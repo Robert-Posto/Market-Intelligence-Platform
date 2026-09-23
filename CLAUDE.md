@@ -21,7 +21,7 @@ fără framework · Playwright + pdfplumber · dezvoltat pe Windows.
 ```bash
 pip install -r requirements.txt && playwright install chromium
 python app/server.py                      # http://localhost:8765
-python ingest/router.py --pas <playwright|bs4|descoperite|pdf|tot> [--banca <slug>]
+python ingest/populare_initiala.py [--banca <slug>] [--fara-llm]
 docker exec -i mip-db psql -U mip -d mip < db/<fisier>.sql
 ```
 
