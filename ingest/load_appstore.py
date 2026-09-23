@@ -34,7 +34,10 @@ FISIER_LOOKUP = os.path.join(
     "date", "rezultate_app_store.json",
 )
 
-STOREFRONTS = ("ro", "us")
+# Doar magazinul romanesc. Masurat pe 23 sept: in `us`, recenziile Citibank si
+# Revolut (aplicatii globale) erau 0% in romana, adica clienti straini citit
+# drept sentiment din Romania; la aplicatiile romanesti ~jumatate erau diaspora.
+STOREFRONTS = ("ro",)
 
 USER_AGENT = (
     "LibraBank-MarketIntel-Test/0.1 "

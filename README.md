@@ -185,8 +185,8 @@ procente — deci nu apare la comisioane.
 
 **2.3 și 2.7 stau la 3 bănci în bază.** Datele pentru toate cele 19 aplicații
 confirmate sunt aduse (`date/rezultate_app_store.json`, 23 sept); lipsește
-doar `load_appstore.py`, care generează 873 de recenzii. Înainte de încărcare:
-recenziile din magazinul `us` ale Citibank și Revolut sunt 0% în română
+doar `load_appstore.py`, care generează 612 recenzii. Doar din magazinul
+românesc: în `us`, recenziile Citibank și Revolut erau 0% în română
 (aplicații globale, clienți străini).
 
 **11 bănci fără id de aplicație confirmat.** Patru probabil n-au aplicație
