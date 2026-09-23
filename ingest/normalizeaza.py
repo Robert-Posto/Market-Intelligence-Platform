@@ -421,7 +421,7 @@ def noteaza_surse(note):
             return cur.rowcount
 
 
-def scrie(randuri, metoda, raport=None, sterge=True):
+def scrie(randuri, metoda, raport=None, sterge=True, banci=None):
     """Scrie rândurile normalizate, idempotent pe `metoda`.
 
     Pașii, în ordinea impusă de chei străine:
@@ -544,7 +544,16 @@ def scrie(randuri, metoda, raport=None, sterge=True):
             id_hash = dict(cur.fetchall())
 
             # --- 3. idempotență pe proveniență (sărită la scriere incrementală)
-            if sterge:
+            # Cu `banci`, doar băncile rulate: `--banca cec` ștergea altfel
+            # observațiile tuturor celorlalte bănci.
+            if sterge and banci:
+                cur.execute(
+                    """DELETE FROM observations o USING surse s, banci b
+                       WHERE o.id_sursa = s.id AND b.id = s.id_banca
+                         AND o.metoda_extractie = %s AND b.slug = ANY(%s)""",
+                    (metoda, list(banci)))
+                raport["observatii_sterse"] += cur.rowcount
+            elif sterge:
                 cur.execute("DELETE FROM observations WHERE metoda_extractie = %s",
                             (metoda,))
                 raport["observatii_sterse"] += cur.rowcount

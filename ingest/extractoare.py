@@ -487,10 +487,11 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
 def din_html(octeti, url, slug, rol=None):
     """Dobânzi + nume de produs din HTML, cu parserul propriu și al colegului."""
     from bs4 import BeautifulSoup
-    from parser_rate import parseaza_linie
+    from crawler.parser_rate import parseaza_linie
 
-    html = octeti.decode("utf-8", errors="replace")
-    soup = BeautifulSoup(html, "lxml")
+    # Octeți, nu text: BeautifulSoup citește charset-ul din <meta>. Decodarea
+    # forțată în UTF-8 strica diacriticele paginilor servite în windows-1250.
+    soup = BeautifulSoup(octeti, "lxml")
     titlu = soup.title.get_text(strip=True) if soup.title else None
     categorie, produs, _ = clasifica(url, titlu)
     if not categorie:
