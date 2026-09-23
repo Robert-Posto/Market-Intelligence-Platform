@@ -167,6 +167,11 @@ SERVICII = [
     ("modificare_anulare", r"(modificar|anular|stornar)\w*"),
     ("interogare_baze_date", r"\bCIP\b|\bCRB\b|\bRECOM\b|baz[ăa]\s+de\s+date"),
     ("poprire", r"poprir|execut\w*\s+silit"),
+    # Adăugate pe 23.09.2026: concepte reale printre valorile nemapate
+    # („Taxa recuperare card", 23 de valori; contestare nejustificată, ~38).
+    ("recuperare_card", r"recuper\w*[^.]{0,30}card|card[^.]{0,30}(re[țt]inut|recuper)"),
+    ("contestare_tranzactie", r"contest\w*[^.]{0,40}(nejustificat|tranzac|opera[țt]iun)"),
+    ("pachet_servicii", r"pachet\w*\s+de\s+servicii|abonament\w*\s+lunar[^.]{0,20}pachet"),
     # Ultimele doua, si poziția lor e obligatorie. Instrumentul de plata e OBIECTUL
     # serviciului, nu capul lui: "Remitere la încasare a cecurilor" e o incasare,
     # "Anulare serviciu SMS Alert" e o anulare. Puse mai sus in lista, furau 22 de
