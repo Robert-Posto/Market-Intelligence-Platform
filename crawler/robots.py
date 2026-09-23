@@ -31,7 +31,8 @@ def _compileaza(model):
 class RegulliRobots:
     """Regulile robots.txt pentru un domeniu, aplicate grupului User-agent: *."""
 
-    def __init__(self, banca_id, base_url, delay_implicit=2):
+    def __init__(self, banca_id, base_url, delay_implicit=2,
+                 ua_token="LibraBank-MarketIntel-Test"):
         self.banca_id = banca_id
         self.base_url = base_url
         self.delay = delay_implicit
@@ -46,6 +47,12 @@ class RegulliRobots:
         self.text_brut = None
         self.cai_interzise = CAI_INTERZISE.get(banca_id, [])
         self._grup_stea = False     # grupul de user-agent curent include "*"
+        # Grupul care ne numește explicit înlocuiește grupul „*" (RFC 9309,
+        # 2.2.1). Potrivire EXACTĂ pe token: un grup „User-agent: Test" nu e
+        # al nostru, deși UA-ul nostru conține „-Test/".
+        self.ua_token = ua_token.lower()
+        self.reguli_proprii = []
+        self._grup_propriu = False
 
     # ------------------------------------------------------------------ citire
     def citeste(self, page, request_ctx=None):
@@ -126,7 +133,9 @@ class RegulliRobots:
                 # un grup poate lista mai multi agenti inainte de reguli
                 if not in_grup_stea:
                     grup_curent_are_stea = False
+                    self._grup_propriu = False
                 grup_curent_are_stea = grup_curent_are_stea or valoare == "*"
+                self._grup_propriu = self._grup_propriu or valoare.lower() == self.ua_token
                 in_grup_stea = True
                 self._grup_stea = grup_curent_are_stea
                 continue
@@ -137,15 +146,14 @@ class RegulliRobots:
 
             # orice alta directiva incheie enumerarea de user-agent
             in_grup_stea = False
-            if not self._grup_stea:
+            if not (self._grup_stea or self._grup_propriu):
                 continue
+            destinatie = self.reguli_proprii if self._grup_propriu else self.reguli
 
             if cheie in ("disallow", "allow"):
-                if cheie == "disallow" and valoare == "":
-                    continue  # "Disallow:" gol = fara restrictie
                 if valoare == "":
-                    continue
-                self.reguli.append(
+                    continue  # "Disallow:" gol = fara restrictie
+                destinatie.append(
                     (len(valoare), cheie == "allow", _compileaza(valoare)))
             elif cheie == "crawl-delay":
                 try:
@@ -166,7 +174,7 @@ class RegulliRobots:
             cale += "?" + analiza.query
 
         cel_mai_lung, permite = -1, True
-        for lungime, este_allow, regex in self.reguli:
+        for lungime, este_allow, regex in (self.reguli_proprii or self.reguli):
             if regex.match(cale):
                 # cel mai lung model castiga; la egalitate, Allow bate Disallow
                 if lungime > cel_mai_lung or (lungime == cel_mai_lung and este_allow):

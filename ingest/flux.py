@@ -10,24 +10,9 @@ Un singur drum, aplicat la fel oricărei surse:
                                                         ▼
                                           extracție ─► normalizare ─► observations
 
-TRANSPORTUL E O CASCADĂ, în ordinea cerută:
-
-  1. `http`        stiva proprie (ingest/scraper.py) — `requests`,
-                   User-Agent care ne identifică, delay, detecție de encoding.
-                   Cea mai ieftină și cea mai transparentă. Merge pe majoritate.
-
-  2. `playwright`  motorul colegului (pentru_coleg_bs4_21sept/crawler) — browser
-                   Chromium real. Ia paginile randate prin JS și trece de unele
-                   WAF-uri. Măsurat: deblochează CEC (403 pe http, 200 aici, cu
-                   9 PDF-uri). NU trece de Banca Transilvania, UniCredit și
-                   Intesa — acolo răspunsul e „Acces blocat", explicit, și ne
-                   oprim.
-
-  3. `llm`         `web_fetch` server-side (flux-colectare/claudeCrawl.py).
-                   Cererea pleacă din infrastructura Anthropic, cu agentul
-                   `Claude-User`, iar robots.txt e impus de ei. Codul nostru nu
-                   atinge serverul băncii. Ultima treaptă fiindcă costă bani
-                   per apel și întoarce text extras, nu marcaj.
+TRANSPORTUL e în `ingest/transport.py`: requests cu UA-ul echipei, Playwright
+doar pentru pagini randate în JS, STOP la blocaj. Vechea cascadă (http →
+playwright → llm) trecea mai departe și după un 403, deci ocolea filtrul băncii.
 
 Se folosesc implementările colegilor, nu doar rezultatele lor:
 
@@ -68,152 +53,49 @@ import normalizeaza as N           # noqa: E402
 
 BRONZE = os.path.join(RADACINA, "bronze")
 
-# User-Agent pentru browser. E cel din codul colegului și e corect aici: cu
-# Playwright rulează chiar Chromium, deci un UA de Chrome nu e o minciună —
-# spre deosebire de `requests` care ar pretinde același lucru. Stiva `http`
-# folosește UA-ul nostru, care ne identifică explicit.
-UA_BROWSER = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-              "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
-
-
 # ==========================================================================
-# robots.txt — implementarea colegului, nu urllib
+# robots.txt — implementarea colegului (crawler/robots.py), nu urllib
 # ==========================================================================
-
-def _reguli_robots():
-    from crawler.robots import RegulliRobots
-    return RegulliRobots
-
 
 _CACHE_ROBOTS = {}
 
 
-def permite(url, banca_id):
-    """robots.txt după RFC 9309, o citire per origine.
+def reguli_pentru(url, banca_id):
+    """Regulile robots.txt ale originii, citite o dată, cu dovada păstrată.
 
-    Se folosește `crawler/robots.py`, nu `urllib.robotparser`. Motivul e o
-    greșeală pe care am făcut-o deja: `urllib` face doar potrivire pe prefix și
-    ratează wildcard-urile, iar ING are `Disallow: *.pdf`. Am descărcat trei
-    PDF-uri de la ING în ciuda interdicției și a trebuit să șterg 903
-    observații.
+    `crawler/robots.py`, nu `urllib.robotparser`: urllib ratează wildcard-urile,
+    iar ING are `Disallow: *.pdf` — am descărcat trei PDF-uri ING în ciuda
+    interdicției și a trebuit să șterg 903 observații.
     """
     from urllib.parse import urlparse
     o = urlparse(url)
     origine = f"{o.scheme}://{o.netloc}"
     if origine not in _CACHE_ROBOTS:
-        R = _reguli_robots()
-        reguli = R(banca_id, origine)
+        import requests
+        from crawler import UA
+        from crawler.robots import RegulliRobots
+        reguli = RegulliRobots(banca_id, origine)
         try:
-            # `citeste` acceptă o pagină Playwright sau un context de cereri;
-            # aici îi dăm textul adus cu stiva simplă, care e suficient în
-            # majoritatea cazurilor.
-            import requests
-            from scraper import HEADERS
-            r = requests.get(origine + "/robots.txt", headers=HEADERS, timeout=15)
-            reguli._parseaza(r.text if r.ok else "")
-        except Exception:
-            reguli._parseaza("")       # inaccesibil => fără restricții declarate
+            r = requests.get(origine + "/robots.txt", headers={"User-Agent": UA}, timeout=15)
+            reguli.status = f"HTTP {r.status_code}"
+            reguli.text_brut = r.text if r.ok else ""
+            # RFC 9309: 4xx = fără restricții; 5xx/timeout = abatere asumată a
+            # echipei, tratat ca permis (README, „Conformitate").
+            reguli._parseaza(reguli.text_brut)
+        except Exception as exc:
+            reguli.status = f"inaccesibil ({type(exc).__name__})"
+            reguli._parseaza("")
         _CACHE_ROBOTS[origine] = reguli
-    return _CACHE_ROBOTS[origine].permite(url)
+    return _CACHE_ROBOTS[origine]
 
 
-# ==========================================================================
-# Transporturile, în ordinea cascadei
-# ==========================================================================
-
-def adu_http(url, _stare):
-    """Treapta 1: stiva proprie. requests, UA care ne identifică."""
-    import requests
-    from scraper import HEADERS
-    try:
-        r = requests.get(url, headers=HEADERS, timeout=45)
-    except Exception as exc:
-        return None, f"{type(exc).__name__}"
-    if not r.ok:
-        return None, f"HTTP {r.status_code}"
-    return r.content, f"HTTP 200, {len(r.content)} octeți"
+def permite(url, banca_id):
+    return reguli_pentru(url, banca_id).permite(url)
 
 
-def adu_playwright(url, stare):
-    """Treapta 2: browser Chromium real, motorul colegului.
-
-    Browserul se pornește o dată per rulare și se ține în `stare` — o lansare
-    costă ~1 secundă, iar pe 100 de surse asta ar fi un minut aruncat.
-    """
-    if "browser" not in stare:
-        from playwright.sync_api import sync_playwright
-        stare["pw"] = sync_playwright().start()
-        stare["browser"] = stare["pw"].chromium.launch(headless=True)
-        stare["ctx"] = stare["browser"].new_context(user_agent=UA_BROWSER,
-                                                    locale="ro-RO")
-    ctx = stare["ctx"]
-    # PDF-urile se iau prin contextul de cereri al browserului, nu prin
-    # navigare: o navigare la un PDF deschide vizualizatorul, nu dă octeții.
-    if url.lower().split("?")[0].endswith(".pdf"):
-        try:
-            resp = ctx.request.get(url, timeout=60000)
-            if not resp.ok:
-                return None, f"HTTP {resp.status}"
-            date = resp.body()
-            if not date.startswith(b"%PDF"):
-                return None, "răspunsul nu e PDF"
-            return date, f"HTTP {resp.status}, {len(date)} octeți (browser)"
-        except Exception as exc:
-            return None, f"{type(exc).__name__}"
-    pg = ctx.new_page()
-    try:
-        r = pg.goto(url, wait_until="domcontentloaded", timeout=45000)
-        pg.wait_for_timeout(1800)      # lăsăm conținutul randat prin JS să apară
-        if r and r.status >= 400:
-            return None, f"HTTP {r.status}"
-        html = pg.content()
-        return html.encode("utf-8"), f"HTTP {r.status if r else '?'}, randat"
-    except Exception as exc:
-        return None, f"{type(exc).__name__}"
-    finally:
-        pg.close()
-
-
-def adu_llm(url, stare):
-    """Treapta 3: `web_fetch` server-side, prin Anthropic.
-
-    Cererea nu pleacă de la noi: pleacă din infrastructura Anthropic, cu
-    agentul `Claude-User`, care respectă robots.txt prin construcție. Costă
-    bani per apel, deci e ultima treaptă, nu prima.
-
-    Întoarce TEXT extras, nu marcaj — deci ce iese de aici nu poate fi dat
-    parserelor de tabel, care au nevoie de geometrie. Bun pentru dobânzi și
-    nume de produse, nu pentru tarife în tabel.
-    """
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        return None, "fără ANTHROPIC_API_KEY"
-    if "anthropic" not in stare:
-        try:
-            import anthropic
-            stare["anthropic"] = anthropic.Anthropic()
-        except Exception as exc:
-            return None, f"clientul Anthropic: {type(exc).__name__}"
-    try:
-        r = stare["anthropic"].messages.create(
-            model=os.environ.get("MODEL", "claude-sonnet-5"),
-            max_tokens=8000,
-            tools=[{"type": "web_fetch_20250910", "name": "web_fetch",
-                    "max_uses": 2, "allowed_domains": [url.split("/")[2]]}],
-            extra_headers={"anthropic-beta": "web-fetch-2025-09-10"},
-            messages=[{"role": "user", "content":
-                       f"Deschide {url} cu web_fetch și întoarce textul paginii, "
-                       f"integral, fără comentarii. Dacă nu se poate deschide, "
-                       f"scrie exact: INACCESIBIL."}],
-        )
-    except Exception as exc:
-        return None, f"{type(exc).__name__}"
-    text = "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
-    if not text.strip() or "INACCESIBIL" in text[:200]:
-        return None, "web_fetch nu a putut deschide pagina"
-    return text.encode("utf-8"), f"web_fetch, {len(text)} caractere de text"
-
-
-CASCADA = [("http", adu_http), ("playwright", adu_playwright), ("llm", adu_llm)]
+def intarziere(url, banca_id):
+    """Crawl-delay cerut de origine (Patria: 5 s)."""
+    return reguli_pentru(url, banca_id).delay
 
 
 # ==========================================================================
