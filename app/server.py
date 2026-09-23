@@ -1014,6 +1014,15 @@ def adu_pdf(url):
     sertarului ar re-descărca de la bancă același document.
     """
     import hashlib
+    # robots.txt și aici, nu doar la colectare: ING are `Disallow: *.pdf`, iar
+    # allowlist-ul din bază lăsa să treacă un PDF înregistrat înainte de verificare.
+    radacina = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for p in (radacina, os.path.join(radacina, "ingest")):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+    import flux
+    if not flux.permite(url, "proxy"):
+        raise PermissionError("interzis de robots.txt al băncii")
     os.makedirs(CACHE_PDF, exist_ok=True)
     cale = os.path.join(CACHE_PDF, hashlib.sha256(url.encode()).hexdigest() + ".pdf")
     if os.path.exists(cale) and os.path.getsize(cale) > 1000:
@@ -1023,8 +1032,9 @@ def adu_pdf(url):
     # fiindcă lipsește intermediarul). `requests` folosește `certifi`.
     import requests
     r = requests.get(url, timeout=40, headers={
-        # User-Agent onest, ca la colectare: se identifică, nu se dă drept browser.
-        "User-Agent": "MIP/1.0 (monitorizare concurenta; contact IT Libra Bank)",
+        # UA-ul unic al echipei (crawler/__init__.py): se identifică, nu se dă
+        # drept browser.
+        "User-Agent": __import__("crawler").UA,
         "Accept": "application/pdf,*/*",
     })
     if not r.ok:
@@ -1047,6 +1057,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return
             try:
                 cale = adu_pdf(url)
+            except PermissionError as exc:
+                self.send_error(403, str(exc))
+                return
             except Exception as exc:
                 self.send_error(502, f"nu s-a putut aduce PDF-ul: {exc}")
                 return
