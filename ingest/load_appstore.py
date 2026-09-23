@@ -1,7 +1,8 @@
 """Genereaza SQL pentru track-ul mobil iOS: versiuni, screenshot-uri, review-uri.
 
 Surse:
-  date/rezultate_app_store.json (itunes_lookup.py) - iTunes Lookup API, 3 banci
+  date/rezultate_app_store.json (itunes_lookup.py) - iTunes Lookup API, cate o
+      aplicatie pentru fiecare slug confirmat in date/app_id_gasite.json
   feed RSS de review-uri    - cerut live, per storefront
 
 PSEUDONIMIZARE, obligatorie: feed-ul RSS al Apple intoarce numele real de
@@ -32,13 +33,6 @@ FISIER_LOOKUP = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "date", "rezultate_app_store.json",
 )
-
-# numele din rezultate_app_store.json -> slug din tabelul `banci`
-SLUG_BANCA = {
-    "Libra Internet Bank": "libra",
-    "ING Bank (HomeBank)": "ing",
-    "BCR (George Romania)": "bcr",
-}
 
 STOREFRONTS = ("ro", "us")
 
@@ -101,12 +95,9 @@ def main():
 
     n_rel = n_shot = n_rev = 0
     for app in apps:
+        slug = app["slug"]
         if not app.get("gasit"):
-            err.write(f"sarit (negasit): {app.get('banca')}\n")
-            continue
-        slug = SLUG_BANCA.get(app.get("banca"))
-        if not slug:
-            err.write(f"sarit (slug nemapat): {app.get('banca')}\n")
+            err.write(f"sarit (negasit): {slug}\n")
             continue
         app_id = str(app["ios_app_id"])
 

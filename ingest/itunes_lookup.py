@@ -24,13 +24,12 @@ USER_AGENT = (
 )
 LOOKUP_URL = "https://itunes.apple.com/lookup"
 DELAY_BETWEEN_REQUESTS = 3.0
+DATE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "date")
 
-# id-uri App Store confirmate prin cautare (apps.apple.com/.../id...), nu ghicite
-APPS = [
-    {"banca": "Libra Internet Bank", "ios_app_id": 691914413},
-    {"banca": "ING Bank (HomeBank)", "ios_app_id": 458609168},
-    {"banca": "BCR (George Romania)", "ios_app_id": 1401166803},
-]
+# id-urile confirmate de cauta_app_id.py (slug din `banci` -> app), nu ghicite;
+# aplicatiile altor piete ale grupului sunt deja respinse acolo
+with open(os.path.join(DATE, "app_id_gasite.json"), encoding="utf-8") as _f:
+    APPS = [{"slug": s, "ios_app_id": a["ios_app_id"]} for s, a in json.load(_f).items()]
 
 CAMPURI_UTILE = [
     "trackName", "sellerName", "version", "currentVersionReleaseDate",
@@ -64,9 +63,9 @@ def main():
 
     toate = []
     for i, app in enumerate(APPS, 1):
-        print(f"[{i}/{len(APPS)}] {app['banca']} (id={app['ios_app_id']})")
+        print(f"[{i}/{len(APPS)}] {app['slug']} (id={app['ios_app_id']})")
         info = lookup_app(app["ios_app_id"])
-        info["banca"] = app["banca"]
+        info["slug"] = app["slug"]
         info["ios_app_id"] = app["ios_app_id"]
         if info.get("gasit"):
             print(
@@ -79,8 +78,7 @@ def main():
         toate.append(info)
         time.sleep(DELAY_BETWEEN_REQUESTS)
 
-    iesire = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                          "date", "rezultate_app_store.json")
+    iesire = os.path.join(DATE, "rezultate_app_store.json")
     with open(iesire, "w", encoding="utf-8") as f:
         json.dump(toate, f, ensure_ascii=False, indent=2)
     print("\nDone. Vezi date/rezultate_app_store.json")

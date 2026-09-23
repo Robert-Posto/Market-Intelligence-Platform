@@ -183,8 +183,11 @@ bănci.
 `bnpparibas` e un caz aparte: are 2 PDF-uri și a extras 1 singură valoare, în
 procente — deci nu apare la comisioane.
 
-**2.3 și 2.7 stau la 3 bănci** deși id-urile pentru 19 sunt găsite și
-confirmate. Lipsește doar încărcarea.
+**2.3 și 2.7 stau la 3 bănci în bază.** Datele pentru toate cele 19 aplicații
+confirmate sunt aduse (`date/rezultate_app_store.json`, 23 sept); lipsește
+doar `load_appstore.py`, care generează 873 de recenzii. Înainte de încărcare:
+recenziile din magazinul `us` ale Citibank și Revolut sunt 0% în română
+(aplicații globale, clienți străini).
 
 **11 bănci fără id de aplicație confirmat.** Patru probabil n-au aplicație
 (bcr-locuinte, bid, cec, creditcoop). Șapte au aplicația *grupului*, dar de pe
