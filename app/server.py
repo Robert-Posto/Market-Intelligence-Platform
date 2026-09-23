@@ -284,7 +284,7 @@ def locatii(q):
         "puncte": interoghează(
             "SELECT l.id, b.slug AS banca, b.nume AS banca_nume, l.tip, l.nume, "
             "l.adresa, l.sector, l.lat::float8, l.lon::float8, l.program, l.sursa, "
-            "l.rating::float8, l.nr_recenzii "
+            "l.rating::float8, l.nr_recenzii, l.furnizori "
             + base + " ORDER BY b.slug, l.tip",
             params,
         ),
@@ -709,7 +709,7 @@ def versus_extra():
     preț: valoare + la ce se referă + sensul (mai mare/mai mic e mai bun).
 
     Fiecare rând spune și de unde vine, fiindcă nu toate sunt egale: ratingul
-    e real din App Store, locațiile sunt mock pentru hartă.
+    e real din App Store, locațiile vin din Overture Maps.
     """
     return {
         "mobil": interoghează(
@@ -827,7 +827,7 @@ def stare():
         UNION ALL
         SELECT 'Indici BNR', count(*)::int, NULL::timestamptz, 'bnr_indici.json' FROM indici_referinta
         UNION ALL
-        SELECT 'Locații (mock)', count(*)::int, max(observat_la), 'mock, pentru hartă' FROM locatii
+        SELECT 'Locații', count(*)::int, max(observat_la), 'Overture Maps Places' FROM locatii
         UNION ALL
         SELECT 'Evenimente de schimbare', count(*)::int, max(created_at), 'diferente.py (neconectat)' FROM change_events
         """

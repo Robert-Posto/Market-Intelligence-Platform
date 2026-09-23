@@ -1076,9 +1076,9 @@ R.retea = async () => {
   return `
   <section>
     <h2>Hartă interactivă</h2>
-    <p class="note">${d.total} locații, ${d.banci.length} bănci. Datele sunt <span class="pill mock">mock</span>
-      — generate pentru testarea fluxului, cu <code class="mono">sursa='mock'</code>, deci se șterg selectiv
-      când vine Google Places. Harta e pe pagină separată, fiindcă MapLibre își gestionează propriul ciclu de viață.</p>
+    <p class="note">${d.total} locații, ${d.banci.length} bănci. Datele vin din <b>Overture Maps Places</b> (versiunea 2026-08-19), un set deschis;
+      în bază intră doar punctele legate sigur de una din băncile urmărite, pe nume sau brand actual.
+      ATM-urile sunt acoperite parțial. Harta e pe pagină separată, fiindcă MapLibre își gestionează propriul ciclu de viață.</p>
     <p><a href="/harta.html"><button class="primar">Deschide harta →</button></a></p>
     ${tabel(d.banci, [
       {cap:"Bancă", k:"nume"}, {cap:"Sucursale", cls:"num", val:r => num(r.sucursale, 0)},
@@ -1088,10 +1088,10 @@ R.retea = async () => {
   </section>
   <section>
     <h2>Ce urmează, pe surse reale</h2>
-    <p class="note">Ordinea de prioritate stabilită în artifact: <b>1.</b> Google Places API (o integrare,
-      prag gratuit lunar, dar ATM-uri incomplete) · <b>2.</b> locatorul propriu al fiecărei bănci
-      (cel mai complet, dar efort per bancă — testat pe BCR, nici API intern, nici sitemap n-au dat
-      lista din prima) · <b>3.</b> ONRC, doar ca verificare încrucișată, fiindcă nu acoperă ATM-urile.</p>
+    <p class="note"><b>1.</b> Locatorul propriu al fiecărei bănci — date oficiale, vin odată cu descoperirea
+      surselor · <b>2.</b> Overture Maps, pentru golurile rămase · <b>3.</b> ONRC, doar ca verificare
+      încrucișată, fiindcă nu acoperă ATM-urile. Google Places nu se folosește: condițiile lui interzic
+      păstrarea coordonatelor peste 30 de zile și afișarea pe o hartă non-Google.</p>
   </section>`;
 };
 
@@ -1211,7 +1211,7 @@ R.versus = async (stare) => {
       a && a.rating
         ? [`${num(a.rating, 2)} ★`, `App Store · ${num(a.volum, 0)} note`]
         : ["—", "fără date App Store"],
-      l ? [num((l.sucursale || 0) + (l.atm || 0), 0), "locații (mock, București)"]
+      l ? [num((l.sucursale || 0) + (l.atm || 0), 0), "locații (Overture Maps)"]
         : ["—", "fără locații"],
       [num(ac ? ac.valori : 0, 0), "valori colectate"],
     ];
@@ -1323,13 +1323,11 @@ R.versus = async (stare) => {
         ["Capturi în listing", "câte imagini publică banca în store", appPe,
          r => r && r.capturi ? numar(r.capturi, "", "capturi") : null],
       ])
-    + sectiuneExtra("Rețea (2.5) — date mock", "mare_bun", [
-        ["Sucursale", "unități fizice în București (mock, pentru hartă)", locPe,
-         r => r && r.sucursale ? numar(r.sucursale, "", "în București") : null],
-        ["ATM-uri proprii", "bancomate proprii (mock, pentru hartă)", locPe,
-         r => r && r.atm ? numar(r.atm, "", "în București") : null],
-        ["Rating sucursale", "media recenziilor de locație (mock)", locPe,
-         r => r && r.rating_sucursale ? numar(r.rating_sucursale, " ★") : null],
+    + sectiuneExtra("Rețea (2.5) — Overture Maps", "mare_bun", [
+        ["Sucursale", "unități fizice în România (Overture Maps)", locPe,
+         r => r && r.sucursale ? numar(r.sucursale, "", "în România") : null],
+        ["ATM-uri proprii", "bancomate proprii (Overture Maps, acoperire parțială)", locPe,
+         r => r && r.atm ? numar(r.atm, "", "în România") : null],
       ])
     + sectiuneExtra("Sentiment (2.7)", "mare_bun", [
         ["Media textelor de review", "nota celor care s-au deranjat să scrie — mai critică decât agregatul", sentPe,
@@ -1366,7 +1364,7 @@ R.versus = async (stare) => {
       și sentiment — avem date doar pentru <b>3 bănci</b>, fiindcă id-urile de App Store
       se adaugă manual, câte unul.
       Un gol nu înseamnă „zero" și nu se completează cu o estimare.
-      Rețeaua (2.5) e <b>mock</b>, pentru hartă; restul e real.</p>
+      Rețeaua (2.5) vine din Overture Maps, cu ATM-uri acoperite parțial.</p>
   </section>
   ${sectiuni ? `<section class="vs" style="${grid}">
       <div class="vs-bara">
