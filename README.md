@@ -8,8 +8,8 @@ WAF-urilor sau a captcha. Autorii recenziilor se pseudonimizează la ingest
 (hash cu sare) — Apple întoarce numele real, deci anonimizarea o facem noi.
 
 > **Prototip funcțional, în construcție activă.** Cifrele de mai jos sunt o
-> fotografie de la **23 septembrie 2026**, luată în timp ce o extracție încă
-> rula — deci sunt un minim, nu un total final.
+> fotografie de la **23 septembrie 2026**, după terminarea extracției din
+> PDF-uri pe toate băncile.
 
 ---
 
@@ -19,15 +19,15 @@ WAF-urilor sau a captcha. Autorii recenziilor se pseudonimizează la ingest
 |---|---|
 | bănci | 30 |
 | surse (URL-uri + documente) | 903 |
-| observații (prețuri, dobânzi) | 19.575 |
-| în coada de verificare umană | 1.385 |
+| observații (prețuri, dobânzi) | 22.321 |
+| în coada de verificare umană | 1.529 |
 | schimbări de preț detectate | 18 |
 
 Patru variante de colectare, cu acoperiri diferite — de aceea rulează toate:
 
 | proveniență | observații | ce acoperă |
 |---|---|---|
-| `pdf` | 12.365 | comisioane din documentele de tarife (extracție proprie) |
+| `pdf` | 15.111 | comisioane din documentele de tarife (extracție proprie) |
 | `playwright` | 6.518 | pachetul colegului, gata extras (JSON) |
 | `bs4` | 511 | depozite, scraperul propriu |
 | `bs4_llm` | 181 | BS4 peste URL-urile găsite de discovery-ul LLM |
@@ -36,7 +36,7 @@ Pe secțiunile din PDF-ul de arhitectură:
 
 | secțiune | acoperire |
 |---|---|
-| 2.1 Produse & prețuri | 17 bănci din 30 |
+| 2.1 Produse & prețuri | 19 bănci din 30 |
 | 2.2 Rate & indicatori | 23 bănci |
 | 2.3 Aplicații mobile | **3 bănci** |
 | 2.4 Campanii & marketing | **0 — necolectat** |
@@ -52,7 +52,7 @@ Ca să nu ne călcăm pe picioare.
 
 | zonă | stare |
 |---|---|
-| `router.py --pas pdf` pe toate băncile | **rulează acum** |
+| `router.py --pas pdf` pe toate băncile | **terminat** — 96 PDF-uri, 15.111 comisioane |
 | încărcarea aplicațiilor în 2.3 / 2.7 | id-uri găsite pentru 19 bănci, **încărcarea nu s-a făcut** |
 | cascada de transport (Playwright pentru băncile cu WAF) | planificat, neînceput |
 | măsurare pentru 2.4 (campanii) | planificat, neînceput |
@@ -160,12 +160,28 @@ umplutură, un comentariu mock se citește ca părere reală de client.
 
 ### Calitate
 
-**Extracția din PDF e verificată doar pe ING.** Acolo rata de mapare la
-vocabularul canonic a ieșit 74,9% — peste cele 71,9% ale pachetului colegului.
-Pe restul băncilor nu s-a verificat încă. În eșantionul ING apar rânduri de
-gunoi de la parserul de tarife nestandardizate („√ produsul / serviciul este"),
-necuantificate. **Asta e cel mai important lucru de verificat înainte să ne
-bazăm pe 2.1.**
+**Rata de mapare la vocabularul canonic scade pe măsură ce adăugăm bănci.**
+Pe ING singur ieșise 74,9%, peste cele 71,9% ale pachetului colegului. Pe toate
+cele 21 de bănci împreună e **58,8%** — deci ~41% din comisioanele extrase
+rămân în găleata generică `comision` și **nu apar în nicio comparație**.
+
+Cel mai prost stau:
+
+| bancă | valori | mapate |
+|---|---|---|
+| revolut | 64 | 7,8% |
+| bcr | 4.068 | 45,7% |
+| bankofchina | 72 | 51,4% |
+| libra | 434 | 56,5% |
+| brd | 733 | 56,8% |
+
+BCR contează cel mai mult: 4.068 de valori la 45,7% înseamnă ~2.200 de
+comisioane extrase corect dar invizibile. **Ăsta e cel mai valoros lucru de
+lucrat la 2.1** — nu mai multă extracție, ci extinderea vocabularului canonic
+peste denumirile pe care nu le acoperă.
+
+Mai apar și rânduri de gunoi de la parserul de tarife nestandardizate
+(„√ produsul / serviciul este"), necuantificate.
 
 **1.385 de valori în coada de verificare.** Nu e o listă de bug-uri, e o
 funcție a sistemului: un extractor care n-ar produce niciodată cazuri de
