@@ -128,15 +128,19 @@ Ordonate după cât dor.
 **16 bănci n-au avut niciodată comisioane** fiindcă pipeline-ul nu citea
 PDF-uri. Corelația măsurată era perfectă: comisioane în bază exact la băncile
 care aveau un PDF adus de pachetul colegului, zero la restul. Rezolvat
-structural (`din_pdf` + `vocabular.canonic`); rularea pe toate băncile e în
-curs.
+structural (`din_pdf` + `vocabular.canonic`), iar 2.1 a crescut de la 13 la 19
+bănci.
 
-**5 bănci rămân la zero**, din două cauze diferite care cer soluții diferite:
+**11 bănci rămân la zero**, din trei cauze care cer soluții diferite:
 
-- *blocate de WAF (HTTP 403)*: banca-transilvania, cec, unicredit, intesa.
-  Nu forțăm. Ruta corectă e un browser real (Playwright), care nu e construit.
-- *fără surse descoperite*: pko, banorient, bnpparibas. Aici lipsește
-  discovery-ul, nu extracția.
+| cauză | bănci | ce ar rezolva |
+|---|---|---|
+| au PDF-uri, dar descărcarea dă 403 (WAF) | intesa, unicredit, cec, banca-transilvania | cascada Playwright |
+| au pagini, dar niciun PDF de tarife găsit pe ele | patria (38 pagini), credex, cetelem, citibank, bid | recoltare mai bună sau tarife publicate doar în HTML |
+| fără nicio sursă descoperită | banorient | lipsește discovery-ul, nu extracția |
+
+`bnpparibas` e un caz aparte: are 2 PDF-uri și a extras 1 singură valoare, în
+procente — deci nu apare la comisioane.
 
 **2.3 și 2.7 stau la 3 bănci** deși id-urile pentru 19 sunt găsite și
 confirmate. Lipsește doar încărcarea.
@@ -183,7 +187,7 @@ peste denumirile pe care nu le acoperă.
 Mai apar și rânduri de gunoi de la parserul de tarife nestandardizate
 („√ produsul / serviciul este"), necuantificate.
 
-**1.385 de valori în coada de verificare.** Nu e o listă de bug-uri, e o
+**1.529 de valori în coada de verificare.** Nu e o listă de bug-uri, e o
 funcție a sistemului: un extractor care n-ar produce niciodată cazuri de
 verificat ar însemna că nu verifică nimic. Două motive domină, amândouă
 pierderi de *structură* la citirea tabelului, nu greșeli de citire a cifrei:
