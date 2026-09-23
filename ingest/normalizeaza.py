@@ -104,7 +104,7 @@ COLOANE = (
     "valoare_num", "valoare_text", "unitate", "valuta", "citat", "confidence",
     "ambiguu", "metoda_extractie", "serviciu", "sectiune", "conditie",
     "frecventa", "detaliu", "pagina", "data_vigoare", "stare_data",
-    "motiv_ambiguu", "nr_aparitii",
+    "motiv_ambiguu", "nr_aparitii", "coloana",
 )
 
 # Aceleași liste ca CHECK-urile din `observations`. Se verifică ÎNAINTE de
@@ -143,6 +143,9 @@ def invalid(r):
 CHEIE_DUPLICAT = (
     "banca", "camp", "cod_scenariu", "serviciu", "valoare_num", "valoare_text",
     "unitate", "conditie", "frecventa", "data_vigoare",
+    # Varianta de produs (Visa / Mastercard / Gold): fără ea, cinci carduri
+    # diferite care costă 0 lei deveneau un singur rând.
+    "coloana",
 )
 
 
@@ -220,7 +223,7 @@ def brut(**kw):
         "destinatie": None, "perioada": None, "nr_rate": None,
         # calitate și versiune
         "citat": None, "incredere": None, "ambiguu": False, "motiv_ambiguu": None,
-        "data_vigoare": None, "stare_data": None,
+        "data_vigoare": None, "stare_data": None, "coloana": None,
         # produsul din catalog; dacă lipsește, se deduce din concept/tip
         "produs": None,
     }
@@ -355,6 +358,7 @@ def normalizeaza(b, raport=None):
         "pagina": b.get("pagina") if isinstance(b.get("pagina"), int) else None,
         "data_vigoare": _data(b.get("data_vigoare")),
         "stare_data": b.get("stare_data"),
+        "coloana": (b.get("coloana") or None) and str(b["coloana"])[:200],
         # De ce e ambiguă, nu doar CĂ e. Cele două motive reale din pachet
         # („antet de coloană pierdut", „prag de sumă pierdut") sunt pierderi de
         # structură la citirea tabelului, nu greșeli de citire a cifrei — și
@@ -580,7 +584,7 @@ def scrie(randuri, metoda, raport=None, sterge=True, banci=None):
                     r["ambiguu"], metoda, r["serviciu"], r["sectiune"], r["conditie"],
                     r["frecventa"], r["detaliu"], r["pagina"],
                     r["data_vigoare"], r["stare_data"], r["motiv_ambiguu"],
-                    r.get("nr_aparitii", 1),
+                    r.get("nr_aparitii", 1), r.get("coloana"),
                 ))
             if valori:
                 psycopg2.extras.execute_values(

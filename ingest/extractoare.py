@@ -339,6 +339,27 @@ RE_TITLU_PAD = re.compile(
     r"|document\w*\s+privind\s+comisioanele", re.I)
 
 
+def _abrev(a):
+    return rf"(?<![A-Za-z]){a}(?![A-Za-z])"
+
+
+# Portat din scripts/unifica_comisioane.py: segmentul din NUMELE documentului.
+# Fără el, lista PF și lista PJ a aceleiași bănci se unesc la deduplicare.
+SEGMENTE = [
+    ("pj", rf"{_abrev('PJ')}|persoane[_\s-]?juridice|juridice|legal[_\s-]?entities|corporate"),
+    ("imm", rf"{_abrev('IMM')}|profesii[_\s-]?liberale|{_abrev('SME')}"),
+    ("pfa", rf"{_abrev('PDAI')}|activit[ăa][țt]i[_\s-]?independente|{_abrev('PFA')}"),
+    ("pf", rf"{_abrev('PF')}|persoane[_\s-]?fizice|fizice|private[_\s-]?individuals"),
+]
+
+
+def segment_din_nume(nume):
+    for seg, tipar in SEGMENTE:
+        if re.search(tipar, nume or "", re.I):
+            return seg
+    return None
+
+
 def _parsere_pdf():
     """Tot ce ține de PDF din pachetul colegului, importat la cerere.
 
@@ -429,6 +450,7 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
         pass
 
     brute, nemapate = [], 0
+    seg_doc = segment_din_nume(sursa or str(cale))
     for c in inregistrari:
         if c.get("valoare") is None:
             continue
@@ -457,8 +479,9 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
             serviciu=c.get("serviciu"), sectiune=c.get("sectiune"),
             conditie=c.get("conditie"), frecventa=c.get("frecventa"),
             detaliu=c.get("detaliu"), pagina=c.get("pagina"),
-            segment=c.get("segment"), canal=c.get("canal"),
-            destinatie=c.get("destinatie"),
+            segment=c.get("segment") or seg_doc, canal=c.get("canal"),
+            destinatie=c.get("destinatie"), coloana=c.get("coloana"),
+            categorie=c.get("categorie"),
             citat=c.get("text_sursa"),
             # Data de vigoare vine din TEXTUL documentului. Fără ea, valoarea
             # nu poate intra în detectarea schimbărilor — iar toate cele 15.230
