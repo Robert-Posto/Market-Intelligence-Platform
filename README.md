@@ -105,6 +105,44 @@ python ingest/fetch_logos_site.py       # sigle, de pe site-ul fiecărei bănci
 Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi
 rescrie. Rularea repetată nu dublează. `--banca <slug>` restrânge la o bancă.
 
+### Pachetul Playwright (`crawler/`)
+
+`--pas playwright` și `load_bnr.py` citesc din `date/pachet/`, un instantaneu
+versionat (rularea din 21 septembrie). Crawler-ul **nu** scrie acolo, ci în
+`output/`, care nu e versionat. Rularea nouă e deci în doi timpi, deliberat: un
+crawl stricat nu ajunge singur în bază.
+
+```bash
+pip install playwright pdfplumber && playwright install chromium
+
+# 1. crawl (~30 min): 6 procese PARALELE, fiecare într-un terminal propriu
+mkdir -p output/log
+python -m crawler.main --banci patria,salt,cetelem                       --pdf --max-pe-banca 80 > output/log/grup1.txt
+python -m crawler.main --banci brd,libra,tbi,bnpparibas                  --pdf --max-pe-banca 80 > output/log/grup2.txt
+python -m crawler.main --banci ing,vista,bcrlocuinte,revolut             --pdf --max-pe-banca 80 > output/log/grup3.txt
+python -m crawler.main --banci bcr,raiffeisen,garanti,bid                --pdf --max-pe-banca 80 > output/log/grup4.txt
+python -m crawler.main --banci eximbank,procredit,creditcoop,bankofchina --pdf --max-pe-banca 80 > output/log/grup5.txt
+python -m crawler.main --banci nexent,techventures,brci,credex           --pdf --max-pe-banca 80 > output/log/grup6.txt
+
+# 2. lanțul post-crawl (~2 min, 13 pași), din rădăcina repo-ului
+python scripts/dupa_crawl.py
+
+# 3. promovare: exact fișierele pe care le citește ingest/
+cp output/{comisioane_unificate,rate_validate,date_documente,bnr_indici}.json date/pachet/
+```
+
+`dupa_crawl.py` așteaptă **toate șase** log-urile `output/log/grup1..6.txt`,
+fiecare terminat cu „Rezultate in:". Cu mai puține grupuri, stă 75 de minute
+și abia apoi pornește.
+
+Gruparea e echilibrare de încărcare, nu ordine alfabetică: pauzele din
+`robots.txt` sunt per origine, deci băncile diferite pot merge în paralel.
+`grup1` are 3 bănci, nu 4, fiindcă Patria cere `Crawl-delay: 5`, singura din
+lot peste 2s. La 18 sept grupurile au durat între 14 min (grup3) și 29 min
+(grup6). Dacă rearanjezi băncile, echilibrează după pauză, nu după număr. Înainte de promovare, `git diff --stat date/pachet/`
+arată cât s-a schimbat. Regula de filtrare pe `stare_data` e în
+`docs/crawler/CITESTE_PENTRU_MERGE.md`.
+
 ### Înainte de commit
 
 ```bash
@@ -268,8 +306,12 @@ comparații și apare în coadă, cu citatul din document.
 app/          server.py (API read-only) · index.html (SPA, 12 pagini)
               harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
 ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
+crawler/      crawler-ul Playwright + parserele PDF + vocabular.py (sursa unică)
+scripts/      lanțul post-crawl (dupa_crawl.py) + teste și verificări robots
 db/           schema.sql + migrările 002..011 · sincronizeaza_vederi.sql
-date/         ieșiri intermediare (JSON)
+date/         ieșiri intermediare (JSON) · pachet/ = ce citește ingest/
+              robots/ = robots.txt brute, dovada de conformitate
+docs/crawler/ jurnalele crawler-ului; operațional e doar CITESTE_PENTRU_MERGE.md
 ```
 
 Serverul e **strict read-only**: nicio rută nu scrie în bază. Interogările

@@ -41,8 +41,7 @@ sys.path.insert(0, os.path.dirname(AICI))
 
 from normalizeaza import brut                                       # noqa: E402
 
-PACHET = os.path.join(os.path.expanduser("~"), "Downloads",
-                      "pentru_coleg_bs4_21sept", "output")
+PACHET = os.path.join(os.path.dirname(AICI), "date", "pachet")
 FISIER_BS4 = os.path.join(os.path.expanduser("~"), "Desktop", "Scraping",
                           "rezultate_depozite.json")
 
@@ -332,9 +331,6 @@ def din_html_live(url, banca, rol_sursa="produs"):
 # 4. PDF: comisioanele din documentele de tarife
 # ==========================================================================
 
-PACHET_CRAWLER = os.path.join(os.path.expanduser("~"), "Downloads",
-                              "pentru_coleg_bs4_21sept")
-
 # Titlul formularului impus prin Legea 258/2017 (directiva UE 2014/92, PAD).
 # Regula e a colegului, refolosită literal: se caută titlul în CONȚINUT, nu în
 # numele fișierului, fiindcă numele minte des. Verificat pe documentul BCR de
@@ -349,8 +345,6 @@ RE_TITLU_PAD = re.compile(
 
 def _parsere_pdf():
     """Parserele colegului + vocabularul canonic, importate la cerere."""
-    if PACHET_CRAWLER not in sys.path:
-        sys.path.insert(0, PACHET_CRAWLER)
     from crawler import parser_pdf, parser_tarife, vocabular
     return parser_pdf, parser_tarife, vocabular
 

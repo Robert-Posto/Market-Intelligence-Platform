@@ -1,0 +1,625 @@
+"""Bateria de teste pentru parser, regula de calendar IRCC si validator.
+
+Fiecare caz vine dintr-o pagina reala intalnita in crawl. Cazurile marcate "NU
+produce" sunt la fel de importante ca celelalte: ele opresc verificari care ar
+da rezultate false.
+
+Rulare:  python scripts/test_validare.py
+"""
+import sys
+from datetime import date, datetime, timezone
+from pathlib import Path
+
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from crawler.data_document import (data_din_nume, data_din_text,
+                                   familie_document, stare_fata_de)
+from crawler.parser_pdf import RE_PROCENT
+from crawler.ambiguitate import marcheaza
+from crawler.diferente import compara as compara_versiuni, rezumat
+from crawler.bnr_indici import ircc_in_vigoare, ircc_ultim_aplicabil, perioada_aplicare
+from crawler.parser_rate import numar, parseaza_linie
+from crawler.validator import _indici_impliciti, _marja_peste_ircc, _perioada_din_text
+from crawler.urme import (actualizeaza, amprenta_parser, cale_unica,
+                          clasifica_semnal, compara,
+                          comparatie_de_valori_permisa, etag_de_incredere,
+                          validator_de_incredere)
+
+TRECUTE = ESUATE = 0
+
+
+def T(cond, eticheta):
+    global TRECUTE, ESUATE
+    if cond:
+        TRECUTE += 1
+    else:
+        ESUATE += 1
+        print(f"  EȘEC  {eticheta}")
+
+
+def P(linie, asteptat, eticheta):
+    """Parseaza o linie si compara (tip, valoare) cu ce se aștepta."""
+    got = sorted((i["tip_rata"], i["valoare"])
+                 for i in parseaza_linie(linie, "b", "c", "u", "t")[0])
+    T(got == sorted(asteptat), f"{eticheta}  (primit {got})")
+
+
+# --------------------------------------------------- regula de calendar a IRCC
+# Trimestrul calculat se aplica din al doilea trimestru calendaristic urmator.
+T(perioada_aplicare("2026T1") == (date(2026, 7, 1), date(2026, 9, 30)), "2026T1 -> T3 2026")
+T(perioada_aplicare("2025T4") == (date(2026, 4, 1), date(2026, 6, 30)), "2025T4 -> T2 2026")
+T(perioada_aplicare("2025T3") == (date(2026, 1, 1), date(2026, 3, 31)), "2025T3 -> T1 2026")
+T(perioada_aplicare("nu e trimestru") is None, "eticheta invalida")
+
+SERIE = [{"perioada": "2026T1", "valoare": 5.56},
+         {"perioada": "2025T4", "valoare": 5.58},
+         {"perioada": "2025T3", "valoare": 5.68}]
+T(ircc_in_vigoare(SERIE, date(2026, 9, 16))["valoare"] == 5.56, "in vigoare 16.09.2026")
+T(ircc_in_vigoare(SERIE, date(2026, 5, 1))["valoare"] == 5.58, "in vigoare 01.05.2026")
+# dupa 1 octombrie, trimestrul aplicabil nu e publicat: nu inventam o valoare
+T(ircc_in_vigoare(SERIE, date(2026, 10, 15)) is None, "trimestru nepublicat -> None")
+T(ircc_ultim_aplicabil(SERIE, date(2026, 10, 15))["valoare"] == 5.56, "plasa de siguranta")
+
+# --------------------------------------------------- perioada declarata in text
+T(_perioada_din_text("IRCC valabil în perioada 01.04.2026 – 30.06.2026 este 5,58%")
+  == (date(2026, 4, 1), date(2026, 6, 30)), "perioada cu en-dash")
+T(_perioada_din_text("IRCC aplicabil în perioada 01.07 - 30.09.2026, respectiv 5,56%")
+  == (date(2026, 7, 1), date(2026, 9, 30)), "an lipsa la prima data")
+T(_perioada_din_text("*IRCC valabil de la 01.07.2026: 5.56%")
+  == (date(2026, 7, 1), None), "interval deschis")
+T(_perioada_din_text("EURIBOR aplicabil in perioada 01.07. - 31.12.2026")
+  == (date(2026, 7, 1), date(2026, 12, 31)), "punct dupa luna")
+T(_perioada_din_text("nicio data aici") is None, "fara perioada")
+
+# --------------------------------------------------- indicele implicit
+T(_indici_impliciti("9.06% (IRCC + 3.5%)") == [("IRCC", 5.56, 9.06, 3.5)], "forma A")
+T(_indici_impliciti("- Cu condiția: 3% + IRCC (8.68%)")
+  == [("IRCC", 5.68, 8.68, 3.0)], "forma B")
+# forma dominanta in piata: scaderea nu are sens, deci nu trebuie sa produca nimic
+T(_indici_impliciti("4,89% fixă în primii 3 ani, apoi variabilă IRCC + 2,10%") == [],
+  "fix-apoi-variabil NU produce indice implicit")
+T(_indici_impliciti("De la 4,70%, ulterior variabilă: marjă 1.90% + IRCC") == [],
+  "marja fara total NU produce indice implicit")
+
+# --------------------------------------------------- marja peste care indice
+T(_marja_peste_ircc({"tip_rata": "marja_ircc", "text_sursa": ""}), "marja_ircc")
+T(not _marja_peste_ircc({"tip_rata": "marja_euribor", "text_sursa": ""}),
+  "marja_euribor exclusa")
+T(not _marja_peste_ircc({"tip_rata": "marja_fixa",
+                         "text_sursa": "Euribor 6 luni + 2,20% marjă fixă"}),
+  "marja_fixa peste EURIBOR exclusa")
+T(_marja_peste_ircc({"tip_rata": "marja_fixa",
+                     "text_sursa": "IRCC aplicabil ... marja fixă de 10%"}),
+  "marja_fixa peste IRCC inclusa")
+
+# --------------------------------------------------- parser
+P("DAE 4\t8,91%\t8,04%\t6,96%\t5,49%",
+  [("dae", 8.91), ("dae", 8.04), ("dae", 6.96), ("dae", 5.49)], "rand de tabel")
+P("Marja fixă a dobânzii\t2,90%\t2,50%\t4,05%\t2,20%",
+  [("marja_fixa", 2.9), ("marja_fixa", 2.5), ("marja_fixa", 4.05),
+   ("marja_fixa", 2.2)], "rand de tabel, marje")
+# celula 0 da marja, celula 1 o rata fixa: NU trebuie propagat tipul
+P("Variabilă, după formula: EURIBOR 6 Luni + Marjă Fixă** 5,2 p.p.\tFIXĂ 3 ani 6% pe an",
+  [("marja_euribor", 5.2)], "NU propaga peste o masura diferita")
+P("Ai până la 12 rate cu 0% dobândă", [("rate_fara_dobanda", 0.0)], "promotie in rate")
+P("Dobanda pentru disponibilitatile la vedere este 0% p.a.",
+  [("nominala", 0.0)], "0% autentic ramane nominala")
+P("Dobândă anuală: 2,20%* + IRCC sau 2,6%* + EURIBOR 6 luni",
+  [("marja_ircc", 2.2), ("marja_euribor", 2.6)], "marcaje de nota de subsol")
+P("Comisionul anual de administrare: Credite în Euro: 0.2% p.a.",
+  [("comision_procent", 0.2)], "comision cu p.a. nu e dobanda")
+P("IRCC valabil de la 01.07.2026: 5.56%", [("ircc_valoare", 5.56)], "IRCC valoare")
+P("Indicele EURIBOR 6 luni este 2,568%", [("euribor_valoare", 2.568)], "capcana zecimala")
+P("4.50% % + IRCC (10.18%)", [("marja_ircc", 4.5)], "paranteza e totalul")
+P("Avans minim 15% din preț", [], "excludere avans")
+P("Se calculează ca în exemplul cu LIBOR de 1%", [], "excludere LIBOR")
+
+T(numar("2,568") == 2.568, "numar: virgula zecimala pe 3 cifre")
+T(numar("20,000", ca_procent=False) == 20000.0, "numar: separator de mii")
+
+
+# --------------------------------------------------- detecția schimbarii
+# Starile care nu pot fi produse de o rulare reala inainte sa treaca o zi.
+# Cazul care conteaza cel mai mult e ULTIMUL: absenta unui document la o banca
+# nerecrawlata NU e o dispariție. Fara el, o rulare in care un site a picat ar
+# raporta ca banca si-a retras tarifele.
+_URL = "https://x.ro/tarife.pdf"
+
+
+def _stare(vechi_amprenta, noua_amprenta, moment_vechi, moment_nou,
+           cale="output/crawl/pdf/x/tarife.pdf"):
+    urme = {"banci": {"x": moment_vechi}, "rulari": [],
+            "documente": {_URL: {"banca": "x", "amprenta": vechi_amprenta,
+                                 "cale": cale}} if vechi_amprenta is not None else {}}
+    observat = {} if noua_amprenta is False else {
+        _URL: {"banca": "x", "origine": "x.ro", "origine_proprie": True,
+               "cale": cale, "amprenta": noua_amprenta,
+               "motiv": None if noua_amprenta else "interzis de robots.txt"}}
+    return compara(urme, observat, {"x": moment_nou})[_URL]["stare"]
+
+
+T(_stare(None, "aaa", None, "L2") == "NOU", "urme: document nou")
+T(_stare("aaa", "aaa", "L1", "L2") == "NESCHIMBAT", "urme: aceiasi octeți")
+T(_stare("aaa", "bbb", "L1", "L2") == "SCHIMBAT", "urme: octeți diferiți")
+T(_stare("aaa", None, "L1", "L2") == "NEDESCARCAT", "urme: referit, nedescarcat")
+# banca A fost recrawlata (momentul s-a schimbat) si documentul nu mai apare
+T(_stare("aaa", False, "L1", "L2") == "LIPSA", "urme: lipsa dupa recrawl")
+# banca NU a fost recrawlata: absenta nu dovedeste nimic
+T(_stare("aaa", False, "L1", "L1") == "NEVERIFICAT",
+  "urme: absenta fara recrawl NU e dispariție")
+# A saptea stare, adaugata dupa ce a produs o constatare falsa: doua URL-uri
+# TBI ("/2023/09/" si "/2022/09/") scriu in acelasi fisier local, iar sonda a
+# comparat octeții unuia cu amprenta celuilalt — "TBI si-a schimbat documentul",
+# care nu se intamplase. Octeții de pe disc apartin URL-ului descarcat ultimul,
+# deci nu spun nimic despre niciunul.
+T(compara({"banci": {"x": "L1"}, "rulari": [],
+           "documente": {_URL: {"banca": "x", "amprenta": "aaa",
+                                "cale": "p/f.pdf"}}},
+          {_URL: {"banca": "x", "origine": "x.ro", "origine_proprie": True,
+                  "cale": "p/f.pdf", "amprenta": "bbb", "cale_partajata": True}},
+          {"x": "L2"})[_URL]["stare"] == "AMBIGUU",
+  "urme: cale partajata NU se raporteaza ca schimbare")
+# ...iar cand calea nu mai e partajata, comparatia redevine valida
+T(compara({"banci": {"x": "L1"}, "rulari": [],
+           "documente": {_URL: {"banca": "x", "amprenta": "aaa",
+                                "cale": "p/f.pdf"}}},
+          {_URL: {"banca": "x", "origine": "x.ro", "origine_proprie": True,
+                  "cale": "p/ab12cd34_f.pdf", "amprenta": "bbb",
+                  "cale_partajata": False}},
+          {"x": "L2"})[_URL]["stare"] == "SCHIMBAT",
+  "urme: cu fisier propriu, comparatia e valida")
+# calea unica e derivata din URL, deci doua URL-uri cu acelasi basename difera
+T(cale_unica("https://a.ro/2023/09/f.pdf", "p/f.pdf")
+  != cale_unica("https://a.ro/2022/09/f.pdf", "p/f.pdf"),
+  "urme: cai unice pentru URL-uri diferite cu acelasi nume")
+T(cale_unica("https://a.ro/f.pdf", "p/f.pdf")
+  == cale_unica("https://a.ro/f.pdf", "p/f.pdf"),
+  "urme: calea unica e stabila pentru acelasi URL")
+T(cale_unica("https://a.ro/f.pdf", "p/f.pdf").endswith("_f.pdf"),
+  "urme: calea unica pastreaza numele original")
+# O scriere poate fi "plina" si totusi sa piarda ce a invatat sistemul.
+# actualizeaza() intorcea un obiect nou cu trei chei si arunca `origini` (ce
+# validator minte la ce origine), `sonde` si `semnale` (ETag-urile). Garda de
+# atunci numara documentele — erau toate acolo — deci n-a prins nimic.
+_BUN = {"rulari": [], "banci": {"x": "L1"},
+        "origini": {"r.ro": {"lm_nesigur": True}},
+        "sonde": [{"moment": "L1"}],
+        "documente": {_URL: {"amprenta": "aaa", "banca": "x",
+                             "cale": "p/f.pdf", "semnale": {"etag": '"a"'}}}}
+_STARE = {_URL: {"stare": "NESCHIMBAT", "banca": "x", "origine": "r.ro",
+                 "cale": "p/f.pdf", "amprenta": "aaa", "octeti": 1}}
+_DUPA = actualizeaza(_BUN, _STARE, {"x": "L2"}, "v1")
+
+T(_DUPA.get("origini") == _BUN["origini"], "urme: actualizeaza pastreaza origini")
+T(_DUPA.get("sonde") == _BUN["sonde"], "urme: actualizeaza pastreaza sonde")
+T(_DUPA["documente"][_URL].get("semnale") == {"etag": '"a"'},
+  "urme: actualizeaza pastreaza semnalele HTTP")
+T(_DUPA["documente"][_URL]["verificari"] == 1,
+  "urme: actualizeaza numara verificarile")
+
+
+
+# Comparatia de valori are voie doar cu parserul neatins. Intre 17 si 18
+# septembrie comisioane_pdf a scazut 430 -> 427 din cauza MEA, nu a bancilor.
+T(not comparatie_de_valori_permisa({"rulari": []}, "v1")[0],
+  "urme: fara rulare anterioara, nu se compara")
+T(comparatie_de_valori_permisa({"rulari": [{"versiune_parser": "v1"}]}, "v1")[0],
+  "urme: parser neschimbat, se compara")
+T(not comparatie_de_valori_permisa({"rulari": [{"versiune_parser": "v1"}]}, "v2")[0],
+  "urme: parser schimbat, NU se compara")
+
+# Amprenta parserului trebuie sa se miste cand se miste un modul de extragere.
+T(len(amprenta_parser()) == 16 and amprenta_parser() == amprenta_parser(),
+  "urme: amprenta parserului e stabila")
+
+
+# --------------------------------------------------- semnalele HTTP
+# Semnalul serverului decide DACA merita sa ne uitam; octeții decid DACA s-a
+# schimbat. "DE_CITIT" nu e o stare finala, e instrucțiunea de a descarca.
+# "NESCHIMBAT_PROBABIL" e finala, dar NU e o confirmare.
+_RAND = {"octeti": 335669, "amprenta": "a" * 64,
+         "ultima_vedere": "2026-09-16T12:00:00+00:00"}
+_VECHI_IUN = "Thu, 26 Jun 2025 12:10:52 GMT"
+_NOU_SEPT = "Wed, 17 Sep 2026 08:00:00 GMT"
+
+
+def _sem(antete, rand=None):
+    return clasifica_semnal(rand or _RAND, antete)[0]
+
+
+T(_sem({"Content-Length": "335669", "Last-Modified": _VECHI_IUN})
+  == "NESCHIMBAT_PROBABIL", "semnal: aceeasi lungime, nu mai nou")
+T(_sem({"Content-Length": "999999"}) == "DE_CITIT",
+  "semnal: alta lungime -> se descarca")
+T(_sem({"Content-Length": "335669", "Last-Modified": _NOU_SEPT}) == "DE_CITIT",
+  "semnal: aceeasi lungime dar mai nou -> se descarca")
+T(_sem({"Last-Modified": _NOU_SEPT}) == "DE_CITIT",
+  "semnal: doar Last-Modified, mai nou")
+T(_sem({"Last-Modified": _VECHI_IUN}) == "NESCHIMBAT_PROBABIL",
+  "semnal: doar Last-Modified, nu mai nou")
+T(_sem({}) == "FARA_SEMNAL", "semnal: server mut NU e neschimbat")
+# de la rularea a doua, ETag-ul stocat compara direct
+_CU_ETAG = dict(_RAND, semnale={"etag": '"x"'})
+T(_sem({"ETag": '"x"'}, _CU_ETAG) == "NESCHIMBAT_PROBABIL", "semnal: ETag identic")
+T(_sem({"ETag": '"y"'}, _CU_ETAG) == "DE_CITIT", "semnal: ETag diferit")
+# antetele vin cu majuscule diferite de la servere diferite
+T(_sem({"content-length": "999999"}) == "DE_CITIT",
+  "semnal: antet cu litere mici")
+# Content-Length comprimat NU se compara cu marimea de pe disc: Raiffeisen
+# raspunde 91.339 cu gzip pentru un fisier de 105.454. Asta a facut 57 de
+# descarcari inutile din 58.
+T(_sem({"Content-Length": "91339", "Content-Encoding": "gzip"}) == "FARA_SEMNAL",
+  "semnal: lungime comprimata se ignora")
+T(_sem({"Content-Length": "0"}) == "FARA_SEMNAL",
+  "semnal: lungime 0 e absenta, nu diferența")
+# Last-Modified se compara cu ce a spus serverul ultima data, nu cu ceasul
+# nostru: 20 de documente raspund "azi" si ar cere descarcare pe vecie.
+_CU_LM = dict(_RAND, semnale={"last_modified": _NOU_SEPT})
+T(_sem({"Last-Modified": _NOU_SEPT}, _CU_LM) == "NESCHIMBAT_PROBABIL",
+  "semnal: Last-Modified neschimbat fața de rularea trecuta")
+T(_sem({"Last-Modified": "Fri, 18 Sep 2026 08:00:00 GMT"}, _CU_LM) == "DE_CITIT",
+  "semnal: Last-Modified schimbat fața de rularea trecuta")
+# Un Last-Modified pus la ora cererii nu e o informație despre document.
+# Raiffeisen raspunde asa pentru 11 documente; comparat cu valoarea precedenta
+# difera mereu, deci ar cere descarcare la fiecare rulare pe vecie.
+_ACUM = datetime(2026, 9, 18, 14, 0, 0, tzinfo=timezone.utc)
+_STAMPILA = "Fri, 18 Sep 2026 10:03:52 GMT"
+T(clasifica_semnal({"octeti": 105454, "semnale": {"last_modified": _STAMPILA}},
+                   {"Last-Modified": _STAMPILA, "Content-Length": "105454"},
+                   acum_dt=_ACUM)[0] == "NESCHIMBAT_PROBABIL",
+  "semnal: Last-Modified la ora cererii se arunca")
+# ...dar o data reala din trecut rămâne folosita
+T(clasifica_semnal({"octeti": 105454},
+                   {"Last-Modified": "Tue, 18 Aug 2026 09:33:14 GMT",
+                    "Content-Length": "999"}, acum_dt=_ACUM)[0] == "DE_CITIT",
+  "semnal: data reala din trecut rămâne valida")
+# ETag-ul unei origini prinse mințind nu se mai foloseste acolo
+T(not etag_de_incredere({"origini": {"www.bcr.ro": {"etag_nesigur": True}}},
+                        "www.bcr.ro"), "semnal: ETag nesigur pe origine")
+T(etag_de_incredere({}, "www.bcr.ro"), "semnal: ETag de incredere implicit")
+T(clasifica_semnal({"octeti": 105454, "semnale": {"etag": '"x"'}},
+                   {"ETag": '"y"', "Content-Length": "105454"},
+                   acum_dt=_ACUM, foloseste_etag=False)[0]
+  == "NESCHIMBAT_PROBABIL", "semnal: cu ETag ignorat se cade pe lungime")
+# Aceeasi regula, generalizata: ORICE antet care arata ca un validator poate sa
+# nu fie unul, iar singurul mod de a afla e sa-l prinzi. Raiffeisen si ProCredit
+# raspund cu ora umplerii cache-ului, nu cu data documentului — masurat, valoarea
+# era cu 640 de secunde in urma, deci pragul de stampila o rateaza. Prinse pe
+# octeți identici, originile lor nu mai folosesc Last-Modified.
+_CACHE = {"octeti": 536320,
+          "semnale": {"last_modified": "Fri, 18 Sep 2026 10:17:39 GMT",
+                      "content_length": 536320}}
+_ANTETE = {"Last-Modified": "Fri, 18 Sep 2026 10:37:37 GMT",
+           "Content-Length": "536320"}
+T(clasifica_semnal(_CACHE, _ANTETE, acum_dt=_ACUM)[0] == "DE_CITIT",
+  "semnal: Last-Modified de cache cere descarcare cat e crezut")
+T(clasifica_semnal(_CACHE, _ANTETE, acum_dt=_ACUM,
+                   foloseste_lm=False)[0] == "NESCHIMBAT_PROBABIL",
+  "semnal: cu Last-Modified nesigur se cade pe lungime")
+T(not validator_de_incredere({"origini": {"r.ro": {"lm_nesigur": True}}}, "r.ro", "lm"),
+  "semnal: lm nesigur pe origine")
+T(validator_de_incredere({"origini": {"r.ro": {"lm_nesigur": True}}}, "r.ro", "etag"),
+  "semnal: un validator nesigur nu-l discredita pe celalalt")
+T(validator_de_incredere({}, "r.ro", "lm"), "semnal: implicit de incredere")
+
+
+
+
+
+# --- data de intrare in vigoare, citita din textul documentului -------------
+# Cazurile vin din documentele reale de pe disc. Cele "NU produce" sunt miezul:
+# o data gresita e mai rea decat niciuna, fiindca arata la fel cu una buna.
+from datetime import date as _D
+
+
+def DD(text, asteptat, eticheta, precizie=None):
+    d, p, _a, dov = data_din_text(text)
+    ok = d == asteptat and (precizie is None or p == precizie)
+    T(ok, f"data: {eticheta}" + ("" if ok else f"  [{d} {p}]"))
+    if asteptat is not None and d == asteptat:
+        T(bool(dov), f"data: {eticheta} vine cu dovada")
+
+
+DD("GHID DE TARIFE SI COMISIOANE PERSOANE FIZICE "
+   "in vigoare incepand cu data de 21.09.2026", _D(2026, 9, 21),
+   "BRD, ghidul de tarife", "zi")
+DD("Vă informăm că, la data de 20.09.2026, următoarele tipuri de dobândă",
+   _D(2026, 9, 20), "BCR, dobanzi indicative", "zi")
+DD("Valabil începând cu 01 octombrie 2026", _D(2026, 10, 1),
+   "luna scrisa in litere", "zi")
+DD("Lista de tarife, versiune mai 2024", _D(2024, 5, 1),
+   "doar luna si an", "luna")
+DD("Tarife aplicabile din 2026-03-15", _D(2026, 3, 15), "an-luna-zi")
+
+# diacriticele lipsesc neregulat din PDF-uri: acelasi text trebuie citit la fel
+DD("In vigoare incepand cu data de 01.09.2026", _D(2026, 9, 1),
+   "fara diacritice")
+DD("În vigoare începând cu data de 01.09.2026", _D(2026, 9, 1),
+   "cu diacritice")
+# "s" apare in PDF-uri si cu sedila (U+015F) si cu virgula dedesubt (U+0219)
+DD("Valabil ş i aplicabil de la data de 05.05.2026", _D(2026, 5, 5),
+   "sedila")
+DD("Valabil ș i aplicabil de la data de 05.05.2026", _D(2026, 5, 5),
+   "virgula dedesubt")
+
+# NU produce
+DD("In cazul clientilor care au optat inainte de 07.01.2013 se percepe 0,30 EUR",
+   None, "nota de subsol istorica NU e data documentului")
+DD("Contul IBAN RO49 AAAA 1B31 0075 9384 0000", None,
+   "sir de cifre fara ancora")
+DD("Document fara nicio data", None, "text fara data")
+DD("Conform Legii 190/2018 privind protectia datelor", None,
+   "numar de lege NU e data")
+DD("In vigoare incepand cu data de 21.09.1999", None,
+   "an sub pragul de plauzibilitate")
+
+# ordinea ancorelor E semantica: "in vigoare" bate "actualizat"
+_d, _p, _ancora, _dov = data_din_text(
+    "Actualizat la 01.03.2026. In vigoare incepand cu data de 15.04.2026.")
+T(_d == _D(2026, 4, 15) and _ancora == "vigoare",
+  "data: 'in vigoare' bate 'actualizat' indiferent de ordinea in text")
+
+# starea fata de azi
+T(stare_fata_de(_D(2026, 9, 1), azi=_D(2026, 9, 21)) == "IN_VIGOARE",
+  "data: document din trecut e in vigoare")
+T(stare_fata_de(_D(2026, 11, 1), azi=_D(2026, 9, 21)) == "VIITOR",
+  "data: document care intra in vigoare mai tarziu NU e pretul de azi")
+T(stare_fata_de(None) == "DATA_NECUNOSCUTA",
+  "data: fara data NU inseamna 'probabil curent'")
+
+
+
+
+# --- data din numele fișierului --------------------------------------------
+# A doua sursa, si la BCR SINGURA: tarifele lor nu contin nicio data in text,
+# verificat pe toate cele 9 pagini. Fara asta, BCR ramane intreg nedatat, iar
+# BCR e a doua banca dupa numarul de comisioane pe care ni le da.
+
+def DN(nume, asteptat, eticheta, precizie=None):
+    d, p, _dov = data_din_nume(nume)
+    ok = (d.isoformat() if d else None) == asteptat and (precizie is None
+                                                         or p == precizie)
+    T(ok, f"nume: {eticheta}" + ("" if ok else f"  [{d} {p}]"))
+
+
+DN("4215705e_BCR_Tarife-si-Comisioane-PDAI_1-iulie-2026.pdf", "2026-07-01",
+   "luna in litere, separata cu liniute", "zi")
+# doua treceri, si ordinea conteaza: normalizarea separatorilor ar rupe
+# "19.06.2024" in "19 06 2024", deci numele se incearca INTAI asa cum e
+DN("844abe37_Document-de-informare-cont-EUR_19.06.2024.pdf", "2024-06-19",
+   "data cu puncte, nerupta de normalizare")
+DN("lista-tarife-19-06-2024.pdf", "2024-06-19", "aceeasi data cu liniute")
+DN("lista_tarife_20260901.pdf", "2026-09-01", "cifre lipite")
+DN("Lista_Tarife_PJ_mai_2024.pdf", "2024-05-01", "doar luna", "luna")
+
+# NU produce
+DN("Document-de-informare-Pachet-George_2025.pdf", None,
+   "un an singur NU distinge doua versiuni din acelasi an")
+DN("Tarif_standard_de_comisioane_PF.pdf", None, "nume fara data")
+# "%20" din adresa devine "20" in numele descarcat si se lipeste de cifre — a
+# treia oara in proiect cand asta strica o citire de data
+DN("An_203_Doc_20de_20info_20cu_20priv_20la_20comisioane_eur.pdf", None,
+   "spatiile codate ca 20 NU sunt o data")
+
+
+# --- familii de documente: doua fișiere = doua versiuni ale aceluiasi act ----
+# Regula taie 1.304 valori din 7.201, deci trebuie sa greseasca in directia
+# sigura: mai bine doua familii separate (nu taiem nimic) decat doua documente
+# diferite puse in aceeasi familie (taiem preturi valide).
+
+def F(a, b, acelasi, eticheta):
+    fa, fb = familie_document(a), familie_document(b)
+    T((fa == fb) == acelasi,
+      f"familie: {eticheta}" + ("" if (fa == fb) == acelasi else f"  [{fa} | {fb}]"))
+
+
+# aceeasi familie — versiuni succesive
+F("bcr/BCR_Tarife-si-Comisioane-PJ_RO_1-martie-2026.pdf",
+  "bcr/BCR_Tarife-si-Comisioane-PJ_RO_1-august-2026.pdf", True,
+  "BCR, acelasi tarif in doua luni")
+# bug real: '_' e caracter de cuvant, deci '\\b' nu exista intre '_' si 'iulie'.
+# Prima versiune a functiei n-a grupat NICIO familie BCR si a raportat linistit
+# "0 documente depasite" — un rezultat fals care arata exact ca unul bun.
+F("bcr/4f609199_BCR_Tarife_si_Comisioane_PJ_RO_1_martie_2026.pdf",
+  "bcr/aca9ef45_BCR_Tarife_si_Comisioane_PJ_RO_1_august_2026.pdf", True,
+  "aceeasi, cu underscore in loc de liniuta")
+F("brd/158b3251_Ghid_tarife_comisioane.pdf",
+  "brd/8bfeb70d_Ghid_tarife_comisioane.pdf", True,
+  "acelasi document sub doua prefixe de unicitate")
+F("brci/Lista_Tarife_PJ_mai_2024.pdf",
+  "brci/Lista_Tarife_PJ_vers_oct_2024.pdf", True,
+  "aceeasi lista, mai fata de octombrie")
+
+# familii DIFERITE — a le uni ar sterge preturi valide
+F("bcr/BCR_Tarife-si-Comisioane-PJ_RO_1-august-2026.pdf",
+  "bcr/BCR_Tarife-si-Comisioane-PDAI_1-august-2026.pdf", False,
+  "persoane juridice fata de activitati independente")
+F("libra/Tarife_si_Comisioane_PF.pdf",
+  "libra/Tarife_si_Comisioane_PJ.pdf", False,
+  "persoane fizice fata de juridice")
+F("bcr/Tarife-si-Comisioane-PJ_1-august-2026.pdf",
+  "brd/Tarife-si-Comisioane-PJ_1-august-2026.pdf", False,
+  "acelasi nume la banci diferite NU e aceeasi familie")
+F("libra/comisioane_card_Avanpost_Gold.pdf",
+  "libra/comisioane_card_Avanpost_Gold_Junior.pdf", False,
+  "Gold fata de Gold Junior sunt produse diferite")
+
+
+
+# --- valori care nu pot fi deosebite intre ele ------------------------------
+# Regula marcheaza 887 de valori din 7.201. Cazurile "NU e ambiguu" sunt la fel
+# de importante: un semn pus gresit pe o cifra corecta erodeaza increderea in
+# toate celelalte semne.
+
+def _v(banca="brd", pdf="d.pdf", serviciu="X", valoare=1.0, **rest):
+    baza = {"banca": banca, "sursa_pdf": pdf, "serviciu": serviciu,
+            "tip": "comision_suma", "moneda": "LEI", "frecventa": None,
+            "conditie": None, "coloana": None, "detaliu": None, "rol": None,
+            "valoare": valoare}
+    baza.update(rest)
+    return baza
+
+
+# cazul BRD: trei praguri in tabel, doar cel din mijloc s-a citit. Glifele
+# ">=" si "<=" nu erau incorporate in font, deci randurile de sus si de jos
+# si-au pierdut banda impreuna cu numarul de langa ea.
+_brd = [_v(valoare=4.0), _v(valoare=8.0, conditie="(500-50.000)"),
+        _v(valoare=11.0)]
+_n, _g = marcheaza(_brd)
+T(_n == 3 and _g == 1, f"ambiguu: BRD, trei praguri din care unul citit [{_n} {_g}]")
+T(_brd[0]["motiv_ambiguu"] == "prag de suma pierdut",
+  f"ambiguu: motivul e pragul  [{_brd[0]['motiv_ambiguu']}]")
+
+# cazul Eximbank: acelasi serviciu, preturi diferite pe tipuri de card, iar
+# antetul cu tipul cardului nu s-a citit. Documentul ARE coloane in alta parte,
+# si de acolo se stie ca lipseste un antet, nu un prag.
+_exim = [_v(banca="eximbank", serviciu="Schimbare PIN la ATM", valoare=0.0),
+         _v(banca="eximbank", serviciu="Schimbare PIN la ATM", valoare=2.5),
+         _v(banca="eximbank", serviciu="Altceva", valoare=9.0, coloana="Gold")]
+_n, _g = marcheaza(_exim)
+T(_n == 2 and _exim[0]["motiv_ambiguu"] == "antet de coloana pierdut",
+  f"ambiguu: Eximbank, antet de coloana  [{_n} {_exim[0]['motiv_ambiguu']}]")
+
+# --- NU e ambiguu ---
+_la_fel = [_v(valoare=5.0), _v(valoare=5.0), _v(valoare=5.0)]
+marcheaza(_la_fel)
+T(not any(x["ambiguu"] for x in _la_fel),
+  "ambiguu: aceeasi valoare repetata NU e o ambiguitate")
+
+# doua monede pentru acelasi serviciu sunt doua preturi, nu o nelamurire
+_monede = [_v(valoare=10.0, moneda="LEI"), _v(valoare=2.0, moneda="EUR")]
+marcheaza(_monede)
+T(not any(x["ambiguu"] for x in _monede),
+  "ambiguu: monede diferite NU fac o ambiguitate")
+
+_cu_praguri = [_v(valoare=4.0, conditie="<500"), _v(valoare=8.0, conditie="500-50.000"),
+               _v(valoare=11.0, conditie=">50.000")]
+marcheaza(_cu_praguri)
+T(not any(x["ambiguu"] for x in _cu_praguri),
+  "ambiguu: fiecare valoare cu pragul ei e in regula")
+
+_alt_document = [_v(pdf="a.pdf", valoare=4.0), _v(pdf="b.pdf", valoare=8.0)]
+marcheaza(_alt_document)
+T(not any(x["ambiguu"] for x in _alt_document),
+  "ambiguu: doua documente diferite NU se compara intre ele")
+
+_alta_banca = [_v(banca="brd", valoare=4.0), _v(banca="bcr", valoare=8.0)]
+marcheaza(_alta_banca)
+T(not any(x["ambiguu"] for x in _alta_banca),
+  "ambiguu: doua banci diferite NU se compara intre ele")
+
+_fara_serviciu = [_v(serviciu=None, valoare=4.0), _v(serviciu=None, valoare=8.0)]
+marcheaza(_fara_serviciu)
+T(not any(x["ambiguu"] for x in _fara_serviciu),
+  "ambiguu: fara nume de serviciu nu se poate spune ca e acelasi lucru")
+
+
+
+# --- comparatia pe valori intre doua versiuni ale aceluiasi document --------
+# Regula care conteaza: din 13 diferente pe octeti in ghidul BRD, UNA era o
+# schimbare de pret. Un raport care nu separa cele doua e adevarat si inutil.
+
+def _r(serviciu="X", tip="comision_suma", valoare=1.0, moneda="LEI", **rest):
+    baza = {"serviciu": serviciu, "tip": tip, "valoare": valoare,
+            "moneda": moneda, "frecventa": None, "coloana": None,
+            "conditie": None}
+    baza.update(rest)
+    return baza
+
+
+# pretul s-a mutat pe un rand care se potriveste exact
+_d = compara_versiuni([_r(valoare=15.0)], [_r(valoare=20.0)])
+T(len(_d["pret"]) == 1 and _d["pret"][0]["vechi"] == [15.0]
+  and _d["pret"][0]["nou"] == [20.0], "diferente: pret mutat 15 -> 20")
+
+# acelasi pret, nicio schimbare
+_d = compara_versiuni([_r(valoare=15.0)], [_r(valoare=15.0)])
+T(rezumat(_d) == {"pret": 0, "banda": 0, "reformatat": 0, "aparut": 0,
+                  "disparut": 0}, f"diferente: identic nu produce nimic  [{rezumat(_d)}]")
+
+# Randarea noua a ghidului BRD a mutat despartirile in cuvinte, fara sa schimbe
+# un caracter de continut. Spatiul alb se scoate din cheie, deci astea doua sunt
+# acelasi rand si nu produc NIMIC — nici macar "reformatat".
+_d = compara_versiuni([_r(serviciu="Oriceoperatiunediferitadecele", valoare=7.0)],
+                      [_r(serviciu="Oriceoperatiune diferita decele", valoare=7.0)])
+T(rezumat(_d)["pret"] == 0 and rezumat(_d)["aparut"] == 0,
+  f"diferente: despartirile in cuvinte nu conteaza  [{rezumat(_d)}]")
+
+# Dar reformatarea muta si PUNCTUL DE TAIERE al etichetei: acelasi rand ajunge
+# sa poarte alt fragment din nota de subsol de deasupra. Atunci numele chiar
+# difera, si singurul lucru care le mai leaga sunt valorile identice.
+_d = compara_versiuni(
+    [_r(serviciu="1procenteleseaplicalavaloareatranzactiei", valoare=0.51),
+     _r(serviciu="1procenteleseaplicalavaloareatranzactiei", valoare=6.0)],
+    [_r(serviciu="2comisiondisputeropaypentrufiecarecaz", valoare=0.51),
+     _r(serviciu="2comisiondisputeropaypentrufiecarecaz", valoare=6.0)])
+T(len(_d["reformatat"]) == 1 and not _d["pret"],
+  f"diferente: eticheta taiata in alt loc = reformatare  [{rezumat(_d)}]")
+
+# diacriticele si majusculele nu fac o schimbare
+_d = compara_versiuni([_r(serviciu="Retrageri de numerar")],
+             [_r(serviciu="RETRAGERI DE NUMERAR")])
+T(rezumat(_d)["pret"] == 0 and rezumat(_d)["aparut"] == 0,
+  "diferente: majuscule si spatii nu fac o schimbare")
+
+# cazul Electrica: randul vechi avea DOUA inregistrari pentru acelasi serviciu
+# ("gratuit" si "1,5 lei"), iar cel nou are una. Excepția a fost eliminata.
+# Trebuie sa se vada ca rand disparut, cu valoarea lui — nu doar numarat.
+_vechi = [_r(serviciu="Simplis Debit", tip="gratuit", valoare=0.0, moneda=None),
+          _r(serviciu="Simplis Debit", valoare=1.5)]
+_nou = [_r(serviciu="Simplis Debit", tip="gratuit", valoare=0.0, moneda=None)]
+_d = compara_versiuni(_vechi, _nou)
+T(len(_d["disparut"]) == 1 and _d["disparut"][0]["valori"] == [1.5],
+  f"diferente: Electrica, randul de 1,5 lei disparut  [{rezumat(_d)}]")
+
+# un prag care apare abia acum (glifele ">=" lipseau din fontul vechi) nu e un
+# rand nou, e acelasi rand cu banda citita
+_d = compara_versiuni([_r(valoare=4.0, conditie=None)],
+             [_r(valoare=4.0, conditie="<=500 lei")])
+T(len(_d["banda"]) == 1 and not _d["aparut"] and not _d["disparut"],
+  f"diferente: prag aparut = banda, nu rand nou  [{rezumat(_d)}]")
+
+# doua servicii diferite nu se confunda intre ele
+_d = compara_versiuni([_r(serviciu="A", valoare=1.0)], [_r(serviciu="B", valoare=2.0)])
+T(len(_d["aparut"]) == 1 and len(_d["disparut"]) == 1 and not _d["pret"],
+  f"diferente: servicii diferite raman separate  [{rezumat(_d)}]")
+
+# aceeasi valoare la monede diferite nu e reformatare
+_d = compara_versiuni([_r(valoare=10.0, moneda="LEI")], [_r(valoare=10.0, moneda="EUR")])
+T(len(_d["reformatat"]) == 0,
+  f"diferente: alta moneda NU e reformatare  [{rezumat(_d)}]")
+
+
+
+# --- procentele cu multe zecimale ------------------------------------------
+# Regexul vechi accepta cel mult trei zecimale si nu avea nicio ancora la
+# stanga. Pe un numar mai lung renunta la inceputul lui si prindea COADA:
+#
+#     "Pachet extins: 0,0125%"   ->  125 %     (BCR, valoare reala in date)
+#     "CME Term SOFR 6M 3,93606%"  ->  606 %
+#
+# Valori false care arata perfect normal intr-un tabel de comisioane. Gasite
+# printr-o cautare de numere cu 4+ zecimale urmate de %, nu prin raportare.
+
+def PC(text, asteptat, eticheta):
+    got = RE_PROCENT.findall(text)
+    T(got == asteptat, f"procent: {eticheta}" + ("" if got == asteptat else f"  [{got}]"))
+
+
+PC("Pachet extins: 0,0125%", ["0,0125"], "patru zecimale, nu coada lor")
+PC("CME Term SOFR 6M 3,93606%", ["3,93606"], "cinci zecimale")
+PC("2,5%", ["2,5"], "doua zecimale")
+PC("de 15%", ["15"], "intreg")
+PC("0,5% + 2,5 Lei", ["0,5"], "procent urmat de suma")
+PC("intre 0,1% si 0,25%", ["0,1", "0,25"], "doua procente pe aceeasi linie")
+PC("IRCC 5,56%", ["5,56"], "indice")
+PC("TVA 19 %", ["19"], "spatiu inaintea semnului")
+# Efect secundar dorit: un numar de patru cifre nu mai produce o coada de trei.
+# 1500% nu e un comision, iar 500% nici atat.
+PC("comision 1500%", [], "patru cifre intregi NU produc coada")
+
+
+print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
+sys.exit(1 if ESUATE else 0)

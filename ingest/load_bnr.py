@@ -17,8 +17,8 @@ import os
 import sys
 
 FISIER = os.path.join(
-    os.path.expanduser("~"), "Downloads", "pentru_coleg_bs4_21sept", "output",
-    "bnr_indici.json",
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "date", "pachet", "bnr_indici.json",
 )
 
 
