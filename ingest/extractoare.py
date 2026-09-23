@@ -550,3 +550,67 @@ def din_html(octeti, url, slug, rol=None):
                 incredere=r.get("incredere"),
             ))
     return brute, f"HTML: {len(brute)} valori"
+
+
+# ==========================================================================
+# 6. Locatoare: sucursale și ATM-uri, din pagina de rețea a băncii
+# ==========================================================================
+
+RE_OBIECT_JSON = re.compile(
+    r"\{[^{}]*?(?:\"lat(?:itude)?\"|\"lng\"|\"lon(?:gitude)?\")[^{}]*\}", re.S)
+CHEI_LAT, CHEI_LON = ("lat", "latitude"), ("lng", "lon", "longitude")
+CHEI_NUME = ("name", "nume", "title", "denumire")
+CHEI_ADRESA = ("address", "adresa", "street")
+CHEI_PROGRAM = ("schedule", "program", "hours", "orar", "opening_hours")
+
+
+def _in_romania(lat, lon):
+    return 43.6 <= lat <= 48.3 and 20.2 <= lon <= 29.8
+
+
+def _tip_locatie(text):
+    return "atm" if re.search(r"\batm\b|bancomat", text or "", re.I) else "sucursala"
+
+
+def _primul(d, chei):
+    for k in chei:
+        if d.get(k) not in (None, ""):
+            return d[k]
+    return None
+
+
+def din_locator(octeti, url, slug):
+    """Coordonate din JSON-ul inclus în pagină sau din atribute `data-lat`.
+
+    Locatorul băncii e sursa oficială a rețelei: are și programul, pe care
+    Overture nu-l are. Punctele din afara României se aruncă: unele locatoare
+    listează și rețeaua grupului din alte țări.
+    """
+    import json
+    from bs4 import BeautifulSoup
+    text = octeti.decode("utf-8", errors="replace")
+    puncte = []
+    for m in RE_OBIECT_JSON.finditer(text):
+        try:
+            d = json.loads(m.group(0))
+            lat, lon = float(_primul(d, CHEI_LAT)), float(_primul(d, CHEI_LON))
+        except (ValueError, TypeError):
+            continue
+        tip = _tip_locatie(" ".join(str(d.get(k, "")) for k in ("type", "tip", "category", "name")))
+        puncte.append({"tip": tip, "nume": _primul(d, CHEI_NUME), "adresa": _primul(d, CHEI_ADRESA),
+                       "lat": lat, "lon": lon, "program": _primul(d, CHEI_PROGRAM)})
+    for el in BeautifulSoup(octeti, "lxml").select("[data-lat]"):
+        try:
+            lat = float(el["data-lat"])
+            lon = float(el.get("data-lng") or el.get("data-lon"))
+        except (ValueError, TypeError):
+            continue
+        eticheta = " ".join(el.get("class", [])) + " " + el.get_text(" ", strip=True)
+        puncte.append({"tip": _tip_locatie(eticheta), "nume": el.get_text(" ", strip=True)[:120] or None,
+                       "adresa": None, "lat": lat, "lon": lon, "program": None})
+    unice = {}
+    for p in puncte:
+        if _in_romania(p["lat"], p["lon"]):
+            p.update(banca=slug, sursa=url, _locatie=True)
+            unice.setdefault((p["tip"], round(p["lat"], 6), round(p["lon"], 6)), p)
+    return list(unice.values()), f"locator: {len(unice)} puncte"

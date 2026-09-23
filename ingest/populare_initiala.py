@@ -247,9 +247,35 @@ def ruleaza_banca(err, raport, banca, limita=None):
 
 
 def scrie(err, raport, brute, banci):
-    err.write(f"\n═══ 3. Normalizare + dedup + scriere ({len(brute)} brute)\n")
+    locatii = [b for b in brute if b.get("_locatie")]
+    brute = [b for b in brute if not b.get("_locatie")]
+    err.write(f"\n═══ 3. Normalizare + dedup + scriere ({len(brute)} brute, "
+              f"{len(locatii)} locații)\n")
     randuri = [x for x in (N.normalizeaza(b, raport) for b in brute) if x]
     N.scrie(randuri, METODA, raport, banci=banci)
+    scrie_locatii(locatii, raport)
+
+
+def scrie_locatii(puncte, raport):
+    """Locatorul băncii e sursa oficială: la băncile care îl au, înlocuiește
+    Overture; la celelalte, Overture rămâne."""
+    if not puncte:
+        return
+    with psycopg2.connect(N.dsn()) as conn:
+        with conn.cursor() as cur:
+            banci = sorted({p["banca"] for p in puncte})
+            cur.execute("""DELETE FROM locatii l USING banci b
+                           WHERE b.id = l.id_banca AND b.slug = ANY(%s)
+                             AND l.sursa IN ('locator_banca', 'overture')""", (banci,))
+            for p in puncte:
+                cur.execute("""INSERT INTO locatii (id_banca, tip, nume, adresa, lat, lon,
+                                   program, sursa, ref_extern)
+                               SELECT id, %s, %s, %s, %s, %s, %s, 'locator_banca', %s
+                               FROM banci WHERE slug = %s
+                               ON CONFLICT (id_banca, tip, lat, lon) DO NOTHING""",
+                            (p["tip"], p["nume"], p["adresa"], p["lat"], p["lon"],
+                             p["program"], p["sursa"], p["banca"]))
+                raport["locatii_locator"] += cur.rowcount
 
 
 def paralel(err, n, argumente):

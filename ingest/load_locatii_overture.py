@@ -74,6 +74,7 @@ TIPARE = [
     ("salt", re.compile(r"salt bank", re.I)),
     ("brci", re.compile(r"\bBRCI\b|banca romana de credite", re.I)),
     ("citibank", re.compile(r"citibank", re.I)),
+    ("cetelem", re.compile(r"cetelem", re.I)),
     ("techventures", re.compile(r"techventures", re.I)),
 ]
 RE_ATM = re.compile(r"\bATM\b|bancomat", re.I)
