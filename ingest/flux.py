@@ -201,7 +201,7 @@ def adu_llm(url, stare):
             return None, f"clientul Anthropic: {type(exc).__name__}"
     try:
         r = stare["anthropic"].messages.create(
-            model=os.environ.get("MODEL", "claude-opus-5"),
+            model=os.environ.get("MODEL", "claude-sonnet-5"),
             max_tokens=8000,
             tools=[{"type": "web_fetch_20250910", "name": "web_fetch",
                     "max_uses": 2, "allowed_domains": [url.split("/")[2]]}],
@@ -235,12 +235,18 @@ def scrie_bronze(url, octeti):
     suprascria primul — apoi sonda de schimbări raporta o schimbare care nu
     existase.
     """
-    from crawler.urme import nume_din_url
     os.makedirs(BRONZE, exist_ok=True)
-    cale = os.path.join(BRONZE, nume_din_url(url))
+    cale = cale_bronze(url)
     with open(cale, "wb") as f:
         f.write(octeti)
     return cale
+
+
+def cale_bronze(url):
+    """Unde stau în Bronze octeții unei surse — același nume la scriere și la
+    citire, altfel reconstruirea din Bronze ar căuta alt fișier."""
+    from crawler.urme import nume_din_url
+    return os.path.join(BRONZE, nume_din_url(url))
 
 
 def amprenta(octeti):

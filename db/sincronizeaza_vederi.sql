@@ -12,12 +12,13 @@
 
 DROP VIEW IF EXISTS observatii_curente;
 
--- Ce se arată implicit: tot ce nu e o versiune depășită sau o dublură.
+-- Ce se arată implicit: tot ce nu e o versiune depășită, o dublură sau un
+-- preț anunțat care nu se aplică încă (VIITOR, migrarea 013).
 -- Regula stă aici o singură dată, ca fiecare interogare a aplicației să nu o
 -- repete (și să nu o uite).
 CREATE VIEW observatii_curente AS
   SELECT * FROM observations
-  WHERE stare_data IS NULL OR stare_data NOT IN ('ISTORIC', 'DUBLURA');
+  WHERE stare_data IS NULL OR stare_data NOT IN ('ISTORIC', 'DUBLURA', 'VIITOR');
 
 -- Verificare: vederea trebuie să expună exact coloanele tabelei. Dacă nu,
 -- oprim cu eroare în loc să lăsăm API-ul să cadă mai târziu cu 500.

@@ -3,7 +3,7 @@
 Rularea de populare inițială din 23 septembrie 2026 scrie în directorul
 temporar al sesiunii Claude care a lansat-o:
 
-    %LOCALAPPDATA%\Temp\claude\c--Users-robert-postolache-Desktop-Scraping\
+    %LOCALAPPDATA%\Temp\claude\<proiectul-claude>\
       c386605a-aff1-48ac-993a-266a4af547f2\scratchpad\populare_final.log
 
 Ieșirea e tamponată: fișierul rămâne la 0 octeți până când procesul termină,

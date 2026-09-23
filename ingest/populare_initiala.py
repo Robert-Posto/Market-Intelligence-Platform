@@ -54,6 +54,8 @@ Rulare:
     python ingest/populare_initiala.py --doar-fisiere  # fără rețea, rapid
     python ingest/populare_initiala.py --banca cec
     python ingest/populare_initiala.py --pastreaza     # nu golește baza
+    python ingest/populare_initiala.py --din-bronze    # reface baza din ce s-a
+                                                       # descărcat, fără rețea
 """
 
 import argparse
@@ -188,7 +190,11 @@ def proceseaza(sursa, cur, stare, fara_llm=False):
         return [], j
     cur.execute("INSERT INTO hashes (id_sursa, format, hash) VALUES (%s, %s, %s)",
                 (sid, "pdf" if octeti.startswith(b"%PDF") else "html", amp))
+    return extrage(octeti, cale, slug, url, rol, j)
 
+
+def extrage(octeti, cale, slug, url, rol, j):
+    """Extracția — aceeași fie că octeții vin de la bancă, fie din Bronze."""
     # Formatul se decide din PRIMII OCTEȚI, nu din extensia URL-ului:
     # extensia și Content-Type mint amândouă (regula din artefact).
     if octeti.startswith(b"%PDF"):
@@ -197,6 +203,61 @@ def proceseaza(sursa, cur, stare, fara_llm=False):
         b_noi, nota = extractoare.din_html(octeti, url, slug, rol)
     j["nota"], j["stare"] = nota, ("OK" if b_noi else "GOL")
     return b_noi, j
+
+
+def din_bronze(err, raport, banca=None):
+    """Reconstruiește observațiile din Bronze, fără nicio cerere către bănci.
+
+    Sunt luate doar sursele cu amprentă în `hashes`, adică exact ce a adus
+    ultima colectare, și fiecare fișier e verificat octet cu octet față de
+    amprenta lui. Un fișier care nu se potrivește (suprascris de altă rulare,
+    sau rămas dintr-una mai veche) se sare, nu se folosește pe încredere.
+    """
+    brute = []
+    with psycopg2.connect(N.dsn()) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                # Toate amprentele sursei, nu doar ultima: `scrie()` poate
+                # adăuga și amprenta documentului din pachetul colegului, care
+                # e alta decât a octeților aduși de flux.
+                """SELECT s.id, b.slug, s.sursa, s.format, s.rol, array_agg(h.hash)
+                   FROM surse s JOIN banci b ON b.id = s.id_banca
+                   JOIN hashes h ON h.id_sursa = s.id
+                   WHERE (%s = '' OR b.slug = %s)
+                   GROUP BY s.id, b.slug
+                   ORDER BY s.id""",
+                (banca or "", banca or ""),
+            )
+            surse = cur.fetchall()
+    err.write(f"  {len(surse)} surse cu amprentă · fără rețea\n\n")
+
+    pe_banca = collections.defaultdict(list)
+    for s in surse:
+        pe_banca[s[1]].append(s)
+    for i, slug in enumerate(sorted(pe_banca), 1):
+        stari, n = collections.Counter(), 0
+        for sid, _, url, fmt, rol, amp in pe_banca[slug]:
+            j = {"sursa": url, "banca": slug, "transport": "bronze",
+                 "stare": None, "nota": None}
+            cale = flux.cale_bronze(url)
+            try:
+                with open(cale, "rb") as f:
+                    octeti = f.read()
+            except OSError:
+                octeti = None
+            if octeti is None:
+                j["stare"] = "LIPSA_BRONZE"
+            elif flux.amprenta(octeti) not in amp:
+                j["stare"] = "AMPRENTA_DIFERITA"
+            else:
+                b_noi, j = extrage(octeti, cale, slug, url, rol, j)
+                brute.extend(b_noi)
+                n += len(b_noi)
+            stari[j["stare"]] += 1
+            raport["stare_" + j["stare"]] += 1
+        err.write(f"  [{i:2d}/{len(pe_banca)}] {slug:20s} "
+                  f"{len(pe_banca[slug]):3d} surse → {n:5d} brute  {dict(stari)}\n")
+    return brute
 
 
 def main():
@@ -210,19 +271,33 @@ def main():
                     help="sari treapta 3 a cascadei (costă per apel)")
     ap.add_argument("--pastreaza", action="store_true",
                     help="nu golește baza înainte")
+    ap.add_argument("--din-bronze", action="store_true",
+                    help="fără rețea: extrage din Bronze ce a adus ultima colectare")
     a = ap.parse_args()
 
     config.incarca()
     err = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", write_through=True)
     raport = collections.Counter()
 
-    if not a.pastreaza and not a.banca:
+    if a.din_bronze:
+        # Amprentele RĂMÂN: ele spun ce fișiere din Bronze sunt ale ultimei
+        # colectări. Se golesc doar observațiile.
+        if not a.pastreaza and not a.banca:
+            with psycopg2.connect(N.dsn()) as conn:
+                with conn.cursor() as cur:
+                    cur.execute("DELETE FROM observations")
+                    err.write(f"golit: {cur.rowcount} observații. "
+                              f"Amprente și Bronze păstrate.\n\n")
+    elif not a.pastreaza and not a.banca:
         goleste(err)
 
     err.write("═══ 1. Variantele din fișier (fără rețea)\n")
     brute = din_fisiere(err, raport)
 
-    if not a.doar_fisiere:
+    if a.din_bronze:
+        err.write("\n═══ 2. Extracție din Bronze (fără rețea)\n")
+        brute += din_bronze(err, raport, a.banca)
+    elif not a.doar_fisiere:
         err.write("\n═══ 2. Fluxul peste inventar (rețea)\n")
         brute += din_rețea(err, raport, a.banca, a.limita, a.fara_llm)
 

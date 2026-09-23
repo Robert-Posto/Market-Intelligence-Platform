@@ -10,7 +10,7 @@ Contextul Claude Code e local, pe mașină, nu în cont:
 
 | ce | unde |
 |---|---|
-| conversațiile proiectului | `~/.claude/projects/c--Users-robert-postolache-Desktop-Scraping/*.jsonl` |
+| conversațiile proiectului | `~/.claude/projects/<proiectul-claude>/*.jsonl` |
 | memoria proiectului | `.../memory/MEMORY.md` + fișierele de memorie |
 | instrucțiuni globale | `~/.claude/CLAUDE.md` |
 | setări, skill-uri, MCP | `~/.claude/` |
@@ -78,7 +78,7 @@ diferite și nu se mai pot lega între rulări. Păstrează exact valoarea actua
    de mașină, nici de cont:
    ```bash
    cd ~/Downloads/mip
-   git remote add origin https://github.com/Robert-Posto/Market-Intelligence-Platform.git
+   git remote add origin <URL-ul repo-ului>
    git push -u origin main
    ```
 4. ⬜ notează valoarea actuală a `MIP_SALT` într-un loc sigur (nu în repo)

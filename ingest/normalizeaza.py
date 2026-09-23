@@ -107,6 +107,27 @@ COLOANE = (
     "motiv_ambiguu", "nr_aparitii",
 )
 
+# Aceleași liste ca CHECK-urile din `observations`. Se verifică ÎNAINTE de
+# inserare: inserarea e în bloc, deci un singur rând invalid anula tot lotul —
+# așa s-au pierdut 24.838 de valori la popularea din 23.09.2026, din cauza unei
+# singure stări `VIITOR`. Acum rândul se sare și se numără în raport, cu motiv.
+PERMISE = {
+    "stare_data": {None, "IN_VIGOARE", "VIITOR", "ISTORIC", "DUBLURA", "DATA_NECUNOSCUTA"},
+    "unitate": {None, "procent", "lei", "eur", "usd", "zile", "luni", "ani", "numar",
+                "puncte_procentuale", "altele"},
+}
+
+
+def invalid(r):
+    """Motivul pentru care rândul ar pica pe un CHECK, sau None."""
+    for camp, voie in PERMISE.items():
+        if r.get(camp) not in voie:
+            return f"{camp}={r.get(camp)}"
+    c = r.get("confidence")
+    if c is not None and not 0 <= c <= 1:
+        return f"confidence={c}"
+    return None
+
 # Ce face două rânduri „același lucru" — cheia SEMANTICĂ, nu tehnică.
 #
 # Deliberat NU include `citat`: la tabelele cu o coloană per variantă de
@@ -502,17 +523,20 @@ def scrie(randuri, metoda, raport=None, sterge=True):
                 (r["banca"], r["sursa"], r["tip_sursa"]): r["amprenta"]
                 for r in randuri if r.get("amprenta")
             }
+            # Se ADAUGĂ doar amprentele care lipsesc; nu se șterge niciuna.
+            # `hashes` e jurnalul colectării: fluxul scrie acolo amprenta
+            # octeților aduși, iar reconstruirea din Bronze se bazează pe ea.
+            # Un DELETE aici ștergea amprentele colectării din 23.09.2026 și
+            # rularea următoare din Bronze nu mai vedea sursele respective.
             if amprente:
-                cur.execute(
-                    "DELETE FROM hashes WHERE id_sursa IN "
-                    "(SELECT id FROM surse WHERE metoda_extractie = %s)", (metoda,)
-                )
-                psycopg2.extras.execute_values(
-                    cur, "INSERT INTO hashes (id_sursa, format, hash) VALUES %s",
-                    [(id_sursa[k], "pdf", v) for k, v in sorted(amprente.items())
-                     if k in id_sursa],
-                )
-                raport["amprente"] += len(amprente)
+                cur.execute("SELECT id_sursa, hash FROM hashes")
+                existente = set(cur.fetchall())
+                noi = [(id_sursa[k], "pdf", v) for k, v in sorted(amprente.items())
+                       if k in id_sursa and (id_sursa[k], v) not in existente]
+                if noi:
+                    psycopg2.extras.execute_values(
+                        cur, "INSERT INTO hashes (id_sursa, format, hash) VALUES %s", noi)
+                raport["amprente"] += len(noi)
             cur.execute(
                 """SELECT h.id_sursa, max(h.id) FROM hashes h
                    GROUP BY h.id_sursa"""
@@ -534,6 +558,10 @@ def scrie(randuri, metoda, raport=None, sterge=True):
                     continue
                 if r["produs"] not in produse:
                     raport[f"obs_sarita_produs_necunoscut:{r['produs']}"] += 1
+                    continue
+                motiv = invalid(r)
+                if motiv:
+                    raport[f"obs_sarita_invalida:{motiv}"] += 1
                     continue
                 s_id = id_sursa[k]
                 valori.append((
