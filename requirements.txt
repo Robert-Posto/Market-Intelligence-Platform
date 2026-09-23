@@ -1,0 +1,11 @@
+# pip install -r requirements.txt && playwright install chromium
+# (browserul Playwright nu vine prin pip; fara el crawler/ nu porneste)
+
+psycopg2>=2.9
+requests>=2.34
+beautifulsoup4>=4.15
+lxml>=6.1
+pdfplumber>=0.11
+playwright>=1.62
+mini-racer>=0.14    # import py_mini_racer, pentru app/verifica_pagini.py
+anthropic>=1.8      # doar ingest/structureaza_depozite.py (pas LLM, netestat live)

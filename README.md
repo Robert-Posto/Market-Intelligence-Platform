@@ -70,11 +70,14 @@ acoperire proastă ar ascunde golurile.
 ## Pornire
 
 ```bash
+pip install -r requirements.txt      # Python 3.12
+playwright install chromium          # doar pentru crawler/, nu vine prin pip
+
 docker compose up -d                 # PostgreSQL 16
 psql < db/schema.sql                 # apoi migrările 002..011, în ordine
 psql < db/sincronizeaza_vederi.sql   # DUPĂ orice migrare care adaugă coloane
 
-cp .env.exemplu .env                 # completează cheile
+cp .env.example .env                 # completează cheile
 python app/server.py                 # http://localhost:8765
 ```
 
@@ -100,10 +103,48 @@ Pași auxiliari, care pregătesc sursele:
 python ingest/recolteaza_pdf_banci.py   # găsește PDF-urile de tarife pe site-uri
 python ingest/cauta_app_id.py           # id-uri de App Store
 python ingest/fetch_logos_site.py       # sigle, de pe site-ul fiecărei bănci
+python ingest/extract_deposits.py       # depozite (BS4) -> date/rezultate_depozite.json, citit de --pas bs4
+python ingest/itunes_lookup.py          # App Store -> date/rezultate_app_store.json, citit de load_appstore.py
 ```
 
 Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi
 rescrie. Rularea repetată nu dublează. `--banca <slug>` restrânge la o bancă.
+
+### Pachetul Playwright (`crawler/`)
+
+`--pas playwright` și `load_bnr.py` citesc din `date/pachet/`, un instantaneu
+versionat (rularea din 21 septembrie). Crawler-ul **nu** scrie acolo, ci în
+`output/`, care nu e versionat. Rularea nouă e deci în doi timpi, deliberat: un
+crawl stricat nu ajunge singur în bază.
+
+```bash
+# 1. crawl (~30 min): 6 procese PARALELE, fiecare într-un terminal propriu
+mkdir -p output/log
+python -m crawler.main --banci patria,salt,cetelem                       --pdf --max-pe-banca 80 > output/log/grup1.txt
+python -m crawler.main --banci brd,libra,tbi,bnpparibas                  --pdf --max-pe-banca 80 > output/log/grup2.txt
+python -m crawler.main --banci ing,vista,bcrlocuinte,revolut             --pdf --max-pe-banca 80 > output/log/grup3.txt
+python -m crawler.main --banci bcr,raiffeisen,garanti,bid                --pdf --max-pe-banca 80 > output/log/grup4.txt
+python -m crawler.main --banci eximbank,procredit,creditcoop,bankofchina --pdf --max-pe-banca 80 > output/log/grup5.txt
+python -m crawler.main --banci nexent,techventures,brci,credex           --pdf --max-pe-banca 80 > output/log/grup6.txt
+
+# 2. lanțul post-crawl (~2 min, 13 pași), din rădăcina repo-ului
+python scripts/dupa_crawl.py
+
+# 3. promovare: exact fișierele pe care le citește ingest/
+cp output/{comisioane_unificate,rate_validate,date_documente,bnr_indici}.json date/pachet/
+```
+
+`dupa_crawl.py` așteaptă **toate șase** log-urile `output/log/grup1..6.txt`,
+fiecare terminat cu „Rezultate in:". Cu mai puține grupuri, stă 75 de minute
+și abia apoi pornește.
+
+Gruparea e echilibrare de încărcare, nu ordine alfabetică: pauzele din
+`robots.txt` sunt per origine, deci băncile diferite pot merge în paralel.
+`grup1` are 3 bănci, nu 4, fiindcă Patria cere `Crawl-delay: 5`, singura din
+lot peste 2s. La 18 sept grupurile au durat între 14 min (grup3) și 29 min
+(grup6). Dacă rearanjezi băncile, echilibrează după pauză, nu după număr. Înainte de promovare, `git diff --stat date/pachet/`
+arată cât s-a schimbat. Regula de filtrare pe `stare_data` e în
+`docs/crawler/CITESTE_PENTRU_MERGE.md`.
 
 ### Înainte de commit
 
@@ -159,6 +200,9 @@ distrus 106 recenzii, irecuperabile.
 
 Ratingul agregat vine din Lookup API și e stabil — de aceea 2.3 s-a umplut
 complet la 19 bănci, iar 2.7 nu.
+
+Recenziile din magazinul `us` nu se încarcă: la Citibank și Revolut
+sunt 0% în română (aplicații globale, clienți străini).
 
 **11 bănci fără id de aplicație confirmat.** Patru probabil n-au aplicație
 (bcr-locuinte, bid, cec, creditcoop). Șapte au aplicația *grupului*, dar de pe
@@ -224,7 +268,9 @@ Față de arhitectura din artefactul de design, lipsesc:
   procesare, deci se reprocesează tot de fiecare dată
 - **cascada de transport** `http → playwright`
 - **LLM ca ultimă treaptă** de extracție, pentru ce niciun parser determinist
-  nu citește
+  nu citește. Există o primă piesă, `ingest/structureaza_depozite.py` (doar
+  depozite, cu Claude API), dar n-a fost rulată niciodată și nu e legată de
+  pipeline
 - **`surse_produse`** — 583 de perechi URL×produs în bază, zero referințe în cod
 - **`change_events` e gol** — schimbările de preț sunt o *vedere*
   (`schimbari_pret`), nu evenimente. Se recalculează din observații, deci nu
@@ -232,6 +278,15 @@ Față de arhitectura din artefactul de design, lipsesc:
 
 Primele trei există doar pentru rerulări, deci sunt în afara priorității
 curente (populare inițială).
+
+### Conformitate — abatere asumată
+
+Un `robots.txt` care răspunde cu eroare de server (5xx) sau nu răspunde deloc
+e tratat ca **„fără restricții"**, în ambele implementări
+(`ingest/scraper.py:robots_allowed`, `crawler/robots.py`). RFC 9309 §2.3.1.4
+cere invers: totul interzis până se poate citi. Păstrat deliberat pe durata
+testării. În datele existente n-a apărut niciun astfel de caz, doar 404 și
+403, tratate corect.
 
 ---
 
@@ -283,8 +338,17 @@ comparații și apare în coadă, cu citatul din document.
 app/          server.py (API read-only) · index.html (SPA, 12 pagini)
               harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
 ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
+              scraper.py = stiva HTTP (robots.txt, User-Agent, pauze), folosită
+              de pașii BS4 · extract_deposits.py · itunes_lookup.py · test_*.py
+crawler/      crawler-ul Playwright + parserele PDF + vocabular.py (sursa unică)
+              parser_rate.py = singurul parser de rate, folosit și de BS4
+scripts/      lanțul post-crawl (dupa_crawl.py) + teste și verificări robots
 db/           schema.sql + migrările 002..011 · sincronizeaza_vederi.sql
-date/         ieșiri intermediare (JSON)
+date/         ieșiri intermediare (JSON) · rezultate_*.json = datele BS4
+              pachet/ = pachetul Playwright citit de ingest/
+              robots/ = robots.txt brute, dovada de conformitate
+docs/crawler/ jurnalele crawler-ului; operațional e doar CITESTE_PENTRU_MERGE.md
+docs/bs4/     notele scraperului BS4 (fezabilitate, comparații)
 ```
 
 Serverul e **strict read-only**: nicio rută nu scrie în bază. Interogările

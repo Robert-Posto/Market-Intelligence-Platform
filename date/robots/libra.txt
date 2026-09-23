@@ -1,0 +1,41 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.librabank.ro/sitemap.xml
+
+# === AI Access Rules ===
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Google AI / Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Mistral
+User-agent: MistralAIBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+
+
+
+

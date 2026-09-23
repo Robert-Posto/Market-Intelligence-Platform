@@ -11,7 +11,7 @@ oricâte drumuri duc la el.
 
 CELE TREI VARIANTE, fiecare cu ce are ea mai bun:
 
-  1. scraperul propriu (Desktop/Scraping)
+  1. scraperul propriu (ingest/scraper.py)
      - `scraper.py`     transport HTTP: UA care ne identifică, delay, encoding
      - depozitele       singura variantă care acoperă produsele de economisire
 

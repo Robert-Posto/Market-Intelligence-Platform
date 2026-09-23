@@ -12,7 +12,7 @@ Un singur drum, aplicat la fel oricărei surse:
 
 TRANSPORTUL E O CASCADĂ, în ordinea cerută:
 
-  1. `http`        stiva proprie (Desktop/Scraping/scraper.py) — `requests`,
+  1. `http`        stiva proprie (ingest/scraper.py) — `requests`,
                    User-Agent care ne identifică, delay, detecție de encoding.
                    Cea mai ieftină și cea mai transparentă. Merge pe majoritate.
 
@@ -61,12 +61,6 @@ AICI = os.path.dirname(os.path.abspath(__file__))
 RADACINA = os.path.dirname(AICI)
 sys.path.insert(0, RADACINA)
 sys.path.insert(0, AICI)
-
-SCRAPING = os.path.join(os.path.expanduser("~"), "Desktop", "Scraping")
-PACHET = os.path.join(os.path.expanduser("~"), "Downloads", "pentru_coleg_bs4_21sept")
-FLUX_LLM = os.path.join(os.path.expanduser("~"), "Downloads", "flux-colectare")
-for p in (SCRAPING, PACHET, FLUX_LLM):
-    sys.path.insert(0, p)
 
 import config                      # noqa: E402
 import extractoare                 # noqa: E402

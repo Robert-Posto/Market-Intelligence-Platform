@@ -72,7 +72,6 @@ PRAG_MIN = 35
 
 
 def fara_diacritice(t):
-    sys.path.insert(0, os.path.join(os.path.expanduser("~"), "Desktop", "Scraping"))
     from scraper import strip_diacritics
     return strip_diacritics(t)
 

@@ -41,15 +41,12 @@ sys.path.insert(0, os.path.dirname(AICI))
 
 from normalizeaza import brut                                       # noqa: E402
 
-PACHET = os.path.join(os.path.expanduser("~"), "Downloads",
-                      "pentru_coleg_bs4_21sept", "output")
-FISIER_BS4 = os.path.join(os.path.expanduser("~"), "Desktop", "Scraping",
-                          "rezultate_depozite.json")
+PACHET = os.path.join(os.path.dirname(AICI), "date", "pachet")
+FISIER_BS4 = os.path.join(os.path.dirname(AICI), "date", "rezultate_depozite.json")
 
-# Stiva proprie de colectare (robots.txt, User-Agent onest, delay, detecție de
-# encoding) se importă la cerere: extractoarele din fișier nu au nevoie de
-# rețea și nu trebuie să depindă de ea.
-SCRAPING = os.path.join(os.path.expanduser("~"), "Desktop", "Scraping")
+# Stiva proprie de colectare (scraper.py: robots.txt, User-Agent onest, delay,
+# detecție de encoding) se importă la cerere: extractoarele din fișier nu au
+# nevoie de rețea și nu trebuie să depindă de ea.
 
 
 def _citeste(cale):
@@ -200,7 +197,6 @@ SEPARATOARE_TITLU = re.compile(r"\s*[|·»—–]\s*")
 
 
 def _fara_diacritice(t):
-    sys.path.insert(0, SCRAPING)
     from scraper import strip_diacritics
     return strip_diacritics(t)
 
@@ -271,9 +267,8 @@ def din_html_live(url, banca, rol_sursa="produs"):
     scriu pe sursă: „blocat de robots.txt" și „pagină randată prin JS" cer
     acțiuni diferite, iar fără ele ambele arată identic (sursă fără observații).
     """
-    sys.path.insert(0, SCRAPING)
     from bs4 import BeautifulSoup
-    from parser_rate import parseaza_linie
+    from crawler.parser_rate import parseaza_linie
     from scraper import DELAY_BETWEEN_REQUESTS, fetch_page, robots_allowed
 
     stare_robots, motiv, crawl_delay = robots_allowed(url)
@@ -332,9 +327,6 @@ def din_html_live(url, banca, rol_sursa="produs"):
 # 4. PDF: comisioanele din documentele de tarife
 # ==========================================================================
 
-PACHET_CRAWLER = os.path.join(os.path.expanduser("~"), "Downloads",
-                              "pentru_coleg_bs4_21sept")
-
 # Titlul formularului impus prin Legea 258/2017 (directiva UE 2014/92, PAD).
 # Regula e a colegului, refolosită literal: se caută titlul în CONȚINUT, nu în
 # numele fișierului, fiindcă numele minte des. Verificat pe documentul BCR de
@@ -366,8 +358,6 @@ def _parsere_pdf():
         neatribuibile. Eu citeam flagul din JSON-ul lui, dar nu-l calculam pe
         documentele noi.
     """
-    if PACHET_CRAWLER not in sys.path:
-        sys.path.insert(0, PACHET_CRAWLER)
     from crawler import ambiguitate, data_document, parser_pdf, parser_tarife, vocabular
     return parser_pdf, parser_tarife, vocabular, data_document, ambiguitate
 

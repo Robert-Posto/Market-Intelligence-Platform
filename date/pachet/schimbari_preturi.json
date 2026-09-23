@@ -1,0 +1,66 @@
+{
+ "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Dobanzi_indicative.pdf": {
+  "banca": "bcr",
+  "moment": "2026-09-21T06:49:55+00:00",
+  "data_veche": "2026-09-01",
+  "data_noua": "2026-09-01",
+  "valori_vechi": 10,
+  "valori_noi": 10,
+  "rezumat": {
+   "pret": 0,
+   "banda": 0,
+   "reformatat": 0,
+   "aparut": 0,
+   "disparut": 0
+  },
+  "pret": [],
+  "banda": []
+ },
+ "https://www.brd.ro/sites/default/files/_files/pdf/Ghid_tarife_comisioane.pdf": {
+  "banca": "brd",
+  "moment": "2026-09-21T06:49:55+00:00",
+  "data_veche": "2026-09-01",
+  "data_noua": "2026-09-21",
+  "valori_vechi": 502,
+  "valori_noi": 500,
+  "rezumat": {
+   "pret": 1,
+   "banda": 1,
+   "reformatat": 9,
+   "aparut": 4,
+   "disparut": 1
+  },
+  "pret": [
+   {
+    "serviciu": "debit(cecurisibiletelaordin)lei(500-50.000)lei",
+    "vechi": [
+     4.0,
+     8.0,
+     8.0,
+     11.0,
+     16.0,
+     22.0
+    ],
+    "nou": [
+     8.0,
+     16.0
+    ],
+    "text": "8 lei/operatiune"
+   }
+  ],
+  "banda": [
+   {
+    "serviciu": "procesateinstant.6listatarilorincluseinzonaunicadeplatiineur(sepa-singleeuropaymentsarea)poateficonsultatalahttps://www.europeanpaymentsco",
+    "banda_veche": null,
+    "banda_noua": "≥50.000lei",
+    "vechi": [
+     6.0,
+     50000.0
+    ],
+    "nou": [
+     6.0
+    ]
+   }
+  ]
+ }
+}
