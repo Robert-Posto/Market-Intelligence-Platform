@@ -526,9 +526,10 @@ def celula(q):
     # PDF descoperite, 9 s-au potrivit exact. Masurat: nu exista mai mult de
     # potrivit, iar un link greșit ar trimite la alt document decat cifra.
     for r in rows:
+        # Documentele populării de la zero au ca sursă chiar adresa publică a
+        # PDF-ului; cele vechi (pachetul colegului) aveau o cale de fișier.
         r["link"] = r["url_public"] or (
-            r["sursa"] if r["tip_sursa"] == "url" and str(r["sursa"]).startswith("http")
-            else None
+            r["sursa"] if str(r["sursa"]).startswith("http") else None
         )
         r["link_pagina"] = None if r["link"] else r["pagina_documente"]
         r["fisier"] = os.path.basename(str(r["sursa"])) if r["tip_sursa"] == "document" else None
@@ -897,9 +898,10 @@ def coada(q):
         params + [limit],
     )
     for r in randuri:
+        # Documentele populării de la zero au ca sursă chiar adresa publică a
+        # PDF-ului; cele vechi (pachetul colegului) aveau o cale de fișier.
         r["link"] = r["url_public"] or (
-            r["sursa"] if r["tip_sursa"] == "url" and str(r["sursa"]).startswith("http")
-            else None
+            r["sursa"] if str(r["sursa"]).startswith("http") else None
         )
         r["link_pagina"] = None if r["link"] else r["pagina_documente"]
         r["fisier"] = os.path.basename(str(r["sursa"])) if r["tip_sursa"] == "document" else None
@@ -994,7 +996,7 @@ def pdf_permis(url):
     if url not in _PERMISE:
         _PERMISE[url] = bool(interoghează(
             """SELECT 1 FROM surse
-               WHERE url_public = %s OR (tip_sursa = 'url' AND sursa = %s)
+               WHERE url_public = %s OR (tip_sursa IN ('url', 'document') AND sursa = %s)
                LIMIT 1""",
             (url, url),
         ))

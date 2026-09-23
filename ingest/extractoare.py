@@ -239,6 +239,20 @@ def _nume_produs(soup, titlu):
     return None
 
 
+RE_PAGINA_PRESA = re.compile(r"/press|/presa|comunicat|/stiri|/news|/noutati|/blog", re.I)
+
+
+def _continut_principal(octeti):
+    """Aceleași tag-uri eliminate ca la amprentă (sanitizare.py)."""
+    from bs4 import BeautifulSoup
+    from sanitizare import ZGOMOT
+    soup = BeautifulSoup(octeti, "lxml")
+    for tag in soup.find_all(ZGOMOT):
+        tag.decompose()
+    return (soup.find("main") or soup.find(attrs={"role": "main"})
+            or soup.find("article") or soup.body or soup)
+
+
 def _linii(soup):
     """Linii pe care le poate citi `parser_rate.py`.
 
@@ -516,6 +530,8 @@ def din_html(octeti, url, slug, rol=None):
     # forțată în UTF-8 strica diacriticele paginilor servite în windows-1250.
     soup = BeautifulSoup(octeti, "lxml")
     titlu = soup.title.get_text(strip=True) if soup.title else None
+    if RE_PAGINA_PRESA.search(url):
+        return [], "pagină de presă/știri: prețurile din comunicate nu sunt oferta paginii"
     categorie, produs, _ = clasifica(url, titlu)
     if not categorie:
         return [], "nici calea URL, nici titlul nu spun ce produs e"
@@ -530,7 +546,11 @@ def din_html(octeti, url, slug, rol=None):
         ))
 
     vazute = set()
-    for linie in _linii(soup):
+    # Liniile se iau DOAR din conținutul principal. Măsurat pe 23.09: 201 din
+    # 643 de citate de dobânzi (31%) veneau din meniu, antet sau subsol (ex.
+    # bannerul ING „4,79%/an" din meniu), atribuite paginii curente — iar
+    # cine deschidea pagina nu găsea citatul în conținut.
+    for linie in _linii(_continut_principal(octeti)):
         if "%" not in linie:
             continue
         inreg, _ = parseaza_linie(linie, slug, categorie, url, titlu)

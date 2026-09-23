@@ -36,6 +36,7 @@ ZGOMOT = ["blog", "news", "/stiri", "presa", "comunicat", "cariere", "csr", "coo
           "gdpr", "confidential", "protectia-datelor", "politica-de", "despre-noi",
           "investitori", "arhiva", "login", "autentificare", "fraud", "securitate",
           "reclamat", "sitemap", "rss", "/tag/", "/author/", "search", "?s=",
+          "/press", "noutati",
           "mailto:", "tel:", "javascript:"]
 RE_LOCATOR = re.compile(r"retea|unitati|agentii|sucursal|locati|harta|\batm\b|bancomat|"
                         r"branch|locator|find-us|puncte-de-lucru", re.I)
