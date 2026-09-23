@@ -271,22 +271,22 @@ def scrie_locatii(puncte, raport):
                              AND l.sursa IN ('locator_banca', 'overture')""", (banci,))
             for p in puncte:
                 cur.execute("""INSERT INTO locatii (id_banca, tip, nume, adresa, lat, lon,
-                                   program, sursa, ref_extern)
-                               SELECT id, %s, %s, %s, %s, %s, %s, 'locator_banca', %s
+                                   program, sursa, ref_extern, retea)
+                               SELECT id, %s, %s, %s, %s, %s, %s, 'locator_banca', %s, %s
                                FROM banci WHERE slug = %s
                                ON CONFLICT (id_banca, tip, lat, lon) DO NOTHING""",
                             (p["tip"], p["nume"], p["adresa"], p["lat"], p["lon"],
-                             p["program"], p["sursa"], p["banca"]))
+                             p["program"], p["sursa"], p.get("retea", "proprie"), p["banca"]))
                 raport["locatii_locator"] += cur.rowcount
 
 
-def paralel(err, n, argumente):
+def paralel(err, n, argumente, sari=()):
     """Câte un proces per bancă; jurnalul fiecăreia în loguri/banci/<slug>.log."""
     os.makedirs(LOGURI, exist_ok=True)
     with psycopg2.connect(N.dsn()) as conn:
         with conn.cursor() as cur:
             cur.execute("SELECT slug FROM banci ORDER BY slug")
-            banci = [r[0] for r in cur.fetchall()]
+            banci = [r[0] for r in cur.fetchall() if r[0] not in sari]
 
     def una(slug):
         cale = os.path.join(LOGURI, f"{slug}.log")
@@ -312,6 +312,8 @@ def main():
                          "Bronze se arhivează")
     ap.add_argument("--paralel", type=int, default=0,
                     help="rulează toate băncile, câte N în paralel")
+    ap.add_argument("--fara", default="",
+                    help="cu --paralel: bănci de sărit, separate prin virgulă")
     ap.add_argument("--din-bronze", action="store_true",
                     help="reextrage din Bronze, fără rețea")
     a = ap.parse_args()
@@ -328,7 +330,8 @@ def main():
     elif a.banca:
         ruleaza_banca(err, raport, a.banca, a.limita)
     elif a.paralel:
-        paralel(err, a.paralel, ["--din-bronze"] if a.din_bronze else [])
+        paralel(err, a.paralel, ["--din-bronze"] if a.din_bronze else [],
+                sari={s.strip() for s in a.fara.split(",") if s.strip()})
         return 0
     else:
         ap.error("alege --banca, --paralel N sau --din-bronze")

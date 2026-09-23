@@ -369,7 +369,8 @@ function deschidePopup(p, lngLat){
       <div class="pop-m">${esc(p.adresa)} · ${esc(p.sector)}</div>
     </div>
     ${p.program ? `<div class="pop-m">Program: ${esc(p.program)}</div>` : ""}
-    <span class="pill">${esc(p.tip)} · Overture Maps${p.furnizori ? ` (${esc(p.furnizori)})` : ""}</span>`).addTo(map);
+    ${p.retea === "partener" ? `<div class="pop-m"><b>ATM partener</b>, nu al băncii: afișat de bancă pentru clienții ei.</div>` : ""}
+    <span class="pill">${esc(p.tip)} · ${p.sursa === "locator_banca" ? "locatorul băncii" : "Overture Maps"}${p.furnizori ? ` (${esc(p.furnizori)})` : ""}</span>`).addTo(map);
 }
 
 function geojson(){
@@ -403,7 +404,9 @@ function aplicaFiltre(){
   const medie = cuRec.length ? cuRec.reduce((s,p) => s + Number(p.rating), 0) / cuRec.length : null;
   document.getElementById("nr").textContent = vaz.length;
   document.getElementById("nr-det").textContent =
-    `${suc} sucursale · ${vaz.length - suc} ATM-uri` + (medie ? ` · notă medie ${medie.toFixed(2)}` : "");
+    `${suc} sucursale · ${vaz.filter(p => p.tip === "atm" && p.retea !== "partener").length} ATM-uri proprii`
+    + (vaz.some(p => p.retea === "partener") ? ` · ${vaz.filter(p => p.retea === "partener").length} partenere` : "")
+    + (medie ? ` · notă medie ${medie.toFixed(2)}` : "");
   document.getElementById("nr-banci").textContent = `(${selectate.size}/${BANCI.length})`;
 }
 

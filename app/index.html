@@ -1082,7 +1082,8 @@ R.retea = async () => {
     <p><a href="/harta.html"><button class="primar">Deschide harta →</button></a></p>
     ${tabel(d.banci, [
       {cap:"Bancă", k:"nume"}, {cap:"Sucursale", cls:"num", val:r => num(r.sucursale, 0)},
-      {cap:"ATM-uri", cls:"num", val:r => num(r.atm, 0)},
+      {cap:"ATM-uri proprii", cls:"num", val:r => num(r.atm, 0)},
+      {cap:"ATM-uri partenere", cls:"num", val:r => num(r.atm_parteneri, 0)},
       {cap:"Total", cls:"num", val:r => num(r.total, 0)},
     ])}
   </section>

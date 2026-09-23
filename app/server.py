@@ -275,7 +275,8 @@ def locatii(q):
         "banci": interoghează(
             """SELECT b.slug, b.nume,
                       count(*) FILTER (WHERE l.tip = 'sucursala')::int AS sucursale,
-                      count(*) FILTER (WHERE l.tip = 'atm')::int       AS atm,
+                      count(*) FILTER (WHERE l.tip = 'atm' AND l.retea = 'proprie')::int AS atm,
+                      count(*) FILTER (WHERE l.retea = 'partener')::int AS atm_parteneri,
                       count(*)::int AS total
                FROM locatii l JOIN banci b ON b.id = l.id_banca
                GROUP BY b.slug, b.nume ORDER BY total DESC"""
@@ -284,7 +285,7 @@ def locatii(q):
         "puncte": interoghează(
             "SELECT l.id, b.slug AS banca, b.nume AS banca_nume, l.tip, l.nume, "
             "l.adresa, l.sector, l.lat::float8, l.lon::float8, l.program, l.sursa, "
-            "l.rating::float8, l.nr_recenzii, l.furnizori "
+            "l.rating::float8, l.nr_recenzii, l.furnizori, l.retea "
             + base + " ORDER BY b.slug, l.tip",
             params,
         ),
@@ -723,7 +724,7 @@ def versus_extra():
         "retea": interoghează(
             """SELECT b.slug AS banca,
                       count(*) FILTER (WHERE l.tip = 'sucursala')::int AS sucursale,
-                      count(*) FILTER (WHERE l.tip = 'atm')::int       AS atm,
+                      count(*) FILTER (WHERE l.tip = 'atm' AND l.retea = 'proprie')::int AS atm,
                       round(avg(l.rating) FILTER (WHERE l.tip = 'sucursala'), 2)::float8
                         AS rating_sucursale
                FROM locatii l JOIN banci b ON b.id = l.id_banca

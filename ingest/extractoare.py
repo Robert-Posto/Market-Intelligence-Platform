@@ -570,7 +570,16 @@ def _in_romania(lat, lon):
     return 43.6 <= lat <= 48.3 and 20.2 <= lon <= 29.8
 
 
+# ATM-uri ale altei rețele, afișate de bancă pentru clienții ei (Patria:
+# 617 ATM-uri Euronet în locatorul propriu). Nu sunt rețeaua băncii.
+RE_PARTENER = re.compile(r"euronet|partener|parteneri|bancomat\s+partener", re.I)
+
+
 def _tip_locatie(text):
+    # Agenția întâi: Patria marchează agențiile „agency,atm" (au și ATM), iar
+    # regula veche le trecea pe toate 45 drept ATM-uri.
+    if re.search(r"agenc|agenti|branch|sucursal|filial", text or "", re.I):
+        return "sucursala"
     return "atm" if re.search(r"\batm\b|bancomat", text or "", re.I) else "sucursala"
 
 
@@ -613,6 +622,7 @@ def din_locator(octeti, url, slug):
     unice = {}
     for p in puncte:
         if _in_romania(p["lat"], p["lon"]):
-            p.update(banca=slug, sursa=url, _locatie=True)
+            p.update(banca=slug, sursa=url, _locatie=True,
+                     retea="partener" if RE_PARTENER.search(p.get("nume") or "") else "proprie")
             unice.setdefault((p["tip"], round(p["lat"], 6), round(p["lon"], 6)), p)
     return list(unice.values()), f"locator: {len(unice)} puncte"

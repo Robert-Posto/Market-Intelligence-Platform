@@ -33,6 +33,15 @@ class TestLocator(unittest.TestCase):
         html = b'<div data-lat="45.75" data-lng="21.22">A</div><div data-lat="45.75" data-lng="21.22">A</div>'
         self.assertEqual(len(extractoare.din_locator(html, "https://x.ro/retea", "libra")[0]), 1)
 
+    def test_agentie_cu_atm_e_sucursala_si_euronet_e_partener(self):
+        html = b"""<script>window.branchesList = [
+        {"name":"Constanta","type":"agency,atm","latitude":"44.18","longitude":"28.63","hours":"L-V 9-17"},
+        {"name":"ATM Euronet - Str. Berzei 19","type":"atm","latitude":"44.43","longitude":"26.08"}];</script>"""
+        puncte, _ = extractoare.din_locator(html, "https://x.ro/sucursale", "patria")
+        tipuri = {p["nume"]: (p["tip"], p["retea"]) for p in puncte}
+        self.assertEqual(tipuri["Constanta"], ("sucursala", "proprie"))
+        self.assertEqual(tipuri["ATM Euronet - Str. Berzei 19"], ("atm", "partener"))
+
 
 if __name__ == "__main__":
     unittest.main()
