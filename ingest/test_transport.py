@@ -18,6 +18,12 @@ class TestClasificare(unittest.TestCase):
         corp = b"<html><title>Access Denied</title>Reference #18.2f</html>"
         self.assertEqual(T.clasifica_raspuns(200, "text/html", corp), "BLOCAT")
 
+    def test_captcha_intr_o_pagina_reala_nu_e_blocaj(self):
+        corp = ("<html><body><main>" + "Depozite la termen, dobânzi și comisioane. " * 60
+                + '<script src="https://www.google.com/recaptcha/api.js"></script>'
+                + "</main></body></html>").encode()
+        self.assertEqual(T.clasifica_raspuns(200, "text/html", corp), "OK")
+
     def test_503_cu_pagina_de_blocaj(self):
         self.assertEqual(T.clasifica_raspuns(503, "text/html", b"Just a moment..."), "BLOCAT")
 

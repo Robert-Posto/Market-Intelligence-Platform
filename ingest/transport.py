@@ -35,6 +35,9 @@ RE_TAGURI = re.compile(rb"<[^>]+>")
 # Sub atâtea caractere de text vizibil, o pagină de produs e un schelet: o
 # pagină reală de depozite are mii de caractere.
 TEXT_MINIM = 400
+# Peste atâta text vizibil, o potrivire cu tiparele de blocaj e un cuvânt din
+# pagina reală (reCAPTCHA pe un formular), nu o pagină de blocaj.
+TEXT_MAXIM_BLOCAJ = 1500
 ANTETE = {"User-Agent": UA, "Accept-Language": "ro,en;q=0.8"}
 
 
@@ -78,7 +81,10 @@ def clasifica_raspuns(status, tip_continut, corp):
         return "REDIRECT_SERIALIZAT"
     if corp.startswith(b"%PDF"):
         return "OK"
-    if RE_BLOCAJ.search(corp[:5000]):
+    # O pagină de blocaj servită cu 200 e aproape goală. Fără pragul ăsta,
+    # cuvântul „captcha" din formularul de contact al paginii Vista (23.09)
+    # marca toată banca drept blocată.
+    if RE_BLOCAJ.search(corp[:5000]) and len(_text_vizibil(corp)) < TEXT_MAXIM_BLOCAJ:
         return "BLOCAT"
     if "html" in (tip_continut or "") and len(_text_vizibil(corp)) < TEXT_MINIM and (
             RE_SCHELET_JS.search(corp) or corp.count(b"<script") > 15):
