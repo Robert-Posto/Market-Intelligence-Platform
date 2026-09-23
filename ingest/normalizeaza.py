@@ -443,6 +443,10 @@ def scrie(randuri, metoda, raport=None, sterge=True, banci=None):
     Pasul 3 e restrâns la metodă anume: altfel o reîncărcare a unei variante ar
     șterge datele altei variante.
     """
+    # Copiat ÎNAINTE de orice altceva: mai jos `banci` devine dicționarul
+    # tuturor băncilor, iar condiția de ștergere pe bancă vedea acel
+    # dicționar. Pe 23.09, fiecare bancă terminată a șters datele celorlalte.
+    doar_banci = list(banci) if banci else None
     raport = raport if raport is not None else collections.Counter()
     if not randuri:
         raport["nimic_de_scris"] += 1
@@ -555,12 +559,12 @@ def scrie(randuri, metoda, raport=None, sterge=True, banci=None):
             # --- 3. idempotență pe proveniență (sărită la scriere incrementală)
             # Cu `banci`, doar băncile rulate: `--banca cec` ștergea altfel
             # observațiile tuturor celorlalte bănci.
-            if sterge and banci:
+            if sterge and doar_banci:
                 cur.execute(
                     """DELETE FROM observations o USING surse s, banci b
                        WHERE o.id_sursa = s.id AND b.id = s.id_banca
                          AND o.metoda_extractie = %s AND b.slug = ANY(%s)""",
-                    (metoda, list(banci)))
+                    (metoda, doar_banci))
                 raport["observatii_sterse"] += cur.rowcount
             elif sterge:
                 cur.execute("DELETE FROM observations WHERE metoda_extractie = %s",
