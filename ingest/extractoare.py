@@ -548,6 +548,8 @@ def din_html(octeti, url, slug, rol=None):
                 frecventa=r.get("perioada"), categorie=categorie,
                 perioada=r.get("perioada"), citat=r.get("text_sursa"),
                 incredere=r.get("incredere"),
+                # dicționarul parserului, pentru validator (validare.py)
+                _rec=r,
             ))
     return brute, f"HTML: {len(brute)} valori"
 

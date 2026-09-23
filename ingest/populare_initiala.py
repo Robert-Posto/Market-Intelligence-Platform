@@ -251,6 +251,8 @@ def scrie(err, raport, brute, banci):
     brute = [b for b in brute if not b.get("_locatie")]
     err.write(f"\n═══ 3. Normalizare + dedup + scriere ({len(brute)} brute, "
               f"{len(locatii)} locații)\n")
+    import validare
+    raport.update(validare.valideaza_rate(brute))
     randuri = [x for x in (N.normalizeaza(b, raport) for b in brute) if x]
     N.scrie(randuri, METODA, raport, banci=banci)
     scrie_locatii(locatii, raport)
@@ -320,13 +322,13 @@ def main():
 
     if a.de_la_zero and not a.banca:
         goleste_tot(err)
-    if a.din_bronze:
+    if a.din_bronze and (a.banca or not a.paralel):
         brute = din_bronze(err, raport, a.banca)
         scrie(err, raport, brute, [a.banca] if a.banca else None)
     elif a.banca:
         ruleaza_banca(err, raport, a.banca, a.limita)
     elif a.paralel:
-        paralel(err, a.paralel, [])
+        paralel(err, a.paralel, ["--din-bronze"] if a.din_bronze else [])
         return 0
     else:
         ap.error("alege --banca, --paralel N sau --din-bronze")

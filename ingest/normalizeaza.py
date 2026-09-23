@@ -278,13 +278,18 @@ def _scenariu(b):
 
 
 def _incredere(b):
+    # Plafoanele se aplică și încrederii numerice: înainte, un număr ieșea
+    # direct, iar plafonul SURSA_VECHE nu se aplica niciodată (cod mort).
     if isinstance(b.get("incredere"), (int, float)):
-        return round(float(b["incredere"]), 3)
-    c = INCREDERE.get(b.get("incredere"), 0.5)
+        c = float(b["incredere"])
+    else:
+        c = INCREDERE.get(b.get("incredere"), 0.5)
     if b.get("stare_data") == "DATA_NECUNOSCUTA":
         c = min(c, 0.7)          # extras corect, dar nu știm de când se aplică
     if b.get("stare") == "SURSA_VECHE":
         c = min(c, 0.5)          # extras corect, dar pagina băncii e învechită
+    if b.get("stare") == "SUSPECT":
+        c = min(c, 0.5)          # o verificare automată a validatorului a eșuat
     return round(c, 3)
 
 
