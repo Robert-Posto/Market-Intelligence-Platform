@@ -107,16 +107,38 @@ COLOANE = (
     "motiv_ambiguu", "nr_aparitii",
 )
 
-# Ce face două rânduri „același lucru". Deliberat NU include `citat`: la
-# tabelele cu o coloană per variantă de produs, citatul diferă doar prin
-# moneda scrisă în celulă („0 lei" vs „0 euro"), deși valoarea și serviciul
-# sunt identice. Dacă citatul ar conta, cele cinci „Emitere card 0 lei" ar
-# rămâne cinci rânduri care arată la fel și nu spun nimic în plus.
+# Ce face două rânduri „același lucru" — cheia SEMANTICĂ, nu tehnică.
+#
+# Deliberat NU include `citat`: la tabelele cu o coloană per variantă de
+# produs, citatul diferă doar prin moneda scrisă în celulă („0 lei" vs
+# „0 euro"), deși valoarea și serviciul sunt identice.
+#
+# Deliberat NU include nici `sursa`, nici pagina, nici metoda de extracție.
+# Motivul e măsurat: aceeași bancă, același serviciu, aceeași valoare, citite
+# pe două căi diferite (odată din pachetul colegului, odată din documentul
+# descărcat de noi) produceau DOUĂ rânduri. La scara bazei: 2.933 de grupuri
+# afectate, 3.483 de rânduri redundante. „Administrare cont, 15 lei, lunar,
+# la BCR" e UN fapt, oricâte drumuri duc la el.
 CHEIE_DUPLICAT = (
-    "banca", "sursa", "camp", "cod_scenariu", "serviciu", "sectiune",
-    "valoare_num", "valoare_text", "unitate", "conditie", "frecventa",
-    "detaliu", "pagina", "data_vigoare",
+    "banca", "camp", "cod_scenariu", "serviciu", "valoare_num", "valoare_text",
+    "unitate", "conditie", "frecventa", "data_vigoare",
 )
+
+
+def _bogatie(r):
+    """Cât de informativ e un rând. Decide care supraviețuiește la duplicat.
+
+    Se preferă rândul care are DATĂ (poate intra în detectarea schimbărilor),
+    apoi cel cu citat mai lung (dovada e mai utilă), apoi cel cu mai mult
+    context. Nu se preferă o proveniență anume: informația contează, nu de
+    unde vine.
+    """
+    return (
+        1 if r.get("data_vigoare") else 0,
+        len(r.get("citat") or ""),
+        sum(1 for c in ("sectiune", "detaliu", "pagina", "cod_scenariu")
+            if r.get(c)),
+    )
 
 
 def dedup(randuri, raport=None):
@@ -140,11 +162,12 @@ def dedup(randuri, raport=None):
     for r in randuri:
         cheie = tuple(r.get(c) for c in CHEIE_DUPLICAT)
         if cheie in unice:
-            unice[cheie]["nr_aparitii"] += 1
-            # Se păstrează citatul cel mai lung: dacă una dintre celule are
-            # text în jurul cifrei, ăla e singurul care explică ceva.
-            if len(r.get("citat") or "") > len(unice[cheie].get("citat") or ""):
-                unice[cheie]["citat"] = r["citat"]
+            vechi = unice[cheie]
+            n = vechi["nr_aparitii"] + 1
+            # Supraviețuiește rândul mai informativ, nu primul venit.
+            pastrat = r if _bogatie(r) > _bogatie(vechi) else vechi
+            pastrat["nr_aparitii"] = n
+            unice[cheie] = pastrat
             raport["randuri_stranse_ca_duplicat"] += 1
         else:
             r["nr_aparitii"] = 1

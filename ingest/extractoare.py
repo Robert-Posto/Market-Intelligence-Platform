@@ -348,11 +348,28 @@ RE_TITLU_PAD = re.compile(
 
 
 def _parsere_pdf():
-    """Parserele colegului + vocabularul canonic, importate la cerere."""
+    """Tot ce ține de PDF din pachetul colegului, importat la cerere.
+
+    Se iau patru module, nu două. Cele adăugate rezolvă probleme pe care nu le
+    văzusem:
+
+    `data_document` — de când e valabil documentul, citit din TEXTUL lui.
+        Fără el, cele 15.230 de valori extrase de mine aveau `data_vigoare`
+        NULL, deci nu puteau intra în detectarea schimbărilor: pagina Istoric
+        rămânea la 18 schimbări, oricâte documente aș mai fi extras. Colegul
+        explică și de ce nu ajunge `Last-Modified`: la multe origini e momentul
+        umplerii cache-ului, nu al publicării.
+
+    `ambiguitate` — mai multe valori diferite sub același serviciu, cu același
+        tip, monedă și frecvență, și nimic care să le deosebească. Atunci s-a
+        pierdut ceva la extragere, iar valorile rămân adevărate dar
+        neatribuibile. Eu citeam flagul din JSON-ul lui, dar nu-l calculam pe
+        documentele noi.
+    """
     if PACHET_CRAWLER not in sys.path:
         sys.path.insert(0, PACHET_CRAWLER)
-    from crawler import parser_pdf, parser_tarife, vocabular
-    return parser_pdf, parser_tarife, vocabular
+    from crawler import ambiguitate, data_document, parser_pdf, parser_tarife, vocabular
+    return parser_pdf, parser_tarife, vocabular, data_document, ambiguitate
 
 
 def e_formular_standardizat(cale):
@@ -388,7 +405,7 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
     public de la care s-a descărcat), nu se deduce din calea temporară: altfel
     sursa ar fi un nume de fișier din cache, care nu spune nimic nimănui.
     """
-    parser_pdf, parser_tarife, vocabular = _parsere_pdf()
+    parser_pdf, parser_tarife, vocabular, data_document, ambiguitate = _parsere_pdf()
     standardizat = e_formular_standardizat(cale)
     fn = parser_pdf.extrage if standardizat else parser_tarife.extrage_tarife
     try:
@@ -396,6 +413,30 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
     except Exception as exc:
         return [], f"parser {'PAD' if standardizat else 'tarife'} a eșuat: " \
                    f"{type(exc).__name__}: {exc}"[:200]
+
+    # Data de vigoare, citită din TEXTUL documentului — o dată per document,
+    # fiindcă e o proprietate a documentului, nu a valorii. Fără ea, valorile
+    # extrase nu pot intra în detectarea schimbărilor: toate cele 15.230 pe
+    # care le extrăsesem aveau `data_vigoare` NULL, deci pagina Istoric
+    # rămânea blocată la schimbările din pachetul colegului.
+    try:
+        dd = data_document.data_documentului(cale) or {}
+    except Exception:
+        dd = {}
+    data_vig, stare_dat = dd.get("data_vigoare"), dd.get("stare")
+
+    # Ambiguitatea se calculează pe TOATE valorile documentului împreună:
+    # semnalul e „mai multe valori diferite sub același serviciu, fără nimic
+    # care să le deosebească", deci nu se poate decide privind un rând singur.
+    #
+    # `marcheaza` modifică lista PE LOC și întoarce (nr_valori, nr_grupuri) —
+    # nu lista. Prima încercare a atribuit rezultatul înapoi în `inregistrari`
+    # și a înlocuit lista cu un tuplu de numere.
+    n_amb = 0
+    try:
+        n_amb, _ = ambiguitate.marcheaza(inregistrari)
+    except Exception:
+        pass
 
     brute, nemapate = [], 0
     for c in inregistrari:
@@ -429,6 +470,11 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
             segment=c.get("segment"), canal=c.get("canal"),
             destinatie=c.get("destinatie"),
             citat=c.get("text_sursa"),
+            # Data de vigoare vine din TEXTUL documentului. Fără ea, valoarea
+            # nu poate intra în detectarea schimbărilor — iar toate cele 15.230
+            # de valori extrase de mine aveau `data_vigoare` NULL.
+            data_vigoare=c.get("data_vigoare") or data_vig,
+            stare_data=c.get("stare_data") or stare_dat,
             # Formularul standardizat merită mai multă încredere decât o listă
             # liberă: secțiunile și terminologia sunt impuse, deci parserul are
             # pe ce să se sprijine.
@@ -438,5 +484,55 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
         ))
     eticheta = "formular standardizat (PAD)" if standardizat else "listă de tarife"
     mapate = len(brute) - nemapate
-    return brute, (f"{eticheta}: {len(brute)} valori, {mapate} mapate la "
-                   f"vocabularul canonic ({nemapate} rămân generice)")
+    datat = f", datat {data_vig}" if data_vig else ", nedatat"
+    amb = f", {n_amb} ambigue" if n_amb else ""
+    return brute, (f"{eticheta}: {len(brute)} valori, {mapate} mapate"
+                   f"{datat}{amb}")
+
+
+# ==========================================================================
+# 5. HTML live: dobânzi + nume de produs, din octeții aduși de flux
+# ==========================================================================
+
+def din_html(octeti, url, slug, rol=None):
+    """Dobânzi + nume de produs din HTML, cu parserul propriu și al colegului."""
+    from bs4 import BeautifulSoup
+    from parser_rate import parseaza_linie
+
+    html = octeti.decode("utf-8", errors="replace")
+    soup = BeautifulSoup(html, "lxml")
+    titlu = soup.title.get_text(strip=True) if soup.title else None
+    categorie, produs, _ = clasifica(url, titlu)
+    if not categorie:
+        return [], "nici calea URL, nici titlul nu spun ce produs e"
+
+    brute = []
+    nume = _nume_produs(soup, titlu)
+    if nume:
+        brute.append(brut(
+            banca=slug, sursa=url, rol_sursa=rol or "produs",
+            concept="nume_produs", produs=produs, valoare_text=nume,
+            serviciu=nume, categorie=categorie, citat=titlu, incredere=0.8,
+        ))
+
+    vazute = set()
+    for linie in _linii(soup):
+        if "%" not in linie:
+            continue
+        inreg, _ = parseaza_linie(linie, slug, categorie, url, titlu)
+        for r in inreg:
+            k = (r.get("tip_rata"), r.get("valoare"), r.get("moneda"),
+                 r.get("perioada"))
+            if k in vazute:
+                continue
+            vazute.add(k)
+            brute.append(brut(
+                banca=slug, sursa=url, rol_sursa=rol or "produs",
+                frecventa_sursa="zilnic", concept=r.get("tip_rata"), tip="rata",
+                valoare=r.get("valoare"), moneda=r.get("moneda"),
+                serviciu=nume or r.get("produs"), sectiune=categorie,
+                frecventa=r.get("perioada"), categorie=categorie,
+                perioada=r.get("perioada"), citat=r.get("text_sursa"),
+                incredere=r.get("incredere"),
+            ))
+    return brute, f"HTML: {len(brute)} valori"

@@ -6,3 +6,13 @@
 __pycache__/
 *.pyc
 .cache_pdf/
+
+# Bronze: octeții bruți descărcați de la bănci. NU se versionează.
+# 107 MB / 298 de fișiere la prima rulare, și crește la fiecare colectare.
+# Se reconstruiește rulând pipeline-ul; nu e cod și nu e rezultat, e materie
+# primă. A ajuns o dată în commit din greșeală (lipsea din lista asta) și a
+# umflat repo-ul la 33 MB.
+bronze/
+
+# ieșiri intermediare ale scripturilor
+date/*.json
