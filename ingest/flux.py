@@ -122,7 +122,11 @@ def cale_bronze(url):
     """Unde stau în Bronze octeții unei surse — același nume la scriere și la
     citire, altfel reconstruirea din Bronze ar căuta alt fișier."""
     from crawler.urme import nume_din_url
-    return os.path.join(BRONZE, nume_din_url(url))
+    nume = nume_din_url(url)
+    # urme.nume_din_url pune „.pdf" la orice nume; o pagină HTML nu e PDF.
+    if nume.endswith(".pdf") and not url.lower().split("?")[0].endswith(".pdf"):
+        nume = nume[:-4]
+    return os.path.join(BRONZE, nume)
 
 
 def amprenta(octeti):

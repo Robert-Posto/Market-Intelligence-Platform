@@ -1,309 +1,309 @@
-"""Popularea inițială a bazei — un singur punct de intrare, o singură scriere.
+"""Popularea inițială a bazei, de la zero, pe flow-ul din artefact.
 
-De ce există: baza ajunsese o stratificare a încercărilor, nu rezultatul unui
-pipeline. Cinci proveniențe scrise la momente diferite, 2.933 de grupuri cu
-aceeași valoare din surse diferite și 3.483 de rânduri redundante — fiindcă
-deduplicarea funcționa doar în interiorul unei rulări, nu între ele.
+Nu se folosește nimic colectat anterior: nici pachetele JSON ale colegilor,
+nici Bronze-ul vechi, nici inventarul vechi de surse. Totul vine din
+scripturile din repo, rulate acum.
 
-Aici totul trece prin O SINGURĂ normalizare, deci printr-o singură trecere de
-deduplicare semantică. „Administrare cont, 15 lei, lunar, la BCR" e un fapt,
-oricâte drumuri duc la el.
+TREI BENZI, legate prin tabele, nu prin apeluri (figura 2):
 
-CELE TREI VARIANTE, fiecare cu ce are ea mai bun:
+  A. descoperire (`descoperire.py`)   → scrie DOAR în `surse`
+  B. extracție   (acest fișier)       → citește `surse`, scrie `observations`
+  C. locatoare   (Task 12)            → `locatii`
 
-  1. scraperul propriu (ingest/scraper.py)
-     - `scraper.py`     transport HTTP: UA care ne identifică, delay, encoding
-     - depozitele       singura variantă care acoperă produsele de economisire
+TRASEUL UNEI SURSE, identic pentru oricare (figura 3):
 
-  2. Playwright, pachetul colegului (pentru_coleg_bs4_21sept/crawler)
-     - `parser_pdf`     formularele standardizate prin Legea 258/2017
-     - `parser_tarife`  listele de tarife nestandardizate
-     - `parser_rate`    dobânzile din HTML
-     - `vocabular`      maparea la conceptul canonic — fără ea, valorile ajung
-                        în găleata generică și nu apar în nicio comparație
-     - `robots.py`      robots.txt după RFC 9309, cu wildcard-uri. `urllib` face
-                        doar potrivire pe prefix și ratează `Disallow: *.pdf`,
-                        regula reală a ING
-     - `urme.py`        amprentă pe OCTEȚI + nume stabil de fișier
-     - `data_document`  data de vigoare, citită din textul documentului
-     - `ambiguitate`    valori adevărate dar neatribuibile
-     - browserul        transport de treapta 2, singurul care deblochează CEC
-     - JSON-ul lui      comisioane din PDF-uri pe care noi nu le mai putem lua
+    transport.adu: robots.txt → requests (UA-ul echipei)
+        BLOCAT (401/403/429/… sau pagină de blocaj) → STOP, sursa `blocat`
+        JS (schelet randat în browser)              → Playwright, același UA
+    → sanitizare → amprentă pe text sanitizat (PDF: octeți)
+        identică: STOP │ diferită: Bronze
+    → extracție deterministă (parserele din crawler/)
+    → normalizare + deduplicare semantică → observations
 
-  3. discovery LLM (flux-colectare)
-     - inventarul       757 de surse găsite fără sitemap
-     - `web_fetch`      transport de treapta 3, cu robots impus de Anthropic
-
-TRASEUL, ca în figura 3 din artefact, aplicat identic oricărei surse:
-
-    robots.txt ─► transport (http → playwright → llm) ─► Bronze
-                                                           │
-                                          amprentă pe octeți vs. ce știam
-                                                           │
-                                   identică ──► STOP, nimic nou
-                                                           │
-                                                      diferită
-                                                           ▼
-                                  extracție ─► vocabular ─► normalizare
-                                                           │
-                                                           ▼
-                                    dedup semantic ─► observations
+Rularea pe bănci în paralel e sigură pentru servere: pauza e per origine
+(Crawl-delay), iar fiecare bancă are propriul proces, deci nicio bancă nu
+primește cereri mai dese decât într-o rulare secvențială.
 
 Rulare:
-    python ingest/populare_initiala.py                 # tot, de la zero
-    python ingest/populare_initiala.py --doar-fisiere  # fără rețea, rapid
-    python ingest/populare_initiala.py --banca cec
-    python ingest/populare_initiala.py --pastreaza     # nu golește baza
-    python ingest/populare_initiala.py --din-bronze    # reface baza din ce s-a
-                                                       # descărcat, fără rețea
+    python ingest/populare_initiala.py --de-la-zero --paralel 6   # tot
+    python ingest/populare_initiala.py --banca vista              # o bancă
+    python ingest/populare_initiala.py --din-bronze               # reextrage,
+                                                                  # fără rețea
 """
 
 import argparse
 import collections
+import concurrent.futures
+import datetime
 import io
 import os
+import shutil
+import subprocess
 import sys
-import time
 
 import psycopg2
 
 AICI = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.dirname(AICI))
+RADACINA = os.path.dirname(AICI)
+sys.path.insert(0, RADACINA)
 sys.path.insert(0, AICI)
 
 import config                      # noqa: E402
 import extractoare                 # noqa: E402
 import flux                        # noqa: E402
 import normalizeaza as N           # noqa: E402
+import sanitizare                  # noqa: E402
+import transport                   # noqa: E402
 
 METODA = "populare"
+LOGURI = os.path.join(RADACINA, "loguri", "banci")
 
 
-def goleste(err):
-    """Șterge observațiile și amprentele. Bronze RĂMÂNE.
+# ==========================================================================
+# Pornire de la zero
+# ==========================================================================
 
-    Observațiile se reconstruiesc din Bronze; Bronze nu se reconstruiește
-    decât cerând din nou paginile băncilor. De aceea el rămâne: o repopulare
-    nu trebuie să însemne încă o rundă de cereri către 30 de bănci.
+def goleste_tot(err):
+    """Nu rămâne nimic din colectările anterioare.
+
+    Rămân cataloagele (`banci`, `produse`) și sursele care nu sunt web
+    (aplicații mobile), fiindcă track-ul mobil le folosește. Bronze nu se
+    șterge: se mută deoparte, ca dovadă a colectării anterioare.
     """
     with psycopg2.connect(N.dsn()) as conn:
         with conn.cursor() as cur:
             cur.execute("DELETE FROM observations")
             o = cur.rowcount
             cur.execute("DELETE FROM hashes")
-            h = cur.rowcount
-    err.write(f"golit: {o} observații, {h} amprente. Bronze păstrat.\n\n")
+            web = "SELECT id FROM surse WHERE tip_sursa IN ('url', 'document')"
+            # Explicit, nu prin CASCADE: FK-urile spre `surse` nu sunt toate
+            # declarate cu ștergere în cascadă.
+            cur.execute(f"DELETE FROM surse_produse WHERE id_sursa IN ({web})")
+            cur.execute(f"DELETE FROM change_events WHERE id_sursa IN ({web})")
+            cur.execute("DELETE FROM surse WHERE tip_sursa IN ('url', 'document')")
+            s = cur.rowcount
+    if os.path.isdir(flux.BRONZE):
+        arhiva = f"{flux.BRONZE}_arhiva_{datetime.datetime.now():%Y%m%d_%H%M}"
+        shutil.move(flux.BRONZE, arhiva)
+    err.write(f"de la zero: {o} observații și {s} surse șterse, Bronze arhivat.\n\n")
 
 
-def din_fisiere(err, raport):
-    """Variantele care citesc din pachete locale: fără rețea, deci rapide."""
-    brute = []
-    for nume, generator in (("pachetul Playwright", extractoare.din_playwright()),
-                            ("depozite (scraper propriu)", extractoare.din_bs4_depozite())):
-        n = 0
-        for b in generator:
-            brute.append(b)
-            n += 1
-        err.write(f"  {nume:32s} {n:6d} înregistrări brute\n")
-        raport[f"brut_{nume.split()[0].lower()}"] += n
-    return brute
+# ==========================================================================
+# Traseul unei surse
+# ==========================================================================
 
-
-def din_rețea(err, raport, banca=None, limita=None, fara_llm=False):
-    """Fluxul peste inventarul de surse, cu cascada de transport."""
-    brute, stare = [], {}
-    try:
-        with psycopg2.connect(N.dsn()) as conn:
-            with conn.cursor() as cur:
-                cur.execute(
-                    """SELECT s.id, b.slug, s.sursa, s.format, s.rol
-                       FROM surse s JOIN banci b ON b.id = s.id_banca
-                       WHERE s.tip_sursa = 'url' AND s.status = 'activ'
-                         AND s.rol IN ('produs', 'conditii')
-                         AND (%s = '' OR b.slug = %s)
-                       ORDER BY b.slug, s.format DESC, s.sursa""",
-                    (banca or "", banca or ""),
-                )
-                surse = cur.fetchall()
-                if limita:
-                    surse = surse[:limita]
-                pe_banca = collections.defaultdict(list)
-                for s in surse:
-                    pe_banca[s[1]].append(s)
-                banci = sorted(pe_banca)
-                err.write(f"  {len(surse)} surse, {len(banci)} bănci · cascadă: "
-                          f"http → playwright{'' if fara_llm else ' → llm'}\n\n")
-
-                for i, slug in enumerate(banci, 1):
-                    stari, note, n = collections.Counter(), [], 0
-                    for s in pe_banca[slug]:
-                        b_noi, j = proceseaza(s, cur, stare, fara_llm)
-                        stari[j["stare"]] += 1
-                        raport["stare_" + str(j["stare"])] += 1
-                        if j["transport"]:
-                            raport["transport_" + j["transport"]] += 1
-                        note.append((slug, j["sursa"], None if j["stare"] in
-                                     ("OK", "NESCHIMBAT") else
-                                     (str(j["stare"]) + ": " + str(j["nota"] or ""))[:300]))
-                        brute.extend(b_noi)
-                        n += len(b_noi)
-                        time.sleep(1.5)
-                    err.write(f"  [{i:2d}/{len(banci)}] {slug:20s} "
-                              f"{len(pe_banca[slug]):3d} surse → {n:5d} brute  "
-                              f"{dict(stari)}\n")
-                    if note:
-                        N.noteaza_surse(note)
-    finally:
-        if "browser" in stare:
-            stare["browser"].close()
-            stare["pw"].stop()
-    return brute
-
-
-def proceseaza(sursa, cur, stare, fara_llm=False):
-    """Traseul complet pentru o sursă. Întoarce (brute, jurnal)."""
+def proceseaza(sursa, cur, stare, raport):
+    """Traseul complet pentru o sursă, ca în figura 3. Întoarce (brute, jurnal)."""
     sid, slug, url, fmt, rol = sursa
     j = {"sursa": url, "banca": slug, "transport": None, "stare": None, "nota": None}
-
-    if not flux.permite(url, slug):
-        j["stare"], j["nota"] = "ROBOTS", "interzis de robots.txt al băncii"
+    rez = transport.adu(url, slug, stare)
+    j["transport"], j["nota"] = rez.transport, rez.nota
+    if rez.verdict != "OK":
+        j["stare"] = rez.verdict
+        if rez.verdict == "BLOCAT":
+            # Documentat ca blocat, cu dovada; nu se încearcă alt canal.
+            cur.execute("UPDATE surse SET status = 'blocat', nota_extractie = %s, "
+                        "ultima_rulare = now() WHERE id = %s",
+                        (f"blocat de bancă: {rez.nota}"[:300], sid))
         return [], j
 
-    octeti, motive = None, []
-    for nume, aducator in flux.CASCADA:
-        if nume == "llm" and fara_llm:
-            continue
-        octeti, nota = aducator(url, stare)
-        if octeti:
-            j["transport"], j["nota"] = nume, nota
-            break
-        motive.append(f"{nume}: {nota}")
-        time.sleep(1.2)
-    if not octeti:
-        j["stare"], j["nota"] = "INACCESIBIL", " | ".join(motive)
-        return [], j
-
-    cale = flux.scrie_bronze(url, octeti)
-    amp = flux.amprenta(octeti)
+    amp = sanitizare.amprenta_continut(rez.octeti)
     if flux.amprenta_cunoscuta(cur, sid, amp):
-        j["stare"], j["nota"] = "NESCHIMBAT", "aceiași octeți ca la ultima rulare"
+        j["stare"] = "NESCHIMBAT"
         return [], j
     cur.execute("INSERT INTO hashes (id_sursa, format, hash) VALUES (%s, %s, %s)",
-                (sid, "pdf" if octeti.startswith(b"%PDF") else "html", amp))
-    return extrage(octeti, cale, slug, url, rol, j)
+                (sid, "pdf" if rez.octeti.startswith(b"%PDF") else "html", amp))
+    cale = flux.scrie_bronze(url, rez.octeti)      # Bronze DOAR la schimbare
+    return extrage(rez.octeti, cale, slug, url, rol, j)
 
 
 def extrage(octeti, cale, slug, url, rol, j):
-    """Extracția — aceeași fie că octeții vin de la bancă, fie din Bronze."""
-    # Formatul se decide din PRIMII OCTEȚI, nu din extensia URL-ului:
-    # extensia și Content-Type mint amândouă (regula din artefact).
-    if octeti.startswith(b"%PDF"):
-        b_noi, nota = extractoare.din_pdf(cale, slug, sursa=url)
-    else:
-        b_noi, nota = extractoare.din_html(octeti, url, slug, rol)
+    """Extracția — aceeași fie că octeții vin de la bancă, fie din Bronze.
+
+    Formatul se decide din PRIMII OCTEȚI, nu din extensia URL-ului: extensia
+    și Content-Type mint amândouă (regula din artefact).
+    """
+    try:
+        if rol == "locator":
+            if not hasattr(extractoare, "din_locator"):
+                j["stare"], j["nota"] = "AMANAT", "locatorul se extrage din Bronze (Task 12)"
+                return [], j
+            b_noi, nota = extractoare.din_locator(octeti, url, slug)
+        elif octeti.startswith(b"%PDF"):
+            b_noi, nota = extractoare.din_pdf(cale, slug, sursa=url)
+        else:
+            b_noi, nota = extractoare.din_html(octeti, url, slug, rol)
+    except Exception as exc:
+        # O pagină care strică parserul nu oprește toată banca; se numără.
+        j["stare"], j["nota"] = "EROARE_EXTRACTIE", f"{type(exc).__name__}: {exc}"[:300]
+        return [], j
     j["nota"], j["stare"] = nota, ("OK" if b_noi else "GOL")
     return b_noi, j
 
 
-def din_bronze(err, raport, banca=None):
-    """Reconstruiește observațiile din Bronze, fără nicio cerere către bănci.
+def surse_active(cur, banca=None, limita=None):
+    cur.execute(
+        """SELECT s.id, b.slug, s.sursa, s.format, s.rol
+           FROM surse s JOIN banci b ON b.id = s.id_banca
+           WHERE s.tip_sursa = 'url' AND s.status = 'activ'
+             AND s.rol IN ('produs', 'conditii', 'locator')
+             AND (%s = '' OR b.slug = %s)
+           ORDER BY b.slug, s.rol, s.sursa""",
+        (banca or "", banca or ""))
+    surse = cur.fetchall()
+    return surse[:limita] if limita else surse
 
-    Sunt luate doar sursele cu amprentă în `hashes`, adică exact ce a adus
-    ultima colectare, și fiecare fișier e verificat octet cu octet față de
-    amprenta lui. Un fișier care nu se potrivește (suprascris de altă rulare,
-    sau rămas dintr-una mai veche) se sare, nu se folosește pe încredere.
+
+def din_retea(err, raport, banca=None, limita=None):
+    brute, stare = [], {}
+    try:
+        with psycopg2.connect(N.dsn()) as conn:
+            with conn.cursor() as cur:
+                surse = surse_active(cur, banca, limita)
+                pe_banca = collections.defaultdict(list)
+                for s in surse:
+                    pe_banca[s[1]].append(s)
+                for slug in sorted(pe_banca):
+                    stari, note, n = collections.Counter(), [], 0
+                    for s in pe_banca[slug]:
+                        b_noi, j = proceseaza(s, cur, stare, raport)
+                        stari[j["stare"]] += 1
+                        raport["stare_" + str(j["stare"])] += 1
+                        if j["transport"]:
+                            raport["transport_" + j["transport"]] += 1
+                        if j["stare"] not in ("OK", "NESCHIMBAT"):
+                            note.append((slug, j["sursa"],
+                                         f"{j['stare']}: {j['nota'] or ''}"[:300]))
+                        brute.extend(b_noi)
+                        n += len(b_noi)
+                        conn.commit()
+                    err.write(f"  {slug:20s} {len(pe_banca[slug]):4d} surse → "
+                              f"{n:6d} brute  {dict(stari)}\n")
+                    if note:
+                        N.noteaza_surse(note)
+    finally:
+        transport.inchide(stare)
+    return brute
+
+
+def din_bronze(err, raport, banca=None):
+    """Reextrage din Bronze, fără nicio cerere către bănci.
+
+    Doar sursele cu amprentă în `hashes` (ce a adus ultima colectare), iar
+    fiecare fișier se verifică față de amprenta lui înainte de folosire.
     """
     brute = []
     with psycopg2.connect(N.dsn()) as conn:
         with conn.cursor() as cur:
             cur.execute(
-                # Toate amprentele sursei, nu doar ultima: `scrie()` poate
-                # adăuga și amprenta documentului din pachetul colegului, care
-                # e alta decât a octeților aduși de flux.
                 """SELECT s.id, b.slug, s.sursa, s.format, s.rol, array_agg(h.hash)
                    FROM surse s JOIN banci b ON b.id = s.id_banca
                    JOIN hashes h ON h.id_sursa = s.id
                    WHERE (%s = '' OR b.slug = %s)
-                   GROUP BY s.id, b.slug
-                   ORDER BY s.id""",
-                (banca or "", banca or ""),
-            )
+                   GROUP BY s.id, b.slug ORDER BY s.id""",
+                (banca or "", banca or ""))
             surse = cur.fetchall()
-    err.write(f"  {len(surse)} surse cu amprentă · fără rețea\n\n")
-
-    pe_banca = collections.defaultdict(list)
-    for s in surse:
-        pe_banca[s[1]].append(s)
-    for i, slug in enumerate(sorted(pe_banca), 1):
-        stari, n = collections.Counter(), 0
-        for sid, _, url, fmt, rol, amp in pe_banca[slug]:
-            j = {"sursa": url, "banca": slug, "transport": "bronze",
-                 "stare": None, "nota": None}
-            cale = flux.cale_bronze(url)
-            try:
-                with open(cale, "rb") as f:
-                    octeti = f.read()
-            except OSError:
-                octeti = None
-            if octeti is None:
-                j["stare"] = "LIPSA_BRONZE"
-            elif flux.amprenta(octeti) not in amp:
-                j["stare"] = "AMPRENTA_DIFERITA"
-            else:
-                b_noi, j = extrage(octeti, cale, slug, url, rol, j)
-                brute.extend(b_noi)
-                n += len(b_noi)
-            stari[j["stare"]] += 1
-            raport["stare_" + j["stare"]] += 1
-        err.write(f"  [{i:2d}/{len(pe_banca)}] {slug:20s} "
-                  f"{len(pe_banca[slug]):3d} surse → {n:5d} brute  {dict(stari)}\n")
+    stari = collections.Counter()
+    for sid, slug, url, fmt, rol, amp in surse:
+        j = {"sursa": url, "banca": slug, "transport": "bronze", "stare": None, "nota": None}
+        cale = flux.cale_bronze(url)
+        try:
+            with open(cale, "rb") as f:
+                octeti = f.read()
+        except OSError:
+            octeti = None
+        if octeti is None:
+            j["stare"] = "LIPSA_BRONZE"
+        elif sanitizare.amprenta_continut(octeti) not in amp:
+            j["stare"] = "AMPRENTA_DIFERITA"
+        else:
+            b_noi, j = extrage(octeti, cale, slug, url, rol, j)
+            brute.extend(b_noi)
+        stari[j["stare"]] += 1
+        raport["stare_" + j["stare"]] += 1
+    err.write(f"  {len(surse)} surse din Bronze · {dict(stari)}\n")
     return brute
+
+
+# ==========================================================================
+# O bancă, cap-coadă
+# ==========================================================================
+
+def ruleaza_banca(err, raport, banca, limita=None):
+    import descoperire
+    # O bancă rulată din nou se extrage integral: amprentele ei se șterg,
+    # altfel sursele neschimbate n-ar produce nimic, iar scrierea (care
+    # înlocuiește observațiile băncii) i-ar pierde datele.
+    with psycopg2.connect(N.dsn()) as conn:
+        with conn.cursor() as cur:
+            cur.execute("""DELETE FROM hashes h USING surse s, banci b
+                           WHERE h.id_sursa = s.id AND b.id = s.id_banca AND b.slug = %s""",
+                        (banca,))
+    err.write("═══ 1. Descoperire\n")
+    descoperire.ruleaza(err, raport, banca)
+    err.write("\n═══ 2. Extracție\n")
+    brute = din_retea(err, raport, banca, limita)
+    scrie(err, raport, brute, [banca])
+
+
+def scrie(err, raport, brute, banci):
+    err.write(f"\n═══ 3. Normalizare + dedup + scriere ({len(brute)} brute)\n")
+    randuri = [x for x in (N.normalizeaza(b, raport) for b in brute) if x]
+    N.scrie(randuri, METODA, raport, banci=banci)
+
+
+def paralel(err, n, argumente):
+    """Câte un proces per bancă; jurnalul fiecăreia în loguri/banci/<slug>.log."""
+    os.makedirs(LOGURI, exist_ok=True)
+    with psycopg2.connect(N.dsn()) as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT slug FROM banci ORDER BY slug")
+            banci = [r[0] for r in cur.fetchall()]
+
+    def una(slug):
+        cale = os.path.join(LOGURI, f"{slug}.log")
+        with open(cale, "w", encoding="utf-8") as log:
+            p = subprocess.run([sys.executable, "-u", os.path.abspath(__file__),
+                                "--banca", slug] + argumente,
+                               stdout=log, stderr=subprocess.STDOUT,
+                               env=dict(os.environ, PYTHONIOENCODING="utf-8"))
+        return slug, p.returncode
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=n) as ex:
+        for slug, cod in ex.map(una, banci):
+            err.write(f"  {slug:20s} {'gata' if cod == 0 else f'EROARE (cod {cod})'}\n")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--banca", help="doar o bancă (slug)")
-    ap.add_argument("--limita", type=int, help="oprește după N surse din rețea")
-    ap.add_argument("--doar-fisiere", action="store_true",
-                    help="fără rețea: doar pachetele locale")
-    ap.add_argument("--fara-llm", action="store_true",
-                    help="sari treapta 3 a cascadei (costă per apel)")
-    ap.add_argument("--pastreaza", action="store_true",
-                    help="nu golește baza înainte")
+    ap.add_argument("--limita", type=int, help="oprește după N surse, pentru probe")
+    ap.add_argument("--de-la-zero", action="store_true",
+                    help="golește observațiile, amprentele și inventarul web; "
+                         "Bronze se arhivează")
+    ap.add_argument("--paralel", type=int, default=0,
+                    help="rulează toate băncile, câte N în paralel")
     ap.add_argument("--din-bronze", action="store_true",
-                    help="fără rețea: extrage din Bronze ce a adus ultima colectare")
+                    help="reextrage din Bronze, fără rețea")
     a = ap.parse_args()
 
     config.incarca()
     err = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", write_through=True)
     raport = collections.Counter()
 
+    if a.de_la_zero and not a.banca:
+        goleste_tot(err)
     if a.din_bronze:
-        # Amprentele RĂMÂN: ele spun ce fișiere din Bronze sunt ale ultimei
-        # colectări. Se golesc doar observațiile.
-        if not a.pastreaza and not a.banca:
-            with psycopg2.connect(N.dsn()) as conn:
-                with conn.cursor() as cur:
-                    cur.execute("DELETE FROM observations")
-                    err.write(f"golit: {cur.rowcount} observații. "
-                              f"Amprente și Bronze păstrate.\n\n")
-    elif not a.pastreaza and not a.banca:
-        goleste(err)
-
-    err.write("═══ 1. Variantele din fișier (fără rețea)\n")
-    brute = din_fisiere(err, raport)
-
-    if a.din_bronze:
-        err.write("\n═══ 2. Extracție din Bronze (fără rețea)\n")
-        brute += din_bronze(err, raport, a.banca)
-    elif not a.doar_fisiere:
-        err.write("\n═══ 2. Fluxul peste inventar (rețea)\n")
-        brute += din_rețea(err, raport, a.banca, a.limita, a.fara_llm)
-
-    err.write(f"\n═══ 3. Normalizare + dedup + scriere ({len(brute)} brute)\n")
-    randuri = [x for x in (N.normalizeaza(b, raport) for b in brute) if x]
-    N.scrie(randuri, METODA, raport)
+        brute = din_bronze(err, raport, a.banca)
+        scrie(err, raport, brute, [a.banca] if a.banca else None)
+    elif a.banca:
+        ruleaza_banca(err, raport, a.banca, a.limita)
+    elif a.paralel:
+        paralel(err, a.paralel, [])
+        return 0
+    else:
+        ap.error("alege --banca, --paralel N sau --din-bronze")
 
     err.write("\n")
     N.raporteaza(raport, sys.stderr)
