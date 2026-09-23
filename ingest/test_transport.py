@@ -45,5 +45,14 @@ class TestClasificare(unittest.TestCase):
         self.assertEqual(T.clasifica_raspuns(200, "text/html", corp), "REDIRECT_SERIALIZAT")
 
 
+class TestEvidenta(unittest.TestCase):
+    def test_evidenta_blocaj_200_cu_access_denied(self):
+        # Test helper: a 200 body containing "Access Denied" yields evidence
+        corp = b"<html><title>Access Denied</title>Reference #18.2f</html>"
+        evidenta = T._evidenta_blocaj(200, corp)
+        self.assertIsNotNone(evidenta)
+        self.assertIn("Access Denied", evidenta)
+
+
 if __name__ == "__main__":
     unittest.main()

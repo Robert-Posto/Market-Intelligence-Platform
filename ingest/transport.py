@@ -43,14 +43,35 @@ def _text_vizibil(corp):
     return RE_TAGURI.sub(b" ", fara_script).strip()
 
 
+def _evidenta_blocaj(status, corp):
+    """Extrage dovada textului de blocaj din corp cand pagina e detectata ca blocata."""
+    corp = corp or b""
+    m = RE_BLOCAJ.search(corp[:5000])
+    if m:
+        try:
+            return m.group(0).decode('latin-1')
+        except:
+            return m.group(0).decode('utf-8', errors='replace')
+    return None
+
+
+def _actualizeaza_nota_blocat(verdict, status, corp, nota):
+    """Actualizeaza nota cu dovada de blocaj daca verdictul e BLOCAT din continut."""
+    if verdict == "BLOCAT" and status not in (401, 403, 407, 429, 451):
+        evidenta = _evidenta_blocaj(status, corp)
+        if evidenta:
+            return f'HTTP {status}: pagina de blocaj - {evidenta}'
+    return nota
+
+
 def clasifica_raspuns(status, tip_continut, corp):
     corp = corp or b""
     if status in (401, 403, 407, 429, 451):
         return "BLOCAT"
-    if status == 503 and RE_BLOCAJ.search(corp[:5000]):
-        return "BLOCAT"
     if status in (404, 410):
         return "DISPARUT"
+    if status is not None and 500 <= status < 600 and RE_BLOCAJ.search(corp[:5000]):
+        return "BLOCAT"
     if status is None or status >= 500:
         return "REINCEARCA"
     if corp.startswith(b"HTTP/"):
@@ -117,15 +138,18 @@ def adu(url, banca_id, stare, _adancime=0):
     status, tip, corp, final, nota = _http(url)
     verdict = clasifica_raspuns(status, tip, corp)
     transport = "http"
+    nota = _actualizeaza_nota_blocat(verdict, status, corp, nota)
 
     if verdict == "REINCEARCA":
         time.sleep(10)
         status, tip, corp, final, nota = _http(url)
         verdict = clasifica_raspuns(status, tip, corp)
+        nota = _actualizeaza_nota_blocat(verdict, status, corp, nota)
     if verdict == "JS" and not url.lower().split("?")[0].endswith(".pdf"):
         _asteapta(url, banca_id, stare)
         status, tip, corp, final, nota = _playwright(url, stare)
         verdict, transport = clasifica_raspuns(status, tip, corp), "playwright"
+        nota = _actualizeaza_nota_blocat(verdict, status, corp, nota)
         if verdict == "JS":          # tot schelet și în browser: nimic de citit
             verdict = "OK"
     if verdict == "REDIRECT_SERIALIZAT" and _adancime < 2:
