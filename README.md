@@ -70,11 +70,14 @@ acoperire proastă ar ascunde golurile.
 ## Pornire
 
 ```bash
+pip install -r requirements.txt      # Python 3.12
+playwright install chromium          # doar pentru crawler/, nu vine prin pip
+
 docker compose up -d                 # PostgreSQL 16
 psql < db/schema.sql                 # apoi migrările 002..011, în ordine
 psql < db/sincronizeaza_vederi.sql   # DUPĂ orice migrare care adaugă coloane
 
-cp .env.exemplu .env                 # completează cheile
+cp .env.example .env                 # completează cheile
 python app/server.py                 # http://localhost:8765
 ```
 
@@ -113,8 +116,6 @@ versionat (rularea din 21 septembrie). Crawler-ul **nu** scrie acolo, ci în
 crawl stricat nu ajunge singur în bază.
 
 ```bash
-pip install playwright pdfplumber && playwright install chromium
-
 # 1. crawl (~30 min): 6 procese PARALELE, fiecare într-un terminal propriu
 mkdir -p output/log
 python -m crawler.main --banci patria,salt,cetelem                       --pdf --max-pe-banca 80 > output/log/grup1.txt
