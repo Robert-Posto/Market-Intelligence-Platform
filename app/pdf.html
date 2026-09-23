@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dovada — document sursă</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Vizualizator propriu de PDF.
+     De ce există: parametrii de deschidere ai Adobe (`#page=`, `search=`) sunt
+     implementați de plugin-ul clasic Acrobat, care nu mai există în Chrome.
+     Extensia Adobe pentru Chrome își încarcă PDF-ul în pagina ei și pierde
+     fragmentul din URL, deci nici nu sare la pagină, nici nu evidențiază.
+     Chrome cu vizualizatorul propriu sare la pagină dar ignoră `search=`.
+     Singurul mod în care ruta la locul exact funcționează la toată lumea e să
+     randăm noi documentul — atunci pagina și evidențierea nu mai depind de ce
+     are instalat cititorul. */
+  :root{
+    --bg:#eef1f4; --surface:#fff; --ink:#1b2430; --muted:#5b6b7a; --line:#c7d0d9;
+    --accent:#1d6f6f; --accent-tint:#dcefee; --marca:#e23b45;
+    --nav:#111e33; --nav-slab:#7b8ca3;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4;
+          --line:#2c3540; --accent:#59c2c2; --accent-tint:#123030;}
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{background:var(--bg);color:var(--ink);
+       font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif;
+       display:flex;flex-direction:column}
+  header{background:var(--nav);color:#fff;padding:11px 18px;display:flex;
+         flex-wrap:wrap;gap:14px;align-items:center}
+  header h1{font-family:"Source Serif 4",Georgia,serif;font-size:16px;margin:0;font-weight:600}
+  header h1 i{color:var(--marca);font-style:italic}
+  header .sp{flex:1}
+  header a,header button{font:inherit;font-size:12.5px;color:#fff;text-decoration:none;
+    border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:7px;
+    padding:5px 11px;cursor:pointer}
+  header a:hover,header button:hover{background:rgba(255,255,255,.12)}
+  .bara{background:var(--surface);border-bottom:1px solid var(--line);
+        padding:9px 18px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;
+        font-size:12.5px}
+  .bara .cit{flex:1;min-width:220px;color:var(--muted)}
+  .bara .cit b{color:var(--ink);background:#ffe9a8;padding:0 3px;border-radius:2px}
+  .bara .nav{display:flex;gap:6px;align-items:center}
+  .bara button{font:inherit;font-size:12.5px;padding:4px 9px;border-radius:6px;
+               border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+  .bara button:disabled{opacity:.45;cursor:not-allowed}
+  .bara .pg{font-family:"IBM Plex Mono",monospace}
+  #zona{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;
+        align-items:center;gap:16px}
+  .foaie{position:relative;box-shadow:0 2px 14px rgba(16,24,32,.18);background:#fff;
+         border-radius:3px}
+  .foaie canvas{display:block;border-radius:3px}
+  /* Evidențierea: dreptunghiuri desenate peste pagină, din pozițiile reale ale
+     textului date de PDF.js. Nu e o căutare vizuală, sunt coordonatele
+     glifelor. */
+  .marcaj{position:absolute;background:rgba(255,213,74,.45);
+          outline:1.5px solid rgba(214,158,0,.85);border-radius:2px;
+          pointer-events:none;mix-blend-mode:multiply}
+  .stare{padding:22px;color:var(--muted);font-size:13px;text-align:center;
+         max-width:62ch;line-height:1.6}
+  .stare b{color:var(--ink);display:block;margin-bottom:5px}
+  .stare a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Market <i>Intelligence</i> Platform</h1>
+  <div class="sp"></div>
+  <a id="orig" href="#" target="_blank" rel="noopener">Deschide originalul la bancă ↗</a>
+  <button id="copiaza">Copiază citatul</button>
+</header>
+<div class="bara">
+  <div class="cit" id="cit">se încarcă…</div>
+  <div class="nav">
+    <button id="prec">‹ anterioară</button>
+    <span class="pg" id="pg">—</span>
+    <button id="urm">următoarea ›</button>
+    <button id="tot">toate paginile</button>
+  </div>
+</div>
+<div id="zona"><div class="stare">se încarcă documentul…</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+const p = new URLSearchParams(location.search);
+const URL_DOC = p.get("u") || "";
+const PAGINA  = Math.max(1, parseInt(p.get("p") || "1", 10) || 1);
+const CITAT   = (p.get("q") || "").trim();
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.getElementById("orig").href = URL_DOC;
+document.getElementById("cit").innerHTML = CITAT
+  ? `Se caută în document: <b>${esc(CITAT)}</b>`
+  : "Fără citat de evidențiat — se deschide direct pagina.";
+document.getElementById("copiaza").onclick = () => {
+  navigator.clipboard.writeText(CITAT).then(() => {
+    const b = document.getElementById("copiaza");
+    b.textContent = "copiat ✓";
+    setTimeout(() => (b.textContent = "Copiază citatul"), 1600);
+  }, () => {});
+};
+
+/* Normalizare pentru potrivire: PDF-urile despart des cuvintele în glife
+   separate, cu spații care nu există în text, și folosesc diacritice
+   inconsistent. Se compară fără spații și fără diacritice — altfel citatul
+   „Lunar: 20 Lei" nu se regăsește într-un text extras ca „Lunar : 20 Lei". */
+const fara = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const strans = s => fara(s).replace(/\s+/g, "");
+
+let doc = null, total = 0, paginaCurenta = PAGINA, toateAfisate = false;
+
+function stare(html){
+  document.getElementById("zona").innerHTML = `<div class="stare">${html}</div>`;
+}
+
+/* Găsește citatul în textul paginii și întoarce dreptunghiurile lui.
+   PDF.js dă fiecare fragment de text cu transformarea lui; se caută secvența
+   de fragmente care, lipite, conțin citatul. */
+function marcaje(textContent, viewport){
+  if(!CITAT) return [];
+  const cauta = strans(CITAT);
+  if(cauta.length < 4) return [];
+  const it = textContent.items.filter(i => i.str && i.str.trim());
+  // se încearcă ferestre de fragmente consecutive
+  for(let i = 0; i < it.length; i++){
+    let acc = "";
+    for(let j = i; j < Math.min(i + 14, it.length); j++){
+      acc += strans(it[j].str);
+      if(acc.includes(cauta) || (cauta.length > 18 && acc.includes(cauta.slice(0, 18)))){
+        return it.slice(i, j + 1).map(x => {
+          const t = pdfjsLib.Util.transform(viewport.transform, x.transform);
+          const h = Math.hypot(t[2], t[3]) || x.height;
+          return {left: t[4], top: t[5] - h, width: x.width * viewport.scale, height: h * 1.18};
+        });
+      }
+      if(acc.length > cauta.length + 140) break;
+    }
+  }
+  return [];
+}
+
+async function randeaza(nr, container){
+  const pag = await doc.getPage(nr);
+  const lat = Math.min(container.clientWidth - 40, 980);
+  const v1 = pag.getViewport({scale: 1});
+  const viewport = pag.getViewport({scale: Math.max(0.6, lat / v1.width)});
+
+  const foaie = document.createElement("div");
+  foaie.className = "foaie";
+  foaie.style.width = viewport.width + "px";
+  foaie.style.height = viewport.height + "px";
+  const canvas = document.createElement("canvas");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = Math.floor(viewport.width * dpr);
+  canvas.height = Math.floor(viewport.height * dpr);
+  canvas.style.width = viewport.width + "px";
+  canvas.style.height = viewport.height + "px";
+  foaie.appendChild(canvas);
+  container.appendChild(foaie);
+
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+  await pag.render({canvasContext: ctx, viewport}).promise;
+
+  const tc = await pag.getTextContent();
+  const m = marcaje(tc, viewport);
+  m.forEach(r => {
+    const d = document.createElement("div");
+    d.className = "marcaj";
+    d.style.left = r.left + "px";
+    d.style.top = r.top + "px";
+    d.style.width = Math.max(r.width, 6) + "px";
+    d.style.height = r.height + "px";
+    foaie.appendChild(d);
+  });
+  return m.length;
+}
+
+async function arata(nr){
+  toateAfisate = false;
+  paginaCurenta = Math.min(Math.max(1, nr), total);
+  const zona = document.getElementById("zona");
+  zona.innerHTML = "";
+  const gasite = await randeaza(paginaCurenta, zona);
+  document.getElementById("pg").textContent = `pagina ${paginaCurenta} / ${total}`;
+  document.getElementById("prec").disabled = paginaCurenta <= 1;
+  document.getElementById("urm").disabled = paginaCurenta >= total;
+  if(CITAT){
+    document.getElementById("cit").innerHTML = gasite
+      ? `Evidențiat pe pagina ${paginaCurenta}: <b>${esc(CITAT)}</b>`
+      : `<b>${esc(CITAT)}</b> — nu s-a regăsit pe pagina ${paginaCurenta}.
+         Textul din PDF poate fi imagine scanată, sau documentul a fost înlocuit
+         de bancă între extracție și acum. Apasă „toate paginile" ca să cauți în
+         restul documentului.`;
+  }
+}
+
+async function arataTot(){
+  toateAfisate = true;
+  const zona = document.getElementById("zona");
+  zona.innerHTML = "";
+  let cu = [];
+  for(let i = 1; i <= total; i++){
+    const n = await randeaza(i, zona);
+    if(n) cu.push(i);
+  }
+  document.getElementById("pg").textContent = `toate ${total} paginile`;
+  document.getElementById("cit").innerHTML = CITAT
+    ? (cu.length ? `Citatul apare pe ${cu.length === 1 ? "pagina" : "paginile"} ${cu.join(", ")}.`
+                 : `<b>${esc(CITAT)}</b> nu s-a regăsit în niciuna din cele ${total} pagini.`)
+    : `${total} pagini.`;
+}
+
+document.getElementById("prec").onclick = () => arata(paginaCurenta - 1);
+document.getElementById("urm").onclick  = () => arata(paginaCurenta + 1);
+document.getElementById("tot").onclick  = () => arataTot();
+window.addEventListener("keydown", e => {
+  if(toateAfisate) return;
+  if(e.key === "ArrowLeft")  arata(paginaCurenta - 1);
+  if(e.key === "ArrowRight") arata(paginaCurenta + 1);
+});
+
+(async () => {
+  if(!URL_DOC){ stare("<b>Lipsește documentul</b>Adresa nu conține parametrul <code>u</code>."); return; }
+  try{
+    // Prin serverul nostru, nu direct de la bancă: un `fetch` către CDN-ul
+    // băncii cade pe CORS, iar PDF.js are nevoie de octeți.
+    doc = await pdfjsLib.getDocument("/pdf?u=" + encodeURIComponent(URL_DOC)).promise;
+    total = doc.numPages;
+    await arata(PAGINA);
+  }catch(e){
+    stare(`<b>Documentul nu s-a putut încărca</b>${esc(String(e && e.message || e))}<br><br>
+      Poți deschide <a href="${esc(URL_DOC)}" target="_blank" rel="noopener">originalul la bancă</a>
+      și căuta manual: <b>${esc(CITAT)}</b>${PAGINA ? `, pagina ${PAGINA}` : ""}.`);
+  }
+})();
+</script>
+</body>
+</html>

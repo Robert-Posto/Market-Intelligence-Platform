@@ -1,0 +1,267 @@
+# Market Intelligence Platform
+
+Monitorizare a concurenței bancare din România: colectăm date publice de la 30
+de bănci și fintech-uri, le normalizăm într-un vocabular comun și le comparăm.
+
+Doar date publice. Se respectă `robots.txt`, User-Agent onest, fără ocolirea
+WAF-urilor sau a captcha. Autorii recenziilor se pseudonimizează la ingest
+(hash cu sare) — Apple întoarce numele real, deci anonimizarea o facem noi.
+
+> **Prototip funcțional, în construcție activă.** Cifrele de mai jos sunt o
+> fotografie de la **23 septembrie 2026**, luată în timp ce o extracție încă
+> rula — deci sunt un minim, nu un total final.
+
+---
+
+## Ce e în bază acum
+
+| | |
+|---|---|
+| bănci | 30 |
+| surse (URL-uri + documente) | 903 |
+| observații (prețuri, dobânzi) | 19.575 |
+| în coada de verificare umană | 1.385 |
+| schimbări de preț detectate | 18 |
+
+Patru variante de colectare, cu acoperiri diferite — de aceea rulează toate:
+
+| proveniență | observații | ce acoperă |
+|---|---|---|
+| `pdf` | 12.365 | comisioane din documentele de tarife (extracție proprie) |
+| `playwright` | 6.518 | pachetul colegului, gata extras (JSON) |
+| `bs4` | 511 | depozite, scraperul propriu |
+| `bs4_llm` | 181 | BS4 peste URL-urile găsite de discovery-ul LLM |
+
+Pe secțiunile din PDF-ul de arhitectură:
+
+| secțiune | acoperire |
+|---|---|
+| 2.1 Produse & prețuri | 17 bănci din 30 |
+| 2.2 Rate & indicatori | 23 bănci |
+| 2.3 Aplicații mobile | **3 bănci** |
+| 2.4 Campanii & marketing | **0 — necolectat** |
+| 2.5 Rețea & operațional | 66 locații, **toate mock** |
+| 2.6 Context de piață | 140 valori ROBOR/ROBID reale |
+| 2.7 Sentiment | **3 bănci**, 218 recenzii reale |
+
+---
+
+## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
+
+Ca să nu ne călcăm pe picioare.
+
+| zonă | stare |
+|---|---|
+| `router.py --pas pdf` pe toate băncile | **rulează acum** |
+| încărcarea aplicațiilor în 2.3 / 2.7 | id-uri găsite pentru 19 bănci, **încărcarea nu s-a făcut** |
+| cascada de transport (Playwright pentru băncile cu WAF) | planificat, neînceput |
+| măsurare pentru 2.4 (campanii) | planificat, neînceput |
+
+### Zonă înghețată deliberat
+
+**Stratul autonom nu se atinge**: scheduler, rulări periodice, butoanele de
+rulare din pagina Overview. Butoanele sunt `disabled` intenționat și sunt
+**singurul mockup din aplicație**. Prioritatea curentă e doar popularea
+inițială — cât de multe date reale se pot aduna. Automatizarea peste o
+acoperire proastă ar ascunde golurile.
+
+---
+
+## Pornire
+
+```bash
+docker compose up -d                 # PostgreSQL 16
+psql < db/schema.sql                 # apoi migrările 002..011, în ordine
+psql < db/sincronizeaza_vederi.sql   # DUPĂ orice migrare care adaugă coloane
+
+cp .env.exemplu .env                 # completează cheile
+python app/server.py                 # http://localhost:8765
+```
+
+`.env` nu e versionat. Cere `MIP_DSN`, `MIP_SALT` (obligatoriu — scripturile
+refuză să ruleze fără el) și `ANTHROPIC_API_KEY` pentru discovery.
+
+> `sincronizeaza_vederi.sql` nu e opțional. Vederea `observatii_curente` e
+> definită cu `SELECT *`, iar Postgres îngheață lista de coloane la creare: o
+> coloană adăugată ulterior nu apare, și API-ul cade cu 500 deși tabela o are.
+
+### Colectare
+
+```bash
+python ingest/router.py --pas playwright    # citește pachetul colegului
+python ingest/router.py --pas bs4           # depozite
+python ingest/router.py --pas descoperite   # BS4 peste URL-urile LLM (rețea)
+python ingest/router.py --pas pdf           # comisioane din PDF-uri (rețea)
+```
+
+Pași auxiliari, care pregătesc sursele:
+
+```bash
+python ingest/recolteaza_pdf_banci.py   # găsește PDF-urile de tarife pe site-uri
+python ingest/cauta_app_id.py           # id-uri de App Store
+python ingest/fetch_logos_site.py       # sigle, de pe site-ul fiecărei bănci
+```
+
+Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi
+rescrie. Rularea repetată nu dublează. `--banca <slug>` restrânge la o bancă.
+
+### Înainte de commit
+
+```bash
+python app/verifica_pagini.py    # randează fiecare pagină într-un V8 real
+```
+
+Obligatoriu după orice modificare în `app/`. O eroare de JavaScript lasă pagina
+complet albă, iar serverul răspunde vesel cu 200 — din terminal arată identic
+cu „merge". S-a întâmplat de două ori, ambele din același motiv: un ghilimet
+`"` ASCII pus în loc de `”` într-un text românesc, care închide șirul devreme
+și doboară tot blocul `<script>`. Verificatorul localizează automat bucata.
+
+---
+
+## Probleme cunoscute
+
+Ordonate după cât dor.
+
+### Date
+
+**16 bănci n-au avut niciodată comisioane** fiindcă pipeline-ul nu citea
+PDF-uri. Corelația măsurată era perfectă: comisioane în bază exact la băncile
+care aveau un PDF adus de pachetul colegului, zero la restul. Rezolvat
+structural (`din_pdf` + `vocabular.canonic`); rularea pe toate băncile e în
+curs.
+
+**5 bănci rămân la zero**, din două cauze diferite care cer soluții diferite:
+
+- *blocate de WAF (HTTP 403)*: banca-transilvania, cec, unicredit, intesa.
+  Nu forțăm. Ruta corectă e un browser real (Playwright), care nu e construit.
+- *fără surse descoperite*: pko, banorient, bnpparibas. Aici lipsește
+  discovery-ul, nu extracția.
+
+**2.3 și 2.7 stau la 3 bănci** deși id-urile pentru 19 sunt găsite și
+confirmate. Lipsește doar încărcarea.
+
+**11 bănci fără id de aplicație confirmat.** Patru probabil n-au aplicație
+(bcr-locuinte, bid, cec, creditcoop). Șapte au aplicația *grupului*, dar de pe
+altă piață: BANOtouch e a mamei franceze, IKO e cea poloneză, iar `tbi`
+potrivea „TBI Banking" publicat de **Trade Bank of Iraq**. Nu se scriu —
+recenziile unor clienți francezi sau irakieni arată ca date bune și nu sunt.
+Singura pe care aș paria că e corectă și totuși e respinsă: **techventures**,
+doar fiindcă aplicația declară interfață numai în engleză. Cere confirmare
+umană.
+
+**5 bănci fără siglă**: intesa, revolut, techventures, citibank, banorient.
+WAF sau timeout.
+
+**2.5 e integral mock.** 66 de locații generate pentru hartă, în forma Google
+Places. Nu sunt date reale și nu trebuie citite ca atare. Pe hartă se arată
+doar nota, nu și texte de recenzii: o notă mock se citește ca cifră de
+umplutură, un comentariu mock se citește ca părere reală de client.
+
+### Calitate
+
+**Extracția din PDF e verificată doar pe ING.** Acolo rata de mapare la
+vocabularul canonic a ieșit 74,9% — peste cele 71,9% ale pachetului colegului.
+Pe restul băncilor nu s-a verificat încă. În eșantionul ING apar rânduri de
+gunoi de la parserul de tarife nestandardizate („√ produsul / serviciul este"),
+necuantificate. **Asta e cel mai important lucru de verificat înainte să ne
+bazăm pe 2.1.**
+
+**1.385 de valori în coada de verificare.** Nu e o listă de bug-uri, e o
+funcție a sistemului: un extractor care n-ar produce niciodată cazuri de
+verificat ar însemna că nu verifică nimic. Două motive domină, amândouă
+pierderi de *structură* la citirea tabelului, nu greșeli de citire a cifrei:
+*antet de coloană pierdut* (nu se știe pentru care pachet e prețul) și
+*prag de sumă pierdut* (avem 1, 3, 5, 15 lei fără să știm de la ce sumă).
+
+**Doar ~51% din valori au link direct la documentul sursă.** Pachetul original
+reține calea locală a PDF-ului, nu URL-ul de descărcare, iar PDF-urile nu sunt
+incluse. Unde nu avem documentul exact, arătăm pagina de pe care banca îl
+publică — marcată vizual diferit, fiindcă **nu e** documentul.
+
+### Arhitectură
+
+Față de arhitectura din artefactul de design, lipsesc:
+
+- **Bronze** — octeții bruți nu se salvează nicăieri
+- **sanitizare** înainte de extracție
+- **hash-skip** — `hashes` are rânduri, dar nimic nu le citește înainte de
+  procesare, deci se reprocesează tot de fiecare dată
+- **cascada de transport** `http → playwright`
+- **LLM ca ultimă treaptă** de extracție, pentru ce niciun parser determinist
+  nu citește
+- **`surse_produse`** — 583 de perechi URL×produs în bază, zero referințe în cod
+- **`change_events` e gol** — schimbările de preț sunt o *vedere*
+  (`schimbari_pret`), nu evenimente. Se recalculează din observații, deci nu
+  pot fi desincronizate, dar nu declanșează nimic.
+
+Primele trei există doar pentru rerulări, deci sunt în afara priorității
+curente (populare inițială).
+
+---
+
+## Cum e construit
+
+```
+                    ┌─ citire pachet   (JSON gata extras)          ─┐
+surse (tabelă) ──►  ├─ extractor HTML  (BS4 + parser_rate)          ─┼─► înregistrare
+     ▲              ├─ extractor PDF   (parser_pdf / parser_tarife) ─┤     brută
+     │              └─ extractor store (iTunes Lookup)               ─┘      │
+     └── discovery LLM propune URL-uri                                       ▼
+                                                                    normalizeaza.py
+                                                                             │
+                                                                             ▼
+                                                                      observations
+```
+
+Două reguli care țin totul curat:
+
+1. **Un extractor nu știe nimic despre baza de date.** Produce o înregistrare
+   brută („am găsit 7,5 pe pagina asta, la serviciul ăsta") și atât.
+2. **`normalizeaza.py` e singurul loc** care traduce brut → rând de bază:
+   slug-ul băncii, conceptul canonic, unitatea, `cod_scenariu`, pragurile.
+   Înainte existau trei copii ale acestor reguli, în trei loadere — de aceea
+   196 de pagini găsite de discovery n-au fost extrase de nimeni: niciun
+   script nu le avea în listă.
+
+Detalii în [PIPELINE.md](PIPELINE.md).
+
+### Praguri de plauzibilitate
+
+Într-un singur loc, `normalizeaza.PRAGURI`. Fiecare are un motiv măsurat:
+
+| prag | de ce |
+|---|---|
+| sumă > 10.000 lei | limitele de retragere și capitalul social ieșeau ca preț |
+| depozite > 12% | TBI apărea cu „dobândă tipică 20%" dintr-o taxă |
+| credite > 30% | mai sus sunt penalități |
+| carduri > 40% | dobânda reală la cardul de credit ajunge la ~28% |
+
+Ce depășește pragul **nu se aruncă**: se marchează ambiguu, se exclude din
+comparații și apare în coadă, cu citatul din document.
+
+---
+
+## Structură
+
+```
+app/          server.py (API read-only) · index.html (SPA, 12 pagini)
+              harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
+ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
+db/           schema.sql + migrările 002..011 · sincronizeaza_vederi.sql
+date/         ieșiri intermediare (JSON)
+```
+
+Serverul e **strict read-only**: nicio rută nu scrie în bază. Interogările
+folosesc parametri (`%s`), nu interpolare de text.
+
+PDF-urile se deschid într-un **vizualizator propriu** (`pdf.html`, PDF.js), nu
+în cititorul sistemului. Motivul: parametrii de deschidere Adobe (`#page=`,
+`search=`) sunt implementați de plugin-ul clasic, care nu mai există în Chrome;
+extensia Adobe pierde fragmentul din URL, iar Chrome ignoră `search=`. Cu
+vizualizator propriu, saltul la pagină și evidențierea citatului merg
+indiferent ce are instalat cititorul.
+
+Ruta `/pdf` are **listă albă din baza de date** — servește doar documente
+înregistrate ca surse. Fără ea ar fi un proxy deschis către orice adresă,
+inclusiv din rețeaua internă.

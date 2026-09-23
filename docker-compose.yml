@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    container_name: mip-db
+    environment:
+      POSTGRES_DB: mip
+      POSTGRES_USER: mip
+      POSTGRES_PASSWORD: mip
+    ports:
+      - "5432:5432"
+    volumes:
+      - mip-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mip -d mip"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mip-db-data:

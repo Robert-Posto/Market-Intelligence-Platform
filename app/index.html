@@ -1,0 +1,1698 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Intelligence Platform · Libra Bank</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#eef1f4; --surface:#fff; --ink:#1b2430; --muted:#5b6b7a; --line:#c7d0d9;
+    --warn:#a8720f; --warn-tint:#faedd2; --ok:#2f7a4f; --ok-tint:#dcf0e3;
+    --accent:#1d6f6f; --accent-tint:#dcefee;
+    /* bara laterală: bleumarin Libra, cu accentul roșu al mărcii */
+    --nav:#111e33; --nav-ink:#c3cedd; --nav-slab:#7b8ca3; --nav-line:#27364f;
+    --marca:#e23b45;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4; --line:#2c3540;
+          --warn:#e0ac52; --warn-tint:#3a2e15; --ok:#6fcf97; --ok-tint:#1c3323;
+          --accent:#59c2c2; --accent-tint:#1c3535;}
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif;display:flex}
+
+  /* ---- navigație ---- */
+  /* ---- bara laterală ----
+     Bleumarin închis cu accent roșu, ca identitatea Libra. Antetul e un titlu
+     serif cu un cuvânt în roșu italic, apoi subtitlul în capitale spațiate —
+     nu mai e o listă de pagini pe fundal alb cu o bordură. */
+  nav{width:262px;flex:none;background:var(--nav);color:var(--nav-ink);
+      padding:0 0 18px;overflow:auto;height:100%}
+  nav .marca{padding:20px 20px 17px;border-bottom:1px solid var(--nav-line);margin-bottom:6px}
+  nav .marca .t{font-family:"Source Serif 4",Georgia,serif;font-size:22px;line-height:1.15;
+                font-weight:600;color:#fff;display:block;letter-spacing:-.01em}
+  nav .marca .t i{color:var(--marca);font-style:italic}
+  nav .marca .s{display:block;margin-top:8px;font-family:"IBM Plex Mono",monospace;
+                font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+                color:var(--nav-slab)}
+  nav h3{font-family:"IBM Plex Mono",monospace;font-size:9.5px;text-transform:uppercase;
+         letter-spacing:.1em;color:var(--nav-slab);font-weight:500;margin:17px 0 5px;
+         padding:0 20px}
+  nav a{display:flex;align-items:center;gap:8px;padding:8px 20px;color:var(--nav-ink);
+        text-decoration:none;font-size:13.5px;border-left:3px solid transparent}
+  nav a:hover{background:rgba(255,255,255,.06);color:#fff}
+  nav a.activ{border-left-color:var(--marca);background:rgba(255,255,255,.09);
+              color:#fff;font-weight:600}
+  nav a .pdf{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10px;
+             color:var(--nav-slab)}
+  nav a.activ .pdf{color:var(--marca)}
+  nav a .gol{margin-left:auto;font-size:10px;color:#e0a44a;font-family:"IBM Plex Mono",monospace}
+  nav .picior{margin:18px 20px 0;padding-top:14px;border-top:1px solid var(--nav-line);
+              font-family:"IBM Plex Mono",monospace;font-size:9.5px;line-height:1.7;
+              color:var(--nav-slab)}
+
+  /* ---- conținut ---- */
+  main{flex:1;min-width:0;overflow:auto;height:100%;padding:26px 30px 60px}
+  .cap{margin-bottom:20px}
+  h1{font-family:"Source Serif 4",Georgia,serif;font-size:26px;margin:0 0 5px}
+  .lede{color:var(--muted);font-size:13.5px;max-width:78ch;margin:0}
+  section{background:var(--surface);border:1px solid var(--line);border-radius:13px;
+          padding:18px 20px;margin-bottom:18px}
+  h2{font-family:"Source Serif 4",Georgia,serif;font-size:17px;margin:0 0 12px}
+  h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+     font-family:"IBM Plex Mono",monospace;font-weight:500;margin:18px 0 8px}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;
+     letter-spacing:.03em;color:var(--muted);font-weight:500;position:sticky;top:0;
+     background:var(--surface);z-index:1}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;
+                font-family:"IBM Plex Mono",monospace}
+  .mono{font-family:"IBM Plex Mono",monospace;font-size:12px}
+  .wrap{overflow:auto;max-height:70vh}
+
+  .filtre{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-bottom:14px}
+  label.f{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted)}
+  select,input{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);
+               border-radius:7px;background:var(--bg);color:var(--ink);min-width:140px}
+  button{font:inherit;font-size:13px;padding:7px 13px;border-radius:8px;cursor:pointer;
+         border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+  button.primar{background:var(--accent);border-color:var(--accent);color:#fff}
+  button:disabled{opacity:.55;cursor:not-allowed}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:11px}
+  .tile{border:1px solid var(--line);border-radius:10px;padding:13px}
+  .tile .n{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:500}
+  .tile .l{color:var(--muted);font-size:11.5px;margin-top:2px}
+
+  /* celulă de comparație: valoarea, la ce se aplică, câte variante mai sunt */
+  .celula{cursor:pointer;border-radius:6px;display:block;padding:4px 6px;text-align:right;
+          position:relative;min-width:104px}
+  .celula:hover{background:var(--accent-tint);outline:1px solid var(--accent)}
+  .celula.gol{color:var(--muted);cursor:default;text-align:center}
+  .celula.gol:hover{background:none;outline:none}
+  .v-pref{display:block;color:var(--muted);font-size:9.5px;line-height:1.2}
+  .v-gratis{color:var(--ok);opacity:.85}
+  .v-num{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:500;white-space:nowrap}
+  .v-ctx{display:block;color:var(--muted);font-size:10px;line-height:1.3;margin-top:1px;
+         font-weight:400;max-width:15ch;margin-left:auto;overflow-wrap:anywhere}
+  .v-n{position:absolute;left:5px;top:4px;color:var(--muted);font-size:9.5px;
+       font-family:"IBM Plex Mono",monospace;border:1px solid var(--line);
+       border-radius:999px;padding:0 4px;line-height:1.45}
+  .best{background:var(--ok-tint)}
+  .best .v-num{font-weight:600;color:var(--ok)}
+  .cap-nume{display:block;font-size:12px}
+  .cap-desc{display:block;font-weight:400;font-size:10px;color:var(--muted);
+            line-height:1.35;margin-top:2px;max-width:17ch;white-space:normal}
+  .cap-slug{display:block;font-family:"IBM Plex Mono",monospace;font-size:9px;
+            color:var(--muted);opacity:.65;margin-top:3px;font-weight:400}
+
+  /* ---- Versus: carduri fixe sus, apoi caracteristici grupate ---- */
+  .vs{overflow-x:auto}
+  .vs-bara{display:grid;grid-template-columns:var(--vsc);
+           background:var(--bg);border-bottom:1px solid var(--line);align-items:stretch}
+  .vs-cap0{padding:12px 10px;display:flex;align-items:flex-end;font-size:11.5px;
+           color:var(--muted);letter-spacing:.02em;text-transform:uppercase}
+  .vs-card{border-left:1px solid var(--line);padding:12px 11px 11px;position:relative;
+           display:flex;flex-direction:column;gap:2px}
+  .vs-card.ref{background:var(--accent-tint)}
+  .vs-tag{position:absolute;right:9px;top:9px;font-size:9px;text-transform:uppercase;
+          letter-spacing:.04em;color:var(--accent);border:1px solid var(--accent);
+          border-radius:999px;padding:1px 6px}
+  .vs-logo{height:30px;display:flex;align-items:center;margin-bottom:5px}
+  .vs-logo img{max-height:30px;max-width:104px;object-fit:contain}
+  .vs-init{font-family:"IBM Plex Mono",monospace;font-size:16px;font-weight:600;
+           color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:2px 8px}
+  .vs-nume{font-size:13.5px;font-weight:600;line-height:1.25}
+  .vs-slug{font-size:10px;color:var(--muted)}
+  .vs-cifre{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+  .vs-cifre b{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;display:block}
+  .vs-cifre span{display:block;font-size:9.5px;color:var(--muted);line-height:1.3}
+
+  .vs-sec{margin-top:16px}
+  .vs-sec-cap{display:grid;grid-template-columns:var(--vsc);align-items:end;
+              background:var(--surface);border-radius:8px 8px 0 0;border:1px solid var(--line);
+              border-bottom:none}
+  .vs-sec-cap .t{font-family:"Source Serif 4",Georgia,serif;font-size:15px;padding:9px 10px}
+  .vs-sec-cap .t span{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+                      color:var(--muted);margin-top:2px}
+  .vs-sec-cap .c{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);
+                 padding:9px 8px;text-align:right;border-left:1px solid var(--line)}
+  .vs-sec-cap .c.ref{color:var(--accent);font-weight:600}
+  .vs-rand{display:grid;grid-template-columns:var(--vsc);border:1px solid var(--line);
+           border-top:none;align-items:center}
+  .vs-rand.alt{background:var(--surface)}
+  .vs-rand:last-child{border-radius:0 0 8px 8px}
+  .vs-lab{padding:9px 10px;min-width:0}
+  .vs-lab b{display:block;font-size:12.5px;font-weight:600;line-height:1.3}
+  .vs-lab span{display:block;font-size:10.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+  .vs-lab em{display:block;font-size:9.5px;color:var(--warn);font-style:normal;margin-top:3px}
+  .vs-cel{padding:7px 8px;border-left:1px solid var(--line);text-align:right;min-width:0}
+  .vs-cel .celula{min-width:0;padding:2px 3px}
+  .vs-cel.gol{color:var(--muted);text-align:center;font-size:12px}
+  .vs-cel.best{background:var(--ok-tint)}
+  .vs-bun{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.04em;
+          color:var(--ok);margin-top:2px}
+  @media (max-width:760px){ .vs-cifre{display:none} }
+
+  /* ---- Clasament: un serviciu, băncile ordonate după preț ----
+     Înlocuiește matricea bancă × serviciu. Motivul e măsurat: în matrice,
+     verdele („cea mai bună valoare") apărea pe 8 din 9 celule la încasare și
+     pe 5 din 10 la administrare cont, fiindcă atâtea bănci au mediana 0. Verde
+     peste tot nu înseamnă nimic. Ordonat, poziția spune totul și nu mai e
+     nevoie de culoare ca să distingi. */
+  .cl{border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-bottom:14px}
+  .cl-cap{padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--line);
+          display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+  .cl-cap h3{font-family:"Source Serif 4",Georgia,serif;font-size:16px;margin:0;font-weight:600}
+  .cl-cap .d{color:var(--muted);font-size:12px;flex:1;min-width:180px}
+  .cl-cap .n{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted)}
+  /* Index (Produse): bancă · serviciu · număr de prețuri.
+     Cu valoare (Rate): poziție · bancă · dobândă · context · număr.
+     Coloanele sunt FIXE, nu `fr` peste tot: cu fracții, un nume lung ca
+     „tbi bank EAD Sofia — Sucursala București" lățea coloana lui și împingea
+     restul rândului, deci rândurile nu se mai aliniau între ele. */
+  .cl-rand{display:grid;grid-template-columns:210px minmax(0,1fr) 128px;
+           gap:14px;align-items:center;padding:9px 14px;border-top:1px solid var(--line);
+           cursor:pointer}
+  .cl-rand.cu-val{grid-template-columns:26px 210px 104px minmax(0,1fr) 128px}
+  .cl-rand:first-of-type{border-top:none}
+  .cl-rand:hover{background:var(--accent-tint)}
+  .cl-rand.top{background:var(--ok-tint)}
+  .cl-rand.top:hover{background:var(--ok-tint);outline:1px solid var(--ok)}
+  .cl-loc{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted);
+          text-align:right}
+  .cl-rand.top .cl-loc{color:var(--ok);font-weight:600}
+  /* `align-items:center` pe rând, dar logoul și numele se aliniază pe linia
+     de bază a textului — altfel un logo înalt decentra numele. */
+  .cl-banca{display:flex;align-items:center;gap:8px;min-width:0}
+  .cl-banca img{max-height:18px;max-width:54px;object-fit:contain;flex:none}
+  .cl-banca .nm{font-size:12.5px;font-weight:600;line-height:1.3;
+                overflow-wrap:anywhere;hyphens:auto}
+  .cl-val{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:500;
+          white-space:nowrap;text-align:right}
+  .cl-rand.top .cl-val{color:var(--ok)}
+  .cl-val .u{font-size:11px;color:var(--muted);font-weight:400}
+  .cl-ctx{font-size:11.5px;color:var(--muted);line-height:1.45;min-width:0;
+          overflow-wrap:anywhere}
+  .cl-ctx b{color:var(--ink);font-weight:500}
+  .cl-alt{display:block;font-size:10px;opacity:.75;margin-top:2px}
+  .cl-note{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;
+           gap:5px;min-width:0}
+  .cl-n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);
+        white-space:nowrap}
+  .cl-gol{padding:12px 14px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+  @media (max-width:900px){
+    .cl-rand,.cl-rand.cu-val{grid-template-columns:1fr auto;row-gap:5px}
+    .cl-loc{display:none}
+    .cl-ctx{grid-column:1 / -1}
+  }
+
+  /* Avertisment care nu se poate sări cu privirea. Folosit acolo unde o cifră
+     corect calculată poate fi înțeleasă greșit — media textelor de review, de
+     exemplu, care e cu 2,6 stele sub media reală a aplicației. */
+  .callout{border:1px solid var(--ok);border-left-width:4px;border-radius:9px;
+           padding:11px 14px;font-size:12.5px;line-height:1.6;background:var(--ok-tint)}
+  .callout.warn{border-color:var(--warn);background:var(--warn-tint)}
+  .callout b{color:var(--ink)}
+
+  /* ---- Capturi din store: un rând per bancă ---- */
+  .capt-banca{border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden}
+  .capt-cap{padding:9px 12px;background:var(--surface);border-bottom:1px solid var(--line);
+            display:flex;gap:10px;align-items:center;justify-content:space-between}
+  .capt-rand{display:flex;gap:9px;overflow-x:auto;padding:11px 12px}
+  .capt-rand img{height:190px;width:auto;border-radius:8px;border:1px solid var(--line);
+                 display:block;flex:none;background:var(--surface)}
+  .capt-rand a:hover img{outline:2px solid var(--accent)}
+
+  /* ---- Sentiment: review-uri filtrabile ---- */
+  .rec{border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:9px}
+  .rec-cap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .rec-stele{font-size:13px;letter-spacing:1px}
+  .rec-stele.bun{color:var(--ok)} .rec-stele.rau{color:var(--warn)}
+  .rec-txt{font-size:12.5px;line-height:1.6}
+  .rec-meta{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+
+  /* ---- Istoric: schimbările de preț ---- */
+  .sch{display:grid;grid-template-columns:86px minmax(120px,1fr) minmax(150px,2fr) auto;
+       gap:12px;align-items:center;padding:9px 13px;border-top:1px solid var(--line)}
+  .sch:first-of-type{border-top:none}
+  .sch .d{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted)}
+  .sch .tr{font-family:"IBM Plex Mono",monospace;font-size:13px;white-space:nowrap}
+  .sch .tr s{color:var(--muted);text-decoration:line-through;font-size:11.5px}
+  .sus{color:var(--warn);font-weight:600}
+  .jos{color:var(--ok);font-weight:600}
+
+  /* sertar: valorile grupate pe serviciul dat de bancă */
+  .grup-serv{border:1px solid var(--line);border-radius:9px;margin-bottom:10px;overflow:hidden}
+  .grup-serv > .cap{background:var(--surface-2,var(--surface));padding:8px 11px;
+                    border-bottom:1px solid var(--line);display:flex;gap:8px;
+                    align-items:baseline;justify-content:space-between}
+  .grup-serv > .cap b{font-size:12.5px;font-weight:600}
+  .obs{display:flex;gap:10px;align-items:baseline;padding:8px 11px;font-size:12px;
+       border-top:1px solid var(--line)}
+  .obs:first-of-type{border-top:none}
+  .obs .val{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;
+            min-width:88px;text-align:right;flex:none}
+  .obs .det{flex:1;min-width:0}
+  .obs .cit{color:var(--muted);font-size:11px;line-height:1.5;margin-top:3px;
+            border-left:2px solid var(--line);padding-left:7px}
+  .obs .cit mark{background:var(--warn-tint);color:var(--ink);font-weight:600;
+                 padding:0 2px;border-radius:2px}
+  /* Ce trebuie să facă omul cu rândul — scris lângă rând, nu într-un tooltip */
+  .obs .ce-faci{font-size:11px;color:var(--muted);line-height:1.5;margin-top:5px;
+                font-style:italic}
+  /* Seria de valori a aceluiași serviciu: cele din coadă marcate */
+  .serie{display:flex;flex-wrap:wrap;gap:5px;align-items:center;padding:8px 11px;
+         background:var(--bg);border-bottom:1px solid var(--line);font-size:11px}
+  .serie .et{color:var(--muted)}
+  .serie .v{font-family:"IBM Plex Mono",monospace;font-size:11px;padding:1px 6px;
+            border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+  .serie .v.aici{border-color:var(--warn);background:var(--warn-tint);
+                 color:var(--warn);font-weight:600}
+  .obs .meta{margin-top:4px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .obs.amb{background:var(--warn-tint)}
+  a.sursa{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--accent);
+          text-decoration:none;border-bottom:1px dotted var(--accent)}
+  a.sursa:hover{background:var(--accent-tint)}
+  /* Pagina băncii nu e documentul: culoare diferită și linie punctată mai
+     slabă, ca să nu fie citită ca dovadă directă. */
+  a.sursa.pagina{color:var(--muted);border-bottom-style:dashed;border-bottom-color:var(--line)}
+  a.sursa.pagina:hover{color:var(--accent);background:var(--accent-tint)}
+  .pill{display:inline-block;padding:1px 7px;border-radius:999px;font-size:10.5px;
+        font-family:"IBM Plex Mono",monospace;border:1px solid var(--line)}
+  .pill.amb{background:var(--warn-tint);border-color:var(--warn);color:var(--warn)}
+  .pill.ok{background:var(--ok-tint);border-color:var(--ok);color:var(--ok)}
+  .pill.mock{background:var(--warn-tint);border-color:var(--warn);color:var(--warn)}
+  .note{color:var(--muted);font-size:12px;line-height:1.55;max-width:80ch}
+  .gol-stare{border:1px dashed var(--line);border-radius:11px;padding:22px;text-align:center;
+             color:var(--muted);font-size:13px}
+  .gol-stare b{color:var(--ink);display:block;margin-bottom:5px;font-size:14px}
+
+  /* sertar cu dovezile din spatele unei celule */
+  #sertar{position:fixed;inset:0;background:rgba(10,14,18,.45);display:none;z-index:50}
+  #sertar.deschis{display:block}
+  #sertar .panou{position:absolute;right:0;top:0;bottom:0;width:min(640px,94vw);
+                 background:var(--surface);border-left:1px solid var(--line);
+                 padding:20px 22px;overflow:auto}
+  #sertar h3{font-family:"Source Serif 4",Georgia,serif;font-size:17px;margin:0 0 3px}
+  #sertar .x{position:absolute;right:16px;top:14px}
+  @media (max-width:900px){ body{flex-direction:column} nav{width:auto;height:auto;border-bottom:1px solid var(--nav-line)} main{height:auto} }
+</style>
+</head>
+<body>
+<nav>
+  <div class="marca">
+    <span class="t">Market <i>Intelligence</i> Platform</span>
+    <span class="s">Libra Bank · Monitorizare concurență</span>
+  </div>
+  <div id="meniu"></div>
+  <div class="picior" id="picior"></div>
+</nav>
+<main>
+  <div class="cap"><h1 id="titlu">…</h1><p class="lede" id="lede"></p></div>
+  <div id="pagina"></div>
+</main>
+
+<div id="sertar"><div class="panou">
+  <button class="x" onclick="inchideSertar()">Închide</button>
+  <h3 id="sertar-t">—</h3><div class="note" id="sertar-s"></div>
+  <div id="sertar-c"></div>
+</div></div>
+
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const num = (v, z = 2) => v === null || v === undefined ? "—" :
+  Number(v).toLocaleString("ro-RO", {maximumFractionDigits: z});
+const ia = async u => { const r = await fetch(u); const d = await r.json();
+  if(d && d.eroare) throw new Error(d.eroare); return d; };
+
+const PAGINI = [
+  {grup:"Colectare", chei:[
+    {id:"overview",  nume:"Overview",              pdf:"",    t:"Overview", l:"Starea reală a fiecărui domeniu de date și controalele de rulare."},
+    {id:"produse",   nume:"Produse & prețuri",     pdf:"2.1", t:"Produse & prețuri", l:"Un clasament per serviciu: băncile ordonate de la cel mai ieftin, cu ce anume se plătește și de unde vine cifra."},
+    {id:"rate",      nume:"Rate & indicatori",     pdf:"2.2", t:"Rate & indicatori", l:"Un clasament per tip de dobândă, separat pe categorie (depozite / credite / conturi), plus indicii de referință BNR."},
+    {id:"mobil",     nume:"Aplicații mobile",      pdf:"2.3", t:"Aplicații mobile & digital", l:"Versiuni, rating și review-uri reale din App Store."},
+    {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Landing pages de campanie, reclame active, newsroom."},
+    {id:"retea",     nume:"Rețea & operațional",   pdf:"2.5", t:"Rețea & operațional", l:"Sucursale, ATM-uri și program."},
+    {id:"context",   nume:"Context de piață",      pdf:"2.6", t:"Context de piață", l:"Indici de referință, statistici de sector, cote de piață."},
+    {id:"sentiment", nume:"Sentiment",             pdf:"2.7", t:"Sentiment", l:"Distribuția notelor și review-urile reale din App Store, filtrabile pe bancă și notă. Autorii sunt pseudonimizați."},
+  ]},
+  {grup:"Analiză", chei:[
+    {id:"versus",  nume:"Versus Libra", pdf:"", t:"Versus Libra", l:"Comparație directă Libra față de băncile alese — prețuri, dobânzi, aplicație mobilă, rețea și sentiment."},
+    {id:"istoric", nume:"Istoric & schimbări", pdf:"", t:"Istoric și schimbări de preț", l:"Ce s-a schimbat efectiv: același serviciu, altă dată de vigoare, altă valoare. Aici e semnalul competitiv, nu în valoarea de azi."},
+  ]},
+  {grup:"Date & guvernanță", chei:[
+    {id:"surse",  nume:"Surse",               pdf:"", t:"Surse", l:"Guvernanță: de unde vine fiecare cifră, ce s-a descoperit și nu s-a extras încă, și de ce."},
+    {id:"coada",  nume:"Coadă de verificare", pdf:"", t:"Coadă de verificare umană", l:"Valori care nu se publică automat: implauzibile, ambigue sau sub pragul de încredere."},
+  ]},
+];
+
+/* ---------------- helpers ---------------- */
+function tabel(randuri, coloane, opt = {}){
+  if(!randuri || !randuri.length) return '<p class="note">Nimic de afișat.</p>';
+  const th = coloane.map(c => `<th class="${c.cls || ""}"${c.titlu ? ` title="${esc(c.titlu)}"` : ""}>`
+    + (c.capHtml || esc(c.cap)) + "</th>").join("");
+  const tr = randuri.map(r => "<tr>" + coloane.map(c => {
+    const v = c.val ? c.val(r) : r[c.k];
+    return `<td class="${c.cls || ""}">${c.html ? (v ?? "") : esc(v ?? "—")}</td>`;
+  }).join("") + "</tr>").join("");
+  return `<div class="wrap"><table><thead><tr>${th}</tr></thead><tbody>${tr}</tbody></table></div>`;
+}
+
+
+function grafBare(randuri, opt = {}){
+  const max = Math.max(...randuri.map(r => r.n), 1);
+  return `<div style="display:flex;flex-direction:column;gap:5px">` + randuri.map(r => `
+    <div style="display:flex;align-items:center;gap:9px;font-size:12.5px">
+      <span class="mono" style="width:${opt.wEtic || 74}px;flex:none">${esc(r.eticheta)}</span>
+      <span style="height:14px;border-radius:3px;background:${r.culoare || "var(--accent)"};
+                   width:${Math.max(2, 100 * r.n / max)}%;max-width:calc(100% - 130px)"></span>
+      <span class="mono" style="color:var(--muted)">${num(r.n, 0)}</span>
+    </div>`).join("") + `</div>`;
+}
+
+/* ---------------- afișarea unei valori ----------------
+   Intervalul „0–25 (9)" nu spunea nici la ce se referă, nici care cifră
+   contează. Înlocuit cu: cât costă de obicei (mediana), la ce serviciu se
+   aplică, cu ce frecvență, câte variante gratuite există și câte alte prețuri
+   stau sub aceeași etichetă. */
+
+const UNITATE_TXT = {lei:" lei", eur:" EUR", usd:" USD", procent:"%"};
+
+/* Conceptele canonice din vocabular.py sunt slug-uri („retragere_numerar"):
+   bune pentru comparație între bănci, dar nu spun ce se plătește, de către
+   cine și când. Dicționarul ăsta le traduce o singură dată, pentru toată
+   aplicația — un `camp` nu mai apare nicăieri fără explicație. */
+const ETICHETE = {
+  administrare_cont:  ["Administrare cont",    "cât costă să ții contul deschis (de regulă pe lună)"],
+  deschidere_cont:    ["Deschidere cont",      "comision plătit o singură dată, la deschidere"],
+  inchidere_cont:     ["Închidere cont",       "comision la închiderea contului"],
+  extras_de_cont:     ["Extras de cont",       "eliberarea unui extras pe hârtie sau la ghișeu"],
+  interogare_sold:    ["Interogare sold",      "verificarea soldului (ATM, ghișeu, SMS)"],
+  emitere_card:       ["Emitere card",         "comision la emiterea cardului"],
+  reemitere_card:     ["Reemitere card",       "card nou după pierdere, furt sau expirare"],
+  administrare_card:  ["Administrare card",    "abonamentul cardului (lunar sau anual)"],
+  retragere_numerar:  ["Retragere numerar",    "scoaterea de bani de la ATM sau ghișeu"],
+  transfer_credit:    ["Transfer trimis",      "plată ordonată de client către alt cont"],
+  transfer_debit:     ["Debitare directă",     "plăți trase automat din cont (direct debit)"],
+  incasare:           ["Încasare",             "bani primiți în cont din altă bancă"],
+  modificare_anulare: ["Modificare / anulare", "schimbarea sau anularea unei plăți deja date"],
+  documentar:         ["Operațiuni documentare", "acreditive, incasso — în general pentru firme"],
+  nominala:           ["Dobândă nominală",     "rata anunțată, fără comisioane incluse"],
+  dae:                ["DAE",                  "dobânda anuală efectivă — include și comisioanele"],
+  marja_ircc:         ["Marjă peste IRCC",     "cât adaugă banca peste indicele de referință"],
+  comision_procent:   ["Comision procentual",  "comision calculat ca procent din sumă"],
+  euribor_valoare:    ["EURIBOR",              "indicele de referință pentru împrumuturi în euro"],
+  rate_fara_dobanda:  ["Rate fără dobândă",    "numărul de rate oferite la 0%"],
+  nume_produs:        ["Nume de produs",       "denumirea comercială, fără cifră atașată"],
+};
+const etNume = c => (ETICHETE[c] || [String(c).replace(/_/g, " ")])[0];
+const etDesc = c => (ETICHETE[c] || [null, ""])[1] || "";
+
+function unitTxt(u){ return UNITATE_TXT[u] !== undefined ? UNITATE_TXT[u] : (u ? " " + u : ""); }
+
+/* Frecvențele din date sunt text liber în română („lunar", „pe operațiune",
+   dar și termene de depozit: „5 ani"). Nu le traducem într-un „/lună" care ar
+   putea minți la termene — le arătăm cum sunt, după separator. */
+function contextScurt(c, maxLen = 26){
+  const p = [];
+  if(c.frecventa) p.push(c.frecventa);
+  if(c.serviciu){
+    const s = c.serviciu.length > maxLen ? c.serviciu.slice(0, maxLen - 1) + "…" : c.serviciu;
+    p.push(s);
+  }
+  if(c.conditie) p.push(c.conditie.length > maxLen ? c.conditie.slice(0, maxLen - 1) + "…" : c.conditie);
+  return p.join(" · ");
+}
+
+/* Cifra afișată e mediana valorilor din bancă, nu minimul: la minim, 80% din
+   celule arătau „0 lei", fiindcă fiecare bancă are cel puțin o variantă
+   gratuită. Mediana e cât costă de obicei și se poate compara. */
+function valoareCelula(c, sens, unitate){
+  if(!c) return null;
+  const v = c.valoare !== undefined && c.valoare !== null
+    ? c.valoare : (sens === "mare_bun" ? c.maxim : c.minim);
+  const multe = c.n > 1 && c.minim !== c.maxim;
+  const ctx = contextScurt(c);
+  const extr = sens === "mare_bun"
+    ? `cea mai mare: ${num(c.maxim)}${unitTxt(unitate || c.unitate)}`
+    : `cea mai mică: ${num(c.minim)}${unitTxt(unitate || c.unitate)}`;
+  return (multe ? `<span class="v-pref">de obicei</span>` : "")
+       + `<span class="v-num">${num(v)}${unitTxt(unitate || c.unitate)}</span>`
+       + (ctx ? `<span class="v-ctx">${esc(ctx)}</span>` : "")
+       + (c.gratuite ? `<span class="v-ctx v-gratis">${c.gratuite} ${c.gratuite === 1 ? "variantă gratuită" : "variante gratuite"}</span>` : "")
+       + (c.n > 1 ? `<span class="v-n" title="${c.n} valori sub această etichetă; afișată e mediana. ${extr}">+${c.n - 1}</span>` : "");
+}
+
+/* ---------------- date refolosite de mai multe pagini ----------------
+   Numele și logoul băncii apar în aproape fiecare pagină. Se cer o dată pe
+   sesiune, nu la fiecare navigare. */
+const CACHE = {};
+async function meta(){
+  if(!CACHE.meta){
+    const [b, l] = await Promise.all([ia("/api/banci"), ia("/api/logos")]);
+    CACHE.meta = {
+      nume: Object.fromEntries(b.map(x => [x.slug, x.nume])),
+      rand: Object.fromEntries(b.map(x => [x.slug, x])),
+      logo: l,
+    };
+  }
+  return CACHE.meta;
+}
+
+function etichetaBanca(slug, m, opt = {}){
+  const logo = m.logo[slug];
+  return `<span class="cl-banca">
+    ${logo ? `<img src="${esc(logo)}" alt="">` : ""}
+    <span class="nm">${esc(opt.scurt ? slug : (m.nume[slug] || slug))}</span>
+  </span>`;
+}
+
+/* ---------------- clasament: un serviciu, băncile ordonate ----------------
+   Un singur component, folosit de „Produse & prețuri" și de „Rate". Înainte
+   erau două matrici bancă × câmp, cu aceleași probleme: numele băncii ilizibil
+   într-o coloană îngustă, badge-uri în colțuri și verde pe majoritatea
+   celulelor. Ordonarea rezolvă toate trei: poziția e informația, nu culoarea.
+
+   `evidentiaza` e deliberat restrictiv: se marchează doar un câștigător UNIC
+   care are cel puțin `MIN_VALORI` valori colectate. Altfel „cel mai bun" ar
+   însemna „banca despre care știm cel mai puțin" — raiffeisen ieșea prima la
+   administrare cont cu o singură valoare în bază. */
+const MIN_VALORI = 3;
+
+/* Explicația celor două note, scrisă o dată și folosită în 2.3 și în Sentiment.
+   Erau denumite „agregat store" și „medie text" — termeni care nu spun nimic
+   cuiva care deschide pagina prima dată, iar diferența dintre ele (până la 2,6
+   stele) făcea cifrele să pară contradictorii. */
+const DOUA_NOTE = `
+<div class="callout warn" style="margin-bottom:14px">
+  <b>Nota din App Store</b> — nota oficială a aplicației, calculată de Apple din
+  <i>toate</i> voturile, inclusiv de la cei care dau doar stele. Vine din API-ul
+  Apple (<code class="mono">averageUserRating</code>), nu e calculată de noi.<br>
+  <b>Nota recenziilor scrise</b> — media celor ~50 de recenzii <i>cu text</i> pe care
+  le întoarce feed-ul RSS. Cine se deranjează să scrie e mult mai critic, deci
+  cifra asta e sistematic mai mică.<br>
+  Când vrei să știi „cât de bună e aplicația", te uiți la prima. Când vrei să știi
+  „de ce se plâng oamenii", citești a doua.
+</div>`;
+
+/* Două moduri, fiindcă cele două pagini vor lucruri diferite:
+
+   `aratValoare: false` (Produse & prețuri) — un INDEX. Rândul spune care bancă
+   are prețuri pentru serviciul respectiv, cum îl numește ea și câte prețuri
+   există; cifra apare la clic, în sertar, cu citatul de lângă ea. Comisioanele
+   au atât de multe variante (pachete, praguri, monede) că o singură cifră pe
+   rând confunda mai mult decât ajuta. Comparația de preț cap la cap e în
+   „Versus Libra".
+
+   `aratValoare: true` (Rate & indicatori) — o dobândă e o singură cifră
+   comparabilă, deci se arată, se ordonează după ea și se marchează cea mai
+   bună. */
+function clasament(camp, celule, opt){
+  const m = opt.meta, unitate = opt.unitate, arata = !!opt.aratValoare;
+  const nume = b => m.nume[b] || b;
+  const randuri = celule.slice().sort((a, b) => arata
+    ? (opt.sens === "mare_bun" ? b.valoare - a.valoare : a.valoare - b.valoare)
+    // fără cifre pe ecran, ordinea după preț ar fi inexplicabilă; se
+    // ordonează după acoperire, care se vede
+    : (b.n - a.n) || nume(a.banca).localeCompare(nume(b.banca), "ro"));
+  if(!randuri.length) return "";
+  const totalValori = randuri.reduce((s, c) => s + c.n, 0);
+
+  let campion = null, nota = "";
+  if(arata){
+    const extrem = randuri[0].valoare;
+    const egali = randuri.filter(c => c.valoare === extrem);
+    campion = (egali.length === 1 && egali[0].n >= MIN_VALORI) ? egali[0].banca : null;
+    nota = campion
+      ? `${nume(campion)} are ${opt.sens === "mare_bun" ? "cea mai mare" : "cea mai mică"} valoare`
+      : (egali.length > 1
+          ? `${egali.length} bănci la egalitate pe ${num(extrem)}${unitTxt(unitate)}`
+          : `prima poziție are o singură valoare colectată — prea puțin ca să fie declarată cea mai bună`);
+  }
+
+  const corp = randuri.map((c, i) => {
+    const servicii = c.servicii || 1;
+    const ctx = [];
+    if(arata && c.frecventa) ctx.push(`<b>${esc(c.frecventa)}</b>`);
+    if(c.serviciu) ctx.push(esc(c.serviciu.length > 62 ? c.serviciu.slice(0, 61) + "…" : c.serviciu));
+    return `<div class="cl-rand ${arata ? "cu-val" : ""} ${c.banca === campion ? "top" : ""}"
+        onclick="deschideSertar('${esc(c.banca)}','${esc(camp)}','${esc(unitate)}','${esc(opt.scenariu || "")}')">
+      ${arata ? `<span class="cl-loc">${i + 1}</span>` : ""}
+      ${etichetaBanca(c.banca, m)}
+      ${arata ? `<span class="cl-val">${num(c.valoare)}<span class="u">${unitTxt(unitate)}</span></span>` : ""}
+      <span class="cl-ctx">${ctx.join(" · ") || "—"}${
+        servicii > 1 && !arata ? `<span class="cl-alt">și alte ${servicii - 1} denumiri de serviciu</span>` : ""}</span>
+      <span class="cl-note">
+        ${c.nemarcate ? `<span class="pill amb" title="${c.nemarcate} din ${c.n} valori nu au segmentul (persoană fizică / firmă) marcat în documentul sursă. Sunt arătate, dar nu se poate garanta că sunt pentru persoane fizice.">segment nemarcat</span>` : ""}
+        ${c.gratuite && !arata ? `<span class="pill ok" title="${c.gratuite} dintre variante sunt fără comision">${c.gratuite} gratuit${c.gratuite === 1 ? "ă" : "e"}</span>` : ""}
+        <span class="cl-n" title="Deschide toate cele ${c.n} valori, fiecare cu citatul și linkul către document">${c.n} ${arata ? (c.n === 1 ? "valoare" : "valori") : (c.n === 1 ? "preț" : "prețuri")} →</span>
+      </span>
+    </div>`;
+  }).join("");
+
+  return `<div class="cl">
+    <div class="cl-cap">
+      <h3>${esc(etNume(camp))}</h3>
+      <span class="d">${esc(etDesc(camp))}</span>
+      <span class="n">${randuri.length} bănci · ${num(totalValori, 0)} ${arata ? "valori" : "prețuri"}${nota ? " · " + esc(nota) : ""}</span>
+    </div>
+    ${corp}
+  </div>`;
+}
+
+/* ---------------- sertar cu dovezi ----------------
+   Grupat pe `serviciu` — numele dat de bancă, nu conceptul canonic. Un tabel
+   plat de 40 de rânduri nu răspundea la „7,5 lei pentru ce?"; grupat pe
+   serviciu, se vede că aceeași etichetă acoperă mai multe prețuri (pachete,
+   praguri, monede) și care e care. */
+/* Citatul cu cifra evidențiată în el.
+   Evidențierea în PDF depinde de vizualizator (vezi `linkSursa`), deci dovada
+   trebuie să fie lizibilă AICI, fără să deschizi documentul. Se marchează
+   exact numărul observației, nu o potrivire aproximativă: dacă nu se
+   regăsește în citat, citatul rămâne neatins. */
+function citatEvidentiat(r){
+  const t = r.citat.length > 260 ? r.citat.slice(0, 259) + "…" : r.citat;
+  // sertarul trimite `valoare`, coada de verificare trimite `valoare_num`
+  const bruta = r.valoare !== undefined && r.valoare !== null ? r.valoare : r.valoare_num;
+  if(bruta === null || bruta === undefined) return esc(t);
+  // se caută atât „20" cât și „20,00" / „20.00", fără să se lege de zecimale
+  const v = Number(bruta);
+  const forme = [...new Set([String(v), v.toFixed(2), v.toFixed(2).replace(".", ",")])];
+  for(const f of forme){
+    const i = t.indexOf(f);
+    // marginile trebuie să nu fie cifre, ca „20" să nu se marcheze în „2024"
+    if(i < 0) continue;
+    const inainte = i > 0 ? t[i-1] : " ", dupa = t[i+f.length] || " ";
+    if(/[0-9]/.test(inainte) || /[0-9.,]/.test(dupa)) continue;
+    return esc(t.slice(0, i)) + "<mark>" + esc(f) + "</mark>" + esc(t.slice(i + f.length));
+  }
+  return esc(t);
+}
+
+function randObs(r){
+  const u = unitTxt(r.unitate);
+  const val = r.valoare !== null && r.valoare !== undefined
+    ? `${num(r.valoare)}${u}` : esc(r.valoare_text || "—");
+  const linii = [];
+  if(r.frecventa) linii.push(`<b>${esc(r.frecventa)}</b>`);
+  if(r.conditie)  linii.push(esc(r.conditie));
+  if(r.detaliu)   linii.push(esc(r.detaliu));
+  const scen = (r.cod_scenariu || "").split("|").filter(Boolean);
+  return `<div class="obs ${r.ambiguu ? "amb" : ""}">
+    <div class="val">${val}</div>
+    <div class="det">
+      ${linii.length ? `<div>${linii.join(" · ")}</div>` : ""}
+      ${r.citat ? `<div class="cit">${citatEvidentiat(r)}</div>` : ""}
+      <div class="meta">
+        <span class="pill" title="cu ce variantă de colectare a fost extrasă">${esc(r.metoda_extractie || "?")}</span>
+        ${scen.map(x => `<span class="pill">${esc(x)}</span>`).join("")}
+        ${r.ambiguu ? `<span class="pill amb" title="${esc(MOTIVE[r.motiv_ambiguu] || "")}">${esc(r.motiv_ambiguu || "ambiguu")}</span>` : ""}
+        ${r.confidence < 0.7 ? `<span class="pill amb">încredere ${num(r.confidence)}</span>` : ""}
+        ${linkSursa(r)}
+      </div>
+    </div></div>`;
+}
+
+/* Trei nivele de dovadă, arătate diferit — fiindcă nu sunt același lucru și nu
+   trebuie să pară:
+
+     ↗ document   linkul duce la cifra însăși (PDF-ul exact sau pagina web)
+     ⌂ pagină     pagina de pe care banca publică documentul. Afirmația „se
+                  publică aici" e verificabilă, dar NU e documentul
+     (fără link)  rămâne numele fișierului și pagina din PDF
+
+   De ce nu toate au link direct: pachetul sursă reține calea locală a PDF-ului,
+   nu URL-ul de descărcare, iar PDF-urile nu sunt incluse. Din 40 de URL-uri de
+   PDF descoperite, 9 s-au potrivit exact. Un link greșit ar trimite la alt
+   document decât cifra, adică opusul unei dovezi. */
+function linkSursa(r){
+  const pg = r.pagina ? ` p.${r.pagina}` : "";
+  const scurta = s => { const t = String(s || "").replace(/^https?:\/\/(www\.)?/, "");
+                        return t.length > 44 ? t.slice(0, 43) + "…" : t; };
+  if(r.link){
+    /* La PDF se deschide vizualizatorul PROPRIU, nu fișierul brut.
+       Motivul e măsurat, nu preferință: parametrii de deschidere ai Adobe
+       (`#page=`, `search=`) sunt implementați de plugin-ul clasic Acrobat, care
+       nu mai există în Chrome. Extensia Adobe pentru Chrome încarcă PDF-ul în
+       pagina ei și pierde fragmentul, deci nu sare nici la pagină. Chrome cu
+       vizualizatorul propriu sare la pagină dar ignoră `search=`. Singurul mod
+       în care ruta la locul exact merge la toată lumea e să randăm noi
+       documentul. Originalul rămâne la un clic, în capul vizualizatorului.
+
+       La paginile web nu e nevoie: `#:~:text=` (Text Fragments) e suportat de
+       Chrome, Edge, Safari 16.1+ și Firefox 131+. */
+    if(r.tip_sursa === "document"){
+      const u = `/pdf.html?u=${encodeURIComponent(r.link)}`
+              + `&p=${r.pagina || 1}&q=${encodeURIComponent(r.citat || "")}`;
+      return `<a class="sursa" href="${esc(u)}" target="_blank" rel="noopener"
+                title="Deschide documentul la pagina ${r.pagina || 1}, cu citatul evidențiat. Randat de aplicație, deci merge indiferent ce cititor de PDF ai instalat."
+                >↗ ${esc(scurta(r.fisier || r.sursa))}${pg} ⤷</a>`;
+    }
+    return `<a class="sursa" href="${esc(r.link)}${esc(r.ancora || "")}" target="_blank" rel="noopener"
+              title="Deschide pagina la fraza exactă și o evidențiază — ${esc(r.link)}"
+              >↗ ${esc(scurta(r.sursa))}${r.ancora ? " ⤷" : ""}</a>`;
+  }
+  const fisier = `<span class="pill" title="Numele documentului din care vine cifra. URL-ul de descărcare nu e înregistrat în pachetul sursă, iar PDF-ul nu e inclus — fișierul și pagina rămân verificabile manual.">${esc(scurta(r.fisier || r.sursa))}${pg}</span>`;
+  if(r.link_pagina){
+    return fisier + ` <a class="sursa pagina" href="${esc(r.link_pagina)}" target="_blank" rel="noopener"
+      title="NU e documentul exact. E pagina de pe care banca publică lista de tarife — de aici se poate descărca versiunea curentă. Aleasă automat: ${esc(r.pagina_documente_motiv || "")}"
+      >⌂ pagina băncii</a>`;
+  }
+  return fisier;
+}
+
+/* `scenariu` = categoria (depozite / credite / conturi_carduri). Obligatoriu la
+   dobânzi: `nominala` e și dobândă de depozit și dobândă de credit, iar fără
+   filtru sertarul deschis din celula de depozit ar arăta și credite. */
+async function deschideSertar(banca, camp, unitate, scenariu){
+  const s = document.getElementById("sertar");
+  s.classList.add("deschis");
+  document.getElementById("sertar-t").textContent = `${banca} · ${etNume(camp)}`;
+  document.getElementById("sertar-s").textContent = "se încarcă…";
+  document.getElementById("sertar-c").innerHTML = "";
+  try{
+    const d = await ia(`/api/celula?banca=${encodeURIComponent(banca)}&camp=${encodeURIComponent(camp)}`
+      + `&unitate=${encodeURIComponent(unitate || "")}&scenariu=${encodeURIComponent(scenariu || "")}`);
+    const grupuri = new Map();
+    d.forEach(r => {
+      const k = r.serviciu || "(fără nume de serviciu în sursă)";
+      if(!grupuri.has(k)) grupuri.set(k, []);
+      grupuri.get(k).push(r);
+    });
+    const cuLink = d.filter(r => r.link).length;
+    const cuPagina = d.filter(r => !r.link && r.link_pagina).length;
+    const fara = d.length - cuLink - cuPagina;
+    const dovada = [
+      cuLink ? `<b>${cuLink}</b> cu link direct la sursă (↗)` : "",
+      cuPagina ? `<b>${cuPagina}</b> cu pagina de publicare a băncii (⌂) — nu documentul exact` : "",
+      fara ? `<b>${fara}</b> doar cu numele fișierului și pagina` : "",
+    ].filter(Boolean).join(", ");
+    document.getElementById("sertar-s").innerHTML =
+      (etDesc(camp) ? `<b>${esc(etNume(camp))}</b> — ${esc(etDesc(camp))}.<br>` : "")
+      + `${d.length} valori, ${grupuri.size} servicii distincte. Fiecare arată
+       <b>la ce serviciu se aplică</b>, cu ce frecvență și în ce condiții, plus citatul
+       exact din document.<br>Dovada: ${dovada}.`;
+    document.getElementById("sertar-c").innerHTML =
+      [...grupuri].map(([serv, randuri]) => {
+        const sec = randuri.find(r => r.sectiune);
+        return `<div class="grup-serv">
+          <div class="cap">
+            <b>${esc(serv)}</b>
+            <span class="mono" style="font-size:10.5px;color:var(--muted)">
+              ${randuri.length} ${randuri.length === 1 ? "valoare" : "valori"}${sec ? " · " + esc(sec.sectiune) : ""}</span>
+          </div>
+          ${randuri.map(randObs).join("")}
+        </div>`;
+      }).join("");
+  }catch(e){ document.getElementById("sertar-s").textContent = "Eroare: " + e.message; }
+}
+function inchideSertar(){ document.getElementById("sertar").classList.remove("deschis"); }
+document.getElementById("sertar").onclick = e => { if(e.target.id === "sertar") inchideSertar(); };
+
+/* ---------------- pagini ---------------- */
+const R = {};
+
+R.overview = async () => {
+  const st = await ia("/api/stare");
+  const acum = Date.now();
+  const varsta = t => {
+    if(!t) return '<span class="pill amb">niciodată</span>';
+    const z = Math.floor((acum - new Date(t)) / 86400000);
+    return z <= 0 ? '<span class="pill ok">azi</span>' : `acum ${z} ${z === 1 ? "zi" : "zile"}`;
+  };
+  return `
+  <section>
+    <h2>Starea datelor</h2>
+    <p class="note">Fiecare rând vine din <code class="mono">max(created_at)</code> al tabelului respectiv — nu e estimare.</p>
+    ${tabel(st, [
+      {cap:"Domeniu", k:"domeniu"},
+      {cap:"Rânduri", cls:"num", val:r => num(r.randuri, 0)},
+      {cap:"Ultima actualizare", html:true, val:r => varsta(r.ultima)},
+      {cap:"Proveniență", k:"provenienta", cls:"mono"},
+    ])}
+  </section>
+  <section>
+    <h2>Rulări <span class="pill mock">interfață, neconectată</span></h2>
+    <p class="note">Butoanele de mai jos sunt <b>singurul mockup din aplicație</b> — arată cum ar arăta controlul,
+      dar nu execută încă scripturile. Motivul e deliberat: discovery-ul prin LLM costă bani la fiecare rulare,
+      iar extracția cere browser. Când le conectăm, fiecare buton va rula exact un script, fără parametri din interfață.</p>
+    <div class="tiles" style="margin-top:12px">
+      ${[["Populare inițială","banci + produse, o singură dată","seed_banks_products.sql"],
+         ["Discovery surse","propune URL-uri noi, lunar","claudeCrawl.py"],
+         ["Extracție PDF + rate","Playwright, prin router","router.py --pas playwright"],
+         ["Extracție depozite","scraperul propriu, prin router","router.py --pas bs4"],
+         ["Extracție surse descoperite","BS4 peste URL-urile găsite de LLM","router.py --pas descoperite"],
+         ["Track mobil iOS","versiuni + review-uri","load_appstore.py"],
+         ["Indici BNR","ROBOR / ROBID","load_bnr.py"],
+         ["Locații (Google Places)","neimplementat","—"]].map(([t,d,s]) => `
+        <div class="tile">
+          <div style="font-weight:600;font-size:13px">${esc(t)}</div>
+          <div class="l">${esc(d)}</div>
+          <div class="mono" style="font-size:10.5px;color:var(--muted);margin:6px 0 9px">${esc(s)}</div>
+          <button disabled>Rulează</button>
+        </div>`).join("")}
+    </div>
+    <h4>Verificare automată</h4>
+    <p class="note">Neconfigurată. În plan (vezi figura 1 din artifact): verificare zilnică pentru curs valutar,
+      dobânzi și aplicații mobile; lunară pentru comisioane PDF, joburi și descoperirea de surse noi.
+      Un server Python simplu nu e scheduler — în producție ar fi Dagster sau Task Scheduler.</p>
+  </section>`;
+};
+
+R.produse = async (stare) => {
+  const grup = stare.grup || "cont_curent", seg = stare.segment || "pf";
+  const [d, m] = await Promise.all([
+    ia(`/api/matrice?grup=${grup}&segment=${seg}&unitate=lei`), meta(),
+  ]);
+  const clasamente = d.campuri.map(cp => clasament(
+    cp, d.celule.filter(c => c.camp === cp),
+    {meta: m, sens: d.sens, unitate: "lei", aratValoare: false},
+  )).filter(Boolean).join("");
+  const nemarcate = d.celule.reduce((s, c) => s + (c.nemarcate || 0), 0);
+
+  return `
+  <section>
+    <div class="filtre">
+      <label class="f">Categorie
+        <select onchange="mergi('produse',{grup:this.value,segment:'${seg}'})">
+          ${[["cont_curent","Cont curent"],["carduri","Carduri"],["transferuri","Transferuri și plăți"]]
+            .map(([v,t]) => `<option value="${v}" ${v === grup ? "selected" : ""}>${t}</option>`).join("")}
+        </select></label>
+      <label class="f">Segment
+        <select onchange="mergi('produse',{grup:'${grup}',segment:this.value})">
+          ${[["pf","Persoane fizice"],["pj","Persoane juridice"],["pfa","PFA"],["toate","Toate (nerecomandat)"]]
+            .map(([v,t]) => `<option value="${v}" ${v === seg ? "selected" : ""}>${t}</option>`).join("")}
+        </select></label>
+      <label class="f">Monedă<select disabled><option>lei</option></select></label>
+    </div>
+    <p class="note">
+      Pagina e un <b>index de prețuri</b>, nu o comparație cap la cap: arată care bănci au
+      prețuri pentru fiecare serviciu, cum îl numesc ele și câte prețuri există.
+      Un comision are prea multe variante (pachete, praguri de sumă, monede) ca o singură
+      cifră pe rând să însemne ceva — de aceea <b>prețul apare la clic</b>, lângă citatul din
+      document și linkul către locul exact din care a fost citit.
+      Pentru comparația directă între bănci, vezi <a href="#/versus">Versus Libra</a>.
+      ${nemarcate ? `<br><b>${num(nemarcate, 0)} valori</b> nu au segmentul (persoană fizică / firmă)
+        marcat în documentul sursă — la BRD și Exim, niciuna nu îl are. Sunt incluse și
+        etichetate <span class="pill amb">segment nemarcat</span>, nu ascunse: extracția a
+        reușit, doar documentul nu spune pentru cine e prețul.` : ""}
+      ${d.excluse_ambigue ? `<br>${d.excluse_ambigue} valori ambigue excluse.` : ""}
+      ${d.excluse_implauzibile ? ` ${d.excluse_implauzibile} valori peste ${num(d.prag_plauzibil, 0)} lei excluse — un comision de retail nu ajunge acolo; sunt limite de retragere sau praguri extrase greșit ca preț. Toate apar în „Coadă de verificare”.` : ""}
+    </p>
+  </section>
+  ${clasamente || '<section><p class="note">Fără date pentru selecția curentă.</p></section>'}
+  <section>
+    <h2>De ce segmentul contează</h2>
+    <p class="note">Prețul pentru persoană fizică și cel pentru firmă stau în același tabel, la aceeași etichetă
+      de serviciu. Comparate între ele dau o concluzie falsă — de aceea filtrul e pe <b>persoane fizice</b>
+      implicit, nu pe „toate”. Segmentele disponibile în date:
+      ${d.segmente.map(s => `<span class="pill">${esc(s.seg)}: ${s.n}</span>`).join(" ")}</p>
+  </section>`;
+};
+
+R.rate = async (stare) => {
+  const cat = stare.categorie || "depozite";
+  const [d, indici, m] = await Promise.all([
+    ia(`/api/rate?categorie=${cat}`), ia("/api/indici"), meta(),
+  ]);
+  const banci = [...new Set(d.celule.map(c => c.banca))];
+  const clasamente = d.campuri.map(cp => clasament(
+    cp, d.celule.filter(c => c.camp === cp),
+    {meta: m, sens: d.sens, unitate: "procent", scenariu: cat, aratValoare: true},
+  )).filter(Boolean).join("");
+
+  /* Indicii: tabel, nu grafic. Datele acoperă 14 zile (4–17 septembrie), iar
+     ROBOR abia se mișcă în interval — șase linii suprapuse pe o variație de
+     0,03 puncte nu arătau nimic, doar zgomot. Un tabel cu valoarea de azi, cea
+     de acum o săptămână și diferența spune exact ce s-a schimbat. */
+  const zile = [...new Set(indici.map(x => String(x.valabil_din).slice(0, 10)))].sort().reverse();
+  const ultima = zile[0], acum7 = zile.find(z => z <= _minusZile(ultima, 7)) || zile[zile.length - 1];
+  const val = (ind, sc, zi) => {
+    const r = indici.find(x => x.indice === ind && x.scadenta === sc
+                          && String(x.valabil_din).slice(0, 10) === zi);
+    return r ? Number(r.valoare) : null;
+  };
+  const scadente = [...new Set(indici.map(x => x.scadenta))]
+    .sort((a, b) => (parseInt(a) || 99) - (parseInt(b) || 99));
+  const randIndici = [];
+  for(const ind of [...new Set(indici.map(x => x.indice))]){
+    for(const sc of scadente){
+      const azi = val(ind, sc, ultima), inainte = val(ind, sc, acum7);
+      if(azi === null) continue;
+      randIndici.push({indice: ind.toUpperCase(), scadenta: sc, azi, inainte,
+                       delta: inainte === null ? null : azi - inainte});
+    }
+  }
+  return `
+  <section>
+    <div class="filtre">
+      <label class="f">Categorie
+        <select onchange="mergi('rate',{categorie:this.value})">
+          ${[["depozite","Depozite"],["credite","Credite"],["conturi_carduri","Conturi & carduri"]]
+            .map(([v,t]) => `<option value="${v}" ${v === cat ? "selected" : ""}>${t}</option>`).join("")}
+        </select></label>
+    </div>
+    <p class="note">${banci.length} bănci · un clasament per tip de dobândă, ordonat
+      ${d.sens === "mare_bun" ? "de la <b>cea mai mare</b> (la depozite, mai mare e mai bine)"
+                              : "de la <b>cea mai mică</b> (la credite, mai mic e mai bine)"}.
+      Cifra e dobânda <b>tipică</b> (mediana), nu vârful — ca o singură campanie să nu
+      reprezinte toată oferta băncii; hover pe <span class="pill">+N variante</span> pentru extremă.
+      Categoria vine din <code class="mono">cod_scenariu</code>, deci dobânda de depozit nu se
+      amestecă cu cea de credit.
+      ${d.excluse_implauzibile ? `<br>${d.excluse_implauzibile} valori peste ${d.prag}% excluse —
+        la ${esc(d.titlu.toLowerCase())} nu există rate peste pragul ăsta în piața reală; sunt
+        procente de alt fel (reduceri, praguri, taxe) etichetate greșit ca dobândă.
+        Toate apar în „Coadă de verificare”.` : ""}
+      ${(d.provenienta || []).length > 1 ? `<br>Colectat de:
+        ${d.provenienta.map(p => `<span class="pill">${esc(p.metoda)}: ${p.valori} valori / ${p.banci} bănci</span>`).join(" ")}
+        — cele trei variante acoperă bănci diferite, de-aia rulează toate.` : ""}
+    </p>
+  </section>
+  ${clasamente || '<section><p class="note">Fără date pentru categoria curentă.</p></section>'}
+  <section>
+    <h2>Indici de referință BNR</h2>
+    <p class="note">${indici.length} valori reale de la BNR. Coloana <b>azi</b> e ziua
+      ${esc(ultima)}; comparația e cu ${esc(acum7)}. ROBOR e rata la care băncile se
+      împrumută între ele — urcă dobânzile la creditele cu rată variabilă; ROBID e rata la
+      care se împrumută unele de la altele, deci un plafon informal pentru dobânzile la depozite.
+      <br><b>IRCC lipsește</b>: în rularea din care provin datele, pagina BNR de IRCC a picat
+      cu eroare de conexiune — nu s-a inventat o valoare. E cel mai important indice pentru
+      creditele ipotecare noi.</p>
+    ${tabel(randIndici, [
+      {cap:"Indice", k:"indice", cls:"mono"},
+      {cap:"Scadență", k:"scadenta", cls:"mono"},
+      {cap:`Azi (${ultima})`, cls:"num", val:r => num(r.azi) + "%"},
+      {cap:`Acum ~7 zile (${acum7})`, cls:"num", val:r => r.inainte === null ? "—" : num(r.inainte) + "%"},
+      {cap:"Variație", cls:"num", html:true, val:r => r.delta === null ? "—"
+        : (Math.abs(r.delta) < 0.005
+            ? '<span style="color:var(--muted)">neschimbat</span>'
+            : `<span class="${r.delta > 0 ? "sus" : "jos"}">${r.delta > 0 ? "↑" : "↓"} ${num(Math.abs(r.delta))}</span>`)},
+    ])}
+  </section>`;
+};
+
+/* Scade zile dintr-o dată ISO, fără să depindă de fusul orar local. */
+function _minusZile(iso, n){
+  const d = new Date(iso + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate() - n);
+  return d.toISOString().slice(0, 10);
+}
+
+R.mobil = async () => {
+  const [d, m] = await Promise.all([ia("/api/mobil"), meta()]);
+  // Screenshot-urile se grupează pe bancă, un rând per bancă: amestecate, nu se
+  // vedea unde se termină o aplicație și începe alta.
+  const capturiPe = {};
+  d.screenshoturi.forEach(s => (capturiPe[s.banca] = capturiPe[s.banca] || []).push(s.url));
+  return `
+  <section>
+    <h2>Versiuni și rating din store</h2>
+    ${tabel(d.versiuni, [
+      {cap:"Bancă", html:true, val:r => etichetaBanca(r.banca, m)},
+      {cap:"Versiune", k:"versiune", cls:"mono"},
+      {cap:"Rating", cls:"num", val:r => num(r.rating_agregat)},
+      {cap:"Volum", cls:"num", val:r => num(r.volum_rating, 0)},
+      {cap:"Notă de lansare", val:r => (r.note_lansare || "—").slice(0, 150)},
+    ])}
+    <p class="note">Doar 3 bănci: id-urile de App Store se adaugă manual, confirmate din URL-ul paginii
+      din store. Restul competitorilor se pot adăuga la fel — nu e o limită tehnică, e muncă neterminată.</p>
+  </section>
+  <section>
+    <h2>Două note diferite, ușor de confundat</h2>
+    ${DOUA_NOTE}
+    ${tabel(d.review_sumar, [
+      {cap:"Bancă", html:true, val:r => etichetaBanca(r.banca, m)},
+      {cap:"Magazin", k:"storefront", cls:"mono"},
+      {cap:"Nota din App Store", cls:"num", html:true,
+       val:r => `<b>${num(r.rating_agregat_store)}</b> ★`},
+      {cap:"Nota recenziilor scrise", cls:"num", html:true,
+       val:r => `${num(r.rating_mediu_text)} ★ <span class="mono" style="font-size:10px;color:var(--muted)">din ${num(r.review_uri, 0)}</span>`},
+      {cap:"Cât mai mică", cls:"num", html:true, val:r => (r.rating_agregat_store && r.rating_mediu_text)
+        ? `<b style="color:var(--warn)">−${num(r.rating_agregat_store - r.rating_mediu_text)}</b>` : "—"},
+    ])}
+  </section>
+  <section>
+    <h2>Screenshot-uri oficiale de listing</h2>
+    <p class="note">Capturile pe care banca le publică singură în store — ce alege ea să arate primul
+      spune ce funcție consideră diferențiatoare. Un rând per bancă.</p>
+    ${Object.entries(capturiPe).map(([banca, urls]) => `
+      <div class="capt-banca">
+        <div class="capt-cap">${etichetaBanca(banca, m)}
+          <span class="mono" style="font-size:10.5px;color:var(--muted)">${urls.length} capturi</span>
+        </div>
+        <div class="capt-rand">
+          ${urls.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener" title="deschide mărit">
+            <img loading="lazy" src="${esc(u)}" alt="${esc(banca)} captura ${i + 1}">
+          </a>`).join("")}
+        </div>
+      </div>`).join("")}
+  </section>`;
+};
+
+R.sentiment = async (stare) => {
+  const bSel = stare.banca || "", nSel = stare.nota || "", sfSel = stare.storefront || "";
+  const [d, m] = await Promise.all([
+    ia(`/api/sentiment?banca=${encodeURIComponent(bSel)}&nota=${encodeURIComponent(nSel)}`
+       + `&storefront=${encodeURIComponent(sfSel)}`),
+    meta(),
+  ]);
+  const perBanca = {};
+  d.distributie.forEach(r => { (perBanca[r.banca] = perBanca[r.banca] || {})[r.rating] = r.n; });
+  const banciCuReview = d.sumar.map(s => s.banca);
+  const f = o => `mergi('sentiment',{banca:'${bSel}',nota:'${nSel}',storefront:'${sfSel}',${o}})`;
+
+  // Diferența text vs. agregat, măsurată: la ING media textelor e 2,22 iar
+  // agregatul din store 4,85. Feed-ul RSS întoarce disproporționat recenzii
+  // negative, deci media textelor NU e media reală a aplicației. Fără
+  // avertismentul asta, cifra induce în eroare.
+  const maxDif = Math.max(...d.sumar.map(s =>
+    (s.medie_store && s.medie_text) ? s.medie_store - s.medie_text : 0), 0);
+
+  return `
+  <section>
+    ${DOUA_NOTE}
+    <h2>Sumar pe bancă</h2>
+    ${tabel(d.sumar, [
+      {cap:"Bancă", html:true, val:r => etichetaBanca(r.banca, m)},
+      {cap:"Nota din App Store", cls:"num", html:true,
+       val:r => `<b>${num(r.medie_store)}</b> ★${r.volum_store ? `<span class="mono" style="font-size:10px;color:var(--muted)"> din ${num(r.volum_store,0)} voturi</span>` : ""}`},
+      {cap:"Nota recenziilor scrise", cls:"num", html:true,
+       val:r => `${num(r.medie_text)} ★ <span class="mono" style="font-size:10px;color:var(--muted)">din ${num(r.review_uri, 0)} citite</span>`},
+      {cap:"Cât mai mică", cls:"num", html:true, val:r => (r.medie_store && r.medie_text)
+        ? `<b style="color:var(--warn)">−${num(r.medie_store - r.medie_text)}</b>` : "—"},
+      {cap:"Recenzii de 1–2★", cls:"num", val:r => num(r.negative, 0)},
+    ])}
+    <p class="note">Diferența cea mai mare din tabel e de <b>${num(maxDif)} stele</b> — de aceea
+      nu se poate spune „aplicația are 2,2 stele" pe baza textelor.
+      Toate recenziile sunt <b>reale</b>, din feed-ul RSS oficial Apple; autorii sunt
+      pseudonimizați cu hash cu sare la ingest, fiindcă Apple întoarce numele real.</p>
+  </section>
+  <section>
+    <h2>Distribuția notelor</h2>
+    ${Object.entries(perBanca).map(([banca, dist]) => `
+      <h4 style="display:flex;align-items:center;gap:8px">${etichetaBanca(banca, m)}</h4>
+      ${grafBare([5,4,3,2,1].map(n => ({
+        eticheta: "★".repeat(n), n: dist[n] || 0,
+        culoare: n >= 4 ? "var(--ok)" : n === 3 ? "var(--muted)" : "var(--warn)",
+      })), {wEtic: 52})}`).join("")}
+  </section>
+  <section>
+    <h2>Review-uri</h2>
+    <div class="filtre">
+      <label class="f">Bancă
+        <select onchange="${f("banca:this.value")}">
+          <option value="">toate băncile</option>
+          ${banciCuReview.map(b =>
+            `<option value="${esc(b)}" ${b === bSel ? "selected" : ""}>${esc(m.nume[b] || b)}</option>`).join("")}
+        </select></label>
+      <label class="f">Notă
+        <select onchange="${f("nota:this.value")}">
+          <option value="">toate notele</option>
+          ${[5,4,3,2,1].map(n =>
+            `<option value="${n}" ${String(n) === nSel ? "selected" : ""}>${"★".repeat(n)}</option>`).join("")}
+        </select></label>
+      <label class="f">Storefront
+        <select onchange="${f("storefront:this.value")}">
+          <option value="">toate</option>
+          ${d.storefronts.map(s =>
+            `<option value="${esc(s.storefront)}" ${s.storefront === sfSel ? "selected" : ""}>${esc(s.storefront)} (${s.n})</option>`).join("")}
+        </select></label>
+      ${(bSel || nSel || sfSel) ? `<button onclick="mergi('sentiment',{})">Șterge filtrele</button>` : ""}
+    </div>
+    <p class="note">${num(d.total_filtrat, 0)} review-uri în filtrul curent; se afișează primele
+      ${Math.min(d.recente.length, d.total_filtrat)}.</p>
+    ${d.recente.length ? d.recente.map(r => `
+      <div class="rec">
+        <div class="rec-cap">
+          <span class="rec-stele ${r.rating >= 4 ? "bun" : r.rating <= 2 ? "rau" : ""}">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</span>
+          ${etichetaBanca(r.banca, m)}
+          <span class="mono" style="font-size:10.5px;color:var(--muted);margin-left:auto">
+            ${esc(String(r.postat_la || "").slice(0, 10))}</span>
+        </div>
+        <div class="rec-txt">${esc(r.text || "(fără text)")}</div>
+        <div class="rec-meta">
+          <span class="pill">${esc(r.storefront)}</span>
+          ${r.versiune ? `<span class="pill">v${esc(r.versiune)}</span>` : ""}
+          <span class="pill" title="autorul e pseudonimizat cu hash cu sare la ingest">autor ${esc(r.autor)}</span>
+        </div>
+      </div>`).join("") : '<p class="note">Niciun review pentru filtrul curent.</p>'}
+  </section>`;
+};
+
+R.retea = async () => {
+  const d = await ia("/api/locatii");
+  return `
+  <section>
+    <h2>Hartă interactivă</h2>
+    <p class="note">${d.total} locații, ${d.banci.length} bănci. Datele sunt <span class="pill mock">mock</span>
+      — generate pentru testarea fluxului, cu <code class="mono">sursa='mock'</code>, deci se șterg selectiv
+      când vine Google Places. Harta e pe pagină separată, fiindcă MapLibre își gestionează propriul ciclu de viață.</p>
+    <p><a href="/harta.html"><button class="primar">Deschide harta →</button></a></p>
+    ${tabel(d.banci, [
+      {cap:"Bancă", k:"nume"}, {cap:"Sucursale", cls:"num", val:r => num(r.sucursale, 0)},
+      {cap:"ATM-uri", cls:"num", val:r => num(r.atm, 0)},
+      {cap:"Total", cls:"num", val:r => num(r.total, 0)},
+    ])}
+  </section>
+  <section>
+    <h2>Ce urmează, pe surse reale</h2>
+    <p class="note">Ordinea de prioritate stabilită în artifact: <b>1.</b> Google Places API (o integrare,
+      prag gratuit lunar, dar ATM-uri incomplete) · <b>2.</b> locatorul propriu al fiecărei bănci
+      (cel mai complet, dar efort per bancă — testat pe BCR, nici API intern, nici sitemap n-au dat
+      lista din prima) · <b>3.</b> ONRC, doar ca verificare încrucișată, fiindcă nu acoperă ATM-urile.</p>
+  </section>`;
+};
+
+R.campanii = async () => `
+  <section>
+    <div class="gol-stare">
+      <b>Nicio dată colectată</b>
+      Niciuna din cele trei variante de colectare nu acoperă încă secțiunea 2.4.
+    </div>
+    <h4>Ce ar fi nevoie</h4>
+    <p class="note">Conform secțiunii 1 din PDF, reclamele se iau doar prin <b>API-uri oficiale</b>:
+      Meta Ad Library (cere verificare de identitate), TikTok Commercial Content Library (UE),
+      YouTube Data API pentru canalele de brand. Google Ads Transparency Center nu are API public —
+      acolo PDF-ul recomandă explicit furnizor licențiat sau colectare manuală eșantionată,
+      nu scraper propriu. Landing pages de campanie și newsroom-ul se pot lua cu fluxul existent,
+      fiind pagini publice — dar nu s-a construit încă.</p>
+  </section>`;
+
+R.context = async (stare) => {
+  const iSel = stare.indice || "", sSel = stare.scadenta || "", zSel = stare.zi || "";
+  const indici = await ia("/api/indici");
+  const zile = [...new Set(indici.map(x => String(x.valabil_din).slice(0, 10)))].sort().reverse();
+  const toateInd = [...new Set(indici.map(x => x.indice))].sort();
+  const toateSc = [...new Set(indici.map(x => x.scadenta))]
+    .sort((a, b) => (parseInt(a) || 99) - (parseInt(b) || 99));
+  // Implicit: ultima zi. 140 de valori pe 14 zile, fără filtru, arătau
+  // aceleași scadențe de zece ori și nu se putea citi nimic.
+  const zi = zSel || zile[0] || "";
+  const randuri = indici.filter(x =>
+    (!iSel || x.indice === iSel) && (!sSel || x.scadenta === sSel)
+    && (zi === "toate" || String(x.valabil_din).slice(0, 10) === zi));
+  const f = o => `mergi('context',{indice:'${iSel}',scadenta:'${sSel}',zi:'${zi}',${o}})`;
+
+  return `
+  <section>
+    <h2>Ce avem: indici de referință BNR</h2>
+    <div class="filtre">
+      <label class="f">Indice
+        <select onchange="${f("indice:this.value")}">
+          <option value="">toți indicii</option>
+          ${toateInd.map(x => `<option value="${esc(x)}" ${x === iSel ? "selected" : ""}>${esc(x.toUpperCase())}</option>`).join("")}
+        </select></label>
+      <label class="f">Scadență
+        <select onchange="${f("scadenta:this.value")}">
+          <option value="">toate scadențele</option>
+          ${toateSc.map(x => `<option value="${esc(x)}" ${x === sSel ? "selected" : ""}>${esc(x)}</option>`).join("")}
+        </select></label>
+      <label class="f">Zi
+        <select onchange="${f("zi:this.value")}">
+          ${zile.map(x => `<option value="${esc(x)}" ${x === zi ? "selected" : ""}>${esc(x)}</option>`).join("")}
+          <option value="toate" ${zi === "toate" ? "selected" : ""}>toate zilele (${indici.length})</option>
+        </select></label>
+      ${(iSel || sSel || zi !== zile[0]) ? `<button onclick="mergi('context',{})">Șterge filtrele</button>` : ""}
+    </div>
+    <p class="note">${num(randuri.length, 0)} valori din ${num(indici.length, 0)} colectate.
+      <b>ROBOR</b> e rata la care băncile se împrumută între ele — mișcă dobânzile la creditele
+      cu rată variabilă. <b>ROBID</b> e rata la care atrag depozite de la alte bănci, deci un
+      plafon informal pentru dobânzile oferite clienților.
+      Scadența e perioada împrumutului (3M = trei luni).</p>
+    ${tabel(randuri.slice(0, 120), [
+      {cap:"Indice", cls:"mono", val:r => String(r.indice).toUpperCase()},
+      {cap:"Scadență", k:"scadenta", cls:"mono"},
+      {cap:"Valoare", cls:"num", val:r => num(r.valoare) + "%"},
+      {cap:"Valabil din", cls:"mono", val:r => String(r.valabil_din).slice(0, 10)},
+    ])}
+  </section>
+  <section>
+    <h2>Ce lipsește din secțiunea 2.6</h2>
+    <p class="note">
+      <b>IRCC</b> — pagina BNR a picat în rularea sursă (eroare de conexiune), iar fișierul păstrează
+      eroarea în loc de date. E cel mai important indice pentru ipotecare.<br>
+      <b>Statistici BNR de sector</b> și <b>cote de piață ARB</b> — necolectate.<br>
+      <b>Rapoarte financiare trimestriale</b> ale băncilor listate — necolectate.<br>
+      <b>ANPC / CSALB</b>, statistici agregate de reclamații — necolectate.
+    </p>
+  </section>`;
+};
+
+/* ---------------- Versus Libra ----------------
+   Structura e cea de la comparatoarele de retail: carduri pe băncile comparate
+   sus (fixe la derulare), apoi caracteristicile grupate pe secțiuni, cu
+   eticheta explicată în stânga și o coloană per bancă. */
+R.versus = async (stare) => {
+  const referinta = "libra";
+  const grupuri = [
+    {api:"matrice", cheie:"cont_curent", unitate:"lei"},
+    {api:"matrice", cheie:"carduri", unitate:"lei"},
+    {api:"matrice", cheie:"transferuri", unitate:"lei"},
+    {api:"rate", cheie:"depozite", unitate:"procent"},
+    {api:"rate", cheie:"credite", unitate:"procent"},
+  ];
+  const [date, M, extra] = await Promise.all([
+    Promise.all(grupuri.map(g => g.api === "matrice"
+      ? ia(`/api/matrice?grup=${g.cheie}&segment=pf&unitate=lei`)
+      : ia(`/api/rate?categorie=${g.cheie}`))),
+    meta(), ia("/api/versus_extra"),
+  ]);
+
+  // băncile disponibile: cele care apar în cel puțin un grup
+  const toateBanci = [...new Set(date.flatMap(d => d.celule.map(c => c.banca)))].sort();
+  const implicit = ["bcr", "brd", "raiffeisen"].filter(b => toateBanci.includes(b));
+  const alese = (stare.banci ? stare.banci.split(",") : implicit).filter(b => toateBanci.includes(b));
+  const coloane = [referinta, ...alese.filter(b => b !== referinta)];
+  const NC = coloane.length;
+  // o singură definiție de coloane, moștenită de bară și de fiecare rând
+  const grid = `--vsc:minmax(152px,1.3fr) repeat(${NC},minmax(122px,1fr))`;
+
+  const pe = (lista, cheie) => Object.fromEntries((lista || []).map(x => [x.banca, x]));
+  const appPe = pe(extra.mobil), locPe = pe(extra.retea);
+  const sentPe = pe(extra.sentiment), acopPe = pe(extra.acoperire);
+
+  /* Cardul de sus: identitatea băncii + cele trei cifre care există cu
+     adevărat pentru ea. Unde nu avem date, scrie că nu avem — nu pune 0. */
+  const card = b => {
+    const a = appPe[b], l = locPe[b], ac = acopPe[b];
+    const cifre = [
+      a && a.rating
+        ? [`${num(a.rating, 2)} ★`, `App Store · ${num(a.volum, 0)} note`]
+        : ["—", "fără date App Store"],
+      l ? [num((l.sucursale || 0) + (l.atm || 0), 0), "locații (mock, București)"]
+        : ["—", "fără locații"],
+      [num(ac ? ac.valori : 0, 0), "valori colectate"],
+    ];
+    return `<div class="vs-card ${b === referinta ? "ref" : ""}">
+      ${b === referinta ? '<span class="vs-tag">referință</span>' : ""}
+      <div class="vs-logo">${M.logo[b]
+        ? `<img src="${esc(M.logo[b])}" alt="${esc(M.nume[b] || b)}">`
+        : `<span class="vs-init">${esc((M.nume[b] || b).slice(0, 2).toUpperCase())}</span>`}</div>
+      <div class="vs-nume">${esc(M.nume[b] || b)}</div>
+      <div class="vs-slug mono">${esc(b)}</div>
+      <div class="vs-cifre">${cifre.map(([v, e]) =>
+        `<div><b>${v}</b><span>${esc(e)}</span></div>`).join("")}</div>
+    </div>`;
+  };
+
+  /* Rândurile care NU vin din prețuri: mobil (2.3), rețea (2.5), sentiment
+     (2.7). Versus acoperea doar 2.1 și 2.2; restul existau în aplicație dar
+     nu se puteau compara cap la cap. `fmt` primește rândul băncii și întoarce
+     text, ca fiecare linie să-și spună singură unitatea. */
+  function sectiuneExtra(titlu, sens, randuri){
+    const corp = randuri.map(([et, desc, surse, fmt], k) => {
+      const brute = coloane.map(b => {
+        const v = fmt(surse[b]);
+        return {b, v, n: (v && typeof v.n === "number") ? v.n : null};
+      });
+      const numere = brute.map(x => x.n).filter(x => x !== null && !isNaN(x));
+      const best = numere.length > 1
+        ? (sens === "mare_bun" ? Math.max(...numere) : Math.min(...numere)) : null;
+      const cate = brute.filter(x => x.v).length;
+      return `<div class="vs-rand ${k % 2 ? "alt" : ""}">
+        <div class="vs-lab"><b>${esc(et)}</b>
+          ${desc ? `<span>${esc(desc)}</span>` : ""}
+          ${cate < NC ? `<em>date doar la ${cate} din ${NC}</em>` : ""}</div>
+        ${brute.map(x => {
+          if(!x.v) return `<div class="vs-cel gol" title="nu avem această dată pentru banca respectivă">—</div>`;
+          const bun = best !== null && x.n === best;
+          return `<div class="vs-cel ${bun ? "best" : ""}">
+            <span class="v-num">${x.v.t}</span>
+            ${x.v.sub ? `<span class="v-ctx">${esc(x.v.sub)}</span>` : ""}
+            ${bun ? '<span class="vs-bun">cel mai bun</span>' : ""}
+          </div>`;
+        }).join("")}
+      </div>`;
+    }).join("");
+    return `<div class="vs-sec">
+      <div class="vs-sec-cap">
+        <div class="t">${esc(titlu)}<span>${sens === "mare_bun" ? "mai mare = mai bun" : "mai mic = mai bun"}</span></div>
+        ${coloane.map(b => `<div class="c ${b === referinta ? "ref" : ""}">${esc(b)}</div>`).join("")}
+      </div>
+      ${corp}
+    </div>`;
+  }
+
+  const secte = date.map((d, i) => {
+    const g = grupuri[i];
+    const harta = {};
+    d.celule.forEach(c => { (harta[c.camp] = harta[c.camp] || {})[c.banca] = c; });
+    const campuri = d.campuri.filter(cp => coloane.some(b => (harta[cp] || {})[b]));
+    if(!campuri.length) return "";
+    const randuri = campuri.map((cp, k) => {
+      const pe = harta[cp] || {};
+      const vals = coloane.map(x => pe[x]).filter(Boolean).map(x => x.valoare);
+      const celMaiBun = vals.length
+        ? (d.sens === "mare_bun" ? Math.max(...vals) : Math.min(...vals)) : null;
+      const cate = coloane.filter(b => pe[b]).length;
+      return `<div class="vs-rand ${k % 2 ? "alt" : ""}">
+        <div class="vs-lab">
+          <b>${esc(etNume(cp))}</b>
+          ${etDesc(cp) ? `<span>${esc(etDesc(cp))}</span>` : ""}
+          ${cate < NC ? `<em>date doar la ${cate} din ${NC}</em>` : ""}
+        </div>
+        ${coloane.map(b => {
+          const c = pe[b];
+          if(!c) return `<div class="vs-cel gol" title="banca nu are această valoare colectată">—</div>`;
+          const bun = vals.length > 1 && c.valoare === celMaiBun;
+          return `<div class="vs-cel ${bun ? "best" : ""}">
+            <span class="celula" onclick="deschideSertar('${esc(b)}','${esc(cp)}','${g.unitate}','${g.api === "rate" ? esc(g.cheie) : ""}')"
+              >${valoareCelula(c, d.sens, g.unitate)}</span>
+            ${bun ? '<span class="vs-bun">cel mai bun</span>' : ""}
+          </div>`;
+        }).join("")}
+      </div>`;
+    }).join("");
+    /* Capul secțiunii repetă codurile băncilor. Un header „lipit" sus n-ar
+       funcționa aici (containerul derulează pe orizontală), iar după 25 de
+       rânduri nu mai știi ce coloană e a cui. Repetiția rezolvă asta fără
+       trucuri de poziționare. */
+    return `<div class="vs-sec">
+      <div class="vs-sec-cap">
+        <div class="t">${esc(d.titlu)}
+          <span>${d.sens === "mare_bun" ? "mai mare = mai bun" : "mai mic = mai bun"}</span></div>
+        ${coloane.map(b => `<div class="c ${b === referinta ? "ref" : ""}">${esc(b)}</div>`).join("")}
+      </div>
+      ${randuri}
+    </div>`;
+  }).join("");
+
+  const numar = (v, sufix, sub) => (v === null || v === undefined)
+    ? null : {t: num(v) + (sufix || ""), n: Number(v), sub};
+
+  const sectiuni = secte
+    + sectiuneExtra("Aplicație mobilă (2.3)", "mare_bun", [
+        ["Rating în App Store", "nota reală a aplicației, din store", appPe,
+         r => r && r.rating ? numar(r.rating, " ★", `${num(r.volum, 0)} note`) : null],
+        ["Volum de note", "câți oameni au votat — indică baza de utilizatori", appPe,
+         r => r && r.volum ? numar(r.volum, "", "note în store") : null],
+        ["Versiune publicată", "ce versiune e live acum", appPe,
+         r => r && r.versiune ? {t: esc(r.versiune), n: null} : null],
+        ["Capturi în listing", "câte imagini publică banca în store", appPe,
+         r => r && r.capturi ? numar(r.capturi, "", "capturi") : null],
+      ])
+    + sectiuneExtra("Rețea (2.5) — date mock", "mare_bun", [
+        ["Sucursale", "unități fizice în București (mock, pentru hartă)", locPe,
+         r => r && r.sucursale ? numar(r.sucursale, "", "în București") : null],
+        ["ATM-uri proprii", "bancomate proprii (mock, pentru hartă)", locPe,
+         r => r && r.atm ? numar(r.atm, "", "în București") : null],
+        ["Rating sucursale", "media recenziilor de locație (mock)", locPe,
+         r => r && r.rating_sucursale ? numar(r.rating_sucursale, " ★") : null],
+      ])
+    + sectiuneExtra("Sentiment (2.7)", "mare_bun", [
+        ["Media textelor de review", "nota celor care s-au deranjat să scrie — mai critică decât agregatul", sentPe,
+         r => r && r.medie_text ? numar(r.medie_text, " ★", `${num(r.review_uri, 0)} review-uri`) : null],
+        ["Review-uri negative", "cât la sută sunt de 1–2 stele (mai puțin = mai bine)", sentPe,
+         r => (r && r.pct_negative !== null && r.pct_negative !== undefined)
+           ? {t: num(r.pct_negative, 0) + "%", n: -Number(r.pct_negative), sub: "din textele citite"} : null],
+      ])
+    + sectiuneExtra("Cât știm despre bancă", "mare_bun", [
+        ["Valori colectate", "câte prețuri și dobânzi avem în bază", acopPe,
+         r => r && r.valori ? numar(r.valori, "", "observații") : null],
+        ["Servicii acoperite", "câte concepte distincte cunoaștem la banca asta", acopPe,
+         r => r && r.servicii_cunoscute ? numar(r.servicii_cunoscute, "", "servicii") : null],
+      ]);
+
+  return `
+  <section>
+    <div class="filtre">
+      <label class="f">Compară Libra cu
+        <select multiple size="6" id="sel-banci" style="min-width:230px">
+          ${toateBanci.filter(b => b !== referinta).map(b =>
+            `<option value="${esc(b)}" ${alese.includes(b) ? "selected" : ""}>${esc(M.nume[b] || b)}</option>`).join("")}
+        </select></label>
+      <button class="primar" onclick="aplicaVersus()">Aplică</button>
+    </div>
+    <p class="note">Libra e prima coloană, fixă. Acoperă toate secțiunile pentru care avem date:
+      prețuri (2.1), dobânzi (2.2), aplicație mobilă (2.3), rețea (2.5) și sentiment (2.7).
+      La prețuri și dobânzi, cifra e cât costă <b>de obicei</b> la banca respectivă (mediana),
+      nu oferta promoțională. Clic pe o valoare de preț deschide toate valorile din spate,
+      cu citat și link către locul exact din document.</p>
+    <p class="note"><b>De ce unele celule sunt goale.</b> Trei motive diferite, toate reale:
+      banca nu are documentul respectiv colectat; serviciul nu există în oferta ei
+      (de exemplu „operațiuni documentare" e pentru firme); sau — la aplicație mobilă
+      și sentiment — avem date doar pentru <b>3 bănci</b>, fiindcă id-urile de App Store
+      se adaugă manual, câte unul.
+      Un gol nu înseamnă „zero" și nu se completează cu o estimare.
+      Rețeaua (2.5) e <b>mock</b>, pentru hartă; restul e real.</p>
+  </section>
+  ${sectiuni ? `<section class="vs" style="${grid}">
+      <div class="vs-bara">
+        <div class="vs-cap0">Caracteristică</div>
+        ${coloane.map(card).join("")}
+      </div>
+      ${sectiuni}
+    </section>` : '<section><p class="note">Fără date pentru selecția curentă.</p></section>'}`;
+};
+
+/* ---------------- Istoric: ce s-a schimbat ----------------
+   Pagina lipsea complet, deși datele existau în sursă și se aruncau la
+   încărcare. Asta e „change_event" din figura 1 a artefactului: pentru
+   inteligență competitivă, schimbarea contează mai mult decât valoarea de azi. */
+R.istoric = async (stare) => {
+  const bSel = stare.banca || "", dSel = stare.directie || "";
+  const [d, m] = await Promise.all([
+    ia(`/api/istoric?banca=${encodeURIComponent(bSel)}&directie=${encodeURIComponent(dSel)}`),
+    meta(),
+  ]);
+  const datate = (d.acoperire || []).filter(x => x.stare !== "fără datare")
+    .reduce((s, x) => s + x.n, 0);
+  const total = (d.acoperire || []).reduce((s, x) => s + x.n, 0);
+
+  return `
+  <section>
+    <div class="filtre">
+      <label class="f">Bancă
+        <select onchange="mergi('istoric',{banca:this.value,directie:'${dSel}'})">
+          <option value="">toate băncile</option>
+          ${d.pe_banca.map(x => `<option value="${esc(x.banca)}" ${x.banca === bSel ? "selected" : ""}
+            >${esc(m.nume[x.banca] || x.banca)} (${x.n})</option>`).join("")}
+        </select></label>
+      <label class="f">Direcție
+        <select onchange="mergi('istoric',{banca:'${bSel}',directie:this.value})">
+          ${[["","toate"],["scumpire","doar scumpiri"],["ieftinire","doar ieftiniri"]].map(([v,t]) =>
+            `<option value="${v}" ${v === dSel ? "selected" : ""}>${t}</option>`).join("")}
+        </select></label>
+    </div>
+    <div class="callout" style="margin-bottom:14px">
+      <b>De unde vin.</b> Fiecare document de tarife descărcat are în text o
+      <i>dată de vigoare</i> („se aplică de la 14.06.2024"), citită la extracție și
+      păstrată pe fiecare valoare. Pachetul sursă conține mai multe versiuni ale
+      aceluiași document — ${d.interval.date_distincte || 0} date de vigoare distincte.
+      Un rând de mai jos apare când <b>același serviciu, la aceeași bancă, are valoare
+      diferită la două date diferite</b>.<br>
+      Nu e o comparație făcută în afara bazei: se recalculează din observații
+      (vederea <code class="mono">schimbari_pret</code>), deci dacă dispar observațiile
+      dispare și istoricul. Nimeni nu a introdus nimic manual.
+    </div>
+    <p class="note">
+      <b>${d.randuri.length} schimbări de preț</b> detectate: același serviciu, la aceeași bancă,
+      cu valoare diferită la date de vigoare diferite.
+      Se pot calcula doar pe observațiile <b>datate</b> — ${num(datate, 0)} din ${num(total, 0)}
+      (${Math.round(100 * datate / Math.max(total, 1))}%). Restul vin din pagini web, care nu
+      declară o dată de vigoare; a pretinde una ar fi invenție.
+      ${d.interval.din ? `Interval acoperit: <b>${esc(String(d.interval.din))}</b> –
+        <b>${esc(String(d.interval.pana))}</b>, ${d.interval.date_distincte} date distincte.` : ""}
+    </p>
+    ${d.pe_banca.length ? `<div class="tiles" style="margin-top:12px">
+      ${d.pe_banca.map(x => `<div class="tile">
+        <div style="font-weight:600;font-size:13px">${esc(m.nume[x.banca] || x.banca)}</div>
+        <div class="n">${x.n}</div>
+        <div class="l"><span class="sus">↑${x.scumpiri}</span> · <span class="jos">↓${x.ieftiniri}</span></div>
+      </div>`).join("")}
+    </div>` : ""}
+  </section>
+  ${d.randuri.length ? `<section>
+    <h2>Schimbările, cea mai recentă prima</h2>
+    <div class="cl">
+      ${d.randuri.map(r => `<div class="sch">
+        <span class="d">${esc(String(r.data_ant).slice(0,10))}<br>→ ${esc(String(r.data_noua).slice(0,10))}</span>
+        ${etichetaBanca(r.banca, m)}
+        <span class="cl-ctx"><b>${esc(etNume(r.camp))}</b><br>${esc((r.serviciu || "").slice(0, 70))}</span>
+        <span class="tr">
+          <s>${num(r.valoare_ant)}${unitTxt(r.unitate)}</s>
+          → <b>${num(r.valoare_noua)}${unitTxt(r.unitate)}</b>
+          ${r.delta_pct !== null ? `<br><span class="${r.delta > 0 ? "sus" : "jos"}"
+            >${r.delta > 0 ? "↑" : "↓"} ${num(Math.abs(r.delta_pct), 0)}%</span>` : ""}
+        </span>
+      </div>`).join("")}
+    </div>
+  </section>` : `<section><div class="gol-stare"><b>Nicio schimbare pentru filtrul curent</b>
+      O schimbare are nevoie de același serviciu extras la două date de vigoare diferite.</div></section>`}
+  <section>
+    <h2>De ce sunt atât de puține</h2>
+    <p class="note">Schimbările se pot detecta doar unde avem <b>aceeași bancă, același serviciu,
+      la două date diferite</b>. Pachetul sursă conține ${d.interval.date_distincte || 0} date de
+      vigoare distincte, dar pentru majoritatea serviciilor avem o singură versiune de document.
+      Numărul crește de la sine la fiecare rulare lunară — de aici încolo, fiecare document nou
+      produce comparație cu cel anterior. Acoperirea pe stări:
+      ${(d.acoperire || []).map(x => `<span class="pill">${esc(x.stare)}: ${num(x.n, 0)}</span>`).join(" ")}</p>
+  </section>`;
+};
+
+/* ---------------- Surse: guvernanță, nu navigare ----------------
+   Pagina răspunde la două întrebări pe care nicio altă pagină nu pune:
+   „de unde vine cifra asta" și „ce a găsit discovery-ul și nimeni n-a extras".
+   A doua a fost gaura cea mai mare din proiect. */
+R.surse = async (stare) => {
+  const bSel = stare.banca || "", stSel = stare.stare || "", rSel = stare.rol || "";
+  const [d, m] = await Promise.all([
+    ia(`/api/surse?limit=300&banca=${encodeURIComponent(bSel)}`
+       + `&stare=${encodeURIComponent(stSel)}&rol=${encodeURIComponent(rSel)}`),
+    meta(),
+  ]);
+  const b = d.bilant;
+  const f = o => `mergi('surse',{banca:'${bSel}',stare:'${stSel}',rol:'${rSel}',${o}})`;
+  const cutie = (et, n, cheie, desc) => `
+    <div class="tile" style="cursor:pointer;${stSel === cheie ? "outline:2px solid var(--accent)" : ""}"
+         onclick="${f(`stare:'${cheie}'`)}">
+      <div class="n">${num(n, 0)}</div>
+      <div style="font-weight:600;font-size:12.5px;margin-top:2px">${esc(et)}</div>
+      <div class="l">${esc(desc)}</div>
+    </div>`;
+
+  return `
+  <section>
+    <p class="note">Inventarul surselor. <b>Clic pe o cutie</b> filtrează lista de dedesubt.</p>
+    <div class="tiles" style="margin-top:12px">
+      ${cutie("cu date", b.cu_date, "cu_date", "au produs cel puțin o observație")}
+      ${cutie("încercate, blocate", b.incercate, "incercate", "s-a rulat și n-a ieșit nimic — motivul e scris pe sursă")}
+      ${cutie("neatinse", b.neatinse, "neatinse", "descoperite și niciodată rulate")}
+      ${cutie("toate", b.total, "", "fără filtru de stare")}
+    </div>
+    ${d.motive.length ? `<p class="note" style="margin-top:12px">Motivele eșecurilor înregistrate:
+      ${d.motive.map(x => `<span class="pill amb">${esc(x.motiv)}: ${x.n}</span>`).join(" ")}
+      — <b>EROARE</b> înseamnă de regulă HTTP 403 (bloc WAF). Nu se forțează: pe băncile
+      respective datele se pot lua doar cu browser real (Playwright), nu cu HTTP simplu.</p>` : ""}
+  </section>
+  <section>
+    <div class="filtre">
+      <label class="f">Bancă
+        <select onchange="${f("banca:this.value")}">
+          <option value="">toate băncile</option>
+          ${d.banci.map(x => `<option value="${esc(x.slug)}" ${x.slug === bSel ? "selected" : ""}
+            >${esc(x.nume)} — ${x.surse} surse${x.neextrase ? `, ${x.neextrase} neextrase` : ""}</option>`).join("")}
+        </select></label>
+      <label class="f">Rol
+        <select onchange="${f("rol:this.value")}">
+          ${[["","toate rolurile"],["produs","produs"],["hub","hub"],["conditii","condiții"],["context","context"]]
+            .map(([v,t]) => `<option value="${v}" ${v === rSel ? "selected" : ""}>${t}</option>`).join("")}
+        </select></label>
+      ${(bSel || stSel || rSel) ? `<button onclick="mergi('surse',{})">Șterge filtrele</button>` : ""}
+    </div>
+    <p class="note">${num(d.total, 0)} surse în filtrul curent; se afișează ${d.randuri.length}.</p>
+    ${tabel(d.randuri, [
+      {cap:"Bancă", html:true, val:r => etichetaBanca(r.banca, m)},
+      {cap:"Sursă", html:true, val:r => {
+        const et = (r.sursa || "").replace(/^https?:\/\/(www\.)?/, "");
+        const scurt = et.length > 62 ? et.slice(0, 61) + "…" : et;
+        const link = r.url_public || (r.tip_sursa === "url" ? r.sursa : null);
+        return link
+          ? `<a class="sursa" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(r.sursa)}">↗ ${esc(scurt)}</a>`
+          : `<span class="mono" style="font-size:11px" title="${esc(r.sursa)}">${esc(scurt)}</span>`;
+      }},
+      {cap:"Tip", cls:"mono", val:r => `${r.tip_sursa}/${r.format || "?"}`},
+      {cap:"Rol", k:"rol", cls:"mono"},
+      {cap:"Obs.", cls:"num", val:r => num(r.observatii, 0)},
+      {cap:"Stare", html:true, val:r => r.observatii
+        ? `<span class="pill ok">${esc(r.metoda_extractie || "?")}</span>`
+        : (r.metoda_extractie
+            ? `<span class="pill amb" title="${esc(r.nota_extractie || "")}">${esc((r.nota_extractie || "fără rezultat").split(":")[0])}</span>`
+            : '<span class="pill">neextrasă</span>')},
+      {cap:"Detaliu", val:r => r.nota_extractie
+        ? (r.nota_extractie.split(":").slice(1).join(":") || "—").slice(0, 70) : "—"},
+    ])}
+  </section>`;
+};
+
+/* ---------------- Coada de verificare ----------------
+   Refăcută: era două tabele lipite, fără ierarhie. Acum fiecare rând e un caz
+   de verificat, cu valoarea mare, motivul explicit și citatul din document —
+   fiindcă decizia „e greșit sau e corect" se ia citind citatul, nu cifra. */
+/* Motivele sunt cele reale din date, nu categorii inventate de interfață.
+   Vechea etichetă „valoare reală, dar neatribuibilă" acoperea 692 de rânduri
+   și nu spunea nimic — nu puteai decide ce să faci cu ele. Cele două motive
+   adevărate sunt pierderi de STRUCTURĂ la citirea tabelului din PDF, nu
+   greșeli de citire a cifrei, și de-aia valoarea se păstrează. */
+const MOTIVE = {
+  "antet de coloana pierdut":
+    "Tabelul din PDF avea mai multe coloane — pachet Standard / Gold, sau persoane fizice / firme — și la extracție s-a pierdut cărei coloane aparține cifra. Prețul e citit corect, dar nu se știe pentru care variantă de produs se aplică.",
+  "prag de suma pierdut":
+    "Comisionul e pe tranșe de sumă («1 leu până la 1.000 lei, 3 lei peste»). Tranșele s-au pierdut, deci avem 1, 3, 5 și 15 lei fără să știm de la ce sumă începe fiecare. Caz real: BRCI, plăți în EUR.",
+  "sumă implauzibilă":
+    "Peste pragul de preț de retail. De obicei e o limită de retragere sau un capital social, extrase ca și cum ar fi preț.",
+  "procent implauzibil":
+    "Peste pragul de dobândă reală. De obicei e o reducere procentuală («100% reducere») sau o cotă de garantare.",
+  "încredere scăzută":
+    "Parserul nu a fost sigur de citire. Valoarea poate fi corectă, dar nu se publică automat.",
+  "peste pragul de plauzibilitate":
+    "Marcată la încărcare fiindcă depășește pragul categoriei ei, deci exclusă din comparații.",
+  "ambiguu, motiv nenotat":
+    "Sursa a marcat-o ambiguă fără să spună de ce — un singur rând în tot pachetul.",
+};
+
+R.coada = async (stare) => {
+  const mSel = stare.motiv || "", bSel = stare.banca || "", pSel = stare.produs || "";
+  const [d, m] = await Promise.all([
+    ia(`/api/coada?limit=150&motiv=${encodeURIComponent(mSel)}&banca=${encodeURIComponent(bSel)}`
+       + `&produs=${encodeURIComponent(pSel)}`),
+    meta(),
+  ]);
+  const f = o => `mergi('coada',{motiv:'${mSel}',banca:'${bSel}',produs:'${pSel}',${o}})`;
+  const c = d.context;
+  const totalTot = c.in_coada;
+
+  return `
+  <section>
+    <div class="callout warn">
+      <b>Nimic de aici nu apare în comparații.</b>
+      ${num(totalTot, 0)} din ${num(c.observatii_total, 0)} valori
+      (<b>${(100 * c.in_coada / Math.max(c.observatii_total, 1)).toFixed(1)}%</b>)
+      sunt extrase din documente reale, dar nu trec porțile de calitate.
+      Se exclud automat din clasamente și din Versus și rămân aici până le vede un om.
+      ${num(c.in_coada_cu_link, 0)} au link direct la documentul sursă, deci se pot verifica
+      pe loc.<br>
+      Coada e o funcție a sistemului, nu o listă de bug-uri: un extractor care n-ar produce
+      niciodată cazuri de verificat ar însemna că nu verifică nimic.
+    </div>
+  </section>
+  <section>
+    <div class="tiles">
+      ${d.pe_motiv.map(x => `
+        <div class="tile" style="cursor:pointer;${x.motiv === mSel ? "outline:2px solid var(--accent)" : ""}"
+             onclick="${f(`motiv:'${esc(x.motiv)}'`)}">
+          <div class="n">${num(x.n, 0)}</div>
+          <div style="font-weight:600;font-size:12.5px;margin-top:2px">${esc(x.motiv)}</div>
+          <div class="l">${esc(MOTIVE[x.motiv] || "")}</div>
+        </div>`).join("")}
+    </div>
+    <div class="filtre" style="margin-top:14px">
+      <label class="f">Motiv
+        <select onchange="${f("motiv:this.value")}">
+          <option value="">toate motivele</option>
+          ${d.pe_motiv.map(x => `<option value="${esc(x.motiv)}" ${x.motiv === mSel ? "selected" : ""}
+            >${esc(x.motiv)} (${x.n})</option>`).join("")}
+        </select></label>
+      <label class="f">Bancă
+        <select onchange="${f("banca:this.value")}">
+          <option value="">toate băncile</option>
+          ${d.pe_banca.map(x => `<option value="${esc(x.banca)}" ${x.banca === bSel ? "selected" : ""}
+            >${esc(x.banca_nume || x.banca)} (${x.n})</option>`).join("")}
+        </select></label>
+      <label class="f">Produs
+        <select onchange="${f("produs:this.value")}">
+          <option value="">toate produsele</option>
+          ${d.pe_produs.map(x => `<option value="${esc(x.produs)}" ${x.produs === pSel ? "selected" : ""}
+            >${esc(x.produs)} (${x.n})</option>`).join("")}
+        </select></label>
+      ${(mSel || bSel || pSel) ? `<button onclick="mergi('coada',{})">Șterge filtrele</button>` : ""}
+    </div>
+    <p class="note">${num(d.total, 0)} rânduri în filtrul curent; se afișează ${d.randuri.length},
+      grupate pe serviciu — fiindcă motivul se vede cel mai clar când valorile
+      aceluiași serviciu stau una lângă alta.</p>
+  </section>
+  <section>
+    ${grupuriCoada(d, m) || '<div class="gol-stare"><b>Coada e goală pentru filtrul curent</b>Nimic de verificat aici.</div>'}
+  </section>`;
+};
+
+/* Rândurile grupate pe (bancă, serviciu). Gruparea nu e cosmetică: la
+   „prag de sumă pierdut", valorile 1, 3, 5 și 15 lei ale aceluiași serviciu
+   privite împreună arată imediat că sunt tranșe de sumă, nu prețuri
+   alternative — iar asta e exact decizia pe care trebuie s-o ia omul. */
+function grupuriCoada(d, m){
+  const g = new Map();
+  d.randuri.forEach(r => {
+    const k = `${r.banca}|${r.camp}|${r.serviciu || ""}`;
+    if(!g.has(k)) g.set(k, []);
+    g.get(k).push(r);
+  });
+  return [...g].map(([k, randuri]) => {
+    const r0 = randuri[0];
+    const frati = d.fratii[`${r0.banca}|${r0.camp}|${r0.serviciu}`];
+    const inCoada = new Set(randuri.map(x => x.valoare_num));
+    return `<div class="grup-serv">
+      <div class="cap">
+        <b>${esc(r0.serviciu || etNume(r0.camp))}</b>
+        <span class="mono" style="font-size:10.5px;color:var(--muted)">
+          ${esc(r0.banca_nume || r0.banca)} · ${esc(etNume(r0.camp))} · ${esc(r0.produs || "")}
+          · ${randuri.length} de verificat</span>
+      </div>
+      ${frati && frati.n > 1 ? `<div class="serie">
+        <span class="et">Toate valorile băncii la acest serviciu:</span>
+        ${frati.valori.map(v => `<span class="v ${inCoada.has(v) ? "aici" : ""}"
+          title="${inCoada.has(v) ? "în coadă" : "trece porțile de calitate"}"
+          >${num(v)}${unitTxt(r0.unitate)}</span>`).join("")}
+        ${frati.n > frati.valori.length ? `<span class="et">+${frati.n - frati.valori.length}</span>` : ""}
+      </div>` : ""}
+      ${randuri.map(r => `<div class="obs amb">
+        <div class="val">${num(r.valoare_num)}${unitTxt(r.unitate)}</div>
+        <div class="det">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:5px">
+            <span class="pill amb" title="${esc(MOTIVE[r.motiv] || "")}">${esc(r.motiv)}</span>
+            ${r.confidence !== null && r.confidence < 0.7 ? `<span class="pill">încredere ${num(r.confidence)}</span>` : ""}
+            <span class="pill" title="cu ce variantă de colectare a fost extrasă">${esc(r.metoda_extractie || "?")}</span>
+          </div>
+          <div class="cit">${r.citat ? citatEvidentiat(r) : "(fără citat în sursă — nu se poate verifica fără documentul original)"}</div>
+          <div class="ce-faci">${esc(MOTIVE[r.motiv] || "")}</div>
+          <div class="meta">${linkSursa(r)}</div>
+        </div>
+      </div>`).join("")}
+    </div>`;
+  }).join("");
+}
+
+/* ---------------- router ---------------- */
+function meniu(activ){
+  document.getElementById("meniu").innerHTML = PAGINI.map(g => `
+    <h3>${esc(g.grup)}</h3>
+    ${g.chei.map(p => `<a href="#/${p.id}" class="${p.id === activ ? "activ" : ""}">
+        ${esc(p.nume)}${p.pdf ? `<span class="pdf">${p.pdf}</span>` : ""}</a>`).join("")}`).join("");
+  // Piciorul barei spune cât e în bază, nu un slogan. Se cere o dată pe sesiune.
+  if(!CACHE.picior){
+    CACHE.picior = ia("/api/sumar").then(s => {
+      const g = c => (s.totaluri.find(x => x.ce === c) || {}).n || 0;
+      return `${num(g("bănci"), 0)} bănci · ${num(g("surse"), 0)} surse<br>`
+           + `${num(g("observații"), 0)} valori colectate`;
+    }).catch(() => "");
+  }
+  CACHE.picior.then(t => { const e = document.getElementById("picior"); if(e) e.innerHTML = t; });
+}
+const toatePag = PAGINI.flatMap(g => g.chei);
+
+function mergi(id, stare = {}){
+  const q = new URLSearchParams(stare).toString();
+  location.hash = `#/${id}${q ? "?" + q : ""}`;
+}
+function aplicaVersus(){
+  const sel = [...document.getElementById("sel-banci").selectedOptions].map(o => o.value).slice(0, 3);
+  mergi("versus", {banci: sel.join(",")});
+}
+
+async function randeaza(){
+  const brut = location.hash.replace(/^#\/?/, "") || "overview";
+  const [id, qs] = brut.split("?");
+  const stare = Object.fromEntries(new URLSearchParams(qs || ""));
+  const p = toatePag.find(x => x.id === id) || toatePag[0];
+  meniu(p.id);
+  document.getElementById("titlu").textContent = p.t;
+  document.getElementById("lede").textContent = p.l;
+  const gazda = document.getElementById("pagina");
+  gazda.innerHTML = '<section><p class="note">se încarcă…</p></section>';
+  try{
+    gazda.innerHTML = await R[p.id](stare);
+  }catch(e){
+    gazda.innerHTML = `<section><p class="note" style="color:var(--warn)">Eroare: ${esc(e.message)}</p></section>`;
+  }
+}
+window.addEventListener("hashchange", randeaza);
+randeaza();
+</script>
+</body>
+</html>
