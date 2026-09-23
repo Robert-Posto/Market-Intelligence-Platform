@@ -49,8 +49,7 @@ from crawler.urme import (actualizeaza_semnale, cale_unica, citeste_urme,
                           clasifica_semnal, observa, scrie_urme,
                           validator_de_incredere)
 
-UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+from crawler import UA
 IEȘIRE = RADACINA / "output" / "sonda_schimbari.json"
 ISTORIC = RADACINA / "output" / "crawl" / "pdf_istoric"
 DELAY_IMPLICIT = 2

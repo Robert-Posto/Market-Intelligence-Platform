@@ -6,8 +6,7 @@ from playwright.sync_api import sync_playwright
 from crawler.banci import BANCI
 from crawler.robots import RegulliRobots
 
-UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+from crawler import UA
 
 with sync_playwright() as p:
     b = p.chromium.launch(headless=True)

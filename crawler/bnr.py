@@ -9,8 +9,7 @@ FEED_ZI = "https://curs.bnr.ro/nbrfxrates.xml"
 FEED_10_ZILE = "https://curs.bnr.ro/nbrfxrates10days.xml"
 NS = {"b": "https://www.bnr.ro/xsd"}
 
-UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+from . import UA
 
 
 def curs_referinta(url=FEED_ZI, timeout=30):

@@ -31,8 +31,7 @@ from .urme import nume_din_url
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+from . import UA
 
 RADACINA = Path(__file__).resolve().parent.parent
 IESIRE = RADACINA / "output" / "crawl"

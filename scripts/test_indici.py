@@ -4,8 +4,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 from playwright.sync_api import sync_playwright
 from crawler.bnr_indici import toti_indicii
 
-UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+from crawler import UA
 with sync_playwright() as p:
     b = p.chromium.launch(headless=True)
     pg = b.new_context(user_agent=UA, locale="ro-RO").new_page()

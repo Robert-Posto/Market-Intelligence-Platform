@@ -34,8 +34,7 @@ from playwright.sync_api import sync_playwright
 from crawler.robots import RegulliRobots
 from crawler.urme import STARI_CU_DOCUMENT, citeste_urme, compara, observa
 
-UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-      "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+from crawler import UA
 IEȘIRE = RADACINA / "output" / "robots_origini.json"
 DOSAR_ROBOTS = RADACINA / "output" / "robots"
 

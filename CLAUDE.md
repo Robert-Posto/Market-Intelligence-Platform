@@ -41,7 +41,10 @@ Rulează totul din rădăcina repo-ului: unele scripturi folosesc căi relative
 ## Reguli
 
 **Conformitate.** Doar date publice. Se respectă `robots.txt` pe fiecare
-origine, inclusiv CDN-ul de documente. User-Agent onest. IMPORTANT: nu se
+origine, inclusiv CDN-ul de documente. Crawler-ul se identifică cu nume și
+contact, cu ecusonul din `crawler/__init__.py` (un singur loc); nu imită un
+browser real și nu se ascunde ca robot anonim.
+IMPORTANT: nu se
 ocolesc WAF, captcha sau un `Disallow`, nici „doar de test". O bancă blocată se
 documentează ca blocată. Autorii recenziilor se pseudonimizează cu `MIP_SALT`.
 Abatere asumată, nu o repara fără să întrebi: un `robots.txt` cu eroare 5xx
