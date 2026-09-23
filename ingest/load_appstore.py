@@ -1,7 +1,7 @@
 """Genereaza SQL pentru track-ul mobil iOS: versiuni, screenshot-uri, review-uri.
 
 Surse:
-  rezultate_app_store.json  (Desktop/Scraping) - iTunes Lookup API, 3 banci
+  date/rezultate_app_store.json (itunes_lookup.py) - iTunes Lookup API, 3 banci
   feed RSS de review-uri    - cerut live, per storefront
 
 PSEUDONIMIZARE, obligatorie: feed-ul RSS al Apple intoarce numele real de
@@ -29,7 +29,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import config  # noqa: E402
 
 FISIER_LOOKUP = os.path.join(
-    os.path.expanduser("~"), "Desktop", "Scraping", "rezultate_app_store.json"
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "date", "rezultate_app_store.json",
 )
 
 # numele din rezultate_app_store.json -> slug din tabelul `banci`

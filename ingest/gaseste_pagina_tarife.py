@@ -40,10 +40,6 @@ sys.path.insert(0, os.path.dirname(AICI))
 sys.path.insert(0, AICI)
 import config                      # noqa: E402
 import normalizeaza as N           # noqa: E402
-
-SCRAPING = os.path.join(os.path.expanduser("~"), "Desktop", "Scraping")
-sys.path.insert(0, SCRAPING)
-
 from bs4 import BeautifulSoup                                     # noqa: E402
 from scraper import (                                             # noqa: E402
     DELAY_BETWEEN_REQUESTS, fetch_page, robots_allowed, strip_diacritics,

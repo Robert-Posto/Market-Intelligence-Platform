@@ -42,13 +42,11 @@ sys.path.insert(0, os.path.dirname(AICI))
 from normalizeaza import brut                                       # noqa: E402
 
 PACHET = os.path.join(os.path.dirname(AICI), "date", "pachet")
-FISIER_BS4 = os.path.join(os.path.expanduser("~"), "Desktop", "Scraping",
-                          "rezultate_depozite.json")
+FISIER_BS4 = os.path.join(os.path.dirname(AICI), "date", "rezultate_depozite.json")
 
-# Stiva proprie de colectare (robots.txt, User-Agent onest, delay, detecție de
-# encoding) se importă la cerere: extractoarele din fișier nu au nevoie de
-# rețea și nu trebuie să depindă de ea.
-SCRAPING = os.path.join(os.path.expanduser("~"), "Desktop", "Scraping")
+# Stiva proprie de colectare (scraper.py: robots.txt, User-Agent onest, delay,
+# detecție de encoding) se importă la cerere: extractoarele din fișier nu au
+# nevoie de rețea și nu trebuie să depindă de ea.
 
 
 def _citeste(cale):
@@ -199,7 +197,6 @@ SEPARATOARE_TITLU = re.compile(r"\s*[|·»—–]\s*")
 
 
 def _fara_diacritice(t):
-    sys.path.insert(0, SCRAPING)
     from scraper import strip_diacritics
     return strip_diacritics(t)
 
@@ -270,9 +267,8 @@ def din_html_live(url, banca, rol_sursa="produs"):
     scriu pe sursă: „blocat de robots.txt" și „pagină randată prin JS" cer
     acțiuni diferite, iar fără ele ambele arată identic (sursă fără observații).
     """
-    sys.path.insert(0, SCRAPING)
     from bs4 import BeautifulSoup
-    from parser_rate import parseaza_linie
+    from crawler.parser_rate import parseaza_linie
     from scraper import DELAY_BETWEEN_REQUESTS, fetch_page, robots_allowed
 
     stare_robots, motiv, crawl_delay = robots_allowed(url)

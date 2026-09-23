@@ -103,6 +103,8 @@ Pași auxiliari, care pregătesc sursele:
 python ingest/recolteaza_pdf_banci.py   # găsește PDF-urile de tarife pe site-uri
 python ingest/cauta_app_id.py           # id-uri de App Store
 python ingest/fetch_logos_site.py       # sigle, de pe site-ul fiecărei bănci
+python ingest/extract_deposits.py       # depozite (BS4) -> date/rezultate_depozite.json, citit de --pas bs4
+python ingest/itunes_lookup.py          # App Store -> date/rezultate_app_store.json, citit de load_appstore.py
 ```
 
 Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi
@@ -248,7 +250,9 @@ Față de arhitectura din artefactul de design, lipsesc:
   procesare, deci se reprocesează tot de fiecare dată
 - **cascada de transport** `http → playwright`
 - **LLM ca ultimă treaptă** de extracție, pentru ce niciun parser determinist
-  nu citește
+  nu citește. Există o primă piesă, `ingest/structureaza_depozite.py` (doar
+  depozite, cu Claude API), dar n-a fost rulată niciodată și nu e legată de
+  pipeline
 - **`surse_produse`** — 583 de perechi URL×produs în bază, zero referințe în cod
 - **`change_events` e gol** — schimbările de preț sunt o *vedere*
   (`schimbari_pret`), nu evenimente. Se recalculează din observații, deci nu
@@ -256,6 +260,15 @@ Față de arhitectura din artefactul de design, lipsesc:
 
 Primele trei există doar pentru rerulări, deci sunt în afara priorității
 curente (populare inițială).
+
+### Conformitate — abatere asumată
+
+Un `robots.txt` care răspunde cu eroare de server (5xx) sau nu răspunde deloc
+e tratat ca **„fără restricții"**, în ambele implementări
+(`ingest/scraper.py:robots_allowed`, `crawler/robots.py`). RFC 9309 §2.3.1.4
+cere invers: totul interzis până se poate citi. Păstrat deliberat pe durata
+testării. În datele existente n-a apărut niciun astfel de caz, doar 404 și
+403, tratate corect.
 
 ---
 
@@ -307,12 +320,17 @@ comparații și apare în coadă, cu citatul din document.
 app/          server.py (API read-only) · index.html (SPA, 12 pagini)
               harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
 ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
+              scraper.py = stiva HTTP (robots.txt, User-Agent, pauze), folosită
+              de pașii BS4 · extract_deposits.py · itunes_lookup.py · test_*.py
 crawler/      crawler-ul Playwright + parserele PDF + vocabular.py (sursa unică)
+              parser_rate.py = singurul parser de rate, folosit și de BS4
 scripts/      lanțul post-crawl (dupa_crawl.py) + teste și verificări robots
 db/           schema.sql + migrările 002..011 · sincronizeaza_vederi.sql
-date/         ieșiri intermediare (JSON) · pachet/ = ce citește ingest/
+date/         ieșiri intermediare (JSON) · rezultate_*.json = datele BS4
+              pachet/ = pachetul Playwright citit de ingest/
               robots/ = robots.txt brute, dovada de conformitate
 docs/crawler/ jurnalele crawler-ului; operațional e doar CITESTE_PENTRU_MERGE.md
+docs/bs4/     notele scraperului BS4 (fezabilitate, comparații)
 ```
 
 Serverul e **strict read-only**: nicio rută nu scrie în bază. Interogările

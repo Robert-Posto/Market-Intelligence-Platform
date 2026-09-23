@@ -228,7 +228,6 @@ def descarca_pdf(url):
     """
     import hashlib
     import requests
-    sys.path.insert(0, os.path.join(os.path.expanduser("~"), "Desktop", "Scraping"))
     from scraper import HEADERS
 
     dosar = os.path.join(os.path.dirname(AICI), "app", ".cache_pdf")
