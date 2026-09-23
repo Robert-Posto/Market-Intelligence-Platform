@@ -263,6 +263,11 @@
             border-left:2px solid var(--line);padding-left:7px}
   .obs .cit mark{background:var(--warn-tint);color:var(--ink);font-weight:600;
                  padding:0 2px;border-radius:2px}
+  /* Când citatul nu adaugă nimic peste cifră, se arată unde e în document,
+     nu se repetă cifra sub ea ca și cum ar fi o dovadă. */
+  .obs .cit.fara{border-left-style:dotted;font-style:italic;opacity:.9}
+  .obs .val .x{font-family:"IBM Plex Mono",monospace;font-size:10px;
+               color:var(--muted);margin-left:4px;font-weight:400}
   /* Ce trebuie să facă omul cu rândul — scris lângă rând, nu într-un tooltip */
   .obs .ce-faci{font-size:11px;color:var(--muted);line-height:1.5;margin-top:5px;
                 font-style:italic}
@@ -549,7 +554,6 @@ function clasament(camp, celule, opt){
       <span class="cl-ctx">${ctx.join(" · ") || "—"}${
         servicii > 1 && !arata ? `<span class="cl-alt">și alte ${servicii - 1} denumiri de serviciu</span>` : ""}</span>
       <span class="cl-note">
-        ${c.nemarcate ? `<span class="pill amb" title="${c.nemarcate} din ${c.n} valori nu au segmentul (persoană fizică / firmă) marcat în documentul sursă. Sunt arătate, dar nu se poate garanta că sunt pentru persoane fizice.">segment nemarcat</span>` : ""}
         ${c.gratuite && !arata ? `<span class="pill ok" title="${c.gratuite} dintre variante sunt fără comision">${c.gratuite} gratuit${c.gratuite === 1 ? "ă" : "e"}</span>` : ""}
         <span class="cl-n" title="Deschide toate cele ${c.n} valori, fiecare cu citatul și linkul către document">${c.n} ${arata ? (c.n === 1 ? "valoare" : "valori") : (c.n === 1 ? "preț" : "prețuri")} →</span>
       </span>
@@ -595,6 +599,17 @@ function citatEvidentiat(r){
   return esc(t);
 }
 
+/* Citatul merită arătat doar dacă spune ceva în plus față de cifră.
+   Măsurat: la 2.378 de rânduri din PDF, `citat` e literalmente valoarea
+   („0 lei"), deci sub cifră apărea aceeași cifră, ca și cum ar fi o dovadă.
+   Nu e. Acolo se arată secțiunea din document, care chiar localizează. */
+function citatUtil(r){
+  const c = (r.citat || "").trim();
+  if(!c) return null;
+  const doarCifra = /^[0-9][0-9.,\s]*(lei|euro|eur|usd|ron|%)?$/i.test(c);
+  return doarCifra ? null : c;
+}
+
 function randObs(r){
   const u = unitTxt(r.unitate);
   const val = r.valoare !== null && r.valoare !== undefined
@@ -605,10 +620,18 @@ function randObs(r){
   if(r.detaliu)   linii.push(esc(r.detaliu));
   const scen = (r.cod_scenariu || "").split("|").filter(Boolean);
   return `<div class="obs ${r.ambiguu ? "amb" : ""}">
-    <div class="val">${val}</div>
+    <div class="val">${val}${r.nr_aparitii > 1
+      ? `<span class="x" title="aceeași valoare, în ${r.nr_aparitii} coloane ale tabelului">×${r.nr_aparitii}</span>` : ""}</div>
     <div class="det">
       ${linii.length ? `<div>${linii.join(" · ")}</div>` : ""}
-      ${r.citat ? `<div class="cit">${citatEvidentiat(r)}</div>` : ""}
+      ${citatUtil(r)
+        ? `<div class="cit">${citatEvidentiat(r)}</div>`
+        : `<div class="cit fara">${r.sectiune
+            ? "În document, la secțiunea <b>" + esc(r.sectiune) + "</b>."
+            : "Documentul nu dă niciun text în jurul cifrei."}
+           ${r.nr_aparitii > 1
+             ? " Aceeași valoare apare în <b>" + r.nr_aparitii + " coloane</b> ale tabelului — de regulă variante ale aceluiași produs, al căror antet s-a pierdut la extracție."
+             : ""}</div>`}
       <div class="meta">
         <span class="pill" title="cu ce variantă de colectare a fost extrasă">${esc(r.metoda_extractie || "?")}</span>
         ${scen.map(x => `<span class="pill">${esc(x)}</span>`).join("")}
@@ -766,7 +789,7 @@ R.overview = async () => {
 };
 
 R.produse = async (stare) => {
-  const grup = stare.grup || "cont_curent", seg = stare.segment || "pf";
+  const grup = stare.grup || "cont_curent", seg = stare.segment || "toate";
   const [d, m] = await Promise.all([
     ia(`/api/matrice?grup=${grup}&segment=${seg}&unitate=lei`), meta(),
   ]);
@@ -784,9 +807,10 @@ R.produse = async (stare) => {
           ${[["cont_curent","Cont curent"],["carduri","Carduri"],["transferuri","Transferuri și plăți"]]
             .map(([v,t]) => `<option value="${v}" ${v === grup ? "selected" : ""}>${t}</option>`).join("")}
         </select></label>
-      <label class="f">Segment
+      <label class="f">Pentru cine e prețul
         <select onchange="mergi('produse',{grup:'${grup}',segment:this.value})">
-          ${[["pf","Persoane fizice"],["pj","Persoane juridice"],["pfa","PFA"],["toate","Toate (nerecomandat)"]]
+          ${[["toate","Oricine (tot ce avem)"],["pf","Doar persoane fizice"],
+             ["pj","Doar firme"],["pfa","Doar PFA"]]
             .map(([v,t]) => `<option value="${v}" ${v === seg ? "selected" : ""}>${t}</option>`).join("")}
         </select></label>
       <label class="f">Monedă<select disabled><option>lei</option></select></label>
@@ -798,21 +822,23 @@ R.produse = async (stare) => {
       cifră pe rând să însemne ceva — de aceea <b>prețul apare la clic</b>, lângă citatul din
       document și linkul către locul exact din care a fost citit.
       Pentru comparația directă între bănci, vezi <a href="#/versus">Versus Libra</a>.
-      ${nemarcate ? `<br><b>${num(nemarcate, 0)} valori</b> nu au segmentul (persoană fizică / firmă)
-        marcat în documentul sursă — la BRD și Exim, niciuna nu îl are. Sunt incluse și
-        etichetate <span class="pill amb">segment nemarcat</span>, nu ascunse: extracția a
-        reușit, doar documentul nu spune pentru cine e prețul.` : ""}
+      <br><b>Majoritatea documentelor nu spun pentru cine e prețul.</b> Doar 37% din
+      valori precizează „persoane fizice" sau „firme"; restul sunt prețuri reale, extrase
+      corect, dar din tabele care nu notează asta. De aceea filtrul e implicit pe
+      <b>oricine</b> — un filtru pe persoane fizice ar ascunde două treimi din date, fără
+      să fie mai corect.
       ${d.excluse_ambigue ? `<br>${d.excluse_ambigue} valori ambigue excluse.` : ""}
       ${d.excluse_implauzibile ? ` ${d.excluse_implauzibile} valori peste ${num(d.prag_plauzibil, 0)} lei excluse — un comision de retail nu ajunge acolo; sunt limite de retragere sau praguri extrase greșit ca preț. Toate apar în „Coadă de verificare”.` : ""}
     </p>
   </section>
   ${clasamente || '<section><p class="note">Fără date pentru selecția curentă.</p></section>'}
   <section>
-    <h2>De ce segmentul contează</h2>
-    <p class="note">Prețul pentru persoană fizică și cel pentru firmă stau în același tabel, la aceeași etichetă
-      de serviciu. Comparate între ele dau o concluzie falsă — de aceea filtrul e pe <b>persoane fizice</b>
-      implicit, nu pe „toate”. Segmentele disponibile în date:
-      ${d.segmente.map(s => `<span class="pill">${esc(s.seg)}: ${s.n}</span>`).join(" ")}</p>
+    <h2>Despre „pentru cine e prețul"</h2>
+    <p class="note">Prețul pentru o persoană și cel pentru o firmă stau des în același tabel, la
+      aceeași denumire de serviciu — comparate între ele, dau o concluzie falsă. Filtrul există
+      tocmai pentru asta, dar funcționează doar unde documentul precizează.
+      Ce scrie efectiv în date:
+      ${d.segmente.map(s => `<span class="pill">${esc(s.seg)}: ${num(s.n,0)}</span>`).join(" ")}</p>
   </section>`;
 };
 

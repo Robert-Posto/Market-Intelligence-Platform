@@ -494,8 +494,8 @@ def celula(q):
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
                   o.ambiguu, o.motiv_ambiguu, o.metoda_extractie,
                   o.serviciu, o.sectiune, o.conditie, o.frecventa, o.detaliu,
-                  o.pagina, s.sursa, s.tip_sursa, s.url_public, s.format,
-                  b.pagina_documente, b.pagina_documente_motiv
+                  o.pagina, o.nr_aparitii, s.sursa, s.tip_sursa, s.url_public,
+                  s.format, b.pagina_documente, b.pagina_documente_motiv
            FROM observatii_curente o
            JOIN surse s ON s.id = o.id_sursa
            JOIN banci b ON b.id = s.id_banca

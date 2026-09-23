@@ -104,8 +104,52 @@ COLOANE = (
     "valoare_num", "valoare_text", "unitate", "valuta", "citat", "confidence",
     "ambiguu", "metoda_extractie", "serviciu", "sectiune", "conditie",
     "frecventa", "detaliu", "pagina", "data_vigoare", "stare_data",
-    "motiv_ambiguu",
+    "motiv_ambiguu", "nr_aparitii",
 )
+
+# Ce face două rânduri „același lucru". Deliberat NU include `citat`: la
+# tabelele cu o coloană per variantă de produs, citatul diferă doar prin
+# moneda scrisă în celulă („0 lei" vs „0 euro"), deși valoarea și serviciul
+# sunt identice. Dacă citatul ar conta, cele cinci „Emitere card 0 lei" ar
+# rămâne cinci rânduri care arată la fel și nu spun nimic în plus.
+CHEIE_DUPLICAT = (
+    "banca", "sursa", "camp", "cod_scenariu", "serviciu", "sectiune",
+    "valoare_num", "valoare_text", "unitate", "conditie", "frecventa",
+    "detaliu", "pagina", "data_vigoare",
+)
+
+
+def dedup(randuri, raport=None):
+    """Strânge rândurile identice într-unul singur, numărând câte au fost.
+
+    Măsurat pe extracția din PDF: 3.263 din 15.111 rânduri (21,6%) erau
+    duplicate exacte, iar în interfață apăreau ca opt „0 lei" unul sub altul,
+    fără nimic care să le deosebească.
+
+    Cauza nu e o greșeală de citire. Tabelele de tarife au o coloană per
+    variantă de produs (Visa Business / Mastercard / Gold), parserul citește
+    fiecare celulă ca rând, iar antetul coloanei se pierde. Deci cele cinci
+    rânduri „Emitere card — 0 lei" sunt cinci tipuri de card care costă toate
+    zero.
+
+    „Cinci variante, toate 0 lei" e informație. Cinci rânduri identice nu
+    sunt — de aceea se păstrează unul singur, cu numărul lor.
+    """
+    raport = raport if raport is not None else collections.Counter()
+    unice = {}
+    for r in randuri:
+        cheie = tuple(r.get(c) for c in CHEIE_DUPLICAT)
+        if cheie in unice:
+            unice[cheie]["nr_aparitii"] += 1
+            # Se păstrează citatul cel mai lung: dacă una dintre celule are
+            # text în jurul cifrei, ăla e singurul care explică ceva.
+            if len(r.get("citat") or "") > len(unice[cheie].get("citat") or ""):
+                unice[cheie]["citat"] = r["citat"]
+            raport["randuri_stranse_ca_duplicat"] += 1
+        else:
+            r["nr_aparitii"] = 1
+            unice[cheie] = r
+    return list(unice.values())
 
 
 def brut(**kw):
@@ -350,6 +394,14 @@ def scrie(randuri, metoda, raport=None, sterge=True):
     if not randuri:
         raport["nimic_de_scris"] += 1
         return raport
+    # Deduplicarea se face AICI, nu la extracție: e o regulă despre ce
+    # înseamnă „aceeași observație", deci aparține normalizatorului, alături
+    # de restul regulilor de traducere. Un extractor nou o primește gratis.
+    inainte = len(randuri)
+    randuri = dedup(randuri, raport)
+    raport["randuri_dupa_dedup"] += len(randuri)
+    if inainte != len(randuri):
+        raport["randuri_intrate_brut"] += inainte
 
     with psycopg2.connect(dsn()) as conn:
         with conn.cursor() as cur:
@@ -468,6 +520,7 @@ def scrie(randuri, metoda, raport=None, sterge=True):
                     r["ambiguu"], metoda, r["serviciu"], r["sectiune"], r["conditie"],
                     r["frecventa"], r["detaliu"], r["pagina"],
                     r["data_vigoare"], r["stare_data"], r["motiv_ambiguu"],
+                    r.get("nr_aparitii", 1),
                 ))
             if valori:
                 psycopg2.extras.execute_values(
