@@ -95,7 +95,7 @@ def goleste_tot(err):
 # Traseul unei surse
 # ==========================================================================
 
-def proceseaza(sursa, cur, stare, raport):
+def proceseaza(sursa, cur, stare, raport, doar_descarca=False):
     """Traseul complet pentru o sursă, ca în figura 3. Întoarce (brute, jurnal)."""
     sid, slug, url, fmt, rol = sursa
     j = {"sursa": url, "banca": slug, "transport": None, "stare": None, "nota": None}
@@ -117,6 +117,12 @@ def proceseaza(sursa, cur, stare, raport):
     cur.execute("INSERT INTO hashes (id_sursa, format, hash) VALUES (%s, %s, %s)",
                 (sid, "pdf" if rez.octeti.startswith(b"%PDF") else "html", amp))
     cale = flux.scrie_bronze(url, rez.octeti)      # Bronze DOAR la schimbare
+    if doar_descarca:
+        # La completare, extracția se face o singură dată, din Bronze: altfel
+        # fiecare PDF nou se parsa de două ori (BCR: 166 de PDF-uri mari pe
+        # cdn.erstegroup.com, zeci de secunde fiecare).
+        j["stare"] = "DESCARCAT"
+        return [], j
     return extrage(rez.octeti, cale, slug, url, rol, j)
 
 
@@ -177,7 +183,7 @@ def din_retea(err, raport, banca=None, limita=None, doar_noi=False):
                 for slug in sorted(pe_banca):
                     stari, note, n = collections.Counter(), [], 0
                     for s in pe_banca[slug]:
-                        b_noi, j = proceseaza(s, cur, stare, raport)
+                        b_noi, j = proceseaza(s, cur, stare, raport, doar_descarca=doar_noi)
                         stari[j["stare"]] += 1
                         raport["stare_" + str(j["stare"])] += 1
                         if j["transport"]:
