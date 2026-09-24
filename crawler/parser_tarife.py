@@ -33,8 +33,8 @@ from pathlib import Path
 
 import pdfplumber
 
-from crawler.parser_pdf import (RE_PRAG, _e_subpunct, analizeaza_linie,
-                                categorie, rol_de_conditie)
+from crawler.parser_pdf import (BANI, MONEDE, RE_PRAG, VAL, _e_subpunct,
+                                analizeaza_linie, categorie, rol_de_conditie, suma_bani)
 
 # doua borduri mai apropiate de atat sunt aceeasi bordura desenata de doua ori
 TOL_BORDURA = 3
@@ -730,6 +730,159 @@ def _aduna_antet(vechi, nou):
     return f"{vechi} {nou}".strip()
 
 
+# --- valori pe care o celula singura nu le arata: depind de coloana sau de randul vecin
+
+# "0" fara moneda e felul in care Nexent, TBI, Vista, Techventures si ProCredit scriu
+# "gratuit": masurat pe cele 50 de liste, 360 de valori recuperate (Nexent 101, Vista
+# 98, BCR 77, TBI 44). Necitit, serviciul se pierdea, iar randul "Nume || RON/FX || 0"
+# devenea antet de matrice si coloana "0 0 0" se lipea de randurile de sub el.
+RE_ZERO_CELULA = re.compile(r"^0\s*\**$")
+# ...dar numai langa preturi: in "0 || 5 || 59 LEI" (BCR, pachetul dupa numarul de
+# tranzactii, "Minim | Maxim") zeroul e un numar de tranzactii, nu un pret
+RE_NUMAR_SINGUR = re.compile(r"^\d+(?:[.,]\d+)?\s*\**$")
+# Intervalul de pret: "550 – 3.300 lei" (BRD, evaluarea imobilului), "2,5 - 12,5 lei"
+# (Eximbank), "5 – 100 lei" (Libra). RE_PRAG il ia drept banda de suma si valoarea se
+# pierdea (48 de capete, pastrate ca min/max). Banda sta insa in coloana numelui, cu
+# pretul in dreapta ei pe acelasi rand.
+RE_INTERVAL = re.compile(rf"^\W*({BANI})\s*(?:{VAL})?\s*[–—-]\s*({BANI})\s*({VAL})"
+                         r"(?![^\W\d_])(?!.*\b(?:in|ex)clusiv)", re.I)
+# Celula de pret rupta pe doua randuri, cu minimul sau maximul pe al doilea: "1,75%,
+# min." / "5 EUR/USD" (BCR), "0,5%/ trimestru (min" / "75 lei)" si "(min 26 euro,
+# max" / "650 euro)" (Libra), "0,20% min. 25 EUR max. 800" / "EUR". Masurat: 24 de
+# sume isi primesc rolul, iar 20 de plafoane se nasc din cifra ramasa pe prima linie.
+RE_ROL_DESCHIS = re.compile(
+    r"\b(?:min|max|minim|maxim|minimum|maximum)\b\.?\s*(?:\d[\d.,]*\s*)?$", re.I)
+
+
+def _semn(margini):
+    return tuple(round(m) for m in margini)
+
+
+def _alta_celula(orizontale, cx, sus, jos):
+    """O bordura orizontala trece prin coloana intre cele doua linii de text?"""
+    return any(sus - 1 <= t <= jos + 1 and x0 - 1 <= cx <= x1 + 1
+               for t, x0, x1 in orizontale)
+
+
+def _valori_din_context(randuri, analize, col_nume, geometrie_pagini):
+    """Completeaza `analize` pe loc cu valorile care depind de coloana sau de vecin.
+
+    Coloana de pret e cea in care tabelul (aceeasi semnatura de borduri) are macar o
+    valoare citita de analizeaza_linie; coloana numelui nu e niciodata una.
+    """
+    cu_pret = defaultdict(set)
+    # Pe fiecare coloana a paginii, felul celulelor nevide care nu sunt zero: "pret"
+    # sau "numar" (cifra fara moneda: "3", "25 trz/lună"). Zeroul dintre numere e si
+    # el un numar: la BCR, "Tranzacții incluse în pachet" are 0, 25 si 200 de
+    # tranzactii in coloanele cu pretul pachetelor George Business.
+    vecini = defaultdict(list)
+    for k, ((nr, _c, margini, _g, texte), analiza) in enumerate(zip(randuri, analize)):
+        cu_pret[_semn(margini)].update(i for i, a in enumerate(analiza) if a[0])
+        for i, t in enumerate(texte):
+            if t and not RE_ZERO_CELULA.match(t):
+                vecini[(nr, _semn(margini), i)].append(
+                    (k, "pret" if analiza[i][0] else "numar" if t[0].isdigit() else "text"))
+    for semn, i in col_nume.items():
+        cu_pret[semn].discard(i)
+
+    def langa_numere(k, nr, semn, i):
+        coloana = vecini[(nr, semn, i)]
+        sus = [f for k2, f in coloana if k2 < k and f != "text"][-1:]
+        jos = [f for k2, f in coloana if k2 > k and f != "text"][:1]
+        return "numar" in sus + jos
+
+    for k, ((nr, cuvinte, margini, geometrie, texte), analiza) in enumerate(
+            zip(randuri, analize)):
+        if geometrie == "unic":
+            continue        # o celula singura n-are coloana care sa spuna ce e
+        semn = _semn(margini)
+        pret = cu_pret[semn]
+
+        # Numele cu o cifra in el ("Dobanda cont curent de card (se aplica la sold mai
+        # mare de 500 RON) || 0", Libra) nu mai e eticheta, iar zeroul ar fi luat
+        # numele randului de deasupra ("Taxa recuperare card"). Fara nume, nu se citeste
+        # (vezi si _zero_fara_nume, la emitere).
+        zerouri = [i for i in pret if RE_ZERO_CELULA.match(texte[i])
+                   and not langa_numere(k, nr, semn, i)]
+        if (zerouri and not any(analiza[j][0] for j in range(len(texte)) if j not in pret)
+                and not any(RE_NUMAR_SINGUR.match(t) and not RE_ZERO_CELULA.match(t)
+                            for t in texte)):
+            for i in zerouri:
+                analiza[i] = ([("gratuit", 0.0, None, None)], None, analiza[i][2], None)
+
+        # intervalul: pe un rand fara alt pret, cu numele serviciului in stanga lui
+        are_valori = any(a[0] for a in analiza)
+        for i in pret:
+            m = RE_INTERVAL.match(texte[i])
+            if not m or are_valori:
+                continue
+            if not any(t and not analiza[j][0] and not _e_doar_banda(t)
+                       and not RE_DOAR_ORNAMENT.match(t) for j, t in enumerate(texte[:i])):
+                continue
+            moneda = MONEDE[m.group(3).lower()]
+            analiza[i] = ([("comision_suma", suma_bani(m.group(1)), moneda, "min"),
+                           ("comision_suma", suma_bani(m.group(2)), moneda, "max")],
+                          None, analiza[i][2], None)
+
+        if geometrie != "bordura":
+            continue
+        for i, t in enumerate(texte):
+            if not analiza[i][0] or not RE_ROL_DESCHIS.search(t):
+                continue
+            # A doua linie a celulei: pe randurile urmatoare, aceeasi coloana, fara
+            # bordura intre ele. Doar cand prima linie are deja pretul (procentul sau
+            # minimul): "Conditie pachet ... de minim" / "40.000 EUR" (BRD) e o cerinta.
+            a, b = margini[i], margini[i + 1]
+            sus, jos = min(w["top"] for w in cuvinte), max(w["bottom"] for w in cuvinte)
+            for k2 in range(k + 1, min(k + 6, len(randuri))):
+                nr2, cuv2, m2, g2, texte2 = randuri[k2]
+                sus2 = min(w["top"] for w in cuv2)
+                if (nr2 != nr or g2 != "bordura" or sus2 - jos > jos - sus
+                        or _alta_celula(geometrie_pagini[nr][0], (a + b) / 2, jos, sus2)):
+                    break
+                j = next((j for j, t2 in enumerate(texte2) if t2 and min(b, m2[j + 1])
+                          - max(a, m2[j]) > 0.5 * min(b - a, m2[j + 1] - m2[j])), None)
+                if j is None:
+                    continue
+                _lipeste_rol(analiza, i, t, analize[k2], j, texte2[j])
+                break
+
+
+def _zero_fara_nume(tip, text, serviciu):
+    """Zeroul din coloana a ramas, dupa reconstruirea etichetei, fara un nume intreg.
+
+    "Activare", "Transfer" sub "Direct Debit intrabancar" (BCR): cand subtitlul nu se
+    vede, serviciul se ia doar din secțiunea de deasupra, si 12 zerouri ieseau file_cec.
+    Cu parintele lipit ("Retrageri de numerar FX", "... prin: SMS") zeroul ramane.
+    """
+    return (tip == "gratuit" and bool(RE_ZERO_CELULA.match(text))
+            and len(re.findall(r"[^\W\d_]{2,}", serviciu or "")) < 2)
+
+
+def _lipeste_rol(analiza, i, t, analiza2, j, t2):
+    """Rolul deschis pe prima linie trece la suma de pe a doua.
+
+    Suma ramane pe randul ei, cu eticheta ei: celula de pret poate fi unita peste
+    mai multe randuri (BCR, "1,75%, min. 5 EUR/USD" peste patru variante de
+    retragere), iar geometria nu spune al cui e pretul. Doar o suma noua, nascuta
+    din cifra de pe prima linie si moneda de pe a doua ("max. 800" / "EUR"), sta cu
+    prima linie.
+    """
+    v1, v2 = analiza[i][0], list(analiza2[j][0])
+    toate = analizeaza_linie(f"{t} {t2}")[0]
+    if toate[:len(v1)] != v1 or len(toate) <= len(v1):
+        return
+    noi = []
+    for tip, val, moneda, rol in toate[len(v1):]:
+        p = next((p for p, x in enumerate(v2) if x[:3] == (tip, val, moneda)), None)
+        if p is not None:
+            v2[p] = (tip, val, moneda, v2[p][3] or rol)
+        else:
+            noi.append((tip, val, moneda, rol))
+    analiza[i] = (v1 + noi,) + tuple(analiza[i][1:])
+    analiza2[j] = (v2,) + tuple(analiza2[j][1:])
+
+
 def extrage_tarife(cale, banca, radacina=None):
     """Inregistrarile de comision dintr-o lista de tarife nestandardizata."""
     cale = Path(cale)
@@ -738,6 +891,7 @@ def extrage_tarife(cale, banca, radacina=None):
     randuri = randuri_document(cale, geometrie_pagini)
     analize = [[analizeaza_linie(t) for t in texte] for _n, _c, _m, _g, texte in randuri]
     col_nume = coloana_numelui(randuri, analize)
+    _valori_din_context(randuri, analize, col_nume, geometrie_pagini)
     latime_tabel = max((m[-1] - m[0] for _n, _c, m, _g, _t in randuri), default=0)
 
     sectiuni = Sectiuni()
@@ -866,6 +1020,8 @@ def extrage_tarife(cale, banca, radacina=None):
             if frecv:
                 frecventa = frecv
             for tip, val, moneda, rol in valori:
+                if _zero_fara_nume(tip, texte[i], serviciu):
+                    continue
                 inregistrari.append({
                     "banca": banca,
                     "sectiune": sectiune,
