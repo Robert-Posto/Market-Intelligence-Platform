@@ -147,7 +147,9 @@ SERVICII = [
     ("acces_lounge", r"\blounge"),
     # BRD "Caseta tip 1..8", Vista "seif marime mica/medie/mare", Techventures
     # "Caseta I (50*260*390 mm)"; pastrarea obiectelor de valoare e acelasi serviciu
-    ("caseta_valori", r"\bcaset[ăaei]|\bseif\b|p[ăa]str\w*[^.]{0,20}obiect\w*[^.]{0,30}valoare"
+    # Doar in capul etichetei: BRD "CIP la cererea clientilor ... transmisa prin:" are
+    # lipit titlul urmator, "Inchiriere casete de valori", iar cei 7 lei sunt ai CIP
+    ("caseta_valori", r"^[^.]{0,40}?(?:\bcaset[ăaei]|\bseif\b)|p[ăa]str\w*[^.]{0,20}obiect\w*[^.]{0,30}valoare"
                       r"|\d+(?:[,.]\d+)?\s*[x*×]\s*\d+(?:[,.]\d+)?\s*[x*×]\s*\d+(?:[,.]\d+)?\s*mm\b"),
     # serviciul de urgenta la card pierdut/furat (Eximbank, Nexent), nu reemiterea
     ("card_pierdut_furat", r"raport\w*[^.]{0,50}(?:pierdut|furat)|plat[ăa]\s+virtual[ăa]\s+unic"
