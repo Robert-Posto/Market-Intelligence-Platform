@@ -275,7 +275,8 @@ def locatii(q):
         "banci": interoghează(
             """SELECT b.slug, b.nume,
                       count(*) FILTER (WHERE l.tip = 'sucursala')::int AS sucursale,
-                      count(*) FILTER (WHERE l.tip = 'atm')::int       AS atm,
+                      count(*) FILTER (WHERE l.tip = 'atm' AND l.retea = 'proprie')::int AS atm,
+                      count(*) FILTER (WHERE l.retea = 'partener')::int AS atm_parteneri,
                       count(*)::int AS total
                FROM locatii l JOIN banci b ON b.id = l.id_banca
                GROUP BY b.slug, b.nume ORDER BY total DESC"""
@@ -284,7 +285,7 @@ def locatii(q):
         "puncte": interoghează(
             "SELECT l.id, b.slug AS banca, b.nume AS banca_nume, l.tip, l.nume, "
             "l.adresa, l.sector, l.lat::float8, l.lon::float8, l.program, l.sursa, "
-            "l.rating::float8, l.nr_recenzii "
+            "l.rating::float8, l.nr_recenzii, l.furnizori, l.retea "
             + base + " ORDER BY b.slug, l.tip",
             params,
         ),
@@ -494,8 +495,8 @@ def celula(q):
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
                   o.ambiguu, o.motiv_ambiguu, o.metoda_extractie,
                   o.serviciu, o.sectiune, o.conditie, o.frecventa, o.detaliu,
-                  o.pagina, s.sursa, s.tip_sursa, s.url_public, s.format,
-                  b.pagina_documente, b.pagina_documente_motiv
+                  o.pagina, o.nr_aparitii, s.sursa, s.tip_sursa, s.url_public,
+                  s.format, b.pagina_documente, b.pagina_documente_motiv
            FROM observatii_curente o
            JOIN surse s ON s.id = o.id_sursa
            JOIN banci b ON b.id = s.id_banca
@@ -525,9 +526,10 @@ def celula(q):
     # PDF descoperite, 9 s-au potrivit exact. Masurat: nu exista mai mult de
     # potrivit, iar un link greșit ar trimite la alt document decat cifra.
     for r in rows:
+        # Documentele populării de la zero au ca sursă chiar adresa publică a
+        # PDF-ului; cele vechi (pachetul colegului) aveau o cale de fișier.
         r["link"] = r["url_public"] or (
-            r["sursa"] if r["tip_sursa"] == "url" and str(r["sursa"]).startswith("http")
-            else None
+            r["sursa"] if str(r["sursa"]).startswith("http") else None
         )
         r["link_pagina"] = None if r["link"] else r["pagina_documente"]
         r["fisier"] = os.path.basename(str(r["sursa"])) if r["tip_sursa"] == "document" else None
@@ -709,7 +711,7 @@ def versus_extra():
     preț: valoare + la ce se referă + sensul (mai mare/mai mic e mai bun).
 
     Fiecare rând spune și de unde vine, fiindcă nu toate sunt egale: ratingul
-    e real din App Store, locațiile sunt mock pentru hartă.
+    e real din App Store, locațiile vin din Overture Maps.
     """
     return {
         "mobil": interoghează(
@@ -723,7 +725,7 @@ def versus_extra():
         "retea": interoghează(
             """SELECT b.slug AS banca,
                       count(*) FILTER (WHERE l.tip = 'sucursala')::int AS sucursale,
-                      count(*) FILTER (WHERE l.tip = 'atm')::int       AS atm,
+                      count(*) FILTER (WHERE l.tip = 'atm' AND l.retea = 'proprie')::int AS atm,
                       round(avg(l.rating) FILTER (WHERE l.tip = 'sucursala'), 2)::float8
                         AS rating_sucursale
                FROM locatii l JOIN banci b ON b.id = l.id_banca
@@ -827,7 +829,7 @@ def stare():
         UNION ALL
         SELECT 'Indici BNR', count(*)::int, NULL::timestamptz, 'bnr_indici.json' FROM indici_referinta
         UNION ALL
-        SELECT 'Locații (mock)', count(*)::int, max(observat_la), 'mock, pentru hartă' FROM locatii
+        SELECT 'Locații', count(*)::int, max(observat_la), 'Overture Maps Places' FROM locatii
         UNION ALL
         SELECT 'Evenimente de schimbare', count(*)::int, max(created_at), 'diferente.py (neconectat)' FROM change_events
         """
@@ -896,9 +898,10 @@ def coada(q):
         params + [limit],
     )
     for r in randuri:
+        # Documentele populării de la zero au ca sursă chiar adresa publică a
+        # PDF-ului; cele vechi (pachetul colegului) aveau o cale de fișier.
         r["link"] = r["url_public"] or (
-            r["sursa"] if r["tip_sursa"] == "url" and str(r["sursa"]).startswith("http")
-            else None
+            r["sursa"] if str(r["sursa"]).startswith("http") else None
         )
         r["link_pagina"] = None if r["link"] else r["pagina_documente"]
         r["fisier"] = os.path.basename(str(r["sursa"])) if r["tip_sursa"] == "document" else None
@@ -993,7 +996,7 @@ def pdf_permis(url):
     if url not in _PERMISE:
         _PERMISE[url] = bool(interoghează(
             """SELECT 1 FROM surse
-               WHERE url_public = %s OR (tip_sursa = 'url' AND sursa = %s)
+               WHERE url_public = %s OR (tip_sursa IN ('url', 'document') AND sursa = %s)
                LIMIT 1""",
             (url, url),
         ))
@@ -1014,6 +1017,15 @@ def adu_pdf(url):
     sertarului ar re-descărca de la bancă același document.
     """
     import hashlib
+    # robots.txt și aici, nu doar la colectare: ING are `Disallow: *.pdf`, iar
+    # allowlist-ul din bază lăsa să treacă un PDF înregistrat înainte de verificare.
+    radacina = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for p in (radacina, os.path.join(radacina, "ingest")):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+    import flux
+    if not flux.permite(url, "proxy"):
+        raise PermissionError("interzis de robots.txt al băncii")
     os.makedirs(CACHE_PDF, exist_ok=True)
     cale = os.path.join(CACHE_PDF, hashlib.sha256(url.encode()).hexdigest() + ".pdf")
     if os.path.exists(cale) and os.path.getsize(cale) > 1000:
@@ -1023,8 +1035,9 @@ def adu_pdf(url):
     # fiindcă lipsește intermediarul). `requests` folosește `certifi`.
     import requests
     r = requests.get(url, timeout=40, headers={
-        # User-Agent onest, ca la colectare: se identifică, nu se dă drept browser.
-        "User-Agent": "MIP/1.0 (monitorizare concurenta; contact IT Libra Bank)",
+        # UA-ul unic al echipei (crawler/__init__.py): se identifică, nu se dă
+        # drept browser.
+        "User-Agent": __import__("crawler").UA,
         "Accept": "application/pdf,*/*",
     })
     if not r.ok:
@@ -1047,6 +1060,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return
             try:
                 cale = adu_pdf(url)
+            except PermissionError as exc:
+                self.send_error(403, str(exc))
+                return
             except Exception as exc:
                 self.send_error(502, f"nu s-a putut aduce PDF-ul: {exc}")
                 return

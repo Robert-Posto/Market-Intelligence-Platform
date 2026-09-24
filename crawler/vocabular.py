@@ -268,6 +268,10 @@ SERVICII = [
     ("interogare_baze_date", r"\bCIP\b|\bCRB\b|\bRECOM\b|baz[ăa]\s+de\s+date"),
     # sechestrul asigurator e tot o masura de executare pe cont (Vista, 2 valori)
     ("poprire", r"poprir|execut\w*\s+silit|sechestr"),
+    # Adăugat pe 23.09.2026: „Taxa recuperare card", 23 de valori nemapate.
+    # (Contestarea și prețul pachetului le acoperă deja `refuz_plata` și
+    # `administrare_cont`, din vocabularul colegului.)
+    ("recuperare_card", r"recuper\w*[^.]{0,30}card|card[^.]{0,30}(re[țt]inut|recuper)"),
     # Ultimele doua, si poziția lor e obligatorie. Instrumentul de plata e OBIECTUL
     # serviciului, nu capul lui: "Remitere la încasare a cecurilor" e o incasare,
     # "Anulare serviciu SMS Alert" e o anulare. Puse mai sus in lista, furau 22 de

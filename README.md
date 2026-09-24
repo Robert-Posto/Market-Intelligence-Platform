@@ -19,15 +19,15 @@ WAF-urilor sau a captcha. Autorii recenziilor se pseudonimizează la ingest
 |---|---|
 | bănci | 30 |
 | surse (URL-uri + documente) | 903 |
-| observații (prețuri, dobânzi) | 22.321 |
-| în coada de verificare umană | 1.529 |
+| observații (prețuri, dobânzi) | 19.104 |
+| în coada de verificare umană | 1.491 |
 | schimbări de preț detectate | 18 |
 
 Patru variante de colectare, cu acoperiri diferite — de aceea rulează toate:
 
 | proveniență | observații | ce acoperă |
 |---|---|---|
-| `pdf` | 15.111 | comisioane din documentele de tarife (extracție proprie) |
+| `pdf` | 11.894 | comisioane din PDF-uri de tarife (reprezintă 15.111 celule — duplicatele sunt strânse) |
 | `playwright` | 6.518 | pachetul colegului, gata extras (JSON) |
 | `bs4` | 511 | depozite, scraperul propriu |
 | `bs4_llm` | 181 | BS4 peste URL-urile găsite de discovery-ul LLM |
@@ -38,11 +38,11 @@ Pe secțiunile din PDF-ul de arhitectură:
 |---|---|
 | 2.1 Produse & prețuri | 19 bănci din 30 |
 | 2.2 Rate & indicatori | 23 bănci |
-| 2.3 Aplicații mobile | **3 bănci** |
+| 2.3 Aplicații mobile | **19 bănci**, 130 capturi |
 | 2.4 Campanii & marketing | **0 — necolectat** |
 | 2.5 Rețea & operațional | 66 locații, **toate mock** |
 | 2.6 Context de piață | 140 valori ROBOR/ROBID reale |
-| 2.7 Sentiment | **3 bănci**, 218 recenzii reale |
+| 2.7 Sentiment | 3 bănci, 112 recenzii — limitat de feed, nu de cod |
 
 ---
 
@@ -53,8 +53,8 @@ Ca să nu ne călcăm pe picioare.
 | zonă | stare |
 |---|---|
 | `router.py --pas pdf` pe toate băncile | **terminat** — 96 PDF-uri, 15.111 comisioane |
-| încărcarea aplicațiilor în 2.3 / 2.7 | id-uri găsite pentru 19 bănci, **încărcarea nu s-a făcut** |
-| cascada de transport (Playwright pentru băncile cu WAF) | planificat, neînceput |
+| încărcarea aplicațiilor în 2.3 / 2.7 | **terminat** — 19 bănci |
+| cascada de transport (Playwright) | **blocat: cere decizie de conformitate** |
 | măsurare pentru 2.4 (campanii) | planificat, neînceput |
 
 ### Zonă înghețată deliberat
@@ -176,18 +176,30 @@ bănci.
 
 | cauză | bănci | ce ar rezolva |
 |---|---|---|
-| au PDF-uri, dar descărcarea dă 403 (WAF) | intesa, unicredit, cec, banca-transilvania | cascada Playwright |
+| au PDF-uri, dar descărcarea dă 403 | intesa, unicredit, cec, banca-transilvania | browser real — **decizie de conformitate în așteptare** |
 | au pagini, dar niciun PDF de tarife găsit pe ele | patria (38 pagini), credex, cetelem, citibank, bid | recoltare mai bună sau tarife publicate doar în HTML |
 | fără nicio sursă descoperită | banorient | lipsește discovery-ul, nu extracția |
+
+Despre cele patru cu 403: **nu e o problemă de antete.** Verificat — refuză și
+cu antete HTTP complete, deci e detectare reală de bot. Singura cale rămasă e
+un browser real (Playwright), iar asta cere o decizie de conformitate: un
+browser nu e o ocolire de WAF, dar e accesarea unui site care ne-a refuzat
+explicit prin alt canal. Falsificarea User-Agent-ului **nu** e o opțiune — ar
+fi evaziune de detecție, interzisă de regulile proiectului.
 
 `bnpparibas` e un caz aparte: are 2 PDF-uri și a extras 1 singură valoare, în
 procente — deci nu apare la comisioane.
 
-**2.3 și 2.7 stau la 3 bănci în bază.** Datele pentru toate cele 19 aplicații
-confirmate sunt aduse (`date/rezultate_app_store.json`, 23 sept); lipsește
-doar `load_appstore.py`, care generează 612 recenzii. Doar din magazinul
-românesc: în `us`, recenziile Citibank și Revolut erau 0% în română
-(aplicații globale, clienți străini).
+**2.3 și 2.7 vin de pe pagina publică App Store, nu din feed-ul RSS.**
+robots.txt al `itunes.apple.com` interzice feed-ul de recenzii
+(`Disallow: /*/rss/*`, verificat 24.09.2026); cele 112 recenzii luate de acolo
+au fost șterse. Pagina `apps.apple.com/ro/app/id…` e permisă și dă, pentru
+toate cele 19 aplicații, versiunea, ratingul, **distribuția pe stele** și
+recenziile afișate de Apple (~8 pe aplicație, alese de ei, nu neapărat cele
+mai recente). Recenziile se acumulează între rulări (`ON CONFLICT DO NOTHING`),
+nu se șterg. Doar magazinul românesc: în `us`, recenziile Citibank și Revolut
+erau 0% în română. Istoricul complet al recenziilor unui concurent se poate
+obține doar de la un furnizor licențiat.
 
 **11 bănci fără id de aplicație confirmat.** Patru probabil n-au aplicație
 (bcr-locuinte, bid, cec, creditcoop). Șapte au aplicația *grupului*, dar de pe

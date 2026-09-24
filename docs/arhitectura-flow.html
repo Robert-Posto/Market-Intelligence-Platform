@@ -1,0 +1,1011 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Flow-uri MIP</title>
+<style>
+  :root{
+    --bg:#eef1f4; --surface:#ffffff; --ink:#1b2430; --muted:#5b6b7a; --line:#c7d0d9;
+    --warn:#a8720f; --warn-tint:#faedd2;
+    --ok:#2f7a4f; --ok-tint:#dcf0e3;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4; --line:#2c3540;
+      --warn:#e0ac52; --warn-tint:#3a2e15;
+      --ok:#6fcf97; --ok-tint:#1c3323;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4; --line:#2c3540;
+    --warn:#e0ac52; --warn-tint:#3a2e15;
+    --ok:#6fcf97; --ok-tint:#1c3323;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font-family:"IBM Plex Sans",system-ui,sans-serif; padding:0 16px; padding-block:32px;}
+  main{max-width:980px; margin:0 auto; display:flex; flex-direction:column; gap:32px;}
+  h1{font-family:"Source Serif 4",Georgia,serif; font-weight:700; font-size:clamp(26px,5vw,36px); text-wrap:balance; margin:0 0 6px;}
+  h3{font-family:"Source Serif 4",Georgia,serif; font-size:17px; margin:0 0 10px; font-weight:600;}
+  .lede{color:var(--muted); font-size:14.5px; max-width:66ch; line-height:1.55; margin:0;}
+  header.page{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:26px 28px;}
+  .legend{display:flex; flex-wrap:wrap; gap:18px; margin-top:16px; font-size:12.5px; color:var(--muted); font-family:"IBM Plex Mono",monospace;}
+  .legend span{display:inline-flex; align-items:center; gap:7px;}
+  .swatch{width:14px; height:14px; border-radius:3px; display:inline-block; flex:none;}
+  .swatch.plain{border:1.6px solid var(--ink); background:transparent;}
+  .swatch.ok{background:var(--ok-tint); border:1.6px solid var(--ok);}
+  .swatch.warn{background:var(--warn-tint); border:1.6px solid var(--warn);}
+  figure{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px 20px 16px; margin:0;}
+  figure h2{font-family:"Source Serif 4",Georgia,serif; font-size:18px; margin:0 0 4px; font-weight:600;}
+  figure .claim{color:var(--muted); font-size:13px; margin:0 0 14px; max-width:70ch;}
+  .svgwrap{overflow-x:auto;}
+  svg{display:block; margin:0 auto; max-width:100%; height:auto; font-family:"IBM Plex Mono",monospace;}
+  figcaption{margin-top:12px; font-size:12.5px; color:var(--muted); line-height:1.5;}
+  .nodetitle{font-size:12.5px; font-weight:600; fill:var(--ink);}
+  .nodesub{font-size:10px; fill:var(--muted);}
+  .edgelabel{font-size:10.5px; fill:var(--muted);}
+  .rect-plain{fill:var(--surface); stroke:var(--ink); stroke-width:1.5;}
+  .rect-ok{fill:var(--ok-tint); stroke:var(--ok); stroke-width:1.7;}
+  .rect-warn{fill:var(--warn-tint); stroke:var(--warn); stroke-width:1.7;}
+  .edge{fill:none; stroke:var(--muted); stroke-width:1.4;}
+  section.block{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:22px 24px;}
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  table caption{text-align:left; font-size:12px; color:var(--muted); margin-bottom:8px;}
+  th,td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted); font-weight:500; text-transform:uppercase; letter-spacing:.03em;}
+  td.mono{font-family:"IBM Plex Mono",monospace; font-size:12px;}
+  section.block p{font-size:13.5px; color:var(--muted); line-height:1.6; max-width:72ch;}
+  .callout{background:var(--ok-tint); border:1.5px solid var(--ok); border-radius:10px; padding:14px 16px; margin-top:14px;}
+  .callout p{color:var(--ink); font-size:13.5px; line-height:1.6; max-width:none; margin:0;}
+  .callout .callout-label{display:block; font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--ok); margin-bottom:6px;}
+  .callout.warn{background:var(--warn-tint); border-color:var(--warn);}
+  .callout.warn .callout-label{color:var(--warn);}
+  section.block a{color:inherit; text-decoration:underline; text-underline-offset:2px;}
+  pre{background:var(--bg); border:1px solid var(--line); border-radius:10px;
+      padding:14px 16px; overflow-x:auto; margin:12px 0 0;
+      font-family:"IBM Plex Mono",monospace; font-size:11.5px; line-height:1.6;
+      color:var(--ink); tab-size:2;}
+  pre .c{color:var(--muted);}
+  pre .n{color:var(--warn); font-weight:500;}
+  .ddl h4{font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600;
+      text-transform:uppercase; letter-spacing:.04em; color:var(--muted);
+      margin:22px 0 0;}
+  .ddl h4:first-of-type{margin-top:6px;}
+  footer.note{font-size:12.5px; color:var(--muted); line-height:1.6; padding:2px 4px;}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<main>
+  <header class="page">
+    <h1>Flow-uri MIP</h1>
+    <p class="lede">Șase diagrame plus tabele: cadența de rulare, cine populează inventarul de surse și cine îl citește, traseul unei surse, cele două moduri de eșec, track-ul mobil (cu opțiuni de backup), schema bazei de date — și o bucată gata de implementat, coada de verificare umană.</p>
+    <div class="legend">
+      <span><span class="swatch plain"></span>pas simplu (citire/scriere)</span>
+      <span><span class="swatch ok"></span>pas cu rezultat de valoare</span>
+      <span><span class="swatch warn"></span>decizie sau necesită om</span>
+    </div>
+  </header>
+
+  <figure>
+    <h2>1. Cadența de rulare</h2>
+    <p class="claim">Populare o singură dată, descoperire lunară cu aviz juridic, apoi două ritmuri de verificare — propunere de discutat, nu literă de lege.</p>
+    <div class="svgwrap">
+    <svg viewBox="0 0 600 620" role="img" aria-label="Cadenta de rulare: banci.json si produse.json alimenteaza o populare initiala facuta o singura data, urmata de descoperire lunara cu aviz juridic care actualizeaza inventarul, care la randul lui alimenteaza doua ritmuri de verificare in paralel, zilnic si lunar, ambele rulind traseul descris in diagrama urmatoare.">
+      <defs>
+        <marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+        </marker>
+      </defs>
+
+      <rect class="rect-plain" x="20" y="20" width="250" height="50" rx="9"/>
+      <text x="145" y="41" text-anchor="middle" class="nodetitle">banci.json</text>
+      <text x="145" y="57" text-anchor="middle" class="nodesub">lista de competitori</text>
+
+      <rect class="rect-plain" x="290" y="20" width="250" height="50" rx="9"/>
+      <text x="415" y="41" text-anchor="middle" class="nodetitle">produse.json</text>
+      <text x="415" y="57" text-anchor="middle" class="nodesub">lista de produse urmărite</text>
+
+      <path class="edge" d="M145,70 L280,100" marker-end="url(#a3)"/>
+      <path class="edge" d="M415,70 L280,100" marker-end="url(#a3)"/>
+
+      <rect class="rect-plain" x="120" y="100" width="320" height="54" rx="9"/>
+      <text x="280" y="122" text-anchor="middle" class="nodetitle">Populare inițială</text>
+      <text x="280" y="138" text-anchor="middle" class="nodesub">script rulat o singură dată, manual</text>
+      <path class="edge" d="M280,154 L280,184" marker-end="url(#a3)"/>
+
+      <rect class="rect-ok" x="120" y="184" width="320" height="54" rx="9"/>
+      <text x="280" y="206" text-anchor="middle" class="nodetitle">Descoperire lunară</text>
+      <text x="280" y="222" text-anchor="middle" class="nodesub">propune URL-uri și produse noi</text>
+      <path class="edge" d="M280,238 L280,268" marker-end="url(#a3)"/>
+
+      <rect class="rect-warn" x="120" y="268" width="320" height="54" rx="9"/>
+      <text x="280" y="290" text-anchor="middle" class="nodetitle">Aviz juridic</text>
+      <text x="280" y="306" text-anchor="middle" class="nodesub">un om aprobă fiecare sursă nouă</text>
+      <path class="edge" d="M280,322 L280,352" marker-end="url(#a3)"/>
+
+      <rect class="rect-plain" x="120" y="352" width="320" height="54" rx="9"/>
+      <text x="280" y="374" text-anchor="middle" class="nodetitle">Inventar actualizat</text>
+      <text x="280" y="390" text-anchor="middle" class="nodesub">sursele active, citite mai jos</text>
+
+      <path class="edge" d="M280,406 L145,436" marker-end="url(#a3)"/>
+      <path class="edge" d="M280,406 L415,436" marker-end="url(#a3)"/>
+
+      <rect class="rect-ok" x="20" y="436" width="250" height="64" rx="9"/>
+      <text x="145" y="460" text-anchor="middle" class="nodetitle">Verificare zilnică</text>
+      <text x="145" y="476" text-anchor="middle" class="nodesub">curs valutar, dobânzi —</text>
+      <text x="145" y="489" text-anchor="middle" class="nodesub">se schimbă des</text>
+
+      <rect class="rect-ok" x="290" y="436" width="250" height="64" rx="9"/>
+      <text x="415" y="460" text-anchor="middle" class="nodetitle">Verificare lunară</text>
+      <text x="415" y="476" text-anchor="middle" class="nodesub">comisioane PDF, joburi —</text>
+      <text x="415" y="489" text-anchor="middle" class="nodesub">se schimbă rar</text>
+
+      <path class="edge" d="M145,500 L280,536" marker-end="url(#a3)"/>
+      <path class="edge" d="M415,500 L280,536" marker-end="url(#a3)"/>
+
+      <rect class="rect-plain" x="120" y="536" width="320" height="54" rx="9"/>
+      <text x="280" y="558" text-anchor="middle" class="nodetitle">Rulează traseul din diagrama 3</text>
+      <text x="280" y="574" text-anchor="middle" class="nodesub">per sursă, la fiecare verificare</text>
+    </svg>
+    </div>
+    <figcaption>Frecvențele exacte sunt o propunere (tabelul de mai jos) — de ajustat cu tine pe măsură ce vedem cât de des se mișcă efectiv fiecare tip de dată.</figcaption>
+  </figure>
+
+  <figure>
+    <h2>2. Cine populează <span class="mono" style="font-family:'IBM Plex Mono',monospace">surse</span>, cine o citește</h2>
+    <p class="claim">Discovery-ul nu citește nicio cifră. Singurul lui rezultat e un rând în <span class="mono" style="font-family:'IBM Plex Mono',monospace">surse</span>: o adresă, cu eticheta „aici s-ar găsi produsul X”. Extracția pornește de acolo, ia rândurile unul câte unul, și abia ea produce valori.</p>
+    <div class="svgwrap">
+    <svg viewBox="0 0 800 840" role="img" aria-label="Doua benzi. Banda de sus, descoperire: banks.py si produse_bancare_v2.json alimenteaza ruleaza-discovery.ps1 care ruleaza claudeCrawl.py, rezultatul e cate un fisier inventar per banca, care trece prin aviz juridic si ajunge in tabelul surse. Banda de jos, extractie: ruleaza-extractie.py citeste rand cu rand din surse si cheama cauta_date, care descarca documentul, scrie Bronze si decide din primii octeti daca merge la flow-html.py sau la flow-pdf.py; ambele scriu in observations.">
+      <defs>
+        <marker id="a6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+        </marker>
+      </defs>
+
+      <rect x="8" y="8" width="784" height="448" rx="12" fill="none" stroke="var(--line)" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <text x="24" y="30" class="edgelabel">DESCOPERIRE · lunar — scrie în surse</text>
+
+      <rect class="rect-plain" x="70" y="44" width="290" height="52" rx="9"/>
+      <text x="215" y="68" text-anchor="middle" class="nodetitle">banks.py</text>
+      <text x="215" y="84" text-anchor="middle" class="nodesub">30 de bănci + URL oficial</text>
+
+      <rect class="rect-plain" x="440" y="44" width="290" height="52" rx="9"/>
+      <text x="585" y="68" text-anchor="middle" class="nodetitle">produse_bancare_v2.json</text>
+      <text x="585" y="84" text-anchor="middle" class="nodesub">31 produse · 221 sinonime</text>
+
+      <path class="edge" d="M215,96 L350,122" marker-end="url(#a6)"/>
+      <path class="edge" d="M585,96 L450,122" marker-end="url(#a6)"/>
+
+      <rect class="rect-plain" x="190" y="126" width="420" height="68" rx="9"/>
+      <text x="400" y="150" text-anchor="middle" class="nodetitle">ruleaza-discovery.ps1 → claudeCrawl.py</text>
+      <text x="400" y="167" text-anchor="middle" class="nodesub">un job per bancă, 4 în paralel</text>
+      <text x="400" y="182" text-anchor="middle" class="nodesub">web_fetch server-side, user-agent Claude-User</text>
+
+      <path class="edge" d="M400,194 L400,224" marker-end="url(#a6)"/>
+
+      <rect class="rect-plain" x="215" y="228" width="370" height="58" rx="9"/>
+      <text x="400" y="252" text-anchor="middle" class="nodetitle">inventar-&lt;banca&gt;.json</text>
+      <text x="400" y="269" text-anchor="middle" class="nodesub">30 de fișiere · stare: PROPUNERE</text>
+
+      <path class="edge" d="M400,286 L400,298" marker-end="url(#a6)"/>
+
+      <rect class="rect-warn" x="250" y="302" width="300" height="50" rx="9"/>
+      <text x="400" y="324" text-anchor="middle" class="nodetitle">Aviz juridic + review uman</text>
+      <text x="400" y="340" text-anchor="middle" class="nodesub">un om aprobă fiecare sursă nouă</text>
+
+      <path class="edge" d="M400,352 L400,368" marker-end="url(#a6)"/>
+
+      <rect class="rect-ok" x="150" y="372" width="500" height="66" rx="9"/>
+      <text x="400" y="396" text-anchor="middle" class="nodetitle">tabelul surse</text>
+      <text x="400" y="412" text-anchor="middle" class="nodesub">un rând per URL urmărit · 467 rânduri · 648 perechi URL×produs</text>
+      <text x="400" y="428" text-anchor="middle" class="nodesub">singurul lucru pe care discovery-ul îl scrie</text>
+
+      <path class="edge" d="M400,438 L400,504" marker-end="url(#a6)"/>
+      <text x="412" y="480" class="edgelabel">un rând, un apel</text>
+
+      <rect x="8" y="472" width="784" height="356" rx="12" fill="none" stroke="var(--line)" stroke-width="1.2" stroke-dasharray="5 4"/>
+      <text x="24" y="492" class="edgelabel">EXTRACȚIE · după surse.frecventa — citește din surse, scrie în observations</text>
+
+      <rect class="rect-plain" x="190" y="510" width="420" height="54" rx="9"/>
+      <text x="400" y="533" text-anchor="middle" class="nodetitle">ruleaza-extractie.py</text>
+      <text x="400" y="549" text-anchor="middle" class="nodesub">bucla: SELECT din surse, un rând o dată</text>
+
+      <path class="edge" d="M400,564 L400,582" marker-end="url(#a6)"/>
+
+      <rect class="rect-warn" x="190" y="586" width="420" height="64" rx="9"/>
+      <text x="400" y="609" text-anchor="middle" class="nodetitle">cauta_date(sursa)</text>
+      <text x="400" y="625" text-anchor="middle" class="nodesub">descarcă, scrie Bronze, citește primii octeți</text>
+      <text x="400" y="640" text-anchor="middle" class="nodesub">formatul real decide flowul, nu extensia</text>
+
+      <path class="edge" d="M380,650 L280,674" marker-end="url(#a6)"/>
+      <text x="290" y="657" class="edgelabel">html</text>
+      <path class="edge" d="M420,650 L520,674" marker-end="url(#a6)"/>
+      <text x="474" y="657" class="edgelabel">pdf</text>
+
+      <rect class="rect-ok" x="140" y="678" width="240" height="56" rx="9"/>
+      <text x="260" y="702" text-anchor="middle" class="nodetitle">flow-html.py</text>
+      <text x="260" y="719" text-anchor="middle" class="nodesub">traseul din figura 3</text>
+
+      <rect class="rect-ok" x="420" y="678" width="240" height="56" rx="9"/>
+      <text x="540" y="702" text-anchor="middle" class="nodetitle">flow-pdf.py</text>
+      <text x="540" y="719" text-anchor="middle" class="nodesub">PAD determinist, altfel LLM</text>
+
+      <path class="edge" d="M260,734 L350,756" marker-end="url(#a6)"/>
+      <path class="edge" d="M540,734 L450,756" marker-end="url(#a6)"/>
+
+      <rect class="rect-ok" x="250" y="760" width="300" height="54" rx="9"/>
+      <text x="400" y="783" text-anchor="middle" class="nodetitle">observations</text>
+      <text x="400" y="799" text-anchor="middle" class="nodesub">o valoare, cu citatul care o susține</text>
+    </svg>
+    </div>
+    <figcaption>Cele două benzi rulează separat: legătura dintre ele e un tabel, nu un apel de funcție, deci oricare se poate rerula fără cealaltă. Discovery-ul produce propuneri și se rerulează — rerulat, propune din nou aceeași adresă, de asta <span class="mono" style="font-family:'IBM Plex Mono',monospace">surse.sursa</span> cere index unic. Iar <span class="mono" style="font-family:'IBM Plex Mono',monospace">cauta_date</span> alege flowul din primii octeți ai fișierului, nu din extensia URL-ului: extensia și Content-Type mint amândouă.</figcaption>
+  </figure>
+
+  <section class="block">
+    <h3>Ce ia funcția dintr-un rând de <span class="mono" style="font-family:'IBM Plex Mono',monospace">surse</span></h3>
+    <p>Contractul dintre cele două benzi. Nimic altceva nu trece: <span class="mono" style="font-family:'IBM Plex Mono',monospace">cauta_date</span> nu știe că există un inventar, iar discovery-ul nu știe ce face un flow.</p>
+    <table>
+      <thead><tr><th>Câmp</th><th>La ce îl folosește</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">id</td><td>numele folderului de Bronze și al fișierului de rezultat: <span class="mono" style="font-family:'IBM Plex Mono',monospace">bronze/&lt;id&gt;/&lt;hash&gt;.bin</span></td></tr>
+        <tr><td class="mono">id_banca</td><td>se scrie în fiecare observație. Banca nu se deduce din URL</td></tr>
+        <tr><td class="mono">sursa</td><td>ce se descarcă</td></tr>
+        <tr><td class="mono">format</td><td>estimarea de la descoperire — folosită doar ca avertisment când nu se potrivește cu octeții reali</td></tr>
+        <tr><td class="mono">metoda</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">http</span> sau <span class="mono" style="font-family:'IBM Plex Mono',monospace">playwright</span>. Tot o estimare a modelului, deci <span class="mono" style="font-family:'IBM Plex Mono',monospace">incredere_metoda &lt; 0.7</span> cere verificare</td></tr>
+        <tr><td class="mono">produse</td><td>ce se caută în document. <strong>Numărul de perechi, nu de surse, dă costul</strong> — fiecare pereche e un apel de extracție</td></tr>
+        <tr><td class="mono">hash_anterior</td><td>dacă e identic cu hash-ul textului sanitizat de acum, flowul se oprește și nu se consumă nimic</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <span class="callout-label">💡 De ce un tabel și nu un apel direct</span>
+      <p>Discovery-ul costă bani și are nevoie de aviz uman; extracția rulează zilnic. Dacă a doua l-ar chema pe primul, fiecare rulare zilnică ar reface descoperirea — 30 de bănci × 100 de pagini, degeaba. Tabelul e și punctul în care un om poate interveni: o sursă pusă pe <span class="mono" style="font-family:'IBM Plex Mono',monospace">status = pauza</span> dispare din bucla de extracție fără să se atingă nimic din cod.</p>
+    </div>
+  </section>
+
+  <figure>
+    <h2>3. Traseul unei surse</h2>
+    <p class="claim">De la un URL din inventar la un rând nou în istoric. Sursele deja structurate (API, store mobil, XML BNR) sar peste extracție.</p>
+    <div class="svgwrap">
+    <svg viewBox="0 0 800 800" role="img" aria-label="Traseul unei surse: descarca, sanitizeaza, verifica hash fata de ieri (identic inseamna stop), salveaza in bronze, sare peste extractie daca datele sunt deja structurate, altfel extrage determinist si eventual cu LLM, valideaza si scrie in istoric, iar rezultatele sub pragul de incredere merg intr-o coada de verificare umana.">
+      <defs>
+        <marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+        </marker>
+      </defs>
+
+      <rect class="rect-plain" x="100" y="20" width="320" height="54" rx="9"/>
+      <text x="260" y="42" text-anchor="middle" class="nodetitle">URL din inventar</text>
+      <text x="260" y="58" text-anchor="middle" class="nodesub">metodă, tip, produse asociate</text>
+      <path class="edge" d="M260,74 L260,104" marker-end="url(#a1)"/>
+
+      <rect class="rect-plain" x="100" y="104" width="320" height="54" rx="9"/>
+      <text x="260" y="126" text-anchor="middle" class="nodetitle">Descarcă</text>
+      <text x="260" y="142" text-anchor="middle" class="nodesub">conținutul brut, în memorie</text>
+      <path class="edge" d="M260,158 L260,188" marker-end="url(#a1)"/>
+
+      <rect class="rect-ok" x="100" y="188" width="320" height="54" rx="9"/>
+      <text x="260" y="210" text-anchor="middle" class="nodetitle">Sanitizare</text>
+      <text x="260" y="226" text-anchor="middle" class="nodesub">elimină meniu, footer, cod irelevant</text>
+      <path class="edge" d="M260,242 L260,272" marker-end="url(#a1)"/>
+
+      <rect class="rect-warn" x="100" y="272" width="320" height="54" rx="9"/>
+      <text x="260" y="294" text-anchor="middle" class="nodetitle">Hash, comparat cu cel de ieri</text>
+      <text x="260" y="310" text-anchor="middle" class="nodesub">pe textul sanitizat, nu pe bytes bruți</text>
+      <path class="edge" d="M420,299 L490,299" marker-end="url(#a1)"/>
+      <text x="455" y="290" text-anchor="middle" class="edgelabel">identic</text>
+      <rect class="rect-warn" x="490" y="272" width="260" height="54" rx="9"/>
+      <text x="620" y="294" text-anchor="middle" class="nodetitle">Identic: stop</text>
+      <text x="620" y="310" text-anchor="middle" class="nodesub">nimic nou, nu se reprocesează</text>
+
+      <path class="edge" d="M260,326 L260,356" marker-end="url(#a1)"/>
+      <text x="284" y="345" class="edgelabel">diferit</text>
+
+      <rect class="rect-ok" x="100" y="356" width="320" height="54" rx="9"/>
+      <text x="260" y="378" text-anchor="middle" class="nodetitle">Bronze</text>
+      <text x="260" y="394" text-anchor="middle" class="nodesub">varianta brută, salvată doar dacă s-a schimbat</text>
+      <path class="edge" d="M260,410 L260,440" marker-end="url(#a1)"/>
+
+      <rect class="rect-plain" x="100" y="440" width="320" height="54" rx="9"/>
+      <text x="260" y="462" text-anchor="middle" class="nodetitle">E deja structurat?</text>
+      <text x="260" y="478" text-anchor="middle" class="nodesub">API oficial, listing de store, XML BNR</text>
+      <path class="edge" d="M420,467 L490,467" marker-end="url(#a1)"/>
+      <text x="455" y="458" text-anchor="middle" class="edgelabel">da</text>
+      <rect class="rect-ok" x="490" y="440" width="260" height="54" rx="9"/>
+      <text x="620" y="462" text-anchor="middle" class="nodetitle">Mapare directă</text>
+      <text x="620" y="478" text-anchor="middle" class="nodesub">fără pas de extracție, direct la validare</text>
+
+      <path class="edge" d="M260,494 L260,524" marker-end="url(#a1)"/>
+      <text x="278" y="513" class="edgelabel">nu</text>
+
+      <rect class="rect-ok" x="100" y="524" width="320" height="64" rx="9"/>
+      <text x="260" y="548" text-anchor="middle" class="nodetitle">Extracție</text>
+      <text x="260" y="564" text-anchor="middle" class="nodesub">determinist întâi (selectori, tabele)</text>
+      <text x="260" y="578" text-anchor="middle" class="nodesub">LLM doar dacă nu găsește nimic</text>
+      <path class="edge" d="M260,588 L260,618" marker-end="url(#a1)"/>
+
+      <rect class="rect-plain" x="100" y="618" width="320" height="64" rx="9"/>
+      <text x="260" y="642" text-anchor="middle" class="nodetitle">Validare, apoi Silver</text>
+      <text x="260" y="658" text-anchor="middle" class="nodesub">verificări automate de plauzibilitate</text>
+      <text x="260" y="672" text-anchor="middle" class="nodesub">rând nou; istoricul nu se șterge</text>
+      <path class="edge" d="M420,650 L490,650" marker-end="url(#a1)"/>
+      <text x="455" y="641" text-anchor="middle" class="edgelabel">sub prag / greșit</text>
+      <rect class="rect-warn" x="490" y="618" width="260" height="64" rx="9"/>
+      <text x="620" y="642" text-anchor="middle" class="nodetitle">Coadă de verificare umană</text>
+      <text x="620" y="658" text-anchor="middle" class="nodesub">un om vede text_sursă + valoarea propusă</text>
+      <text x="620" y="672" text-anchor="middle" class="nodesub">nu se publică automat nimic nesigur</text>
+
+      <path class="edge" d="M260,682 L260,712" marker-end="url(#a1)"/>
+      <text x="282" y="701" class="edgelabel">ok</text>
+      <path class="edge" d="M620,682 L620,712" marker-end="url(#a1)"/>
+
+      <rect class="rect-ok" x="100" y="712" width="320" height="54" rx="9"/>
+      <text x="260" y="734" text-anchor="middle" class="nodetitle">Semnal de schimbare</text>
+      <text x="260" y="750" text-anchor="middle" class="nodesub">doar dacă diferă de ultima valoare validă</text>
+
+      <rect class="rect-ok" x="490" y="712" width="260" height="54" rx="9"/>
+      <text x="620" y="734" text-anchor="middle" class="nodetitle">Adnotat, intră în istoric</text>
+      <text x="620" y="750" text-anchor="middle" class="nodesub">la fel ca rândul din stânga</text>
+    </svg>
+    </div>
+    <figcaption>Detaliul de implementare al coborâtorilor din dreapta e desfăcut în tabelul „Coada de verificare umană" mai jos.</figcaption>
+  </figure>
+
+  <figure>
+    <h2>4. Cele două eșecuri</h2>
+    <p class="claim">URL mort se vede imediat. Produs disparut de pe o pagină nu înseamnă mereu că a fost retras — poate avea alt URL activ.</p>
+    <div class="svgwrap">
+    <svg viewBox="0 0 1160 780" role="img" aria-label="Cele doua tipuri de esec: URL care nu raspunde, tratat imediat, versus extractie goala pe un URL cunoscut, care intai verifica daca produsul mai are alt URL activ inainte de a declansa redescoperirea pe domeniul bancii si, in final, un semnal de schimbare doar daca produsul nu se mai gaseste nicaieri.">
+      <defs>
+        <marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+        </marker>
+      </defs>
+
+      <rect class="rect-warn" x="100" y="21" width="260" height="58" rx="9"/>
+      <text x="230" y="46" text-anchor="middle" class="nodetitle">URL nu răspunde</text>
+      <text x="230" y="62" text-anchor="middle" class="nodesub">404 · 410 · timeout — eșec zgomotos</text>
+
+      <rect class="rect-warn" x="610" y="21" width="300" height="58" rx="9"/>
+      <text x="760" y="46" text-anchor="middle" class="nodetitle">Extracție goală</text>
+      <text x="760" y="62" text-anchor="middle" class="nodesub">200 OK, dar produsul nu mai apare — eșec tăcut</text>
+
+      <path class="edge" d="M760,79 L760,145" marker-end="url(#a2)"/>
+
+      <rect class="rect-plain" x="620" y="145" width="280" height="50" rx="8"/>
+      <text x="760" y="165" text-anchor="middle" class="nodetitle">produsul are alt URL activ?</text>
+      <text x="760" y="181" text-anchor="middle" class="nodesub">verificat în legătura URL–produs</text>
+
+      <path class="edge" d="M900,170 C 960,170 990,190 990,228" marker-end="url(#a2)"/>
+      <text x="960" y="208" text-anchor="middle" class="edgelabel">da</text>
+
+      <rect class="rect-ok" x="850" y="228" width="280" height="64" rx="9"/>
+      <text x="990" y="254" text-anchor="middle" class="nodetitle">legătură marcată inactivă</text>
+      <text x="990" y="270" text-anchor="middle" class="nodesub">fără alarmă — produsul e viu în altă parte</text>
+      <text x="990" y="284" text-anchor="middle" class="nodesub">nu declanșează redescoperire</text>
+
+      <path class="edge" d="M760,195 L760,290 L620,290" marker-end="url(#a2)"/>
+      <text x="700" y="280" text-anchor="middle" class="edgelabel">nu</text>
+
+      <path class="edge" d="M230,79 L230,290 L360,290" marker-end="url(#a2)"/>
+      <text x="260" y="200" text-anchor="middle" class="edgelabel">imediat, fără prag</text>
+
+      <rect class="rect-plain" x="350" y="263" width="280" height="54" rx="9"/>
+      <text x="490" y="286" text-anchor="middle" class="nodetitle">Contor de eșecuri</text>
+      <text x="490" y="302" text-anchor="middle" class="nodesub">404 imediat · lipsă produs după 3 rulări</text>
+
+      <path class="edge" d="M490,317 L490,373" marker-end="url(#a2)"/>
+      <text x="512" y="348" class="edgelabel">peste prag</text>
+
+      <rect class="rect-ok" x="340" y="373" width="300" height="54" rx="9"/>
+      <text x="490" y="396" text-anchor="middle" class="nodetitle">Redescoperire pe domeniul băncii</text>
+      <text x="490" y="412" text-anchor="middle" class="nodesub">crawl, caută produsul — o rulare/bancă/zi</text>
+
+      <path class="edge" d="M490,427 L490,477" marker-end="url(#a2)"/>
+
+      <rect class="rect-plain" x="390" y="477" width="200" height="46" rx="8"/>
+      <text x="490" y="504" text-anchor="middle" class="nodetitle">găsit?</text>
+
+      <path class="edge" d="M390,500 L230,572" marker-end="url(#a2)"/>
+      <text x="300" y="530" text-anchor="middle" class="edgelabel">da</text>
+
+      <path class="edge" d="M590,500 L780,568" marker-end="url(#a2)"/>
+      <text x="700" y="530" text-anchor="middle" class="edgelabel">nu</text>
+
+      <rect class="rect-warn" x="100" y="572" width="260" height="56" rx="9"/>
+      <text x="230" y="596" text-anchor="middle" class="nodetitle">Coadă de verificare umană</text>
+      <text x="230" y="612" text-anchor="middle" class="nodesub">om confirmă adresa nouă</text>
+
+      <path class="edge" d="M230,628 L230,675" marker-end="url(#a2)"/>
+
+      <rect class="rect-plain" x="120" y="675" width="220" height="50" rx="9"/>
+      <text x="230" y="704" text-anchor="middle" class="nodetitle">URL actualizat</text>
+
+      <rect class="rect-ok" x="630" y="568" width="300" height="64" rx="9"/>
+      <text x="780" y="592" text-anchor="middle" class="nodetitle">Semnal de schimbare: produs retras</text>
+      <text x="780" y="608" text-anchor="middle" class="nodesub">informație de piață, nu eroare</text>
+      <text x="780" y="622" text-anchor="middle" class="nodesub">trimis spre sinteza zilnică</text>
+      <text x="780" y="662" text-anchor="middle" class="edgelabel">URL vechi marcat inactiv — niciodată șters</text>
+    </svg>
+    </div>
+    <figcaption>Pasul „produsul are alt URL activ?" evită alarme false: un produs cu două adrese cunoscute nu declanșează nimic doar pentru că una din adrese și-a schimbat structura.</figcaption>
+  </figure>
+
+  <figure>
+    <h2>5. Track mobil: de unde vin datele</h2>
+    <p class="claim">Patru surse, două regimuri: ce vine automat trece prin validare ca orice altă sursă, ce introduce un om intră deja verificat. Fără cereri automate către Google. Date complet separate de scraping-ul de pe siteurile băncilor (produse/dobânzi) — mecanismul e comun, datele nu se amestecă.</p>
+    <div class="svgwrap">
+    <svg viewBox="0 0 900 450" role="img" aria-label="Track-ul mobil: patru surse - iOS prin iTunes API cu feed RSS, Android prin Exodus pentru versiuni, Android prin telefonul propriu pentru analiza APK, toate trei automate, plus pagina de store citita manual pentru rating si imagini. Cele automate sunt structurate fara pas de extractie, cele manuale intra deja verificate, apoi toate trec prin validare si ajung in patru tabele: app_release, app_review doar din iOS, app_screenshot si app_composition doar din Android.">
+      <defs>
+        <marker id="a4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+        </marker>
+      </defs>
+
+      <rect class="rect-plain" x="12" y="16" width="200" height="76" rx="9"/>
+      <text x="112" y="38" text-anchor="middle" class="nodetitle">iOS — iTunes API</text>
+      <text x="112" y="56" text-anchor="middle" class="nodesub">+ feed RSS de review-uri</text>
+      <text x="112" y="72" text-anchor="middle" class="nodesub">automat</text>
+
+      <rect class="rect-plain" x="237" y="16" width="200" height="76" rx="9"/>
+      <text x="337" y="38" text-anchor="middle" class="nodetitle">Android — Exodus</text>
+      <text x="337" y="56" text-anchor="middle" class="nodesub">versiuni + istoric</text>
+      <text x="337" y="72" text-anchor="middle" class="nodesub">automat, gratuit</text>
+
+      <rect class="rect-plain" x="462" y="16" width="200" height="76" rx="9"/>
+      <text x="562" y="38" text-anchor="middle" class="nodetitle">Android — telefon propriu</text>
+      <text x="562" y="56" text-anchor="middle" class="nodesub">APK, prin adb</text>
+      <text x="562" y="72" text-anchor="middle" class="nodesub">automat</text>
+
+      <rect class="rect-plain" x="687" y="16" width="200" height="76" rx="9"/>
+      <text x="787" y="38" text-anchor="middle" class="nodetitle">Android — pagina de store</text>
+      <text x="787" y="56" text-anchor="middle" class="nodesub">rating, imagini de listing</text>
+      <text x="787" y="72" text-anchor="middle" class="nodesub">manual</text>
+
+      <path class="edge" d="M112,92 L330,146" marker-end="url(#a4)"/>
+      <path class="edge" d="M337,92 L336,146" marker-end="url(#a4)"/>
+      <path class="edge" d="M562,92 L342,146" marker-end="url(#a4)"/>
+      <path class="edge" d="M787,92 L777,146" marker-end="url(#a4)"/>
+
+      <rect class="rect-plain" x="60" y="150" width="550" height="56" rx="9"/>
+      <text x="335" y="174" text-anchor="middle" class="nodetitle">Structurate automat</text>
+      <text x="335" y="191" text-anchor="middle" class="nodesub">fără pas de extracție, ca în figura 3</text>
+
+      <rect class="rect-warn" x="660" y="150" width="230" height="56" rx="9"/>
+      <text x="775" y="174" text-anchor="middle" class="nodetitle">Introduse de om</text>
+      <text x="775" y="191" text-anchor="middle" class="nodesub">intră deja verificate</text>
+
+      <path class="edge" d="M335,206 L440,246" marker-end="url(#a4)"/>
+      <path class="edge" d="M775,206 L465,246" marker-end="url(#a4)"/>
+
+      <rect class="rect-plain" x="310" y="250" width="280" height="52" rx="9"/>
+      <text x="450" y="273" text-anchor="middle" class="nodetitle">Validare</text>
+      <text x="450" y="290" text-anchor="middle" class="nodesub">aceleași verificări ca în figura 3</text>
+
+      <path class="edge" d="M450,302 L120,336" marker-end="url(#a4)"/>
+      <path class="edge" d="M450,302 L337,336" marker-end="url(#a4)"/>
+      <path class="edge" d="M450,302 L562,336" marker-end="url(#a4)"/>
+      <path class="edge" d="M450,302 L780,336" marker-end="url(#a4)"/>
+
+      <rect class="rect-ok" x="12" y="340" width="200" height="94" rx="9"/>
+      <text x="112" y="366" text-anchor="middle" class="nodetitle">app_release</text>
+      <text x="112" y="384" text-anchor="middle" class="nodesub">iOS + Android</text>
+      <text x="112" y="398" text-anchor="middle" class="nodesub">versiuni; fiecare lansare</text>
+      <text x="112" y="412" text-anchor="middle" class="nodesub">nouă e un semnal</text>
+
+      <rect class="rect-ok" x="237" y="340" width="200" height="94" rx="9"/>
+      <text x="337" y="366" text-anchor="middle" class="nodetitle">app_review</text>
+      <text x="337" y="384" text-anchor="middle" class="nodesub">doar iOS</text>
+      <text x="337" y="398" text-anchor="middle" class="nodesub">pe Android nu există</text>
+      <text x="337" y="412" text-anchor="middle" class="nodesub">sursă gratuită</text>
+
+      <rect class="rect-ok" x="462" y="340" width="200" height="94" rx="9"/>
+      <text x="562" y="366" text-anchor="middle" class="nodetitle">app_screenshot</text>
+      <text x="562" y="384" text-anchor="middle" class="nodesub">iOS automat,</text>
+      <text x="562" y="398" text-anchor="middle" class="nodesub">Android manual,</text>
+      <text x="562" y="412" text-anchor="middle" class="nodesub">la versiune nouă</text>
+
+      <text x="787" y="332" text-anchor="middle" class="edgelabel">nou</text>
+      <rect class="rect-ok" x="687" y="340" width="200" height="94" rx="9"/>
+      <text x="787" y="366" text-anchor="middle" class="nodetitle">app_composition</text>
+      <text x="787" y="384" text-anchor="middle" class="nodesub">doar Android</text>
+      <text x="787" y="398" text-anchor="middle" class="nodesub">permisiuni, SDK-uri,</text>
+      <text x="787" y="412" text-anchor="middle" class="nodesub">framework</text>
+    </svg>
+    </div>
+    <figcaption><span class="mono" style="font-family:'IBM Plex Mono',monospace">app_composition</span> e ieșirea nouă, alimentată doar de analiza fișierului de instalare: e singura care arată ce pregătește o bancă înainte să anunțe. Pe iOS nu are echivalent — binarul aplicației nu se poate obține fără să ieșim din zona legitimă. Ce rămâne nefăcut: feature matrix după logare, fiindcă cere cont deschis la competitor, deci aviz Juridic separat.</figcaption>
+  </figure>
+
+  <section class="block">
+    <h3>Ce extragem din aplicații mobile, pe sursă</h3>
+    <table>
+      <thead><tr><th>Dată</th><th>Sursă</th><th>Notă</th></tr></thead>
+      <tbody>
+        <tr><td>Versiune + notă de lansare</td><td class="mono">iOS: API · Android: Exodus</td><td>fiecare versiune nouă declanșează un semnal de schimbare; pe Android nota de lansare nu e disponibilă, doar versiunea</td></tr>
+        <tr><td>Rating + distribuție stele</td><td class="mono">iOS: API · Android: manual lunar</td><td>ne interesează trendul, nu o valoare izolată</td></tr>
+        <tr><td>Review-uri (text)</td><td class="mono">iOS: feed RSS oficial · Android: doar prin furnizor licențiat</td><td>autor pseudonimizat (hash), la fel ca restul platformei; pe Android nu există sursă gratuită</td></tr>
+        <tr><td>Screenshot-uri de listing</td><td class="mono">iOS: API · Android: manual, la versiune nouă</td><td>doar imaginile oficiale de marketing, nu captură de pe device</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="block">
+    <h3>Verificare live pe opțiunea principală iOS (2026-09-21)</h3>
+    <p>Testat direct pe <span class="mono" style="font-family:'IBM Plex Mono',monospace">itunes.apple.com/lookup</span> + feed-ul RSS de review-uri, pe trei bănci. Comparat direct cu textul din secțiunea 2.3 a PDF-ului de referință:</p>
+    <table>
+      <thead><tr><th>Cerință din PDF (2.3)</th><th>Acoperit?</th><th>Notă</th></tr></thead>
+      <tbody>
+        <tr><td>Versiuni + changelog</td><td class="mono">parțial</td><td>doar versiunea curentă; istoricul se construiește din rulări zilnice, nu dintr-un apel</td></tr>
+        <tr><td>Rating, distribuție note, volum review-uri în timp</td><td class="mono">parțial</td><td>rating agregat + volum: da. Distribuție pe stele (1★-5★): nu există în niciun câmp public al Apple — doar aproximabilă dintr-un eșantion de review-uri cu text</td></tr>
+        <tr><td>Screenshot-uri de store</td><td class="mono">da</td><td>complet — 8 imagini oficiale la testul pe Libra</td></tr>
+        <tr><td>+ walkthrough real pe device</td><td class="mono">exclus deliberat</td><td>decis la brainstorming, nu e o limită a API-ului</td></tr>
+      </tbody>
+    </table>
+    <p>Disponibilitatea review-urilor cu text nu ține de mărimea băncii — verificat pe trei aplicații:</p>
+    <table>
+      <thead><tr><th>Bancă</th><th>Rating-uri totale</th><th>Review-uri cu text pe „ro"</th></tr></thead>
+      <tbody>
+        <tr><td>Libra Internet Bank</td><td class="mono">971</td><td class="mono">0</td></tr>
+        <tr><td>ING HomeBank</td><td class="mono">125.844</td><td class="mono">0</td></tr>
+        <tr><td>BCR George Romania</td><td class="mono">188.379</td><td class="mono">50 (maximul unei pagini)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="block">
+    <h3>Verificare live pe opțiunea principală Android (2026-09-22)</h3>
+    <p>Testat direct pe API-ul public Exodus Privacy și pe analiza locală a două APK-uri, cu rezultatele comparate față de rapoartele lor publicate. Aceleași cerințe din secțiunea 2.3 a PDF-ului:</p>
+    <table>
+      <thead><tr><th>Cerință din PDF (2.3)</th><th>Acoperit?</th><th>Notă</th></tr></thead>
+      <tbody>
+        <tr><td>Versiuni + changelog</td><td class="mono">parțial</td><td>Versiuni: da — 429 de versiuni istorice pe cele 8 bănci testate, dintre care 172 cu dată estimată la precizie de zile. Changelog: nu, textul de lansare există doar pe pagina de store</td></tr>
+        <tr><td>Rating, distribuție note, volum review-uri</td><td class="mono">manual</td><td>Exodus nu colectează rating-uri, iar accesul automat la pagina de store încalcă ToS Google. Recomandat: <strong>introducere manuală lunară</strong> (nota agregată, numărul de note, distribuția pe stele — ~7 valori per bancă; linkurile sunt la finalul secțiunii). Alternativele automate, în tabelul următor</td></tr>
+        <tr><td>Screenshot-uri de store</td><td class="mono">manual, la nevoie</td><td>Tot din pagina de listing, deci același ToS ca la rating. Sunt fișiere, nu numere, deci nu merită pe calendar lunar: se colectează <strong>declanșat de o versiune nouă</strong> (pe care o detectăm oricum), doar pentru banca respectivă. Aceleași linkuri</td></tr>
+        <tr><td>+ walkthrough real pe device</td><td class="mono">posibil, cu telefon</td><td>Doar ecranele dinainte de logare. Feature matrix după logare cere cont deschis la competitor — aviz juridic separat</td></tr>
+      </tbody>
+    </table>
+    <p>Sursa e gratuită, fără cheie de acces și fără cereri către Google, deci nu ridică problema de ToS din tabelul următor. Acoperirea a fost verificată pe cele 8 bănci din track-ul Android; pentru restul universului din PDF nu e încă testată.</p>
+    <p>Telefonul deblochează în plus un semnal care nu apare în 2.3, dar care e cel mai valoros dintre toate: analiza interiorului fișierului de instalare — ce permisiuni cere aplicația și ce biblioteci terțe include. Un SDK de verificare a identității apare în aplicație cu săptămâni înainte ca funcționalitatea să fie anunțată public. Se citește doar metadata, fără decompilare.</p>
+    <p><strong>Ce telefon e necesar</strong></p>
+    <table>
+      <thead><tr><th>Cerință</th><th>Detaliu</th></tr></thead>
+      <tbody>
+        <tr><td>Telefon</td><td>Android 11 sau mai nou, oarecare, <strong>nerootat</strong>. Producătorul nu contează</td></tr>
+        <tr><td>Setări</td><td>USB debugging + „stay awake while charging” (Developer Options)</td></tr>
+        <tr><td>Cont</td><td>Google Workspace al băncii — nu personal, nu identitate inventată</td></tr>
+        <tr><td>Conectivitate</td><td>WiFi + încărcător permanent. Fără SIM</td></tr>
+        <tr><td>Gazdă</td><td>Un PC sau mini-PC mereu pornit, la care telefonul stă conectat prin USB</td></tr>
+      </tbody>
+    </table>
+    <p>Fără cost recurent. Un telefon Android nu acoperă și walkthrough-ul pe iOS — pentru acela ar trebui separat un iPhone.</p>
+    <p><strong>Linkuri pentru colectarea manuală</strong></p>
+    <table>
+      <caption>Lunar: nota agregată, numărul total de note, distribuția pe stele. La apariția unei versiuni noi, doar pentru banca respectivă: screenshot-urile de listing.</caption>
+      <thead><tr><th>Bancă</th><th>Pagina de store</th></tr></thead>
+      <tbody>
+        <tr><td>BCR / George</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=ro.bcr.georgego">ro.bcr.georgego</a></td></tr>
+        <tr><td>BRD</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=brd.bankingapp.android">brd.bankingapp.android</a></td></tr>
+        <tr><td>Banca Transilvania (BT Pay)</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=ro.btrl.pay">ro.btrl.pay</a></td></tr>
+        <tr><td>Raiffeisen</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=ro.raiffeisen.smartmobile">ro.raiffeisen.smartmobile</a></td></tr>
+        <tr><td>Revolut</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=com.revolut.revolut">com.revolut.revolut</a></td></tr>
+        <tr><td>Salt Bank</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=ro.digibank.app">ro.digibank.app</a></td></tr>
+        <tr><td>ING — pachet neconfirmat ca fiind cel pentru România</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=com.ing.mobile">com.ing.mobile</a></td></tr>
+        <tr><td>UniCredit — pachet neconfirmat ca fiind cel pentru România</td><td class="mono"><a href="https://play.google.com/store/apps/details?id=com.unicredit">com.unicredit</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="block">
+    <h3>Opțiuni de backup pentru track-ul mobil</h3>
+    <p>Track-ul mobil trage date complet separate de scraping-ul de pe siteurile băncilor — nu se amestecă cu produsele/dobânzile din figurile 3-4, și scriu în tabele Silver proprii (<span class="mono" style="font-family:'IBM Plex Mono',monospace">app_release</span>/<span class="mono" style="font-family:'IBM Plex Mono',monospace">app_review</span>/<span class="mono" style="font-family:'IBM Plex Mono',monospace">app_screenshot</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">app_composition</span>).</p>
+    <table>
+      <thead><tr><th>Opțiune</th><th>Plus</th><th>Minus</th></tr></thead>
+      <tbody>
+        <tr><td>Appfigures</td><td>cel mai accesibil furnizor licențiat ($9,99–1.399/lună)</td><td>mai puțin detaliu per-review decât scraping propriu; cost recurent</td></tr>
+        <tr><td>AppFollow</td><td>gratuit pentru 2 aplicații — bun pentru test rapid; sentiment AI inclus</td><td>la 27 de competitori din universul PDF-ului, trece rapid la $599/lună (planul Team)</td></tr>
+        <tr><td>Sensor Tower / data.ai</td><td>cel mai complet (estimări de download-uri, ranking istoric)</td><td>API costă separat $5.000–20.000/an, peste un contract de bază ~$74.000/an — disproporționat pentru scopul nostru</td></tr>
+        <tr><td>Colectare manuală eșantionată (Tier 1, lunar)</td><td>zero risc legal, zero cost de unealtă</td><td>nu scalează, nu e zilnic, efort uman recurent</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="block">
+    <h3>Opțiuni pentru sucursale + ATM (secțiunea 2.5) — în ordinea priorității</h3>
+    <table>
+      <thead><tr><th>#</th><th>Opțiune</th><th>Plus</th><th>Minus</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1</td><td>Google Places API</td><td>o singură integrare pentru toate băncile; prag gratuit lunar; date structurate, cu coordonate exacte</td><td>fără „un apel = toate agențiile" — cere căutare geografică pe grilă; ATM-uri incomplete (listări crowd-sourced, nu oficiale)</td></tr>
+        <tr><td class="mono">2</td><td>Locator propriu al băncii (reverse-engineering)</td><td>cel mai complet — agenții + ATM-uri direct de la sursă, gratuit</td><td>efort de investigație per bancă; testat live pe BCR — nici API intern, nici sitemap-ul nu au dat lista completă din prima, a cerut mai multe trepte de verificare</td></tr>
+        <tr><td class="mono">3</td><td>ONRC / registre publice (CUIScan, FirmeAPI)</td><td>oficial, gratuit, zero risc legal</td><td>doar cross-check — nu acoperă ATM-uri; „punct de lucru" legal ≠ neapărat agenție deschisă publicului</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Cost Google Places API</strong> (preț 2026, per 1.000 apeluri):</p>
+    <table>
+      <thead><tr><th>Nivel</th><th>Ce include</th><th>Preț / 1.000 apeluri</th><th>Prag gratuit lunar</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">Pro</td><td>Nearby/Text Search de bază (nume, adresă, coordonate)</td><td class="mono">$32,00</td><td class="mono">5.000 apeluri</td></tr>
+        <tr><td class="mono">Enterprise</td><td>+ program de funcționare, rating, telefon, website</td><td class="mono">$35,00</td><td class="mono">1.000 apeluri</td></tr>
+        <tr><td class="mono">Enterprise + Atmosphere</td><td>+ review-uri, poze</td><td class="mono">$40,00</td><td class="mono">—</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <span class="callout-label">⚠️ Important</span>
+      <p>Dacă ceri un singur câmp din nivelul Enterprise (ex. programul de funcționare) la un apel altfel „Pro", <strong>tot apelul</strong> se scumpește la $35 — nu se plătește diferența doar pentru câmpul respectiv. Volumul scade prețul la scală mare (până la $2,40/1.000 peste 5 milioane/lună), dar la câteva sute-mii de apeluri/lună (cazul nostru, rulat lunar pe 14-27 bănci), rămânem în banda de preț de bază sau chiar sub pragul gratuit.</p>
+    </div>
+    <div class="callout">
+      <span class="callout-label">💡 Idee de implementare</span>
+      <p>Cu coordonatele exacte primite de la Google Places, construim o <strong>hartă interactivă</strong> cu toate agențiile/ATM-urile competitorilor, ca strat peste harta României — nu doar un tabel de adrese. Scopul nu e doar „câte agenții are banca X", ci <strong>identificarea zonelor neacoperite de competiție</strong> (județe/orașe cu densitate mică de agenții competitoare) — semnal direct pentru unde ar avea sens expansiunea rețelei proprii.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>Opțiuni pentru anunțuri de angajare (secțiunea 2.5) — în ordinea priorității</h3>
+    <p>URL-ul nu se caută separat. Pagina de carieră iese din banda de descoperire a figurii 2, ca orice altă sursă: propusă de crawl, aprobată de om, scrisă în <span class="mono" style="font-family:'IBM Plex Mono',monospace">surse</span> și reverificată trimestrial. E deja în setul de link-uri pe care descoperirea îl aduce oricum — momentan e doar aruncată de filtrul de pagini editoriale. Costul marginal e aproape zero. Singura modificare de schemă: încă o valoare, <span class="mono" style="font-family:'IBM Plex Mono',monospace">cariera</span>, în enumul <span class="mono" style="font-family:'IBM Plex Mono',monospace">surse.rol</span> din DDL.</p>
+    <p>Diferența față de restul platformei începe după aceea: aici descoperirea dă <strong>poarta, nu ținta</strong>. Anunțurile sunt efemere, nu apar în sitemap, și se enumeră din spatele porții la fiecare rulare.</p>
+    <table>
+      <thead><tr><th>#</th><th>Opțiune</th><th>Plus</th><th>Minus</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">1</td><td>API public de ATS (sistemul de recrutare al băncii)</td><td>JSON structurat și stabil, destinat explicit publicării anunțurilor pe site-uri terțe; fără scraping și fără ambiguitate juridică</td><td>Nu toate băncile folosesc unul cu endpoint public. Formatul se confirmă pe un răspuns real, nu se presupune. ATS-ul stă pe alt domeniu, deci are robots.txt propriu</td></tr>
+        <tr><td class="mono">2</td><td>Pagina de carieră proprie a băncii</td><td>Sursă primară, robots.txt de obicei permisiv; multe pagini de carieră sunt de fapt un fetch către ATS-ul de la punctul 1, deci duc tot la endpoint-ul bun</td><td>HTML, deci fragil — se rupe la orice redesign. Măsurat la BCR și BRD: lista nu e în HTML-ul inițial, apare după o interacțiune în pagină</td></tr>
+        <tr><td class="mono">3</td><td>Job boards românești (eJobs, BestJobs, Hipo)</td><td>Acoperire bună, inclusiv pentru bănci care nu publică pe site propriu</td><td>ToS de regulă restrictiv pe colectare automată. <span class="mono" style="font-family:'IBM Plex Mono',monospace">legal_decision: PENDING</span> — documentate ca întrebare pentru Juridic, nu colectate</td></tr>
+        <tr><td class="mono">4</td><td>LinkedIn</td><td>—</td><td><strong>Exclus.</strong> ToS agresiv, anti-scraping activ, risc reputațional disproporționat. Consecință măsurată: Salt Bank nu are pagină de carieră proprie, deci pentru ea track-ul e blocat de regula noastră, nu de o barieră tehnică</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Cum se implementează.</strong> Patru pași, cu trei cadențe diferite — și cadența e ce decide ce intră în descoperire și ce e pas propriu.</p>
+    <table>
+      <thead><tr><th>Pas</th><th>Ce face</th><th>Cadență</th></tr></thead>
+      <tbody>
+        <tr><td>Poartă</td><td>Pagina de carieră, din descoperirea comună; nimic nou de construit</td><td class="mono">trimestrial</td></tr>
+        <tr><td>ATS</td><td>Ce furnizor e în spate și ce endpoint expune, din interceptarea răspunsurilor pe care pagina le cere la încărcare</td><td class="mono">trimestrial</td></tr>
+        <tr><td>Enumerare</td><td>Lista completă de anunțuri: titlu, locație, departament, URL, data publicării unde există. Datele personale se elimină <em>înainte</em> de Bronze</td><td class="mono">lunar</td></tr>
+        <tr><td>Prezență</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">first_seen</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">last_seen</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">closed_at</span>. Un anunț care dispare = post ocupat sau abandonat; ambele sunt semnal. Durata de viață e ea însăși informație</td><td class="mono">lunar</td></tr>
+      </tbody>
+    </table>
+    <p>Colectorul e un modul separat care folosește crawlerul existent ca bibliotecă — matcherul robots.txt, Bronze, amprentele pe octeți, stările de verificare — nu o ramură în extractorul de produse. Motivul: cele două au obiective opuse. La produse selecția e scopul (alegi cele mai bune N din mii), la joburi selecția e pierdere (trebuie tot, dintr-un set mic).</p>
+    <div class="callout warn">
+      <span class="callout-label">⚠️ Un anunț ratat devine un semnal fals</span>
+      <p>La produse, o pagină ratată e o lacună în acoperire. La joburi, un anunț ratat la enumerare arată <strong>identic</strong> cu un anunț dispărut, deci devine <span class="mono" style="font-family:'IBM Plex Mono',monospace">posting_closed</span> — o informație de piață inventată. E același mecanism ca eșecul tăcut din figura 4, dar aici e regula, nu excepția: la fiecare rulare, tot ce nu s-a văzut arată ca ceva retras. De aceea o rulare care n-a reușit nu e un rezultat, ci o stare separată — „n-am putut verifica” trebuie să fie în date, nu în capul celui care citește raportul.</p>
+    </div>
+    <div class="callout">
+      <span class="callout-label">💡 De ce merită, și ce îl face mai valoros</span>
+      <p>O bancă angajează pentru ce construiește, nu pentru ce a construit deja: semnalul apare cu <strong>3–9 luni înainte</strong> de lansarea produsului, iar el stă în aglomerare, nu în anunțul individual — cinci roluri de data engineer în trei săptămâni, la o bancă fără niciunul în ultimele șase luni. Cel mai valoros efect e însă <strong>corelarea cu <span class="mono" style="font-family:'IBM Plex Mono',monospace">app_composition</span> din figura 5</strong>: un SDK nou detectat în fișierul de instalare, plus roluri deschise pe aceeași tehnologie, sunt două surse independente care spun același lucru. Separat, fiecare e o presupunere. Cost recurent: zero — nici furnizor, nici hardware.</p>
+    </div>
+    <p><strong>Stare la 22 septembrie 2026.</strong> Din cele 8 bănci din scope, Banca Transilvania și UniCredit răspund 403 (același WAF din analiza de acces, confirmat din două rețele diferite), iar Salt Bank publică doar pe LinkedIn. BCR și BRD au pagina de carieră accesibilă. ING, Raiffeisen și Revolut nu sunt încă testate — la Revolut, <span class="mono" style="font-family:'IBM Plex Mono',monospace">Disallow: *?*</span> din robots.txt lovește exact forma URL-urilor de listare. <strong>Bogăția descrierilor nu e măsurată deloc</strong>, și e criteriul care decide dacă track-ul merită construit: dacă textele sunt generice de HR, fără tehnologii concrete, valoarea e mult mai mică decât presupunem.</p>
+  </section>
+
+
+  <section class="block">
+    <h3>Cadență propusă, pe tip de dată</h3>
+    <table>
+      <thead><tr><th>Tip dată</th><th>Cadență</th><th>Motiv</th></tr></thead>
+      <tbody>
+        <tr><td>Curs valutar</td><td class="mono">zilnic</td><td>referința BNR se publică zilnic</td></tr>
+        <tr><td>Dobânzi, depozite</td><td class="mono">zilnic</td><td>valorile afișate se schimbă des</td></tr>
+        <tr><td>Comisioane (liste PDF)</td><td class="mono">lunar</td><td>documentele de tarife se actualizează rar</td></tr>
+        <tr><td>Joburi / anunțuri angajare</td><td class="mono">lunar</td><td>semnal de direcție, nu urgent</td></tr>
+        <tr><td>Descoperire URL-uri / produse noi</td><td class="mono">lunar</td><td>consistent cu ritmul de mai sus</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="block">
+    <h3>O bucată de implementare — coada de verificare umană</h3>
+    <p>Apare de două ori în diagrame (figura 3 și figura 4), deci merită gândită o singură dată, ca piesă separată. E, în esență, un tabel pe care un om îl parcurge rând cu rând.</p>
+    <table>
+      <caption>Câmpurile unui rând din coadă</caption>
+      <thead><tr><th>Câmp</th><th>Rol</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">motiv</td><td>de ce a ajuns aici: „încredere sub prag" · „validare picată" · „produs negăsit nicăieri"</td></tr>
+        <tr><td class="mono">valoare_propusă</td><td>ce a extras sistemul, determinist sau prin LLM</td></tr>
+        <tr><td class="mono">text_sursă</td><td>fragmentul exact din pagină/PDF — fără el, omul nu poate verifica nimic</td></tr>
+        <tr><td class="mono">sursa_url</td><td>link direct la pagina/documentul original</td></tr>
+        <tr><td class="mono">decizie_om</td><td>confirmă corect · corectează manual · confirmă schimbare reală</td></tr>
+        <tr><td class="mono">rezolvat_de, rezolvat_la</td><td>audit trail — cine, când</td></tr>
+      </tbody>
+    </table>
+    <p>Interfața poate fi la fel de simplă ca un tabel web: un rând pe ecran, <span class="mono" style="font-family:'IBM Plex Mono',monospace">text_sursă</span> lângă <span class="mono" style="font-family:'IBM Plex Mono',monospace">valoare_propusă</span>, trei butoane pentru <span class="mono" style="font-family:'IBM Plex Mono',monospace">decizie_om</span>. Nimic din asta nu cere o unealtă nouă — un ecran Metabase/Retool sau un formular intern e suficient pentru volumul discutat în PDF (sute, nu mii, de rânduri pe noapte).</p>
+  </section>
+
+  <figure>
+    <h2>6. Schema bazei de date</h2>
+    <p class="claim">Patru tabele plus amprentele. Tot ce e mai sus scrie în <span class="mono" style="font-family:'IBM Plex Mono',monospace">observations</span>; restul există ca să se poată răspunde la „de unde vine cifra asta".</p>
+    <div class="svgwrap">
+    <svg viewBox="0 0 800 560" role="img" aria-label="Schema relationala: tabelul banci alimenteaza surse prin id_banca, sursele au amprente in tabelul hashes prin id_sursa, iar observatiile primesc doua chei externe, id_sursa de la surse si id_produs de la produse; fiecare observatie pointeaza si la bytes-ii bruti din Bronze prin bronze_sha256.">
+      <defs>
+        <marker id="a5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+        </marker>
+      </defs>
+
+      <rect class="rect-plain" x="30" y="20" width="230" height="58" rx="9"/>
+      <text x="145" y="44" text-anchor="middle" class="nodetitle">banci</text>
+      <text x="145" y="60" text-anchor="middle" class="nodesub">30 de competitori, din banks.py</text>
+
+      <rect class="rect-plain" x="540" y="20" width="230" height="58" rx="9"/>
+      <text x="655" y="44" text-anchor="middle" class="nodetitle">produse</text>
+      <text x="655" y="60" text-anchor="middle" class="nodesub">31 de produse, vocabular închis</text>
+
+      <path class="edge" d="M145,78 L145,150" marker-end="url(#a5)"/>
+      <text x="152" y="118" class="edgelabel">id_banca</text>
+
+      <rect class="rect-ok" x="30" y="150" width="230" height="76" rx="9"/>
+      <text x="145" y="176" text-anchor="middle" class="nodetitle">surse</text>
+      <text x="145" y="192" text-anchor="middle" class="nodesub">un rând per URL urmărit</text>
+      <text x="145" y="206" text-anchor="middle" class="nodesub">467 acum, din care 69% extractibile</text>
+
+      <path class="edge" d="M260,188 L300,188" marker-end="url(#a5)"/>
+      <rect class="rect-plain" x="300" y="150" width="200" height="76" rx="9"/>
+      <text x="400" y="176" text-anchor="middle" class="nodetitle">hashes</text>
+      <text x="400" y="192" text-anchor="middle" class="nodesub">s-a schimbat pagina?</text>
+      <text x="400" y="206" text-anchor="middle" class="nodesub">hash pe textul sanitizat</text>
+
+      <path class="edge" d="M145,226 L145,300 L330,300 L330,330" marker-end="url(#a5)"/>
+      <text x="200" y="293" class="edgelabel">id_sursa</text>
+
+      <path class="edge" d="M655,78 L655,300 L470,300 L470,330" marker-end="url(#a5)"/>
+      <text x="490" y="293" class="edgelabel">id_produs</text>
+
+      <rect class="rect-ok" x="205" y="330" width="390" height="150" rx="9"/>
+      <text x="400" y="356" text-anchor="middle" class="nodetitle">observations</text>
+      <text x="400" y="374" text-anchor="middle" class="nodesub">o valoare extrasă, cu dovada ei</text>
+      <text x="400" y="396" text-anchor="middle" class="nodesub">camp · cod_scenariu · valoare_num · unitate</text>
+      <text x="400" y="412" text-anchor="middle" class="nodesub">citat · confidence · verificat_de_om</text>
+      <text x="400" y="428" text-anchor="middle" class="nodesub">sursa_continut · bronze_sha256</text>
+      <text x="400" y="452" text-anchor="middle" class="nodesub">append-only: fiecare rulare adaugă,</text>
+      <text x="400" y="466" text-anchor="middle" class="nodesub">nu suprascrie</text>
+
+      <path class="edge" d="M595,440 L640,440" marker-end="url(#a5)"/>
+      <text x="618" y="432" text-anchor="middle" class="edgelabel">sha256</text>
+      <rect class="rect-warn" x="640" y="405" width="140" height="70" rx="9"/>
+      <text x="710" y="430" text-anchor="middle" class="nodetitle">Bronze</text>
+      <text x="710" y="446" text-anchor="middle" class="nodesub">bytes bruți,</text>
+      <text x="710" y="460" text-anchor="middle" class="nodesub">fișiere, nu tabel</text>
+    </svg>
+    </div>
+    <figcaption>Bronze nu e un tabel: sunt fișierele brute pe disc, iar <span class="mono" style="font-family:'IBM Plex Mono',monospace">observations.bronze_sha256</span> e legătura către ele. Rămâne <span class="mono" style="font-family:'IBM Plex Mono',monospace">null</span> pentru valorile aduse prin web_fetch — acelea nu au bytes bruți, deci nu pot fi reverificate niciodată.</figcaption>
+  </figure>
+
+  <section class="block">
+    <h3>observations — valorile, cu dovada lor</h3>
+    <p>Tabelul spre care converge tot. Un rând e o singură valoare extrasă dintr-un singur document, pentru un singur produs. Coloanele de dovadă nu sunt decorative: fără <span class="mono" style="font-family:'IBM Plex Mono',monospace">citat</span>, un model de limbaj poate produce cifre plauzibile pe care nimeni nu le poate contesta.</p>
+    <table>
+      <caption>observations — cheile externe sunt <span class="mono" style="font-family:'IBM Plex Mono',monospace">id_sursa</span> și <span class="mono" style="font-family:'IBM Plex Mono',monospace">id_produs</span>. Nu există cheie către bancă: banca se află prin sursă. Coloanele marcate „propus” nu sunt încă în db.sql.</caption>
+      <thead><tr><th>Coloană</th><th>Tip · constrângeri</th><th>Rol</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">id</td><td class="mono" style="white-space:nowrap">BIGSERIAL PK</td><td>cheie tehnică. Identitatea de conținut e (id_sursa, id_produs, camp, cod_scenariu, content_hash)</td></tr>
+        <tr><td class="mono">id_sursa</td><td class="mono" style="white-space:nowrap">BIGINT NOT NULL<br>→ surse.id</td><td>de unde vine. <span class="mono" style="font-family:'IBM Plex Mono',monospace">ON DELETE CASCADE</span>: ștergi sursa, dispar observațiile ei</td></tr>
+        <tr><td class="mono">id_produs</td><td class="mono" style="white-space:nowrap">BIGINT NOT NULL<br>→ produse.id</td><td>despre ce e. <span class="mono" style="font-family:'IBM Plex Mono',monospace">ON DELETE RESTRICT</span>: un produs cu observații nu se poate șterge</td></tr>
+        <tr><td class="mono">camp</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL</td><td>numele canonic, din vocabularul închis al produsului. Fără listă închisă, modelul inventează un nume la fiecare apel: măsurat, 114 denumiri pentru 339 de valori, din care doar 13 apăreau la mai mult de o bancă</td></tr>
+        <tr><td class="mono">cod_scenariu</td><td class="mono" style="white-space:nowrap">TEXT NULL</td><td>condiția de care depinde valoarea: <span class="mono" style="font-family:'IBM Plex Mono',monospace">ABONAMENT_GOLD</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">PLATA_ONLINE_SUB_50000</span>. Null doar când valoarea e necondiționată</td></tr>
+        <tr><td class="mono">valoare_num</td><td class="mono" style="white-space:nowrap">NUMERIC(18,6)</td><td>cifra. Șase zecimale fiindcă marjele se exprimă în puncte procentuale fracționare</td></tr>
+        <tr><td class="mono">valoare_text</td><td class="mono" style="white-space:nowrap">TEXT NULL</td><td>pentru ce nu e numeric — „gratuit”, „negociabil”. Constrângerea cere ca măcar una dintre cele două să fie completată</td></tr>
+        <tr><td class="mono">unitate</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL</td><td>din enumul extractorului: <span class="mono" style="font-family:'IBM Plex Mono',monospace">procent</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">lei</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">eur</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">usd</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">zile</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">luni</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">ani</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">numar</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">puncte_procentuale</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">altele</span>. Obligatorie: <span class="mono" style="font-family:'IBM Plex Mono',monospace">valoare_num = 1</span> a însemnat, în date reale, și „1 an” și „1 procent”</td></tr>
+        <tr><td class="mono">valuta</td><td class="mono" style="white-space:nowrap">CHAR(3) NULL</td><td>redundantă cu <span class="mono" style="font-family:'IBM Plex Mono',monospace">unitate</span> — moneda e deja acolo. De ales una dintre cele două</td></tr>
+        <tr><td class="mono">citat</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL</td><td>fragmentul exact din text, verificat literal la validare. Singurul mecanism care prinde o valoare inventată, deci nu poate fi null</td></tr>
+        <tr><td class="mono">confidence</td><td class="mono" style="white-space:nowrap">NUMERIC(4,3)<br>CHECK 0..1</td><td>autoevaluarea extractorului. Sub prag, rândul merge în coada de verificare umană</td></tr>
+        <tr><td class="mono">content_hash</td><td class="mono" style="white-space:nowrap">TEXT NULL <span style="opacity:.75">· propus</span></td><td>versiunea paginii din care provine. De înlocuit cu <span class="mono" style="font-family:'IBM Plex Mono',monospace">id_hash BIGINT → hashes.id</span>, altfel tabelul <span class="mono" style="font-family:'IBM Plex Mono',monospace">hashes</span> rămâne fără nimeni care să-l refere</td></tr>
+        <tr><td class="mono">sursa_continut</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL<br>DEFAULT 'descarcare_proprie' <span style="opacity:.75">· propus</span></td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">descarcare_proprie</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">web_fetch</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">llm_parser</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">manual</span>. Distincția nu se poate recupera retroactiv: o valoare adusă prin web_fetch nu are bytes bruți și nu va avea niciodată</td></tr>
+        <tr><td class="mono">bronze_sha256</td><td class="mono" style="white-space:nowrap">CHAR(64) NULL <span style="opacity:.75">· propus</span></td><td>amprenta documentului brut. Null înseamnă „fără dovadă” — și e null tocmai când <span class="mono" style="font-family:'IBM Plex Mono',monospace">sursa_continut</span> nu e descărcare proprie</td></tr>
+        <tr><td class="mono">conflict_scenariu</td><td class="mono" style="white-space:nowrap">TEXT NULL <span style="opacity:.75">· propus</span></td><td>același câmp apare de mai multe ori fără scenarii distincte. Valoarea se păstrează, dar marcată — altfel ambiguitatea dispare în tăcere</td></tr>
+        <tr><td class="mono">valid_from</td><td class="mono" style="white-space:nowrap">DATE NULL <span style="opacity:.75">· propus</span></td><td>valabilitatea <strong>declarată de bancă</strong>, când o declară: „IRCC valabil până la 30.06.2026”. Distinct de momentul observației</td></tr>
+        <tr><td class="mono">valid_to</td><td class="mono" style="white-space:nowrap">DATE NULL <span style="opacity:.75">· propus</span></td><td>idem, capătul de sus</td></tr>
+        <tr><td class="mono">created_at</td><td class="mono" style="white-space:nowrap">TIMESTAMPTZ NOT NULL<br>DEFAULT now() <span style="opacity:.75">· propus</span></td><td>când am văzut valoarea. Axa temporală reală, fiindcă tabelul e append-only. Fără DEFAULT, un insert care uită coloana produce un rând pe care nu-l mai poți data</td></tr>
+        <tr><td class="mono">verificat_de_om</td><td class="mono" style="white-space:nowrap">BOOLEAN NOT NULL<br>DEFAULT FALSE <span style="opacity:.75">· propus</span></td><td>toate inventarele intră ca propuneri</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <span class="callout-label">⚠️ Append-only, nu actualizare</span>
+      <p>Fiecare rulare adaugă rânduri; nimic nu se suprascrie. Consecința practică: întrebarea „ce dobândă are banca X acum" nu e un <span class="mono" style="font-family:'IBM Plex Mono',monospace">SELECT</span> simplu, ci „ultima valoare la sau înainte de data Y", pe grup. Și, fiindcă o pagină neschimbată nu produce rânduri noi — hashul oprește extracția — <span class="mono" style="font-family:'IBM Plex Mono',monospace">created_at</span> spune „când am reextras", nu „când era valabil". Un index pe (id_sursa, id_produs, camp, created_at DESC) e obligatoriu, nu opțional.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>surse, banci, produse — contextul</h3>
+    <table>
+      <caption>surse — un rând per adresă urmărită</caption>
+      <thead><tr><th>Coloană</th><th>Tip · constrângeri</th><th>Rol</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">id</td><td class="mono" style="white-space:nowrap">BIGSERIAL PK</td><td>cheia la care se leagă observațiile și amprentele</td></tr>
+        <tr><td class="mono">id_banca</td><td class="mono" style="white-space:nowrap">BIGINT NOT NULL<br>→ banci.id</td><td>ON DELETE CASCADE</td></tr>
+        <tr><td class="mono">tip_sursa</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL<br>CHECK</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">url</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">aplicatie</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">reclama</span>. Track-ul mobil din figura 5 intră aici, nu într-un tabel paralel</td></tr>
+        <tr><td class="mono">sursa</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL</td><td>URL, id de aplicație sau identificator de reclamă. Cere index unic parțial pe <span class="mono" style="font-family:'IBM Plex Mono',monospace">tip_sursa = url</span>: descoperirea produce propuneri și se rerulează, deci aceeași adresă va fi propusă din nou</td></tr>
+        <tr><td class="mono">rol</td><td class="mono" style="white-space:nowrap">TEXT NULL<br>CHECK</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">produs</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">hub</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">conditii</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">context</span>. Un hub n-are produse asociate și nu se extrage</td></tr>
+        <tr><td class="mono">format</td><td class="mono" style="white-space:nowrap">TEXT NULL<br>CHECK</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">html</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">pdf</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">xml</span>. Estimat la descoperire, dar <strong>reverificat din primii octeți</strong> la fiecare descărcare: extensia și Content-Type mint amândouă</td></tr>
+        <tr><td class="mono">metoda</td><td class="mono" style="white-space:nowrap">TEXT NULL<br>CHECK</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">http</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">playwright</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">manual</span></td></tr>
+        <tr><td class="mono">metoda_verificata_la</td><td class="mono" style="white-space:nowrap">TIMESTAMPTZ NULL</td><td>null cât timp <span class="mono" style="font-family:'IBM Plex Mono',monospace">metoda</span> e o estimare a modelului. Se completează când o confirmă un om</td></tr>
+        <tr><td class="mono">produse</td><td class="mono" style="white-space:nowrap">BIGINT[] NOT NULL<br>DEFAULT '{}'</td><td>produsele acoperite. Postgres nu impune integritate referențială pe elementele unui array — o tabelă de legătură ar fi verificabilă. Numărul de perechi sursă-produs, nu numărul de surse, determină costul: fiecare pereche e un apel de extracție</td></tr>
+        <tr><td class="mono">robots_ok</td><td class="mono" style="white-space:nowrap">BOOLEAN NULL</td><td>ce permite robots.txt pentru adresa asta</td></tr>
+        <tr><td class="mono">frecventa</td><td class="mono" style="white-space:nowrap">TEXT NULL<br>CHECK</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">zilnic</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">saptamanal</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">lunar</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">trimestrial</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">la_descoperire</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">manual</span> — cadența din figura 1, pe sursă</td></tr>
+        <tr><td class="mono">status</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL<br>DEFAULT 'activ'</td><td><span class="mono" style="font-family:'IBM Plex Mono',monospace">activ</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">pauza</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">eroare</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">blocat</span> · <span class="mono" style="font-family:'IBM Plex Mono',monospace">retras</span>. Sursele care cer verificare intră în <span class="mono" style="font-family:'IBM Plex Mono',monospace">pauza</span>, nu în crawl. O adresă moartă trece pe <span class="mono" style="font-family:'IBM Plex Mono',monospace">retras</span> — niciodată ștearsă, fiindcă figura 4 se sprijină pe asta</td></tr>
+        <tr><td class="mono">ultima_rulare</td><td class="mono" style="white-space:nowrap">TIMESTAMPTZ NULL</td><td>pentru planificator</td></tr>
+        <tr><td class="mono">legal_review_ref</td><td class="mono" style="white-space:nowrap">TEXT NULL</td><td>avizul juridic din figura 1</td></tr>
+        <tr><td class="mono">created_at</td><td class="mono" style="white-space:nowrap">TIMESTAMPTZ NOT NULL<br>DEFAULT now()</td><td>când a intrat sursa</td></tr>
+      </tbody>
+    </table>
+    <p>Un URL nu se șterge niciodată — figura 4 se sprijină pe asta. Adresa moartă trece pe <span class="mono" style="font-family:'IBM Plex Mono',monospace">status = retras</span>, iar istoricul ei de observații rămâne interogabil. Un index unic pe <span class="mono" style="font-family:'IBM Plex Mono',monospace">sursa</span> e necesar: descoperirea produce propuneri și se rerulează, deci aceeași adresă va fi propusă din nou.</p>
+    <table>
+      <caption>banci, produse, hashes — dimensiunile și amprentele</caption>
+      <thead><tr><th>Coloană</th><th>Tip · constrângeri</th><th>Rol</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">banci.slug</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL UNIQUE</td><td>cheia de legătură cu tot restul: același text în numele fișierelor de inventar și în scripturi</td></tr>
+        <tr><td class="mono">banci.nume</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL UNIQUE</td><td>denumirea completă</td></tr>
+        <tr><td class="mono">banci.tier</td><td class="mono" style="white-space:nowrap">SMALLINT NULL<br>CHECK 1..3</td><td>null unde analiza de acces nu clasează entitatea. Un tier inventat ar arăta ca un fapt</td></tr>
+        <tr><td class="mono">banci.segment_real</td><td class="mono" style="white-space:nowrap">TEXT NULL</td><td>de completat manual; derivarea din inventare dă rezultate false</td></tr>
+        <tr><td class="mono">banci.activ</td><td class="mono" style="white-space:nowrap">BOOLEAN NOT NULL<br>DEFAULT TRUE</td><td>entitățile absorbite trec pe false, nu se șterg</td></tr>
+        <tr><td class="mono">produse.nume</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL UNIQUE</td><td>ține <strong>slugul</strong>, nu denumirea de afișare: slugul e ce întoarce extractorul în <span class="mono" style="font-family:'IBM Plex Mono',monospace">id_produs</span></td></tr>
+        <tr><td class="mono">produse.activ</td><td class="mono" style="white-space:nowrap">BOOLEAN NOT NULL<br>DEFAULT TRUE</td><td>un produs scos din urmărire, cu istoricul păstrat</td></tr>
+        <tr><td class="mono">hashes.id_sursa</td><td class="mono" style="white-space:nowrap">BIGINT NOT NULL<br>→ surse.id</td><td>ON DELETE CASCADE</td></tr>
+        <tr><td class="mono">hashes.hash</td><td class="mono" style="white-space:nowrap">TEXT NOT NULL</td><td>amprenta pe textul sanitizat, cu datele și orele scoase — altfel un timestamp din subsol ar declanșa o reextragere inutilă</td></tr>
+        <tr><td class="mono">hashes.created_at</td><td class="mono" style="white-space:nowrap">TIMESTAMPTZ NOT NULL<br>DEFAULT now() <span style="opacity:.75">· propus</span></td><td>cheia unică nu poate fi doar (id_sursa, format): aceea permite un singur rând per sursă, deci nu se poate ține istoric de amprente</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <span class="callout-label">💡 De ce produsele sunt un tabel, nu o coloană de text</span>
+      <p>Prima versiune amesteca produse reale cu măsuri: <span class="mono" style="font-family:'IBM Plex Mono',monospace">dae</span>, <span class="mono" style="font-family:'IBM Plex Mono',monospace">dobanda-nominala</span> și <span class="mono" style="font-family:'IBM Plex Mono',monospace">curs-valutar</span> erau tratate ca produse, deci fiecare primea propriul apel de extracție pe aceeași pagină. Rezultatul, măsurat: <span class="mono" style="font-family:'IBM Plex Mono',monospace">comision_administrare_lunar</span> apărea sub 8 etichete de produs diferite și <span class="mono" style="font-family:'IBM Plex Mono',monospace">dae</span> sub 7. Un DAE nu e un produs — e o cifră care descrie un credit, deci e o valoare în <span class="mono" style="font-family:'IBM Plex Mono',monospace">camp</span>, nu o linie în <span class="mono" style="font-family:'IBM Plex Mono',monospace">produse</span>.</p>
+    </div>
+  </section>
+
+  <section class="block ddl">
+    <h3>DDL, tabel cu tabel</h3>
+    <p>PostgreSQL. Comentariile marcate <span class="n" style="font-family:'IBM Plex Mono',monospace; color:var(--warn)">-- NOU</span> sunt diferențele față de <span class="mono" style="font-family:'IBM Plex Mono',monospace">db.sql</span> din proiect; restul e schema existentă. Ordinea de creare e cea de mai jos: cheile externe cer tabelele părinte întâi.</p>
+
+    <h4>1. banci</h4>
+    <pre>CREATE TABLE banci (
+    id            BIGSERIAL    PRIMARY KEY,
+    slug          TEXT         NOT NULL UNIQUE,   <span class="c">-- cheia de legatura cu scripturile</span>
+    nume          TEXT         NOT NULL UNIQUE,
+    tier          SMALLINT     CHECK (tier BETWEEN 1 AND 3),
+    segment_real  TEXT,
+    rol           TEXT         NOT NULL DEFAULT 'competitor'   <span class="n">-- NOU</span>
+                  CHECK (rol IN ('competitor', 'referinta')),  <span class="n">-- NOU: Libra nu e competitor</span>
+    activ         BOOLEAN      NOT NULL DEFAULT TRUE
+);</pre>
+
+    <h4>2. produse</h4>
+    <pre>CREATE TABLE produse (
+    id       BIGSERIAL  PRIMARY KEY,
+    nume     TEXT       NOT NULL UNIQUE,   <span class="c">-- slugul, nu denumirea de afisare</span>
+    segment  TEXT       CHECK (segment IN ('retail', 'imm-corporate')),  <span class="n">-- NOU</span>
+    grup     TEXT,                                                       <span class="n">-- NOU</span>
+    activ    BOOLEAN    NOT NULL DEFAULT TRUE
+);</pre>
+
+    <h4>3. surse</h4>
+    <pre>CREATE TABLE surse (
+    id                    BIGSERIAL    PRIMARY KEY,
+    id_banca              BIGINT       NOT NULL
+                          REFERENCES banci (id) ON DELETE CASCADE,
+
+    tip_sursa             TEXT         NOT NULL
+                          CHECK (tip_sursa IN ('url', 'aplicatie', 'reclama')),
+    sursa                 TEXT         NOT NULL,
+    rol                   TEXT         CHECK (rol IN ('produs', 'hub',
+                                                      'conditii', 'context')),
+
+    <span class="c">-- au sens doar pentru tip_sursa = 'url'</span>
+    format                TEXT         CHECK (format IN ('html', 'pdf', 'xml')),
+    metoda                TEXT         CHECK (metoda IN ('http', 'playwright',
+                                                         'manual')),
+    robots_ok             BOOLEAN,
+
+    produse               BIGINT[]     NOT NULL DEFAULT '{}',
+    metoda_extractie      TEXT,
+    metoda_verificata_la  TIMESTAMPTZ,   <span class="c">-- null cat timp `metoda` e o estimare</span>
+
+    frecventa             TEXT         CHECK (frecventa IN ('zilnic', 'saptamanal',
+                              'lunar', 'trimestrial', 'la_descoperire', 'manual')),
+    status                TEXT         NOT NULL DEFAULT 'activ'
+                          CHECK (status IN ('activ', 'pauza', 'eroare',
+                                            'blocat', 'retras')),
+    ultima_rulare         TIMESTAMPTZ,
+    legal_review_ref      TEXT,
+    created_at            TIMESTAMPTZ  NOT NULL DEFAULT now(),
+
+    CONSTRAINT ck_surse_web_only CHECK (
+        tip_sursa = 'url' OR (format IS NULL AND robots_ok IS NULL)
+    )
+);
+
+<span class="c">-- Fara indexul unic, aceeasi adresa intra de doua ori: descoperirea produce</span>
+<span class="c">-- propuneri si se rerulează, deci o va propune din nou.</span>
+CREATE UNIQUE INDEX ux_surse_url     ON surse (sursa) WHERE tip_sursa = 'url';
+CREATE UNIQUE INDEX ux_surse_non_url ON surse (id_banca, tip_sursa, sursa)
+                                     WHERE tip_sursa &lt;&gt; 'url';
+CREATE INDEX ix_surse_banca   ON surse (id_banca);
+CREATE INDEX ix_surse_planif  ON surse (frecventa, ultima_rulare)
+                              WHERE status = 'activ';   <span class="c">-- ce ruleaza la noapte</span>
+CREATE INDEX ix_surse_produse ON surse USING GIN (produse);</pre>
+
+    <h4>4. hashes</h4>
+    <pre>CREATE TABLE hashes (
+    id          BIGSERIAL    PRIMARY KEY,
+    id_sursa    BIGINT       NOT NULL
+                REFERENCES surse (id) ON DELETE CASCADE,
+    format      TEXT         CHECK (format IN ('html', 'pdf', 'xml')),
+    hash        TEXT         NOT NULL,   <span class="c">-- pe textul sanitizat, fara date si ore</span>
+    hash_bytes  CHAR(64),                <span class="n">-- NOU: pe octetii bruti, pentru Bronze</span>
+    created_at  TIMESTAMPTZ  NOT NULL DEFAULT now()   <span class="n">-- NOU</span>
+
+    <span class="n">-- NOU: cheia veche era UNIQUE (id_sursa, format), care permite UN singur</span>
+    <span class="c">-- rand per sursa. Cu ea nu se poate tine istoric de amprente, desi de</span>
+    <span class="c">-- asta exista tabelul.</span>
+);
+
+CREATE UNIQUE INDEX ux_hashes ON hashes (id_sursa, format, hash);
+CREATE INDEX ix_hashes_sursa  ON hashes (id_sursa, created_at DESC);</pre>
+
+    <h4>5. observations</h4>
+    <pre>CREATE TABLE observations (
+    id                 BIGSERIAL     PRIMARY KEY,
+    id_sursa           BIGINT        NOT NULL
+                       REFERENCES surse (id)   ON DELETE CASCADE,
+    id_produs          BIGINT        NOT NULL
+                       REFERENCES produse (id) ON DELETE RESTRICT,
+
+    camp               TEXT          NOT NULL,   <span class="c">-- din vocabularul inchis al produsului</span>
+    cod_scenariu       TEXT,                     <span class="c">-- ABONAMENT_GOLD, PLATA_ONLINE_SUB_50000</span>
+
+    valoare_num        NUMERIC(18,6),
+    valoare_text       TEXT,                     <span class="c">-- 'gratuit', 'negociabil'</span>
+    unitate            TEXT          NOT NULL    <span class="n">-- NOU: era nullable</span>
+                       CHECK (unitate IN ('procent', 'lei', 'eur', 'usd', 'zile',
+                              'luni', 'ani', 'numar', 'puncte_procentuale',
+                              'altele')),        <span class="n">-- NOU: enumul extractorului</span>
+
+    <span class="c">-- Valabilitatea DECLARATA de banca, nu momentul observatiei.</span>
+    valabil_de_la      DATE,   <span class="n">-- NOU</span>
+    valabil_pana       DATE,   <span class="n">-- NOU</span>
+
+    <span class="c">-- Dovada. Fara ea, o cifra inventata arata ca una masurata.</span>
+    citat              TEXT          NOT NULL,   <span class="n">-- NOU: era nullable</span>
+    confidence         NUMERIC(4,3)  CHECK (confidence BETWEEN 0 AND 1),
+    id_hash            BIGINT        REFERENCES hashes (id),   <span class="n">-- NOU: inlocuieste content_hash</span>
+    sursa_continut     TEXT          NOT NULL DEFAULT 'descarcare_proprie'  <span class="n">-- NOU</span>
+                       CHECK (sursa_continut IN ('descarcare_proprie', 'web_fetch',
+                                                 'llm_parser', 'manual')),  <span class="n">-- NOU</span>
+    bronze_sha256      CHAR(64),   <span class="n">-- NOU: null = fara bytes bruti, nereverificabil</span>
+    conflict_scenariu  TEXT,       <span class="n">-- NOU: acelasi camp de mai multe ori, fara scenarii distincte</span>
+
+    verificat_de_om    BOOLEAN       NOT NULL DEFAULT FALSE,   <span class="n">-- NOU</span>
+    created_at         TIMESTAMPTZ   NOT NULL DEFAULT now(),   <span class="n">-- NOU: axa temporala</span>
+
+    CONSTRAINT ck_obs_valoare CHECK (
+        valoare_num IS NOT NULL OR valoare_text IS NOT NULL
+    ),
+    CONSTRAINT ck_obs_valabilitate CHECK (
+        valabil_pana IS NULL OR valabil_de_la IS NULL
+        OR valabil_pana &gt;= valabil_de_la
+    ),
+    <span class="c">-- Coerenta pe care codul o impune deja: o valoare adusa prin web_fetch nu</span>
+    <span class="c">-- are bytes bruti, deci nu poate avea amprenta de Bronze.</span>
+    CONSTRAINT ck_obs_bronze CHECK (
+        bronze_sha256 IS NULL OR sursa_continut = 'descarcare_proprie'
+    )
+);
+
+<span class="c">-- Tabelul e append-only si va fi cel mai mare. Fara indexul asta, intrebarea</span>
+<span class="c">-- "ce valoare e in vigoare acum" scaneaza tot.</span>
+CREATE INDEX ix_obs_curent ON observations
+    (id_sursa, id_produs, camp, created_at DESC);
+CREATE INDEX ix_obs_produs ON observations (id_produs, camp, created_at DESC);
+CREATE INDEX ix_obs_review ON observations (created_at DESC)
+    WHERE verificat_de_om = FALSE;   <span class="c">-- coada de verificare umana</span></pre>
+
+    <h4>6. observations_curente</h4>
+    <pre><span class="c">-- Valoarea in vigoare, per (sursa, produs, camp, scenariu). Append-only</span>
+<span class="c">-- inseamna ca "acum" nu e un SELECT simplu: o pagina neschimbata nu produce</span>
+<span class="c">-- rand nou, fiindca hashul opreste extractia, deci se cere ultima valoare</span>
+<span class="c">-- cunoscuta, nu una de azi.</span>
+CREATE VIEW observations_curente AS
+SELECT DISTINCT ON (id_sursa, id_produs, camp, COALESCE(cod_scenariu, ''))
+       *
+FROM   observations
+ORDER  BY id_sursa, id_produs, camp, COALESCE(cod_scenariu, ''),
+          created_at DESC;</pre>
+
+    <div class="callout warn">
+      <span class="callout-label">⚠️ Trei constrângeri care fac munca de verificare</span>
+      <p><span class="mono" style="font-family:'IBM Plex Mono',monospace">citat TEXT NOT NULL</span> — dacă poate fi null, plasa care prinde valorile inventate are o gaură. <span class="mono" style="font-family:'IBM Plex Mono',monospace">unitate</span> cu enum — <span class="mono" style="font-family:'IBM Plex Mono',monospace">valoare_num = 1</span> a însemnat, în date reale, și „1 an” și „1 procent”. Iar <span class="mono" style="font-family:'IBM Plex Mono',monospace">ck_obs_bronze</span> împiedică o combinație imposibilă: o valoare adusă prin web_fetch nu are bytes bruți, deci nu poate purta amprentă de Bronze. Codul o respectă deja; constrângerea o face imposibil de încălcat.</p>
+    </div>
+  </section>
+
+  <footer class="note">Diagramele sunt schematice, gândite pentru discuție, nu pentru implementare literă cu literă. Cadențele din figura 1 și din tabel sunt propuneri — le ajustăm împreună.</footer>
+</main>
+</body></html>

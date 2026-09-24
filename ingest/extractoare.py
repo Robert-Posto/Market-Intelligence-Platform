@@ -239,6 +239,24 @@ def _nume_produs(soup, titlu):
     return None
 
 
+# Liniile cu procente pe care parserul nu le-a putut tipiza, pe URL.
+# Le consumă `populare_initiala.extrage` când rezerva LLM e pornită.
+PROBLEME = {}
+
+RE_PAGINA_PRESA = re.compile(r"/press|/presa|comunicat|/stiri|/news|/noutati|/blog", re.I)
+
+
+def _continut_principal(octeti):
+    """Aceleași tag-uri eliminate ca la amprentă (sanitizare.py)."""
+    from bs4 import BeautifulSoup
+    from sanitizare import ZGOMOT
+    soup = BeautifulSoup(octeti, "lxml")
+    for tag in soup.find_all(ZGOMOT):
+        tag.decompose()
+    return (soup.find("main") or soup.find(attrs={"role": "main"})
+            or soup.find("article") or soup.body or soup)
+
+
 def _linii(soup):
     """Linii pe care le poate citi `parser_rate.py`.
 
@@ -339,10 +357,94 @@ RE_TITLU_PAD = re.compile(
     r"|document\w*\s+privind\s+comisioanele", re.I)
 
 
+def _abrev(a):
+    return rf"(?<![A-Za-z]){a}(?![A-Za-z])"
+
+
+# Portat din scripts/unifica_comisioane.py: segmentul din NUMELE documentului.
+# Fără el, lista PF și lista PJ a aceleiași bănci se unesc la deduplicare.
+SEGMENTE = [
+    ("pj", rf"{_abrev('PJ')}|persoane[_\s-]?juridice|juridice|legal[_\s-]?entities|corporate"),
+    ("imm", rf"{_abrev('IMM')}|profesii[_\s-]?liberale|{_abrev('SME')}"),
+    ("pfa", rf"{_abrev('PDAI')}|activit[ăa][țt]i[_\s-]?independente|{_abrev('PFA')}"),
+    ("pf", rf"{_abrev('PF')}|persoane[_\s-]?fizice|fizice|private[_\s-]?individuals"),
+]
+
+
+def segment_din_nume(nume):
+    for seg, tipar in SEGMENTE:
+        if re.search(tipar, nume or "", re.I):
+            return seg
+    return None
+
+
 def _parsere_pdf():
-    """Parserele colegului + vocabularul canonic, importate la cerere."""
-    from crawler import parser_pdf, parser_tarife, vocabular
-    return parser_pdf, parser_tarife, vocabular
+    """Tot ce ține de PDF din pachetul colegului, importat la cerere.
+
+    Se iau patru module, nu două. Cele adăugate rezolvă probleme pe care nu le
+    văzusem:
+
+    `data_document` — de când e valabil documentul, citit din TEXTUL lui.
+        Fără el, cele 15.230 de valori extrase de mine aveau `data_vigoare`
+        NULL, deci nu puteau intra în detectarea schimbărilor: pagina Istoric
+        rămânea la 18 schimbări, oricâte documente aș mai fi extras. Colegul
+        explică și de ce nu ajunge `Last-Modified`: la multe origini e momentul
+        umplerii cache-ului, nu al publicării.
+
+    `ambiguitate` — mai multe valori diferite sub același serviciu, cu același
+        tip, monedă și frecvență, și nimic care să le deosebească. Atunci s-a
+        pierdut ceva la extragere, iar valorile rămân adevărate dar
+        neatribuibile. Eu citeam flagul din JSON-ul lui, dar nu-l calculam pe
+        documentele noi.
+    """
+    from crawler import ambiguitate, data_document, parser_pdf, parser_tarife, vocabular
+    return parser_pdf, parser_tarife, vocabular, data_document, ambiguitate
+
+
+# Documente publicate de bănci care NU sunt liste de prețuri. Măsurat pe
+# 24.09.2026: rapoartele de transparență CreditCoop (Reg. 575) și situațiile
+# financiare dădeau ~1.000 de „valori", buletinele Libra „Info-Economice" ~700 —
+# procente de analiză economică sau prudențială, intrate în bază ca prețuri.
+RE_NU_TARIF = re.compile(
+    r"raport|cerinte[-_ ]transparenta|reg(ulament)?[-_ ]?575|situati\w*[-_ ]financiar"
+    r"|info[-_ ]?economic|psd2|strategi|asigurar|\bKID\b|informatii[-_ ]esentiale"
+    r"|prospect|audit|guvernanta|remunerar|pilon|pillar"
+    # Vista, 24.09: documentația API PSD2 (`api-website-aisp`) dădea singură
+    # 4.911 „valori"; la fel raportul de transparență și clasamentul MiFID al
+    # locurilor de execuție.
+    r"|(?<![a-z])api(?![a-z])|aisp|pisp|technical|transparen[tț]a[-_ ]si[-_ ]publicare"
+    r"|ranking|execution[-_ ]venue|indici[-_ ]referinta",
+    re.I)
+
+
+# Pe titlu, doar formulări fără echivoc: „raport" sau „asigurare" apar și în
+# titlul unui contract de servicii bancare sau al termenilor unui card, care pot
+# conține comisioane reale.
+RE_TITLU_NU_TARIF = re.compile(
+    r"informa[țt]ii\s+esen[țt]iale|document\s+de\s+informare\s+privind\s+produsul\s+de\s+asigurare"
+    r"|IPID|prospect|situa[țt]ii(le)?\s+financiare|raport(ul)?\s+anual|cerin[țt]e\s+de\s+transparen",
+    re.I)
+
+
+def document_fara_tarife(cale, sursa=None):
+    """Motivul pentru care documentul nu e o listă de prețuri, sau None.
+
+    Se uită la numele documentului și la începutul primei pagini (titlul);
+    conținutul unui tarif conține oricum „raport" sau „asigurare" pe undeva,
+    deci restul textului nu se citește.
+    """
+    nume = urllib.parse.unquote(os.path.basename(str(sursa or cale)))
+    m = RE_NU_TARIF.search(nume)
+    if m:
+        return f"numele conține „{m.group(0)}”"
+    try:
+        import pdfplumber
+        with pdfplumber.open(cale) as pdf:
+            inceput = (pdf.pages[0].extract_text() or "")[:250] if pdf.pages else ""
+    except Exception:
+        return None
+    m = RE_TITLU_NU_TARIF.search(inceput)
+    return f"titlul conține „{m.group(0)}”" if m else None
 
 
 def e_formular_standardizat(cale):
@@ -378,7 +480,10 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
     public de la care s-a descărcat), nu se deduce din calea temporară: altfel
     sursa ar fi un nume de fișier din cache, care nu spune nimic nimănui.
     """
-    parser_pdf, parser_tarife, vocabular = _parsere_pdf()
+    parser_pdf, parser_tarife, vocabular, data_document, ambiguitate = _parsere_pdf()
+    motiv = document_fara_tarife(cale, sursa)
+    if motiv:
+        return [], f"document fără tarife ({motiv}): nu se extrag prețuri"
     standardizat = e_formular_standardizat(cale)
     fn = parser_pdf.extrage if standardizat else parser_tarife.extrage_tarife
     try:
@@ -387,7 +492,32 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
         return [], f"parser {'PAD' if standardizat else 'tarife'} a eșuat: " \
                    f"{type(exc).__name__}: {exc}"[:200]
 
+    # Data de vigoare, citită din TEXTUL documentului — o dată per document,
+    # fiindcă e o proprietate a documentului, nu a valorii. Fără ea, valorile
+    # extrase nu pot intra în detectarea schimbărilor: toate cele 15.230 pe
+    # care le extrăsesem aveau `data_vigoare` NULL, deci pagina Istoric
+    # rămânea blocată la schimbările din pachetul colegului.
+    try:
+        dd = data_document.data_documentului(cale) or {}
+    except Exception:
+        dd = {}
+    data_vig, stare_dat = dd.get("data_vigoare"), dd.get("stare")
+
+    # Ambiguitatea se calculează pe TOATE valorile documentului împreună:
+    # semnalul e „mai multe valori diferite sub același serviciu, fără nimic
+    # care să le deosebească", deci nu se poate decide privind un rând singur.
+    #
+    # `marcheaza` modifică lista PE LOC și întoarce (nr_valori, nr_grupuri) —
+    # nu lista. Prima încercare a atribuit rezultatul înapoi în `inregistrari`
+    # și a înlocuit lista cu un tuplu de numere.
+    n_amb = 0
+    try:
+        n_amb, _ = ambiguitate.marcheaza(inregistrari)
+    except Exception:
+        pass
+
     brute, nemapate = [], 0
+    seg_doc = segment_din_nume(sursa or str(cale))
     for c in inregistrari:
         if c.get("valoare") is None:
             continue
@@ -416,9 +546,15 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
             serviciu=c.get("serviciu"), sectiune=c.get("sectiune"),
             conditie=c.get("conditie"), frecventa=c.get("frecventa"),
             detaliu=c.get("detaliu"), pagina=c.get("pagina"),
-            segment=c.get("segment"), canal=c.get("canal"),
-            destinatie=c.get("destinatie"),
+            segment=c.get("segment") or seg_doc, canal=c.get("canal"),
+            destinatie=c.get("destinatie"), coloana=c.get("coloana"),
+            categorie=c.get("categorie"),
             citat=c.get("text_sursa"),
+            # Data de vigoare vine din TEXTUL documentului. Fără ea, valoarea
+            # nu poate intra în detectarea schimbărilor — iar toate cele 15.230
+            # de valori extrase de mine aveau `data_vigoare` NULL.
+            data_vigoare=c.get("data_vigoare") or data_vig,
+            stare_data=c.get("stare_data") or stare_dat,
             # Formularul standardizat merită mai multă încredere decât o listă
             # liberă: secțiunile și terminologia sunt impuse, deci parserul are
             # pe ce să se sprijine.
@@ -428,5 +564,145 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
         ))
     eticheta = "formular standardizat (PAD)" if standardizat else "listă de tarife"
     mapate = len(brute) - nemapate
-    return brute, (f"{eticheta}: {len(brute)} valori, {mapate} mapate la "
-                   f"vocabularul canonic ({nemapate} rămân generice)")
+    datat = f", datat {data_vig}" if data_vig else ", nedatat"
+    amb = f", {n_amb} ambigue" if n_amb else ""
+    return brute, (f"{eticheta}: {len(brute)} valori, {mapate} mapate"
+                   f"{datat}{amb}")
+
+
+# ==========================================================================
+# 5. HTML live: dobânzi + nume de produs, din octeții aduși de flux
+# ==========================================================================
+
+def din_html(octeti, url, slug, rol=None):
+    """Dobânzi + nume de produs din HTML, cu parserul propriu și al colegului."""
+    from bs4 import BeautifulSoup
+    from crawler.parser_rate import parseaza_linie
+
+    # Octeți, nu text: BeautifulSoup citește charset-ul din <meta>. Decodarea
+    # forțată în UTF-8 strica diacriticele paginilor servite în windows-1250.
+    soup = BeautifulSoup(octeti, "lxml")
+    titlu = soup.title.get_text(strip=True) if soup.title else None
+    if RE_PAGINA_PRESA.search(url):
+        return [], "pagină de presă/știri: prețurile din comunicate nu sunt oferta paginii"
+    categorie, produs, _ = clasifica(url, titlu)
+    if not categorie:
+        return [], "nici calea URL, nici titlul nu spun ce produs e"
+
+    brute = []
+    nume = _nume_produs(soup, titlu)
+    if nume:
+        # Citatul e numele însuși când apare în pagină (h1), nu <title>: titlul
+        # tab-ului nu e în conținut, deci evidențierea la click nu-l găsea
+        # (409 din 604 nume de produs, 24.09).
+        brute.append(brut(
+            banca=slug, sursa=url, rol_sursa=rol or "produs",
+            concept="nume_produs", produs=produs, valoare_text=nume,
+            serviciu=nume, categorie=categorie,
+            citat=nume if soup.find("h1") else titlu, incredere=0.8,
+        ))
+
+    vazute = set()
+    # Liniile se iau DOAR din conținutul principal. Măsurat pe 23.09: 201 din
+    # 643 de citate de dobânzi (31%) veneau din meniu, antet sau subsol (ex.
+    # bannerul ING „4,79%/an" din meniu), atribuite paginii curente — iar
+    # cine deschidea pagina nu găsea citatul în conținut.
+    for linie in _linii(_continut_principal(octeti)):
+        if "%" not in linie:
+            continue
+        inreg, problema = parseaza_linie(linie, slug, categorie, url, titlu)
+        if problema and not inreg:
+            # candidat pentru rezerva LLM (llm_rezerva.py), nu aruncat
+            PROBLEME.setdefault(url, []).append(linie)
+        for r in inreg:
+            k = (r.get("tip_rata"), r.get("valoare"), r.get("moneda"),
+                 r.get("perioada"))
+            if k in vazute:
+                continue
+            vazute.add(k)
+            brute.append(brut(
+                banca=slug, sursa=url, rol_sursa=rol or "produs",
+                frecventa_sursa="zilnic", concept=r.get("tip_rata"), tip="rata",
+                valoare=r.get("valoare"), moneda=r.get("moneda"),
+                serviciu=nume or r.get("produs"), sectiune=categorie,
+                frecventa=r.get("perioada"), categorie=categorie,
+                perioada=r.get("perioada"), citat=r.get("text_sursa"),
+                incredere=r.get("incredere"),
+                # dicționarul parserului, pentru validator (validare.py)
+                _rec=r,
+            ))
+    return brute, f"HTML: {len(brute)} valori"
+
+
+# ==========================================================================
+# 6. Locatoare: sucursale și ATM-uri, din pagina de rețea a băncii
+# ==========================================================================
+
+RE_OBIECT_JSON = re.compile(
+    r"\{[^{}]*?(?:\"lat(?:itude)?\"|\"lng\"|\"lon(?:gitude)?\")[^{}]*\}", re.S)
+CHEI_LAT, CHEI_LON = ("lat", "latitude"), ("lng", "lon", "longitude")
+CHEI_NUME = ("name", "nume", "title", "denumire")
+CHEI_ADRESA = ("address", "adresa", "street")
+CHEI_PROGRAM = ("schedule", "program", "hours", "orar", "opening_hours")
+
+
+def _in_romania(lat, lon):
+    return 43.6 <= lat <= 48.3 and 20.2 <= lon <= 29.8
+
+
+# ATM-uri ale altei rețele, afișate de bancă pentru clienții ei (Patria:
+# 617 ATM-uri Euronet în locatorul propriu). Nu sunt rețeaua băncii.
+RE_PARTENER = re.compile(r"euronet|partener|parteneri|bancomat\s+partener", re.I)
+
+
+def _tip_locatie(text):
+    # Agenția întâi: Patria marchează agențiile „agency,atm" (au și ATM), iar
+    # regula veche le trecea pe toate 45 drept ATM-uri.
+    if re.search(r"agenc|agenti|branch|sucursal|filial", text or "", re.I):
+        return "sucursala"
+    return "atm" if re.search(r"\batm\b|bancomat", text or "", re.I) else "sucursala"
+
+
+def _primul(d, chei):
+    for k in chei:
+        if d.get(k) not in (None, ""):
+            return d[k]
+    return None
+
+
+def din_locator(octeti, url, slug):
+    """Coordonate din JSON-ul inclus în pagină sau din atribute `data-lat`.
+
+    Locatorul băncii e sursa oficială a rețelei: are și programul, pe care
+    Overture nu-l are. Punctele din afara României se aruncă: unele locatoare
+    listează și rețeaua grupului din alte țări.
+    """
+    import json
+    from bs4 import BeautifulSoup
+    text = octeti.decode("utf-8", errors="replace")
+    puncte = []
+    for m in RE_OBIECT_JSON.finditer(text):
+        try:
+            d = json.loads(m.group(0))
+            lat, lon = float(_primul(d, CHEI_LAT)), float(_primul(d, CHEI_LON))
+        except (ValueError, TypeError):
+            continue
+        tip = _tip_locatie(" ".join(str(d.get(k, "")) for k in ("type", "tip", "category", "name")))
+        puncte.append({"tip": tip, "nume": _primul(d, CHEI_NUME), "adresa": _primul(d, CHEI_ADRESA),
+                       "lat": lat, "lon": lon, "program": _primul(d, CHEI_PROGRAM)})
+    for el in BeautifulSoup(octeti, "lxml").select("[data-lat]"):
+        try:
+            lat = float(el["data-lat"])
+            lon = float(el.get("data-lng") or el.get("data-lon"))
+        except (ValueError, TypeError):
+            continue
+        eticheta = " ".join(el.get("class", [])) + " " + el.get_text(" ", strip=True)
+        puncte.append({"tip": _tip_locatie(eticheta), "nume": el.get_text(" ", strip=True)[:120] or None,
+                       "adresa": None, "lat": lat, "lon": lon, "program": None})
+    unice = {}
+    for p in puncte:
+        if _in_romania(p["lat"], p["lon"]):
+            p.update(banca=slug, sursa=url, _locatie=True,
+                     retea="partener" if RE_PARTENER.search(p.get("nume") or "") else "proprie")
+            unice.setdefault((p["tip"], round(p["lat"], 6), round(p["lon"], 6)), p)
+    return list(unice.values()), f"locator: {len(unice)} puncte"

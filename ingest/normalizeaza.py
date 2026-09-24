@@ -104,8 +104,99 @@ COLOANE = (
     "valoare_num", "valoare_text", "unitate", "valuta", "citat", "confidence",
     "ambiguu", "metoda_extractie", "serviciu", "sectiune", "conditie",
     "frecventa", "detaliu", "pagina", "data_vigoare", "stare_data",
-    "motiv_ambiguu",
+    "motiv_ambiguu", "nr_aparitii", "coloana",
 )
+
+# Aceleași liste ca CHECK-urile din `observations`. Se verifică ÎNAINTE de
+# inserare: inserarea e în bloc, deci un singur rând invalid anula tot lotul —
+# așa s-au pierdut 24.838 de valori la popularea din 23.09.2026, din cauza unei
+# singure stări `VIITOR`. Acum rândul se sare și se numără în raport, cu motiv.
+PERMISE = {
+    "stare_data": {None, "IN_VIGOARE", "VIITOR", "ISTORIC", "DUBLURA", "DATA_NECUNOSCUTA"},
+    "unitate": {None, "procent", "lei", "eur", "usd", "zile", "luni", "ani", "numar",
+                "puncte_procentuale", "altele"},
+}
+
+
+def invalid(r):
+    """Motivul pentru care rândul ar pica pe un CHECK, sau None."""
+    for camp, voie in PERMISE.items():
+        if r.get(camp) not in voie:
+            return f"{camp}={r.get(camp)}"
+    c = r.get("confidence")
+    if c is not None and not 0 <= c <= 1:
+        return f"confidence={c}"
+    return None
+
+# Ce face două rânduri „același lucru" — cheia SEMANTICĂ, nu tehnică.
+#
+# Deliberat NU include `citat`: la tabelele cu o coloană per variantă de
+# produs, citatul diferă doar prin moneda scrisă în celulă („0 lei" vs
+# „0 euro"), deși valoarea și serviciul sunt identice.
+#
+# Deliberat NU include nici `sursa`, nici pagina, nici metoda de extracție.
+# Motivul e măsurat: aceeași bancă, același serviciu, aceeași valoare, citite
+# pe două căi diferite (odată din pachetul colegului, odată din documentul
+# descărcat de noi) produceau DOUĂ rânduri. La scara bazei: 2.933 de grupuri
+# afectate, 3.483 de rânduri redundante. „Administrare cont, 15 lei, lunar,
+# la BCR" e UN fapt, oricâte drumuri duc la el.
+CHEIE_DUPLICAT = (
+    "banca", "camp", "cod_scenariu", "serviciu", "valoare_num", "valoare_text",
+    "unitate", "conditie", "frecventa", "data_vigoare",
+    # Varianta de produs (Visa / Mastercard / Gold): fără ea, cinci carduri
+    # diferite care costă 0 lei deveneau un singur rând.
+    "coloana",
+)
+
+
+def _bogatie(r):
+    """Cât de informativ e un rând. Decide care supraviețuiește la duplicat.
+
+    Se preferă rândul care are DATĂ (poate intra în detectarea schimbărilor),
+    apoi cel cu citat mai lung (dovada e mai utilă), apoi cel cu mai mult
+    context. Nu se preferă o proveniență anume: informația contează, nu de
+    unde vine.
+    """
+    return (
+        1 if r.get("data_vigoare") else 0,
+        len(r.get("citat") or ""),
+        sum(1 for c in ("sectiune", "detaliu", "pagina", "cod_scenariu")
+            if r.get(c)),
+    )
+
+
+def dedup(randuri, raport=None):
+    """Strânge rândurile identice într-unul singur, numărând câte au fost.
+
+    Măsurat pe extracția din PDF: 3.263 din 15.111 rânduri (21,6%) erau
+    duplicate exacte, iar în interfață apăreau ca opt „0 lei" unul sub altul,
+    fără nimic care să le deosebească.
+
+    Cauza nu e o greșeală de citire. Tabelele de tarife au o coloană per
+    variantă de produs (Visa Business / Mastercard / Gold), parserul citește
+    fiecare celulă ca rând, iar antetul coloanei se pierde. Deci cele cinci
+    rânduri „Emitere card — 0 lei" sunt cinci tipuri de card care costă toate
+    zero.
+
+    „Cinci variante, toate 0 lei" e informație. Cinci rânduri identice nu
+    sunt — de aceea se păstrează unul singur, cu numărul lor.
+    """
+    raport = raport if raport is not None else collections.Counter()
+    unice = {}
+    for r in randuri:
+        cheie = tuple(r.get(c) for c in CHEIE_DUPLICAT)
+        if cheie in unice:
+            vechi = unice[cheie]
+            n = vechi["nr_aparitii"] + 1
+            # Supraviețuiește rândul mai informativ, nu primul venit.
+            pastrat = r if _bogatie(r) > _bogatie(vechi) else vechi
+            pastrat["nr_aparitii"] = n
+            unice[cheie] = pastrat
+            raport["randuri_stranse_ca_duplicat"] += 1
+        else:
+            r["nr_aparitii"] = 1
+            unice[cheie] = r
+    return list(unice.values())
 
 
 def brut(**kw):
@@ -132,7 +223,7 @@ def brut(**kw):
         "destinatie": None, "perioada": None, "nr_rate": None,
         # calitate și versiune
         "citat": None, "incredere": None, "ambiguu": False, "motiv_ambiguu": None,
-        "data_vigoare": None, "stare_data": None,
+        "data_vigoare": None, "stare_data": None, "coloana": None,
         # produsul din catalog; dacă lipsește, se deduce din concept/tip
         "produs": None,
     }
@@ -187,13 +278,18 @@ def _scenariu(b):
 
 
 def _incredere(b):
+    # Plafoanele se aplică și încrederii numerice: înainte, un număr ieșea
+    # direct, iar plafonul SURSA_VECHE nu se aplica niciodată (cod mort).
     if isinstance(b.get("incredere"), (int, float)):
-        return round(float(b["incredere"]), 3)
-    c = INCREDERE.get(b.get("incredere"), 0.5)
+        c = float(b["incredere"])
+    else:
+        c = INCREDERE.get(b.get("incredere"), 0.5)
     if b.get("stare_data") == "DATA_NECUNOSCUTA":
         c = min(c, 0.7)          # extras corect, dar nu știm de când se aplică
     if b.get("stare") == "SURSA_VECHE":
         c = min(c, 0.5)          # extras corect, dar pagina băncii e învechită
+    if b.get("stare") == "SUSPECT":
+        c = min(c, 0.5)          # o verificare automată a validatorului a eșuat
     return round(c, 3)
 
 
@@ -267,6 +363,7 @@ def normalizeaza(b, raport=None):
         "pagina": b.get("pagina") if isinstance(b.get("pagina"), int) else None,
         "data_vigoare": _data(b.get("data_vigoare")),
         "stare_data": b.get("stare_data"),
+        "coloana": (b.get("coloana") or None) and str(b["coloana"])[:200],
         # De ce e ambiguă, nu doar CĂ e. Cele două motive reale din pachet
         # („antet de coloană pierdut", „prag de sumă pierdut") sunt pierderi de
         # structură la citirea tabelului, nu greșeli de citire a cifrei — și
@@ -333,7 +430,7 @@ def noteaza_surse(note):
             return cur.rowcount
 
 
-def scrie(randuri, metoda, raport=None, sterge=True):
+def scrie(randuri, metoda, raport=None, sterge=True, banci=None):
     """Scrie rândurile normalizate, idempotent pe `metoda`.
 
     Pașii, în ordinea impusă de chei străine:
@@ -346,10 +443,22 @@ def scrie(randuri, metoda, raport=None, sterge=True):
     Pasul 3 e restrâns la metodă anume: altfel o reîncărcare a unei variante ar
     șterge datele altei variante.
     """
+    # Copiat ÎNAINTE de orice altceva: mai jos `banci` devine dicționarul
+    # tuturor băncilor, iar condiția de ștergere pe bancă vedea acel
+    # dicționar. Pe 23.09, fiecare bancă terminată a șters datele celorlalte.
+    doar_banci = list(banci) if banci else None
     raport = raport if raport is not None else collections.Counter()
     if not randuri:
         raport["nimic_de_scris"] += 1
         return raport
+    # Deduplicarea se face AICI, nu la extracție: e o regulă despre ce
+    # înseamnă „aceeași observație", deci aparține normalizatorului, alături
+    # de restul regulilor de traducere. Un extractor nou o primește gratis.
+    inainte = len(randuri)
+    randuri = dedup(randuri, raport)
+    raport["randuri_dupa_dedup"] += len(randuri)
+    if inainte != len(randuri):
+        raport["randuri_intrate_brut"] += inainte
 
     with psycopg2.connect(dsn()) as conn:
         with conn.cursor() as cur:
@@ -427,17 +536,20 @@ def scrie(randuri, metoda, raport=None, sterge=True):
                 (r["banca"], r["sursa"], r["tip_sursa"]): r["amprenta"]
                 for r in randuri if r.get("amprenta")
             }
+            # Se ADAUGĂ doar amprentele care lipsesc; nu se șterge niciuna.
+            # `hashes` e jurnalul colectării: fluxul scrie acolo amprenta
+            # octeților aduși, iar reconstruirea din Bronze se bazează pe ea.
+            # Un DELETE aici ștergea amprentele colectării din 23.09.2026 și
+            # rularea următoare din Bronze nu mai vedea sursele respective.
             if amprente:
-                cur.execute(
-                    "DELETE FROM hashes WHERE id_sursa IN "
-                    "(SELECT id FROM surse WHERE metoda_extractie = %s)", (metoda,)
-                )
-                psycopg2.extras.execute_values(
-                    cur, "INSERT INTO hashes (id_sursa, format, hash) VALUES %s",
-                    [(id_sursa[k], "pdf", v) for k, v in sorted(amprente.items())
-                     if k in id_sursa],
-                )
-                raport["amprente"] += len(amprente)
+                cur.execute("SELECT id_sursa, hash FROM hashes")
+                existente = set(cur.fetchall())
+                noi = [(id_sursa[k], "pdf", v) for k, v in sorted(amprente.items())
+                       if k in id_sursa and (id_sursa[k], v) not in existente]
+                if noi:
+                    psycopg2.extras.execute_values(
+                        cur, "INSERT INTO hashes (id_sursa, format, hash) VALUES %s", noi)
+                raport["amprente"] += len(noi)
             cur.execute(
                 """SELECT h.id_sursa, max(h.id) FROM hashes h
                    GROUP BY h.id_sursa"""
@@ -445,7 +557,16 @@ def scrie(randuri, metoda, raport=None, sterge=True):
             id_hash = dict(cur.fetchall())
 
             # --- 3. idempotență pe proveniență (sărită la scriere incrementală)
-            if sterge:
+            # Cu `banci`, doar băncile rulate: `--banca cec` ștergea altfel
+            # observațiile tuturor celorlalte bănci.
+            if sterge and doar_banci:
+                cur.execute(
+                    """DELETE FROM observations o USING surse s, banci b
+                       WHERE o.id_sursa = s.id AND b.id = s.id_banca
+                         AND o.metoda_extractie = %s AND b.slug = ANY(%s)""",
+                    (metoda, doar_banci))
+                raport["observatii_sterse"] += cur.rowcount
+            elif sterge:
                 cur.execute("DELETE FROM observations WHERE metoda_extractie = %s",
                             (metoda,))
                 raport["observatii_sterse"] += cur.rowcount
@@ -460,6 +581,10 @@ def scrie(randuri, metoda, raport=None, sterge=True):
                 if r["produs"] not in produse:
                     raport[f"obs_sarita_produs_necunoscut:{r['produs']}"] += 1
                     continue
+                motiv = invalid(r)
+                if motiv:
+                    raport[f"obs_sarita_invalida:{motiv}"] += 1
+                    continue
                 s_id = id_sursa[k]
                 valori.append((
                     s_id, produse[r["produs"]], id_hash.get(s_id),
@@ -468,6 +593,7 @@ def scrie(randuri, metoda, raport=None, sterge=True):
                     r["ambiguu"], metoda, r["serviciu"], r["sectiune"], r["conditie"],
                     r["frecventa"], r["detaliu"], r["pagina"],
                     r["data_vigoare"], r["stare_data"], r["motiv_ambiguu"],
+                    r.get("nr_aparitii", 1), r.get("coloana"),
                 ))
             if valori:
                 psycopg2.extras.execute_values(

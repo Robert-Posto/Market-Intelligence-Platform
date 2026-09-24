@@ -263,6 +263,11 @@
             border-left:2px solid var(--line);padding-left:7px}
   .obs .cit mark{background:var(--warn-tint);color:var(--ink);font-weight:600;
                  padding:0 2px;border-radius:2px}
+  /* Când citatul nu adaugă nimic peste cifră, se arată unde e în document,
+     nu se repetă cifra sub ea ca și cum ar fi o dovadă. */
+  .obs .cit.fara{border-left-style:dotted;font-style:italic;opacity:.9}
+  .obs .val .x{font-family:"IBM Plex Mono",monospace;font-size:10px;
+               color:var(--muted);margin-left:4px;font-weight:400}
   /* Ce trebuie să facă omul cu rândul — scris lângă rând, nu într-un tooltip */
   .obs .ce-faci{font-size:11px;color:var(--muted);line-height:1.5;margin-top:5px;
                 font-style:italic}
@@ -549,7 +554,6 @@ function clasament(camp, celule, opt){
       <span class="cl-ctx">${ctx.join(" · ") || "—"}${
         servicii > 1 && !arata ? `<span class="cl-alt">și alte ${servicii - 1} denumiri de serviciu</span>` : ""}</span>
       <span class="cl-note">
-        ${c.nemarcate ? `<span class="pill amb" title="${c.nemarcate} din ${c.n} valori nu au segmentul (persoană fizică / firmă) marcat în documentul sursă. Sunt arătate, dar nu se poate garanta că sunt pentru persoane fizice.">segment nemarcat</span>` : ""}
         ${c.gratuite && !arata ? `<span class="pill ok" title="${c.gratuite} dintre variante sunt fără comision">${c.gratuite} gratuit${c.gratuite === 1 ? "ă" : "e"}</span>` : ""}
         <span class="cl-n" title="Deschide toate cele ${c.n} valori, fiecare cu citatul și linkul către document">${c.n} ${arata ? (c.n === 1 ? "valoare" : "valori") : (c.n === 1 ? "preț" : "prețuri")} →</span>
       </span>
@@ -595,6 +599,17 @@ function citatEvidentiat(r){
   return esc(t);
 }
 
+/* Citatul merită arătat doar dacă spune ceva în plus față de cifră.
+   Măsurat: la 2.378 de rânduri din PDF, `citat` e literalmente valoarea
+   („0 lei"), deci sub cifră apărea aceeași cifră, ca și cum ar fi o dovadă.
+   Nu e. Acolo se arată secțiunea din document, care chiar localizează. */
+function citatUtil(r){
+  const c = (r.citat || "").trim();
+  if(!c) return null;
+  const doarCifra = /^[0-9][0-9.,\s]*(lei|euro|eur|usd|ron|%)?$/i.test(c);
+  return doarCifra ? null : c;
+}
+
 function randObs(r){
   const u = unitTxt(r.unitate);
   const val = r.valoare !== null && r.valoare !== undefined
@@ -605,10 +620,18 @@ function randObs(r){
   if(r.detaliu)   linii.push(esc(r.detaliu));
   const scen = (r.cod_scenariu || "").split("|").filter(Boolean);
   return `<div class="obs ${r.ambiguu ? "amb" : ""}">
-    <div class="val">${val}</div>
+    <div class="val">${val}${r.nr_aparitii > 1
+      ? `<span class="x" title="aceeași valoare, în ${r.nr_aparitii} coloane ale tabelului">×${r.nr_aparitii}</span>` : ""}</div>
     <div class="det">
       ${linii.length ? `<div>${linii.join(" · ")}</div>` : ""}
-      ${r.citat ? `<div class="cit">${citatEvidentiat(r)}</div>` : ""}
+      ${citatUtil(r)
+        ? `<div class="cit">${citatEvidentiat(r)}</div>`
+        : `<div class="cit fara">${r.sectiune
+            ? "În document, la secțiunea <b>" + esc(r.sectiune) + "</b>."
+            : "Documentul nu dă niciun text în jurul cifrei."}
+           ${r.nr_aparitii > 1
+             ? " Aceeași valoare apare în <b>" + r.nr_aparitii + " coloane</b> ale tabelului — de regulă variante ale aceluiași produs, al căror antet s-a pierdut la extracție."
+             : ""}</div>`}
       <div class="meta">
         <span class="pill" title="cu ce variantă de colectare a fost extrasă">${esc(r.metoda_extractie || "?")}</span>
         ${scen.map(x => `<span class="pill">${esc(x)}</span>`).join("")}
@@ -766,7 +789,7 @@ R.overview = async () => {
 };
 
 R.produse = async (stare) => {
-  const grup = stare.grup || "cont_curent", seg = stare.segment || "pf";
+  const grup = stare.grup || "cont_curent", seg = stare.segment || "toate";
   const [d, m] = await Promise.all([
     ia(`/api/matrice?grup=${grup}&segment=${seg}&unitate=lei`), meta(),
   ]);
@@ -784,9 +807,10 @@ R.produse = async (stare) => {
           ${[["cont_curent","Cont curent"],["carduri","Carduri"],["transferuri","Transferuri și plăți"]]
             .map(([v,t]) => `<option value="${v}" ${v === grup ? "selected" : ""}>${t}</option>`).join("")}
         </select></label>
-      <label class="f">Segment
+      <label class="f">Pentru cine e prețul
         <select onchange="mergi('produse',{grup:'${grup}',segment:this.value})">
-          ${[["pf","Persoane fizice"],["pj","Persoane juridice"],["pfa","PFA"],["toate","Toate (nerecomandat)"]]
+          ${[["toate","Oricine (tot ce avem)"],["pf","Doar persoane fizice"],
+             ["pj","Doar firme"],["pfa","Doar PFA"]]
             .map(([v,t]) => `<option value="${v}" ${v === seg ? "selected" : ""}>${t}</option>`).join("")}
         </select></label>
       <label class="f">Monedă<select disabled><option>lei</option></select></label>
@@ -798,21 +822,23 @@ R.produse = async (stare) => {
       cifră pe rând să însemne ceva — de aceea <b>prețul apare la clic</b>, lângă citatul din
       document și linkul către locul exact din care a fost citit.
       Pentru comparația directă între bănci, vezi <a href="#/versus">Versus Libra</a>.
-      ${nemarcate ? `<br><b>${num(nemarcate, 0)} valori</b> nu au segmentul (persoană fizică / firmă)
-        marcat în documentul sursă — la BRD și Exim, niciuna nu îl are. Sunt incluse și
-        etichetate <span class="pill amb">segment nemarcat</span>, nu ascunse: extracția a
-        reușit, doar documentul nu spune pentru cine e prețul.` : ""}
+      <br><b>Majoritatea documentelor nu spun pentru cine e prețul.</b> Doar 37% din
+      valori precizează „persoane fizice" sau „firme"; restul sunt prețuri reale, extrase
+      corect, dar din tabele care nu notează asta. De aceea filtrul e implicit pe
+      <b>oricine</b> — un filtru pe persoane fizice ar ascunde două treimi din date, fără
+      să fie mai corect.
       ${d.excluse_ambigue ? `<br>${d.excluse_ambigue} valori ambigue excluse.` : ""}
       ${d.excluse_implauzibile ? ` ${d.excluse_implauzibile} valori peste ${num(d.prag_plauzibil, 0)} lei excluse — un comision de retail nu ajunge acolo; sunt limite de retragere sau praguri extrase greșit ca preț. Toate apar în „Coadă de verificare”.` : ""}
     </p>
   </section>
   ${clasamente || '<section><p class="note">Fără date pentru selecția curentă.</p></section>'}
   <section>
-    <h2>De ce segmentul contează</h2>
-    <p class="note">Prețul pentru persoană fizică și cel pentru firmă stau în același tabel, la aceeași etichetă
-      de serviciu. Comparate între ele dau o concluzie falsă — de aceea filtrul e pe <b>persoane fizice</b>
-      implicit, nu pe „toate”. Segmentele disponibile în date:
-      ${d.segmente.map(s => `<span class="pill">${esc(s.seg)}: ${s.n}</span>`).join(" ")}</p>
+    <h2>Despre „pentru cine e prețul"</h2>
+    <p class="note">Prețul pentru o persoană și cel pentru o firmă stau des în același tabel, la
+      aceeași denumire de serviciu — comparate între ele, dau o concluzie falsă. Filtrul există
+      tocmai pentru asta, dar funcționează doar unde documentul precizează.
+      Ce scrie efectiv în date:
+      ${d.segmente.map(s => `<span class="pill">${esc(s.seg)}: ${num(s.n,0)}</span>`).join(" ")}</p>
   </section>`;
 };
 
@@ -1050,22 +1076,23 @@ R.retea = async () => {
   return `
   <section>
     <h2>Hartă interactivă</h2>
-    <p class="note">${d.total} locații, ${d.banci.length} bănci. Datele sunt <span class="pill mock">mock</span>
-      — generate pentru testarea fluxului, cu <code class="mono">sursa='mock'</code>, deci se șterg selectiv
-      când vine Google Places. Harta e pe pagină separată, fiindcă MapLibre își gestionează propriul ciclu de viață.</p>
+    <p class="note">${d.total} locații, ${d.banci.length} bănci. Datele vin din <b>Overture Maps Places</b> (versiunea 2026-08-19), un set deschis;
+      în bază intră doar punctele legate sigur de una din băncile urmărite, pe nume sau brand actual.
+      ATM-urile sunt acoperite parțial. Harta e pe pagină separată, fiindcă MapLibre își gestionează propriul ciclu de viață.</p>
     <p><a href="/harta.html"><button class="primar">Deschide harta →</button></a></p>
     ${tabel(d.banci, [
       {cap:"Bancă", k:"nume"}, {cap:"Sucursale", cls:"num", val:r => num(r.sucursale, 0)},
-      {cap:"ATM-uri", cls:"num", val:r => num(r.atm, 0)},
+      {cap:"ATM-uri proprii", cls:"num", val:r => num(r.atm, 0)},
+      {cap:"ATM-uri partenere", cls:"num", val:r => num(r.atm_parteneri, 0)},
       {cap:"Total", cls:"num", val:r => num(r.total, 0)},
     ])}
   </section>
   <section>
     <h2>Ce urmează, pe surse reale</h2>
-    <p class="note">Ordinea de prioritate stabilită în artifact: <b>1.</b> Google Places API (o integrare,
-      prag gratuit lunar, dar ATM-uri incomplete) · <b>2.</b> locatorul propriu al fiecărei bănci
-      (cel mai complet, dar efort per bancă — testat pe BCR, nici API intern, nici sitemap n-au dat
-      lista din prima) · <b>3.</b> ONRC, doar ca verificare încrucișată, fiindcă nu acoperă ATM-urile.</p>
+    <p class="note"><b>1.</b> Locatorul propriu al fiecărei bănci — date oficiale, vin odată cu descoperirea
+      surselor · <b>2.</b> Overture Maps, pentru golurile rămase · <b>3.</b> ONRC, doar ca verificare
+      încrucișată, fiindcă nu acoperă ATM-urile. Google Places nu se folosește: condițiile lui interzic
+      păstrarea coordonatelor peste 30 de zile și afișarea pe o hartă non-Google.</p>
   </section>`;
 };
 
@@ -1185,7 +1212,7 @@ R.versus = async (stare) => {
       a && a.rating
         ? [`${num(a.rating, 2)} ★`, `App Store · ${num(a.volum, 0)} note`]
         : ["—", "fără date App Store"],
-      l ? [num((l.sucursale || 0) + (l.atm || 0), 0), "locații (mock, București)"]
+      l ? [num((l.sucursale || 0) + (l.atm || 0), 0), "locații (Overture Maps)"]
         : ["—", "fără locații"],
       [num(ac ? ac.valori : 0, 0), "valori colectate"],
     ];
@@ -1297,13 +1324,11 @@ R.versus = async (stare) => {
         ["Capturi în listing", "câte imagini publică banca în store", appPe,
          r => r && r.capturi ? numar(r.capturi, "", "capturi") : null],
       ])
-    + sectiuneExtra("Rețea (2.5) — date mock", "mare_bun", [
-        ["Sucursale", "unități fizice în București (mock, pentru hartă)", locPe,
-         r => r && r.sucursale ? numar(r.sucursale, "", "în București") : null],
-        ["ATM-uri proprii", "bancomate proprii (mock, pentru hartă)", locPe,
-         r => r && r.atm ? numar(r.atm, "", "în București") : null],
-        ["Rating sucursale", "media recenziilor de locație (mock)", locPe,
-         r => r && r.rating_sucursale ? numar(r.rating_sucursale, " ★") : null],
+    + sectiuneExtra("Rețea (2.5) — Overture Maps", "mare_bun", [
+        ["Sucursale", "unități fizice în România (Overture Maps)", locPe,
+         r => r && r.sucursale ? numar(r.sucursale, "", "în România") : null],
+        ["ATM-uri proprii", "bancomate proprii (Overture Maps, acoperire parțială)", locPe,
+         r => r && r.atm ? numar(r.atm, "", "în România") : null],
       ])
     + sectiuneExtra("Sentiment (2.7)", "mare_bun", [
         ["Media textelor de review", "nota celor care s-au deranjat să scrie — mai critică decât agregatul", sentPe,
@@ -1340,7 +1365,7 @@ R.versus = async (stare) => {
       și sentiment — avem date doar pentru <b>3 bănci</b>, fiindcă id-urile de App Store
       se adaugă manual, câte unul.
       Un gol nu înseamnă „zero" și nu se completează cu o estimare.
-      Rețeaua (2.5) e <b>mock</b>, pentru hartă; restul e real.</p>
+      Rețeaua (2.5) vine din Overture Maps, cu ATM-uri acoperite parțial.</p>
   </section>
   ${sectiuni ? `<section class="vs" style="${grid}">
       <div class="vs-bara">

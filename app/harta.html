@@ -81,7 +81,7 @@
 <body>
 <header>
   <h1>Hartă sucursale și ATM-uri</h1>
-  <div class="sub">Date <b>mock</b> (locații și note), în forma Google Places ·
+  <div class="sub">Date <b>Overture Maps Places</b> (versiunea 2026-08-19): Meta, Microsoft, Foursquare, AllThePlaces și alții, sub licențe CDLA Permissive 2.0 / Apache 2.0 / CC0. ATM-urile sunt acoperite parțial ·
     <a href="/">← înapoi la date colectate</a></div>
 </header>
 <div class="layout">
@@ -335,7 +335,7 @@ function amesteca(rgbText, peste, alfa){
 
 const map = new maplibregl.Map({
   container: "map", style: STIL_CARTO,
-  center: [26.0980, 44.4380], zoom: 11.3, attributionControl: {compact: true},
+  center: [25.0, 45.9], zoom: 6.4, attributionControl: {compact: true},
 });
 map.addControl(new maplibregl.NavigationControl({showCompass: false}), "top-right");
 map.addControl(new maplibregl.ScaleControl({maxWidth: 110, unit: "metric"}));
@@ -357,11 +357,8 @@ const popup = new maplibregl.Popup({closeButton: true, offset: 16, maxWidth: "31
 const stele = n => (n === null || n === undefined) ? "" :
   "★".repeat(Math.round(n)) + "☆".repeat(5 - Math.round(n));
 
-/* Popup-ul arată nota și numărul de recenzii, nu textele lor.
-   Textele erau mock generat, deci citite ca păreri reale de clienți ar induce
-   în eroare pe oricine deschide harta — o notă mock se citește ca cifră de
-   umplutură, un comentariu mock se citește ca dovadă. Când locațiile vin din
-   Google Places, textele se pot pune la loc: vor fi reale. */
+/* Overture nu are note și recenzii de locație, deci popup-ul nu arată
+   niciuna. Notele de dinainte erau mock și au fost șterse (migrarea 014). */
 function deschidePopup(p, lngLat){
   const col = CULOARE[p.banca] || "#5b6b7a";
   const rating = p.rating === null || p.rating === undefined ? null : Number(p.rating);
@@ -371,12 +368,9 @@ function deschidePopup(p, lngLat){
       <div class="pop-t">${esc(p.nume)}</div>
       <div class="pop-m">${esc(p.adresa)} · ${esc(p.sector)}</div>
     </div>
-    <div class="pop-m">Program: ${esc(p.program)}</div>
-    ${rating !== null
-      ? `<div class="pop-rating"><span class="stele">${stele(rating)}</span><b>${rating.toFixed(1)}</b>
-           <span class="pop-m">din ${p.nr_recenzii ?? 0} recenzii</span></div>`
-      : `<div class="pop-rating pop-m">Fără notă</div>`}
-    <span class="pill">${esc(p.tip)} · sursă: ${esc(p.sursa)}</span>`).addTo(map);
+    ${p.program ? `<div class="pop-m">Program: ${esc(p.program)}</div>` : ""}
+    ${p.retea === "partener" ? `<div class="pop-m"><b>ATM partener</b>, nu al băncii: afișat de bancă pentru clienții ei.</div>` : ""}
+    <span class="pill">${esc(p.tip)} · ${p.sursa === "locator_banca" ? "locatorul băncii" : "Overture Maps"}${p.furnizori ? ` (${esc(p.furnizori)})` : ""}</span>`).addTo(map);
 }
 
 function geojson(){
@@ -410,7 +404,9 @@ function aplicaFiltre(){
   const medie = cuRec.length ? cuRec.reduce((s,p) => s + Number(p.rating), 0) / cuRec.length : null;
   document.getElementById("nr").textContent = vaz.length;
   document.getElementById("nr-det").textContent =
-    `${suc} sucursale · ${vaz.length - suc} ATM-uri` + (medie ? ` · notă medie ${medie.toFixed(2)}` : "");
+    `${suc} sucursale · ${vaz.filter(p => p.tip === "atm" && p.retea !== "partener").length} ATM-uri proprii`
+    + (vaz.some(p => p.retea === "partener") ? ` · ${vaz.filter(p => p.retea === "partener").length} partenere` : "")
+    + (medie ? ` · notă medie ${medie.toFixed(2)}` : "");
   document.getElementById("nr-banci").textContent = `(${selectate.size}/${BANCI.length})`;
 }
 
