@@ -56,6 +56,9 @@ import sanitizare                  # noqa: E402
 import transport                   # noqa: E402
 
 METODA = "populare"
+# Rezerva LLM de extracție (llm_rezerva.py): oprită implicit, costă per apel.
+LLM_REZERVA = False
+RAPORT_LLM = collections.Counter()
 LOGURI = os.path.join(RADACINA, "loguri", "banci")
 
 
@@ -133,6 +136,13 @@ def extrage(octeti, cale, slug, url, rol, j):
             b_noi, nota = extractoare.din_pdf(cale, slug, sursa=url)
         else:
             b_noi, nota = extractoare.din_html(octeti, url, slug, rol)
+            probleme = extractoare.PROBLEME.pop(url, [])
+            if LLM_REZERVA and probleme:
+                import llm_rezerva
+                categorie = extractoare.clasifica(url, None)[0] or "credite"
+                noi = llm_rezerva.extrage(probleme, slug, url, categorie, raport=RAPORT_LLM)
+                b_noi += noi
+                nota = f"{nota}; rezerva LLM: {len(noi)} din {len(probleme)} linii"
     except Exception as exc:
         # O pagină care strică parserul nu oprește toată banca; se numără.
         j["stare"], j["nota"] = "EROARE_EXTRACTIE", f"{type(exc).__name__}: {exc}"[:300]
@@ -312,6 +322,8 @@ def main():
                          "Bronze se arhivează")
     ap.add_argument("--paralel", type=int, default=0,
                     help="rulează toate băncile, câte N în paralel")
+    ap.add_argument("--llm-rezerva", action="store_true",
+                    help="LLM pe liniile pe care parserul nu le citește (costă)")
     ap.add_argument("--fara", default="",
                     help="cu --paralel: bănci de sărit, separate prin virgulă")
     ap.add_argument("--din-bronze", action="store_true",
@@ -320,7 +332,9 @@ def main():
 
     config.incarca()
     err = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", write_through=True)
-    raport = collections.Counter()
+    global LLM_REZERVA
+    LLM_REZERVA = a.llm_rezerva
+    raport = RAPORT_LLM
 
     if a.de_la_zero and not a.banca:
         goleste_tot(err)
@@ -330,7 +344,8 @@ def main():
     elif a.banca:
         ruleaza_banca(err, raport, a.banca, a.limita)
     elif a.paralel:
-        paralel(err, a.paralel, ["--din-bronze"] if a.din_bronze else [],
+        paralel(err, a.paralel, (["--din-bronze"] if a.din_bronze else [])
+                + (["--llm-rezerva"] if a.llm_rezerva else []),
                 sari={s.strip() for s in a.fara.split(",") if s.strip()})
         return 0
     else:

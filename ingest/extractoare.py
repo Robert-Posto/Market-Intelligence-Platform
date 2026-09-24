@@ -239,6 +239,10 @@ def _nume_produs(soup, titlu):
     return None
 
 
+# Liniile cu procente pe care parserul nu le-a putut tipiza, pe URL.
+# Le consumă `populare_initiala.extrage` când rezerva LLM e pornită.
+PROBLEME = {}
+
 RE_PAGINA_PRESA = re.compile(r"/press|/presa|comunicat|/stiri|/news|/noutati|/blog", re.I)
 
 
@@ -606,7 +610,10 @@ def din_html(octeti, url, slug, rol=None):
     for linie in _linii(_continut_principal(octeti)):
         if "%" not in linie:
             continue
-        inreg, _ = parseaza_linie(linie, slug, categorie, url, titlu)
+        inreg, problema = parseaza_linie(linie, slug, categorie, url, titlu)
+        if problema and not inreg:
+            # candidat pentru rezerva LLM (llm_rezerva.py), nu aruncat
+            PROBLEME.setdefault(url, []).append(linie)
         for r in inreg:
             k = (r.get("tip_rata"), r.get("valoare"), r.get("moneda"),
                  r.get("perioada"))
