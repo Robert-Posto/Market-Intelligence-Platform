@@ -179,6 +179,7 @@ SERVICII = [
     ("curierat_posta", r"^\W*(?:comision\s+|tax[ăa]\s+|cost\s+)?(?:coresponden[țţ]|corespondent[ăa]\b|curierat"
                        r"|curier\b|fax\b)"
                        r"|\b(?:DHL|TNT|UPS)\b|remiter\w*\s+prin\s+curier|^\W*scrisoare\s*$"
+                       r"|^\W*sending\s+documents?\s+(?:through|by)\s+fax"
                        r"|^\W*transmiter\w*\s+(?:documente|coresponden\w*)[^.]{0,30}prin\s+(?:fax|po[șs]t|curier)"),
     ("blocare_card", r"blocar\w*[^.]{0,30}card|card[^.]{0,25}blocar"
                      r"|blocare\s+(a\s+)?cardului"),
@@ -257,6 +258,7 @@ SERVICII = [
                           # TBI, lista in engleza: "Withdrawals3"
                           r"|^\W*(?:cash\s+)?withdrawals?(?![a-z])"),
     ("depunere_numerar", r"depuner\w*[^.]{0,20}numerar|alimentar\w*[^.]{0,20}numerar"
+                         r"|^\W*(?:depunere\s*/\s*)?(?:cash\s+)?deposits?\b(?!\s+(?:account|certificat))"
                          r"|^\W*depuner\w*\s+(?:\w+\s+)?la\s+(?:smart\s+cashbox|MFM|ma[șs]in\w*\s+multifunc"
                          r"|multifunc[țt]ional|ATM)"),
     # Adeverinte, confirmari de sold/audit, scrisori de bonitate, copii si duplicate
@@ -272,11 +274,15 @@ SERVICII = [
      r"|confirm\w*\s+(?:a\s+)?capital\w*\s+social"
      r"|duplicat\w*\s+(?:dup[ăa]\s+)?acte|copi\w*\s+(?:de\s+)?(?:pe\s+)?document"
      r"|copi[ei]\w*\s+(?:similar\s+)?(?:swift|mesaj)"
-     r"|^\W*eliber\w*\s+(?:de\s+)?(?:alte\s+)?adres|adres\w*\s+(?:diverse|emis)|^\W*adres[ăa]\s+(?:de\s+)?lichidar"),
+     r"|^\W*eliber\w*\s+(?:de\s+)?(?:alte\s+)?adres|adres\w*\s+(?:diverse|emis)|^\W*adres[ăa]\s+(?:de\s+)?lichidar"
+     r"|creditworthiness\s+letter|^\W*cop(?:y|ies)\s+of\s+swift|^\W*photocop"),
     # cont
-    ("deschidere_cont", r"deschider\w*[^.]{0,25}(cont|depozit)|^\W*deschider\w*\s*/\s*[îi]nchider\w*\s+produs"),
+    ("deschidere_cont", r"deschider\w*[^.]{0,25}(cont|depozit)|^\W*deschider\w*\s*/\s*[îi]nchider\w*\s+produs"
+                        # TBI, lista in engleza (sectiunile bilingve "CURRENT ACCOUNT SERVICES")
+                        r"|^\W*opening\s+of\s+(?:the\s+)?account"),
     # pachetul de cont, ca la administrare: "Inchidere pachet" la BRD, 11 valori
-    ("inchidere_cont", r"([îi]nchider|lichidar)\w*[^.]{0,25}(cont|pachet|depozit)"),
+    ("inchidere_cont", r"([îi]nchider|lichidar)\w*[^.]{0,25}(cont|pachet|depozit)"
+                       r"|^\W*clos(?:ing|ure)\s+(?:of\s+)?(?:the\s+)?account"),
     # BRD nu scrie "administrare": "Pret pachet/luna cu indeplinirea conditiei de
     # pachet" e tot abonamentul lunar al pachetului (22 de valori)
     ("administrare_cont", r"administrar\w*[^.]{0,25}(cont|pachet)"
@@ -295,7 +301,8 @@ SERVICII = [
                           # baza (ProCredit, 8), dupa _curat ("Contul de Plăți" -> "cont")
                           r"|^\W*(?:•\s*)?cont(?:ul)?\s+de\s+economii\b(?![^.;:]{0,50}sold)[^.;:]{0,50}$"
                           r"|^\W*cont\s+cu\s+servicii\s+de\s+baz"
-                          r"|gestion\w*\s+(?:a\s+)?contului|^\W*administrar\w*\s+produs\b"),
+                          r"|gestion\w*\s+(?:a\s+)?contului|^\W*administrar\w*\s+produs\b"
+                          r"|^\W*monthly\s+maintenance\s+of\s+(?:the\s+)?account"),
     # "Extras suplimentar de cont", "Extrase la sediul Bancii" (Vista, 6 valori);
     # nu "Extras ONRC", care e extrasul din registrul comertului
     ("extras_de_cont", r"extras\w*\s+(de\s+)?cont|extras\s+de|stare\s+financiar"
@@ -304,11 +311,13 @@ SERVICII = [
                        # BRD "Transmitere extras prin poștă" (iesea livrare_card).
                        # Nu "extras alte conturi" (Techventures, 50 lei: strica linia)
                        r"|^\W*(?:emiter|eliberar|transmiter|furnizar)\w*\s+extras\w*\b(?![^.]{0,12}alte\s+conturi)"
-                       r"|^\W*(?:ta?x[ăa]\s+)?extras\s+duplicat|istoric\w*\s+(?:de\s+)?(?:tranzac|cont)"),
+                       r"|^\W*(?:ta?x[ăa]\s+)?extras\s+duplicat|istoric\w*\s+(?:de\s+)?(?:tranzac|cont)"
+                       r"|^\W*statement\s+of\s+(?:the\s+)?account"),
     # activarea e o plata o singura data, administrarea e lunara: prețuri diferite.
     # Inaintea lui token: "Activare ... cu token" (15 LEI) e activarea, nu tokenul.
     ("activare_banking_distanta",
-     r"(?:re)?activar\w*\s+(?:\w+\s+){0,3}(?:online|mobile|internet|banking)\b|^\W*[îi]nregistr\w*\s+utilizator"
+     # "monet" e internet bankingul Nexent ("tranzactiile efectuate prin serviciul monet")
+     r"(?:re)?activar\w*\s+(?:\w+\s+){0,3}(?:online|mobile|internet|banking|monet)\b|^\W*[îi]nregistr\w*\s+utilizator"
      r"|(?:instalar|[îi]nrolar|[îi]nregistrar)\w*[^.]{0,30}(?:internet|mobile|web|phone|e-?)[\s-]*banking"
      r"|^\W*(?:re)?instal\w*\s+(?:multicash|internet\s*banking|mobile\s*banking|e-?banking)"),
     ("token", r"(?:[îi]nlocuir|emiter|furnizar|contravaloare)\w*[^.]{0,20}\btoken\b|\btoken\w*\s+suplimentar"
@@ -327,7 +336,7 @@ SERVICII = [
      r"|^\W*abonament\w*(?:\s+lunar\w*)?(?:\s*\([^)]*\))?\s+[\d.\s]{0,6}\w+\s+(?:\w+\s+)?(?:online|mobile|multicash)\b"
      # Salt "Activare/ Administrare aplicatia Salt Bank", BCR "utilizare a
      # Serviciului George" (George e internet bankingul BCR; nu George Info/Bills)
-     r"|administrar\w*\s+aplica[țt]i|administrar\w*[^.]{0,40}electronic\s+banking"
+     r"|administrar\w*\s+aplica[țt]i|administrar\w*[^.]{0,40}electronic\s+banking|administrar\w*\s+monet\b"
      r"|utilizar\w*\s+(?:a\s+)?serviciul\w*\s+George(?!\s*(?:Info|Bills))"
      # ProCredit: "Internet Banking ProB@nking Plus și Mobile Banking MB@nk", cu pretul
      # lui in lista pachetului (6 valori)
@@ -433,7 +442,7 @@ SERVICII = [
     # ------------------------------------------------------------------------
     # "cu încasare venit" e conditia ofertei de credit (salariul virat la banca),
     # nu o incasare: 8 valori BRD
-    ("incasare", r"[îi]ncas[ăa]r(?!\w*\s+(?:a\s+)?venit)|remiter\w*\s+(?:a\s+)?cec"),
+    ("incasare", r"[îi]ncas[ăa]r(?!\w*\s+(?:a\s+)?venit)|remiter\w*\s+(?:a\s+)?cec|\bincomings?\b"),
     # Obiectul refuzului nu e mereu "plata": documentele scriu "Refuz cecuri/ bilete
     # la ordin (neonorate la plata)". Cu vechiul tipar, care cerea "refuz" lipit de
     # "plat", potrivirea cadea pe `transfer_credit` prin "la plata" de la coada —
@@ -445,17 +454,18 @@ SERVICII = [
     ("refuz_plata", r"refuz\w*\s+(?:de\s+|la\s+)?(?:plat|cec|bilet|instrument|[îi]ncas)"
                     r"|contest(?:a[țt]|ar)|chargeback"
                     # "Comision dispute RoPay pentru fiecare caz" (BRD, 7 valori)
-                    r"|\bdisput"),
+                    r"|\bdisput|refus\w*\s+(?:a\s+)?payment"),
     # dupa depunere si incasare: "depuneri de catre persoane imputernicite" raman acolo
     ("imputernicire", r"[îi]mputernic|ad[ăa]ug\w*\s+delegat|valabilit\w*\s+(?:a\s+)?procur"
                       r"|administrar\w*\s+documente\s+speciale"),
     ("verificare_semnatura", r"^\W*(?:comision\s+|tax[ăa]\s+)?verific\w*\s+(?:a\s+)?(?:de\s+)?"
                              r"(?:specimen\w*\s+(?:de\s+)?)?semn[ăa]tur"),
     # "Amendament la ordin de plata" (Nexent 5, Libra 2) iesea transfer_credit
-    ("modificare_anulare", r"^\s*(modificar|anular|stornar)\w*|amendament\w*\s+(?:la\s+)?(?:OP\b|ordin)"),
+    ("modificare_anulare", r"^\s*(modificar|anular|stornar)\w*|amendament\w*\s+(?:la\s+)?(?:OP\b|ordin)"
+                           r"|^\W*change\s*/\s*revo\w*\s+(?:of\s+)?a\s+payment"),
     ("debitare_directa", r"debitar\w*\s+direct|direct\s+debit"),
     ("plata_programata", RE_PLATA_PROGRAMATA),
-    ("speze_swift", r"speze\s+swift|mesaj\s+swift|comision\s+swift|ta?x[ăa]\s+swift"
+    ("speze_swift", r"speze\s+swift|mesaj\s+swift|comision\s+swift|ta?x[ăa]\s+swift|^\W*swift\s+fees?\b"
                     r"|notific\w*[^.]{0,30}(?:via|prin)\s+swift"),
     # plati. Doua capcane, amandoua gasite la verificarea de mana:
     #  - "cont de plăți" e termenul legal pentru contul curent (PAD), nu o plata.
@@ -480,11 +490,15 @@ SERVICII = [
                         r"|comision\w*\s+suplimentar\w*\s+(?:de\s+|pentru\s+)?urgen[țt]"
                         r"|data\s+(?:de\s+)?valut\w*\s+(?:today|aceea?[șs]i\s+zi|same\s+day)"
                         r"|^\W*comision\w*\s+(?:pentru\s+)?(?:op[țt]iunea\s+)?OUR\d*\b|\bOUR\s+garantat"
-                        r"|^\W*comision\w*\s+transfer\w*\s+bancar\b"),
+                        r"|^\W*comision\w*\s+transfer\w*\s+bancar\b"
+                        r"|urgent\s+payments?|payments?\s+with\s+OUR|corresponding\s+banks?\s+fee"
+                        # Vista: banda "≥ 50.000 LEI si urgente (orice suma)" e pretul platii
+                        # urgente (12-30 LEI); parintele e pe alt rand
+                        r"|^\W*[<>≤≥]\s*\d[\d.,]*\s*(?:LEI|RON|EUR)\w*(?:\s+echivalent\s+euro)?\s+(?:si|și)\s+urgent"),
     # diverse cu volum
     ("interogare_sold", r"interog\w*[^.]{0,20}sold|verificar\w*[^.]{0,20}(sold|disponibil)"
                         r"|consultar\w*[^.]{0,20}sold|comunicar\w*\s+sold"),
-    ("conversie_valutara", r"conversi\w*\s+valutar|schimb\s+valutar"
+    ("conversie_valutara", r"conversi\w*\s+valutar|schimb\w*\s+valutar|^\W*fx\s+exchange"
                            r"|marj\w*\s+(?:de\s+)?(?:ajustare\s+)?(?:a\s+)?curs\w*\s+valutar"
                            # BCR "Transformarea dintr-o valută efectivă în altă valută
                            # efectivă" lua retragere_numerar din secțiune
@@ -493,9 +507,10 @@ SERVICII = [
     ("modificare_anulare", r"(modificar|anular|stornar)\w*"),
     # "Extras ONRC" e interogarea registrului comertului; CRC si Api.Investigator
     # (Libra) sunt interogari de baze de date
-    ("interogare_baze_date", r"\bCIP\b|\bCRB\b|\bRECOM\b|baz[ăa]\s+de\s+date|investigator\b|\bCRC\b|\bONRC\b"),
+    ("interogare_baze_date", r"\bCIP\b|\bCRB\b|\bRECOM\b|baz[ăa]\s+de\s+date|investigator\b|\bCRC\b|\bONRC\b"
+                             r"|credit\s+bureau"),
     # sechestrul asigurator e tot o masura de executare pe cont (Vista, 2 valori)
-    ("poprire", r"poprir|execut\w*\s+silit|sechestr"),
+    ("poprire", r"poprir|execut\w*\s+silit|sechestr|garnishment"),
     # Adăugat pe 23.09.2026: „Taxa recuperare card", 23 de valori nemapate.
     # (Contestarea și prețul pachetului le acoperă deja `refuz_plata` și
     # `administrare_cont`, din vocabularul colegului.)
@@ -509,7 +524,7 @@ SERVICII = [
     # Libra: "retragere instrument de pe circuit", "Comision de interventiune"
     ("file_cec", r"file\s+cec|carnet\w*\s+(?:de\s+)?cec|bilet\w*\s+la\s+ordin"
                  r"|\bcec\w*\s+(?:barat|in\s+alb)|formular\w*\s+de\s+cec"
-                 r"|instrument\w*\s+de\s+debit|\bcecuri\b"
+                 r"|instrument\w*\s+(?:de\s+)?debit|\bcecuri\b"
                  r"|retrager\w*\s+instrument|instrument\w*\s+de\s+pe\s+circuit|\binterven[țt]iun"),
     ("alerta_sms", r"\bSMS\s*(?:alert|banking|notific)|alert[ăae]\s+(?:prin\s+)?SMS"
                    r"|notific[ăa]r\w*\s+(?:prin\s+)?SMS|serviciu\s+SMS|\binfo\s*SMS"

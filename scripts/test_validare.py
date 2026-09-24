@@ -949,6 +949,13 @@ CN("Comision de decontare BVB", "tranzactionare_titluri", "BVB")
 CN("Comisioane aferenta achitarii politelor de asigurare cesionate", "plata_asigurare",
    "polite cesionate")
 CN("LoungeKey", "acces_lounge", "lounge NU e retragere")
+CN("Comision activare monet", "activare_banking_distanta", "monet e internet bankingul Nexent")
+CN("Schimburi valutare pe contul curent", "conversie_valutara", "pluralul schimburi")
+CN("Statement of account - duplicate", "extras_de_cont", "TBI in engleza")
+CN("Notification for refusing a payment order", "refuz_plata", "refuz in engleza")
+CN("≥ 50.000 LEI si urgente (orice suma)", "transfer_credit", "banda urgenta Vista")
+CN("CIP la cererea clientilor pentru fiecare cerere transmisa prin: Inchiriere casete de valori",
+   "interogare_baze_date", "caseta doar in capul etichetei")
 T(canonic({"serviciu": "www.mj.romarhiva.ro sau www.co.romarhiva.ro",
            "sectiune": "EVALUARE"})[0] is None, "adresa web NU ia secțiunea")
 T(canonic({"serviciu": "Tiparire extras", "sectiune": "x", "text_sursa": "imobil"})[1]
