@@ -133,12 +133,74 @@ def e_lista_tarife(cale):
 TOL_ORIZONTALA = 1.5
 
 
-def randuri_de_cuvinte(pagina, toleranta=3):
-    """Cuvintele grupate pe randuri de text, in ordinea paginii."""
+# Exponentul unei note ("plată4", "RON1", "lei2") are baza cu 3,8-5,4 pt deasupra
+# literelor de langa el. Doua marimi de litera pe aceeasi linie ("2,595" la 10 pt,
+# "%," la 10,6 pt, ProCredit) difera cu 0,15 pt, iar TBI are un rand cu baza
+# urcata cu 1,06 pt la mijlocul lui "set-up": acelea nu sunt exponenti.
+TOL_LINIE_DE_BAZA = 2
+
+
+# Toate tolerantele din fisier sunt in puncte de pagina A4. Lista Raiffeisen IMM
+# (6f118df0) e scanata la 300 dpi: pagini de 3508x2480 pt, litere de 40 pt, deci
+# de 4,17 ori mai mare. Acolo 3 pt nu mai tin un rand laolalta: cifrele si moneda
+# cadeau pe randuri diferite ("0,5 lei" si "1" in loc de 0,51 lei, "1 lei" in loc
+# de 10, "5" fara "LEI"), iar initiala intr-un font substituit, cu 5,5 pt mai jos,
+# rupea "Executare" in "E" si "xecutare". Doar peste 1,5: A5 (0,71, litere de
+# 7 pt) si prezentarea 1024x768 a BCR (1,22) au litere obisnuite.
+LATURA_A4 = 842
+SCARA_MIN = 1.5
+
+
+def _scara(pagina):
+    k = max(pagina.width, pagina.height) / LATURA_A4
+    return k if k > SCARA_MIN else 1
+
+
+def _la_scara(obiect, k):
+    """Obiectul (cuvant, litera, bordura) cu coordonatele aduse la A4."""
+    if k == 1:
+        return obiect
+    return dict(obiect, **{c: obiect[c] / k for c in ("x0", "x1", "top", "bottom")})
+
+
+def _top_rand(litere):
+    """Top-ul literelor de pe linia de baza a cuvantului, fara exponent."""
+    baza = max(c["bottom"] for c in litere)
+    return min(c["top"] for c in litere if c["bottom"] > baza - TOL_LINIE_DE_BAZA)
+
+
+def randuri_de_cuvinte(pagina, toleranta=3, k=1):
+    """Cuvintele grupate pe randuri de text, in ordinea paginii.
+
+    Randul unui cuvant se da dupa literele lui de pe linia de baza, nu dupa
+    top-ul cuvantului. Exponentul lipit ("plată4", "RON1", "Bank9", "banci)13")
+    ridica top-ul cu 0,5-2,3 pt; peste o granita de galeata cuvantul cadea pe
+    alt rand, iar valoarea ramanea cu eticheta "RON1" sau "curent1", ori lua
+    randul vecin (ProCredit: "Anulare plată" ajungea "Investigații plăți").
+
+    Nu mediana top-urilor: la ProCredit ea muta "2,595%," (cifre la 10 pt, "%"
+    la 10,6) peste granita, rupea un rand de proza in doua si scotea 6 valori
+    false ("1 EURO = 5.2430 RON" citit 2.430 lei). Nici gruparea in lant (rand
+    nou doar dupa un gol de 3 pt): lipea pretul centrat pe verticala de randul
+    etichetei, 25 de concepte pierdute si 27 mutate ("Taxă anuală de
+    administrare card" ajungea retragere_numerar la Raiffeisen). Galeata
+    ramane; se schimba doar cheia cuvintelor cu exponent.
+
+    Coordonatele ies aduse la A4 (vezi _scara), cu k al paginii.
+
+    Textul din afara paginii (pasteboard, x<0 sau x>latime) ramane deocamdata.
+    Taiat, cele doua depuneri gratuite Raiffeisen IMM pierdeau eticheta falsa
+    "Interbancar" (x=-717) si luau titlul tabelului, "Comisioane depunere și
+    retragere numerar", deci retragere_numerar: celula lor de nume e citita ca
+    valoare ("Depunere gratuit la MFM-uri"). within_bbox e si mai rau: scoate
+    bordurile care ies putin din pagina (BRD: 104 concepte pierdute).
+    """
     grupe = {}
-    for w in pagina.extract_words(use_text_flow=False, x_tolerance=TOL_ORIZONTALA):
-        grupe.setdefault(round(w["top"] / toleranta), []).append(w)
-    return [sorted(grupe[k], key=lambda w: w["x0"]) for k in sorted(grupe)]
+    for w in pagina.extract_words(use_text_flow=False, x_tolerance=TOL_ORIZONTALA * k,
+                                  y_tolerance=3 * k, return_chars=True):
+        litere = [_la_scara(c, k) for c in w.pop("chars")]
+        grupe.setdefault(round(_top_rand(litere) / toleranta), []).append(_la_scara(w, k))
+    return [sorted(grupe[g], key=lambda w: w["x0"]) for g in sorted(grupe)]
 
 
 def margini_la(vert, y, toleranta=TOL_BORDURA):
@@ -158,12 +220,20 @@ def gol_minim_rand(cuvinte):
 
     Derivat din rand, nu fix: documentele au corpuri de litera intre 6 si 12
     puncte, deci un prag fix ar rupe randurile dese si ar lipi randurile rare.
+
+    Cu doua goluri, mediana e media lor, iar de patru ori media e mereu peste
+    golul mare: un rand de trei cuvinte fara borduri nu se rupea niciodata.
+    Spatiul dintre cuvinte e golul mic. La Garanti, "Închidere cont Gratuit" si
+    "Schimb valutar Gratuit" erau o singura celula, iar valoarea lua eticheta
+    vecinului (extras_de_cont, transfer_credit); la Raiffeisen IMM la fel
+    "Discrepante 100 euro" si "Abonament lunar gratuit".
     """
     goluri = [b["x0"] - a["x1"] for a, b in zip(cuvinte, cuvinte[1:])]
     goluri = [g for g in goluri if g > 0]
     if not goluri:
         return 8.0
-    return max(8.0, 4 * statistics.median(goluri))
+    spatiu = min(goluri) if len(goluri) == 2 else statistics.median(goluri)
+    return max(8.0, 4 * spatiu)
 
 
 def secvente(cuvinte, gol_minim):
@@ -508,21 +578,24 @@ def randuri_document(cale, geometrie_pagini=None):
     with pdfplumber.open(str(cale)) as pdf:
         npagini = len(pdf.pages)
         for nr_pagina, pagina in enumerate(pdf.pages, 1):
-            vert = [e for e in pagina.edges if e["orientation"] == "v"]
-            randuri_pagina = randuri_de_cuvinte(pagina)
+            k = _scara(pagina)
+            muchii = [_la_scara(e, k) for e in pagina.edges]
+            vert = [e for e in muchii if e["orientation"] == "v"]
+            randuri_pagina = randuri_de_cuvinte(pagina, k=k)
             if geometrie_pagini is not None:
                 geometrie_pagini[nr_pagina] = (
-                    [(e["top"], e["x0"], e["x1"]) for e in pagina.edges
+                    [(e["top"], e["x0"], e["x1"]) for e in muchii
                      if e["orientation"] == "h" and e["x1"] - e["x0"] > 5],
                     [w for r in randuri_pagina for w in r])
+            inaltime = pagina.height / k
             for cuvinte in randuri_pagina:
                 margini, geometrie = margini_rand(vert, cuvinte)
                 texte = celule(cuvinte, margini)
                 if not any(texte):
                     continue
                 y = min(w["top"] for w in cuvinte)
-                in_margine = (y < MARGINE_MOBILIER * pagina.height
-                              or y > (1 - MARGINE_MOBILIER) * pagina.height)
+                in_margine = (y < MARGINE_MOBILIER * inaltime
+                              or y > (1 - MARGINE_MOBILIER) * inaltime)
                 brute.append((nr_pagina, cuvinte, margini, geometrie, texte,
                               in_margine))
     respinse = _mobilier(brute, npagini)
