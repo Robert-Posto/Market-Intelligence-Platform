@@ -621,5 +621,173 @@ PC("TVA 19 %", ["19"], "spatiu inaintea semnului")
 PC("comision 1500%", [], "patru cifre intregi NU produc coada")
 
 
+# --- listele de tarife: titlul, subpunctele, coada celulei de pret -----------
+# Toate din crawl-ul din 23 sept. Nexent, Vista si lista de preturi ProCredit nu
+# erau citite deloc (numele fisierului nu spunea "tarif"), iar subpunctele de
+# tipul "- de la ATM-uri BCR" ramaneau fara serviciu.
+from crawler.parser_pdf import analizeaza_linie  # noqa: E402
+from crawler.parser_tarife import (RE_TITLU_TARIFE, _adauga_eticheta,  # noqa: E402
+                                   _celula_eticheta, _e_doar_banda, _e_titlu,
+                                   _e_varianta, _eticheta_pentru, _titlu_din_tabel,
+                                   categorie)
+from crawler.vocabular import canonic  # noqa: E402
+
+for titlu in ["Lista de taxe, comisioane si dobanzi aferenta cardului",   # Nexent
+              "LISTĂ PREȚURI PERSOANE FIZICE",                             # ProCredit
+              "Lista de Tarife, Termene și Condiții pentru persoane fizice",  # Vista
+              "DOBANZI, COMISIOANE, TAXE SI ALTE COSTURI Avanpost Gold Credit",  # Libra
+              "Lista taxelor și comisioanelor Salt Business",
+              "Tarife și comisioane standard"]:                            # Garanti
+    T(RE_TITLU_TARIFE.search(titlu), f"titlu de tarife: {titlu[:40]}")
+for rand in ["Puteți consulta în orice moment Tarifele, Termenele și Condițiile",
+             "conform Listei de tarife si comisioane in vigoare",
+             "Regulamentul oficial al Campaniei"]:
+    T(not RE_TITLU_TARIFE.search(rand), f"NU e titlu: {rand[:40]}")
+
+# "tranzacție" sub "min. 1 LEI/" e coada celulei de pret, nu un nume
+FARA = ([], None, None, None)
+T(_celula_eticheta(["", "", "tranzacție", "tranzacție"], [FARA] * 4,
+                   frozenset({2, 3})) is None, "coada celulei de pret NU e eticheta")
+T(_celula_eticheta(["", "demagnetizat", "", ""], [FARA] * 4,
+                   frozenset({2, 3})) == 1, "continuarea numelui ramane eticheta")
+
+# blocuri: (sus, jos, text, e_parinte)
+BCR = [(504, 512, "Eliberare de numerar în România", True),
+       (518, 525, "- de la ghișeele BCR", False)]
+T(_eticheta_pentru(515, 522, BCR) == "Eliberare de numerar în România - de la ghișeele BCR",
+  "subpunctul primeste numele de deasupra")
+RAIF = [(261, 270, "Comision pentru retrageri de numerar", True),
+        (276, 285, "La ATM-urile băncilor acceptatoare din străinătate", False)]
+T(_eticheta_pentru(276, 285, RAIF).startswith("Comision pentru retrageri de numerar La"),
+  "subpunct cu prepozitie")
+T(_eticheta_pentru(276, 285, [(100, 110, "pentru care retragerea a fost programată)", True),
+                              (276, 285, "În EUR", False)]) == "În EUR",
+  "coada unei fraze NU devine parinte")
+T(_eticheta_pentru(515, 522, [(504, 512, "Taxa blocare card", False),
+                              (515, 522, "Taxa recuperare card", False)]) == "Taxa recuperare card",
+  "eticheta intreaga ramane neatinsa")
+
+
+def CN(serviciu, asteptat, eticheta):
+    got = canonic({"serviciu": serviciu})[0]
+    T(got == asteptat, f"concept: {eticheta}" + ("" if got == asteptat else f"  [{got}]"))
+
+
+CN("Mentenanţă anuală card", "administrare_card", "diacritice cu sedila")
+CN("Plăţi intrabancare în lei și valută", "transfer_credit", "sedila in plural")
+CN("Contestare nejustificată a unei tranzacţii", "refuz_plata", "contestare, nu doar contestație")
+CN("Comision pentru operatiuni la comerciantii din Romania", "tranzactie_card",
+   "operatiuni la comercianti")
+CN("Comision pentru operatiuni (la POS/pe internet) la comerciantii de tip jocuri de noroc",
+   None, "gamblingul NU intra la plata cu cardul")
+CN("Emitere card - reînnoire", "reemitere_card", "reinnoirea dupa card")
+CN("Inchidere pachet", "inchidere_cont", "pachetul de cont")
+CN("Pret pachet/luna cu indeplinirea conditiei de pachet", "administrare_cont",
+   "pretul pachetului (BRD)")
+CN("Transferuri intrabancare", "transfer_credit", "transferuri (Vista)")
+CN("Taxa SWIFT", "speze_swift", "taxa swift")
+
+# --- a doua runda: 23-24 sept, masurat pe aceleasi 68 de documente ------------
+# sumele in USD/GBP/CHF se citeau ca text, iar coada lor devenea nume de serviciu
+T([(v[1], v[2]) for v in analizeaza_linie("30 USD/card")[0]] == [(30.0, "USD")],
+  "suma in USD")
+T([v[2] for v in analizeaza_linie("3 USD 2,5 GBP 3 CHF")[0]] == ["USD", "GBP", "CHF"],
+  "trei valute pe un rand")
+
+# numele inceput pe un rand fara pret si continuat pe randul cu pret (BRD)
+BL = [(71, 79, "Pret pachet /luna cu", True)]
+_adauga_eticheta(BL, 83, 90, "indeplinirea conditie", True)
+T(len(BL) == 1 and BL[0][2] == "Pret pachet /luna cu indeplinirea conditie" and not BL[0][3],
+  "randul cu pret continua numele de deasupra")
+BL = [(35, 42, "Utilizare ATM/POS alte banci – retragere numerar:", True)]
+_adauga_eticheta(BL, 45, 52, "- National", True)
+T(len(BL) == 2, "dupa ':' incepe lista, nu continuarea")
+
+# canalul fizic la inceput e varianta; banda cu "inclusiv" e tot banda
+T(_eticheta_pentru(56, 62, [(43, 50, "Retragere de numerar ATM/POS", True),
+                            (56, 62, "ATM BRD", False)]) == "Retragere de numerar ATM/POS ATM BRD",
+  "ATM BRD primeste serviciul de deasupra")
+T(_eticheta_pentru(56, 62, [(40, 50, "Internet Banking", True),
+                            (56, 62, "Internet Banking (administrare)", False)])
+  == "Internet Banking (administrare)", "Internet Banking ramane serviciu, nu varianta")
+T(_e_doar_banda("- 100 LEI, inclusiv") and _e_doar_banda("Peste 50.000 LEI, inclusiv"),
+  "banda cu inclusiv/exclusiv")
+T(not _e_doar_banda("Plăți interbancare ≤ 50.000 LEI"), "nume cu banda NU e doar banda")
+
+# subtitlul se aplica variantelor, nu numelor intregi
+T(_e_varianta("Emitere iniţială") and _e_varianta("Primit") and _e_varianta("- 50.000 LEI"),
+  "variante, si cu sedila")
+T(not _e_varianta("Investigatie ordin de plata"), "nume intreg inchide subtitlul")
+
+# titluri: index in coloana lui (BCR), titlu langa antetul de moneda (Libra)
+T(_titlu_din_tabel(["11.", "Carduri de Debit în Lei"], [1]) == ("11.", "Carduri de Debit în Lei"),
+  "index in coloana lui")
+T(_titlu_din_tabel(["2.4.", "(de la ghișee/ ATM-uri BCR"], [1]) is None,
+  "continuarea unui nume NU e titlu")
+T(_e_titlu(["", "ACREDITIVE DE IMPORT", "", "", "EUR", ""], [1, 4],
+           [0, 50, 300, 350, 400, 450, 573], 573) == (None, "ACREDITIVE DE IMPORT"),
+  "titlu pe randul antetului de moneda")
+
+# limita spusa direct iese din comisioane doar cand celula e numai cifra
+T(categorie(None, "limită maximă pe tranzacție", "500.000 LEI", "500.000 LEI") == "limita",
+  "limita maxima (Garanti)")
+T(categorie(None, "Limita zilnică de retragere numerar",
+            "5% (minim 10 lei) din suma utilizată",
+            "5% (minim 10 lei) din suma utilizată") == "comision",
+  "formula de pret sub eticheta de limita ramane comision")
+
+
+# --- a treia runda: 24 sept, aceleasi 68 de documente --------------------------
+from crawler.parser_pdf import rol_de_conditie  # noqa: E402
+
+# "dobânzii" nu contine "dobând": 13 marje ProCredit si 8 penalizari Nexent
+T(categorie("Credite ProGreen", "Marja fixa a dobanzii", "2,10%") == "dobanda",
+  "marja dobanzii (ProCredit)")
+T(categorie(None, "Rata dobanzii penalizatoare pentru sumele restante", "30% / an")
+  == "dobanda", "rata dobanzii (Nexent)")
+# ...dar doar in capul etichetei: secțiunea Raiffeisen si produsul BRD nu mută
+T(categorie("TARIFE ȘI DOBÂNZI PENTRU ACTIVITATEA DE EMITERE CARDURI",
+            "Retragere numerar la ATM", "1,50% min 3 lei") == "comision",
+  "dobanzi in secțiune NU face comisionul dobanda")
+T(categorie(None, "Linie de credit cu rata dobanzii variabila, acordata in",
+            "30 lei") == "comision", "rata dobanzii in coada etichetei NU e dobanda")
+
+# titlul listei din pachet nu e "gratuit" (12 valori false)
+T(analizeaza_linie("Produse și Servicii incluse")[0] == []
+  and analizeaza_linie("PRODUSE SI SERVICII INCLUSE")[0] == [],
+  "titlul listei incluse NU e valoare")
+T(analizeaza_linie("Inclus în costul lunar al pachetului")[0] == [("gratuit", 0.0, None, None)],
+  "inclus in pachet ramane gratuit")
+
+# "în limita a 5.000 LEI/zi" e limita (ProCredit, 9 valori), dar doar cifra ei
+T(rol_de_conditie("România în limita a 5.000 LEI/zi/maxim 10", "Retrageri", 5000.0)
+  == "conditie", "in limita a N e conditie")
+T(rol_de_conditie("10 LEI în limita a 5.000 LEI", "Retrageri", 10.0) is None,
+  "pretul de langa limita ramane pret")
+
+# "Utilizare ATM" fara "numerar" e retragere (BCR 8, Eximbank 2), dar nu la sold
+T(canonic({"serviciu": "Utilizare ATM-uri Erste Group***",
+           "sectiune": "Tranzacţii Internaţionale"})[0] == "retragere_numerar",
+  "utilizare ATM-uri Erste Group")
+CN("Utilizare ATM pentru interogare sold", "interogare_sold", "utilizare ATM la sold")
+# plata sub "Standing order" e plata programata (BCR, 4 valori)
+T(canonic({"serviciu": "Plăți - alte conturi 0 - 50.000 LEI, exclusiv",
+           "sectiune": "Standing order (plată programată)"})[0] == "plata_programata",
+  "plata sub standing order")
+T(canonic({"serviciu": "Plăți - alte conturi 0 - 50.000 LEI, exclusiv",
+           "sectiune": "Operațiuni prin ordin de plată"})[0] == "transfer_credit",
+  "aceeasi plata sub ordin de plata ramane transfer")
+
+# pachetul care isi enumera continutul nu e primul serviciu din lista (BCR, 16)
+CN("George, conţinȃnd: - administrarea Cont curent în lei; - furnizarea unui Card de debit",
+   None, "George continand NU e emitere_card")
+CN("Pachetul Servicii de Bază pentru persoane nevulnerabile, conţinȃnd: - Furnizarea "
+   "unui Card de debit", "administrare_cont", "pachetul continand e pretul pachetului")
+# numele pachetului singur e pretul lui (20 de valori), componenta nu
+CN("Pachet Gold", "administrare_cont", "pachet Raiffeisen")
+CN("Pachet de servicii", "administrare_cont", "pachet ProCredit PAD")
+CN("Pachet • comision de mentenanță card", "administrare_card", "componenta pachetului")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)

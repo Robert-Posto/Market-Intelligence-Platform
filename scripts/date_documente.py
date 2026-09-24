@@ -95,7 +95,9 @@ def marcheaza_versiuni_depasite(rezultat):
     """
     familii = defaultdict(list)
     for rel, v in rezultat.items():
-        if v.get("stare") in ("DUBLURA", "LIPSA_PE_DISC"):
+        # VIITOR nu declasează: lista Vista din 7 octombrie 2026 ar fi facut ISTORIC
+        # lista din 12.2025, adica tocmai preturile practicate azi
+        if v.get("stare") in ("DUBLURA", "LIPSA_PE_DISC", "VIITOR"):
             continue
         if v.get("data_vigoare"):
             familii[v["familie"]].append(rel)

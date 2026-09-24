@@ -236,16 +236,18 @@ def main():
                         for x in nemapate).most_common(12):
         print(f"  {n:4}  {s[:72]}")
 
-    # Din tabelul comparativ ies DOAR cele doua stari despre care avem DOVADA ca
-    # sunt gresite: o versiune mai noua a aceluiasi document exista (`ISTORIC`),
-    # sau acelasi fișier se numara de doua ori (`DUBLURA`).
+    # Din tabelul comparativ ies DOAR starile despre care avem DOVADA ca nu sunt
+    # pretul de azi: o versiune mai noua a aceluiasi document exista (`ISTORIC`),
+    # acelasi fișier se numara de doua ori (`DUBLURA`), sau documentul intra in
+    # vigoare mai tarziu (`VIITOR` — Vista are deja pe site lista din 7 octombrie
+    # 2026, 422 de comisioane care altfel stateau in aceeasi celula cu cele curente).
     #
     # `DATA_NECUNOSCUTA` RAMANE. Tentatia e sa iasa si ea — "daca nu stim data,
     # nu stim daca e pretul de azi". Dar masurat, regula aia ar fi taiat Libra
     # de la 876 de valori la 65, si ar fi sters cu totul Eximbank, Salt si BCR
     # Locuinte. A nu sti data unui document nu e o dovada ca e vechi; e o
     # dovada ca banca nu si-a datat documentul. Le pastram si le marcam.
-    EXCLUSE = ("ISTORIC", "DUBLURA")
+    EXCLUSE = ("ISTORIC", "DUBLURA", "VIITOR")
     inainte = len(comisioane)
     comparabile = [x for x in comisioane if x["stare_data"] not in EXCLUSE]
     scoase = Counter(x["stare_data"] for x in comisioane

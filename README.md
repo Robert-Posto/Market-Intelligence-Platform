@@ -190,19 +190,16 @@ fi evaziune de detecție, interzisă de regulile proiectului.
 `bnpparibas` e un caz aparte: are 2 PDF-uri și a extras 1 singură valoare, în
 procente — deci nu apare la comisioane.
 
-**2.7 e limitat de feed-ul Apple, nu de codul nostru.** Feed-ul RSS de
-recenzii răspunde diferit la fiecare apel: BCR și Revolut au returnat 50 de
-recenzii fiecare într-o rulare și **zero** în următoarea, la o oră distanță.
-Secțiunea nu se poate umple într-o singură rulare — se acumulează în timp. De
-aceea încărcarea **nu șterge niciodată** recenzii, doar adaugă ce e nou
-(`ON CONFLICT DO NOTHING`). Prima versiune ștergea înainte de rescriere și a
-distrus 106 recenzii, irecuperabile.
-
-Ratingul agregat vine din Lookup API și e stabil — de aceea 2.3 s-a umplut
-complet la 19 bănci, iar 2.7 nu.
-
-Recenziile din magazinul `us` nu se încarcă: la Citibank și Revolut
-sunt 0% în română (aplicații globale, clienți străini).
+**2.3 și 2.7 vin de pe pagina publică App Store, nu din feed-ul RSS.**
+robots.txt al `itunes.apple.com` interzice feed-ul de recenzii
+(`Disallow: /*/rss/*`, verificat 24.09.2026); cele 112 recenzii luate de acolo
+au fost șterse. Pagina `apps.apple.com/ro/app/id…` e permisă și dă, pentru
+toate cele 19 aplicații, versiunea, ratingul, **distribuția pe stele** și
+recenziile afișate de Apple (~8 pe aplicație, alese de ei, nu neapărat cele
+mai recente). Recenziile se acumulează între rulări (`ON CONFLICT DO NOTHING`),
+nu se șterg. Doar magazinul românesc: în `us`, recenziile Citibank și Revolut
+erau 0% în română. Istoricul complet al recenziilor unui concurent se poate
+obține doar de la un furnizor licențiat.
 
 **11 bănci fără id de aplicație confirmat.** Patru probabil n-au aplicație
 (bcr-locuinte, bid, cec, creditcoop). Șapte au aplicația *grupului*, dar de pe

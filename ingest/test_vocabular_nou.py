@@ -16,11 +16,9 @@ class TestVocabular(unittest.TestCase):
     def test_recuperare_card(self):
         self.assertEqual(concept("Taxa recuperare card reținut de ATM"), "recuperare_card")
 
-    def test_contestare(self):
-        self.assertEqual(concept("Contestare nejustificată a unei tranzacții"), "contestare_tranzactie")
-
-    def test_pachet(self):
-        self.assertEqual(concept("Comision lunar pachet de servicii"), "pachet_servicii")
+    def test_contestarea_e_a_colegului(self):
+        # conceptul colegului, nu unul paralel: o singură coloană în comparații
+        self.assertEqual(concept("Contestare nejustificată a unei tranzacții"), "refuz_plata")
 
 
 if __name__ == "__main__":
