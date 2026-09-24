@@ -679,7 +679,7 @@ CN("Contestare nejustificată a unei tranzacţii", "refuz_plata", "contestare, n
 CN("Comision pentru operatiuni la comerciantii din Romania", "tranzactie_card",
    "operatiuni la comercianti")
 CN("Comision pentru operatiuni (la POS/pe internet) la comerciantii de tip jocuri de noroc",
-   None, "gamblingul NU intra la plata cu cardul")
+   "tranzactie_gambling", "gamblingul NU intra la plata cu cardul, are linia lui")
 CN("Emitere card - reînnoire", "reemitere_card", "reinnoirea dupa card")
 CN("Inchidere pachet", "inchidere_cont", "pachetul de cont")
 CN("Pret pachet/luna cu indeplinirea conditiei de pachet", "administrare_cont",
@@ -830,7 +830,7 @@ CN("Suma minimă de plata de rambursat lunar", None, "plata de rambursat NU e tr
 CN("Retragere de de la ATM-uri si Ghiseele (POS-urile)", "retragere_numerar",
    "retragere de la ATM fara numerar")
 CN("Extras suplimentar de cont", "extras_de_cont", "extras suplimentar")
-CN("Extras ONRC", None, "extras ONRC NU e extras de cont")
+CN("Extras ONRC", "interogare_baze_date", "extras ONRC NU e extras de cont")
 CN("Administrare lunara Principal", "administrare_card", "cardul principal")
 # banda de suma ia serviciul din secțiune; stramosul apropiat inaintea celui de sus
 T(canonic({"serviciu": "≥ 50.000 LEI si urgente (orice suma)",
@@ -863,7 +863,7 @@ T(rol_de_conditie("50.000 lei", "Valoarea maximă a limitei de credit", 50000.0)
   == "conditie", "plafonul cardului de credit e conditie")
 # serviciul numit dar fara concept nu ia secțiunea (Vista: investigatii sub PLATI)
 T(canonic({"serviciu": "Investigatii telefonice/ email/ SWIFT", "sectiune": "PLATI"})[0]
-  is None, "investigatii NU iau conceptul sectiunii")
+  == "investigatie", "investigatii NU iau conceptul sectiunii")
 T(canonic({"serviciu": "Confirmare", "sectiune": "ACREDITIVE DE EXPORT"})[0]
   == "documentar", "confirmarea acreditivului ramane documentar")
 CN("Comision de emitere plastic", "emitere_card", "emitere plastic")
@@ -887,6 +887,72 @@ T(_e_titlu_cu_index("6. Taxe și comisioane aferente cardurilor de debit "
                     "principale/suplimentare în lei și valută"), "titlu cu index lung")
 T(not _e_titlu_cu_index("1. Comisionul se percepe pentru fiecare operatiune efectuata."),
   "nota numerotata NU e titlu")
+
+print("\n=== Vocabular: conceptele din 24.09 (runda a cincea) ===")
+# etichete reale din clasificarea de mana a celor 1.077 de nemapate
+CN("Tranzacții de tip Gambling", "tranzactie_gambling", "gambling")
+CN("Comision tranzacționare comercianți gambling", "tranzactie_gambling",
+   "gambling inaintea lui tranzactie_card")
+CN("Caseta tip 3", "caseta_valori", "caseta BRD")
+CN("Comision anual seif marime mica (dimensiuni: lungime 29,5 cm)", "caseta_valori", "seif")
+CN("Tip 1: 48,5 x 265 x 413 mm", "caseta_valori", "caseta dupa dimensiuni")
+CN("Furnizarea listei ultimelor 10 operatiuni, la ATM", "miniextras_atm", "lista ultimelor 10")
+CN("Miniextras de cont la ATM", "miniextras_atm", "miniextrasul NU e extras de cont")
+CN("Raportare card pierdut/furat", "card_pierdut_furat", "card pierdut")
+CN("Curierat Special (TNT, DHL, UPS)", "curierat_posta", "curierat")
+CN("Corespondenta postala: ~ Interna", "curierat_posta", "corespondenta")
+CN("Scrisoare de bonitate bancara", "eliberare_document", "scrisoare de bonitate")
+CN("Emitere confirmari pentru auditori", "eliberare_document", "confirmare audit")
+CN("Transmitere extras de cont cu scrisoare recomandata", "extras_de_cont",
+   "scrisoare recomandata NU e scrisoare de recomandare")
+CN("Investigatii in arhiva referitoare la tranzactii", "investigatie", "investigatie")
+CN("Investigatie privind stadiul documentelor la ordinul Clientului", None,
+   "stadiul documentelor ramane pe secțiune (documentar sub INCASSO)")
+CN("Comision de analiză dosar, credit in LEI", "acordare_credit", "analiza dosar")
+CN("Comisionul de analiza dosar este redus astfel:", None, "nota reducerii NU e pret")
+CN("Comision de rambursare anticipată aplicabil", "rambursare_anticipata", "rambursare anticipata")
+CN("Reemitere acord intabulare imobil", "modificare_credit", "acord pe garantie")
+CN("Emitere acord modificare suprafata imobil", "modificare_credit",
+   "acordul NU e modificare de plata")
+CN("Comision lunar de administrare credit", "administrare_credit", "administrare credit")
+CN("Comision administrare credit", "administrare_credit",
+   "administrare credit NU e administrare card")
+CN("Comision evaluare apartament in bloc sau in vila", "evaluare_garantie", "evaluare")
+CN("Notificare credit restant", "neplata_credit", "credit restant")
+CN("AVIZ DE GARANŢIE INIŢIAL", "inregistrare_garantie", "aviz de garantie")
+CN("Comision inscriere/stergere/ modificare garantie in RNPM", "inregistrare_garantie",
+   "RNPM NU e modificare de plata")
+CN("Executarea garantiei", "documentar", "executarea garantiei emise")
+CN("Contravaloarea TOKEN percepută în cazul înlocuirii dispozitivului", "token",
+   "contravaloare NU e aval")
+CN("Activare Garanti BBVA Online/Mobile cu token", "activare_banking_distanta",
+   "activarea inaintea tokenului")
+CN("Depuneri în cont monedă metalică (sume ≥ 10 LEI)", "depunere_moneda", "moneda metalica")
+CN("Depuneri numerar inclusiv monedă metalică", "depunere_numerar",
+   "inclusiv moneda ramane depunere")
+CN("Neridicarea sumelor programate a fi ridicate", "neridicare_numerar",
+   "neridicare inaintea retragerii")
+CN("Comision de utilizare mijloc de plata (card) la ATM-uri din Romania", "retragere_numerar",
+   "mijloc de plata (card) la ATM e retragere, nu transfer")
+CN("Adaugarea unei persoane imputernicite pe contul clientului", "imputernicire", "imputernicit")
+CN("Verificarea semnaturilor autorizate", "verificare_semnatura", "verificare semnatura")
+CN("Amendament la ordin de plata", "modificare_anulare", "amendament NU e transfer")
+CN("Cost notificari de tip push", "notificare_push", "push")
+CN("Alerta prin e-mail", "notificare_email", "alerta e-mail NU e debitare directa")
+CN("Utilizare (Folosire) BCR Alert", "alerta_sms", "BCR Alert e SMS")
+CN("Taxa extras duplicat listat aferent cardului de credit", "extras_de_cont",
+   "extras duplicat NU e card nou")
+CN("Taxă chirie terminal și servicii suport POS", "terminal_pos", "chirie terminal POS")
+CN("Comision de mentenanță serviciu individual electronic banking", "administrare_banking_distanta",
+   "mentenanta electronic banking NU e card")
+CN("Comision de decontare BVB", "tranzactionare_titluri", "BVB")
+CN("Comisioane aferenta achitarii politelor de asigurare cesionate", "plata_asigurare",
+   "polite cesionate")
+CN("LoungeKey", "acces_lounge", "lounge NU e retragere")
+T(canonic({"serviciu": "www.mj.romarhiva.ro sau www.co.romarhiva.ro",
+           "sectiune": "EVALUARE"})[0] is None, "adresa web NU ia secțiunea")
+T(canonic({"serviciu": "Tiparire extras", "sectiune": "x", "text_sursa": "imobil"})[1]
+  != "mobile_banking", "imobil NU e mobile banking")
 
 
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
