@@ -11,6 +11,7 @@
 | **Depozite** (2.1) | Dobânzi la depozite, pe termene | 20 | 100 de valori |
 | **Dobânzi la credite** (2.2) | Dobândă nominală, DAE, marjă peste IRCC | 17 | 468 de valori |
 | **Curs valutar propriu** (2.2) | Cursul afișat de bancă | 13 | 30 de valori |
+| **Indici de referință BNR** (2.2) | ROBOR și ROBID zilnic (7 scadențe), IRCC trimestrial — IRCC în vigoare: 5,56% | BNR | 150 de valori |
 | **Aplicații mobile iOS** (2.3) | Versiune, rating, distribuția notelor pe stele, capturi din store | 19 | 19 aplicații |
 | **Recenzii App Store** (2.7) | Recenzii afișate public, autor pseudonimizat, cu răspunsul băncii | 16 | 120 de recenzii |
 | **Rețea** (2.5) | Sucursale și ATM-uri pe hartă | 19 | 852 sucursale · 54 ATM proprii · 572 ATM partenere |
@@ -22,8 +23,7 @@
 
 | Ce | Stare | Ce e nevoie |
 |---|---|---|
-| ROBOR și IRCC actuale (BNR) | **în lucru azi** | — (sursa e permisă, testat) |
-| Curs de referință BNR | **în lucru azi** | pagină permisă pe www.bnr.ro (feed-ul XML e interzis roboților) |
+| Curs de referință BNR | în așteptare | feed-ul oficial XML (curs.bnr.ro) interzice roboții prin robots.txt; de confirmat cu BNR / echipa dacă se poate folosi |
 | Dobânzi din PDF-urile de dobânzi | **în lucru azi** | — |
 | Mai multe dobânzi și prețuri de pe paginile ING și ale altor bănci | **în lucru azi** | — |
 | Curățarea versiunilor vechi de documente (ex. BCR) | **în lucru azi** | — |
