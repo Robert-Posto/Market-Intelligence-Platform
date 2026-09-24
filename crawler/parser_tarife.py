@@ -28,12 +28,13 @@ identice pe un rand sunt patru pachete diferite, nu o valoare repetata.
 """
 import re
 import statistics
-from collections import Counter
+from collections import defaultdict
 from pathlib import Path
 
 import pdfplumber
 
-from crawler.parser_pdf import RE_PRAG, analizeaza_linie, rol_de_conditie
+from crawler.parser_pdf import (RE_PRAG, _doar_cifra, _e_subpunct, analizeaza_linie,
+                                rol_de_conditie)
 
 # doua borduri mai apropiate de atat sunt aceeasi bordura desenata de doua ori
 TOL_BORDURA = 3
@@ -52,6 +53,8 @@ RE_INDEX_LA_INCEPUT = re.compile(r"^(\d+(?:\.\d+)*\.?|[A-Z]\.|[IVX]+\.)\s+(.+)$"
 # orice rand care incepe cu o cifra devenea sectiune: nota de subsol "2 intrări
 # gratuite pe an," ajunsese titlu, iar titlul adevarat se pierdea.
 RE_INDEX_SECTIUNE = re.compile(r"^(\d+(?:\.\d+)*\.|[A-Z]\.|[IVX]+\.)\s+(.+)$")
+# acelasi index, dar singur in celula lui; fara litere ("a." e semn de lista)
+RE_INDEX_CELULA = re.compile(r"^(?:\d+(?:\.\d+)*\.|[IVX]+\.)$")
 RE_DOAR_MONEDE = re.compile(r"^(?:\s*(?:lei|leu|ron|eur|euro|usd|gbp|chf)\s*[/,;]?)+$",
                             re.I)
 RE_INDEX_LA_SFARSIT = re.compile(r"\s+\d+(?:\.\d+){1,}\.?$")
@@ -64,6 +67,12 @@ RE_DOBANDA = re.compile(r"dob[âa]nd|interest\s+(rate|on)|\bDAE\b|rata\s+anual",
 RE_LIMITA = re.compile(
     r"limit[ăae]\w*\s+de\s+tranzac|valoare\s+tranzac|num[ăa]r\w*\s+de\s+tranzac"
     r"|\bplafon", re.I)
+# Limita spusa direct: "limită zilnică", "limită maximă pe tranzacție" (Garanti,
+# Vista, Raiffeisen: 52 de valori de ordinul 10.000-1.000.000 lei numarate drept
+# comisioane). Doar cand celula e practic numai cifra: sub "Limita zilnică de
+# retragere numerar", Raiffeisen scrie "5% (minim 10 lei) din suma utilizată",
+# adica pretul, nu limita (vezi rol_de_conditie in parser_pdf).
+RE_LIMITA_SPUSA = re.compile(r"limit[ăae]\w*\s+(?:zilnic|maxim|minim|lunar)", re.I)
 RE_CURS = re.compile(r"curs\s+(de\s+)?schimb|curs\s+bnr|exchange\s+rate", re.I)
 # Randurile din cuprins ("CONTURI CURENTE ... PAG. 3") arata ca titluri de
 # sectiune si deveneau sectiuni: BCR PDAI avea "PACHET DE SERVICII PAG. 7".
@@ -244,15 +253,36 @@ def _celula_eticheta(texte, analiza, coloane_pret=frozenset()):
     valoare cu cel mai mult text — numele serviciului e cel mai lung lucru de pe
     rand care nu e un preț.
 
-    `coloane_pret` sunt coloanele in care randul de preturi de deasupra avea
-    valori: textul de acolo e coada celulei de preț, nu un nume. BCR scrie
-    "min. 1 LEI/" pe un rand si "tranzacție" pe urmatorul, iar "tranzacție",
-    "operațiune" si "nepermisă" ajunsesera nume de serviciu pentru 27 de valori.
+    Textul din `coloane_pret` (vezi coloane_de_pret) e coada celulei de preț, nu
+    un nume. BCR scrie "min. 1 LEI/" pe un rand si "tranzacție" pe urmatorul, iar
+    "tranzacție", "operațiune" si "nepermisă" ajunsesera nume de serviciu.
     """
     candidate = [i for i, t in enumerate(texte)
                  if t and i not in coloane_pret and not RE_DOAR_INDEX.match(t)
                  and not RE_DOAR_ORNAMENT.match(t) and not analiza[i][0]]
     return max(candidate, key=lambda i: len(texte[i])) if candidate else None
+
+
+def coloana_numelui(randuri, analize):
+    """Pe fiecare tabel (semnatura de coloane), coloana cu cel mai mult text fara pret.
+
+    Ea nu e niciodata coloana de pret, chiar daca o eticheta are o cifra: la Libra,
+    "Dobanda cont curent de card (...500 RON)" facea coloana numelui sa para de
+    pret, iar randul urmator ramanea fara nume.
+
+    Se numara o data, pe tot tabelul. Numarata din mers, dupa alegerile facute pana
+    atunci, o greseala se autointretinea: la BCR, "operațiune" ales o data drept
+    nume facea din coloana lui "coloana numelui", si "tranzacție" ramanea numele a
+    23 de valori.
+    """
+    exces = defaultdict(lambda: defaultdict(int))    # texte fara pret - valori
+    for (_n, _c, margini, _g, texte), analiza in zip(randuri, analize):
+        semn = tuple(round(m) for m in margini)
+        for i, t in enumerate(texte):
+            if t and not RE_DOAR_INDEX.match(t):
+                exces[semn][i] += -1 if analiza[i][0] else 1
+    return {semn: max(pe_col, key=pe_col.get) for semn, pe_col in exces.items()
+            if max(pe_col.values()) > 0}
 
 
 def _e_continuare(text, precedent):
@@ -271,19 +301,38 @@ def _e_continuare(text, precedent):
 def _adauga_eticheta(blocuri, sus, jos, text, are_valori, gol_maxim=6):
     """Adauga un rand de eticheta la blocul curent, sau deschide unul nou.
 
-    Blocurile sunt (sus, jos, text, e_parinte). Un rand cu valoare deschide
-    intotdeauna bloc nou: intr-un tabel de tarife, randul cu preț ESTE randul
-    logic. Un rand fara valoare continua numele de deasupra doar daca arata ca o
-    continuare; altfel deschide un bloc de tip parinte, adica numele sub care
-    urmeaza mai multe benzi de suma.
+    Blocurile sunt (sus, jos, text, e_parinte). Un rand cu valoare deschide bloc
+    nou: intr-un tabel de tarife, randul cu preț ESTE randul logic. Un rand fara
+    valoare continua numele de deasupra doar daca arata ca o continuare; altfel
+    deschide un bloc de tip parinte, adica numele sub care urmeaza mai multe
+    benzi de suma.
+
+    Exceptia e numele inceput pe un rand FARA pret si continuat pe randul cu
+    pret: la BRD, "Pret pachet /luna cu" / "indeplinirea conditie 0 lei/luna" /
+    "de pachet". Pretul sta pe randul din mijloc, iar ca bloc nou ramanea cu
+    numele "indeplinirea conditie de pachet", fara pachet si fara pret.
     """
-    lipit = (blocuri and sus - blocuri[-1][1] <= gol_maxim
-             and not are_valori and _e_continuare(text, blocuri[-1][2]))
+    ultim = blocuri[-1] if blocuri else None
+    lipit = ultim and sus - ultim[1] <= gol_maxim and _e_continuare(text, ultim[2])
+    if lipit and are_valori:
+        # ...dar nu cand randul de deasupra deschide o lista ("Utilizare ATM/POS
+        # alte banci – retragere numerar:") sau randul e chiar un subpunct: acolo
+        # primul element s-ar lipi de parinte, iar celelalte ar ramane fara el
+        lipit = (ultim[3] and not _e_subpunct(text)
+                 and not ultim[2].rstrip().endswith(":"))
     if lipit:
-        a, _b, t, parinte = blocuri[-1]
-        blocuri[-1] = (a, jos, f"{t} {text}", parinte)
+        a, _b, t, parinte = ultim
+        blocuri[-1] = (a, jos, f"{t} {text}", parinte and not are_valori)
     else:
         blocuri.append((sus, jos, text, not are_valori))
+
+
+# Ce ramane dintr-o banda dupa ce se scot sumele. RE_DOAR_MONEDE e ancorat pe tot
+# textul, deci nu scotea "LEI" din "- 100 LEI, inclusiv" — exemplul chiar din
+# docstring-ul de mai jos nu era recunoscut, iar benzile BCR ramaneau fara
+# numele serviciului de deasupra.
+RE_CUVINTE_BANDA = re.compile(
+    r"\b(?:lei|leu|ron|eur|euro|usd|gbp|chf|inclusiv|exclusiv|echiv\w*)\b", re.I)
 
 
 def _e_doar_banda(text):
@@ -293,21 +342,8 @@ def _e_doar_banda(text):
     corecte, dar incomplete: serviciul e scris o data, deasupra, si dupa el vin
     mai multe benzi. Fara prefixul lui, valoarea nu se poate compara cu nimic.
     """
-    rest = RE_PRAG.sub(" ", text)
-    return len(re.findall(r"[A-Za-zĂÂÎȘȚăâîșț]", RE_DOAR_MONEDE.sub(" ", rest))) < 4
-
-
-# Un subpunct numeste varianta, nu serviciul: "Eliberare de numerar în România" e
-# urmat de "- de la ghișeele BCR" si "- de la ATM-uri BCR", iar la Raiffeisen
-# "Comision pentru retrageri de numerar" de "La ATM-urile băncilor acceptatoare
-# din străinătate". Pretul sta pe randul subpunctului, deci fara numele de
-# deasupra valoarea ramanea doar cu canalul, fara serviciu.
-RE_SUBPUNCT = re.compile(r"^\s*[-–—•·▪~]\s*\S|^(?:la|de\s+la|prin|[îi]n|din|c[ăa]tre)\s",
-                         re.I)
-
-
-def _e_subpunct(text):
-    return bool(RE_SUBPUNCT.match(text))
+    rest = RE_CUVINTE_BANDA.sub(" ", RE_PRAG.sub(" ", text))
+    return len(re.findall(r"[A-Za-zĂÂÎȘȚăâîșț]", rest)) < 4
 
 
 def _eticheta_pentru(sus, jos, blocuri):
@@ -334,22 +370,25 @@ def _eticheta_pentru(sus, jos, blocuri):
         parinti = [b[2] for b in blocuri[:i] if b[3] and not _e_doar_banda(b[2])
                    and not _e_subpunct(b[2])]
         # Subpunctul cere un nume intreg: coada unei fraze ("pentru care retragerea
-        # a fost programată)") ajunsese parinte. Banda nu: la BRD parintele ei chiar
-        # incepe cu litera mica ("debit (cecuri si bilete la ordin) LEI"), si fara
-        # el 6 valori treceau de la file_cec la transfer_credit.
-        if subpunct and not banda:
+        # a fost programată)") ajunsese parinte. Banda simpla nu: la BRD parintele
+        # ei chiar incepe cu litera mica ("debit (cecuri si bilete la ordin) LEI"),
+        # si fara el 6 valori treceau de la file_cec la transfer_credit. "În USD"
+        # e si banda si subpunct, si cere nume intreg (Garanti, 8 valori).
+        if subpunct:
             parinti = [p for p in parinti if not RE_CONTINUARE.match(p)]
         if parinti:
             nume = f"{parinti[-1]} {nume}"
     return nume
 
 
-def categorie(sectiune, serviciu, text):
+def categorie(sectiune, serviciu, text, celula=""):
     """Ce fel de cifra e: comision, dobanda, limita de tranzactionare sau curs."""
     tot = f"{sectiune or ''} {serviciu or ''} {text or ''}"
     if RE_DOBANDA.search(tot):
         return "dobanda"
     if RE_LIMITA.search(tot):
+        return "limita"
+    if RE_LIMITA_SPUSA.search(tot) and celula and _doar_cifra(celula):
         return "limita"
     if RE_CURS.search(tot):
         return "curs"
@@ -389,6 +428,13 @@ class Sectiuni:
             self.pune(None, titlu)
         else:
             self.pe_adancime[self.ultima] += " " + titlu
+
+    def subtitlu(self, titlu):
+        """Titlul unui grup din interiorul tabelului: sub toate titlurile reale."""
+        self.pe_adancime[ADANCIME_SUBTITLU] = titlu
+
+    def inchide_subtitlu(self):
+        self.pe_adancime.pop(ADANCIME_SUBTITLU, None)
 
     def cale(self):
         return " > ".join(self.pe_adancime[k] for k in sorted(self.pe_adancime))
@@ -430,8 +476,97 @@ def randuri_document(cale):
     return [r[:5] for r in brute if " ".join(r[4]).strip() not in respinse]
 
 
+# Nivelul subtitlului, mai adanc decat orice index ("A." are 9): un titlu real il
+# sterge, iar urmatorul subtitlu il inlocuieste.
+ADANCIME_SUBTITLU = 99
+# un subtitlu e un nume de grup, nu o fraza; peste atat e o nota
+LUNGIME_MAX_SUBTITLU = 80
+
+
+# cuvinte care nu numesc un serviciu, la numaratoarea din _e_varianta
+CUVINTE_GOALE = {"lei", "leu", "ron", "eur", "euro", "usd", "gbp", "chf", "sau", "pentru",
+                 "din", "prin", "catre", "către", "sub", "peste", "inclusiv", "exclusiv"}
+
+
+def _e_varianta(text):
+    """Eticheta numeste doar varianta serviciului de deasupra, nu serviciul?
+
+    "Emis", "Primit", "Cesiune", "(principal)", "- 50.000 LEI, exclusiv", "ATM BRD":
+    un subpunct, o banda, o continuare, sau cel mult doua cuvinte cu sens. Un
+    subtitlu se aplica doar unor astfel de randuri (vezi _e_subtitlu).
+    """
+    if _e_subpunct(text) or RE_CONTINUARE.match(text) or _e_doar_banda(text):
+        return True
+    fara_paranteze = re.sub(r"\([^)]*\)?", " ", text)
+    # orice litera, si cu sedila: "iniţială" cu [a-zăâîșț] se rupea in doua, iar
+    # "Emitere iniţială" parea un nume de trei cuvinte si inchidea subtitlul
+    cuvinte = [c for c in re.findall(r"[^\W\d_]{3,}", fara_paranteze)
+               if c.lower() not in CUVINTE_GOALE]
+    return len(cuvinte) <= 2
+
+
+def _e_subtitlu(texte, nevide, margini, latime_tabel, geometrie):
+    """Randul e titlul unui grup de servicii, scris cu litere mici?
+
+    Titlurile cu majuscule sau cu index le prinde _e_titlu. Nexent isi scrie toate
+    titlurile normal ("Scrisori de garantie", "Tranzactii cu numerar", "Alte
+    servicii"), pe un rand cu bordura si o singura celula intinsa peste tabel; fara
+    ele documentul nu avea nicio secțiune, iar "Cesiune", "Executare" sau "Emitere
+    (trimestrial)" nu spuneau despre ce e vorba. Doar randuri cu bordura: fara
+    ea, o linie lunga de nota trece la fel de bine drept titlu.
+
+    Subtitlul se inchide la primul rand care isi numeste singur serviciul. La
+    Nexent, "Ordin de plata conditionat" acopera doar "Emis" si "Primit"; dupa ele
+    vin "Investigatie ordin de plata", "Scrisoare de bonitate", "Curierat Special".
+    Lasat deschis, le dadea tuturor conceptul transfer_credit: verificate de mana
+    40 de atribuiri, pe etichetele-varianta 16 din 19 erau corecte, pe numele
+    intregi doar 9 din 19.
+    """
+    if geometrie != "bordura" or len(nevide) != 1:
+        return False
+    i = nevide[0]
+    t = texte[i]
+    if (len(t) > LUNGIME_MAX_SUBTITLU or RE_CONTINUARE.match(t)
+            or t.rstrip().endswith((".", ",", ";")) or RE_DOAR_MONEDE.match(t)):
+        return False
+    latime_celula = margini[i + 1] - margini[i]
+    return (bool(latime_tabel) and latime_celula >= LATIME_MIN_TITLU * latime_tabel
+            and len(re.findall(r"[A-Za-zĂÂÎȘȚăâîșț]", t)) >= LITERE_MIN_TITLU)
+
+
+def _titlu_din_tabel(texte, nevide):
+    """(index, titlu) cand indexul sta in coloana lui, in interiorul tabelului.
+
+    BCR scrie "11." intr-o celula si "Carduri de Debit în Lei" in urmatoarea.
+    Nerecunoscut, titlul trecea drept subtitlu si era inlocuit de randul de
+    dedesubt ("George Business* Business Gold..."), iar "Emitere iniţială" si
+    "Reînnoire" ramaneau fara card: 90 de valori BCR fara concept.
+    """
+    if len(nevide) != 1:
+        return None
+    t = texte[nevide[0]]
+    index = [j for j, x in enumerate(texte) if x and RE_INDEX_CELULA.match(x)]
+    if (len(index) == 1 and index[0] < nevide[0] and len(t) <= 90
+            and not RE_CONTINUARE.match(t)):
+        return texte[index[0]], t
+    return None
+
+
 def _e_titlu(texte, nevide, margini, latime_tabel):
     """(index, titlu) daca randul e un titlu de sectiune, altfel None."""
+    # Titlul pe acelasi rand cu antetul de moneda: Libra scrie "ACREDITIVE DE
+    # IMPORT", "GARANTII", "DIRECT DEBIT INTERBANCAR" in coloana numelui si "EUR"
+    # sau "LEI" deasupra preturilor. Cu doua celule nu era titlu, iar celula ocupa
+    # 45% din tabel, sub pragul de latime; asa ca "Amendamente" sau "Negociere/
+    # plata" nu spuneau ale carui instrument sunt.
+    monede = [i for i in nevide if RE_DOAR_MONEDE.match(texte[i])]
+    rest = [i for i in nevide if i not in monede]
+    if monede and len(rest) == 1:
+        t = texte[rest[0]]
+        if (len(t) <= 90 and t == t.upper()
+                and len(re.findall(r"[A-ZĂÂÎȘȚ]", t)) >= LITERE_MIN_TITLU):
+            m = RE_INDEX_SECTIUNE.match(t)
+            return (m.group(1), m.group(2)) if m else (None, t)
     if len(nevide) != 1:
         return None
     i = nevide[0]
@@ -526,6 +661,8 @@ def extrage_tarife(cale, banca, radacina=None):
     cale = Path(cale)
     sursa = str(cale.relative_to(radacina)) if radacina else cale.name
     randuri = randuri_document(cale)
+    analize = [[analizeaza_linie(t) for t in texte] for _n, _c, _m, _g, texte in randuri]
+    col_nume = coloana_numelui(randuri, analize)
     latime_tabel = max((m[-1] - m[0] for _n, _c, m, _g, _t in randuri), default=0)
 
     sectiuni = Sectiuni()
@@ -542,17 +679,16 @@ def extrage_tarife(cale, banca, radacina=None):
     # semnaturile de coloane care au dat deja o valoare: dupa ele, un rand cu
     # litera mica e continuare de celula, nu de antet (vezi _e_rand_antet)
     semn_cu_valori = set()
-    # (semnatura, coloanele cu valori) ale ultimului rand de preturi; vezi
-    # _celula_eticheta — doar in acelasi tabel, altfel coloanele nu se corespund
-    ultim_pret = (None, frozenset())
-    # coloana in care sta de obicei numele, pe tabel. Ea nu e niciodata coloana de
-    # pret, chiar daca eticheta are o cifra: la Libra, "Dobanda cont curent de card
-    # (...500 RON)" facea coloana numelui sa para de pret, iar randul urmator
-    # ramanea fara nume
-    col_nume = {}
+    # coloanele in care tabelul a avut deja valori; vezi _celula_eticheta. Pe tot
+    # tabelul, nu doar pe randul de deasupra: la BRD textul unei celule de pret se
+    # intinde pe patru randuri ("lunar: prima tranzactie" / "gratuita, de la a
+    # doua:" / "1% + 10 lei (echiv. in" / "valuta contului)"), iar "valuta
+    # contului)" ajungea lipit de numele serviciului de pe randul urmator.
+    pret = defaultdict(set)
     rand_titlu_caps = None    # randul ultimului titlu cu majuscule, pentru alipire
     pagina_anterioara = None
-    for k, (nr_pagina, cuvinte, margini, geometrie, texte) in enumerate(randuri):
+    for k, ((nr_pagina, cuvinte, margini, geometrie, texte), analiza) in enumerate(
+            zip(randuri, analize)):
         # un rand fara nicio coloana si cu multe cuvinte e proza, nu tarif
         if geometrie == "unic" and len(cuvinte) > CUVINTE_MAX_RAND_UNIC:
             continue
@@ -565,14 +701,12 @@ def extrage_tarife(cale, banca, radacina=None):
             blocuri_et = []          # pagina noua, alte poziții verticale
         pagina_anterioara = nr_pagina
 
-        analiza = [analizeaza_linie(t) for t in texte]
         are_valori = any(v for v, _p, _f, _d in analiza)
         nevide = [i for i, t in enumerate(texte)
                   if t and not RE_DOAR_INDEX.match(t)]
         semn = tuple(round(m) for m in margini)
-        coloane_pret = ultim_pret[1] if ultim_pret[0] == semn else frozenset()
-        if coloane_pret and col_nume.get(semn):
-            coloane_pret = coloane_pret - {col_nume[semn].most_common(1)[0][0]}
+        coloane_pret = pret[semn]
+        coloane_pret = coloane_pret - {col_nume.get(semn)}
 
         if not are_valori:
             titlu = _e_titlu(texte, nevide, margini, latime_tabel)
@@ -587,6 +721,18 @@ def extrage_tarife(cale, banca, radacina=None):
                 semn_cu_valori.clear()   # si tabelul nou n-a dat inca valori
                 blocuri_et = []     # si alte etichete
                 continue
+            # Titlul cu index in coloana lui si subtitlul intra in secțiune, dar raman
+            # si parinti pentru subpunctele de sub ei, deci nu golesc etichetele si
+            # trec mai departe. Stau in acelasi tabel: golite, etichetele pierdeau
+            # prefixul ("Incasso de import/incasso primit" + "La efectuarea
+            # modificarii" ajungea modificare_anulare, nu documentar).
+            din_tabel = _titlu_din_tabel(texte, nevide)
+            subtitlu = bool(din_tabel) or _e_subtitlu(texte, nevide, margini,
+                                                      latime_tabel, geometrie)
+            if din_tabel:
+                sectiuni.pune(*din_tabel)
+            elif subtitlu:
+                sectiuni.subtitlu(texte[nevide[0]])
             # antet de matrice: mai multe nume de coloana, niciunul cu valoare
             if _e_rand_antet(texte, nevide, semn in semn_cu_valori):
                 vechi = antete.get(semn) or [""] * len(texte)
@@ -597,16 +743,18 @@ def extrage_tarife(cale, banca, radacina=None):
             i_eticheta = _celula_eticheta(texte, analiza, coloane_pret)
             if i_eticheta is not None:
                 _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], False)
-                col_nume.setdefault(semn, Counter())[i_eticheta] += 1
+                if not subtitlu and not _e_varianta(texte[i_eticheta]):
+                    sectiuni.inchide_subtitlu()
             continue
 
         # rand cu valori: eticheta lui poate continua si pe randurile urmatoare
         i_eticheta = _celula_eticheta(texte, analiza, coloane_pret)
         if i_eticheta is not None:
             _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], True)
-            col_nume.setdefault(semn, Counter())[i_eticheta] += 1
+            if not _e_varianta(texte[i_eticheta]):
+                sectiuni.inchide_subtitlu()
         semn_cu_valori.add(semn)
-        ultim_pret = (semn, frozenset(i for i, a in enumerate(analiza) if a[0]))
+        pret[semn].update(i for i, a in enumerate(analiza) if a[0])
         de_emis.append((nr_pagina, sus, jos, texte, analiza, geometrie,
                         blocuri_et, sectiuni.cale() or None,
                         antete.get(semn, [])))
@@ -644,7 +792,8 @@ def extrage_tarife(cale, banca, radacina=None):
                     # sau limite, nu preturi, ies din comparatie dar se pastreaza
                     "rol": rol_de_conditie(texte[i], serviciu, val) or rol,
                     "categorie": categorie(sectiune, serviciu,
-                                           f"{texte[i]} {antet[i] if i < len(antet) else ''}"),
+                                           f"{texte[i]} {antet[i] if i < len(antet) else ''}",
+                                           texte[i]),
                     "sursa_pdf": sursa,
                     "pagina": nr_pagina,
                     "geometrie": geometrie,

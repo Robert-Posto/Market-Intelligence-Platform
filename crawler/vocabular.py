@@ -104,6 +104,8 @@ SERVICII = [
     # de numerar: la EximBank sta sub "COMISIOANE TRANZACTII", la BCR ca
     # "Cumpărare bunuri/servicii"
     ("tranzactie_card", r"cump[ăa]rar\w*[^.]{0,25}(bunuri|servicii)"
+                        # Eximbank: "Cumparaturi la comercianti (National/International)"
+                        r"|cump[ăa]r[ăa]tur\w*\s+la\s+comercian"
                         r"|tranzac[țt]i\w*\s+(na[țt]ional|interna[țt]ional|quasi)"
                         r"|comisioan\w*\s+tranzac|tranzac[țt]ion\w*\s+comercian"
                         # Libra: "Comision pentru operatiuni la comerciantii din
@@ -120,8 +122,10 @@ SERVICII = [
     ("deschidere_cont", r"deschider\w*[^.]{0,25}(cont|depozit)"),
     # pachetul de cont, ca la administrare: "Inchidere pachet" la BRD, 11 valori
     ("inchidere_cont", r"([îi]nchider|lichidar)\w*[^.]{0,25}(cont|pachet)"),
+    # BRD nu scrie "administrare": "Pret pachet/luna cu indeplinirea conditiei de
+    # pachet" e tot abonamentul lunar al pachetului (22 de valori)
     ("administrare_cont", r"administrar\w*[^.]{0,25}(cont|pachet)"
-                          r"|administrare\s+(lunar|anual)"
+                          r"|administrare\s+(lunar|anual)|pre[țt]\w*\s+pachet"
                           r"|^\s*administrar\w*\s*$"),
     ("extras_de_cont", r"extras\w*\s+(de\s+)?cont|extras\s+de|stare\s+financiar"),
     # canale la distanta, ca serviciu in sine
@@ -159,7 +163,7 @@ SERVICII = [
     ("modificare_anulare", r"^\s*(modificar|anular|stornar)\w*"),
     ("debitare_directa", r"debitar\w*\s+direct|direct\s+debit"),
     ("plata_programata", r"standing\s+order|plat[ăa]\s+programat|ordin\w*\s+programat"),
-    ("speze_swift", r"speze\s+swift|mesaj\s+swift|comision\s+swift"),
+    ("speze_swift", r"speze\s+swift|mesaj\s+swift|comision\s+swift|ta?x[ăa]\s+swift"),
     # plati. Doua capcane, amandoua gasite la verificarea de mana:
     #  - "cont de plăți" e termenul legal pentru contul curent (PAD), nu o plata.
     #    "La ghișeu din contul de plăți", sub secțiunea "Carduri și numerar", e o
@@ -167,7 +171,11 @@ SERVICII = [
     #  - "plata poliței in 12 rate" e o rata de asigurare, nu un transfer.
     ("transfer_credit", r"transfer\s+credit|ordin\w*\s+de\s+plat[ăa]|\bpl[ăa][țt]i\b"
                         r"|\bplat[ăa]\b(?!\s+poli[țt])|transfer\w*\s+(de\s+)?bani"
-                        r"|vira?ment"),
+                        r"|vira?ment"
+                        # "Transferuri intrabancare", "Transfer intre conturi proprii":
+                        # formularea Vista, Nexent si Eximbank, fara "credit" si "bani"
+                        r"|transfer\w*\s+(?:intra|inter)bancar|transfer\w*\s+[îi]ntre\s+conturi"
+                        r"|\btransferuri\b"),
     # diverse cu volum
     ("interogare_sold", r"interog\w*[^.]{0,20}sold|verificar\w*[^.]{0,20}(sold|disponibil)"
                         r"|consultar\w*[^.]{0,20}sold"),

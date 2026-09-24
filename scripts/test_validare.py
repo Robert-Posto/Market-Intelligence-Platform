@@ -625,8 +625,11 @@ PC("comision 1500%", [], "patru cifre intregi NU produc coada")
 # Toate din crawl-ul din 23 sept. Nexent, Vista si lista de preturi ProCredit nu
 # erau citite deloc (numele fisierului nu spunea "tarif"), iar subpunctele de
 # tipul "- de la ATM-uri BCR" ramaneau fara serviciu.
-from crawler.parser_tarife import (RE_TITLU_TARIFE, _celula_eticheta,  # noqa: E402
-                                   _eticheta_pentru)
+from crawler.parser_pdf import analizeaza_linie  # noqa: E402
+from crawler.parser_tarife import (RE_TITLU_TARIFE, _adauga_eticheta,  # noqa: E402
+                                   _celula_eticheta, _e_doar_banda, _e_titlu,
+                                   _e_varianta, _eticheta_pentru, _titlu_din_tabel,
+                                   categorie)
 from crawler.vocabular import canonic  # noqa: E402
 
 for titlu in ["Lista de taxe, comisioane si dobanzi aferenta cardului",   # Nexent
@@ -679,6 +682,59 @@ CN("Comision pentru operatiuni (la POS/pe internet) la comerciantii de tip jocur
    None, "gamblingul NU intra la plata cu cardul")
 CN("Emitere card - reînnoire", "reemitere_card", "reinnoirea dupa card")
 CN("Inchidere pachet", "inchidere_cont", "pachetul de cont")
+CN("Pret pachet/luna cu indeplinirea conditiei de pachet", "administrare_cont",
+   "pretul pachetului (BRD)")
+CN("Transferuri intrabancare", "transfer_credit", "transferuri (Vista)")
+CN("Taxa SWIFT", "speze_swift", "taxa swift")
+
+# --- a doua runda: 23-24 sept, masurat pe aceleasi 68 de documente ------------
+# sumele in USD/GBP/CHF se citeau ca text, iar coada lor devenea nume de serviciu
+T([(v[1], v[2]) for v in analizeaza_linie("30 USD/card")[0]] == [(30.0, "USD")],
+  "suma in USD")
+T([v[2] for v in analizeaza_linie("3 USD 2,5 GBP 3 CHF")[0]] == ["USD", "GBP", "CHF"],
+  "trei valute pe un rand")
+
+# numele inceput pe un rand fara pret si continuat pe randul cu pret (BRD)
+BL = [(71, 79, "Pret pachet /luna cu", True)]
+_adauga_eticheta(BL, 83, 90, "indeplinirea conditie", True)
+T(len(BL) == 1 and BL[0][2] == "Pret pachet /luna cu indeplinirea conditie" and not BL[0][3],
+  "randul cu pret continua numele de deasupra")
+BL = [(35, 42, "Utilizare ATM/POS alte banci – retragere numerar:", True)]
+_adauga_eticheta(BL, 45, 52, "- National", True)
+T(len(BL) == 2, "dupa ':' incepe lista, nu continuarea")
+
+# canalul fizic la inceput e varianta; banda cu "inclusiv" e tot banda
+T(_eticheta_pentru(56, 62, [(43, 50, "Retragere de numerar ATM/POS", True),
+                            (56, 62, "ATM BRD", False)]) == "Retragere de numerar ATM/POS ATM BRD",
+  "ATM BRD primeste serviciul de deasupra")
+T(_eticheta_pentru(56, 62, [(40, 50, "Internet Banking", True),
+                            (56, 62, "Internet Banking (administrare)", False)])
+  == "Internet Banking (administrare)", "Internet Banking ramane serviciu, nu varianta")
+T(_e_doar_banda("- 100 LEI, inclusiv") and _e_doar_banda("Peste 50.000 LEI, inclusiv"),
+  "banda cu inclusiv/exclusiv")
+T(not _e_doar_banda("Plăți interbancare ≤ 50.000 LEI"), "nume cu banda NU e doar banda")
+
+# subtitlul se aplica variantelor, nu numelor intregi
+T(_e_varianta("Emitere iniţială") and _e_varianta("Primit") and _e_varianta("- 50.000 LEI"),
+  "variante, si cu sedila")
+T(not _e_varianta("Investigatie ordin de plata"), "nume intreg inchide subtitlul")
+
+# titluri: index in coloana lui (BCR), titlu langa antetul de moneda (Libra)
+T(_titlu_din_tabel(["11.", "Carduri de Debit în Lei"], [1]) == ("11.", "Carduri de Debit în Lei"),
+  "index in coloana lui")
+T(_titlu_din_tabel(["2.4.", "(de la ghișee/ ATM-uri BCR"], [1]) is None,
+  "continuarea unui nume NU e titlu")
+T(_e_titlu(["", "ACREDITIVE DE IMPORT", "", "", "EUR", ""], [1, 4],
+           [0, 50, 300, 350, 400, 450, 573], 573) == (None, "ACREDITIVE DE IMPORT"),
+  "titlu pe randul antetului de moneda")
+
+# limita spusa direct iese din comisioane doar cand celula e numai cifra
+T(categorie(None, "limită maximă pe tranzacție", "500.000 LEI", "500.000 LEI") == "limita",
+  "limita maxima (Garanti)")
+T(categorie(None, "Limita zilnică de retragere numerar",
+            "5% (minim 10 lei) din suma utilizată",
+            "5% (minim 10 lei) din suma utilizată") == "comision",
+  "formula de pret sub eticheta de limita ramane comision")
 
 
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")

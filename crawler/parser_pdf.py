@@ -38,12 +38,16 @@ RE_TITLU_FID = re.compile(
     r"document\w*\s+de\s+informare\s+cu\s+privire\s+la\s+comisioane"
     r"|document\w*\s+privind\s+comisioanele", re.I)
 
-MONEDE = {"lei": "LEI", "leu": "LEI", "ron": "LEI", "eur": "EUR", "euro": "EUR"}
+# USD, GBP si CHF nu erau citite deloc: 57 de sume in 7 banci (cardurile in USD
+# ale BCR si BRD, "3 USD 2,5 GBP 3 CHF" la BRCI). Pe langa suma pierduta, coada
+# celulei ramasa fara valoare ("tranzacție" sub "5 USD/") ajungea nume de serviciu.
+MONEDE = {"lei": "LEI", "leu": "LEI", "ron": "LEI", "eur": "EUR", "euro": "EUR",
+          "usd": "USD", "gbp": "GBP", "chf": "CHF"}
 BANI = r"\d{1,3}(?:[.\s]\d{3})*(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?"
 # "euro" inaintea lui "eur": alternarea e ordonata, deci cu "eur" primul cuvantul
 # "euro" se potrivea mereu ca "eur" si lasa un "o" orfan in linie dupa ce banda era
 # taiata — iar litera ramasa se numara in _e_doar_banda.
-VAL = r"(?:lei|leu|ron|euro|eur)"
+VAL = r"(?:lei|leu|ron|euro|eur|usd|gbp|chf)"
 
 RE_SUMA = re.compile(rf"({BANI})\s*({VAL})\b", re.I)
 # Lookbehind-ul opreste potrivirea sa inceapa in MIJLOCUL unui numar, iar
@@ -485,6 +489,25 @@ def blocuri_eticheta(bloc, gol_maxim=6):
     return out
 
 
+# Un subpunct numeste varianta, nu serviciul: "Eliberare de numerar în România" e
+# urmat de "- de la ghișeele BCR" si "- de la ATM-uri BCR", iar la Raiffeisen
+# "Comision pentru retrageri de numerar" de "La ATM-urile băncilor acceptatoare
+# din străinătate". Pretul sta pe randul subpunctului, deci fara numele de
+# deasupra valoarea ramanea doar cu canalul, fara serviciu. Folosit de ambele
+# parsere: in formularul standardizat, CreditCoop scrie "Emitere card:" pe un
+# rand de grila si "• Visa Classic Standard 5 lei" pe urmatorul.
+# La fel randul care incepe cu un canal fizic: BRD scrie "Retragere de numerar
+# ATM/POS" o data, apoi "ATM BRD", "ATM/POS alte banci din Romania", "POS in EUR,
+# alte banci din Uniunea". Internet/Mobile Banking nu intra aici: "Internet
+# Banking (administrare)" e chiar serviciul, nu varianta lui.
+RE_SUBPUNCT = re.compile(r"^\s*[-–—•·▪~]\s*\S|^(?:la|de\s+la|prin|[îi]n|din|c[ăa]tre)\s"
+                         r"|^(?:ATM|POS|MFM|EPOS)\b", re.I)
+
+
+def _e_subpunct(text):
+    return bool(RE_SUBPUNCT.match(text))
+
+
 def eticheta_pentru(sus, jos, etichete):
     """Eticheta careia aparține o valoare, dupa poziția verticala.
 
@@ -527,11 +550,18 @@ def extrage(cale, banca, radacina=None):
     inregistrari = []
     serviciu = None      # ultimul nume incheiat, pentru blocurile care dau doar sume
     sectiune = None      # secțiunea de formular in care ne aflam
+    # Numele de deasupra subpunctelor: randurile de grila fara pret. CreditCoop pune
+    # fiecare rand in randul lui de grila ("Retrageri de numerar" / "La ghișeu:" /
+    # "• Sume până la 5.000 lei"), deci eticheta blocului nu ajunge: 51 din cele
+    # 114 comisioane ramaneau cu numele variantei, fara serviciu. Un subpunct fara
+    # pret se adauga la lant; un nume intreg il porneste din nou.
+    parinti = []
 
     for nr_pagina, bloc in blocuri(cale):
         titlu = _sectiune_pad(bloc)
         if titlu:
             sectiune = titlu
+            parinti = []
             continue
         # Etichetele se grupeaza in blocuri cu poziție verticala, iar fiecare
         # valoare merge la blocul care o cuprinde. Versiunea anterioara potrivea
@@ -543,6 +573,13 @@ def extrage(cale, banca, radacina=None):
         for _sus, _jos, texte in bloc:
             pe_linie = [analizeaza_linie(t) for t in texte[1:]]
             analiza.append(pe_linie)
+        are_valori = any(v for linie in analiza for v, _p, _f, _d in linie)
+        if etichete and not are_valori:
+            nume = re.sub(r"\s+", " ", etichete[0][2]).strip()
+            # un subpunct continua lantul, dar nu il porneste: la ProCredit,
+            # "• Retrageri de numerar (LEI), gratuite..." ajunsese parintele lui
+            # "• Depuneri de numerar la terminalele ProCredit"
+            parinti = (parinti + [nume] if parinti else []) if _e_subpunct(nume) else [nume]
 
         conditie = frecventa = None
         bucati = []
@@ -561,6 +598,8 @@ def extrage(cale, banca, radacina=None):
                 if gasita:
                     serviciu = re.sub(r"\s+", " ", gasita[2]).strip()
                     nota = gasita[3]
+                    if parinti and _e_subpunct(serviciu):
+                        serviciu = " ".join(parinti + [serviciu])
                 detaliu = " ".join(bucati + ([nota] if nota else []))[:160] or None
                 for tip, val, moneda, rol in valori:
                     inregistrari.append({
@@ -585,6 +624,11 @@ def extrage(cale, banca, radacina=None):
                 # se aplica — mai bine pierdem o conditie decat sa atasam una greșita.
                 bucati = []
                 conditie = None
+        # Un nume intreg cu pret incheie grupul: subpunctele de dupa el nu mai sunt
+        # ale parintelui de deasupra. La ProCredit, "• Plăți instant ≤ LEI 5.000"
+        # ajungea "Ordine de plată programată ... • Plăți instant".
+        if are_valori and etichete and not _e_subpunct(etichete[0][2]):
+            parinti = []
     return inregistrari
 
 
