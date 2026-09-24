@@ -889,5 +889,130 @@ T(not _e_titlu_cu_index("1. Comisionul se percepe pentru fiecare operatiune efec
   "nota numerotata NU e titlu")
 
 
+# --- valori false (reparatia «false»): ce nu e comision iese din comisioane -----
+from crawler.parser_tarife import (RE_INDEX_LA_SFARSIT, RE_MARCAJ_NOTA,  # noqa: E402
+                                   _bordura_intre, _e_nota, _fara_cifre, _nota_dupa)
+
+
+def G(text, gratuit, eticheta):
+    got = [v[0] for v in analizeaza_linie(text)[0]] == ["gratuit"]
+    T(got == gratuit, f"inclus: {eticheta}")
+
+
+# "inclus" e pret zero doar cand e predicatul celulei
+G("Inclus în costul lunar al pachetului", True, "celula de pret ProCredit")
+G("*Inclus în costul lunar al", True, "cu nota si rupt")
+G("• Business debit card inclus în Pachet", True, "lista incluse gratuit BCR")
+G("suplimentar LEI/ Valută, inclus în Pachet", True, "continuarea elementului din lista")
+G("Taxe și comisioane pentru cardurile de debit incluse în pachetele de Cont Curent", False,
+  "titlu / cuprins")
+G("OPERATIUNI GRATUITE INCLUSE IN OFERTA (DIFERITE DE OFERTA STANDARD)", False, "titlu Vista")
+G("*TVA inclus", False, "TVA inclus")
+G("valabilitate, speze SWIFT incluse", False, "speze incluse in pret")
+G("Operațiuni prin conturile curente incluse în pachet:", False, "antet cu doua puncte")
+G("tranzacţiilor care depășesc numărul de plăţi incluse in pachet)**", False, "paranteza")
+G("inclusa in", False, "forma noua NU produce valori noi")
+G("Gratuit", True, "gratuit ramane gratuit")
+
+# indicele de referinta e dobanda; pe eticheta nu decide (BRD "IRCC + 5,10 pp")
+T(categorie("descoperit_de_cont", "Descoperitul de cont", "IRCC + 13,99%",
+            "IRCC + 13,99%") == "dobanda", "IRCC plus marja in celula")
+T(categorie("Credite", "Valoare", "5,56% IRCC", "5,56%", "IRCC") == "dobanda",
+  "valoarea indicelui sub coloana IRCC")
+T(categorie("Credite", "Comision de analiza dosar", "1% IRCC", "1%", "IRCC") == "comision",
+  "comisionul din coloana IRCC ramane comision")
+T(categorie("CREDITE", "ofertă standard IRCC + 5,10 pp clădire viitoare – evaluare",
+            "600 lei", "600 lei") == "comision", "IRCC in eticheta NU decide")
+# limitele fara cuvantul "limita" in eticheta
+T(categorie("LIMITELE BANCII PENTRU TRANZACȚIILE EFECTUATE CU CARDUL DE DEBIT",
+            "zilnică și per tranzacție", "6.000 LEI", "6.000 LEI") == "limita",
+  "sectiunea de limite")
+T(categorie(None, "Plăți Contactless (fără PIN) limită per tranzacție", "100 LEI",
+            "100 LEI") == "limita", "limita per tranzactie")
+T(categorie("Carduri", "Sumă per tranzacție top-up", "5.000 LEI /1.000 EUR",
+            "5.000 LEI /1.000 EUR") == "limita", "top-up ProCredit")
+T(categorie("Parametri", "Valoarea maximă a limitei de credit", "50.000 lei",
+            "50.000 lei") == "limita", "valoarea maxima a limitei")
+T(categorie(None, "Comision lunar de administrare credit", "Suma creditului: max. 15.000 lei",
+            "Suma creditului: max. 15.000 lei") == "limita", "suma creditului")
+# pretul spus fata de plafon e pret; plafonul insusi ramane limita
+T(categorie("Comision de analiză dosar", "-comision de analiză pentru acordări ulterioare "
+            "de plafon:", "25 LEI", "25 LEI") == "comision", "analiza pentru acordare de plafon")
+T(categorie(None, "Retrageri de numerar - retrageri sub plafonul stabilit",
+            "2,5% minim 30 LEI", "2,5% minim 30 LEI") == "comision", "retragere sub plafon")
+T(categorie(None, "Comision suplimentar de eliberare numerar ce depaseste plafonul de",
+            "20.000 lei, care nu a fost si se percepe aditional sumei",
+            "20.000 lei, care nu a fost si se percepe aditional sumei") == "limita",
+  "cifra plafonului din fraza ramane limita")
+T(categorie(None, "Eliberare", "ridicarea sumelor ce depasesc plafonul de 20.000 lei",
+            "ridicarea sumelor ce depasesc plafonul de 20.000 lei") == "limita",
+  "plafonul spus in celula")
+# taxa de stat din antetul coloanei (AEGRM), nu din numele serviciului
+T(categorie(None, "AVIZ DE GARANŢIE INIŢIAL", "30 lei", "30 lei",
+            "Taxa către bugetul de stat (Ministerul Justiţiei)") == "taxa_stat", "taxa de stat")
+T(categorie(None, "AVIZ DE GARANŢIE INIŢIAL", "50 lei + TVA", "50 lei + TVA",
+            "Tarif BCR pentru efectuare operatiuni la AEGRM") == "comision", "tariful bancii")
+T(categorie(None, "Plata impozite si taxe catre bugetul de stat", "2 lei", "2 lei")
+  == "comision", "serviciul de plata catre buget ramane comision")
+# conditii, nu preturi
+T(rol_de_conditie("40.000 EUR", "Conditie pachet", 40000.0) == "conditie", "conditie pachet")
+T(rol_de_conditie("15 lei/luna", "Pret pachet/luna fara indeplinirea conditie de pachet",
+                  15.0) is None, "pretul pachetului NU e conditie")
+T(rol_de_conditie("3% din Valoarea tranzacțiilor efectuate cu Cardul, la care se",
+                  "Suma minimă de plata de rambursat lunar", 3.0) == "conditie",
+  "suma minima de plata")
+T(rol_de_conditie("cu 20% pentru clienții care dețin un pachet",
+                  "Comisionul de analiză dosar este redus astfel:", 20.0) == "conditie",
+  "reducerea din eticheta")
+T(rol_de_conditie("cu 20% pentru clienții care dețin un pachet",
+                  "Comision de analiză dosar", 20.0) is None, "fara reducere NU e conditie")
+# data de la coada etichetei ramane; indexul lipit se taie
+T(RE_INDEX_LA_SFARSIT.sub("", "pe adresa BCR 3.2.7.") == "pe adresa BCR", "index taiat")
+T(RE_INDEX_LA_SFARSIT.sub("", "Cu token cumpărat începând cu 05.04.2019")
+  == "Cu token cumpărat începând cu 05.04.2019", "data ramane")
+T(RE_INDEX_LA_SFARSIT.sub("", "Plăți instant ≤ LEI 5.000") == "Plăți instant ≤ LEI 5.000",
+  "suma ramane")
+T(_fara_cifre("PAGINA 3") == _fara_cifre("PAGINA 14"), "subsolul numerotat se repeta")
+# marcajul notei; randul numerotat al tabelului nu e nota
+for t in ["*Comisionul Transfond de 0,51 LEI", "NOTE:", "Nota bene: Nu se percepe",
+          "4Clienti vulnerabili", "17Financially", "1În"]:
+    T(RE_MARCAJ_NOTA.match(t), f"marcaj de nota: {t}")
+for t in ["1 Comision administrare", "3D Secure", "Notificare prin SMS", "Nota de debit"]:
+    T(not RE_MARCAJ_NOTA.match(t), f"NU e marcaj de nota: {t}")
+# bordura: umplerile alaturate si sublinierea NU sunt borduri
+T(not _bordura_intre([(84.7, 38.8, 563.5), (84.7, 38.8, 563.5)], 83, 87, 44),
+  "doua umpleri alaturate (Vista)")
+T(_bordura_intre([(445.1, 54.4, 331.2), (445.6, 54.4, 331.2)], 443, 450, 60),
+  "dreptunghi subtire (ProCredit)")
+T(_bordura_intre([(445.1, 54.4, 331.2)], 443, 450, 60), "linie singura")
+T(not _bordura_intre([(605.4, 46.6, 70.0), (606.0, 46.6, 70.0)], 604, 608, 47),
+  "sublinierea lui NOTE:")
+# zona notei: marcaj, continuare, sfarsit
+Z = _nota_dupa(None, 5, 41, 75, 84, ["*Comisionul Transfond de 0,51 LEI"], False, [])
+T(Z and Z[:2] == (5, 41), "marcajul deschide nota")
+T(_nota_dupa(Z, 5, 44, 87, 96, ["6 LEI pentru platile ≥ 50.000 LEI sunt incluse."],
+             False, []), "randul de sub marcaj continua nota")
+T(_nota_dupa(Z, 5, 44, 87, 96, ["Avizare", "50 EUR"], False, []) is None,
+  "randul de tabel cu doua celule o inchide")
+T(_nota_dupa(Z, 5, 410, 87, 96, ["250 EUR + TVA"], False, []) is None,
+  "pretul din alta coloana o inchide")
+T(_nota_dupa(Z, 5, 44, 87, 96, ["Depuneri de numerar"], False,
+             [(85.0, 38.8, 563.5)]) is None, "bordura o inchide")
+T(_nota_dupa(Z, 6, 41, 87, 96, ["ceva"], False, []) is None, "pagina noua o inchide")
+Z = _nota_dupa(None, 4, 44, 634, 642, ["17Financially"], False, [])
+T(_nota_dupa(Z, 4, 100, 635, 643, ["non-vulnerable customers"], False, []),
+  "restul randului rupt de exponent")
+Z = _nota_dupa(None, 4, 234, 994, 1030, ["Extraoptiune IMM Retrageri numerar ..."], True, [])
+T(_nota_dupa(Z, 4, 2726, 996, 1030, ["12 lei"], False, []) is None,
+  "pretul de pe randul prozei NU intra in nota")
+# proza si antetul firmei
+T(_e_nota("gratuit", "neacceptarea modificarii (caz in care are dreptul sa denunte "
+          "unilateral Contractul, imediat si gratuit inainte de data propusa"), "gratuit in proza")
+T(not _e_nota("gratuit", "Gratuit"), "gratuit in celula")
+T(_e_nota("comision_suma", "Capital Social: 1.625.341.625,40 lei"), "capitalul social")
+T(_e_nota("gratuit", "gratuit din orice reţea naţională;"), "telefonul gratuit")
+T(not _e_nota("comision_suma", "35 lei + TVA"), "pretul NU e nota")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)
