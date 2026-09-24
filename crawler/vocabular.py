@@ -292,7 +292,9 @@ SERVICII = [
                           # Gold 0*/30 lei/lună" (Raiffeisen), "Pachet de servicii:
                           # Cost lunar 50 LEI" (ProCredit), 20 de valori nemapate.
                           # Nu componenta: "Pachet • comision de mentenanță".
+                          # (nu "Pachet de servicii de protecție", asigurarea cardului Raiffeisen)
                           r"|^\W*(?:comision\s+(?:de\s+)?)?pachet(?:ul)?\b(?![^.]{0,3}[•\-–])"
+                          r"(?!\s+de\s+servicii\s+de\s+protec)"
                           # ...la fel contul singur: "Cont curent în USD sau GBP: 2
                           # EUR / echivalent, pe cont" (ProCredit), "Cont Curent
                           # Standard 5 lei/lună" (Raiffeisen). Nu dobanda la sold.
@@ -377,7 +379,10 @@ SERVICII = [
                    r"|pre-?verificar\w*\s+(?:de\s+|a\s+)?document|m[ăa]rfur\w*\s+expediat"
                    r"|document\w*\s+returnat|^\W*cesion(?:are|area)\s*$"
                    # ordinele de plata conditionate (Libra "OPC Emise/Primite")
-                   r"|\bOPC\b(?![^.]{0,25}(?:modificar|anular))"),
+                   r"|\bOPC\b(?![^.]{0,25}(?:modificar|anular))"
+                   # BCR "Eliberare documente «franco de plată»" (iesea transfer_credit
+                   # de la "plată"), BRCI "Scontare efecte de comert"
+                   r"|franco\s+de\s+plat|\bscont[ăa]r\w*\s+(?:a\s+)?efect"),
     # Acceptarea cardurilor la comerciant e alt serviciu decat plata cu cardul: banca
     # incaseaza de la comerciant, nu de la client. Doar 8 valori la 2 banci, deci nu
     # va face niciodata o linie in tabel — dar erau 7 mapate greșit pe
@@ -409,7 +414,9 @@ SERVICII = [
      r"|co\s?mision\w*\s+unic\s+(?:pentru|[îi]ncasat)"
      # BCR "Comision (flat) pentru creditele în sold" e titlul grupului amanare /
      # gratie / extinderea perioadei, nu administrarea (verificat in PDF, p.5 pct. 9)
-     r"|^\W*comision\w*\s+(?:\(flat\)\s+)?pentru\s+credit\w*\s+[îi]n\s+sold"),
+     r"|^\W*comision\w*\s+(?:\(flat\)\s+)?pentru\s+credit\w*\s+[îi]n\s+sold"
+     # Libra "Modificare/prelungire scadenta utilizari din credit"
+     r"|^\W*modificar\w*\s*/\s*prelungir\w*\s+scaden"),
     ("evaluare_garantie", r"evaluar\w*[^.]{0,30}(?:imobil|apartament|teren|\bcas[ăae]\b|garan[țt]|propriet)"
                           r"|raport\w*\s+(?:de\s+)?evaluar|analiz\w*\s+tehnic"),
     # Nu "restan" simplu: BCR "creditele în sold • ... înregistrează restanţe" e
