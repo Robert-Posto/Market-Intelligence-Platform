@@ -59,6 +59,12 @@ RE_PROCENT = re.compile(r"(?<![\d.,])(\d{1,3}(?:[.,]\d+)?)\s*%")
 # comision zero declarat in cuvinte
 RE_GRATUIT = re.compile(
     r"\bgratuit\b|f[aă]r[aă]\s+comision|nu\s+se\s+percepe|\bincluse?\b", re.I)
+# ...dar "Produse și servicii incluse" e titlul listei din pachet, nu un pret.
+# Citit ca "gratuit", dadea 12 valori false (ProCredit 7, Vista 3, Techventures 2),
+# intre ele "Administrare pachet: gratuit" la Techventures si "Cost lunar:
+# gratuit" la fiecare pachet ProCredit.
+RE_TITLU_INCLUSE = re.compile(
+    r"^\W*(?:produse|servicii)(?:\s+(?:[șsş]i)\s+(?:produse|servicii))?\s+incluse\b", re.I)
 RE_FRECVENTA = re.compile(
     r"\b(lunar|anual|trimestrial|semestrial|zilnic|"
     r"pe\s+opera[tț]iune|per\s+opera[tț]iune|la\s+fiecare)\b"
@@ -175,6 +181,11 @@ RE_ETICHETA_LIMITA = re.compile(r"^\s*(?:limit[ăa]|plafon)\b", re.I)
 # cand celula e practic numai cifra ("500.000 LEI", "3.000 lei"), sau cand textul
 # vorbeste el insusi despre o limita ("max. 40% din limita de credit").
 RE_LIMITA_IN_TEXT = re.compile(r"limit[ăa]|plafon", re.I)
+# Limita spusa in fraza, in fata cifrei: ProCredit scrie "Retrageri de numerar,
+# gratuite ... în limita a 5.000 LEI/zi", si 5.000 ieșea pret de retragere (9
+# valori, 2.000-10.000). Se leaga de cifra ei, nu de rand: pe acelasi rand poate
+# sta si pretul.
+RE_IN_LIMITA_A = re.compile(r"\blimit[ăa]\s+(?:a|de)\s+(\d[\d.,]*)", re.I)
 # A cincea familie, si singura cu discriminant pur structural: pragul se rupe peste
 # granita coloanei. Garanti scrie "Transfer credit de mică valoare (sub" in coloana
 # de nume si "50.000 LEI)" in cea de valoare — deci 50.000 ieșea drept comision de
@@ -224,12 +235,53 @@ def rol_de_conditie(text, eticheta, valoare):
         return "conditie"
     if text and (RE_CERINTA.search(text) or RE_REDUCERE.search(text)):
         return "conditie"
+    if text and any(suma(m.group(1)) == valoare for m in RE_IN_LIMITA_A.finditer(text)):
+        return "conditie"
     if (text and RE_COMPARATIV.search(text)
             and not RE_MARGINE_COMISION.search(text)):
         return "conditie"
     if text and eticheta and _inchide_paranteza_etichetei(text, eticheta):
         return "conditie"
     return None
+
+
+RE_DOBANDA = re.compile(r"dob[âa]nd|interest\s+(rate|on)|\bDAE\b|rata\s+anual", re.I)
+# "dobânzii" nu contine "dobând": "Marja fixa a dobanzii" (ProCredit, 13 procente)
+# si "Rata dobanzii penalizatoare" (Nexent, 8) ieseau comisioane. Doar cand
+# eticheta INCEPE cu dobanda: "dobânz" oriunde muta 98 de valori, intre ele toate
+# comisioanele de card Raiffeisen, a caror sectiune se cheama "TARIFE SI DOBANZI".
+RE_DOBANDA_CAP = re.compile(r"^\W*(?:valoarea\s+)?(?:rat|marj)\w*\s+(?:\w+\s+){0,2}dob[âa]nz",
+                            re.I)
+# Nu tot ce e scris in lista de tarife e un comision. Verificarea de mana a gasit
+# 3 din 24: o limita de tranzactionare si doua rate de dobanda raportate ca
+# preturi. Categoria nu arunca valoarea — o marcheaza, ca sa nu intre in
+# comparatia de comisioane.
+RE_LIMITA = re.compile(
+    r"limit[ăae]\w*\s+de\s+tranzac|valoare\s+tranzac|num[ăa]r\w*\s+de\s+tranzac"
+    r"|\bplafon", re.I)
+# Limita spusa direct: "limită zilnică", "limită maximă pe tranzacție" (Garanti,
+# Vista, Raiffeisen: 52 de valori de ordinul 10.000-1.000.000 lei numarate drept
+# comisioane). Doar cand celula e practic numai cifra: sub "Limita zilnică de
+# retragere numerar", Raiffeisen scrie "5% (minim 10 lei) din suma utilizată",
+# adica pretul, nu limita (vezi rol_de_conditie).
+RE_LIMITA_SPUSA = re.compile(r"limit[ăae]\w*\s+(?:zilnic|maxim|minim|lunar)", re.I)
+RE_CURS = re.compile(r"curs\s+(de\s+)?schimb|curs\s+bnr|exchange\s+rate", re.I)
+
+
+def categorie(sectiune, serviciu, text, celula=""):
+    """Ce fel de cifra e: comision, dobanda, limita de tranzactionare sau curs."""
+    tot = f"{sectiune or ''} {serviciu or ''} {text or ''}"
+    if RE_DOBANDA.search(tot) or RE_DOBANDA_CAP.search(serviciu or ""):
+        return "dobanda"
+    if RE_LIMITA.search(tot):
+        return "limita"
+    if RE_LIMITA_SPUSA.search(tot) and celula and _doar_cifra(celula):
+        return "limita"
+    if RE_CURS.search(tot):
+        return "curs"
+    return "comision"
+
+
 # Secțiunile impuse de formular. Ele sunt adevarata axa de comparatie intre banci:
 # masurat pe cele 16 documente, toate cinci apar LITERAL la toate cele 5 banci, in
 # timp ce numele serviciilor se potrivesc intre banci doar in 4 cazuri din 116.
@@ -398,7 +450,8 @@ def analizeaza_linie(text):
         if v is not None:
             valori.append(("comision_suma", v, MONEDE[m.group(2).lower()],
                            rol_pentru(m.start())))
-    if not valori and RE_GRATUIT.search(linie) and not re.search(r"\d", linie):
+    if (not valori and RE_GRATUIT.search(linie) and not re.search(r"\d", linie)
+            and not RE_TITLU_INCLUSE.match(linie)):
         valori.append(("gratuit", 0.0, None, None))
 
     descriere = None
@@ -615,6 +668,10 @@ def extrage(cale, banca, radacina=None):
                         # o cerinta sau o limita bate plafonul min/max: daca cifra
                         # nu e un pret, rolul de plafon nu se mai aplica
                         "rol": rol_de_conditie(pe_coloana, serviciu, val) or rol,
+                        # si in formular: "Rata de dobândă fixă: 12%" la
+                        # descoperit (ProCredit, BCR, BRCI: 6 valori) iesea comision
+                        "categorie": categorie(sectiune, serviciu, pe_coloana,
+                                               pe_coloana),
                         "sursa_pdf": sursa,
                         "pagina": nr_pagina,
                         "text_sursa": pe_coloana[:300],

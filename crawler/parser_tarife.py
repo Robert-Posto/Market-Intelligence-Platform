@@ -34,7 +34,7 @@ from pathlib import Path
 import pdfplumber
 
 from crawler.parser_pdf import (RE_PRAG, _doar_cifra, _e_subpunct, analizeaza_linie,
-                                rol_de_conditie)
+                                categorie, rol_de_conditie)
 
 # doua borduri mai apropiate de atat sunt aceeasi bordura desenata de doua ori
 TOL_BORDURA = 3
@@ -59,21 +59,6 @@ RE_DOAR_MONEDE = re.compile(r"^(?:\s*(?:lei|leu|ron|eur|euro|usd|gbp|chf)\s*[/,;
                             re.I)
 RE_INDEX_LA_SFARSIT = re.compile(r"\s+\d+(?:\.\d+){1,}\.?$")
 RE_LITERA_SAU_ROMAN = re.compile(r"^[A-Z]\.$|^[IVX]+\.$")
-RE_DOBANDA = re.compile(r"dob[âa]nd|interest\s+(rate|on)|\bDAE\b|rata\s+anual", re.I)
-# Nu tot ce e scris in lista de tarife e un comision. Verificarea de mana a gasit
-# 3 din 24: o limita de tranzactionare si doua rate de dobanda raportate ca
-# preturi. Categoria nu arunca valoarea — o marcheaza, ca sa nu intre in
-# comparatia de comisioane.
-RE_LIMITA = re.compile(
-    r"limit[ăae]\w*\s+de\s+tranzac|valoare\s+tranzac|num[ăa]r\w*\s+de\s+tranzac"
-    r"|\bplafon", re.I)
-# Limita spusa direct: "limită zilnică", "limită maximă pe tranzacție" (Garanti,
-# Vista, Raiffeisen: 52 de valori de ordinul 10.000-1.000.000 lei numarate drept
-# comisioane). Doar cand celula e practic numai cifra: sub "Limita zilnică de
-# retragere numerar", Raiffeisen scrie "5% (minim 10 lei) din suma utilizată",
-# adica pretul, nu limita (vezi rol_de_conditie in parser_pdf).
-RE_LIMITA_SPUSA = re.compile(r"limit[ăae]\w*\s+(?:zilnic|maxim|minim|lunar)", re.I)
-RE_CURS = re.compile(r"curs\s+(de\s+)?schimb|curs\s+bnr|exchange\s+rate", re.I)
 # Randurile din cuprins ("CONTURI CURENTE ... PAG. 3") arata ca titluri de
 # sectiune si deveneau sectiuni: BCR PDAI avea "PACHET DE SERVICII PAG. 7".
 RE_CUPRINS = re.compile(r"\bpag\.?\s*\d+\b", re.I)
@@ -379,20 +364,6 @@ def _eticheta_pentru(sus, jos, blocuri):
         if parinti:
             nume = f"{parinti[-1]} {nume}"
     return nume
-
-
-def categorie(sectiune, serviciu, text, celula=""):
-    """Ce fel de cifra e: comision, dobanda, limita de tranzactionare sau curs."""
-    tot = f"{sectiune or ''} {serviciu or ''} {text or ''}"
-    if RE_DOBANDA.search(tot):
-        return "dobanda"
-    if RE_LIMITA.search(tot):
-        return "limita"
-    if RE_LIMITA_SPUSA.search(tot) and celula and _doar_cifra(celula):
-        return "limita"
-    if RE_CURS.search(tot):
-        return "curs"
-    return "comision"
 
 
 def _desparte_index(text):
@@ -761,11 +732,18 @@ def extrage_tarife(cale, banca, radacina=None):
 
     # A doua trecere: acum fiecare bloc de eticheta e intreg
     inregistrari = []
-    serviciu = None
+    serviciu = sectiune_anterioara = None
     conditie = frecventa = None
     for (nr_pagina, sus, jos, texte, analiza, geometrie, etichete_active,
          sectiune, antet) in de_emis:
         gasita = _eticheta_pentru(sus, jos, etichete_active)
+        # Fara eticheta, randul mosteneste serviciul de deasupra: corect peste o
+        # pagina rupta, greșit peste un titlu. La Vista, pretul pachetului ("5
+        # LEI/Luna", "500 LEI/AN") mostenea "Taxa SWIFT" din tabelul de plati de
+        # deasupra titlului "PACHETE DE PRODUSE SI SERVICII".
+        if not gasita and sectiune != sectiune_anterioara:
+            serviciu = None
+        sectiune_anterioara = sectiune
         if gasita:
             _index, eticheta = _desparte_index(gasita.strip())
             # indexul randului urmator se lipeste la coada ("pe adresa BCR 3.2.7.")

@@ -80,12 +80,19 @@ def _e_fragment(nume):
 # contul de plăți" — care e o retragere de numerar — primea transfer_credit de la
 # cuvantul "plăți". Un lookbehind nu merge: are nevoie de lațime fixa.
 RE_CONT_DE_PLATI = re.compile(r"cont\w*\s+de\s+pl[ăa][țt]i", re.I)
+# Eticheta care isi enumera continutul e pachetul, nu primul serviciu din lista:
+# "George, conţinȃnd: - administrarea Cont curent; - furnizarea unui Card..." dadea
+# emitere_card la 16 preturi de pachet BCR (12-1.200 lei). Conceptul se cauta doar
+# in capul etichetei. "ȃ" (a cu breve inversat) e chiar litera din document.
+RE_LISTA_CONTINUT = re.compile(r",?\s*(?:con[țt]in[âaȃ]nd|const[ăa]\s+[îi]n)\b.*",
+                               re.I | re.S)
 
 # Ordinea conteaza, si regula e: SUBSTANTIVUL-CAP decide. "Încasare interbancara
 # prin ordin de plata" e o incasare, nu un ordin de plata; "Anulare ordin de plata"
 # e o anulare; "Plată/negociere/manipulare documente" e serviciu documentar. Prima
 # versiune avea transfer_credit inaintea lor si le inghitea pe toate trei — 901 de
 # valori intr-un singur concept, dintre care multe greșite.
+RE_PLATA_PROGRAMATA = r"standing\s+order|plat[ăa]\s+programat|ordin\w*\s+programat"
 SERVICII = [
     # carduri — inaintea celor generale, fiindca "emitere card" nu e "emitere" oarecare
     # "refacere" si "card - reînnoire" (cu cardul inainte) scapau: 5 valori BCR
@@ -116,7 +123,12 @@ SERVICII = [
     # numerar
     # "Utilizare ATM/POS de la alte bănci pentru numerar" e tot o retragere
     ("retragere_numerar", r"(retrager|eliberar|ridicar|utilizar)\w*[^.]{0,40}numerar"
-                          r"|numerar[^.]{0,20}(retrager|eliberar)"),
+                          r"|numerar[^.]{0,20}(retrager|eliberar)"
+                          # ...si fara "numerar": BCR "Utilizare ATM-uri Erste
+                          # Group***" (8 valori, acelasi pret ca retragerea de la ATM
+                          # BCR) lua tranzactie_card din secțiunea "Tranzacţii
+                          # Internaţionale". Doar in capul etichetei, si nu la sold/PIN.
+                          r"|^\W*utilizar\w*\s+(?:a\s+)?ATM(?![^.]{0,60}(?:sold|PIN))"),
     ("depunere_numerar", r"depuner\w*[^.]{0,20}numerar|alimentar\w*[^.]{0,20}numerar"),
     # cont
     ("deschidere_cont", r"deschider\w*[^.]{0,25}(cont|depozit)"),
@@ -126,7 +138,12 @@ SERVICII = [
     # pachet" e tot abonamentul lunar al pachetului (22 de valori)
     ("administrare_cont", r"administrar\w*[^.]{0,25}(cont|pachet)"
                           r"|administrare\s+(lunar|anual)|pre[țt]\w*\s+pachet"
-                          r"|^\s*administrar\w*\s*$"),
+                          r"|^\s*administrar\w*\s*$"
+                          # ...si numele pachetului singur, cu pretul lui: "Pachet
+                          # Gold 0*/30 lei/lună" (Raiffeisen), "Pachet de servicii:
+                          # Cost lunar 50 LEI" (ProCredit), 20 de valori nemapate.
+                          # Nu componenta: "Pachet • comision de mentenanță".
+                          r"|^\W*pachet(?:ul)?\b(?![^.]{0,3}[•\-–])"),
     ("extras_de_cont", r"extras\w*\s+(de\s+)?cont|extras\s+de|stare\s+financiar"),
     # canale la distanta, ca serviciu in sine
     ("administrare_banking_distanta",
@@ -162,7 +179,7 @@ SERVICII = [
                     r"|contest(?:a[țt]|ar)|chargeback"),
     ("modificare_anulare", r"^\s*(modificar|anular|stornar)\w*"),
     ("debitare_directa", r"debitar\w*\s+direct|direct\s+debit"),
-    ("plata_programata", r"standing\s+order|plat[ăa]\s+programat|ordin\w*\s+programat"),
+    ("plata_programata", RE_PLATA_PROGRAMATA),
     ("speze_swift", r"speze\s+swift|mesaj\s+swift|comision\s+swift|ta?x[ăa]\s+swift"),
     # plati. Doua capcane, amandoua gasite la verificarea de mana:
     #  - "cont de plăți" e termenul legal pentru contul curent (PAD), nu o plata.
@@ -366,11 +383,11 @@ def canonic(inregistrare):
     coloanei din matrice si textul-sursa. Canalul e adesea scris in coloana, nu in
     nume ("Din aplicatia Salt"), iar destinatia in secțiune ("4.2. PLĂȚI > SEPA").
     """
-    nume = RE_CONT_DE_PLATI.sub(" cont ", (inregistrare.get("serviciu") or "")
-                                .translate(SEDILA_LA_VIRGULA))
-    context = RE_CONT_DE_PLATI.sub(" cont ", " ".join(
+    nume = RE_LISTA_CONTINUT.sub("", RE_CONT_DE_PLATI.sub(
+        " cont ", (inregistrare.get("serviciu") or "").translate(SEDILA_LA_VIRGULA)))
+    context = nume + " " + RE_CONT_DE_PLATI.sub(" cont ", " ".join(
         str(inregistrare.get(c) or "") for c in
-        ("serviciu", "sectiune", "coloana", "detaliu", "text_sursa")
+        ("sectiune", "coloana", "detaliu", "text_sursa")
     ).translate(SEDILA_LA_VIRGULA))
     concept = _potrivire(SERVICII, nume)
     # Contextul se folosește doar cand numele e un FRAGMENT ("- de la ATM-uri BCR",
@@ -380,6 +397,11 @@ def canonic(inregistrare):
     # cuvantul "plăți" din secțiune.
     if concept is None and _e_fragment(nume):
         concept = _potrivire(SERVICII, context)
+    # Sub "Standing order (plată programată)", "Plăți - alte conturi" e varianta
+    # ordinului programat, nu o plata oarecare: BCR, 4 valori puse la transfer_credit.
+    if concept == "transfer_credit" and re.search(
+            RE_PLATA_PROGRAMATA, inregistrare.get("sectiune") or "", re.I):
+        concept = "plata_programata"
     return concept, _potrivire(CANALE, context), _destinatie(concept, nume, context)
 
 
