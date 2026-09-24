@@ -151,25 +151,26 @@ def extrage(octeti, cale, slug, url, rol, j):
     return b_noi, j
 
 
-def surse_active(cur, banca=None, limita=None):
+def surse_active(cur, banca=None, limita=None, doar_noi=False):
     cur.execute(
         """SELECT s.id, b.slug, s.sursa, s.format, s.rol
            FROM surse s JOIN banci b ON b.id = s.id_banca
            WHERE s.tip_sursa = 'url' AND s.status = 'activ'
              AND s.rol IN ('produs', 'conditii', 'locator')
              AND (%s = '' OR b.slug = %s)
+             AND (NOT %s OR NOT EXISTS (SELECT 1 FROM hashes h WHERE h.id_sursa = s.id))
            ORDER BY b.slug, s.rol, s.sursa""",
-        (banca or "", banca or ""))
+        (banca or "", banca or "", doar_noi))
     surse = cur.fetchall()
     return surse[:limita] if limita else surse
 
 
-def din_retea(err, raport, banca=None, limita=None):
+def din_retea(err, raport, banca=None, limita=None, doar_noi=False):
     brute, stare = [], {}
     try:
         with psycopg2.connect(N.dsn()) as conn:
             with conn.cursor() as cur:
-                surse = surse_active(cur, banca, limita)
+                surse = surse_active(cur, banca, limita, doar_noi)
                 pe_banca = collections.defaultdict(list)
                 for s in surse:
                     pe_banca[s[1]].append(s)
@@ -238,6 +239,21 @@ def din_bronze(err, raport, banca=None):
 # ==========================================================================
 # O bancă, cap-coadă
 # ==========================================================================
+
+def completeaza_banca(err, raport, banca):
+    """Descoperă din nou, descarcă DOAR sursele noi, apoi reface banca din Bronze.
+
+    Pentru golurile găsite după popularea de la zero (documentele de tarife
+    nedescoperite pe 23.09): nu se mai cere de la bancă nimic din ce avem deja.
+    """
+    import descoperire
+    err.write("═══ 1. Descoperire (completare)\n")
+    descoperire.ruleaza(err, raport, banca)
+    err.write("\n═══ 2. Descărcare doar pentru sursele noi\n")
+    din_retea(err, raport, banca, doar_noi=True)
+    err.write("\n═══ 3. Refacere din Bronze\n")
+    scrie(err, raport, din_bronze(err, raport, banca), [banca])
+
 
 def ruleaza_banca(err, raport, banca, limita=None):
     import descoperire
@@ -324,6 +340,8 @@ def main():
                     help="rulează toate băncile, câte N în paralel")
     ap.add_argument("--llm-rezerva", action="store_true",
                     help="LLM pe liniile pe care parserul nu le citește (costă)")
+    ap.add_argument("--completeaza", action="store_true",
+                    help="cu --banca: descoperă din nou și descarcă doar sursele noi")
     ap.add_argument("--fara", default="",
                     help="cu --paralel: bănci de sărit, separate prin virgulă")
     ap.add_argument("--din-bronze", action="store_true",
@@ -341,10 +359,13 @@ def main():
     if a.din_bronze and (a.banca or not a.paralel):
         brute = din_bronze(err, raport, a.banca)
         scrie(err, raport, brute, [a.banca] if a.banca else None)
+    elif a.banca and a.completeaza:
+        completeaza_banca(err, raport, a.banca)
     elif a.banca:
         ruleaza_banca(err, raport, a.banca, a.limita)
     elif a.paralel:
         paralel(err, a.paralel, (["--din-bronze"] if a.din_bronze else [])
+                + (["--completeaza"] if a.completeaza else [])
                 + (["--llm-rezerva"] if a.llm_rezerva else []),
                 sari={s.strip() for s in a.fara.split(",") if s.strip()})
         return 0

@@ -137,6 +137,44 @@ def din_navigare(baza, slug, stare, raport):
     return gasite
 
 
+# Paginile care țin documentele de tarife. Sitemap-urile nu listează PDF-urile,
+# iar navigarea pe 2 niveluri nu ajunge la ele: pe 24.09 lipseau tarifele BCR
+# PJ și PFA (496 + 287 de valori în pachetul colegului), toate documentele de
+# informare CreditCoop, lista de carduri Exim, ambele liste TechVentures.
+RE_HUB_DOCUMENTE = re.compile(
+    r"tarif|comision|taxe|documente|informatii-utile|informare|dobanzi|conditii-generale"
+    r"|fees|pricing", re.I)
+MAX_HUBURI = 15
+
+
+def din_huburi(candidati, baza, slug, stare, raport):
+    """Intră pe paginile de tip „tarife / documente" și strânge linkurile PDF."""
+    huburi, vazute = [], set()
+    for u, _t in candidati:
+        u = normalizeaza_url(u)
+        if (u not in vazute and _pe_domeniu(u, baza) and RE_HUB_DOCUMENTE.search(urlparse(u).path)
+                and not RE_DOCUMENT_URL.search(u) and not any(z in u.lower() for z in ZGOMOT)):
+            vazute.add(u)
+            huburi.append(u)
+    # cele mai scurte adrese întâi: /tarife-si-comisioane înaintea
+    # /tarife-si-comisioane/arhiva/2019
+    huburi.sort(key=len)
+    gasite = []
+    for u in huburi[:MAX_HUBURI]:
+        rez = transport.adu(u, slug, stare)
+        if rez.verdict != "OK" or rez.octeti.startswith(b"%PDF"):
+            continue
+        soup = BeautifulSoup(rez.octeti, "lxml")
+        for a in soup.find_all("a", href=True):
+            l = urljoin(rez.url_final, a["href"]).split("#")[0]
+            text = a.get_text(" ", strip=True)
+            if l.startswith("http") and (RE_DOCUMENT_URL.search(l) or RE_DOCUMENT_TEXT.search(text)):
+                gasite.append((l, text))
+    raport["huburi_vizitate"] += min(len(huburi), MAX_HUBURI)
+    raport["documente_din_huburi"] += len(gasite)
+    return gasite
+
+
 def ruleaza(err, raport, banca=None):
     stare = {}
     try:
@@ -174,6 +212,7 @@ def ruleaza_banca(cur, slug, url_banca, produse, stare, err, raport):
         raport["banci_blocate"] += 1
         return
     candidati = din_sitemap(url_banca, slug, stare, raport) + nav
+    candidati += din_huburi(candidati, url_banca, slug, stare, raport)
     alese = {}
     for u, text in candidati:
         # Documentele pot sta pe CDN-ul grupului (BCR: cdn.erstegroup.com);
