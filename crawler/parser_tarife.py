@@ -57,7 +57,11 @@ RE_INDEX_SECTIUNE = re.compile(r"^(\d+(?:\.\d+)*\.|[A-Z]\.|[IVX]+\.)\s+(.+)$")
 RE_INDEX_CELULA = re.compile(r"^(?:\d+(?:\.\d+)*\.|[IVX]+\.)$")
 RE_DOAR_MONEDE = re.compile(r"^(?:\s*(?:lei|leu|ron|eur|euro|usd|gbp|chf)\s*[/,;]?)+$",
                             re.I)
-RE_INDEX_LA_SFARSIT = re.compile(r"\s+\d+(?:\.\d+){1,}\.?$")
+# Componente de cel mult doua cifre: o data are anul de patru ("Cu token cumpărat
+# începând cu 05.04.2019" ramanea "...începând cu", casetele "după 21.07.2014" la
+# fel; 6 etichete BCR si BRD), iar suma are grupe de trei ("Plăți instant ≤ LEI
+# 5.000" ramanea "≤ LEI"; 8 etichete ProCredit, BRCI, Garanti)
+RE_INDEX_LA_SFARSIT = re.compile(r"\s+\d{1,2}(?:\.\d{1,2})+\.?$")
 RE_LITERA_SAU_ROMAN = re.compile(r"^[A-Z]\.$|^[IVX]+\.$")
 # Randurile din cuprins ("CONTURI CURENTE ... PAG. 3") arata ca titluri de
 # sectiune si deveneau sectiuni: BCR PDAI avea "PACHET DE SERVICII PAG. 7".
@@ -736,16 +740,23 @@ class Sectiuni:
         return " > ".join(self.pe_adancime[k] for k in sorted(self.pe_adancime))
 
 
-def _mobilier(randuri, npagini):
+def _mobilier(randuri, npagini, cheie=lambda t: t):
     """Textele de antet/subsol: aceeasi linie, in marginea paginii, pe multe pagini."""
     if npagini < 3:
         return set()
     pe_text = {}
     for nr, _cuvinte, _m, _g, texte, in_margine in randuri:
         if in_margine:
-            pe_text.setdefault(" ".join(texte).strip(), set()).add(nr)
+            pe_text.setdefault(cheie(" ".join(texte).strip()), set()).add(nr)
     prag = max(2, int(REPETARE_MOBILIER * npagini))
     return {t for t, pagini in pe_text.items() if t and len(pagini) >= prag}
+
+
+def _fara_cifre(text):
+    """Subsolul numerotat se repeta doar fara cifre: "PAGINA 3", "PAGINA 4" erau
+    texte diferite, deci ramaneau, iar "PAGINA 3" ajungea eticheta a 3 valori BCR.
+    Numarul paginii si "Vers.10.2026 9" la Vista, "1/3 Nexent Bank..." la fel."""
+    return re.sub(r"\d+", "#", text)
 
 
 def randuri_document(cale, geometrie_pagini=None):
@@ -779,7 +790,11 @@ def randuri_document(cale, geometrie_pagini=None):
                 brute.append((nr_pagina, cuvinte, margini, geometrie, texte,
                               in_margine))
     respinse = _mobilier(brute, npagini)
-    return [r[:5] for r in brute if " ".join(r[4]).strip() not in respinse]
+    # fara cifre, doar din margine: in tabel, "#" ar lua orice celula cu un numar
+    numerotate = _mobilier(brute, npagini, _fara_cifre)
+    return [r[:5] for r in brute
+            if (t := " ".join(r[4]).strip()) not in respinse
+            and not (r[5] and _fara_cifre(t) in numerotate)]
 
 
 # Nivelul subtitlului, mai adanc decat orice index ("A." are 9): un titlu real il
@@ -1136,6 +1151,93 @@ def _lipeste_rol(analiza, i, t, analiza2, j, t2):
     analiza2[j] = (v2,) + tuple(analiza2[j][1:])
 
 
+# Nota de sub tabel (sau dintr-o caseta) se citea ca rand de tarif: la Vista
+# "*Comisionul Transfond de 0,51 LEI ... si comisionul BNR de 6 LEI pentru platile
+# ≥ 50.000 LEI sunt incluse" dadea trei "comisioane", intre ele pragul de 50.000;
+# la Eximbank "NOTE: 1) ... 2) 20 lei pentru Mastercard Standard..."; la BRD, TBI si
+# ProCredit "4Clienti vulnerabili ... 60% din castigul salarial". Valorile raman —
+# unele sunt preturi reale, dar conditionate si cu eticheta luata din nota — si
+# primesc categoria "nota", care le scoate din comparatie. Masurat pe cele 50 de
+# liste: 98 de valori, dintre care 47 mapate, toate pe concepte gresite (taxele
+# Transfond/BNR "incluse" ca transfer_credit, disputa RoPay ca refuz_plata) in afara
+# de una: BCR, "1 leu începând cu 01.09.2026" din nota 7, pretul unor pachete.
+# Marcajul: asterisc, "Nota:"/"NOTE:"/"Nota bene:", sau numarul notei lipit de
+# cuvant ("4Clienti", "1În", "17Financially"). Numarul urmat de spatiu nu: "1
+# Comision..." e si randul numerotat al unui tabel.
+RE_MARCAJ_NOTA = re.compile(
+    r"^\s*(?:\*+\s*\S|(?i:not[ăae]\s*(?:bene\s*)?:)|\d{1,2}[A-ZĂÂÎȘȚ][a-zăâîșț])")
+# Randurile notei incep la aceeasi margine; lista din nota e indentata (BCR "▪ 2.000
+# Lei pentru Cardul George Standard" la 28 de puncte de marginea notei)
+DX_NOTA = 30
+LATIME_MIN_BORDURA_NOTA = 60
+# Celula cu atatea cuvinte e proza: "gratuit" din ea nu e un pret. Nexent, in caseta
+# de sub tabel, "...dreptul sa denunte unilateral Contractul, imediat si gratuit",
+# iesea modificare_anulare gratuit (5 valori); Salt "Un glosar ... este disponibil
+# in mod gratuit".
+CUVINTE_MAX_GRATUIT = 12
+# Antetul firmei pe prima pagina, pe care _mobilier nu-l vede sub 3 pagini: BCR
+# (cardurile de credit, 2 pagini) "Capital Social: 1.625.341.625,40 lei" iesea
+# comision de 1,6 miliarde, "apelabil gratuit din orice reţea naţională" gratuit.
+# Pe celula valorii, nu pe eticheta: "Consemnare si confirmare capital social" e
+# un serviciu cu pret (BRCI, Raiffeisen).
+RE_ANTET_FIRMA = re.compile(r"capital\s+social\s*:|apelabil|din\s+orice\s+re[țţt]ea", re.I)
+
+
+def _bordura_intre(orizontale, sus, jos, x):
+    """O bordura orizontala trece intre doua randuri, prin dreptul lui x?
+
+    Doua umpleri alaturate lasa aceeasi muchie de doua ori, la acelasi y, si nu e
+    o linie: Vista coloreaza fiecare rand al notei cu dreptunghiul lui, deci intre
+    "*Comisionul Transfond..." si "6 LEI ... sunt incluse" era o "bordura" la 84,7
+    (de doua ori). O linie e o muchie singura sau un dreptunghi subtire, cu a doua
+    muchie la sub 2 puncte (ProCredit, 445,1 si 445,6). Sublinierea unui cuvant nu
+    e bordura: la Eximbank, "NOTE:" e subliniat pe 23 de puncte, iar bordurile de
+    celula masurate au peste 270.
+    """
+    prin_x = [t for t, x0, x1 in orizontale
+              if x0 - 1 <= x + 5 <= x1 + 1 and x1 - x0 >= LATIME_MIN_BORDURA_NOTA]
+    for t in prin_x:
+        if sus - 1 <= t <= jos + 1:
+            gemene = sum(1 for t2 in prin_x if abs(t2 - t) < 0.1)
+            subtire = any(0.1 <= abs(t2 - t) <= 2 for t2 in prin_x)
+            if gemene == 1 or subtire:
+                return True
+    return False
+
+
+def _nota_dupa(nota, pagina, x, sus, jos, nevide, proza, orizontale):
+    """Nota in curs dupa randul acesta: (pagina, x, jos, sus, proza) sau None.
+
+    Nota tine pana la urmatorul rand de tabel: unul cu mai multe celule, unul care
+    incepe in alta parte, sau unul de dincolo de o bordura orizontala. La
+    ProCredit, "*Excepție: retragerile ... Euronet" sta in coloana numelui, iar sub
+    ea "Depuneri de numerar gratuite" incepe la acelasi x; doar bordura le
+    desparte. Proza sarita de extrage_tarife deschide si ea o nota: bucatile ei
+    scurte ("1EUR/2EUR).", "▪ 2.000 Lei pentru Cardul George") treceau filtrul.
+
+    Acelasi rand vizual, rupt in doua de exponentul notei ("17Financially" la 634,
+    restul frazei la 635 si x=100), continua nota oriunde ar incepe. Dar nu dupa
+    proza: la Raiffeisen (pagina la 300 dpi) un rand de tabel fara goluri detectate
+    e "proza", iar pretul lui, "12 lei", sta pe acelasi rand vizual la x=2726.
+    """
+    if len(nevide) != 1:
+        return None
+    if proza or RE_MARCAJ_NOTA.match(nevide[0]):
+        return (pagina, x, jos, sus, proza)
+    if nota and nota[0] == pagina and (
+            (abs(sus - nota[3]) <= TOL_BORDURA and not nota[4])
+            or (nota[1] - TOL_BORDURA <= x <= nota[1] + DX_NOTA
+                and not _bordura_intre(orizontale, nota[2], sus, x))):
+        return (pagina, nota[1], jos, sus, proza)
+    return None
+
+
+def _e_nota(tip, text):
+    """Valoarea citita din proza sau din antetul firmei, nu dintr-o celula de pret."""
+    return bool(RE_ANTET_FIRMA.search(text)
+                or (tip == "gratuit" and len(text.split()) > CUVINTE_MAX_GRATUIT))
+
+
 def extrage_tarife(cale, banca, radacina=None):
     """Inregistrarile de comision dintr-o lista de tarife nestandardizata."""
     cale = Path(cale)
@@ -1169,24 +1271,30 @@ def extrage_tarife(cale, banca, radacina=None):
     pret = defaultdict(set)
     rand_titlu_caps = None    # randul ultimului titlu cu majuscule, pentru alipire
     pagina_anterioara = None
+    # (pagina, x, jos, sus, proza) al notei in curs: marginea ei si ultimul ei rand
+    nota = None
     for k, ((nr_pagina, cuvinte, margini, geometrie, texte), analiza) in enumerate(
             zip(randuri, analize)):
+        sus = min(w["top"] for w in cuvinte)
+        jos = max(w["bottom"] for w in cuvinte)
+        nevide = [i for i, t in enumerate(texte)
+                  if t and not RE_DOAR_INDEX.match(t)]
+        x = cuvinte[0]["x0"]
         # un rand fara nicio coloana si cu multe cuvinte e proza, nu tarif
-        if (geometrie == "unic" and len(cuvinte) > CUVINTE_MAX_RAND_UNIC
-                and not _e_titlu_cu_index(" ".join(texte).strip())):
+        proza = (geometrie == "unic" and len(cuvinte) > CUVINTE_MAX_RAND_UNIC
+                 and not _e_titlu_cu_index(" ".join(texte).strip()))
+        nota = _nota_dupa(nota, nr_pagina, x, sus, jos, [texte[i] for i in nevide],
+                          proza, geometrie_pagini[nr_pagina][0])
+        if proza:
             continue
         if RE_CUPRINS.search(" ".join(texte)):
             continue          # rand din cuprins, nu din tabel
 
-        sus = min(w["top"] for w in cuvinte)
-        jos = max(w["bottom"] for w in cuvinte)
         if pagina_anterioara != nr_pagina:
             blocuri_et = []          # pagina noua, alte poziții verticale
         pagina_anterioara = nr_pagina
 
         are_valori = any(v for v, _p, _f, _d in analiza)
-        nevide = [i for i, t in enumerate(texte)
-                  if t and not RE_DOAR_INDEX.match(t)]
         semn = tuple(round(m) for m in margini)
         coloane_pret = pret[semn]
         coloane_pret = coloane_pret - {col_nume.get(semn)}
@@ -1203,6 +1311,7 @@ def extrage_tarife(cale, banca, radacina=None):
                 antete.clear()      # tabel nou, antetul vechi nu se mai aplica
                 semn_cu_valori.clear()   # si tabelul nou n-a dat inca valori
                 blocuri_et = []     # si alte etichete
+                nota = None         # si nota de dinainte s-a terminat
                 continue
             # Titlul cu index in coloana lui si subtitlul intra in secțiune, dar raman
             # si parinti pentru subpunctele de sub ei, deci nu golesc etichetele si
@@ -1246,7 +1355,7 @@ def extrage_tarife(cale, banca, radacina=None):
         pret[semn].update(i for i, a in enumerate(analiza) if a[0])
         de_emis.append((nr_pagina, sus, jos, texte, analiza, geometrie,
                         blocuri_et, sectiuni.cale() or None,
-                        antete.get(semn, []), margini[0]))
+                        antete.get(semn, []), margini[0], nota is not None))
 
     # A doua trecere: acum fiecare bloc de eticheta e intreg
     cu_pret = defaultdict(set)     # lista de blocuri -> blocurile care primesc o valoare
@@ -1257,7 +1366,7 @@ def extrage_tarife(cale, banca, radacina=None):
     serviciu = sectiune_anterioara = None
     conditie = frecventa = None
     for (nr_pagina, sus, jos, texte, analiza, geometrie, etichete_active,
-         sectiune, antet, stanga) in de_emis:
+         sectiune, antet, stanga, in_nota) in de_emis:
         gasita = _eticheta_pentru(
             sus, jos, etichete_active,
             lambda xv, o_celula=False, g=geometrie_pagini[nr_pagina], st=stanga, a=sus,
@@ -1298,9 +1407,10 @@ def extrage_tarife(cale, banca, radacina=None):
                     # vezi rol_de_conditie in parser_pdf: cifrele care sunt cerinte
                     # sau limite, nu preturi, ies din comparatie dar se pastreaza
                     "rol": rol_de_conditie(texte[i], serviciu, val) or rol,
-                    "categorie": categorie(sectiune, serviciu,
+                    "categorie": "nota" if in_nota or _e_nota(tip, texte[i]) else
+                                 categorie(sectiune, serviciu,
                                            f"{texte[i]} {antet[i] if i < len(antet) else ''}",
-                                           texte[i]),
+                                           texte[i], antet[i] if i < len(antet) else ""),
                     "sursa_pdf": sursa,
                     "pagina": nr_pagina,
                     "geometrie": geometrie,
