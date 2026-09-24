@@ -7,7 +7,26 @@ vechi. Pachetul colegului apare mai jos doar ca reper numeric.
 Cifrele „după" vin din `python scripts/raport_calitate.py`, rulat pe 24.09.2026
 după refacerea finală din Bronze.
 
-## Rezultatul, pe scurt
+## Actualizare 24.09, după completare și parserele colegului
+
+Descoperirea intră acum și pe paginile „tarife / documente" (BCR: 97 → 326 de
+surse active), iar extracția folosește parserele PDF ale colegului (subpuncte
+cu serviciu, USD/GBP/CHF, valori false scoase). Refăcut din Bronze.
+
+| | 24.09 dimineață | 24.09 după completare + parserele colegului |
+|---|---|---|
+| valori | 7.017 | **27.218** |
+| curate | 3.223 (46%) | **14.722 (54%)** |
+| concept comparabil | 59% | **65%** |
+| datate | 57% | **69%** |
+| ambigue | 24% | 20% |
+| citate HTML regăsite | 520/520 | 626/626 |
+| citate PDF (eșantion) | 222/223 | 245/247 |
+
+De verificat: BCR are 13.661 de valori (jumătate din total) — posibil și
+versiuni vechi din arhivă, marcate totuși în vigoare.
+
+## Rezultatul, pe scurt (24.09 dimineață)
 
 | | |
 |---|---|
