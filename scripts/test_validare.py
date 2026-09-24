@@ -889,5 +889,110 @@ T(not _e_titlu_cu_index("1. Comisionul se percepe pentru fiecare operatiune efec
   "nota numerotata NU e titlu")
 
 
+# --- sectiuni: titluri, capitole si subtitluri -------------------------------
+# Secțiunea decide conceptul etichetelor-fragment ("Executare", "Emitere
+# iniţială"), deci un titlu ratat sau unul fals muta valori intre concepte.
+from crawler.parser_tarife import (RE_DOAR_MONEDE, RE_INDEX_SECTIUNE,  # noqa: E402
+                                   Sectiuni, _e_subtitlu, _index_rand,
+                                   _introduce_lista)
+
+# index cu punct in interior, fara cel final (Raiffeisen)
+T(RE_INDEX_SECTIUNE.match("5.3 Multicash").group(1) == "5.3", "5.3 Multicash e titlu")
+T(RE_INDEX_SECTIUNE.match("5.5 MT 101") is not None, "5.5 MT 101 e titlu")
+T(RE_INDEX_SECTIUNE.match("15.3 comision zero") is None, "randul de tarif NU e titlu")
+T(RE_INDEX_SECTIUNE.match("2.500 lei") is None, "suma NU e index")
+T(RE_INDEX_SECTIUNE.match("2 intrări gratuite pe an,") is None, "nota fara punct NU e titlu")
+# antetul de monede cu paranteze (BCR); "EUR*" ramane afara, vezi RE_DOAR_MONEDE
+T(bool(RE_DOAR_MONEDE.match("(USD) (EUR)")), "(USD) (EUR) e antet de monede")
+T(not RE_DOAR_MONEDE.match("EUR*"), "EUR* NU e inca antet de monede")
+T(_e_titlu(["(USD) (EUR)"], [0], [0, 500], 500) is None, "(USD) (EUR) NU e titlu")
+
+# lista numerotata din coloana de pret nu e titlu (Salt, ProCredit)
+T(_e_titlu(["", "2. Clientii Salt Fondatori."], [1], [0, 100, 500], 500, col_nume=0)
+  is None, "punct numerotat din celula de pret NU e titlu")
+T(_e_titlu(["1. Pachete de cont curent"], [0], [0, 500], 500, col_nume=0)
+  == ("1.", "Pachete de cont curent"), "titlul cu index din coloana numelui")
+
+# cifra romana cu majuscule e capitol (BRD); cu litere mici in paranteza, nu (BCR)
+s = Sectiuni()
+s.pune("2.", "Credite pentru studii si tratamente medicale")
+s.pune("II.", "LINII DE CREDIT")
+T(s.cale() == "LINII DE CREDIT", "capitolul roman inchide sectiunea de dinainte")
+s.pune("1.", "Creditul Expresso")
+T(s.cale() == "LINII DE CREDIT > Creditul Expresso", "sub capitolul roman")
+s = Sectiuni()
+s.pune("I.", "CREDITE (cu excepţia creditelor pe card)")
+s.pune("1.", "Comision pentru analiza creditului")
+T(s.cale() == "Comision pentru analiza creditului",
+  "romanul cu paranteza cu litere mici ramane frunza")
+
+# numerotarea reluata sub capitolul cu majuscule (BCR PJ)
+s = Sectiuni()
+s.pune("9.", "ACCEPTARE LA PLATĂ A CARDURILOR")
+s.pune("1.", "POS")
+T(s.cale() == "ACCEPTARE LA PLATĂ A CARDURILOR > POS", "1. POS sub capitol")
+s.pune("2.", "E-COMM")
+T(s.cale() == "ACCEPTARE LA PLATĂ A CARDURILOR > E-COMM", "2. E-COMM sub capitol")
+s.pune("10.", "FINANȚAREA COMERȚULUI")
+T(s.cale() == "FINANȚAREA COMERȚULUI", "capitolul urmator il inlocuieste")
+s = Sectiuni()
+s.pune(None, "LISTĂ PREȚURI PERSOANE FIZICE")
+s.pune("1.", "Pachete de cont curent")
+T(s.cale() == "Pachete de cont curent", "titlul documentului, fara index, ramane inlocuit")
+
+# randul cu pret care isi poarta indexul inchide ramura fratelui
+s = Sectiuni()
+s.pune("3.", "Comision de administrare credit")
+s.rand_cu_index("6.")
+T(s.cale() == "", "6. cu pret inchide 3.")
+s = Sectiuni()
+s.pune("15.8", "Comisioane percepute de terţi pentru efectuarea de transferuri")
+s.rand_cu_index("16.")
+T(s.cale() == "", "16. inchide 15.8")
+s = Sectiuni()
+s.pune("1.2.", "Operațiuni prin instrumente de debit")
+s.rand_cu_index("1.2.4.")
+T(s.cale() == "Operațiuni prin instrumente de debit", "copilul NU inchide parintele")
+s = Sectiuni()
+s.pune("6.", "ALTE PRODUSE ȘI SERVICII")
+s.rand_cu_index("1.")
+s.rand_cu_index("7.")
+T(s.cale() == "ALTE PRODUSE ȘI SERVICII", "numerotarea reluata NU inchide capitolul")
+T(_index_rand(["6.", "Comision unic", "-", "10 EURO"], 1) == "6.", "index in celula lui")
+T(_index_rand(["10. Cost cu avizul de legalitate*", "396,8 EUR"], 0) == "10.",
+  "index la inceputul numelui")
+T(_index_rand(["Plati", "5 lei"], 0) is None, "fara index")
+
+# subtitlul ramane deschis pentru randul care ii repeta cuvantul (Nexent)
+s = Sectiuni()
+s.subtitlu("Scrisori de garantie")
+s.rand("Acceptare garantie de credit emisa de alte banci in favoarea bancii")
+T(s.cale() == "Scrisori de garantie", "randul cu garantie ramane sub subtitlu")
+s.rand("Executare")
+T(s.cale() == "Scrisori de garantie", "varianta ramane sub subtitlu")
+s.rand("Anulare la cerere inainte de expirarea datei de valabilitate")
+T(s.cale() == "", "numele intreg fara cuvantul subtitlului il inchide")
+s = Sectiuni()
+s.subtitlu("Ordin de plata conditionat")
+s.rand("Investigatie ordin de plata")
+T(s.cale() == "", "conteaza ultimul cuvant cu sens (conditionat), nu ordin")
+
+# nici elementul de lista, nici serviciul cu "0" in coloana de pret nu e subtitlu
+T(_e_subtitlu(["Scrisori de garantie"], [0], [0, 500], 500, "bordura"), "subtitlu Nexent")
+T(not _e_subtitlu(["- Caseta II (100*260*390 mm)", ""], [0], [0, 400, 500], 500,
+                  "bordura"), "elementul de lista NU e subtitlu")
+T(not _e_subtitlu(["Inchidere cont curent/ Current account closing", "0"], [0],
+                  [0, 400, 500], 500, "bordura"), "serviciul gratuit NU e subtitlu")
+# titlul cu index lung doar din paranteza
+T(_titlu_din_tabel(["4.", "Cost de asigurare viaţă şi complexă (opţional, încasat lunar,"
+                    " aplicat la valoarea iniţiala a creditului)"], [1]) is not None,
+  "lungimea titlului se masoara fara paranteza")
+# randul lung doar din paranteza, terminat in ":", nu e proza
+T(_introduce_lista("Cost de asigurare de viaţă (opţional, încasat lunar, aplicat la soldul"
+                   " creditului):"), "numele cu paranteza si doua puncte")
+T(not _introduce_lista("Comisionul se percepe lunar si se retine automat din contul curent"
+                       " al clientului la data scadentei:"), "proza lunga ramane proza")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)
