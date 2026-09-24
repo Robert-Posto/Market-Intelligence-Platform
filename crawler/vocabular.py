@@ -70,10 +70,26 @@ RE_ETICHETA_FRAZA = re.compile(r"\w\s*\.\s*$")
 CUVINTE_FRAZA = 5
 
 
+# Eticheta care isi numeste singura serviciul, dar unul fara concept in vocabular,
+# nu e fragment si nu ia conceptul secțiunii. Sub "PLATI", "Investigatii
+# telefonice/ email/ SWIFT" (Vista, "Maxim 15 EUR") intra la transfer_credit si
+# strica linia plafoanelor de transfer (dispersie interna 60x).
+# "Confirmare" simplu nu intra aici: sub "ACREDITIVE" e confirmarea acreditivului,
+# serviciu documentar (13 valori), la fel investigarea documentelor de incasso.
+RE_SERVICIU_FARA_CONCEPT = re.compile(
+    r"^\W*(?:speze\s+pentru\s+|comision\s+(?:de\s+|pentru\s+)?)?investiga[țt]"
+    r"(?![^.]{0,40}document)"
+    r"|^\W*(?:eliberare\s+)?(?:adeverin[țt]|confirm\w*\s+(?:sold|audit)|duplicat"
+    r"|scriso(?:are|ri)\s+de\s+(?:bonitate|recomandare|inten))"
+    r"|^\W*(?:[îi]nchirier\w*\s+)?caset|^\W*curierat", re.I)
+
+
 def _e_fragment(nume):
     """Eticheta nu spune singura despre ce serviciu e vorba."""
     if RE_ETICHETA_NOTA.search(nume):
         return False        # nota de subsol: nu se mapeaza deloc
+    if RE_SERVICIU_FARA_CONCEPT.search(nume):
+        return False        # isi numeste serviciul, doar ca vocabularul nu il are
     if RE_ETICHETA_FRAZA.search(nume) and len(nume.split()) >= CUVINTE_FRAZA:
         return False        # proza fara marcaj: tot nota, doar nemarcata
     return len(nume) < LUNGIME_FRAGMENT or bool(RE_ETICHETA_FRAGMENT.search(nume))
@@ -110,7 +126,9 @@ SERVICII = [
     ("reemitere_card", r"(reemiter|re-emiter|re[îi]nnoir|[îi]nlocuir|duplicat|refacer)\w*[^.]{0,30}card"
                        r"|card[^.]{0,30}(reemiter|re[îi]nnoir|[îi]nlocuir)"),
     ("emitere_card", r"(emiter|furnizar|eliberar)\w*[^.]{0,30}card"
-                     r"|card[^.]{0,25}(emiter|furnizar)"),
+                     r"|card[^.]{0,25}(emiter|furnizar)"
+                     # "Comision de emitere plastic" (Libra, 4 valori)
+                     r"|emiter\w*\s+plastic"),
     ("livrare_card", r"(livrar|trimiter|transmiter|curierat)\w*[^.]{0,30}card"
                      r"|card[^.]{0,25}livrar"),
     ("blocare_card", r"blocar\w*[^.]{0,30}card|card[^.]{0,25}blocar"
@@ -177,8 +195,7 @@ SERVICII = [
     # "Extras suplimentar de cont", "Extrase la sediul Bancii" (Vista, 6 valori);
     # nu "Extras ONRC", care e extrasul din registrul comertului
     ("extras_de_cont", r"extras\w*\s+(de\s+)?cont|extras\s+de|stare\s+financiar"
-                       r"|extras\w*\s+(?:\w+\s+){1,2}de\s+cont|^\W*extrase\b"
-                       r"|extras\w*\s+alte\s+cont"),
+                       r"|extras\w*\s+(?:\w+\s+){1,2}de\s+cont|^\W*extrase\b"),
     # canale la distanta, ca serviciu in sine
     ("administrare_banking_distanta",
      r"administrar\w*[^.]{0,30}(internet|mobile|phone|e-?)\s*banking"
@@ -256,7 +273,8 @@ SERVICII = [
     # "Anulare serviciu SMS Alert" e o anulare. Puse mai sus in lista, furau 22 de
     # valori corect mapate. Puse aici, la sfarsit: zero deplasari, 47 de valori
     # castigate. A patra oara in proiect cand ordonarea dupa substantivul-cap decide.
-    ("file_cec", r"file\s+cec|carnet\s+de\s+cec|bilet\w*\s+la\s+ordin"
+    # si fara "de": "Emitere carnet cec in lei" > "Fila" (Vista, 8 valori)
+    ("file_cec", r"file\s+cec|carnet\w*\s+(?:de\s+)?cec|bilet\w*\s+la\s+ordin"
                  r"|\bcec\w*\s+(?:barat|in\s+alb)|formular\w*\s+de\s+cec"
                  r"|instrument\w*\s+de\s+debit|\bcecuri\b"),
     ("alerta_sms", r"\bSMS\s*(?:alert|banking|notific)|alert[ăae]\s+(?:prin\s+)?SMS"

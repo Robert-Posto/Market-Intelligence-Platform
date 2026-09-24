@@ -861,6 +861,21 @@ T(rol_de_conditie("9.000 RON", "Suma maxima zilnica de retragere numerar", 9000.
   == "conditie", "suma maxima e conditie")
 T(rol_de_conditie("50.000 lei", "Valoarea maximă a limitei de credit", 50000.0)
   == "conditie", "plafonul cardului de credit e conditie")
+# serviciul numit dar fara concept nu ia secțiunea (Vista: investigatii sub PLATI)
+T(canonic({"serviciu": "Investigatii telefonice/ email/ SWIFT", "sectiune": "PLATI"})[0]
+  is None, "investigatii NU iau conceptul sectiunii")
+T(canonic({"serviciu": "Confirmare", "sectiune": "ACREDITIVE DE EXPORT"})[0]
+  == "documentar", "confirmarea acreditivului ramane documentar")
+CN("Comision de emitere plastic", "emitere_card", "emitere plastic")
+T(canonic({"serviciu": "Fila", "sectiune": "Emitere carnet cec in lei"})[0] == "file_cec",
+  "carnet cec fara de")
+# banda din coloana din dreapta: celula din stanga inaintea parintelui de deasupra
+BL = [(127, 135, "Depuneri de numerar", True, 36), (145, 153, "FX", False, 140),
+      (151, 159, "Retrageri de numerar", True, 36)]
+T(_eticheta_pentru(145, 153, BL, lambda xv: "Retrageri de numerar")
+  == "Retrageri de numerar FX", "banda ia celula din stanga (Nexent)")
+T(_eticheta_pentru(145, 153, BL) == "Depuneri de numerar FX",
+  "fara geometrie ramane parintele de deasupra")
 # "% p.a." e dobanda doar sub descoperit/restanta (Salt 6); caseta ramane comision
 T(categorie(None, "neautorizat", "20 % p.a. (LEI) / 15% p.a. (valuta)") == "dobanda",
   "procent pe an la descoperit neautorizat")

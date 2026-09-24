@@ -360,7 +360,17 @@ def _eticheta_pentru(sus, jos, blocuri, parinte_stanga=None):
 
     nume = blocuri[i][2]
     banda, subpunct = _e_doar_banda(nume), _e_subpunct(nume)
-    if banda or subpunct:
+    # Varianta dintr-o coloana din dreapta isi ia intai numele din celula cu
+    # bordura din stanga. "Ultimul parinte de deasupra" greseste acolo unde celula
+    # din stanga e centrata: la Nexent, randul "FX 0,5%" al retragerilor lua
+    # "Depuneri de numerar", fiindca "Retrageri de numerar" e scris sub el.
+    parinte = None
+    if (parinte_stanga and _x(blocuri[i]) is not None
+            and (banda or subpunct or _e_varianta(nume))):
+        parinte = parinte_stanga(_x(blocuri[i]))
+    if parinte:
+        nume = f"{parinte} {nume}"
+    elif banda or subpunct:
         parinti = [b[2] for b in blocuri[:i] if b[3] and not _e_doar_banda(b[2])
                    and not _e_subpunct(b[2])]
         # Subpunctul cere un nume intreg: coada unei fraze ("pentru care retragerea
@@ -378,10 +388,6 @@ def _eticheta_pentru(sus, jos, blocuri, parinte_stanga=None):
         # inceputul: BCR "Emiterea unui Card de debit/ (furnizarea)" + "(principal)",
         # iar "(principal)21" ramanea numele a 7 valori.
         nume = f"{blocuri[i - 1][2]} {nume}"
-    elif parinte_stanga and _x(blocuri[i]) is not None and _e_varianta(nume):
-        parinte = parinte_stanga(_x(blocuri[i]))
-        if parinte:
-            nume = f"{parinte} {nume}"
     return nume
 
 
