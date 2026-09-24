@@ -889,5 +889,61 @@ T(not _e_titlu_cu_index("1. Comisionul se percepe pentru fiecare operatiune efec
   "nota numerotata NU e titlu")
 
 
+# --- randuri: gruparea cuvintelor in randuri de grila, 24 sept ------------------
+from crawler.parser_tarife import _scara, gol_minim_rand, randuri_de_cuvinte  # noqa: E402
+
+
+def _litere(text, x0, top, jos):
+    return [{"text": c, "x0": x0 + 6 * i, "x1": x0 + 6 * i + 6, "top": top, "bottom": jos}
+            for i, c in enumerate(text)]
+
+
+def _cuv(litere):
+    return {"text": "".join(c["text"] for c in litere), "x0": litere[0]["x0"],
+            "x1": litere[-1]["x1"], "top": min(c["top"] for c in litere),
+            "bottom": max(c["bottom"] for c in litere), "chars": litere}
+
+
+class _Pagina:
+    def __init__(self, cuvinte, latime=595, inaltime=842):
+        self.cuvinte, self.width, self.height = cuvinte, latime, inaltime
+
+    def extract_words(self, **_kw):
+        return [dict(w, chars=list(w["chars"])) for w in self.cuvinte]
+
+
+def _texte(randuri):
+    return [[w["text"] for w in r] for r in randuri]
+
+
+# ProCredit p7: exponentul din "plată4" urca top-ul cu 1,8 pt peste granita galetii
+PAG = _Pagina([_cuv(_litere("Anulare", 54, 710.84, 722.84)),
+               _cuv(_litere("plată", 100, 710.84, 722.84) + _litere("4", 130, 709.03, 715.0)),
+               _cuv(_litere("25", 300, 710.84, 722.84))])
+T(_texte(randuri_de_cuvinte(PAG)) == [["Anulare", "plată4", "25"]],
+  "exponentul lipit NU rupe randul")
+# ProCredit p12: cifre la 10 pt si "%" la 10,6 pe aceeasi linie; mediana le rupea
+PAG = _Pagina([_cuv(_litere("2,595", 60, 97.91, 107.91) + _litere("%,", 90, 97.46, 108.06)),
+               _cuv(_litere("EURO", 120, 97.46, 108.06))])
+T(_texte(randuri_de_cuvinte(PAG)) == [["2,595%,", "EURO"]],
+  "doua marimi de litera raman pe acelasi rand")
+# randurile vecine raman separate
+PAG = _Pagina([_cuv(_litere("Anulare", 54, 710.84, 722.84)),
+               _cuv(_litere("Recuperare", 54, 727.9, 739.9))])
+T(len(randuri_de_cuvinte(PAG)) == 2, "randul urmator NU se lipeste")
+# Raiffeisen IMM: pagina de 3508x2480 pt se aduce la A4; A5 si 1024x768 raman
+T(abs(_scara(_Pagina([], 3508, 2480)) - 4.166) < 0.01, "300 dpi se aduce la A4")
+T(_scara(_Pagina([], 595.3, 420.9)) == 1 and _scara(_Pagina([], 1024, 768)) == 1,
+  "A5 si prezentarea NU se scaleaza")
+PAG = _Pagina([_cuv(_litere("Discrepante", 417, 1886.6, 1926.6))], 3508, 2480)
+W = randuri_de_cuvinte(PAG, k=_scara(PAG))[0][0]
+T(abs(W["x0"] - 100.1) < 0.1 and abs(W["top"] - 452.8) < 0.1, "coordonate aduse la A4")
+# cu doua goluri, spatiul dintre cuvinte e golul mic ("Discrepante 100 euro")
+T(gol_minim_rand([_cuv(_litere("Discrepante", 0, 0, 10)), _cuv(_litere("100", 166, 0, 10)),
+                  _cuv(_litere("euro", 186, 0, 10))]) == 8.0, "doua goluri: pragul din cel mic")
+T(gol_minim_rand([_cuv(_litere("Taxa", 0, 0, 10)), _cuv(_litere("de", 26, 0, 10)),
+                  _cuv(_litere("emitere", 40, 0, 10))]) == 8.0, "fraza obisnuita NU se rupe")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)
