@@ -42,16 +42,17 @@ sys.path.insert(0, os.path.dirname(AICI))
 sys.path.insert(0, AICI)
 import config                      # noqa: E402
 import normalizeaza as N           # noqa: E402
+import flux                        # noqa: E402
+from crawler import UA as UA_ECHIPA  # noqa: E402
 
 FISIER_ID = os.path.join(os.path.dirname(AICI), "date", "app_id_gasite.json")
 
-# Două vitrine: `ro` e piața noastră, `us` e vitrina implicită a Apple și de
-# multe ori singura cu recenzii în volum. Se păstrează separat, nu amestecate:
-# părerea unui client american despre aplicația BCR nu spune același lucru.
-STOREFRONTS = ("ro", "us")
+# O singură vitrină, `ro`: colegul a măsurat că recenziile din vitrina `us`
+# ale Citibank și Revolut sunt 0% în română (aplicații globale, clienți străini).
+STOREFRONT = "ro"
 
-UA = {"User-Agent": "MIP/1.0 (monitorizare concurenta; contact IT Libra Bank)"}
-PAUZA = 3.0          # iTunes acceptă ~20 cereri/minut per IP
+UA = {"User-Agent": UA_ECHIPA}
+PAUZA = 3.0          # o cerere la 3 s spre Apple
 
 
 def hash_autor(nume, sare):
@@ -59,6 +60,7 @@ def hash_autor(nume, sare):
 
 
 def lookup(app_id):
+    # `/lookup?` e permis; doar `/*/lookup?` (cu țara în cale) e interzis.
     r = requests.get("https://itunes.apple.com/lookup",
                      params={"id": app_id, "country": "ro"}, headers=UA, timeout=25)
     r.raise_for_status()
@@ -66,23 +68,42 @@ def lookup(app_id):
     return rez[0] if rez else None
 
 
-def recenzii(app_id, storefront):
-    """Recenziile cu text. Feed-ul e capricios, deci eșecul nu oprește rularea."""
-    url = (f"https://itunes.apple.com/{storefront}/rss/customerreviews/"
-           f"id={app_id}/sortby=mostrecent/json")
-    try:
-        r = requests.get(url, headers=UA, timeout=20)
-        r.raise_for_status()
-        intrari = (r.json().get("feed") or {}).get("entry") or []
-    except Exception:
-        return []
-    # Când feed-ul are un singur review, Apple întoarce un OBIECT, nu o listă.
-    # Fără normalizare, iterarea dă cheile dicționarului în loc de recenzie —
-    # eroare reală, prinsă la prima rulare.
-    if isinstance(intrari, dict):
-        intrari = [intrari]
-    # prima intrare e uneori metadata aplicației, nu o recenzie
-    return [x for x in intrari if (x.get("im:rating") or {}).get("label")]
+def pagina_app(app_id):
+    """Recenziile afișate și distribuția pe stele, de pe pagina publică.
+
+    Nu din feed-ul RSS: robots.txt al itunes.apple.com îl interzice
+    (`Disallow: /*/rss/*`, verificat 24.09.2026). Pagina `apps.apple.com` e
+    permisă și conține datele serializate ale paginii (`serialized-server-data`):
+    ~8 recenzii alese de Apple (nu neapărat cele mai recente) și numărul de
+    note pe fiecare stea — o informație pe care feed-ul nici nu o avea.
+    """
+    import re
+    url = f"https://apps.apple.com/{STOREFRONT}/app/id{app_id}"
+    if not flux.permite(url, "apple"):
+        return None, None, "interzis de robots.txt"
+    r = requests.get(url, headers=UA, timeout=30)
+    r.raise_for_status()
+    m = re.search(r'<script[^>]*id="serialized-server-data"[^>]*>(.*?)</script>',
+                  r.content.decode("utf-8"), re.S)
+    if not m:
+        return [], None, "pagina nu are date serializate"
+    recenzii, distributie = {}, None
+
+    def cauta(o):
+        nonlocal distributie
+        if isinstance(o, dict):
+            if o.get("$kind") == "Review" and o.get("id"):
+                recenzii[o["id"]] = o
+            if isinstance(o.get("ratingCounts"), list) and len(o["ratingCounts"]) == 5:
+                distributie = [int(x) for x in o["ratingCounts"]]
+            for v in o.values():
+                cauta(v)
+        elif isinstance(o, list):
+            for v in o:
+                cauta(v)
+
+    cauta(json.loads(m.group(1)))
+    return list(recenzii.values()), distributie, None
 
 
 def main():
@@ -170,39 +191,46 @@ def main():
                     )
                     raport["capturi"] += len(capturi)
 
+                try:
+                    intrari, distributie, motiv = pagina_app(app_id)
+                except Exception as exc:
+                    intrari, distributie, motiv = [], None, type(exc).__name__
+                time.sleep(PAUZA)
+                if distributie:
+                    cur.execute("""UPDATE app_release SET distributie_stele = %s
+                                   WHERE id_banca = %s AND platforma = 'ios'""",
+                                (distributie, banci[slug]))
+                valori = []
+                for x in intrari or []:
+                    try:
+                        nota = int(x.get("rating"))
+                    except (TypeError, ValueError):
+                        continue
+                    text = " — ".join(p for p in (x.get("title"), x.get("contents")) if p)
+                    valori.append((
+                        banci[slug], "ios", STOREFRONT, nota, text, None,
+                        hash_autor(x.get("reviewerName"), sare), x.get("date"),
+                        ((x.get("response") or {}).get("contents") or "").strip() or None,
+                    ))
                 n_rev = 0
-                for sf in STOREFRONTS:
-                    intrari = recenzii(app_id, sf)
-                    time.sleep(PAUZA)
-                    valori = []
-                    for x in intrari:
-                        try:
-                            nota = int((x.get("im:rating") or {}).get("label"))
-                        except (TypeError, ValueError):
-                            continue
-                        valori.append((
-                            banci[slug], "ios", sf, nota,
-                            (x.get("content") or {}).get("label"),
-                            (x.get("im:version") or {}).get("label"),
-                            hash_autor((x.get("author") or {}).get("name", {}).get("label"), sare),
-                            (x.get("updated") or {}).get("label"),
-                        ))
-                    if valori:
-                        inainte = cur.rowcount
-                        psycopg2.extras.execute_values(
-                            cur,
-                            """INSERT INTO app_review (id_banca, platforma, storefront,
-                                   rating, text, versiune, autor_hash, postat_la)
-                               VALUES %s ON CONFLICT DO NOTHING""",
-                            valori,
-                        )
-                        n_rev += cur.rowcount if cur.rowcount >= 0 else len(valori)
+                if valori:
+                    psycopg2.extras.execute_values(
+                        cur,
+                        """INSERT INTO app_review (id_banca, platforma, storefront, rating,
+                               text, versiune, autor_hash, postat_la, raspuns_banca)
+                           VALUES %s ON CONFLICT DO NOTHING""",
+                        valori,
+                    )
+                    n_rev = cur.rowcount if cur.rowcount >= 0 else len(valori)
+                if motiv:
+                    raport[f"pagina_{motiv}"] += 1
                 raport["recenzii_noi"] += n_rev
 
                 err.write(f"{slug:20s} v{str(app.get('version'))[:12]:14s} "
                           f"{app.get('averageUserRating') or '-'}★ "
                           f"{app.get('userRatingCount') or 0:>8} note · "
-                          f"{len(capturi)} capturi · {n_rev} recenzii\n")
+                          f"{len(capturi)} capturi · {n_rev} recenzii · "
+                          f"stele {distributie or '-'}\n")
 
     N.raporteaza(raport, sys.stderr)
     return 0
