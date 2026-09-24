@@ -49,7 +49,10 @@ BANI = r"\d{1,3}(?:[.\s]\d{3})*(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?"
 # taiata — iar litera ramasa se numara in _e_doar_banda.
 VAL = r"(?:lei|leu|ron|euro|eur|usd|gbp|chf)"
 
-RE_SUMA = re.compile(rf"({BANI})\s*({VAL})\b", re.I)
+# "Neurmat de litera", nu "\b": nota de subsol se lipeste de moneda ("2 RON2",
+# "30 Lei1167", "150 LEI6"), iar cu "\b" suma se pierdea de tot — 28 de celule din
+# cele 68 de documente, fiecare cu singurul ei pret. "10 EURIBOR" ramane nepotrivit.
+RE_SUMA = re.compile(rf"({BANI})\s*({VAL})(?![^\W\d_])", re.I)
 # Lookbehind-ul opreste potrivirea sa inceapa in MIJLOCUL unui numar, iar
 # zecimalele nu mai sunt limitate la trei. Fara ele, "0,0125%" iesea 125%
 # si "3,93606%" iesea 606% — regexul renunta la inceputul numarului si

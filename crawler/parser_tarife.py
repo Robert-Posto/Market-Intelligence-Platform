@@ -33,7 +33,7 @@ from pathlib import Path
 
 import pdfplumber
 
-from crawler.parser_pdf import (RE_PRAG, _doar_cifra, _e_subpunct, analizeaza_linie,
+from crawler.parser_pdf import (RE_PRAG, _e_subpunct, analizeaza_linie,
                                 categorie, rol_de_conditie)
 
 # doua borduri mai apropiate de atat sunt aceeasi bordura desenata de doua ori
@@ -80,6 +80,10 @@ LATIME_MIN_TITLU = 0.55
 # drept sectiuni, luand cu ele numele serviciului: "USD/" ajunsese sectiunea cu
 # cele mai multe valori din documentul BRD.
 LITERE_MIN_TITLU = 6
+# ...dar "PLATI" are 5 si e un titlu adevarat: la Vista, fara el, platile
+# interbancare de sub el (10,51 si 20,51 lei) ramaneau sub "INCASARI" si ieseau
+# incasari
+RE_TITLU_SCURT = re.compile(r"^\W*PL[ĂA][ȚŢT]I\W*$")
 # Un rand fara nicio coloana e fie o linie de tabel simplu, fie un paragraf de
 # conditii contractuale. Peste atatea cuvinte e proza, si procentele din ea sunt
 # clauze de penalizare, nu tarife (masurat pe TBI).
@@ -283,10 +287,11 @@ def _e_continuare(text, precedent):
                 or (precedent and RE_TERMINA_DESCHIS.search(precedent)))
 
 
-def _adauga_eticheta(blocuri, sus, jos, text, are_valori, gol_maxim=6):
+def _adauga_eticheta(blocuri, sus, jos, text, are_valori, gol_maxim=6, x=None):
     """Adauga un rand de eticheta la blocul curent, sau deschide unul nou.
 
-    Blocurile sunt (sus, jos, text, e_parinte). Un rand cu valoare deschide bloc
+    Blocurile sunt (sus, jos, text, e_parinte, x); x e marginea stanga a celulei,
+    None cand nu se stie (vezi _celula_din_stanga). Un rand cu valoare deschide bloc
     nou: intr-un tabel de tarife, randul cu preț ESTE randul logic. Un rand fara
     valoare continua numele de deasupra doar daca arata ca o continuare; altfel
     deschide un bloc de tip parinte, adica numele sub care urmeaza mai multe
@@ -306,10 +311,14 @@ def _adauga_eticheta(blocuri, sus, jos, text, are_valori, gol_maxim=6):
         lipit = (ultim[3] and not _e_subpunct(text)
                  and not ultim[2].rstrip().endswith(":"))
     if lipit:
-        a, _b, t, parinte = ultim
-        blocuri[-1] = (a, jos, f"{t} {text}", parinte and not are_valori)
+        a, _b, t, parinte = ultim[:4]
+        blocuri[-1] = (a, jos, f"{t} {text}", parinte and not are_valori, _x(ultim))
     else:
-        blocuri.append((sus, jos, text, not are_valori))
+        blocuri.append((sus, jos, text, not are_valori, x))
+
+
+def _x(bloc):
+    return bloc[4] if len(bloc) > 4 else None
 
 
 # Ce ramane dintr-o banda dupa ce se scot sumele. RE_DOAR_MONEDE e ancorat pe tot
@@ -331,7 +340,7 @@ def _e_doar_banda(text):
     return len(re.findall(r"[A-Za-zĂÂÎȘȚăâîșț]", rest)) < 4
 
 
-def _eticheta_pentru(sus, jos, blocuri):
+def _eticheta_pentru(sus, jos, blocuri, parinte_stanga=None):
     """Eticheta careia aparține o valoare, dupa poziția verticala.
 
     Suprapunerea decide cand exista, altfel cel mai apropiat centru. Ordinea de
@@ -340,8 +349,8 @@ def _eticheta_pentru(sus, jos, blocuri):
     """
     if not blocuri:
         return None
-    lungime, minus_i = max((min(jos, b) - max(sus, a), -i)
-                           for i, (a, b, _t, _p) in enumerate(blocuri))
+    lungime, minus_i = max((min(jos, b[1]) - max(sus, b[0]), -i)
+                           for i, b in enumerate(blocuri))
     if lungime > 0:
         i = -minus_i
     else:
@@ -363,7 +372,67 @@ def _eticheta_pentru(sus, jos, blocuri):
             parinti = [p for p in parinti if not RE_CONTINUARE.match(p)]
         if parinti:
             nume = f"{parinti[-1]} {nume}"
+    elif (RE_CONTINUARE.match(nume) and i > 0
+          and blocuri[i - 1][1] >= blocuri[i][0] - LIPIRE_CONTINUARE):
+        # Continuarea care are pret pe randul ei deschide bloc nou, deci pierdea
+        # inceputul: BCR "Emiterea unui Card de debit/ (furnizarea)" + "(principal)",
+        # iar "(principal)21" ramanea numele a 7 valori.
+        nume = f"{blocuri[i - 1][2]} {nume}"
+    elif parinte_stanga and _x(blocuri[i]) is not None and _e_varianta(nume):
+        parinte = parinte_stanga(_x(blocuri[i]))
+        if parinte:
+            nume = f"{parinte} {nume}"
     return nume
+
+
+# Cat de mult in dreapta trebuie sa stea varianta fata de marginea tabelului.
+# Coloanele de nume si de varianta sunt la zeci de puncte (BCR: 36 si 239).
+DX_VARIANTA = 40
+# blocul de deasupra atinge continuarea: randurile aceleiasi celule se ating sau se
+# suprapun, cele din celule diferite au intre ele padding-ul celulei
+LIPIRE_CONTINUARE = 3
+# peste atat, "celula" dintre doua borduri e de fapt o pagina fara borduri
+INALTIME_MAX_CELULA = 150
+CUVINTE_MAX_PARINTE = 15
+
+
+def _celula_din_stanga(geometrie_pagina, stanga, xv, sus, jos):
+    """Textul celulei cu bordura din stanga variantei, care cuprinde randul ei.
+
+    BCR pune serviciul in prima coloana si canalul in a doua: "Depunere de numerar
+    în contul Clientului" cuprinde randurile "Unități Bancare" si "MFM", fiecare cu
+    pretul lui, iar eticheta randului era doar canalul (12 valori fara serviciu).
+    Decide bordura, nu apropierea: celula din stanga e centrata pe verticala, iar
+    "Casa de schimb" sta mai aproape de numele grupului URMATOR ("Retrageri de
+    numerar") decat de al sau ("Depunere de monedă metalică"). Fara borduri nu se
+    ghiceste nimic: dupa gol, trei servicii Nexent de pe randuri vecine se lipeau.
+    """
+    orizontale, cuvinte = geometrie_pagina
+    cx, cy = (stanga + xv) / 2, (sus + jos) / 2
+    # fata de mijlocul randului: literele ies cu un punct peste bordura de jos
+    acopera = [t for t, x0, x1 in orizontale if x0 - 1 <= cx <= x1 + 1]
+    sus_c = max((t for t in acopera if t <= cy), default=None)
+    jos_c = min((t for t in acopera if t >= cy), default=None)
+    if sus_c is None or jos_c is None or jos_c - sus_c > INALTIME_MAX_CELULA:
+        return None
+    din_celula = sorted((w for w in cuvinte
+                         if stanga - 1 <= (w["x0"] + w["x1"]) / 2 < xv - 2
+                         and sus_c < (w["top"] + w["bottom"]) / 2 < jos_c),
+                        key=lambda w: w["top"])
+    linii = []
+    for w in din_celula:
+        if linii and w["top"] - linii[-1][0]["top"] <= 3:
+            linii[-1].append(w)
+        else:
+            linii.append([w])
+    text = " ".join(w["text"] for linie in linii
+                    for w in sorted(linie, key=lambda w: w["x0"]))
+    # O celula cu preturi nu e un nume (Eximbank: "Utilizare ATM Exim Banca 0,2 %
+    # minim 5 0 Lei..."), iar una cu zeci de cuvinte e un tabel intreg fara borduri
+    # interioare (BRD: "MyBRD SMS atasat unui cont curent/ de economii/ ...").
+    if not text or analizeaza_linie(text)[0] or len(text.split()) > CUVINTE_MAX_PARINTE:
+        return None
+    return text
 
 
 def _desparte_index(text):
@@ -423,17 +492,24 @@ def _mobilier(randuri, npagini):
     return {t for t, pagini in pe_text.items() if t and len(pagini) >= prag}
 
 
-def randuri_document(cale):
+def randuri_document(cale, geometrie_pagini=None):
     """Randurile de tabel ale documentului, fara antetul si subsolul paginii.
 
-    (nr_pagina, cuvinte, margini, geometrie, texte)
+    (nr_pagina, cuvinte, margini, geometrie, texte). Daca primeste un dict, il
+    umple cu {nr_pagina: (borduri orizontale, cuvinte)} pentru _celula_din_stanga.
     """
     brute = []
     with pdfplumber.open(str(cale)) as pdf:
         npagini = len(pdf.pages)
         for nr_pagina, pagina in enumerate(pdf.pages, 1):
             vert = [e for e in pagina.edges if e["orientation"] == "v"]
-            for cuvinte in randuri_de_cuvinte(pagina):
+            randuri_pagina = randuri_de_cuvinte(pagina)
+            if geometrie_pagini is not None:
+                geometrie_pagini[nr_pagina] = (
+                    [(e["top"], e["x0"], e["x1"]) for e in pagina.edges
+                     if e["orientation"] == "h" and e["x1"] - e["x0"] > 5],
+                    [w for r in randuri_pagina for w in r])
+            for cuvinte in randuri_pagina:
                 margini, geometrie = margini_rand(vert, cuvinte)
                 texte = celule(cuvinte, margini)
                 if not any(texte):
@@ -450,8 +526,10 @@ def randuri_document(cale):
 # Nivelul subtitlului, mai adanc decat orice index ("A." are 9): un titlu real il
 # sterge, iar urmatorul subtitlu il inlocuieste.
 ADANCIME_SUBTITLU = 99
-# un subtitlu e un nume de grup, nu o fraza; peste atat e o nota
-LUNGIME_MAX_SUBTITLU = 80
+# un subtitlu e un nume de grup, nu o fraza; peste atat e o nota. La 80, "Incasare
+# sume din contul deschis la alt prestator de servicii - Incasari prin virament"
+# (86) nu era subtitlu, si 24 de incasari Nexent ramaneau fara concept.
+LUNGIME_MAX_SUBTITLU = 100
 
 
 # cuvinte care nu numesc un serviciu, la numaratoarea din _e_varianta
@@ -554,7 +632,8 @@ def _e_titlu(texte, nevide, margini, latime_tabel):
     # latimea tabelului treceau amandoua si stergeau numele serviciului
     latime_celula = margini[i + 1] - margini[i]
     intins = latime_tabel and latime_celula >= LATIME_MIN_TITLU * latime_tabel
-    destul = len(re.findall(r"[A-Za-zĂÂÎȘȚ]", t)) >= LITERE_MIN_TITLU
+    destul = (len(re.findall(r"[A-Za-zĂÂÎȘȚ]", t)) >= LITERE_MIN_TITLU
+              or RE_TITLU_SCURT.match(t))
     if t == t.upper() and intins and destul:
         return None, t
     return None
@@ -631,7 +710,8 @@ def extrage_tarife(cale, banca, radacina=None):
     """Inregistrarile de comision dintr-o lista de tarife nestandardizata."""
     cale = Path(cale)
     sursa = str(cale.relative_to(radacina)) if radacina else cale.name
-    randuri = randuri_document(cale)
+    geometrie_pagini = {}
+    randuri = randuri_document(cale, geometrie_pagini)
     analize = [[analizeaza_linie(t) for t in texte] for _n, _c, _m, _g, texte in randuri]
     col_nume = coloana_numelui(randuri, analize)
     latime_tabel = max((m[-1] - m[0] for _n, _c, m, _g, _t in randuri), default=0)
@@ -713,7 +793,8 @@ def extrage_tarife(cale, banca, radacina=None):
                 continue
             i_eticheta = _celula_eticheta(texte, analiza, coloane_pret)
             if i_eticheta is not None:
-                _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], False)
+                _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], False,
+                                 x=margini[i_eticheta])
                 if not subtitlu and not _e_varianta(texte[i_eticheta]):
                     sectiuni.inchide_subtitlu()
             continue
@@ -721,22 +802,26 @@ def extrage_tarife(cale, banca, radacina=None):
         # rand cu valori: eticheta lui poate continua si pe randurile urmatoare
         i_eticheta = _celula_eticheta(texte, analiza, coloane_pret)
         if i_eticheta is not None:
-            _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], True)
+            _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], True,
+                             x=margini[i_eticheta])
             if not _e_varianta(texte[i_eticheta]):
                 sectiuni.inchide_subtitlu()
         semn_cu_valori.add(semn)
         pret[semn].update(i for i, a in enumerate(analiza) if a[0])
         de_emis.append((nr_pagina, sus, jos, texte, analiza, geometrie,
                         blocuri_et, sectiuni.cale() or None,
-                        antete.get(semn, [])))
+                        antete.get(semn, []), margini[0]))
 
     # A doua trecere: acum fiecare bloc de eticheta e intreg
     inregistrari = []
     serviciu = sectiune_anterioara = None
     conditie = frecventa = None
     for (nr_pagina, sus, jos, texte, analiza, geometrie, etichete_active,
-         sectiune, antet) in de_emis:
-        gasita = _eticheta_pentru(sus, jos, etichete_active)
+         sectiune, antet, stanga) in de_emis:
+        gasita = _eticheta_pentru(
+            sus, jos, etichete_active,
+            lambda xv, g=geometrie_pagini[nr_pagina], st=stanga, a=sus, b=jos:
+                _celula_din_stanga(g, st, xv, a, b) if xv - st > DX_VARIANTA else None)
         # Fara eticheta, randul mosteneste serviciul de deasupra: corect peste o
         # pagina rupta, greșit peste un titlu. La Vista, pretul pachetului ("5
         # LEI/Luna", "500 LEI/AN") mostenea "Taxa SWIFT" din tabelul de plati de

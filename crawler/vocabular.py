@@ -38,6 +38,9 @@ LUNGIME_FRAGMENT = 28
 # spune nimic. Forma e un criteriu mai bun decat lungimea.
 RE_ETICHETA_FRAGMENT = re.compile(
     r"^\s*[-–—•·▪(\[]"                       # semn de lista sau paranteza
+    # banda de suma: "≥ 50.000 LEI si urgente (orice suma)" (Vista, 7 valori) nu
+    # numeste serviciul, dar trecea de lungime si nu se uita in secțiune
+    r"|^\s*[<>≤≥]"
     r"|^[a-zăâîșț]"                          # continuarea unei fraze
     r"|^\s*(?:si|sau|de|la|in|din|pe|pentru|prin|cu)\b", re.I)
 # ...dar o nota de subsol nu e un serviciu fara nume, e altceva cu totul. Fara
@@ -94,6 +97,14 @@ RE_LISTA_CONTINUT = re.compile(r",?\s*(?:con[țt]in[âaȃ]nd|const[ăa]\s+[îi]n
 # valori intr-un singur concept, dintre care multe greșite.
 RE_PLATA_PROGRAMATA = r"standing\s+order|plat[ăa]\s+programat|ordin\w*\s+programat"
 SERVICII = [
+    # Alertele SMS inaintea cardului si a contului: substantivul-cap e serviciul de
+    # alerta, nu produsul la care e atasat. "Administrare Serviciu Alerte SMS Card"
+    # ieșea administrare_card, "Info SMS – încasări și tranzacții cu cardul"
+    # incasare, "SMS pentru depăşirea a 25 mesaje" extras_de_cont: 22 de valori in
+    # 5 concepte. Anularea serviciului ramane anulare.
+    # Doar in capul etichetei: in lista unui pachet ProCredit ("Cont curent în LEI
+    # Cont de economii... Serviciul Info SMS") SMS-ul e o componenta, nu serviciul.
+    ("alerta_sms", r"^(?!\W*(?:anular|modificar|stornar|dezactivar))[^.]{0,50}?\bSMS\b"),
     # carduri — inaintea celor generale, fiindca "emitere card" nu e "emitere" oarecare
     # "refacere" si "card - reînnoire" (cu cardul inainte) scapau: 5 valori BCR
     ("reemitere_card", r"(reemiter|re-emiter|re[îi]nnoir|[îi]nlocuir|duplicat|refacer)\w*[^.]{0,30}card"
@@ -105,7 +116,10 @@ SERVICII = [
     ("blocare_card", r"blocar\w*[^.]{0,30}card|card[^.]{0,25}blocar"
                      r"|blocare\s+(a\s+)?cardului"),
     ("administrare_card", r"administrar\w*[^.]{0,30}card|card[^.]{0,25}administrar"
-                          r"|menten[ăa]n[țt][ăa]|ta?x[ăa]\s+anual[ăa][^.]{0,20}card"),
+                          r"|menten[ăa]n[țt][ăa]|ta?x[ăa]\s+anual[ăa][^.]{0,20}card"
+                          # cardul principal/suplimentar, fara cuvantul "card"
+                          # (Eximbank: "Administrare lunara" / "Suplimentar")
+                          r"|administrar\w*[^.]{0,30}\b(?:principal|suplimentar)\b"),
     ("schimbare_pin", r"\bPIN\b"),
     # comisionul pe tranzacția cu cardul la comerciant, distinct de retragerea
     # de numerar: la EximBank sta sub "COMISIOANE TRANZACTII", la BCR ca
@@ -128,7 +142,9 @@ SERVICII = [
                           # Group***" (8 valori, acelasi pret ca retragerea de la ATM
                           # BCR) lua tranzactie_card din secțiunea "Tranzacţii
                           # Internaţionale". Doar in capul etichetei, si nu la sold/PIN.
-                          r"|^\W*utilizar\w*\s+(?:a\s+)?ATM(?![^.]{0,60}(?:sold|PIN))"),
+                          r"|^\W*utilizar\w*\s+(?:a\s+)?ATM(?![^.]{0,60}(?:sold|PIN))"
+                          # "Retragere de de la ATM-uri si Ghiseele" (Vista, 7)
+                          r"|^\W*retrager\w*[^.]{0,15}\b(?:ATM|ghi[șs]e)"),
     ("depunere_numerar", r"depuner\w*[^.]{0,20}numerar|alimentar\w*[^.]{0,20}numerar"),
     # cont
     ("deschidere_cont", r"deschider\w*[^.]{0,25}(cont|depozit)"),
@@ -144,11 +160,16 @@ SERVICII = [
                           # Cost lunar 50 LEI" (ProCredit), 20 de valori nemapate.
                           # Nu componenta: "Pachet • comision de mentenanță".
                           r"|^\W*pachet(?:ul)?\b(?![^.]{0,3}[•\-–])"),
-    ("extras_de_cont", r"extras\w*\s+(de\s+)?cont|extras\s+de|stare\s+financiar"),
+    # "Extras suplimentar de cont", "Extrase la sediul Bancii" (Vista, 6 valori);
+    # nu "Extras ONRC", care e extrasul din registrul comertului
+    ("extras_de_cont", r"extras\w*\s+(de\s+)?cont|extras\s+de|stare\s+financiar"
+                       r"|extras\w*\s+(?:\w+\s+){1,2}de\s+cont|^\W*extrase\b"),
     # canale la distanta, ca serviciu in sine
     ("administrare_banking_distanta",
      r"administrar\w*[^.]{0,30}(internet|mobile|phone|e-?)\s*banking"
-     r"|abonament[^.]{0,25}banking|(internet|mobile)\s*banking\s*[-–]?\s*administrar"),
+     r"|abonament[^.]{0,25}banking|(internet|mobile)\s*banking\s*[-–]?\s*administrar"
+     # Vista: "Accesul prin Internet/Mobile Banking", "... ambele aplicatii (IB+MB)"
+     r"|(?:acces|administrar)\w*[^.]{0,40}(?:internet\s*/\s*mobile|\bIB\s*\+\s*MB\b)"),
     # cap de expresie mai specific decat "plata" — se verifica INAINTEA lui
     # Vocabularul nu acoperea decat jumatate din serviciile documentare. Cu
     # coborarea la context pentru etichetele-fragment, golul a devenit activ:
@@ -168,7 +189,9 @@ SERVICII = [
     # `transfer_credit`, iar o mapare greșita e mai rea decat una lipsa.
     ("acceptare_carduri", r"acceptare\s+(?:la\s+plat[ăa]\s+a\s+)?cardu"
                           r"|comerciant\w*\s+accept"),
-    ("incasare", r"[îi]ncas[ăa]r"),
+    # "cu încasare venit" e conditia ofertei de credit (salariul virat la banca),
+    # nu o incasare: 8 valori BRD
+    ("incasare", r"[îi]ncas[ăa]r(?!\w*\s+(?:a\s+)?venit)"),
     # Obiectul refuzului nu e mereu "plata": documentele scriu "Refuz cecuri/ bilete
     # la ordin (neonorate la plata)". Cu vechiul tipar, care cerea "refuz" lipit de
     # "plat", potrivirea cadea pe `transfer_credit` prin "la plata" de la coada —
@@ -176,7 +199,9 @@ SERVICII = [
     # "contestare" nu conține "contestaț": 27 de valori BCR "Contestare
     # nejustificată a unei tranzacții" ramaneau nemapate
     ("refuz_plata", r"refuz\w*\s+(?:de\s+)?(?:plat|cec|bilet|instrument|[îi]ncas)"
-                    r"|contest(?:a[țt]|ar)|chargeback"),
+                    r"|contest(?:a[țt]|ar)|chargeback"
+                    # "Comision dispute RoPay pentru fiecare caz" (BRD, 7 valori)
+                    r"|\bdisput"),
     ("modificare_anulare", r"^\s*(modificar|anular|stornar)\w*"),
     ("debitare_directa", r"debitar\w*\s+direct|direct\s+debit"),
     ("plata_programata", RE_PLATA_PROGRAMATA),
@@ -187,8 +212,12 @@ SERVICII = [
     #    retragere de numerar, si primea transfer_credit de la cuvantul "plăți".
     #  - "plata poliței in 12 rate" e o rata de asigurare, nu un transfer.
     ("transfer_credit", r"transfer\s+credit|ordin\w*\s+de\s+plat[ăa]|\bpl[ăa][țt]i\b"
-                        r"|\bplat[ăa]\b(?!\s+poli[țt])|transfer\w*\s+(de\s+)?bani"
+                        r"|\bplat[ăa]\b(?!\s+(?:poli[țt]|de\s+rambursat))"
+                        r"|transfer\w*\s+(de\s+)?bani"
                         r"|vira?ment"
+                        # Libra: "sub 50.000 lei urgent prin RTGS" sub "In favoarea
+                        # clientilor altor banci"; "clientilor BRCI" poate fi incasare
+                        r"|[îi]n\s+favoarea\s+clien\w*\s+altor\s+b[ăa]nci"
                         # "Transferuri intrabancare", "Transfer intre conturi proprii":
                         # formularea Vista, Nexent si Eximbank, fara "credit" si "bani"
                         r"|transfer\w*\s+(?:intra|inter)bancar|transfer\w*\s+[îi]ntre\s+conturi"
@@ -200,7 +229,8 @@ SERVICII = [
     # acelasi concept, dar tiparul neancorat: se incearca abia la sfarsit
     ("modificare_anulare", r"(modificar|anular|stornar)\w*"),
     ("interogare_baze_date", r"\bCIP\b|\bCRB\b|\bRECOM\b|baz[ăa]\s+de\s+date"),
-    ("poprire", r"poprir|execut\w*\s+silit"),
+    # sechestrul asigurator e tot o masura de executare pe cont (Vista, 2 valori)
+    ("poprire", r"poprir|execut\w*\s+silit|sechestr"),
     # Ultimele doua, si poziția lor e obligatorie. Instrumentul de plata e OBIECTUL
     # serviciului, nu capul lui: "Remitere la încasare a cecurilor" e o incasare,
     # "Anulare serviciu SMS Alert" e o anulare. Puse mai sus in lista, furau 22 de
@@ -396,7 +426,19 @@ def canonic(inregistrare):
     # "Activare Garanti BBVA Online fără token" primea transfer_credit, de la
     # cuvantul "plăți" din secțiune.
     if concept is None and _e_fragment(nume):
-        concept = _potrivire(SERVICII, context)
+        # Intai stramosul cel mai apropiat, apoi tot mai sus: sub "ÎNCASĂRI ȘI PLĂȚI
+        # > PLĂȚI ÎN ALTE VALUTE", o optiune de plata (Salt, 5 valori) lua incasare
+        # doar fiindca incasare sta mai sus in lista decat transfer_credit.
+        # Coloana matricei inaintea secțiunii: sub "Alte instrumente de plată",
+        # coloana "Debitare directă" e cea care numeste instrumentul (Raiffeisen).
+        niveluri = RE_CONT_DE_PLATI.sub(" cont ", (inregistrare.get("sectiune") or "")
+                                        .translate(SEDILA_LA_VIRGULA)).split(" > ")
+        coloana = str(inregistrare.get("coloana") or "").translate(SEDILA_LA_VIRGULA)
+        trepte = [f"{nume} {coloana}"] + [f"{nume} {' > '.join(niveluri[k:])}"
+                                          for k in range(len(niveluri) - 1, 0, -1)]
+        concept = next(filter(None, (_potrivire(SERVICII, t) for t in trepte)), None)
+        if concept is None:
+            concept = _potrivire(SERVICII, context)
     # Sub "Standing order (plată programată)", "Plăți - alte conturi" e varianta
     # ordinului programat, nu o plata oarecare: BCR, 4 valori puse la transfer_credit.
     if concept == "transfer_credit" and re.search(

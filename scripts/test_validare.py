@@ -789,5 +789,59 @@ CN("Pachet de servicii", "administrare_cont", "pachet ProCredit PAD")
 CN("Pachet • comision de mentenanță card", "administrare_card", "componenta pachetului")
 
 
+# --- a patra runda: 24 sept, aceleasi 68 de documente --------------------------
+from crawler.parser_tarife import _celula_din_stanga  # noqa: E402
+
+# nota de subsol lipita de moneda nu mai pierde suma (28 de celule)
+T([(v[1], v[2]) for v in analizeaza_linie("2 RON2")[0]] == [(2.0, "LEI")],
+  "suma cu nota lipita de moneda")
+T(analizeaza_linie("10 EURIBOR")[0] == [], "EURIBOR nu e suma in euro")
+
+
+def _w(text, x0, top):
+    return {"text": text, "x0": x0, "x1": x0 + 6 * len(text), "top": top, "bottom": top + 8}
+
+
+# BCR: serviciul in stanga, canalul in dreapta, in aceeasi celula cu bordura
+GEOM = ([(95, 36, 239), (120, 36, 239), (132, 36, 239)],
+        [_w("Depunere", 54, 99), _w("numerar", 110, 99), _w("Clientului", 54, 111),
+         _w("MFM", 287, 124), _w("Alt", 54, 124)])
+T(_celula_din_stanga(GEOM, 36, 239, 105, 113) == "Depunere numerar Clientului",
+  "parintele din celula cu bordura din stanga")
+T(_celula_din_stanga(GEOM, 36, 239, 124, 132) == "Alt", "celula vecina NU se amesteca")
+T(_celula_din_stanga(([], GEOM[1]), 36, 239, 105, 113) is None,
+  "fara borduri nu se ghiceste parintele")
+T(_celula_din_stanga(([(95, 36, 239), (120, 36, 239)], [_w("Utilizare", 54, 99),
+                                                        _w("5 lei", 120, 99)]),
+                     36, 239, 105, 113) is None, "celula cu pret NU e parinte")
+
+# "PLATI" e titlu (Vista), "SEPA" nu
+T(_e_titlu(["PLATI"], [0], [0, 500], 500) == (None, "PLATI"), "PLATI e titlu scurt")
+T(_e_titlu(["SEPA"], [0], [0, 500], 500) is None, "SEPA ramane respins")
+
+# alertele SMS au un singur concept, indiferent de produsul atasat (22 de valori)
+CN("Administrare Serviciu Alerte SMS Card", "alerta_sms", "alerta SMS pe card")
+CN("Serviciul Info SMS – încasări și tranzacții cu cardul", "alerta_sms", "info SMS")
+CN("Anulare serviciu SMS Alert", "modificare_anulare", "anularea ramane anulare")
+# "cu încasare venit" e conditia creditului, nu o incasare (BRD, 8)
+CN("Oferta standard / Oferta cu incasare venit in contul BRD", None,
+   "incasare venit NU e incasare")
+CN("Suma minimă de plata de rambursat lunar", None, "plata de rambursat NU e transfer")
+CN("Retragere de de la ATM-uri si Ghiseele (POS-urile)", "retragere_numerar",
+   "retragere de la ATM fara numerar")
+CN("Extras suplimentar de cont", "extras_de_cont", "extras suplimentar")
+CN("Extras ONRC", None, "extras ONRC NU e extras de cont")
+CN("Administrare lunara Principal", "administrare_card", "cardul principal")
+# banda de suma ia serviciul din secțiune; stramosul apropiat inaintea celui de sus
+T(canonic({"serviciu": "≥ 50.000 LEI si urgente (orice suma)",
+           "sectiune": "PLATI"})[0] == "transfer_credit", "banda ia sectiunea")
+T(canonic({"serviciu": "Optiune “All Fees on You” 5",
+           "sectiune": "ÎNCASĂRI ȘI PLĂȚI > PLĂȚI ÎN ALTE VALUTE"})[0] == "transfer_credit",
+  "sectiunea cea mai adanca decide")
+T(canonic({"serviciu": "Comision", "sectiune": "Transfer credit - plăți > Alte instrumente",
+           "coloana": "Debitare directă (intrabancară/interbancară)"})[0]
+  == "debitare_directa", "coloana matricei inaintea sectiunii")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)
