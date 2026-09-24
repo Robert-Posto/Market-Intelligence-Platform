@@ -133,7 +133,13 @@ SERVICII = [
                         # Romania". Cu "din" obligatoriu, ca sa nu prinda varianta
                         # "la comerciantii de tip jocuri de noroc": gamblingul costa
                         # 1% + 10 lei si ar strica linia platilor obisnuite.
-                        r"|opera[țt]iun\w*\s+la\s+comercian\w*\s+din"),
+                        r"|opera[țt]iun\w*\s+la\s+comercian\w*\s+din"
+                        # "Plăți POS România sau internațional" (Garanti, 4 valori
+                        # ieșeau transfer_credit), "Comision tranzacțional Prin
+                        # intermediul EPOS" (Raiffeisen, 6), "tranzacţii comerciale"
+                        r"|pl[ăa][țt]i\s+(?:la\s+)?E?POS\b"
+                        r"|comision\w*\s+tranzac[țt]ional\w*[^.]{0,30}\bE?POS\b"
+                        r"|tranzac[țt]i\w*\s+comercial"),
     # numerar
     # "Utilizare ATM/POS de la alte bănci pentru numerar" e tot o retragere
     ("retragere_numerar", r"(retrager|eliberar|ridicar|utilizar)\w*[^.]{0,40}numerar"
@@ -142,7 +148,11 @@ SERVICII = [
                           # Group***" (8 valori, acelasi pret ca retragerea de la ATM
                           # BCR) lua tranzactie_card din secțiunea "Tranzacţii
                           # Internaţionale". Doar in capul etichetei, si nu la sold/PIN.
-                          r"|^\W*utilizar\w*\s+(?:a\s+)?ATM(?![^.]{0,60}(?:sold|PIN))"
+                          r"|^\W*(?:comision\s+|cost\s+)?utilizar\w*\s+(?:\(\w+\)\s+)?(?:a\s+)?"
+                          r"ATM(?![^.]{0,60}(?:sold|PIN))"
+                          # Nexent: "Cost utilizare mijloc de plată la ATM-ul...", "...
+                          # prin POS-uri situate la ghișeele bancare" (13 valori)
+                          r"|utilizar\w*\s+mijloc\w*\s+de\s+plat[ăa]\s+(?:la|prin)\s+(?:ATM|POS)"
                           # "Retragere de de la ATM-uri si Ghiseele" (Vista, 7)
                           r"|^\W*retrager\w*[^.]{0,15}\b(?:ATM|ghi[șs]e)"),
     ("depunere_numerar", r"depuner\w*[^.]{0,20}numerar|alimentar\w*[^.]{0,20}numerar"),
@@ -159,17 +169,25 @@ SERVICII = [
                           # Gold 0*/30 lei/lună" (Raiffeisen), "Pachet de servicii:
                           # Cost lunar 50 LEI" (ProCredit), 20 de valori nemapate.
                           # Nu componenta: "Pachet • comision de mentenanță".
-                          r"|^\W*pachet(?:ul)?\b(?![^.]{0,3}[•\-–])"),
+                          r"|^\W*pachet(?:ul)?\b(?![^.]{0,3}[•\-–])"
+                          # ...la fel contul singur: "Cont curent în USD sau GBP: 2
+                          # EUR / echivalent, pe cont" (ProCredit), "Cont Curent
+                          # Standard 5 lei/lună" (Raiffeisen). Nu dobanda la sold.
+                          r"|^\W*(?:•\s*)?cont(?:ul)?\s+curent\b(?![^.;:]{0,70}sold)[^.;:]{0,70}$"),
     # "Extras suplimentar de cont", "Extrase la sediul Bancii" (Vista, 6 valori);
     # nu "Extras ONRC", care e extrasul din registrul comertului
     ("extras_de_cont", r"extras\w*\s+(de\s+)?cont|extras\s+de|stare\s+financiar"
-                       r"|extras\w*\s+(?:\w+\s+){1,2}de\s+cont|^\W*extrase\b"),
+                       r"|extras\w*\s+(?:\w+\s+){1,2}de\s+cont|^\W*extrase\b"
+                       r"|extras\w*\s+alte\s+cont"),
     # canale la distanta, ca serviciu in sine
     ("administrare_banking_distanta",
      r"administrar\w*[^.]{0,30}(internet|mobile|phone|e-?)\s*banking"
      r"|abonament[^.]{0,25}banking|(internet|mobile)\s*banking\s*[-–]?\s*administrar"
      # Vista: "Accesul prin Internet/Mobile Banking", "... ambele aplicatii (IB+MB)"
-     r"|(?:acces|administrar)\w*[^.]{0,40}(?:internet\s*/\s*mobile|\bIB\s*\+\s*MB\b)"),
+     r"|(?:acces|administrar)\w*[^.]{0,40}(?:internet\s*/\s*mobile|\bIB\s*\+\s*MB\b)"
+     # Garanti: "Abonament lunar Garanti BBVA Online" (4). Produsul imediat dupa:
+     # "Abonament lunar" sub Free-Way (vama, 85 lei/punct) nu e internet banking
+     r"|abonament\w*\s+(?:lunar\w*\s+)?(?:\w+\s+){0,2}(?:online|mobile)\b"),
     # cap de expresie mai specific decat "plata" — se verifica INAINTEA lui
     # Vocabularul nu acoperea decat jumatate din serviciile documentare. Cu
     # coborarea la context pentru etichetele-fragment, golul a devenit activ:
@@ -198,7 +216,9 @@ SERVICII = [
     # adica un refuz de instrument era raportat drept comision de transfer.
     # "contestare" nu conține "contestaț": 27 de valori BCR "Contestare
     # nejustificată a unei tranzacții" ramaneau nemapate
-    ("refuz_plata", r"refuz\w*\s+(?:de\s+)?(?:plat|cec|bilet|instrument|[îi]ncas)"
+    # si "refuz la plata": Nexent, "Taxa pentru initiere nejustificata de refuz la
+    # plata la ATM/POS", 9 valori care ieseau transfer_credit
+    ("refuz_plata", r"refuz\w*\s+(?:de\s+|la\s+)?(?:plat|cec|bilet|instrument|[îi]ncas)"
                     r"|contest(?:a[țt]|ar)|chargeback"
                     # "Comision dispute RoPay pentru fiecare caz" (BRD, 7 valori)
                     r"|\bdisput"),
@@ -406,6 +426,15 @@ def _potrivire(lista, text):
 SEDILA_LA_VIRGULA = str.maketrans("şţŞŢ", "șțȘȚ")
 
 
+def _curat(text):
+    """Sedila la virgula, greseala de tipar cunoscuta, "cont de plăți" -> "cont"."""
+    text = str(text or "").translate(SEDILA_LA_VIRGULA)
+    # "Administarea contului curent" (Raiffeisen): fara "r", pachetele de sub ea
+    # nu erau administrare de cont
+    text = re.sub(r"(?i)\badministar", "administrar", text)
+    return RE_CONT_DE_PLATI.sub(" cont ", text)
+
+
 def canonic(inregistrare):
     """(concept, canal, destinatie) pentru un comision, sau (None, ...) daca nu se mapeaza.
 
@@ -413,12 +442,11 @@ def canonic(inregistrare):
     coloanei din matrice si textul-sursa. Canalul e adesea scris in coloana, nu in
     nume ("Din aplicatia Salt"), iar destinatia in secțiune ("4.2. PLĂȚI > SEPA").
     """
-    nume = RE_LISTA_CONTINUT.sub("", RE_CONT_DE_PLATI.sub(
-        " cont ", (inregistrare.get("serviciu") or "").translate(SEDILA_LA_VIRGULA)))
-    context = nume + " " + RE_CONT_DE_PLATI.sub(" cont ", " ".join(
+    serviciu = _curat(inregistrare.get("serviciu"))
+    nume = RE_LISTA_CONTINUT.sub("", serviciu)
+    context = nume + " " + _curat(" ".join(
         str(inregistrare.get(c) or "") for c in
-        ("sectiune", "coloana", "detaliu", "text_sursa")
-    ).translate(SEDILA_LA_VIRGULA))
+        ("sectiune", "coloana", "detaliu", "text_sursa")))
     concept = _potrivire(SERVICII, nume)
     # Contextul se folosește doar cand numele e un FRAGMENT ("- de la ATM-uri BCR",
     # "tranzacție"): acolo conceptul e legitim in secțiune, fiindca serviciul-parinte
@@ -431,14 +459,19 @@ def canonic(inregistrare):
         # doar fiindca incasare sta mai sus in lista decat transfer_credit.
         # Coloana matricei inaintea secțiunii: sub "Alte instrumente de plată",
         # coloana "Debitare directă" e cea care numeste instrumentul (Raiffeisen).
-        niveluri = RE_CONT_DE_PLATI.sub(" cont ", (inregistrare.get("sectiune") or "")
-                                        .translate(SEDILA_LA_VIRGULA)).split(" > ")
-        coloana = str(inregistrare.get("coloana") or "").translate(SEDILA_LA_VIRGULA)
+        niveluri = _curat(inregistrare.get("sectiune")).split(" > ")
+        coloana = _curat(inregistrare.get("coloana"))
         trepte = [f"{nume} {coloana}"] + [f"{nume} {' > '.join(niveluri[k:])}"
                                           for k in range(len(niveluri) - 1, 0, -1)]
         concept = next(filter(None, (_potrivire(SERVICII, t) for t in trepte)), None)
         if concept is None:
             concept = _potrivire(SERVICII, context)
+    # Eticheta care isi enumera continutul e un pachet, iar pretul ei e pretul
+    # pachetului, ca la "Pachetul Servicii de Bază, conţinȃnd: ...". Numele
+    # pachetului nu spune singur asta: "George, conţinȃnd: - administrarea Cont
+    # curent..." (BCR, 12 valori, 12-1.200 lei) ramanea fara concept.
+    if concept is None and RE_LISTA_CONTINUT.search(serviciu):
+        concept = "administrare_cont"
     # Sub "Standing order (plată programată)", "Plăți - alte conturi" e varianta
     # ordinului programat, nu o plata oarecare: BCR, 4 valori puse la transfer_credit.
     if concept == "transfer_credit" and re.search(

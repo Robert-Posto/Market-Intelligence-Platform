@@ -601,6 +601,21 @@ def _titlu_din_tabel(texte, nevide):
     return None
 
 
+# Titlul cu index poate fi lung: "6. Taxe și comisioane aferente cardurilor de debit
+# principale/suplimentare în lei și valută" (Raiffeisen) are 13 cuvinte si 91 de
+# caractere, deci cadea la filtrul de proza, iar cardurile de debit ramaneau sub
+# secțiunea de dinainte ("Comisioane de procesare..."). O nota numerotata se
+# termina insa cu punct si e mai lunga.
+LUNGIME_MAX_TITLU_INDEX = 120
+CUVINTE_MAX_TITLU_INDEX = 16
+
+
+def _e_titlu_cu_index(t):
+    return bool(RE_INDEX_SECTIUNE.match(t) and len(t) <= LUNGIME_MAX_TITLU_INDEX
+                and len(t.split()) <= CUVINTE_MAX_TITLU_INDEX
+                and not t.rstrip().endswith((".", ",", ";", ":")))
+
+
 def _e_titlu(texte, nevide, margini, latime_tabel):
     """(index, titlu) daca randul e un titlu de sectiune, altfel None."""
     # Titlul pe acelasi rand cu antetul de moneda: Libra scrie "ACREDITIVE DE
@@ -620,6 +635,9 @@ def _e_titlu(texte, nevide, margini, latime_tabel):
         return None
     i = nevide[0]
     t = texte[i]
+    if _e_titlu_cu_index(t):
+        m = RE_INDEX_SECTIUNE.match(t)
+        return m.group(1), m.group(2)
     if len(t) > 90 or not re.search(r"[A-Za-zĂÂÎȘȚăâîșț]{3}", t):
         return None
     if t.endswith(",") or RE_DOAR_MONEDE.match(t):
@@ -741,7 +759,8 @@ def extrage_tarife(cale, banca, radacina=None):
     for k, ((nr_pagina, cuvinte, margini, geometrie, texte), analiza) in enumerate(
             zip(randuri, analize)):
         # un rand fara nicio coloana si cu multe cuvinte e proza, nu tarif
-        if geometrie == "unic" and len(cuvinte) > CUVINTE_MAX_RAND_UNIC:
+        if (geometrie == "unic" and len(cuvinte) > CUVINTE_MAX_RAND_UNIC
+                and not _e_titlu_cu_index(" ".join(texte).strip())):
             continue
         if RE_CUPRINS.search(" ".join(texte)):
             continue          # rand din cuprins, nu din tabel

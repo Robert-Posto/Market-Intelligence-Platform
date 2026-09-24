@@ -780,7 +780,7 @@ T(canonic({"serviciu": "Plăți - alte conturi 0 - 50.000 LEI, exclusiv",
 
 # pachetul care isi enumera continutul nu e primul serviciu din lista (BCR, 16)
 CN("George, conţinȃnd: - administrarea Cont curent în lei; - furnizarea unui Card de debit",
-   None, "George continand NU e emitere_card")
+   "administrare_cont", "George continand e pretul pachetului, NU emitere_card")
 CN("Pachetul Servicii de Bază pentru persoane nevulnerabile, conţinȃnd: - Furnizarea "
    "unui Card de debit", "administrare_cont", "pachetul continand e pretul pachetului")
 # numele pachetului singur e pretul lui (20 de valori), componenta nu
@@ -841,6 +841,37 @@ T(canonic({"serviciu": "Optiune “All Fees on You” 5",
 T(canonic({"serviciu": "Comision", "sectiune": "Transfer credit - plăți > Alte instrumente",
            "coloana": "Debitare directă (intrabancară/interbancară)"})[0]
   == "debitare_directa", "coloana matricei inaintea sectiunii")
+# refuzul "la plata" (Nexent, BRD, Vista: ~45 de valori ieseau transfer_credit)
+CN("Refuz la plata nejustificat", "refuz_plata", "refuz la plata")
+CN("Taxa pentru initiere nejustificata de refuz la plata la POS", "refuz_plata",
+   "initiere refuz la plata")
+CN("Plăți POS România sau internațional", "tranzactie_card", "plati POS")
+CN("Comision tranzacțional Prin intermediul EPOS", "tranzactie_card", "EPOS")
+CN("Cost utilizare mijloc de plată la ATM-ul altor bănci din străinătate",
+   "retragere_numerar", "mijloc de plata la ATM")
+CN("Administarea contului curent", "administrare_cont", "greseala de tipar")
+CN("Abonament lunar Garanti BBVA Online", "administrare_banking_distanta",
+   "abonament internet banking")
+CN("Cont curent în USD sau GBP", "administrare_cont", "contul singur")
+CN("Cont curent sold creditor", None, "dobanda la sold NU e administrare")
+# cerintele si plafoanele spuse in eticheta ies din preturi
+T(rol_de_conditie("100 EUR", "Suma minimă pentru deschiderea contului de card", 100.0)
+  == "conditie", "suma minima e conditie")
+T(rol_de_conditie("9.000 RON", "Suma maxima zilnica de retragere numerar", 9000.0)
+  == "conditie", "suma maxima e conditie")
+T(rol_de_conditie("50.000 lei", "Valoarea maximă a limitei de credit", 50000.0)
+  == "conditie", "plafonul cardului de credit e conditie")
+# "% p.a." e dobanda doar sub descoperit/restanta (Salt 6); caseta ramane comision
+T(categorie(None, "neautorizat", "20 % p.a. (LEI) / 15% p.a. (valuta)") == "dobanda",
+  "procent pe an la descoperit neautorizat")
+T(categorie(None, "Caseta tip 2", "1,50%/ an, min. 56,5 lei/luna + TVA") == "comision",
+  "procent pe an la caseta ramane comision")
+# titlul cu index lung nu e proza; nota numerotata ramane nota
+from crawler.parser_tarife import _e_titlu_cu_index  # noqa: E402
+T(_e_titlu_cu_index("6. Taxe și comisioane aferente cardurilor de debit "
+                    "principale/suplimentare în lei și valută"), "titlu cu index lung")
+T(not _e_titlu_cu_index("1. Comisionul se percepe pentru fiecare operatiune efectuata."),
+  "nota numerotata NU e titlu")
 
 
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")

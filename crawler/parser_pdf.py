@@ -176,7 +176,14 @@ RE_MARGINE_COMISION = re.compile(r"\bnu\s+mai\s+(?:mic|mar[ei]|mult|pu[țt]in)",
 # textul doar "500.000 LEI". Ancorarea la inceput e obligatorie: "Comision SMS -
 # peste limita inclusă în abonament" e un comision real de 0,8 LEI, iar "din card de
 # credit – limită avans numerar" e unul de 1% + 5 LEI.
-RE_ETICHETA_LIMITA = re.compile(r"^\s*(?:limit[ăa]|plafon)\b", re.I)
+# Tot aici cerintele de sold spuse in eticheta: "Depunere inițială minimă în cont
+# pentru fiecare card de debit" (Raiffeisen, 6), "Suma minimă pentru deschiderea
+# contului de card" (BCR, 100 EUR ca deschidere_cont), si plafoanele: "Valoarea
+# maximă a limitei de credit" (50.000-320.000 lei), "Suma maxima zilnica de
+# retragere numerar" (Nexent, 9.000 RON ca pret de retragere).
+RE_ETICHETA_LIMITA = re.compile(
+    r"^\s*(?:limit[ăa]|plafon|valoarea\s+maxim\w*\s+a\s+limitei"
+    r"|sum[ăa]\s+(?:minim|maxim)|depunere\s+ini[țţt]ial[ăa]\s+minim)", re.I)
 # ...dar nici eticheta ancorata nu ajunge singura. La Raiffeisen, eticheta "Limita
 # zilnică de retragere numerar" a prins prin atribuire un comision real — textul
 # "5% (minim 10 lei) din suma utilizată" e formula unui pret, nu o limita. Cele doua
@@ -269,12 +276,19 @@ RE_LIMITA = re.compile(
 # adica pretul, nu limita (vezi rol_de_conditie).
 RE_LIMITA_SPUSA = re.compile(r"limit[ăae]\w*\s+(?:zilnic|maxim|minim|lunar)", re.I)
 RE_CURS = re.compile(r"curs\s+(de\s+)?schimb|curs\s+bnr|exchange\s+rate", re.I)
+# "% p.a." singur nu decide: casetele BRD (1,50%/an) si custodia BCR (0,07% p.a.)
+# sunt comisioane. Sub un descoperit neautorizat sau o restanta insa e dobanda:
+# Salt, "neautorizat" / "20 % p.a. (LEI) / 15% p.a. (valuta)", 6 valori.
+RE_PROCENT_PE_AN = re.compile(r"%\s*(?:p\.\s?a\b|pe\s+an\b|/\s*an\b)", re.I)
+RE_DESCOPERIT = re.compile(r"neautorizat|descoperit|restan[tț]|penaliz", re.I)
 
 
 def categorie(sectiune, serviciu, text, celula=""):
     """Ce fel de cifra e: comision, dobanda, limita de tranzactionare sau curs."""
     tot = f"{sectiune or ''} {serviciu or ''} {text or ''}"
     if RE_DOBANDA.search(tot) or RE_DOBANDA_CAP.search(serviciu or ""):
+        return "dobanda"
+    if RE_PROCENT_PE_AN.search(text or "") and RE_DESCOPERIT.search(serviciu or ""):
         return "dobanda"
     if RE_LIMITA.search(tot):
         return "limita"
