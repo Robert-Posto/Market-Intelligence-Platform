@@ -1011,5 +1011,91 @@ T(gol_minim_rand([_cuv(_litere("Taxa", 0, 0, 10)), _cuv(_litere("de", 26, 0, 10)
                   _cuv(_litere("emitere", 40, 0, 10))]) == 8.0, "fraza obisnuita NU se rupe")
 
 
+# ------------------------------------------------ valori pierdute sau citite gresit
+from crawler.parser_tarife import _valori_din_context  # noqa: E402
+
+
+def V(text):
+    return analizeaza_linie(text)[0]
+
+
+# mii cu virgula (format englezesc): nu mai iese 0 sau coada numarului
+T(V("100,000 lei") == [("comision_suma", 100000.0, "LEI", None)], "100,000 lei e o suta de mii")
+T(V("656,348.07 RON")[0][1] == 656348.07, "mii englezesti cu zecimale")
+T(V("max 3,000 euro") == [("comision_suma", 3000.0, "EUR", "max")], "max 3,000 euro")
+T(V("0,0125%")[0][1] == 0.0125 and V("2,5 LEI")[0][1] == 2.5, "virgula zecimala ramane")
+T(V("0,050 EUR") == [], "trei zecimale dupa 0 NU sunt mii")
+T(V("- între 10,000 și 100,000 lei - 1.0% p.a.") == [("comision_procent", 1.0, None, None)],
+  "banda cu si cu diacritice NU e comision")
+T(V("Payment order amounts between 1,000.00 99,999.99 EUR") == [], "banda between")
+# moneda inaintea sumei, doar la inceputul celulei sau dupa min./max.
+T(V("RON 4") == [("comision_suma", 4.0, "LEI", None)], "RON 4")
+T(V("0.18% Max. EUR 2,000") == [("comision_procent", 0.18, None, None),
+                                 ("comision_suma", 2000.0, "EUR", "max")], "Max. EUR 2,000")
+T(V("0.50% min. RON 5")[1] == ("comision_suma", 5.0, "LEI", "min"), "min. RON 5")
+T(V("Transfer credit – plăți interbancare în LEI 2") == [], "nota dupa moneda NU e suma")
+T(V("Plăți instant ≤ LEI 5.000") == [], "pragul dupa moneda NU e suma")
+T(len(V("3 USD 2,5 GBP 3 CHF")) == 3 and V("4 RON 4") == [("comision_suma", 4.0, "LEI", None)],
+  "suma normala nu se dubleaza")
+# zeroul in cuvinte si moneda spatiata
+T(V("0 (zero)") == [("gratuit", 0.0, None, None)] and V("comision zero")
+  == [("gratuit", 0.0, None, None)], "0 (zero) si comision zero")
+T(V("Pachet ZERO Tot") == [] and V("Beneficiezi de comision ZERO dacă") == [],
+  "ZERO in nume sau conditie NU e pret")
+T(V("0 L E I") == [("comision_suma", 0.0, "LEI", None)], "L E I spatiat")
+# cerinta cu zero si pragul repetat in celula
+T(rol_de_conditie("0 LEI", "Suma minimă pentru deschiderea contului de card", 0.0)
+  == "conditie", "suma minima 0 e conditie")
+T(rol_de_conditie("0", "Sold minim al contului de card", 0.0) == "conditie", "sold minim")
+T(rol_de_conditie("0 Lei in limita primelor 5 retrageri", "Retrageri", 0.0) is None,
+  "zeroul ramane pret")
+ET_TBI = "Ordin de plata – sume ≥ 50.000,00 RON / Payment order – amounts ≥"
+T(rol_de_conditie("50,000.00 RON", ET_TBI, 50000.0) == "conditie", "pragul repetat")
+T(rol_de_conditie("14 RON 4", ET_TBI, 14.0) is None, "pretul de sub prag ramane pret")
+
+
+def R(texte, sus=100, margini=(0, 300, 400)):
+    cuv = [{"text": "x", "x0": 1, "x1": 2, "top": sus, "bottom": sus + 8}]
+    return (1, cuv, list(margini), "bordura", texte)
+
+
+def CTX(randuri, col_nume=None):
+    analize = [[analizeaza_linie(t) for t in r[4]] for r in randuri]
+    _valori_din_context(randuri, analize, col_nume or {(0, 300, 400): 0}, {1: ([], [])})
+    return analize
+
+
+GR = [("gratuit", 0.0, None, None)]
+A = CTX([R(["Taxa emitere card", "0"], 100), R(["Taxa reinnoire", "3 RON"], 112)])
+T(A[0][1][0] == GR, "0 in coloana de pret e gratuit")
+A = CTX([R(["Cont curent (nr. maxim)", "3"], 100), R(["Plati", "0"], 112),
+         R(["Cost", "5 LEI"], 124)])
+T(A[1][1][0] == [], "0 langa numere de tranzactii NU e pret")
+A = CTX([R(["Dobanda (sold mai mare de 500 RON)", "0"], 100), R(["Taxa", "5 LEI"], 112)])
+T(A[0][1][0] == [], "0 langa un nume cu cifra NU se citeste")
+A = CTX([R(["Retrageri", "0"], 100)])
+T(A[0][1][0] == [], "0 fara pret in coloana NU se citeste")
+A = CTX([R(["Scrisoare de bonitate", "50-100 lei"], 100), R(["Taxa", "5 lei"], 112)])
+T(A[0][1][0] == [("comision_suma", 50.0, "LEI", "min"), ("comision_suma", 100.0, "LEI", "max")],
+  "intervalul de pret devine min/max")
+A = CTX([R(["", "0-100 LEI, inclusiv", "gratuit"], 100, (0, 50, 300, 400)),
+         R(["", "Taxa", "5 lei"], 112, (0, 50, 300, 400))], {(0, 50, 300, 400): 1})
+T(A[0][1][0] == [], "banda din coloana numelui NU e interval de pret")
+A = CTX([R(["(POS,", "1,75%, min."], 100), R(["de la ATM-uri", "5 EUR/USD"], 110)])
+T(A[1][1][0] == [("comision_suma", 5.0, "EUR", "min")] and len(A[0][1][0]) == 1,
+  "minimul de pe randul urmator primeste rolul, pe randul lui")
+A = CTX([R(["", "0,20% min. 25 EUR max. 800"], 100), R(["", "EUR"], 110)])
+T(A[0][1][0][-1] == ("comision_suma", 800.0, "EUR", "max"), "max. 800 / EUR")
+A = CTX([R(["Conditie pachet", "de minim"], 100), R(["", "40.000 EUR"], 110)])
+T(A[1][1][0] == [("comision_suma", 40000.0, "EUR", None)], "cerinta rupta NU primeste rol")
+# zeroul ramas cu o eticheta de un cuvant nu se emite (BCR, Direct Debit: file_cec)
+from crawler.parser_tarife import _zero_fara_nume  # noqa: E402
+T(_zero_fara_nume("gratuit", "0", "Activare") and _zero_fara_nume("gratuit", "0", None),
+  "zero cu eticheta de un cuvant NU se emite")
+T(not _zero_fara_nume("gratuit", "0", "Retrageri de numerar FX")
+  and not _zero_fara_nume("gratuit", "GRATUIT", "Activare"),
+  "zero cu parinte si GRATUIT scris raman")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)
