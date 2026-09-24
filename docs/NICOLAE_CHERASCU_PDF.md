@@ -20,6 +20,20 @@ din PDF-urile băncilor: `crawler/parser_pdf.py`, `crawler/parser_tarife.py` și
 | linii de încredere în `comparatie_comisioane.md` (comparabile între bănci) | 85 | 103 |
 | linii prea eterogene (dispersie mare între bănci) | 71 | 84 |
 
+**În baza de date**, refăcută cu `populare_initiala.py --din-bronze` și măsurată cu
+`scripts/raport_calitate.py` (scriptul din `docs/IMBUNATATIRI.md`):
+
+| | 23.09 (Robert) | 24.09 seara |
+|---|---:|---:|
+| concept comparabil | 59% | **76%** |
+| valori „curate” | 46% | **64%** |
+| datate | 57% | 69% |
+| ambigue | 24% | 19% |
+
+Baza are mult mai multe documente decât setul fix; BCR singură are 171 de PDF-uri.
+Pe comisioanele din documentele românești, 84% au concept. Pe versiunile în engleză ale
+listelor BCR PJ („Fees and commissions”, „Tariffs for legal entities”), doar 47%.
+
 Liniile prea eterogene cresc odată cu numărul de linii: intră concepte noi și 500 de
 valori recuperate. Nu le-am analizat încă una câte una. Dimineață, creșterea venea din
 dispersie reală în date (TBI „min. 5 LEI” lângă BCR „min. 30 LEI”), nu din parser.
