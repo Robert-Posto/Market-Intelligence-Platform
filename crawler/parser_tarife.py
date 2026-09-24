@@ -52,17 +52,35 @@ RE_INDEX_LA_INCEPUT = re.compile(r"^(\d+(?:\.\d+)*\.?|[A-Z]\.|[IVX]+\.)\s+(.+)$"
 # Indexul unei sectiuni se scrie cu punct ("7.", "4.2."). Fara punct obligatoriu,
 # orice rand care incepe cu o cifra devenea sectiune: nota de subsol "2 intrări
 # gratuite pe an," ajunsese titlu, iar titlul adevarat se pierdea.
-RE_INDEX_SECTIUNE = re.compile(r"^(\d+(?:\.\d+)*\.|[A-Z]\.|[IVX]+\.)\s+(.+)$")
+# ...sau cu punct in interior, fara cel final: Raiffeisen scrie "5.3 Multicash",
+# "5.5 MT 101", "7.4 Incasso" (212 valori isi schimba secțiunea). Fara el, "5.5
+# MT 101" nu era nici subtitlu (doua litere), iar abonamentul MT101 ramanea sub
+# "5.4 Free-Way" (vama), iar 8 plati de sub "4.1" ieseau incasari. Punctul din
+# interior tine afara nota "2 intrări", cifrele scurte suma "2.500 lei", iar
+# majuscula randul de tarif "15.3 comision zero" (BCR, pretul in aceeasi celula).
+RE_INDEX_SECTIUNE = re.compile(
+    r"^(\d+(?:\.\d+)*\.|\d{1,2}(?:\.\d{1,2})+(?=\s+[A-ZĂÂÎȘȚŞŢ])|[A-Z]\.|[IVX]+\.)"
+    r"\s+(.+)$")
 # acelasi index, dar singur in celula lui; fara litere ("a." e semn de lista)
 RE_INDEX_CELULA = re.compile(r"^(?:\d+(?:\.\d+)*\.|[IVX]+\.)$")
-RE_DOAR_MONEDE = re.compile(r"^(?:\s*(?:lei|leu|ron|eur|euro|usd|gbp|chf)\s*[/,;]?)+$",
-                            re.I)
+# Cu paranteze: "(USD) (EUR)" ajunsese titlu la BCR si inlocuia "14. Carduri de
+# Debit în Valută" (13 valori). "EUR*" nu intra: titlul Libra "ORDINE DE PLATA
+# CONDITIONATE || EUR*" recunoscut dadea transfer_credit si notificarii OPC-ului
+# primit, care e documentar (6 greșite fata de 7 corecte).
+RE_DOAR_MONEDE = re.compile(
+    r"^[\s()/,;]*(?:(?:lei|leu|ron|eur|euro|usd|gbp|chf)[\s()/,;]*)+$", re.I)
 # Componente de cel mult doua cifre: o data are anul de patru ("Cu token cumpărat
 # începând cu 05.04.2019" ramanea "...începând cu", casetele "după 21.07.2014" la
 # fel; 6 etichete BCR si BRD), iar suma are grupe de trei ("Plăți instant ≤ LEI
 # 5.000" ramanea "≤ LEI"; 8 etichete ProCredit, BRCI, Garanti)
 RE_INDEX_LA_SFARSIT = re.compile(r"\s+\d{1,2}(?:\.\d{1,2})+\.?$")
+# o paranteza, si una neinchisa pana la capatul celulei
+RE_PARANTEZA = re.compile(r"\([^)]*\)?")
+# Doar liniuta: nota cu bulina "• nu se aplica conturilor in valuta..." (Vista)
+# ramane subtitlu, altfel pragul de 100.000 lei din ea lua administrare_cont.
+RE_LINIUTA = re.compile(r"^\s*[-–—]\s*\S")
 RE_LITERA_SAU_ROMAN = re.compile(r"^[A-Z]\.$|^[IVX]+\.$")
+RE_ROMAN = re.compile(r"^[IVX]+\.$")
 # Randurile din cuprins ("CONTURI CURENTE ... PAG. 3") arata ca titluri de
 # sectiune si deveneau sectiuni: BCR PDAI avea "PACHET DE SERVICII PAG. 7".
 RE_CUPRINS = re.compile(r"\bpag\.?\s*\d+\b", re.I)
@@ -701,11 +719,46 @@ def _desparte_index(text):
     return (m.group(1), m.group(2)) if m else (None, text)
 
 
-def _adancime(index):
-    """Adancimea in ierarhie: "4.2." da 2, "7." da 1, "A." da 9 (frunza)."""
+# Capitolul numerotat cu majuscule care isi reia numerotarea dedesubt: la BCR,
+# "9. ACCEPTARE LA PLATĂ A CARDURILOR" are sub el "1. POS" si "2. E-COMM", iar la
+# aceeasi adancime "1. POS" il inlocuia, deci "Taxă de înrolare" nu mai stia ca e
+# acceptarea cardurilor. Tot asa "1. CONTURI" si "1. Conturi", "8. CARDURI" si
+# "1. Carduri de debit": 401 valori din lista PJ isi recapata capitolul.
+ADANCIME_CAPITOL = 0.5
+
+
+def _majuscule(titlu):
+    """Titlu de capitol: cu majuscule, fara paranteze, macar LITERE_MIN_TITLU litere.
+
+    "POS" si "E-COMM" sunt tot cu majuscule, dar sunt subpunctele capitolului.
+    """
+    fara = RE_PARANTEZA.sub(" ", titlu)
+    return fara == fara.upper() and len(re.findall(r"[^\W\d_]", fara)) >= LITERE_MIN_TITLU
+
+
+def _adancime(index, titlu=""):
+    """Adancimea in ierarhie: "4.2." da 2, "7." da 1, "A." da 9 (frunza).
+
+    Cifra romana urmata de un titlu cu majuscule e capitol (0): la BRD, "II. LINII
+    DE CREDIT" ramanea frunza sub "2. Credite pentru studii si tratamente
+    medicale" (86 de valori cu secțiunea schimbata in ghidul de credite). Literele
+    raman frunze ("A. In lei"). Cu majuscule
+    peste tot, si in paranteza: BCR "I. CREDITE (cu excepţia creditelor pe card)"
+    ramas deasupra facea din "card) > Comision de administrare credit" un
+    administrare_card.
+    """
+    if RE_ROMAN.match(index) and titlu == titlu.upper() and _majuscule(titlu):
+        return 0
     if RE_LITERA_SAU_ROMAN.match(index):
         return 9
     return len([p for p in index.rstrip(".").split(".") if p])
+
+
+def _numere(index):
+    """(15, 8) din "15.8" sau "15.8."; None pentru litere si cifre romane."""
+    if not index or not re.fullmatch(r"\d+(?:\.\d+)*\.?", index):
+        return None
+    return tuple(int(p) for p in index.rstrip(".").split("."))
 
 
 class Sectiuni:
@@ -713,18 +766,66 @@ class Sectiuni:
 
     def __init__(self):
         self.pe_adancime = {}
+        self.indexuri = {}      # adancime -> indexul numeric al titlului de acolo
         self.ultima = None
 
+    def _taie(self, a):
+        """Sterge nivelurile de la adancimea a in jos."""
+        for k in [k for k in self.pe_adancime if k >= a]:
+            del self.pe_adancime[k]
+            self.indexuri.pop(k, None)
+
+    def _reluat(self, numere):
+        """Un "1." sub capitolul numerotat cu majuscule il face capitol."""
+        if (numere == (1,) and 1 in self.indexuri
+                and _majuscule(self.pe_adancime[1])):
+            # Doar capitolul numerotat: titlul documentului ("LISTĂ PREȚURI
+            # PERSOANE FIZICE") nu are index si ramane inlocuit, ca inainte.
+            self.pe_adancime[ADANCIME_CAPITOL] = self.pe_adancime.pop(1)
+            self.indexuri[ADANCIME_CAPITOL] = self.indexuri.pop(1)
+
     def pune(self, index, titlu):
-        a = _adancime(index) if index else 1
-        for mai_adanc in [k for k in self.pe_adancime if k > a]:
-            del self.pe_adancime[mai_adanc]
+        a = _adancime(index, titlu) if index else 1
+        numere = _numere(index)
+        if numere and len(numere) == 1:
+            if _majuscule(titlu):
+                self._taie(ADANCIME_CAPITOL)     # capitol nou
+            else:
+                self._reluat(numere)
+        self._taie(a)
         self.pe_adancime[a] = titlu
+        if numere:
+            self.indexuri[a] = index
         self.ultima = a
+
+    def rand_cu_index(self, index):
+        """Un rand cu pret care isi poarta indexul inchide ramura fratelui de dinainte.
+
+        La BCR, "6. Comision unic..." si "10. Cost cu avizul de legalitate" au pretul
+        pe randul lor, deci nu sunt titluri, iar secțiunea ramanea "3. Comision de
+        administrare credit". In lista PJ, 142 de valori stateau sub "1.1. Emitere
+        card" dupa "1.2. Mentenanță anuală". "16. Comision verificare valabilitate
+        procură" ramanea sub "15.8 Comisioane percepute de terţi pentru
+        transferuri" si ieșea transfer_credit. Se inchide doar ramura
+        care s-a terminat ("15.8" inaintea lui "16."), la aceeasi adancime sau mai
+        jos, nu una reluata de la capat: "1. POS" dupa "9. ACCEPTARE..." e
+        numerotarea din capitol, nu un frate.
+        """
+        nou = _numere(index)
+        if not nou:
+            return
+        self._reluat(nou)
+        for k in sorted(k for k in self.indexuri if k >= len(nou)):
+            vechi = _numere(self.indexuri[k])
+            diferit = next(((a, b) for a, b in zip(vechi, nou) if a != b), None)
+            if diferit and diferit[0] < diferit[1]:
+                self._taie(k)
+                return
 
     def alipeste(self, titlu):
         """Titlurile cu majuscule se rup pe doua randuri: "CONTURI CURENTE CU" / "SERVICII DE BAZA"."""
-        if self.ultima is None:
+        if self.ultima not in self.pe_adancime:
+            # "ultima" s-a mutat la capitol sau a fost inchisa intre timp
             self.pune(None, titlu)
         else:
             self.pe_adancime[self.ultima] += " " + titlu
@@ -733,15 +834,40 @@ class Sectiuni:
         """Titlul unui grup din interiorul tabelului: sub toate titlurile reale."""
         self.pe_adancime[ADANCIME_SUBTITLU] = titlu
 
-    def inchide_subtitlu(self):
-        self.pe_adancime.pop(ADANCIME_SUBTITLU, None)
+    def rand(self, eticheta):
+        """Un rand cu eticheta proprie: ramane sub subtitlu sau il inchide.
+
+        Se inchide la primul rand care isi numeste singur serviciul (vezi
+        _e_subtitlu), afara de randul care repeta cuvantul subtitlului: la Nexent,
+        "Acceptare garantie de credit..." inchidea "Scrisori de garantie", iar
+        "Executare" si "Cesiune" de dupa el nu mai stiau ca sunt ale garantiei (25
+        de valori in cele 7 liste, acum documentar).
+
+        "Primul rand de sub subtitlu nu il inchide" a fost incercat si scos: ar fi
+        adus "Interogare sold" la BRD (3 valori), dar multe "subtitluri" sunt de
+        fapt servicii cu pretul centrat pe randul vecin ("Taxa de anulare/
+        modificare" la Vista), iar fratele de sub ele lua conceptul lor: 12 mapari
+        noi greșite (poprire, modificare_anulare, conversie_valutara).
+        """
+        sub = self.pe_adancime.get(ADANCIME_SUBTITLU)
+        if sub is None or _e_varianta(eticheta):
+            return
+        if _cuvant_subtitlu(sub) not in re.findall(r"[^\W\d_]+", eticheta.lower()):
+            del self.pe_adancime[ADANCIME_SUBTITLU]
 
     def cale(self):
         return " > ".join(self.pe_adancime[k] for k in sorted(self.pe_adancime))
 
 
 def _mobilier(randuri, npagini, cheie=lambda t: t):
-    """Textele de antet/subsol: aceeasi linie, in marginea paginii, pe multe pagini."""
+    """Textele de antet/subsol: aceeasi linie, in marginea paginii, pe multe pagini.
+
+    Antetul Vista repetat in afara marginii ("TARIFE, TERMENI ŞI CONDIŢII PERSOANE
+    FIZICE", 14 din 16 pagini, luat drept titlu) a fost incercat aici si scos: cu
+    secțiunea reala sub ele, notele de sub tabel si conditiile pachetelor au primit
+    concepte (17 corecte, 17 greșite: "* Comisionul Transfond..." transfer_credit,
+    "Serviciu custodie" file_cec). Intai trebuie oprite valorile din note.
+    """
     if npagini < 3:
         return set()
     pe_text = {}
@@ -820,12 +946,27 @@ def _e_varianta(text):
     """
     if _e_subpunct(text) or RE_CONTINUARE.match(text) or _e_doar_banda(text):
         return True
-    fara_paranteze = re.sub(r"\([^)]*\)?", " ", text)
+    fara_paranteze = RE_PARANTEZA.sub(" ", text)
     # orice litera, si cu sedila: "iniţială" cu [a-zăâîșț] se rupea in doua, iar
     # "Emitere iniţială" parea un nume de trei cuvinte si inchidea subtitlul
     cuvinte = [c for c in re.findall(r"[^\W\d_]{3,}", fara_paranteze)
                if c.lower() not in CUVINTE_GOALE]
     return len(cuvinte) <= 2
+
+
+# Subtitlul scurt isi spune obiectul in ultimul cuvant ("Scrisori de garantie",
+# "Ordin de plata conditionat"); unul lung e o descriere, nu un nume de grup.
+CUVINTE_MAX_SUBTITLU_SCURT = 4
+
+
+def _cuvant_subtitlu(subtitlu):
+    """Ultimul cuvant cu sens al unui subtitlu scurt, cu litere mici, sau None."""
+    fara = RE_PARANTEZA.sub(" ", subtitlu)
+    if len(fara.split()) > CUVINTE_MAX_SUBTITLU_SCURT:
+        return None
+    cuvinte = [c.lower() for c in re.findall(r"[^\W\d_]{5,}", fara)
+               if c.lower() not in CUVINTE_GOALE]
+    return cuvinte[-1] if cuvinte else None
 
 
 def _e_subtitlu(texte, nevide, margini, latime_tabel, geometrie):
@@ -849,7 +990,15 @@ def _e_subtitlu(texte, nevide, margini, latime_tabel, geometrie):
         return False
     i = nevide[0]
     t = texte[i]
-    if (len(t) > LUNGIME_MAX_SUBTITLU or RE_CONTINUARE.match(t)
+    # Un "0" sau "-" in coloana de pret nu e index, e pretul: la TBI, "Inchidere
+    # cont curent/ Current account closing || 0" e un serviciu gratuit, nu un
+    # grup. Luat drept subtitlu, dobanzile la sold de dedesubt (0%, 3 valori)
+    # ieseau inchidere_cont.
+    if any(texte[j] for j in range(i + 1, len(texte))):
+        return False
+    # Nici un element de lista: "- Caseta II (100*260*390 mm)" (Techventures) are
+    # pretul pe randul de dedesubt si ajungea secțiunea casetei urmatoare.
+    if (len(t) > LUNGIME_MAX_SUBTITLU or RE_CONTINUARE.match(t) or RE_LINIUTA.match(t)
             or t.rstrip().endswith((".", ",", ";")) or RE_DOAR_MONEDE.match(t)):
         return False
     latime_celula = margini[i + 1] - margini[i]
@@ -869,10 +1018,33 @@ def _titlu_din_tabel(texte, nevide):
         return None
     t = texte[nevide[0]]
     index = [j for j, x in enumerate(texte) if x and RE_INDEX_CELULA.match(x)]
-    if (len(index) == 1 and index[0] < nevide[0] and len(t) <= 90
-            and not RE_CONTINUARE.match(t)):
+    # Lungimea fara paranteze: "4. Cost de asigurare viaţă şi complexă (opţional,
+    # încasat lunar, aplicat la soldul creditului)" are peste 90 de caractere doar
+    # din paranteza, iar asigurarile BCR ramaneau sub "3. Comision de administrare".
+    if (len(index) == 1 and index[0] < nevide[0]
+            and len(RE_PARANTEZA.sub("", t)) <= 90 and not RE_CONTINUARE.match(t)):
         return texte[index[0]], t
     return None
+
+
+def _introduce_lista(text):
+    """Numele lung doar din paranteza, terminat in ":", deci nu proza.
+
+    "Cost de asigurare de viaţă (opţional, încasat lunar, aplicat la soldul
+    creditului):" (BCR) are 13 cuvinte si cadea la filtrul de proza, iar
+    "- credite garantate" de sub el ramanea sub asigurarea de dinainte.
+    """
+    return (text.endswith(":")
+            and len(RE_PARANTEZA.sub(" ", text).split()) <= CUVINTE_MAX_RAND_UNIC)
+
+
+def _index_rand(texte, i_eticheta):
+    """Indexul propriu al randului: in prima celula sau la inceputul numelui."""
+    prima = next((x for x in texte if x), "")
+    if RE_INDEX_CELULA.match(prima):
+        return prima
+    m = i_eticheta is not None and RE_INDEX_SECTIUNE.match(texte[i_eticheta])
+    return m.group(1) if m else None
 
 
 # Titlul cu index poate fi lung: "6. Taxe și comisioane aferente cardurilor de debit
@@ -890,8 +1062,11 @@ def _e_titlu_cu_index(t):
                 and not t.rstrip().endswith((".", ",", ";", ":")))
 
 
-def _e_titlu(texte, nevide, margini, latime_tabel):
-    """(index, titlu) daca randul e un titlu de sectiune, altfel None."""
+def _e_titlu(texte, nevide, margini, latime_tabel, col_nume=None):
+    """(index, titlu) daca randul e un titlu de sectiune, altfel None.
+
+    `col_nume` e coloana numelui in tabelul randului (vezi coloana_numelui).
+    """
     # Titlul pe acelasi rand cu antetul de moneda: Libra scrie "ACREDITIVE DE
     # IMPORT", "GARANTII", "DIRECT DEBIT INTERBANCAR" in coloana numelui si "EUR"
     # sau "LEI" deasupra preturilor. Cu doua celule nu era titlu, iar celula ocupa
@@ -909,7 +1084,12 @@ def _e_titlu(texte, nevide, margini, latime_tabel):
         return None
     i = nevide[0]
     t = texte[i]
-    if _e_titlu_cu_index(t):
+    # Lista numerotata din celula de pret sau de conditii nu e titlu: la Salt, "2.
+    # Clientii Salt Fondatori." (conditia pachetului, in coloana SALT PREMIUM)
+    # ajunsese secțiunea a 99 de valori pana la pagina 4, iar la ProCredit "3.
+    # Deții in conturile de EURO /" pe cea a 28 de valori din paginile 1-4.
+    din_nume = col_nume is None or i == col_nume
+    if din_nume and _e_titlu_cu_index(t):
         m = RE_INDEX_SECTIUNE.match(t)
         return m.group(1), m.group(2)
     if len(t) > 90 or not re.search(r"[A-Za-zĂÂÎȘȚăâîșț]{3}", t):
@@ -918,7 +1098,7 @@ def _e_titlu(texte, nevide, margini, latime_tabel):
         return None     # fragment de fraza, sau un rand de antet cu monede
     m = RE_INDEX_SECTIUNE.match(t)
     if m:
-        return m.group(1), m.group(2)
+        return (m.group(1), m.group(2)) if din_nume else None
     # latimea CELULEI, nu a tabelului: un titlu se intinde peste tabel, iar
     # "EUR" sau "ATM" intr-o celula ingusta a unui tabel lat nu e titlu — cu
     # latimea tabelului treceau amandoua si stergeau numele serviciului
@@ -1281,13 +1461,14 @@ def extrage_tarife(cale, banca, radacina=None):
                   if t and not RE_DOAR_INDEX.match(t)]
         x = cuvinte[0]["x0"]
         # un rand fara nicio coloana si cu multe cuvinte e proza, nu tarif
+        tot_randul = " ".join(texte).strip()
         proza = (geometrie == "unic" and len(cuvinte) > CUVINTE_MAX_RAND_UNIC
-                 and not _e_titlu_cu_index(" ".join(texte).strip()))
+                 and not _e_titlu_cu_index(tot_randul) and not _introduce_lista(tot_randul))
         nota = _nota_dupa(nota, nr_pagina, x, sus, jos, [texte[i] for i in nevide],
                           proza, geometrie_pagini[nr_pagina][0])
         if proza:
             continue
-        if RE_CUPRINS.search(" ".join(texte)):
+        if RE_CUPRINS.search(tot_randul):
             continue          # rand din cuprins, nu din tabel
 
         if pagina_anterioara != nr_pagina:
@@ -1300,13 +1481,14 @@ def extrage_tarife(cale, banca, radacina=None):
         coloane_pret = coloane_pret - {col_nume.get(semn)}
 
         if not are_valori:
-            titlu = _e_titlu(texte, nevide, margini, latime_tabel)
+            titlu = _e_titlu(texte, nevide, margini, latime_tabel, col_nume.get(semn))
             if titlu:
                 index, text = titlu
                 if index is None and rand_titlu_caps == k - 1:
                     sectiuni.alipeste(text)
                 else:
-                    sectiuni.pune(index, text)
+                    # indexul din celula lui: "9." | "ACCEPTARE LA PLATĂ A CARDURILOR"
+                    sectiuni.pune(index or _index_rand(texte, nevide[0]), text)
                 rand_titlu_caps = k if index is None else None
                 antete.clear()      # tabel nou, antetul vechi nu se mai aplica
                 semn_cu_valori.clear()   # si tabelul nou n-a dat inca valori
@@ -1338,19 +1520,21 @@ def extrage_tarife(cale, banca, radacina=None):
                                  x=margini[i_eticheta],
                                  x_text=_x_celula(cuvinte, margini, i_eticheta),
                                  bordura=geometrie == "bordura")
-                if not subtitlu and not _e_varianta(texte[i_eticheta]):
-                    sectiuni.inchide_subtitlu()
+                if not subtitlu:
+                    sectiuni.rand(texte[i_eticheta])
             continue
 
         # rand cu valori: eticheta lui poate continua si pe randurile urmatoare
         i_eticheta = _celula_eticheta(texte, analiza, coloane_pret)
+        index_rand = _index_rand(texte, i_eticheta)
+        if index_rand:
+            sectiuni.rand_cu_index(index_rand)
         if i_eticheta is not None:
             _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], True,
                              x=margini[i_eticheta],
                              x_text=_x_celula(cuvinte, margini, i_eticheta),
                              bordura=geometrie == "bordura")
-            if not _e_varianta(texte[i_eticheta]):
-                sectiuni.inchide_subtitlu()
+            sectiuni.rand(texte[i_eticheta])
         semn_cu_valori.add(semn)
         pret[semn].update(i for i, a in enumerate(analiza) if a[0])
         de_emis.append((nr_pagina, sus, jos, texte, analiza, geometrie,
