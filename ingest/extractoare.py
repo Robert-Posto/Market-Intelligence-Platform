@@ -404,7 +404,12 @@ def _parsere_pdf():
 RE_NU_TARIF = re.compile(
     r"raport|cerinte[-_ ]transparenta|reg(ulament)?[-_ ]?575|situati\w*[-_ ]financiar"
     r"|info[-_ ]?economic|psd2|strategi|asigurar|\bKID\b|informatii[-_ ]esentiale"
-    r"|prospect|audit|guvernanta|remunerar|pilon|pillar",
+    r"|prospect|audit|guvernanta|remunerar|pilon|pillar"
+    # Vista, 24.09: documentația API PSD2 (`api-website-aisp`) dădea singură
+    # 4.911 „valori"; la fel raportul de transparență și clasamentul MiFID al
+    # locurilor de execuție.
+    r"|(?<![a-z])api(?![a-z])|aisp|pisp|technical|transparen[tț]a[-_ ]si[-_ ]publicare"
+    r"|ranking|execution[-_ ]venue|indici[-_ ]referinta",
     re.I)
 
 
