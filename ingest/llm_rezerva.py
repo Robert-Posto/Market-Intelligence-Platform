@@ -22,6 +22,8 @@ import normalizeaza as N
 
 MODEL = os.environ.get("MODEL_REZERVA", "claude-sonnet-5")
 MAX_LINII = 25
+CACHE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                     "bronze", "llm_cache")
 SISTEM = (
     "Extragi dobânzi și costuri procentuale dintr-un text de pe site-ul unei bănci "
     "din România. Răspunzi DOAR cu JSON, fără alt text: "
@@ -51,17 +53,33 @@ def extrage(linii, banca, url, categorie, client=None, raport=None):
     linii = [l for l in linii if l.strip()][:MAX_LINII]
     if not linii:
         return []
-    if client is None:
-        import anthropic
-        client = anthropic.Anthropic()
     numerotat = "\n".join(f"{i}: {l}" for i, l in enumerate(linii))
-    r = client.messages.create(model=MODEL, max_tokens=2000, system=SISTEM,
-                               messages=[{"role": "user", "content": numerotat}])
-    if raport is not None:
-        raport["llm_rezerva_apeluri"] += 1
-        raport["llm_rezerva_tokeni_intrare"] += r.usage.input_tokens
-        raport["llm_rezerva_tokeni_iesire"] += r.usage.output_tokens
-    raspuns = "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
+    # Cache pe (model, prompt, linii), doar pentru apelurile reale: o refacere
+    # din Bronze trimite exact aceleași linii, iar răspunsul nu se plătește de
+    # două ori. Clientul injectat (teste) nu scrie în cache.
+    import hashlib
+    cheie = hashlib.sha256(f"{MODEL}|{SISTEM}|{numerotat}".encode("utf-8")).hexdigest()[:24]
+    cale = os.path.join(CACHE, f"{cheie}.txt")
+    cu_cache = client is None
+    if cu_cache and os.path.exists(cale):
+        raspuns = open(cale, encoding="utf-8").read()
+        if raport is not None:
+            raport["llm_rezerva_din_cache"] += 1
+    else:
+        if client is None:
+            import anthropic
+            client = anthropic.Anthropic()
+        r = client.messages.create(model=MODEL, max_tokens=2000, system=SISTEM,
+                                   messages=[{"role": "user", "content": numerotat}])
+        if raport is not None:
+            raport["llm_rezerva_apeluri"] += 1
+            raport["llm_rezerva_tokeni_intrare"] += r.usage.input_tokens
+            raport["llm_rezerva_tokeni_iesire"] += r.usage.output_tokens
+        raspuns = "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
+        if cu_cache:
+            os.makedirs(CACHE, exist_ok=True)
+            with open(cale, "w", encoding="utf-8") as f:
+                f.write(raspuns)
     try:
         valori = json.loads(raspuns[raspuns.find("{"):raspuns.rfind("}") + 1])["valori"]
     except (ValueError, KeyError):
