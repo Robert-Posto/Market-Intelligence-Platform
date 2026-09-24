@@ -83,7 +83,10 @@ RE_SERVICIU_FARA_CONCEPT = re.compile(
     r"(?![^.]{0,40}document)"
     r"|^\W*(?:eliberare\s+)?(?:adeverin[țt]|confirm\w*\s+(?:sold|audit)|duplicat"
     r"|scriso(?:are|ri)\s+de\s+(?:bonitate|recomandare|inten))"
-    r"|^\W*(?:[îi]nchirier\w*\s+)?caset|^\W*curierat", re.I)
+    r"|^\W*(?:[îi]nchirier\w*\s+)?caset|^\W*curierat"
+    # BCR "Operațiuni de schimb între bancnote și monede" (1,8%) lua retragerea din
+    # secțiune; vocabularul nu are concept pentru schimbul de numerar
+    r"|schimb\w*\s+[îi]ntre\s+bancnote", re.I)
 
 
 def _e_fragment(nume):
@@ -191,11 +194,9 @@ SERVICII = [
      r"|^\W*internet\s*banking\b[^.]{0,10}[•\-–]\s*administrar"),
     # Ancorat si inaintea cardului si a contului. Neancorat, secțiunea BCR "Comision
     # de administrare credit (încasat lunar...)" se lipea de asigurari si avize.
-    # "creditele în sold – Comision pentru diminuarea perioadei" e o modificare.
     ("administrare_credit",
      r"^\W*(?:comision\w*\s+)?(?:\(flat\)\s+)?(?:lunar\w*\s+|anual\w*\s+)?(?:de\s+|pentru\s+)?administrar\w*\s+"
-     r"(?:a\s+)?(?:credit(?:ului|e|elor)?\b|DAC\b|lini\w*\s+de\s+credit|descoperit\w*|[îi]mprumut)"
-     r"|^\W*comision\w*\s+(?:\(flat\)\s+)?pentru\s+credit\w*\s+[îi]n\s+sold(?![^.]{0,10}[–-]\s*comision)"),
+     r"(?:a\s+)?(?:credit(?:ului|e|elor)?\b|DAC\b|lini\w*\s+de\s+credit|descoperit\w*|[îi]mprumut)"),
     ("administrare_card", r"administrar\w*[^.]{0,30}card|card[^.]{0,25}administrar"
                           r"|menten[ăa]n[țt][ăa]|ta?x[ăa]\s+anual[ăa][^.]{0,20}card"
                           # cardul principal/suplimentar, fara cuvantul "card"
@@ -250,7 +251,7 @@ SERVICII = [
                           # valori care ieseau transfer_credit din secțiune)
                           r"|utilizar\w*\s+mijloc\w*\s+de\s+plat[ăa]\s+(?:\(\s*card\s*\)\s+)?(?:la|prin)\s+(?:ATM|POS)"
                           # "Retragere de de la ATM-uri si Ghiseele" (Vista, 7)
-                          r"|^\W*retrager\w*[^.]{0,50}\b(?:ATM|ghi[șs]e|casieri)"
+                          r"|^\W*(?:comision\s+(?:de\s+)?)?retrager\w*[^.]{0,60}\b(?:ATM|ghi[șs]e|casieri)"
                           # TBI, lista in engleza: "Withdrawals3"
                           r"|^\W*(?:cash\s+)?withdrawals?(?![a-z])"),
     ("depunere_numerar", r"depuner\w*[^.]{0,20}numerar|alimentar\w*[^.]{0,20}numerar"
@@ -325,7 +326,10 @@ SERVICII = [
      # Salt "Activare/ Administrare aplicatia Salt Bank", BCR "utilizare a
      # Serviciului George" (George e internet bankingul BCR; nu George Info/Bills)
      r"|administrar\w*\s+aplica[țt]i|administrar\w*[^.]{0,40}electronic\s+banking"
-     r"|utilizar\w*\s+(?:a\s+)?serviciul\w*\s+George(?!\s*(?:Info|Bills))"),
+     r"|utilizar\w*\s+(?:a\s+)?serviciul\w*\s+George(?!\s*(?:Info|Bills))"
+     # ProCredit: "Internet Banking ProB@nking Plus și Mobile Banking MB@nk", cu pretul
+     # lui in lista pachetului (6 valori)
+     r"|^\W*(?:•\s*)?internet\s*banking\s*\(?\s*ProB@nking"),
     # Investigatia are capul ei, oricare ar fi obiectul: "Investigatii telefonice/
     # email/ SWIFT" sub "PLATI" (Vista, pana la 15 EUR) strica linia plafoanelor de
     # transfer (dispersie 60x). Mutate aici ~34 de valori de pe transfer_credit,
@@ -334,7 +338,10 @@ SERVICII = [
      r"^\W*(?:(?:comision|speze|tax[ăa])\w*\s+(?:\w+\s+){0,2}?)?(?:de\s+|pentru\s+)?investiga[țt]i\w*"
      # ...dar "stadiul documentelor" sub INCASSO ramane documentar (Vista, 2)
      r"(?![^.]{0,40}(?:\bCIP\b|\bCRB\b|(?:stadiul|soarta)\s+document))"
-     r"|investiga[țt]\w*\s+[îi]n\s+arhiv|repar\w*[^.]{0,15}\b(?:IBAN|cod)"),
+     r"|investiga[țt]\w*\s+[îi]n\s+arhiv|repar\w*[^.]{0,15}\b(?:IBAN|cod)"
+     # BRCI "Taxe de investigare sub 6 luni" lua transfer_credit din secțiune
+     # ("Investigare" singur sub INCASSO, Garanti, ramane pe secțiune: documentar)
+     r"|^\W*(?:ta?x[ăa]\w*|ta?xe|comision\w*)\s+(?:de\s+)?investigar"),
     # cap de expresie mai specific decat "plata" — se verifica INAINTEA lui
     # Vocabularul nu acoperea decat jumatate din serviciile documentare. Cu
     # coborarea la context pentru etichetele-fragment, golul a devenit activ:
@@ -388,7 +395,10 @@ SERVICII = [
      r"|acord\w*\s+de\s+instituire|^\W*(?:eliberar|[îi]nstr[ăa]inar)\w*\s+(?:a\s+)?unui\s+bun"
      r"|bun\w*\s+care\s+constituie\s+garan|^\W*eliberar\w*\s+temporar|^\W*acceptar\w*\s+[îi]n\s+garan[țt]i"
      r"|servic\w*\s+(?:suplimentare\s+)?prestat\w*\s+(?:de\s+banc[ăa]\s+)?la\s+(?:cererea|solicitar)"
-     r"|co\s?mision\w*\s+unic\s+(?:pentru|[îi]ncasat)"),
+     r"|co\s?mision\w*\s+unic\s+(?:pentru|[îi]ncasat)"
+     # BCR "Comision (flat) pentru creditele în sold" e titlul grupului amanare /
+     # gratie / extinderea perioadei, nu administrarea (verificat in PDF, p.5 pct. 9)
+     r"|^\W*comision\w*\s+(?:\(flat\)\s+)?pentru\s+credit\w*\s+[îi]n\s+sold"),
     ("evaluare_garantie", r"evaluar\w*[^.]{0,30}(?:imobil|apartament|teren|\bcas[ăae]\b|garan[țt]|propriet)"
                           r"|raport\w*\s+(?:de\s+)?evaluar|analiz\w*\s+tehnic"),
     # Nu "restan" simplu: BCR "creditele în sold • ... înregistrează restanţe" e
@@ -473,7 +483,10 @@ SERVICII = [
     ("interogare_sold", r"interog\w*[^.]{0,20}sold|verificar\w*[^.]{0,20}(sold|disponibil)"
                         r"|consultar\w*[^.]{0,20}sold|comunicar\w*\s+sold"),
     ("conversie_valutara", r"conversi\w*\s+valutar|schimb\s+valutar"
-                           r"|marj\w*\s+(?:de\s+)?(?:ajustare\s+)?(?:a\s+)?curs\w*\s+valutar"),
+                           r"|marj\w*\s+(?:de\s+)?(?:ajustare\s+)?(?:a\s+)?curs\w*\s+valutar"
+                           # BCR "Transformarea dintr-o valută efectivă în altă valută
+                           # efectivă" lua retragere_numerar din secțiune
+                           r"|valut\w*\s+efectiv\w*\s+[îi]n\s+alt\w*\s+valut"),
     # acelasi concept, dar tiparul neancorat: se incearca abia la sfarsit
     ("modificare_anulare", r"(modificar|anular|stornar)\w*"),
     # "Extras ONRC" e interogarea registrului comertului; CRC si Api.Investigator
