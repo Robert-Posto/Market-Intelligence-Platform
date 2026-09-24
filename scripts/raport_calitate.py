@@ -106,6 +106,9 @@ def main():
         pdfuri = [r for r in rr if r[2] == "document" and r[4]]
         esantion = set(x[1] for x in random.Random(1).sample(pdfuri, min(a.esantion_pdf, len(pdfuri))))
         for (_, oid, tip, sursa, citat, camp, unit, datat, amb, pagina, curenta) in rr:
+            if camp == "nume_produs":      # catalog de produse, nu preț
+                c["nume_produs"] += 1
+                continue
             c["val"] += 1
             c["curente"] += curenta
             c["datat"] += datat
@@ -142,6 +145,7 @@ def main():
     print(f"citate HTML regăsite în conținut: {t['html_ok']}/{t['html']} "
           f"({100 * t['html_ok'] / max(t['html'], 1):.0f}%); citate PDF pe eșantion: "
           f"{t['pdf_ok']}/{t['pdf_esantion']} ({100 * t['pdf_ok'] / max(t['pdf_esantion'], 1):.0f}%)")
+    print(f"nume de produse (catalog, nu prețuri): {t['nume_produs']}")
     print(f"pachetul colegului (doar ca reper): {sum(coleg.values())} valori la "
           f"{sum(1 for v in coleg.values() if v)} bănci")
 

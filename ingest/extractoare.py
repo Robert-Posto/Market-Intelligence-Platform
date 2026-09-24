@@ -588,10 +588,14 @@ def din_html(octeti, url, slug, rol=None):
     brute = []
     nume = _nume_produs(soup, titlu)
     if nume:
+        # Citatul e numele însuși când apare în pagină (h1), nu <title>: titlul
+        # tab-ului nu e în conținut, deci evidențierea la click nu-l găsea
+        # (409 din 604 nume de produs, 24.09).
         brute.append(brut(
             banca=slug, sursa=url, rol_sursa=rol or "produs",
             concept="nume_produs", produs=produs, valoare_text=nume,
-            serviciu=nume, categorie=categorie, citat=titlu, incredere=0.8,
+            serviciu=nume, categorie=categorie,
+            citat=nume if soup.find("h1") else titlu, incredere=0.8,
         ))
 
     vazute = set()
