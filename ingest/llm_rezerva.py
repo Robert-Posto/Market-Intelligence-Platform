@@ -87,7 +87,11 @@ def extrage(linii, banca, url, categorie, client=None, raport=None):
             banca=banca, sursa=url, frecventa_sursa="zilnic", concept=v.get("tip_rata"),
             tip="rata", valoare=valoare, moneda=v.get("moneda"), frecventa=v.get("perioada"),
             categorie=categorie, sectiune=categorie, perioada=v.get("perioada"),
-            citat=linie, incredere=0.6, _rec=rec))
+            citat=linie, incredere=0.6, _rec=rec,
+            # Cifra e verificată literal, dar TIPUL și produsul nu: pe Patria
+            # (24.09) modelul a etichetat conversia valutară 1,75% drept marjă
+            # ROBOR. Totul merge în coada de verificare, nu direct în comparații.
+            ambiguu=True, motiv_ambiguu="extras de LLM: tipul și produsul de confirmat"))
         if raport is not None:
             raport["llm_rezerva_acceptate"] += 1
     return brute

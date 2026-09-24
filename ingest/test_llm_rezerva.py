@@ -35,6 +35,7 @@ class TestRezerva(unittest.TestCase):
         self.assertEqual([b["valoare"] for b in rez], [4.25])
         self.assertLessEqual(rez[0]["incredere"], 0.6)
         self.assertEqual(rez[0]["citat"], self.LINIE)
+        self.assertTrue(rez[0]["ambiguu"])          # merge în coada de verificare
 
     def test_cifra_trebuie_sa_fie_intreaga(self):
         # 4,2 nu e „în text" doar pentru că apare ca început al lui 4,25
