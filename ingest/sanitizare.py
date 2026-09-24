@@ -24,13 +24,26 @@ RE_ORA = re.compile(r"\b\d{1,2}:\d{2}(:\d{2})?\b")
 RE_ISO = re.compile(r"\b\d{4}-\d{2}-\d{2}T[\d:.+Z-]+")
 
 
+# Sub această parte din textul paginii, blocul „principal" e altceva decât
+# conținutul. Pagina ING de refinanțare nu are <main>: primul <article> găsit
+# avea 186 de caractere din 26.200, iar dobânzile rămâneau în afara lui.
+PARTE_MINIMA = 0.2
+
+
+def radacina_continut(soup):
+    corp = soup.body or soup
+    total = len(corp.get_text(" ", strip=True)) or 1
+    for candidat in (soup.find("main"), soup.find(attrs={"role": "main"}), soup.find("article")):
+        if candidat is not None and len(candidat.get_text(" ", strip=True)) >= PARTE_MINIMA * total:
+            return candidat
+    return corp
+
+
 def text_sanitizat(octeti):
     soup = BeautifulSoup(octeti, "lxml")
     for tag in soup.find_all(ZGOMOT):
         tag.decompose()
-    radacina = (soup.find("main") or soup.find(attrs={"role": "main"})
-                or soup.find("article") or soup.body or soup)
-    text = radacina.get_text(separator=" ", strip=True)
+    text = radacina_continut(soup).get_text(separator=" ", strip=True)
     text = RE_ISO.sub(" ", RE_ORA.sub(" ", text))
     return re.sub(r"\s+", " ", text).strip()
 

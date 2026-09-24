@@ -231,9 +231,18 @@ def din_bronze(err, raport, banca=None):
             octeti = None
         if octeti is None:
             j["stare"] = "LIPSA_BRONZE"
-        elif sanitizare.amprenta_continut(octeti) not in amp:
+        elif sanitizare.amprenta_continut(octeti) not in amp and octeti.startswith(b"%PDF"):
+            # la PDF amprenta e pe octeți: altă valoare = alt fișier decât cel colectat
             j["stare"] = "AMPRENTA_DIFERITA"
         else:
+            noua = sanitizare.amprenta_continut(octeti)
+            if noua not in amp:
+                # HTML: s-a schimbat regula de sanitizare, nu fișierul (Bronze e
+                # scris doar de pipeline). Se reînregistrează amprenta nouă.
+                with psycopg2.connect(N.dsn()) as c2, c2.cursor() as k:
+                    k.execute("INSERT INTO hashes (id_sursa, format, hash) VALUES (%s, 'html', %s)",
+                              (sid, noua))
+                raport["amprenta_html_reinregistrata"] += 1
             b_noi, j = extrage(octeti, cale, slug, url, rol, j)
             brute.extend(b_noi)
         stari[j["stare"]] += 1
@@ -284,7 +293,9 @@ def scrie(err, raport, brute, banci):
     err.write(f"\n═══ 3. Normalizare + dedup + scriere ({len(brute)} brute, "
               f"{len(locatii)} locații)\n")
     import validare
+    import versiuni
     raport.update(validare.valideaza_rate(brute))
+    raport.update(versiuni.marcheaza(brute))
     randuri = [x for x in (N.normalizeaza(b, raport) for b in brute) if x]
     N.scrie(randuri, METODA, raport, banci=banci)
     scrie_locatii(locatii, raport)

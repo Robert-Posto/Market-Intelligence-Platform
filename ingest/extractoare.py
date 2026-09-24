@@ -253,8 +253,8 @@ def _continut_principal(octeti):
     soup = BeautifulSoup(octeti, "lxml")
     for tag in soup.find_all(ZGOMOT):
         tag.decompose()
-    return (soup.find("main") or soup.find(attrs={"role": "main"})
-            or soup.find("article") or soup.body or soup)
+    from sanitizare import radacina_continut
+    return radacina_continut(soup)
 
 
 def _linii(soup):
@@ -426,6 +426,37 @@ RE_TITLU_NU_TARIF = re.compile(
     re.I)
 
 
+RE_DOC_DEPOZITE = re.compile(r"depozit|economis|savings|deposit", re.I)
+
+
+def _rata_din_pdf(c, banca, sursa, data_vig, stare_dat):
+    """O dobândă găsită într-un PDF, tipizată cu parserul de dobânzi.
+
+    Tipul (nominală, DAE, marjă) îl dă `parser_rate` pe textul rândului, nu îl
+    ghicim; dacă parserul nu recunoaște aceeași valoare pe rând, rămâne
+    `dobanda` generică — reală, dar în afara comparațiilor.
+    """
+    from crawler.parser_rate import parseaza_linie
+    text = c.get("text_sursa") or c.get("serviciu") or ""
+    categorie = "depozite" if RE_DOC_DEPOZITE.search(f"{sursa} {c.get('sectiune') or ''}") else "credite"
+    tip_rata = "dobanda"
+    try:
+        recs, _ = parseaza_linie(text, banca, categorie, sursa)
+        for r in recs:
+            if r.get("valoare") is not None and abs(float(r["valoare"]) - float(c["valoare"])) < 1e-6:
+                tip_rata = r.get("tip_rata") or tip_rata
+                break
+    except Exception:
+        pass
+    return brut(
+        banca=banca, sursa=sursa, tip_sursa="document", format="pdf", frecventa_sursa="lunar",
+        concept=tip_rata, tip="rata", valoare=c.get("valoare"), moneda=c.get("moneda"),
+        serviciu=c.get("serviciu"), sectiune=categorie, categorie=categorie,
+        pagina=c.get("pagina"), segment=c.get("segment") or segment_din_nume(sursa),
+        citat=c.get("text_sursa"), data_vigoare=c.get("data_vigoare") or data_vig,
+        stare_data=c.get("stare_data") or stare_dat, incredere=0.7)
+
+
 def document_fara_tarife(cale, sursa=None):
     """Motivul pentru care documentul nu e o listă de prețuri, sau None.
 
@@ -520,6 +551,28 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
     seg_doc = segment_din_nume(sursa or str(cale))
     for c in inregistrari:
         if c.get("valoare") is None:
+            continue
+        # Categoria dată de parserul colegului (parser_pdf.categorie): nu tot
+        # ce e într-o listă de tarife e un comision. Dobânzile merg la 2.2 (nu
+        # ajungeau deloc acolo), iar limitele și cursurile nu intră în
+        # comparația de comisioane.
+        cat = c.get("categorie")
+        if cat == "dobanda":
+            rata = _rata_din_pdf(c, banca, sursa or str(cale), data_vig, stare_dat)
+            if rata:
+                brute.append(rata)
+            continue
+        if cat in ("limita", "curs"):
+            brute.append(brut(
+                banca=banca, sursa=sursa or os.path.basename(str(cale)),
+                tip_sursa="document", format="pdf", frecventa_sursa="lunar",
+                concept="limita_tranzactionare" if cat == "limita" else "curs_valutar_document",
+                tip=c.get("tip"), valoare=c.get("valoare"), moneda=c.get("moneda"),
+                serviciu=c.get("serviciu"), sectiune=c.get("sectiune"), pagina=c.get("pagina"),
+                segment=c.get("segment") or seg_doc, categorie=cat, citat=c.get("text_sursa"),
+                data_vigoare=c.get("data_vigoare") or data_vig,
+                stare_data=c.get("stare_data") or stare_dat,
+                incredere=0.9 if standardizat else 0.7, produs="comisioane"))
             continue
         # Maparea la vocabularul canonic. Parserele întorc denumirea băncii
         # („Comision de administrare cont curent lei"), nu conceptul — iar fără
