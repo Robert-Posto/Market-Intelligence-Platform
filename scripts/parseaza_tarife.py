@@ -8,6 +8,7 @@ in vigoare succesiv (BCR PJ are iulie, august si martie 2026), iar fara ea aceea
 lista de tarife ar intra de trei ori in date si ar dubla tot ce numaram.
 """
 import hashlib
+from datetime import date
 from functools import lru_cache
 import json
 import re
@@ -22,7 +23,7 @@ sys.path.insert(0, str(RADACINA))
 
 from crawler.data_document import data_documentului
 from crawler.parser_pdf import RE_NUME_FID
-from crawler.parser_tarife import extrage_tarife
+from crawler.parser_tarife import e_lista_tarife, extrage_tarife
 
 PDFURI = RADACINA / "output" / "crawl" / "pdf"
 RE_TARIF = re.compile(r"tarif|comisio|taxe|speze", re.I)
@@ -102,9 +103,14 @@ def _vechime(cale_text):
 
 
 def candidati():
-    """Documentele de tarife care NU sunt formularul standardizat."""
+    """Documentele de tarife care NU sunt formularul standardizat.
+
+    Numele sau titlul din pagina: numele singur rata listele cu nume-hash sau
+    generic (vezi RE_TITLU_TARIFE). Titlul se citeste doar cand numele nu decide.
+    """
     return [c for c in sorted(PDFURI.rglob("*.pdf"))
-            if RE_TARIF.search(c.name) and not RE_NUME_FID.search(c.name)]
+            if not RE_NUME_FID.search(c.name)
+            and (RE_TARIF.search(c.name) or e_lista_tarife(c))]
 
 
 def dedubleaza(cai):
@@ -122,12 +128,20 @@ def dedubleaza(cai):
     for cale in pe_amprenta.values():
         familii[(cale.parent.name, _cheie_familie(cale.name))].append(cale)
 
+    azi = date.today().isoformat()
     pastrate = []
     for _cheie, grup in sorted(familii.items()):
         grup.sort(key=lambda c: _vechime(str(c)))
-        pastrate.append(grup[-1])
-        for vechi in grup[:-1]:
-            aruncate.append((vechi, f"versiune mai veche decat {grup[-1].name[:40]}"))
+        # O versiune care intra in vigoare mai tarziu nu o inlocuieste pe cea de azi.
+        # Vista are pe site lista din 12.2025 si pe cea din 7 octombrie 2026; cu
+        # "cea mai noua castiga", pretul practicat azi se arunca. Viitoarea se
+        # pastreaza alaturi, iar date_documente o marcheaza VIITOR.
+        viitoare = [c for c in grup
+                    if _vechime(str(c))[0] and _vechime(str(c))[1] > azi]
+        curente = [c for c in grup if c not in viitoare]
+        pastrate += viitoare + curente[-1:]
+        for vechi in curente[:-1]:
+            aruncate.append((vechi, f"versiune mai veche decat {curente[-1].name[:40]}"))
     return sorted(pastrate), aruncate
 
 

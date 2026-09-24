@@ -621,5 +621,65 @@ PC("TVA 19 %", ["19"], "spatiu inaintea semnului")
 PC("comision 1500%", [], "patru cifre intregi NU produc coada")
 
 
+# --- listele de tarife: titlul, subpunctele, coada celulei de pret -----------
+# Toate din crawl-ul din 23 sept. Nexent, Vista si lista de preturi ProCredit nu
+# erau citite deloc (numele fisierului nu spunea "tarif"), iar subpunctele de
+# tipul "- de la ATM-uri BCR" ramaneau fara serviciu.
+from crawler.parser_tarife import (RE_TITLU_TARIFE, _celula_eticheta,  # noqa: E402
+                                   _eticheta_pentru)
+from crawler.vocabular import canonic  # noqa: E402
+
+for titlu in ["Lista de taxe, comisioane si dobanzi aferenta cardului",   # Nexent
+              "LISTĂ PREȚURI PERSOANE FIZICE",                             # ProCredit
+              "Lista de Tarife, Termene și Condiții pentru persoane fizice",  # Vista
+              "DOBANZI, COMISIOANE, TAXE SI ALTE COSTURI Avanpost Gold Credit",  # Libra
+              "Lista taxelor și comisioanelor Salt Business",
+              "Tarife și comisioane standard"]:                            # Garanti
+    T(RE_TITLU_TARIFE.search(titlu), f"titlu de tarife: {titlu[:40]}")
+for rand in ["Puteți consulta în orice moment Tarifele, Termenele și Condițiile",
+             "conform Listei de tarife si comisioane in vigoare",
+             "Regulamentul oficial al Campaniei"]:
+    T(not RE_TITLU_TARIFE.search(rand), f"NU e titlu: {rand[:40]}")
+
+# "tranzacție" sub "min. 1 LEI/" e coada celulei de pret, nu un nume
+FARA = ([], None, None, None)
+T(_celula_eticheta(["", "", "tranzacție", "tranzacție"], [FARA] * 4,
+                   frozenset({2, 3})) is None, "coada celulei de pret NU e eticheta")
+T(_celula_eticheta(["", "demagnetizat", "", ""], [FARA] * 4,
+                   frozenset({2, 3})) == 1, "continuarea numelui ramane eticheta")
+
+# blocuri: (sus, jos, text, e_parinte)
+BCR = [(504, 512, "Eliberare de numerar în România", True),
+       (518, 525, "- de la ghișeele BCR", False)]
+T(_eticheta_pentru(515, 522, BCR) == "Eliberare de numerar în România - de la ghișeele BCR",
+  "subpunctul primeste numele de deasupra")
+RAIF = [(261, 270, "Comision pentru retrageri de numerar", True),
+        (276, 285, "La ATM-urile băncilor acceptatoare din străinătate", False)]
+T(_eticheta_pentru(276, 285, RAIF).startswith("Comision pentru retrageri de numerar La"),
+  "subpunct cu prepozitie")
+T(_eticheta_pentru(276, 285, [(100, 110, "pentru care retragerea a fost programată)", True),
+                              (276, 285, "În EUR", False)]) == "În EUR",
+  "coada unei fraze NU devine parinte")
+T(_eticheta_pentru(515, 522, [(504, 512, "Taxa blocare card", False),
+                              (515, 522, "Taxa recuperare card", False)]) == "Taxa recuperare card",
+  "eticheta intreaga ramane neatinsa")
+
+
+def CN(serviciu, asteptat, eticheta):
+    got = canonic({"serviciu": serviciu})[0]
+    T(got == asteptat, f"concept: {eticheta}" + ("" if got == asteptat else f"  [{got}]"))
+
+
+CN("Mentenanţă anuală card", "administrare_card", "diacritice cu sedila")
+CN("Plăţi intrabancare în lei și valută", "transfer_credit", "sedila in plural")
+CN("Contestare nejustificată a unei tranzacţii", "refuz_plata", "contestare, nu doar contestație")
+CN("Comision pentru operatiuni la comerciantii din Romania", "tranzactie_card",
+   "operatiuni la comercianti")
+CN("Comision pentru operatiuni (la POS/pe internet) la comerciantii de tip jocuri de noroc",
+   None, "gamblingul NU intra la plata cu cardul")
+CN("Emitere card - reînnoire", "reemitere_card", "reinnoirea dupa card")
+CN("Inchidere pachet", "inchidere_cont", "pachetul de cont")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)

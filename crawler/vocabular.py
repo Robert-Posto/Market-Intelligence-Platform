@@ -88,8 +88,9 @@ RE_CONT_DE_PLATI = re.compile(r"cont\w*\s+de\s+pl[ăa][țt]i", re.I)
 # valori intr-un singur concept, dintre care multe greșite.
 SERVICII = [
     # carduri — inaintea celor generale, fiindca "emitere card" nu e "emitere" oarecare
-    ("reemitere_card", r"(reemiter|re-emiter|re[îi]nnoir|[îi]nlocuir|duplicat)\w*[^.]{0,30}card"
-                       r"|card[^.]{0,30}(reemiter|[îi]nlocuir)"),
+    # "refacere" si "card - reînnoire" (cu cardul inainte) scapau: 5 valori BCR
+    ("reemitere_card", r"(reemiter|re-emiter|re[îi]nnoir|[îi]nlocuir|duplicat|refacer)\w*[^.]{0,30}card"
+                       r"|card[^.]{0,30}(reemiter|re[îi]nnoir|[îi]nlocuir)"),
     ("emitere_card", r"(emiter|furnizar|eliberar)\w*[^.]{0,30}card"
                      r"|card[^.]{0,25}(emiter|furnizar)"),
     ("livrare_card", r"(livrar|trimiter|transmiter|curierat)\w*[^.]{0,30}card"
@@ -104,7 +105,12 @@ SERVICII = [
     # "Cumpărare bunuri/servicii"
     ("tranzactie_card", r"cump[ăa]rar\w*[^.]{0,25}(bunuri|servicii)"
                         r"|tranzac[țt]i\w*\s+(na[țt]ional|interna[țt]ional|quasi)"
-                        r"|comisioan\w*\s+tranzac|tranzac[țt]ion\w*\s+comercian"),
+                        r"|comisioan\w*\s+tranzac|tranzac[țt]ion\w*\s+comercian"
+                        # Libra: "Comision pentru operatiuni la comerciantii din
+                        # Romania". Cu "din" obligatoriu, ca sa nu prinda varianta
+                        # "la comerciantii de tip jocuri de noroc": gamblingul costa
+                        # 1% + 10 lei si ar strica linia platilor obisnuite.
+                        r"|opera[țt]iun\w*\s+la\s+comercian\w*\s+din"),
     # numerar
     # "Utilizare ATM/POS de la alte bănci pentru numerar" e tot o retragere
     ("retragere_numerar", r"(retrager|eliberar|ridicar|utilizar)\w*[^.]{0,40}numerar"
@@ -112,7 +118,8 @@ SERVICII = [
     ("depunere_numerar", r"depuner\w*[^.]{0,20}numerar|alimentar\w*[^.]{0,20}numerar"),
     # cont
     ("deschidere_cont", r"deschider\w*[^.]{0,25}(cont|depozit)"),
-    ("inchidere_cont", r"([îi]nchider|lichidar)\w*[^.]{0,25}cont"),
+    # pachetul de cont, ca la administrare: "Inchidere pachet" la BRD, 11 valori
+    ("inchidere_cont", r"([îi]nchider|lichidar)\w*[^.]{0,25}(cont|pachet)"),
     ("administrare_cont", r"administrar\w*[^.]{0,25}(cont|pachet)"
                           r"|administrare\s+(lunar|anual)"
                           r"|^\s*administrar\w*\s*$"),
@@ -145,8 +152,10 @@ SERVICII = [
     # la ordin (neonorate la plata)". Cu vechiul tipar, care cerea "refuz" lipit de
     # "plat", potrivirea cadea pe `transfer_credit` prin "la plata" de la coada —
     # adica un refuz de instrument era raportat drept comision de transfer.
+    # "contestare" nu conține "contestaț": 27 de valori BCR "Contestare
+    # nejustificată a unei tranzacții" ramaneau nemapate
     ("refuz_plata", r"refuz\w*\s+(?:de\s+)?(?:plat|cec|bilet|instrument|[îi]ncas)"
-                    r"|contesta[țt]|chargeback"),
+                    r"|contest(?:a[țt]|ar)|chargeback"),
     ("modificare_anulare", r"^\s*(modificar|anular|stornar)\w*"),
     ("debitare_directa", r"debitar\w*\s+direct|direct\s+debit"),
     ("plata_programata", r"standing\s+order|plat[ăa]\s+programat|ordin\w*\s+programat"),
@@ -176,7 +185,7 @@ SERVICII = [
                  r"|\bcec\w*\s+(?:barat|in\s+alb)|formular\w*\s+de\s+cec"
                  r"|instrument\w*\s+de\s+debit|\bcecuri\b"),
     ("alerta_sms", r"\bSMS\s*(?:alert|banking|notific)|alert[ăae]\s+(?:prin\s+)?SMS"
-                   r"|notific[ăa]r\w*\s+(?:prin\s+)?SMS|serviciu\s+SMS"),
+                   r"|notific[ăa]r\w*\s+(?:prin\s+)?SMS|serviciu\s+SMS|\binfo\s*SMS"),
 ]
 
 # PRIN CE se face operatiunea. Acelasi serviciu costa altfel la ghiseu si la ATM,
@@ -334,6 +343,14 @@ def _potrivire(lista, text):
     return None
 
 
+# Documentele scriu diacriticele in doua feluri: cu virgula (ș ț, standardul) si cu
+# sedila (ş ţ, din codarile vechi). Tiparele de mai sus sunt scrise cu virgula, asa
+# ca "Plăţi interbancare" si "Mentenanţă anuală card" nu se potriveau cu nimic: 20
+# de valori BCR si Raiffeisen, plus 15 destinatii. Se normalizeaza textul o data,
+# aici, in loc sa se dubleze fiecare [țt] din vocabular.
+SEDILA_LA_VIRGULA = str.maketrans("şţŞŢ", "șțȘȚ")
+
+
 def canonic(inregistrare):
     """(concept, canal, destinatie) pentru un comision, sau (None, ...) daca nu se mapeaza.
 
@@ -341,10 +358,12 @@ def canonic(inregistrare):
     coloanei din matrice si textul-sursa. Canalul e adesea scris in coloana, nu in
     nume ("Din aplicatia Salt"), iar destinatia in secțiune ("4.2. PLĂȚI > SEPA").
     """
-    nume = RE_CONT_DE_PLATI.sub(" cont ", inregistrare.get("serviciu") or "")
+    nume = RE_CONT_DE_PLATI.sub(" cont ", (inregistrare.get("serviciu") or "")
+                                .translate(SEDILA_LA_VIRGULA))
     context = RE_CONT_DE_PLATI.sub(" cont ", " ".join(
         str(inregistrare.get(c) or "") for c in
-        ("serviciu", "sectiune", "coloana", "detaliu", "text_sursa")))
+        ("serviciu", "sectiune", "coloana", "detaliu", "text_sursa")
+    ).translate(SEDILA_LA_VIRGULA))
     concept = _potrivire(SERVICII, nume)
     # Contextul se folosește doar cand numele e un FRAGMENT ("- de la ATM-uri BCR",
     # "tranzacție"): acolo conceptul e legitim in secțiune, fiindca serviciul-parinte

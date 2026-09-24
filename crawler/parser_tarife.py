@@ -28,6 +28,7 @@ identice pe un rand sunt patru pachete diferite, nu o valoare repetata.
 """
 import re
 import statistics
+from collections import Counter
 from pathlib import Path
 
 import pdfplumber
@@ -94,6 +95,36 @@ CUVINTE_MAX_RAND_UNIC = 12
 # serviciului pentru 23 de comisioane.
 REPETARE_MOBILIER = 0.4
 MARGINE_MOBILIER = 0.08
+
+
+# Titlul unei liste de tarife, citit din pagina, nu din numele fisierului. Numele
+# minte sau lipsește: Nexent isi publica listele cu nume-hash
+# ("fdab3b17d18...pdf"), Vista isi numeste lista "Anexa_1_CGA", ProCredit
+# "LISTA-PRETURI". Masurat pe cele 487 de PDF-uri din 23 sept: 17 liste de tarife
+# nu erau citite deloc, iar Nexent si Vista ieseau fara niciun comision.
+# Ancorat la inceput de rand: in corpul unui contract "conform Listei de tarife"
+# e o trimitere, nu un titlu.
+RE_TITLU_TARIFE = re.compile(
+    r"^\W*(?:anexa\s*\d*\W*)?"
+    r"(?:list[ăa]\s+(?:de\s+)?(?:taxe|taxelor|tarife|tarifelor|comisioane|comisioanelor"
+    r"|pre[țt]uri)"
+    r"|tarife\s*(?:,|[șsş]i)\s*(?:comisioane|taxe|termeni)"
+    r"|(?:taxe|dob[âa]nzi)\s*,\s*comisioane"
+    r"|comisioane\s*(?:,|[șsş]i)\s*(?:taxe|tarife|speze)"
+    r"|ghid\w*\s+(?:de\s+)?tarife)", re.I)
+# titlul sta sus pe prima pagina; la Vista abia dupa un paragraf de avertisment
+RANDURI_TITLU = 15
+
+
+def e_lista_tarife(cale):
+    """Prima pagina are, sus, titlul unei liste de tarife?"""
+    try:
+        with pdfplumber.open(str(cale)) as pdf:
+            text = (pdf.pages[0].extract_text() or "") if pdf.pages else ""
+    except Exception:
+        return False
+    randuri = [r for r in text.splitlines() if r.strip()][:RANDURI_TITLU]
+    return any(RE_TITLU_TARIFE.search(r) for r in randuri)
 
 
 # Multe liste de tarife nu scriu spatiile in PDF: la toleranta implicita de 3
@@ -204,7 +235,7 @@ def margini_rand(vert, cuvinte):
     return capete, "unic"
 
 
-def _celula_eticheta(texte, analiza):
+def _celula_eticheta(texte, analiza, coloane_pret=frozenset()):
     """Indicele celulei care poarta numele serviciului, sau None.
 
     Nu e coloana 0: multe liste au o coloana de numerotare ("Nr. crt.") sau un
@@ -212,9 +243,14 @@ def _celula_eticheta(texte, analiza):
     descrierea in dreapta (tariful de evaluari al BCR). Se alege celula fara
     valoare cu cel mai mult text — numele serviciului e cel mai lung lucru de pe
     rand care nu e un preț.
+
+    `coloane_pret` sunt coloanele in care randul de preturi de deasupra avea
+    valori: textul de acolo e coada celulei de preț, nu un nume. BCR scrie
+    "min. 1 LEI/" pe un rand si "tranzacție" pe urmatorul, iar "tranzacție",
+    "operațiune" si "nepermisă" ajunsesera nume de serviciu pentru 27 de valori.
     """
     candidate = [i for i, t in enumerate(texte)
-                 if t and not RE_DOAR_INDEX.match(t)
+                 if t and i not in coloane_pret and not RE_DOAR_INDEX.match(t)
                  and not RE_DOAR_ORNAMENT.match(t) and not analiza[i][0]]
     return max(candidate, key=lambda i: len(texte[i])) if candidate else None
 
@@ -261,6 +297,19 @@ def _e_doar_banda(text):
     return len(re.findall(r"[A-Za-zĂÂÎȘȚăâîșț]", RE_DOAR_MONEDE.sub(" ", rest))) < 4
 
 
+# Un subpunct numeste varianta, nu serviciul: "Eliberare de numerar în România" e
+# urmat de "- de la ghișeele BCR" si "- de la ATM-uri BCR", iar la Raiffeisen
+# "Comision pentru retrageri de numerar" de "La ATM-urile băncilor acceptatoare
+# din străinătate". Pretul sta pe randul subpunctului, deci fara numele de
+# deasupra valoarea ramanea doar cu canalul, fara serviciu.
+RE_SUBPUNCT = re.compile(r"^\s*[-–—•·▪~]\s*\S|^(?:la|de\s+la|prin|[îi]n|din|c[ăa]tre)\s",
+                         re.I)
+
+
+def _e_subpunct(text):
+    return bool(RE_SUBPUNCT.match(text))
+
+
 def _eticheta_pentru(sus, jos, blocuri):
     """Eticheta careia aparține o valoare, dupa poziția verticala.
 
@@ -280,8 +329,16 @@ def _eticheta_pentru(sus, jos, blocuri):
                 key=lambda k: abs((blocuri[k][0] + blocuri[k][1]) / 2 - centru))
 
     nume = blocuri[i][2]
-    if _e_doar_banda(nume):
-        parinti = [b[2] for b in blocuri[:i] if b[3] and not _e_doar_banda(b[2])]
+    banda, subpunct = _e_doar_banda(nume), _e_subpunct(nume)
+    if banda or subpunct:
+        parinti = [b[2] for b in blocuri[:i] if b[3] and not _e_doar_banda(b[2])
+                   and not _e_subpunct(b[2])]
+        # Subpunctul cere un nume intreg: coada unei fraze ("pentru care retragerea
+        # a fost programată)") ajunsese parinte. Banda nu: la BRD parintele ei chiar
+        # incepe cu litera mica ("debit (cecuri si bilete la ordin) LEI"), si fara
+        # el 6 valori treceau de la file_cec la transfer_credit.
+        if subpunct and not banda:
+            parinti = [p for p in parinti if not RE_CONTINUARE.match(p)]
         if parinti:
             nume = f"{parinti[-1]} {nume}"
     return nume
@@ -485,6 +542,14 @@ def extrage_tarife(cale, banca, radacina=None):
     # semnaturile de coloane care au dat deja o valoare: dupa ele, un rand cu
     # litera mica e continuare de celula, nu de antet (vezi _e_rand_antet)
     semn_cu_valori = set()
+    # (semnatura, coloanele cu valori) ale ultimului rand de preturi; vezi
+    # _celula_eticheta — doar in acelasi tabel, altfel coloanele nu se corespund
+    ultim_pret = (None, frozenset())
+    # coloana in care sta de obicei numele, pe tabel. Ea nu e niciodata coloana de
+    # pret, chiar daca eticheta are o cifra: la Libra, "Dobanda cont curent de card
+    # (...500 RON)" facea coloana numelui sa para de pret, iar randul urmator
+    # ramanea fara nume
+    col_nume = {}
     rand_titlu_caps = None    # randul ultimului titlu cu majuscule, pentru alipire
     pagina_anterioara = None
     for k, (nr_pagina, cuvinte, margini, geometrie, texte) in enumerate(randuri):
@@ -504,6 +569,10 @@ def extrage_tarife(cale, banca, radacina=None):
         are_valori = any(v for v, _p, _f, _d in analiza)
         nevide = [i for i, t in enumerate(texte)
                   if t and not RE_DOAR_INDEX.match(t)]
+        semn = tuple(round(m) for m in margini)
+        coloane_pret = ultim_pret[1] if ultim_pret[0] == semn else frozenset()
+        if coloane_pret and col_nume.get(semn):
+            coloane_pret = coloane_pret - {col_nume[semn].most_common(1)[0][0]}
 
         if not are_valori:
             titlu = _e_titlu(texte, nevide, margini, latime_tabel)
@@ -519,27 +588,28 @@ def extrage_tarife(cale, banca, radacina=None):
                 blocuri_et = []     # si alte etichete
                 continue
             # antet de matrice: mai multe nume de coloana, niciunul cu valoare
-            if _e_rand_antet(texte, nevide,
-                             tuple(round(m) for m in margini) in semn_cu_valori):
-                semn = tuple(round(m) for m in margini)
+            if _e_rand_antet(texte, nevide, semn in semn_cu_valori):
                 vechi = antete.get(semn) or [""] * len(texte)
                 if len(vechi) != len(texte):
                     vechi = [""] * len(texte)
                 antete[semn] = [_aduna_antet(a, b) for a, b in zip(vechi, texte)]
                 continue
-            i_eticheta = _celula_eticheta(texte, analiza)
+            i_eticheta = _celula_eticheta(texte, analiza, coloane_pret)
             if i_eticheta is not None:
                 _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], False)
+                col_nume.setdefault(semn, Counter())[i_eticheta] += 1
             continue
 
         # rand cu valori: eticheta lui poate continua si pe randurile urmatoare
-        i_eticheta = _celula_eticheta(texte, analiza)
+        i_eticheta = _celula_eticheta(texte, analiza, coloane_pret)
         if i_eticheta is not None:
             _adauga_eticheta(blocuri_et, sus, jos, texte[i_eticheta], True)
-        semn_cu_valori.add(tuple(round(m) for m in margini))
+            col_nume.setdefault(semn, Counter())[i_eticheta] += 1
+        semn_cu_valori.add(semn)
+        ultim_pret = (semn, frozenset(i for i, a in enumerate(analiza) if a[0]))
         de_emis.append((nr_pagina, sus, jos, texte, analiza, geometrie,
                         blocuri_et, sectiuni.cale() or None,
-                        antete.get(tuple(round(m) for m in margini), [])))
+                        antete.get(semn, [])))
 
     # A doua trecere: acum fiecare bloc de eticheta e intreg
     inregistrari = []
