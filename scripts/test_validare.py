@@ -889,5 +889,85 @@ T(not _e_titlu_cu_index("1. Comisionul se percepe pentru fiecare operatiune efec
   "nota numerotata NU e titlu")
 
 
+# --- parinte: subpunctele isi pastreaza parintele (24 sept, aceleasi 68 de documente)
+from crawler.parser_tarife import (_deja_continut, _parinte_indentat,  # noqa: E402
+                                   _sub_parinte)
+
+# numele intreg dintr-o sub-coloana ia si el celula din stanga (BCR, token)
+BL = [(30, 40, "Folosirea/Administrare Internet Banking, Mobile Banking", True, 36),
+      (45, 53, "Cu token cumpărat începând cu", False, 239)]
+T(_eticheta_pentru(45, 53, BL, lambda xv, o_celula=False:
+                   "Folosirea/Administrare Internet Banking, Mobile Banking" if o_celula else None)
+  == "Folosirea/Administrare Internet Banking, Mobile Banking Cu token cumpărat începând cu",
+  "nume intreg din sub-coloana: celula din stanga, ca o singura celula")
+T(_deja_continut("Plati interbancare (catre alte banci)",
+                 "Taxa plati efectuate cu aceeasi data de Plati interbancare valuta (catre alte banci)"),
+  "parintele scris deja in eticheta NU se repeta (Nexent)")
+T(not _deja_continut("Folosirea/Administrare Internet Banking, Mobile Banking",
+                     "Cu token cumpărat începând cu"), "parintele nou se pune")
+
+# celula din stanga peste o bordura verticala nu e o celula (BRD, DOBANZI | COMISIOANE)...
+GEOM_V = ([(95, 6, 470), (120, 6, 470)],
+          [_w("oferta", 20, 99), _w("IRCC", 220, 99)],
+          [{"x0": 118, "top": 90, "bottom": 125}])
+T(_celula_din_stanga(GEOM_V, 6, 468, 105, 113, o_celula=True) is None,
+  "text peste o bordura verticala NU e parinte pentru un nume intreg")
+T(_celula_din_stanga(GEOM_V, 6, 468, 105, 113) == "oferta IRCC",
+  "varianta pastreaza comportamentul vechi")
+# ...dar chenarul unei note care taie un cuvant nu e bordura (BCR "Clientului1143")
+GEOM_N = ([(95, 36, 239), (120, 36, 239)], [_w("Clientului1143", 54, 99), _w("MFM", 120, 99)],
+          [{"x0": 104, "top": 96, "bottom": 118}])
+T(_celula_din_stanga(GEOM_N, 36, 239, 105, 113, o_celula=True) == "Clientului1143 MFM",
+  "chenarul notei care taie cuvantul NU rupe celula")
+
+# indentarea: (sus, jos, text, e_parinte, x, x_text, bordura)
+BRD = [(398, 406, "Reînnoire/ Majorare linie de credit", True, 468.1, 473.7, True),
+       (409, 417, "Descoperitul autorizat de cont Individual", False, 468.1, 484.5, True),
+       (421, 429, "Descoperitul autorizat de cont Platinum", False, 468.1, 484.5, True)]
+T(_parinte_indentat(BRD, 2) == "Reînnoire/ Majorare linie de credit",
+  "subpunct indentat in aceeasi celula de coloana (BRD)")
+T(_eticheta_pentru(421, 429, BRD).startswith("Reînnoire/ Majorare linie de credit Descoperitul"),
+  "eticheta primeste parintele indentat")
+T(_parinte_indentat(BRD, 2, cu_pret={0}) is None, "parintele cu pret propriu NU e parinte")
+LIBRA = [(92, 104, "Accesare produs “Acces Investigator”: Pachet", True, 26.4, 32.0, True),
+         (175, 187, "Consultari Baze Date CIP, CRC", False, 26.4, 41.0, True)]
+T(_parinte_indentat(LIBRA, 1) is None, "prima linie retrasa a paragrafului NU e subpunct (Libra)")
+CENTRAT = [(128, 138, "Furnizare (emitere)/ Administrare", True, 36.0, 342.5, True),
+           (248, 258, "Retrageri de numerar", False, 36.0, 371.2, True)]
+T(_parinte_indentat(CENTRAT, 1) is None, "textul centrat NU arata indentare (BCR)")
+PROZA = [(160, 170, "achite Bancii sunt urmatoarele:", True, 25.4, 25.4, False),
+         (183, 193, "Comision de emitere card", False, 28.1, 33.0, True)]
+T(_parinte_indentat(PROZA, 1) is None, "randul de deasupra tabelului NU e parinte")
+CASETE = [(189, 214, "Închiriere casete de siguranță:", True, 58.2, 59.2, False),
+          (217, 228, "Tip 1: 48,5 x 265 x 413 mm", False, 94.2, 95.2, False)]
+T(_parinte_indentat(CASETE, 1) == "Închiriere casete de siguranță:",
+  "fara borduri: parintele terminat in ':' (Garanti)")
+URGENTE = [(236, 261, "Transfer credit – plați interbancare în LEI", True, 51.2, 52.2, False),
+           (278, 289, "0 – 5.000,00 LEI", True, 87.2, 88.2, False),
+           (363, 374, "Tranzacții urgente, orice sumă", False, 87.2, 88.2, False)]
+T(_parinte_indentat(URGENTE, 2) == "Transfer credit – plați interbancare în LEI",
+  "fara borduri: frate banda de suma (Garanti)")
+T(_parinte_indentat([URGENTE[0], URGENTE[2]], 1) is None,
+  "fara borduri, fara ':' si fara banda nu se ghiceste")
+
+# ierarhia de marcaje: "•" sub "–" (BCR credite PF)
+MARC = [(85, 95, "Comision (flat) pentru creditele în sold", True, 60.9),
+        (205, 215, "– Comision pentru graţie de până la 6 luni:", True, 66.8),
+        (226, 236, "• în cazul în care creditul nu înregistrează restanţe", False, 66.8),
+        (246, 256, "• în cazul în care creditul înregistrează restanţe", False, 66.8)]
+T(_sub_parinte(MARC, 3) == 1, "sub-parintele cu alt marcaj")
+T(_eticheta_pentru(246, 256, MARC) == "Comision (flat) pentru creditele în sold – Comision "
+  "pentru graţie de până la 6 luni: • în cazul în care creditul înregistrează restanţe",
+  "bunicul, sub-parintele si itemul")
+T(_sub_parinte(MARC, 3, cu_pret={1}) is None, "sub-parintele cu pret propriu NU e parinte")
+
+# subpunctul lipit de randul deschis de deasupra ii continua numele (BCR, refacere card)
+CARD = [(438, 457, "Comision pentru tranzacţii ... jocuri de noroc", True, 36.9),
+        (477, 487, "Furnizare (Refacere) Card furat /pierdut /deteriorat /", False, 36.9),
+        (485, 496, "la cerere", False, 36.9)]
+T(_eticheta_pentru(490, 496, CARD) == "Furnizare (Refacere) Card furat /pierdut /deteriorat / la cerere",
+  "subpunctul lipit ia blocul de deasupra, nu ultimul parinte")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)
