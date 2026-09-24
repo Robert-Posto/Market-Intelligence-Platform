@@ -397,6 +397,47 @@ def _parsere_pdf():
     return parser_pdf, parser_tarife, vocabular, data_document, ambiguitate
 
 
+# Documente publicate de bănci care NU sunt liste de prețuri. Măsurat pe
+# 24.09.2026: rapoartele de transparență CreditCoop (Reg. 575) și situațiile
+# financiare dădeau ~1.000 de „valori", buletinele Libra „Info-Economice" ~700 —
+# procente de analiză economică sau prudențială, intrate în bază ca prețuri.
+RE_NU_TARIF = re.compile(
+    r"raport|cerinte[-_ ]transparenta|reg(ulament)?[-_ ]?575|situati\w*[-_ ]financiar"
+    r"|info[-_ ]?economic|psd2|strategi|asigurar|\bKID\b|informatii[-_ ]esentiale"
+    r"|prospect|audit|guvernanta|remunerar|pilon|pillar",
+    re.I)
+
+
+# Pe titlu, doar formulări fără echivoc: „raport" sau „asigurare" apar și în
+# titlul unui contract de servicii bancare sau al termenilor unui card, care pot
+# conține comisioane reale.
+RE_TITLU_NU_TARIF = re.compile(
+    r"informa[țt]ii\s+esen[țt]iale|document\s+de\s+informare\s+privind\s+produsul\s+de\s+asigurare"
+    r"|IPID|prospect|situa[țt]ii(le)?\s+financiare|raport(ul)?\s+anual|cerin[țt]e\s+de\s+transparen",
+    re.I)
+
+
+def document_fara_tarife(cale, sursa=None):
+    """Motivul pentru care documentul nu e o listă de prețuri, sau None.
+
+    Se uită la numele documentului și la începutul primei pagini (titlul);
+    conținutul unui tarif conține oricum „raport" sau „asigurare" pe undeva,
+    deci restul textului nu se citește.
+    """
+    nume = urllib.parse.unquote(os.path.basename(str(sursa or cale)))
+    m = RE_NU_TARIF.search(nume)
+    if m:
+        return f"numele conține „{m.group(0)}”"
+    try:
+        import pdfplumber
+        with pdfplumber.open(cale) as pdf:
+            inceput = (pdf.pages[0].extract_text() or "")[:250] if pdf.pages else ""
+    except Exception:
+        return None
+    m = RE_TITLU_NU_TARIF.search(inceput)
+    return f"titlul conține „{m.group(0)}”" if m else None
+
+
 def e_formular_standardizat(cale):
     """Titlul PAD apare în primele trei pagini?
 
@@ -431,6 +472,9 @@ def din_pdf(cale, banca, sursa=None, amprenta=None):
     sursa ar fi un nume de fișier din cache, care nu spune nimic nimănui.
     """
     parser_pdf, parser_tarife, vocabular, data_document, ambiguitate = _parsere_pdf()
+    motiv = document_fara_tarife(cale, sursa)
+    if motiv:
+        return [], f"document fără tarife ({motiv}): nu se extrag prețuri"
     standardizat = e_formular_standardizat(cale)
     fn = parser_pdf.extrage if standardizat else parser_tarife.extrage_tarife
     try:

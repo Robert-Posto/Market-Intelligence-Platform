@@ -118,6 +118,7 @@ def din_navigare(baza, slug, stare, raport):
             rez = transport.adu(u, slug, stare)
             pagini += 1
             if rez.verdict == "BLOCAT" and u == baza:
+                stare["dovada_blocaj"] = rez.nota     # codul exact, ca dovadă
                 return None                           # banca ne-a blocat
             if rez.verdict != "OK" or rez.octeti.startswith(b"%PDF"):
                 continue
@@ -164,10 +165,11 @@ def ruleaza_banca(cur, slug, url_banca, produse, stare, err, raport):
         cur.execute(
             """INSERT INTO surse (id_banca, tip_sursa, sursa, rol, format, metoda,
                    status, nota_extractie, frecventa)
-               SELECT id, 'url', %s, 'hub', 'html', 'http', 'blocat',
-                      'blocat de bancă la descoperire (403 sau pagină de blocaj)', 'lunar'
+               SELECT id, 'url', %s, 'hub', 'html', 'http', 'blocat', %s, 'lunar'
                FROM banci WHERE slug = %s
-               ON CONFLICT DO NOTHING""", (url_banca, slug))
+               ON CONFLICT DO NOTHING""",
+            (url_banca, f"blocat de bancă la descoperire: {stare.get('dovada_blocaj')}"[:300],
+             slug))
         err.write(f"  {slug:20s} BLOCAT — documentat, fără alt canal\n")
         raport["banci_blocate"] += 1
         return

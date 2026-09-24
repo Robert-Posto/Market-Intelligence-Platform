@@ -39,6 +39,13 @@ class TestColoana(unittest.TestCase):
         self.assertEqual(N.normalizeaza(b)["coloana"], "Visa Gold")
         self.assertEqual(N.COLOANE[-1], "coloana")
 
+    def test_documente_fara_tarife_dupa_nume(self):
+        self.assertIsNotNone(extractoare.document_fara_tarife(
+            "x", "https://x.ro/RAP_cerinte-transparenta-si-publicare_REG_575_pt-2024.pdf"))
+        self.assertIsNotNone(extractoare.document_fara_tarife("x", "https://x.ro/Info-Economice-30-04-2025.pdf"))
+        self.assertIsNone(extractoare.document_fara_tarife("x", "https://x.ro/Tarife_si_Comisioane_PF.pdf"))
+        self.assertIsNone(extractoare.document_fara_tarife("x", "https://x.ro/Ghid_tarife_comisioane.pdf"))
+
 
 if __name__ == "__main__":
     unittest.main()
