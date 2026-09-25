@@ -177,28 +177,58 @@ def surse(q):
         where.append(f"NOT {ARE_DATE} AND s.nota_extractie IS NOT NULL")
     elif stare == "cu_date":
         where.append(ARE_DATE)
+    if q.get("q"):
+        # căutare după numele fișierului sau orice bucată din adresă
+        where.append("(s.sursa ILIKE %s OR coalesce(s.url_public, '') ILIKE %s)")
+        t = "%" + q["q"][0].strip() + "%"
+        params += [t, t]
+    if q.get("motiv"):
+        where.append("split_part(s.nota_extractie, ':', 1) = %s")
+        params.append(q["motiv"][0])
     limit = min(int((q.get("limit") or ["100"])[0]), 500)
     offset = int((q.get("offset") or ["0"])[0])
     sql_base = f"FROM surse s JOIN banci b ON b.id = s.id_banca WHERE {' AND '.join(where)}"
     total = interoghează("SELECT count(*)::int AS n " + sql_base, params)[0]["n"]
+    # Numărul de observații se ia dintr-o agregare, nu dintr-o subinterogare
+    # pe fiecare rând: sortarea după ea cerea 6.525 de subinterogări (2,5 s).
     randuri = interoghează(
-        """SELECT b.slug AS banca, b.nume AS banca_nume, s.sursa, s.tip_sursa,
+        """WITH nr AS (SELECT id_sursa, count(*)::int AS n FROM observatii_curente GROUP BY 1)
+           SELECT b.slug AS banca, b.nume AS banca_nume, s.sursa, s.tip_sursa,
                   s.format, s.metoda, s.rol, s.frecventa, s.status,
                   s.metoda_extractie, s.nota_extractie, s.url_public,
-                  s.ultima_rulare,
-                  (SELECT count(*)::int FROM observatii_curente o WHERE o.id_sursa = s.id) AS observatii
+                  s.ultima_rulare, coalesce(nr.n, 0) AS observatii
         """
-        + sql_base
-        + " ORDER BY observatii DESC, b.slug LIMIT %s OFFSET %s",
+        + sql_base.replace("WHERE", "LEFT JOIN nr ON nr.id_sursa = s.id WHERE", 1)
+        + " ORDER BY observatii DESC, b.slug, s.sursa LIMIT %s OFFSET %s",
         params + [limit, offset],
     )
+    for r in randuri:
+        adresa = str(r["url_public"] or r["sursa"] or "")
+        r["fisier"] = (urllib.parse.unquote(adresa.rstrip("/").rsplit("/", 1)[-1].split("?")[0])
+                       or adresa)
     return {
         "total": total, "limit": limit, "offset": offset, "randuri": randuri,
         "banci": interoghează(
             """SELECT b.slug, b.nume, count(*)::int AS surse,
                       count(*) FILTER (WHERE s.metoda_extractie IS NULL)::int AS neextrase
                FROM surse s JOIN banci b ON b.id = s.id_banca
-               GROUP BY 1, 2 ORDER BY 3 DESC"""
+               GROUP BY 1, 2 ORDER BY 2"""
+        ),
+        # Tabelul pe bancă: din ce s-a descoperit, cât a dat date și de ce nu.
+        # Toate cele 30 de bănci, și cele fără nicio sursă.
+        "pe_banca": interoghează(
+            """WITH x AS (
+                 SELECT s.id_banca, s.status, s.nota_extractie, s.metoda_extractie,
+                        EXISTS (SELECT 1 FROM observations o WHERE o.id_sursa = s.id) AS are_date
+                 FROM surse s)
+               SELECT b.slug, b.nume, count(x.id_banca)::int AS total,
+                      count(*) FILTER (WHERE x.are_date)::int AS cu_date,
+                      count(*) FILTER (WHERE NOT x.are_date AND x.nota_extractie IS NOT NULL)::int AS incercate,
+                      count(*) FILTER (WHERE NOT x.are_date AND x.nota_extractie IS NULL
+                                       AND x.metoda_extractie IS NULL)::int AS neatinse,
+                      count(*) FILTER (WHERE x.status = 'blocat')::int AS blocate
+               FROM banci b LEFT JOIN x ON x.id_banca = b.id
+               GROUP BY 1, 2 ORDER BY cu_date DESC, total DESC, b.nume"""
         ),
         # Bilanțul care contează: din ce s-a descoperit, cât a produs date.
         "bilant": interoghează(
@@ -227,7 +257,8 @@ def mobil():
     return {
         "versiuni": interoghează(
             """SELECT b.slug AS banca, ar.platforma, ar.app_id, ar.versiune,
-                      ar.note_lansare, ar.rating_agregat, ar.volum_rating
+                      ar.note_lansare, ar.rating_agregat, ar.volum_rating,
+                      ar.distributie_stele
                FROM app_release ar JOIN banci b ON b.id = ar.id_banca
                ORDER BY ar.volum_rating DESC NULLS LAST"""
         ),
@@ -257,7 +288,7 @@ def mobil():
 
 def indici():
     return interoghează(
-        """SELECT indice, scadenta, valoare, valabil_din
+        """SELECT indice, scadenta, valoare, valabil_din, valabil_pana, sursa
            FROM indici_referinta ORDER BY valabil_din DESC, indice, scadenta"""
     )
 
@@ -490,6 +521,18 @@ def celula(q):
     # dintr-o celula de depozit arata si dobanzi de credit - exact amestecul pe
     # care matricea il evita. Categoria e primul segment din cod_scenariu.
     categorie = (q.get("scenariu") or [""])[0]
+    # aceleasi filtre ca celula din pagina Rate, ca sertarul sa arate exact
+    # valorile din spatele cifrei pe care s-a dat clic
+    termen = (q.get("termen") or [""])[0]
+    produs = (q.get("produs") or [""])[0]
+    extra, p_extra = "", ()
+    if termen in TERMENE:
+        extra += f" AND {TERMEN_LUNI} {TERMENE[termen][1]}"
+    elif termen == "necunoscut":
+        extra += f" AND {TERMEN_LUNI} IS NULL"
+    if produs in PRODUSE_CREDIT:
+        extra += f" AND {PRODUS_CREDIT} = %s"
+        p_extra = (produs,)
     rows = interoghează(
         """SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
@@ -502,11 +545,12 @@ def celula(q):
            JOIN banci b ON b.id = s.id_banca
            WHERE b.slug = %s AND o.camp = %s
              AND (%s = '' OR o.unitate = %s)
-             AND (%s = '' OR split_part(coalesce(o.cod_scenariu, ''), '|', 1) = %s)
+             AND (%s = '' OR split_part(coalesce(o.cod_scenariu, ''), '|', 1) = %s)"""
+        + extra + """
            ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num""",
         (q["banca"][0], q["camp"][0],
          (q.get("unitate") or [""])[0], (q.get("unitate") or [""])[0],
-         categorie, categorie),
+         categorie, categorie) + p_extra,
     )
     # Trei nivele de dovada, in ordinea puterii. Interfata le arata diferit,
     # fiindca nu sunt acelasi lucru si nu trebuie sa para:
@@ -565,35 +609,110 @@ def ancora(r):
     return ""
 
 
+# Termenul unei dobanzi, in luni. Vine ca text liber din doua locuri: `frecventa`
+# („12 LUNI", „pe 4 luni") sau al doilea segment din cod_scenariu („360 luni",
+# „5 ani"). Fara el, „cea mai mare dobanda la depozit" compara 4 luni cu 12 luni -
+# ING iesea primul cu 6% pe 4 luni. NULL = sursa nu spune termenul.
+_TEXT_TERMEN = ("lower(coalesce(nullif(o.frecventa, ''), "
+                "nullif(split_part(o.cod_scenariu, '|', 2), ''), ''))")
+TERMEN_LUNI = f"""(CASE
+    WHEN {_TEXT_TERMEN} ~ '\\d+\\s*(zi|zile)'
+      THEN greatest(1, round(substring({_TEXT_TERMEN} from '(\\d+)\\s*(?:zi|zile)')::numeric / 30))::int
+    WHEN {_TEXT_TERMEN} ~ '\\d+\\s*(lun|lună)'
+      THEN substring({_TEXT_TERMEN} from '(\\d+)\\s*(?:lun|lună)')::int
+    WHEN {_TEXT_TERMEN} ~ '\\d+\\s*an'
+      THEN 12 * substring({_TEXT_TERMEN} from '(\\d+)\\s*an')::int
+    WHEN {_TEXT_TERMEN} ~ '^(pe\\s+)?(un\\s+)?an$' THEN 12
+  END)"""
+TERMENE = {             # cheie -> (eticheta, conditie pe luni)
+    "scurt": ("1–3 luni", "BETWEEN 1 AND 3"),
+    "6": ("4–6 luni", "BETWEEN 4 AND 6"),
+    "12": ("7–12 luni", "BETWEEN 7 AND 12"),
+    "lung": ("peste 12 luni", "> 12"),
+}
+
+# Produsul unui credit, din denumirea data de banca. Nu exista camp structurat:
+# fara el, DAE-ul „cel mai mic" era 2,15% din „8 rate fara dobanda in magazine",
+# comparat cu ipotecare. Ordinea conteaza: „linie de credit atasata cardului" e
+# card, „nevoi personale cu ipoteca" e nevoi personale.
+_TEXT_PRODUS = "lower(coalesce(o.serviciu, '') || ' ' || coalesce(o.conditie, ''))"
+PRODUS_CREDIT = f"""(CASE
+    WHEN {_TEXT_PRODUS} ~ '(card|overdraft|linie de credit|descoperit)' THEN 'card'
+    WHEN {_TEXT_PRODUS} ~ 'rate (fara|fără)' THEN 'rate_magazin'
+    WHEN {_TEXT_PRODUS} ~ '(nevoi personale|consum|refinan|împrumut|imprumut|personal)' THEN 'nevoi_personale'
+    WHEN {_TEXT_PRODUS} ~ '(ipotec|imobiliar|locuin|casa|casă|home)' THEN 'ipotecar'
+    ELSE 'altele'
+  END)"""
+PRODUSE_CREDIT = {
+    "ipotecar": "Ipotecar / imobiliar", "nevoi_personale": "Nevoi personale",
+    "card": "Card de credit / overdraft", "rate_magazin": "Rate fără dobândă în magazine",
+    "altele": "Nespecificat în sursă",
+}
+
+
 def rate(q):
     """Dobanzi pe categorie (depozite / credite / conturi), din cod_scenariu.
 
     Categoria e primul segment din cod_scenariu, pus la incarcare. Asa se
     separa dobanda de depozit de cea de credit - altfel ar ajunge in aceeasi
     coloana, iar comparatia ar fi falsa.
+
+    Filtre: `termen` (depozite) si `produs` (credite). Fara ele, mediana pe
+    banca amesteca termene si produse diferite.
     """
     categorie = (q.get("categorie") or ["depozite"])[0]
     if categorie not in GRUPURI_RATE:
         return {"eroare": f"categorie necunoscută: {categorie}"}
     campuri = GRUPURI_RATE[categorie]["campuri"]
     prag = GRUPURI_RATE[categorie]["prag"]
+    termen = (q.get("termen") or [""])[0]
+    produs = (q.get("produs") or [""])[0]
+    filtru = ""
+    if termen in TERMENE:
+        filtru += f" AND {TERMEN_LUNI} {TERMENE[termen][1]}"
+    elif termen == "necunoscut":
+        filtru += f" AND {TERMEN_LUNI} IS NULL"
+    if produs in PRODUSE_CREDIT:
+        filtru += f" AND {PRODUS_CREDIT} = %s"
+    p_extra = (produs,) if produs in PRODUSE_CREDIT else ()
+    baza_cat = f"""FROM observatii_curente o
+                  JOIN surse s ON s.id = o.id_sursa
+                  JOIN banci b ON b.id = s.id_banca
+                  WHERE o.unitate = 'procent' AND o.camp = ANY(%s)
+                    AND split_part(o.cod_scenariu, '|', 1) = %s
+                    AND NOT o.ambiguu AND o.valoare_num IS NOT NULL
+                    AND o.valoare_num <= {prag}"""
+    # cate valori are fiecare optiune de filtru, ca meniul sa spuna ce gasesti
+    optiuni = interoghează(
+        f"""SELECT {TERMEN_LUNI} AS luni, {PRODUS_CREDIT} AS produs, count(*)::int AS n
+            {baza_cat} GROUP BY 1, 2""",
+        (campuri, categorie),
+    )
+    pe_termen, pe_produs = {}, {}
+    for x in optiuni:
+        l = x["luni"]
+        k = ("necunoscut" if l is None else "scurt" if l <= 3 else "6" if l <= 6
+             else "12" if l <= 12 else "lung")
+        pe_termen[k] = pe_termen.get(k, 0) + x["n"]
+        pe_produs[x["produs"]] = pe_produs.get(x["produs"], 0) + x["n"]
     return {
         "categorie": categorie,
         "titlu": GRUPURI_RATE[categorie]["titlu"],
         "sens": GRUPURI_RATE[categorie]["sens"],
         "campuri": campuri,
         "prag": prag,
+        "termen": termen, "produs": produs,
+        "termene": [{"cheie": k, "eticheta": v[0], "n": pe_termen.get(k, 0)}
+                    for k, v in TERMENE.items()]
+                   + [{"cheie": "necunoscut", "eticheta": "termen nespecificat",
+                       "n": pe_termen.get("necunoscut", 0)}],
+        "produse": [{"cheie": k, "eticheta": v, "n": pe_produs.get(k, 0)}
+                    for k, v in PRODUSE_CREDIT.items()],
         "celule": interoghează(
             f"""WITH randuri AS (
                   SELECT b.slug AS banca, o.camp, o.valoare_num, o.serviciu,
-                         o.frecventa, o.conditie
-                  FROM observatii_curente o
-                  JOIN surse s ON s.id = o.id_sursa
-                  JOIN banci b ON b.id = s.id_banca
-                  WHERE o.unitate = 'procent' AND o.camp = ANY(%s)
-                    AND split_part(o.cod_scenariu, '|', 1) = %s
-                    AND NOT o.ambiguu AND o.valoare_num IS NOT NULL
-                    AND o.valoare_num <= {prag}
+                         o.frecventa, o.conditie, {TERMEN_LUNI} AS luni
+                  {baza_cat}{filtru}
                 ), agregat AS (
                   SELECT banca, camp, count(*)::int AS n,
                          min(valoare_num)::float8 AS minim,
@@ -609,15 +728,15 @@ def rate(q):
                   -- mediana, ca la comisioane: o singura dobanda promotionala
                   -- nu trebuie sa reprezinte toata oferta de depozite a bancii
                   SELECT DISTINCT ON (banca, camp) banca, camp,
-                         valoare_num::float8 AS valoare, serviciu, frecventa, conditie
+                         valoare_num::float8 AS valoare, serviciu, frecventa, conditie, luni
                   FROM numerotat
                   ORDER BY banca, camp, abs(rn - (tot + 1) / 2.0), rn
                 )
                 SELECT a.banca, a.camp, a.n, a.minim, a.maxim, a.gratuite,
-                       r.valoare, r.serviciu, r.frecventa, r.conditie
+                       r.valoare, r.serviciu, r.frecventa, r.conditie, r.luni
                 FROM agregat a JOIN reprezentativ r USING (banca, camp)
                 ORDER BY 1""",
-            (campuri, categorie),
+            (campuri, categorie) + p_extra,
         ),
         # peste prag nu e dobanda de retail in categoria asta; sunt procente de
         # alt fel (reduceri, praguri de venit, cote de garantare, taxe) extrase
@@ -666,6 +785,9 @@ def sentiment(q):
         where.append("v.storefront = %s")
         params.append(q["storefront"][0])
     filtru = " AND ".join(where)
+    # Pe o singură bancă, cele negative întâi: întrebarea e „de ce se plâng".
+    ordine = ("v.rating, v.postat_la DESC NULLS LAST" if q.get("banca")
+              else "v.postat_la DESC NULLS LAST")
     return {
         "distributie": interoghează(
             """SELECT b.slug AS banca, v.rating, count(*)::int AS n
@@ -694,10 +816,11 @@ def sentiment(q):
         )[0]["n"],
         "recente": interoghează(
             f"""SELECT b.slug AS banca, b.nume AS banca_nume, v.rating, v.storefront,
-                       v.versiune, v.text, left(v.autor_hash, 8) AS autor, v.postat_la
+                       v.versiune, v.text, left(v.autor_hash, 8) AS autor, v.postat_la,
+                       v.raspuns_banca
                 FROM app_review v JOIN banci b ON b.id = v.id_banca
                 WHERE {filtru}
-                ORDER BY v.postat_la DESC NULLS LAST LIMIT 120""", params
+                ORDER BY {ordine} LIMIT 120""", params
         ),
     }
 
@@ -772,8 +895,19 @@ def istoric(q):
         where.append("delta > 0")
     elif q.get("directie") == ["ieftinire"]:
         where.append("delta < 0")
+    # Aceleasi praguri ca in comparatii: o „schimbare" de la 1.625.341.614 la
+    # 1.625.341.625 lei la BCR era capitalul social citit ca comision. Ce
+    # depaseste pragul nu e pret; ramane in coada de verificare.
+    prag_proc = max(PRAGURI["depozite"], PRAGURI["credite"], PRAGURI["conturi_carduri"])
+    implauzibil = (f"((unitate = 'lei' AND greatest(valoare_ant, valoare_noua) > {PRAGURI['suma']})"
+                   f" OR (unitate = 'procent' AND greatest(valoare_ant, valoare_noua) > {prag_proc}))")
+    excluse = interoghează(
+        f"SELECT count(*)::int AS n FROM schimbari_pret WHERE {' AND '.join(where)} AND {implauzibil}",
+        params)[0]["n"]
+    where.append(f"NOT {implauzibil}")
     filtru = " AND ".join(where)
     return {
+        "excluse_implauzibile": excluse,
         "randuri": interoghează(
             f"""SELECT banca, banca_nume, camp, serviciu, unitate,
                        data_ant, valoare_ant::float8, data_noua, valoare_noua::float8,
@@ -782,11 +916,12 @@ def istoric(q):
                 FROM schimbari_pret WHERE {filtru}
                 ORDER BY data_noua DESC, abs(delta_pct) DESC NULLS LAST""", params
         ),
+        # pentru meniul de bănci: pe toate băncile, fără filtrul de bancă
         "pe_banca": interoghează(
-            """SELECT banca, count(*)::int AS n,
+            f"""SELECT banca, count(*)::int AS n,
                       count(*) FILTER (WHERE delta > 0)::int AS scumpiri,
                       count(*) FILTER (WHERE delta < 0)::int AS ieftiniri
-               FROM schimbari_pret GROUP BY 1 ORDER BY 2 DESC"""
+               FROM schimbari_pret WHERE NOT {implauzibil} GROUP BY 1 ORDER BY 2 DESC"""
         ),
         # Cate observatii au datare, si cate nu: fara asta, „18 schimbari" pare
         # o cifra completa, cand de fapt se poate calcula doar pe ce e datat.
@@ -836,6 +971,59 @@ def stare():
     )
 
 
+def acoperire():
+    """Ce avem, pe categoriile 2.1-2.7 și pe fiecare bancă.
+
+    Pentru Overview și pentru fișa de bancă. Cifrele vin direct din tabele;
+    „blocată" înseamnă că site-ul băncii a refuzat colectarea (robots/WAF),
+    deci un gol acolo nu e o scăpare.
+    """
+    pe_banca = interoghează(
+        """WITH o AS (
+             SELECT s.id_banca,
+                    count(*) FILTER (WHERE o.unitate = 'lei' AND NOT o.ambiguu)::int AS comisioane,
+                    count(*) FILTER (WHERE o.unitate = 'procent' AND NOT o.ambiguu)::int AS dobanzi
+             FROM observatii_curente o JOIN surse s ON s.id = o.id_sursa GROUP BY 1),
+           a AS (SELECT id_banca, max(rating_agregat)::float8 AS rating, max(volum_rating)::int AS note
+                 FROM app_release GROUP BY 1),
+           l AS (SELECT id_banca, count(*)::int AS n FROM locatii GROUP BY 1),
+           r AS (SELECT id_banca, count(*)::int AS n FROM app_review GROUP BY 1),
+           s AS (SELECT id_banca, count(*)::int AS surse,
+                        count(*) FILTER (WHERE status = 'blocat')::int AS blocate
+                 FROM surse GROUP BY 1)
+           SELECT b.slug, b.nume, b.tier,
+                  coalesce(o.comisioane, 0) AS comisioane, coalesce(o.dobanzi, 0) AS dobanzi,
+                  a.rating, a.note, coalesce(l.n, 0) AS locatii, coalesce(r.n, 0) AS recenzii,
+                  coalesce(s.surse, 0) AS surse, coalesce(s.blocate, 0) AS blocate,
+                  (SELECT count(*)::int FROM schimbari_pret sp WHERE sp.banca = b.slug) AS schimbari,
+                  (SELECT count(*)::int FROM coada_verificare c WHERE c.banca = b.slug) AS in_coada
+           FROM banci b
+           LEFT JOIN o ON o.id_banca = b.id LEFT JOIN a ON a.id_banca = b.id
+           LEFT JOIN l ON l.id_banca = b.id LEFT JOIN r ON r.id_banca = b.id
+           LEFT JOIN s ON s.id_banca = b.id
+           ORDER BY b.nume"""
+    )
+    cat = interoghează(
+        """SELECT
+             (SELECT count(*) FROM observatii_curente WHERE unitate = 'lei' AND NOT ambiguu)::int AS comisioane,
+             (SELECT max(created_at) FROM observatii_curente WHERE unitate = 'lei') AS comisioane_la,
+             (SELECT count(*) FROM observatii_curente WHERE unitate = 'procent' AND NOT ambiguu)::int AS dobanzi,
+             (SELECT max(created_at) FROM observatii_curente WHERE unitate = 'procent') AS dobanzi_la,
+             (SELECT count(*) FROM app_release)::int AS aplicatii,
+             (SELECT max(observat_la) FROM app_release) AS aplicatii_la,
+             (SELECT count(*) FROM locatii)::int AS locatii,
+             (SELECT max(observat_la) FROM locatii) AS locatii_la,
+             (SELECT count(*) FROM indici_referinta)::int AS indici,
+             (SELECT max(valabil_din) FROM indici_referinta WHERE indice <> 'ircc') AS indici_la,
+             (SELECT count(*) FROM app_review)::int AS recenzii,
+             (SELECT max(postat_la) FROM app_review) AS recenzii_la,
+             (SELECT count(*) FROM schimbari_pret)::int AS schimbari,
+             (SELECT count(*) FROM coada_verificare)::int AS in_coada,
+             (SELECT count(*) FROM surse)::int AS surse"""
+    )[0]
+    return {"pe_banca": pe_banca, "categorii": cat}
+
+
 def logos():
     """slug -> calea locala a logoului, pentru bancile care au unul descarcat."""
     dosar = os.path.join(AICI, "logos")
@@ -881,7 +1069,13 @@ def coada(q):
     if q.get("produs"):
         where.append("c.produs = %s")
         params.append(q["produs"][0])
+    # „doar citate cu context": citatul spune mai mult decât cifra. La jumătate
+    # din rânduri citatul e chiar cifra („349 RON") și nu ajută la decizie.
+    if (q.get("context") or [""])[0] == "1":
+        where.append("c.citat IS NOT NULL AND NOT (btrim(c.citat) ~* "
+                     "'^[0-9][0-9.,[:space:]]*(lei|euro|eur|usd|ron|%%)?$')")
     limit = min(int((q.get("limit") or ["120"])[0]), 500)
+    offset = max(int((q.get("offset") or ["0"])[0]), 0)
     base = f"FROM coada_verificare c WHERE {' AND '.join(where)}"
 
     randuri = interoghează(
@@ -893,9 +1087,9 @@ def coada(q):
            """
         + base.replace("FROM coada_verificare c",
                        "FROM coada_verificare c JOIN banci b ON b.slug = c.banca")
-        + " ORDER BY c.banca, c.camp, coalesce(c.serviciu, ''), c.valoare_num "
-          "LIMIT %s",
-        params + [limit],
+        + " ORDER BY c.banca, c.camp, coalesce(c.serviciu, ''), c.valoare_num, c.id "
+          "LIMIT %s OFFSET %s",
+        params + [limit, offset],
     )
     for r in randuri:
         # Documentele populării de la zero au ca sursă chiar adresa publică a
@@ -943,13 +1137,22 @@ def coada(q):
         ),
         # Cât din tot ce avem stă în coadă: fără raportul asta, „1.166 de
         # rânduri" nu spune dacă e mult sau puțin.
+        # Tabelul bancă × motiv: cât e de verificat, dintr-o privire.
+        "matrice": interoghează(
+            """SELECT banca, banca_nume, motiv, count(*)::int AS n
+               FROM coada_verificare GROUP BY 1, 2, 3"""
+        ),
         "context": interoghează(
+            # link = adresa publică SAU sursa care e ea însăși o adresă web
+            # (documentele populării de la zero); altfel cifra spunea „0 cu link"
+            # deși fiecare rând avea link.
             """SELECT (SELECT count(*)::int FROM observations) AS observatii_total,
                       (SELECT count(*)::int FROM coada_verificare) AS in_coada,
                       (SELECT count(*)::int FROM coada_verificare
-                        WHERE url_public IS NOT NULL) AS in_coada_cu_link"""
+                        WHERE url_public IS NOT NULL OR left(sursa, 4) = 'http') AS in_coada_cu_link"""
         )[0],
         "total": interoghează("SELECT count(*)::int AS n " + base, params)[0]["n"],
+        "offset": offset, "limit": limit,
         "randuri": randuri,
         "fratii": fratii,
     }
@@ -973,6 +1176,7 @@ RUTE = {
     "/api/istoric": istoric,
     "/api/versus_extra": lambda q: versus_extra(),
     "/api/stare": lambda q: stare(),
+    "/api/acoperire": lambda q: acoperire(),
 }
 
 

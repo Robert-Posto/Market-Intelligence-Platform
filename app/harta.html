@@ -52,7 +52,11 @@
   .stat span{color:var(--muted);font-size:12px;display:block}
   .note{color:var(--muted);font-size:11.5px;line-height:1.5;margin-top:14px}
   .legenda{display:flex;flex-direction:column;gap:9px;font-size:12px;color:var(--muted)}
-  .legenda div{display:flex;align-items:center;gap:9px}
+  .legenda .lg{display:flex;align-items:center;gap:9px}
+  .cluster{background:var(--accent);color:#fff;border:2.5px solid #fff;border-radius:50%;
+           display:grid;place-items:center;font:700 12px "IBM Plex Mono",monospace;cursor:pointer;
+           box-shadow:0 1px 4px rgba(16,24,32,.35)}
+  #nr-zona{margin-top:3px}
   .lg-suc,.lg-atm{flex:none;background:var(--accent);box-shadow:0 1px 3px rgba(16,24,32,.3);
                   display:grid;place-items:center;color:#fff;font-weight:700;
                   font-family:"IBM Plex Sans",sans-serif}
@@ -86,7 +90,7 @@
 </header>
 <div class="layout">
   <aside>
-    <div class="stat"><b id="nr">—</b><span id="nr-det">se încarcă…</span></div>
+    <div class="stat"><b id="nr">—</b><span id="nr-det">se încarcă…</span><span id="nr-zona"></span></div>
 
     <div class="grup">
       <h2>Tip locație</h2>
@@ -96,12 +100,12 @@
         <button data-tip="atm">ATM-uri</button>
       </div>
       <div class="legenda">
-        <div><span class="lg-suc">BT</span> <span><b>Sucursală</b> — pătrat mai mare, cu codul băncii</span></div>
-        <div><span class="lg-atm">BT</span> <span><b>ATM</b> — cerc mai mic, cu codul băncii</span></div>
-        <div style="color:var(--muted);font-size:11.5px;line-height:1.45;margin-top:2px">
-          Peste zoom 13, ambele devin card cu <b>logoul real</b> al băncii;
-          ATM-urile au în plus eticheta <code style="font-family:'IBM Plex Mono',monospace">ATM</code>.
-        </div>
+        <div class="lg"><span class="lg-suc">BT</span> <span><b>Sucursală</b> — pătrat, cu codul băncii</span></div>
+        <div class="lg"><span class="lg-atm">BT</span> <span><b>ATM propriu</b> — cerc, cu codul băncii</span></div>
+        <div class="lg"><span class="lg-atm" style="opacity:.45">PAT</span> <span><b>ATM partener</b> — estompat: rețea comună, nu a băncii</span></div>
+        <div class="lg"><span class="cluster" style="width:30px;height:30px;font-size:11px">42</span> <span><b>Grup de locații</b> — la zoom mic; clic ca să te apropii</span></div>
+        <p style="color:var(--muted);font-size:11.5px;line-height:1.45;margin:2px 0 0">
+          De aproape, punctele devin carduri cu <b>logoul</b> băncii.</p>
       </div>
     </div>
 
@@ -115,14 +119,9 @@
     </div>
 
     <p class="note">
-      Culoarea fiecărei bănci e extrasă automat din logoul ei (pixelul dominant saturat),
-      nu aleasă manual.
-    </p>
-    <p class="note">
-      Logourile sunt desenate o singură dată în textura markerului, nu încărcate ca
-      elemente DOM — randarea se face pe GPU, deci numărul de puncte nu afectează
-      fluența hărții. Wordmark-urile late (ex. Patria 224×29 px) apar doar peste zoom 13,
-      unde cardul are lățime să le arate lizibil.
+      <b>Acoperirea e parțială.</b> Punctele vin din Overture Maps și, unde e permis, din
+      locatorul băncii. La băncile mici și la ATM-uri lipsesc locații: o zonă goală nu
+      înseamnă sigur că banca nu e acolo.
     </p>
   </aside>
   <div class="harta-zona">
@@ -373,8 +372,8 @@ function deschidePopup(p, lngLat){
     <span class="pill">${esc(p.tip)} · ${p.sursa === "locator_banca" ? "locatorul băncii" : "Overture Maps"}${p.furnizori ? ` (${esc(p.furnizori)})` : ""}</span>`).addTo(map);
 }
 
-function geojson(){
-  return {type:"FeatureCollection", features: TOATE.map(p => ({
+function geojson(lista = TOATE){
+  return {type:"FeatureCollection", features: lista.map(p => ({
     type: "Feature",
     geometry: {type: "Point", coordinates: [p.lon, p.lat]},
     properties: {...p,
@@ -387,18 +386,47 @@ function geojson(){
 const PRAG_CHIP = 13;
 const iconDupaZoom = ["step", ["zoom"], ["get","icon_punct"], PRAG_CHIP, ["get","icon_chip"]];
 
-function aplicaFiltre(){
-  const lista = [...selectate];
-  const baza = ["in", ["get","banca"], ["literal", lista]];
-  for(const [strat, tip] of [["atm","atm"], ["sucursala","sucursala"]]){
-    const f = ["all", baza, ["==", ["get","tip"], tip]];
-    if(tipSelectat && tipSelectat !== tip){
-      map.setFilter(strat, ["==", ["get","tip"], "__nimic__"]);
-    }else{
-      map.setFilter(strat, f);
-    }
+/* Grupele (bule cu număr) sunt elemente DOM peste hartă: textul lor nu depinde
+   de fonturile stilului de fond, deci merg și pe fondul de rezervă. Filtrarea
+   se face în datele sursei, fiindcă gruparea se calculează din ele. */
+const GRUPE = {};
+function curataGrupe(){ for(const id in GRUPE){ GRUPE[id].remove(); delete GRUPE[id]; } }
+function actualizeazaGrupe(){
+  if(!map.getSource("locatii")) return;
+  const vazute = {};
+  for(const x of map.querySourceFeatures("locatii")){
+    if(!x.properties.cluster) continue;
+    const id = x.properties.cluster_id;
+    if(vazute[id]) continue;
+    vazute[id] = true;
+    if(GRUPE[id]) continue;
+    const n = x.properties.point_count, el = document.createElement("div");
+    const d = n < 10 ? 28 : n < 50 ? 34 : n < 200 ? 42 : 50;
+    el.className = "cluster"; el.style.width = el.style.height = d + "px";
+    // o singură bancă aleasă: grupul are culoarea ei
+    if(selectate.size === 1) el.style.background = CULOARE[[...selectate][0]] || "";
+    el.textContent = x.properties.point_count_abbreviated;
+    el.title = `${n} locații — clic ca să te apropii`;
+    el.onclick = () => Promise.resolve(map.getSource("locatii").getClusterExpansionZoom(id))
+      .then(z => map.easeTo({center: x.geometry.coordinates, zoom: z + 0.3}));
+    GRUPE[id] = new maplibregl.Marker({element: el}).setLngLat(x.geometry.coordinates).addTo(map);
   }
+  for(const id in GRUPE) if(!vazute[id]){ GRUPE[id].remove(); delete GRUPE[id]; }
+}
+
+let VIZIBILE = [];
+function inZona(){
+  const z = map.getBounds();
+  const n = VIZIBILE.filter(p => z.contains([p.lon, p.lat])).length;
+  document.getElementById("nr-zona").textContent = !VIZIBILE.length ? ""
+    : n ? `${n} în zona vizibilă a hărții` : "0 în zona vizibilă — nicio locație a băncilor alese aici";
+}
+
+function aplicaFiltre(){
   const vaz = TOATE.filter(p => selectate.has(p.banca) && (!tipSelectat || p.tip === tipSelectat));
+  VIZIBILE = vaz;
+  curataGrupe();
+  map.getSource("locatii").setData(geojson(vaz));
   const suc = vaz.filter(p => p.tip === "sucursala").length;
   const cuRec = vaz.filter(p => p.rating !== null && p.rating !== undefined);
   const medie = cuRec.length ? cuRec.reduce((s,p) => s + Number(p.rating), 0) / cuRec.length : null;
@@ -408,6 +436,7 @@ function aplicaFiltre(){
     + (vaz.some(p => p.retea === "partener") ? ` · ${vaz.filter(p => p.retea === "partener").length} partenere` : "")
     + (medie ? ` · notă medie ${medie.toFixed(2)}` : "");
   document.getElementById("nr-banci").textContent = `(${selectate.size}/${BANCI.length})`;
+  inZona();
 }
 
 function randBanci(){
@@ -416,7 +445,7 @@ function randBanci(){
       <input type="checkbox" data-slug="${esc(b.slug)}" ${selectate.has(b.slug) ? "checked" : ""}>
       <span class="bara" style="background:${esc(CULOARE[b.slug] || "#9aa7b4")}"></span>
       ${LOGO[b.slug] ? `<img class="logo" src="${esc(LOGO[b.slug])}" alt="${esc(b.nume)}">` : ""}
-      <span class="nume" title="${esc(b.nume)}">${esc(COD[b.slug] || b.slug)}</span>
+      <span class="nume" title="${esc(b.nume)}">${esc(b.nume)}</span>
       <span class="n">${b.sucursale}s/${b.atm}a</span>
     </label>`).join("");
   document.querySelectorAll("#lista-banci input").forEach(cb => {
@@ -434,7 +463,9 @@ map.on("load", async () => {
   ]);
   TOATE = d.puncte; BANCI = d.banci;
   Object.assign(LOGO, logos);
-  selectate = new Set(BANCI.map(b => b.slug));
+  const dinLink = (new URLSearchParams(location.search).get("banca") || "").split(",")
+    .filter(s => BANCI.some(b => b.slug === s));
+  selectate = new Set(dinLink.length ? dinLink : BANCI.map(b => b.slug));
 
   // culoarea fiecărei bănci, din logoul ei; imaginile încărcate se refolosesc
   // apoi la desenarea chip-urilor, ca să nu le cerem de două ori
@@ -462,15 +493,18 @@ map.on("load", async () => {
     }
   }
 
-  map.addSource("locatii", {type: "geojson", data: geojson()});
+  map.addSource("locatii", {type: "geojson", data: geojson(), cluster: true, clusterMaxZoom: 9, clusterRadius: 44});
   // ATM-urile dedesubt, sucursalele deasupra — când se suprapun, contează sucursala
+  // ATM-urile partenere estompate: rețea comună, nu a băncii
+  const opacitate = ["case", ["==", ["get","retea"], "partener"], 0.45, 1];
   map.addLayer({id: "atm", type: "symbol", source: "locatii",
-    filter: ["==", ["get","tip"], "atm"],
+    filter: ["all", ["!", ["has", "point_count"]], ["==", ["get","tip"], "atm"]],
+    paint: {"icon-opacity": opacitate},
     layout: {"icon-image": iconDupaZoom, "icon-allow-overlap": true, "icon-ignore-placement": true,
              "icon-size": ["interpolate", ["linear"], ["zoom"],
                            10, 0.72, 12.9, 1.0, PRAG_CHIP, 0.50, 16, 0.72]}});
   map.addLayer({id: "sucursala", type: "symbol", source: "locatii",
-    filter: ["==", ["get","tip"], "sucursala"],
+    filter: ["all", ["!", ["has", "point_count"]], ["==", ["get","tip"], "sucursala"]],
     layout: {"icon-image": iconDupaZoom, "icon-allow-overlap": true, "icon-ignore-placement": true,
              "icon-size": ["interpolate", ["linear"], ["zoom"],
                            10, 0.78, 12.9, 1.0, PRAG_CHIP, 0.55, 16, 0.80]}});
@@ -481,8 +515,16 @@ map.on("load", async () => {
     map.on("mouseleave", strat, () => map.getCanvas().style.cursor = "");
   }
 
+  map.on("moveend", () => { actualizeazaGrupe(); inZona(); });
+  map.on("sourcedata", e => { if(e.sourceId === "locatii" && e.isSourceLoaded) actualizeazaGrupe(); });
   randBanci();
   aplicaFiltre();
+  // bancă aleasă din link: harta se centrează pe punctele ei
+  if(dinLink.length && VIZIBILE.length){
+    const b = new maplibregl.LngLatBounds();
+    VIZIBILE.forEach(p => b.extend([p.lon, p.lat]));
+    map.fitBounds(b, {padding: 60, maxZoom: 13, duration: 0});
+  }
 });
 
 document.querySelectorAll(".segment button").forEach(b => {
