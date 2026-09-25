@@ -14,7 +14,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from crawler.data_document import (data_din_nume, data_din_text,
+from crawler.data_document import (data_din_nume, data_din_text, e_traducere,
                                    familie_document, stare_fata_de)
 from crawler.parser_pdf import RE_PROCENT
 from crawler.ambiguitate import marcheaza
@@ -368,6 +368,22 @@ T(stare_fata_de(_D(2026, 11, 1), azi=_D(2026, 9, 21)) == "VIITOR",
   "data: document care intra in vigoare mai tarziu NU e pretul de azi")
 T(stare_fata_de(None) == "DATA_NECUNOSCUTA",
   "data: fara data NU inseamna 'probabil curent'")
+
+# limba documentului: traducerea e DUBLURA, lista bilingva nu
+T(e_traducere("BCR tariffs for\nlegal entities\nCONTENTS\n1 ACCOUNTS page 3\n"
+              "LETTERS OF BANK GUARANTEE AND AVALS\nOTC OPERATIONS WITH ROMANIAN TBILLS AND\n"
+              "GOVERNMENT BONDS AND FINANCIAL INSTRUMENTS\nFees for the account of the client"),
+  "limba: lista BCR PJ in engleza e traducere")
+T(not e_traducere("Administrare pachet 25 lei/ lună 29 lei/ lună\nPackage management 25 lei/ month\n"
+                  "Produse și servicii incluse în pachet: / Products and services included in the package\n"
+                  "1 cont în lei și, opțional, maximum un cont în euro\n1 account in lei and, optionally, "
+                  "one account in euro\nComision de administrare cont / Account management fee"),
+  "limba: lista bilingva Techventures NU e traducere")
+T(not e_traducere("Comision de administrare cont curent pentru persoane fizice, plata cu cardul "
+                  "la comercianti din Romania si din strainatate"),
+  "limba: lista romaneasca NU e traducere")
+T(not e_traducere("PRICE LIST 2026\n— 1 —") and not e_traducere(None),
+  "limba: o coperta cu doua cuvinte nu spune in ce limba e")
 
 
 

@@ -215,8 +215,8 @@ def data_din_nume(nume):
     return None, None, None
 
 
-def data_din_pdf(cale, pagini=2):
-    """Acelasi raspuns, citit direct dintr-un PDF.
+def text_pdf(cale, pagini=2):
+    """Textul primelor pagini si motivul, daca PDF-ul nu se poate citi.
 
     Se deschide documentul a doua oara, desi parserul tocmai l-a deschis. E
     ~15% timp in plus pe un pas care oricum dureaza minute, si tine citirea
@@ -225,10 +225,35 @@ def data_din_pdf(cale, pagini=2):
     import pdfplumber
     try:
         with pdfplumber.open(cale) as pdf:
-            text = "\n".join((p.extract_text() or "") for p in pdf.pages[:pagini])
+            return "\n".join((p.extract_text() or "") for p in pdf.pages[:pagini]), None
     except Exception as e:
-        return None, None, None, f"eroare la citire: {type(e).__name__}"
-    return data_din_text(text)
+        return None, f"eroare la citire: {type(e).__name__}"
+
+
+# Legea cere documentele de preturi in romana (OUG 50/2010, Legea 258/2017),
+# deci unul scris doar in engleza e traducerea unui original romanesc. Pe
+# 25.09.2026, fiecare lista in engleza din baza avea geamanul romanesc de
+# aceeasi data (BCR PJ, Raiffeisen corporatii si IMM, Garanti T0012). Vocabularul
+# e romanesc: pe traduceri doar 47% din comisioane aveau concept, pe originale 84%.
+#
+# Pragul e masurat pe primele pagini ale celor 567 de PDF-uri din baza: listele
+# bilingve (Techventures, TBI, PKO) au cel mult 63% cuvinte de legatura
+# englezesti, cele doar in engleza cel putin 91%.
+RE_CUVINTE_EN = re.compile(
+    r"\b(?:the|of|and|for|with|from|to|by|or|fee|fees|account|accounts|charge|charges)\b", re.I)
+RE_CUVINTE_RO = re.compile(
+    r"\b(?:de|și|şi|si|pentru|cu|la|din|sau|ale|cont|contul|comision|comisionul)\b", re.I)
+PRAG_ENGLEZA = 0.85
+
+
+def e_traducere(text):
+    """Textul e in engleza, nu in romana?
+
+    Sub cinci cuvinte englezesti nu se decide: un document scanat sau o coperta
+    goala nu spune in ce limba e.
+    """
+    en, ro = len(RE_CUVINTE_EN.findall(text or "")), len(RE_CUVINTE_RO.findall(text or ""))
+    return en >= 5 and en >= PRAG_ENGLEZA * (en + ro)
 
 
 def data_documentului(cale, pagini=2):
@@ -242,7 +267,9 @@ def data_documentului(cale, pagini=2):
     alegem in tacere — un dezacord intre surse e informatie despre cat de mult
     merita crezuta oricare dintre ele.
     """
-    d_txt, p_txt, ancora, dovada_txt = data_din_pdf(cale, pagini=pagini)
+    text, eroare = text_pdf(cale, pagini=pagini)
+    d_txt, p_txt, ancora, dovada_txt = (data_din_text(text) if text is not None
+                                        else (None, None, None, eroare))
     d_nume, p_nume, dovada_nume = data_din_nume(str(cale))
 
     if d_txt:
@@ -262,7 +289,10 @@ def data_documentului(cale, pagini=2):
     return {"data_vigoare": d.isoformat() if d else None,
             "precizie": precizie, "sursa_data": sursa, "ancora": ancora,
             "dovada": dovada, "dezacord": dezacord,
-            "stare": stare_fata_de(d)}
+            # Traducerea se incarca, dar ca `DUBLURA`: nu intra in comparatii si
+            # nici in Istoric, unde preturile ei, citite prin alt vocabular, ar
+            # parea schimbari fata de originalul romanesc.
+            "stare": "DUBLURA" if e_traducere(text) else stare_fata_de(d)}
 
 
 RE_PREFIX_UNIC = re.compile(r"^[0-9a-f]{8}_")
