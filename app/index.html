@@ -10,9 +10,13 @@
     --bg:#eef1f4; --surface:#fff; --ink:#1b2430; --muted:#5b6b7a; --line:#c7d0d9;
     --warn:#a8720f; --warn-tint:#faedd2; --ok:#2f7a4f; --ok-tint:#dcf0e3;
     --accent:#1d6f6f; --accent-tint:#dcefee;
-    /* bara laterală: bleumarin Libra, cu accentul roșu al mărcii */
-    --nav:#111e33; --nav-ink:#c3cedd; --nav-slab:#7b8ca3; --nav-line:#27364f;
-    --marca:#e23b45;
+    /* bara laterală — direcția F: bloc plin pe roșul Libra, text alb; pagina
+       activă se inversează pe crem/bleumarin; piciorul pe o bandă bleumarin
+       mai închisă decât bara. Spațierile verticale ale barei sunt în clamp()
+       cu vh, ca tot meniul să încapă fără derulare la 720–900px înălțime. */
+    --nav:#b8222c; --nav-ink:#ffffff; --nav-slab:#fbe8e3; --nav-line:rgba(255,255,255,.22);
+    --marca:#111e33; --nav-activ-bg:#fff8f2; --nav-activ-ink:#111e33;
+    --nav-footer:#111e33; --nav-footer-ink:#f2ddd3;
   }
   @media (prefers-color-scheme:dark){
     :root{--bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4; --line:#2c3540;
@@ -26,33 +30,39 @@
 
   /* ---- navigație ---- */
   /* ---- bara laterală ----
-     Bleumarin închis cu accent roșu, ca identitatea Libra. Antetul e un titlu
-     serif cu un cuvânt în roșu italic, apoi subtitlul în capitale spațiate —
-     nu mai e o listă de pagini pe fundal alb cu o bordură. */
-  nav{width:262px;flex:none;background:var(--nav);color:var(--nav-ink);
-      padding:0 0 18px;overflow:auto;height:100%}
-  nav .marca{padding:20px 20px 17px;border-bottom:1px solid var(--nav-line);margin-bottom:6px}
-  nav .marca .t{font-family:"Source Serif 4",Georgia,serif;font-size:22px;line-height:1.15;
-                font-weight:600;color:#fff;display:block;letter-spacing:-.01em}
-  nav .marca .t i{color:var(--marca);font-style:italic}
-  nav .marca .s{display:block;margin-top:8px;font-family:"IBM Plex Mono",monospace;
+     Direcția F — bloc plin pe roșul Libra, text alb, titlu tipografic mare;
+     grupurile au etichete mono, în majuscule; pagina activă se inversează
+     (fundal crem, text bleumarin) cu un colț tăiat spre conținut; piciorul
+     stă pe o bandă bleumarin, lipit jos. Fiecare spațiere verticală e
+     clamp(minim la 720px înălțime, vh, maxim la 900px), ca antetul + cele
+     12 linkuri + piciorul să încapă fără derulare pe orice laptop uzual. */
+  nav{width:266px;flex:none;background:var(--nav);color:var(--nav-ink);
+      padding:0;overflow:auto;height:100%;display:flex;flex-direction:column}
+  nav .marca{padding:clamp(16px,2.2vh,20px) 22px clamp(13px,1.8vh,16px);
+             border-bottom:2px solid var(--nav-line)}
+  nav .marca .t{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(19px,2.6vh,24px);
+                line-height:1.1;font-weight:700;color:#fff;display:block;letter-spacing:-.01em}
+  nav .marca .t i{color:var(--nav-slab);font-style:italic;font-weight:600}
+  nav .marca .s{display:block;margin-top:clamp(7px,1vh,9px);font-family:"IBM Plex Mono",monospace;
                 font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
                 color:var(--nav-slab)}
   nav h3{font-family:"IBM Plex Mono",monospace;font-size:9.5px;text-transform:uppercase;
-         letter-spacing:.1em;color:var(--nav-slab);font-weight:500;margin:17px 0 5px;
-         padding:0 20px}
-  nav a{display:flex;align-items:center;gap:8px;padding:8px 20px;color:var(--nav-ink);
-        text-decoration:none;font-size:13.5px;border-left:3px solid transparent}
-  nav a:hover{background:rgba(255,255,255,.06);color:#fff}
-  nav a.activ{border-left-color:var(--marca);background:rgba(255,255,255,.09);
-              color:#fff;font-weight:600}
-  nav a .pdf{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:10px;
-             color:var(--nav-slab)}
+         letter-spacing:.12em;color:var(--nav-slab);font-weight:600;
+         margin:clamp(10px,1.4vh,13px) 0 clamp(4px,0.6vh,5px);padding:0 22px;opacity:.9}
+  nav a{display:flex;align-items:center;padding:clamp(5px,0.7vh,6px) 42px clamp(5px,0.7vh,6px) 22px;
+        color:var(--nav-ink);text-decoration:none;font-size:13px;font-weight:500;position:relative}
+  nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+  nav a:focus-visible{outline:2px solid #fff;outline-offset:-2px}
+  nav a.activ{background:var(--nav-activ-bg);color:var(--nav-activ-ink);font-weight:700;
+              clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%)}
+  nav a .pdf,nav a .gol{position:absolute;right:20px;top:50%;transform:translateY(-50%);
+                        font-family:"IBM Plex Mono",monospace;font-size:10px}
+  nav a .pdf{color:var(--nav-slab)}
   nav a.activ .pdf{color:var(--marca)}
-  nav a .gol{margin-left:auto;font-size:10px;color:#e0a44a;font-family:"IBM Plex Mono",monospace}
-  nav .picior{margin:18px 20px 0;padding-top:14px;border-top:1px solid var(--nav-line);
-              font-family:"IBM Plex Mono",monospace;font-size:9.5px;line-height:1.7;
-              color:var(--nav-slab)}
+  nav a .gol{color:#ffe6ba}
+  nav .picior{margin-top:auto;padding:clamp(10px,1.4vh,13px) 22px clamp(11px,1.5vh,14px);
+              background:var(--nav-footer);font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+              line-height:1.6;color:var(--nav-footer-ink)}
 
   /* ---- conținut ---- */
   main{flex:1;min-width:0;overflow:auto;height:100%;padding:26px 30px 60px}
