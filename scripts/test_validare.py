@@ -972,6 +972,15 @@ CN("Notification for refusing a payment order", "refuz_plata", "refuz in engleza
 CN("≥ 50.000 LEI si urgente (orice suma)", "transfer_credit", "banda urgenta Vista")
 CN("CIP la cererea clientilor pentru fiecare cerere transmisa prin: Inchiriere casete de valori",
    "interogare_baze_date", "caseta doar in capul etichetei")
+# etichete intregi dupa reparatia „celule” (25.09): doua servicii, decide primul
+CN("Interogare sold ATM alte bănci Romania / străinătate/Schimbare PIN la ATM",
+   "interogare_sold", "interogarea din capul etichetei bate PIN-ul")
+CN("Schimbare PIN la ATM", "schimbare_pin", "PIN singur")
+CN("Furnizarea unui card de debit Bonus Debit Card (emitere și reînnoire)", "emitere_card",
+   "emitere si reinnoire e intai emitere")
+CN("Reînnoire card de debit", "reemitere_card", "reinnoirea singura")
+CN("Verificare/ confirmare/ eliminare/ modificare semnaturi autorizare (cu deplasare)",
+   "verificare_semnatura", "lista cu / NU e modificare")
 T(canonic({"serviciu": "www.mj.romarhiva.ro sau www.co.romarhiva.ro",
            "sectiune": "EVALUARE"})[0] is None, "adresa web NU ia secțiunea")
 T(canonic({"serviciu": "Tiparire extras", "sectiune": "x", "text_sursa": "imobil"})[1]

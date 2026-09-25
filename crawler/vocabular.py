@@ -163,7 +163,8 @@ SERVICII = [
     # "reinoire" e greseala de tipar din sursa (Libra). "Taxa extras duplicat
     # aferent cardului" e un extras, nu un card nou (5 valori Libra/BRCI).
     ("reemitere_card", r"(reemiter|re-emiter|re[îi]n?noir|[îi]nlocuir|(?<!extras\s)duplicat|refacer)\w*[^.]{0,30}card"
-                       r"|card[^.]{0,30}(reemiter|re[îi]n?noir|[îi]nlocuir)"),
+                       # "card (emitere și reînnoire)" (Garanti) e intai emitere
+                       r"|card(?:(?!emiter)[^.]){0,30}(reemiter|re[îi]n?noir|[îi]nlocuir)"),
     ("emitere_card", r"(emiter|furnizar|eliberar)\w*[^.]{0,30}card"
                      r"|card[^.]{0,25}(emiter|furnizar)"
                      # "Comision de emitere plastic" (Libra, 4 valori)
@@ -210,7 +211,9 @@ SERVICII = [
                           # la fel ca regula "cont curent" singur de mai jos
                           r"|^\W*(?:•\s*)?card\w*\s+(?:adi[țt]ional\w*\s+|suplimentar\w*\s+)?(?:de\s+debit\s+)?"
                           r"(?:Visa|Mastercard|Maestro)\b[^.;:]{0,40}$"),
-    ("schimbare_pin", r"\bPIN\b"),
+    # "Interogare sold ATM ... /Schimbare PIN la ATM" (Salt, 5 valori): doua
+    # servicii cu acelasi pret, decide primul
+    ("schimbare_pin", r"^(?!\W*interog)[^\n]*?\bPIN\b"),
     # comisionul pe tranzacția cu cardul la comerciant, distinct de retragerea
     # de numerar: la EximBank sta sub "COMISIOANE TRANZACTII", la BCR ca
     # "Cumpărare bunuri/servicii"
@@ -465,7 +468,9 @@ SERVICII = [
     # dupa depunere si incasare: "depuneri de catre persoane imputernicite" raman acolo
     ("imputernicire", r"[îi]mputernic|ad[ăa]ug\w*\s+delegat|valabilit\w*\s+(?:a\s+)?procur"
                       r"|administrar\w*\s+documente\s+speciale"),
-    ("verificare_semnatura", r"^\W*(?:comision\s+|tax[ăa]\s+)?verific\w*\s+(?:a\s+)?(?:de\s+)?"
+    # "Verificare/ confirmare/ eliminare/ modificare semnaturi" (Libra) iesea
+    # modificare_anulare, dupa ce reparatia „celule” a adus eticheta intreaga
+    ("verificare_semnatura", r"^\W*(?:comision\s+|tax[ăa]\s+)?verific\w*(?:\s*/\s*\w+)*\s+(?:a\s+)?(?:de\s+)?"
                              r"(?:specimen\w*\s+(?:de\s+)?)?semn[ăa]tur"),
     # "Amendament la ordin de plata" (Nexent 5, Libra 2) iesea transfer_credit
     ("modificare_anulare", r"^\s*(modificar|anular|stornar)\w*|amendament\w*\s+(?:la\s+)?(?:OP\b|ordin)"
