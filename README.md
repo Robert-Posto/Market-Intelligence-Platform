@@ -46,6 +46,32 @@ Pe secțiunile din PDF-ul de arhitectură:
 
 ---
 
+
+## Migrări
+
+Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
+`observations`: `db/sincronizeaza_vederi.sql`.
+
+| migrare | ce face |
+|---|---|
+| 002 | surse de tip `document` |
+| 003 | coada de verificare umană (vedere) |
+| 004 | locații fizice: sucursale și ATM-uri |
+| 005 | recenzii per locație |
+| 006 | contextul valorii (la ce se referă cifra) |
+| 007 | proveniența `bs4_llm` |
+| 008 | istoricul valorilor: data de vigoare și starea versiunii |
+| 009 | pagina de pe care banca publică documentele de tarife |
+| 010 | motivul pentru care o valoare e ambiguă |
+| 011 | motive concrete în coada de verificare |
+| 012 | deduplicare: câte celule identice stau în spatele unui rând |
+| 013 | starea `VIITOR` (preț anunțat, încă neintrat în vigoare) |
+| 014 | locații din Overture Maps în locul celor mock |
+| 015 | varianta de produs (`coloana`) și rolul `locator` |
+| 016 | rețeaua proprie vs. rețeaua parteneră (ATM-uri) |
+| 017 | App Store din pagina publică; recenziile din RSS șterse |
+| 018 | proveniența `populare` permisă în `observations` |
+
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
 Ca să nu ne călcăm pe picioare.
