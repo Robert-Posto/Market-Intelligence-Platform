@@ -1233,7 +1233,30 @@ R.rate = async (stare) => {
     })),
   ];
   const cp0 = campuri[0];
-  const html = banci.length
+  /* Un singur tip de dobândă (la depozite doar nominala: DAE și marja peste
+     IRCC țin de credite): matricea ar avea o singură coloană de cifre, cu tot
+     contextul înghesuit sub ea și gol în dreapta. Aici fiecare informație are
+     coloana ei — dobânda, termenul, oferta, intervalul — pe toată lățimea. */
+  const plat = campuri.length === 1 ? [
+    {cap: "Bancă", html: true, s: b => m.nume[b] || b, val: b => etichetaBanca(b, m, {fisa: true, tag: true})},
+    {capHtml: `${esc(etNume(cp0))}<span class="cap-d">tipică (mediana)</span>`, cls: "num", html: true,
+     s: b => pe[b][cp0].valoare, td: b => ({cls: best[cp0] === b ? "mc best" : "mc"}),
+     val: b => `<b>${num(pe[b][cp0].valoare)}%</b>${best[cp0] === b ? '<span class="sub" style="color:var(--ok)">cea mai bună</span>' : ""}`},
+    {cap: "Termen", html: true, s: b => pe[b][cp0].luni,
+     val: b => termenTxt(pe[b][cp0]) ? esc(termenTxt(pe[b][cp0])) : '<span class="gri" title="sursa nu spune termenul">nespecificat</span>'},
+    {cap: "Oferta", html: true, s: b => pe[b][cp0].serviciu,
+     val: b => { const c = pe[b][cp0];
+       return `${esc(c.serviciu || "—")}${c.conditie ? `<span class="sub">${esc(c.conditie.slice(0, 110))}</span>` : ""}`; }},
+    {cap: "Interval", cls: "num", html: true, s: b => pe[b][cp0].maxim,
+     val: b => { const c = pe[b][cp0];
+       return `<span style="white-space:nowrap">${c.minim === c.maxim ? `${num(c.minim)}%` : `${num(c.minim)}–${num(c.maxim)}%`}</span>`; }},
+    {cap: "Valori", cls: "num", s: b => pe[b][cp0].n, val: b => num(pe[b][cp0].n, 0)},
+  ] : null;
+  const html = banci.length && plat
+    ? tabel(banci, plat, {sort: true, lung: true, libra: b => b, implicit: [1, mare ? "desc" : "asc"],
+        rand: b => ({cauta: `${m.nume[b] || ""} ${b}`,
+                     clic: `deschideSertar('${esc(b)}','${esc(cp0)}','procent','${esc(cat)}',${esc(JSON.stringify({termen, produs}))})`})})
+    : banci.length
     ? tabel(banci, coloane, {sort: true, lung: true, libra: b => b,
         implicit: cp0 ? [1, mare ? "desc" : "asc"] : null, rand: b => ({cauta: `${m.nume[b] || ""} ${b}`})})
     : `<div class="gol-stare"><b>Nicio valoare pentru filtrul curent</b>
@@ -1269,12 +1292,13 @@ R.rate = async (stare) => {
       <a href="#/context">→ indici BNR</a></span>
   </div></div>
   <section>
-    <p class="note" style="margin:0 0 10px">${banci.length} bănci · cifra e dobânda <b>tipică</b> a băncii (mediana),
-      cu termenul și produsul ei dedesubt; ${mare ? "<b>mai mare e mai bine</b>" : "<b>mai mic e mai bine</b>"}.
-      Clic pe celulă pentru toate valorile, cu citat și link.
+    <p class="note" style="margin:0 0 10px">${banci.length} bănci · cifra e dobânda <b>tipică</b> a băncii (mediana)${plat
+        ? ", cu termenul și oferta de la care vine" : ", cu termenul și produsul ei dedesubt"};
+      ${mare ? "<b>mai mare e mai bine</b>" : "<b>mai mic e mai bine</b>"}.
+      Clic pe ${plat ? "rând" : "celulă"} pentru toate valorile, cu citat și link.
       ${cat === "depozite" && !termen ? `<b>Alege un termen</b> ca să compari aceeași perioadă — altfel 4 luni stă lângă 12 luni.` : ""}
       ${cat === "credite" && !produs ? `<b>Alege un produs</b> — altfel un ipotecar stă lângă rate fără dobândă în magazine.` : ""}</p>
-    <div id="t-rate" style="${campuri.length <= 1 ? "max-width:900px" : ""}">${html}</div>
+    <div id="t-rate">${html}</div>
     ${despre(`
       <b>Mediana, nu vârful</b>: ca o singură campanie să nu reprezinte toată oferta băncii; intervalul
       de sub cifră arată extremele.<br>
