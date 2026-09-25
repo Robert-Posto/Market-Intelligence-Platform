@@ -179,6 +179,8 @@
   .cl-banca{display:flex;align-items:center;gap:8px;min-width:0}
   .cl-banca img{max-height:18px;max-width:54px;object-fit:contain;flex:none}
   .cl-banca .nm{font-size:12.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;hyphens:auto}
+  /* 2.3 Aplicații: multe coloane fac numele băncii să se rupă pe 2-3 rânduri */
+  .apl-tabel table.t td:first-child .cl-banca{min-width:190px}
 
   /* Avertisment care nu se poate sări cu privirea. Folosit acolo unde o cifră
      corect calculată poate fi înțeleasă greșit — media textelor de review, de
@@ -967,26 +969,28 @@ R.overview = async () => {
     ${card("2.6", "Context de piață", num(c.indici, 0), "valori ROBOR, ROBID, IRCC de la BNR", null, c.indici_la, "#/context")}
     ${card("", "Istoric de prețuri", num(c.schimbari, 0), "schimbări de preț între versiunile documentelor", null, null, "#/istoric")}
   </div>
-  <section>
-    <h2>Ce avem pe fiecare bancă</h2>
-    <p class="note" style="margin:0 0 10px">Câte valori avem în fiecare categorie. Un gol la o bancă <b>blocată</b>
-      nu e o scăpare: site-ul refuză colectarea automată și nu forțăm. Clic pe nume pentru fișa băncii.</p>
-    ${tabel(pb, [
-      {cap: "Bancă", html: true, s: r => r.nume, val: r => etichetaBanca(r.slug, m, {fisa: true, tag: true})},
-      {cap: "Comisioane", cls: "num", html: true, s: r => r.comisioane, val: r => celula(r.comisioane)},
-      {cap: "Dobânzi", cls: "num", html: true, s: r => r.dobanzi, val: r => celula(r.dobanzi)},
-      {cap: "Aplicație", cls: "num", html: true, s: r => r.rating, val: r => r.rating ? `${num(r.rating)} ★` : '<span class="gri">—</span>'},
-      {cap: "Locații", cls: "num", html: true, s: r => r.locatii, val: r => celula(r.locatii)},
-      {cap: "Recenzii", cls: "num", html: true, s: r => r.recenzii, val: r => celula(r.recenzii)},
-      {cap: "Schimbări de preț", cls: "num", html: true, s: r => r.schimbari, val: r => celula(r.schimbari)},
-      {cap: "De verificat", cls: "num", html: true, s: r => r.in_coada,
-       val: r => r.in_coada ? `<a class="sursa" href="#/coada?banca=${encodeURIComponent(r.slug)}">${num(r.in_coada, 0)}</a>` : '<span class="gri">—</span>'},
-      {cap: "Colectare", html: true, s: r => r.blocate ? 0 : r.comisioane + r.dobanzi ? 2 : 1,
-       val: r => r.blocate && !(r.comisioane + r.dobanzi) ? '<span class="pill amb" title="robots.txt sau WAF refuză colectarea; nu se forțează">site blocat</span>'
-         : r.blocate ? '<span class="pill amb" title="o parte din site refuză colectarea; ce e permis s-a colectat">parțial blocat</span>'
-         : r.comisioane + r.dobanzi ? '<span class="pill ok">are date</span>' : '<span class="pill">fără prețuri</span>'},
-    ], {sort: true, lung: true, libra: r => r.slug, implicit: [1, "desc"]})}
-  </section>
+  <details class="pliat" style="margin-bottom:18px">
+    <summary style="margin-bottom:10px"><h2>Ce avem pe fiecare bancă <span class="note">toate cele 30 de bănci · clic pentru tabel</span></h2></summary>
+    <section>
+      <p class="note" style="margin:0 0 10px">Câte valori avem în fiecare categorie. Un gol la o bancă <b>blocată</b>
+        nu e o scăpare: site-ul refuză colectarea automată și nu forțăm. Clic pe nume pentru fișa băncii.</p>
+      ${tabel(pb, [
+        {cap: "Bancă", html: true, s: r => r.nume, val: r => etichetaBanca(r.slug, m, {fisa: true, tag: true})},
+        {cap: "Comisioane", cls: "num", html: true, s: r => r.comisioane, val: r => celula(r.comisioane)},
+        {cap: "Dobânzi", cls: "num", html: true, s: r => r.dobanzi, val: r => celula(r.dobanzi)},
+        {cap: "Aplicație", cls: "num", html: true, s: r => r.rating, val: r => r.rating ? `${num(r.rating)} ★` : '<span class="gri">—</span>'},
+        {cap: "Locații", cls: "num", html: true, s: r => r.locatii, val: r => celula(r.locatii)},
+        {cap: "Recenzii", cls: "num", html: true, s: r => r.recenzii, val: r => celula(r.recenzii)},
+        {cap: "Schimbări de preț", cls: "num", html: true, s: r => r.schimbari, val: r => celula(r.schimbari)},
+        {cap: "De verificat", cls: "num", html: true, s: r => r.in_coada,
+         val: r => r.in_coada ? `<a class="sursa" href="#/coada?banca=${encodeURIComponent(r.slug)}">${num(r.in_coada, 0)}</a>` : '<span class="gri">—</span>'},
+        {cap: "Colectare", html: true, s: r => r.blocate ? 0 : r.comisioane + r.dobanzi ? 2 : 1,
+         val: r => r.blocate && !(r.comisioane + r.dobanzi) ? '<span class="pill amb" title="robots.txt sau WAF refuză colectarea; nu se forțează">site blocat</span>'
+           : r.blocate ? '<span class="pill amb" title="o parte din site refuză colectarea; ce e permis s-a colectat">parțial blocat</span>'
+           : r.comisioane + r.dobanzi ? '<span class="pill ok">are date</span>' : '<span class="pill">fără prețuri</span>'},
+      ], {sort: true, lung: true, libra: r => r.slug, implicit: [1, "desc"]})}
+    </section>
+  </details>
   <details class="pliat" style="margin-bottom:18px">
     <summary style="margin-bottom:10px"><h2>Detalii tehnice: tabelele din bază</h2></summary>
     <section>
@@ -1354,7 +1358,7 @@ R.mobil = async (stare) => {
   const titluRec = bSel ? `Recenziile ${esc(m.nume[bSel] || bSel)}, cele negative întâi` : "Cele mai noi recenzii";
   const selF = (cheie, opt) => `<select onchange="${f({[cheie]: "__v"}).replace("&quot;__v&quot;", "this.value")}">${opt}</select>`;
   return `${comutator}
-  <section>
+  <section class="apl-tabel">
     <h2>Aplicațiile</h2>
     <p class="note" style="margin:0 0 10px"><b>${d.versiuni.length} din 30 de bănci</b> au aplicația identificată în App Store.
       <b>Clic pe o bancă</b> pentru recenziile ei (mai jos). Clic pe antet sortează; Libra rămâne prima.</p>
