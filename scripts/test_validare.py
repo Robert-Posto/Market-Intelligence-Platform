@@ -14,7 +14,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from crawler.data_document import (data_din_nume, data_din_text,
+from crawler.data_document import (data_din_nume, data_din_text, e_traducere,
                                    familie_document, stare_fata_de)
 from crawler.parser_pdf import RE_PROCENT
 from crawler.ambiguitate import marcheaza
@@ -369,6 +369,22 @@ T(stare_fata_de(_D(2026, 11, 1), azi=_D(2026, 9, 21)) == "VIITOR",
 T(stare_fata_de(None) == "DATA_NECUNOSCUTA",
   "data: fara data NU inseamna 'probabil curent'")
 
+# limba documentului: traducerea e DUBLURA, lista bilingva nu
+T(e_traducere("BCR tariffs for\nlegal entities\nCONTENTS\n1 ACCOUNTS page 3\n"
+              "LETTERS OF BANK GUARANTEE AND AVALS\nOTC OPERATIONS WITH ROMANIAN TBILLS AND\n"
+              "GOVERNMENT BONDS AND FINANCIAL INSTRUMENTS\nFees for the account of the client"),
+  "limba: lista BCR PJ in engleza e traducere")
+T(not e_traducere("Administrare pachet 25 lei/ lună 29 lei/ lună\nPackage management 25 lei/ month\n"
+                  "Produse și servicii incluse în pachet: / Products and services included in the package\n"
+                  "1 cont în lei și, opțional, maximum un cont în euro\n1 account in lei and, optionally, "
+                  "one account in euro\nComision de administrare cont / Account management fee"),
+  "limba: lista bilingva Techventures NU e traducere")
+T(not e_traducere("Comision de administrare cont curent pentru persoane fizice, plata cu cardul "
+                  "la comercianti din Romania si din strainatate"),
+  "limba: lista romaneasca NU e traducere")
+T(not e_traducere("PRICE LIST 2026\n— 1 —") and not e_traducere(None),
+  "limba: o coperta cu doua cuvinte nu spune in ce limba e")
+
 
 
 
@@ -647,9 +663,9 @@ for rand in ["Puteți consulta în orice moment Tarifele, Termenele și Condiți
 # "tranzacție" sub "min. 1 LEI/" e coada celulei de pret, nu un nume
 FARA = ([], None, None, None)
 T(_celula_eticheta(["", "", "tranzacție", "tranzacție"], [FARA] * 4,
-                   frozenset({2, 3})) is None, "coada celulei de pret NU e eticheta")
+                   frozenset({2, 3})) == [], "coada celulei de pret NU e eticheta")
 T(_celula_eticheta(["", "demagnetizat", "", ""], [FARA] * 4,
-                   frozenset({2, 3})) == 1, "continuarea numelui ramane eticheta")
+                   frozenset({2, 3})) == [1], "continuarea numelui ramane eticheta")
 
 # blocuri: (sus, jos, text, e_parinte)
 BCR = [(504, 512, "Eliberare de numerar în România", True),
@@ -679,7 +695,7 @@ CN("Contestare nejustificată a unei tranzacţii", "refuz_plata", "contestare, n
 CN("Comision pentru operatiuni la comerciantii din Romania", "tranzactie_card",
    "operatiuni la comercianti")
 CN("Comision pentru operatiuni (la POS/pe internet) la comerciantii de tip jocuri de noroc",
-   None, "gamblingul NU intra la plata cu cardul")
+   "tranzactie_gambling", "gamblingul NU intra la plata cu cardul, are linia lui")
 CN("Emitere card - reînnoire", "reemitere_card", "reinnoirea dupa card")
 CN("Inchidere pachet", "inchidere_cont", "pachetul de cont")
 CN("Pret pachet/luna cu indeplinirea conditiei de pachet", "administrare_cont",
@@ -780,13 +796,844 @@ T(canonic({"serviciu": "Plăți - alte conturi 0 - 50.000 LEI, exclusiv",
 
 # pachetul care isi enumera continutul nu e primul serviciu din lista (BCR, 16)
 CN("George, conţinȃnd: - administrarea Cont curent în lei; - furnizarea unui Card de debit",
-   None, "George continand NU e emitere_card")
+   "administrare_cont", "George continand e pretul pachetului, NU emitere_card")
 CN("Pachetul Servicii de Bază pentru persoane nevulnerabile, conţinȃnd: - Furnizarea "
    "unui Card de debit", "administrare_cont", "pachetul continand e pretul pachetului")
 # numele pachetului singur e pretul lui (20 de valori), componenta nu
 CN("Pachet Gold", "administrare_cont", "pachet Raiffeisen")
 CN("Pachet de servicii", "administrare_cont", "pachet ProCredit PAD")
 CN("Pachet • comision de mentenanță card", "administrare_card", "componenta pachetului")
+
+
+# --- a patra runda: 24 sept, aceleasi 68 de documente --------------------------
+from crawler.parser_tarife import _celula_din_stanga  # noqa: E402
+
+# nota de subsol lipita de moneda nu mai pierde suma (28 de celule)
+T([(v[1], v[2]) for v in analizeaza_linie("2 RON2")[0]] == [(2.0, "LEI")],
+  "suma cu nota lipita de moneda")
+T(analizeaza_linie("10 EURIBOR")[0] == [], "EURIBOR nu e suma in euro")
+
+
+def _w(text, x0, top):
+    return {"text": text, "x0": x0, "x1": x0 + 6 * len(text), "top": top, "bottom": top + 8}
+
+
+# BCR: serviciul in stanga, canalul in dreapta, in aceeasi celula cu bordura
+GEOM = ([(95, 36, 239), (120, 36, 239), (132, 36, 239)],
+        [_w("Depunere", 54, 99), _w("numerar", 110, 99), _w("Clientului", 54, 111),
+         _w("MFM", 287, 124), _w("Alt", 54, 124)])
+T(_celula_din_stanga(GEOM, 36, 239, 105, 113) == "Depunere numerar Clientului",
+  "parintele din celula cu bordura din stanga")
+T(_celula_din_stanga(GEOM, 36, 239, 124, 132) == "Alt", "celula vecina NU se amesteca")
+T(_celula_din_stanga(([], GEOM[1]), 36, 239, 105, 113) is None,
+  "fara borduri nu se ghiceste parintele")
+T(_celula_din_stanga(([(95, 36, 239), (120, 36, 239)], [_w("Utilizare", 54, 99),
+                                                        _w("5 lei", 120, 99)]),
+                     36, 239, 105, 113) is None, "celula cu pret NU e parinte")
+
+# "PLATI" e titlu (Vista), "SEPA" nu
+T(_e_titlu(["PLATI"], [0], [0, 500], 500) == (None, "PLATI"), "PLATI e titlu scurt")
+T(_e_titlu(["SEPA"], [0], [0, 500], 500) is None, "SEPA ramane respins")
+
+# alertele SMS au un singur concept, indiferent de produsul atasat (22 de valori)
+CN("Administrare Serviciu Alerte SMS Card", "alerta_sms", "alerta SMS pe card")
+CN("Serviciul Info SMS – încasări și tranzacții cu cardul", "alerta_sms", "info SMS")
+CN("Anulare serviciu SMS Alert", "modificare_anulare", "anularea ramane anulare")
+# "cu încasare venit" e conditia creditului, nu o incasare (BRD, 8)
+CN("Oferta standard / Oferta cu incasare venit in contul BRD", None,
+   "incasare venit NU e incasare")
+CN("Suma minimă de plata de rambursat lunar", None, "plata de rambursat NU e transfer")
+CN("Retragere de de la ATM-uri si Ghiseele (POS-urile)", "retragere_numerar",
+   "retragere de la ATM fara numerar")
+CN("Extras suplimentar de cont", "extras_de_cont", "extras suplimentar")
+CN("Extras ONRC", "interogare_baze_date", "extras ONRC NU e extras de cont")
+CN("Administrare lunara Principal", "administrare_card", "cardul principal")
+# banda de suma ia serviciul din secțiune; stramosul apropiat inaintea celui de sus
+T(canonic({"serviciu": "≥ 50.000 LEI si urgente (orice suma)",
+           "sectiune": "PLATI"})[0] == "transfer_credit", "banda ia sectiunea")
+T(canonic({"serviciu": "Optiune “All Fees on You” 5",
+           "sectiune": "ÎNCASĂRI ȘI PLĂȚI > PLĂȚI ÎN ALTE VALUTE"})[0] == "transfer_credit",
+  "sectiunea cea mai adanca decide")
+T(canonic({"serviciu": "Comision", "sectiune": "Transfer credit - plăți > Alte instrumente",
+           "coloana": "Debitare directă (intrabancară/interbancară)"})[0]
+  == "debitare_directa", "coloana matricei inaintea sectiunii")
+# refuzul "la plata" (Nexent, BRD, Vista: ~45 de valori ieseau transfer_credit)
+CN("Refuz la plata nejustificat", "refuz_plata", "refuz la plata")
+CN("Taxa pentru initiere nejustificata de refuz la plata la POS", "refuz_plata",
+   "initiere refuz la plata")
+CN("Plăți POS România sau internațional", "tranzactie_card", "plati POS")
+CN("Comision tranzacțional Prin intermediul EPOS", "tranzactie_card", "EPOS")
+CN("Cost utilizare mijloc de plată la ATM-ul altor bănci din străinătate",
+   "retragere_numerar", "mijloc de plata la ATM")
+CN("Administarea contului curent", "administrare_cont", "greseala de tipar")
+CN("Abonament lunar Garanti BBVA Online", "administrare_banking_distanta",
+   "abonament internet banking")
+CN("Cont curent în USD sau GBP", "administrare_cont", "contul singur")
+CN("Cont curent sold creditor", None, "dobanda la sold NU e administrare")
+# cerintele si plafoanele spuse in eticheta ies din preturi
+T(rol_de_conditie("100 EUR", "Suma minimă pentru deschiderea contului de card", 100.0)
+  == "conditie", "suma minima e conditie")
+T(rol_de_conditie("9.000 RON", "Suma maxima zilnica de retragere numerar", 9000.0)
+  == "conditie", "suma maxima e conditie")
+T(rol_de_conditie("50.000 lei", "Valoarea maximă a limitei de credit", 50000.0)
+  == "conditie", "plafonul cardului de credit e conditie")
+# serviciul numit dar fara concept nu ia secțiunea (Vista: investigatii sub PLATI)
+T(canonic({"serviciu": "Investigatii telefonice/ email/ SWIFT", "sectiune": "PLATI"})[0]
+  == "investigatie", "investigatii NU iau conceptul sectiunii")
+T(canonic({"serviciu": "Confirmare", "sectiune": "ACREDITIVE DE EXPORT"})[0]
+  == "documentar", "confirmarea acreditivului ramane documentar")
+CN("Comision de emitere plastic", "emitere_card", "emitere plastic")
+T(canonic({"serviciu": "Fila", "sectiune": "Emitere carnet cec in lei"})[0] == "file_cec",
+  "carnet cec fara de")
+# banda din coloana din dreapta: celula din stanga inaintea parintelui de deasupra
+BL = [(127, 135, "Depuneri de numerar", True, 36), (145, 153, "FX", False, 140),
+      (151, 159, "Retrageri de numerar", True, 36)]
+T(_eticheta_pentru(145, 153, BL, lambda xv: "Retrageri de numerar")
+  == "Retrageri de numerar FX", "banda ia celula din stanga (Nexent)")
+T(_eticheta_pentru(145, 153, BL) == "Depuneri de numerar FX",
+  "fara geometrie ramane parintele de deasupra")
+# "% p.a." e dobanda doar sub descoperit/restanta (Salt 6); caseta ramane comision
+T(categorie(None, "neautorizat", "20 % p.a. (LEI) / 15% p.a. (valuta)") == "dobanda",
+  "procent pe an la descoperit neautorizat")
+T(categorie(None, "Caseta tip 2", "1,50%/ an, min. 56,5 lei/luna + TVA") == "comision",
+  "procent pe an la caseta ramane comision")
+# titlul cu index lung nu e proza; nota numerotata ramane nota
+from crawler.parser_tarife import _e_titlu_cu_index  # noqa: E402
+T(_e_titlu_cu_index("6. Taxe și comisioane aferente cardurilor de debit "
+                    "principale/suplimentare în lei și valută"), "titlu cu index lung")
+T(not _e_titlu_cu_index("1. Comisionul se percepe pentru fiecare operatiune efectuata."),
+  "nota numerotata NU e titlu")
+
+print("\n=== Vocabular: conceptele din 24.09 (runda a cincea) ===")
+# etichete reale din clasificarea de mana a celor 1.077 de nemapate
+CN("Tranzacții de tip Gambling", "tranzactie_gambling", "gambling")
+CN("Comision tranzacționare comercianți gambling", "tranzactie_gambling",
+   "gambling inaintea lui tranzactie_card")
+CN("Caseta tip 3", "caseta_valori", "caseta BRD")
+CN("Comision anual seif marime mica (dimensiuni: lungime 29,5 cm)", "caseta_valori", "seif")
+CN("Tip 1: 48,5 x 265 x 413 mm", "caseta_valori", "caseta dupa dimensiuni")
+CN("Furnizarea listei ultimelor 10 operatiuni, la ATM", "miniextras_atm", "lista ultimelor 10")
+CN("Miniextras de cont la ATM", "miniextras_atm", "miniextrasul NU e extras de cont")
+CN("Raportare card pierdut/furat", "card_pierdut_furat", "card pierdut")
+CN("Curierat Special (TNT, DHL, UPS)", "curierat_posta", "curierat")
+CN("Corespondenta postala: ~ Interna", "curierat_posta", "corespondenta")
+CN("Scrisoare de bonitate bancara", "eliberare_document", "scrisoare de bonitate")
+CN("Emitere confirmari pentru auditori", "eliberare_document", "confirmare audit")
+CN("Transmitere extras de cont cu scrisoare recomandata", "extras_de_cont",
+   "scrisoare recomandata NU e scrisoare de recomandare")
+CN("Investigatii in arhiva referitoare la tranzactii", "investigatie", "investigatie")
+CN("Investigatie privind stadiul documentelor la ordinul Clientului", None,
+   "stadiul documentelor ramane pe secțiune (documentar sub INCASSO)")
+CN("Comision de analiză dosar, credit in LEI", "acordare_credit", "analiza dosar")
+CN("Comisionul de analiza dosar este redus astfel:", None, "nota reducerii NU e pret")
+CN("Comision de rambursare anticipată aplicabil", "rambursare_anticipata", "rambursare anticipata")
+CN("Reemitere acord intabulare imobil", "modificare_credit", "acord pe garantie")
+CN("Emitere acord modificare suprafata imobil", "modificare_credit",
+   "acordul NU e modificare de plata")
+CN("Comision lunar de administrare credit", "administrare_credit", "administrare credit")
+CN("Comision administrare credit", "administrare_credit",
+   "administrare credit NU e administrare card")
+CN("Comision evaluare apartament in bloc sau in vila", "evaluare_garantie", "evaluare")
+CN("Notificare credit restant", "neplata_credit", "credit restant")
+CN("AVIZ DE GARANŢIE INIŢIAL", "inregistrare_garantie", "aviz de garantie")
+CN("Comision inscriere/stergere/ modificare garantie in RNPM", "inregistrare_garantie",
+   "RNPM NU e modificare de plata")
+CN("Executarea garantiei", "documentar", "executarea garantiei emise")
+CN("Contravaloarea TOKEN percepută în cazul înlocuirii dispozitivului", "token",
+   "contravaloare NU e aval")
+CN("Activare Garanti BBVA Online/Mobile cu token", "activare_banking_distanta",
+   "activarea inaintea tokenului")
+CN("Depuneri în cont monedă metalică (sume ≥ 10 LEI)", "depunere_moneda", "moneda metalica")
+CN("Depuneri numerar inclusiv monedă metalică", "depunere_numerar",
+   "inclusiv moneda ramane depunere")
+CN("Neridicarea sumelor programate a fi ridicate", "neridicare_numerar",
+   "neridicare inaintea retragerii")
+CN("Comision de utilizare mijloc de plata (card) la ATM-uri din Romania", "retragere_numerar",
+   "mijloc de plata (card) la ATM e retragere, nu transfer")
+CN("Adaugarea unei persoane imputernicite pe contul clientului", "imputernicire", "imputernicit")
+CN("Verificarea semnaturilor autorizate", "verificare_semnatura", "verificare semnatura")
+CN("Amendament la ordin de plata", "modificare_anulare", "amendament NU e transfer")
+CN("Cost notificari de tip push", "notificare_push", "push")
+CN("Alerta prin e-mail", "notificare_email", "alerta e-mail NU e debitare directa")
+CN("Utilizare (Folosire) BCR Alert", "alerta_sms", "BCR Alert e SMS")
+CN("Taxa extras duplicat listat aferent cardului de credit", "extras_de_cont",
+   "extras duplicat NU e card nou")
+CN("Taxă chirie terminal și servicii suport POS", "terminal_pos", "chirie terminal POS")
+CN("Comision de mentenanță serviciu individual electronic banking", "administrare_banking_distanta",
+   "mentenanta electronic banking NU e card")
+CN("Comision de decontare BVB", "tranzactionare_titluri", "BVB")
+CN("Comisioane aferenta achitarii politelor de asigurare cesionate", "plata_asigurare",
+   "polite cesionate")
+CN("LoungeKey", "acces_lounge", "lounge NU e retragere")
+CN("Comision activare monet", "activare_banking_distanta", "monet e internet bankingul Nexent")
+CN("Schimburi valutare pe contul curent", "conversie_valutara", "pluralul schimburi")
+CN("Statement of account - duplicate", "extras_de_cont", "TBI in engleza")
+CN("Notification for refusing a payment order", "refuz_plata", "refuz in engleza")
+CN("≥ 50.000 LEI si urgente (orice suma)", "transfer_credit", "banda urgenta Vista")
+CN("CIP la cererea clientilor pentru fiecare cerere transmisa prin: Inchiriere casete de valori",
+   "interogare_baze_date", "caseta doar in capul etichetei")
+# etichete intregi dupa reparatia „celule” (25.09): doua servicii, decide primul
+CN("Interogare sold ATM alte bănci Romania / străinătate/Schimbare PIN la ATM",
+   "interogare_sold", "interogarea din capul etichetei bate PIN-ul")
+CN("Schimbare PIN la ATM", "schimbare_pin", "PIN singur")
+CN("Furnizarea unui card de debit Bonus Debit Card (emitere și reînnoire)", "emitere_card",
+   "emitere si reinnoire e intai emitere")
+CN("Reînnoire card de debit", "reemitere_card", "reinnoirea singura")
+CN("Verificare/ confirmare/ eliminare/ modificare semnaturi autorizare (cu deplasare)",
+   "verificare_semnatura", "lista cu / NU e modificare")
+T(canonic({"serviciu": "www.mj.romarhiva.ro sau www.co.romarhiva.ro",
+           "sectiune": "EVALUARE"})[0] is None, "adresa web NU ia secțiunea")
+T(canonic({"serviciu": "Tiparire extras", "sectiune": "x", "text_sursa": "imobil"})[1]
+  != "mobile_banking", "imobil NU e mobile banking")
+
+
+# --- randuri: gruparea cuvintelor in randuri de grila, 24 sept ------------------
+from crawler.parser_tarife import _scara, gol_minim_rand, randuri_de_cuvinte  # noqa: E402
+
+
+def _litere(text, x0, top, jos):
+    return [{"text": c, "x0": x0 + 6 * i, "x1": x0 + 6 * i + 6, "top": top, "bottom": jos}
+            for i, c in enumerate(text)]
+
+
+def _cuv(litere):
+    return {"text": "".join(c["text"] for c in litere), "x0": litere[0]["x0"],
+            "x1": litere[-1]["x1"], "top": min(c["top"] for c in litere),
+            "bottom": max(c["bottom"] for c in litere), "chars": litere}
+
+
+class _Pagina:
+    def __init__(self, cuvinte, latime=595, inaltime=842):
+        self.cuvinte, self.width, self.height = cuvinte, latime, inaltime
+
+    def extract_words(self, **_kw):
+        return [dict(w, chars=list(w["chars"])) for w in self.cuvinte]
+
+
+def _texte(randuri):
+    return [[w["text"] for w in r] for r in randuri]
+
+
+# ProCredit p7: exponentul din "plată4" urca top-ul cu 1,8 pt peste granita galetii
+PAG = _Pagina([_cuv(_litere("Anulare", 54, 710.84, 722.84)),
+               _cuv(_litere("plată", 100, 710.84, 722.84) + _litere("4", 130, 709.03, 715.0)),
+               _cuv(_litere("25", 300, 710.84, 722.84))])
+T(_texte(randuri_de_cuvinte(PAG)) == [["Anulare", "plată4", "25"]],
+  "exponentul lipit NU rupe randul")
+# ProCredit p12: cifre la 10 pt si "%" la 10,6 pe aceeasi linie; mediana le rupea
+PAG = _Pagina([_cuv(_litere("2,595", 60, 97.91, 107.91) + _litere("%,", 90, 97.46, 108.06)),
+               _cuv(_litere("EURO", 120, 97.46, 108.06))])
+T(_texte(randuri_de_cuvinte(PAG)) == [["2,595%,", "EURO"]],
+  "doua marimi de litera raman pe acelasi rand")
+# randurile vecine raman separate
+PAG = _Pagina([_cuv(_litere("Anulare", 54, 710.84, 722.84)),
+               _cuv(_litere("Recuperare", 54, 727.9, 739.9))])
+T(len(randuri_de_cuvinte(PAG)) == 2, "randul urmator NU se lipeste")
+# Raiffeisen IMM: pagina de 3508x2480 pt se aduce la A4; A5 si 1024x768 raman
+T(abs(_scara(_Pagina([], 3508, 2480)) - 4.166) < 0.01, "300 dpi se aduce la A4")
+T(_scara(_Pagina([], 595.3, 420.9)) == 1 and _scara(_Pagina([], 1024, 768)) == 1,
+  "A5 si prezentarea NU se scaleaza")
+PAG = _Pagina([_cuv(_litere("Discrepante", 417, 1886.6, 1926.6))], 3508, 2480)
+W = randuri_de_cuvinte(PAG, k=_scara(PAG))[0][0]
+T(abs(W["x0"] - 100.1) < 0.1 and abs(W["top"] - 452.8) < 0.1, "coordonate aduse la A4")
+# cu doua goluri, spatiul dintre cuvinte e golul mic ("Discrepante 100 euro")
+T(gol_minim_rand([_cuv(_litere("Discrepante", 0, 0, 10)), _cuv(_litere("100", 166, 0, 10)),
+                  _cuv(_litere("euro", 186, 0, 10))]) == 8.0, "doua goluri: pragul din cel mic")
+T(gol_minim_rand([_cuv(_litere("Taxa", 0, 0, 10)), _cuv(_litere("de", 26, 0, 10)),
+                  _cuv(_litere("emitere", 40, 0, 10))]) == 8.0, "fraza obisnuita NU se rupe")
+
+
+# ------------------------------------------------ valori pierdute sau citite gresit
+from crawler.parser_tarife import _valori_din_context  # noqa: E402
+
+
+def V(text):
+    return analizeaza_linie(text)[0]
+
+
+# mii cu virgula (format englezesc): nu mai iese 0 sau coada numarului
+T(V("100,000 lei") == [("comision_suma", 100000.0, "LEI", None)], "100,000 lei e o suta de mii")
+T(V("656,348.07 RON")[0][1] == 656348.07, "mii englezesti cu zecimale")
+T(V("max 3,000 euro") == [("comision_suma", 3000.0, "EUR", "max")], "max 3,000 euro")
+T(V("0,0125%")[0][1] == 0.0125 and V("2,5 LEI")[0][1] == 2.5, "virgula zecimala ramane")
+T(V("0,050 EUR") == [], "trei zecimale dupa 0 NU sunt mii")
+T(V("- între 10,000 și 100,000 lei - 1.0% p.a.") == [("comision_procent", 1.0, None, None)],
+  "banda cu si cu diacritice NU e comision")
+T(V("Payment order amounts between 1,000.00 99,999.99 EUR") == [], "banda between")
+# moneda inaintea sumei, doar la inceputul celulei sau dupa min./max.
+T(V("RON 4") == [("comision_suma", 4.0, "LEI", None)], "RON 4")
+T(V("0.18% Max. EUR 2,000") == [("comision_procent", 0.18, None, None),
+                                 ("comision_suma", 2000.0, "EUR", "max")], "Max. EUR 2,000")
+T(V("0.50% min. RON 5")[1] == ("comision_suma", 5.0, "LEI", "min"), "min. RON 5")
+T(V("Transfer credit – plăți interbancare în LEI 2") == [], "nota dupa moneda NU e suma")
+T(V("Plăți instant ≤ LEI 5.000") == [], "pragul dupa moneda NU e suma")
+T(len(V("3 USD 2,5 GBP 3 CHF")) == 3 and V("4 RON 4") == [("comision_suma", 4.0, "LEI", None)],
+  "suma normala nu se dubleaza")
+# zeroul in cuvinte si moneda spatiata
+T(V("0 (zero)") == [("gratuit", 0.0, None, None)] and V("comision zero")
+  == [("gratuit", 0.0, None, None)], "0 (zero) si comision zero")
+T(V("Pachet ZERO Tot") == [] and V("Beneficiezi de comision ZERO dacă") == [],
+  "ZERO in nume sau conditie NU e pret")
+T(V("0 L E I") == [("comision_suma", 0.0, "LEI", None)], "L E I spatiat")
+# cerinta cu zero si pragul repetat in celula
+T(rol_de_conditie("0 LEI", "Suma minimă pentru deschiderea contului de card", 0.0)
+  == "conditie", "suma minima 0 e conditie")
+T(rol_de_conditie("0", "Sold minim al contului de card", 0.0) == "conditie", "sold minim")
+T(rol_de_conditie("0 Lei in limita primelor 5 retrageri", "Retrageri", 0.0) is None,
+  "zeroul ramane pret")
+ET_TBI = "Ordin de plata – sume ≥ 50.000,00 RON / Payment order – amounts ≥"
+T(rol_de_conditie("50,000.00 RON", ET_TBI, 50000.0) == "conditie", "pragul repetat")
+T(rol_de_conditie("14 RON 4", ET_TBI, 14.0) is None, "pretul de sub prag ramane pret")
+
+
+def R(texte, sus=100, margini=(0, 300, 400)):
+    cuv = [{"text": "x", "x0": 1, "x1": 2, "top": sus, "bottom": sus + 8}]
+    return (1, cuv, list(margini), "bordura", texte)
+
+
+def CTX(randuri, col_nume=None):
+    analize = [[analizeaza_linie(t) for t in r[4]] for r in randuri]
+    _valori_din_context(randuri, analize, col_nume or {(0, 300, 400): 0}, {1: ([], [])})
+    return analize
+
+
+GR = [("gratuit", 0.0, None, None)]
+A = CTX([R(["Taxa emitere card", "0"], 100), R(["Taxa reinnoire", "3 RON"], 112)])
+T(A[0][1][0] == GR, "0 in coloana de pret e gratuit")
+A = CTX([R(["Cont curent (nr. maxim)", "3"], 100), R(["Plati", "0"], 112),
+         R(["Cost", "5 LEI"], 124)])
+T(A[1][1][0] == [], "0 langa numere de tranzactii NU e pret")
+A = CTX([R(["Dobanda (sold mai mare de 500 RON)", "0"], 100), R(["Taxa", "5 LEI"], 112)])
+T(A[0][1][0] == [], "0 langa un nume cu cifra NU se citeste")
+A = CTX([R(["Retrageri", "0"], 100)])
+T(A[0][1][0] == [], "0 fara pret in coloana NU se citeste")
+A = CTX([R(["Scrisoare de bonitate", "50-100 lei"], 100), R(["Taxa", "5 lei"], 112)])
+T(A[0][1][0] == [("comision_suma", 50.0, "LEI", "min"), ("comision_suma", 100.0, "LEI", "max")],
+  "intervalul de pret devine min/max")
+A = CTX([R(["", "0-100 LEI, inclusiv", "gratuit"], 100, (0, 50, 300, 400)),
+         R(["", "Taxa", "5 lei"], 112, (0, 50, 300, 400))], {(0, 50, 300, 400): 1})
+T(A[0][1][0] == [], "banda din coloana numelui NU e interval de pret")
+A = CTX([R(["(POS,", "1,75%, min."], 100), R(["de la ATM-uri", "5 EUR/USD"], 110)])
+T(A[1][1][0] == [("comision_suma", 5.0, "EUR", "min")] and len(A[0][1][0]) == 1,
+  "minimul de pe randul urmator primeste rolul, pe randul lui")
+A = CTX([R(["", "0,20% min. 25 EUR max. 800"], 100), R(["", "EUR"], 110)])
+T(A[0][1][0][-1] == ("comision_suma", 800.0, "EUR", "max"), "max. 800 / EUR")
+A = CTX([R(["Conditie pachet", "de minim"], 100), R(["", "40.000 EUR"], 110)])
+T(A[1][1][0] == [("comision_suma", 40000.0, "EUR", None)], "cerinta rupta NU primeste rol")
+# zeroul ramas cu o eticheta de un cuvant nu se emite (BCR, Direct Debit: file_cec)
+from crawler.parser_tarife import _zero_fara_nume  # noqa: E402
+T(_zero_fara_nume("gratuit", "0", "Activare") and _zero_fara_nume("gratuit", "0", None),
+  "zero cu eticheta de un cuvant NU se emite")
+T(not _zero_fara_nume("gratuit", "0", "Retrageri de numerar FX")
+  and not _zero_fara_nume("gratuit", "GRATUIT", "Activare"),
+  "zero cu parinte si GRATUIT scris raman")
+
+
+# --- parinte: subpunctele isi pastreaza parintele (24 sept, aceleasi 68 de documente)
+from crawler.parser_tarife import (_deja_continut, _parinte_indentat,  # noqa: E402
+                                   _sub_parinte)
+
+# numele intreg dintr-o sub-coloana ia si el celula din stanga (BCR, token)
+BL = [(30, 40, "Folosirea/Administrare Internet Banking, Mobile Banking", True, 36),
+      (45, 53, "Cu token cumpărat începând cu", False, 239)]
+T(_eticheta_pentru(45, 53, BL, lambda xv, o_celula=False:
+                   "Folosirea/Administrare Internet Banking, Mobile Banking" if o_celula else None)
+  == "Folosirea/Administrare Internet Banking, Mobile Banking Cu token cumpărat începând cu",
+  "nume intreg din sub-coloana: celula din stanga, ca o singura celula")
+T(_deja_continut("Plati interbancare (catre alte banci)",
+                 "Taxa plati efectuate cu aceeasi data de Plati interbancare valuta (catre alte banci)"),
+  "parintele scris deja in eticheta NU se repeta (Nexent)")
+T(not _deja_continut("Folosirea/Administrare Internet Banking, Mobile Banking",
+                     "Cu token cumpărat începând cu"), "parintele nou se pune")
+
+# celula din stanga peste o bordura verticala nu e o celula (BRD, DOBANZI | COMISIOANE)...
+GEOM_V = ([(95, 6, 470), (120, 6, 470)],
+          [_w("oferta", 20, 99), _w("standard", 220, 99)],
+          [{"x0": 118, "top": 90, "bottom": 125}])
+T(_celula_din_stanga(GEOM_V, 6, 468, 105, 113, o_celula=True) is None,
+  "text peste o bordura verticala NU e parinte pentru un nume intreg")
+# (cu "IRCC" in celula nu mai e parinte deloc: reparatia "eticheta")
+T(_celula_din_stanga(GEOM_V, 6, 468, 105, 113) == "oferta standard",
+  "varianta pastreaza comportamentul vechi")
+# ...dar chenarul unei note care taie un cuvant nu e bordura (BCR "Clientului1143")
+GEOM_N = ([(95, 36, 239), (120, 36, 239)], [_w("Clientului1143", 54, 99), _w("MFM", 120, 99)],
+          [{"x0": 104, "top": 96, "bottom": 118}])
+T(_celula_din_stanga(GEOM_N, 36, 239, 105, 113, o_celula=True) == "Clientului1143 MFM",
+  "chenarul notei care taie cuvantul NU rupe celula")
+
+# indentarea: (sus, jos, text, e_parinte, x, x_text, bordura)
+BRD = [(398, 406, "Reînnoire/ Majorare linie de credit", True, 468.1, 473.7, True),
+       (409, 417, "Descoperitul autorizat de cont Individual", False, 468.1, 484.5, True),
+       (421, 429, "Descoperitul autorizat de cont Platinum", False, 468.1, 484.5, True)]
+T(_parinte_indentat(BRD, 2) == "Reînnoire/ Majorare linie de credit",
+  "subpunct indentat in aceeasi celula de coloana (BRD)")
+T(_eticheta_pentru(421, 429, BRD).startswith("Reînnoire/ Majorare linie de credit Descoperitul"),
+  "eticheta primeste parintele indentat")
+T(_parinte_indentat(BRD, 2, cu_pret={0}) is None, "parintele cu pret propriu NU e parinte")
+LIBRA = [(92, 104, "Accesare produs “Acces Investigator”: Pachet", True, 26.4, 32.0, True),
+         (175, 187, "Consultari Baze Date CIP, CRC", False, 26.4, 41.0, True)]
+T(_parinte_indentat(LIBRA, 1) is None, "prima linie retrasa a paragrafului NU e subpunct (Libra)")
+CENTRAT = [(128, 138, "Furnizare (emitere)/ Administrare", True, 36.0, 342.5, True),
+           (248, 258, "Retrageri de numerar", False, 36.0, 371.2, True)]
+T(_parinte_indentat(CENTRAT, 1) is None, "textul centrat NU arata indentare (BCR)")
+PROZA = [(160, 170, "achite Bancii sunt urmatoarele:", True, 25.4, 25.4, False),
+         (183, 193, "Comision de emitere card", False, 28.1, 33.0, True)]
+T(_parinte_indentat(PROZA, 1) is None, "randul de deasupra tabelului NU e parinte")
+CASETE = [(189, 214, "Închiriere casete de siguranță:", True, 58.2, 59.2, False),
+          (217, 228, "Tip 1: 48,5 x 265 x 413 mm", False, 94.2, 95.2, False)]
+T(_parinte_indentat(CASETE, 1) == "Închiriere casete de siguranță:",
+  "fara borduri: parintele terminat in ':' (Garanti)")
+URGENTE = [(236, 261, "Transfer credit – plați interbancare în LEI", True, 51.2, 52.2, False),
+           (278, 289, "0 – 5.000,00 LEI", True, 87.2, 88.2, False),
+           (363, 374, "Tranzacții urgente, orice sumă", False, 87.2, 88.2, False)]
+T(_parinte_indentat(URGENTE, 2) == "Transfer credit – plați interbancare în LEI",
+  "fara borduri: frate banda de suma (Garanti)")
+T(_parinte_indentat([URGENTE[0], URGENTE[2]], 1) is None,
+  "fara borduri, fara ':' si fara banda nu se ghiceste")
+
+# ierarhia de marcaje: "•" sub "–" (BCR credite PF)
+MARC = [(85, 95, "Comision (flat) pentru creditele în sold", True, 60.9),
+        (205, 215, "– Comision pentru graţie de până la 6 luni:", True, 66.8),
+        (226, 236, "• în cazul în care creditul nu înregistrează restanţe", False, 66.8),
+        (246, 256, "• în cazul în care creditul înregistrează restanţe", False, 66.8)]
+T(_sub_parinte(MARC, 3) == 1, "sub-parintele cu alt marcaj")
+T(_eticheta_pentru(246, 256, MARC) == "Comision (flat) pentru creditele în sold – Comision "
+  "pentru graţie de până la 6 luni: • în cazul în care creditul înregistrează restanţe",
+  "bunicul, sub-parintele si itemul")
+T(_sub_parinte(MARC, 3, cu_pret={1}) is None, "sub-parintele cu pret propriu NU e parinte")
+
+# subpunctul lipit de randul deschis de deasupra ii continua numele (BCR, refacere card)
+CARD = [(438, 457, "Comision pentru tranzacţii ... jocuri de noroc", True, 36.9),
+        (477, 487, "Furnizare (Refacere) Card furat /pierdut /deteriorat /", False, 36.9),
+        (485, 496, "la cerere", False, 36.9)]
+T(_eticheta_pentru(490, 496, CARD) == "Furnizare (Refacere) Card furat /pierdut /deteriorat / la cerere",
+  "subpunctul lipit ia blocul de deasupra, nu ultimul parinte")
+
+
+# --- valori false (reparatia «false»): ce nu e comision iese din comisioane -----
+from crawler.parser_tarife import (RE_INDEX_LA_SFARSIT, RE_MARCAJ_NOTA,  # noqa: E402
+                                   _bordura_intre, _e_nota, _fara_cifre, _nota_dupa)
+
+
+def G(text, gratuit, eticheta):
+    got = [v[0] for v in analizeaza_linie(text)[0]] == ["gratuit"]
+    T(got == gratuit, f"inclus: {eticheta}")
+
+
+# "inclus" e pret zero doar cand e predicatul celulei
+G("Inclus în costul lunar al pachetului", True, "celula de pret ProCredit")
+G("*Inclus în costul lunar al", True, "cu nota si rupt")
+G("• Business debit card inclus în Pachet", True, "lista incluse gratuit BCR")
+G("suplimentar LEI/ Valută, inclus în Pachet", True, "continuarea elementului din lista")
+G("Taxe și comisioane pentru cardurile de debit incluse în pachetele de Cont Curent", False,
+  "titlu / cuprins")
+G("OPERATIUNI GRATUITE INCLUSE IN OFERTA (DIFERITE DE OFERTA STANDARD)", False, "titlu Vista")
+G("*TVA inclus", False, "TVA inclus")
+G("valabilitate, speze SWIFT incluse", False, "speze incluse in pret")
+G("Operațiuni prin conturile curente incluse în pachet:", False, "antet cu doua puncte")
+G("tranzacţiilor care depășesc numărul de plăţi incluse in pachet)**", False, "paranteza")
+G("inclusa in", False, "forma noua NU produce valori noi")
+G("Gratuit", True, "gratuit ramane gratuit")
+
+# indicele de referinta e dobanda; pe eticheta nu decide (BRD "IRCC + 5,10 pp")
+T(categorie("descoperit_de_cont", "Descoperitul de cont", "IRCC + 13,99%",
+            "IRCC + 13,99%") == "dobanda", "IRCC plus marja in celula")
+T(categorie("Credite", "Valoare", "5,56% IRCC", "5,56%", "IRCC") == "dobanda",
+  "valoarea indicelui sub coloana IRCC")
+T(categorie("Credite", "Comision de analiza dosar", "1% IRCC", "1%", "IRCC") == "comision",
+  "comisionul din coloana IRCC ramane comision")
+T(categorie("CREDITE", "ofertă standard IRCC + 5,10 pp clădire viitoare – evaluare",
+            "600 lei", "600 lei") == "comision", "IRCC in eticheta NU decide")
+# limitele fara cuvantul "limita" in eticheta
+T(categorie("LIMITELE BANCII PENTRU TRANZACȚIILE EFECTUATE CU CARDUL DE DEBIT",
+            "zilnică și per tranzacție", "6.000 LEI", "6.000 LEI") == "limita",
+  "sectiunea de limite")
+T(categorie(None, "Plăți Contactless (fără PIN) limită per tranzacție", "100 LEI",
+            "100 LEI") == "limita", "limita per tranzactie")
+T(categorie("Carduri", "Sumă per tranzacție top-up", "5.000 LEI /1.000 EUR",
+            "5.000 LEI /1.000 EUR") == "limita", "top-up ProCredit")
+T(categorie("Parametri", "Valoarea maximă a limitei de credit", "50.000 lei",
+            "50.000 lei") == "limita", "valoarea maxima a limitei")
+T(categorie(None, "Comision lunar de administrare credit", "Suma creditului: max. 15.000 lei",
+            "Suma creditului: max. 15.000 lei") == "limita", "suma creditului")
+# pretul spus fata de plafon e pret; plafonul insusi ramane limita
+T(categorie("Comision de analiză dosar", "-comision de analiză pentru acordări ulterioare "
+            "de plafon:", "25 LEI", "25 LEI") == "comision", "analiza pentru acordare de plafon")
+T(categorie(None, "Retrageri de numerar - retrageri sub plafonul stabilit",
+            "2,5% minim 30 LEI", "2,5% minim 30 LEI") == "comision", "retragere sub plafon")
+T(categorie(None, "Comision suplimentar de eliberare numerar ce depaseste plafonul de",
+            "20.000 lei, care nu a fost si se percepe aditional sumei",
+            "20.000 lei, care nu a fost si se percepe aditional sumei") == "limita",
+  "cifra plafonului din fraza ramane limita")
+T(categorie(None, "Eliberare", "ridicarea sumelor ce depasesc plafonul de 20.000 lei",
+            "ridicarea sumelor ce depasesc plafonul de 20.000 lei") == "limita",
+  "plafonul spus in celula")
+# taxa de stat din antetul coloanei (AEGRM), nu din numele serviciului
+T(categorie(None, "AVIZ DE GARANŢIE INIŢIAL", "30 lei", "30 lei",
+            "Taxa către bugetul de stat (Ministerul Justiţiei)") == "taxa_stat", "taxa de stat")
+T(categorie(None, "AVIZ DE GARANŢIE INIŢIAL", "50 lei + TVA", "50 lei + TVA",
+            "Tarif BCR pentru efectuare operatiuni la AEGRM") == "comision", "tariful bancii")
+T(categorie(None, "Plata impozite si taxe catre bugetul de stat", "2 lei", "2 lei")
+  == "comision", "serviciul de plata catre buget ramane comision")
+# conditii, nu preturi
+T(rol_de_conditie("40.000 EUR", "Conditie pachet", 40000.0) == "conditie", "conditie pachet")
+T(rol_de_conditie("15 lei/luna", "Pret pachet/luna fara indeplinirea conditie de pachet",
+                  15.0) is None, "pretul pachetului NU e conditie")
+T(rol_de_conditie("3% din Valoarea tranzacțiilor efectuate cu Cardul, la care se",
+                  "Suma minimă de plata de rambursat lunar", 3.0) == "conditie",
+  "suma minima de plata")
+T(rol_de_conditie("cu 20% pentru clienții care dețin un pachet",
+                  "Comisionul de analiză dosar este redus astfel:", 20.0) == "conditie",
+  "reducerea din eticheta")
+T(rol_de_conditie("cu 20% pentru clienții care dețin un pachet",
+                  "Comision de analiză dosar", 20.0) is None, "fara reducere NU e conditie")
+# data de la coada etichetei ramane; indexul lipit se taie
+T(RE_INDEX_LA_SFARSIT.sub("", "pe adresa BCR 3.2.7.") == "pe adresa BCR", "index taiat")
+T(RE_INDEX_LA_SFARSIT.sub("", "Cu token cumpărat începând cu 05.04.2019")
+  == "Cu token cumpărat începând cu 05.04.2019", "data ramane")
+T(RE_INDEX_LA_SFARSIT.sub("", "Plăți instant ≤ LEI 5.000") == "Plăți instant ≤ LEI 5.000",
+  "suma ramane")
+T(_fara_cifre("PAGINA 3") == _fara_cifre("PAGINA 14"), "subsolul numerotat se repeta")
+# marcajul notei; randul numerotat al tabelului nu e nota
+for t in ["*Comisionul Transfond de 0,51 LEI", "NOTE:", "Nota bene: Nu se percepe",
+          "4Clienti vulnerabili", "17Financially", "1În"]:
+    T(RE_MARCAJ_NOTA.match(t), f"marcaj de nota: {t}")
+for t in ["1 Comision administrare", "3D Secure", "Notificare prin SMS", "Nota de debit"]:
+    T(not RE_MARCAJ_NOTA.match(t), f"NU e marcaj de nota: {t}")
+# bordura: umplerile alaturate si sublinierea NU sunt borduri
+T(not _bordura_intre([(84.7, 38.8, 563.5), (84.7, 38.8, 563.5)], 83, 87, 44),
+  "doua umpleri alaturate (Vista)")
+T(_bordura_intre([(445.1, 54.4, 331.2), (445.6, 54.4, 331.2)], 443, 450, 60),
+  "dreptunghi subtire (ProCredit)")
+T(_bordura_intre([(445.1, 54.4, 331.2)], 443, 450, 60), "linie singura")
+T(not _bordura_intre([(605.4, 46.6, 70.0), (606.0, 46.6, 70.0)], 604, 608, 47),
+  "sublinierea lui NOTE:")
+# zona notei: marcaj, continuare, sfarsit
+Z = _nota_dupa(None, 5, 41, 75, 84, ["*Comisionul Transfond de 0,51 LEI"], False, [])
+T(Z and Z[:2] == (5, 41), "marcajul deschide nota")
+T(_nota_dupa(Z, 5, 44, 87, 96, ["6 LEI pentru platile ≥ 50.000 LEI sunt incluse."],
+             False, []), "randul de sub marcaj continua nota")
+T(_nota_dupa(Z, 5, 44, 87, 96, ["Avizare", "50 EUR"], False, []) is None,
+  "randul de tabel cu doua celule o inchide")
+T(_nota_dupa(Z, 5, 410, 87, 96, ["250 EUR + TVA"], False, []) is None,
+  "pretul din alta coloana o inchide")
+T(_nota_dupa(Z, 5, 44, 87, 96, ["Depuneri de numerar"], False,
+             [(85.0, 38.8, 563.5)]) is None, "bordura o inchide")
+T(_nota_dupa(Z, 6, 41, 87, 96, ["ceva"], False, []) is None, "pagina noua o inchide")
+Z = _nota_dupa(None, 4, 44, 634, 642, ["17Financially"], False, [])
+T(_nota_dupa(Z, 4, 100, 635, 643, ["non-vulnerable customers"], False, []),
+  "restul randului rupt de exponent")
+Z = _nota_dupa(None, 4, 234, 994, 1030, ["Extraoptiune IMM Retrageri numerar ..."], True, [])
+T(_nota_dupa(Z, 4, 2726, 996, 1030, ["12 lei"], False, []) is None,
+  "pretul de pe randul prozei NU intra in nota")
+# proza si antetul firmei
+T(_e_nota("gratuit", "neacceptarea modificarii (caz in care are dreptul sa denunte "
+          "unilateral Contractul, imediat si gratuit inainte de data propusa"), "gratuit in proza")
+T(not _e_nota("gratuit", "Gratuit"), "gratuit in celula")
+T(_e_nota("comision_suma", "Capital Social: 1.625.341.625,40 lei"), "capitalul social")
+T(_e_nota("gratuit", "gratuit din orice reţea naţională;"), "telefonul gratuit")
+T(not _e_nota("comision_suma", "35 lei + TVA"), "pretul NU e nota")
+
+
+# --- sectiuni: titluri, capitole si subtitluri -------------------------------
+# Secțiunea decide conceptul etichetelor-fragment ("Executare", "Emitere
+# iniţială"), deci un titlu ratat sau unul fals muta valori intre concepte.
+from crawler.parser_tarife import (RE_DOAR_MONEDE, RE_INDEX_SECTIUNE,  # noqa: E402
+                                   Sectiuni, _e_subtitlu, _index_rand,
+                                   _introduce_lista)
+
+# index cu punct in interior, fara cel final (Raiffeisen)
+T(RE_INDEX_SECTIUNE.match("5.3 Multicash").group(1) == "5.3", "5.3 Multicash e titlu")
+T(RE_INDEX_SECTIUNE.match("5.5 MT 101") is not None, "5.5 MT 101 e titlu")
+T(RE_INDEX_SECTIUNE.match("15.3 comision zero") is None, "randul de tarif NU e titlu")
+T(RE_INDEX_SECTIUNE.match("2.500 lei") is None, "suma NU e index")
+T(RE_INDEX_SECTIUNE.match("2 intrări gratuite pe an,") is None, "nota fara punct NU e titlu")
+# antetul de monede cu paranteze (BCR); "EUR*" ramane afara, vezi RE_DOAR_MONEDE
+T(bool(RE_DOAR_MONEDE.match("(USD) (EUR)")), "(USD) (EUR) e antet de monede")
+T(not RE_DOAR_MONEDE.match("EUR*"), "EUR* NU e inca antet de monede")
+T(_e_titlu(["(USD) (EUR)"], [0], [0, 500], 500) is None, "(USD) (EUR) NU e titlu")
+
+# lista numerotata din coloana de pret nu e titlu (Salt, ProCredit)
+T(_e_titlu(["", "2. Clientii Salt Fondatori."], [1], [0, 100, 500], 500, col_nume=0)
+  is None, "punct numerotat din celula de pret NU e titlu")
+T(_e_titlu(["1. Pachete de cont curent"], [0], [0, 500], 500, col_nume=0)
+  == ("1.", "Pachete de cont curent"), "titlul cu index din coloana numelui")
+
+# cifra romana cu majuscule e capitol (BRD); cu litere mici in paranteza, nu (BCR)
+s = Sectiuni()
+s.pune("2.", "Credite pentru studii si tratamente medicale")
+s.pune("II.", "LINII DE CREDIT")
+T(s.cale() == "LINII DE CREDIT", "capitolul roman inchide sectiunea de dinainte")
+s.pune("1.", "Creditul Expresso")
+T(s.cale() == "LINII DE CREDIT > Creditul Expresso", "sub capitolul roman")
+s = Sectiuni()
+s.pune("I.", "CREDITE (cu excepţia creditelor pe card)")
+s.pune("1.", "Comision pentru analiza creditului")
+T(s.cale() == "Comision pentru analiza creditului",
+  "romanul cu paranteza cu litere mici ramane frunza")
+
+# numerotarea reluata sub capitolul cu majuscule (BCR PJ)
+s = Sectiuni()
+s.pune("9.", "ACCEPTARE LA PLATĂ A CARDURILOR")
+s.pune("1.", "POS")
+T(s.cale() == "ACCEPTARE LA PLATĂ A CARDURILOR > POS", "1. POS sub capitol")
+s.pune("2.", "E-COMM")
+T(s.cale() == "ACCEPTARE LA PLATĂ A CARDURILOR > E-COMM", "2. E-COMM sub capitol")
+s.pune("10.", "FINANȚAREA COMERȚULUI")
+T(s.cale() == "FINANȚAREA COMERȚULUI", "capitolul urmator il inlocuieste")
+s = Sectiuni()
+s.pune(None, "LISTĂ PREȚURI PERSOANE FIZICE")
+s.pune("1.", "Pachete de cont curent")
+T(s.cale() == "Pachete de cont curent", "titlul documentului, fara index, ramane inlocuit")
+
+# randul cu pret care isi poarta indexul inchide ramura fratelui
+s = Sectiuni()
+s.pune("3.", "Comision de administrare credit")
+s.rand_cu_index("6.")
+T(s.cale() == "", "6. cu pret inchide 3.")
+s = Sectiuni()
+s.pune("15.8", "Comisioane percepute de terţi pentru efectuarea de transferuri")
+s.rand_cu_index("16.")
+T(s.cale() == "", "16. inchide 15.8")
+s = Sectiuni()
+s.pune("1.2.", "Operațiuni prin instrumente de debit")
+s.rand_cu_index("1.2.4.")
+T(s.cale() == "Operațiuni prin instrumente de debit", "copilul NU inchide parintele")
+s = Sectiuni()
+s.pune("6.", "ALTE PRODUSE ȘI SERVICII")
+s.rand_cu_index("1.")
+s.rand_cu_index("7.")
+T(s.cale() == "ALTE PRODUSE ȘI SERVICII", "numerotarea reluata NU inchide capitolul")
+T(_index_rand(["6.", "Comision unic", "-", "10 EURO"], 1) == "6.", "index in celula lui")
+T(_index_rand(["10. Cost cu avizul de legalitate*", "396,8 EUR"], 0) == "10.",
+  "index la inceputul numelui")
+T(_index_rand(["Plati", "5 lei"], 0) is None, "fara index")
+
+# subtitlul ramane deschis pentru randul care ii repeta cuvantul (Nexent)
+s = Sectiuni()
+s.subtitlu("Scrisori de garantie")
+s.rand("Acceptare garantie de credit emisa de alte banci in favoarea bancii")
+T(s.cale() == "Scrisori de garantie", "randul cu garantie ramane sub subtitlu")
+s.rand("Executare")
+T(s.cale() == "Scrisori de garantie", "varianta ramane sub subtitlu")
+s.rand("Anulare la cerere inainte de expirarea datei de valabilitate")
+T(s.cale() == "", "numele intreg fara cuvantul subtitlului il inchide")
+s = Sectiuni()
+s.subtitlu("Ordin de plata conditionat")
+s.rand("Investigatie ordin de plata")
+T(s.cale() == "", "conteaza ultimul cuvant cu sens (conditionat), nu ordin")
+
+# nici elementul de lista, nici serviciul cu "0" in coloana de pret nu e subtitlu
+T(_e_subtitlu(["Scrisori de garantie"], [0], [0, 500], 500, "bordura"), "subtitlu Nexent")
+T(not _e_subtitlu(["- Caseta II (100*260*390 mm)", ""], [0], [0, 400, 500], 500,
+                  "bordura"), "elementul de lista NU e subtitlu")
+T(not _e_subtitlu(["Inchidere cont curent/ Current account closing", "0"], [0],
+                  [0, 400, 500], 500, "bordura"), "serviciul gratuit NU e subtitlu")
+# titlul cu index lung doar din paranteza
+T(_titlu_din_tabel(["4.", "Cost de asigurare viaţă şi complexă (opţional, încasat lunar,"
+                    " aplicat la valoarea iniţiala a creditului)"], [1]) is not None,
+  "lungimea titlului se masoara fara paranteza")
+# randul lung doar din paranteza, terminat in ":", nu e proza
+T(_introduce_lista("Cost de asigurare de viaţă (opţional, încasat lunar, aplicat la soldul"
+                   " creditului):"), "numele cu paranteza si doua puncte")
+T(not _introduce_lista("Comisionul se percepe lunar si se retine automat din contul curent"
+                       " al clientului la data scadentei:"), "proza lunga ramane proza")
+
+
+# --- eticheta: celula numelui pe randul cu valori si randul-antet -------------
+from crawler.parser_tarife import (RE_DOAR_MONEDE, _colt_antet,  # noqa: E402
+                                   _conditii_in_nume, _e_rand_antet)
+
+
+def ET(texte, asteptat, eticheta, coloane_pret=frozenset()):
+    primit = _celula_eticheta(texte, [analizeaza_linie(t) for t in texte], coloane_pret)
+    T(primit == asteptat, f"{eticheta}  (primit {primit})")
+
+
+# BRD, ghidul de credite: DOBANZI | COMISIOANE pe acelasi rand
+ET(["credit cu asigurare de viata acordat în agenția BRD", "",
+    "Rata dobânzii este cuprinsă între 6,49 pp si 19,01 pp", "", "",
+    "Pu nerea la dispoziție a creditului", "", "gratuit"], [5],
+   "numele e celula din stanga valorii, nu textul mai lung din DOBANZI")
+ET(["credit fara asigurare de viata", "Rata dobânzii este cuprinsă între 7,99 pp", "",
+    "0,50%"], [], "dobanda din stanga opreste cautarea: nu e numele comisionului")
+# BCR PJ: coloana Comentarii din dreapta pretului
+ET(["2.3.", "Taxă de înrolare", "150 EUR / comerciant",
+    "Se percepe o singură dată la înrolare"], [1], "comentariul NU bate numele")
+# BCR, tariful de evaluari: pretul in prima coloana
+ET(["790 LEI inclusiv TVA*", "Raport evaluare", "Casă/vilă cu terenul aferent"], [1, 2],
+   "pretul in stanga: numele sunt celulele din dreapta, unite")
+# Raiffeisen: "N/A" nu e nume
+ET(["Loungekey", "N/A", "N/A", "", "apoi 30 EUR/intrare/", "invitat; pentru invitați"],
+   [0], "N/A sarit, textul coloanei Infinite NU e nume")
+ET(["", "1,5 lei/lună*", "0 lei", "N/A"], [], "N/A singur NU e nume")
+# moneda dintre nume si pret se sare; singura, ramane banda de sub nume
+ET(["Cesiune", "RON/FX", "0,20%, min. echivalent 75 EUR"], [0], "RON/FX NU e numele")
+ET(["Lei", "5 Lei"], [0], "moneda singura ramane eticheta (BRCI)")
+# varianta scurta se compune cu numele din stanga; numele intreg nu
+ET(["Incidente de plata - Consultare baza de date", "centrala", "6 lei + TVA"], [0, 1],
+   "varianta 'centrala' ia numele din stanga")
+ET(["datoriei în sold.", "", "", "", "clădire viitoare – evaluare intermediară", "",
+    "330 lei (echiv. în valuta creditului)"], [4], "numele de 4 cuvinte NU se compune")
+ET(["1.200,01", "1.500", "25", "", "", "1500,01", "---", "1%"], [],
+   "capetele de banda fara moneda NU sunt nume")
+T(RE_DOAR_MONEDE.match("RON/FX"), "FX e moneda")
+
+# antetul: liniuta si N/A nu sunt nume de coloana
+T(not _e_rand_antet(["Eliberare numerar EUR si USD 4", "", "-"], [0, 2], True),
+  "nume + liniuta NU e antet (Libra)")
+T(not _e_rand_antet(["LoungeKey", "N/A"], [0, 1], True), "nume + N/A NU e antet")
+T(_e_rand_antet(["Minim", "Maxim", "Comision standard administrare Pachet"], [0, 1, 2],
+                False), "antetul adevarat ramane antet")
+
+
+def _rand(top, texte, margini=(23, 128, 256, 375, 468, 572), pagina=8):
+    return (pagina, [_w("x", margini[0] + 5, top)], list(margini), "bordura", texte)
+
+
+def COLT(randuri, k):
+    return _colt_antet(randuri, [[analizeaza_linie(t) for t in r[4]] for r in randuri], k)
+
+
+# BCR PJ p8: coltul antetului numeste randul de preturi fara nume
+PACHET = [_rand(103.5, ["Comision administrare pachet", "George Business START",
+                        "George Business DINAMIC", "George Business FLUX",
+                        "George Business COMPAS"]),
+          _rand(121.3, ["", "100 LEI/lună", "150 LEI/lună", "250 LEI/lună", "400 LEI/lună"]),
+          _rand(134.9, ["Componente obligatorii ale pachetului"], (23, 572))]
+T(COLT(PACHET, 0) == 0, "coltul antetului e numele randului de preturi")
+# BRD: in coloana 0 sta tabelul de dobanzi, numele comisionului e mai la dreapta
+DOB = (6, 456, 468, 694, 699, 813, 818)
+T(COLT([_rand(139.9, ["CREDITUL EXPRESSO", "", "Comision de analiză dosar", "", "", ""], DOB),
+        _rand(145.0, ["", "", "", "", "200 lei", ""], DOB)], 0) is None,
+  "coloana 0 NU e numele cand intre ea si pret mai e text")
+# BCR Locuinte: numele sta pe aceeasi linie cu preturile, rupt de grila
+AVIZ = (48, 83, 297, 511, 724)
+T(COLT([_rand(350.6, ["crt.", "", "AEGRM", "(Ministerul Justiţiei)"], AVIZ),
+        _rand(378.8, ["", "", "50 lei + TVA", "30 lei"], AVIZ),
+        _rand(379.7, ["1", "AVIZ DE GARANŢIE INIŢIAL", "", ""], AVIZ)], 0) is None,
+  "numele rupt sub preturi bate coltul antetului")
+
+
+def COND(texte, i=0):
+    return _conditii_in_nume(texte, [analizeaza_linie(t) for t in texte], i)
+
+
+# suma din fraza numelui e conditie, iar fraza ramane numele
+T(COND(["Dobanda cont curent de card (se aplica la sold mai mare de 500 RON)", "1%", "0%"])
+  == {0}, "sold minim din numele dobanzii e conditie (Libra)")
+T(COND(["Retragere numerar pentru sume care depasesc 10.000 EUR sau", ""]) == {0},
+  "suma urmata de 'sau' e conditie (Vista)")
+T(COND(["Api.Investigator – 40 lei; RECOM - 33 lei; CIP (format FNIP sau", ""]) == set(),
+  "lista de preturi din celula numelui NU e conditie (Libra)")
+T(COND(["Interogare sold gratuit** de la orice ATM din România", ""]) == set(),
+  "gratuit din nume ramane pret (ProCredit)")
+T(COND(["minime3 de 5.000.000 EUR/an(sau echiv.) sau", "", ""]) == set(),
+  "continuarea scurta NU se atinge (BRD NOIR)")
+
+# parintele din stanga nu vine din tabelul de dobanzi alaturat (BRD)
+T(_celula_din_stanga(([(495, 6, 468), (520, 6, 468)],
+                      [_w("ofertă", 10, 503), _w("standard", 60, 503), _w("IRCC", 290, 503),
+                       _w("+", 330, 503), _w("5,10", 340, 503), _w("pp", 380, 503)]),
+                     6, 468, 503, 511) is None, "dobanda NU e parinte")
+
+
+# --- celule: numele pe mai multe randuri in aceeasi celula cu bordura (25 sept) ---
+# Reparatia din 54aeb41, refacuta peste codul de acum, pe aceleasi 68 de documente:
+# mapate 6.536 -> 6.568, nicio valoare pierduta.
+from crawler.parser_tarife import _celula, _loc_eticheta, _orizontale  # noqa: E402
+
+
+def _dr(x0, x1, sus, jos, culoare):
+    """Un dreptunghi plin, fara contur, si muchiile lui orizontale, ca in pdfplumber."""
+    r = {"x0": x0, "x1": x1, "top": sus, "bottom": jos, "fill": True, "stroke": False,
+         "non_stroking_color": culoare}
+    pts = [(x0, sus), (x1, sus), (x1, jos), (x0, jos)]
+    return r, [dict(r, object_type="rect_edge", orientation="h", top=y, pts=pts)
+               for y in (sus, jos)]
+
+
+def ORIZ(*dreptunghiuri):
+    """y-urile bordurilor orizontale ale unei pagini facute doar din dreptunghiuri."""
+    class Pagina:
+        rects = [r for r, _m in dreptunghiuri]
+    muchii = [e for _r, m in dreptunghiuri for e in m]
+    return sorted({round(t, 1) for t, _a, _b in _orizontale(Pagina, muchii)})
+
+
+# BCR: fiecare rand e un dreptunghi plin; intre doua de aceeasi culoare nu e bordura
+ALBASTRU, GRI = (0.842, 0.876, 0.912), (0.946, 0.955, 0.968)
+T(ORIZ(_dr(36, 239, 95, 119.6, ALBASTRU), _dr(36, 239, 119.6, 132.1, ALBASTRU),
+       _dr(36, 239, 132.1, 144.6, GRI)) == [95, 132.1, 144.6],
+  "muchia comuna de aceeasi culoare NU e bordura (BCR)")
+# Eximbank: dreptunghi alb (gri 1.0) sub fiecare rand, pe celula alba (RGB)
+T(ORIZ(_dr(10, 164, 165.4, 202, (1.0, 1.0, 1.0)), _dr(15, 159, 171.5, 183.7, 1.0),
+       _dr(15, 159, 183.7, 195.9, 1.0)) == [165.4, 202],
+  "alb pe alb NU e bordura, oricum ar fi scrisa culoarea (Eximbank)")
+# ProCredit: bordura desenata ca dreptunghi negru de 0,48 puncte ramane bordura
+T(ORIZ(_dr(54, 301, 177.0, 177.48, 0.0)) == [177.0, 177.5],
+  "linia desenata ca dreptunghi ramane bordura (ProCredit)")
+
+T(_celula([(95, 36, 239), (120, 36, 239), (132, 36, 239)], 36, 239, 105, 113) == (95, 120),
+  "celula: bordurile de deasupra si de dedesubt")
+T(_celula([], 36, 239, 105, 113) is None, "fara borduri nu e celula")
+
+# locul randului in celula: "Comision de emitere", BCR PJ 7.1, un pret in celula
+BORD = [(385.6, 51, 573), (424.8, 51, 573)]
+CUV = [_w("Comision", 57, 400), _w("de", 111, 400), _w("emitere", 126, 400)]
+LOC = _loc_eticheta(CUV, [51, 207, 256], 0, "bordura", BORD, [395.4], 400, 408)
+T(LOC["celula"] == (385.6, 424.8) and LOC["un_pret"] and LOC["x_text"] == 57,
+  "loc: celula si pretul ei")
+T(LOC["liber"] == 156 - (168 - 57) - 2 * 6 and LOC["cuv1"] == 48,
+  "loc: cat mai incapea pe rand, cu padding-ul cel mic de ambele parti")
+T(_loc_eticheta([_w("Bancii", 100, 400)], [70, 166], 0, "bordura", BORD, [395.4],
+                400, 408)["liber"] == 0, "textul centrat nu lasa loc liber")
+T("liber" not in _loc_eticheta(CUV, [51, 207, 256], 0, "gol", BORD, [395.4], 400, 408),
+  "fara borduri verticale, locul liber nu se stie")
+T(not _loc_eticheta(CUV, [51, 207, 256], 0, "bordura", BORD, [], 400, 408)["un_pret"],
+  "celula fara pret NU e un singur serviciu (BCR, antetul matricei de pachete)")
+T(not _loc_eticheta(CUV, [51, 207, 256], 0, "bordura", BORD, [395.4, 410], 400, 408)["un_pret"],
+  "celula cu doua preturi e o lista")
+
+
+def LIPESTE(bloc, sus, jos, text, are_valori, x, **loc):
+    """Blocurile dupa ce randul intra langa blocul dat."""
+    blocuri = [bloc]
+    _adauga_eticheta(blocuri, sus, jos, text, are_valori, x=x, x_text=x + 1,
+                     bordura=True, **loc)
+    return blocuri
+
+
+# ProCredit: aceeasi celula, un pret, rand rupt de latime -> majuscula nu rupe numele
+BL = LIPESTE((181.6, 193.6, "Card de debit Visa Classic (LEI) sau Visa", True, 54, 55, True,
+              (177.5, 221.6), 0.5), 195.4, 207.4, "Classic în EURO", True, 54,
+             celula=(177.5, 221.6), un_pret=True, liber=150, cuv1=40)
+T(len(BL) == 1 and BL[0][2] == "Card de debit Visa Classic (LEI) sau Visa Classic în EURO"
+  and not BL[0][3] and BL[0][8] == 150, "aceeasi celula: majuscula nu rupe numele (ProCredit)")
+# BCR: trei comisioane ale cardului unul sub altul; "Comision" incapea pe randul de sus
+BL = LIPESTE((399.9, 407.2, "Comision de emitere", True, 51, 71.4, True, (385.6, 424.8), 50.9),
+             407.9, 414.9, "Comision de reînnoire", False, 51,
+             celula=(385.6, 424.8), un_pret=True, liber=47.3, cuv1=29.4)
+T(len(BL) == 2, "randul rupt de autor incepe alt nume (BCR, cuvantul incapea sus)")
+# Techventures: intre randuri e valoarea, scrisa in coloana numelui
+BL = LIPESTE((367.9, 377.9, "Card de debit în lei atașat contului curent", True, 13, 23, True,
+              (360.0, 430.0), 0), 394.5, 404.5, "expirare, administrare, livrare card emis /",
+             False, 13, celula=(360.0, 430.0), un_pret=True, liber=0, cuv1=40)
+T(len(BL) == 2, "peste un rand sarit NU se lipeste (Techventures)")
+# Garanti: celula cu mai multe preturi tine o lista (incasso documentar)
+BL = LIPESTE((283.9, 295.0, "Remiterea documentelor pentru plată/acceptare", True, 95, 96, True,
+              (245.2, 364.9), None), 298.2, 309.2, "Modificare", False, 95,
+             celula=(245.2, 364.9), un_pret=False)
+T(len(BL) == 2, "celula cu mai multe preturi: fiecare serviciu ramane al lui (Garanti)")
+# BCR: varianta din coloana din dreapta, aceeasi celula, nu continua numele din stanga
+BL = LIPESTE((100, 108, "Unități Bancare", False, 239, 240, True, (95, 120), 0),
+             110, 118, "Clientului", False, 36, celula=(95, 120), un_pret=True, liber=0, cuv1=40)
+T(len(BL) == 2, "alta coloana din aceeasi celula NU se lipeste")
+# banda de suma cu pretul ei ramane randul ei, si in aceeasi celula
+BL = LIPESTE((100, 108, "Retragere numerar de la ghișeu", True, 36, 37, True, (95, 125), 0),
+             110, 118, "≤ 100.000 EUR", True, 36, celula=(95, 125), un_pret=True, liber=0,
+             cuv1=10)
+T(len(BL) == 2, "banda cu pret din aceeasi celula ramane banda")
 
 
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")

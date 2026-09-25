@@ -43,13 +43,35 @@ RE_TITLU_FID = re.compile(
 # celulei ramasa fara valoare ("tranzacție" sub "5 USD/") ajungea nume de serviciu.
 MONEDE = {"lei": "LEI", "leu": "LEI", "ron": "LEI", "eur": "EUR", "euro": "EUR",
           "usd": "USD", "gbp": "GBP", "chf": "CHF"}
-BANI = r"\d{1,3}(?:[.\s]\d{3})*(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?"
+# Mii cu virgula, in format englezesc: "100,000 lei" (Techventures), "max 3,000 euro"
+# (Libra), "EUR 2,000" (TBI), "Valoare totala platibila: 5,698 RON" (BCR). Fara
+# alternativa, suma pornea din mijlocul numarului: 0 lei, 348,07 in loc de 656.348,07.
+# O suma de bani nu are trei zecimale, iar prima cifra nenula tine afara "0,050".
+BANI_EN = r"[1-9]\d{0,2}(?:,\d{3})+(?:\.\d{1,2})?(?![\d,])"
+BANI = BANI_EN + r"|\d{1,3}(?:[.\s]\d{3})*(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?"
+RE_MII_EN = re.compile(BANI_EN)
 # "euro" inaintea lui "eur": alternarea e ordonata, deci cu "eur" primul cuvantul
 # "euro" se potrivea mereu ca "eur" si lasa un "o" orfan in linie dupa ce banda era
 # taiata — iar litera ramasa se numara in _e_doar_banda.
 VAL = r"(?:lei|leu|ron|euro|eur|usd|gbp|chf)"
 
-RE_SUMA = re.compile(rf"({BANI})\s*({VAL})\b", re.I)
+# "Neurmat de litera", nu "\b": nota de subsol se lipeste de moneda ("2 RON2",
+# "30 Lei1167", "150 LEI6"), iar cu "\b" suma se pierdea de tot — 28 de celule din
+# cele 68 de documente, fiecare cu singurul ei pret. "10 EURIBOR" ramane nepotrivit.
+# Lookbehind-ul e cel din RE_PROCENT: suma nu incepe in mijlocul unui numar.
+RE_SUMA = re.compile(rf"(?<!\d)(?<!\d[.,])({BANI})\s*({VAL})(?![^\W\d_])", re.I)
+# Moneda inaintea sumei: lista in engleza a TBI ("RON 4", "0.50% min. RON 5", "0.18%
+# Max. EUR 2,000", 57 de valori pierdute) si ProCredit ("LEI 5,51 /echivalent", 4).
+# Doar la inceputul celulei sau dupa min./max.: in mijlocul textului,
+# cifra de dupa moneda e nota de subsol ("plăți interbancare în LEI 2", "Eliberare
+# numerar EUR si USD 4") sau pragul ("Plăți instant ≤ LEI 5.000").
+RE_SUMA_INVERSA = re.compile(
+    rf"(?:^|\b(?:min|max|minim|maxim|minimum|maximum)\b\.?)\s*({VAL})\s+({BANI})"
+    rf"(?![\d.,])(?!\s*{VAL}(?![^\W\d_]))", re.I)
+# Moneda cu litere spatiate ("0 L E I", BCR, creditele cu garantii reale): suma se
+# pierdea. Doar majuscule izolate, deci un cuvant obisnuit nu se lipeste.
+RE_MONEDA_SPATIATA = re.compile(r"(?<![^\W\d_])(?:L\s+E\s+I|R\s+O\s+N|E\s+U\s+R|U\s+S\s+D)"
+                                r"(?![^\W\d_])")
 # Lookbehind-ul opreste potrivirea sa inceapa in MIJLOCUL unui numar, iar
 # zecimalele nu mai sunt limitate la trei. Fara ele, "0,0125%" iesea 125%
 # si "3,93606%" iesea 606% — regexul renunta la inceputul numarului si
@@ -58,13 +80,32 @@ RE_SUMA = re.compile(rf"({BANI})\s*({VAL})\b", re.I)
 RE_PROCENT = re.compile(r"(?<![\d.,])(\d{1,3}(?:[.,]\d+)?)\s*%")
 # comision zero declarat in cuvinte
 RE_GRATUIT = re.compile(
-    r"\bgratuit\b|f[aă]r[aă]\s+comision|nu\s+se\s+percepe|\bincluse?\b", re.I)
+    r"\bgratuit\b|f[aă]r[aă]\s+comision|nu\s+se\s+percepe", re.I)
+# "Inclus" e pret zero doar cand e chiar predicatul celulei: "Inclus în costul lunar
+# al pachetului" (ProCredit), "• Business debit card inclus în Pachet" (BCR, lista
+# serviciilor incluse gratuit). Cautat oriunde: din cele 70 de valori "gratuit"
+# venite doar din "inclus", 30 erau titluri si proza (18 mapate, toate gresit):
+# cuprinsul si titlul "Taxe și comisioane pentru cardurile de debit incluse în
+# pachetele...", "OPERATIUNI GRATUITE INCLUSE IN OFERTA", "*TVA inclus", "speze
+# SWIFT incluse" sub pretul unui acreditiv, "nu sunt incluse in tarifele afisate".
+# Cu ele au disparut si cele 2 valori din "CUPRINS". Continuarea cu litera mica
+# ("suplimentar LEI/ Valută, inclus în Pachet") cere "în pachet" si nicio
+# paranteza, altfel prindea "(... plăţi incluse in pachet)*".
+RE_INCLUS_GRATUIT = re.compile(
+    r"^[\W\d]*inclus[e]?\b(?!.*:\s*$)"
+    r"|^\s*[•·▪]\S*.*\binclus[e]?(?:\s+[îi]n(?:\s+pachet\w*)?)?[\s.*]*$"
+    r"|^(?-i:[a-zăâîșț])[^()]*\binclus[e]?\s+[îi]n\s+pachet\w*[\s.*]*$", re.I)
 # ...dar "Produse și servicii incluse" e titlul listei din pachet, nu un pret.
 # Citit ca "gratuit", dadea 12 valori false (ProCredit 7, Vista 3, Techventures 2),
 # intre ele "Administrare pachet: gratuit" la Techventures si "Cost lunar:
 # gratuit" la fiecare pachet ProCredit.
 RE_TITLU_INCLUSE = re.compile(
     r"^\W*(?:produse|servicii)(?:\s+(?:[șsş]i)\s+(?:produse|servicii))?\s+incluse\b", re.I)
+# Zeroul spus in cuvinte, cand e singur in celula: "0 (zero)" (ProCredit, rambursarea
+# anticipata si evaluarea la creditele ProGreen) si "comision zero" (BCR, contul de
+# derulare a creditului). Ancorat: "Pachet ZERO Tot" e un nume, iar "Beneficiezi de
+# comision ZERO dacă..." e conditia unei reduceri.
+RE_ZERO_IN_CUVINTE = re.compile(r"^\W*(?:0\s*\(\s*zero\s*\)|comision\s+zero)\W*$", re.I)
 RE_FRECVENTA = re.compile(
     r"\b(lunar|anual|trimestrial|semestrial|zilnic|"
     r"pe\s+opera[tț]iune|per\s+opera[tț]iune|la\s+fiecare)\b"
@@ -99,8 +140,12 @@ RE_PRAG = re.compile(
     # Cuvantul spune singur cate capete are banda: "intre" si "de la" au doua,
     # "peste", "sub" si "pana la" au unul. De aceea extinderea se face numai pe
     # primele doua — pe "sub 1.000 lei - 5 lei" ar mancat comisionul.
-    rf"|\b(?:[îi]ntre|de\s+la)\s+(?:{BANI})\s*{VAL}?"
-    rf"\s*(?:si|and|p[âa]n[ăa]\s+la|[-–—])?\s*(?:{BANI})\s*{VAL}"
+    # "between": lista bilingva TBI ("amounts between 1,000.00 99,999.99 EUR"), unde
+    # capatul din dreapta iesea comision de transfer odata ce mia englezeasca e citita
+    rf"|\b(?:[îi]ntre|de\s+la|between)\s+(?:{BANI})\s*{VAL}?"
+    # "și" cu diacritice: "- între 10,000 și 100,000 lei - 1.0% p.a." (Techventures)
+    # dadea capatul din dreapta drept comision, dupa ce virgula de mii a fost citita
+    rf"\s*(?:[sșş]i|and|p[âa]n[ăa]\s+la|[-–—])?\s*(?:{BANI})\s*{VAL}"
     # separatorul de dupa cuvantul de prag poate fi si "/": Salt scrie "sau pana
     # la/200 EUR luna". Cu `\s+` pragul scapa si 200 iese drept comision.
     # "pana in" pe langa "pana la": BRCI scrie "pentru sume până în 50.000 Lei: 5 lei",
@@ -173,7 +218,29 @@ RE_MARGINE_COMISION = re.compile(r"\bnu\s+mai\s+(?:mic|mar[ei]|mult|pu[țt]in)",
 # textul doar "500.000 LEI". Ancorarea la inceput e obligatorie: "Comision SMS -
 # peste limita inclusă în abonament" e un comision real de 0,8 LEI, iar "din card de
 # credit – limită avans numerar" e unul de 1% + 5 LEI.
-RE_ETICHETA_LIMITA = re.compile(r"^\s*(?:limit[ăa]|plafon)\b", re.I)
+# Tot aici cerintele de sold spuse in eticheta: "Depunere inițială minimă în cont
+# pentru fiecare card de debit" (Raiffeisen, 6), "Suma minimă pentru deschiderea
+# contului de card" (BCR, 100 EUR ca deschidere_cont), si plafoanele: "Valoarea
+# maximă a limitei de credit" (50.000-320.000 lei), "Suma maxima zilnica de
+# retragere numerar" (Nexent, 9.000 RON ca pret de retragere).
+# "Sold minim al contului de card" (BCR PJ, 0 pe toate cele 9 carduri) e tot o cerinta.
+# Si conditia de eligibilitate a pachetului: BRD scrie "Conditie pachet" / "40.000
+# EUR" (3 valori numarate drept comisioane). Ancorat: neancorat prindea si "Pret
+# pachet /luna cu indeplinirea conditie de pachet", adica pretul pachetului.
+RE_ETICHETA_LIMITA = re.compile(
+    r"^\s*(?:limit[ăa]|plafon|valoarea\s+maxim\w*\s+a\s+limitei|sold\s+minim"
+    r"|sum[ăa]\s+(?:minim|maxim)|depunere\s+ini[țţt]ial[ăa]\s+minim"
+    r"|condi[țţt]i\w*\s+(?:de\s+)?pachet\b)", re.I)
+# Suma minima de plata a cardului de credit e formula de rambursare ("3% din
+# Valoarea tranzacțiilor efectuate cu Cardul, la care se adaugă..."), nu un pret,
+# oricat text ar avea celula: la Nexent 2 valori de 3% treceau drept comision.
+RE_ETICHETA_RAMBURSARE = re.compile(
+    r"^\s*sum[ăa]\s+minim[ăa]\s+de\s+(?:plat|rambursa)", re.I)
+# Reducerea spusa in eticheta, cu procentul singur in celula: BRD, sub "Comisionul
+# de analiză dosar este redus astfel:", "cu 20% / 50% / 100% pentru clienții care
+# dețin..." (3 valori). RE_REDUCERE nu le prinde, fiindca "redus" nu e in celula.
+RE_CU_PROCENT = re.compile(r"^\s*cu\s+\d+(?:[.,]\d+)?\s*%", re.I)
+RE_REDUS = re.compile(r"\bredu[sc]", re.I)
 # ...dar nici eticheta ancorata nu ajunge singura. La Raiffeisen, eticheta "Limita
 # zilnică de retragere numerar" a prins prin atribuire un comision real — textul
 # "5% (minim 10 lei) din suma utilizată" e formula unui pret, nu o limita. Cele doua
@@ -201,6 +268,20 @@ RE_PRAG_IN_PARANTEZA = re.compile(
 RE_PLAFON_IN_PARANTEZA = re.compile(r"\b(?:min|max)\w*\b", re.I)
 
 
+def _repeta_pragul(text, eticheta, valoare):
+    """Celula de valoare e chiar pragul spus in eticheta, nu pretul.
+
+    TBI, lista bilingva: "Ordin de plata – sume ≥ 50.000,00 RON / Payment order –
+    amounts ≥" urmat de "50,000.00 RON", partea engleza a pragului. Nu ajunge ca
+    eticheta sa se termine in "≥": acolo stau si preturi ("14 RON", "6 lei" la
+    Raiffeisen, "2%" la moneda metalica BCR). Decide egalitatea cu suma pragului.
+    """
+    if not _doar_cifra(text):
+        return False
+    return any(suma_bani(n) == valoare for m in RE_PRAG.finditer(eticheta)
+               for n in re.findall(r"\d[\d.,]*\d|\d", m.group(0)))
+
+
 def _inchide_paranteza_etichetei(text, eticheta):
     """Celula de valoare inchide o paranteza de prag deschisa in eticheta."""
     if text.count(")") <= text.count("(") or eticheta.count("(") <= eticheta.count(")"):
@@ -226,14 +307,20 @@ def rol_de_conditie(text, eticheta, valoare):
     Zeroul nu e niciodata o cerinta: nicio banca nu cere un sold minim de 0 lei.
     Fara conditia asta regula avea 12 falsi pozitivi din 23, toti cu valoarea 0
     ("0 Lei in limita primelor 5 retrageri" — acolo zeroul ESTE pretul, iar limita e
-    conditia lui).
+    conditia lui). Exceptia e eticheta care se numeste singura limita: "Suma minimă
+    pentru deschiderea contului de card: 0 LEI" (BCR, 7 valori) ieșea pret de
+    deschidere_cont.
     """
-    if not valoare:
-        return None
     if (eticheta and RE_ETICHETA_LIMITA.match(eticheta) and text
             and (_doar_cifra(text) or RE_LIMITA_IN_TEXT.search(text))):
         return "conditie"
+    if not valoare:
+        return None
+    if eticheta and RE_ETICHETA_RAMBURSARE.match(eticheta):
+        return "conditie"
     if text and (RE_CERINTA.search(text) or RE_REDUCERE.search(text)):
+        return "conditie"
+    if text and eticheta and RE_CU_PROCENT.match(text) and RE_REDUS.search(eticheta):
         return "conditie"
     if text and any(suma(m.group(1)) == valoare for m in RE_IN_LIMITA_A.finditer(text)):
         return "conditie"
@@ -241,6 +328,8 @@ def rol_de_conditie(text, eticheta, valoare):
             and not RE_MARGINE_COMISION.search(text)):
         return "conditie"
     if text and eticheta and _inchide_paranteza_etichetei(text, eticheta):
+        return "conditie"
+    if text and eticheta and _repeta_pragul(text, eticheta, valoare):
         return "conditie"
     return None
 
@@ -257,25 +346,87 @@ RE_DOBANDA_CAP = re.compile(r"^\W*(?:valoarea\s+)?(?:rat|marj)\w*\s+(?:\w+\s+){0
 # preturi. Categoria nu arunca valoarea — o marcheaza, ca sa nu intre in
 # comparatia de comisioane.
 RE_LIMITA = re.compile(
-    r"limit[ăae]\w*\s+de\s+tranzac|valoare\s+tranzac|num[ăa]r\w*\s+de\s+tranzac"
-    r"|\bplafon", re.I)
+    r"limit[ăae]\w*\s+de\s+tranzac|valoare\s+tranzac|num[ăa]r\w*\s+de\s+tranzac", re.I)
+# "Plafon" oriunde facea limita si din pretul spus FATA de plafon: "comision de
+# analiză pentru prima acordare de plafon" (BCR, 0 si 25 LEI), "retrageri sub
+# plafonul stabilit" (BCR, 2,5% min. 30 LEI), "ce depaseste plafonul" (Libra,
+# 0,25%), "suma ce depaseste acest plafon" (Vista, 2% min. 5 LEI): 14 preturi reale
+# scoase din comisioane. Plafonul ramane limita cand e chiar cifra din celula
+# ("plafonul de 20.000 lei") sau cand celula e fraza, nu pret ("20.000 lei, care nu
+# a fost programat...").
+RE_PLAFON = re.compile(r"\bplafon", re.I)
+RE_FATA_DE_PLAFON = re.compile(
+    r"(?:\bsub|\bpeste|dep[ăa][șsş]\w*|acord[ăa]r\w*\s+(?:\w+\s+)?de|\bacest)\s+plafon", re.I)
 # Limita spusa direct: "limită zilnică", "limită maximă pe tranzacție" (Garanti,
 # Vista, Raiffeisen: 52 de valori de ordinul 10.000-1.000.000 lei numarate drept
 # comisioane). Doar cand celula e practic numai cifra: sub "Limita zilnică de
 # retragere numerar", Raiffeisen scrie "5% (minim 10 lei) din suma utilizată",
-# adica pretul, nu limita (vezi rol_de_conditie).
-RE_LIMITA_SPUSA = re.compile(r"limit[ăae]\w*\s+(?:zilnic|maxim|minim|lunar)", re.I)
+# adica pretul, nu limita (vezi rol_de_conditie). Si "limită per tranzacție",
+# "limită cumulativă" (Garanti, contactless: 100 LEI iesea schimbare_pin).
+RE_LIMITA_SPUSA = re.compile(
+    r"limit[ăae]\w*\s+(?:zilnic|maxim|minim|lunar|cumulativ|per\s+tranzac|pe\s+tranzac)",
+    re.I)
+# Limita pusa in capul etichetei, fara cuvantul "limita": tabelul de top-up ProCredit
+# ("Sumă per tranzacție top-up", "Volum total tranzacții top-up pe lună", 4 valori)
+# si "Valoarea maximă a limitei de credit" (Raiffeisen, 4). Antetul tabelului,
+# "Limite aplicabile...", are alta semnatura de coloane, deci nu ajunge la randuri.
+RE_ETICHETA_LIMITA_CAT = re.compile(
+    r"^\W*(?:sum[ăa]\s+per\s+tranzac|volum\w*\s+total|valoare\w*\s+maxim\w*\s+a\s+limit)",
+    re.I)
+# Secțiunea de limite, pentru toate randurile ei: Garanti "LIMITELE BANCII PENTRU
+# TRANZACȚIILE EFECTUATE CU CARDUL DE DEBIT" (3 valori ramase comision, intre ele
+# "zilnică și per tranzacție" / 6.000 LEI)
+RE_SECTIUNE_LIMITE = re.compile(r"(?:^|>)\s*\W*limit", re.I)
+# Suma creditului e marimea creditului, nu un pret: BRD, in coloana DOBÂNZI, "Suma
+# creditului: max. 15.000 lei" (3 valori, cu rol "max" de plafon de comision)
+RE_SUMA_CREDITULUI = re.compile(r"^\s*sum[ăa]\s+creditului\b", re.I)
 RE_CURS = re.compile(r"curs\s+(de\s+)?schimb|curs\s+bnr|exchange\s+rate", re.I)
+# Indicele de referinta e o dobanda, nu un comision. ProCredit are un rand "Valoare"
+# sub coloanele IRCC/EURIBOR ("5,56%", "2,595%", 9 valori), BCR scrie in formular
+# "IRCC + 13,99%" la descoperit (2 valori, una mapata transfer_credit). Doar pe
+# celula sau pe coloana, nu pe eticheta: BRD are "IRCC + 5,10 pp" in eticheta unor
+# comisioane de evaluare.
+RE_INDICE = re.compile(r"\b(?:IRCC|EURIBOR|ROBOR)\b", re.I)
+RE_INDICE_PLUS = re.compile(r"\b(?:IRCC|EURIBOR|ROBOR)\s*\+\s*\d", re.I)
+RE_VALOARE_INDICE = re.compile(r"^\W*(?:valoare|indice)", re.I)
+RE_DOAR_PROCENT = re.compile(r"^\s*\d+(?:[.,]\d+)?\s*%\s*$")
+# Taxa de stat incasata de banca in numele altcuiva nu e tariful bancii: la BCR
+# Locuinte, tabelul AEGRM are coloana "Taxa către bugetul de stat (Ministerul
+# Justiţiei)" langa "Tarif BCR", cu aceeasi eticheta pe rand (6 valori). Doar din
+# antetul coloanei: "Plata impozite si taxe" e un serviciu al bancii.
+RE_TAXA_STAT = re.compile(r"bugetul\s+de\s+stat", re.I)
+# "% p.a." singur nu decide: casetele BRD (1,50%/an) si custodia BCR (0,07% p.a.)
+# sunt comisioane. Sub un descoperit neautorizat sau o restanta insa e dobanda:
+# Salt, "neautorizat" / "20 % p.a. (LEI) / 15% p.a. (valuta)", 6 valori.
+RE_PROCENT_PE_AN = re.compile(r"%\s*(?:p\.\s?a\b|pe\s+an\b|/\s*an\b)", re.I)
+RE_DESCOPERIT = re.compile(r"neautorizat|descoperit|restan[tț]|penaliz", re.I)
 
 
-def categorie(sectiune, serviciu, text, celula=""):
-    """Ce fel de cifra e: comision, dobanda, limita de tranzactionare sau curs."""
+def categorie(sectiune, serviciu, text, celula="", coloana=""):
+    """Ce fel de cifra e: comision, dobanda, limita, curs sau taxa de stat."""
     tot = f"{sectiune or ''} {serviciu or ''} {text or ''}"
-    if RE_DOBANDA.search(tot) or RE_DOBANDA_CAP.search(serviciu or ""):
+    celula, serviciu = celula or "", serviciu or ""
+    if coloana and RE_TAXA_STAT.search(coloana):
+        return "taxa_stat"
+    if RE_DOBANDA.search(tot) or RE_DOBANDA_CAP.search(serviciu):
         return "dobanda"
-    if RE_LIMITA.search(tot):
+    if RE_PROCENT_PE_AN.search(text or "") and RE_DESCOPERIT.search(serviciu):
+        return "dobanda"
+    if RE_INDICE_PLUS.search(celula):
+        return "dobanda"
+    if (coloana and RE_INDICE.search(coloana) and RE_VALOARE_INDICE.match(serviciu)
+            and RE_DOAR_PROCENT.match(celula)):
+        return "dobanda"
+    if RE_LIMITA.search(tot) or RE_SECTIUNE_LIMITE.search(sectiune or ""):
         return "limita"
-    if RE_LIMITA_SPUSA.search(tot) and celula and _doar_cifra(celula):
+    if RE_SUMA_CREDITULUI.match(celula):
+        return "limita"
+    if RE_PLAFON.search(tot) and not (
+            RE_FATA_DE_PLAFON.search(f"{sectiune or ''} {serviciu}")
+            and not RE_PLAFON.search(celula) and celula and _doar_cifra(celula)):
+        return "limita"
+    if ((RE_LIMITA_SPUSA.search(tot) or RE_ETICHETA_LIMITA_CAT.match(serviciu))
+            and celula and _doar_cifra(celula)):
         return "limita"
     if RE_CURS.search(tot):
         return "curs"
@@ -328,6 +479,14 @@ def suma(text):
         return float(t)
     except ValueError:
         return None
+
+
+def suma_bani(text):
+    """Ca suma(), dar "1,000" e o mie: doar la bani, unde nu exista trei zecimale.
+
+    La procente virgula ramane zecimala: "0,125%" e 0,125, nu 125.
+    """
+    return suma(text.replace(",", "") if RE_MII_EN.fullmatch(text.strip()) else text)
 
 
 def _margini(masurate, toleranta, prag_relativ):
@@ -418,6 +577,7 @@ def analizeaza_linie(text):
     """
     if not text:
         return [], None, None, None
+    text = RE_MONEDA_SPATIATA.sub(lambda m: re.sub(r"\s+", "", m.group(0)), text)
     linie, prag = _desprinde_prag(text)
     frecventa = _frecventa(linie)
 
@@ -446,12 +606,19 @@ def analizeaza_linie(text):
         if v is not None:
             valori.append(("comision_procent", v, None, rol_pentru(m.start())))
     for m in RE_SUMA.finditer(linie):
-        v = suma(m.group(1))
+        v = suma_bani(m.group(1))
         if v is not None:
             valori.append(("comision_suma", v, MONEDE[m.group(2).lower()],
                            rol_pentru(m.start())))
-    if (not valori and RE_GRATUIT.search(linie) and not re.search(r"\d", linie)
-            and not RE_TITLU_INCLUSE.match(linie)):
+    for m in RE_SUMA_INVERSA.finditer(linie):
+        v = suma_bani(m.group(2))
+        if v is not None:
+            valori.append(("comision_suma", v, MONEDE[m.group(1).lower()],
+                           rol_pentru(m.start(2))))
+    if not valori and (RE_ZERO_IN_CUVINTE.match(linie)
+                       or ((RE_GRATUIT.search(linie) or RE_INCLUS_GRATUIT.search(linie))
+                           and not re.search(r"\d", linie)
+                           and not RE_TITLU_INCLUSE.match(linie))):
         valori.append(("gratuit", 0.0, None, None))
 
     descriere = None
