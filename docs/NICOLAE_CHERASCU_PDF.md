@@ -1,6 +1,6 @@
-# Extragerea comisioanelor din PDF-uri: ce am schimbat (Nicolae Cherascu, 24.09.2026)
+# Extragerea comisioanelor din PDF-uri: ce am schimbat (Nicolae Cherascu, 24–25.09.2026)
 
-Pentru echipă, după push-ul din 24.09.2026. Acoperă doar extragerea comisioanelor
+Pentru echipă, după push-ul din 24.09.2026, cu actualizarea din 25.09. Acoperă doar extragerea comisioanelor
 din PDF-urile băncilor: `crawler/parser_pdf.py`, `crawler/parser_tarife.py` și
 `crawler/vocabular.py`. Popularea bazei, harta și App Store sunt în
 `docs/HANDOFF_POPULARE.md` (Robert).
@@ -32,7 +32,48 @@ din PDF-urile băncilor: `crawler/parser_pdf.py`, `crawler/parser_tarife.py` și
 
 Baza are mult mai multe documente decât setul fix; BCR singură are 171 de PDF-uri.
 Pe comisioanele din documentele românești, 84% au concept. Pe versiunile în engleză ale
-listelor BCR PJ („Fees and commissions”, „Tariffs for legal entities”), doar 47%.
+listelor BCR PJ („Fees and commissions”, „Tariffs for legal entities”), doar 47%
+(rezolvat pe 25.09, vezi mai jos).
+
+## 25.09: ce s-a mai schimbat
+
+| | 24.09 seara | 25.09 |
+|---|---:|---:|
+| setul fix, comisioane mapate | 95,6% (6.536 / 6.835) | **96,0%** (6.568 / 6.839) |
+| baza, valori curente (ce vede aplicația) | 27.569 | 22.926 |
+| baza, concept comparabil | 76% (pe toate valorile) | 76% pe toate, **83% pe cele curente** |
+| baza, valori „curate” din cele curente | 65% | **71%** |
+| teste (`scripts/test_validare.py`) | 480 | 506 |
+
+1. **Documentele doar în engleză sunt `DUBLURA`** (`crawler/data_document.py`). Legea
+   cere listele de prețuri în română, iar fiecare listă în engleză din bază avea
+   geamănul românesc de aceeași dată (BCR PJ, Raiffeisen corporații și IMM, Garanti
+   T0012). Se încarcă în continuare, dar nu intră în comparații și nici în Istoric.
+   - Limba se citește din textul primelor pagini, nu din nume. Pe cele 567 de PDF-uri
+     din bază, listele bilingve (Techventures, TBI, PKO) au cel mult 63% cuvinte de
+     legătură englezești, traducerile cel puțin 91%; pragul e 85%.
+   - 67 de documente, 4.633 de valori: 48 la BCR, 6 la PKO (de pe pkobp.pl), 5 la
+     Raiffeisen, apoi formularele IRS, raportul Revolut, fișa Bank of China.
+2. **Reparația „celule”, unită** (merge `f5b4395`). Rândurile aceleiași celule cu
+   bordură se lipesc într-o etichetă, chiar dacă al doilea începe cu majusculă, iar
+   muchia dintre două fundaluri de aceeași culoare nu mai e bordură.
+   - Refăcută peste codul de acum, cu trei condiții noi, fiecare măsurată: exact un preț
+     în celulă, rândul rupt de lățime, rânduri vecine.
+   - Pe setul fix: +28 mapate, 9 mutate, 4 valori noi, niciuna pierdută. Toate cele 41
+     de schimbări verificate în PDF.
+3. **Vocabularul după etichetele întregi** (`8ab873d`): când celula numește două servicii,
+   decide primul. „Interogare sold … /Schimbare PIN” (Salt, 5 valori) e interogare de
+   sold, „card (emitere și reînnoire)” (Garanti) e emitere, „Verificare/ confirmare/ …
+   semnături” (Libra) e verificare de semnătură.
+
+**De ce scad unele cifre din `raport_calitate.py`.**
+- **„Curate” pe toate valorile (64% → 58%):** scriptul împarte la toate valorile,
+  inclusiv cele `DUBLURA`, deci scoaterea traducerilor din comparații arată ca o scădere.
+  Pe valorile curente, cifra crește de la 65% la 71%. Ar merita împărțit la curente.
+- **Libra, −34 de rânduri:** e același serviciu, care înainte apărea de două ori, o
+  dată cu eticheta întreagă și o dată ruptă („RECOM Alte servicii…”, „Juridice”).
+  Acum ambele au eticheta întreagă și se strâng într-un rând cu `nr_aparitii = 2`.
+  Extracția dă aceleași 1.878 de valori brute cu codul vechi și cu cel nou.
 
 Liniile prea eterogene cresc odată cu numărul de linii: intră concepte noi și 500 de
 valori recuperate. Nu le-am analizat încă una câte una. Dimineață, creșterea venea din
@@ -169,13 +210,18 @@ românească în `app/index.html`.
 
 ## Ce rămâne
 
-1. **Reparația „celule”, neunită.** Lipește rândurile aceleiași celule cu bordură, chiar
-   dacă al doilea rând începe cu majusculă, și ignoră muchiile dreptunghiurilor de fundal
-   de aceeași culoare.
-   - Precizia pe schimbările ei e doar 115/149 (77%).
-   - Are 11 conflicte cu reparația „părinte”, pe aceleași funcții.
-   - E pe ramura locală `worktree-wf_729bdf0c-2df-2` (commit `54aeb41`) și merită
-     reluată peste codul de acum.
+1. **Versiunile vechi ale aceleiași liste nu sunt marcate `ISTORIC` în bază (pentru
+   Robert).** Lanțul de măsurare are regula (`scripts/date_documente.py`,
+   `marcheaza_versiuni_depasite`), dar `populare_initiala.py` n-o aplică, iar vederea
+   `observatii_curente` exclude doar ce e marcat. Lista PJ BCR din martie, iulie și
+   august 2026 sunt toate „în vigoare”, deci prețurile din martie intră în aceeași
+   celulă cu cele din august.
+   - Măsurat pe 25.09, doar pe versiunile cu nume identic (`familie_document`), deci o
+     limită de jos: 4.742 de valori curente vin din versiuni depășite (BCR 3.991, din
+     care 1.261 din listele în engleză, acum `DUBLURA`; Garanti 442; BRCI 292; BRD 17).
+   - Propunere: funcția din `date_documente.py` mutată în `crawler/data_document.py`
+     și aplicată pe înregistrările brute ale unei bănci înainte de scriere. N-am atins
+     `populare_initiala.py`.
 2. **Conceptul luat din secțiune.** `RE_ETICHETA_FRAGMENT` e compilat cu `re.I`, deci
    aproape orice etichetă nemapată își ia conceptul din secțiune.
    - Verificat în PDF pe 80 de astfel de mapări: 56 corecte, 16 greșite, 8 nu erau
@@ -183,7 +229,7 @@ românească în `app/index.html`.
    - Reparat pe loc ce ținea de vocabular (investigare, schimb de valută efectivă,
      schimb de bancnote).
    - Restul vine din etichete pierdute de parser.
-3. **Nemapate rămase pe setul fix: 299 din 6.835.**
+3. **Nemapate rămase pe setul fix: 271 din 6.839** (299 pe 24.09).
    - Etichete încă greșite: cea mai mare parte.
    - Servicii izolate, câte unul la o singură bancă, fără concept (de exemplu
      certificatele de depozit BCR, TrezoNet, „Free-Way” la Raiffeisen).
@@ -191,14 +237,13 @@ românească în `app/index.html`.
 4. **Conceptele noi nu apar încă în matricele de comparație.** `app/server.py` (GRUPURI)
    are doar grupurile Cont curent, Carduri și Transferuri. Un grup „Credite
    (comisioane)” și unul „Servicii” ar fi următorul pas în interfață.
-5. **Descoperirea BCR aduce și versiunile în engleză ale listelor PJ** („Fees and
-   commissions”, „Tariffs for legal entities”). Dublează conținutul și nu se mapează pe
-   vocabularul românesc. De decis dacă se exclud.
+5. **Documentele de pe altă piață.** Lista de prețuri PKO în poloneză („Taryfa prowizji”)
+   intră încă în bază; detectorul de limbă prinde doar engleza.
 
 ## Cum refaci
 
 ```bash
-python scripts/test_validare.py            # 480 trecute
+python scripts/test_validare.py            # 506 trecute (25.09)
 python ingest/populare_initiala.py --din-bronze --paralel 6   # baza, cu parserele noi, fără rețea
 # lanțul de măsurare pe PDF-urile din output/crawl/pdf (~10 min):
 python scripts/parseaza_pdf.py && python scripts/parseaza_tarife.py
@@ -212,4 +257,6 @@ Commit-urile zilei, în ordine:
 - **vocabularul:** `e283d4f`, `507acf8`, `50ed833`, `fd05965`;
 - **reparațiile de parser:** merge-urile `a7b166b` (rânduri), `4f65ecf` (valori),
   `e5d38c2` (părinte), `deccae3` (valori false), `328fd18` (secțiuni), `e163788`
-  (etichetă).
+  (etichetă);
+- **25.09:** `dea1d33` (traducerile sunt `DUBLURA`), merge-ul `f5b4395` (celule),
+  `8ab873d` (vocabular după celule).
