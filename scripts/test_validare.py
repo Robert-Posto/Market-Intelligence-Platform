@@ -1513,5 +1513,103 @@ T(_celula_din_stanga(([(495, 6, 468), (520, 6, 468)],
                      6, 468, 503, 511) is None, "dobanda NU e parinte")
 
 
+# --- celule: numele pe mai multe randuri in aceeasi celula cu bordura (25 sept) ---
+# Reparatia din 54aeb41, refacuta peste codul de acum, pe aceleasi 68 de documente:
+# mapate 6.536 -> 6.568, nicio valoare pierduta.
+from crawler.parser_tarife import _celula, _loc_eticheta, _orizontale  # noqa: E402
+
+
+def _dr(x0, x1, sus, jos, culoare):
+    """Un dreptunghi plin, fara contur, si muchiile lui orizontale, ca in pdfplumber."""
+    r = {"x0": x0, "x1": x1, "top": sus, "bottom": jos, "fill": True, "stroke": False,
+         "non_stroking_color": culoare}
+    pts = [(x0, sus), (x1, sus), (x1, jos), (x0, jos)]
+    return r, [dict(r, object_type="rect_edge", orientation="h", top=y, pts=pts)
+               for y in (sus, jos)]
+
+
+def ORIZ(*dreptunghiuri):
+    """y-urile bordurilor orizontale ale unei pagini facute doar din dreptunghiuri."""
+    class Pagina:
+        rects = [r for r, _m in dreptunghiuri]
+    muchii = [e for _r, m in dreptunghiuri for e in m]
+    return sorted({round(t, 1) for t, _a, _b in _orizontale(Pagina, muchii)})
+
+
+# BCR: fiecare rand e un dreptunghi plin; intre doua de aceeasi culoare nu e bordura
+ALBASTRU, GRI = (0.842, 0.876, 0.912), (0.946, 0.955, 0.968)
+T(ORIZ(_dr(36, 239, 95, 119.6, ALBASTRU), _dr(36, 239, 119.6, 132.1, ALBASTRU),
+       _dr(36, 239, 132.1, 144.6, GRI)) == [95, 132.1, 144.6],
+  "muchia comuna de aceeasi culoare NU e bordura (BCR)")
+# Eximbank: dreptunghi alb (gri 1.0) sub fiecare rand, pe celula alba (RGB)
+T(ORIZ(_dr(10, 164, 165.4, 202, (1.0, 1.0, 1.0)), _dr(15, 159, 171.5, 183.7, 1.0),
+       _dr(15, 159, 183.7, 195.9, 1.0)) == [165.4, 202],
+  "alb pe alb NU e bordura, oricum ar fi scrisa culoarea (Eximbank)")
+# ProCredit: bordura desenata ca dreptunghi negru de 0,48 puncte ramane bordura
+T(ORIZ(_dr(54, 301, 177.0, 177.48, 0.0)) == [177.0, 177.5],
+  "linia desenata ca dreptunghi ramane bordura (ProCredit)")
+
+T(_celula([(95, 36, 239), (120, 36, 239), (132, 36, 239)], 36, 239, 105, 113) == (95, 120),
+  "celula: bordurile de deasupra si de dedesubt")
+T(_celula([], 36, 239, 105, 113) is None, "fara borduri nu e celula")
+
+# locul randului in celula: "Comision de emitere", BCR PJ 7.1, un pret in celula
+BORD = [(385.6, 51, 573), (424.8, 51, 573)]
+CUV = [_w("Comision", 57, 400), _w("de", 111, 400), _w("emitere", 126, 400)]
+LOC = _loc_eticheta(CUV, [51, 207, 256], 0, "bordura", BORD, [395.4], 400, 408)
+T(LOC["celula"] == (385.6, 424.8) and LOC["un_pret"] and LOC["x_text"] == 57,
+  "loc: celula si pretul ei")
+T(LOC["liber"] == 156 - (168 - 57) - 2 * 6 and LOC["cuv1"] == 48,
+  "loc: cat mai incapea pe rand, cu padding-ul cel mic de ambele parti")
+T(_loc_eticheta([_w("Bancii", 100, 400)], [70, 166], 0, "bordura", BORD, [395.4],
+                400, 408)["liber"] == 0, "textul centrat nu lasa loc liber")
+T("liber" not in _loc_eticheta(CUV, [51, 207, 256], 0, "gol", BORD, [395.4], 400, 408),
+  "fara borduri verticale, locul liber nu se stie")
+T(not _loc_eticheta(CUV, [51, 207, 256], 0, "bordura", BORD, [], 400, 408)["un_pret"],
+  "celula fara pret NU e un singur serviciu (BCR, antetul matricei de pachete)")
+T(not _loc_eticheta(CUV, [51, 207, 256], 0, "bordura", BORD, [395.4, 410], 400, 408)["un_pret"],
+  "celula cu doua preturi e o lista")
+
+
+def LIPESTE(bloc, sus, jos, text, are_valori, x, **loc):
+    """Blocurile dupa ce randul intra langa blocul dat."""
+    blocuri = [bloc]
+    _adauga_eticheta(blocuri, sus, jos, text, are_valori, x=x, x_text=x + 1,
+                     bordura=True, **loc)
+    return blocuri
+
+
+# ProCredit: aceeasi celula, un pret, rand rupt de latime -> majuscula nu rupe numele
+BL = LIPESTE((181.6, 193.6, "Card de debit Visa Classic (LEI) sau Visa", True, 54, 55, True,
+              (177.5, 221.6), 0.5), 195.4, 207.4, "Classic în EURO", True, 54,
+             celula=(177.5, 221.6), un_pret=True, liber=150, cuv1=40)
+T(len(BL) == 1 and BL[0][2] == "Card de debit Visa Classic (LEI) sau Visa Classic în EURO"
+  and not BL[0][3] and BL[0][8] == 150, "aceeasi celula: majuscula nu rupe numele (ProCredit)")
+# BCR: trei comisioane ale cardului unul sub altul; "Comision" incapea pe randul de sus
+BL = LIPESTE((399.9, 407.2, "Comision de emitere", True, 51, 71.4, True, (385.6, 424.8), 50.9),
+             407.9, 414.9, "Comision de reînnoire", False, 51,
+             celula=(385.6, 424.8), un_pret=True, liber=47.3, cuv1=29.4)
+T(len(BL) == 2, "randul rupt de autor incepe alt nume (BCR, cuvantul incapea sus)")
+# Techventures: intre randuri e valoarea, scrisa in coloana numelui
+BL = LIPESTE((367.9, 377.9, "Card de debit în lei atașat contului curent", True, 13, 23, True,
+              (360.0, 430.0), 0), 394.5, 404.5, "expirare, administrare, livrare card emis /",
+             False, 13, celula=(360.0, 430.0), un_pret=True, liber=0, cuv1=40)
+T(len(BL) == 2, "peste un rand sarit NU se lipeste (Techventures)")
+# Garanti: celula cu mai multe preturi tine o lista (incasso documentar)
+BL = LIPESTE((283.9, 295.0, "Remiterea documentelor pentru plată/acceptare", True, 95, 96, True,
+              (245.2, 364.9), None), 298.2, 309.2, "Modificare", False, 95,
+             celula=(245.2, 364.9), un_pret=False)
+T(len(BL) == 2, "celula cu mai multe preturi: fiecare serviciu ramane al lui (Garanti)")
+# BCR: varianta din coloana din dreapta, aceeasi celula, nu continua numele din stanga
+BL = LIPESTE((100, 108, "Unități Bancare", False, 239, 240, True, (95, 120), 0),
+             110, 118, "Clientului", False, 36, celula=(95, 120), un_pret=True, liber=0, cuv1=40)
+T(len(BL) == 2, "alta coloana din aceeasi celula NU se lipeste")
+# banda de suma cu pretul ei ramane randul ei, si in aceeasi celula
+BL = LIPESTE((100, 108, "Retragere numerar de la ghișeu", True, 36, 37, True, (95, 125), 0),
+             110, 118, "≤ 100.000 EUR", True, 36, celula=(95, 125), un_pret=True, liber=0,
+             cuv1=10)
+T(len(BL) == 2, "banda cu pret din aceeasi celula ramane banda")
+
+
 print(f"\n{TRECUTE} trecute, {ESUATE} eșuate")
 sys.exit(1 if ESUATE else 0)
