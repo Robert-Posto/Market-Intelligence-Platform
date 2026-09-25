@@ -22,6 +22,9 @@ import normalizeaza as N
 
 MODEL = os.environ.get("MODEL_REZERVA", "claude-sonnet-5")
 MAX_LINII = 25
+# MIP_LLM_DOAR_CACHE=1: refolosește doar răspunsurile deja plătite, fără apeluri
+# noi — pentru refacerile din Bronze, care nu trebuie să coste.
+DOAR_CACHE = os.environ.get("MIP_LLM_DOAR_CACHE") == "1"
 CACHE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                      "bronze", "llm_cache")
 SISTEM = (
@@ -65,6 +68,11 @@ def extrage(linii, banca, url, categorie, client=None, raport=None):
         raspuns = open(cale, encoding="utf-8").read()
         if raport is not None:
             raport["llm_rezerva_din_cache"] += 1
+    elif cu_cache and DOAR_CACHE:
+        # refacere gratuită: ce nu e deja plătit rămâne neextras (se numără)
+        if raport is not None:
+            raport["llm_rezerva_sarite_fara_cache"] += 1
+        return []
     else:
         if client is None:
             import anthropic

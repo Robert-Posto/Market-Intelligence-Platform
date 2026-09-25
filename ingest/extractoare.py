@@ -413,7 +413,10 @@ RE_NU_TARIF = re.compile(
     # 4.911 „valori"; la fel raportul de transparență și clasamentul MiFID al
     # locurilor de execuție.
     r"|(?<![a-z])api(?![a-z])|aisp|pisp|technical|transparen[tț]a[-_ ]si[-_ ]publicare"
-    r"|ranking|execution[-_ ]venue|indici[-_ ]referinta",
+    r"|ranking|execution[-_ ]venue|indici[-_ ]referinta"
+    # BRD, 25.09: formularele fiscale americane IRS (W-8BEN, W-9), publicate
+    # pentru FATCA, dădeau „valori" din instrucțiunile de completare.
+    r"|(?<![a-z])f?iw-?8|(?<![a-z])f?iw-?9(?![0-9])|w-?8ben",
     re.I)
 
 
