@@ -1195,7 +1195,9 @@ def pdf_permis(url):
     Windows, iar fără cache fiecare deschidere de document plătea de două ori
     (o dată verificarea, o dată servirea) chiar și când fișierul era deja local.
     """
-    if not url or not url.startswith("https://"):
+    # http:// trece doar dacă documentul e deja în Bronze (se servește local,
+    # fără nicio cerere în rețea); descărcarea din rețea rămâne doar pe https
+    if not url or not (url.startswith("https://") or (url.startswith("http://") and _din_bronze(url))):
         return False
     if url not in _PERMISE:
         _PERMISE[url] = bool(interoghează(
@@ -1210,7 +1212,36 @@ def pdf_permis(url):
 CACHE_PDF = os.path.join(AICI, ".cache_pdf")
 
 
+def _din_bronze(url):
+    """Copia din Bronze a documentului, dacă există și e un PDF.
+
+    Bronze păstrează octeții exacți din care s-au extras cifrele. Servit de
+    acolo, vizualizatorul arată chiar versiunea citată (nu una pe care banca a
+    înlocuit-o între timp) și nu mai face nicio cerere către bancă. Înainte se
+    descărca din nou la prima deschidere, iar la unele bănci cererea cădea
+    (răspuns lent, pagină HTML în loc de PDF), deci documentul nu se deschidea.
+    """
+    radacina = os.path.dirname(AICI)
+    for p in (radacina, os.path.join(radacina, "ingest")):
+        if p not in sys.path:
+            sys.path.insert(0, p)
+    import flux
+    cale = flux.cale_bronze(url)
+    try:
+        with open(cale, "rb") as f:
+            return cale if f.read(4) == b"%PDF" else None
+    except OSError:
+        return None
+
+
 def adu_pdf(url):
+    cale_bronze = _din_bronze(url)
+    if cale_bronze:
+        return cale_bronze
+    return _adu_din_retea(url)
+
+
+def _adu_din_retea(url):
     """Aduce PDF-ul o singură dată și îl păstrează local.
 
     De ce prin serverul nostru: vizualizatorul propriu (PDF.js) are nevoie de

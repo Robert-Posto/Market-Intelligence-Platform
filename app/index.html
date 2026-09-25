@@ -415,14 +415,13 @@ const PAGINI = [
     {id:"overview",  nume:"Overview",              pdf:"",    t:"Overview", l:"Ce date avem pe fiecare categorie, cât de proaspete sunt și ce lipsește la fiecare bancă."},
     {id:"produse",   nume:"Produse & prețuri",     pdf:"2.1", t:"Produse & prețuri", l:"Comisioanele fiecărei bănci pe servicii: câte prețuri avem, între ce valori, câte sunt gratuite. Clic pe o celulă pentru dovezi."},
     {id:"rate",      nume:"Rate & indicatori",     pdf:"2.2", t:"Rate & indicatori", l:"Dobânda tipică a fiecărei bănci, pe termen (depozite) și pe produs (credite). Clic pe o celulă pentru dovezi."},
-    {id:"mobil",     nume:"Aplicații mobile",      pdf:"2.3", t:"Aplicații mobile & digital", l:"Nota, numărul de note, distribuția pe stele și versiunea fiecărei aplicații din App Store."},
+    {id:"mobil",     nume:"Aplicații & recenzii",  pdf:"2.3", t:"Aplicații mobile & recenzii", l:"Nota, distribuția pe stele și versiunea fiecărei aplicații, plus ce spun clienții în recenzii, cu răspunsurile băncilor."},
     {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Landing pages de campanie, reclame active, newsroom — ce se poate colecta și cum."},
     {id:"retea",     nume:"Rețea & operațional",   pdf:"2.5", t:"Rețea & operațional", l:"Sucursalele și ATM-urile fiecărei bănci, cu harta interactivă."},
     {id:"context",   nume:"Context de piață",      pdf:"2.6", t:"Context de piață", l:"Indicii de referință BNR: ROBOR, ROBID și IRCC."},
-    {id:"sentiment", nume:"Sentiment",             pdf:"2.7", t:"Sentiment", l:"Ce spun clienții în recenziile din App Store, pe bancă, cu răspunsurile băncilor. Autorii sunt pseudonimizați."},
   ]},
   {grup:"Analiză", chei:[
-    {id:"versus",  nume:"Versus Libra", pdf:"", t:"Versus Libra", l:"Libra față de până la trei bănci alese — unde câștigă, unde pierde, pe prețuri, dobânzi, aplicație, rețea și sentiment."},
+    {id:"versus",  nume:"Versus Libra", pdf:"", t:"Versus Libra", l:"Libra față de până la trei bănci alese — unde câștigă, unde pierde, pe prețuri, dobânzi, aplicație, rețea și recenzii."},
     {id:"banca",   nume:"Fișă bancă", pdf:"", t:"Fișă bancă", l:"Tot ce avem despre o bancă, într-un singur loc."},
     {id:"istoric", nume:"Istoric & schimbări", pdf:"", t:"Istoric și schimbări de preț", l:"Ce și-au schimbat băncile la prețuri: același serviciu, altă dată de vigoare, altă valoare."},
   ]},
@@ -962,11 +961,10 @@ R.overview = async () => {
   <div class="kpi" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
     ${card("2.1", "Comisioane", num(c.comisioane, 0), "prețuri curente (cont, carduri, transferuri)", cate("comisioane"), c.comisioane_la, "#/produse")}
     ${card("2.2", "Dobânzi", num(c.dobanzi, 0), "dobânzi curente la depozite și credite", cate("dobanzi"), c.dobanzi_la, "#/rate")}
-    ${card("2.3", "Aplicații mobile", num(c.aplicatii, 0), "aplicații iOS: notă, versiune, capturi", cate("rating"), c.aplicatii_la, "#/mobil")}
+    ${card("2.3", "Aplicații & recenzii", num(c.aplicatii, 0), `aplicații iOS, cu ${num(c.recenzii, 0)} recenzii și răspunsurile băncilor`, cate("rating"), c.aplicatii_la, "#/mobil")}
     ${card("2.4", "Campanii & marketing", "—", "necolectat încă — vezi ce se poate porni", 0, null, "#/campanii", true)}
     ${card("2.5", "Rețea", num(c.locatii, 0), "sucursale și ATM-uri pe hartă", cate("locatii"), c.locatii_la, "#/retea")}
     ${card("2.6", "Context de piață", num(c.indici, 0), "valori ROBOR, ROBID, IRCC de la BNR", null, c.indici_la, "#/context")}
-    ${card("2.7", "Sentiment", num(c.recenzii, 0), "recenzii App Store, cu răspunsul băncii", cate("recenzii"), c.aplicatii_la, "#/sentiment")}
     ${card("", "Istoric de prețuri", num(c.schimbari, 0), "schimbări de preț între versiunile documentelor", null, null, "#/istoric")}
   </div>
   <section>
@@ -1103,7 +1101,7 @@ R.banca = async (stare) => {
     <h2>Recenzii</h2>
     ${s ? `<p class="note" style="margin:0 0 10px">Nota recenziilor scrise <b>${num(s.medie_text)} ★</b> din ${s.review_uri} citite
       · ${s.negative} negative · nota App Store <b>${num(s.medie_store)} ★</b>.
-      <a href="#/sentiment?banca=${encodeURIComponent(slug)}">Toate recenziile →</a></p>
+      <a href="#/mobil?banca=${encodeURIComponent(slug)}&la=recenzii">Toate recenziile →</a></p>
       ${sent.recente.slice(0, 3).map(x => `<div class="rec"><div class="rec-cap">
         <span class="rec-stele ${x.rating >= 4 ? "bun" : x.rating <= 2 ? "rau" : ""}">${"★".repeat(x.rating)}${"☆".repeat(5 - x.rating)}</span>
         <span class="mono gri" style="font-size:10.5px;margin-left:auto">${esc(String(x.postat_la || "").slice(0, 10))}</span></div>
@@ -1286,130 +1284,101 @@ R.rate = async (stare) => {
   </section>`;
 };
 
-R.mobil = async () => {
-  const [d, m] = await Promise.all([ia("/api/mobil"), meta()]);
-  /* Un singur tabel în locul celor două (versiuni + „două note") și al
-     caruselului cu capturile tuturor băncilor, care era 76% din pagină.
-     Capturile se deschid acum doar pentru banca aleasă. */
-  const capturiPe = {};
-  d.screenshoturi.forEach(s => (capturiPe[s.banca] = capturiPe[s.banca] || []).push(s.url));
-  CACHE.capturi = capturiPe;
-  // recenziile scrise, însumate pe bancă (pot fi mai multe magazine)
-  const text = {};
-  d.review_sumar.forEach(r => {
-    const t = text[r.banca] = text[r.banca] || {n: 0, s: 0};
-    t.n += r.review_uri; t.s += Number(r.rating_mediu_text) * r.review_uri;
-  });
-  const v = d.versiuni.map(r => ({...r, text_n: (text[r.banca] || {}).n || 0,
-    text_medie: text[r.banca] ? text[r.banca].s / text[r.banca].n : null}));
-  const nota = r => r.note_lansare
-    ? `<details class="despre" style="margin:0"><summary>${esc(r.note_lansare.slice(0, 70).replace(/\s+\S*$/, ""))}…</summary>
-         <div class="note" style="white-space:pre-line;max-width:60ch">${esc(r.note_lansare)}</div></details>`
-    : '<span class="gri">—</span>';
-  return `
-  <section>
-    <p class="note" style="margin:0 0 10px"><b>${d.versiuni.length} din 30 de bănci</b> au aplicația identificată în App Store.
-      Clic pe antet sortează; Libra rămâne prima. Nota din store și nota recenziilor scrise
-      <b>nu</b> sunt același lucru — vezi „Despre date".</p>
-    ${tabel(v, [
-      {cap: "Bancă", html: true, s: r => m.nume[r.banca] || r.banca, val: r => etichetaBanca(r.banca, m, {fisa: true, tag: true})},
-      {cap: "Nota App Store", cls: "num", html: true, s: r => r.rating_agregat,
-       val: r => r.rating_agregat ? `<b>${num(r.rating_agregat)}</b> ★` : "—"},
-      {cap: "Nr. note", cls: "num", s: r => r.volum_rating, val: r => num(r.volum_rating, 0),
-       titlu: "câți oameni au dat o notă — indică baza de utilizatori"},
-      {cap: "Distribuția notelor", html: true, val: r => bareStele(r.distributie_stele),
-       titlu: "toate notele din App Store, de la 5★ (verde) la 1★ (portocaliu); treci cu mouse-ul pentru cifre"},
-      {cap: "Nota recenziilor scrise", cls: "num", html: true, s: r => r.text_medie,
-       val: r => r.text_medie !== null ? `${num(r.text_medie)} ★<span class="sub">din ${r.text_n} citite</span>` : "—"},
-      {cap: "Versiune", cls: "mono", s: r => r.versiune, k: "versiune"},
-      {cap: "Ce e nou în versiune", html: true, val: nota},
-      {cap: "Capturi", html: true, s: r => (capturiPe[r.banca] || []).length,
-       val: r => (capturiPe[r.banca] || []).length
-         ? `<button style="white-space:nowrap" onclick="arataCapturi('${esc(r.banca)}')">${capturiPe[r.banca].length} capturi</button>` : "—"},
-    ], {sort: true, lung: true, libra: r => r.banca, implicit: [2, "desc"]})}
-    ${despre(`${DOUA_NOTE}
-      <b>Data ultimei actualizări</b> a aplicației nu e încă colectată: avem versiunea curentă,
-      nu și ziua în care a apărut.`)}
-  </section>`;
-};
-
-/* Capturile din listing, pentru o singură bancă, în sertar */
-async function arataCapturi(banca){
-  const m = await meta(), urls = (CACHE.capturi || {})[banca] || [];
-  deschideSertarHtml(`${m.nume[banca] || banca} · capturi din App Store`,
-    "Imaginile pe care banca le publică singură în store — ce alege să arate primul spune ce consideră diferențiator.",
-    `<div style="display:flex;flex-wrap:wrap;gap:10px">${urls.map((u, i) =>
-      `<a href="${esc(u)}" target="_blank" rel="noopener" title="deschide mărit">
-         <img src="${esc(u)}" alt="captura ${i + 1}" style="height:300px;border-radius:9px;border:1px solid var(--line)"></a>`).join("")}</div>`);
-}
-
-R.sentiment = async (stare) => {
+/* ---------------- 2.3 Aplicații mobile și recenzii ----------------
+   Pagina 2.7 (Sentiment) s-a mutat aici, la cererea lui Robert (25.09): și
+   aplicația, și recenziile vin din același loc (pagina publică din store), iar
+   întrebările merg împreună („ce notă are aplicația și de ce se plâng
+   oamenii"). Un comutator iOS / Android; Android nu e încă colectat. */
+R.mobil = async (stare) => {
+  const plat = stare.platforma || "ios";
   const bSel = stare.banca || "", nSel = stare.nota || "", sfSel = stare.storefront || "";
-  const [d, m] = await Promise.all([
-    ia(`/api/sentiment?banca=${encodeURIComponent(bSel)}&nota=${encodeURIComponent(nSel)}`
-       + `&storefront=${encodeURIComponent(sfSel)}`),
+  const f = o => `mergi('mobil',${esc(JSON.stringify({platforma: plat, banca: bSel, nota: nSel, storefront: sfSel, ...o}))})`;
+  const comutator = `<div class="filtre" style="margin-bottom:16px">
+    <div class="taburi">
+      <button class="${plat === "ios" ? "activ" : ""}" onclick="mergi('mobil',{platforma:'ios'})">iOS · App Store</button>
+      <button class="${plat === "android" ? "activ" : ""}" onclick="mergi('mobil',{platforma:'android'})">Android · Google Play</button>
+    </div></div>`;
+
+  if(plat === "android") return `${comutator}
+    <section>
+      <div class="gol-stare"><b>Android — în lucru</b>
+        Aplicațiile din Google Play nu sunt încă colectate.</div>
+      <h4>Ce va conține</h4>
+      <p class="note">Aceleași informații ca la iOS, pentru aceleași bănci: nota și numărul de note,
+        distribuția pe stele, versiunea curentă și ce e nou în ea, capturile din listing și
+        recenziile scrise, cu răspunsul băncii. Sursa va fi pagina publică a aplicației din
+        Google Play, cu aceleași reguli ca la App Store: doar ce permite robots.txt, fără conturi.</p>
+    </section>`;
+
+  const [d, s, m] = await Promise.all([
+    ia("/api/mobil"),
+    ia(`/api/sentiment?banca=${encodeURIComponent(bSel)}&nota=${encodeURIComponent(nSel)}&storefront=${encodeURIComponent(sfSel)}`),
     meta(),
   ]);
-  const dist = {};
-  d.distributie.forEach(r => { (dist[r.banca] = dist[r.banca] || [0, 0, 0, 0, 0])[5 - r.rating] = r.n; });
-  const f = o => `mergi('sentiment',${esc(JSON.stringify({banca: bSel, nota: nSel, storefront: sfSel, ...o}))})`;
-  const dif = r => (r.medie_store && r.medie_text) ? r.medie_text - r.medie_store : null;
+  const capturiPe = {};
+  d.screenshoturi.forEach(x => (capturiPe[x.banca] = capturiPe[x.banca] || []).push(x.url));
+  CACHE.capturi = capturiPe;
+  const rec = Object.fromEntries(s.sumar.map(x => [x.banca, x]));
+  const v = d.versiuni.map(r => ({...r, rec: rec[r.banca] || null}));
+  const dif = r => (r.rec && r.rec.medie_text && r.rating_agregat) ? r.rec.medie_text - Number(r.rating_agregat) : null;
+  const nota = r => r.note_lansare
+    ? `<details class="despre" style="margin:0" onclick="event.stopPropagation()"><summary>${esc(r.note_lansare.slice(0, 70).replace(/\s+\S*$/, ""))}…</summary>
+         <div class="note" style="white-space:pre-line;max-width:60ch">${esc(r.note_lansare)}</div></details>`
+    : '<span class="gri">—</span>';
 
-  /* Sumarul: distribuția e o bară în rând (erau ~16 blocuri separate, ~3.000 px),
-     ordonat de la cea mai proastă notă a recenziilor, clic pe rând = recenziile
-     băncii. Diferența are semn: text sub store = portocaliu, peste = verde. */
-  const sumar = tabel(d.sumar, [
-    {cap: "Bancă", html: true, s: r => r.nume, val: r => etichetaBanca(r.banca, m, {tag: true})},
-    {cap: "Nota recenziilor scrise", cls: "num", html: true, s: r => r.medie_text,
-     val: r => `<b>${num(r.medie_text)}</b> ★<span class="sub">din ${r.review_uri} citite</span>`},
-    {cap: "Distribuția recenziilor", html: true, val: r => bareStele(dist[r.banca], 120),
-     titlu: "recenziile scrise citite, de la 5★ (verde) la 1★ (portocaliu)"},
-    {cap: "Negative (1–2★)", cls: "num", html: true, s: r => r.negative / r.review_uri,
-     val: r => `${r.negative} din ${r.review_uri} <span class="gri">(${Math.round(100 * r.negative / r.review_uri)}%)</span>`},
-    {cap: "Nota App Store", cls: "num", html: true, s: r => r.medie_store,
-     val: r => r.medie_store ? `${num(r.medie_store)} ★<span class="sub">din ${num(r.volum_store, 0)} note</span>` : "—"},
+  const aplicatii = tabel(v, [
+    {cap: "Bancă", html: true, s: r => m.nume[r.banca] || r.banca, val: r => etichetaBanca(r.banca, m, {tag: true})},
+    {cap: "Nota App Store", cls: "num", html: true, s: r => r.rating_agregat,
+     val: r => r.rating_agregat ? `<b>${num(r.rating_agregat)}</b> ★` : "—"},
+    {cap: "Nr. note", cls: "num", s: r => r.volum_rating, val: r => num(r.volum_rating, 0),
+     titlu: "câți oameni au dat o notă — indică baza de utilizatori"},
+    {cap: "Distribuția notelor", html: true, val: r => bareStele(r.distributie_stele, 120),
+     titlu: "toate notele din App Store, de la 5★ (verde) la 1★ (portocaliu); treci cu mouse-ul pentru cifre"},
+    {cap: "Nota recenziilor scrise", cls: "num", html: true, s: r => r.rec ? r.rec.medie_text : null,
+     val: r => r.rec ? `${num(r.rec.medie_text)} ★<span class="sub">din ${r.rec.review_uri} citite</span>` : "—"},
+    {cap: "Negative (1–2★)", cls: "num", html: true, s: r => r.rec ? r.rec.negative / r.rec.review_uri : null,
+     val: r => r.rec ? `${r.rec.negative} din ${r.rec.review_uri}<span class="sub">${Math.round(100 * r.rec.negative / r.rec.review_uri)}%</span>` : "—"},
     {cap: "Diferență text − store", cls: "num", html: true, s: dif,
      titlu: "cât de mult se abate nota celor care scriu de nota tuturor votanților",
      val: r => { const x = dif(r); return x === null ? "—" : Math.abs(x) < 0.005 ? "0"
        : `<b style="color:${x < 0 ? "var(--warn)" : "var(--ok)"}">${x > 0 ? "+" : "−"}${num(Math.abs(x))}</b>`; }},
-  ], {sort: true, lung: true, libra: r => r.banca, implicit: [1, "asc"],
+    {cap: "Versiune", cls: "mono", s: r => r.versiune, k: "versiune"},
+    {cap: "Ce e nou", html: true, val: nota},
+    {cap: "Capturi", html: true, s: r => (capturiPe[r.banca] || []).length,
+     val: r => (capturiPe[r.banca] || []).length
+       ? `<button style="white-space:nowrap" onclick="event.stopPropagation();arataCapturi('${esc(r.banca)}')">${capturiPe[r.banca].length} capturi</button>` : "—"},
+  ], {sort: true, lung: true, libra: r => r.banca, implicit: [2, "desc"],
       rand: r => ({cls: r.banca === bSel ? "ales" : "",
-                   clic: f({banca: r.banca === bSel ? "" : r.banca})})});
+                   clic: r.rec ? f({banca: r.banca === bSel ? "" : r.banca, la: "recenzii"}) : ""})});
 
   const titluRec = bSel ? `Recenziile ${esc(m.nume[bSel] || bSel)}, cele negative întâi` : "Cele mai noi recenzii";
-  return `
-  <div class="bara-fixa"><div class="filtre">
-    <label class="f">Bancă
-      <select onchange="${f({banca: "__v"}).replace("&quot;__v&quot;", "this.value")}">
-        <option value="">toate băncile</option>
-        ${d.sumar.slice().sort((a, b) => a.nume.localeCompare(b.nume, "ro")).map(s =>
-          `<option value="${esc(s.banca)}" ${s.banca === bSel ? "selected" : ""}>${esc(s.nume)} (${s.review_uri})</option>`).join("")}
-      </select></label>
-    <label class="f">Notă
-      <select onchange="${f({nota: "__v"}).replace("&quot;__v&quot;", "this.value")}">
-        <option value="">toate notele</option>
-        ${[5,4,3,2,1].map(n => `<option value="${n}" ${String(n) === nSel ? "selected" : ""}>${"★".repeat(n)}</option>`).join("")}
-      </select></label>
-    <label class="f">Magazin
-      <select onchange="${f({storefront: "__v"}).replace("&quot;__v&quot;", "this.value")}">
-        <option value="">toate</option>
-        ${d.storefronts.map(s => `<option value="${esc(s.storefront)}" ${s.storefront === sfSel ? "selected" : ""}>${esc(s.storefront)} (${s.n})</option>`).join("")}
-      </select></label>
-    ${(bSel || nSel || sfSel) ? `<button onclick="mergi('sentiment',{})">Șterge filtrele</button>` : ""}
+  const selF = (cheie, opt) => `<select onchange="${f({[cheie]: "__v"}).replace("&quot;__v&quot;", "this.value")}">${opt}</select>`;
+  return `${comutator}
+  <section>
+    <h2>Aplicațiile</h2>
+    <p class="note" style="margin:0 0 10px"><b>${d.versiuni.length} din 30 de bănci</b> au aplicația identificată în App Store.
+      <b>Clic pe o bancă</b> pentru recenziile ei (mai jos). Clic pe antet sortează; Libra rămâne prima.</p>
+    ${aplicatii}
+    ${despre(`${DOUA_NOTE}
+      Recenziile sunt reale, de pe pagina publică a aplicației din App Store; autorii sunt pseudonimizați
+      la colectare (Apple afișează numele real).<br>
+      <b>Data ultimei actualizări</b> a aplicației nu e încă colectată: avem versiunea curentă, nu și ziua în care a apărut.`)}
+  </section>
+  <div class="bara-fixa" id="recenzii"><div class="filtre">
+    <b style="font-family:'Source Serif 4',Georgia,serif;font-size:16px;margin-right:6px">Recenzii</b>
+    <label class="f">Bancă ${selF("banca", `<option value="">toate băncile</option>
+      ${s.sumar.slice().sort((a, b) => a.nume.localeCompare(b.nume, "ro")).map(x =>
+        `<option value="${esc(x.banca)}" ${x.banca === bSel ? "selected" : ""}>${esc(x.nume)} (${x.review_uri})</option>`).join("")}`)}</label>
+    <label class="f">Notă ${selF("nota", `<option value="">toate notele</option>
+      ${[5,4,3,2,1].map(n => `<option value="${n}" ${String(n) === nSel ? "selected" : ""}>${"★".repeat(n)}</option>`).join("")}`)}</label>
+    <label class="f">Magazin ${selF("storefront", `<option value="">toate</option>
+      ${s.storefronts.map(x => `<option value="${esc(x.storefront)}" ${x.storefront === sfSel ? "selected" : ""}>${esc(x.storefront)} (${x.n})</option>`).join("")}`)}</label>
+    ${(bSel || nSel || sfSel) ? `<button onclick="mergi('mobil',{platforma:'ios',la:'recenzii'})">Șterge filtrele</button>` : ""}
+    <span class="note" style="margin-left:auto">${num(s.total_filtrat, 0)} în filtrul curent</span>
   </div></div>
   <section>
-    <h2>Sumar pe bancă</h2>
-    <p class="note" style="margin:0 0 10px">Ordonat de la cea mai proastă notă a recenziilor scrise.
-      <b>Clic pe o bancă</b> pentru recenziile ei (mai jos). Clic pe antet sortează.</p>
-    ${sumar}
-    ${despre(`${DOUA_NOTE}
-      Toate recenziile sunt reale, de pe pagina publică a aplicației din App Store; autorii sunt
-      pseudonimizați la colectare (Apple afișează numele real).`)}
-  </section>
-  <section>
-    <h2>${titluRec} <span class="mono gri" style="font-size:12px;font-weight:400">
-      ${num(d.total_filtrat, 0)} în filtrul curent</span></h2>
-    ${d.recente.length ? d.recente.map((r, i) => `
+    <h2>${titluRec}</h2>
+    ${s.recente.length ? s.recente.map((r, i) => `
       <div class="rec" ${i >= 15 ? 'data-ascuns style="display:none"' : ""}>
         <div class="rec-cap">
           <span class="rec-stele ${r.rating >= 4 ? "bun" : r.rating <= 2 ? "rau" : ""}">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</span>
@@ -1423,10 +1392,19 @@ R.sentiment = async (stare) => {
             background:var(--accent-tint);border-radius:0 7px 7px 0;font-size:12px">
             <b>Răspunsul băncii:</b> ${esc(r.raspuns_banca)}</div>` : ""}
       </div>`).join("") : '<p class="note">Nicio recenzie pentru filtrul curent.</p>'}
-    ${d.recente.length > 15 ? `<button onclick="this.closest('section').querySelectorAll('[data-ascuns]').forEach(x=>x.style.display='');this.remove()"
-        >Arată toate cele ${d.recente.length} recenzii</button>` : ""}
+    ${s.recente.length > 15 ? `<button onclick="this.closest('section').querySelectorAll('[data-ascuns]').forEach(x=>x.style.display='');this.remove()"
+        >Arată toate cele ${s.recente.length} recenzii</button>` : ""}
   </section>`;
 };
+
+async function arataCapturi(banca){
+  const m = await meta(), urls = (CACHE.capturi || {})[banca] || [];
+  deschideSertarHtml(`${m.nume[banca] || banca} · capturi din App Store`,
+    "Imaginile pe care banca le publică singură în store — ce alege să arate primul spune ce consideră diferențiator.",
+    `<div style="display:flex;flex-wrap:wrap;gap:10px">${urls.map((u, i) =>
+      `<a href="${esc(u)}" target="_blank" rel="noopener" title="deschide mărit">
+         <img src="${esc(u)}" alt="captura ${i + 1}" style="height:300px;border-radius:9px;border:1px solid var(--line)"></a>`).join("")}</div>`);
+}
 
 R.retea = async () => {
   const [d, m] = await Promise.all([ia("/api/locatii"), meta()]);
@@ -1689,7 +1667,7 @@ R.versus = async (stare) => {
         ["ATM-uri proprii", "bancomate proprii (acoperire parțială)", locPe,
          r => r && r.atm ? numar(r.atm, "", "în România") : null],
       ])
-    + sectiuneExtra("Sentiment (2.7)", "mare_bun", [
+    + sectiuneExtra("Recenzii App Store (2.3)", "mare_bun", [
         ["Nota recenziilor scrise", "nota celor care au scris o recenzie — mai critică decât nota din store", sentPe,
          r => r && r.medie_text ? numar(r.medie_text, " ★", `${num(r.review_uri, 0)} recenzii`) : null],
         ["Recenzii negative", "cât la sută sunt de 1–2 stele (mai puțin = mai bine)", sentPe,
@@ -2125,6 +2103,10 @@ async function randeaza(){
   const brut = location.hash.replace(/^#\/?/, "") || "overview";
   const [id, qs] = brut.split("?");
   const stare = Object.fromEntries(new URLSearchParams(qs || ""));
+  if(id === "sentiment"){                      // pagina 2.7 s-a mutat în 2.3
+    const q = new URLSearchParams(qs || ""); q.set("la", "recenzii");
+    location.replace(`#/mobil?${q}`); return;
+  }
   const p = toatePag.find(x => x.id === id) || toatePag[0];
   meniu(p.id);
   document.getElementById("titlu").textContent = p.t;
@@ -2148,6 +2130,9 @@ async function randeaza(){
   const bara = gazda.querySelector(".bara-fixa");
   principal.style.setProperty("--sub-bara", (bara ? Math.max(bara.offsetHeight - 26, 0) : -26) + "px");
   principal.scrollTop = sus;
+  const tinta = stare.la && document.getElementById(stare.la);
+  if(tinta && !aceeasi) tinta.scrollIntoView();
+  else if(tinta && tinta.getBoundingClientRect().top > principal.clientHeight) tinta.scrollIntoView();
 }
 window.addEventListener("hashchange", randeaza);
 randeaza();
