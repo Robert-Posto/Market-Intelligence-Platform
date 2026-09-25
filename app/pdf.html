@@ -16,28 +16,31 @@
      randăm noi documentul — atunci pagina și evidențierea nu mai depind de ce
      are instalat cititorul. */
   :root{
-    --bg:#eef1f4; --surface:#fff; --ink:#1b2430; --muted:#5b6b7a; --line:#c7d0d9;
-    --accent:#1d6f6f; --accent-tint:#dcefee; --marca:#e23b45;
-    --nav:#111e33; --nav-slab:#7b8ca3;
+    /* aceeași paletă ca aplicația: fildeș cald + vișiniu, antetul ca bara laterală */
+    --bg:#f5f1ec; --surface:#fffdfa; --ink:#2a1f22; --muted:#6e615d; --line:#e3dad0;
+    --line-2:#d6cabd;
+    --accent:#7a1e2c; --accent-tint:#f5e8e6; --marca:#e6c9b5;
+    --nav:#6e1a28; --nav-2:#561420; --nav-ink:#f6ece6; --nav-slab:#e6c9b5;
   }
   @media (prefers-color-scheme:dark){
-    :root{--bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4;
-          --line:#2c3540; --accent:#59c2c2; --accent-tint:#123030;}
+    :root{--bg:#1b1517; --surface:#251d1f; --ink:#efe6e2; --muted:#b4a5a0;
+          --line:#3a2e30; --line-2:#4a3b3d; --accent:#e7a3ab; --accent-tint:#3b2428;
+          --nav:#4e1520; --nav-2:#3a0f18;}
   }
   *{box-sizing:border-box}
   html,body{height:100%;margin:0}
   body{background:var(--bg);color:var(--ink);
        font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif;
        display:flex;flex-direction:column}
-  header{background:var(--nav);color:#fff;padding:11px 18px;display:flex;
+  header{background:linear-gradient(90deg,var(--nav),var(--nav-2));color:var(--nav-ink);padding:11px 18px;display:flex;
          flex-wrap:wrap;gap:14px;align-items:center}
   header h1{font-family:"Source Serif 4",Georgia,serif;font-size:16px;margin:0;font-weight:600}
   header h1 i{color:var(--marca);font-style:italic}
   header .sp{flex:1}
-  header a,header button{font:inherit;font-size:12.5px;color:#fff;text-decoration:none;
-    border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:7px;
+  header a,header button{font:inherit;font-size:12.5px;color:var(--nav-ink);text-decoration:none;
+    border:1px solid rgba(246,236,230,.28);background:transparent;border-radius:7px;
     padding:5px 11px;cursor:pointer}
-  header a:hover,header button:hover{background:rgba(255,255,255,.12)}
+  header a:hover,header button:hover{background:rgba(246,236,230,.10)}
   .bara{background:var(--surface);border-bottom:1px solid var(--line);
         padding:9px 18px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;
         font-size:12.5px}
@@ -45,12 +48,12 @@
   .bara .cit b{color:var(--ink);background:#ffe9a8;padding:0 3px;border-radius:2px}
   .bara .nav{display:flex;gap:6px;align-items:center}
   .bara button{font:inherit;font-size:12.5px;padding:4px 9px;border-radius:6px;
-               border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+               border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer}
   .bara button:disabled{opacity:.45;cursor:not-allowed}
   .bara .pg{font-family:"IBM Plex Mono",monospace}
   #zona{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;
         align-items:center;gap:16px}
-  .foaie{position:relative;box-shadow:0 2px 14px rgba(16,24,32,.18);background:#fff;
+  .foaie{position:relative;box-shadow:0 2px 14px rgba(58,22,28,.14);background:#fff;
          border-radius:3px}
   .foaie canvas{display:block;border-radius:3px}
   /* Evidențierea: dreptunghiuri desenate peste pagină, din pozițiile reale ale
