@@ -402,6 +402,26 @@
   .r .rx .cit mark{background:var(--warn-tint);color:var(--ink);font-weight:600;padding:0 2px;border-radius:2px}
   .r .rx .meta{margin-top:4px;display:flex;flex-wrap:wrap;gap:5px}
   .r .ind{font-size:10px;color:var(--accent);margin-left:6px}
+  /* 2.4: conturile sociale, un card pe bancă */
+  .rs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:12px}
+  .rs-card{border:1px solid var(--line);border-radius:11px;padding:12px 14px 13px;
+           display:flex;flex-direction:column;gap:10px;min-width:0}
+  .rs-card.ref{background:var(--accent-tint);border-color:var(--accent)}
+  .rs-cap{display:flex;align-items:center;gap:11px;min-height:34px;padding-bottom:9px;
+          border-bottom:1px solid var(--line)}
+  .rs-logo{width:112px;height:34px;display:flex;align-items:center;flex:none}
+  .rs-logo img{max-height:34px;max-width:112px;object-fit:contain}
+  .rs-nume{font-size:13px;font-weight:600;line-height:1.3;min-width:0}
+  .rs-lista{display:flex;flex-direction:column;gap:6px}
+  .rs-r{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:9px;align-items:center;font-size:12.5px}
+  .rs-ic{height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+         font:600 10px "IBM Plex Mono",monospace;color:#fff;letter-spacing:.02em}
+  .rs-ic.facebook{background:#1877f2} .rs-ic.linkedin{background:#0a66c2}
+  .rs-ic.instagram{background:#c13584} .rs-ic.tiktok{background:#161823;box-shadow:inset 0 0 0 1px #fe2c55}
+  .rs-r a{color:var(--ink);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rs-r a:hover{color:var(--accent);text-decoration:underline}
+  .rs-r .pill{font-size:9.5px;white-space:nowrap}
+  .rs-leg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:11.5px;color:var(--muted);margin:10px 0 0}
   @media (max-width:900px){ body{flex-direction:column} nav{width:auto;height:auto;border-bottom:1px solid var(--nav-line)} main{height:auto} }
 </style>
 </head>
@@ -440,7 +460,7 @@ const PAGINI = [
     {id:"produse",   nume:"Produse & prețuri",     pdf:"2.1", t:"Produse & prețuri", l:"Comisioanele fiecărei bănci pe servicii: câte prețuri avem, între ce valori, câte sunt gratuite. Clic pe o celulă pentru dovezi."},
     {id:"rate",      nume:"Rate & indicatori",     pdf:"2.2", t:"Rate & indicatori", l:"Dobânda tipică a fiecărei bănci, pe termen (depozite) și pe produs (credite). Clic pe o celulă pentru dovezi."},
     {id:"mobil",     nume:"Aplicații & recenzii",  pdf:"2.3", t:"Aplicații mobile & recenzii", l:"Nota, distribuția pe stele și versiunea fiecărei aplicații, plus ce spun clienții în recenzii, cu răspunsurile băncilor."},
-    {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Landing pages de campanie, reclame active, newsroom — ce se poate colecta și cum."},
+    {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Conturile oficiale ale fiecărei bănci pe Facebook, LinkedIn, Instagram și TikTok. Campaniile și reclamele urmează: mai jos, ce se poate colecta și cum."},
     {id:"retea",     nume:"Rețea & operațional",   pdf:"2.5", t:"Rețea & operațional", l:"Sucursalele și ATM-urile fiecărei bănci, cu harta interactivă."},
     {id:"context",   nume:"Context de piață",      pdf:"2.6", t:"Context de piață", l:"Indicii de referință BNR: ROBOR, ROBID și IRCC."},
   ]},
@@ -524,6 +544,22 @@ function sorteaza(th){
     return compara(va, vb) * (sens === "asc" ? 1 : -1);
   });
   rows.forEach(r => tb.appendChild(r));
+}
+
+/* „Romana” găsește „Română”: pe carduri se caută și în nume scrise cu diacritice */
+const fara_diacritice = t => String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+/* 2.4: căutare pe cardurile băncilor, fără cerere nouă */
+function cautaCarduri(inp){
+  const t = fara_diacritice(inp.value.trim());
+  let n = 0;
+  document.querySelectorAll("#rs-grid .rs-card").forEach(c => {
+    const da = !t || (c.dataset.cauta || "").includes(t);
+    c.style.display = da ? "" : "none";
+    n += da;
+  });
+  document.getElementById("rs-n").textContent = t ? `${n} ${n === 1 ? "bancă" : "bănci"}` : "";
+  document.getElementById("rs-gol").style.display = t && !n ? "" : "none";
 }
 
 /* căutare pe rândurile unui tabel, fără cerere nouă */
@@ -1499,10 +1535,79 @@ R.retea = async () => {
   </section>`;
 };
 
-R.campanii = async () => `
+/* Numele contului din adresă: fără domeniu, fără `company/` sau `pages/`,
+   fără id-ul numeric pe care Facebook îl lipește la paginile vechi. */
+function contSocial(url, retea){
+  let p = url.replace(/^https?:\/\/[^/]+\/?/, "").replace(/[?#].*$/, "").replace(/\/+$/, "");
+  try{ p = decodeURIComponent(p); }catch(e){}
+  const seg = p.replace(/^(company|pages|p)\//, "").split("/").filter(Boolean);
+  const nume = seg.find(s => !/^\d+$/.test(s));
+  if(!nume) return "pagină fără nume · " + (seg[0] || "");
+  const h = nume.replace(/-\d{9,}$/, "");
+  return (retea === "instagram" || retea === "tiktok") && !h.startsWith("@") ? "@" + h : h;
+}
+
+const RETELE = [
+  {k: "facebook", ic: "f"}, {k: "linkedin", ic: "in"}, {k: "instagram", ic: "ig"}, {k: "tiktok", ic: "tt"},
+];
+
+R.campanii = async () => {
+  const [m, rs] = await Promise.all([meta(), ia("/api/retele")]);
+  const pe = {};
+  rs.forEach(r => { (pe[r.slug] = pe[r.slug] || {})[r.retea] = r; });
+  const lipsa = r => !r || r.url === "NEGASIT";
+  const deVerificat = r => r && !lipsa(r) && (r.incredere === "medie" || r.incredere === "mica" || r.nivel.endsWith("?"));
+  const banci = Object.keys(m.rand)
+    .sort((a, b) => (b === "libra") - (a === "libra") || (m.nume[a] || a).localeCompare(m.nume[b] || b, "ro"));
+
+  const rand = (x, r) => {
+    if(lipsa(r)) return "";
+    const titlu = [r.sursa === "site banca" ? "link de pe site-ul băncii" : "găsit prin căutare web",
+                   "încredere " + r.incredere, r.nota].filter(Boolean).join(" · ");
+    const pill = r.nivel === "grup" ? '<span class="pill" title="contul grupului internațional, nu al sucursalei din România">International</span>'
+               : deVerificat(r) ? '<span class="pill amb">de verificat</span>' : "";
+    return `<div class="rs-r" title="${esc(titlu)}"><span class="rs-ic ${x.k}">${x.ic}</span>
+      <a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${esc(contSocial(r.url, x.k))}</a>${pill}</div>`;
+  };
+
+  const cauta = b => fara_diacritice([b, m.nume[b] || "", ...RETELE.map(x => {
+    const r = (pe[b] || {})[x.k]; return lipsa(r) ? "" : contSocial(r.url, x.k); })].join(" "));
+  const card = b => `<div class="rs-card${b === "libra" ? " ref" : ""}" data-cauta="${esc(cauta(b))}">
+    <div class="rs-cap">
+      <div class="rs-logo">${m.logo[b] ? `<img src="${esc(m.logo[b])}" alt="${esc(m.nume[b] || b)}">`
+        : `<span class="vs-init">${esc((m.nume[b] || b).slice(0, 2).toUpperCase())}</span>`}</div>
+      <div class="rs-nume"><a class="fisa" href="#/banca?b=${encodeURIComponent(b)}" title="fișa băncii"><span class="nm">${esc(m.nume[b] || b)}</span></a>${
+        b === "libra" ? '<span class="tag-libra">noi</span>' : ""}</div>
+    </div>
+    <div class="rs-lista">${RETELE.map(x => rand(x, (pe[b] || {})[x.k])).join("")}</div>
+  </div>`;
+
+  return `
+  <section id="retele">
+    <div class="filtre" style="align-items:center">
+      <h2 style="margin:0">Conturi oficiale pe rețelele sociale</h2>
+      <span class="gri" id="rs-n" style="font-size:12px;margin-left:auto"></span>
+      <input class="cauta" type="search" placeholder="Caută bancă sau cont…" oninput="cautaCarduri(this)">
+    </div>
+    <div class="rs-grid" id="rs-grid">${banci.map(card).join("")}</div>
+    <p class="note" id="rs-gol" style="display:none">Nicio bancă și niciun cont nu se potrivesc căutării.</p>
+    <div class="rs-leg">
+      <span><span class="pill">International</span> contul grupului; sucursala din România nu are unul propriu</span>
+      <span><span class="pill amb">de verificat</span> încredere medie sau mică, cere o privire de om</span>
+      <span>treci cu mouse-ul peste un rând: de unde vine linkul</span>
+    </div>
+    ${despre(`Lista e făcută o dată, pe 28.09.2026, nu de pipeline. Întâi s-au citit linkurile din subsolul
+      site-ului fiecărei bănci, prin stiva HTTP a proiectului (robots.txt respectat, User-Agent propriu).
+      Unde site-ul ne refuză (403 la Banca Transilvania, CEC, UniCredit, Intesa; robots.txt la Banorient)
+      sau nu pune linkul, contul vine din căutare web, fără să ocolim blocarea.<br>
+      O rețea care lipsește din card nu a apărut nici pe site, nici în căutare. Conturile cu nume asemănător ale
+      altor entități (tbi din Bulgaria, Garanti din Turcia, Intesa din Slovenia) nu intră.<br>
+      Datele stau în <span class="mono">date/retele_sociale.csv</span>, nu în bază: un tabel nou ar cere migrarea 019.`)}
+  </section>
+
   <section>
-    <div class="callout warn" style="margin-bottom:14px"><b>Nimic colectat încă în 2.4.</b>
-      Mai jos: ce se poate porni și ce cere fiecare sursă.</div>
+    <div class="callout warn" style="margin-bottom:14px"><b>Campaniile nu sunt colectate încă.</b>
+      Conturile de mai sus sunt punctul de plecare pentru reclame. Mai jos: ce se poate porni și ce cere fiecare sursă.</div>
     ${tabel([
       ["Landing pages de campanie", "paginile publice de promoții ale băncilor", "realizabil acum, cu fluxul existent", "ok"],
       ["Newsroom / comunicate", "anunțurile de produse și campanii", "realizabil acum, cu fluxul existent", "ok"],
@@ -1516,6 +1621,7 @@ R.campanii = async () => `
     ], {lung: true})}
     ${despre("Conform secțiunii 1 din arhitectură, reclamele se iau doar prin API-uri oficiale, nu cu scraper propriu.")}
   </section>`;
+};
 
 /* scadențele în ordinea lor economică, nu alfabetică (12M, 1M, 1W… nu spunea nimic) */
 const ORD_SCADENTA = ["O/N", "T/N", "1W", "1M", "3M", "6M", "9M", "12M"];

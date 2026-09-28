@@ -7,6 +7,7 @@ parametri (%s), nu interpolare de text, ca filtrele din interfata sa nu poata
 deveni injectie SQL.
 """
 
+import csv
 import http.server
 import json
 import os
@@ -1032,8 +1033,25 @@ def logos():
         for f in sorted(os.listdir(dosar)):
             slug, _, ext = f.rpartition(".")
             if slug and ext.lower() in ("svg", "png", "ico", "jpg", "jpeg", "webp"):
-                gasite.setdefault(slug, "/logos/" + f)
+                # ?v= cu data fisierului: o sigla inlocuita sub acelasi nume
+                # (bcr-locuinte.svg, 28.09.2026) ramanea in cache-ul browserului
+                # in varianta veche, alba pe alb, deci invizibila
+                v = int(os.path.getmtime(os.path.join(dosar, f)))
+                gasite.setdefault(slug, f"/logos/{f}?v={v}")
     return gasite
+
+
+def retele():
+    """Conturile oficiale de social media ale bancilor, din date/retele_sociale.csv.
+
+    Stau intr-un fisier, nu in baza: un tabel nou inseamna migrarea 019, iar
+    lista e facuta o singura data, de mana (28.09.2026), nu de pipeline.
+    """
+    cale = os.path.join(os.path.dirname(AICI), "date", "retele_sociale.csv")
+    if not os.path.exists(cale):
+        return []
+    with open(cale, encoding="utf-8", newline="") as f:
+        return [r for r in csv.DictReader(f)]
 
 
 def recenzii(q):
@@ -1169,6 +1187,7 @@ RUTE = {
     "/api/locatii": locatii,
     "/api/recenzii": recenzii,
     "/api/logos": lambda q: logos(),
+    "/api/retele": lambda q: retele(),
     "/api/matrice": matrice,
     "/api/celula": celula,
     "/api/rate": rate,
