@@ -1006,7 +1006,9 @@ const R = {};
    din 30, prospețimea, link), apoi acoperirea pe bănci. Tabelul tehnic și
    rulările (mockup înghețat) stau pliate dedesubt. */
 R.overview = async () => {
-  const [a, st, m] = await Promise.all([ia("/api/acoperire"), ia("/api/stare"), meta()]);
+  const [a, st, m, soc] = await Promise.all([ia("/api/acoperire"), ia("/api/stare"), meta(), ia("/api/retele")]);
+  // 2.4: conturile oficiale pe rețele sociale (lista din 28.09.2026); campaniile urmează
+  const conturi = soc.filter(x => x.url && x.url !== "NEGASIT");
   const c = a.categorii, pb = a.pe_banca;
   const cate = k => pb.filter(b => b[k] > 0 || (k === "rating" && b.rating)).length;
   const card = (cod, titlu, cifra, et, banci, data, link, inactiv) => `
@@ -1014,7 +1016,7 @@ R.overview = async () => {
       <div class="e"><span class="mono gri" style="font-size:10.5px">${cod}</span> ${esc(titlu)}</div>
       <div class="n">${cifra}</div>
       <div class="l">${et}</div>
-      <div class="l">${banci !== null ? `<b style="color:var(--ink)">${banci}</b> / 30 bănci · ` : ""}${data ? varsta(data) : ""}</div>
+      <div class="l">${banci !== null ? `<b style="color:var(--ink)">${banci}</b> / 30 bănci` : ""}${banci !== null && data ? " · " : ""}${data ? varsta(data) : ""}</div>
       <a class="kpi-link" href="${link}">Deschide →</a>
     </div>`;
   const celula = (n, cls) => n ? `<b>${num(n, 0)}</b>` : '<span class="gri">—</span>';
@@ -1024,7 +1026,7 @@ R.overview = async () => {
     ${card("2.1", "Comisioane", num(c.comisioane, 0), "prețuri curente (cont, carduri, transferuri)", cate("comisioane"), c.comisioane_la, "#/produse")}
     ${card("2.2", "Dobânzi", num(c.dobanzi, 0), "dobânzi curente la depozite și credite", cate("dobanzi"), c.dobanzi_la, "#/rate")}
     ${card("2.3", "Aplicații & recenzii", num(c.aplicatii, 0), `aplicații iOS, cu ${num(c.recenzii, 0)} recenzii și răspunsurile băncilor`, cate("rating"), c.aplicatii_la, "#/mobil")}
-    ${card("2.4", "Campanii & marketing", "—", "necolectat încă — vezi ce se poate porni", 0, null, "#/campanii", true)}
+    ${card("2.4", "Campanii & marketing", num(conturi.length, 0), "conturi oficiale pe Facebook, LinkedIn, Instagram, TikTok; campaniile urmează", new Set(conturi.map(x => x.slug)).size, null, "#/campanii")}
     ${card("2.5", "Rețea", num(c.locatii, 0), "sucursale și ATM-uri pe hartă", cate("locatii"), c.locatii_la, "#/retea")}
     ${card("2.6", "Context de piață", num(c.indici, 0), "valori ROBOR, ROBID, IRCC de la BNR", null, c.indici_la, "#/context")}
     ${card("", "Istoric de prețuri", num(c.schimbari, 0), "schimbări de preț între versiunile documentelor", null, null, "#/istoric")}
