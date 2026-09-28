@@ -185,7 +185,11 @@
   .vs-bun, .eticheta-best{display:inline-block;margin-top:4px;padding:1px 7px;border-radius:999px;
           background:var(--accent);color:var(--on-accent);font:600 9px "IBM Plex Sans",sans-serif;
           text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
-  .vs-cel.pierde{background:var(--warn-tint)}
+  /* Libra e cea mai slabă pe rând: fără fundal, o etichetă cu contur — pereche
+     cu „cea mai bună" (plină). Fundalul bej-gălbui de înainte păta tabelul. */
+  .vs-cel.pierde::after{content:"cea mai slabă";display:block;width:max-content;margin:4px 0 0 auto;
+          padding:0 7px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);
+          font:600 9px "IBM Plex Sans",sans-serif;text-transform:uppercase;letter-spacing:.04em}
   .vs-alege{display:flex;flex-wrap:wrap;gap:6px;align-items:center;position:relative}
   details.vs-lista > summary{list-style:none}
   details.vs-lista > summary::-webkit-details-marker{display:none}
