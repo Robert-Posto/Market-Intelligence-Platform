@@ -1033,7 +1033,11 @@ def logos():
         for f in sorted(os.listdir(dosar)):
             slug, _, ext = f.rpartition(".")
             if slug and ext.lower() in ("svg", "png", "ico", "jpg", "jpeg", "webp"):
-                gasite.setdefault(slug, "/logos/" + f)
+                # ?v= cu data fisierului: o sigla inlocuita sub acelasi nume
+                # (bcr-locuinte.svg, 28.09.2026) ramanea in cache-ul browserului
+                # in varianta veche, alba pe alb, deci invizibila
+                v = int(os.path.getmtime(os.path.join(dosar, f)))
+                gasite.setdefault(slug, f"/logos/{f}?v={v}")
     return gasite
 
 
