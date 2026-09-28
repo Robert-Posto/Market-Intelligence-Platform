@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Market Intelligence Platform · Libra Bank</title>
+<title>Marketing Command Center · Libra Bank</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root{
     /* paleta: fildeș cald + vișiniu profund, aceeași familie în bară și în pagini */
     --bg:#f5f1ec; --surface:#fffdfa; --ink:#2a1f22; --muted:#6e615d; --line:#e3dad0;
     --line-2:#d6cabd;
-    --warn:#98550b; --warn-tint:#f8ead6; --ok:#2b7044; --ok-tint:#e5efe1;
+    --warn:#98550b; --warn-tint:#f8ead6; --ok:#2b7044; --ok-tint:#e5efe1; --aur:#b58a2c;
     --accent:#7a1e2c; --accent-tint:#f5e8e6; --on-accent:#fffdfa;
     --umbra:0 1px 2px rgba(74,32,36,.05);
     /* bara laterală: vișiniu cu gradient vertical discret, text crem cald;
@@ -26,7 +26,7 @@
   @media (prefers-color-scheme:dark){
     :root{--bg:#1b1517; --surface:#251d1f; --ink:#efe6e2; --muted:#b4a5a0; --line:#3a2e30;
           --line-2:#4a3b3d;
-          --warn:#e3a95a; --warn-tint:#3a2a16; --ok:#7fcb97; --ok-tint:#1d3024;
+          --warn:#e3a95a; --warn-tint:#3a2a16; --ok:#7fcb97; --ok-tint:#1d3024; --aur:#dcb567;
           --accent:#e7a3ab; --accent-tint:#3b2428; --on-accent:#2a1216;
           --umbra:none;
           --nav:#4e1520; --nav-2:#3a0f18; --marca:#e7a3ab; --nav-activ-ink:#f2d7d3;}
@@ -123,8 +123,6 @@
   .v-n{position:absolute;left:5px;top:4px;color:var(--muted);font-size:9.5px;
        font-family:"IBM Plex Mono",monospace;border:1px solid var(--line);
        border-radius:999px;padding:0 4px;line-height:1.45}
-  .best{background:var(--ok-tint)}
-  .best .v-num{font-weight:600;color:var(--ok)}
   .cap-nume{display:block;font-size:12px}
   .cap-desc{display:block;font-weight:400;font-size:10px;color:var(--muted);
             line-height:1.35;margin-top:2px;max-width:17ch;white-space:normal}
@@ -174,9 +172,6 @@
   .vs-cel{padding:7px 8px;border-left:1px solid var(--line);text-align:right;min-width:0}
   .vs-cel .celula{min-width:0;padding:2px 3px}
   .vs-cel.gol{color:var(--muted);text-align:center;font-size:12px}
-  .vs-cel.best{background:var(--ok-tint)}
-  .vs-bun{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.04em;
-          color:var(--ok);margin-top:2px}
   @media (max-width:760px){ .vs-cifre{display:none} }
   /* revamp: secțiuni pliabile, capul secțiunii fix la derulare, fără derulare orizontală */
   .vs{overflow:visible}
@@ -185,6 +180,11 @@
   details.vs-sec > summary .t::before{content:"▾ ";color:var(--muted);font-size:11px}
   details.vs-sec:not([open]) > summary .t::before{content:"▸ "}
   details.vs-sec:not([open]) > summary .vs-sec-cap{border-bottom:1px solid var(--line);border-radius:8px}
+  .best .v-num, td.mc.best b{font-weight:700;color:var(--ink)}
+  .best .v-num::before, td.mc.best b::before{content:"★ ";color:var(--aur);font-size:.9em}
+  .vs-bun, .eticheta-best{display:inline-block;margin-top:4px;padding:1px 7px;border-radius:999px;
+          background:var(--accent);color:var(--on-accent);font:600 9px "IBM Plex Sans",sans-serif;
+          text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
   .vs-cel.pierde{background:var(--warn-tint)}
   .vs-alege{display:flex;flex-wrap:wrap;gap:6px;align-items:center;position:relative}
   details.vs-lista > summary{list-style:none}
@@ -342,8 +342,6 @@
   td.mc:hover{outline:1px solid var(--accent);outline-offset:-1px}
   td.mc b{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:500}
   td.mc .g{display:block;color:var(--ok);font-size:10.5px}
-  td.mc.best{background:var(--ok-tint)}
-  td.mc.best b{color:var(--ok);font-weight:600}
   td.gol{color:var(--muted);text-align:center}
   th .cap-d{display:block;text-transform:none;letter-spacing:0;font-family:"IBM Plex Sans",sans-serif;
             font-size:10px;line-height:1.3;margin-top:2px;opacity:.85;font-weight:400;max-width:22ch}
@@ -406,7 +404,7 @@
 <body>
 <nav>
   <div class="marca">
-    <span class="t">Market <i>Intelligence</i> Platform</span>
+    <span class="t">Marketing <i>Command</i> Center</span>
     <span class="s">Libra Bank · Monitorizare concurență</span>
   </div>
   <div id="meniu"></div>
@@ -1246,7 +1244,7 @@ R.rate = async (stare) => {
         if(!c) return "—";
         const ctx = [termenTxt(c), c.serviciu ? (c.serviciu.length > 34 ? c.serviciu.slice(0, 33) + "…" : c.serviciu) : ""]
           .filter(Boolean).join(" · ");
-        return `<b>${num(c.valoare)}%</b>${best[cp] === b ? ' <span class="pill ok" style="font-size:9px">cea mai bună</span>' : ""}
+        return `<b>${num(c.valoare)}%</b>${best[cp] === b ? '<span class="eticheta-best" style="display:block;width:max-content;margin-left:auto">cea mai bună</span>' : ""}
           ${ctx ? `<span class="sub" style="white-space:normal;max-width:24ch;margin-left:auto">${esc(ctx)}</span>` : ""}
           <span class="sub">${c.n > 1 ? `${num(c.minim)}–${num(c.maxim)}% · ${c.n} valori` : "1 valoare"}</span>`;
       },
@@ -1261,7 +1259,7 @@ R.rate = async (stare) => {
     {cap: "Bancă", html: true, s: b => m.nume[b] || b, val: b => etichetaBanca(b, m, {fisa: true, tag: true})},
     {capHtml: `${esc(etNume(cp0))}<span class="cap-d">tipică (mediana)</span>`, cls: "num", html: true,
      s: b => pe[b][cp0].valoare, td: b => ({cls: best[cp0] === b ? "mc best" : "mc"}),
-     val: b => `<b>${num(pe[b][cp0].valoare)}%</b>${best[cp0] === b ? '<span class="sub" style="color:var(--ok)">cea mai bună</span>' : ""}`},
+     val: b => `<b>${num(pe[b][cp0].valoare)}%</b>${best[cp0] === b ? '<span class="eticheta-best" style="display:block;width:max-content;margin-left:auto">cea mai bună</span>' : ""}`},
     {cap: "Termen", html: true, s: b => pe[b][cp0].luni,
      val: b => termenTxt(pe[b][cp0]) ? esc(termenTxt(pe[b][cp0])) : '<span class="gri" title="sursa nu spune termenul">nespecificat</span>'},
     {cap: "Oferta", html: true, s: b => pe[b][cp0].serviciu,
