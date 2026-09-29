@@ -28,3 +28,11 @@ loguri/banci/
 
 # note de lucru și ledger-e locale (planuri, pauze, analize ale agenților)
 .superpowers/
+
+# copiile robots.txt scrise de ingest/flux.py la fiecare descărcare
+# (<gazda>_<AAAA-LL-ZZTHHMM>.txt + .json): se adună la fiecare rulare și rămân
+# pe mașina care a făcut cererile. Cele 30 de copii vechi (bcr.txt, ing.txt...)
+# sunt deja versionate și rămân așa: .gitignore nu atinge fișierele urmărite.
+date/robots/*_20??-??-??T*
+# coada pe origine (lacăt + ora ultimei cereri), stare de rulare
+loguri/origini/

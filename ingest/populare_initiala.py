@@ -20,9 +20,12 @@ TRASEUL UNEI SURSE, identic pentru oricare (figura 3):
     → extracție deterministă (parserele din crawler/)
     → normalizare + deduplicare semantică → observations
 
-Rularea pe bănci în paralel e sigură pentru servere: pauza e per origine
-(Crawl-delay), iar fiecare bancă are propriul proces, deci nicio bancă nu
-primește cereri mai dese decât într-o rulare secvențială.
+Rularea pe bănci în paralel e sigură pentru servere: cererile spre aceeași
+origine stau la coadă (`flux.coada_origine`, un lacăt pe fișier), iar pauza
+(Crawl-delay) se măsoară de la cererea anterioară din ORICE proces. Contează
+acolo unde două bănci împart o origine (BCR și BCR Locuințe:
+cdn.erstegroup.com); altfel nicio origine nu primește cereri mai dese decât
+într-o rulare secvențială.
 
 Rulare:
     python ingest/populare_initiala.py --de-la-zero --paralel 6   # tot
