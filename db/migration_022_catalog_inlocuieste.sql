@@ -1,14 +1,37 @@
--- Recreează vederile peste `observations`. DE RULAT DUPĂ ORICE MIGRARE care
--- adaugă o coloană în `observations`.
+-- Migrarea 022: catalogul intern Libra înlocuiește valorile colectate de pe web,
+-- doar acolo unde le poate înlocui.
 --
--- De ce e nevoie: `observatii_curente` e definită cu `SELECT *`, iar Postgres
--- expandează `*` la momentul creării și îngheață lista de coloane. O coloană
--- adăugată ulterior NU apare în vedere, iar o interogare care o cere prin
--- vedere cade cu „column o.motiv_ambiguu does not exist" — adică API-ul
--- răspunde 500, deși tabela are coloana. S-a întâmplat la migrarea 010.
+-- DE CE: Robert a hotărât ca, pentru Libra, prețurile și dobânzile scrise
+-- explicit în catalogul intern (`catalog_libra`, migrarea 020) să ia locul
+-- celor luate prin scraping. Valorile din catalog intră în `observations` prin
+-- ingest/catalog_libra_valori.py, cu `metoda_extractie = 'catalog'`, pe o sursă
+-- dedicată fișierului Excel (tip_sursa 'document', format 'xlsx').
 --
--- Rulare:
---   docker exec -i mip-db psql -U mip -d mip < db/sincronizeaza_vederi.sql
+-- Ce face:
+--   1. permite `metoda_extractie = 'catalog'` în observations;
+--   2. permite `format = 'xlsx'` în surse (CHECK-ul avea doar html/pdf/xml);
+--   3. ASCUNDE — nu șterge — valorile web ale băncilor cu catalog pe care
+--      catalogul le acoperă, prin vederea `observatii_inlocuite_de_catalog`,
+--      exclusă din `observatii_curente`. Regula completă, cu segmentele, e
+--      comentată mai jos (identic cu db/sincronizeaza_vederi.sql, care rămâne
+--      definiția curentă a vederilor; aici e copia de la momentul migrării).
+--
+-- Reversibilă: se reface `observatii_curente` fără condiția NOT EXISTS și
+-- totul reapare; nimic nu s-a șters. Idempotentă: rulată de două ori, dă
+-- același rezultat.
+--
+-- (019 e rezervată pentru tabela de campanii.)
+
+BEGIN;
+
+ALTER TABLE observations DROP CONSTRAINT IF EXISTS observations_metoda_extractie_check;
+ALTER TABLE observations ADD CONSTRAINT observations_metoda_extractie_check
+  CHECK (metoda_extractie IN ('playwright', 'bs4', 'bs4_llm', 'llm', 'manual', 'populare',
+                              'catalog'));
+
+ALTER TABLE surse DROP CONSTRAINT IF EXISTS surse_format_check;
+ALTER TABLE surse ADD CONSTRAINT surse_format_check
+  CHECK (format IN ('html', 'pdf', 'xml', 'xlsx'));
 
 DROP VIEW IF EXISTS observatii_curente;
 DROP VIEW IF EXISTS observatii_inlocuite_de_catalog;
@@ -102,3 +125,5 @@ BEGIN
   END IF;
   RAISE NOTICE 'observatii_curente e sincronizată cu observations';
 END $$;
+
+COMMIT;

@@ -107,6 +107,9 @@ INCREDERE = {"ridicata": 0.9, "medie": 0.6, "scazuta": 0.3}
 TRANSPORT = {
     "playwright": "playwright", "bs4": "http", "bs4_llm": "http",
     "llm": "http", "manual": "manual",
+    # catalogul intern Libra (ingest/catalog_libra_valori.py): un fișier Excel
+    # primit, nu adus de noi prin rețea; fără intrarea asta ar fi apărut „http"
+    "catalog": "manual",
 }
 MONEDA_UNITATE = {"LEI": "lei", "RON": "lei", "EUR": "eur", "USD": "usd"}
 

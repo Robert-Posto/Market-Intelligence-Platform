@@ -73,6 +73,7 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 018 | proveniența `populare` permisă în `observations` |
 | 020 | `catalog_libra`: catalogul intern de produse Libra (referință, nu colectare); 019 e rezervată campaniilor |
 | 021 | sursele Libra cu rol `produs` trec pe `pauza` (produsele vin din catalog) |
+| 022 | catalogul Libra înlocuiește valorile web: `metoda_extractie = 'catalog'`, `format = 'xlsx'`; vederea `observatii_inlocuite_de_catalog` le ascunde (nu le șterge) din `observatii_curente` pe același `camp`/`unitate`/categorie și segment compatibil; valorile se scriu cu `ingest/catalog_libra_valori.py` |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 

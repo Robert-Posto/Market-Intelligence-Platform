@@ -826,6 +826,12 @@ function citatUtil(r){
    PDF descoperite, 9 s-au potrivit exact. Un link greșit ar trimite la alt
    document decât cifra, adică opusul unei dovezi. */
 function linkSursa(r){
+  /* Catalogul intern Libra (migrarea 022): un fișier Excel primit, fără URL.
+     Fără ramura asta apărea „⌂ pagina băncii" (pagina de comisioane Libra),
+     care NU e sursa cifrei — cifra vine din exportul intern. */
+  if(r.metoda_extractie === "catalog"){
+    return `<span class="pill" title="Din catalogul intern de produse (export Sales Command Center), nu de pe web. Citatul e textul exact din coloana „Caracteristicile produsului”.">catalog intern · ${esc(r.fisier || r.sursa)}</span>`;
+  }
   const pg = r.pagina ? ` p.${r.pagina}` : "";
   const scurta = s => { const t = String(s || "").replace(/^https?:\/\/(www\.)?/, "");
                         return t.length > 44 ? t.slice(0, 43) + "…" : t; };
