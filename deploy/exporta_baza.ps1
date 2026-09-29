@@ -1,4 +1,4 @@
-# Pe LAPTOP: exportă baza din containerul mip-db într-un fișier .dump (format custom).
+﻿# Pe LAPTOP: exportă baza din containerul mip-db într-un fișier .dump (format custom).
 # Fișierul se copiază apoi pe server și se importă cu importa_baza.ps1.
 #   .\deploy\exporta_baza.ps1                 -> mip_AAAA-LL-ZZ.dump în folderul curent
 #   .\deploy\exporta_baza.ps1 -Iesire D:\x.dump

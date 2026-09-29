@@ -1,4 +1,4 @@
-# Pe SERVER, ca administrator: aplicația ca serviciu Windows, cu NSSM
+﻿# Pe SERVER, ca administrator: aplicația ca serviciu Windows, cu NSSM
 # (nssm.cc; un singur .exe, fără instalare). Pornește la boot și repornește la cădere.
 #   .\deploy\instaleaza_serviciu.ps1 -Radacina D:\mcc\mip -Nssm D:\mcc\nssm.exe
 param(

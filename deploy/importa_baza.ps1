@@ -1,4 +1,4 @@
-# Pe SERVER: importă un .dump făcut cu exporta_baza.ps1.
+﻿# Pe SERVER: importă un .dump făcut cu exporta_baza.ps1.
 #   .\deploy\importa_baza.ps1 -Fisier D:\mcc\mip_2026-09-29.dump
 #
 # Nu atinge baza curentă până nu reușește importul: restaurează în `mip_nou`,

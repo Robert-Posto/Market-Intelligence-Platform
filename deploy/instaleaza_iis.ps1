@@ -1,4 +1,4 @@
-# Pe SERVER, ca administrator: IIS ca poartă de intrare (HTTPS + cont de domeniu).
+﻿# Pe SERVER, ca administrator: IIS ca poartă de intrare (HTTPS + cont de domeniu).
 # Înainte: instalează URL Rewrite și Application Request Routing 3.0 (installere
 # offline de la Microsoft), altfel regula din web.config nu are ce rula.
 #   .\deploy\instaleaza_iis.ps1 -Dns mcc.libra.local -Radacina D:\mcc
