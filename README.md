@@ -76,6 +76,7 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 022 | catalogul Libra înlocuiește valorile web: `metoda_extractie = 'catalog'`, `format = 'xlsx'`; vederea `observatii_inlocuite_de_catalog` le ascunde (nu le șterge) din `observatii_curente` pe același `camp`/`unitate`/categorie și segment compatibil; valorile se scriu cu `ingest/catalog_libra_valori.py` |
 | 023 | vederea `observatii_din_campanii`: valorile din pagini de campanii și din regulamente de campanie (după calea URL-ului) se ascund din `observatii_curente`, nu se șterg; excepțiile sunt în migrare, cu motiv |
 | 024 | sursele cu nota `ROBOTS:` care figurau `activ` trec pe `blocat` (ING 48, Patria 16, BRD 1) |
+| 025 | completează `observatii_din_campanii`: se ascund și programul de loialitate eMAG Raiffeisen (`program-loialitate`, 76 de valori) și paginile TBI `landing-pages/lcp-*` (finanțări la comercianți parteneri, 29); doar vederea, `CREATE OR REPLACE` |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 

@@ -1,8 +1,8 @@
-"""Teste pentru migrarea 023: valorile din pagini de campanie și din
+"""Teste pentru migrările 023 și 025: valorile din pagini de campanie și din
 regulamente de campanie sunt ascunse în `observatii_curente`, nu șterse.
 
 Rulează pe baza locală (containerul mip-db), după
-db/migration_023_valori_din_campanii.sql sau db/sincronizeaza_vederi.sql:
+db/migration_025_campanii_completare.sql sau db/sincronizeaza_vederi.sql:
     python ingest/test_valori_din_campanii.py
 """
 
@@ -20,10 +20,12 @@ import normalizeaza as N
 RADACINA = os.path.dirname(AICI)
 
 # Câte valori curente ascunde regula pe baza din 29.09.2026 (înainte: 24.601
-# valori curente, după: 24.274). Dacă baza se repopulează, cifra se schimbă:
+# valori curente; după 023: 24.274, 327 ascunse; după 025: 24.169, încă 105 —
+# programul de loialitate eMAG Raiffeisen 76, paginile TBI lcp-* 29).
+# Dacă baza se repopulează, cifra se schimbă:
 # o verifici cu interogarea din `test_numarul_valorilor_ascunse` și o
 # actualizezi aici, după ce te uiți ce s-a schimbat.
-ASCUNSE_LA_29_09 = 327
+ASCUNSE_LA_29_09 = 432
 EXCEPTII_LA_29_09 = 6
 
 # o observație e „curentă" după regulile de dinainte de 023
@@ -116,7 +118,9 @@ class TestValoriDinCampanii(unittest.TestCase):
         # prinse
         for f in ("cetelem.ro/promotii-credite-", "garantibbva.ro/campanii-incheiate/",
                   "garantibbva.ro/en/ended-campains/", "Regulament-campanie-Depozitul-Promo",
-                  "castiga-ti-bicicleta", "bonus-500-lei-la-creditul-imobiliar"):
+                  "castiga-ti-bicicleta", "bonus-500-lei-la-creditul-imobiliar",
+                  "regulament-aa1-aa2-aa3-program-loialitate-card-emag",   # 025
+                  "tbibank.ro/landing-pages/lcp-"):                        # 025
             self.assertGreater(in_vedere(f), 0, f)
         # lăsate vizibile: pagini de produs și programe permanente
         for f in ("garantibbva.ro/persoane-fizice/bonus-card/",          # „bonus-card" e numele
@@ -124,7 +128,7 @@ class TestValoriDinCampanii(unittest.TestCase):
                   "oferta-credite-imobiliare-procredit-bank",           # oferta standard
                   "brd.ro/card-de-credit-oferte",                       # pagina cardului
                   "Regulamentul-oficial-al-programului-de-plata-in-rate",
-                  "regulament-aa1-aa2-aa3-program-loialitate-card-emag",
+                  "procreditbank.ro/landing/progreen-imobiliar",       # „landing" simplu
                   "bcr.ro/ro/persoane-fizice/economisire-si-investire/depozitul-la-termen"):
             self.assertEqual(in_vedere(f), 0, f)
 
@@ -144,7 +148,8 @@ class TestSincronizare(unittest.TestCase):
             i = sql.index("-- >>> observatii_din_campanii")
             j = sql.index("-- <<< observatii_din_campanii")
             return sql[i:j]
-        self.assertEqual(bloc("migration_023_valori_din_campanii.sql"),
+        # ultima migrare care redefinește vederea e 025
+        self.assertEqual(bloc("migration_025_campanii_completare.sql"),
                          bloc("sincronizeaza_vederi.sql"))
 
     def test_observatii_curente_identica(self):
