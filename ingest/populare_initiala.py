@@ -111,6 +111,17 @@ def proceseaza(sursa, cur, stare, raport, doar_descarca=False):
             cur.execute("UPDATE surse SET status = 'blocat', nota_extractie = %s, "
                         "ultima_rulare = now() WHERE id = %s",
                         (f"blocat de bancă: {rez.nota}"[:300], sid))
+        elif rez.verdict == "ROBOTS":
+            # Interzisă de robots.txt: `blocat`, cu nota ROBOTS ca dovadă
+            # (altfel rămânea `activ` și se reîncerca la fiecare rulare; migrarea 024).
+            cur.execute("UPDATE surse SET status = 'blocat', nota_extractie = %s, "
+                        "ultima_rulare = now() WHERE id = %s",
+                        (f"ROBOTS: {rez.nota}"[:300], sid))
+        elif rez.verdict == "EXCLUS":
+            # Exclusă de regulile noastre, nu de bancă: `retras`, cu motivul.
+            cur.execute("UPDATE surse SET status = 'retras', nota_extractie = %s, "
+                        "ultima_rulare = now() WHERE id = %s",
+                        (f"EXCLUS: {rez.nota}"[:300], sid))
         return [], j
 
     amp = sanitizare.amprenta_continut(rez.octeti)

@@ -49,7 +49,8 @@ def normalizeaza_url(url):
     p = urlparse(url.strip())
     cale = p.path.rstrip("/") or "/"
     interogare = "&".join(q for q in p.query.split("&") if q and not q.startswith("utm_"))
-    return urlunparse((p.scheme, p.netloc.lower(), cale, "", interogare, ""))
+    # restul parametrilor de urmărire (gclid, fbclid, mc_* ...), ca la transport
+    return flux.curata_url(urlunparse((p.scheme, p.netloc.lower(), cale, "", interogare, "")))
 
 
 def clasifica_adresa(url, text_link=""):
@@ -223,6 +224,11 @@ def ruleaza_banca(cur, slug, url_banca, produse, stare, err, raport):
         # Produsele acestei bănci vin din catalogul intern: paginile de produs
         # nu se mai propun ca surse (documentele de tarife rămân).
         if c and c["rol"] == "produs" and slug in N.BANCI_CU_CATALOG:
+            continue
+        # Ce transportul n-ar cere oricum (câștigători, onboarding, previzualizare,
+        # recomandări) nu se mai propune ca sursă.
+        if c and flux.motiv_excludere(u):
+            raport["excluse_la_descoperire"] = raport.get("excluse_la_descoperire", 0) + 1
             continue
         if c:
             alese.setdefault(normalizeaza_url(u), c)
