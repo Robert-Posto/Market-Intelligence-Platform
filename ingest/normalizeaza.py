@@ -48,6 +48,17 @@ AICI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(AICI))
 
 # --------------------------------------------------------------------------
+# Băncile ale căror PRODUSE vin dintr-un catalog intern, nu de pe web.
+#
+# Libra: catalogul de produse (tabela `catalog_libra`, migrarea 020) e
+# referința; nu se mai descoperă, descarcă sau extrag surse cu rol 'produs'
+# ale ei. Un singur loc: descoperirea, populare_initiala și `scrie` de mai jos
+# citesc de aici. Documentele de tarife (rol 'conditii') și celelalte roluri
+# rămân în colectare.
+# --------------------------------------------------------------------------
+BANCI_CU_CATALOG = frozenset({"libra"})
+
+# --------------------------------------------------------------------------
 # Praguri de plauzibilitate. Un singur loc.
 #
 # Motivele sunt măsurate, nu presupuse:
@@ -408,8 +419,11 @@ def curata(metoda, banci=None):
                     (metoda, list(banci)),
                 )
             else:
-                cur.execute("DELETE FROM observations WHERE metoda_extractie = %s",
-                            (metoda,))
+                cur.execute("""DELETE FROM observations o USING surse s, banci b
+                               WHERE o.id_sursa = s.id AND b.id = s.id_banca
+                                 AND o.metoda_extractie = %s
+                                 AND NOT (b.slug = ANY(%s) AND s.rol = 'produs')""",
+                            (metoda, list(BANCI_CU_CATALOG)))
             return cur.rowcount
 
 
@@ -557,18 +571,25 @@ def scrie(randuri, metoda, raport=None, sterge=True, banci=None):
             id_hash = dict(cur.fetchall())
 
             # --- 3. idempotență pe proveniență (sărită la scriere incrementală)
+            # Observațiile produselor din BANCI_CU_CATALOG nu se șterg: sursele
+            # lor de produs nu se mai colectează, deci o reîncărcare nu le-ar
+            # mai reface și datele s-ar pierde (regula: datele nu se aruncă).
             # Cu `banci`, doar băncile rulate: `--banca cec` ștergea altfel
             # observațiile tuturor celorlalte bănci.
             if sterge and doar_banci:
                 cur.execute(
                     """DELETE FROM observations o USING surse s, banci b
                        WHERE o.id_sursa = s.id AND b.id = s.id_banca
-                         AND o.metoda_extractie = %s AND b.slug = ANY(%s)""",
-                    (metoda, doar_banci))
+                         AND o.metoda_extractie = %s AND b.slug = ANY(%s)
+                         AND NOT (b.slug = ANY(%s) AND s.rol = 'produs')""",
+                    (metoda, doar_banci, list(BANCI_CU_CATALOG)))
                 raport["observatii_sterse"] += cur.rowcount
             elif sterge:
-                cur.execute("DELETE FROM observations WHERE metoda_extractie = %s",
-                            (metoda,))
+                cur.execute("""DELETE FROM observations o USING surse s, banci b
+                               WHERE o.id_sursa = s.id AND b.id = s.id_banca
+                                 AND o.metoda_extractie = %s
+                                 AND NOT (b.slug = ANY(%s) AND s.rol = 'produs')""",
+                            (metoda, list(BANCI_CU_CATALOG)))
                 raport["observatii_sterse"] += cur.rowcount
 
             # --- 4. observații

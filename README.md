@@ -71,6 +71,8 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 016 | rețeaua proprie vs. rețeaua parteneră (ATM-uri) |
 | 017 | App Store din pagina publică; recenziile din RSS șterse |
 | 018 | proveniența `populare` permisă în `observations` |
+| 020 | `catalog_libra`: catalogul intern de produse Libra (referință, nu colectare); 019 e rezervată campaniilor |
+| 021 | sursele Libra cu rol `produs` trec pe `pauza` (produsele vin din catalog) |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 

@@ -11,3 +11,4 @@ mini-racer>=0.14    # import py_mini_racer, pentru app/verifica_pagini.py
 anthropic>=1.8      # doar ingest/structureaza_depozite.py (pas LLM, netestat live)
 duckdb>=1.5
 pillow>=12.0      # import PIL, doar ingest/fetch_logos_wiki.py (decupeaza marginile albe)
+openpyxl>=3.1     # doar ingest/load_catalog_libra.py (citește Excel-ul cu catalogul Libra)

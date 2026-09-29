@@ -220,6 +220,10 @@ def ruleaza_banca(cur, slug, url_banca, produse, stare, err, raport):
         if not _pe_domeniu(u, url_banca) and not RE_DOCUMENT_URL.search(u):
             continue
         c = clasifica_adresa(u, text)
+        # Produsele acestei bănci vin din catalogul intern: paginile de produs
+        # nu se mai propun ca surse (documentele de tarife rămân).
+        if c and c["rol"] == "produs" and slug in N.BANCI_CU_CATALOG:
+            continue
         if c:
             alese.setdefault(normalizeaza_url(u), c)
     pe_produs = collections.Counter()

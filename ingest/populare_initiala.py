@@ -163,10 +163,11 @@ def surse_active(cur, banca=None, limita=None, doar_noi=False):
            FROM surse s JOIN banci b ON b.id = s.id_banca
            WHERE s.tip_sursa = 'url' AND s.status = 'activ'
              AND s.rol IN ('produs', 'conditii', 'locator')
+             AND NOT (s.rol = 'produs' AND b.slug = ANY(%s))
              AND (%s = '' OR b.slug = %s)
              AND (NOT %s OR NOT EXISTS (SELECT 1 FROM hashes h WHERE h.id_sursa = s.id))
            ORDER BY b.slug, s.rol, s.sursa""",
-        (banca or "", banca or "", doar_noi))
+        (list(N.BANCI_CU_CATALOG), banca or "", banca or "", doar_noi))
     surse = cur.fetchall()
     return surse[:limita] if limita else surse
 
@@ -217,8 +218,9 @@ def din_bronze(err, raport, banca=None):
                    FROM surse s JOIN banci b ON b.id = s.id_banca
                    JOIN hashes h ON h.id_sursa = s.id
                    WHERE (%s = '' OR b.slug = %s)
+                     AND NOT (s.rol = 'produs' AND b.slug = ANY(%s))
                    GROUP BY s.id, b.slug ORDER BY s.id""",
-                (banca or "", banca or ""))
+                (banca or "", banca or "", list(N.BANCI_CU_CATALOG)))
             surse = cur.fetchall()
     stari = collections.Counter()
     for sid, slug, url, fmt, rol, amp in surse:
