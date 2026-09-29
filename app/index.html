@@ -1493,7 +1493,7 @@ R.mobil = async (stare) => {
     : '<span class="gri">—</span>';
 
   const aplicatii = tabel(v, [
-    {cap: "Bancă", html: true, s: r => m.nume[r.banca] || r.banca, val: r => etichetaBanca(r.banca, m, {tag: true})},
+    {cap: "Bancă", html: true, td: () => ({attr: 'style="white-space:nowrap"'}), s: r => m.nume[r.banca] || r.banca, val: r => etichetaBanca(r.banca, m, {tag: true})},
     {cap: "Nota App Store", cls: "num", html: true, s: r => r.rating_agregat,
      val: r => r.rating_agregat ? `<b>${num(r.rating_agregat)}</b> ★` : "—"},
     {cap: "Nr. note", cls: "num", s: r => r.volum_rating, val: r => num(r.volum_rating, 0),
@@ -1641,8 +1641,76 @@ const RETELE = [
   {k: "instagram", nume: "Instagram"}, {k: "tiktok", nume: "TikTok"},
 ];
 
+/* 2.4: reclamele de pe Bing. Filtrele lucrează pe rândurile deja desenate (fără cerere nouă). */
+const bingLimita = 50;
+const bingAfisari = t => { const x = String(t || "").match(/([\d.,]+)\s*([KM]?)/i);
+  return x ? parseFloat(x[1].replace(",", ".")) * ({K: 1e3, M: 1e6}[x[2].toUpperCase()] || 1) : NaN; };
+function filtreazaBing(){
+  const b = document.getElementById("bg-banca").value;
+  const toate = document.getElementById("bg-toate").checked;
+  const t = fara_diacritice(document.getElementById("bg-cauta").value.trim());
+  let n = 0;
+  document.querySelectorAll("#bg-tabel tbody tr").forEach(r => {
+    const da = (toate || r.dataset.ro === "1") && (!b || r.dataset.banca === b)
+      && (!t || (r.dataset.cauta || "").includes(t));
+    r.style.display = da ? "" : "none";
+    n += da;
+  });
+  document.getElementById("bg-n").textContent = `${n} ${n === 1 ? "reclamă" : "reclame"}`;
+  document.getElementById("bg-gol").style.display = n ? "none" : "";
+}
+function reclameBing(d, m){
+  const rec = d.reclame || [];
+  if(!rec.length) return '<p class="note">Nicio reclamă în fotografie (fișierul output/reclame/microsoft_*.json lipsește sau e gol).</p>';
+  const ro = r => r.pondere_ro !== null && r.pondere_ro >= 50;
+  const pe = {};
+  rec.forEach(r => { const x = pe[r.banca] = pe[r.banca] || {ro: 0, alt: 0}; ro(r) ? x.ro++ : x.alt++; });
+  const slugs = Object.keys(pe).sort((a, b) => pe[b].ro - pe[a].ro || (m.nume[a] || a).localeCompare(m.nume[b] || b, "ro"));
+  const nRo = rec.filter(ro).length;
+  const kpi = `<div class="kpi">
+    <div><div class="e">Țintite pe România</div><div class="n">${nRo}</div>
+      <div class="l">reclame cu cel puțin 50% din afișări în România<br>din ${rec.length} găsite, ${d.banci_verificate} bănci verificate</div></div>
+    ${slugs.filter(b => pe[b].ro).map(b => `<div><div class="e">${etichetaBanca(b, m)}</div><div class="n">${pe[b].ro}</div>
+      <div class="l">${pe[b].alt ? `+ ${pe[b].alt} ale grupului, în alte țări` : "țintite pe România"}</div></div>`).join("")}
+  </div>`;
+  const oprit = d.oprit ? `<div class="callout warn" style="margin-bottom:12px"><b>Extragerea s-a oprit înainte de final</b>
+    (limita de cereri a Microsoft: HTTP 429). Lipsesc bănci din listă; ce se completează apare la reîncărcarea paginii.</div>` : "";
+  const tab = tabel(rec, [
+    {cap: "Bancă", html: true, s: r => m.nume[r.banca] || r.banca, val: r => etichetaBanca(r.banca, m)},
+    {cap: "Reclama", html: true, s: r => r.titlu || "", val: r => `<b>${esc(r.titlu || "—")}</b>
+      <div class="gri" style="font-size:11.5px;margin-top:2px;max-width:60ch">${esc(r.text || "")}</div>${
+      r.advertiser ? `<div class="gri" style="font-size:11px;margin-top:2px" title="advertiserul${r.platitor ? "; plătit de " + esc(r.platitor) : ""}">${esc(r.advertiser)}</div>` : ""}`},
+    {cap: "Perioada", cls: "mono", td: () => ({attr: 'style="white-space:nowrap"'}), s: r => r.start || "", val: r => `${r.start || "?"} → ${r.sfarsit || "?"}`},
+    {cap: "Afișări", cls: "num", s: r => bingAfisari(r.afisari), val: r => r.afisari || "—"},
+    {cap: "% România", cls: "num", html: true, s: r => r.pondere_ro, val: r => r.pondere_ro === null ? "—"
+      : `<span class="${ro(r) ? "" : "gri"}">${num(r.pondere_ro, 1)}%</span>`},
+    {cap: "Sursa", html: true, td: () => ({attr: 'style="white-space:nowrap"'}), val: r => r.link_biblioteca
+      ? `<a class="sursa" href="${esc(r.link_biblioteca)}" target="_blank" rel="noopener noreferrer">↗ Ad Library</a>` : "—"},
+  ], {sort: true, implicit: [4, "desc"], rand: r => ({
+    attr: `data-banca="${esc(r.banca)}" data-ro="${ro(r) ? 1 : 0}"`,
+    cauta: fara_diacritice([r.titlu, r.text, r.advertiser, m.nume[r.banca] || r.banca].join(" "))})});
+  return `${oprit}${kpi}
+    <div class="filtre" style="align-items:center">
+      <select id="bg-banca" onchange="filtreazaBing()"><option value="">Toate băncile</option>${
+        slugs.map(b => `<option value="${esc(b)}">${esc(m.nume[b] || b)}</option>`).join("")}</select>
+      <input class="cauta" id="bg-cauta" type="search" placeholder="Caută în titlu sau text…" oninput="filtreazaBing()">
+      <label class="note" style="display:flex;gap:6px;align-items:center;max-width:none"><input type="checkbox" id="bg-toate" style="width:auto;margin:0" onchange="filtreazaBing()">
+        arată și reclamele grupului din alte țări (sub 50% în România)</label>
+      <span class="gri" id="bg-n" style="font-size:12px;margin-left:auto"></span>
+    </div>
+    <div id="bg-tabel">${tab}</div>
+    <p class="note" id="bg-gol" style="display:none">Nicio reclamă nu se potrivește filtrelor.</p>
+    ${despre(`Datele vin din API-ul public al Microsoft Advertising Ad Library, fără cont, cu User-Agent-ul proiectului
+      (cu contact) și cu robots.txt verificat. Aduce: textul reclamei, perioada, intervalul de afișări, ponderea pe țări,
+      cine a plătit. <b>Nu</b> aduce cheltuieli, clicuri sau cuvinte-cheie.<br>
+      Reclamele grupurilor (ING N.V., Raiffeisen Bank International) apar și ele, cu ponderea României: implicit se văd
+      doar cele cu cel puțin 50% din afișări în România. Libra nu face reclamă pe Bing.<br>
+      Datele stau într-un fișier local (<span class="mono">output/reclame/microsoft_*.json</span>), nu în bază:
+      tabelul de reclame vine cu migrarea 019, după avizul juridic. Pagina citește cea mai recentă fotografie la fiecare încărcare.`)}`;
+}
+
 R.campanii = async () => {
-  const [m, rs] = await Promise.all([meta(), ia("/api/retele")]);
+  const [m, rs, bing] = await Promise.all([meta(), ia("/api/retele"), ia("/api/reclame_bing")]);
   const pe = {};
   rs.forEach(r => { (pe[r.slug] = pe[r.slug] || {})[r.retea] = r; });
   const lipsa = r => !r || r.url === "NEGASIT";
@@ -1695,12 +1763,22 @@ R.campanii = async () => {
       Datele stau în <span class="mono">date/retele_sociale.csv</span>, nu în bază: un tabel nou ar cere migrarea 019.`)}
   </section>
 
+
+  <section id="bing">
+    <div class="filtre" style="align-items:center">
+      <h2 style="margin:0">Reclame pe Bing (Microsoft Ad Library)</h2>
+      <span class="pill amb" title="Datele stau într-un fișier local, nu în bază">fotografie din ${esc(bing.fotografie || "—")} · test, până la avizul juridic</span>
+    </div>
+    ${reclameBing(bing, m)}
+  </section>
+
   <section>
     <div class="callout warn" style="margin-bottom:14px"><b>Campaniile nu sunt colectate încă.</b>
       Conturile de mai sus sunt punctul de plecare pentru reclame. Mai jos: ce se poate porni și ce cere fiecare sursă.</div>
     ${tabel([
       ["Landing pages de campanie", "paginile publice de promoții ale băncilor", "realizabil acum, cu fluxul existent", "ok"],
       ["Newsroom / comunicate", "anunțurile de produse și campanii", "realizabil acum, cu fluxul existent", "ok"],
+      ["Microsoft Ad Library (Bing)", "reclamele din Bing, cu perioadă, afișări și ponderea României", "API public, fără cont: testat, vezi secțiunea de mai sus", "ok"],
       ["Meta Ad Library", "reclamele active pe Facebook și Instagram", "API oficial, cere verificare de identitate", ""],
       ["TikTok Commercial Content Library", "reclamele din UE", "API oficial, cere cont de cercetare", ""],
       ["YouTube Data API", "canalele de brand ale băncilor", "API oficial, cere cheie", ""],
@@ -2369,6 +2447,7 @@ async function randeaza(){
   else gazda.innerHTML = '<section><p class="note">se încarcă…</p></section>';
   try{
     gazda.innerHTML = await R[p.id](stare);
+    if(document.getElementById("bg-tabel")) filtreazaBing();
   }catch(e){
     gazda.innerHTML = `<section><p class="note" style="color:var(--warn)">Eroare: ${esc(e.message)}</p></section>`;
   }

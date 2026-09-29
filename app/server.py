@@ -1074,6 +1074,55 @@ def retele():
         return [r for r in csv.DictReader(f)]
 
 
+def reclame_bing():
+    """Reclamele de pe Bing (Microsoft Ad Library), din cel mai recent output/reclame/microsoft_*.json.
+
+    Doar citire, din fisier, la fiecare cerere: extragerea se poate completa intre timp.
+    Nu se scrie nimic in baza (tabela de reclame vine cu migrarea 019, dupa avizul juridic).
+    """
+    import glob
+    gol = {"fotografie": None, "banci_verificate": 0, "oprit": None, "reclame": []}
+    fisiere = sorted(glob.glob(os.path.join(os.path.dirname(AICI), "output", "reclame", "microsoft_*.json")))
+    if not fisiere:
+        return gol
+    try:
+        with open(fisiere[-1], encoding="utf-8") as f:
+            d = json.load(f)
+    except (OSError, ValueError):
+        return gol
+
+    def pondere_ro(det):
+        for x in det.get("ImpressionsByCountry") or []:
+            if x.get("Country") == "Romania":
+                try:
+                    return float(str(x.get("ImpressionShare", "")).replace("%", "").replace(",", ".").strip())
+                except ValueError:
+                    return None
+        return None
+
+    banci = d.get("banci") or {}
+    reclame = []
+    for slug, b in banci.items():
+        for r in (b or {}).get("reclame") or []:
+            det = r.get("AdDetails") or {}
+            reclame.append({
+                "banca": slug,
+                "advertiser": r.get("AdvertiserName"),
+                "titlu": r.get("Title"),
+                "text": r.get("Description"),
+                "display_url": r.get("DisplayUrl"),
+                "destinatie": r.get("DestinationUrl"),
+                "start": det.get("StartDate"),
+                "sfarsit": det.get("EndDate"),
+                "afisari": det.get("TotalImpressionsRange"),
+                "pondere_ro": pondere_ro(det),
+                "platitor": det.get("PaidForByName"),
+                "link_biblioteca": r.get("link_biblioteca"),
+            })
+    return {"fotografie": d.get("fotografie"), "banci_verificate": len(banci),
+            "oprit": d.get("oprit"), "reclame": reclame}
+
+
 def recenzii(q):
     if not q.get("id_locatie"):
         return {"eroare": "lipsește id_locatie"}
@@ -1208,6 +1257,7 @@ RUTE = {
     "/api/recenzii": recenzii,
     "/api/logos": lambda q: logos(),
     "/api/retele": lambda q: retele(),
+    "/api/reclame_bing": lambda q: reclame_bing(),
     "/api/catalog_libra": lambda q: catalog_libra(),
     "/api/matrice": matrice,
     "/api/celula": celula,
