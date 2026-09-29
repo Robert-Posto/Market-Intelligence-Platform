@@ -1,47 +1,38 @@
--- Recreează vederile peste `observations`. DE RULAT DUPĂ ORICE MIGRARE care
--- adaugă o coloană în `observations`.
+-- Migrarea 023: valorile luate din pagini de campanie și din regulamente de
+-- campanie nu mai apar ca prețuri standard ale băncii.
 --
--- De ce e nevoie: `observatii_curente` e definită cu `SELECT *`, iar Postgres
--- expandează `*` la momentul creării și îngheață lista de coloane. O coloană
--- adăugată ulterior NU apare în vedere, iar o interogare care o cere prin
--- vedere cade cu „column o.motiv_ambiguu does not exist" — adică API-ul
--- răspunde 500, deși tabela are coloana. S-a întâmplat la migrarea 010.
+-- DE CE: în comparațiile de prețuri (paginile Produse și Rate, prin vederea
+-- `observatii_curente`) intrau valori de pe pagini de promoții, campanii
+-- încheiate și regulamente de campanie, ca și cum ar fi prețurile curente.
+-- Cazul cel mai grav: Cetelem apărea cu 0% dobândă nominală la credite, pentru
+-- că toate dobânzile ei veneau din `cetelem.ro/promotii-credite-*` (rate fără
+-- dobândă la magazine partenere). La fel, Garanti apărea cu 6,50–6,75% la
+-- depozite din `campanii-incheiate/...` (campanii terminate; dobânzile ei
+-- standard sunt 4–5,10%), iar regulamentele puneau premii și bugete de
+-- campanie („112.500 lei", „1.247.118,80 lei") printre comisioane.
 --
--- Rulare:
---   docker exec -i mip-db psql -U mip -d mip < db/sincronizeaza_vederi.sql
+-- Ce face: ASCUNDE — nu șterge — aceste valori, prin vederea
+-- `observatii_din_campanii`, exclusă din `observatii_curente`. Același model ca
+-- migrarea 022. Regula completă e comentată mai jos (identic cu
+-- db/sincronizeaza_vederi.sql, care rămâne definiția curentă a vederilor; aici
+-- e copia de la momentul migrării).
+--
+-- Reversibilă: se reface `observatii_curente` fără condiția nouă și totul
+-- reapare; nimic nu s-a șters. Idempotentă: rulată de două ori, dă același
+-- rezultat. Nu adaugă coloane.
+--
+-- (019 rămâne rezervată tabelei de campanii; când va exista, regula de aici
+-- poate citi din ea în loc de URL.)
+
+BEGIN;
 
 DROP VIEW IF EXISTS observatii_curente;
 DROP VIEW IF EXISTS observatii_inlocuite_de_catalog;
 DROP VIEW IF EXISTS observatii_din_campanii;
 
 -- --------------------------------------------------------------------------
--- Valorile colectate de pe web pe care catalogul intern le ÎNLOCUIEȘTE
--- (migrarea 022). Se ascund în `observatii_curente`, nu se șterg.
---
--- DE CE în vedere și nu în date: o refacere din Bronze recreează observațiile
--- colectate, iar regula trebuie să rămână valabilă fără să se mai ruleze ceva;
--- și e reversibilă (scoți condiția, totul reapare). Vederea asta separată
--- spune exact CE s-a ascuns și în locul căror valori din catalog.
---
--- Băncile: `b.slug IN ('libra')` e lista BANCI_CU_CATALOG din
--- ingest/normalizeaza.py. SQL-ul nu poate citi Python-ul, deci lista stă și
--- aici; testul ingest/test_catalog_valori.py pică dacă cele două diferă.
---
--- O valoare web e ascunsă doar dacă catalogul acoperă ACELAȘI serviciu:
---   - același `camp` și aceeași `unitate` (un preț în lei nu înlocuiește unul
---     în euro), plus aceeași categorie (primul segment din cod_scenariu) la
---     `procent` — altfel o dobândă de depozit ar ascunde una de credit;
---   - segment compatibil: fiecare segment al valorii web trebuie să aibă preț
---     în catalog. Un preț doar pentru firme (pj) NU ascunde valorile marcate pf.
---     `pfa` și `imm` contează ca pj (în catalog, PFA/IMM stau la „persoane
---     juridice").
---   - valoarea web FĂRĂ segment marcat: poate fi pentru oricine, deci se
---     ascunde doar dacă catalogul acoperă AMBELE segmente (pf și pj). Motivul:
---     matricea pe PF include valorile nemarcate; dacă un preț de catalog doar
---     pentru firme le-ar ascunde, coloana PF a Librei ar pierde valori pe care
---     catalogul nu le înlocuiește.
--- Contează doar valorile de catalog curente și neambigue: o valoare de catalog
--- „de verificat" nu are voie să ascundă una observată.
+-- Valorile catalogului intern: identic cu migrarea 022, recreată doar pentru
+-- că `observatii_curente` depinde de ea.
 -- --------------------------------------------------------------------------
 CREATE VIEW observatii_inlocuite_de_catalog AS
   WITH obs AS (
@@ -72,8 +63,6 @@ CREATE VIEW observatii_inlocuite_de_catalog AS
                   AND a.unitate = o.unitate
                   AND (o.unitate <> 'procent' OR a.categorie = o.categorie)
   WHERE o.metoda_extractie IS DISTINCT FROM 'catalog'
-    -- segmentele cerute de valoarea web: pf dacă e marcată pf SAU e nemarcată,
-    -- pj dacă e marcată pj SAU e nemarcată; fiecare trebuie acoperit de catalog
     AND (NOT (o.pf OR NOT o.pj) OR a.pf)
     AND (NOT (o.pj OR NOT o.pf) OR a.pj);
 
@@ -219,3 +208,5 @@ BEGIN
   END IF;
   RAISE NOTICE 'observatii_curente e sincronizată cu observations';
 END $$;
+
+COMMIT;

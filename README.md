@@ -74,6 +74,8 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 020 | `catalog_libra`: catalogul intern de produse Libra (referință, nu colectare); 019 e rezervată campaniilor |
 | 021 | sursele Libra cu rol `produs` trec pe `pauza` (produsele vin din catalog) |
 | 022 | catalogul Libra înlocuiește valorile web: `metoda_extractie = 'catalog'`, `format = 'xlsx'`; vederea `observatii_inlocuite_de_catalog` le ascunde (nu le șterge) din `observatii_curente` pe același `camp`/`unitate`/categorie și segment compatibil; valorile se scriu cu `ingest/catalog_libra_valori.py` |
+| 023 | vederea `observatii_din_campanii`: valorile din pagini de campanii și din regulamente de campanie (după calea URL-ului) se ascund din `observatii_curente`, nu se șterg; excepțiile sunt în migrare, cu motiv |
+| 024 | sursele cu nota `ROBOTS:` care figurau `activ` trec pe `blocat` (ING 48, Patria 16, BRD 1) |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
