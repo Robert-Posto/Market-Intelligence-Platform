@@ -507,7 +507,8 @@ function tabel(randuri, coloane, opt = {}){
     const libra = opt.libra && opt.libra(r) === "libra";
     const cls = [libra ? "libra fix" : "", e.cls || "", e.clic ? "clic" : ""].join(" ").trim();
     return `<tr${cls ? ` class="${cls}"` : ""}${e.clic ? ` onclick="${e.clic}"` : ""}`
-      + (e.cauta !== undefined ? ` data-cauta="${esc(String(e.cauta).toLowerCase())}"` : "") + ">"
+      + (e.cauta !== undefined ? ` data-cauta="${esc(String(e.cauta).toLowerCase())}"` : "")
+      + (e.attr ? " " + e.attr : "") + ">"
       + coloane.map(c => {
         const v = c.val ? c.val(r) : r[c.k];
         const s = c.s ? c.s(r) : null;
@@ -1093,6 +1094,69 @@ R.overview = async () => {
   </details>`;
 };
 
+/* ---------------- Catalogul intern Libra ----------------
+   Produsele Libra vin din exportul intern (Sales Command Center), nu de pe web:
+   e referința după care se va face colectarea pe produse la celelalte bănci.
+   Nu are citat și link ca valorile colectate; proveniența e fișierul exportat. */
+const fara_paranteza = t => String(t || "").replace(/\s*\([A-Z_]+\)\s*$/, "");
+function sectiuneCatalog(cat){
+  const categorii = [...new Map(cat.filter(x => x.categorie_cod).map(x => [x.categorie_cod, fara_paranteza(x.categorie)])).entries()];
+  const lei = v => v === null || v === undefined ? null : num(v, 0) + " lei";
+  const elig = x => [
+    x.cifra_afaceri_min !== null || x.cifra_afaceri_max !== null
+      ? `cifră de afaceri ${x.cifra_afaceri_min !== null ? "de la " + lei(x.cifra_afaceri_min) : ""}${x.cifra_afaceri_max !== null ? " până la " + lei(x.cifra_afaceri_max) : ""}` : "",
+    x.vechime_min_ani !== null ? `vechime minimă ${num(x.vechime_min_ani)} ani` : "",
+    x.vechime_max_ani !== null ? `vechime maximă ${num(x.vechime_max_ani)} ani` : "",
+    x.linii_business ? `linii de business: ${x.linii_business}` : "",
+    x.caen_prefixe ? `CAEN: ${x.caen_prefixe}` : "",
+    x.criterii_eligibilitate || "",
+  ].filter(Boolean);
+  const detalii = x => (x.cand_recomand || elig(x).length) ? `<details class="despre" style="margin:4px 0 0"><summary>detalii</summary>
+      <div class="note" style="max-width:70ch">
+        ${x.cand_recomand ? `<b>Când îl recomanzi:</b> ${esc(x.cand_recomand)}<br>` : ""}
+        ${elig(x).length ? `<b>Eligibilitate:</b> ${esc(elig(x).join(" · "))}` : ""}</div></details>` : "";
+  const d = cat[0].generat_la ? String(cat[0].generat_la).slice(0, 10).split("-").reverse().join(".") : "";
+  return `<section>
+    <div class="filtre" style="align-items:center">
+      <h2 style="margin:0">Catalogul intern de produse <span class="mono gri" style="font-size:12px;font-weight:400">${cat.length} produse</span></h2>
+      <select id="cat-filtru" style="margin-left:auto" onchange="filtreazaCatalog()">
+        <option value="">toate categoriile</option>
+        ${categorii.map(([k, n]) => `<option value="${esc(k)}">${esc(n)} (${cat.filter(x => x.categorie_cod === k).length})</option>`).join("")}
+      </select>
+      <select id="cat-segment" onchange="filtreazaCatalog()" style="min-width:0">
+        <option value="">PF și PJ</option><option value="PF">persoane fizice</option><option value="PJ">firme</option>
+      </select>
+      <input class="cauta" id="cat-cauta" placeholder="Caută produs…" oninput="filtreazaCatalog()">
+    </div>
+    <div id="t-catalog">${tabel(cat, [
+      {cap: "Produs", html: true, s: x => x.denumire,
+       val: x => `<b style="font-weight:600">${esc(x.denumire)}</b>${x.produs_prioritar ? ' <span class="eticheta-best" title="produs prioritar în catalog">prioritar</span>' : ""}
+         <span class="sub mono">${esc(x.cod)}</span>`},
+      {cap: "Categorie", s: x => fara_paranteza(x.categorie), val: x => fara_paranteza(x.categorie) || "—"},
+      {cap: "Pentru cine", s: x => x.segment, val: x => x.segment === "PF+PJ" ? "PF și PJ" : x.segment === "PF" ? "persoane fizice" : x.segment === "PJ" ? "firme" : (x.adresabilitate || "—")},
+      {cap: "Ce oferă", html: true, val: x => `${esc(x.caracteristici || "—")}${detalii(x)}`},
+    ], {sort: true,   // derulare în tabel (70% din ecran): restul fișei rămâne la îndemână
+        rand: x => ({cauta: `${x.denumire} ${x.cod} ${x.caracteristici || ""} ${x.categorie || ""}`,
+                     attr: `data-cat="${esc(x.categorie_cod || "")}" data-seg="${esc(x.segment || "")}"`})})}</div>
+    ${despre(`Sursa: exportul intern „${esc(cat[0].fisier)}"${d ? `, generat pe ${d}` : ""}, din Sales Command Center
+      (LIBRAREPORTING) — <b>uz intern</b>. Produsele Libra nu se mai colectează de pe site: catalogul e referința
+      după care se va face colectarea pe produse la celelalte bănci. Prețurile și dobânzile Libra de mai jos
+      rămân cele colectate din documentele de tarife.`)}
+  </section>`;
+}
+
+/* filtrul catalogului: categorie + segment + căutare, fără cerere nouă */
+function filtreazaCatalog(){
+  const c = document.getElementById("cat-filtru").value, s = document.getElementById("cat-segment").value;
+  const q = document.getElementById("cat-cauta").value.trim().toLowerCase();
+  const rows = [...document.querySelectorAll("#t-catalog tbody tr")];
+  rows.forEach(tr => {
+    const ok = (!c || tr.dataset.cat === c) && (!s || (tr.dataset.seg || "").includes(s))
+            && (!q || (tr.dataset.cauta || "").includes(q));
+    tr.style.display = ok ? "" : "none";
+  });
+}
+
 /* ---------------- Fișa unei bănci ----------------
    Tot ce avem despre o bancă, într-un loc: înainte trebuia căutată pe
    fiecare pagină în parte. */
@@ -1108,6 +1172,8 @@ R.banca = async (stare) => {
     ia(`/api/sentiment?banca=${encodeURIComponent(slug)}`),
     ia("/api/locatii"),
   ]);
+  // Libra: produsele vin din catalogul intern (migrarea 020), nu de pe web
+  const catalog = slug === "libra" ? await ia("/api/catalog_libra") : [];
   const r = a.pe_banca.find(x => x.slug === slug);
   if(!r) return `<section><p class="note">Bancă necunoscută: ${esc(slug)}</p></section>`;
   const nume = m.nume[slug] || slug;
@@ -1141,6 +1207,7 @@ R.banca = async (stare) => {
     <div><div class="e">Rețea proprie</div><div class="n">${l ? num(l.sucursale + l.atm, 0) : "—"}</div>
       <div class="l">${l ? `${l.sucursale} sucursale · ${l.atm} ATM-uri${l.atm_parteneri ? ` · +${l.atm_parteneri} partenere` : ""}` : "fără locații în sursă"}</div></div>
   </div>
+  ${catalog.length ? sectiuneCatalog(catalog) : ""}
   <section>
     <h2>Comisioane</h2>
     ${preturi.length ? tabel(preturi, [

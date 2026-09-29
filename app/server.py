@@ -1041,6 +1041,26 @@ def logos():
     return gasite
 
 
+def catalog_libra():
+    """Catalogul intern de produse Libra (tabela `catalog_libra`, migrarea 020).
+
+    E referința pentru produsele Libra: vine din exportul intern (Sales Command
+    Center), nu de pe web, deci nu are citat și link ca observațiile colectate.
+    """
+    return interoghează(
+        """SELECT c.cod, c.denumire, c.categorie, c.categorie_cod, c.produs_prioritar,
+                  c.tip_produs, c.adresabilitate, c.segment, c.caracteristici,
+                  c.criterii_eligibilitate, c.cand_recomand,
+                  c.cifra_afaceri_min::float8 AS cifra_afaceri_min,
+                  c.cifra_afaceri_max::float8 AS cifra_afaceri_max,
+                  c.vechime_min_ani::float8 AS vechime_min_ani,
+                  c.vechime_max_ani::float8 AS vechime_max_ani,
+                  c.linii_business, c.caen_prefixe, c.fisier, c.generat_la
+           FROM catalog_libra c
+           ORDER BY c.produs_prioritar DESC, coalesce(c.categorie_cod, 'ZZ'), c.denumire"""
+    )
+
+
 def retele():
     """Conturile oficiale de social media ale bancilor, din date/retele_sociale.csv.
 
@@ -1188,6 +1208,7 @@ RUTE = {
     "/api/recenzii": recenzii,
     "/api/logos": lambda q: logos(),
     "/api/retele": lambda q: retele(),
+    "/api/catalog_libra": lambda q: catalog_libra(),
     "/api/matrice": matrice,
     "/api/celula": celula,
     "/api/rate": rate,
