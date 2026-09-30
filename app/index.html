@@ -465,7 +465,7 @@ const PAGINI = [
     {id:"produse",   nume:"Produse & prețuri",     pdf:"2.1", t:"Produse & prețuri", l:"Comisioanele fiecărei bănci pe servicii: câte prețuri avem, între ce valori, câte sunt gratuite. Clic pe o celulă pentru dovezi."},
     {id:"rate",      nume:"Rate & indicatori",     pdf:"2.2", t:"Rate & indicatori", l:"Dobânda tipică a fiecărei bănci, pe termen (depozite) și pe produs (credite). Clic pe o celulă pentru dovezi."},
     {id:"mobil",     nume:"Aplicații & recenzii",  pdf:"2.3", t:"Aplicații mobile & recenzii", l:"Nota, distribuția pe stele și versiunea fiecărei aplicații, plus ce spun clienții în recenzii, cu răspunsurile băncilor."},
-    {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Conturile oficiale ale fiecărei bănci pe Facebook, LinkedIn, Instagram și TikTok. Campaniile și reclamele urmează: mai jos, ce se poate colecta și cum."},
+    {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Conturile oficiale ale fiecărei bănci pe rețelele sociale și reclamele lor din bibliotecile oficiale Google și Bing (test, până la avizul juridic). Campaniile de pe site-uri urmează."},
     {id:"retea",     nume:"Rețea & operațional",   pdf:"2.5", t:"Rețea & operațional", l:"Sucursalele și ATM-urile fiecărei bănci, cu harta interactivă."},
     {id:"context",   nume:"Context de piață",      pdf:"2.6", t:"Context de piață", l:"Indicii de referință BNR: ROBOR, ROBID și IRCC."},
   ]},
@@ -1709,8 +1709,163 @@ function reclameBing(d, m){
       tabelul de reclame vine cu migrarea 019, după avizul juridic. Pagina citește cea mai recentă fotografie la fiecare încărcare.`)}`;
 }
 
+/* 2.4: reclamele Google (Ads Transparency Center). Sunt 16.765 în fotografia din 30.09, prea
+   multe pentru un tabel întreg: filtrul, sortarea și paginarea le face serverul, iar aici se
+   redesenează doar rezultatul, ca filtrele Bing de mai sus să nu se piardă. */
+const GG_PLATFORMA = {SEARCH: "Search", YOUTUBE: "YouTube", MAPS: "Maps", PLAY: "Play", SHOPPING: "Shopping",
+  sub_1000: "sub 1.000 peste tot", fara_date: "fără date de platformă"};
+const GG_FORMAT = {TEXT: "text", IMAGE: "imagine", VIDEO: "video"};
+const GG_COLOANE = ["banca", "advertiser", "format", "platforma", "prima", "ultima", "afisari"];
+const GG = {ordine: "ultima", sens: "desc", offset: 0, nr: 0, t: null};
+const ggPlat = p => String(p || "").split("+").map(x => GG_PLATFORMA[x] || x).join(" + ");
+const ggNr = v => v >= 1e6 ? `${num(v / 1e6, 1)} mil.` : num(v, 0);
+/* linkul public al reclamei, refăcut din coduri (ca în galeria colegului); se deschide doar la clic */
+const ggLink = r => `https://adstransparency.google.com/advertiser/${encodeURIComponent(r.advertiser_id)}/creative/${encodeURIComponent(r.creative_id)}?region=RO`;
+
+async function filtreazaGoogle(pastreazaPagina){
+  if(!pastreazaPagina) GG.offset = 0;
+  const v = id => document.getElementById(id);
+  const p = new URLSearchParams({banca: v("gg-banca").value, format: v("gg-format").value,
+    platforma: v("gg-platforma").value, perioada: v("gg-perioada").value, q: v("gg-cauta").value.trim(),
+    doar_ro: v("gg-ro").checked ? "1" : "", filiale: v("gg-filiale").checked ? "1" : "",
+    ordine: GG.ordine, sens: GG.sens, offset: String(GG.offset)});
+  const nr = ++GG.nr, gazda = v("gg-rezultat");
+  gazda.style.opacity = ".45";
+  try{
+    const [d, m] = await Promise.all([ia("/api/reclame_google?" + p), meta()]);
+    if(nr === GG.nr) gazda.innerHTML = ggRezultat(d, m);      // un filtru mai nou câștigă
+  }catch(e){
+    if(nr === GG.nr) gazda.innerHTML = `<p class="note" style="color:var(--warn)">Eroare: ${esc(e.message)}</p>`;
+  }
+  if(nr === GG.nr) gazda.style.opacity = "";
+}
+function sorteazaGoogle(th){
+  const col = GG_COLOANE[[...th.parentNode.children].indexOf(th)];
+  if(!col) return;
+  GG.sens = col === GG.ordine && GG.sens === "desc" ? "asc" : "desc";
+  GG.ordine = col;
+  filtreazaGoogle();
+}
+function paginaGoogle(offset){ GG.offset = offset; filtreazaGoogle(true); }
+function bancaGoogle(slug){
+  const s = document.getElementById("gg-banca");
+  s.value = s.value === slug ? "" : slug;
+  filtreazaGoogle();
+}
+
+function ggRezultat(d, m){
+  const f = d.filtrat, lim = d.limit, off = d.offset, n = f.n;
+  const z = new Date(d.ultima_zi + "T00:00:00Z"); z.setUTCDate(z.getUTCDate() - 6);
+  const prag7 = z.toISOString().slice(0, 10);
+  const activ = GG_COLOANE.indexOf(d.ordine);
+  const lista = (o, et) => Object.entries(o).sort((a, b) => b[1] - a[1])
+    .map(([k, x]) => `${esc(et[k] || k || "—")} <b>${num(x, 0)}</b>`).join(" · ");
+  const rezumat = `<p class="note" style="margin:0 0 10px;max-width:none"><b>${num(n, 0)}</b> ${n === 1 ? "reclamă" : "reclame"}
+    de la ${f.banci} ${f.banci === 1 ? "bancă" : "bănci"}${n ? ` · format: ${lista(f.pe_format, GG_FORMAT)}
+    <br>suprafața principală: ${lista(f.pe_platforma, GG_PLATFORMA)}` : ""}</p>`;
+  if(!n) return rezumat + '<p class="note">Nicio reclamă nu se potrivește filtrelor.</p>';
+  const k0 = () => 0;      // sortarea o face serverul, pe tot filtrul; coloana doar arată săgeata
+  const mic = t => `<div class="gri" style="font-size:11px;margin-top:2px">${t}</div>`;
+  const tab = tabel(d.randuri, [
+    {cap: "Bancă", html: true, s: k0, td: () => ({attr: 'style="white-space:nowrap"'}),
+      val: r => etichetaBanca(r.banca, m, {fisa: true}) + (r.filiala
+      ? ' <span class="pill" title="filială a grupului, în afara comparației între bănci">filială</span>' : "")},
+    {cap: "Advertiser", html: true, s: k0, val: r => esc(r.advertiser || "—")
+      + (r.platitor ? mic(`plătit de ${esc(r.platitor)}`) : "")},
+    {cap: "Format", html: true, s: k0, val: r => esc(GG_FORMAT[r.format] || r.format || "—")
+      + (r.tema ? `<div class="gri" style="font-size:11px;margin-top:2px" title="tema pusă automat de Google; poate diferi de pagina ATC">${esc(r.tema)}</div>` : "")},
+    {cap: "Suprafață principală", titlu: "platforma cu cea mai mare treaptă de afișări; treci cu mouse-ul pentru toate cinci",
+      html: true, s: k0, td: r => (r.platforme ? {attr: `title="${esc(r.platforme)}"`} : {}),
+      val: r => r.platforma === "fara_date" || r.platforma === "sub_1000"
+        ? `<span class="gri">${esc(ggPlat(r.platforma))}</span>` : esc(ggPlat(r.platforma))},
+    {cap: "Prima afișare", cls: "mono", s: k0, td: () => ({attr: 'style="white-space:nowrap"'}), val: r => r.prima || "—"},
+    {cap: "Ultima afișare", cls: "mono", html: true, s: k0, td: () => ({attr: 'style="white-space:nowrap"'}),
+      val: r => esc(r.ultima || "—") + (r.ultima >= prag7
+        ? ' <span class="pill ok" title="afișată în ultimele 7 zile din date">activă</span>' : "")},
+    {cap: "Afișări", cls: "num", html: true, s: k0, td: () => ({attr: 'style="white-space:nowrap"'}),
+      titlu: `intervalul publicat de Google, numărat până la ${d.afisari_pana_la || "—"}`,
+      val: r => r.af_deschis ? "peste 10 mil." : r.af_jos !== null ? `${ggNr(r.af_jos)}–${ggNr(r.af_sus)}`
+        : `<span class="gri" title="Google publică afișările cu 90 de zile întârziere">din ${esc(r.af_din || "—")}</span>`},
+    {cap: "Sursa", html: true, td: () => ({attr: 'style="white-space:nowrap"'}), val: r =>
+      `<a class="sursa" href="${esc(ggLink(r))}" target="_blank" rel="noopener noreferrer" title="${esc(r.creative_id)}">↗ ATC</a>`},
+  ], {sort: true, implicit: activ >= 0 ? [activ, d.sens] : undefined,
+      rand: r => (r.banca === "libra" ? {cls: "libra"} : {})})
+    .replaceAll('onclick="sorteaza(this)"', 'onclick="sorteazaGoogle(this)"');
+  const pag = n > lim ? `<div class="pagini"><span>${num(off + 1, 0)}–${num(Math.min(off + lim, n), 0)} din ${num(n, 0)}</span>
+    ${off > 0 ? `<button onclick="paginaGoogle(0)">« prima</button><button onclick="paginaGoogle(${off - lim})">‹ înapoi</button>` : ""}
+    ${off + lim < n ? `<button onclick="paginaGoogle(${off + lim})">înainte ›</button>
+      <button onclick="paginaGoogle(${Math.floor((n - 1) / lim) * lim})">ultima »</button>` : ""}</div>` : "";
+  return rezumat + tab + pag;
+}
+
+function reclameGoogle(d, m){
+  if(!d.fotografie) return '<p class="note">Nicio fotografie Google (lipsește output/reclame/google_*/ cu atc_ro_*.csv și google_advertiseri.csv).</p>';
+  const banci = d.banci || [], fil = (d.filiale || []).reduce((s, b) => s + b.n, 0);
+  const lasate = d.lasate_deoparte || {};
+  const mil = v => num(v / 1e6, 1);
+  const afis = b => b.af_deschis ? `≥ ${mil(b.af_jos)} mil.` : b.af_sus >= 1e6 ? `${mil(b.af_jos)}–${mil(b.af_sus)} mil.`
+    : `${ggNr(b.af_jos)}–${ggNr(b.af_sus)}`;
+  const kpi = `<div class="kpi">
+    <div><div class="e">Reclame Google ale băncilor</div><div class="n">${num(d.total, 0)}</div>
+      <div class="l">${banci.length} bănci din 30, afișate în România în ultimul an; ultima zi din date:
+        ${esc(d.ultima_zi || "—")}, afișări numărate până la ${esc(d.afisari_pana_la || "—")}</div></div>
+    ${banci.map(b => `<div style="cursor:pointer${b.banca === "libra" ? ";border-color:var(--accent)" : ""}"
+        onclick="bancaGoogle('${esc(b.banca)}')" title="clic: filtrează tabelul pe bancă (încă un clic: toate)">
+      <div class="e">${etichetaBanca(b.banca, m)}</div><div class="n">${num(b.n, 0)}</div>
+      <div class="l">${num(b.active7, 0)} active în 7 zile · ${num(b.noi30, 0)} noi în 30<br>${afis(b)} afișări</div></div>`).join("")}
+  </div>`;
+  const opt = (v, t) => `<option value="${esc(v)}">${esc(t)}</option>`;
+  const platforme = [...Object.keys(GG_PLATFORMA).filter(k => d.platforme.includes(k)),
+                     ...d.platforme.filter(k => !GG_PLATFORMA[k])];
+  const bara = `<div class="bara-fixa" style="margin:0 -20px 14px;padding:10px 20px;background:var(--surface)"><div class="filtre">
+    <label class="f">Bancă<select id="gg-banca" onchange="filtreazaGoogle()">${opt("", "Toate băncile")}${
+      banci.map(b => b.banca).sort((a, b) => (m.nume[a] || a).localeCompare(m.nume[b] || b, "ro"))
+        .map(b => opt(b, m.nume[b] || b)).join("")}</select></label>
+    <label class="f">Format<select id="gg-format" onchange="filtreazaGoogle()">${opt("", "Toate")}${
+      d.formate.map(x => opt(x, GG_FORMAT[x] || x)).join("")}</select></label>
+    <label class="f">Suprafață principală<select id="gg-platforma" onchange="filtreazaGoogle()">${opt("", "Toate")}${
+      platforme.map(x => opt(x, GG_PLATFORMA[x] || x)).join("")}</select></label>
+    <label class="f">Perioada activă<select id="gg-perioada" onchange="filtreazaGoogle()">${
+      [["", "tot anul din set"], ["activ7", "active în ultimele 7 zile"], ["activ30", "active în ultimele 30 de zile"],
+       ["activ90", "active în ultimele 90 de zile"], ["noi30", "pornite în ultimele 30 de zile"]].map(([v, t]) => opt(v, t)).join("")}</select></label>
+    <label class="f">Caută<input class="cauta" id="gg-cauta" type="search" placeholder="advertiser, agenție, temă, cod CR…"
+      oninput="clearTimeout(GG.t);GG.t=setTimeout(filtreazaGoogle,250)"></label>
+    <label class="bifa" title="reclamele cu o singură țară în afară de total: deducție, neconfirmată de Google"><input type="checkbox" id="gg-ro" onchange="filtreazaGoogle()">doar cele livrate numai în România</label>
+    ${fil ? `<label class="bifa" title="${esc((d.filiale || []).map(b => (m.nume[b.banca] || b.banca) + ": " + b.n).join(" · "))}"><input type="checkbox" id="gg-filiale" onchange="filtreazaGoogle()">și filialele (${num(fil, 0)} reclame)</label>`
+      : '<input type="checkbox" id="gg-filiale" hidden>'}
+  </div></div>`;
+  return `${kpi}${bara}
+    <div id="gg-rezultat">${ggRezultat(d, m)}</div>
+    ${despre(`<b>Sursa:</b> setul public oficial Google Ads Transparency Center din BigQuery
+      (<span class="mono">bigquery-public-data.google_ads_transparency_center.creative_stats</span>), descărcat de
+      Nicolae Cherascu pe 29–30.09.2026: toate reclamele livrate în România de advertiserii băncilor. Banca vine din lista de
+      advertiseri verificată de mână (<span class="mono">google_advertiseri.csv</span>). Aplicația citește doar fișierul local
+      <span class="mono">${esc(d.fisier || "")}</span>; nu face nicio cerere spre Google.<br>
+      <b>Ce conține:</b> advertiserul și, uneori, cine a plătit (agenția), formatul, tema pusă de Google, prima și ultima
+      afișare în România, intervalul de afișări, afișările pe fiecare platformă (Search, YouTube, Maps, Play, Shopping).<br>
+      <b>Ce nu conține:</b> textul, imaginea sau videoclipul reclamei, pagina spre care duce, campania, cuvintele-cheie,
+      bugetul și cheltuielile, clicurile, numărul exact de afișări. Doar din aceste date nu se poate spune <b>despre ce</b> e o reclamă.<br>
+      <b>Cum se citește:</b> o „reclamă” e o variantă de creație, nu o campanie (pe Search sunt multe variante de text), deci
+      numărul nu arată presiunea publicitară: BT are 61% dintre reclame, dar la afișări e sub Revolut, ING, Raiffeisen și BCR.
+      Afișările sunt trepte (0–1.000, 1.000–2.000, …, peste 10 milioane), publicate cu 90 de zile întârziere (numărate până la
+      ${esc(d.afisari_pana_la || "—")}); „din &lt;dată&gt;” înseamnă că Google nu le-a publicat încă. Suma pe bancă e un ordin de mărime,
+      „≥” când măcar o reclamă e în treapta deschisă. Fiecare reclamă cu date apare pe toate cele cinci platforme: se arată cea cu
+      treapta cea mai mare; sub 1.000 peste tot sau fără date de platformă înseamnă că nu se poate spune.<br>
+      <b>Limite:</b> Google păstrează doar ultimul an (o reclamă iese din set la un an după ultima afișare) și avertizează că setul
+      poate fi incomplet. Găsite: ${banci.length} bănci din 30. BRD publică prin agenția Sense8, cu „plătit de” gol la toate cele
+      ${num(lasate.agentie_fara_platitor || 0, 0)} de reclame ale contului, deci nu se poate separa și lipsește; Intesa publică prin
+      WPP Media Romania, plătit de Intesa. Grupurile din alte țări (RBI, în germană, și altele) și potrivirile false de nume
+      (GARANTI PREST, „Revolut” cu reclame Autovit) sunt lăsate deoparte (${num(lasate.exclus || 0, 0)} în fișier). Filialele (BCR Social
+      Finance, BCR Leasing, BCR Pensii, BRD Asset Management) se văd doar la cerere. „Doar în România” e o deducție din numărul de
+      țări, neconfirmată de Google; tema Google e aproximativă.<br>
+      Pagina reclamei din ATC nu se poate încadra în aplicație (Google răspunde 403): linkul „↗ ATC” o deschide în browser, la clic.
+      Datele nu sunt în bază și nici în git; avizul juridic pe termenii Google nu e încă cerut (30.09).`)}`;
+}
+
 R.campanii = async () => {
-  const [m, rs, bing] = await Promise.all([meta(), ia("/api/retele"), ia("/api/reclame_bing")]);
+  GG.nr++; Object.assign(GG, {ordine: "ultima", sens: "desc", offset: 0});
+  const [m, rs, bing, google] = await Promise.all([meta(), ia("/api/retele"), ia("/api/reclame_bing"),
+                                                   ia("/api/reclame_google")]);
   const pe = {};
   rs.forEach(r => { (pe[r.slug] = pe[r.slug] || {})[r.retea] = r; });
   const lipsa = r => !r || r.url === "NEGASIT";
@@ -1772,6 +1927,14 @@ R.campanii = async () => {
     ${reclameBing(bing, m)}
   </section>
 
+  <section id="google">
+    <div class="filtre" style="align-items:center">
+      <h2 style="margin:0">Reclame pe Google (Ads Transparency Center)</h2>
+      <span class="pill amb" title="Datele stau într-un fișier local, nu în bază">fotografie din ${esc(google.fotografie || "—")} · test, până la avizul juridic</span>
+    </div>
+    ${reclameGoogle(google, m)}
+  </section>
+
   <section>
     <div class="callout warn" style="margin-bottom:14px"><b>Campaniile nu sunt colectate încă.</b>
       Conturile de mai sus sunt punctul de plecare pentru reclame. Mai jos: ce se poate porni și ce cere fiecare sursă.</div>
@@ -1782,7 +1945,7 @@ R.campanii = async () => {
       ["Meta Ad Library", "reclamele active pe Facebook și Instagram", "API oficial, cere verificare de identitate", ""],
       ["TikTok Commercial Content Library", "reclamele din UE", "API oficial, cere cont de cercetare", ""],
       ["YouTube Data API", "canalele de brand ale băncilor", "API oficial, cere cheie", ""],
-      ["Google Ads Transparency Center", "reclamele Google", "fără API public: furnizor licențiat sau eșantion manual", "amb"],
+      ["Google Ads Transparency Center", "reclamele Google: advertiser, format, perioadă, afișări, platformă (fără text și fără cheltuieli)", "setul oficial din BigQuery, doar metadate: testat, vezi secțiunea de mai sus; cere avizul juridic", "ok"],
     ], [
       {cap: "Sursă", val: r => r[0]}, {cap: "Ce aduce", val: r => r[1]},
       {cap: "Ce e nevoie", html: true, val: r => `<span class="pill ${r[3]}">${esc(r[2])}</span>`},

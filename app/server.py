@@ -1123,6 +1123,205 @@ def reclame_bing():
             "oprit": d.get("oprit"), "reclame": reclame}
 
 
+# Reclamele Google (Ads Transparency Center, setul oficial din BigQuery), din arhiva
+# colegului dezarhivata in output/reclame/google_<data>/. Nimic in baza pana la aviz.
+# Lista de advertiseri foloseste „bt”; tabela `banci` are „banca-transilvania”.
+GOOGLE_ALIAS = {"bt": "banca-transilvania"}
+GOOGLE_INT64_MAX = 2 ** 63 - 1      # treapta deschisa „peste 10 milioane” de afisari
+GOOGLE_PE_PAGINA = 100
+_GOOGLE = {"cheie": None, "date": None}
+
+
+def _google_fisiere():
+    import glob
+    radacina = os.path.join(os.path.dirname(AICI), "output", "reclame")
+    for folder in sorted(glob.glob(os.path.join(radacina, "google_*")), reverse=True):
+        csvuri = sorted(glob.glob(os.path.join(folder, "**", "atc_ro_*.csv"), recursive=True))
+        harta = glob.glob(os.path.join(folder, "**", "google_advertiseri.csv"), recursive=True)
+        if csvuri and harta:
+            return csvuri[-1], harta[0]
+    return None, None
+
+
+def _google_platforme(s):
+    """„MAPS:0-1000:;…;YOUTUBE:400000-450000:” -> platforma principala + detaliu.
+
+    Fiecare reclama cu date are toate cele 5 platforme (10.053 din 10.053, 30.09),
+    deci numele nu deosebesc nimic: conteaza cea cu treapta de afisari cea mai mare."""
+    trepte = []
+    for b in (s or "").split(";"):
+        p = b.split(":")
+        if len(p) >= 2 and p[0]:
+            jos, _, sus = p[1].partition("-")
+            trepte.append((p[0], int(jos or 0), int(sus or 0)))
+    if not trepte:
+        return "fara_date", ""
+    maxim = max(t[1] for t in trepte)
+    detaliu = "; ".join(f"{n} {j:,}–{'∞' if u == GOOGLE_INT64_MAX else f'{u:,}'}".replace(",", ".")
+                        for n, j, u in sorted(trepte, key=lambda t: -t[1]))
+    if maxim == 0:
+        return "sub_1000", detaliu
+    return "+".join(n for n, j, _ in trepte if j == maxim), detaliu
+
+
+def _google_incarca():
+    """Citeste CSV-ul (10 MB, 17.262 de randuri pe 30.09) o singura data si il tine
+    in memorie; il reciteste doar cand se schimba fisierul (mtime)."""
+    cale, cale_harta = _google_fisiere()
+    if not cale:
+        return None
+    cheie = (cale, os.path.getmtime(cale), cale_harta, os.path.getmtime(cale_harta))
+    if _GOOGLE["cheie"] == cheie:
+        return _GOOGLE["date"]
+    csv.field_size_limit(10 ** 7)       # coloana de tintire e JSON
+    with open(cale_harta, encoding="utf-8", newline="") as f:
+        harta = {r["advertiser_id"]: r for r in csv.DictReader(f)}
+    reclame, lasate, pana_la = [], {}, ""
+    with open(cale, encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            pana_la = max(pana_la, r.get("times_shown_end_date") or "")
+            adv = harta.get(r["advertiser_id"]) or {"rol": "necunoscut", "banca": "-"}
+            rol, platitor = adv["rol"], (r.get("ad_funded_by") or "").strip()
+            # O agentie conteaza la banca doar cand „platit de” o numeste: Intesa publica
+            # prin WPP Media Romania (42, toate platite de Intesa); la Sense8 (BRD)
+            # platitorul e gol la toate cele 364, deci reclamele BRD nu se pot separa.
+            if rol == "agentie" and not (platitor and adv["banca"].upper() in platitor.upper()):
+                rol = "agentie_fara_platitor"
+            if rol not in ("banca", "filiala", "agentie"):
+                lasate[rol] = lasate.get(rol, 0) + 1
+                continue
+            platforma, detaliu = _google_platforme(r.get("platforme"))
+            jos, sus = r.get("times_shown_lower_bound"), r.get("times_shown_upper_bound")
+            deschis = bool(sus) and int(sus) == GOOGLE_INT64_MAX
+            reclame.append({
+                "banca": GOOGLE_ALIAS.get(adv["banca"], adv["banca"]),
+                "filiala": rol == "filiala",
+                "advertiser": r.get("advertiser_disclosed_name") or adv.get("advertiser"),
+                "platitor": platitor or None,
+                "format": r.get("ad_format_type") or None,
+                "tema": r.get("topic") or None,
+                "platforma": platforma,
+                "platforme": detaliu,
+                "prima": r.get("first_shown") or None,
+                "ultima": r.get("last_shown") or None,
+                "af_jos": int(jos) if jos else None,
+                "af_sus": int(sus) if sus and not deschis else None,
+                "af_deschis": deschis,
+                "af_din": r.get("times_shown_availability_date") or None,
+                # Nicio reclama n-are sub 2 intrari de tara (30.09): una pare un total,
+                # deci 2 = „doar in Romania”. Deductie, neconfirmata de Google.
+                "doar_ro": r.get("nr_tari") == "2",
+                "advertiser_id": r["advertiser_id"],
+                "creative_id": r["creative_id"],
+            })
+    nume = os.path.basename(cale)
+    date = {
+        "fotografie": nume[len("atc_ro_"):-len(".csv")],
+        "fisier": os.path.relpath(cale, os.path.dirname(AICI)).replace("\\", "/"),
+        "ultima_zi": max((x["ultima"] for x in reclame if x["ultima"]), default=None),
+        "afisari_pana_la": pana_la or None,
+        "lasate_deoparte": lasate,
+        "reclame": reclame,
+    }
+    _GOOGLE.update(cheie=cheie, date=date)
+    return date
+
+
+def _google_zi(date, zile):
+    import datetime
+    z = datetime.date.fromisoformat(date["ultima_zi"]) if date["ultima_zi"] else datetime.date.today()
+    return str(z - datetime.timedelta(days=zile))
+
+
+def _google_rezumat(rs, date):
+    # „Azi” e ultima zi din date (29.09 in fotografia din 30.09), nu data rularii:
+    # setul apare cu o zi intarziere.
+    prag7, prag30 = _google_zi(date, 6), _google_zi(date, 29)
+    pe = {}
+    for r in rs:
+        b = pe.setdefault(r["banca"], {"banca": r["banca"], "n": 0, "active7": 0, "noi30": 0,
+                                       "formate": {}, "af_jos": 0, "af_sus": 0, "af_deschis": False})
+        b["n"] += 1
+        b["active7"] += (r["ultima"] or "") >= prag7
+        b["noi30"] += (r["prima"] or "") >= prag30
+        b["formate"][r["format"]] = b["formate"].get(r["format"], 0) + 1
+        b["af_jos"] += r["af_jos"] or 0
+        b["af_sus"] += r["af_sus"] or 0
+        b["af_deschis"] |= r["af_deschis"]
+    return sorted(pe.values(), key=lambda b: -b["n"])
+
+
+GOOGLE_ORDINE = {
+    "banca": lambda r: r["banca"], "advertiser": lambda r: (r["advertiser"] or "").lower(),
+    "format": lambda r: r["format"] or "", "platforma": lambda r: r["platforma"],
+    "prima": lambda r: r["prima"] or "", "ultima": lambda r: r["ultima"] or "",
+    "afisari": lambda r: r["af_jos"] if r["af_jos"] is not None else -1,
+}
+
+
+def reclame_google(q):
+    """Reclamele Google ale bancilor, filtrate si paginate aici: 16.765 de reclame
+    (30.09) nu se trimit toate in browser, doar pagina curenta si agregatele."""
+    date = _google_incarca()
+    if not date:
+        return {"fotografie": None, "total": 0, "banci": [], "filiale": [], "formate": [],
+                "platforme": [], "filtrat": {"n": 0, "pe_format": {}, "pe_platforma": {}, "banci": 0},
+                "randuri": [], "offset": 0, "limit": GOOGLE_PE_PAGINA}
+    arg = lambda k: (q.get(k) or [""])[0].strip()
+    perioada = arg("perioada")
+    zile = {"activ7": 6, "activ30": 29, "activ90": 89, "noi30": 29}.get(perioada)
+    prag = _google_zi(date, zile) if zile is not None else None
+    banca, fmt, plat, text = arg("banca"), arg("format"), arg("platforma"), arg("q").lower()
+    filiale, doar_ro = arg("filiale") == "1", arg("doar_ro") == "1"
+
+    def trece(r):
+        if r["filiala"] and not filiale:
+            return False
+        if (banca and r["banca"] != banca) or (fmt and r["format"] != fmt):
+            return False
+        if plat and plat not in r["platforma"].split("+"):
+            return False
+        if doar_ro and not r["doar_ro"]:
+            return False
+        if prag and ((r["prima"] if perioada == "noi30" else r["ultima"]) or "") < prag:
+            return False
+        if text and text not in " ".join(filter(None, (r["advertiser"], r["platitor"], r["creative_id"],
+                                                       r["tema"], r["banca"]))).lower():
+            return False
+        return True
+
+    toate = [r for r in date["reclame"] if not r["filiala"]]
+    rs = [r for r in date["reclame"] if trece(r)]
+    ordine = arg("ordine") if arg("ordine") in GOOGLE_ORDINE else "ultima"
+    sens = "asc" if arg("sens") == "asc" else "desc"
+    rs.sort(key=GOOGLE_ORDINE[ordine], reverse=sens == "desc")
+    try:
+        offset = max(int(arg("offset") or 0), 0)
+    except ValueError:
+        offset = 0
+    pe_format, pe_platforma = {}, {}
+    for r in rs:
+        pe_format[r["format"] or ""] = pe_format.get(r["format"] or "", 0) + 1
+        # La egalitate de trepte o reclama are doua platforme principale (55 din 16.765,
+        # 30.09) si se numara la amandoua, ca cifrele sa se potriveasca filtrului.
+        for p in r["platforma"].split("+"):
+            pe_platforma[p] = pe_platforma.get(p, 0) + 1
+    return {
+        "fotografie": date["fotografie"], "fisier": date["fisier"],
+        "ultima_zi": date["ultima_zi"], "afisari_pana_la": date["afisari_pana_la"],
+        "lasate_deoparte": date["lasate_deoparte"],
+        "total": len(toate),
+        "banci": _google_rezumat(toate, date),
+        "filiale": _google_rezumat([r for r in date["reclame"] if r["filiala"]], date),
+        "formate": sorted({r["format"] for r in toate if r["format"]}),
+        "platforme": sorted({p for r in toate for p in r["platforma"].split("+")}),
+        "filtrat": {"n": len(rs), "pe_format": pe_format, "pe_platforma": pe_platforma,
+                    "banci": len({r["banca"] for r in rs})},
+        "ordine": ordine, "sens": sens, "offset": offset, "limit": GOOGLE_PE_PAGINA,
+        "randuri": rs[offset:offset + GOOGLE_PE_PAGINA],
+    }
+
+
 def recenzii(q):
     if not q.get("id_locatie"):
         return {"eroare": "lipsește id_locatie"}
@@ -1258,6 +1457,7 @@ RUTE = {
     "/api/logos": lambda q: logos(),
     "/api/retele": lambda q: retele(),
     "/api/reclame_bing": lambda q: reclame_bing(),
+    "/api/reclame_google": reclame_google,
     "/api/catalog_libra": lambda q: catalog_libra(),
     "/api/matrice": matrice,
     "/api/celula": celula,
