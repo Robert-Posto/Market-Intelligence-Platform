@@ -229,3 +229,31 @@ BEGIN
   END IF;
   RAISE NOTICE 'observatii_curente e sincronizată cu observations';
 END $$;
+
+-- >>> campanii_curente (aceeași instrucțiune CREATE VIEW ca în migrarea 019;
+--     testul ingest/test_campanii.py pică dacă diferă)
+-- --------------------------------------------------------------------------
+-- Campaniile din ultima fotografie a fiecărei bănci (migrarea 019). Nu depinde
+-- de `observations`, dar `c.*` îngheață lista de coloane la fel ca la
+-- `observatii_curente`, deci se recreează aici după orice coloană nouă în
+-- `campanii`. Fără migrarea 019 blocul se sare, fără eroare.
+-- --------------------------------------------------------------------------
+DO $$
+BEGIN
+  IF to_regclass('public.campanii') IS NULL THEN
+    RAISE NOTICE 'campanii_curente: tabela campanii lipsește (migrarea 019 nerulată), sărit';
+    RETURN;
+  END IF;
+  DROP VIEW IF EXISTS campanii_curente;
+  CREATE VIEW campanii_curente AS
+    SELECT c.*, b.slug AS banca, b.nume AS nume_banca,
+           b.slug IN ('libra') AS reper,                          -- BANCI_REPER
+           c.organizator = 'banca' AS in_comparatie,
+           coalesce(c.fereastra_sfarsit < current_date, FALSE) AS incheiata_azi
+    FROM campanii c
+    JOIN banci b ON b.id = c.id_banca
+    WHERE c.ultima_vedere::date = (SELECT max(c2.ultima_vedere)::date
+                                   FROM campanii c2 WHERE c2.id_banca = c.id_banca);
+  RAISE NOTICE 'campanii_curente recreată';
+END $$;
+-- <<< campanii_curente

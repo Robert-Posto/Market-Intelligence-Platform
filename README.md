@@ -71,6 +71,7 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 016 | rețeaua proprie vs. rețeaua parteneră (ATM-uri) |
 | 017 | App Store din pagina publică; recenziile din RSS șterse |
 | 018 | proveniența `populare` permisă în `observations` |
+| 019 | campaniile (2.4): `campanii`, legătura N:M `campanii_surse` (cu amprenta documentului, nu în `hashes`), `comunicate` (newsroom), rolurile `campanie` / `comunicat` în `surse`, vederea `campanii_curente`; scrise de `ingest/campanii.py`, nimic în `observations` |
 | 020 | `catalog_libra`: catalogul intern de produse Libra (referință, nu colectare); 019 e rezervată campaniilor |
 | 021 | sursele Libra cu rol `produs` trec pe `pauza` (produsele vin din catalog) |
 | 022 | catalogul Libra înlocuiește valorile web: `metoda_extractie = 'catalog'`, `format = 'xlsx'`; vederea `observatii_inlocuite_de_catalog` le ascunde (nu le șterge) din `observatii_curente` pe același `camp`/`unitate`/categorie și segment compatibil; valorile se scriu cu `ingest/catalog_libra_valori.py` |
@@ -137,6 +138,16 @@ python ingest/cauta_app_id.py           # id-uri de App Store
 python ingest/fetch_logos_site.py       # sigle, de pe site-ul fiecărei bănci
 python ingest/extract_deposits.py       # depozite (BS4) -> date/rezultate_depozite.json, citit de --pas bs4
 python ingest/itunes_lookup.py          # App Store -> date/rezultate_app_store.json, citit de load_appstore.py
+```
+
+Campaniile și comunicatele (2.4, după migrarea 019; configurația pe bancă e
+în `ingest/campanii_config.py`):
+
+```bash
+python ingest/campanii.py --simulare [--newsroom]   # ce s-ar cere, fără nicio cerere
+python ingest/campanii.py --doar-bronze             # doar documentele deja în Bronze, fără rețea
+python ingest/campanii.py [--banca <slug>]          # cu rețea, prin transport.adu
+python ingest/campanii.py --newsroom [--corp-luni 24]
 ```
 
 Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi

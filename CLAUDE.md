@@ -64,7 +64,8 @@ sau timeout e tratat ca permis (vezi README, „Conformitate").
 
 **Un singur loc pentru fiecare regulă.**
 - Extractoarele produc înregistrări brute și nu știu de baza de date.
-- `ingest/normalizeaza.py` e singurul loc brut → rând din bază.
+- `ingest/normalizeaza.py` e singurul loc brut → rând în `observations`; pentru
+  `campanii` / `comunicate` e `ingest/normalizeaza_campanii.py`.
 - Vocabularul canonic e doar în `crawler/vocabular.py`.
 - Fiecare pas din `router.py` e idempotent: șterge doar ce a scris propria
   proveniență.

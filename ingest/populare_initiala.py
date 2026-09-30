@@ -223,6 +223,13 @@ def din_bronze(err, raport, banca=None):
 
     Doar sursele cu amprentă în `hashes` (ce a adus ultima colectare), iar
     fiecare fișier se verifică față de amprenta lui înainte de folosire.
+
+    Doar rolurile de preț, ca `surse_active`: un comunicat sau o pagină de
+    campanie trecută prin extractorul de tarife devine „preț" (comunicatul Exim
+    cu 0% la conturi, Nicolae §4.3). Colectorul de campanii (`campanii.py`)
+    nu scrie în `hashes`, dar filtrul ține și dacă altcineva o face. Pe 29.09
+    toate sursele cu amprentă aveau deja unul dintre cele trei roluri, deci
+    filtrul nu schimbă nimic din ce se reextrage azi.
     """
     brute = []
     with psycopg2.connect(N.dsn()) as conn:
@@ -232,6 +239,7 @@ def din_bronze(err, raport, banca=None):
                    FROM surse s JOIN banci b ON b.id = s.id_banca
                    JOIN hashes h ON h.id_sursa = s.id
                    WHERE (%s = '' OR b.slug = %s)
+                     AND s.rol IN ('produs', 'conditii', 'locator')
                      AND NOT (s.rol = 'produs' AND b.slug = ANY(%s))
                    GROUP BY s.id, b.slug ORDER BY s.id""",
                 (banca or "", banca or "", list(N.BANCI_CU_CATALOG)))

@@ -15,7 +15,11 @@ surse (tabelă) ──►  ├─ extractor HTML  (BS4 + parser_rate)          �
 ```
 
 `router.py` decide ce extractor primește fiecare sursă. `normalizeaza.py` e
-singurul loc care traduce o înregistrare brută în rânduri de bază.
+singurul loc care traduce o înregistrare brută în rânduri de `observations`.
+Campaniile și comunicatele (2.4) au drumul lor, care nu atinge `observations`:
+`ingest/campanii.py` (colectorul) → `campanii_extractie.py` →
+`normalizeaza_campanii.py` → `campanii`, `campanii_surse`, `comunicate`
+(migrarea 019).
 
 > **Corectură.** O versiune anterioară a diagramei scria „extractor PDF
 > (Playwright)" pe prima ramură. Era fals: ramura aceea **citește un JSON pe
