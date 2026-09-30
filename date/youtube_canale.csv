@@ -1,0 +1,31 @@
+slug,stare,canal,tip,nivel,pagini,url_dovada,fisier_bronze,alte_canale,nota
+banca-transilvania,GASIT,BancaTransilvania,custom,blocat,7,https://www.bancatransilvania.ro/companii/cont-online,bronze_arhiva_20260923_1714/67767c9a_factoring.pdf,,dovada vine din pagini aduse după blocajul WAF (arhiva 23.09); nu se extrage
+bankofchina,NEGASIT,,,,13,,,,"13 pagini HTML ale băncii în Bronze, niciun link de canal"
+banorient,NEGASIT,,,,0,,,,robots.txt interzice tot (banks.py): nicio pagină în Bronze
+bcr,GASIT,@BCR-BancaComercialaRomana,handle,RO,113,https://www.bcr.ro/ro/business/general/finantare/supply-chain-finance/factoring/factoring-de-import,bronze/09ee98a1_factoring-de-import,videobcr:user(20),
+bcr-locuinte,NEGASIT,,,,9,,,,"9 pagini HTML ale băncii în Bronze, niciun link de canal"
+bid,NEGASIT,,,,16,,,,"16 pagini HTML ale băncii în Bronze, niciun link de canal"
+bnpparibas,GASIT,BNPParibas,user,grup,2,https://www.romania.bnpparibas.com/en/contacts/,bronze/455a51d8_contacts,,"canalul grupului BNP Paribas (Paris), legat din subsolul romania.bnpparibas.com"
+brci,GASIT,UCF-tbLxARsLxX2MFaFqrIdQ,id,RO,1,https://vreaucont.brci.ro/onboarding,bronze_arhiva_20260923_1714/b85bc0a5_.pdf,,"o singură pagină (arhiva 23.09), link /channel/…/featured; de verificat titlul la prima rulare"
+brd,GASIT,UCoEyYt1n-eiZ4OLoiqcZofA,id,RO,117,https://www.brd.ro/afla-totul-despre-comisioanele-pe-care-le-ai-platit-in-ultimele-12-luni,bronze/02c1f39b_afla-totul-despre-comisioanele-pe-care-le-ai-platit-in-ultimele-12-luni,,
+cec,NEGASIT,,,,11,,,,"11 pagini HTML ale băncii în Bronze, niciun link de canal"
+cetelem,GASIT,UCVXigziaml8oJqQhV7ujBKQ,id,blocat,66,https://www.cetelem.ro/card-de-credit/promotii/premiu-cash-ATM-POS-24Ianuarie,bronze/0aa1ccdb_premiu-cash-ATM-POS-24Ianuarie,,dovada vine din paginile aduse prin Playwright după respingerea F5 (23.09; Nicolae §9.14); nu se extrage
+citibank,NEGASIT,,,,0,,,,"domeniu abandonat (banks.py), fără retail în România: nicio pagină în Bronze"
+credex,GASIT,UCZKd8kP8WhvDcVHibKBKybg,id,RO,39,https://credex.ro/totul-despre-credite/despre-credite-in-rate-ifn/,bronze/065b8a0f_despre-credite-in-rate-ifn,@WhiteBoardFinance:handle(1),
+creditcoop,NEGASIT,,,,40,,,,"40 pagini HTML ale băncii în Bronze, niciun link de canal"
+exim,GASIT,UCR9fv9V5JMMFgcrC0KL6aNg,id,RO,128,https://www.eximbank.ro/en/2014/08/19/halalai-implementing-structural-reforms-remains-the-solution-for-a-real-economic-convergence/,bronze/003d22bf_halalai-implementing-structural-reforms-remains-the-solution-for-a-real-economic-convergence,,
+garanti,GASIT,GarantiBBVARomania,custom,RO,63,https://www.garantibbva.ro/imm-si-pfa/comisioane-si-dobanzi-credite-imm-si-pfa/,bronze/00d0ddd9_comisioane-si-dobanzi-credite-imm-si-pfa,,
+ing,GASIT,ingbankromania,user,RO,64,linkuri interne spre site (19),bronze/001463fe_extra-rol,,
+intesa,GASIT,@IntesaSanpaoloBank-g4m,handle,blocat,3,https://www.intesasanpaolobank.ro/persoane-fizice/credite/credit-ipotecar-campanie.html,bronze_arhiva_20260923_1714/03df0fc8_credit-ipotecar-campanie.html.pdf,,dovada vine din pagini aduse după blocajul WAF (arhiva 23.09); handle generat automat (-g4m); nu se extrage
+libra,GASIT,LibraInternetBank,user,RO,95,https://www.librabank.ro/credit-nevoi-personale-cu-ipoteca,bronze/03617a86_credit-nevoi-personale-cu-ipoteca,@LibraInternetBank:handle(91),
+nexent,NEGASIT,,,,48,,,,"48 pagini HTML ale băncii în Bronze, niciun link de canal"
+patria,GASIT,UCQMhtX9IFP_aTwbNeR1xPmg,id,RO,57,https://www.patriabank.ro/afaceri-mici/fonduri-europene/scrisori-de-garantie-bancara-pentru-prefinantare-avans-proiect-cu-fonduri-europene,bronze/0517b047_scrisori-de-garantie-bancara-pentru-prefinantare-avans-proiect-cu-fonduri-europene,,
+pko,GASIT,pkobp,user,grup,90,https://www.pkobp.pl/aktualnosci/zmieniaja-sie-warunki-ubezpieczenia-podroznego-pko-mastercard-platinum-i-pko-visa-infinite,bronze/031ef21c_zmieniaja-sie-warunki-ubezpieczenia-podroznego-pko-mastercard-platinum-i-pko-visa-infinite,@pkobp:handle(22),"paginile sunt pe pkobp.pl (PKO Bank Polski, Polonia): canalul băncii-mamă, în polonă; sucursala din România n-are canal legat"
+procredit,GASIT,ProCreditBankRomania,user,RO,67,https://www.procreditbank.ro/persoane-fizice/locatii-24-7/,bronze/04f30437_locatii-24-7,,
+raiffeisen,NEGASIT,,,,82,,,,"82 pagini HTML ale băncii în Bronze, niciun link de canal; doar videoclipuri încorporate (5, ex. Ecb0Y8bM7NM, L8qN7ohHRqE, bGnT5d26-yU), al căror canal nu e neapărat al băncii"
+revolut,GASIT,@RevolutApp,handle,grup,10,https://www.revolut.com/en-RO/personal-loans/,bronze_arhiva_20260923_1714/01d6136e_.pdf,,"@RevolutApp e canalul global Revolut, legat de pe revolut.com/en-RO; niciun canal pentru România"
+salt,GASIT,@SaltBankRO,handle,RO,24,linkuri interne spre site (87),bronze/052d5f44_de-la-prieteni-la-facturi-toate-platile-ropay-intr-un-singur-loc,,
+tbi,NEGASIT,,,,96,,,,"96 pagini HTML ale băncii în Bronze, niciun link de canal; doar videoclipuri încorporate (2, ex. EVJbeGsyll8, NJPliICCFRQ), al căror canal nu e neapărat al băncii"
+techventures,NEGASIT,,,,28,,,,"28 pagini HTML ale băncii în Bronze, niciun link de canal"
+unicredit,GASIT,@UniCreditBankRomania,handle,blocat,6,https://www.unicredit.ro/ro/persoane-fizice/Credite/carduri-de-credit.html,bronze_arhiva_20260923_1714/176d7902_carduri-de-credit.html.pdf,,dovada vine din pagini aduse după blocajul WAF (arhiva 23.09); nu se extrage
+vista,NEGASIT,,,,29,,,,"29 pagini HTML ale băncii în Bronze, niciun link de canal"
