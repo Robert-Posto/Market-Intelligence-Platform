@@ -33,6 +33,9 @@ portul 8765, nici 5432.
 
 ## 1. Pe server: programele (o singură dată)
 
+Mai întâi: te conectezi prin Remote Desktop (`mstsc`, cu numele DNS și contul de domeniu)
+și rulezi `deployerifica_server.ps1`. Scriptul doar citește și arată ce lipsește: programe, spațiu pe disc, acces la internet, porturi.
+
 Structura propusă: `D:\mcc\mip` pentru cod, `D:\mcc\iis` pentru site-ul IIS,
 `D:\mcc\nssm.exe`.
 
