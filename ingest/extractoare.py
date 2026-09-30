@@ -696,7 +696,9 @@ def din_html(octeti, url, slug, rol=None):
 
 RE_OBIECT_JSON = re.compile(
     r"\{[^{}]*?(?:\"lat(?:itude)?\"|\"lng\"|\"lon(?:gitude)?\")[^{}]*\}", re.S)
-CHEI_LAT, CHEI_LON = ("lat", "latitude"), ("lng", "lon", "longitude")
+# „long”: TechVentures pune rețeaua în pagină (`window.locations`, 14 puncte,
+# 29.09) cu cheile „lat”/„long”; fără ea, pagina ieșea GOL cu 0 puncte.
+CHEI_LAT, CHEI_LON = ("lat", "latitude"), ("lng", "lon", "long", "longitude")
 CHEI_NUME = ("name", "nume", "title", "denumire")
 CHEI_ADRESA = ("address", "adresa", "street")
 CHEI_PROGRAM = ("schedule", "program", "hours", "orar", "opening_hours")
