@@ -14,14 +14,17 @@ sub limita, nu la limita.
 
 import json
 import os
+import sys
 import time
 
 import requests
 
-USER_AGENT = (
-    "LibraBank-MarketIntel-Test/0.1 "
-    "(test personal, doar date publice; contact: robert.postolache@librabank.ro)"
-)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Ecusonul are un singur loc, `crawler/__init__.py`. Aici era copiat ca text:
+# identic azi, dar la schimbarea ecusonului rămânea vechiul (Nicolae, §10.1
+# punctul 2).
+from crawler import UA as USER_AGENT  # noqa: E402
+
 LOOKUP_URL = "https://itunes.apple.com/lookup"
 DELAY_BETWEEN_REQUESTS = 3.0
 DATE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "date")

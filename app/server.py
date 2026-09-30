@@ -103,7 +103,7 @@ def banci():
         FROM banci b
         LEFT JOIN surse s        ON s.id_banca = b.id
         LEFT JOIN observations o ON o.id_sursa = s.id
-        LEFT JOIN app_release ar ON ar.id_banca = b.id
+        LEFT JOIN app_release_curente ar ON ar.id_banca = b.id
         GROUP BY b.id, b.slug, b.nume, b.tier
         ORDER BY observatii DESC, b.slug
         """
@@ -260,7 +260,7 @@ def mobil():
             """SELECT b.slug AS banca, ar.platforma, ar.app_id, ar.versiune,
                       ar.note_lansare, ar.rating_agregat, ar.volum_rating,
                       ar.distributie_stele
-               FROM app_release ar JOIN banci b ON b.id = ar.id_banca
+               FROM app_release_curente ar JOIN banci b ON b.id = ar.id_banca
                ORDER BY ar.volum_rating DESC NULLS LAST"""
         ),
         "review_sumar": interoghează(
@@ -269,7 +269,7 @@ def mobil():
                       max(ar.rating_agregat)  AS rating_agregat_store
                FROM app_review v
                JOIN banci b ON b.id = v.id_banca
-               LEFT JOIN app_release ar ON ar.id_banca = b.id AND ar.platforma = v.platforma
+               LEFT JOIN app_release_curente ar ON ar.id_banca = b.id AND ar.platforma = v.platforma
                GROUP BY 1,2 ORDER BY 1,2"""
         ),
         "review_recente": interoghează(
@@ -281,7 +281,7 @@ def mobil():
         ),
         "screenshoturi": interoghează(
             """SELECT b.slug AS banca, sh.url
-               FROM app_screenshot sh JOIN banci b ON b.id = sh.id_banca
+               FROM app_screenshot_curente sh JOIN banci b ON b.id = sh.id_banca
                ORDER BY b.slug, sh.id"""
         ),
     }
@@ -804,7 +804,7 @@ def sentiment(q):
                       count(*) FILTER (WHERE v.rating <= 2)::int AS negative
                FROM app_review v
                JOIN banci b ON b.id = v.id_banca
-               LEFT JOIN app_release ar ON ar.id_banca = b.id AND ar.platforma = v.platforma
+               LEFT JOIN app_release_curente ar ON ar.id_banca = b.id AND ar.platforma = v.platforma
                GROUP BY 1, 2 ORDER BY review_uri DESC"""
         ),
         "storefronts": interoghează(
@@ -842,9 +842,9 @@ def versus_extra():
             """SELECT b.slug AS banca, ar.platforma, ar.versiune,
                       ar.rating_agregat::float8 AS rating,
                       ar.volum_rating::int      AS volum,
-                      (SELECT count(*)::int FROM app_screenshot sh
+                      (SELECT count(*)::int FROM app_screenshot_curente sh
                         WHERE sh.id_banca = b.id) AS capturi
-               FROM app_release ar JOIN banci b ON b.id = ar.id_banca"""
+               FROM app_release_curente ar JOIN banci b ON b.id = ar.id_banca"""
         ),
         "retea": interoghează(
             """SELECT b.slug AS banca,
@@ -986,7 +986,7 @@ def acoperire():
                     count(*) FILTER (WHERE o.unitate = 'procent' AND NOT o.ambiguu)::int AS dobanzi
              FROM observatii_curente o JOIN surse s ON s.id = o.id_sursa GROUP BY 1),
            a AS (SELECT id_banca, max(rating_agregat)::float8 AS rating, max(volum_rating)::int AS note
-                 FROM app_release GROUP BY 1),
+                 FROM app_release_curente GROUP BY 1),
            l AS (SELECT id_banca, count(*)::int AS n FROM locatii GROUP BY 1),
            r AS (SELECT id_banca, count(*)::int AS n FROM app_review GROUP BY 1),
            s AS (SELECT id_banca, count(*)::int AS surse,
@@ -1010,8 +1010,8 @@ def acoperire():
              (SELECT max(created_at) FROM observatii_curente WHERE unitate = 'lei') AS comisioane_la,
              (SELECT count(*) FROM observatii_curente WHERE unitate = 'procent' AND NOT ambiguu)::int AS dobanzi,
              (SELECT max(created_at) FROM observatii_curente WHERE unitate = 'procent') AS dobanzi_la,
-             (SELECT count(*) FROM app_release)::int AS aplicatii,
-             (SELECT max(observat_la) FROM app_release) AS aplicatii_la,
+             (SELECT count(*) FROM app_release_curente)::int AS aplicatii,
+             (SELECT max(vazut_ultima) FROM app_release) AS aplicatii_la,
              (SELECT count(*) FROM locatii)::int AS locatii,
              (SELECT max(observat_la) FROM locatii) AS locatii_la,
              (SELECT count(*) FROM indici_referinta)::int AS indici,
