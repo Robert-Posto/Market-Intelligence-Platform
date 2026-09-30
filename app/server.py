@@ -1322,6 +1322,91 @@ def reclame_google(q):
     }
 
 
+def _blocate_la_rulare():
+    """Băncile la care ultima rulare a colectorului de campanii a dat de un blocaj.
+
+    `campanii_config.BLOCATE` ține doar blocajele știute dinainte (0 cereri). BRCI
+    a răspuns pe 30.09.2026 cu pagina WAF „Request Rejected” (HTTP 200) la sitemap
+    și la newsroom, în timpul rulării: apare doar în jurnal, deci se citește de acolo.
+    """
+    import glob
+    gasite = {}
+    for cale in sorted(glob.glob(os.path.join(os.path.dirname(AICI), "loguri", "campanii", "*.jsonl"))):
+        try:
+            with open(cale, encoding="utf-8") as f:
+                for linie in f:
+                    if '"BLOCAT"' not in linie:
+                        continue
+                    try:
+                        r = json.loads(linie)
+                    except ValueError:
+                        continue
+                    if r.get("banca"):
+                        gasite.setdefault(r["banca"], {"data": (r.get("data") or "")[:10], "nota": r.get("nota") or ""})
+        except OSError:
+            pass
+    return gasite
+
+
+def campanii(q):
+    """Campaniile din ultima rulare a colectorului (vederea `campanii_curente`).
+
+    Toate rândurile deodată, fără filtre pe server: 742 pe 30.09.2026, ~0,5 MB,
+    iar filtrele din pagină (bancă, stare, tip, segment, categorie, căutare) se
+    combină fără cereri noi. Documentele vin cu campania; hub-ul (pagina-listă din
+    care s-a citit eticheta) nu e document al campaniei și nu se arată.
+    """
+    import campanii_config
+    randuri = interoghează(
+        """SELECT c.id, c.banca, c.titlu, c.titlu_din, c.beneficiu, c.segment,
+                  c.categorie_produs, c.tip_oferta, c.organizator, c.organizator_citat,
+                  c.fereastra_start, c.fereastra_sfarsit, c.fereastra_citat, c.sursa_ferestrei,
+                  c.sfarsit_din, c.act_aditional, c.stare, c.motiv_verificare, c.incheiata_azi,
+                  c.in_comparatie, c.url, c.provenienta, c.ultima_vedere::date AS vazut,
+                  coalesce((SELECT json_agg(json_build_object(
+                                'url', s.url, 'rol', s.rol_document, 'format', s.format,
+                                'eticheta', s.eticheta_link, 'fara_text', s.fara_text,
+                                'in_bronze', s.cale_bronze IS NOT NULL)
+                              ORDER BY s.rol_document, s.url)
+                            FROM campanii_surse s
+                            WHERE s.id_campanie = c.id AND s.rol_document <> 'hub'), '[]') AS documente
+           FROM campanii_curente c
+           ORDER BY c.banca, c.fereastra_sfarsit DESC NULLS LAST, c.id"""
+    )
+    nr_comunicate = {r["banca"]: r["n"] for r in interoghează(
+        """SELECT b.slug AS banca, count(*)::int AS n
+           FROM comunicate c JOIN banci b ON b.id = c.id_banca GROUP BY 1""")}
+    cu_campanii = {r["banca"] for r in randuri}
+    blocate_rulare = _blocate_la_rulare()
+    banci = []
+    for b in interoghează("SELECT slug, nume FROM banci ORDER BY nume"):
+        stare, motiv = campanii_config.stare_banca(b["slug"])
+        if stare == "colectat" and b["slug"] not in cu_campanii and b["slug"] in blocate_rulare:
+            x = blocate_rulare[b["slug"]]
+            stare, motiv = "blocat", f"blocat la rulare ({x['data']}): {x['nota']}"
+        banci.append({"banca": b["slug"], "stare": stare, "motiv": motiv,
+                      "comunicate": nr_comunicate.get(b["slug"], 0)})
+    rulare = interoghează(
+        """SELECT (SELECT max(ultima_vedere) FROM campanii) AS campanii,
+                  (SELECT max(ultima_vedere) FROM comunicate) AS comunicate""")[0]
+    return {"randuri": randuri, "banci": banci, "rulare": rulare}
+
+
+def comunicate(q):
+    """Comunicatele de presă din newsroom-urile băncilor (989 pe 30.09.2026).
+
+    Toate deodată, ca la campanii: căutarea și paginarea din pagină nu mai cer
+    nimic serverului. Data poate lipsi (la Garanti, ING, Libra și ProCredit
+    lista nu o publică), iar ordinea pune golurile la coadă.
+    """
+    return interoghează(
+        """SELECT c.id, b.slug AS banca, c.titlu, c.titlu_din, c.data_publicarii, c.data_din,
+                  c.e_campanie, c.e_campanie_potrivire, c.url
+           FROM comunicate c JOIN banci b ON b.id = c.id_banca
+           ORDER BY c.data_publicarii DESC NULLS LAST, b.slug, c.id"""
+    )
+
+
 def recenzii(q):
     if not q.get("id_locatie"):
         return {"eroare": "lipsește id_locatie"}
@@ -1458,6 +1543,8 @@ RUTE = {
     "/api/retele": lambda q: retele(),
     "/api/reclame_bing": lambda q: reclame_bing(),
     "/api/reclame_google": reclame_google,
+    "/api/campanii": campanii,
+    "/api/comunicate": comunicate,
     "/api/catalog_libra": lambda q: catalog_libra(),
     "/api/matrice": matrice,
     "/api/celula": celula,
@@ -1517,11 +1604,18 @@ def _din_bronze(url):
             sys.path.insert(0, p)
     import flux
     cale = flux.cale_bronze(url)
-    try:
-        with open(cale, "rb") as f:
-            return cale if f.read(4) == b"%PDF" else None
-    except OSError:
-        return None
+    # Colectorul de campanii (ingest/campanii.py, scrie_bronze) pune regulamentele
+    # sub bronze/campanii/, cu același nume: pe 30.09.2026, 482 din 540 de PDF-uri
+    # de campanie erau doar acolo și nu se deschideau în vizualizator. Tot Bronze,
+    # tot fără cerere spre bancă.
+    for c in (cale, os.path.join(flux.BRONZE, "campanii", os.path.basename(cale))):
+        try:
+            with open(c, "rb") as f:
+                if f.read(4) == b"%PDF":
+                    return c
+        except OSError:
+            pass
+    return None
 
 
 def adu_pdf(url):

@@ -465,7 +465,7 @@ const PAGINI = [
     {id:"produse",   nume:"Produse & prețuri",     pdf:"2.1", t:"Produse & prețuri", l:"Comisioanele fiecărei bănci pe servicii: câte prețuri avem, între ce valori, câte sunt gratuite. Clic pe o celulă pentru dovezi."},
     {id:"rate",      nume:"Rate & indicatori",     pdf:"2.2", t:"Rate & indicatori", l:"Dobânda tipică a fiecărei bănci, pe termen (depozite) și pe produs (credite). Clic pe o celulă pentru dovezi."},
     {id:"mobil",     nume:"Aplicații & recenzii",  pdf:"2.3", t:"Aplicații mobile & recenzii", l:"Nota, distribuția pe stele și versiunea fiecărei aplicații, plus ce spun clienții în recenzii, cu răspunsurile băncilor."},
-    {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Conturile oficiale ale fiecărei bănci pe rețelele sociale și reclamele lor din bibliotecile oficiale Google și Bing (test, până la avizul juridic). Campaniile de pe site-uri urmează."},
+    {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Campaniile de pe site-urile băncilor (cu perioada, regulamentul și starea) și comunicatele lor de presă, apoi conturile oficiale pe rețelele sociale și reclamele din bibliotecile oficiale Google și Bing (test, până la avizul juridic)."},
     {id:"retea",     nume:"Rețea & operațional",   pdf:"2.5", t:"Rețea & operațional", l:"Sucursalele și ATM-urile fiecărei bănci, cu harta interactivă."},
     {id:"context",   nume:"Context de piață",      pdf:"2.6", t:"Context de piață", l:"Indicii de referință BNR: ROBOR, ROBID și IRCC."},
   ]},
@@ -1016,9 +1016,10 @@ const R = {};
    din 30, prospețimea, link), apoi acoperirea pe bănci. Tabelul tehnic și
    rulările (mockup înghețat) stau pliate dedesubt. */
 R.overview = async () => {
-  const [a, st, m, soc] = await Promise.all([ia("/api/acoperire"), ia("/api/stare"), meta(), ia("/api/retele")]);
-  // 2.4: conturile oficiale pe rețele sociale (lista din 28.09.2026); campaniile urmează
+  const [a, st, m, soc, cmp] = await Promise.all([ia("/api/acoperire"), ia("/api/stare"), meta(), ia("/api/retele"), ia("/api/campanii")]);
+  // 2.4: campaniile active de pe site-uri (colectorul din 30.09), plus conturile sociale
   const conturi = soc.filter(x => x.url && x.url !== "NEGASIT");
+  const active = (cmp.randuri || []).filter(x => x.stare === "activa" && x.in_comparatie !== false);
   const c = a.categorii, pb = a.pe_banca;
   const cate = k => pb.filter(b => b[k] > 0 || (k === "rating" && b.rating)).length;
   const card = (cod, titlu, cifra, et, banci, data, link, inactiv) => `
@@ -1036,7 +1037,7 @@ R.overview = async () => {
     ${card("2.1", "Comisioane", num(c.comisioane, 0), "prețuri curente (cont, carduri, transferuri)", cate("comisioane"), c.comisioane_la, "#/produse")}
     ${card("2.2", "Dobânzi", num(c.dobanzi, 0), "dobânzi curente la depozite și credite", cate("dobanzi"), c.dobanzi_la, "#/rate")}
     ${card("2.3", "Aplicații & recenzii", num(c.aplicatii, 0), `aplicații iOS, cu ${num(c.recenzii, 0)} recenzii și răspunsurile băncilor`, cate("rating"), c.aplicatii_la, "#/mobil")}
-    ${card("2.4", "Campanii & marketing", num(conturi.length, 0), "conturi oficiale pe Facebook, LinkedIn, Instagram, TikTok; campaniile urmează", new Set(conturi.map(x => x.slug)).size, null, "#/campanii")}
+    ${card("2.4", "Campanii & marketing", num(active.length, 0), `campanii active pe site-urile băncilor, plus ${num(conturi.length, 0)} conturi sociale și reclamele Google și Bing`, new Set(active.map(x => x.banca)).size, (cmp.rulare || {}).campanii || null, "#/campanii")}
     ${card("2.5", "Rețea", num(c.locatii, 0), "sucursale și ATM-uri pe hartă", cate("locatii"), c.locatii_la, "#/retea")}
     ${card("2.6", "Context de piață", num(c.indici, 0), "valori ROBOR, ROBID, IRCC de la BNR", null, c.indici_la, "#/context")}
     ${card("", "Istoric de prețuri", num(c.schimbari, 0), "schimbări de preț între versiunile documentelor", null, null, "#/istoric")}
@@ -1862,10 +1863,274 @@ function reclameGoogle(d, m){
       Datele nu sunt în bază și nici în git; avizul juridic pe termenii Google nu e încă cerut (30.09).`)}`;
 }
 
+/* 2.4: campaniile de pe site-urile băncilor (migrarea 019, colectorul ingest/campanii.py).
+   Sunt 742 în rularea din 30.09.2026: vin toate deodată, iar filtrele se combină aici,
+   fără cereri noi. Implicit: doar cele active și doar cele organizate de bancă; filialele,
+   schema de card și partenerii se păstrează în bază, dar nu intră în comparație. */
+const CP = {date: null, com: null, comOffset: 0, t: null};
+const CP_STARE = {activa: ["activă", "ok"], incheiata: ["încheiată", ""], de_verificat: ["de verificat", "amb"]};
+const CP_ORD_STARE = {activa: 0, de_verificat: 1, incheiata: 2};
+const CP_TIP = {campanie: "campanie", program: "program permanent", oferta_curenta: "ofertă fără termen"};
+const CP_CATEG = {conturi_carduri: "conturi și carduri", credite: "credite", depozite: "depozite"};
+const CP_ORG = {grup: ["filială", "organizată de o filială a grupului"], schema_card: ["schema de card", "organizată de Visa sau Mastercard"],
+                partener: ["partener", "organizată de un partener al băncii"]};
+const CP_ROL = {regulament: "regulament", act_aditional: "act adițional", landing: "document"};
+const CP_PE_PAGINA = 50;
+const cpZi = d => d ? `${d.slice(8, 10)}.${d.slice(5, 7)}.${d.slice(0, 4)}` : "?";
+
+/* Pe 30.09.2026, ~215 titluri erau textul linkului de pe pagina-listă („aici” de 65 de ori
+   la ING, „Vezi regulamentul, Deschide in tab nou” de 57 de ori la BCR): nu spun despre ce
+   e campania. Acolo se arată și numele documentului din adresă, marcat ca atare. */
+const CP_TITLU_GOL = /^(aici|vezi( regulament(ul)?)?|detalii [iî]n regulament|regulament(ul)?( oficial)?( al)?( campaniei| campanie| promo[tț]iei)?|promo[tț]ie|campanii|saltbank|brd|vista bank)$/i;
+const cpTitluGol = t => { const x = String(t || "").replace(/\s*,\s*deschide in tab nou\s*$/i, "").trim();
+                          return !x || CP_TITLU_GOL.test(x) || /^pdf\s/i.test(x); };
+function cpNumeDinUrl(u){
+  try{
+    const seg = new URL(u).pathname.split("/").filter(Boolean);
+    return decodeURIComponent(seg[seg.length - 1] || "").replace(/(\.(pdf|html?|coredownload))+$/i, "")
+      .replace(/[-_]+/g, " ").trim();
+  }catch(e){ return ""; }
+}
+const cpDocPrincipal = r => (r.documente || []).find(d => d.rol === "regulament") || null;
+
+function cpCampanie(r){
+  const gol = cpTitluGol(r.titlu), dinUrl = gol ? cpNumeDinUrl((cpDocPrincipal(r) || r).url) : "";
+  const titlu = gol && dinUrl
+    ? `<b title="titlul din adresa documentului; eticheta linkului era „${esc(r.titlu || "")}”">${esc(dinUrl)}</b>
+       <span class="gri" style="font-size:11px">(din adresă)</span>`
+    : `<b>${esc(r.titlu || "—")}</b>`;
+  const tip = r.tip_oferta && r.tip_oferta !== "campanie" ? ` <span class="pill">${esc(CP_TIP[r.tip_oferta])}</span>` : "";
+  const ben = r.beneficiu || "", scurt = ben.length > 160 ? ben.slice(0, 159) + "…" : ben;
+  return titlu + tip + (ben ? `<div class="gri" style="font-size:11.5px;margin-top:2px;max-width:70ch"
+    title="citat din document: ${esc(ben)}">${esc(scurt)}</div>` : "");
+}
+
+function cpPerioada(r){
+  if(!r.fereastra_start && !r.fereastra_sfarsit) return '<span class="gri">fără perioadă</span>';
+  const din = {eticheta_link: "din eticheta linkului", url: "din adresă"}[r.sursa_ferestrei];
+  return `${cpZi(r.fereastra_start)} – ${cpZi(r.fereastra_sfarsit)}`
+    + (din ? `<div class="gri" style="font-size:11px">${din}</div>` : "")
+    + (r.act_aditional ? ' <span class="pill amb" title="există un act adițional: sfârșitul poate fi altul">act adițional</span>' : "");
+}
+
+function cpStare(r){
+  const [t, cls] = CP_STARE[r.stare] || [r.stare, ""];
+  const intre = r.stare === "activa" && r.incheiata_azi
+    ? ' <span class="pill" title="activă la data rulării; sfârșitul a trecut între timp">încheiată între timp</span>' : "";
+  return `<span class="pill ${cls}">${esc(t)}</span>${intre}`
+    + (r.motiv_verificare ? `<div class="${r.stare === "de_verificat" ? "" : "gri"}" style="font-size:11px;margin-top:3px;max-width:30ch">${esc(r.motiv_verificare)}</div>` : "");
+}
+
+/* ↗ duce la sursa oficială, pe site-ul băncii; 📄 deschide copia din Bronze (exact
+   versiunea din care s-au citit câmpurile) în vizualizatorul propriu, fără cerere spre
+   bancă, cu citatul perioadei căutat în document. */
+function cpDocumente(r){
+  const lk = (href, t, titlu, tinta = "_blank") => `<a class="sursa" href="${esc(href)}" target="${tinta}"
+    rel="noopener noreferrer" title="${esc(titlu)}">${t}</a>`;
+  const q = r.sursa_ferestrei === "document" ? r.fereastra_citat || "" : "";
+  const docs = (r.documente || []).filter(d => !(d.url === r.url && d.format !== "pdf"));
+  const legaturi = docs.map(d => {
+    const et = CP_ROL[d.rol] || d.rol;
+    if(d.format === "pdf" && d.in_bronze)
+      return lk(`/pdf.html?u=${encodeURIComponent(d.url)}&p=1&q=${encodeURIComponent(d.rol === "regulament" ? q : "")}`,
+        `📄 ${esc(et)}`, `în vizualizatorul aplicației, din Bronze${d.fara_text ? " (PDF scanat, fără strat de text)" : ""} — ${d.url}`);
+    return lk(d.url, `↗ ${esc(et)}`, d.format ? `pe site-ul băncii: ${d.url}`
+      : `documentul nu s-a putut aduce la colectare; se deschide pe site-ul băncii: ${d.url}`);
+  });
+  const primele = legaturi.slice(0, 2).join("<br>"), rest = legaturi.slice(2);
+  return lk(r.url, "↗ sursa", `sursa oficială, pe site-ul băncii: ${r.url}`)
+    + (primele ? "<br>" + primele : "")
+    + (rest.length ? `<details><summary class="gri" style="cursor:pointer;font-size:11.5px">+${rest.length} documente</summary>${rest.join("<br>")}</details>` : "");
+}
+
+function cpFiltrate(){
+  const v = id => document.getElementById(id);
+  const f = {banca: v("cp-banca").value, stare: v("cp-stare").value, tip: v("cp-tip").value,
+             segment: v("cp-segment").value, cat: v("cp-categ").value,
+             q: fara_diacritice(v("cp-cauta").value.trim()), filiale: v("cp-filiale").checked};
+  const potriveste = (val, ales, gol) => !ales || (ales === gol ? !val : val === ales);
+  return CP.date.randuri.filter(r => (f.filiale || r.in_comparatie)
+    && (!f.banca || r.banca === f.banca) && (!f.stare || r.stare === f.stare)
+    && potriveste(r.tip_oferta, f.tip, "nedecis") && potriveste(r.segment, f.segment, "nemarcat")
+    && potriveste(r.categorie_produs, f.cat, "nemarcata") && (!f.q || r._cauta.includes(f.q)));
+}
+
+function cpRezultat(lista, m){
+  const n = s => lista.filter(r => r.stare === s).length;
+  const banci = new Set(lista.map(r => r.banca)).size;
+  const rezumat = `<p class="note" style="margin:0 0 10px;max-width:none"><b>${num(lista.length, 0)}</b>
+    ${lista.length === 1 ? "campanie" : "campanii"} la ${banci} ${banci === 1 ? "bancă" : "bănci"}${lista.length
+    ? ` · ${n("activa")} active · ${n("de_verificat")} de verificat · ${n("incheiata")} încheiate` : ""}</p>`;
+  if(!lista.length) return rezumat + '<p class="note">Nicio campanie nu se potrivește filtrelor.</p>';
+  /* cele mai noi întâi, fără perioadă la coadă; sortarea inițială din tabel() ar pune golurile sus la „desc” */
+  const inceput = r => r.fereastra_start || r.fereastra_sfarsit || "";
+  lista = lista.slice().sort((a, b) => !inceput(a) - !inceput(b) || inceput(b).localeCompare(inceput(a)));
+  return rezumat + tabel(lista, [
+    {cap: "Bancă", html: true, s: r => m.nume[r.banca] || r.banca, td: () => ({attr: 'style="white-space:nowrap"'}),
+      val: r => etichetaBanca(r.banca, m, {fisa: true, tag: true}) + (CP_ORG[r.organizator]
+        ? `<div><span class="pill" title="${esc(CP_ORG[r.organizator][1] + (r.organizator_citat ? ": " + r.organizator_citat : ""))}">${esc(CP_ORG[r.organizator][0])}</span></div>` : "")},
+    {cap: "Campanie", html: true, s: r => r.titlu || "", val: cpCampanie},
+    {cap: "Perioadă", cls: "mono", html: true, s: r => r.fereastra_start || r.fereastra_sfarsit || "",
+      titlu: "treci cu mouse-ul: textul din care s-a citit perioada",
+      td: r => ({attr: `style="white-space:nowrap"${r.fereastra_citat ? ` title="${esc("„" + r.fereastra_citat + "”")}"` : ""}`}),
+      val: cpPerioada},
+    {cap: "Segment", s: r => r.segment || "", val: r => r.segment || "—"},
+    {cap: "Categorie", s: r => r.categorie_produs || "", val: r => CP_CATEG[r.categorie_produs] || r.categorie_produs || "—"},
+    {cap: "Stare", html: true, s: r => CP_ORD_STARE[r.stare], val: cpStare},
+    {cap: "Documente", html: true, td: () => ({attr: 'style="white-space:nowrap"'}), val: cpDocumente},
+  ], {sort: true, libra: r => r.banca});
+}
+
+function filtreazaCampanii(){
+  const gazda = document.getElementById("cp-rezultat");
+  if(gazda && CP.date) gazda.innerHTML = cpRezultat(cpFiltrate(), CACHE.meta);
+}
+function bancaCampanii(slug){
+  const s = document.getElementById("cp-banca");
+  s.value = s.value === slug ? "" : slug;
+  filtreazaCampanii();
+}
+
+function campaniiSite(d, m){
+  const rs = d.randuri;
+  rs.forEach(r => { r._cauta = fara_diacritice([r.titlu, r.beneficiu, cpTitluGol(r.titlu)
+    ? cpNumeDinUrl((cpDocPrincipal(r) || r).url) : "", m.nume[r.banca] || r.banca].join(" ")); });
+  const comp = rs.filter(r => r.in_comparatie);
+  const pe = {};
+  comp.forEach(r => { const x = pe[r.banca] = pe[r.banca] || {activa: 0, incheiata: 0, de_verificat: 0}; x[r.stare]++; });
+  const slugs = Object.keys(pe).sort((a, b) => (b === "libra") - (a === "libra") || pe[b].activa - pe[a].activa
+    || (m.nume[a] || a).localeCompare(m.nume[b] || b, "ro"));
+  const rulare = String(d.rulare.campanii || "").slice(0, 10);
+  const nActive = comp.filter(r => r.stare === "activa").length;
+  const kpi = `<div class="kpi">
+    <div><div class="e">Campanii active</div><div class="n">${nActive}</div>
+      <div class="l">din ${num(comp.length, 0)} găsite pe site-urile a ${slugs.length} bănci, organizate de bancă; rularea din ${esc(cpZi(rulare))}</div></div>
+    ${slugs.map(b => `<div style="cursor:pointer${b === "libra" ? ";border-color:var(--accent)" : ""}" onclick="bancaCampanii('${esc(b)}')"
+        title="clic: filtrează tabelul pe bancă (încă un clic: toate)">
+      <div class="e">${etichetaBanca(b, m, {tag: true})}</div><div class="n">${pe[b].activa}</div>
+      <div class="l">active · ${pe[b].incheiata} încheiate · ${pe[b].de_verificat} de verificat</div></div>`).join("")}
+  </div>`;
+  const grup = s => d.banci.filter(b => b.stare === s);
+  const lista = bs => bs.map(b => `<span title="${esc(b.motiv || "")}">${esc(m.nume[b.banca] || b.banca)}</span>`).join(", ");
+  const fara = d.banci.filter(b => b.stare === "colectat" && !pe[b.banca]);
+  const lipsa = `<p class="note" style="max-width:none;margin:-8px 0 14px">
+    ${fara.length ? `<b>Colectate, fără nicio campanie:</b> ${lista(fara)} · ` : ""}
+    <b>Blocate:</b> ${lista(grup("blocat"))} · <b>În afara scopului:</b> ${lista(grup("in_afara_scopului"))}${
+    grup("fara_config").length ? ` · <b>Neconfigurate:</b> ${lista(grup("fara_config"))}` : ""}
+    <span class="gri">(treci cu mouse-ul peste nume: motivul)</span></p>`;
+  const opt = (v, t, sel) => `<option value="${esc(v)}"${sel ? " selected" : ""}>${esc(t)}</option>`;
+  const sel = (id, eticheta, optiuni) => `<label class="f">${eticheta}<select id="${id}" onchange="filtreazaCampanii()">${optiuni}</select></label>`;
+  const banciCu = [...new Set(rs.map(r => r.banca))]
+    .sort((a, b) => (b === "libra") - (a === "libra") || (m.nume[a] || a).localeCompare(m.nume[b] || b, "ro"));
+  const nFil = rs.length - comp.length;
+  const bara = `<div class="bara-fixa" style="margin:0 -20px 14px;padding:10px 20px;background:var(--surface)"><div class="filtre">
+    ${sel("cp-banca", "Bancă", opt("", "Toate băncile") + banciCu.map(b => opt(b, m.nume[b] || b)).join(""))}
+    ${sel("cp-stare", "Stare", opt("activa", "active", true) + opt("de_verificat", "de verificat") + opt("incheiata", "încheiate") + opt("", "toate"))}
+    ${sel("cp-tip", "Tip ofertă", opt("", "Toate") + Object.entries(CP_TIP).map(([k, t]) => opt(k, t)).join("") + opt("nedecis", "nedecis din text"))}
+    ${sel("cp-segment", "Segment", opt("", "Toate") + opt("PF", "PF (persoane fizice)") + opt("PJ", "PJ (firme)") + opt("nemarcat", "nemarcat"))}
+    ${sel("cp-categ", "Categorie", opt("", "Toate") + Object.entries(CP_CATEG).map(([k, t]) => opt(k, t)).join("") + opt("nemarcata", "nemarcată"))}
+    <label class="f">Caută<input class="cauta" id="cp-cauta" type="search" placeholder="titlu, beneficiu…"
+      oninput="clearTimeout(CP.t);CP.t=setTimeout(filtreazaCampanii,200)"></label>
+    <label class="bifa" title="filialele grupului (BCR Social Finance), schema de card (Visa, Mastercard) și partenerii: se păstrează, dar nu intră în comparație"><input type="checkbox" id="cp-filiale" onchange="filtreazaCampanii()">include filialele / schema de card (${nFil})</label>
+  </div></div>`;
+  const nGol = rs.filter(r => cpTitluGol(r.titlu)).length;
+  const motive = {};
+  rs.filter(r => r.stare === "de_verificat").forEach(r => (r.motiv_verificare || "").split("; ").forEach(x => {
+    const k = x.replace(/: .*$/, "").replace(/ e \d.*$/, ""); motive[k] = (motive[k] || 0) + 1; }));
+  return `${kpi}${lipsa}${bara}
+    <div id="cp-rezultat">${cpRezultat(comp.filter(r => r.stare === "activa"), m)}</div>
+    ${despre(`<b>Ce e o campanie aici.</b> Definiția strictă: „campanie” e doar o ofertă cu o perioadă (început și
+      sfârșit) citită din textul paginii sau al regulamentului. Programele permanente („program permanent”) și ofertele
+      fără termen („ofertă fără termen”) au <span class="mono">tip_oferta</span> separat, iar ce nu se poate decide din
+      text rămâne „nedecis”. Filtrul „Tip ofertă” le separă.<br>
+      <b>Starea</b> e calculată la data rulării, din perioadă: activă, încheiată sau <b>de verificat</b>. „De verificat” e o
+      stare legitimă, nu o eroare: extracția e deterministă (reguli, fără LLM) și nu ghicește. Motivul apare sub stare;
+      cele mai dese: ${Object.entries(motive).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, x]) => `${esc(k)} (${x})`).join(", ")}.
+      „Treapta B” = documentul n-are perioadă, dar cea mai recentă dată din text e trecută, deci campania e socotită încheiată.
+      Perioada are citatul exact la hover; „act adițional” înseamnă că sfârșitul poate fi altul decât cel citit.<br>
+      <b>Organizator.</b> Implicit se văd doar campaniile organizate de bancă pe site-ul propriu. Cele ale filialelor
+      (BCR Social Finance), ale schemei de card (Visa, Mastercard) și ale partenerilor se văd la bifă (${nFil}).<br>
+      <b>Documente.</b> „↗ sursa” deschide pagina sau documentul pe site-ul băncii. „📄” deschide copia din Bronze, exact
+      versiunea din care s-au citit câmpurile, în vizualizatorul aplicației, fără nicio cerere spre bancă. „↗ regulament”
+      fără 📄 = documentul nu s-a putut aduce la colectare (de regulă robots.txt).<br>
+      <b>Titluri.</b> La ${nGol} campanii titlul e textul generic al linkului („aici”, „Vezi regulamentul”); acolo se arată
+      numele documentului din adresă, marcat „din adresă”. Beneficiul e un citat din document, nu un rezumat.<br>
+      <b>Bănci.</b> Libra e reperul: apare prima și marcată. Blocate, cu 0 cereri: Banca Transilvania, CEC, UniCredit, Intesa
+      (WAF, HTTP 403), Banorient (robots.txt), Cetelem (respingere F5); BRCI a răspuns cu pagina de blocaj a WAF-ului
+      („Request Rejected”) pe 30.09.2026, la sitemap și la newsroom, iar colectorul s-a oprit acolo. În afara scopului:
+      Citibank, BNP Paribas, BID, Bank of China (fără retail), PKO (piața poloneză). Nu se ocolește nicio blocare.<br>
+      Rularea colectorului: ${esc(cpZi(rulare))}. Sursa: <span class="mono">campanii_curente</span> (migrarea 019),
+      scrisă doar de <span class="mono">ingest/normalizeaza_campanii.py</span>.`)}`;
+}
+
+/* 2.4: comunicatele de presă. 989 pe 30.09.2026: vin toate, paginarea e aici. */
+function cmFiltrate(){
+  const v = id => document.getElementById(id);
+  const b = v("cm-banca").value, q = fara_diacritice(v("cm-cauta").value.trim()), doar = v("cm-camp").checked;
+  return CP.com.filter(r => (!b || r.banca === b) && (!doar || r.e_campanie) && (!q || r._cauta.includes(q)));
+}
+function cmRezultat(m, lista = cmFiltrate()){
+  const off = CP.comOffset, n = lista.length;
+  const pagina = lista.slice(off, off + CP_PE_PAGINA);
+  const rez = `<p class="note" style="margin:0 0 10px;max-width:none"><b>${num(n, 0)}</b> ${n === 1 ? "comunicat" : "comunicate"}
+    · ${lista.filter(r => r.e_campanie).length} marcate „campanie” · ${lista.filter(r => !r.data_publicarii).length} fără dată</p>`;
+  if(!n) return rez + '<p class="note">Niciun comunicat nu se potrivește filtrelor.</p>';
+  const tab = tabel(pagina, [
+    {cap: "Bancă", html: true, td: () => ({attr: 'style="white-space:nowrap"'}), val: r => etichetaBanca(r.banca, m, {fisa: true, tag: true})},
+    {cap: "Data", cls: "mono", td: r => ({attr: `style="white-space:nowrap" title="${esc(r.data_din ? "data din " + ({url: "adresă", lista: "lista de comunicate", pagina: "pagină"}[r.data_din] || r.data_din) : "lista nu publică data")}"`}),
+      val: r => r.data_publicarii ? cpZi(r.data_publicarii) : "—"},
+    {cap: "Titlu", html: true, val: r => `<a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer"
+      title="${esc((r.titlu_din === "url" ? "titlu refăcut din adresă — " : "") + r.url)}">${esc(r.titlu || r.url)} ↗</a>`},
+    {cap: "Campanie", html: true, td: () => ({attr: 'style="white-space:nowrap"'}), val: r => r.e_campanie
+      ? `<span class="pill ok" title="cuvântul din titlu: „${esc(r.e_campanie_potrivire || "")}” (regex, fără LLM; poate fi o potrivire falsă)">campanie</span>` : ""},
+  ], {lung: true, rand: r => (r.banca === "libra" ? {cls: "libra"} : {})});
+  const lim = CP_PE_PAGINA;
+  const pag = n > lim ? `<div class="pagini"><span>${num(off + 1, 0)}–${num(Math.min(off + lim, n), 0)} din ${num(n, 0)}</span>
+    ${off > 0 ? `<button onclick="paginaComunicate(0)">« prima</button><button onclick="paginaComunicate(${off - lim})">‹ înapoi</button>` : ""}
+    ${off + lim < n ? `<button onclick="paginaComunicate(${off + lim})">înainte ›</button>
+      <button onclick="paginaComunicate(${Math.floor((n - 1) / lim) * lim})">ultima »</button>` : ""}</div>` : "";
+  return rez + tab + pag;
+}
+function filtreazaComunicate(pastreaza){
+  if(!pastreaza) CP.comOffset = 0;
+  const gazda = document.getElementById("cm-rezultat");
+  if(gazda && CP.com) gazda.innerHTML = cmRezultat(CACHE.meta);
+}
+function paginaComunicate(off){ CP.comOffset = off; filtreazaComunicate(true); }
+
+function comunicateSite(com, m){
+  com.forEach(r => { r._cauta = fara_diacritice(`${r.titlu || ""} ${m.nume[r.banca] || r.banca}`); });
+  const pe = {};
+  com.forEach(r => { pe[r.banca] = (pe[r.banca] || 0) + 1; });
+  const banci = Object.keys(pe).sort((a, b) => (b === "libra") - (a === "libra") || (m.nume[a] || a).localeCompare(m.nume[b] || b, "ro"));
+  const nCamp = com.filter(r => r.e_campanie).length;
+  return `<details class="pliat" id="cm-pliat">
+    <summary><h2>Comunicate de presă</h2><span class="gri" style="font-size:12px">${num(com.length, 0)} de la ${banci.length} bănci ·
+      ${nCamp} marcate „campanie” · clic pentru listă</span></summary>
+    <div class="filtre" style="align-items:center;margin-top:10px">
+      <select id="cm-banca" onchange="filtreazaComunicate()"><option value="">Toate băncile</option>${
+        banci.map(b => `<option value="${esc(b)}">${esc(m.nume[b] || b)} (${pe[b]})</option>`).join("")}</select>
+      <input class="cauta" id="cm-cauta" type="search" placeholder="Caută în titlu…"
+        oninput="clearTimeout(CP.t);CP.t=setTimeout(filtreazaComunicate,200)">
+      <label class="bifa"><input type="checkbox" id="cm-camp" onchange="filtreazaComunicate()">doar cele marcate „campanie”</label>
+    </div>
+    <div id="cm-rezultat">${cmRezultat(m, com)}</div>
+    ${despre(`Titlul, data și adresa, din newsroom-ul fiecărei bănci (sitemap sau pagina-listă), la rularea din
+      ${esc(cpZi(String(CP.date && CP.date.rulare.comunicate || "").slice(0, 10)))}. Data vine din adresă, din listă sau din pagină,
+      niciodată din <span class="mono">lastmod</span>; unde lista nu o publică (Garanti, ING, Libra, ProCredit), lipsește.
+      La unele bănci titlul e refăcut din adresă (BCR, Garanti: fără diacritice).<br>
+      Marcajul „campanie” e un regex pe titlu (fără LLM), cu cuvântul potrivit la hover: „premii” prinde și premiile
+      primite de bancă, „gratuit” și știrile retrospective. E un semnal de citit, nu o clasificare.
+      Blocate ca la campanii: Banca Transilvania, CEC, UniCredit, Intesa, Banorient, Cetelem, BRCI.`)}
+  </details>`;
+}
+
 R.campanii = async () => {
   GG.nr++; Object.assign(GG, {ordine: "ultima", sens: "desc", offset: 0});
-  const [m, rs, bing, google] = await Promise.all([meta(), ia("/api/retele"), ia("/api/reclame_bing"),
-                                                   ia("/api/reclame_google")]);
+  CP.comOffset = 0;
+  const [m, rs, bing, google, camp, com] = await Promise.all([meta(), ia("/api/retele"), ia("/api/reclame_bing"),
+                                                   ia("/api/reclame_google"), ia("/api/campanii"), ia("/api/comunicate")]);
+  CP.date = camp; CP.com = com;
   const pe = {};
   rs.forEach(r => { (pe[r.slug] = pe[r.slug] || {})[r.retea] = r; });
   const lipsa = r => !r || r.url === "NEGASIT";
@@ -1895,7 +2160,23 @@ R.campanii = async () => {
     <div class="rs-lista">${RETELE.map(x => rand(x, (pe[b] || {})[x.k])).join("")}</div>
   </div>`;
 
+  const zi = x => cpZi(String(x || "").slice(0, 10));
+  const nCamp = camp.randuri.length, nBanciCamp = new Set(camp.randuri.map(r => r.banca)).size;
+  const nBanciCom = new Set(com.map(r => r.banca)).size;
+
   return `
+  <section id="campanii-site">
+    <div class="filtre" style="align-items:center">
+      <h2 style="margin:0">Campanii de pe site-urile băncilor</h2>
+      <span class="pill ok" title="colectorul ingest/campanii.py, în bază (migrarea 019)">rularea din ${esc(zi(camp.rulare.campanii))}</span>
+    </div>
+    ${campaniiSite(camp, m)}
+  </section>
+
+  <section id="comunicate">
+    ${comunicateSite(com, m)}
+  </section>
+
   <section id="retele">
     <div class="filtre" style="align-items:center">
       <h2 style="margin:0">Conturi oficiale pe rețelele sociale</h2>
@@ -1936,11 +2217,13 @@ R.campanii = async () => {
   </section>
 
   <section>
-    <div class="callout warn" style="margin-bottom:14px"><b>Campaniile nu sunt colectate încă.</b>
-      Conturile de mai sus sunt punctul de plecare pentru reclame. Mai jos: ce se poate porni și ce cere fiecare sursă.</div>
+    <div class="callout" style="margin-bottom:14px"><b>Campaniile de pe site-uri și comunicatele sunt colectate</b>
+      (secțiunile de sus). Conturile sociale sunt punctul de plecare pentru reclame. Mai jos: starea fiecărei surse și ce cere.</div>
     ${tabel([
-      ["Landing pages de campanie", "paginile publice de promoții ale băncilor", "realizabil acum, cu fluxul existent", "ok"],
-      ["Newsroom / comunicate", "anunțurile de produse și campanii", "realizabil acum, cu fluxul existent", "ok"],
+      ["Landing pages de campanie", "paginile publice de promoții ale băncilor și regulamentele lor",
+       `colectat: ${num(nCamp, 0)} campanii la ${nBanciCamp} bănci, rularea din ${zi(camp.rulare.campanii)}; vezi secțiunea de sus`, "ok"],
+      ["Newsroom / comunicate", "anunțurile de produse și campanii",
+       `colectat: ${num(com.length, 0)} comunicate de la ${nBanciCom} bănci, rularea din ${zi(camp.rulare.comunicate)}; vezi secțiunea de sus`, "ok"],
       ["Microsoft Ad Library (Bing)", "reclamele din Bing, cu perioadă, afișări și ponderea României", "API public, fără cont: testat, vezi secțiunea de mai sus", "ok"],
       ["Meta Ad Library", "reclamele active pe Facebook și Instagram", "API oficial, cere verificare de identitate", ""],
       ["TikTok Commercial Content Library", "reclamele din UE", "API oficial, cere cont de cercetare", ""],
