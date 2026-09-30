@@ -2208,19 +2208,17 @@ function reteleSociale(rs, m){
   const pe = {};
   rs.forEach(r => { (pe[r.slug] = pe[r.slug] || {})[r.retea] = r; });
   const lipsa = r => !r || r.url === "NEGASIT";
-  const deVerificat = r => r && !lipsa(r) && (r.incredere === "medie" || r.incredere === "mica" || r.nivel.endsWith("?"));
   const banci = Object.keys(m.rand)
     .sort((a, b) => (b === "libra") - (a === "libra") || (m.nume[a] || a).localeCompare(m.nume[b] || b, "ro"));
   const ordine = ["facebook", "instagram", "linkedin", "tiktok"].map(k => RETELE.find(x => x.k === k));
   const cont = (b, x) => { const r = (pe[b] || {})[x.k]; return lipsa(r) ? null : r; };
   const are = b => ordine.filter(x => cont(b, x)).length;
-  const titlu = r => [r.sursa === "site banca" ? "link de pe site-ul băncii" : "găsit prin căutare web",
-                      "încredere " + r.incredere, r.nota].filter(Boolean).join(" · ");
+  const titlu = r => [r.sursa === "site banca" ? "link de pe site-ul băncii" : "găsit prin căutare web", r.nota]
+                     .filter(Boolean).join(" · ");
   const celula = (b, x) => {
     const r = cont(b, x);
     if(!r) return '<span class="gri">—</span>';
-    const pill = r.nivel === "grup" ? '<span class="pill" title="contul grupului internațional, nu al sucursalei din România">International</span>'
-               : deVerificat(r) ? '<span class="pill amb">de verificat</span>' : "";
+    const pill = r.nivel === "grup" ? '<span class="pill" title="contul grupului internațional, nu al sucursalei din România">International</span>' : "";
     return `<a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${esc(contSocial(r.url, x.k))} ↗</a>${pill}`;
   };
   const cauta = b => fara_diacritice([b, m.nume[b] || "", ...ordine.map(x => {
@@ -2238,19 +2236,18 @@ function reteleSociale(rs, m){
     [num(gasite.length, 0), "conturi găsite"],
     [`${banci.filter(are).length}<small> din ${banci.length}</small>`, "bănci cu cel puțin un cont"],
     [num(gasite.filter(r => r.nivel === "grup").length, 0), "ale grupului internațional"],
-    [num(gasite.filter(deVerificat).length, 0), "de verificat", "încredere medie sau mică: cer o privire de om"],
   ], "");
   const filtre = `
     <label class="f">Caută<input class="cauta" type="search" placeholder="Caută bancă sau cont…" oninput="cautaCarduri(this)"></label>
     <span class="gri" id="rs-n" style="font-size:12px;align-self:center"></span>
     <span class="rs-leg" style="margin:0 0 0 auto;align-self:center">
       <span><span class="pill">International</span> contul grupului; sucursala din România nu are unul propriu</span>
-      <span><span class="pill amb">de verificat</span> încredere medie sau mică</span>
       <span>hover pe celulă: de unde vine linkul</span></span>`;
-  return {info: '<span class="gri" style="font-size:12px">lista din 28.09.2026, făcută o dată</span>', filtre, banda, corp: `
+  return {info: '<span class="gri" style="font-size:12px">lista din 28.09.2026, verificată de mână</span>', filtre, banda, corp: `
     <div id="rs-tabel">${tab}</div>
     <p class="note" id="rs-gol" style="display:none">Nicio bancă și niciun cont nu se potrivesc căutării.</p>
-    ${despre(`Lista e făcută o dată, pe 28.09.2026, nu de pipeline. Întâi s-au citit linkurile din subsolul
+    ${despre(`Lista e făcută o dată, pe 28.09.2026, nu de pipeline, și verificată apoi de mână, cont cu cont,
+      în browser. Întâi s-au citit linkurile din subsolul
       site-ului fiecărei bănci, prin stiva HTTP a proiectului (robots.txt respectat, User-Agent propriu).
       Unde site-ul ne refuză (403 la Banca Transilvania, CEC, UniCredit, Intesa; robots.txt la Banorient)
       sau nu pune linkul, contul vine din căutare web, fără să ocolim blocarea.<br>
