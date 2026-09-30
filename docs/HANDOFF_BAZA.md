@@ -1,6 +1,6 @@
 # Baza MIP: copia lui Robert, de pus pe laptopul tău
 
-Fotografia bazei e din **30.09.2026, ora 14:57** (11:57 UTC). Pașii de mai jos
+Fotografia bazei e din **30.09.2026, ora 15:39**. Pașii de mai jos
 îți aduc exact aceeași bază în containerul tău `mip-db`. Baza ta de acum nu se
 șterge: rămâne alături, sub alt nume, și poți reveni oricând la ea.
 
@@ -8,7 +8,7 @@ Fotografia bazei e din **30.09.2026, ora 14:57** (11:57 UTC). Pașii de mai jos
 
 | fișier | mărime | ce e |
 |---|---|---|
-| `mip_2026-09-30.dump` | 1,3 MB | baza întreagă (`pg_dump -Fc`), schema până la migrarea 026 inclusiv |
+| `mip_2026-09-30.dump` | 1,5 MB | baza întreagă (`pg_dump -Fc`), schema până la migrarea 026 inclusiv |
 | `output\reclame\` | 21 MB, 22 fișiere | reclamele Bing (`microsoft_2026-09-29.json`) și Google (`google_2026-09-30\`), citite de aplicație din fișiere, nu din bază |
 | `app\.cache_pdf\` | 58 MB, 114 PDF-uri | opțional: PDF-uri publice ale băncilor, aduse deja de vizualizator (fallback când documentul nu e în Bronze) |
 | `importa_baza_docker.ps1` | | aceeași copie ca `deploy\importa_baza_docker.ps1` din repo, în caz că nu a ajuns încă în `main` |
@@ -21,19 +21,18 @@ Fotografia bazei e din **30.09.2026, ora 14:57** (11:57 UTC). Pașii de mai jos
 |---|---|
 | `observatii_curente` (vedere) | 24.169 |
 | `observations` | 27.677 |
-| `surse` | 6.765 |
-| `campanii` | 360 (+ 523 în `campanii_surse`) |
+| `surse` | 7.313 |
+| `campanii` | 742 (+ 1.540 în `campanii_surse`) |
+| `comunicate` | 989 |
 | `catalog_libra` | 57 |
 | `app_release` | 26 (+ 133 capturi, 120 recenzii) |
 | `banci` | 30 |
 | `locatii` | 1.478 |
 
-> **Campaniile sunt parțiale.** Dump-ul s-a făcut în timp ce colectorul de
-> campanii (`ingest/campanii.py`) încă rula. Fotografia e consistentă, dar
-> conține doar băncile ajunse până atunci: bcr 135, brd 156, garanti 18,
-> raiffeisen 12, procredit 9, tbi 9, exim 8, bcr-locuinte 4, ing 3, salt 3,
-> credex, libra și nexent câte 1. Robert trimite un dump nou după ce se termină
-> colectarea, iar importul se reface cu aceiași pași.
+> **Campaniile sunt complete** pentru rularea din 30.09 (colectorul s-a terminat
+> înainte de export): brd 156, bcr 135, ing 111, salt 109, raiffeisen 66,
+> procredit 42, garanti 40, tbi 37, exim 20, libra 12, patria 6, bcr-locuinte 4,
+> vista 2, credex și nexent câte 1. Comunicatele (newsroom): doar titlu și dată.
 
 ## Pași
 
@@ -61,7 +60,7 @@ powershell -ExecutionPolicy Bypass -File .\deploy\importa_baza_docker.ps1 -Fisie
 Scriptul restaurează în `mip_nou`, apoi închide conexiunile și schimbă numele:
 `mip` devine `mip_vechi_<AAAAMMZZ_HHmmss>` și `mip_nou` devine `mip`. La final
 afișează numărătorile, care trebuie să fie cele din tabelul de mai sus
-(24169 / 6765 / 360 / 57 / 26). Dacă `pg_restore` eșuează, baza ta rămâne
+(24169 / 7313 / 742 / 57 / 26). Dacă `pg_restore` eșuează, baza ta rămâne
 neatinsă. După import **nu rula** `db/schema.sql` sau migrările, pentru că
 dump-ul le conține deja.
 
