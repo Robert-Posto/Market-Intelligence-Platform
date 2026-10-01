@@ -14,7 +14,7 @@ Cursul de referință NU e aici: feed-ul XML stă pe `curs.bnr.ro`, unde robots.
 interzice tot (`Disallow: /`).
 
 Rulare:
-    python ingest/load_bnr.py            # colectează și înlocuiește tabela
+    python ingest/load_bnr.py            # colectează și adaugă valorile noi (istoricul rămâne)
     python ingest/load_bnr.py --uscat    # doar afișează ce ar scrie
 """
 
@@ -85,13 +85,19 @@ def main():
         return 0
     with psycopg2.connect(N.dsn()) as conn:
         with conn.cursor() as cur:
-            # Datele din pachetul din 21.09 pleacă: popularea e de la zero.
-            cur.execute("DELETE FROM indici_referinta")
-            print(f"șterse: {cur.rowcount} rânduri vechi")
+            # Istoricul se păstrează (01.10.2026): BNR publică doar ultimele ~2
+            # săptămâni de ROBOR/ROBID, deci fiecare rulare ADAUGĂ zilele noi și
+            # nu atinge ce e deja în bază (cheia: indice, scadență, valabil_din).
+            # Înainte, rularea ștergea tabela și pierdea tot ce ieșise din pagina BNR.
+            cur.execute("SELECT count(*) FROM indici_referinta")
+            inainte = cur.fetchone()[0]
             psycopg2.extras.execute_values(
                 cur, """INSERT INTO indici_referinta (indice, scadenta, valoare, valabil_din,
-                            valabil_pana, sursa) VALUES %s ON CONFLICT DO NOTHING""", randuri)
-            print(f"scrise: {len(randuri)} rânduri")
+                            valabil_pana, sursa) VALUES %s
+                        ON CONFLICT (indice, scadenta, valabil_din) DO NOTHING""", randuri)
+            cur.execute("SELECT count(*) FROM indici_referinta")
+            dupa = cur.fetchone()[0]
+            print(f"citite: {len(randuri)} rânduri · noi: {dupa - inainte} · în bază: {dupa}")
     return 0
 
 
