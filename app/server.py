@@ -1123,6 +1123,60 @@ def reclame_bing():
             "oprit": d.get("oprit"), "reclame": reclame}
 
 
+YOUTUBE_RETENTIE_ZILE = 30
+
+
+def youtube():
+    """Canalele YouTube ale bancilor, din cel mai recent output/youtube/youtube_<data>.json (ingest/youtube_api.py).
+
+    Doar citire, din fisier; nicio cerere spre YouTube, nicio cheie. Retentia (YouTube Developer
+    Policies III.E.4.d): datele API se sterg sau se reimprospateaza la 30 de zile. Un fisier cu
+    `sterge_la` atins (sau extras acum 30 de zile ori mai mult) NU se mai serveste: raspunsul e gol,
+    cu motivul. Nu se intoarce nimic agregat intre canale (III.E.2.a): fiecare banca, separat.
+    """
+    import datetime
+    import glob
+    gol = {"data_extragerii": None, "sterge_la": None, "luni": None, "de_la": None,
+           "motiv": None, "banci": {}}
+    fisiere = sorted(glob.glob(os.path.join(os.path.dirname(AICI), "output", "youtube", "youtube_*.json")))
+    if not fisiere:
+        return {**gol, "motiv": "lipsește fișierul output/youtube/youtube_*.json"}
+    try:
+        with open(fisiere[-1], encoding="utf-8") as f:
+            d = json.load(f)
+    except (OSError, ValueError):
+        return {**gol, "motiv": "fișierul YouTube nu se poate citi"}
+
+    azi = datetime.date.today()
+
+    def zi(x):
+        try:
+            return datetime.date.fromisoformat(str(x)[:10])
+        except ValueError:
+            return None
+
+    extras, sterge = zi(d.get("data_extragerii")), zi(d.get("sterge_la"))
+    if extras is None:
+        return {**gol, "motiv": "fișierul YouTube nu are data extragerii"}
+    if sterge is None:
+        sterge = extras + datetime.timedelta(days=YOUTUBE_RETENTIE_ZILE)
+    meta = {"data_extragerii": extras.isoformat(), "sterge_la": sterge.isoformat(),
+            "luni": d.get("luni"), "de_la": d.get("de_la")}
+    # pe ziua din `sterge_la` datele nu mai trebuie sa existe, deci nici nu se mai arata
+    if azi >= sterge or (azi - extras).days >= YOUTUBE_RETENTIE_ZILE:
+        return {**gol, **meta, "motiv": f"datele din {extras.isoformat()} au depășit cele "
+                f"{YOUTUBE_RETENTIE_ZILE} de zile (ștergere la {sterge.isoformat()}): trebuie extrase din nou"}
+
+    banci = {}
+    for slug, b in (d.get("banci") or {}).items():
+        b = b or {}
+        if not b.get("canal"):
+            continue
+        banci[slug] = {"canal": b["canal"], "dovada": b.get("dovada"),
+                       "videoclipuri": b.get("videoclipuri") or []}
+    return {**gol, **meta, "banci": banci}
+
+
 # Reclamele Google (Ads Transparency Center, setul oficial din BigQuery), din arhiva
 # colegului dezarhivata in output/reclame/google_<data>/. Nimic in baza pana la aviz.
 # Lista de advertiseri foloseste „bt”; tabela `banci` are „banca-transilvania”.
@@ -1542,6 +1596,7 @@ RUTE = {
     "/api/logos": lambda q: logos(),
     "/api/retele": lambda q: retele(),
     "/api/reclame_bing": lambda q: reclame_bing(),
+    "/api/youtube": lambda q: youtube(),
     "/api/reclame_google": reclame_google,
     "/api/campanii": campanii,
     "/api/comunicate": comunicate,

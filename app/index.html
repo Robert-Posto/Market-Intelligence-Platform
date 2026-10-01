@@ -432,6 +432,8 @@
   button.cm-chip.activ{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
   button.cm-chip.activ b{color:inherit}
   .cm-sec > details.despre{margin-right:18px}
+  .yt-canal{display:flex;flex-direction:column;gap:2px;flex:none;max-width:230px;font-size:13px}
+  .yt-canal .pill{align-self:flex-start}
   .cm-note details.despre{display:inline-block;margin-right:18px}
   .rs-ic{display:inline-flex;align-items:center;justify-content:center}
   .rs-ic svg{width:14px;height:14px;display:block}
@@ -1668,6 +1670,7 @@ const CM_SECTIUNI = [
   ["comunicate", "Comunicate", "comunicate de presă"],
   ["google", "Reclame Google", "reclame în Ads Transparency Center"],
   ["bing", "Reclame Bing", "reclame țintite pe România"],
+  ["youtube", "YouTube", "canale YouTube ale băncilor, găsite pe site-urile lor (fiecare separat)"],
   ["retele", "Rețele sociale", "conturi oficiale găsite"],
 ];
 /* răspunsurile API ale paginii, ținute 5 minute: schimbarea secțiunii nu mai cere 1,6 MB din nou
@@ -2256,8 +2259,147 @@ function reteleSociale(rs, m){
       Datele stau în <span class="mono">date/retele_sociale.csv</span>, nu în bază: un tabel nou ar cere migrarea 019.`)}`};
 }
 
+/* 2.4: canalele YouTube ale băncilor (YouTube Data API v3, fișierul output/youtube/youtube_<data>.json).
+   Regula politicii YouTube (Developer Policies III.E.2.a): datele API NU se agregă între canalele unor
+   proprietari diferiți. De-aia aici nu există niciun total, medie, clasament sau grafic între bănci:
+   se alege O bancă și se văd doar cifrele canalului ei, cum le dă YouTube. Băncile stau în ordine
+   alfabetică, cu Libra prima, niciodată după cifre; chips-urile n-au numere. Sortarea din tabel
+   lucrează doar în interiorul canalului ales. */
+const YT = {d: null, m: null, banca: null};
+// linkul de pe site există, dar nu se extrage: pagini aduse după blocaj, respectiv canalul grupului
+const YT_BLOCATE = ["banca-transilvania", "intesa", "unicredit", "cetelem"];
+const YT_GRUP = ["pko", "revolut", "bnpparibas"];
+const YT_ETICHETA = `<span class="pill" title="cifre luate din YouTube Data API, nemodificate (YouTube Developer Policies III.E.4.h)">Date YouTube</span>`;
+const ytDurata = s => { if(s === null || s === undefined) return "—";
+  const h = Math.floor(s / 3600), mi = Math.floor(s % 3600 / 60), se = String(s % 60).padStart(2, "0");
+  return h ? `${h}:${String(mi).padStart(2, "0")}:${se}` : `${mi}:${se}`; };
+const ytNumar = (n, tot) => tot ? `${n} din ${tot} ${tot === 1 ? "videoclip" : "videoclipuri"} ale canalului` : "";
+const ytZi = x => cpZi(String(x || "").slice(0, 10));
+const ytOrdine = (d, m) => Object.keys(d.banci)
+  .sort((a, b) => (b === "libra") - (a === "libra") || cmScurt(a, m).localeCompare(cmScurt(b, m), "ro"));
+
+/* fișa canalului ales și chips-urile de alegere: se redesenează la schimbarea băncii */
+function ytBanda(){
+  const {d, m, banca} = YT, c = d.banci[banca].canal;
+  const chipuri = ytOrdine(d, m).map(b => `<button class="cm-chip${b === "libra" ? " ref" : ""}${b === banca ? " activ" : ""}"
+    data-b="${esc(b)}" title="${esc((m.nume[b] || b) + " — clic: canalul ei")}" onclick="bancaYoutube('${esc(b)}')">${esc(cmScurt(b, m))}</button>`).join("");
+  const cifre = [
+    [c.abonati_ascunsi ? "ascunși" : num(c.abonati, 0), "abonați", c.abonati_ascunsi
+      ? "canalul nu-și arată public numărul de abonați" : "YouTube rotunjește public numărul de abonați"],
+    [num(c.vizualizari, 0), "vizualizări, tot canalul", "de la crearea canalului, nu doar ultimele 12 luni"],
+    [num(c.videoclipuri, 0), "videoclipuri publice pe canal"],
+    [ytZi(c.creat_la), "canal creat la"],
+  ];
+  return `<div class="yt-canal">
+      <a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" title="canalul pe YouTube"><b>${esc(c.titlu || banca)}</b> ↗</a>
+      <span class="gri mono" style="font-size:11.5px">${esc(c.custom_url || c.id || "")}</span>${YT_ETICHETA}</div>
+    <div class="cm-cifre">${cifre.map(([n, t, titlu]) => `<div${titlu ? ` title="${esc(titlu)}"` : ""}><b>${n}</b><span>${t}</span></div>`).join("")}</div>
+    <div class="cm-chipuri"><span class="cm-et">Canalul băncii · câte unul, fără comparații</span>${chipuri}</div>`;
+}
+
+/* tabelul videoclipurilor canalului ales (doar al lui) */
+function ytTabel(){
+  const {d, m, banca} = YT, b = d.banci[banca], vs = b.videoclipuri || [];
+  const dovada = /^https?:/.test(b.dovada || "")
+    ? `<a href="${esc(b.dovada)}" target="_blank" rel="noopener noreferrer">o pagină a băncii ↗</a>` : esc(b.dovada || "site-ul băncii");
+  const cap = `<p class="note" style="margin:0 0 10px;max-width:none">${etichetaBanca(banca, m)}
+    Videoclipurile publicate pe canal din ${ytZi(d.de_la)} până la ${ytZi(d.data_extragerii)}, cu cifrele de la extragere ${YT_ETICHETA}
+    · linkul canalului e pe ${dovada}</p>`;
+  if(!vs.length) return cap + `<p class="note">Canalul n-a publicat niciun videoclip în ultimele ${d.luni || 12} luni.</p>`;
+  return cap + tabel(vs, [
+    {cap: "Data", cls: "mono", td: () => ({attr: 'style="white-space:nowrap"'}), s: v => v.publicat_la || "", val: v => ytZi(v.publicat_la)},
+    {cap: "Titlu", html: true, s: v => v.titlu || "", val: v => `<a href="${esc(v.link)}" target="_blank" rel="noopener noreferrer"
+      title="deschide pe YouTube">${esc(v.titlu || v.id)} ↗</a>`},
+    {cap: "Durata", cls: "num", s: v => v.durata_sec, val: v => ytDurata(v.durata_sec), titlu: "≤ 1:00 = scurt (Shorts, aproximativ)"},
+    {cap: "Vizualizări", cls: "num", s: v => v.vizualizari, val: v => num(v.vizualizari, 0)},
+    {cap: "Like-uri", cls: "num", s: v => v.likeuri, val: v => num(v.likeuri, 0), titlu: "lipsește când canalul ascunde like-urile"},
+    {cap: "Comentarii", cls: "num", s: v => v.comentarii, val: v => num(v.comentarii, 0), titlu: "lipsește când comentariile sunt închise"},
+  ], {sort: true, implicit: [0, "desc"], rand: v => ({
+    attr: `data-zi="${esc(String(v.publicat_la || "").slice(0, 10))}" data-sec="${esc(v.durata_sec ?? "")}"`,
+    cauta: fara_diacritice(v.titlu || "")})});
+}
+
+/* filtrele lucrează pe rândurile canalului ales, fără cerere nouă */
+function filtreazaYoutube(){
+  const v = id => document.getElementById(id);
+  if(!v("yt-tabel")) return;
+  const t = fara_diacritice(v("yt-cauta").value.trim());
+  const zile = Number(v("yt-perioada").value), durata = v("yt-durata").value;
+  let prag = "";
+  if(zile){ const z = new Date(YT.d.data_extragerii + "T00:00:00Z"); z.setUTCDate(z.getUTCDate() - zile); prag = z.toISOString().slice(0, 10); }
+  const randuri = document.querySelectorAll("#yt-tabel tbody tr");
+  let n = 0;
+  randuri.forEach(r => {
+    const sec = r.dataset.sec === "" ? NaN : Number(r.dataset.sec);
+    const da = (!t || (r.dataset.cauta || "").includes(t)) && (!prag || r.dataset.zi >= prag)
+      && (!durata || (durata === "scurt" ? sec <= 60 : sec > 60));
+    r.style.display = da ? "" : "none";
+    n += da;
+  });
+  const tot = (YT.d.banci[YT.banca].videoclipuri || []).length;
+  v("yt-n").textContent = ytNumar(n, tot);
+  v("yt-gol").style.display = tot && !n ? "" : "none";
+}
+function bancaYoutube(slug){
+  if(!YT.d || !YT.d.banci[slug]) return;
+  YT.banca = slug;
+  const s = document.getElementById("yt-banca");
+  if(s) s.value = slug;
+  document.getElementById("yt-banda").innerHTML = ytBanda();
+  document.getElementById("yt-tabel").innerHTML = ytTabel();
+  filtreazaYoutube();
+  // banca rămâne în adresă (link de trimis), fără o nouă randare a paginii
+  history.replaceState(null, "", `#/campanii?s=youtube&b=${encodeURIComponent(slug)}`);
+}
+
+function canaleYoutube(d, m, stare){
+  const ret = d.data_extragerii ? `extras pe ${ytZi(d.data_extragerii)} · se șterge pe ${ytZi(d.sterge_la)} (politica YouTube, 30 de zile)` : "";
+  const info = `${YT_ETICHETA}${ret ? `<span class="gri" style="font-size:12px" title="YouTube Developer Policies III.E.4.d: datele din API se șterg sau se reîmprospătează cel târziu la 30 de zile">${esc(ret)}</span>` : ""}`;
+  const fara = Object.keys(m.rand).filter(b => !d.banci[b] && !YT_BLOCATE.includes(b) && !YT_GRUP.includes(b))
+    .sort((a, b) => cmScurt(a, m).localeCompare(cmScurt(b, m), "ro"));
+  const nume = l => l.map(b => esc(cmScurt(b, m))).join(", ");
+  const ds = despre(`Sursa: <b>YouTube Data API v3</b>, cu o cheie API (fără cont de utilizator, doar date publice), prin
+      <span class="mono">ingest/youtube_api.py</span>. Pe fiecare canal: datele canalului și videoclipurile publicate în ultimele
+      ${d.luni || 12} luni, cu vizualizările, like-urile și comentariile de la data extragerii. Pagina citește fișierul local
+      <span class="mono">output/youtube/youtube_&lt;data&gt;.json</span>; nu face nicio cerere spre YouTube și nu scrie în bază.<br>
+      <b>Canalele</b> vin doar din linkurile de pe site-urile băncilor (paginile din Bronze), nu din căutare pe YouTube:
+      lista e în <span class="mono">date/youtube_canale.csv</span>, cu pagina pe care s-a găsit linkul.
+      <b>Excluse:</b> ${nume(YT_BLOCATE)}: linkul există, dar dovada vine din pagini aduse după blocajul site-ului, deci nu se
+      extrage; ${nume(YT_GRUP)}: canalul e al grupului internațional, nu al băncii din România.
+      <b>Fără canal</b> (niciun link pe paginile din Bronze): ${nume(fara) || "—"}.<br>
+      <b>Fără agregare</b> (YouTube Developer Policies III.E.2.a): datele din API nu se adună și nu se compară între canalele unor
+      proprietari diferiți. De aceea pagina nu arată totaluri, medii, clasamente sau grafice între bănci: alegi o bancă și vezi
+      doar canalul ei; băncile stau în ordine alfabetică, nu după cifre.<br>
+      <b>Retenția</b> (III.E.4.d): datele se șterg sau se reîmprospătează cel târziu la 30 de zile. Fișierul din
+      ${ytZi(d.data_extragerii)} se șterge pe ${ytZi(d.sterge_la)}; din ziua aceea serverul nu-l mai servește, chiar dacă e încă pe disc.<br>
+      <b>„Date YouTube”</b> (III.E.4.h): tot ce vine din API e marcat ca atare și arătat așa cum îl dă YouTube (abonații sunt
+      rotunjiți chiar de YouTube; „ascunși” = canalul nu-i arată). „Scurte ≤ 60 s” e o aproximare după durată: API-ul nu spune
+      ce e Short.`);
+  const nb = Object.keys(d.banci).length;
+  if(!nb) return {info, corp: `<div class="callout warn" style="margin-bottom:12px"><b>Nu se arată date YouTube.</b>
+    ${esc(d.motiv || "niciun canal în fișier")}.</div>${ds}`};
+  YT.d = d; YT.m = m;
+  const ordine = ytOrdine(d, m);
+  YT.banca = d.banci[stare.b] ? stare.b : ordine[0];
+  const tot = (d.banci[YT.banca].videoclipuri || []).length;
+  const filtre = `
+    <label class="f">Bancă<select id="yt-banca" onchange="bancaYoutube(this.value)">${
+      ordine.map(b => `<option value="${esc(b)}"${b === YT.banca ? " selected" : ""}>${esc(m.nume[b] || b)}</option>`).join("")}</select></label>
+    <label class="f">Caută<input class="cauta" id="yt-cauta" type="search" placeholder="Caută în titlu…" oninput="filtreazaYoutube()"></label>
+    <label class="f">Perioada<select id="yt-perioada" onchange="filtreazaYoutube()">
+      <option value="30">ultimele 30 de zile</option><option value="90">ultimele 90 de zile</option>
+      <option value="" selected>ultimele ${d.luni || 12} luni</option></select></label>
+    <label class="f">Durata<select id="yt-durata" onchange="filtreazaYoutube()">
+      <option value="">toate</option><option value="scurt">scurte (Shorts, ≤ 60 s)</option><option value="lung">lungi (&gt; 60 s)</option></select></label>
+    <span class="gri" id="yt-n" style="font-size:12px;margin-left:auto;align-self:center">${ytNumar(tot, tot)}</span>`;
+  return {info, filtre, banda: `<div class="cm-banda" id="yt-banda">${ytBanda()}</div>`, corp: `
+    <div id="yt-tabel">${ytTabel()}</div>
+    <p class="note" id="yt-gol" style="display:none">Niciun videoclip al canalului nu se potrivește filtrelor.</p>
+    ${ds}`};
+}
+
 /* 2.4: toate sursele posibile și ce cere fiecare: pliat la coada fiecărei secțiuni */
-function cmSurse(camp, com){
+function cmSurse(camp, com, yt){
   const zi = x => cpZi(String(x || "").slice(0, 10));
   const nCamp = camp.randuri.length, nBanciCamp = new Set(camp.randuri.map(r => r.banca)).size;
   const nBanciCom = new Set(com.map(r => r.banca)).size;
@@ -2272,7 +2414,9 @@ function cmSurse(camp, com){
       ["Microsoft Ad Library (Bing)", "reclamele din Bing, cu perioadă, afișări și ponderea României", "API public, fără cont: testat", "ok", "bing"],
       ["Meta Ad Library", "reclamele active pe Facebook și Instagram", "API oficial, cere verificare de identitate", ""],
       ["TikTok Commercial Content Library", "reclamele din UE", "API oficial, cere cont de cercetare", ""],
-      ["YouTube Data API", "canalele de brand ale băncilor", "API oficial, cere cheie", ""],
+      ["YouTube Data API v3", "canalele băncilor găsite pe site-urile lor și videoclipurile din ultimele 12 luni, cu vizualizări, like-uri, comentarii",
+       yt.data_extragerii ? `API oficial, cu cheie: ${num(Object.keys(yt.banci).length, 0)} canale, extrase pe ${zi(yt.data_extragerii)}; fără agregare între canale, se șterg pe ${zi(yt.sterge_la)}`
+         : `API oficial, cu cheie: ${yt.motiv || "fără date"}`, yt.data_extragerii && Object.keys(yt.banci).length ? "ok" : "", "youtube"],
       ["Google Ads Transparency Center", "reclamele Google: advertiser, format, perioadă, afișări, platformă (fără text și fără cheltuieli)",
        "setul oficial din BigQuery, doar metadate: testat; cere avizul juridic", "ok", "google"],
     ], [
@@ -2286,8 +2430,10 @@ R.campanii = async (stare) => {
   const s = CM_SECTIUNI.some(([k]) => k === stare.s) ? stare.s : "site";
   GG.nr++; Object.assign(GG, {ordine: "ultima", sens: "desc", offset: 0});
   CP.comOffset = 0;
-  const [m, rs, bing, google, camp, com] = await Promise.all([meta(), cmia("/api/retele"), cmia("/api/reclame_bing"),
-    cmia("/api/reclame_google"), cmia("/api/campanii"), cmia("/api/comunicate")]);
+  const [m, rs, bing, google, camp, com, yt] = await Promise.all([meta(), cmia("/api/retele"), cmia("/api/reclame_bing"),
+    cmia("/api/reclame_google"), cmia("/api/campanii"), cmia("/api/comunicate"),
+    // un server pornit înainte de ruta nouă răspunde 404: secțiunea spune asta, restul paginii merge
+    cmia("/api/youtube").catch(() => ({banci: {}, motiv: "serverul nu are încă ruta /api/youtube (trebuie repornit)"}))]);
   CP.date = camp; CP.com = com;
   // câte are fiecare secțiune, pe comutator
   const n = {
@@ -2295,10 +2441,12 @@ R.campanii = async (stare) => {
     comunicate: com.length,
     google: google.total || 0,
     bing: (bing.reclame || []).filter(r => r.pondere_ro !== null && r.pondere_ro >= 50).length,
+    youtube: Object.keys(yt.banci || {}).length,      // canale, nu suma videoclipurilor (fără agregare)
     retele: rs.filter(r => r.url !== "NEGASIT").length,
   };
   const sec = {site: () => campaniiSite(camp, m), comunicate: () => comunicateSite(com, m),
-               google: () => reclameGoogle(google, m), bing: () => reclameBing(bing, m), retele: () => reteleSociale(rs, m)}[s]();
+               google: () => reclameGoogle(google, m), bing: () => reclameBing(bing, m),
+               youtube: () => canaleYoutube(yt, m, stare), retele: () => reteleSociale(rs, m)}[s]();
   const taburi = `<div class="taburi">${CM_SECTIUNI.map(([k, t, titlu]) =>
     `<button class="${k === s ? "activ" : ""}" onclick="mergi('campanii',{s:'${k}'})" title="${esc(num(n[k], 0) + " " + titlu)}"
       >${esc(t)}<span class="n">${num(n[k], 0)}</span></button>`).join("")}</div>`;
@@ -2310,7 +2458,7 @@ R.campanii = async (stare) => {
   ${sec.banda || ""}
   <section class="cm-sec">
     ${sec.corp}
-    ${cmSurse(camp, com)}
+    ${cmSurse(camp, com, yt)}
   </section>`;
 };
 
