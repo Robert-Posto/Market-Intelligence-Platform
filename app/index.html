@@ -434,6 +434,8 @@
   .cm-sec > details.despre{margin-right:18px}
   .yt-canal{display:flex;flex-direction:column;gap:2px;flex:none;max-width:230px;font-size:13px}
   .yt-canal .pill{align-self:flex-start}
+  .yt-nou{font-size:11px;color:var(--muted);max-width:165px;line-height:1.35;flex:none}
+  #yt-tabel .eticheta-best{margin:0 0 0 6px;vertical-align:1px}
   .cm-note details.despre{display:inline-block;margin-right:18px}
   .rs-ic{display:inline-flex;align-items:center;justify-content:center}
   .rs-ic svg{width:14px;height:14px;display:block}
@@ -2275,6 +2277,11 @@ const ytDurata = s => { if(s === null || s === undefined) return "—";
   return h ? `${h}:${String(mi).padStart(2, "0")}:${se}` : `${mi}:${se}`; };
 const ytNumar = (n, tot) => tot ? `${n} din ${tot} ${tot === 1 ? "videoclip" : "videoclipuri"} ale canalului` : "";
 const ytZi = x => cpZi(String(x || "").slice(0, 10));
+/* eticheta „nou” (ingest/youtube_api.py): videoclipul nu era în extragerea anterioară (metoda „id-uri”)
+   sau, fără fișierul anterior, e publicat după ziua rulării anterioare (metoda „data”). Doar pe canalul ales. */
+const ytNouTitlu = (d, metoda) => metoda === "data"
+  ? `publicat după ${ytZi(d.nou_fata_de)}, ziua extragerii anterioare (fișierul ei nu mai e, sau canalul lipsea din el: doar după dată)`
+  : `nu era în extragerea din ${ytZi(d.nou_fata_de)}`;
 const ytOrdine = (d, m) => Object.keys(d.banci)
   .sort((a, b) => (b === "libra") - (a === "libra") || cmScurt(a, m).localeCompare(cmScurt(b, m), "ro"));
 
@@ -2290,10 +2297,14 @@ function ytBanda(){
     [num(c.videoclipuri, 0), "videoclipuri publice pe canal"],
     [ytZi(c.creat_la), "canal creat la"],
   ];
+  const b = d.banci[banca], noi = (b.videoclipuri || []).filter(v => v.nou).length;
+  if(d.nou_fata_de) cifre.push([num(noi, 0), `noi față de ${ytZi(d.nou_fata_de)}`,
+    `videoclipurile canalului marcate „nou”: ${ytNouTitlu(d, b.metoda_nou)}`]);
   return `<div class="yt-canal">
       <a href="${esc(c.link)}" target="_blank" rel="noopener noreferrer" title="canalul pe YouTube"><b>${esc(c.titlu || banca)}</b> ↗</a>
       <span class="gri mono" style="font-size:11.5px">${esc(c.custom_url || c.id || "")}</span>${YT_ETICHETA}</div>
     <div class="cm-cifre">${cifre.map(([n, t, titlu]) => `<div${titlu ? ` title="${esc(titlu)}"` : ""}><b>${n}</b><span>${t}</span></div>`).join("")}</div>
+    ${d.nou_fata_de ? "" : `<div class="yt-nou">prima extragere — eticheta «nou» apare de la următoarea rulare</div>`}
     <div class="cm-chipuri"><span class="cm-et">Canalul băncii · câte unul, fără comparații</span>${chipuri}</div>`;
 }
 
@@ -2309,13 +2320,14 @@ function ytTabel(){
   return cap + tabel(vs, [
     {cap: "Data", cls: "mono", td: () => ({attr: 'style="white-space:nowrap"'}), s: v => v.publicat_la || "", val: v => ytZi(v.publicat_la)},
     {cap: "Titlu", html: true, s: v => v.titlu || "", val: v => `<a href="${esc(v.link)}" target="_blank" rel="noopener noreferrer"
-      title="deschide pe YouTube">${esc(v.titlu || v.id)} ↗</a>`},
+      title="deschide pe YouTube">${esc(v.titlu || v.id)} ↗</a>${v.nou
+      ? `<span class="eticheta-best" title="${esc(ytNouTitlu(d, b.metoda_nou))}">nou</span>` : ""}`},
     {cap: "Durata", cls: "num", s: v => v.durata_sec, val: v => ytDurata(v.durata_sec), titlu: "≤ 1:00 = scurt (Shorts, aproximativ)"},
     {cap: "Vizualizări", cls: "num", s: v => v.vizualizari, val: v => num(v.vizualizari, 0)},
     {cap: "Like-uri", cls: "num", s: v => v.likeuri, val: v => num(v.likeuri, 0), titlu: "lipsește când canalul ascunde like-urile"},
     {cap: "Comentarii", cls: "num", s: v => v.comentarii, val: v => num(v.comentarii, 0), titlu: "lipsește când comentariile sunt închise"},
   ], {sort: true, implicit: [0, "desc"], rand: v => ({
-    attr: `data-zi="${esc(String(v.publicat_la || "").slice(0, 10))}" data-sec="${esc(v.durata_sec ?? "")}"`,
+    attr: `data-zi="${esc(String(v.publicat_la || "").slice(0, 10))}" data-sec="${esc(v.durata_sec ?? "")}" data-nou="${v.nou ? 1 : 0}"`,
     cauta: fara_diacritice(v.titlu || "")})});
 }
 
@@ -2324,7 +2336,7 @@ function filtreazaYoutube(){
   const v = id => document.getElementById(id);
   if(!v("yt-tabel")) return;
   const t = fara_diacritice(v("yt-cauta").value.trim());
-  const zile = Number(v("yt-perioada").value), durata = v("yt-durata").value;
+  const zile = Number(v("yt-perioada").value), durata = v("yt-durata").value, doarNoi = v("yt-noi").checked;
   let prag = "";
   if(zile){ const z = new Date(YT.d.data_extragerii + "T00:00:00Z"); z.setUTCDate(z.getUTCDate() - zile); prag = z.toISOString().slice(0, 10); }
   const randuri = document.querySelectorAll("#yt-tabel tbody tr");
@@ -2332,7 +2344,7 @@ function filtreazaYoutube(){
   randuri.forEach(r => {
     const sec = r.dataset.sec === "" ? NaN : Number(r.dataset.sec);
     const da = (!t || (r.dataset.cauta || "").includes(t)) && (!prag || r.dataset.zi >= prag)
-      && (!durata || (durata === "scurt" ? sec <= 60 : sec > 60));
+      && (!durata || (durata === "scurt" ? sec <= 60 : sec > 60)) && (!doarNoi || r.dataset.nou === "1");
     r.style.display = da ? "" : "none";
     n += da;
   });
@@ -2374,7 +2386,11 @@ function canaleYoutube(d, m, stare){
       ${ytZi(d.data_extragerii)} se șterge pe ${ytZi(d.sterge_la)}; din ziua aceea serverul nu-l mai servește, chiar dacă e încă pe disc.<br>
       <b>„Date YouTube”</b> (III.E.4.h): tot ce vine din API e marcat ca atare și arătat așa cum îl dă YouTube (abonații sunt
       rotunjiți chiar de YouTube; „ascunși” = canalul nu-i arată). „Scurte ≤ 60 s” e o aproximare după durată: API-ul nu spune
-      ce e Short.`);
+      ce e Short.<br>
+      <b>„Nou”</b>: la fiecare rulare, videoclipul care nu era în extragerea anterioară (cel mai recent fișier dinaintea zilei,
+      încă în cele 30 de zile). Dacă fișierul acela nu mai există, „nou” = publicat după ziua rulării anterioare, păstrată
+      local în <span class="mono">output/youtube/extrageri.txt</span> (doar data, nimic de la YouTube). ${d.nou_fata_de
+        ? `Acum: față de ${ytZi(d.nou_fata_de)}.` : "Fișierul de acum e prima extragere, deci nimic nu e încă „nou”."}`);
   const nb = Object.keys(d.banci).length;
   if(!nb) return {info, corp: `<div class="callout warn" style="margin-bottom:12px"><b>Nu se arată date YouTube.</b>
     ${esc(d.motiv || "niciun canal în fișier")}.</div>${ds}`};
@@ -2391,6 +2407,9 @@ function canaleYoutube(d, m, stare){
       <option value="" selected>ultimele ${d.luni || 12} luni</option></select></label>
     <label class="f">Durata<select id="yt-durata" onchange="filtreazaYoutube()">
       <option value="">toate</option><option value="scurt">scurte (Shorts, ≤ 60 s)</option><option value="lung">lungi (&gt; 60 s)</option></select></label>
+    <label class="bifa" title="${esc(d.nou_fata_de ? `doar videoclipurile marcate „nou” față de extragerea din ${ytZi(d.nou_fata_de)}`
+      : "prima extragere: eticheta «nou» apare de la următoarea rulare")}"><input type="checkbox" id="yt-noi"
+      onchange="filtreazaYoutube()"${d.nou_fata_de ? "" : " disabled"}>doar noi</label>
     <span class="gri" id="yt-n" style="font-size:12px;margin-left:auto;align-self:center">${ytNumar(tot, tot)}</span>`;
   return {info, filtre, banda: `<div class="cm-banda" id="yt-banda">${ytBanda()}</div>`, corp: `
     <div id="yt-tabel">${ytTabel()}</div>

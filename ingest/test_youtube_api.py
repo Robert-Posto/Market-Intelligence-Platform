@@ -250,6 +250,119 @@ class TestExtragere(FaraRetea):
         self.assertEqual(self.get.call_args.kwargs["params"]["forHandle"], "@AltaBanca")
 
 
+class TestNou(FaraRetea):
+    """Eticheta „nou”: față de extragerea anterioară (id-uri), cu rezerva pe dată."""
+    AZI = datetime.date(2026, 10, 1)
+    # playlist-ul din TestExtragere: v1 (2026-09-01) și v2 (2026-01-01) în fereastră, v3 nu
+    RANDURI = [{"slug": "brd", "canal": "UCx", "tip": "id", "url_dovada": "https://www.brd.ro/"}]
+
+    def setUp(self):
+        super().setUp()
+        self.d = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.d)
+        p = mock.patch.object(y, "DIR_IESIRE", self.d)
+        p.start()
+        self.addCleanup(p.stop)
+
+    def fisier(self, zi, banci):
+        with open(os.path.join(self.d, f"youtube_{zi}.json"), "w", encoding="utf-8") as f:
+            json.dump({"data_extragerii": zi, "banci": banci}, f)
+
+    def jurnal(self, *zile):
+        with open(os.path.join(self.d, "extrageri.txt"), "w", encoding="utf-8") as f:
+            f.write("# comentariu\n" + "".join(z + "\n" for z in zile))
+
+    PUBLICAT = {"v1": "2026-09-01T10:00:00Z", "v2": "2026-01-01T10:00:00Z"}
+
+    def raspunsuri(self, m, p):
+        if m != "videos":
+            return TestExtragere.raspunsuri(self, m, p)
+        return 200, {"items": [{"id": i, "snippet": {"title": i, "publishedAt": self.PUBLICAT[i]},
+                                "contentDetails": {}, "statistics": {}} for i in p["id"].split(",")]}
+
+    def ruleaza(self, randuri=None, azi=None):
+        with contextlib.redirect_stdout(io.StringIO()):
+            _, cale = y.extrage(self.client(self.raspunsuri),
+                                randuri or self.RANDURI, 12, azi or self.AZI)
+        with open(cale, encoding="utf-8") as f:
+            return json.load(f)
+
+    def noi(self, scris, slug="brd"):
+        return {v["id"]: v["nou"] for v in scris["banci"][slug]["videoclipuri"]}
+
+    def zile_jurnal(self):
+        return [z.isoformat() for z in y.zile_din_jurnal(self.d)]
+
+    def test_referinta_pe_id_uri(self):
+        self.fisier("2026-09-20", {"brd": {"canal": {"id": "UCx"}, "videoclipuri": [{"id": "v1"}, {"id": "v2"}]}})
+        self.fisier("2026-09-30", {"brd": {"canal": {"id": "UCx"}, "videoclipuri": [{"id": "v2"}]},
+                                   "ing": {"eroare": "canal negăsit de API"}})
+        self.jurnal("2026-09-20", "2026-09-30")
+        randuri = self.RANDURI + [{"slug": "ing", "canal": "UCx", "tip": "id", "url_dovada": ""}]
+        scris = self.ruleaza(randuri)
+        self.assertEqual(scris["nou_fata_de"], "2026-09-30")       # cea mai recentă, nu 09-20
+        self.assertEqual(scris["metoda_nou"], "id-uri")
+        self.assertEqual(self.noi(scris), {"v1": True, "v2": False})
+        # ING avea eroare în referință: pe dată (v1 din 09-01 nu e după 09-30)
+        self.assertEqual(scris["banci"]["ing"]["metoda_nou"], "data")
+        self.assertNotIn("metoda_nou", scris["banci"]["brd"])
+        self.assertEqual(self.noi(scris, "ing"), {"v1": False, "v2": False})
+        self.assertEqual(self.zile_jurnal(), ["2026-09-20", "2026-09-30", "2026-10-01"])
+
+    def test_rezerva_pe_data(self):
+        self.jurnal("2026-08-15", "2026-08-20")          # jurnalul poate fi mai vechi de 30 de zile
+        scris = self.ruleaza()
+        self.assertEqual((scris["nou_fata_de"], scris["metoda_nou"]), ("2026-08-20", "data"))
+        self.assertEqual(self.noi(scris), {"v1": True, "v2": False})
+        self.assertEqual(self.zile_jurnal(), ["2026-08-15", "2026-08-20", "2026-10-01"])
+
+    def test_prima_rulare(self):
+        scris = self.ruleaza()
+        self.assertIsNone(scris["nou_fata_de"])
+        self.assertIsNone(scris["metoda_nou"])
+        self.assertEqual(self.noi(scris), {"v1": False, "v2": False})
+        with open(os.path.join(self.d, "extrageri.txt"), encoding="utf-8") as f:
+            text = f.read()
+        self.assertTrue(text.endswith("\n2026-10-01\n"))
+        self.assertNotIn("v1", text)                     # doar data, nimic de la YouTube
+
+    def test_referinta_expirata_ignorata(self):
+        # 2026-09-01 are exact 30 de zile pe 2026-10-01: expirat, chiar dacă e încă pe disc
+        self.fisier("2026-09-01", {"brd": {"canal": {"id": "UCx"}, "videoclipuri": []}})
+        self.jurnal("2026-09-01")
+        self.assertEqual(y.referinta(self.AZI, self.d), ("2026-09-01", None, "data"))
+        # cu 29 de zile, da
+        self.fisier("2026-09-02", {"brd": {"canal": {"id": "UCx"}, "videoclipuri": [{"id": "v2"}]}})
+        self.assertEqual(y.referinta(self.AZI, self.d), ("2026-09-02", {"brd": {"v2"}}, "id-uri"))
+        os.remove(os.path.join(self.d, "youtube_2026-09-02.json"))
+        self.assertEqual(y.curata(self.AZI, self.d), ["youtube_2026-09-01.json"])
+        scris = self.ruleaza()
+        self.assertEqual((scris["nou_fata_de"], scris["metoda_nou"]), ("2026-09-01", "data"))
+        self.assertEqual(self.noi(scris), {"v1": False, "v2": False})  # v1 e din 09-01, nu după
+        # fără jurnal: un fișier expirat singur = prima rulare
+        os.remove(os.path.join(self.d, "extrageri.txt"))
+        self.fisier("2026-08-01", {"brd": {"canal": {"id": "UCx"}, "videoclipuri": []}})
+        self.assertEqual(y.referinta(datetime.date(2026, 9, 15), self.d), (None, None, None))
+
+    def test_reluare_in_aceeasi_zi(self):
+        self.fisier("2026-09-30", {"brd": {"canal": {"id": "UCx"}, "videoclipuri": [{"id": "v2"}]},
+                                   "ing": {"canal": {"id": "UCx"}, "videoclipuri": []}})
+        randuri = self.RANDURI + [{"slug": "ing", "canal": "lipsa", "tip": "user", "url_dovada": ""}]
+        prima = self.ruleaza(randuri)
+        self.assertIn("eroare", prima["banci"]["ing"])
+        self.assertEqual(self.noi(prima), {"v1": True, "v2": False})
+        # reluarea: BRD vine din fișierul de azi, care acum conține v1 și v2 — tot nou față de 09-30
+        a_doua = self.ruleaza(randuri)
+        self.assertEqual(a_doua["nou_fata_de"], "2026-09-30")
+        self.assertEqual(self.noi(a_doua), {"v1": True, "v2": False})
+        self.assertEqual(y.referinta(self.AZI, self.d)[0], "2026-09-30")
+        self.assertEqual(self.zile_jurnal(), ["2026-10-01"])    # o singură dată
+        # a doua zi, referința devine fișierul de azi
+        maine = self.ruleaza(azi=datetime.date(2026, 10, 2))
+        self.assertEqual((maine["nou_fata_de"], maine["metoda_nou"]), ("2026-10-01", "id-uri"))
+        self.assertEqual(self.noi(maine), {"v1": False, "v2": False})
+
+
 class TestDescoperire(unittest.TestCase):
     def test_pagina_sintetica(self):
         d = tempfile.mkdtemp()

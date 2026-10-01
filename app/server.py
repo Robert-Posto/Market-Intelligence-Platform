@@ -1137,8 +1137,10 @@ def youtube():
     import datetime
     import glob
     gol = {"data_extragerii": None, "sterge_la": None, "luni": None, "de_la": None,
-           "motiv": None, "banci": {}}
-    fisiere = sorted(glob.glob(os.path.join(os.path.dirname(AICI), "output", "youtube", "youtube_*.json")))
+           "nou_fata_de": None, "metoda_nou": None, "motiv": None, "banci": {}}
+    # MIP_YOUTUBE_DIR: doar pentru verificarea interfetei pe un fisier sintetic (alt port, alt folder)
+    director = os.environ.get("MIP_YOUTUBE_DIR") or os.path.join(os.path.dirname(AICI), "output", "youtube")
+    fisiere = sorted(glob.glob(os.path.join(director, "youtube_*.json")))
     if not fisiere:
         return {**gol, "motiv": "lipsește fișierul output/youtube/youtube_*.json"}
     try:
@@ -1160,8 +1162,11 @@ def youtube():
         return {**gol, "motiv": "fișierul YouTube nu are data extragerii"}
     if sterge is None:
         sterge = extras + datetime.timedelta(days=YOUTUBE_RETENTIE_ZILE)
+    # eticheta „nou” (ingest/youtube_api.py): fata de extragerea anterioara; null = prima extragere
+    # (sau fisier scris inainte de eticheta), cand niciun videoclip nu e „nou”
     meta = {"data_extragerii": extras.isoformat(), "sterge_la": sterge.isoformat(),
-            "luni": d.get("luni"), "de_la": d.get("de_la")}
+            "luni": d.get("luni"), "de_la": d.get("de_la"),
+            "nou_fata_de": d.get("nou_fata_de"), "metoda_nou": d.get("metoda_nou")}
     # pe ziua din `sterge_la` datele nu mai trebuie sa existe, deci nici nu se mai arata
     if azi >= sterge or (azi - extras).days >= YOUTUBE_RETENTIE_ZILE:
         return {**gol, **meta, "motiv": f"datele din {extras.isoformat()} au depășit cele "
@@ -1172,8 +1177,9 @@ def youtube():
         b = b or {}
         if not b.get("canal"):
             continue
-        banci[slug] = {"canal": b["canal"], "dovada": b.get("dovada"),
-                       "videoclipuri": b.get("videoclipuri") or []}
+        vs = [{**v, "nou": bool(v.get("nou")) and bool(meta["nou_fata_de"])} for v in b.get("videoclipuri") or []]
+        banci[slug] = {"canal": b["canal"], "dovada": b.get("dovada"), "videoclipuri": vs,
+                       "metoda_nou": b.get("metoda_nou") or meta["metoda_nou"]}
     return {**gol, **meta, "banci": banci}
 
 

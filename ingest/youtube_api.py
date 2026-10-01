@@ -18,6 +18,16 @@ Două etape, separate intenționat:
    local, `output/youtube/youtube_<AAAA-LL-ZZ>.json` (ignorat de git), salvat
    după fiecare bancă, cu reluare în aceeași zi. NU în bază.
 
+Eticheta „nou”: fiecare videoclip primește `nou` = nu exista în extragerea
+anterioară. Referința e cel mai recent `youtube_<data>.json` cu data strict
+dinaintea zilei de azi și încă în retenție (`metoda_nou: "id-uri"`); o bancă
+absentă din el (sau cu eroare acolo) cade pe regula de dată. Fără un astfel de
+fișier, rezerva e doar data rulării anterioare din `output/youtube/extrageri.txt`
+(jurnal local cu datele rulărilor, nimic de la YouTube, deci poate rămâne peste
+30 de zile): „nou” = publicat după acea zi (`metoda_nou: "data"`). Prima rulare
+vreodată: toate `nou: false`, `nou_fata_de: null`. Reluarea din aceeași zi
+păstrează referința (fișierul de azi nu e niciodată referință).
+
 Costul, din documentația oficială
 (https://developers.google.com/youtube/v3/determine_quota_cost, citită 30.09.2026):
 „Projects that enable the YouTube Data API have a default quota allocation of
@@ -329,6 +339,86 @@ def curata(azi=None, director=DIR_IESIRE):
     return sterse
 
 
+# ------------------------------------------------------------- eticheta „nou”
+
+JURNAL_EXTRAGERI = "extrageri.txt"
+RE_ZI = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def zile_din_jurnal(director):
+    """Datele rulărilor anterioare din `extrageri.txt` (doar date, nimic de la YouTube)."""
+    try:
+        with open(os.path.join(director, JURNAL_EXTRAGERI), encoding="utf-8") as f:
+            return sorted({datetime.date.fromisoformat(r.strip()) for r in f if RE_ZI.match(r.strip())})
+    except OSError:
+        return []
+
+
+def noteaza_extragerea(zi, director):
+    """Adaugă ziua rulării în jurnal, o singură dată (reluarea din aceeași zi nu o repetă)."""
+    if zi in zile_din_jurnal(director):
+        return
+    os.makedirs(director, exist_ok=True)
+    cale = os.path.join(director, JURNAL_EXTRAGERI)
+    nou = not os.path.exists(cale)
+    with open(cale, "a", encoding="utf-8") as f:
+        if nou:
+            f.write("# zilele rulărilor ingest/youtube_api.py: doar data, fără date YouTube "
+                    "(rezerva etichetei „nou” când lipsește fișierul anterior)\n")
+        f.write(zi.isoformat() + "\n")
+
+
+def referinta(azi, director):
+    """(data, {slug: id-uri} sau None, metoda) față de care se marchează „nou”.
+
+    Întâi cel mai recent `youtube_<data>.json` cu data < azi și vârsta <
+    RETENTIE_ZILE: un fișier expirat nu se folosește, chiar dacă `curata` nu
+    l-a șters încă (iar `curata` nu poate șterge unul neexpirat, deci ordinea
+    la pornire nu contează). Fișierul de azi nu e referință: reluarea din
+    aceeași zi se compară tot cu ziua anterioară. Altfel, ultima zi din jurnal
+    < azi (metoda „data”); altfel (None, None, None) = prima rulare."""
+    valide = []
+    if os.path.isdir(director):
+        for nume in os.listdir(director):
+            m = RE_FISIER.match(nume)
+            if m:
+                zi = datetime.date.fromisoformat(m.group(1))
+                if zi < azi and (azi - zi).days < RETENTIE_ZILE:
+                    valide.append((zi, nume))
+    for zi, nume in sorted(valide, reverse=True):
+        try:
+            with open(os.path.join(director, nume), encoding="utf-8") as f:
+                d = json.load(f)
+        except (OSError, ValueError):
+            continue
+        # doar băncile extrase fără eroare: la celelalte nu știm ce videoclipuri erau
+        ids = {slug: {v["id"] for v in b.get("videoclipuri") or []}
+               for slug, b in (d.get("banci") or {}).items() if b and b.get("canal")}
+        return zi.isoformat(), ids, "id-uri"
+    zile = [z for z in zile_din_jurnal(director) if z < azi]
+    if zile:
+        return max(zile).isoformat(), None, "data"
+    return None, None, None
+
+
+def marcheaza_noi(slug, intrare, ref):
+    """`nou` pe fiecare videoclip al băncii. Regula de dată: publicat după ziua
+    referinței (`publicat_la` e în UTC; ziua referinței însăși nu intră, fiindcă
+    jurnalul nu are ora rulării)."""
+    zi, ids, _ = ref
+    vechi = ids.get(slug) if ids is not None else None
+    intrare.pop("metoda_nou", None)
+    if ids is not None and vechi is None:
+        intrare["metoda_nou"] = "data"      # banca lipsea din extragerea de referință
+    for v in intrare.get("videoclipuri") or []:
+        if zi is None:
+            v["nou"] = False
+        elif vechi is not None:
+            v["nou"] = v["id"] not in vechi
+        else:
+            v["nou"] = (v.get("publicat_la") or "")[:10] > zi
+
+
 # -------------------------------------------------------------------- cereri
 
 
@@ -498,9 +588,11 @@ def salveaza(rez, client):
     rez["cereri"] = client.jurnal
     rez["unitati_consumate"] = client.unitati
     os.makedirs(DIR_IESIRE, exist_ok=True)
-    cale = cale_iesire(datetime.date.fromisoformat(rez["data_extragerii"]))
+    zi = datetime.date.fromisoformat(rez["data_extragerii"])
+    cale = cale_iesire(zi)
     with open(cale, "w", encoding="utf-8") as f:
         json.dump(rez, f, ensure_ascii=False, indent=1)
+    noteaza_extragerea(zi, DIR_IESIRE)
     return cale
 
 
@@ -508,12 +600,15 @@ def extrage(client, randuri, luni, azi=None):
     azi = azi or datetime.date.today()
     de_la = minus_luni(azi, luni).isoformat()
     cale = cale_iesire(azi)
+    # referința se citește înainte de orice scriere de azi; e aceeași și la reluare
+    ref = referinta(azi, DIR_IESIRE)
     rez = {"sursa": "YouTube Data API v3", "baza": BAZA, "politica": POLITICA,
            "data_extragerii": azi.isoformat(),
            "extras_la": datetime.datetime.now().isoformat(timespec="seconds"),
            "retentie_zile": RETENTIE_ZILE,
            "sterge_la": (azi + datetime.timedelta(days=RETENTIE_ZILE)).isoformat(),
-           "luni": luni, "de_la": de_la, "ua": UA, "banci": {}}
+           "luni": luni, "de_la": de_la, "ua": UA,
+           "nou_fata_de": ref[0], "metoda_nou": ref[2], "banci": {}}
     if os.path.exists(cale):
         # reluare: băncile extrase azi fără eroare, pe aceeași fereastră, nu se mai cer
         with open(cale, encoding="utf-8") as f:
@@ -522,6 +617,8 @@ def extrage(client, randuri, luni, azi=None):
             rez["banci"] = {s: b for s, b in vechi.get("banci", {}).items() if not b.get("eroare")}
             client.jurnal[:0] = vechi.get("cereri", [])
             client.unitati += vechi.get("unitati_consumate", 0)
+    for slug, intrare in rez["banci"].items():
+        marcheaza_noi(slug, intrare, ref)
     try:
         for rand in randuri:
             slug = rand["slug"]
@@ -535,6 +632,7 @@ def extrage(client, randuri, luni, azi=None):
             else:
                 ids = id_uri_din_fereastra(client, info["uploads"], de_la) if info["uploads"] else []
                 intrare.update(canal=info, videoclipuri=videoclipuri(client, ids))
+                marcheaza_noi(slug, intrare, ref)
             intrare["unitati"] = client.unitati - inainte
             rez["banci"][slug] = intrare
             print(f"{slug:20} {rand['canal'][:28]:28} "
@@ -579,6 +677,8 @@ def main():
     ap.add_argument("--curata", action="store_true", help="doar retenția de 30 de zile")
     a = ap.parse_args()
 
+    # curățarea întâi: șterge doar fișiere expirate, pe care `referinta` (din
+    # `extrage`) oricum nu le-ar folosi; `extrageri.txt` nu e atins
     sterse = curata()
     if sterse or a.curata:
         print(f"retenție {RETENTIE_ZILE} de zile (III.E.4.d): {len(sterse)} fișiere șterse "
