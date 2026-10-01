@@ -93,11 +93,18 @@ Ca să nu ne călcăm pe picioare.
 
 ### Zonă înghețată deliberat
 
-**Stratul autonom nu se atinge**: scheduler, rulări periodice, butoanele de
-rulare din pagina Overview. Butoanele sunt `disabled` intenționat și sunt
-**singurul mockup din aplicație**. Prioritatea curentă e doar popularea
-inițială — cât de multe date reale se pot aduna. Automatizarea peste o
-acoperire proastă ar ascunde golurile.
+**Stratul autonom nu se atinge**: scheduler, rulări periodice. Prioritatea
+curentă e doar popularea inițială — cât de multe date reale se pot aduna.
+Automatizarea peste o acoperire proastă ar ascunde golurile.
+
+**Excepția, intenționată (01.10.2026, decizia lui Robert):** butoanele
+„Rulează” din Overview, până acum mockup înghețat, sunt deblocate ca **rulări
+manuale** — „doar ca să ai opțiunea să actualizezi manual” scripturile care
+altfel ar rula automat. Nu e scheduler: nu pornește nimic singur. Funcționează
+**doar pe laptopul lui Robert**, cu `MIP_PERMITE_RULARI=1` în `.env`; fără
+variabila asta (pe serverul comun), secțiunea arată „Rulările manuale sunt
+oprite pe acest server (MIP_PERMITE_RULARI)”, butoanele sunt dezactivate și
+serverul refuză pornirea (403). Detalii la „Rulări manuale”, mai jos.
 
 ---
 
@@ -151,8 +158,54 @@ python ingest/campanii.py [--banca <slug>]          # cu rețea, prin transport.
 python ingest/campanii.py --newsroom [--corp-luni 24]
 ```
 
+Reclamele Bing (2.4, test până la avizul juridic), într-un fișier local din
+`output/reclame/`, nu în bază:
+
+```bash
+python ingest/microsoft_ad_library.py [--banca <slug>]   # ~10 cereri/min, oprire la 429 repetat
+```
+
 Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi
 rescrie. Rularea repetată nu dublează. `--banca <slug>` restrânge la o bancă.
+
+### Rulări manuale (Overview)
+
+Secțiunea pliată „Rulări manuale” din Overview pornește, la cerere, un script
+dintr-o **listă fixă** (`app/rulari.py`, `COMENZI`). Activă doar cu
+`MIP_PERMITE_RULARI=1` în `.env` (în `.env.example` e `0`); serverul trebuie
+repornit după ce schimbi variabila.
+
+| comandă | ce rulează | bancă | rețea | estimare inițială |
+|---|---|---|---|---|
+| Indicii BNR | `ingest/load_bnr.py` | — | da | 1 min |
+| YouTube | `ingest/youtube_api.py --luni 12` | — | da | 2 min (01.10: 51 de cereri, 2 min) |
+| Aplicații iOS | `ingest/load_mobil.py` | — | da | 2 min |
+| Campanii de pe site-uri | `ingest/campanii.py` | opțional | da | 60 min toate (30.09: 61 min), 5 min pe bancă |
+| Comunicate de presă | `ingest/campanii.py --newsroom` | opțional | da | 2 min toate (30.09: 1 min 14 s), 1 min pe bancă |
+| Reclame Bing | `ingest/microsoft_ad_library.py` | — | da | 140 min (29.09: 706 cereri la ~11 s); băncile deja luate în aceeași zi se sar |
+| Prețuri și dobânzi | `ingest/populare_initiala.py --llm-rezerva --banca X` | obligatoriu | da | 20 min pe bancă |
+| Refacere din Bronze | `ingest/populare_initiala.py --din-bronze --llm-rezerva --banca X` | obligatoriu | nu | 10 min pe bancă |
+
+- „Prețuri și dobânzi” fără `--din-bronze` e `ruleaza_banca`: șterge amprentele
+  băncii, rulează din nou descoperirea, descarcă din nou fiecare sursă și
+  înlocuiește valorile `populare` ale băncii. Ambele variante de prețuri rulează
+  cu `MIP_LLM_DOAR_CACHE=1`: rezerva LLM folosește doar răspunsurile deja
+  plătite, fără apeluri noi.
+- Nu sunt în listă: TikTok (neaprobat), Google (exportul manual al colegului),
+  `--de-la-zero`, `--paralel` sau orice pas care golește date, migrările.
+- Un singur proces odată; al doilea primește „rulează deja …”. **Oprește**
+  închide tot arborele de procese (`taskkill /T /F`).
+- Ieșirea în `loguri/rulari/<id>_<AAAAMMZZ_HHMMSS>.log`; la final, un rând în
+  `loguri/rulari/istoric.jsonl` (bancă, început, sfârșit, durată, cod de ieșire,
+  ultimele rânduri). Estimarea afișată devine mediana rulărilor reușite din
+  istoric, pe aceeași bancă dacă există.
+- Securitate: rutele de pornire sunt doar `POST`, doar cu variabila, doar de pe
+  loopback (`verify_request`), cu `Host` = `localhost`/`127.0.0.1`/`[::1]` și
+  portul nostru, `Origin` (dacă e trimis) aceeași pagină, `Content-Type:
+  application/json` și antetul `X-MIP-Token` (aleator, generat la pornirea
+  serverului, primit de pagină prin `GET /api/rulari`). Din cerere ajung în
+  linia de comandă doar id-ul comenzii (căutat în listă) și slug-ul băncii
+  (căutat în `ingest/banks.py` + tabela `banci`). Teste: `python app/test_rulari.py`.
 
 ### Pachetul Playwright (`crawler/`)
 
@@ -376,7 +429,7 @@ comparații și apare în coadă, cu citatul din document.
 ## Structură
 
 ```
-app/          server.py (API read-only) · index.html (SPA, 12 pagini)
+app/          server.py (API read-only) · rulari.py (rulările manuale) · index.html (SPA, 12 pagini)
               harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
 ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
               scraper.py = stiva HTTP (robots.txt, User-Agent, pauze), folosită
@@ -392,7 +445,8 @@ docs/crawler/ jurnalele crawler-ului; operațional e doar CITESTE_PENTRU_MERGE.m
 docs/bs4/     notele scraperului BS4 (fezabilitate, comparații)
 ```
 
-Serverul e **strict read-only**: nicio rută nu scrie în bază. Interogările
+Serverul e **strict read-only**: nicio rută nu scrie în bază (rulările manuale
+pornesc scripturile, care scriu ele; serverul nu). Interogările
 folosesc parametri (`%s`), nu interpolare de text.
 
 PDF-urile se deschid într-un **vizualizator propriu** (`pdf.html`, PDF.js), nu

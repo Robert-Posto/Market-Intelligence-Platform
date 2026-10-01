@@ -5,6 +5,12 @@ Pornire:  python app/server.py        (apoi http://localhost:8765)
 Doar citire: nu exista nicio ruta care scrie in baza. Interogarile folosesc
 parametri (%s), nu interpolare de text, ca filtrele din interfata sa nu poata
 deveni injectie SQL.
+
+Singura exceptie, ceruta de Robert si doar pe laptopul lui: cu
+`MIP_PERMITE_RULARI=1` in `.env`, Overview poate porni manual scripturile de
+colectare dintr-o lista fixa (`app/rulari.py`, rutele `/api/rulari*`).
+Serverul tot nu scrie in baza; scriu scripturile pornite. Fara variabila,
+rutele de pornire raspund 403.
 """
 
 import csv
@@ -29,6 +35,7 @@ import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului
 # Erau in trei locuri (incarcare, coada de verificare, API) si o schimbare
 # trebuia facuta in toate trei. Un singur loc, o singura valoare.
 from normalizeaza import PRAGURI  # noqa: E402
+import rulari  # noqa: E402  (app/, langa server)
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
 # Vederea tine regula o singura data (`stare_data NOT IN (ISTORIC, DUBLURA)`) -
@@ -1589,6 +1596,18 @@ def coada(q):
     }
 
 
+def _slugs_rulari():
+    """Băncile pe care se poate porni o rulare: cele din `ingest/banks.py`,
+    cu slug-ul din tabela `banci` (banks.py ține doar numele; potrivirea pe
+    nume e cea din `descoperire.py`)."""
+    import banks
+    nume = {b["name"] for b in banks.BANKS}
+    return [r["slug"] for r in interoghează("SELECT slug, nume FROM banci") if r["nume"] in nume]
+
+
+RULARI = rulari.Rulari(slugs=_slugs_rulari)
+
+
 RUTE = {
     "/api/sumar": lambda q: sumar(),
     "/api/banci": lambda q: banci(),
@@ -1730,8 +1749,80 @@ def _adu_din_retea(url):
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    def _json(self, cod, date):
+        corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
+        self.send_response(cod)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(corp)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(corp)
+
+    def _refuz_rulari(self, cu_token):
+        """Motivul refuzului pentru rutele de rulări, sau None (vezi rulari.verifica_cerere)."""
+        return rulari.verifica_cerere(self.headers, self.server.server_address[1],
+                                      RULARI.token if cu_token else None)
+
+    def do_POST(self):
+        cale = urllib.parse.urlparse(self.path).path
+        if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
+            self.send_error(404)
+            return
+        if not rulari.activ():
+            self._json(403, {"eroare": "Rulările manuale sunt oprite pe acest server (MIP_PERMITE_RULARI)"})
+            return
+        motiv = self._refuz_rulari(cu_token=True)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        # JSON obligatoriu: un formular de pe alt site nu poate trimite
+        # application/json fără preflight CORS, pe care nu-l acceptăm
+        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
+            self._json(415, {"eroare": "se acceptă doar application/json"})
+            return
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            n = -1
+        if not 0 <= n <= 2048:
+            self._json(400, {"eroare": "corp prea mare"})
+            return
+        try:
+            corp = json.loads(self.rfile.read(n) or b"{}")
+            if not isinstance(corp, dict):
+                raise ValueError
+        except ValueError:
+            self._json(400, {"eroare": "JSON invalid"})
+            return
+        try:
+            if cale.endswith("/porneste"):
+                self._json(200, RULARI.porneste(corp.get("id"), corp.get("banca")))
+            else:
+                self._json(200, RULARI.opreste())
+        except rulari.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except rulari.Ocupat as exc:
+            self._json(409, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(500, {"eroare": f"{exc.__class__.__name__}: {exc}"})
+
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/rulari":
+            # tot cu Host/Origin: răspunsul poartă tokenul de scriere, deci
+            # nu trebuie să-l poată citi o pagină cu DNS rebinding
+            motiv = self._refuz_rulari(cu_token=False)
+            if motiv:
+                self._json(403, {"eroare": motiv})
+                return
+            try:
+                date = RULARI.stare()
+                if date["activ"]:
+                    date["token"] = RULARI.token
+                self._json(200, date)
+            except Exception as exc:
+                self._json(500, {"eroare": f"{exc.__class__.__name__}: {exc}"})
+            return
         if parsed.path == "/pdf":
             q = urllib.parse.parse_qs(parsed.query)
             url = (q.get("u") or [""])[0]

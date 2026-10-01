@@ -29,7 +29,7 @@ Verificări, după zona atinsă:
 
 | ai modificat | rulează | trebuie să vezi |
 |---|---|---|
-| `app/` | `python app/verifica_pagini.py` (cu serverul pornit) | toate paginile randate |
+| `app/` | `python app/verifica_pagini.py` (cu serverul pornit); `python app/test_rulari.py` la rulări | toate paginile randate; OK |
 | `crawler/` | `python scripts/test_validare.py` și `python scripts/test_robots_matcher.py` | 0 eșuate |
 | `ingest/` | numără ce produce extractorul, înainte să scrii în bază | cifrele din README |
 | `ingest/scraper.py`, `robots_matcher.py` | `python ingest/test_robots_matcher.py`, `test_known_block.py`, `test_crawl_bfs.py` | OK |
@@ -77,14 +77,17 @@ număr, adăugată în lista din README. După orice coloană nouă în
 
 **Serverul e read-only.** Nicio rută nu scrie în bază. Interogările folosesc
 parametri (`%s`), nu text interpolat. `/pdf` servește doar URL-uri
-înregistrate în `surse`, altfel devine proxy deschis.
+înregistrate în `surse`, altfel devine proxy deschis. Excepție: cu
+`MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
+`app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
 
 **Frontend.** În textele românești din `<script>` se folosesc ghilimelele
 „…” sau ”, niciodată `"` ASCII în interiorul unui șir. O singură ghilimea
 greșită lasă pagina albă, iar serverul răspunde totuși 200.
 
-**Zonă înghețată.** Nu se atinge scheduler-ul, rulările periodice și butoanele
-`disabled` din Overview. Prioritatea e popularea inițială, nu automatizarea.
+**Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice.
+Prioritatea e popularea inițială, nu automatizarea. Butoanele din Overview sunt
+deblocate deliberat (01.10.2026) doar ca rulări manuale (README, „Rulări manuale”).
 
 **Dependențe.** Orice pachet nou importat intră în `requirements.txt` în
 același commit.

@@ -321,6 +321,23 @@
   details.pliat[open] > summary::before{content:"▾"}
   details.pliat > summary h2{margin:0}
 
+  /* Rulări manuale (Overview): rularea curentă, bara scurs/estimat, jurnalul live */
+  .rl-curenta{border:1px solid var(--accent);border-radius:10px;padding:14px 16px;margin:0 0 16px;
+              background:var(--accent-tint)}
+  .rl-cap{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;margin-bottom:9px}
+  .rl-cap b{font-size:14px}
+  .rl-bara{height:8px;border-radius:999px;background:var(--line);overflow:hidden;margin:4px 0 5px}
+  .rl-bara > i{display:block;height:100%;background:var(--accent);transition:width .8s}
+  .rl-bara.peste > i{background:var(--warn)}
+  pre.rl-jurnal{font:11.5px/1.5 "IBM Plex Mono",monospace;max-height:300px;overflow:auto;margin:10px 0 0;
+                background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 11px;
+                white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
+  table.rl td{vertical-align:middle}
+  table.rl td:first-child{width:44%}
+  table.rl td.rl-n{white-space:nowrap}
+  table.rl td.rl-u{min-width:210px}
+  table.rl select{min-width:0;width:200px}
+
   /* tabel sortabil; rândul Libra fixat și evidențiat */
   table.t th.sort{cursor:pointer;user-select:none}
   table.t th.sort:hover{color:var(--ink)}
@@ -1035,9 +1052,11 @@ const R = {};
 /* ---------------- Overview: punctul de intrare ----------------
    Revamp 25.09: șapte carduri pe categoriile 2.1–2.7 (cifra-cheie, câte bănci
    din 30, prospețimea, link), apoi acoperirea pe bănci. Tabelul tehnic și
-   rulările (mockup înghețat) stau pliate dedesubt. */
+   rulările manuale stau pliate dedesubt. */
 R.overview = async () => {
-  const [a, st, m, soc, cmp] = await Promise.all([ia("/api/acoperire"), ia("/api/stare"), meta(), ia("/api/retele"), ia("/api/campanii")]);
+  const [a, st, m, soc, cmp, rl] = await Promise.all([ia("/api/acoperire"), ia("/api/stare"), meta(), ia("/api/retele"), ia("/api/campanii"),
+    ia("/api/rulari").catch(e => ({eroare: e.message}))]);
+  RL.d = rl; RL.m = m;
   // 2.4: campaniile active de pe site-uri (colectorul din 30.09), plus conturile sociale
   const conturi = soc.filter(x => x.url && x.url !== "NEGASIT");
   const active = (cmp.randuri || []).filter(x => x.stare === "activa" && x.in_comparatie !== false);
@@ -1097,30 +1116,156 @@ R.overview = async () => {
       ], {lung: true})}
     </section>
   </details>
-  <details class="pliat">
-    <summary style="margin-bottom:10px"><h2>Rulări <span class="pill mock">interfață, neconectată</span></h2></summary>
-    <section>
-      <p class="note">Butoanele de mai jos sunt <b>singurul mockup din aplicație</b> — arată cum ar arăta controlul,
-        dar nu execută încă scripturile. Când le conectăm, fiecare buton va rula exact un script, fără parametri din interfață.</p>
-      <div class="tiles" style="margin-top:12px">
-        ${[["Populare inițială","bănci + produse, o singură dată"],
-           ["Descoperire surse","propune adrese noi, lunar"],
-           ["Extracție documente și pagini","PDF-uri și pagini de tarife"],
-           ["Extracție depozite","paginile de dobânzi"],
-           ["Aplicații iOS","versiuni, note, recenzii"],
-           ["Indici BNR","ROBOR, ROBID, IRCC"],
-           ["Locații","sucursale și ATM-uri"]].map(([t, d]) => `
-          <div class="tile">
-            <div style="font-weight:600;font-size:13px">${esc(t)}</div>
-            <div class="l" style="margin-bottom:9px">${esc(d)}</div>
-            <button disabled>Rulează</button>
-          </div>`).join("")}
-      </div>
-      <p class="note">Verificarea automată nu e configurată. În plan: zilnic pentru curs, dobânzi și aplicații;
-        lunar pentru comisioanele din PDF și descoperirea de surse noi.</p>
-    </section>
+  <details class="pliat" id="rulari"${rl.curenta ? " open" : ""}>
+    <summary style="margin-bottom:10px"><h2>Rulări manuale ${rl.activ
+      ? '<span class="pill ok">pornite pe acest laptop</span>' : '<span class="pill">oprite pe acest server</span>'}</h2></summary>
+    <section id="rl-corp">${rulariCorp(rl)}</section>
   </details>`;
 };
+
+/* ---------------- Rulări manuale (Overview) ----------------
+   Scripturile de colectare care ar rula automat, pornite la cerere. Doar pe
+   laptopul cu MIP_PERMITE_RULARI=1 în .env; altfel butoanele rămân
+   dezactivate. Lista e fixă, pe server (app/rulari.py): din pagină pleacă
+   doar id-ul comenzii și, unde se poate, banca. Un singur proces odată. */
+const RL = {d: null, m: null, t: null};
+
+function rlDurata(s){
+  if(s === null || s === undefined) return "—";
+  s = Math.round(s);
+  if(s < 60) return `${s} s`;
+  if(s < 3600) return `${Math.round(s / 60)} min`;
+  const h = Math.floor(s / 3600), mn = Math.round((s % 3600) / 60);
+  return `${h} h${mn ? " " + mn + " min" : ""}`;
+}
+const rlOra = t => t ? new Date(t).toLocaleString("ro-RO", {day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit"}) : "—";
+const rlNumeBanca = b => (RL.m && RL.m.nume[b]) || b;
+
+/* estimarea pentru banca aleasă: mediana ei din istoric, altfel cea pe orice bancă */
+function rlEst(c, banca){
+  if(!banca) return c.estimare_s ?? c.estimare_banca_s;
+  return (c.estimari_banca || {})[banca] ?? c.estimare_banca_s;
+}
+function rlEstHtml(c, banca){
+  const s = rlEst(c, banca);
+  const peBanca = !!banca || c.estimare_s === undefined;
+  const masurat = peBanca ? (c.estimari_banca || {})[banca] !== undefined || c.estimare_banca_sursa === "istoric"
+                          : c.estimare_sursa === "istoric";
+  return `~${rlDurata(s)}${!banca && peBanca ? " / bancă" : ""}<span class="sub">${masurat ? "mediana rulărilor de aici" : "estimare inițială"}</span>`;
+}
+function rlEstimare(id){
+  const c = RL.d.comenzi.find(x => x.id === id), sel = document.getElementById("rl-b-" + id);
+  document.getElementById("rl-e-" + id).innerHTML = rlEstHtml(c, sel ? sel.value : "");
+}
+
+function rlUltima(u){
+  if(!u) return '<span class="gri">niciodată din Overview</span>';
+  const rez = u.oprit ? '<span class="pill amb">oprită</span>'
+    : u.cod === 0 ? '<span class="pill ok">reușită</span>'
+    : u.cod === null ? '<span class="pill" title="serverul a fost repornit în timpul rulării">cod necunoscut</span>'
+    : `<span class="pill amb">eroare (cod ${esc(u.cod)})</span>`;
+  const coada = (u.ultimele || []).join("\n");
+  return `<span title="${esc(coada)}">${rlOra(u.sfarsit)} · ${rlDurata(u.durata_s)}${u.banca ? " · " + esc(rlNumeBanca(u.banca)) : ""}</span> ${rez}`;
+}
+
+function rlCurenta(cur){
+  const est = cur.estimare_s || 0, p = est ? cur.scurs_s / est : 0;
+  const peste = p > 1;
+  return `<div class="rl-curenta" id="rl-curenta">
+    <div class="rl-cap"><b>Rulează: ${esc(cur.nume)}${cur.banca ? " · " + esc(rlNumeBanca(cur.banca)) : ""}</b>
+      <span class="note">pornită la ${rlOra(cur.inceput)}${cur.dupa_repornire ? " (înainte de repornirea serverului)" : ""}</span>
+      <span style="margin-left:auto"><button onclick="rlOpreste()"${cur.oprit ? " disabled" : ""}>${cur.oprit ? "Se oprește…" : "Oprește"}</button></span></div>
+    <div class="rl-bara${peste ? " peste" : ""}"><i style="width:${Math.min(100, Math.round(p * 100))}%"></i></div>
+    <div class="note">${rlDurata(cur.scurs_s)} din ~${rlDurata(est)} estimate${peste ? " · <b>peste estimare</b>: durata depinde de site-uri și de pauzele din robots.txt" : ""}
+      · jurnal: <span class="mono">loguri/rulari/${esc(cur.log)}</span></div>
+    <pre class="rl-jurnal" id="rl-jurnal">${esc((cur.jurnal || []).join("\n")) || "se pornește…"}</pre>
+  </div>`;
+}
+
+function rulariCorp(d){
+  if(!d || d.eroare) return `<p class="note" style="color:var(--warn)">Starea rulărilor nu s-a putut citi: ${esc(d && d.eroare)}</p>`;
+  const blocat = !d.activ || !!d.curenta;
+  const banci = (d.banci || []).slice().sort((a, b) => rlNumeBanca(a).localeCompare(rlNumeBanca(b), "ro"));
+  const selector = c => !c.banca ? '<span class="gri">—</span>' : `
+    <select id="rl-b-${esc(c.id)}" onchange="rlEstimare('${esc(c.id)}')"${d.activ ? "" : " disabled"}>
+      <option value="">${c.banca === "obligatoriu" ? "alege banca…" : "toate băncile"}</option>
+      ${banci.map(b => `<option value="${esc(b)}">${esc(rlNumeBanca(b))}</option>`).join("")}
+    </select>`;
+  return `
+    ${d.activ ? "" : `<div class="callout warn" style="margin-bottom:14px"><b>Rulările manuale sunt oprite pe acest server (MIP_PERMITE_RULARI).</b>
+      Se pot porni doar de pe laptopul pe care <span class="mono">.env</span> are <span class="mono">MIP_PERMITE_RULARI=1</span>;
+      aici aplicația rămâne doar-citire.</div>`}
+    ${d.curenta ? rlCurenta(d.curenta) : ""}
+    <p class="note" style="margin:0 0 10px">Scripturile de colectare care ar rula automat, pornite de mână. Lista e fixă;
+      se alege cel mult banca. Rulează un singur script odată, cu aceleași reguli ca din terminal (robots.txt, pauze,
+      fără ocolirea blocajelor), iar rezerva LLM a prețurilor folosește doar răspunsurile deja plătite.</p>
+    <div class="wrap lung"><table class="t rl"><thead><tr>
+      <th>Ce rulează</th><th>Rețea</th><th>Bancă</th><th class="num">Durează</th><th>Ultima rulare</th><th></th>
+    </tr></thead><tbody>
+    ${d.comenzi.map(c => `<tr>
+      <td><b>${esc(c.nume)}</b><span class="sub" style="max-width:62ch">${esc(c.ce)}</span></td>
+      <td class="rl-n">${c.internet ? '<span class="pill amb">face cereri pe internet</span>' : '<span class="pill ok">fără internet</span>'}</td>
+      <td>${selector(c)}</td>
+      <td class="num rl-n" id="rl-e-${esc(c.id)}">${rlEstHtml(c, "")}</td>
+      <td class="rl-u">${rlUltima(c.ultima)}</td>
+      <td><button class="primar" onclick="rlPorneste('${esc(c.id)}')"${blocat ? " disabled" : ""}>Rulează</button></td>
+    </tr>`).join("")}
+    </tbody></table></div>`;
+}
+
+async function rlPost(u, corp){
+  const r = await fetch(u, {method: "POST", body: JSON.stringify(corp),
+    headers: {"Content-Type": "application/json", "X-MIP-Token": (RL.d && RL.d.token) || ""}});
+  let d = {};
+  try{ d = await r.json(); }catch(e){}
+  if(!r.ok && !d.eroare) d.eroare = `HTTP ${r.status}`;
+  return d;
+}
+
+async function rlPorneste(id){
+  const c = RL.d.comenzi.find(x => x.id === id), sel = document.getElementById("rl-b-" + id);
+  const banca = sel ? sel.value : "";
+  if(c.banca === "obligatoriu" && !banca){ alert("Alege întâi banca."); return; }
+  const est = rlEst(c, banca);
+  if(est > 600 && !confirm(`„${c.nume}”${banca ? " pe " + rlNumeBanca(banca) : ""} durează de obicei ~${rlDurata(est)}`
+      + `${c.internet ? " și face cereri pe site-uri" : ""}. Cât rulează, nu se poate porni altceva. Pornești?`)) return;
+  const r = await rlPost("/api/rulari/porneste", {id, banca: banca || null});
+  if(r.eroare) alert(`Nu a pornit: ${r.eroare}`);
+  await rlSondeaza(true);
+}
+
+async function rlOpreste(){
+  const cur = RL.d && RL.d.curenta;
+  if(!cur || !confirm(`Oprești „${cur.nume}”? Se oprește tot arborele de procese; ce a apucat să scrie rămâne.`)) return;
+  const r = await rlPost("/api/rulari/opreste", {});
+  if(r.eroare) alert(`Nu s-a oprit: ${r.eroare}`);
+  await rlSondeaza(true);
+}
+
+/* Sondare la 2 s cât rulează ceva și cât Overview e deschis. Se redesenează
+   doar panoul rulării; tabelul (cu selectoarele de bancă) doar când pornește
+   sau se termină o rulare, cu băncile alese păstrate. */
+async function rlSondeaza(tot){
+  clearTimeout(RL.t);
+  if(!document.getElementById("rl-corp")) return;
+  let d;
+  try{ d = await ia("/api/rulari"); }catch(e){ d = {eroare: e.message}; }
+  const corp = document.getElementById("rl-corp");
+  if(!corp) return;
+  const inainte = RL.d && RL.d.curenta, acum = d.curenta;
+  RL.d = d;
+  const panou = document.getElementById("rl-curenta");
+  if(tot || d.eroare || !inainte !== !acum || (inainte && acum && inainte.log !== acum.log) || !panou){
+    const alese = [...corp.querySelectorAll("select")].map(s => [s.id, s.value]);
+    corp.innerHTML = rulariCorp(d);
+    alese.forEach(([i, v]) => { const s = document.getElementById(i); if(s){ s.value = v; rlEstimare(i.slice(5)); } });
+  } else if(acum){
+    panou.outerHTML = rlCurenta(acum);
+  }
+  const j = document.getElementById("rl-jurnal");
+  if(j) j.scrollTop = j.scrollHeight;
+  if(acum) RL.t = setTimeout(rlSondeaza, 2000);
+}
 
 /* ---------------- Catalogul intern Libra ----------------
    Produsele Libra vin din exportul intern (Sales Command Center), nu de pe web:
@@ -3138,6 +3283,10 @@ async function randeaza(){
   try{
     gazda.innerHTML = await R[p.id](stare);
     if(document.getElementById("bg-tabel")) filtreazaBing();
+    if(document.getElementById("rl-corp") && RL.d && RL.d.curenta){
+      clearTimeout(RL.t); RL.t = setTimeout(rlSondeaza, 2000);
+      const j = document.getElementById("rl-jurnal"); if(j) j.scrollTop = j.scrollHeight;
+    }
   }catch(e){
     gazda.innerHTML = `<section><p class="note" style="color:var(--warn)">Eroare: ${esc(e.message)}</p></section>`;
   }
