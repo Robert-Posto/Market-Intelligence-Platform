@@ -466,6 +466,121 @@
   td.rs-c .pill{font-size:9.5px;display:block;width:fit-content;margin-top:3px}
   .rs-leg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:11.5px;color:var(--muted);margin:10px 0 0}
   @media (max-width:900px){ body{flex-direction:column} nav{width:auto;height:auto;border-bottom:1px solid var(--nav-line)} main{height:auto} }
+  /* Produse & prețuri: comparația cu Libra */
+  .pl-filtre{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:10px}
+  .pl-filtre input.cauta{min-width:0;width:260px}
+  label.pl-bifa{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink);cursor:pointer}
+  label.pl-bifa input{margin:0;min-width:0;width:auto;accent-color:var(--accent)}
+  .pl-vedere{margin-left:auto}
+  .pl-chipuri{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  button.pl-chip{flex:none;padding:3px 10px;font-size:12px;border-radius:999px;border:1px solid var(--line-2);
+                 background:var(--surface);color:var(--ink);white-space:nowrap}
+  button.pl-chip span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-left:6px}
+  button.pl-chip.activ{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  button.pl-chip.activ span{color:var(--on-accent);opacity:.8}
+  .pl-slider{display:flex;align-items:stretch;gap:6px;margin-bottom:14px}
+  button.pl-sag{flex:none;width:32px;padding:0;font-size:22px;line-height:1;border:1px solid var(--line-2);
+                border-radius:9px;background:var(--surface);color:var(--ink)}
+  .pl-track{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;flex:1;min-width:0;
+            padding:2px 2px 8px;scrollbar-width:thin}
+  button.pl-card{flex:none;width:218px;display:flex;flex-direction:column;gap:6px;
+                 text-align:left;padding:9px 11px;border:1px solid var(--line);border-radius:11px;
+                 background:var(--surface);color:var(--ink);cursor:pointer}
+  button.pl-card:hover{border-color:var(--accent)}
+  button.pl-card.activ{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset;background:var(--accent-tint)}
+  .pl-card .cat{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+                white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pl-card .n{font-size:13.5px;font-weight:600;line-height:1.3;min-height:2.6em;
+              display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .pl-card .lg{display:flex;gap:4px;align-items:center}
+  .pl-card .lg .cmp, .pl-card .lg .gri{margin-left:auto;font-size:11px;white-space:nowrap}
+  .pl-lg{display:inline-flex;align-items:center;justify-content:center;width:28px;height:22px;border-radius:5px;
+         border:1px solid var(--line);background:#fff;font-size:9px;color:var(--muted);
+         filter:grayscale(1);opacity:.35;position:relative;overflow:hidden}
+  .pl-lg img{max-width:22px;max-height:15px;object-fit:contain}
+  .pl-lg.da{filter:none;opacity:1;border-color:var(--ok)}
+  .pl-lg.nu{opacity:.55}
+  .pl-lg.nu::after{content:"";position:absolute;left:-2px;right:-2px;top:50%;border-top:1.5px solid var(--warn);transform:rotate(-30deg)}
+  .pl-card .cmp{color:var(--accent);font-weight:600}
+  .pl-sec{padding-top:12px}
+  table.pl th{text-transform:none;letter-spacing:0;font-family:inherit;font-size:13px;color:var(--ink)}
+  .pl-cap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-bottom:10px}
+  .pl-bife{display:flex;flex-wrap:wrap;gap:4px 14px;margin-left:auto}
+  .pl-cap h2{margin:0;font-size:19px}
+  .pl-tw{overflow:auto;overscroll-behavior:contain;max-height:calc(120vh - 48px);border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+  table.pl{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;table-layout:fixed}
+  table.pl thead th{position:sticky;top:0;z-index:2;background:var(--surface);text-align:left;vertical-align:top;
+                    padding:9px 10px;border-bottom:2px solid var(--line-2);font-weight:400}
+  table.pl thead th.libra{background:var(--accent-tint)}
+  table.pl th.camp{position:sticky;left:0;z-index:1;width:170px;background:var(--surface);text-align:left;
+                   font-weight:500;padding:8px 10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+                   vertical-align:top;overflow-wrap:anywhere}
+  table.pl thead th.colt{z-index:3;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  table.pl th.camp small{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);
+                         font-weight:400;text-transform:none;letter-spacing:0}
+  table.pl .bk{display:flex;align-items:center;gap:7px;font-size:13px}
+  table.pl .bk img.lg{height:22px;max-width:64px;object-fit:contain;background:#fff;border-radius:4px;padding:2px}
+  table.pl .eq{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+               font-size:11px;line-height:1.35;color:var(--muted);margin-top:4px}
+  table.pl td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.pl tbody tr:hover td, table.pl tbody tr:hover th.camp{background:var(--bg)}
+  table.pl td.libra, table.pl tbody tr:hover td.libra{background:var(--accent-tint)}
+  table.pl tbody tr:last-child > *{border-bottom:0}
+  button.pl-v{display:block;width:100%;text-align:left;border:1px solid transparent;border-radius:7px;
+              background:none;padding:3px 5px;margin:0 0 3px;cursor:pointer;color:var(--ink)}
+  button.pl-v:hover{border-color:var(--accent);background:var(--surface)}
+  .pl-v .val{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;margin-right:4px}
+  .pl-v .pill{font-size:9.5px;margin-left:2px}
+  .pl-v .sc{display:flex;flex-wrap:wrap;gap:3px;margin-top:2px}
+  .pl-sc{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;line-height:1.5;color:var(--muted);
+         background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:0 5px 0 4px;white-space:nowrap}
+  .pl-sc svg.ic{width:11px;height:11px;flex:none}
+  .pl-sc.val{color:var(--ink);font-weight:600}
+  .pl-sc.of{color:var(--ok);background:var(--ok-tint);border-color:var(--ok);font-weight:600}
+  .pl-sc.ref{color:var(--accent);background:var(--accent-tint);border-color:var(--accent);font-weight:600}
+  .pl-sc.ref.ap{font-weight:500;border-style:dashed}
+  .pl-sc.alt{color:var(--warn);background:var(--warn-tint);border-color:var(--warn)}
+  .pl-sc.var{color:var(--ink);border-style:dashed}
+  .pl-sc.der{font-style:italic}
+  .pl-ref{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--accent);
+          background:var(--accent-tint);border:1px solid var(--accent);border-radius:999px;padding:2px 10px}
+  .pl-ref svg.ic, .pl-ref-linie svg.ic{width:13px;height:13px;flex:none}
+  .pl-ref-linie{display:flex;gap:6px;align-items:flex-start;font-size:13px}
+  .pl-ref-linie svg.ic{margin-top:3px;color:var(--accent)}
+  .pl-reguli{font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:8px 0}
+  .pl-reguli ul{margin:4px 0 0;padding-left:18px}
+  .pl-sc-mare{display:flex;flex-wrap:wrap;gap:5px}
+  .pl-sc-mare .pl-sc{font-size:12.5px;padding:2px 8px 2px 6px}
+  .pl-sc-mare .pl-sc svg.ic{width:14px;height:14px}
+  button.pl-mai{border:0;background:none;color:var(--accent);font-size:11.5px;padding:2px 5px;cursor:pointer}
+  .pl-gol{color:var(--muted);font-size:11.5px}
+  .pl-modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px}
+  .pl-modal[hidden]{display:none}
+  .pl-modal-fundal{position:absolute;inset:0;background:rgba(40,14,20,.42);opacity:0;transition:opacity .22s ease}
+  .pl-modal-cutie{position:relative;width:min(620px,100%);max-height:calc(100vh - 32px);overflow:auto;
+                  background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;
+                  box-shadow:0 24px 60px rgba(0,0,0,.28);padding:18px 22px 20px;
+                  opacity:0;transform:translateY(32px) scale(.96);
+                  transition:opacity .22s ease, transform .26s cubic-bezier(.2,.8,.2,1)}
+  .pl-modal.deschis .pl-modal-fundal{opacity:1}
+  .pl-modal.deschis .pl-modal-cutie{opacity:1;transform:none}
+  .pl-modal-cap{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .pl-modal-cap h3{font-family:"Source Serif 4",Georgia,serif;font-size:18px;margin:0 0 2px}
+  .pl-modal-cap .note{margin:0}
+  button.pl-modal-x{flex:none;width:32px;height:32px;padding:0;font-size:20px;line-height:1;border-radius:8px;
+                    border:1px solid var(--line-2);background:var(--bg);color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){
+    .pl-modal-cutie{transform:none;transition:opacity .15s ease}
+  }
+  @media (max-width:860px){
+    .pl-filtre input.cauta{width:100%}
+    .pl-vedere{margin-left:0}
+    .pl-chipuri{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+    button.pl-sag{display:none}
+    button.pl-card{width:190px}
+    table.pl th.camp{width:130px}
+    .pl-bife{margin-left:0}
+  }
 </style>
 </head>
 <body>
@@ -500,7 +615,7 @@ const ia = async u => { const r = await fetch(u); const d = await r.json();
 const PAGINI = [
   {grup:"Colectare", chei:[
     {id:"overview",  nume:"Overview",              pdf:"",    t:"Overview", l:"Ce date avem pe fiecare categorie, cât de proaspete sunt și ce lipsește la fiecare bancă."},
-    {id:"produse",   nume:"Produse & prețuri",     pdf:"2.1", t:"Produse & prețuri", l:"Comisioanele fiecărei bănci pe servicii: câte prețuri avem, între ce valori, câte sunt gratuite. Clic pe o celulă pentru dovezi."},
+    {id:"produse",   nume:"Produse & prețuri",     pdf:"2.1", t:"Produse & prețuri", l:"Fiecare produs Libra față de produsul echivalent de la concurență: valorile, scenariul la care se aplică și citatul din document. Tabul „Comisioane pe bănci” păstrează matricea pe servicii."},
     {id:"rate",      nume:"Rate & indicatori",     pdf:"2.2", t:"Rate & indicatori", l:"Dobânda tipică a fiecărei bănci, pe termen (depozite) și pe produs (credite). Clic pe o celulă pentru dovezi."},
     {id:"mobil",     nume:"Aplicații & recenzii",  pdf:"2.3", t:"Aplicații mobile & recenzii", l:"Nota, distribuția pe stele și versiunea fiecărei aplicații, plus ce spun clienții în recenzii, cu răspunsurile băncilor."},
     {id:"campanii",  nume:"Campanii & marketing",  pdf:"2.4", t:"Campanii & marketing", l:"Campaniile de pe site-urile băncilor, comunicatele de presă, reclamele din bibliotecile oficiale Google și Bing (test, până la avizul juridic) și conturile de pe rețelele sociale."},
@@ -1419,7 +1534,7 @@ R.banca = async (stare) => {
   </section>`;
 };
 
-R.produse = async (stare) => {
+R.produseMatrice = async (stare) => {
   const grup = stare.grup || "cont_curent", seg = stare.segment || "toate";
   const [d, m] = await Promise.all([
     ia(`/api/matrice?grup=${grup}&segment=${seg}&unitate=lei`), meta(),
@@ -1460,10 +1575,10 @@ R.produse = async (stare) => {
   <div class="bara-fixa"><div class="filtre">
     <div class="taburi">
       ${[["cont_curent","Cont curent"],["carduri","Carduri"],["transferuri","Transferuri și plăți"]]
-        .map(([v,t]) => `<button class="${v === grup ? "activ" : ""}" onclick="mergi('produse',{grup:'${v}',segment:'${seg}'})">${t}</button>`).join("")}
+        .map(([v,t]) => `<button class="${v === grup ? "activ" : ""}" onclick="mergi('produse',{vedere:'matrice',grup:'${v}',segment:'${seg}'})">${t}</button>`).join("")}
     </div>
     <label class="f">Pentru cine e prețul
-      <select onchange="mergi('produse',{grup:'${grup}',segment:this.value})">
+      <select onchange="mergi('produse',{vedere:'matrice',grup:'${grup}',segment:this.value})">
         ${[["toate","Oricine (tot ce avem)"],["pf","Doar persoane fizice"],
            ["pj","Doar firme"],["pfa","Doar PFA"]]
           .map(([v,t]) => `<option value="${v}" ${v === seg ? "selected" : ""}>${t}</option>`).join("")}
@@ -1487,6 +1602,353 @@ R.produse = async (stare) => {
       ${d.excluse_ambigue ? `<b>${num(d.excluse_ambigue, 0)}</b> valori ambigue nu intră în tabel. ` : ""}
       ${d.excluse_implauzibile ? `<b>${num(d.excluse_implauzibile, 0)}</b> valori peste ${num(d.prag_plauzibil, 0)} lei nu intră — sunt limite sau praguri extrase greșit ca preț. ` : ""}
       Toate sunt în <a href="#/coada">Coada de verificare</a>.`)}
+  </section>`;
+};
+
+/* ---------------- Produse & prețuri: comparația cu Libra ----------------
+   Sursa: tabela `comparatie_libra` (fluxul extragere_produse_bancare din proiect-it).
+   Pentru fiecare produs Libra, valorile produsului ECHIVALENT găsit la fiecare
+   bancă — nu toată lista de prețuri a băncii. Fiecare cifră are citatul și
+   linkul spre paragraful din document. */
+const PL = {vals: []};
+const PL_CAT = {CONT_CURENT: "Conturi & pachete", CONT_OPERATIUNI: "Operațiuni & plăți",
+  CARDURI_ACQUIRING: "Carduri & POS", CREDIT_CAPITAL_LUCRU: "Credite & linii",
+  CREDIT_INVESTITII: "Investiții & imobiliare", DEPOZITE: "Depozite",
+  FX_HEDGING: "Schimb valutar", TRADE_FINANCE: "Garanții & acreditive"};
+const PL_SCURT = {libra: "Libra", bcr: "BCR", raiffeisen: "Raiffeisen", brd: "BRD", ing: "ING",
+  "banca-transilvania": "BT"};
+const PL_ET = new Set(["standard", "Premium", "gold", "extra", "plus", "optim", "start-up", "lunar", "Max"]);
+const PL_MOTIV = {produs_inexistent: "banca nu are produsul", nepublicat: "nu îl publică pe site",
+  nu_am_gasit: "negăsit pe site", potrivire_slaba: "fără echivalent sigur"};
+
+function plValoare(v){
+  if(v.valoare === null || v.valoare === undefined) return esc(v.valoare_text || "—");
+  const u = {"%": "%", pp: " pp", lei: " lei", eur: " EUR", usd: " USD", luni: " luni", ani: " ani",
+    zile: " zile", numar: ""}[v.unitate];
+  return num(v.valoare) + (u !== undefined ? u : (v.unitate ? " " + esc(v.unitate) : ""));
+}
+/* Iconițe pentru etichetele de scenariu, desenate după Lucide (lucide.dev, licență ISC).
+   Inline, ca pagina să nu depindă de un CDN. */
+const PL_IC = {
+  calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+  lacat: '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+  monede: '<circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/>',
+  bancnota: '<rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/>',
+  euro: '<path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/>',
+  dolar: '<line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  lira: '<path d="M18 7c0-5.333-8-5.333-8 0"/><path d="M10 7v14"/><path d="M6 21h12"/><path d="M6 13h10"/>',
+  portofel: '<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',
+  scut: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+  servieta: '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+  glob: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  clientNou: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/>',
+  coroana: '<path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/>',
+  eticheta: '<path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>',
+  tinta: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  straturi: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+  calculator: '<rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/>',
+  oferta: '<path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m15 9-6 6"/><path d="M9 9h.01"/><path d="M15 15h.01"/>',
+};
+const plIc = n => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${PL_IC[n]}</svg>`;
+// potrivirea cu scenariul de referință (referinte_libra.json); „nespecificat” nu primește etichetă
+const PL_REF = {exact: {t: "referință", cls: "ref"}, aproximativ: {t: "≈ referință", cls: "ref ap"}, alt: {t: "alt exemplu", cls: "alt"}};
+const PL_REF_TEXT = {exact: "este chiar scenariul de referință", aproximativ: "e foarte aproape de scenariul de referință",
+  alt: "e pentru alt exemplu decât scenariul de referință: nu o compara direct cu celelalte",
+  nespecificat: "documentul nu spune pentru ce sumă / perioadă / valută e: nu se știe dacă e scenariul de referință"};
+const PL_RANG = {exact: 0, aproximativ: 1, nespecificat: 3, alt: 4};
+const plRang = v => { const r = v.scenariu && v.scenariu.referinta; return r ? PL_RANG[r.potrivire] : 2; };
+const PL_VALUTA_IC = {EUR: "euro", USD: "dolar", GBP: "lira", RON: "bancnota"};
+function plIcEticheta(x){
+  if(/asigur/i.test(x)) return "scut";
+  if(/salariu/i.test(x)) return "servieta";
+  if(/venit/i.test(x)) return "portofel";
+  if(/perioad|luni|\ban\b/i.test(x)) return "calendar";
+  if(/străin/i.test(x)) return "glob";
+  if(/client nou/i.test(x)) return "clientNou";
+  if(/premium|gold|max/i.test(x)) return "coroana";
+  return "eticheta";
+}
+const plEPromo = (s, v) => /promo/i.test([(s && s.cod) || "", ((s && s.etichete) || []).join(" "), (v && v.conditie) || ""].join(" "));
+// etichetele de scenariu: {t: text, ic: iconiță, cls: clasă}; oferta e prima, ca să sară în ochi
+function plScenariu(s, v){
+  const e = [];
+  if(plEPromo(s, v)) e.push({t: "Ofertă", ic: "oferta", cls: "of"});
+  if(!s) return e;
+  const ref = s.referinta && PL_REF[s.referinta.potrivire];
+  if(ref) e.push({t: ref.t, ic: "tinta", cls: ref.cls});
+  if(s.varianta) e.push({t: s.varianta, ic: "straturi", cls: "var"});
+  const bani = (n, m) => `${num(n, 0)} ${m === "EUR" ? "EUR" : m === "USD" ? "USD" : "lei"}`;
+  if(s.valuta){ const c = s.valuta === "LEI" ? "RON" : s.valuta; e.push({t: c, ic: PL_VALUTA_IC[c] || "monede", cls: "val"}); }
+  if(s.suma != null) e.push({t: s.suma_max != null ? `${bani(s.suma, s.moneda)} – ${bani(s.suma_max, s.moneda)}` : bani(s.suma, s.moneda), ic: "monede"});
+  if(s.perioada_luni != null) e.push({t: `${s.perioada_luni} ${s.perioada_luni === 1 ? "lună" : "luni"}`, ic: "calendar"});
+  if(s.perioada_zile != null) e.push({t: `${s.perioada_zile} ${s.perioada_zile === 1 ? "zi" : "zile"}`, ic: "calendar"});
+  if(s.fix_ani != null) e.push({t: `fix ${s.fix_ani} ${s.fix_ani === 1 ? "an" : "ani"}`, ic: "lacat"});
+  if(s.venit_min != null) e.push({t: `venit ≥ ${num(s.venit_min, 0)} lei`, ic: "portofel"});
+  (s.etichete || []).filter(x => x !== s.varianta && !/promo/i.test(x) && (/ /.test(x) || /[^ -~]/.test(x) || PL_ET.has(x)))
+    .slice(0, 3).forEach(x => e.push({t: x, ic: plIcEticheta(x)}));
+  if(s.derivat) e.push({t: "calculat", ic: "calculator", cls: "der"});
+  return e;
+}
+const plChip = x => `<span class="pl-sc ${x.cls || ""}">${plIc(x.ic)}${esc(x.t)}</span>`;
+// condițiile citite din document, fără codul de scenariu și fără valuta (afișate separat)
+function plConditie(v){
+  let c = v.conditie || "";
+  const cod = v.scenariu && v.scenariu.cod;
+  if(cod && c.startsWith(cod)) c = c.slice(cod.length).replace(/^;\s*/, "");
+  return c.replace(/^valuta [A-Z]{3};?\s*/, "");
+}
+function plVizibila(v, stare){
+  if(stare.amb === "1" && v.ambiguu) return false;
+  if(stare.low === "1" && v.incredere != null && v.incredere < 0.85) return false;
+  const ref = v.scenariu && v.scenariu.referinta;
+  if(stare.ref === "1" && ref && (ref.potrivire === "alt" || ref.potrivire === "nespecificat")) return false;
+  return true;
+}
+function plCelula(lista, stare){
+  // întâi valorile pe scenariul de referință, apoi cele fără scenariu, la urmă alte exemple
+  const l = (lista || []).filter(v => plVizibila(v, stare)).sort((a, b) => plRang(a) - plRang(b));
+  if(!l.length) return "";
+  const una = v => {
+    const i = PL.vals.push(v) - 1;
+    const sc = plScenariu(v.scenariu, v);
+    return `<button class="pl-v" onclick="plSertar(${i})" title="citatul și linkul spre document">
+      <span class="val">${plValoare(v)}</span>${v.ambiguu ? '<span class="pill amb">neclar</span>' : ""}${
+        v.incredere != null && v.incredere < 0.85 ? `<span class="pill">încr. ${num(v.incredere)}</span>` : ""}
+      ${sc.length ? `<span class="sc">${sc.map(plChip).join("")}</span>` : ""}</button>`;
+  };
+  const prim = l.slice(0, 3).map(una).join("");
+  if(l.length <= 3) return prim;
+  const id = "plm" + PL.vals.length;
+  return prim + `<button class="pl-mai" onclick="this.hidden=true;document.getElementById('${id}').hidden=false">+ încă ${l.length - 3}</button>
+    <div id="${id}" hidden>${l.slice(3).map(una).join("")}</div>`;
+}
+/* Dovada unei valori într-un modal centrat (nu în sertarul lateral al celorlalte
+   pagini): apare cu fade + scale + translateY(32px) și dispare la fel, invers. */
+function plModal(titlu, sub, html){
+  let m = document.getElementById("pl-modal");
+  if(!m){
+    m = document.createElement("div");
+    m.id = "pl-modal"; m.className = "pl-modal"; m.hidden = true;
+    m.innerHTML = `<div class="pl-modal-fundal"></div>
+      <div class="pl-modal-cutie" role="dialog" aria-modal="true" aria-labelledby="pl-modal-t">
+        <div class="pl-modal-cap"><div><h3 id="pl-modal-t"></h3><p class="note" id="pl-modal-s"></p></div>
+          <button class="pl-modal-x" aria-label="Închide">×</button></div>
+        <div id="pl-modal-c"></div>
+      </div>`;
+    document.body.appendChild(m);
+    m.querySelector(".pl-modal-fundal").onclick = plInchideModal;
+    m.querySelector(".pl-modal-x").onclick = plInchideModal;
+  }
+  clearTimeout(plModal.t);
+  document.getElementById("pl-modal-t").textContent = titlu;
+  document.getElementById("pl-modal-s").innerHTML = sub || "";
+  document.getElementById("pl-modal-c").innerHTML = html;
+  m.hidden = false;
+  m.offsetWidth;                       // pornește tranziția din starea inițială
+  m.classList.add("deschis");
+  m.querySelector(".pl-modal-x").focus({preventScroll: true});
+}
+function plInchideModal(){
+  const m = document.getElementById("pl-modal");
+  if(!m || !m.classList.contains("deschis")) return;
+  m.classList.remove("deschis");
+  plModal.t = setTimeout(() => { m.hidden = true; }, 260);
+}
+document.addEventListener("keydown", e => { if(e.key === "Escape") plInchideModal(); });
+function plSertar(i){
+  const v = PL.vals[i];
+  const sc = plScenariu(v.scenariu, v), cond = plConditie(v);
+  plModal(`${PL_SCURT[v.banca] || v.banca} · ${etNume(v.camp)}`,
+    esc(v.denumire_banca || ""),
+    `<p style="font-size:22px;margin:0 0 6px"><b>${plValoare(v)}</b></p>
+     ${sc.length ? `<p class="pl-sc-mare">${sc.map(plChip).join("")}</p>` : ""}
+     ${cond ? `<p><b>Condiție:</b> ${esc(cond)}</p>` : ""}
+     ${v.scenariu && v.scenariu.referinta ? `<p class="pl-ref-linie">${plIc("tinta")}<span>Față de scenariul de referință
+       (<b>${esc(v.scenariu.referinta.nume)}</b>): valoarea ${PL_REF_TEXT[v.scenariu.referinta.potrivire] || ""}${
+       v.scenariu.referinta.motiv ? ` — ${esc(v.scenariu.referinta.motiv)}` : ""}.</span></p>` : ""}
+     ${v.scenariu && (v.scenariu.reguli || []).length ? `<div class="pl-reguli"><b>Corectat automat</b> (reguli deterministe, fără model):
+       <ul>${v.scenariu.reguli.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
+     ${v.scenariu && v.scenariu.cod ? `<p class="gri" style="font-size:12px">Scenariu: <span class="mono">${esc(v.scenariu.cod)}</span>${v.scenariu.din_trepte ? " (din treptele documentului)" : ""}</p>` : ""}
+     <blockquote style="margin:10px 0;padding:8px 12px;border-left:3px solid var(--accent);background:var(--bg)">${esc(v.citat || "")}</blockquote>
+     <p><a href="${esc(v.link || v.url)}" target="_blank" rel="noopener">Deschide documentul${v.tip === "html" && v.link !== v.url ? " la paragraf" : ""} ↗</a>
+       <span class="gri">· ${esc((v.tip || "").toUpperCase())}</span></p>
+     <p class="note">Încredere ${v.incredere != null ? num(v.incredere) : "—"} · colectat ${esc(v.data_colectare || "")} ·
+       ${v.stare === "validat" ? "validat de un om" : "propunere, neverificată de un om"}</p>
+     ${v.ambiguu ? `<p class="callout warn">${esc(v.motiv_ambiguu || "Aceeași condiție are și alte valori în document.")}</p>` : ""}`);
+}
+// căutarea filtrează cardurile pe loc, fără să reîncarce pagina
+function plFiltreazaLista(inp){
+  const t = inp.value.trim().toLowerCase();
+  let n = 0;
+  document.querySelectorAll(".pl-card").forEach(b => { b.hidden = t && !b.dataset.cauta.includes(t); if(!b.hidden) n++; });
+  const c = document.getElementById("pl-nr"); if(c) c.textContent = `${n} produse`;
+}
+function plDeruleaza(dir){
+  const t = document.getElementById("pl-track");
+  if(t) t.scrollBy({left: dir * t.clientWidth * 0.8, behavior: "smooth"});
+}
+/* Tabelul se derulează în interiorul lui, nu pagina: capul cu băncile rămâne
+   mereu vizibil. Înălțimea se potrivește cu ce a rămas din ecran sub carduri. */
+function plPotriveste(){
+  const w = document.getElementById("pl-tw");
+  if(!w) return;
+  const main = document.querySelector("main");
+  const ingust = window.innerWidth < 860;
+  const sus = w.getBoundingClientRect().top - main.getBoundingClientRect().top + main.scrollTop;
+  // cu 20% peste spațiul rămas pe ecran: restul se vede derulând puțin pagina
+  w.style.maxHeight = Math.round(1.2 * (ingust ? window.innerHeight - 70 : Math.max(380, main.clientHeight - sus - 24))) + "px";
+  const t = document.getElementById("pl-track"), a = t && t.querySelector(".pl-card.activ");
+  if(!t) return;
+  if(a) t.scrollLeft = a.offsetLeft - (t.clientWidth - a.offsetWidth) / 2;
+  if(t.dataset.rotita) return;       // la redimensionare, ascultătorul există deja
+  t.dataset.rotita = "1";
+  /* Rotița verticală deasupra sliderului îl mută pe orizontală (altfel derula
+     pagina). La capete o lasă să deruleze pagina, ca să nu „blocheze” mouse-ul. */
+  t.addEventListener("wheel", e => {
+    if(Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+    const max = t.scrollWidth - t.clientWidth;
+    if((e.deltaY < 0 && t.scrollLeft <= 0) || (e.deltaY > 0 && t.scrollLeft >= max - 1)) return;
+    e.preventDefault();
+    t.scrollLeft += e.deltaY;
+  }, {passive: false});
+}
+window.addEventListener("resize", () => plPotriveste());
+
+R.produse = async (stare) => {
+  const tab = stare.vedere === "matrice" ? "matrice" : "libra";
+  const comutator = `<div class="taburi pl-vedere">
+      <button class="${tab === "libra" ? "activ" : ""}" onclick="mergi('produse',{})">Comparație cu Libra</button>
+      <button class="${tab === "matrice" ? "activ" : ""}" onclick="mergi('produse',{vedere:'matrice'})">Comisioane pe bănci</button>
+    </div>`;
+  if(tab === "matrice") return `<div style="margin-bottom:12px">${comutator}</div>` + await R.produseMatrice(stare);
+
+  const [lista, m] = await Promise.all([ia("/api/comparatie_libra"), meta()]);
+  if(!lista.disponibil) return `<div style="margin-bottom:12px">${comutator}</div>` + `<section><p class="note">Baza nu are încă tabelele comparației cu Libra
+    (<code>produse_libra</code>, <code>comparatie_libra</code>). Se creează cu migrările din
+    <code>extragere_produse_bancare/migrari</code>.</p></section>`;
+
+  const seg = stare.segment || "toate", cat = stare.cat || "";
+  const acop = {}, cmp = {}, nf = {};
+  (lista.acoperire || []).forEach(a => { (acop[a.cod] = acop[a.cod] || {})[a.banca] = a; });
+  (lista.comparabile || []).forEach(c => { cmp[c.cod] = c.n; });
+  (lista.negasite || []).forEach(x => { (nf[x.cod] = nf[x.cod] || {})[x.banca] = x; });
+  const banci = (lista.banci || []).map(b => b.slug);
+  const toate = lista.produse || [];
+  const peSeg = toate.filter(p => seg === "toate" || p.segment === seg || p.segment === "PF+PJ");
+  const produse = peSeg.filter(p => !cat || p.categorie_cod === cat);
+  const ales = produse.find(p => p.cod === stare.produs)
+    || [...produse].sort((a, b) => (cmp[b.cod] || 0) - (cmp[a.cod] || 0))[0];
+  const d = ales ? await ia(`/api/comparatie_libra?produs=${encodeURIComponent(ales.cod)}`) : null;
+
+  const st = k => Object.assign({}, stare, k);
+  const mergiJs = k => esc(`mergi('produse',${JSON.stringify(st(k))})`);
+  const nume = b => PL_SCURT[b] || m.nume[b] || b;
+  const logo = (b, cls = "") => m.logo[b]
+    ? `<img class="${cls}" src="${esc(m.logo[b])}" alt="${esc(nume(b))}">` : "";
+
+  // filtre: segmentul ca taburi, categoria ca buline cu numărul de produse
+  const segTab = [["toate", "Toate"], ["PF", "Persoane fizice"], ["PJ", "Firme"]].map(([v, t]) =>
+    `<button class="${v === seg ? "activ" : ""}" onclick="${mergiJs({segment: v, produs: ""})}">${t}</button>`).join("");
+  const nrCat = {};
+  peSeg.forEach(p => { nrCat[p.categorie_cod] = (nrCat[p.categorie_cod] || 0) + 1; });
+  const catChip = (v, t, n) => `<button class="pl-chip ${v === cat ? "activ" : ""}" onclick="${mergiJs({cat: v, produs: ""})}">${t}<span>${n}</span></button>`;
+  const chipuri = catChip("", "Toate", peSeg.length) + Object.keys(PL_CAT).filter(c => nrCat[c])
+    .map(c => catChip(c, esc(PL_CAT[c]), nrCat[c])).join("");
+  const chk = (k, txt) => `<label class="pl-bifa">
+      <input type="checkbox" ${stare[k] === "1" ? "checked" : ""} onchange="${mergiJs({[k]: stare[k] === "1" ? "0" : "1"})}"> ${txt}</label>`;
+
+  // sliderul de produse
+  const carduri = produse.map(p => `<button class="pl-card ${ales && p.cod === ales.cod ? "activ" : ""}"
+      onclick="${mergiJs({produs: p.cod})}" data-cauta="${esc((p.denumire + " " + p.cod).toLowerCase())}">
+      <span class="cat">${esc(p.segment || "")} · ${esc(PL_CAT[p.categorie_cod] || "Altele")}</span>
+      <span class="n">${esc(p.denumire)}</span>
+      <span class="lg">${banci.map(b => {
+        const a = (acop[p.cod] || {})[b], n = (nf[p.cod] || {})[b];
+        const sta = a ? "da" : n ? "nu" : "";
+        const t = `${nume(b)}: ${a ? a.n + " valori" : n ? PL_MOTIV[n.motiv] || "fără echivalent" : "fără date"}`;
+        return `<span class="pl-lg ${sta}" title="${esc(t)}">${logo(b) || esc(nume(b).slice(0, 3))}</span>`;
+      }).join("")}${cmp[p.cod] ? `<span class="cmp" title="câmpuri cu valori și la Libra, și la concurență">${cmp[p.cod]} comp.</span>`
+        : '<span class="gri" title="niciun câmp cu valori și la Libra, și la concurență">—</span>'}</span>
+    </button>`).join("");
+
+  // tabelul produsului ales: un rând per câmp, o coloană per bancă
+  PL.vals = [];
+  let tabelHtml = '<p class="note">Niciun produs pentru filtrele alese.</p>';
+  if(d){
+    const pc = {};
+    (d.valori || []).forEach(v => { ((pc[v.camp] = pc[v.camp] || {})[v.banca] = pc[v.camp][v.banca] || []).push(v); });
+    const vede = l => (l || []).some(v => plVizibila(v, stare));
+    let campuri = Object.keys(pc);
+    // în modul „doar referința” rândul rămâne și când Libra n-are cifra pe referință:
+    // tocmai asta e informația (Libra publică alt exemplu), nu un motiv să dispară rândul
+    if(stare.toate !== "1") campuri = campuri.filter(c => stare.ref === "1"
+      ? banci.some(b => vede(pc[c][b])) && (pc[c].libra || []).length > 0
+      : vede(pc[c].libra) && banci.some(b => b !== "libra" && vede(pc[c][b])));
+    campuri.sort((a, b) => (a === "altele") - (b === "altele") || etNume(a).localeCompare(etNume(b), "ro"));
+    const ech = {}; (d.echivalente || []).forEach(e => { ech[e.banca] = e; });
+    const nfp = nf[ales.cod] || {};
+    const antet = banci.map(b => {
+      const sub = ech[b] ? `<span class="eq" title="${esc(ech[b].denumire_la_banca || "")}">${esc(ech[b].denumire_la_banca || "")}</span>`
+        : nfp[b] ? `<span class="eq sus">${esc(PL_MOTIV[nfp[b].motiv] || "fără echivalent")}</span>`
+        : '<span class="eq">fără date</span>';
+      return `<th class="${b === "libra" ? "libra" : ""}"><span class="bk">${logo(b, "lg")}<b>${esc(nume(b))}</b></span>${sub}</th>`;
+    }).join("");
+    const randuri = campuri.map(c => `<tr><th class="camp" scope="row">${esc(etNume(c))}<small>${esc(c)}</small></th>${
+      banci.map(b => {
+        const html = plCelula(pc[c][b], stare);
+        const ascunse = !html && (pc[c][b] || []).length;
+        const gol = ascunse && stare.ref === "1" ? '<span class="pl-gol">doar alt exemplu</span>'
+          : ascunse ? '<span class="pl-gol">ascuns de filtre</span>' : '<span class="pl-gol">—</span>';
+        return `<td class="${b === "libra" ? "libra" : ""}">${html || gol}</td>`;
+      }).join("")}</tr>`).join("");
+    tabelHtml = campuri.length
+      ? `<div class="pl-tw" id="pl-tw"><table class="pl" style="min-width:${170 + 148 * banci.length}px">
+          <thead><tr><th class="camp colt">Ce se compară<small>${campuri.length} câmpuri</small></th>${antet}</tr></thead>
+          <tbody>${randuri}</tbody></table></div>`
+      : `<p class="note">${stare.toate === "1" ? "Nicio valoare pentru filtrele alese." :
+          "Niciun câmp nu are valori și la Libra, și la o altă bancă. Bifează „Arată și câmpurile necomparabile” ca să vezi tot ce s-a colectat."}</p>`;
+  }
+
+  const refProdus = d && (d.valori || []).map(v => v.scenariu && v.scenariu.referinta).find(Boolean);
+  return `
+  <div class="pl-filtre">
+    <div class="taburi">${segTab}</div>
+    <input class="cauta" placeholder="Caută produs: depozit, card, credit…" oninput="plFiltreazaLista(this)">
+    ${comutator}
+  </div>
+  <div class="pl-chipuri">${chipuri}</div>
+  <div class="pl-slider">
+    <button class="pl-sag" onclick="plDeruleaza(-1)" aria-label="Produsele anterioare">‹</button>
+    <div class="pl-track" id="pl-track">${carduri || '<p class="note">Niciun produs.</p>'}</div>
+    <button class="pl-sag" onclick="plDeruleaza(1)" aria-label="Produsele următoare">›</button>
+  </div>
+  <section class="pl-sec">
+    ${ales ? `<div class="pl-cap">
+      <h2>${esc(ales.denumire)}</h2>
+      <span class="gri mono" style="font-size:11px">${esc(ales.cod)} · ${esc(ales.segment || "")}${ales.prioritar ? " · prioritar" : ""}</span>
+      ${refProdus ? `<span class="pl-ref" title="DAE, dobânzile și ratele se compară doar pe același exemplu de sumă, perioadă și valută">${plIc("tinta")}Scenariu de referință: <b>${esc(refProdus.nume)}</b></span>` : ""}
+      <span class="pl-bife">${refProdus ? chk("ref", "Doar scenariul de referință") : ""}${chk("toate", "Și câmpurile necomparabile")}${chk("low", "Ascunde încrederea sub 0,85")}${chk("amb", "Ascunde valorile neclare")}</span>
+    </div>` : ""}
+    ${tabelHtml}
+    ${despre(`
+      <b>Ce e aici.</b> Pentru fiecare produs din catalogul Libra, valorile produsului <b>echivalent</b> găsit la
+      fiecare bancă (numele lui e în capul coloanei). Nu e toată lista de prețuri a băncii, ci doar produsul care
+      corespunde. Pe carduri: logo întreg = avem valori, logo tăiat = banca nu are produsul sau nu îl publică,
+      logo estompat = fără date.<br>
+      <b>Scenariul.</b> Etichetele de sub o valoare (valută, sumă, perioadă, venit) arată la ce caz se aplică.
+      Codul complet al scenariului e în panoul deschis la clic.<br>
+      <b>Scenariul de referință.</b> La credite, depozite și schimb valutar, DAE și dobânzile se compară doar pe
+      același exemplu (sumă, perioadă, valută): „referință”, „≈ referință” sau „alt exemplu”. Bifa „Doar scenariul
+      de referință” le ascunde pe celelalte.<br>
+      <b>Corecții automate.</b> Reguli fără model: un 0 rămâne doar dacă citatul spune „0 / gratuit / fără
+      comision / inclus”; „negociabil” și „nelimitat” rămân text; dobânda minimă / maximă își are câmpul ei;
+      dobânda penalizatoare nu e dobânda produsului; perioadele sunt în luni. Ce s-a respins e în
+      <code>inventare-libra/respinse-reguli-*.json</code>.<br>
+      <b>Cât de sigure sunt.</b> Fiecare cifră are citatul regăsit literal în document și încredere ≥ 0,6. Cele sub 0,85
+      au eticheta cu încrederea; „neclar” = aceeași condiție are și alte cifre în document. Toate sunt
+      <b>propuneri</b>, neverificate încă de un om.<br>
+      <b>De unde vin.</b> ${(lista.banci || []).map(b => `${esc(nume(b.slug))}: ${num(b.n, 0)}`).join(" · ")} valori.
+      BT răspunde 403 pe site-ul principal, de aceea are foarte puține.`)}
   </section>`;
 };
 
@@ -3294,6 +3756,7 @@ async function randeaza(){
   const bara = gazda.querySelector(".bara-fixa");
   principal.style.setProperty("--sub-bara", (bara ? Math.max(bara.offsetHeight - 26, 0) : -26) + "px");
   principal.scrollTop = sus;
+  if(document.getElementById("pl-tw")) plPotriveste();
   const tinta = stare.la && document.getElementById(stare.la);
   if(tinta && !aceeasi) tinta.scrollIntoView();
   else if(tinta && tinta.getBoundingClientRect().top > principal.clientHeight) tinta.scrollIntoView();

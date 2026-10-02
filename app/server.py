@@ -1068,6 +1068,82 @@ def catalog_libra():
     )
 
 
+def comparatie_libra(q):
+    """Produsele Libra față de echivalentele lor la concurență (tabela `comparatie_libra`).
+
+    Vine din fluxul `extragere_produse_bancare` (proiect-it): pentru fiecare produs
+    din `produse_libra`, discovery-ul găsește produsul echivalent la bancă
+    (`surse_libra`), iar extracția scoate DOAR valorile acelui produs, cu citat,
+    link spre paragraf și scenariul descompus (sumă, perioadă, valută).
+
+    Fără `produs`: lista produselor, cu acoperirea pe bănci (câte valori, câte
+    câmpuri comparabile cu Libra, unde produsul nu există). Cu `produs=COD`: și
+    valorile acelui produs. Pe o bază fără tabelele fluxului (migrările lui sunt
+    separate), întoarce `disponibil: false` în loc de 500.
+    """
+    if not interoghează("SELECT to_regclass('public.comparatie_libra') IS NOT NULL AS e")[0]["e"]:
+        return {"disponibil": False}
+    produse = interoghează(
+        """SELECT cod, denumire, segment, categorie_cod, prioritar
+             FROM produse_libra WHERE activ
+            ORDER BY prioritar DESC, denumire""")
+    acoperire = interoghează(
+        """SELECT p.cod, b.slug AS banca, count(*)::int AS n,
+                  count(DISTINCT c.camp)::int AS campuri
+             FROM comparatie_libra c
+             JOIN banci b ON b.id = c.id_banca
+             JOIN produse_libra p ON p.id = c.id_produs_libra
+            GROUP BY 1, 2""")
+    # câmp comparabil = are valoare și la Libra, și la cel puțin o altă bancă
+    comparabile = interoghează(
+        """SELECT cod, count(*)::int AS n FROM (
+             SELECT p.cod, c.camp
+               FROM comparatie_libra c
+               JOIN banci b ON b.id = c.id_banca
+               JOIN produse_libra p ON p.id = c.id_produs_libra
+              GROUP BY 1, 2
+             HAVING bool_or(b.slug = 'libra') AND count(DISTINCT b.slug) > 1) x
+           GROUP BY 1""")
+    negasite = interoghează(
+        """SELECT p.cod, b.slug AS banca,
+                  split_part(trim(leading '[' from coalesce(s.explicatie_incredere, '')), ']', 1) AS motiv,
+                  s.explicatie_incredere AS nota
+             FROM surse_libra s
+             JOIN banci b ON b.id = s.id_banca
+             JOIN produse_libra p ON p.id = s.id_produs_libra
+            WHERE s.not_found""")
+    banci = interoghează(
+        """SELECT b.slug, b.nume, b.acces_restricted, count(c.id)::int AS n
+             FROM banci b JOIN comparatie_libra c ON c.id_banca = b.id
+            GROUP BY 1, 2, 3
+            ORDER BY (b.slug <> 'libra'), count(c.id) DESC""")
+    rez = {"disponibil": True, "produse": produse, "acoperire": acoperire,
+           "comparabile": comparabile, "negasite": negasite, "banci": banci}
+    cod = (q.get("produs") or [""])[0]
+    if cod:
+        rez["valori"] = interoghează(
+            """SELECT b.slug AS banca, c.camp, c.valoare_num::float8 AS valoare, c.valoare_text,
+                      c.unitate, c.moneda, c.conditie, c.citat,
+                      coalesce(c.link_live, s.url) AS link, s.url, s.tip,
+                      c.incredere::float8 AS incredere, c.ambiguu, c.motiv_ambiguu,
+                      coalesce(c.denumire_la_banca, s.denumire_la_banca) AS denumire_banca,
+                      c.scenariu, c.stare, c.data_colectare::text AS data_colectare
+                 FROM comparatie_libra c
+                 JOIN banci b ON b.id = c.id_banca
+                 JOIN produse_libra p ON p.id = c.id_produs_libra
+                 JOIN surse_libra s ON s.id = c.id_sursa
+                WHERE p.cod = %s
+                ORDER BY c.camp, (b.slug <> 'libra'), b.slug, c.valoare_num""", (cod,))
+        rez["echivalente"] = interoghează(
+            """SELECT DISTINCT ON (b.slug) b.slug AS banca, s.denumire_la_banca, s.url, s.incredere::float8
+                 FROM surse_libra s
+                 JOIN banci b ON b.id = s.id_banca
+                 JOIN produse_libra p ON p.id = s.id_produs_libra
+                WHERE p.cod = %s AND NOT s.not_found
+                ORDER BY b.slug, s.incredere DESC NULLS LAST""", (cod,))
+    return rez
+
+
 def retele():
     """Conturile oficiale de social media ale bancilor, din date/retele_sociale.csv.
 
@@ -1626,6 +1702,7 @@ RUTE = {
     "/api/campanii": campanii,
     "/api/comunicate": comunicate,
     "/api/catalog_libra": lambda q: catalog_libra(),
+    "/api/comparatie_libra": comparatie_libra,
     "/api/matrice": matrice,
     "/api/celula": celula,
     "/api/rate": rate,
