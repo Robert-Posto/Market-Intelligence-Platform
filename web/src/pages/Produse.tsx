@@ -116,9 +116,10 @@ export default function Produse() {
           <T k="produse.despre_segment" />{' '}
           {d.segmente.map((s) => <Pill key={s.seg}>{s.seg}: {num(s.n, locale, 0)}</Pill>)}
           <br />
-          {d.excluse_ambigue > 0 && <T k="produse.despre_ambigue" params={{ n: num(d.excluse_ambigue, locale, 0) }} />}
+          {/* frazele sunt texte separate; spațiul dintre ele îl pune pagina, nu dicționarul */}
+          {d.excluse_ambigue > 0 && <><T k="produse.despre_ambigue" params={{ n: num(d.excluse_ambigue, locale, 0) }} />{' '}</>}
           {d.excluse_implauzibile > 0 && (
-            <T k="produse.despre_implauzibile" params={{ n: num(d.excluse_implauzibile, locale, 0), prag: num(d.prag_plauzibil, locale, 0) }} />
+            <><T k="produse.despre_implauzibile" params={{ n: num(d.excluse_implauzibile, locale, 0), prag: num(d.prag_plauzibil, locale, 0) }} />{' '}</>
           )}
           <T k="produse.despre_coada" />
         </Despre>

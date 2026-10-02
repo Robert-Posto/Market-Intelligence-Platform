@@ -255,6 +255,25 @@ cu „merge". S-a întâmplat de două ori, ambele din același motiv: un ghilim
 `"` ASCII pus în loc de `”` într-un text românesc, care închide șirul devreme
 și doboară tot blocul `<script>`. Verificatorul localizează automat bucata.
 
+### Interfața nouă (React, în lucru pe ramura `stack-scc`)
+
+Trecerea la stack-ul Sales Command Center (02.10.2026): `web/` (React 18,
+Vite 6, Ant Design 5) și `shared/` (schemele Zod ale API-ului). Sunt mutate
+Overview și 2.1; celelalte pagini trimit la aplicația veche. Datele vin tot de
+la `app/server.py`, prin proxy-ul Vite.
+
+```bash
+npm install                 # Node 20+
+python app/server.py        # API-ul, pe :8765
+npm run dev                 # interfața nouă, pe http://localhost:5173
+npm run typecheck && npm run build   # înainte de commit, după orice modificare în web/ sau shared/
+```
+
+Textele sunt în `web/src/i18n/dict/*.ts`, câte o pereche `[română, engleză]`
+pe cheie (1.137 la 02.10.2026). Datele băncilor (servicii, citate, recenzii)
+nu se traduc: sunt dovezi. Rulările manuale nu se pot porni din `npm run dev`:
+serverul refuză cererile de pe alt port, iar verificarea nu se slăbește.
+
 ---
 
 ## Probleme cunoscute

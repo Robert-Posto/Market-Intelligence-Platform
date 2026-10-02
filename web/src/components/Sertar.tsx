@@ -5,6 +5,7 @@ import { Celula, type ValoareDovada } from '@mcc/shared'
 import { api } from '../api/client'
 import { useMeta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
+import { deLaServer } from '../i18n/server'
 import { compara, num } from '../util/format'
 import { Pill } from './comune'
 import { etDesc, etNume, unitTxt } from './valori'
@@ -113,8 +114,8 @@ function Corp({ date, camp, unitate }: { date: ValoareDovada[]; camp: string; un
           <div><b>{num(Math.min(...vals), locale)} – {num(Math.max(...vals), locale)}{u(date[0])}</b> <span>{t('sertar.rezumat.interval')}</span></div>
         )}
         <div><b>{nServ}</b> <span>{t((nServ === 1 ? 'sertar.rezumat.variante_serviciu_1' : 'sertar.rezumat.variante_serviciu_n'))}</span></div>
-        <div><b>{date.length}</b> <span>{t('sertar.rezumat.valori')}</span></div>
-        {gratuite > 0 && <div><b style={{ color: 'var(--ok)' }}>{gratuite}</b> <span>{t('sertar.rezumat.gratuite')}</span></div>}
+        <div><b>{date.length}</b> <span>{t(date.length === 1 ? 'sertar.rezumat.valori_1' : 'sertar.rezumat.valori_n')}</span></div>
+        {gratuite > 0 && <div><b style={{ color: 'var(--ok)' }}>{gratuite}</b> <span>{t(gratuite === 1 ? 'sertar.rezumat.gratuite_1' : 'sertar.rezumat.gratuite_n')}</span></div>}
         {amb > 0 && <div><b style={{ color: 'var(--warn)' }}>{amb}</b> <span>{t('sertar.rezumat.de_verificat')}</span></div>}
         <div><b>{cuLink}</b> <span>{t('sertar.rezumat.cu_link')}</span></div>
       </div>
@@ -196,7 +197,7 @@ function CitatEvidentiat({ r }: { r: ValoareDovada }) {
 }
 
 function Rand({ r }: { r: ValoareDovada }) {
-  const { t, locale } = useLang()
+  const { t, lang, locale } = useLang()
   const [des, setDes] = useState(false)
   const val = r.valoare !== null && r.valoare !== undefined ? `${num(r.valoare, locale)}${unitTxt(r.unitate, t)}` : r.valoare_text || '—'
   const ctx: ReactNode[] = [r.frecventa && <b key="f">{r.frecventa}</b>, r.conditie, r.detaliu].filter(Boolean)
@@ -230,7 +231,8 @@ function Rand({ r }: { r: ValoareDovada }) {
         <div className="meta">
           <Pill title={t('sertar.rand.metoda_tooltip')}>{r.metoda_extractie || '?'}</Pill>
           {scen.map((x) => <Pill key={x}>{x}</Pill>)}
-          {r.ambiguu && <Pill tip="amb">{r.motiv_ambiguu || t('sertar.rand.ambiguu')}</Pill>}
+          {/* motivul vine din bază în română; în engleză se arată tradus, cheia rămâne aceeași */}
+          {r.ambiguu && <Pill tip="amb">{r.motiv_ambiguu ? deLaServer(r.motiv_ambiguu, lang) : t('sertar.rand.ambiguu')}</Pill>}
           {(r.confidence ?? 1) < 0.7 && <Pill tip="amb">{t('sertar.rand.incredere', { valoare: num(r.confidence, locale) })}</Pill>}
         </div>
       </div>
