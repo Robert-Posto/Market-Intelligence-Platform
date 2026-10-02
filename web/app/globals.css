@@ -1,0 +1,585 @@
+/* Stilurile aplicației, copiate din app/index.html (SPA-ul vechi) la portarea pe Next.js.
+   Un singur fișier, ca paginile încă neportate să le găsească gata când vin. */
+  :root{
+    /* paleta: fildeș cald + vișiniu profund, aceeași familie în bară și în pagini */
+    --bg:#f5f1ec; --surface:#fffdfa; --ink:#2a1f22; --muted:#6e615d; --line:#e3dad0;
+    --line-2:#d6cabd;
+    --warn:#98550b; --warn-tint:#f8ead6; --ok:#2b7044; --ok-tint:#e5efe1; --aur:#b58a2c;
+    --accent:#7a1e2c; --accent-tint:#f5e8e6; --on-accent:#fffdfa;
+    --umbra:0 1px 2px rgba(74,32,36,.05);
+    /* bara laterală: vișiniu cu gradient vertical discret, text crem cald;
+       pagina activă pe fundalul paginii, ca vârful să intre în conținut;
+       piciorul în aceeași familie, puțin mai închis, sub o linie fină.
+       Spațierile verticale ale barei sunt în clamp() cu vh, ca tot meniul să
+       încapă fără derulare la 720–900px înălțime. */
+    --nav:#6e1a28; --nav-2:#561420; --nav-ink:#f6ece6; --nav-slab:#e6c9b5;
+    --nav-line:rgba(246,236,230,.14); --nav-hover:rgba(246,236,230,.08);
+    --marca:#7a1e2c; --nav-activ-bg:var(--bg); --nav-activ-ink:#5a1622;
+    --nav-footer:rgba(28,6,11,.22); --nav-footer-ink:#dcc3bb;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#1b1517; --surface:#251d1f; --ink:#efe6e2; --muted:#b4a5a0; --line:#3a2e30;
+          --line-2:#4a3b3d;
+          --warn:#e3a95a; --warn-tint:#3a2a16; --ok:#7fcb97; --ok-tint:#1d3024; --aur:#dcb567;
+          --accent:#e7a3ab; --accent-tint:#3b2428; --on-accent:#2a1216;
+          --umbra:none;
+          --nav:#4e1520; --nav-2:#3a0f18; --marca:#e7a3ab; --nav-activ-ink:#f2d7d3;}
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif;display:flex}
+  a{color:var(--accent)}
+
+  /* ---- navigație ---- */
+  /* ---- bara laterală ----
+     Direcția F — bloc plin pe roșul Libra, text alb, titlu tipografic mare;
+     grupurile au etichete mono, în majuscule; pagina activă se inversează
+     (fundal crem, text bleumarin) cu un colț tăiat spre conținut; piciorul
+     stă pe o bandă bleumarin, lipit jos. Fiecare spațiere verticală e
+     clamp(minim la 720px înălțime, vh, maxim la 900px), ca antetul + cele
+     12 linkuri + piciorul să încapă fără derulare pe orice laptop uzual. */
+  nav{width:266px;flex:none;background:linear-gradient(180deg,var(--nav) 0%,var(--nav-2) 100%);color:var(--nav-ink);
+      padding:0;overflow:auto;height:100%;display:flex;flex-direction:column}
+  nav .marca{padding:clamp(16px,2.2vh,20px) 22px clamp(13px,1.8vh,16px);
+             border-bottom:1px solid var(--nav-line)}
+  nav .marca .t{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(19px,2.6vh,24px);
+                line-height:1.1;font-weight:700;color:var(--nav-ink);display:block;letter-spacing:-.01em}
+  nav .marca .t i{color:var(--nav-slab);font-style:italic;font-weight:600}
+  nav .marca .s{display:block;margin-top:clamp(7px,1vh,9px);font-family:"IBM Plex Mono",monospace;
+                font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+                color:var(--nav-slab);opacity:.8}
+  nav h3{font-family:"IBM Plex Mono",monospace;font-size:9.5px;text-transform:uppercase;
+         letter-spacing:.12em;color:var(--nav-ink);font-weight:600;
+         margin:clamp(10px,1.4vh,13px) 0 clamp(4px,0.6vh,5px);padding:0 22px;opacity:.62}
+  nav a{display:flex;align-items:center;padding:clamp(5px,0.7vh,6px) 42px clamp(5px,0.7vh,6px) 22px;
+        color:var(--nav-ink);text-decoration:none;font-size:13px;font-weight:500;position:relative}
+  nav a:hover{background:var(--nav-hover);color:var(--nav-ink)}
+  nav a:focus-visible{outline:2px solid var(--nav-slab);outline-offset:-2px}
+  nav a.activ,nav a.activ:hover{background:var(--nav-activ-bg);color:var(--nav-activ-ink);font-weight:600;
+              clip-path:polygon(0 0,calc(100% - 12px) 0,100% 50%,calc(100% - 12px) 100%,0 100%)}
+  nav a .pdf,nav a .gol{position:absolute;right:20px;top:50%;transform:translateY(-50%);
+                        font-family:"IBM Plex Mono",monospace;font-size:10px}
+  nav a .pdf{color:var(--nav-slab);opacity:.75}
+  nav a.activ .pdf{color:var(--marca);opacity:1}
+  nav a .gol{color:#f0d3a8}
+  nav .picior{margin-top:auto;padding:clamp(10px,1.4vh,13px) 22px clamp(11px,1.5vh,14px);
+              background:var(--nav-footer);border-top:1px solid var(--nav-line);font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+              line-height:1.6;color:var(--nav-footer-ink)}
+
+  /* ---- conținut ---- */
+  main{flex:1;min-width:0;overflow:auto;height:100%;padding:26px 30px 60px}
+  .cap{margin-bottom:20px}
+  h1{font-family:"Source Serif 4",Georgia,serif;font-size:26px;margin:0 0 5px}
+  .lede{color:var(--muted);font-size:13.5px;max-width:78ch;margin:0}
+  section{background:var(--surface);border:1px solid var(--line);border-radius:13px;
+          padding:18px 20px;margin-bottom:18px;box-shadow:var(--umbra)}
+  h2{font-family:"Source Serif 4",Georgia,serif;font-size:17px;margin:0 0 12px}
+  h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+     font-family:"IBM Plex Mono",monospace;font-weight:500;margin:18px 0 8px}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;text-transform:uppercase;
+     letter-spacing:.03em;color:var(--muted);font-weight:500;position:sticky;top:0;
+     background:var(--surface);z-index:1}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;
+                font-family:"IBM Plex Mono",monospace}
+  .mono{font-family:"IBM Plex Mono",monospace;font-size:12px}
+  .wrap{overflow:auto;max-height:70vh}
+
+  .filtre{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-bottom:14px}
+  label.f{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted)}
+  select,input{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line-2);
+               border-radius:7px;background:var(--bg);color:var(--ink);min-width:140px}
+  button{font:inherit;font-size:13px;padding:7px 13px;border-radius:8px;cursor:pointer;
+         border:1px solid var(--line-2);background:var(--surface);color:var(--ink)}
+  button:hover{border-color:var(--muted)}
+  button.primar{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  button:disabled{opacity:.55;cursor:not-allowed}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:11px}
+  .tile{border:1px solid var(--line);border-radius:10px;padding:13px}
+  .tile .n{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:500}
+  .tile .l{color:var(--muted);font-size:11.5px;margin-top:2px}
+
+  /* celulă de comparație: valoarea, la ce se aplică, câte variante mai sunt */
+  .celula{cursor:pointer;border-radius:6px;display:block;padding:4px 6px;text-align:right;
+          position:relative;min-width:104px}
+  .celula:hover{background:var(--accent-tint);outline:1px solid var(--accent)}
+  .celula.gol{color:var(--muted);cursor:default;text-align:center}
+  .celula.gol:hover{background:none;outline:none}
+  .v-pref{display:block;color:var(--muted);font-size:9.5px;line-height:1.2}
+  .v-gratis{color:var(--ok);opacity:.85}
+  .v-num{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:500;white-space:nowrap}
+  .v-ctx{display:block;color:var(--muted);font-size:10px;line-height:1.3;margin-top:1px;
+         font-weight:400;max-width:15ch;margin-left:auto;overflow-wrap:anywhere}
+  .v-n{position:absolute;left:5px;top:4px;color:var(--muted);font-size:9.5px;
+       font-family:"IBM Plex Mono",monospace;border:1px solid var(--line);
+       border-radius:999px;padding:0 4px;line-height:1.45}
+  .cap-nume{display:block;font-size:12px}
+  .cap-desc{display:block;font-weight:400;font-size:10px;color:var(--muted);
+            line-height:1.35;margin-top:2px;max-width:17ch;white-space:normal}
+  .cap-slug{display:block;font-family:"IBM Plex Mono",monospace;font-size:9px;
+            color:var(--muted);opacity:.65;margin-top:3px;font-weight:400}
+
+  /* ---- Versus: carduri fixe sus, apoi caracteristici grupate ---- */
+  .vs{overflow-x:auto}
+  .vs-bara{display:grid;grid-template-columns:var(--vsc);
+           background:var(--bg);border-bottom:1px solid var(--line);align-items:stretch}
+  .vs-cap0{padding:12px 10px;display:flex;align-items:flex-end;font-size:11.5px;
+           color:var(--muted);letter-spacing:.02em;text-transform:uppercase}
+  .vs-card{border-left:1px solid var(--line);padding:12px 11px 11px;position:relative;
+           display:flex;flex-direction:column;gap:2px}
+  .vs-card.ref{background:var(--accent-tint)}
+  .vs-tag{position:absolute;right:9px;top:9px;font-size:9px;text-transform:uppercase;
+          letter-spacing:.04em;color:var(--accent);border:1px solid var(--accent);
+          border-radius:999px;padding:1px 6px}
+  .vs-logo{height:30px;display:flex;align-items:center;margin-bottom:5px}
+  .vs-logo img{max-height:30px;max-width:104px;object-fit:contain}
+  .vs-init{font-family:"IBM Plex Mono",monospace;font-size:16px;font-weight:600;
+           color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:2px 8px}
+  .vs-nume{font-size:13.5px;font-weight:600;line-height:1.25}
+  .vs-slug{font-size:10px;color:var(--muted)}
+  .vs-cifre{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+  .vs-cifre b{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;display:block}
+  .vs-cifre span{display:block;font-size:9.5px;color:var(--muted);line-height:1.3}
+
+  .vs-sec{margin-top:16px}
+  .vs-sec-cap{display:grid;grid-template-columns:var(--vsc);align-items:end;
+              background:var(--surface);border-radius:8px 8px 0 0;border:1px solid var(--line);
+              border-bottom:none}
+  .vs-sec-cap .t{font-family:"Source Serif 4",Georgia,serif;font-size:15px;padding:9px 10px}
+  .vs-sec-cap .t span{display:block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+                      color:var(--muted);margin-top:2px}
+  .vs-sec-cap .c{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);
+                 padding:9px 8px;text-align:right;border-left:1px solid var(--line)}
+  .vs-sec-cap .c.ref{color:var(--accent);font-weight:600}
+  .vs-rand{display:grid;grid-template-columns:var(--vsc);border:1px solid var(--line);
+           border-top:none;align-items:center}
+  .vs-rand.alt{background:var(--surface)}
+  .vs-rand:last-child{border-radius:0 0 8px 8px}
+  .vs-lab{padding:9px 10px;min-width:0}
+  .vs-lab b{display:block;font-size:12.5px;font-weight:600;line-height:1.3}
+  .vs-lab span{display:block;font-size:10.5px;color:var(--muted);line-height:1.4;margin-top:2px}
+  .vs-lab em{display:block;font-size:9.5px;color:var(--warn);font-style:normal;margin-top:3px}
+  .vs-cel{padding:7px 8px;border-left:1px solid var(--line);text-align:right;min-width:0}
+  .vs-cel .celula{min-width:0;padding:2px 3px}
+  .vs-cel.gol{color:var(--muted);text-align:center;font-size:12px}
+  @media (max-width:760px){ .vs-cifre{display:none} }
+  /* revamp: secțiuni pliabile, capul secțiunii fix la derulare, fără derulare orizontală */
+  .vs{overflow:visible}
+  details.vs-sec > summary{list-style:none;cursor:pointer;position:sticky;top:var(--sub-bara,40px);z-index:4}
+  details.vs-sec > summary::-webkit-details-marker{display:none}
+  details.vs-sec > summary .t::before{content:"▾ ";color:var(--muted);font-size:11px}
+  details.vs-sec:not([open]) > summary .t::before{content:"▸ "}
+  details.vs-sec:not([open]) > summary .vs-sec-cap{border-bottom:1px solid var(--line);border-radius:8px}
+  .best .v-num, td.mc.best b{font-weight:700;color:var(--ink)}
+  .best .v-num::before, td.mc.best b::before{content:"★ ";color:var(--aur);font-size:.9em}
+  .vs-bun, .eticheta-best{display:inline-block;margin-top:4px;padding:1px 7px;border-radius:999px;
+          background:var(--accent);color:var(--on-accent);font:600 9px "IBM Plex Sans",sans-serif;
+          text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+  /* Libra e cea mai slabă pe rând: fără fundal, o etichetă cu contur — pereche
+     cu „cea mai bună" (plină). Fundalul bej-gălbui de înainte păta tabelul. */
+  .vs-cel.pierde::after{content:"cea mai slabă";display:block;width:max-content;margin:4px 0 0 auto;
+          padding:0 7px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);
+          font:600 9px "IBM Plex Sans",sans-serif;text-transform:uppercase;letter-spacing:.04em}
+  .vs-alege{display:flex;flex-wrap:wrap;gap:6px;align-items:center;position:relative}
+  details.vs-lista > summary{list-style:none}
+  details.vs-lista > summary::-webkit-details-marker{display:none}
+  summary.buton{display:inline-block;font-size:13px;padding:6px 12px;border-radius:8px;cursor:pointer;
+                border:1px solid var(--line);background:var(--surface)}
+  .vs-pop{position:absolute;left:0;top:calc(100% + 6px);z-index:20;background:var(--surface);
+          border:1px solid var(--line);border-radius:11px;padding:12px;width:340px;
+          box-shadow:0 8px 28px rgba(58,22,28,.16)}
+  .vs-opt{max-height:300px;overflow:auto;display:flex;flex-direction:column;gap:6px;margin-top:8px}
+
+  .cl-banca{display:flex;align-items:center;gap:8px;min-width:0}
+  .cl-banca img{max-height:18px;max-width:54px;object-fit:contain;flex:none}
+  .cl-banca .nm{font-size:12.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;hyphens:auto}
+  /* 2.3 Aplicații: multe coloane fac numele băncii să se rupă pe 2-3 rânduri */
+  .apl-tabel table.t td:first-child .cl-banca{min-width:190px}
+
+  /* Avertisment care nu se poate sări cu privirea. Folosit acolo unde o cifră
+     corect calculată poate fi înțeleasă greșit — media textelor de review, de
+     exemplu, care e cu 2,6 stele sub media reală a aplicației. */
+  .callout{border:1px solid var(--ok);border-left-width:4px;border-radius:9px;
+           padding:11px 14px;font-size:12.5px;line-height:1.6;background:var(--ok-tint)}
+  .callout.warn{border-color:var(--warn);background:var(--warn-tint)}
+  .callout b{color:var(--ink)}
+
+  /* ---- Sentiment: review-uri filtrabile ---- */
+  .rec{border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:9px}
+  .rec-cap{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+  .rec-stele{font-size:13px;letter-spacing:1px}
+  .rec-stele.bun{color:var(--ok)} .rec-stele.rau{color:var(--warn)}
+  .rec-txt{font-size:12.5px;line-height:1.6}
+  .rec-cap .nm, table.t .pill{white-space:nowrap}
+  .rec-meta{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+
+  .sus{color:var(--warn);font-weight:600}
+  .jos{color:var(--ok);font-weight:600}
+
+  /* sertar: valorile grupate pe serviciul dat de bancă */
+  .grup-serv{border:1px solid var(--line);border-radius:9px;margin-bottom:10px;overflow:hidden}
+  .grup-serv > .cap{background:var(--surface-2,var(--surface));padding:8px 11px;
+                    border-bottom:1px solid var(--line);display:flex;gap:8px;
+                    align-items:baseline;justify-content:space-between}
+  .grup-serv > .cap b{font-size:12.5px;font-weight:600}
+  .obs{display:flex;gap:10px;align-items:baseline;padding:8px 11px;font-size:12px;
+       border-top:1px solid var(--line)}
+  .obs:first-of-type{border-top:none}
+  .obs .val{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;
+            min-width:88px;text-align:right;flex:none}
+  .obs .det{flex:1;min-width:0}
+  .obs .cit{color:var(--muted);font-size:11px;line-height:1.5;margin-top:3px;
+            border-left:2px solid var(--line);padding-left:7px}
+  .obs .cit mark{background:var(--warn-tint);color:var(--ink);font-weight:600;
+                 padding:0 2px;border-radius:2px}
+  /* Când citatul nu adaugă nimic peste cifră, se arată unde e în document,
+     nu se repetă cifra sub ea ca și cum ar fi o dovadă. */
+  .obs .cit.fara{border-left-style:dotted;font-style:italic;opacity:.9}
+  .obs .val .x{font-family:"IBM Plex Mono",monospace;font-size:10px;
+               color:var(--muted);margin-left:4px;font-weight:400}
+  /* Ce trebuie să facă omul cu rândul — scris lângă rând, nu într-un tooltip */
+  .obs .ce-faci{font-size:11px;color:var(--muted);line-height:1.5;margin-top:5px;
+                font-style:italic}
+  /* Seria de valori a aceluiași serviciu: cele din coadă marcate */
+  .serie{display:flex;flex-wrap:wrap;gap:5px;align-items:center;padding:8px 11px;
+         background:var(--bg);border-bottom:1px solid var(--line);font-size:11px}
+  .serie .et{color:var(--muted)}
+  .serie .v{font-family:"IBM Plex Mono",monospace;font-size:11px;padding:1px 6px;
+            border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+  .serie .v.aici{border-color:var(--warn);background:var(--warn-tint);
+                 color:var(--warn);font-weight:600}
+  .obs .meta{margin-top:4px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+  .obs.amb{background:var(--warn-tint)}
+  a.sursa{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--accent);
+          text-decoration:none;border-bottom:1px dotted var(--accent)}
+  a.sursa:hover{background:var(--accent-tint)}
+  /* Pagina băncii nu e documentul: culoare diferită și linie punctată mai
+     slabă, ca să nu fie citită ca dovadă directă. */
+  a.sursa.pagina{color:var(--muted);border-bottom-style:dashed;border-bottom-color:var(--line)}
+  a.sursa.pagina:hover{color:var(--accent);background:var(--accent-tint)}
+  .pill{display:inline-block;padding:1px 7px;border-radius:999px;font-size:10.5px;
+        font-family:"IBM Plex Mono",monospace;border:1px solid var(--line)}
+  .pill.amb{background:var(--warn-tint);border-color:var(--warn);color:var(--warn)}
+  .pill.ok{background:var(--ok-tint);border-color:var(--ok);color:var(--ok)}
+  .pill.mock{background:var(--warn-tint);border-color:var(--warn);color:var(--warn)}
+  .note{color:var(--muted);font-size:12px;line-height:1.55;max-width:80ch}
+  .gol-stare{border:1px dashed var(--line);border-radius:11px;padding:22px;text-align:center;
+             color:var(--muted);font-size:13px}
+  .gol-stare b{color:var(--ink);display:block;margin-bottom:5px;font-size:14px}
+
+  /* sertar cu dovezile din spatele unei celule */
+  #sertar{position:fixed;inset:0;background:rgba(40,14,20,.40);display:none;z-index:50}
+  #sertar.deschis{display:block}
+  #sertar .panou{position:absolute;right:0;top:0;bottom:0;width:min(640px,94vw);
+                 background:var(--surface);border-left:1px solid var(--line);
+                 padding:20px 22px;overflow:auto}
+  #sertar h3{font-family:"Source Serif 4",Georgia,serif;font-size:17px;margin:0 0 3px}
+  #sertar .x{position:absolute;right:16px;top:14px}
+
+  /* ================= revamp 25.09: tipare comune =================
+     Aceeași rețetă pe fiecare pagină: rezumat sus, filtre fixe, un tabel
+     compact (sortabil, Libra fixată), detaliile pliate. */
+
+  /* bara de filtre rămâne sus la derulare (derulează <main>, nu documentul) */
+  .bara-fixa{position:sticky;top:-26px;z-index:8;background:var(--bg);
+             margin:-6px -30px 14px;padding:12px 30px 10px;border-bottom:1px solid var(--line)}
+  .bara-fixa .filtre{margin:0}
+  .taburi{display:inline-flex;border:1px solid var(--line-2);border-radius:9px;overflow:hidden;
+          background:var(--surface)}
+  .taburi button{border:0;border-radius:0;border-right:1px solid var(--line-2);background:none;
+                 padding:7px 13px;font-size:12.5px}
+  .taburi button:last-child{border-right:0}
+  .taburi button.activ{background:var(--accent);color:var(--on-accent);font-weight:600}
+  .taburi button .n{font-family:"IBM Plex Mono",monospace;font-size:10px;opacity:.75;margin-left:4px}
+  input.cauta{min-width:230px;background:var(--surface)}
+  label.bifa{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink);cursor:pointer}
+  label.bifa input{min-width:0;margin:0}
+
+  /* „Despre date": explicațiile lungi, pliate implicit */
+  details.despre{margin-top:10px;font-size:12px}
+  details.despre > summary{cursor:pointer;color:var(--accent);font-size:12px;list-style:none;
+                           display:inline-flex;align-items:center;gap:5px;user-select:none}
+  details.despre > summary::-webkit-details-marker{display:none}
+  details.despre > summary::before{content:"ⓘ";font-size:13px}
+  details.despre[open] > summary{margin-bottom:6px}
+  details.despre .note{margin:0 0 6px}
+
+  /* secțiune pliabilă (Rulări, detalii tehnice, grupe) */
+  details.pliat > summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px}
+  details.pliat > summary::-webkit-details-marker{display:none}
+  details.pliat > summary::before{content:"▸";color:var(--muted);font-size:12px;width:10px}
+  details.pliat[open] > summary::before{content:"▾"}
+  details.pliat > summary h2{margin:0}
+
+  /* Rulări manuale (Overview): rularea curentă, bara scurs/estimat, jurnalul live */
+  .rl-curenta{border:1px solid var(--accent);border-radius:10px;padding:14px 16px;margin:0 0 16px;
+              background:var(--accent-tint)}
+  .rl-cap{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;margin-bottom:9px}
+  .rl-cap b{font-size:14px}
+  .rl-bara{height:8px;border-radius:999px;background:var(--line);overflow:hidden;margin:4px 0 5px}
+  .rl-bara > i{display:block;height:100%;background:var(--accent);transition:width .8s}
+  .rl-bara.peste > i{background:var(--warn)}
+  pre.rl-jurnal{font:11.5px/1.5 "IBM Plex Mono",monospace;max-height:300px;overflow:auto;margin:10px 0 0;
+                background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 11px;
+                white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink)}
+  table.rl td{vertical-align:middle}
+  table.rl td:first-child{width:44%}
+  table.rl td.rl-n{white-space:nowrap}
+  table.rl td.rl-u{min-width:210px}
+  table.rl select{min-width:0;width:200px}
+
+  /* tabel sortabil; rândul Libra fixat și evidențiat */
+  table.t th.sort{cursor:pointer;user-select:none}
+  table.t th.sort:hover{color:var(--ink)}
+  table.t th.sort::after{content:" ↕";opacity:.35}
+  table.t th.sort.asc::after{content:" ↑";opacity:1;color:var(--accent)}
+  table.t th.sort.desc::after{content:" ↓";opacity:1;color:var(--accent)}
+  table.t tbody tr:hover td{background:var(--accent-tint)}
+  table.t tr.libra td{background:var(--accent-tint)}
+  table.t tr.libra td:first-child{box-shadow:inset 4px 0 var(--accent)}
+  table.t tr.clic{cursor:pointer}
+  table.t tr.ales td{background:var(--warn-tint)}
+  .wrap.lung{max-height:none;overflow:visible}
+  .tag-libra{font-family:"IBM Plex Mono",monospace;font-size:9px;text-transform:uppercase;
+             letter-spacing:.05em;color:var(--accent);border:1px solid var(--accent);
+             border-radius:999px;padding:0 5px;margin-left:6px;vertical-align:middle}
+  .sub{display:block;color:var(--muted);font-size:10.5px;line-height:1.35;font-weight:400}
+  .gri{color:var(--muted)}
+  a.fisa{color:inherit;text-decoration:none}
+  a.fisa:hover .nm{text-decoration:underline}
+
+  /* matrice bancă × serviciu: celula = câte prețuri, intervalul, gratuite */
+  td.mc{cursor:pointer;text-align:right;white-space:nowrap}
+  td.mc:hover{outline:1px solid var(--accent);outline-offset:-1px}
+  td.mc b{font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:500}
+  td.mc .g{display:block;color:var(--ok);font-size:10.5px}
+  td.gol{color:var(--muted);text-align:center}
+  th .cap-d{display:block;text-transform:none;letter-spacing:0;font-family:"IBM Plex Sans",sans-serif;
+            font-size:10px;line-height:1.3;margin-top:2px;opacity:.85;font-weight:400;max-width:22ch}
+
+  /* distribuția pe stele: o bară stivuită 5★ → 1★ */
+  .stele-bar{display:flex;height:12px;width:140px;border-radius:3px;overflow:hidden;
+             background:var(--bg);border:1px solid var(--line)}
+  .stele-bar span{display:block;height:100%}
+
+  /* cifre-cheie sus */
+  .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:18px}
+  .kpi > div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--umbra)}
+  .kpi .n{font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:500;line-height:1.1}
+  .kpi .e{font-weight:600;font-size:12.5px;margin-bottom:4px}
+  .kpi .l{color:var(--muted);font-size:11.5px;margin-top:4px}
+  .kpi a.kpi-link{display:inline-block;margin-top:8px;font-size:12px;color:var(--accent);text-decoration:none}
+  .kpi a.kpi-link:hover{text-decoration:underline}
+  .kpi > div.inactiv{border-style:dashed;border-color:var(--line-2);background:none;box-shadow:none}
+
+  /* paginare */
+  .pagini{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;font-size:12px;color:var(--muted)}
+  .pagini button{padding:4px 10px;font-size:12px}
+  .pagini button.activ{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+  /* sertar: rezumat + căutare + grupe pliate + rânduri pe o linie */
+  #sertar .panou{width:min(880px,94vw);padding:0}
+  #sertar .s-cap{position:sticky;top:0;z-index:2;background:var(--surface);
+                 border-bottom:1px solid var(--line);padding:18px 22px 12px}
+  #sertar .s-corp{padding:14px 22px 30px}
+  .s-rez{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 10px;font-size:12.5px}
+  .s-rez b{font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:500}
+  .s-rez span{color:var(--muted)}
+  .s-bara{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+  details.g{border:1px solid var(--line);border-radius:9px;margin-bottom:8px;overflow:hidden}
+  details.g > summary{cursor:pointer;list-style:none;display:grid;
+                      grid-template-columns:14px minmax(0,1fr) auto auto;gap:10px;align-items:baseline;
+                      padding:8px 11px;background:var(--bg)}
+  details.g > summary::-webkit-details-marker{display:none}
+  details.g > summary::before{content:"▸";color:var(--muted);font-size:11px}
+  details.g[open] > summary::before{content:"▾"}
+  details.g > summary .gn{font-size:12.5px;font-weight:600;overflow-wrap:anywhere}
+  details.g > summary .gi{font-family:"IBM Plex Mono",monospace;font-size:12px;white-space:nowrap}
+  details.g > summary .gc{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);white-space:nowrap}
+  .r{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;
+     padding:6px 11px;border-top:1px solid var(--line);font-size:12px;cursor:pointer}
+  .r:hover{background:var(--accent-tint)}
+  .r .rv{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;text-align:right;white-space:nowrap}
+  .r .rc{min-width:0;color:var(--muted)}
+  .r .rc b{color:var(--ink);font-weight:500}
+  .r .rs{white-space:nowrap}
+  .r .rx{display:none;grid-column:2 / -1}
+  .r.des .rx{display:block}
+  .r .rx .cit{color:var(--muted);font-size:11px;line-height:1.5;border-left:2px solid var(--line);padding-left:7px}
+  .r .rx .cit mark{background:var(--warn-tint);color:var(--ink);font-weight:600;padding:0 2px;border-radius:2px}
+  .r .rx .meta{margin-top:4px;display:flex;flex-wrap:wrap;gap:5px}
+  .r .ind{font-size:10px;color:var(--accent);margin-left:6px}
+  /* 2.4 (revamp 30.09): comutatorul de secțiuni, banda de cifre cu băncile ca „chips”,
+     conturile sociale ca tabel bancă × rețea */
+  .cm-bara .filtre{gap:8px 10px}
+  .cm-bara .filtre + .filtre{margin-top:8px}
+  .cm-bara select{min-width:0;max-width:185px;padding:5px 7px;font-size:12.5px}
+  .cm-bara input.cauta{min-width:0;width:190px;padding:5px 8px;font-size:12.5px}
+  .cm-bara label.f{gap:3px}
+  /* numele băncii nu se rupe în mijlocul cuvântului în tabelele 2.4 (la nowrap se suprapunea peste coloana vecină) */
+  .cm-sec td .cl-banca .nm{overflow-wrap:normal;hyphens:manual}
+  /* siglele SVG n-au mărime proprie: tabelul le socotea 0 px și numele trecea peste coloana vecină */
+  .cm-sec td .cl-banca img{width:54px;height:18px;object-position:left center}
+  .cm-info{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center;align-self:center}
+  .cm-banda{display:flex;gap:10px 20px;align-items:center;background:var(--surface);border:1px solid var(--line);
+            border-radius:12px;padding:9px 16px;margin-bottom:14px;box-shadow:var(--umbra)}
+  .cm-cifre{display:flex;gap:20px;flex:none}
+  .cm-cifre > div{display:flex;flex-direction:column;cursor:default}
+  .cm-cifre b{font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:500;line-height:1.15;white-space:nowrap}
+  .cm-cifre b small{font-size:11px;color:var(--muted);font-weight:400}
+  .cm-cifre span{font-size:11px;color:var(--muted);white-space:nowrap}
+  .cm-chipuri{display:flex;flex-wrap:wrap;gap:5px;align-items:center;min-width:0;
+              border-left:1px solid var(--line);padding-left:18px}
+  .cm-et{font-size:11px;color:var(--muted);margin-right:3px}
+  button.cm-chip{padding:2px 9px;font-size:12px;line-height:1.5;border-radius:999px;background:var(--bg);
+                 display:inline-flex;gap:6px;align-items:baseline;white-space:nowrap}
+  button.cm-chip b{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:11.5px}
+  button.cm-chip.zero b{color:var(--muted)}
+  button.cm-chip.ref{border-color:var(--accent);background:var(--accent-tint)}
+  button.cm-chip.activ{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  button.cm-chip.activ b{color:inherit}
+  .cm-sec > details.despre{margin-right:18px}
+  .yt-canal{display:flex;flex-direction:column;gap:2px;flex:none;max-width:230px;font-size:13px}
+  .yt-canal .pill{align-self:flex-start}
+  .yt-nou{font-size:11px;color:var(--muted);max-width:165px;line-height:1.35;flex:none}
+  #yt-tabel .eticheta-best{margin:0 0 0 6px;vertical-align:1px}
+  .cm-note details.despre{display:inline-block;margin-right:18px}
+  .rs-ic{display:inline-flex;align-items:center;justify-content:center}
+  .rs-ic svg{width:14px;height:14px;display:block}
+  th .rs-ic{vertical-align:-3px;margin-right:6px}
+  .rs-ic.facebook{color:#1877f2} .rs-ic.linkedin{color:#0a66c2}
+  .rs-ic.instagram{color:#d62976} .rs-ic.tiktok{color:var(--ink)}
+  td.rs-c{white-space:nowrap}
+  td.rs-c a{color:var(--ink);text-decoration:none;display:inline-block;max-width:170px;overflow:hidden;
+            text-overflow:ellipsis;vertical-align:bottom;font-size:12.5px}
+  td.rs-c a:hover{color:var(--accent);text-decoration:underline}
+  td.rs-c .pill{font-size:9.5px;display:block;width:fit-content;margin-top:3px}
+  .rs-leg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:11.5px;color:var(--muted);margin:10px 0 0}
+  @media (max-width:900px){ body{flex-direction:column} nav{width:auto;height:auto;border-bottom:1px solid var(--nav-line)} main{height:auto} }
+  /* Produse & prețuri: comparația cu Libra */
+  .pl-filtre{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:10px}
+  .pl-filtre input.cauta{min-width:0;width:260px}
+  label.pl-bifa{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink);cursor:pointer}
+  label.pl-bifa input{margin:0;min-width:0;width:auto;accent-color:var(--accent)}
+  .pl-vedere{margin-left:auto}
+  .pl-chipuri{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  button.pl-chip{flex:none;padding:3px 10px;font-size:12px;border-radius:999px;border:1px solid var(--line-2);
+                 background:var(--surface);color:var(--ink);white-space:nowrap}
+  button.pl-chip span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-left:6px}
+  button.pl-chip.activ{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  button.pl-chip.activ span{color:var(--on-accent);opacity:.8}
+  .pl-slider{display:flex;align-items:stretch;gap:6px;margin-bottom:14px}
+  button.pl-sag{flex:none;width:32px;padding:0;font-size:22px;line-height:1;border:1px solid var(--line-2);
+                border-radius:9px;background:var(--surface);color:var(--ink)}
+  .pl-track{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;flex:1;min-width:0;
+            padding:2px 2px 8px;scrollbar-width:thin}
+  button.pl-card{flex:none;width:218px;display:flex;flex-direction:column;gap:6px;
+                 text-align:left;padding:9px 11px;border:1px solid var(--line);border-radius:11px;
+                 background:var(--surface);color:var(--ink);cursor:pointer}
+  button.pl-card:hover{border-color:var(--accent)}
+  button.pl-card.activ{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset;background:var(--accent-tint)}
+  .pl-card .cat{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
+                white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pl-card .n{font-size:13.5px;font-weight:600;line-height:1.3;min-height:2.6em;
+              display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .pl-card .lg{display:flex;gap:4px;align-items:center}
+  .pl-card .lg .cmp, .pl-card .lg .gri{margin-left:auto;font-size:11px;white-space:nowrap}
+  .pl-lg{display:inline-flex;align-items:center;justify-content:center;width:28px;height:22px;border-radius:5px;
+         border:1px solid var(--line);background:#fff;font-size:9px;color:var(--muted);
+         filter:grayscale(1);opacity:.35;position:relative;overflow:hidden}
+  .pl-lg img{max-width:22px;max-height:15px;object-fit:contain}
+  .pl-lg.da{filter:none;opacity:1;border-color:var(--ok)}
+  .pl-lg.nu{opacity:.55}
+  .pl-lg.nu::after{content:"";position:absolute;left:-2px;right:-2px;top:50%;border-top:1.5px solid var(--warn);transform:rotate(-30deg)}
+  .pl-card .cmp{color:var(--accent);font-weight:600}
+  .pl-sec{padding-top:12px}
+  table.pl th{text-transform:none;letter-spacing:0;font-family:inherit;font-size:13px;color:var(--ink)}
+  .pl-cap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-bottom:10px}
+  .pl-bife{display:flex;flex-wrap:wrap;gap:4px 14px;margin-left:auto}
+  .pl-cap h2{margin:0;font-size:19px}
+  .pl-tw{overflow:auto;overscroll-behavior:contain;max-height:calc(120vh - 48px);border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+  table.pl{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;table-layout:fixed}
+  table.pl thead th{position:sticky;top:0;z-index:2;background:var(--surface);text-align:left;vertical-align:top;
+                    padding:9px 10px;border-bottom:2px solid var(--line-2);font-weight:400}
+  table.pl thead th.libra{background:var(--accent-tint)}
+  table.pl th.camp{position:sticky;left:0;z-index:1;width:170px;background:var(--surface);text-align:left;
+                   font-weight:500;padding:8px 10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);
+                   vertical-align:top;overflow-wrap:anywhere}
+  table.pl thead th.colt{z-index:3;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  table.pl th.camp small{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);
+                         font-weight:400;text-transform:none;letter-spacing:0}
+  table.pl .bk{display:flex;align-items:center;gap:7px;font-size:13px}
+  table.pl .bk img.lg{height:22px;max-width:64px;object-fit:contain;background:#fff;border-radius:4px;padding:2px}
+  table.pl .eq{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+               font-size:11px;line-height:1.35;color:var(--muted);margin-top:4px}
+  table.pl td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.pl tbody tr:hover td, table.pl tbody tr:hover th.camp{background:var(--bg)}
+  table.pl td.libra, table.pl tbody tr:hover td.libra{background:var(--accent-tint)}
+  table.pl tbody tr:last-child > *{border-bottom:0}
+  button.pl-v{display:block;width:100%;text-align:left;border:1px solid transparent;border-radius:7px;
+              background:none;padding:3px 5px;margin:0 0 3px;cursor:pointer;color:var(--ink)}
+  button.pl-v:hover{border-color:var(--accent);background:var(--surface)}
+  .pl-v .val{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;margin-right:4px}
+  .pl-v .pill{font-size:9.5px;margin-left:2px}
+  .pl-v .sc{display:flex;flex-wrap:wrap;gap:3px;margin-top:2px}
+  .pl-sc{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;line-height:1.5;color:var(--muted);
+         background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:0 5px 0 4px;white-space:nowrap}
+  .pl-sc svg.ic{width:11px;height:11px;flex:none}
+  .pl-sc.val{color:var(--ink);font-weight:600}
+  .pl-sc.of{color:var(--ok);background:var(--ok-tint);border-color:var(--ok);font-weight:600}
+  .pl-sc.ref{color:var(--accent);background:var(--accent-tint);border-color:var(--accent);font-weight:600}
+  .pl-sc.ref.ap{font-weight:500;border-style:dashed}
+  .pl-sc.alt{color:var(--warn);background:var(--warn-tint);border-color:var(--warn)}
+  .pl-sc.var{color:var(--ink);border-style:dashed}
+  .pl-sc.der{font-style:italic}
+  .pl-ref{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--accent);
+          background:var(--accent-tint);border:1px solid var(--accent);border-radius:999px;padding:2px 10px}
+  .pl-ref svg.ic, .pl-ref-linie svg.ic{width:13px;height:13px;flex:none}
+  .pl-ref-linie{display:flex;gap:6px;align-items:flex-start;font-size:13px}
+  .pl-ref-linie svg.ic{margin-top:3px;color:var(--accent)}
+  .pl-reguli{font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:8px 0}
+  .pl-reguli ul{margin:4px 0 0;padding-left:18px}
+  .pl-sc-mare{display:flex;flex-wrap:wrap;gap:5px}
+  .pl-sc-mare .pl-sc{font-size:12.5px;padding:2px 8px 2px 6px}
+  .pl-sc-mare .pl-sc svg.ic{width:14px;height:14px}
+  button.pl-mai{border:0;background:none;color:var(--accent);font-size:11.5px;padding:2px 5px;cursor:pointer}
+  .pl-gol{color:var(--muted);font-size:11.5px}
+  .pl-modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px}
+  .pl-modal[hidden]{display:none}
+  .pl-modal-fundal{position:absolute;inset:0;background:rgba(40,14,20,.42);opacity:0;transition:opacity .22s ease}
+  .pl-modal-cutie{position:relative;width:min(620px,100%);max-height:calc(100vh - 32px);overflow:auto;
+                  background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;
+                  box-shadow:0 24px 60px rgba(0,0,0,.28);padding:18px 22px 20px;
+                  opacity:0;transform:translateY(32px) scale(.96);
+                  transition:opacity .22s ease, transform .26s cubic-bezier(.2,.8,.2,1)}
+  .pl-modal.deschis .pl-modal-fundal{opacity:1}
+  .pl-modal.deschis .pl-modal-cutie{opacity:1;transform:none}
+  .pl-modal-cap{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .pl-modal-cap h3{font-family:"Source Serif 4",Georgia,serif;font-size:18px;margin:0 0 2px}
+  .pl-modal-cap .note{margin:0}
+  button.pl-modal-x{flex:none;width:32px;height:32px;padding:0;font-size:20px;line-height:1;border-radius:8px;
+                    border:1px solid var(--line-2);background:var(--bg);color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){
+    .pl-modal-cutie{transform:none;transition:opacity .15s ease}
+  }
+  @media (max-width:860px){
+    .pl-filtre input.cauta{width:100%}
+    .pl-vedere{margin-left:0}
+    .pl-chipuri{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+    button.pl-sag{display:none}
+    button.pl-card{width:190px}
+    table.pl th.camp{width:130px}
+    .pl-bife{margin-left:0}
+  }
+
+/* Next.js: tabul unei vederi încă neportate e un link spre aplicația veche, nu un buton */
+.taburi a{display:inline-flex;align-items:center;padding:7px 13px;font-size:13px;color:var(--ink);
+          text-decoration:none;border-right:1px solid var(--line-2)}
+.taburi a:last-child{border-right:0}
+.taburi a:hover{background:var(--accent-tint)}
+/* `display:flex` de pe card bate atributul `hidden`: fără regula asta, căutarea nu ascundea nimic */
+button.pl-card[hidden]{display:none}

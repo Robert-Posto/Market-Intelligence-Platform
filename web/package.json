@@ -1,0 +1,16 @@
+{
+  "name": "mip-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interfața Market Intelligence Platform pe Next.js, peste API-ul Python din app/server.py",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001"
+  },
+  "dependencies": {
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}

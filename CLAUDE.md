@@ -21,6 +21,7 @@ fără framework · Playwright + pdfplumber · dezvoltat pe Windows.
 ```bash
 pip install -r requirements.txt && playwright install chromium
 python app/server.py                      # http://localhost:8765
+cd web && npm install && npm run dev      # interfața Next.js, :3001, peste API-ul de pe :8765
 python ingest/populare_initiala.py [--banca <slug>] [--fara-llm]
 docker exec -i mip-db psql -U mip -d mip < db/<fisier>.sql
 ```
@@ -30,6 +31,7 @@ Verificări, după zona atinsă:
 | ai modificat | rulează | trebuie să vezi |
 |---|---|---|
 | `app/` | `python app/verifica_pagini.py` (cu serverul pornit); `python app/test_rulari.py` la rulări | toate paginile randate; OK |
+| `web/` | `npm run build` în `web/`, apoi pagina deschisă pe :3001 cu serverul Python pornit | build fără erori; date reale în pagină |
 | `crawler/` | `python scripts/test_validare.py` și `python scripts/test_robots_matcher.py` | 0 eșuate |
 | `ingest/` | numără ce produce extractorul, înainte să scrii în bază | cifrele din README |
 | `ingest/scraper.py`, `robots_matcher.py` | `python ingest/test_robots_matcher.py`, `test_known_block.py`, `test_crawl_bfs.py` | OK |
@@ -81,9 +83,9 @@ parametri (`%s`), nu text interpolat. `/pdf` servește doar URL-uri
 `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
 `app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
 
-**Frontend.** În textele românești din `<script>` se folosesc ghilimelele
-„…” sau ”, niciodată `"` ASCII în interiorul unui șir. O singură ghilimea
-greșită lasă pagina albă, iar serverul răspunde totuși 200.
+**Frontend.** `web/` (Next.js) e doar interfață, fără rute API: totul trece prin
+`app/server.py`. În `app/index.html`, textele din `<script>` folosesc „…” sau ”, nu `"`
+ASCII într-un șir: o ghilimea greșită lasă pagina albă, iar serverul răspunde 200.
 
 **Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice.
 Prioritatea e popularea inițială, nu automatizarea. Butoanele din Overview sunt

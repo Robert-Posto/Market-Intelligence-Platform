@@ -487,6 +487,8 @@
                  text-align:left;padding:9px 11px;border:1px solid var(--line);border-radius:11px;
                  background:var(--surface);color:var(--ink);cursor:pointer}
   button.pl-card:hover{border-color:var(--accent)}
+  /* `display:flex` de pe card bate atributul `hidden`: fără regula asta, căutarea nu ascundea nimic */
+  button.pl-card[hidden]{display:none}
   button.pl-card.activ{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset;background:var(--accent-tint)}
   .pl-card .cat{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
                 white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
