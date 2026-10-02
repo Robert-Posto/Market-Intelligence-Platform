@@ -1,0 +1,182 @@
+/* Paleta aplicației vechi (fildeș cald + vișiniu); aceleași valori stau în
+   theme.ts pentru componentele AntD. */
+:root {
+  --bg: #f5f1ec; --surface: #fffdfa; --ink: #2a1f22; --muted: #6e615d; --line: #e3dad0;
+  --line-2: #d6cabd;
+  --warn: #98550b; --warn-tint: #f8ead6; --ok: #2b7044; --ok-tint: #e5efe1; --aur: #b58a2c;
+  --accent: #7a1e2c; --accent-tint: #f5e8e6; --on-accent: #fffdfa;
+  --umbra: 0 1px 2px rgba(74, 32, 36, .05);
+  --nav: #6e1a28; --nav-2: #561420; --nav-ink: #f6ece6; --nav-slab: #e6c9b5;
+  --nav-line: rgba(246, 236, 230, .14); --nav-hover: rgba(246, 236, 230, .08);
+  --marca: #7a1e2c; --nav-activ-bg: var(--bg); --nav-activ-ink: #5a1622;
+  --nav-footer: rgba(28, 6, 11, .22); --nav-footer-ink: #dcc3bb;
+  --serif: "Source Serif 4", Georgia, serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1517; --surface: #251d1f; --ink: #efe6e2; --muted: #b4a5a0; --line: #3a2e30;
+    --line-2: #4a3b3d;
+    --warn: #e3a95a; --warn-tint: #3a2a16; --ok: #7fcb97; --ok-tint: #1d3024; --aur: #dcb567;
+    --accent: #e7a3ab; --accent-tint: #3b2428; --on-accent: #2a1216;
+    --umbra: none;
+    --nav: #4e1520; --nav-2: #3a0f18; --marca: #e7a3ab; --nav-activ-ink: #f2d7d3;
+  }
+}
+* { box-sizing: border-box }
+html, body, #root { height: 100% }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.5 "IBM Plex Sans", system-ui, sans-serif }
+a { color: var(--accent) }
+/* AntD <App> pune un div în jurul aplicației: fără înălțime, bara laterală se oprea la conținut */
+.ant-app { height: 100% }
+.aplicatie { display: flex; height: 100%; font-size: 14px; line-height: 1.5 }
+
+/* ---- bara laterală: bloc vișiniu, grupuri mono, pagina activă cu colț tăiat spre conținut;
+   spațierile în clamp() cu vh, ca tot meniul să încapă fără derulare la 720–900px înălțime ---- */
+nav { width: 266px; flex: none; background: linear-gradient(180deg, var(--nav) 0%, var(--nav-2) 100%); color: var(--nav-ink);
+  overflow: auto; height: 100%; display: flex; flex-direction: column }
+nav .marca { padding: clamp(16px, 2.2vh, 20px) 22px clamp(13px, 1.8vh, 16px); border-bottom: 1px solid var(--nav-line) }
+nav .marca .t { font-family: var(--serif); font-size: clamp(19px, 2.6vh, 24px); line-height: 1.1; font-weight: 700;
+  color: var(--nav-ink); display: block; letter-spacing: -.01em }
+nav .marca .t i { color: var(--nav-slab); font-style: italic; font-weight: 600 }
+nav .marca .s { display: block; margin-top: clamp(7px, 1vh, 9px); font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--nav-slab); opacity: .8 }
+nav h3 { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--nav-ink);
+  font-weight: 600; margin: clamp(10px, 1.4vh, 13px) 0 clamp(4px, 0.6vh, 5px); padding: 0 22px; opacity: .62 }
+nav a { display: flex; align-items: center; padding: clamp(5px, 0.7vh, 6px) 42px clamp(5px, 0.7vh, 6px) 22px; color: var(--nav-ink);
+  text-decoration: none; font-size: 13px; font-weight: 500; position: relative }
+nav a:hover { background: var(--nav-hover); color: var(--nav-ink) }
+nav a.activ, nav a.activ:hover { background: var(--nav-activ-bg); color: var(--nav-activ-ink); font-weight: 600;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%) }
+nav a .pdf { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 10px;
+  color: var(--nav-slab); opacity: .75 }
+nav a.activ .pdf { color: var(--marca); opacity: 1 }
+nav .picior { margin-top: auto; padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
+  border-top: 1px solid var(--nav-line); font-family: var(--mono); font-size: 9.5px; line-height: 1.6; color: var(--nav-footer-ink) }
+nav .picior .limba { margin-top: 8px }
+
+/* ---- conținut ---- */
+main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 60px }
+.cap { margin-bottom: 20px }
+h1 { font-family: var(--serif); font-size: 26px; margin: 0 0 5px; font-weight: 700 }
+.lede { color: var(--muted); font-size: 13.5px; max-width: 78ch; margin: 0 }
+section { background: var(--surface); border: 1px solid var(--line); border-radius: 13px; padding: 18px 20px; margin-bottom: 18px;
+  box-shadow: var(--umbra) }
+h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 600 }
+.mono { font-family: var(--mono); font-size: 12px }
+.note { color: var(--muted); font-size: 12px; line-height: 1.55; max-width: 80ch }
+.gri { color: var(--muted) }
+.sub { display: block; color: var(--muted); font-size: 10.5px; line-height: 1.35; font-weight: 400 }
+.callout { border: 1px solid var(--ok); border-left-width: 4px; border-radius: 9px; padding: 11px 14px; font-size: 12.5px; line-height: 1.6;
+  background: var(--ok-tint) }
+.callout.warn { border-color: var(--warn); background: var(--warn-tint) }
+
+/* pastila: Tag AntD cu forma veche (rotunjită, mono, mică) */
+.ant-tag.pill { border-radius: 999px; font-family: var(--mono); font-size: 10.5px; line-height: 1.5; padding: 0 7px; margin-inline-end: 4px }
+
+/* cifre-cheie sus */
+.kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-bottom: 18px }
+.kpi > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; box-shadow: var(--umbra) }
+.kpi .n { font-family: var(--mono); font-size: 26px; font-weight: 500; line-height: 1.1 }
+.kpi .e { font-weight: 600; font-size: 12.5px; margin-bottom: 4px }
+.kpi .l { color: var(--muted); font-size: 11.5px; margin-top: 4px }
+.kpi .l b { color: var(--ink) }
+.kpi a.kpi-link { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--accent); text-decoration: none }
+.kpi a.kpi-link:hover { text-decoration: underline }
+
+/* secțiuni pliabile: Collapse AntD fără chenar, titlul h2 ca în aplicația veche */
+.ant-collapse.pliat { margin-bottom: 18px }
+.ant-collapse.pliat > .ant-collapse-item > .ant-collapse-header { padding: 0 0 10px; align-items: baseline }
+.ant-collapse.pliat > .ant-collapse-item > .ant-collapse-header h2 { margin: 0 }
+.ant-collapse.pliat .ant-collapse-content-box { padding: 0 !important }
+.ant-collapse.despre { margin-top: 10px; font-size: 12px }
+.ant-collapse.despre > .ant-collapse-item > .ant-collapse-header { padding: 0; color: var(--accent); font-size: 12px }
+.ant-collapse.despre > .ant-collapse-item > .ant-collapse-header .ant-collapse-expand-icon { display: none }
+.ant-collapse.despre .ant-collapse-content-box { padding: 6px 0 0 !important }
+
+/* tabel: antetul mono, mic, majuscule; rândul Libra evidențiat și fixat */
+.ant-table-wrapper.t .ant-table-thead > tr > th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: .03em; font-weight: 500; vertical-align: top }
+.ant-table-wrapper.t td.num, .ant-table-wrapper.t th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono) }
+.ant-table-wrapper.t tr.libra > td { background: var(--accent-tint) }
+.ant-table-wrapper.t tr.libra > td:first-child { box-shadow: inset 4px 0 var(--accent) }
+.ant-table-wrapper.t .ant-table-tbody > tr > td { vertical-align: top }
+.cl-banca { display: flex; align-items: center; gap: 8px; min-width: 0 }
+.cl-banca img { max-height: 18px; max-width: 54px; object-fit: contain; flex: none }
+.cl-banca .nm { font-size: 12.5px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; hyphens: auto }
+.tag-libra { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .05em; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: 0 5px; margin-left: 6px; vertical-align: middle }
+a.fisa { color: inherit; text-decoration: none }
+a.fisa:hover .nm { text-decoration: underline }
+a.sursa { font-family: var(--mono); font-size: 10.5px; color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent) }
+a.sursa:hover { background: var(--accent-tint) }
+/* pagina băncii nu e documentul: altă culoare și linie mai slabă, ca să nu fie citită ca dovadă directă */
+a.sursa.pagina { color: var(--muted); border-bottom-style: dashed; border-bottom-color: var(--line) }
+
+/* matrice bancă × serviciu: celula = câte prețuri, intervalul, gratuite */
+.ant-table-wrapper.t td.mc { cursor: pointer; text-align: right; white-space: nowrap }
+.ant-table-wrapper.t td.mc:hover { outline: 1px solid var(--accent); outline-offset: -1px }
+td.mc b { font-family: var(--mono); font-size: 13.5px; font-weight: 500 }
+td.mc .g { display: block; color: var(--ok); font-size: 10.5px }
+.ant-table-wrapper.t td.gol { color: var(--muted); text-align: center }
+.cap-d { display: block; text-transform: none; letter-spacing: 0; font-family: "IBM Plex Sans", sans-serif; font-size: 10px;
+  line-height: 1.3; margin-top: 2px; opacity: .85; font-weight: 400; max-width: 22ch }
+
+/* bara de filtre rămâne sus la derulare (derulează <main>, nu documentul) */
+.bara-fixa { position: sticky; top: -26px; z-index: 8; background: var(--bg); margin: -6px -30px 14px; padding: 12px 30px 10px;
+  border-bottom: 1px solid var(--line) }
+.filtre { display: flex; flex-wrap: wrap; gap: 10px; align-items: end }
+label.f { display: flex; flex-direction: column; gap: 4px; font-size: 11.5px; color: var(--muted) }
+.ant-input-affix-wrapper.cauta, input.cauta { min-width: 230px }
+
+/* Rulări manuale */
+.rl-curenta { border: 1px solid var(--accent); border-radius: 10px; padding: 14px 16px; margin: 0 0 16px; background: var(--accent-tint) }
+.rl-cap { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; margin-bottom: 9px }
+.rl-bara { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 4px 0 5px }
+.rl-bara > i { display: block; height: 100%; background: var(--accent); transition: width .8s }
+.rl-bara.peste > i { background: var(--warn) }
+pre.rl-jurnal { font: 11.5px/1.5 var(--mono); max-height: 300px; overflow: auto; margin: 10px 0 0; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; white-space: pre-wrap; overflow-wrap: anywhere }
+table.t.rl { width: 100%; border-collapse: collapse; font-size: 13px }
+table.t.rl th, table.t.rl td { text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--line); vertical-align: middle }
+table.t.rl th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); font-weight: 500 }
+table.t.rl td:first-child { width: 44% }
+table.t.rl td.rl-n { white-space: nowrap }
+table.t.rl td.rl-u { min-width: 210px }
+table.t.rl .num { text-align: right }
+
+/* sertarul cu dovezi */
+.sertar-titlu { font-family: var(--serif); font-size: 17px }
+.s-rez { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 8px 0 10px; font-size: 12.5px }
+.s-rez b { font-family: var(--mono); font-size: 15px; font-weight: 500 }
+.s-rez span { color: var(--muted) }
+.s-bara { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-bottom: 14px }
+.ant-collapse.grupe { background: none; border: 0 }
+.ant-collapse.grupe > .ant-collapse-item { border: 1px solid var(--line); border-radius: 9px !important; margin-bottom: 8px; overflow: hidden }
+.ant-collapse.grupe > .ant-collapse-item > .ant-collapse-header { padding: 8px 11px; background: var(--bg) }
+.ant-collapse.grupe .ant-collapse-content { border-top: 0 }
+.ant-collapse.grupe .ant-collapse-content-box { padding: 0 !important }
+.g-cap { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: baseline }
+.g-cap .gn { font-size: 12.5px; font-weight: 600; overflow-wrap: anywhere }
+.g-cap .gi { font-family: var(--mono); font-size: 12px; white-space: nowrap }
+.g-cap .gc { font-family: var(--mono); font-size: 10.5px; color: var(--muted); white-space: nowrap }
+.r { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; padding: 6px 11px;
+  border-top: 1px solid var(--line); font-size: 12px; cursor: pointer }
+.r:hover { background: var(--accent-tint) }
+.r .rv { font-family: var(--mono); font-size: 13px; font-weight: 500; text-align: right; white-space: nowrap }
+.r .rc { min-width: 0; color: var(--muted) }
+.r .rc b { color: var(--ink); font-weight: 500 }
+.r .rs { white-space: nowrap }
+.r .rx { display: none; grid-column: 2 / -1 }
+.r.des .rx { display: block }
+.r .rx .cit { color: var(--muted); font-size: 11px; line-height: 1.5; border-left: 2px solid var(--line); padding-left: 7px }
+.r .rx .cit.fara { border-left-style: dotted; font-style: italic }
+.r .rx .cit mark { background: var(--warn-tint); color: var(--ink); font-weight: 600; padding: 0 2px; border-radius: 2px }
+.r .rx .meta { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 5px }
+.r .ind { font-size: 10px; color: var(--accent); margin-left: 6px }
+
+@media (max-width: 900px) {
+  .aplicatie { flex-direction: column; height: auto }
+  nav { width: auto; height: auto }
+  main { height: auto }
+}

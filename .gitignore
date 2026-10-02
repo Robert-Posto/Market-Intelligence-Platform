@@ -38,3 +38,7 @@ date/robots/*_20??-??-??T*
 loguri/origini/
 # rulările manuale din Overview (app/rulari.py): jurnale, istoric, rularea curentă
 loguri/rulari/
+
+# interfața React (web/, shared/): dependențele și build-ul nu se versionează
+node_modules/
+web/dist/
