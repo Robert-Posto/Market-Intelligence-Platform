@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test iframe ATC</title>
+<style>
+  :root { --fundal: #f6f6f4; --card: #ffffff; --text: #1d1d1b; --slab: #6b6b66; --linie: #deded9; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fundal: #1b1b1a; --card: #262624; --text: #ececea; --slab: #a3a39e; --linie: #3a3a37; }
+  }
+  body { margin: 0; padding: 16px; background: var(--fundal); color: var(--text); font: 15px/1.5 system-ui, sans-serif; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p { margin: 0 0 16px; color: var(--slab); max-width: 70ch; }
+  .grila { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  figure { margin: 0; background: var(--card); border: 1px solid var(--linie); border-radius: 8px; overflow: hidden; }
+  iframe { display: block; width: 100%; height: 560px; border: 0; background: #fff; }
+  figcaption { padding: 8px 12px; font-size: 14px; border-top: 1px solid var(--linie); }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<h1>Test: se pot încadra paginile Ads Transparency Center?</h1>
+<p>Trei reclame BCR din fotografia din 29.09, câte una din fiecare format. Dacă în casete apar reclamele, încadrarea merge. Dacă scrie „refused to connect” sau „a refuzat conexiunea”, ori caseta rămâne goală, Google o blochează. Linkul de sub fiecare casetă deschide aceeași reclamă normal, pentru comparație.</p>
+<div class="grila">
+  <figure>
+    <iframe src="https://adstransparency.google.com/advertiser/AR01664430875242135553/creative/CR15290871863467573249?region=RO" loading="lazy"></iframe>
+    <figcaption>BCR · text · 04.09 → 28.09 · <a href="https://adstransparency.google.com/advertiser/AR01664430875242135553/creative/CR15290871863467573249?region=RO" target="_blank" rel="noopener">deschide normal</a></figcaption>
+  </figure>
+  <figure>
+    <iframe src="https://adstransparency.google.com/advertiser/AR01664430875242135553/creative/CR05490035323272429569?region=RO" loading="lazy"></iframe>
+    <figcaption>BCR · imagine · 19.09 → 28.09 · <a href="https://adstransparency.google.com/advertiser/AR01664430875242135553/creative/CR05490035323272429569?region=RO" target="_blank" rel="noopener">deschide normal</a></figcaption>
+  </figure>
+  <figure>
+    <iframe src="https://adstransparency.google.com/advertiser/AR01664430875242135553/creative/CR16911642265842089985?region=RO" loading="lazy"></iframe>
+    <figcaption>BCR · video · 28.09 · <a href="https://adstransparency.google.com/advertiser/AR01664430875242135553/creative/CR16911642265842089985?region=RO" target="_blank" rel="noopener">deschide normal</a></figcaption>
+  </figure>
+</div>
+</body>
+</html>
