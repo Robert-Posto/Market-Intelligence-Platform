@@ -1,26 +1,25 @@
 # Market Intelligence Platform
 
-Monitorizarea concurenței bancare din România: date publice de la 30 de bănci
-(comisioane, dobânzi, aplicații, recenzii, indici BNR), normalizate într-un
-vocabular comun și comparate într-o aplicație read-only. Prototip în lucru.
+Monitorizarea concurenței bancare din România: date publice de la 30 de bănci (comisioane, dobânzi,
+aplicații, recenzii, indici BNR), normalizate într-un vocabular comun și comparate într-o aplicație
+read-only. Prototip în lucru.
 
-Python 3.12 · PostgreSQL 16 (Docker, containerul `mip-db`) · SPA în JS simplu,
-fără framework · Playwright + pdfplumber · dezvoltat pe Windows.
+Python 3.12 (colectare, API) · PostgreSQL 16 (Docker, containerul `mip-db`) · interfața în React
+(`web/`, stack-ul SCC) · Playwright + pdfplumber · Windows.
 
 ## Citește înainte, după zonă
 
 - `README.md`: starea curentă, problemele cunoscute, ce e mock
 - `PIPELINE.md`: drumul datelor de la sursă la `observations`
-- `docs/crawler/CITESTE_PENTRU_MERGE.md`: câmpurile din `date/pachet/*.json`
-  (`stare_data`, `ambiguu`, `rol`)
-- Restul `docs/crawler/*.md` și `docs/bs4/*.md` sunt jurnale datate, nu
-  instrucțiuni.
+- `docs/crawler/CITESTE_PENTRU_MERGE.md`: câmpurile din `date/pachet/*.json` (`stare_data`, `ambiguu`, `rol`)
+- Restul `docs/crawler/*.md` și `docs/bs4/*.md` sunt jurnale datate, nu instrucțiuni.
 
 ## Comenzi
 
 ```bash
 pip install -r requirements.txt && playwright install chromium
 python app/server.py                      # http://localhost:8765
+npm install && npm run dev                # interfața, http://localhost:5173
 python ingest/populare_initiala.py [--banca <slug>] [--fara-llm]
 docker exec -i mip-db psql -U mip -d mip < db/<fisier>.sql
 ```
@@ -29,90 +28,92 @@ Verificări, după zona atinsă:
 
 | ai modificat | rulează | trebuie să vezi |
 |---|---|---|
+| `web/`, `shared/` | `npm run typecheck && npm run build`; pagina deschisă în RO și EN | 0 erori, consola curată |
 | `app/` | `python app/verifica_pagini.py` (cu serverul pornit); `python app/test_rulari.py` la rulări | toate paginile randate; OK |
 | `crawler/` | `python scripts/test_validare.py` și `python scripts/test_robots_matcher.py` | 0 eșuate |
 | `ingest/` | numără ce produce extractorul, înainte să scrii în bază | cifrele din README |
 | `ingest/scraper.py`, `robots_matcher.py` | `python ingest/test_robots_matcher.py`, `test_known_block.py`, `test_crawl_bfs.py` | OK |
 | `db/` | `db/sincronizeaza_vederi.sql` după migrare, apoi reîncarcă o pagină din aplicație | fără 500 |
 
-Rulează totul din rădăcina repo-ului: unele scripturi folosesc căi relative
-(`output/...`).
+Rulează totul din rădăcina repo-ului: unele scripturi folosesc căi relative (`output/...`).
 
 ## Reguli
 
-**Conformitate.** Doar date publice. Se respectă `robots.txt` pe fiecare
-origine, inclusiv CDN-ul de documente. Crawler-ul se identifică cu nume și
-contact, cu ecusonul din `crawler/__init__.py` (un singur loc); nu imită un
-browser real și nu se ascunde ca robot anonim.
-IMPORTANT: nu se
-ocolesc WAF, captcha sau un `Disallow`, nici „doar de test". O bancă blocată se
-documentează ca blocată. Autorii recenziilor se pseudonimizează cu `MIP_SALT`.
-Abatere asumată, nu o repara fără să întrebi: un `robots.txt` cu eroare 5xx
-sau timeout e tratat ca permis (vezi README, „Conformitate").
+**Conformitate.** Doar date publice. Se respectă `robots.txt` pe fiecare origine, inclusiv CDN-ul de
+documente. Crawler-ul se identifică cu nume și contact, cu ecusonul din `crawler/__init__.py` (un
+singur loc); nu imită un browser real și nu se ascunde ca robot anonim. IMPORTANT: nu se ocolesc WAF,
+captcha sau un `Disallow`, nici „doar de test". O bancă blocată se documentează ca blocată. Autorii
+recenziilor se pseudonimizează cu `MIP_SALT`. Abatere asumată, nu o repara fără să întrebi: un
+`robots.txt` cu eroare 5xx sau timeout e tratat ca permis (vezi README, „Conformitate").
 
 **Datele nu se aruncă și nu se ghicesc.**
-- O valoare peste pragurile din `normalizeaza.PRAGURI` se marchează
-  `ambiguu`, nu se șterge.
+- O valoare peste pragurile din `normalizeaza.PRAGURI` se marchează `ambiguu`, nu se șterge.
 - Un serviciu care nu se mapează rămâne `comision`; nu i se ghicește conceptul.
-- `ISTORIC` și `DUBLURA` **se încarcă**. Se filtrează doar la afișare, în
-  vederea `observatii_curente`. Asta contrazice intenționat
-  `CITESTE_PENTRU_MERGE.md`: filtrarea la încărcare a pierdut 18 schimbări de
-  preț reale.
-- Aplicațiile mobile ale grupului de pe altă piață (franceză, poloneză) nu se
-  încarcă: recenziile lor arată ca date bune și nu sunt.
+- `ISTORIC` și `DUBLURA` **se încarcă**. Se filtrează doar la afișare, în vederea `observatii_curente`.
+  Asta contrazice intenționat `CITESTE_PENTRU_MERGE.md`: filtrarea la încărcare a pierdut 18 schimbări
+  de preț reale.
+- Aplicațiile mobile ale grupului de pe altă piață (franceză, poloneză) nu se încarcă: recenziile lor
+  arată ca date bune și nu sunt.
 - Ce e mock (secțiunea 2.5) rămâne etichetat ca mock în interfață.
 
 **Un singur loc pentru fiecare regulă.**
 - Extractoarele produc înregistrări brute și nu știu de baza de date.
-- `ingest/normalizeaza.py` e singurul loc brut → rând în `observations`; pentru
-  `campanii` / `comunicate` e `ingest/normalizeaza_campanii.py`.
+- `ingest/normalizeaza.py` e singurul loc brut → rând în `observations`; pentru `campanii` /
+  `comunicate` e `ingest/normalizeaza_campanii.py`.
 - Vocabularul canonic e doar în `crawler/vocabular.py`.
-- Fiecare pas din `router.py` e idempotent: șterge doar ce a scris propria
-  proveniență.
+- Fiecare pas de încărcare e idempotent: șterge doar ce a scris propria proveniență.
 
-**Baza de date.** Migrare nouă = `db/migration_NNN_<nume>.sql`, următorul
-număr, adăugată în lista din README. După orice coloană nouă în
-`observations` rulezi `db/sincronizeaza_vederi.sql`: `SELECT *` din vedere
-îngheață lista de coloane, iar API-ul dă 500 deși tabela are coloana.
+**Baza de date.** Migrare nouă = `db/migration_NNN_<nume>.sql`, următorul număr, adăugată în lista din
+README. După orice coloană nouă în `observations` rulezi `db/sincronizeaza_vederi.sql`: `SELECT *` din
+vedere îngheață lista de coloane, iar API-ul dă 500 deși tabela are coloana.
 
-**Serverul e read-only.** Nicio rută nu scrie în bază. Interogările folosesc
-parametri (`%s`), nu text interpolat. `/pdf` servește doar URL-uri
-înregistrate în `surse`, altfel devine proxy deschis. Excepție: cu
-`MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
+**Serverul e read-only.** Nicio rută nu scrie în bază. Interogările folosesc parametri (`%s`), nu text
+interpolat. `/pdf` servește doar URL-uri înregistrate în `surse`, altfel devine proxy deschis.
+Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
 `app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
 
-**Frontend.** În textele românești din `<script>` se folosesc ghilimelele
-„…” sau ”, niciodată `"` ASCII în interiorul unui șir. O singură ghilimea
-greșită lasă pagina albă, iar serverul răspunde totuși 200.
+**Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice. Prioritatea e popularea inițială,
+nu automatizarea. Butoanele din Overview sunt deblocate deliberat (01.10.2026) doar ca rulări manuale
+(README, „Rulări manuale”).
 
-**Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice.
-Prioritatea e popularea inițială, nu automatizarea. Butoanele din Overview sunt
-deblocate deliberat (01.10.2026) doar ca rulări manuale (README, „Rulări manuale”).
+**Dependențe.** Orice pachet nou importat intră în `requirements.txt` (Python) sau `package.json`
+(`web/`) în același commit.
 
-**Dependențe.** Orice pachet nou importat intră în `requirements.txt` în
-același commit.
+**Date generate.** Ce citește `ingest/` stă în `date/`. Crawler-ul Playwright scrie în `output/` (în
+`.gitignore`), iar în bază ajunge doar ce e copiat explicit în `date/pachet/`. Scripturile BS4
+(`extract_deposits.py`, `itunes_lookup.py`) scriu direct în `date/`; verifică `git diff` înainte să
+încarci. `date/robots/` e dovadă de conformitate, păstrată byte cu byte: nu se editează.
 
-**Date generate.** Ce citește `ingest/` stă în `date/`. Crawler-ul Playwright
-scrie în `output/` (în `.gitignore`), iar în bază ajunge doar ce e copiat
-explicit în `date/pachet/`. Scripturile BS4 (`extract_deposits.py`,
-`itunes_lookup.py`) scriu direct în `date/`; verifică `git diff` înainte să
-încarci. `date/robots/` e dovadă de
-conformitate, păstrată byte cu byte: nu se editează.
+## Interfața (`web/`)
+
+React 18 + Vite 6 + Ant Design 5 (tema MIP în `web/src/theme.ts`), TanStack Query, rute cu
+`HashRouter`; datele vin de la `app/server.py`. `app/index.html` e interfața veche, păstrată până la
+livrare. Cum s-a făcut trecerea: `docs/HANDOFF_REACT.md`.
+
+**O pagină nouă:** ruta în `App.tsx` și intrarea în `pagini.ts`; textele `pagini.<id>.*` în
+`i18n/dict/`; schema Zod în `shared/src/<zonă>.ts`; cererea în `api/<zonă>.ts` (`useQuery` +
+`api(cale, Schema)`); pagina în `pages/`; stilurile în `styles/<zonă>.css`. Model: `pages/Produse.tsx`.
+- **Textele** trec toate prin `t` / `tn` / `<T>`, ca perechi `[română, engleză]` în `i18n/dict/`;
+  niciun text scris direct în componentă. Datele băncilor (servicii, citate, recenzii, titluri) nu se
+  traduc. Textele românești trimise de server trec prin `deLaServer`. Un concept nou din vocabular
+  cere `camp.<slug>.eticheta`.
+- **Refolosește, nu rescrie:** `Tabel` (Libra prima, golurile jos), `Sertar` și `Dovezi` (orice PDF
+  prin `linkDocument`), `Despre`, `Pill`, `Banda`, `Paginare`; numerele și datele prin `num` / `formatZi`.
+- **Filtrele stau în adresă** (`useSearchParams`), ca o vedere să se poată trimite.
+- Fără CDN; un pachet din afara stack-ului SCC se adaugă doar după ce întrebi.
+- În `app/`, textele românești din `<script>` folosesc „…” sau ”, niciodată `"` ASCII: o ghilimea
+  greșită lasă pagina albă, iar serverul răspunde totuși 200.
 
 ## Stil
 
-- Identificatori în română, fără diacritice. Textele pentru utilizator și
-  documentația sunt cu diacritice.
-- Un comentariu spune **de ce**, de regulă cu cifra măsurată care a motivat
-  decizia („BCR avea 2.559 de adrese în sitemap și ne uitam la 32"). Nu
-  descrie ce face codul.
+- Identificatori în română, fără diacritice. Textele pentru utilizator și documentația sunt cu diacritice.
+- Un comentariu spune **de ce**, de regulă cu cifra măsurată care a motivat decizia („BCR avea 2.559 de
+  adrese în sitemap și ne uitam la 32"). Nu descrie ce face codul.
 - O cifră din documentație e măsurată și datată, nu estimată.
-- Pe Windows, consola e cp1252: scripturile care afișează diacritice
-  reconfigurează `stdout` pe UTF-8.
-- Commit-uri în română, cu subiect scurt de forma „zonă: ce și de ce”. Fără
-  linii `Co-Authored-By`.
+- Pe Windows, consola e cp1252: scripturile care afișează diacritice reconfigurează `stdout` pe UTF-8.
+- Commit-uri în română, cu subiect scurt de forma „zonă: ce și de ce”. Fără linii `Co-Authored-By`.
 
 ## Întreținere
 
-Când Claude greșește ceva ce o regulă ar fi prevenit, adaugă regula aici.
-Șterge o regulă care nu mai previne nimic. Țintă: sub 120 de linii.
+Când Claude greșește ceva ce o regulă ar fi prevenit, adaugă regula aici. Șterge o regulă care nu mai
+previne nimic. Țintă: sub 120 de linii.
