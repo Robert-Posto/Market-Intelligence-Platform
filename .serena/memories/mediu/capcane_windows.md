@@ -9,4 +9,4 @@
 - Node.js e în `C:\Program Files\nodejs` (poate lipsi din PATH-ul Git Bash: `export PATH="/c/Program Files/nodejs:$PATH"`); npm 11 blochează scripturile de instalare: esbuild merge fără ele, nu le aproba.
 - Hook-urile de securitate ale utilizatorului (dacă există, în `~/.claude/hooks`) blochează citirea `.env`, a cheilor și comenzile distructive; nu le ocoli, spune-i utilizatorului.
 - În spatele unui proxy de firmă, `curl` din Git Bash poate eșua acolo unde Python `requests` trece; unele domenii pot fi blocate de rețea.
-- Serena rulează pe un Python 3.11 separat, instalat cu `uv tool` (pe 3.14, `pyyaml` nu are wheel și compilarea cere Visual C++).
+- Serena rulează pe un Python 3.11 separat, instalat cu `uv tool` (pe 3.14, `pyyaml` nu are wheel și compilarea cere Visual C++). Configurația e în repo (`.mcp.json`, `.claude/`); instalarea, o dată pe mașină: README, „Serena”.
