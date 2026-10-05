@@ -1,0 +1,34 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "if command -v serena-hooks >/dev/null 2>&1; then serena-hooks activate --client claude-code; fi", "timeout": 15 }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__serena__.*",
+        "hooks": [
+          { "type": "command", "command": "serena-hooks auto-approve --client claude-code", "timeout": 10 }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/serena_memento.py\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          { "type": "command", "command": "if command -v serena-hooks >/dev/null 2>&1; then serena-hooks cleanup --client claude-code; fi", "timeout": 15 }
+        ]
+      }
+    ]
+  }
+}

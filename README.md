@@ -277,6 +277,24 @@ pe cheie (1.137 la 02.10.2026, plus cele adăugate la mutarea paginilor). Datele
 nu se traduc: sunt dovezi. Rulările manuale nu se pot porni din `npm run dev`:
 serverul refuză cererile de pe alt port, iar verificarea nu se slăbește.
 
+### Serena (opțional, pentru Claude Code)
+
+Serena îi dă lui Claude navigare pe simboluri prin cod și o hartă comună a proiectului
+(`.serena/memories/`). Configurarea e în repo (`.mcp.json`, `.claude/`), deci după `git pull` mai
+trebuie doar instalat programul, o singură dată pe mașină:
+
+```bash
+winget install astral-sh.uv
+uv tool install --python 3.11 git+https://github.com/oraios/serena@a8e30ff531a0092ece01c3a2bb9bb2833c7aa41a
+uv tool update-shell        # pune ~/.local/bin în PATH; repornește VS Code după
+```
+
+Python 3.11, nu 3.14: Serena fixează `pyyaml` 6.0.2, care n-are pachet gata compilat pentru 3.14.
+`uv` aduce singur 3.11, separat de Python-ul proiectului. La prima deschidere a proiectului,
+Claude Code întreabă dacă aprobă serverul `serena` din `.mcp.json`: răspunde da. De acolo pornește
+singur, iar după un commit care schimbă structura codului îți amintește să actualizezi memoriile
+(`/actualizeaza-memoria`). Fără Serena instalată, proiectul merge normal, doar fără aceste unelte.
+
 ---
 
 ## Probleme cunoscute

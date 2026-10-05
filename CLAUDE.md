@@ -13,6 +13,8 @@ Python 3.12 (colectare, API) · PostgreSQL 16 (Docker, containerul `mip-db`) · 
 - `PIPELINE.md`: drumul datelor de la sursă la `observations`
 - `docs/crawler/CITESTE_PENTRU_MERGE.md`: câmpurile din `date/pachet/*.json` (`stare_data`, `ambiguu`, `rol`)
 - Restul `docs/crawler/*.md` și `docs/bs4/*.md` sunt jurnale datate, nu instrucțiuni.
+- `.serena/memories/`: harta codului pentru Serena (pornește de la `mem:core`); după un commit care schimbă
+  structura, actualizează-le cu `/actualizeaza-memoria`. Instalarea: README, „Serena”.
 
 ## Comenzi
 
