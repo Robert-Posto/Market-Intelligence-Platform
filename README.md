@@ -1,4 +1,4 @@
-# Market Intelligence Platform
+# Market Command Center
 
 Monitorizare a concurenței bancare din România: colectăm date publice de la 30
 de bănci și fintech-uri, le normalizăm într-un vocabular comun și le comparăm.
