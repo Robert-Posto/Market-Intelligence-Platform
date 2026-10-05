@@ -1,1 +1,46 @@
 /* Stilurile paginilor mutate de agentul „rate_mobil”; global.css rămâne pentru ce e comun. */
+
+/* stare goală: 2.2 fără valori pe filtru, 2.3 Android necolectat */
+.gol-stare { border: 1px dashed var(--line); border-radius: 11px; padding: 22px; text-align: center; color: var(--muted); font-size: 13px }
+.gol-stare b { color: var(--ink); display: block; margin-bottom: 5px; font-size: 14px }
+
+/* ---- 2.2 Rate & indicatori ---- */
+.rt-reper { margin-left: auto; text-align: right }
+/* cea mai bună valoare pe coloană: steluța aurie în fața cifrei și eticheta plină dedesubt */
+.ant-table-wrapper.t td.mc.best b { font-weight: 700; color: var(--ink) }
+.ant-table-wrapper.t td.mc.best b::before { content: "★ "; color: var(--aur); font-size: .9em }
+.rt-best { display: block; width: max-content; margin: 4px 0 0 auto; padding: 1px 7px; border-radius: 999px; background: var(--accent);
+  color: var(--on-accent); font: 600 9px "IBM Plex Sans", sans-serif; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap }
+/* termenul și oferta sub cifră: se rup pe rânduri, aliniate la dreapta ca cifra */
+td.mc .sub.ctx { white-space: normal; max-width: 24ch; margin-left: auto }
+
+/* rânduri clicabile (2.2 tabelul plat, 2.3 aplicațiile) și banca aleasă în 2.3 */
+.ant-table-wrapper.t tr.clic > td { cursor: pointer }
+.ant-table-wrapper.t .ant-table-tbody > tr.ant-table-row.ales > td { background: var(--warn-tint) }
+
+/* ---- 2.3 Aplicații & recenzii ---- */
+.mb-comutator { margin-bottom: 16px }
+.mb-nowrap { white-space: nowrap }
+/* multe coloane fac numele băncii să se rupă pe 2-3 rânduri */
+.apl-tabel .ant-table-wrapper.t td:first-child .cl-banca { min-width: 190px }
+.ant-collapse.despre.mb-nou { margin: 0 }
+.mb-nou-txt { white-space: pre-line; max-width: 60ch; margin: 0 0 6px }
+.mb-h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-family: var(--mono);
+  font-weight: 500; margin: 18px 0 8px }
+.mb-bara-titlu { font-family: var(--serif); font-size: 16px; margin-right: 6px }
+
+/* recenziile */
+.rec { border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; margin-bottom: 9px }
+.rec-cap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px }
+.rec-cap .nm { white-space: nowrap }
+.rec-cap .rec-data { font-size: 10.5px; margin-left: auto }
+.rec-stele { font-size: 13px; letter-spacing: 1px }
+.rec-stele.bun { color: var(--ok) }
+.rec-stele.rau { color: var(--warn) }
+.rec-txt { font-size: 12.5px; line-height: 1.6 }
+.rec-txt.rec-raspuns { margin-top: 7px; padding: 7px 10px; border-left: 3px solid var(--accent); background: var(--accent-tint);
+  border-radius: 0 7px 7px 0; font-size: 12px }
+
+/* capturile din App Store, în sertar */
+.mb-capturi { display: flex; flex-wrap: wrap; gap: 10px }
+.mb-capturi img { display: block; height: 300px; border-radius: 9px; border: 1px solid var(--line) }

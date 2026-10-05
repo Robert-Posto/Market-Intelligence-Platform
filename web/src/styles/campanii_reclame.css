@@ -1,1 +1,19 @@
-/* Stilurile paginilor mutate de agentul „campanii_reclame”; global.css rămâne pentru ce e comun. */
+/* Stilurile paginilor mutate de agentul „campanii_reclame”; global.css rămâne pentru ce e comun.
+   2.4 Reclame Google și Reclame Bing. */
+
+/* filtrele din bara fixă, cât mai aproape de mărimea din aplicația veche (185 px), ca șase filtre
+   Google să încapă pe un rând la 1440 px; puțin mai late, ca „the whole year in the dataset” să se vadă */
+.cm-bara .ant-select.rc-sel { min-width: 110px; max-width: 215px }
+.cm-bara .ant-input-affix-wrapper.rc-cauta { min-width: 0; width: 190px }
+/* bifele stau pe linia câmpurilor, nu a etichetelor de deasupra lor */
+.cm-bara .ant-checkbox-wrapper.rc-bifa { align-self: end; padding-bottom: 5px; font-size: 12.5px; color: var(--ink); margin-inline-start: 0 }
+.cm-bara .rc-n { color: var(--muted); font-size: 12px; margin-left: auto; align-self: center }
+
+/* celulele care nu se rup (dată, interval de afișări, sursa), ca în tabelele vechi */
+.cm-sec .ant-table-wrapper.t td.nw { white-space: nowrap }
+.cm-sec .rc-mic { color: var(--muted); font-size: 11px; margin-top: 2px }
+.cm-sec .rc-text { color: var(--muted); font-size: 11.5px; margin-top: 2px; max-width: 60ch }
+.cm-sec .rc-adv { color: var(--muted); font-size: 11px; margin-top: 2px; display: inline-block }
+
+/* „Pe bănci”: clic pe rând = filtrul pe bancă */
+.cm-sec .ant-table-wrapper.t tr.rc-clic > td { cursor: pointer }

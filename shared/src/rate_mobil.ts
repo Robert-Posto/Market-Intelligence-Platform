@@ -84,3 +84,63 @@ export const Mobil = z
   })
   .passthrough()
 export type Mobil = z.infer<typeof Mobil>
+
+/**
+ * /api/indici: indicii BNR (ROBOR, ROBID, IRCC). 2.2 arată doar reperul (ROBOR 3M
+ * din ultima zi, IRCC în vigoare); pagina lor e 2.6. `valoare` vine din coloana
+ * `numeric` a bazei, deci ca text („5.6400”).
+ */
+export const Indici = z.array(
+  z
+    .object({
+      indice: z.string(),
+      scadenta: z.string().nullable(),
+      valoare: z.union([z.string(), z.number()]).nullable(),
+      valabil_din: z.string().nullable(),
+      valabil_pana: z.string().nullable(),
+      sursa: z.string().nullable(),
+    })
+    .passthrough(),
+)
+export type Indici = z.infer<typeof Indici>
+
+/**
+ * /api/sentiment: recenziile din App Store, filtrabile pe bancă, notă și magazin.
+ * `sumar` și `storefronts` rămân pe toate băncile (serverul nu le filtrează), ca
+ * să se vadă cu ce se compară banca aleasă; `recente` și `total_filtrat` urmează filtrul.
+ */
+export const Sentiment = z
+  .object({
+    sumar: z.array(
+      z
+        .object({
+          banca: z.string(),
+          nume: z.string(),
+          review_uri: z.number(),
+          medie_text: z.number().nullable(),
+          medie_store: z.number().nullable(),
+          volum_store: z.number().nullable(),
+          negative: z.number(),
+        })
+        .passthrough(),
+    ),
+    storefronts: z.array(z.object({ storefront: z.string().nullable(), n: z.number() }).passthrough()),
+    total_filtrat: z.number(),
+    recente: z.array(
+      z
+        .object({
+          banca: z.string(),
+          banca_nume: z.string().nullable(),
+          rating: z.number().nullable(),
+          storefront: z.string().nullable(),
+          versiune: z.string().nullable(),
+          text: z.string().nullable(),
+          autor: z.string().nullable(),
+          postat_la: z.string().nullable(),
+          raspuns_banca: z.string().nullable(),
+        })
+        .passthrough(),
+    ),
+  })
+  .passthrough()
+export type Sentiment = z.infer<typeof Sentiment>
