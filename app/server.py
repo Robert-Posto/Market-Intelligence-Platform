@@ -294,6 +294,55 @@ def mobil():
     }
 
 
+def android(q):
+    """Aplicațiile Android ale băncilor (migrarea 027, `ingest/load_android.py`): analiza
+    statică a APK-urilor din pachetul lui Nicolae. Cu `?package=…` întoarce doar
+    bibliotecile acelei aplicații (3.644 de rânduri în total, prea multe pentru sumar)."""
+    if q.get("package"):
+        return interoghează(
+            """SELECT version_name, biblioteca, versiune FROM android_biblioteci
+               WHERE package = %s ORDER BY version_name DESC, biblioteca""",
+            (q["package"][0],))
+    return {
+        "aplicatii": interoghează(
+            """SELECT b.slug AS banca, a.package, a.aplicatie, a.rol, a.versiune_analizata,
+                      a.versiune_cea_mai_noua, a.framework, a.platforma_tehnica, a.captura,
+                      a.min_sdk, a.target_sdk, a.nr_permisiuni, a.nr_texte_in_apk,
+                      v.nr_trackere, v.nr_biblioteci, v.nr_librarii_native, v.data_extragere,
+                      (SELECT count(*)::int FROM android_versiuni x WHERE x.package = a.package) AS nr_versiuni,
+                      a.provenienta
+               FROM android_aplicatii a
+               JOIN banci b ON b.id = a.id_banca
+               LEFT JOIN android_versiuni v ON v.package = a.package
+                                           AND v.version_name = a.versiune_cea_mai_noua
+               ORDER BY (b.slug <> 'libra'), b.slug, (a.rol <> 'principal'), a.aplicatie"""),
+        "versiuni": interoghează(
+            """SELECT package, version_name, version_code, min_sdk, target_sdk, framework,
+                      nr_permisiuni, nr_trackere, nr_biblioteci, nr_librarii_native, data_extragere
+               FROM android_versiuni ORDER BY package, version_code"""),
+        "functionalitati": interoghează(
+            """SELECT package, functie, titlu, verdict, surse, dovada_text
+               FROM android_functionalitati ORDER BY functie, package"""),
+        "trackere": interoghează(
+            """SELECT package, version_name, tracker, categorii, dovada
+               FROM android_trackere ORDER BY package, tracker"""),
+        "permisiuni": interoghează(
+            """SELECT package, version_name, permisiune
+               FROM android_permisiuni ORDER BY package, permisiune"""),
+        "portofele": interoghează("SELECT * FROM android_portofele ORDER BY package"),
+        "profil_tehnic": interoghează(
+            "SELECT package, tip, valoare FROM android_profil_tehnic ORDER BY package, tip, valoare"),
+        "schimbari": interoghează(
+            """SELECT package, de_la, la, camp, adaugat, eliminat
+               FROM android_schimbari_versiuni ORDER BY package, camp"""),
+        "texte_ecran": interoghează(
+            """SELECT package, sursa, data, pas, text FROM android_texte_ecran
+               ORDER BY package, sursa, pas, id"""),
+        "note": interoghează("SELECT package, nota FROM android_note ORDER BY package, id"),
+        "incarcat_la": interoghează("SELECT max(incarcat_la) AS la FROM android_aplicatii")[0]["la"],
+    }
+
+
 def indici():
     return interoghează(
         """SELECT indice, scadenta, valoare, valabil_din, valabil_pana, sursa
@@ -1614,6 +1663,7 @@ RUTE = {
     "/api/observatii": observatii,
     "/api/surse": surse,
     "/api/mobil": lambda q: mobil(),
+    "/api/android": android,
     "/api/indici": lambda q: indici(),
     "/api/coada": coada,
     "/api/locatii": locatii,

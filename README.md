@@ -79,6 +79,7 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 024 | sursele cu nota `ROBOTS:` care figurau `activ` trec pe `blocat` (ING 48, Patria 16, BRD 1) |
 | 025 | completează `observatii_din_campanii`: se ascund și programul de loialitate eMAG Raiffeisen (`program-loialitate`, 76 de valori) și paginile TBI `landing-pages/lcp-*` (finanțări la comercianți parteneri, 29); doar vederea, `CREATE OR REPLACE` |
 | 026 | aplicații iOS: `app_release.descriere` (textul din magazin) și `vazut_ultima` pe `app_release`/`app_screenshot`; `load_mobil.py` face upsert în loc de `DELETE`, deci versiunile și capturile vechi rămân; starea de acum în vederile `app_release_curente` și `app_screenshot_curente` |
+| 027 | aplicațiile Android ale băncilor (analiza statică a APK-urilor, pachetul lui Nicolae din 05.10.2026): tabelele `android_*` (aplicații, versiuni, permisiuni, trackere, biblioteci, funcționalități, portofele, profil tehnic, schimbări între versiuni, texte de ecran, note), cu `provenienta` pe fiecare rând; se încarcă cu `python ingest/load_android.py <folderul pachetului>` (verifică sha256 din MANIFEST.csv); capturile și reconstrucțiile din pachet nu se încarcă |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
