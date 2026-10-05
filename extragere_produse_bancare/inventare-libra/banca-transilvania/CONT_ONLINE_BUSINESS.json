@@ -1,0 +1,55 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/cont-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Online de Business (BT Go)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane juridice/PFA, deschis și gestionat 100% online prin BT Go, cu abonament de cont curent și card de business inclus — potrivire directă cu Cont Online Business Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu cifre concrete despre comisioane POS/e-commerce, SMS incluse și durata ofertei.",
+      "citat": "Comision de procesare BT POS APP 0,9% 0,7% +0,1 lei - Comision de procesare POS 0,9% 0,7% - Comision de procesare E-commerce 1.00% 0,9%",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent Nelimitat (persoane juridice) / Cont Online Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane juridice conține exact structura de abonamente de cont curent (Nelimitat, Nelimitat&10, Nelimitat&25, Nelimitat All Inclusive) și comisioanele cardului de debit business Visa Business Silver folosite de Cont Online Business.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife, actualizat lunar, cu tabelul complet al pachetelor de cont curent pentru firme și al cardurilor business, cu sume exacte.",
+      "citat": "Nelimitat în rețeaua BT 29 lei / lună, Nelimitat & 10 46 lei / lună, Nelimitat & 25 76 lei / lună, Nelimitat All Inclusive 129 lei / lună",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/cont-online",
+    "https://intreb.bancatransilvania.ro/cat-ma-costa-sa-deschid-un-cont-la-banca-pentru-firma-mea/",
+    "https://www.bancatransilvania.ro/taxe-si-comisioane",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 12,
+    "iesire": 2245,
+    "citire_cache": 219162,
+    "scriere_cache": 142218,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4218514
+  }
+}

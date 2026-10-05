@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CONT_DEZVOLTATOR",
+  "denumire": "Contul Dezvoltatorului",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Raiffeisen nu are un produs dedicat tip \"Cont Dezvoltator\" conform Legii 207/2025. Pagina corporatii/produse-si-servicii-de-cont.html menționează doar generic, pentru orice companie, posibilitatea de a deschide \"conturi colectoare... conturi de garanții, conturi Escrow și conturi de consemnațiuni\", fără nicio referire la Legea 207/2025 sau la proiecte imobiliare rezidențiale / protecția avansurilor clienților. Separat, banca are produse de FINANȚARE (credite) pentru dezvoltatori imobiliari (pagina \"Finanțarea proiectelor imobiliare\" și \"Sectorul imobiliar\"), dar acestea sunt credite, nu conturi de încasare-plată a avansurilor, deci nu corespund produsului Libra care este un cont bancar reglementat, nu un credit. Conform regulii, un produs general (conturi escrow/colectoare generice) nu poate înlocui un produs dedicat unei legi/segment specific (dezvoltatori imobiliari sub Legea 207/2025)."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/produse-si-servicii-de-cont.html",
+    "https://www.raiffeisen.ro/ro/corporatii/expertiza/expertiza-sectoriala/sectorul-imobliar.html",
+    "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/solutii-de-finantare/finantarea-proiectelor-imobiliare.html"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3206,
+    "citire_cache": 61721,
+    "scriere_cache": 41954,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1493052
+  }
+}

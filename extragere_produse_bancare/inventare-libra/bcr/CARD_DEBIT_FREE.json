@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/cardul-george-standard",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul George Standard",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit pentru persoane fizice, fără comision de emitere/administrare pe cardul principal și cu program de cashback (George Moneyback), echivalent segmentului persoane fizice al produsului Libra Card de debit Free.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit cifrele comisioanelor (0 lei emitere/administrare, 15 lei livrare) și descrie cashback-ul George Moneyback.",
+      "citat": "ZERO Comision pentru emitere și administrare lunară card principal și acces la două carduri suplimentare George Standard gratuite. Taxa de livrare card prin curier în Romania este de 15 Lei, iar codul PIN îl primiți prin SMS.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/cardul-george-standard#:~:text=ZERO%20Comision%20pentru%20emitere%20%C8%99i,PIN%20%C3%AEl%20primi%C8%9Bi%20prin%20SMS."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-ron",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit BCR Mastercard Business în RON",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit pentru persoane juridice, disponibil gratuit doar în cadrul unui pachet de cont (nu necondiționat ca la Libra) și cu 0% comision doar pentru plățile la comercianți/internet; celelalte operațiuni urmează tarifele standard BCR pentru persoane juridice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifrele relevante (0% comision la plăți, card gratuit în pachet) pentru segmentul persoane juridice.",
+      "citat": "Poți beneficia gratuit de card în cadrul unui pachet de cont. 0% comision pentru plățile la comercianți și pe internet; plătești contactless, rapid și ușor la terminalele acceptante.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit",
+    "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/cardul-george-standard",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business"
+  ],
+  "durata_s": 422,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2224,
+    "citire_cache": 64087,
+    "scriere_cache": 44351,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1459509
+  }
+}

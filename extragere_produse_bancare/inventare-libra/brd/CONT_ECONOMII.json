@@ -1,0 +1,89 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/en/your-personal-account/savings-and-investments/saving-accounts/yousave",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "YOU Save",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul de economii pentru persoane fizice la BRD, cu acces oricând la bani și dobândă unică, dar dobânda este fixă/unică (2,50%), fără treptele 2,00%/2,50%/3,00% în funcție de vechimea sumelor ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit procentul de dobândă anual și condițiile de acces.",
+      "citat": "Open a YOU Save savings account directly from YOU BRD or any BRD branch, with no fees and an annual interest rate of 2.5%.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/dobanzi-pf.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "YOU Save",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ghidul de dobânzi standard pentru persoane fizice arată dobânda unică de 2,50% pentru YOU Save, fără diferențiere pe intervale de timp ca la produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de dobânzi, în vigoare din 21.09.2026, care listează explicit procentul și sumele minime/maxime pentru contul de economii YOU Save.",
+      "citat": "YOU Save Cont de economii pentru clientii >= 18 ani 2.50% 2.50% Suma minima/ maxima in cont 0 0",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (19 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/economisire-si-investitii/you-save-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "YOU SAVE BUSINESS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echivalentul pentru persoane juridice/PFA al contului de economii, cu acces oricând la sume, dar cu dobândă fixă unică (2,00% pe pagina de produs, respectiv 1,50% capitalizare lunară în ghidul de dobânzi), nu progresivă pe intervale de 3-6/6-12 luni ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului menționează explicit denumirea, segmentul (PFA/companii) și procentul de dobândă anual.",
+      "citat": "Deschide un cont de economii YOU SAVE BUSINESS în orice agenție BRD, fără comision și cu o dobândă de 2,00% pe an.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Depozitul-la-termen_companii_mici_RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "YOU SAVE BUSINESS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de dobânzi pentru companii mici (persoane juridice) care listează explicit rata fixă de 1,50% cu capitalizare lunară pentru contul YOU SAVE BUSINESS, diferită de structura pe trepte a Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document general de dobânzi pentru depozite, dar include o secțiune dedicată cu valoarea exactă a dobânzii pentru contul de economii YOU SAVE BUSINESS pentru persoane juridice.",
+      "citat": "Cont de economii YOU SAVE BUSINESS* Persoane Juridice RON Capitalizare lunara 1,50%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (12 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/en/your-personal-account/savings-and-investments/saving-accounts/yousave",
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/economisire-si-investitii/you-save-business",
+    "https://www.brd.ro/persoane-fizice/economisire-si-investitii/conturi-de-economii/yousave",
+    "https://www.brd.ro/_files/pdf/dobanzi-pf.pdf",
+    "https://www.brd.ro/_files/pdf/Depozitul-la-termen_companii_mici_RO.pdf"
+  ],
+  "durata_s": 73,
+  "consum": {
+    "intrare": 10,
+    "iesire": 6593,
+    "citire_cache": 115341,
+    "scriere_cache": 74862,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2761732
+  }
+}

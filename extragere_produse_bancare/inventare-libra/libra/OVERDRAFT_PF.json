@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credit-overdraft",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Overdraft Libra (Credit Overdraft - overdraft prin card de debit)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact produsului de descoperit de cont pentru persoane fizice, cu aceleași caracteristici: până la 6 salarii nete, plafon 70.000 lei, dobândă doar pe suma utilizată.",
+      "incredere": 0.97,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu toate cifrele (plafon, dobândă, DAE, exemplu reprezentativ) prezente direct în text.",
+      "citat": "Overdraft de 20.000 lei, cu o perioadă de creditare 36 de luni, în rate egale lunare, cu o dobândă variabilă de 10.06%, compusă din IRCC + marja băncii de 4.50 % și comision administrare card: 48 lei/an, dobândă anuală efectivă (DAE) este de 10,80% p.a.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credit-overdraft#:~:text=Overdraft%20de%2020.000%20lei%2C%20cu,%28DAE%29%20este%20de%2010%2C80%25%20p.a."
+    },
+    {
+      "url": "https://www.librabank.ro/documente/carduri/Conditii_contractuale_utilizare_carduri_debit_si_credit.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Card de debit cu overdraft (Conditii contractuale pentru utilizarea cardului de credit sau cardului de debit cu/fara overdraft)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de condiții contractuale care reglementează explicit facilitatea de overdraft atașată cardului de debit pentru persoane fizice, inclusiv durata și data scadentă.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Document general de condiții pentru carduri (credit și debit cu overdraft, PF și PJ), dar conține clauze explicite despre overdraft (durată, scadență, acordare facilitate).",
+      "citat": "Data de scadenta – data pana la care Detinatorul de card principal are obligatia de a rambursa suma minima de plata. Aceasta data este considerata a fi ziua 25 (pentru cardul de credit)/ ultima zi lucratoare a fiecarei luni (pentru cardul de debit cu overdraft).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credit-overdraft"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4419,
+    "citire_cache": 65655,
+    "scriere_cache": 46586,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.173802
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/nelimitat.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent Nelimitat (varianta de bază „Nelimitat în rețeaua BT”)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pachetul lunar de cont curent pentru persoane juridice/PFA la BT, cu card de business, abonament Internet & Mobile Banking (BT24) inclus și un număr fix de operațiuni incluse pe lună, exact ca Abonamentul PFA de la Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul PDF oficial al băncii prezintă explicit cele 4 variante ale pachetului Nelimitat cu prețurile lunare exacte (29, 46/76/129 lei) și beneficiile incluse (card, IB/MB, SMS alert).",
+      "pagina_pdf": 2,
+      "citat": "Ai 4 variante cu operațiuni interbancare mai multe sau mai puține, de la 29 la 129 de lei. Nelimitat în rețeaua BT 29 lei/lună Operațiuni interbancare în lei și valută online sau cu cec și bilet la ordin Zero",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/cont-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Online de Business (pentru companii, PFA sau profesii liberale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată deschiderii contului de business/PFA la BT, care include exact aceleași componente ca abonamentul Libra (cont, card business Visa Business Silver, Internet & Mobile Banking prin BT Go), destinat explicit și PFA-urilor.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina prezintă explicit condițiile de eligibilitate pentru PFA și componentele pachetului (card, IB/MB, comisioane), dar prețul standard al abonamentului nu apare aici (e acoperit de campania de 24 luni gratuite).",
+      "citat": "Ești asociat unic și reprezentant legal Ai o companie, un PFA sau practici o profesie liberală Ești rezident și ai carte de identitate emisă în România",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+    "https://www.bancatransilvania.ro/nelimitat.pdf",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/solicita-pachet"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3700,
+    "citire_cache": 137094,
+    "scriere_cache": 64221,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2249913
+  }
+}

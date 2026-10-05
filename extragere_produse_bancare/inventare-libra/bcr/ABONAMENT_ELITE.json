@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Conturi-tranzactii/conturi-2025/George-Business-Beneficii-Pachete.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetele George Business (Start, Dinamic, Flux, Compas)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echivalentul corporate al unui abonament lunar cu plafon de tranzacții gratuite, card de debit și electronic banking pentru firme (IMM/companii mari), la fel ca Abonamentul ELITE Libra; diferă structura (4 trepte de preț 100-400 lei, 25-200 tranzacții incluse/lună, 1 card/pachet față de 3 carduri la Libra, fără mențiune explicită de Live FX).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul PDF oficial BCR prezintă tabelar prețul fiecărui pachet, numărul de conturi, cardul inclus și plafonul de tranzacții gratuite lunare.",
+      "pagina_pdf": 3,
+      "citat": "Tip Pachet George Business START DINAMIC FLUX COMPAS Prețul pachetului 100 Lei 150 Lei 250 Lei 400 Lei Conturi curente, nr. maxim (LEI și/sau valută și/sau Subcont de Card) 3 3 3 3 Card de Debit Business (Lei) 1 1 1 1",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetul-xpert-plus-bcr",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele George Business (Start, Dinamic, Flux, Compas)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina principală de conturi business prezintă cele patru pachete George Business (Start, Dinamic, Flux, Compas) ca abonamente lunare pentru companii, cu card de debit, până la 3 conturi curente și acces la platforma de electronic banking, segment și tip de produs identice cu Abonamentul ELITE Libra, dar fără Live FX menționat și cu alt număr de carduri incluse.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina listează numele pachetelor și beneficiile generale, dar cifrele detaliate (preț, tranzacții incluse) sunt doar în PDF-ul linkat, nu în textul paginii.",
+      "citat": "Orice pachet alegi, acesta îți aduce: Cont curent în lei*. Card de debit în lei. Acces la George Business. Până la 3 conturi curente (în lei sau în valută).",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetul-xpert-plus-bcr#:~:text=Orice%20pachet%20alegi%2C%20acesta%20%C3%AE%C8%9Bi,%28%C3%AEn%20lei%20sau%20%C3%AEn%20valut%C4%83%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetele-bcr-succes",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetul-xpert-plus-bcr",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Conturi-tranzactii/conturi-2025/George-Business-Beneficii-Pachete.pdf"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3283,
+    "citire_cache": 66779,
+    "scriere_cache": 44193,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1566843
+  }
+}

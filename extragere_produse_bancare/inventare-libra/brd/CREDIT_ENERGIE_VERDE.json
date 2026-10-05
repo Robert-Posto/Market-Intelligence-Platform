@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/parteneriat-brd-auchan",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Investiții pentru Instalații Fotovoltaice (în cadrul programului Parteneri pentru Decarbonizare)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit de investiții dedicat IMM-urilor pentru capacități de producție fotovoltaică, de la zero sau prin refinanțare — același tip de produs și segment ca la Libra. Diferă însă prin faptul că varianta dedicată IMM (cu cod CAEN 2790/3511) acoperă explicit doar fotovoltaicul; eolianul apare la BRD într-un produs separat, mai larg (Proiecte de Energie Regenerabilă), care include și corporații mari/SPV-uri, nu doar IMM-uri.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată descrie explicit criteriile de eligibilitate, codurile CAEN și posibilitatea de refinanțare, dar nu conține cifre despre dobânzi/comisioane, doar termenii produsului.",
+      "citat": "Creditul de investiții pentru instalații fotovoltaice reprezintă soluția financiară dedicată IMM-urilor care doresc să investească în echipamente și tehnologii pentru producerea energiei electrice din surse solare. Poți utiliza creditul pentru achiziția de panouri fotovoltaice, extinderea sau modernizarea capacităților de producție, precum și pentru refinanțarea investițiilor deja realizate.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/calea-brd/finantare-pentru-dezvoltare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru achiziția de fotovoltaice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă, într-un hub de produse de finanțare pentru companii, același credit de investiții dedicat IMM pentru instalații de producere a energiei fotovoltaice; la fel ca la sursa principală, nu acoperă explicit eolianul, spre deosebire de produsul Libra care include ambele tehnologii.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina-hub listează produsul cu denumirea exactă a tipului de credit și criteriile de eligibilitate (coduri CAEN), dar fără cifre de dobândă/comision; trimite către lista de producători acceptați ANRE/PNRR.",
+      "citat": "Criterii de eligibilitate: Companii de tip IMM care trebuie să dețină următoarele coduri CAEN (inclusiv cod secundar de activitate): 2790 Fabricarea altor echipamente electrice sau 3511 Producția de energie electrica; Tip de credit: „Credit de investiții pentru instalații de producere a energiei fotovoltaice”",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/parteneriat-brd-auchan",
+    "https://www.brd.ro/calea-brd/finantare-pentru-dezvoltare"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3509,
+    "citire_cache": 41134,
+    "scriere_cache": 60758,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1952238
+  }
+}

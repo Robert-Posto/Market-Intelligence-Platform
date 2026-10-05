@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "BRD@ffice / e-BRD (secțiunea 8 - Mijloace de plată)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice conține secțiunea dedicată BRD@ffice/e-BRD cu toate comisioanele de utilizare, exact tipul de produs echivalent Internet & Mobile Banking business.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document PDF oficial, în vigoare, cu tabel dedicat BRD@ffice/e-BRD care listează explicit comisionul de utilizare și comisionul pentru token, plus toate costurile tranzacțiilor online (MyBRD Mobile, MyBRD Net) asociate canalelor digitale pentru companii.",
+      "citat": "Utilizare BRD@ffice / e-BRD* 45 LEI / luna Utilizare Token/ M-token BRD@ffice / e-BRD 20 LEI / utilizator + TVA",
+      "pagina_pdf": 21,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/brd-office-internet-banking-pentru-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BRD@ffice - Internet Banking pentru companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Serviciu de internet banking dedicat persoanelor juridice/IMM-uri, echivalent funcțional cu Internet & Mobile Banking business de la Libra: gestionare conturi, plăți, acces multi-utilizator.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului descrie beneficiile (reduceri 35% la transferuri, acces multi-utilizator) dar nu conține toate cifrele tarifare, acestea fiind în documentul de tarife.",
+      "citat": "BRD@ffice este serviciul de Internet banking care vă oferă acces în timp real la conturi în condiţii de deplină securitate şi mobilitate, 24 h din 24, 7 zile din 7.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/brd-office-internet-banking-businesses",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BRD@ffice (Internet Banking for businesses) - versiune EN",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în limba engleză a paginii dedicate aceluiași produs BRD@ffice pentru companii, cu descriere a beneficiilor (transferuri multiple, acces multi-utilizator).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată produsului cu descrierea beneficiilor dar fără cifre tarifare complete (acestea sunt în PDF-ul de tarife).",
+      "citat": "BRD@ffice is the internet banking service that offers you real time access to the accounts in full safety and mobility conditions, 24/7.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/brd-office-internet-banking-pentru-companii",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1875,
+    "citire_cache": 32223,
+    "scriere_cache": 122595,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3316941
+  }
+}

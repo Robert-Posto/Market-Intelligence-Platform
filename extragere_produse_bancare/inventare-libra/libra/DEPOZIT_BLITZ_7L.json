@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/depozit-blitz",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul Blitz (7 luni)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este chiar pagina/alias-ul oficial al Libra Bank pentru Depozitul Blitz pe 7 luni, cu grila curentă de dobânzi pentru persoane fizice (inclusiv pensionari).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina afișează explicit randamentul curent 'Blitz 7 luni' alături de data de valabilitate a dobânzilor.",
+      "citat": "Best offer depozite Blitz 7 luni - 5.00% p.a. 1 An și 1 Lună - 5.95% dobândă totală (5.50% p.a.) Depozite standard 7 zile 2.50% 1 lună 4.25% 3 luni 4.50% 6 luni 4.75% 9 luni 5.0% 12 luni 5.25%",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/depozit-blitz#:~:text=Best%20offer%20depozite%20Blitz%207,luni%205.0%25%2012%20luni%205.25%25"
+    },
+    {
+      "url": "https://www.librabank.ro/dobanzi-depozite-profesii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozitul Blitz (7 luni) - Profesii Liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Aceeași grilă de dobânzi Blitz 7 luni, dar afișată pe pagina dedicată segmentului Profesii Liberale, nu persoanelor fizice generale.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Tabelul conține explicit valoarea curentă Blitz 7 luni și data de valabilitate a dobânzilor (22 Septembrie 2026).",
+      "citat": "Best offer depozite Blitz 7 luni - 5.00% p.a. 1 An și 1 Lună - 5.95% dobândă totală (5.50% p.a.) Depozite standard 7 zile 2.50% 1 lună 4.25% 3 luni 4.50% 6 luni 4.75% 9 luni 5.00% 12 luni 5.25%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/depozit-blitz-eur",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul Blitz Eur (7 luni)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același produs Blitz pe 7 luni, dar în monedă EUR, cu dobândă diferită față de varianta în lei.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina de landing dedicată conține explicit dobânda, moneda și durata depozitului Blitz, dar fără dată de valabilitate afișată.",
+      "citat": "DEPOZITUL BLITZ în EURO. Dobândă 2.15% Dobândă 2.15% p.a. Durata depozitului 7 luni ZERO comision la constituire și scadență, pentru persoane fizice",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/depozit-blitz-eur#:~:text=DEPOZITUL%20BLITZ%20%C3%AEn%20EURO.%20Dob%C3%A2nd%C4%83,%C8%99i%20scaden%C8%9B%C4%83%2C%20pentru%20persoane%20fizice"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/depozit-blitz",
+    "https://www.librabank.ro/dobanzi-depozite-persoane-fizice",
+    "https://www.librabank.ro/dobanzi-depozite-persoane-juridice",
+    "https://www.librabank.ro/depozit-blitz-eur",
+    "https://www.librabank.ro/depozit_Blitz_profesii_liberale"
+  ],
+  "durata_s": 85,
+  "consum": {
+    "intrare": 10,
+    "iesire": 8579,
+    "citire_cache": 167388,
+    "scriere_cache": 89837,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3438801
+  }
+}

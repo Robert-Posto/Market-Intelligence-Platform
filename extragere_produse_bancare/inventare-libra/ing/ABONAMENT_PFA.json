@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet ING FIX Util",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un pachet lunar pentru cont curent + card business + ING Business (IB/MB), disponibil explicit pentru categoria de clienți 'Microîntreprinderi si PFA', deci același tip de produs și același segment ca Abonamentul PFA Libra; diferă prețul (40 RON vs 29 RON/lună) și numărul de operațiuni gratuite incluse (10 plăți către clienți ING + 5 plăți interbancare, nu 50 operațiuni/lună) și este un pachet general ING FIX, nu un produs dedicat exclusiv PFA/profesii.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor ING FIX conține simulatorul care listează PFA ca categorie eligibilă și tabelul cu prețul și componența exactă a pachetului FIX Util (cel mai apropiat de Abonamentul PFA ca preț și conținut).",
+      "citat": "Pachet FIX Util(40 RON/luna) Cont curent RON ✓ Business Card ✓ ING Business, platforma de internet și mobile banking ✓ Depunere de numerar la ATM ING ✓ Acceptare la plată prin POS (primul cont) ✓ Plăți în RON intre conturile proprii sau către alți clienți ING Romania ✓1",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Pachet%20FIX%20Util%2840%20RON%2Fluna%29%20Cont,al%C8%9Bi%20clien%C8%9Bi%20ING%20Romania%20%E2%9C%931"
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--29-August-2025-.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de produse și servicii pentru afacerea ta (ING FIX Util / Online / Lei / Valută / Complet)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă taxele lunare de administrare ale pachetelor ING FIX (inclusiv pachetul de 40 lei, cel mai apropiat ca preț de Abonamentul PFA Libra de 29 lei) și precizează explicit că aceste pachete/comisioane se aplică și conturilor de PFA și altor entități (profesii liberale, întreprinderi individuale).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de tarife în care pachetele de cont pentru firme/PFA apar explicit cu valorile taxei lunare de administrare, dar fără un produs separat denumit exclusiv pentru PFA.",
+      "citat": "Listă de Taxe și Comisioane pentru Persoane Juridice, PFA și alte entități Administrare lunară pachet 0 lei 30 lei 40 lei 70 lei 150 lei 165 lei 250 lei",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.ing.ro/microcompanii/profesii-liberale/ing-profesional-pentru-profesii-liberale.html",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice--PFA-si-alte-entitati--29-August-2025-.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--29-August-2025-.pdf",
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+    "https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf",
+    "https://ing.ro/microcompanii/profesii-liberale/ing-profesional-pentru-profesii-liberale.html",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf"
+  ],
+  "durata_s": 113,
+  "consum": {
+    "intrare": 114758,
+    "iesire": 8566,
+    "citire_cache": 109982,
+    "scriere_cache": 73127,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5199899
+  }
+}

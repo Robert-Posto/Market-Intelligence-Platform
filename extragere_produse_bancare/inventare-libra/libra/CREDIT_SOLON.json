@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_SOLON",
+  "denumire": "Credit Solon (juriști)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credit-profesii-liberale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit profesii liberale (Credit SOLON pentru notari, avocați, executori judecătorești, practicieni în insolvență)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina curentă a produsului de credit Libra dedicat profesiilor liberale juridice; fostele pagini separate 'Creditul SOLON pentru cabinete de avocatură', 'pentru birouri notariale' și 'pentru birouri executori judecătorești' redirecționează acum spre această pagină unică, care enumeră explicit notar, avocat, executor judecătoresc și practician în insolvență ca beneficiari, exact segmentul produsului CREDIT_SOLON.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina este dedicată explicit acestor profesii juridice și conține cifre concrete (dobândă fixă, perioadă maximă de creditare, procent de finanțare), chiar dacă titlul comercial afișat este generic 'Credit profesii liberale' în loc de 'SOLON'.",
+      "citat": "Dobândă fixă 8,99% în primii 5 ani Destinată exclusiv clienților Profesii Liberale (PFA, SRL, PFI) Doar pentru credite garantate cu ipoteci imobiliare",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane pentru clienții persoane juridice (inclusiv profesii liberale juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este documentul oficial de tarife și comisioane linkat direct din pagina 'Cont bancar profesii liberale' (care include notari, avocați) sub titlul 'Taxe și comisioane profesii liberale', aplicabil și clienților cu credit SOLON.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Documentul este cel generic pentru persoane juridice/profesii liberale, listează comisioane bancare generale (plăți, garanții, RNPM etc.), dar nu detaliază explicit linia 'Credit SOLON' cu valori proprii distincte.",
+      "citat": "Clientul este informat ca tarifele si comisioanele practicate de banca, pentru serviciile sale, sunt cele enumerate mai jos si este de acord cu plata acestor costuri in cazul in care sunt aplicabile sau solicita efectuarea serviciilor respective.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/Profesii_liberale/juristi/Creditul_SOLON_pentru_cabinete_de_avocatura/80",
+    "https://www.librabank.ro/Profesii_liberale/Executori_judecatoresti/Creditul_SOLON_pentru_birouri_executori_judecatoresti/324",
+    "https://www.librabank.ro/harta",
+    "https://www.librabank.ro/Profesii_liberale/juristi",
+    "https://librabank.ro/Profesii_liberale/notari/Creditul_SOLON_pentru_birouri_notariale/349",
+    "https://www.librabank.ro/cont-bancar-profesii-liberale"
+  ],
+  "durata_s": 111,
+  "consum": {
+    "intrare": 14,
+    "iesire": 8476,
+    "citire_cache": 302458,
+    "scriere_cache": 101284,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3984896
+  }
+}

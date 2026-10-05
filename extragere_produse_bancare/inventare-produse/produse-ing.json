@@ -1,0 +1,988 @@
+{
+ "banca": "ing",
+ "generat": "2026-10-02",
+ "model": "claude-haiku-4-5",
+ "statistica": {
+  "adrese_brute": 131,
+  "candidati": 48,
+  "scoase": {
+   "domeniu": 13,
+   "fisier": 3,
+   "exclus": 19,
+   "sectiune": 19,
+   "robots": 0,
+   "deja_libra": 29
+  },
+  "sitemapuri_citite": 0
+ },
+ "limita": 60,
+ "blocat": null,
+ "cost_estimat_usd": 0.2441,
+ "tokeni": {
+  "intrare": 187605,
+  "iesire": 11305,
+  "citire_cache": 0,
+  "scriere_cache": 0
+ },
+ "nou": [
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/factoring",
+   "titlu": "Factoring",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3539,
+    "iesire": 183,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Factoring",
+   "descriere_produs": null,
+   "categorie": "trade_finance",
+   "segment": "PJ",
+   "citat": "Pentru managementul eficient al creditului comercial. Protecție în relație cu riscul de neplată",
+   "echivalent_libra": null,
+   "incredere": 0.8,
+   "rezultat": "nou",
+   "motiv": "fără echivalent în catalogul Libra"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari/ing-credit-protect",
+   "titlu": "ING Credit Protect",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4418,
+    "iesire": 289,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Credit Protect",
+   "descriere_produs": "Asigurare de protecție a creditului pentru persoane fizice care acoperă plata ratelor creditului de nevoi personale în situații de deces, invaliditate, incapacitate temporară de muncă, pierderea locului de muncă sau spitalizare",
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "asigurare ce îți oferă protecție atât ție, cât și familiei tale, când nu mai poți plăti pentru o vreme creditul tău de nevoi personale",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "nou",
+   "motiv": "fără echivalent în catalogul Libra"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari/ing-travel-protect",
+   "titlu": "ING Travel Protect",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4472,
+    "iesire": 196,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Travel Protect",
+   "descriere_produs": null,
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "Asigurarea acoperă costurile cauzate de distrugerea, deteriorarea, furtul bagajelor sau cheltuieli medicale în străinătate",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "nou",
+   "motiv": "fără echivalent în catalogul Libra"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/young-cont-copii",
+   "titlu": "ING Young - internet banking și card pentru copii",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4398,
+    "iesire": 256,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Young",
+   "descriere_produs": "Cont curent pentru copii cu vârsta între 8 și 18 ani, cu internet banking și card asociat, controlat de părinți",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Copilul tău are între 8 și 18 ani? Lasă-l pe cont propriu! Are Home'Bank-ul și cardul lui, dar contul e pe numele tău",
+   "echivalent_libra": null,
+   "incredere": 0.9,
+   "rezultat": "nou",
+   "motiv": "fără echivalent în catalogul Libra"
+  }
+ ],
+ "echivalent": [
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/credit-ing-util-instant",
+   "titlu": "Credit ING Util instant",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4076,
+    "iesire": 259,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Credit ING Util instant",
+   "descriere_produs": "Credit de capital de lucru pentru IMM-uri, fără garanții materiale, cu acordare rapidă online, până la 500.000 lei pe maxim 5 ani",
+   "categorie": "credite",
+   "segment": "PJ",
+   "citat": "Credit rapid până la 500.000 lei. Fără garanții materiale. Util pentru orice tip de cheltuieli necesare companiei",
+   "echivalent_libra": "LINIE_CREDIT",
+   "incredere": 0.7,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu LINIE_CREDIT"
+  },
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/finantare-comerciala/incasso-documentar",
+   "titlu": "Incasso documentar",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4067,
+    "iesire": 293,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Incasso documentar",
+   "descriere_produs": "Produs de finanțare comercială pentru IMM care acoperă riscul de neplată în tranzacțiile comerciale, prin prezentarea documentelor comerciale și financiare către bancă pentru decontare.",
+   "categorie": "trade_finance",
+   "segment": "PJ",
+   "citat": "După livrarea mărfii, documentele comerciale și financiare sunt prezentate de către Vânzător la banca sa, împreună cu instrucțiunile sale cu privire la eliberarea acestor documente către Cumpărător.",
+   "echivalent_libra": "ACREDITIVE",
+   "incredere": 0.6,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu ACREDITIVE"
+  },
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/solutii-complexe-de-finantare",
+   "titlu": "Soluții complexe de finanțare",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3546,
+    "iesire": 250,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Soluții complexe de finanțare",
+   "descriere_produs": "Soluții de finanțare personalizate pentru IMM, cu credite simple sau complexe pe termene variate (scurt, mediu, lung)",
+   "categorie": "credite",
+   "segment": "PJ",
+   "citat": "Propuneri personalizate de creditare simple sau complexe; Credit pe termen scurt, mediu sau lung",
+   "echivalent_libra": "LINIE_CREDIT",
+   "incredere": 0.65,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu LINIE_CREDIT"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/freeing-cont-fara-comision",
+   "titlu": "Liber și gratis cu Free@ING – pentru cei sub 24 de ani",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4371,
+    "iesire": 261,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Free@ING",
+   "descriere_produs": "Cont curent pentru tineri sub 24 de ani fără comisioane la operațiuni bancare și cu beneficii suplimentare",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Liber și gratis cu Free@ING. Pentru cei sub 24 de ani. Devii Free@ING și primești: Zero comisioane la încasari si transferuri în lei",
+   "echivalent_libra": "CONT_ONLINE_PERSONAL",
+   "incredere": 0.65,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CONT_ONLINE_PERSONAL"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/ing-elementar",
+   "titlu": "ING Elementar",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4357,
+    "iesire": 296,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Elementar",
+   "descriere_produs": "Cont curent cu card de debit Visa Electron/Visa Classic pentru persoane fizice fără conturi la alte bănci, cu comision de administrare 0",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "ING Elementar este un cont de plăți cu servicii de bază pentru clienții care nu au în prezent niciun cont bancar și au rezidența legală în Uniunea Europeană. Pachetul include un cont curent în lei, un card de debit Visa Electron",
+   "echivalent_libra": "CONT_ONLINE_PERSONAL",
+   "incredere": 0.65,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CONT_ONLINE_PERSONAL"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/ing-together",
+   "titlu": "ING Together",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3610,
+    "iesire": 253,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Together",
+   "descriere_produs": "Cont pentru mai multe persoane care gestionează bani în comun, cu acces plin la fonduri și vizibilitate asupra tranzacțiilor",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Deschizi un cont nou 100% online din Home'Bank sau alegi un cont existent. Adaugi până la 3 persoane pe cont",
+   "echivalent_libra": "CONT_ONLINE_PERSONAL",
+   "incredere": 0.5,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CONT_ONLINE_PERSONAL"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/extra",
+   "titlu": "ING Extra",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4443,
+    "iesire": 260,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Extra",
+   "descriere_produs": "Pachet premium de cont curent cu card Visa Platinum, asigurare de afecțiuni grave, Priority Pass și beneficii de 920 RON lunar pentru 220 RON/lună.",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Un Pachet pentru cei care vor Extra beneficii și Extra timp pentru tot ce iubesc. 220 RON/lună",
+   "echivalent_libra": "ABONAMENT_PRESTIGE",
+   "incredere": 0.35,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu ABONAMENT_PRESTIGE"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/credite/noua-casa",
+   "titlu": "ING Noua Casă",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4122,
+    "iesire": 281,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Noua Casă",
+   "descriere_produs": "Credit ipotecar pentru achiziția unei locuințe noi sau vechi, cu dobândă variabilă, avans minim 5%, fără comisioane de administrare.",
+   "categorie": "credite",
+   "segment": "PF",
+   "citat": "Cu ING Noua Casă îți faci amintiri, nu planuri de plătit chirii. Dobândă anuală variabilă (2% marjă fixă + IRCC)",
+   "echivalent_libra": "CREDIT_IPOTECAR_PF",
+   "incredere": 0.95,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CREDIT_IPOTECAR_PF"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/economii-si-investitii/depo-invest",
+   "titlu": "Ia-ți ING Depo Invest",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4471,
+    "iesire": 299,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Depo Invest",
+   "descriere_produs": "Produs hibrید pentru persoane fizice care combină un depozit (50%) cu o investiție în fonduri mutuale (50%), oferind dobândă preferențială și gestionare profesională a investițiilor",
+   "categorie": "depozite_economii",
+   "segment": "PF",
+   "citat": "Combini siguranța economisirii cu oportunitățile de investiție. Dobândă anuală preferențială la depozit, în funcție de valuta aleasă: 7% pentru RON sau 2,5% pentru EUR",
+   "echivalent_libra": "CONT_ECONOMII",
+   "incredere": 0.6,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CONT_ECONOMII"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-pentru-copii",
+   "titlu": "ING Economii pentru copii",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3662,
+    "iesire": 285,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Economii pentru copii",
+   "descriere_produs": "Cont de economii pentru copii care permite părinților să economisească treptat pentru viitorul copilului, cu acces la bani oricând fără a pierde dobânda acumulată și fără depuneri minime.",
+   "categorie": "depozite_economii",
+   "segment": "PF",
+   "citat": "Tu pui deoparte bani pentru copii puțin câte puțin, pentru ca ei să aibă puțin mai puține griji când se fac mari.",
+   "echivalent_libra": "CONT_ECONOMII",
+   "incredere": 0.7,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CONT_ECONOMII"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/economii-si-investitii/round-up",
+   "titlu": "Round Up",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3814,
+    "iesire": 257,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Round Up",
+   "descriere_produs": "Serviciu de economisire automată care rotunjește fiecare plată cu cardul și pune diferența într-un cont de economii, pentru persoane fizice.",
+   "categorie": "depozite_economii",
+   "segment": "PF",
+   "citat": "Rotunjește automat fiecare sumă plătită cu cardul. Diferența de sumă se duce direct în contul tău de economii.",
+   "echivalent_libra": "CONT_ECONOMII",
+   "incredere": 0.6,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CONT_ECONOMII"
+  }
+ ],
+ "de_verificat": [],
+ "respins": [
+  {
+   "url": "https://ing.ro/imm/Economii",
+   "titlu": "Economii",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "rezultat": "respins",
+   "motiv": "pagină aproape goală după curățare"
+  },
+  {
+   "url": "https://ing.ro/imm/Internet-banking",
+   "titlu": "Internet banking",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3412,
+    "iesire": 197,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Internet banking",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PJ",
+   "citat": "Internet banking Accesibilitate Dacă alegi să elimini meniul de accesibilitate",
+   "echivalent_libra": null,
+   "incredere": 0.1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/Internet-banking/ING-Business-Pro",
+   "titlu": "ING Business Pro",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4350,
+    "iesire": 188,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Business Pro",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PJ",
+   "citat": "Banking-ul companiei tale. Tot ce ai nevoie pentru afacere, dintr-o singură aplicație mobilă.",
+   "echivalent_libra": "INTERNET_BANKING",
+   "incredere": 0.6,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/Internet-banking/Recomand--ING-partenerilor",
+   "titlu": "Recomandă ING partenerilor",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3539,
+    "iesire": 200,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Recomandă ING partenerilor",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PJ",
+   "citat": "primești 2 luni de zile gratuitate la pachetele Fix când recomanzi partenerul recomandat poate primi 3 luni gratuitate",
+   "echivalent_libra": null,
+   "incredere": 0.95,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/operatiuni-curente",
+   "titlu": "Operațiuni curente",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3545,
+    "iesire": 189,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Operațiuni curente IMM",
+   "descriere_produs": null,
+   "categorie": "conturi",
+   "segment": "PJ",
+   "citat": "Soluții de cont curent, Acceptare carduri, Tranzacții valutare, Depozite la termen",
+   "echivalent_libra": null,
+   "incredere": 0,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/operatiuni-curente/acceptare-carduri",
+   "titlu": "Soluții acceptare plăți cu cardul",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3431,
+    "iesire": 198,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Soluții acceptare plăți cu cardul",
+   "descriere_produs": null,
+   "categorie": "acceptare_plati",
+   "segment": "PJ",
+   "citat": "Soluții acceptare plăți cu cardul",
+   "echivalent_libra": null,
+   "incredere": 0,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/operatiuni-curente/solutii-complexe-pentru-operatiuni-curente",
+   "titlu": "Soluții complexe pentru operațiuni curente",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3993,
+    "iesire": 201,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Soluții complexe pentru operațiuni curente",
+   "descriere_produs": null,
+   "categorie": "conturi",
+   "segment": "PJ",
+   "citat": "gamă largă de produse și servicii, de la servicii de cont, plăți și încasări, până la produse complexe - concentrare de fonduri",
+   "echivalent_libra": null,
+   "incredere": 0,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/operatiuni-curente/solutii-complexe-pentru-pietele-financiare",
+   "titlu": "Soluții complexe pentru piețele financiare",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3765,
+    "iesire": 227,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Soluții complexe pentru piețele financiare",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PJ",
+   "citat": "Vă oferim acces la piețele financiare, punând la dispoziție o gamă completă de produse: Tranzacții de schimb valutar; Depozite la termen; Obligațiuni; Produse structurate",
+   "echivalent_libra": null,
+   "incredere": 0.95,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent",
+   "titlu": "Solutii de cont curent pentru firme si IMM",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3438,
+    "iesire": 178,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Soluții de cont curent pentru firme și IMM",
+   "descriere_produs": null,
+   "categorie": "conturi",
+   "segment": "PJ",
+   "citat": "Solutii de cont curent pentru firme si IMM",
+   "echivalent_libra": null,
+   "incredere": 0,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare",
+   "titlu": "Finanțare",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3572,
+    "iesire": 211,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Soluții de finanțare persoane juridice",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PJ",
+   "citat": "Linia de credit, Linia de credit rapidă, Credit de investiții, Credit cu garanție BID pentru IMM, Finanțare comercială și garanții bancare, Factoring",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/finantare-comerciala",
+   "titlu": "Finanțare comercială și garanții bancare",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3786,
+    "iesire": 227,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Finanțare comercială și garanții bancare",
+   "descriere_produs": null,
+   "categorie": "trade_finance",
+   "segment": "PJ",
+   "citat": "Serviciile de finanțare a comerțului sunt soluții de decontare, finanțare (credit pe firmă) și atenuare a riscurilor",
+   "echivalent_libra": null,
+   "incredere": 0.8,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/finantare-proiecte-sustenabile",
+   "titlu": "Finanțare proiecte sustenabile",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3679,
+    "iesire": 203,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Finanțare proiecte sustenabile",
+   "descriere_produs": null,
+   "categorie": "credite",
+   "segment": "PJ",
+   "citat": "finanțare și consultanță pentru dezvoltarea de proiecte sustenabile",
+   "echivalent_libra": null,
+   "incredere": 0.3,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/fonduri-europene",
+   "titlu": "Fonduri Europene",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3541,
+    "iesire": 245,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Fonduri Europene",
+   "descriere_produs": "Serviciu de asistență și expertizare pentru accesarea fondurilor europene și soluții de finanțare personalizate pentru IMM-uri",
+   "categorie": "altele",
+   "segment": "PJ",
+   "citat": "Dezvoltă-ți afacerea cu Fonduri Europene și soluțiile de finanțare de la ING",
+   "echivalent_libra": null,
+   "incredere": 0.5,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/imm/solutii-de-finantare/imm-plus",
+   "titlu": "IMM Plus",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3576,
+    "iesire": 213,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "IMM Plus",
+   "descriere_produs": null,
+   "categorie": "credite",
+   "segment": "PJ",
+   "citat": "Acest produs nu mai face parte din oferta ING având în vedere finalizarea programului IMM Plus România 2024 la 30.06.2024",
+   "echivalent_libra": null,
+   "incredere": 1.0,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari",
+   "titlu": "Asigurări",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4119,
+    "iesire": 221,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Pagina de asigurări ING",
+   "descriere_produs": null,
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "Alege asigurarea ING care ți se potrivește, simplu și rapid. Descoperă oferta noastră de asigurări flexibile",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari/asigurarea-de-viata-de-grup",
+   "titlu": "Asigurarea de viață de grup",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4377,
+    "iesire": 277,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Asigurarea de viață de grup",
+   "descriere_produs": "Asigurare de viață de grup legată de credite imobiliare care acoperă decesul asiguratului și protejează familia prin anularea datoriei în caz de necaz, cu reducere de 0,3% la dobânda creditului",
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "Cu asigurarea de viață de grup avem grijă de creditul tău ipotecar în caz de necaz",
+   "echivalent_libra": null,
+   "incredere": 0.95,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari/ing-health-protect",
+   "titlu": "ING Health Protect",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4440,
+    "iesire": 269,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Health Protect",
+   "descriere_produs": "Asigurare de sănătate pentru intervenții chirurgicale neprevăzute din accident sau îmbolnăvire, cu helpline medical 24/7",
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "ING Health Protect, asigurare dezvoltată de către NN Asigurări special pentru clienții ING Bank, îți oferă sprijin financiar în cazul intervențiilor chirurgicale",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari/ing-home-protect",
+   "titlu": "ING Home Protect",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4483,
+    "iesire": 269,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Home Protect",
+   "descriere_produs": "Asigurare de locuință care oferă protecție extinsă împotriva a 24 de riscuri neprevăzute, cu plată rapidă a daunei și cazare alternativă în caz de pagube majore.",
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "asigurarea ING Home Protect, ai siguranța că tot ce ți-e drag și a fost deteriorat poate fi schimbat sau reparat",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari/ing-salary-protect",
+   "titlu": "ING Salary Protect",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4547,
+    "iesire": 307,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Salary Protect",
+   "descriere_produs": "Plan de asigurare pentru protejarea salariului și bunăstării financiare în caz de invaliditate, șomaj sau concediu medical prelungit, cu asistență Back2Work pentru găsirea unui nou loc de muncă",
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "Protejează-ți salariul, cu planul de rezervă ING Salary Protect ai: Sprijin financiar în caz de invaliditate, Sprijin financiar în caz de șomaj, Sprijin financiar în caz de concediu medical prelungit",
+   "echivalent_libra": null,
+   "incredere": 0.95,
+   "rezultat": "respins",
+   "motiv": "citatul nu se regăsește în pagină"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/asigurari/ing-vita-protect",
+   "titlu": "ING Vita Protect",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4522,
+    "iesire": 274,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Vita Protect",
+   "descriere_produs": "Asigurare de viață care oferă despăgubire pentru cazuri de deces din accident sau îmbolnăvire, în trei pachete cu prime lunare între 18 și 89 lei",
+   "categorie": "asigurari",
+   "segment": "PF",
+   "citat": "O grijă în minus pentru familia ta: Ești asigurat imediat cu până la 1.000.000 lei. De la 18 lei/lună prima de asigurare",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi",
+   "titlu": "Carduri și conturi",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3752,
+    "iesire": 201,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Carduri și conturi curente ING",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PF",
+   "citat": "Alege cardurile ING, pentru plăți sigure și simplu de realizat!",
+   "echivalent_libra": null,
+   "incredere": 0,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/ING-Gold",
+   "titlu": "ING Gold",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3572,
+    "iesire": 275,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Gold",
+   "descriere_produs": "Card bancar premium Visa cu servicii de asigurare de călătorie, asistență rutieră și beneficii de curs de schimb avantajos pentru persoane fizice.",
+   "categorie": "carduri",
+   "segment": "PF",
+   "citat": "Card bancar premium ING Gold Visa. Curs de schimb personalizat, avantajos și în weekend. Asigurare de călătorie pentru tine și membrii familiei tale.",
+   "echivalent_libra": "CARD_DEBIT_GOLD",
+   "incredere": 0.75,
+   "rezultat": "respins",
+   "motiv": "citatul nu se regăsește în pagină"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/carduri-virtuale-ING",
+   "titlu": "Cardul virtual ING",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3651,
+    "iesire": 231,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Cardul virtual ING",
+   "descriere_produs": "Card virtual care se emite gratuit și instant în Home'Bank, oferind control crescut asupra plăților și securitate",
+   "categorie": "carduri",
+   "segment": "PF",
+   "citat": "Îl emiți gratuit și instant în Home'Bank. E foarte sigur și ușor de folosit.",
+   "echivalent_libra": null,
+   "incredere": 0.8,
+   "rezultat": "respins",
+   "motiv": "citatul nu se regăsește în pagină"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/cardurile-ing",
+   "titlu": "Cardurile ING",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3878,
+    "iesire": 273,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Card ING de salariu și cumpărături",
+   "descriere_produs": "Card pentru persoane fizice, disponibil în lei sau euro, folosit pentru salariu și cumpărături, cu posibilitate de retragere de numerar și plăți online sigure cu 3D Secure.",
+   "categorie": "carduri",
+   "segment": "PF",
+   "citat": "Card de cumpărături. Le folosești aproape oriunde: la magazinul de jos, la un hotel de lux sau pe net.",
+   "echivalent_libra": "CARD_DEBIT_FREE",
+   "incredere": 0.75,
+   "rezultat": "respins",
+   "motiv": "citatul nu se regăsește în pagină"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/conturi-in-valuta",
+   "titlu": "Conturi în valută",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3617,
+    "iesire": 260,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Conturi în valută",
+   "descriere_produs": "Cont curent în valută (euro și dolari) pentru persoane fizice cu acces la schimburi valutare prin internet banking și posibilitate de atașare card",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Un cont curent în valută îți permite să-ți gestionezi schimburi valutare simplu, non-stop, la orice oră",
+   "echivalent_libra": "CONT_ONLINE_PERSONAL",
+   "incredere": 0.7,
+   "rezultat": "respins",
+   "motiv": "citatul nu se regăsește în pagină"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente",
+   "titlu": "Pachete conturi curente ING – Beneficii care contează",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4437,
+    "iesire": 289,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Pachete conturi curente ING (ING Go, ING More, ING Extra)",
+   "descriere_produs": "Pachete de cont curent cu beneficii variate - de la banking accesibil cu comisioane reduse la pachete premium cu asigurări și acces la lounge-uri internaționale",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Noile Pachete de cont curent ING. Mai multe avantaje financiare. Un Pachet pentru un start promițător și tot ce ai nevoie zi de zi.",
+   "echivalent_libra": "CONT_ONLINE_PERSONAL",
+   "incredere": 0.7,
+   "rezultat": "respins",
+   "motiv": "citatul nu se regăsește în pagină"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/credite",
+   "titlu": "Credite",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4047,
+    "iesire": 204,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Pagina de credite ING Bank",
+   "descriere_produs": null,
+   "categorie": "credite",
+   "segment": "PF",
+   "citat": "Descoperă oferta de credite de la ING Bank pentru planurile tale îndrăznețe!",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/credite/refinantare",
+   "titlu": "Refinanțează-ți creditele",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4420,
+    "iesire": 222,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Refinanțare ING",
+   "descriere_produs": null,
+   "categorie": "credite",
+   "segment": "PF",
+   "citat": "Refinanțezi din orice ING Office. Vino cu creditele tale de investiții imobiliare cu ipotecă la noi și refinanțează-le",
+   "echivalent_libra": null,
+   "incredere": 0.2,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/economii-si-investitii",
+   "titlu": "Economii și investiții",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4060,
+    "iesire": 218,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Economii și investiții ING",
+   "descriere_produs": null,
+   "categorie": "depozite_economii",
+   "segment": "PF",
+   "citat": "Alege flexibilitatea contului ING Economii atunci când vrei să economisești în ritmul tău, fără constrângerea unui termen, sau depozitul la termen, dacă preferi un termen fix.",
+   "echivalent_libra": null,
+   "incredere": 0,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/economii-si-investitii/investitii",
+   "titlu": "Investiții",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4376,
+    "iesire": 201,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Investiții - Secțiune cu mai multe produse",
+   "descriere_produs": null,
+   "categorie": "investitii",
+   "segment": "PF",
+   "citat": "Acțiuni, ETF-uri, Fonduri mutuale - totul într-un singur loc. Tu alegi companiile, sumele și momentul.",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/internet-banking",
+   "titlu": "Internet Banking",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3959,
+    "iesire": 218,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Internet Banking / ING Home'Bank",
+   "descriere_produs": null,
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Serviciul de internet banking prietenos și ușor de utilizat de la ING îți permite să faci chiar tu o gamă largă de operațiuni fără să te deplasezi la ghișeu",
+   "echivalent_libra": "APLICATIA_LIBRA",
+   "incredere": 0.5,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/internet-banking/3dSecure",
+   "titlu": "Cum confirmi o plată online cu cardul (3D Secure)",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4352,
+    "iesire": 239,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "3D Secure / Autorizarea plăților online",
+   "descriere_produs": null,
+   "categorie": "plati_digitale",
+   "segment": "PF+PJ",
+   "citat": "Cum confirmi o plată online cu cardul (3D Secure). Fie că ești persoană fizică sau persoană juridică, atunci când faci cumpărături online cu cardul ING",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://ing.ro/persoane-fizice/internet-banking/bazar",
+   "titlu": "ING Bazar",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4003,
+    "iesire": 262,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "ING Bazar",
+   "descriere_produs": "Un program de cashback integrat în Home'Bank care oferă reduceri sub formă de cashback la cumpărături cu carduri ING la parteneri din diverse categorii.",
+   "categorie": "altele",
+   "segment": "PF",
+   "citat": "ING Bazar este un loc de cumpărături colorat, pliiin de reduceri sub forma de cashback pentru toate gusturile și nevoile, pe care îl găsești în Home'Bank.",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  }
+ ],
+ "nerulat": []
+}

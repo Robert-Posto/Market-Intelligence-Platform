@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele ING Fix (cont curent pentru companii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pachetul corporate de cont curent al ING: abonament lunar cu sumă fixă, conturi lei/valută, card business și un număr de plăți/încasări incluse, pentru persoane juridice/PFA — același tip de produs (abonament de cont pentru firme) și același segment ca Abonament PRIME Libra, dar structurat pe mai multe trepte de preț (40/70/150/165/250 RON) cu praguri diferite de tranzacții incluse, nu o singură ofertă la 95 lei cu 25 plăți + 25 încasări + 2 carduri + Live FX.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată pachetelor ING Fix conține tabelul complet cu denumirile pachetelor, prețurile lunare și serviciile incluse (conturi, card business, plăți/încasări, valută).",
+      "citat": "Servicii incluse în pachet | FIX Util(40 RON) | FIX Online (70 RON) | FIX RON (150 RON) | FIX Valută (165 RON) | FIX Complet (250 RON) | Cont curent RON | ✓ | ✓ | ✓ | ✓ | ✓",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetele ING Fix / ING Profesional (listă de taxe și comisioane persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife detaliază pachetele de cont curent pentru firme (ING FIX Util/Online/RON/Valută/Complet, ING Profesional), cu taxa lunară de administrare a pachetului și numărul de plăți/încasări incluse — same tip de produs și segment ca Abonament PRIME, dar cu praguri și denumiri diferite de cele Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "PDF-ul oficial de tarife pentru persoane juridice conține explicit cifrele pachetelor (taxă lunară, număr de plăți/încasări incluse) pentru pachetele FIX și Profesional.",
+      "citat": "Pentru C lienții persoane juridice cu cifra de afaceri mai mare de 9.000.000 lei pachetul ING FIX Complet include un număr de 20 (douăzeci) de plăți lunare si 20 (douăzeci) de încasări lunare prin instrumente de debit de tip cec sau bilet la ordin.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3241,
+    "citire_cache": 6357,
+    "scriere_cache": 39008,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1312094
+  }
+}

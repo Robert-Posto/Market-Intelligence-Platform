@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/Persoane_juridice/Credit_IMM_cu_ipoteca_imobiliara/383",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit IMM cu ipotecă imobiliară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este creditul garantat cu ipotecă imobiliară destinat persoanelor juridice (companii), exact tipul de produs descris de codul CREDIT_IMOBILIAR_PJ, pe pagina dedicată secțiunii Persoane juridice / Credite IMM.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina conține secțiunea dedicată 'Credit IMM cu ipotecă imobiliară' cu sumă maximă și perioade de rambursare exprimate explicit în text.",
+      "citat": "Credit pentru dezvoltarea afacerii sau pentru susținerea activității curente Poți obține până la 1 milion de lei Perioada maximă: Credit activitate curentă în rate: 84 luni Credit ipotecar sau de investiții: 180 luni",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/Persoane_juridice/Credit_IMM_cu_ipoteca_imobiliara/383#:~:text=Credit%20pentru%20dezvoltarea%20afacerii%20sau,sau%20de%20investi%C8%9Bii%3A%20180%20luni"
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane - Persoane juridice și alte forme de organizare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul general de tarife pentru persoane juridice conține comisioanele aplicabile garanțiilor ipotecare imobiliare (ex. radiere ipotecă, comisioane pe tip de imobil adus în garanție) folosite la creditele imobiliare pentru companii.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Documentul e general pentru toate serviciile persoane juridice, dar conține linii explicite de comisioane pentru garanții imobiliare (apartamente, teren, case, spații comerciale/industriale) și radiere ipotecă, relevante pentru produsul de credit imobiliar.",
+      "citat": "Comisioane garantii: apartamente 100 lei, teren liber 100 lei, casa/vila (1 sau mai multe niveluri) si teren 150 lei, spatii comerciale 150 lei, spatii industriale si depozitare cu aria desfasurata< 1.000 mp (inclusiv teren) 200 lei, Autentificare adresa radiere ipoteca imobiliara Tarif notarial",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/Persoane_juridice/Credit_IMM_cu_ipoteca_imobiliara/383",
+    "https://www.librabank.ro/credite-persoane-juridice-afaceri",
+    "https://www.librabank.ro/credit-investitii-imobiliare"
+  ],
+  "durata_s": 57,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3507,
+    "citire_cache": 146571,
+    "scriere_cache": 78695,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.26114170000000003
+  }
+}

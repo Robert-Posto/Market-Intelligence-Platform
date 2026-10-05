@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cash 360 (echipament de depunere numerar la terminale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este același tip de produs ca RCD Cash Deposit: echipament/terminal de depunere numerar bancnote, dedicat exclusiv clienților persoane juridice (PJ/PFA), cu comision procentual per depunere. Diferă faptul că ING impune un prag de eligibilitate (cifră de afaceri/rulaj > 2.000.000 lei), neregăsit explicit la produsul Libra.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Documentul oficial de tarife și comisioane pentru persoane juridice menționează explicit echipamentul Cash 360, comisionul de 0,15% pentru depunere numerar și condiția de eligibilitate bazată pe cifra de afaceri.",
+      "citat": "Echipamentul CASH 360 este disponibil doar pentru clienții cu cifră de afaceri/rulaj bancar prin ING Bank România mai mare de 2.000.000 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati-25-Iulie-2024.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati.pdf"
+  ],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 33073,
+    "iesire": 6227,
+    "citire_cache": 40253,
+    "scriere_cache": 38269,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2321391
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/conturi-si-tranzactii/conturi/contul-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "George pentru afacerea ta (cont de business George, Mastercard Business)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament operațional pentru firme mici și PFA (microîntreprinderi, PFA, afaceri până la 1 mil. euro) ce include cont curent, card business, Internet/Mobile Banking și plăți/încasări digitale nelimitate, deci același tip de produs și segment ca Abonamentul RISE. Diferă însă modelul de tarifare: la BCR comisionul lunar e dinamic (reduceri de până la 50%, nu un abonament fix de 50 lei/lună ca la Libra), iar informațiile despre mPOS sau numărul exact de carduri incluse nu apar explicit.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului pentru microîntreprinderi/PFA conține cifre concrete (reducere până la 50%, comisioane 0 pentru plăți/încasări), dar nu un preț fix lunar comparabil cu cel de 50 lei al Libra.",
+      "citat": "Plătești doar pentru cât folosești. Până la 50% reducere la comisioane. Conceput pentru afaceri de până la 1 mil. euro, ONG-uri și Asociații de Proprietari, pachetul George îți răsplătește plățile digitale cu comisioane 0 și reduceri dinamice la administrare.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/conturi-si-tranzactii/conturi/contul-curent#:~:text=Pl%C4%83te%C8%99ti%20doar%20pentru%20c%C3%A2t%20folose%C8%99ti.,%C8%99i%20reduceri%20dinamice%20la%20administrare."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/george-business-cont-online-help-center/cat-costa-contul-online-george-pentru-companii-",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "George pentru afacerea ta (cont de business George)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagină de condiții/FAQ pentru același produs (cont de business George pentru PFA/microîntreprinderi) care detaliază structura de cost: fără comision la plăți, încasări și retrageri la ATM BCR, dar comisionul lunar variază în funcție de volumul de tranzacții, spre deosebire de abonamentul fix de 50 lei de la Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Confirmă explicit gratuitatea plăților/încasărilor/retragerilor pentru acest cont de business, dar nu oferă o sumă fixă lunară comparabilă cu cea a Abonamentului RISE.",
+      "citat": "Deschiderea contului este gratuită, costul lunar al pachetului depinde de numărul de plăti electronice pe care le faci în fiecare luna și de reducerile pe care le primești, în funcție de activitatea ta. Toate plățile prin George, încasările în cont și retragerile de numerar de la ATM-urile BCR sunt gratuite.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/george-business-cont-online-help-center/cat-costa-contul-online-george-pentru-companii-#:~:text=Deschiderea%20contului%20este%20gratuit%C4%83%2C%20costul,la%20ATM%2Durile%20BCR%20sunt%20gratuite."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/conturi-si-tranzactii/conturi/contul-curent",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetele-bcr-succes",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Conturi-tranzactii/conturi-2025/George-Business-Beneficii-Pachete.pdf",
+    "https://www.bcr.ro/ro/business/george-business-cont-online-help-center/cat-costa-contul-online-george-pentru-companii-"
+  ],
+  "durata_s": 103,
+  "consum": {
+    "intrare": 10,
+    "iesire": 8748,
+    "citire_cache": 109968,
+    "scriere_cache": 49764,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.23390360000000002
+  }
+}

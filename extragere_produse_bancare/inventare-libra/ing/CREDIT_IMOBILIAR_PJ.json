@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții (Credit la Termen Companii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este creditul ING pentru persoane juridice garantat cu ipotecă imobiliară care poate finanța explicit achiziția unui imobil, dar este un credit de investiții general (acoperă și utilaje, echipamente, mașini), nu un credit imobiliar dedicat exclusiv achiziției/construcției de imobile ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține cifrele produsului (sume, perioadă, garanții imobiliare) și menționează explicit achiziția unui imobil ca destinație eligibilă.",
+      "citat": "Creditul de investiții te ajută să îți susții planurile de extindere a afacerii, indiferent de ce ai nevoie: mașini, utilaje, echipamente, achiziția unui imobil, modernizarea sediului etc. Poți să obții între 100 000 lei și 4.900.000 lei; Perioadă de finanțare extinsă, de până la 10 ani.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/solutii-de-finantare/credit-de-investitii#:~:text=Creditul%20de%20investi%C8%9Bii%20te%20ajut%C4%83,de%20p%C3%A2n%C4%83%20la%2010%20ani."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/solutii-de-finantare/credit-de-investitii",
+    "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf"
+  ],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 92938,
+    "iesire": 1847,
+    "citire_cache": 49422,
+    "scriere_cache": 49255,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.33736790000000005
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/finantare/programe-speciale-de-finantare/credite-subventie-apia",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite subvenție APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat de credit pe adeverința/cererea APIA, pentru persoane juridice/PFA/micro din agricultură, cu grație la plata dobânzii și procent din subvenție finanțat, identic ca tip și segment cu CREDIT_APIA de la Libra.",
+      "incredere": 0.93,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele cheie (85%/90% din subvenție, plafon fără garanții 300.000 lei, dobândă ROBOR 6M + marjă).",
+      "citat": "Valoarea creditului este de până la maxim 85% din suma de încasat de la APIA pentru subvențiile SAPS - PNDR, respectiv 90% din valoarea adeverinței emise de APIA pentru beneficiarii Măsurii 14 - Bunăstarea animalelor",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/organizatii-publice-si-non-profit/creditare/programe-speciale-de-finantare/credit-subventie-apia",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul pentru subvențiile APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași variantă de produs, cu detaliere a valorii creditului, dobânzii (ROBOR 6M + max 2%), duratei (max 12 luni) și garanțiilor, aplicabilă persoanelor juridice/PFA din agricultură beneficiare APIA.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina conține secțiuni separate cu cifre pentru creditul pe obiect (85-90% din valoare, max 12 luni, ROBOR 6M+2%) și pentru factoring fără regres pe adeverința APIA.",
+      "citat": "maximum 90% din valoarea adeverinței APIA, în funcție de convenția aplicabilă încheiată de BCR sau maximum 85% din valoarea cererii unice de plată depuse la APIA",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/fonduri-nerambursabile/credit-subventie-apia",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit subvenție APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiune actuală a paginii de produs, cu aceleași cifre despre valoarea creditului și perioada de grație, adresată explicit segmentului corporate/micro/PFA agricol.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele privind valoarea creditului (85%/90%) și perioada de grație doar pentru segmentul micro.",
+      "citat": "valoarea creditului: până la maxim 85% din suma de încasat de la APIA pentru subvențiile SAPS - PNDR, respectiv 90% din valoarea adeverinței emise de APIA pentru beneficiarii Măsurii 14 - Bunăstarea animalelor",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1557,
+    "citire_cache": 6390,
+    "scriere_cache": 37565,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1107685
+  }
+}

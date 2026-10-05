@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://moneytrade.bcr.ro/userguide.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "MONEY TRADE BCR",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Money Trade BCR este o platformă online de tranzacționare valutară cu cotații afișate în timp real, accesată direct de client prin internet (https://moneytrade.bcr.ro/html5), ceea ce corespunde conceptului Live FX. Diferă însă segmentul: din manual reiese clar că platforma este dedicată exclusiv clienților persoane juridice (companii), fiecare fereastră de tranzacționare afișând 'Denumirea companiei', fără variantă pentru persoane fizice precum la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul este manualul oficial de utilizare al platformei, publicat pe subdomeniul moneytrade.bcr.ro, și conține date concrete despre program, cursuri și mecanismul de cotare în timp real.",
+      "citat": "Serviciul MONEY TRADE BCR este activ intre orele 9.00 - 17.30, interval in care Clientul beneficiaza de serviciile/ produsele oferite de Banca enumerate mai jos, iar imediat sub perechea de valute sunt doua butoane ACTIVE in care se afiseaza in timp real cotatia de piata valutara.",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://moneytrade.bcr.ro/",
+    "https://www.bcr.ro/ro/persoane-juridice/tranzactii-trezorerie/tranzactii-valutare",
+    "https://moneytrade.bcr.ro/userguide.pdf"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 27880,
+    "iesire": 2938,
+    "citire_cache": 73830,
+    "scriere_cache": 100069,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3500785
+  }
+}

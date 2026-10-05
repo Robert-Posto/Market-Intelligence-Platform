@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/cont-curent-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Shine IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată conturilor curente pentru IMM conține tabelul comparativ al abonamentelor operaționale, inclusiv Shine IMM, cu toate caracteristicile cerute: abonament lunar, lei+euro, carduri Business Gold, mPOS 0,59%.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Tabelul de pe pagină listează explicit Shine IMM cu toate cifrele relevante (preț abonament, carduri, mPOS, servicii euro).",
+      "citat": "Administrare lunară cont valută · - · - · Abonament IMM Card Business Gold · - · - · până la 2 mPOS – comision carduri persoane fizice · 0,59% · 0,59% · 0,59% Firme nou înființate: Gratuit 12 luni · 50 lei · 100 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-curent-imm#:~:text=Administrare%20lunar%C4%83%20cont%20valut%C4%83%20%C2%B7,50%20lei%20%C2%B7%20100%20lei"
+    },
+    {
+      "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Shine IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina Cont Online 2 în 1 reproduce același tabel de abonamente operaționale pentru companii sub 5M lei, cu Shine IMM explicit la 100 lei/lună și detaliile de card/mPOS.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține același tabel de prețuri și caracteristici pentru Shine IMM ca pagina dedicată, dar este o pagină secundară (despre un alt produs combinat business+personal).",
+      "citat": "Card Business Gold · - · - · până la 2 carduri mPOS – comision carduri persoane fizice · 0,59% · 0,59% · 0,59% ✦ Gratuit 12 luni · 50 lei/lună · 100 lei/lună",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-bancar-online-2in1#:~:text=Card%20Business%20Gold%20%C2%B7%20%2D,50%20lei%2Flun%C4%83%20%C2%B7%20100%20lei%2Flun%C4%83"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/cont-curent-imm",
+    "https://www.librabank.ro/cont-bancar-online-2in1",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2034,
+    "citire_cache": 64135,
+    "scriere_cache": 77404,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.226693
+  }
+}

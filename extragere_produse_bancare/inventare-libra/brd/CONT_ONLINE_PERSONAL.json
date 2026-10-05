@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/persoane-fizice/digital-banking/digital-station",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont curent online (Digital Station - deschidere pachet de cont curent 100% online)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este fluxul dedicat BRD pentru persoane fizice de deschidere 100% online a unui cont curent (fără deplasare la bancă), cu alegerea pachetului de cont, identificare online, apel video și semnare electronică a contractului — același tip de produs și segment ca „Cont Online Personal” de la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina este dedicată explicit procesului de deschidere online a contului curent pentru persoane fizice și conține detalii operaționale concrete (program orar, termene, pași), dar randarea completă necesită JavaScript, iar cifrele de tarife nu apar direct în acest flux ci sunt trimise către alte pachete (Card de Zi cu Zi / Card Gold).",
+      "citat": "Poti sa deschizi un cont curent online oricand de luni - vineri intre orele 8.00 - 20.00 si sambata - duminica intre orele 8.00 - 19.00, cu exceptia sarbatorilor legale.",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/persoane-fizice/digital-banking/digital-station",
+    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/servicii-de-baza",
+    "https://www.brd.ro/persoane-fizice/operatiuni-curente/cont-curent",
+    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/carduri-de-zi-cu-zi",
+    "https://www.brd.ro/tarife-si-comisioane"
+  ],
+  "durata_s": 50,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3778,
+    "citire_cache": 175900,
+    "scriere_cache": 94495,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3092175
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent Nelimitat (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este abonamentul operațional lunar pentru firme/PFA la BT, cu cont curent, card business Visa Business Silver, plăți nelimitate și comisioane preferențiale la POS - același tip de produs și segment ca Abonamentul SHINE de la Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține grila completă de prețuri lunare pe cele 4 variante ale pachetului, cu beneficiile incluse.",
+      "citat": "Unlimited in the BT Network 29 lei / month Interbank collections with ZERO commission Internet & Mobile Banking with BT Go Visa Business Silver Debit Card RECOMMENDED Unlimited & 10 46 lei / month",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat#:~:text=Unlimited%20in%20the%20BT%20Network,10%2046%20lei%20%2F%20month"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent Nelimitat (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de comisioane pentru persoane juridice conține tabelul complet cu cele 4 variante de abonament lunar echivalente cu Abonamentul SHINE, inclusiv comisioanele de POS și card business.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Tabelul 'Pachete de cont curent' din PDF listează explicit prețul abonamentului (29/46/76/129 lei/lună), cardul Visa Business Silver inclus și comisioanele POS pentru fiecare variantă.",
+      "pagina_pdf": 3,
+      "citat": "Servicii abonament Nelimitat în rețeaua BT 29 lei / lună Nelimitat & 10 46 lei / lună Nelimitat & 25 76 lei / lună Nelimitat All Inclusive 129 lei / lună 1. Pachete de cont curent",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3949,
+    "citire_cache": 188954,
+    "scriere_cache": 123454,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3859358
+  }
+}

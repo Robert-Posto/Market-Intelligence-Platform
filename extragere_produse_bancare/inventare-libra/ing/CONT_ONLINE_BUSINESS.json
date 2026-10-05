@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele ING Fix cont curent (FIX Util / FIX Online / FIX RON / FIX Valută / FIX Complet)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane juridice (SRL, PFA etc.), deschis și administrat prin platforma online ING Business/Home'Bank, cu pachete de abonament operațional (ING Fix) și card business inclus - același tip de produs și segment ca ‘Cont Online Business’ Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține grila completă de prețuri lunare pentru fiecare pachet de cont curent business (40/70/150/165/250 RON) și detaliul serviciilor incluse.",
+      "citat": "Deschide contul online până pe 31 decembrie 2026 și primești 3 luni gratuite la pachetul ING FIX. Încasezi prin POS sau SoftPOS? Primești încă 1 lună gratuită.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Deschide%20contul%20online%20p%C3%A2n%C4%83%20pe,Prime%C8%99ti%20%C3%AEnc%C4%83%201%20lun%C4%83%20gratuit%C4%83."
+    },
+    {
+      "url": "https://ing.ro/lp-ak/imm/onboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de firmă 100% online (Digital Onboarding IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată deschiderii 100% online a contului curent pentru firme (SRL, PFA, Întreprindere Individuală) direct din aplicație, cu acces imediat la platforma ING Business și pachetul de cont ING Fix - corespunde direct conceptului de cont de firmă gestionat exclusiv online.",
+      "incredere": 0.88,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit procesul 100% online de deschidere a contului de firmă, termenul de ~15 minute și condițiile de eligibilitate (cifră de afaceri sub 22 milioane lei), cu cifre concrete despre bonusurile de gratuitate.",
+      "citat": "Deschide cont firmă în ~15 minute. Până la 4 luni gratuite la pachetul ING Fix dacă deschizi până pe 31 decembrie 2026.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati-25-Iulie-2024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Listă de Taxe și Comisioane pentru Persoane Juridice, PFA și alte entități - pachete FIX Util/FIX Online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife detaliază pragurile de cifră de afaceri și condițiile pentru pachetele de cont curent business FIX Util și FIX Online, aceleași produse identificate ca echivalent al Cont Online Business.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "PDF oficial de tarife care menționează explicit pachetele FIX Util și FIX Online cu pragurile de cifră de afaceri (400.000 lei, respectiv 9.000.000 lei) ce definesc eligibilitatea.",
+      "pagina_pdf": 1,
+      "citat": "Pachetul Fix Util se adreseaz ă Companiilor (SRL, SA, SNC, SCS, SCA) care au cifra de afaceri de maxim 400.000 lei. Pachetul Fix Online se adreseaz ă Companiilor (SRL, SA, SNC, SCS, SCA) care au cifra de afaceri de maxim 9.000.000 lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+    "https://ing.ro/lp/digital-onboarding-bb"
+  ],
+  "durata_s": 463,
+  "consum": {
+    "intrare": 6,
+    "iesire": 7702,
+    "citire_cache": 46420,
+    "scriere_cache": 62757,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2432085
+  }
+}

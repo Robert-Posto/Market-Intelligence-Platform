@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credite-energie",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru energie verde (Credite energie verde)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată produsului Libra pentru persoane juridice, cu finanțare de la zero sau refinanțare a proiectelor fotovoltaice/eoliene, exact ca produsul cerut.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată exact acestui produs (Credit pentru energie verde, persoane juridice), cu descriere a opțiunilor de autoconsum și livrare în rețea și cifra de reducere a costurilor.",
+      "citat": "Finanțarea de la zero a proiectelor fotovoltaice și eoliene - Fără PPA-uri la aprobare (Power Purchase Agreement) – investitorul își poate decide singur strategia comercială - Reducerea cu 30-60% a costurilor de energie pentru compania ta",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite-energie#:~:text=Finan%C8%9Barea%20de%20la%20zero%20a,de%20energie%20pentru%20compania%20ta"
+    },
+    {
+      "url": "https://www.librabank.ro/credite-persoane-juridice-afaceri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit energie verde",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea dedicată Creditului energie verde din hub-ul de credite pentru persoane juridice, confirmă finanțarea de la zero și refinanțarea proiectelor fotovoltaice/eoliene.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina acoperă mai multe produse pentru persoane juridice, dar conține un paragraf distinct, explicit despre Creditul energie verde, fără cifre financiare proprii (dobândă/comision).",
+      "citat": "Credit energie verde Finanțare de la zero pentru proiecte fotovoltaice și eoliene. Credit pentru persoane juridice și refinanțarea proiectelor existente, în condiții avantajoase.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credite-energie",
+    "https://www.librabank.ro/energie-verde"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2708,
+    "citire_cache": 83646,
+    "scriere_cache": 64840,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20592519999999997
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/ing-personal",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Personal - Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fără garanții, fără justificarea destinației, pentru persoane fizice, cu dobândă fixă sau variabilă, rambursabil în rate pe o perioadă de până la 5 ani - corespunde exact profilului CREDIT_NEVOI_PERSONALE de la Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține grila completă de dobânzi pe tranșe valorice, comisioane, sumă maximă și perioadă de creditare.",
+      "citat": "cel puțin 150.000 lei - Dobânda fixă*: 5,29% - Dobândă variabilă* (marjă fixă + IRCC): 7,79% ( marja: 2,23% + IRCC) - între 70.000 lei și 149.999 lei - Dobânda fixă*: 6,79%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1363,
+    "citire_cache": 6340,
+    "scriere_cache": 34930,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10223100000000002
+  }
+}

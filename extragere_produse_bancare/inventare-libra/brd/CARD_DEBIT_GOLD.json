@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/en/mastercardvisa-gold",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Debit Card Gold (MasterCard/Visa Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exclusiv cardului de debit Gold pentru persoane fizice, cu asigurare de călătorie gratuită, acces lounge și limite de tranzacție mai mari, corespunzând direct cardului de debit Gold Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre concrete: 5 intrări gratuite/an în lounge condiționate de tranzacții de minim 1000 lei, plus plafoane de asigurare de călătorie (100.000 EUR, 500 EUR, 5.000 EUR).",
+      "citat": "You get 5 free entrances per year to the Business Lounges in the Priority Pass network, provided that transactions are made at POS or e-commerce worth at least 1000 lei, excluding bank transfers, settled in the previous month, but no later than 4 days before access to the lounge.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/card-de-zi-cu-zi-gold",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de Zi cu Zi Gold (Card de debit Mastercard/Visa Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet cu card de debit premium Gold, cont curent atașat, cashback, asigurare de călătorie și acces lounge pentru persoane fizice; segmentul firme nu e acoperit de acest pachet specific, dar tipul de produs (card debit premium) și beneficiile sunt echivalente cu CARD_DEBIT_GOLD.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetului descrie explicit cardul de debit Gold, comision 0 și programul de cashback, deși cifrele complete apar mai degrabă în documentul conex (newsletter).",
+      "citat": "CARD DE ZI CU ZI GOLD include o gamă largă de produse și servicii bancare și extrabancare Icon CARD DE DEBIT MASTERCARD/VISA GOLD Cu un cont curent în lei atașat, ambele cu comision 0",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/newsletters/Card_gold_website.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Card Gold în lei (pachet cont curent + card de debit Mastercard Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de prezentare a pachetului cu cardul de debit Gold pentru persoane fizice, cu cifre exacte pentru retrageri gratuite, acces lounge și condiții de gratuitate a administrării, comparabile cu retragerile gratuite și taxa anuală din CARD_DEBIT_GOLD Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document cu cifre explicite despre retrageri gratuite (nelimitat în România, de 2 ori/lună în străinătate) și condiția de venit de 8.000 lei/lună pentru gratuitate completă, direct legate de cardul de debit Gold.",
+      "citat": "GRATUIT si NELIMITAT poti retrage lei de la bancomatul oricarei banci din Romania. GRATUIT mai poti retrage valuta, de la bancomatul oricarei banci din strainatate, de 2 ori pe luna. ESTE GRATUIT IN PRIMELE 2 LUNI Comision 0 de administrare a pachetului, in luna deschiderii si in urmatoarea luna calendaristica. IL POTI AVEA GRATUIT SI DUPA CELE 2 LUNI Daca incasezi in conturile tale de la BRD un venit recurent de minimum 8.000 lei/luna.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/card-de-zi-cu-zi-gold",
+    "https://www.brd.ro/mastercardvisa-gold",
+    "https://www.brd.ro/en/mastercardvisa-gold",
+    "https://www.brd.ro/card-gold-upgrade"
+  ],
+  "durata_s": 69,
+  "consum": {
+    "intrare": 93322,
+    "iesire": 5547,
+    "citire_cache": 12704,
+    "scriere_cache": 29926,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3194698
+  }
+}

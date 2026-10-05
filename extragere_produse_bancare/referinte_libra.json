@@ -1,0 +1,101 @@
+{
+ "nota": "Scenariul de referință al comparației, per produs Libra: cazul în care o cifră de la o bancă se poate pune lângă cifra Libra. Se aplică doar câmpurilor care depind de scenariu (din `trepte[].campuri` în produse_bancare_v2.json): un comision de analiză dosar de 900 lei e 900 lei la orice sumă, dar o DAE la 250.000 lei / 180 luni nu se compară cu una la 350.000 lei / 300 luni. Potrivirea se calculează din cifre (scenariu_libra.potrivire), nu din textul condițiilor.",
+ "toleranta": {
+  "suma_exact": 0.02,
+  "suma_aproximativ": 0.15,
+  "perioada_aproximativ": 0.2
+ },
+ "de_ce_acestea": {
+  "credit_ipotecar": "350.000 lei / 300 luni e exemplul publicat la BCR (6 DAE) și Raiffeisen (350.500 lei, 7 DAE); BRD dă 330.000 / 360, Libra 250.000 / 180. Nu există un punct publicat de toți; ăsta e cel mai des.",
+  "nevoi_personale": "30.000 lei / 60 luni, același ca NP_30K_60L_BAZA din scenarii.json, pe care extracția îl cere deja.",
+  "depozite": "Durata produsului Libra, în lei: depozitul promoțional de 13 luni se compară cu oferte de ~12 luni (aproximativ), nu cu dobânda la 1 lună.",
+  "fx": "EUR / RON, perechea pe care o publică toate băncile."
+ },
+ "produse": {
+  "CREDIT_IPOTECAR_PF": {
+   "id": "IPO_350K_300L",
+   "nume": "350.000 lei pe 300 de luni",
+   "parametri": {
+    "suma": 350000,
+    "valuta": "RON",
+    "perioada_luni": 300
+   },
+   "pret_de_lista": true
+  },
+  "CREDIT_NEVOI_PERSONALE": {
+   "id": "NP_30K_60L",
+   "nume": "30.000 lei pe 60 de luni",
+   "parametri": {
+    "suma": 30000,
+    "valuta": "RON",
+    "perioada_luni": 60
+   },
+   "pret_de_lista": true
+  },
+  "CREDIT_LIBRA_WAY": {
+   "id": "NP_30K_60L",
+   "nume": "30.000 lei pe 60 de luni",
+   "parametri": {
+    "suma": 30000,
+    "valuta": "RON",
+    "perioada_luni": 60
+   },
+   "pret_de_lista": true
+  },
+  "OVERDRAFT_PF": {
+   "id": "OD_5K",
+   "nume": "limită de 5.000 lei",
+   "parametri": {
+    "suma": 5000,
+    "valuta": "RON"
+   },
+   "pret_de_lista": true
+  },
+  "DEPOZIT_TERMEN": {
+   "id": "DEP_12L_RON",
+   "nume": "12 luni, în lei",
+   "parametri": {
+    "perioada_luni": 12,
+    "valuta": "RON"
+   }
+  },
+  "DEPOZIT_1AN_1LUNA": {
+   "id": "DEP_13L_RON",
+   "nume": "13 luni, în lei",
+   "parametri": {
+    "perioada_luni": 13,
+    "valuta": "RON"
+   }
+  },
+  "DEPOZIT_BLITZ_7L": {
+   "id": "DEP_7L_RON",
+   "nume": "7 luni, în lei",
+   "parametri": {
+    "perioada_luni": 7,
+    "valuta": "RON"
+   }
+  },
+  "CONT_ECONOMII": {
+   "id": "EC_RON",
+   "nume": "sold în lei",
+   "parametri": {
+    "valuta": "RON"
+   }
+  },
+  "FX_SPOT": {
+   "id": "FX_EUR",
+   "nume": "EUR / RON",
+   "parametri": {
+    "valuta": "EUR"
+   }
+  },
+  "LIVE_FX": {
+   "id": "FX_EUR",
+   "nume": "EUR / RON",
+   "parametri": {
+    "valuta": "EUR"
+   }
+  }
+ },
+ "de_ce_pret_de_lista": "La credite, referința e prețul de listă: client fără beneficii. O DAE pe aceeași sumă și perioadă, dar pentru clientul Max cu venit peste 10.000 lei, nu e aceeași ofertă: devine `aproximativ`, cu motivul."
+}

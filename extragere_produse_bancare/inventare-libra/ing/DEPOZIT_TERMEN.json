@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Depozit la termen",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru persoane fizice, destinat economiilor/lichidităților existente, cu dobânzi afișate pe termene (3 luni, 6 luni, 1 an), la fel ca produsul Libra pentru persoane fizice.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu grilă de dobânzi pe valute și termene afișată direct în text.",
+      "citat": "Pentru sumele în lei depuse în ING Depozit de care vrei să nu te atingi timp de 1 an de zile, primești o dobândă de până la  5% pe an.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/Economii/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit la termen (companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru persoane juridice (IMM/microîntreprinderi), destinat sumelor disponibile ale firmei, cu termene și sume minime afișate, corespunzând segmentului juridic al produsului Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului pentru companii, cu cifre despre termene, sume minime și costuri de constituire/lichidare.",
+      "citat": "Deschide un depozit bancar pentru 7 zile, 1, 3 sau 12 luni și păstrează-ți banii firmei în siguranță. Poți începe cu o sumă minimă de 1000 RON sau EUR.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen - ING Profesional/ING Fix",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi pentru persoane juridice și alte entități, conținând exact grila de dobânzi pentru Depozite la termen pe termene de 7 zile, 1 lună, 3 luni și 1 an.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document PDF oficial, actualizat (valabil din 01 August 2026), cu cifre explicite pentru depozitele la termen ale companiilor.",
+      "pagina_pdf": 1,
+      "citat": "Termen 7 zile 1 lună 3 luni 1 an Suma minimă de constituire a unui depozit este 1.000 unităţi. Lei 1.75% 3.75% 4.00% 4.50% Euro 0.10% 1.00% 1.50% 1.70%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4000,
+    "citire_cache": 6345,
+    "scriere_cache": 29828,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.115847
+  }
+}

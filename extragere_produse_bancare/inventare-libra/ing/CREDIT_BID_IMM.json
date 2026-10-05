@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/Credit-cu-garantie-BID-pentru-IMM",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanție BID pentru IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (credit garantat de BID pentru IMM, investiții și capital de lucru), același segment de clienți (persoane juridice, IMM), cu garanție BID 70% din valoarea creditului, foarte apropiat de produsul Libra.",
+      "incredere": 0.97,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu toate cifrele (procent garanție, valoare maximă credit, perioade, beneficiari).",
+      "citat": "Caracteristici principale - Procentul de garantare: 70% din valoarea creditului - Valoarea creditului: maxim 14 milioane LEI - Contractele de credit cu garanție BID se pot semna până la 31.12.2027",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/informatii-utile/ING-Bank-finanteaza-IMM-urile",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit cu garanție BID pentru IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Articol oficial ING despre același produs, cu cifre complementare celor din pagina produsului (procent garanție, valoare maximă, condiții de eligibilitate).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document general (comunicat/articol informativ) în care produsul apare explicit cu valori despre procentul de garantare și plafonul creditului.",
+      "citat": "Prin plafonul de garantare pentru IMM-uri, antreprenorii beneficiază de un procent de garantare de 70% din valoarea creditelor atrase. Valoarea maximă a unui credit solicitat se ridică la 14 milioane de lei.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1011,
+    "citire_cache": 6337,
+    "scriere_cache": 32269,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0920579
+  }
+}

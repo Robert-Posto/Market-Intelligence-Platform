@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/arhiva-pj/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_7-August-2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisoare de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru persoane juridice, PFA și alte entități, conținând secțiune dedicată comisioanelor pentru scrisori de garanție emise de ING Bank, cu procente și sume exacte.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document de tarife actual (valabil din 7 August 2025) cu cifre explicite pentru toate comisioanele aferente scrisorilor de garanție bancară.",
+      "citat": "Comisionul de emitere/majorare valoare a scrisorii de garanție emise de ING Bank 0,5%, min 330 lei / trimestru Comision de administrare scrisoare de garanție emisă de ING Bank 0,5% / trimestru Comision de modificare scrisoare de garanție emisă de ING Bank 110 lei Comision de executare scrisoare de garanție 0,1 %, min 225 lei, max 6.750 lei",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/finantare-comerciala/scrisoarea-de-garantie-bancara",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoarea de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată produsului pentru persoane juridice/IMM, descriind Scrisoarea de Garanție Bancară (SGB) ca angajament irevocabil al băncii emitente la cererea beneficiarului, exact tipul de produs Libra SCRISORI_GARANTIE.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina este dedicată explicit produsului și descrie caracteristicile lui, dar nu conține cifre de tarife în text, doar beneficii și descriere.",
+      "citat": "Scrisoarea de Garație Bancară reprezintă un angajament irevocabil al Băncii Emitente (Garantul) Angajamentul este asumat la solicitarea și în numele Părții de la care a primit instrucțiunile de emitere, care poate fi aceeași cu Ordonatorul sau diferită de acesta",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/jcr:b794d4a4-3235-4e64-b513-bcdb30fd3700/Termeni%20si%20conditii%20specifice%20produselor%20de%20creditare.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Scrisori de Garanție Bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de termeni și condiții specifice produselor de creditare pentru persoane juridice, care include secțiune dedicată Scrisorilor de Garanție Bancară și regulile aplicabile emiterii lor.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document juridic oficial ING ce reglementează condițiile produsului, dar nu conține cifre de preț, doar termeni contractuali.",
+      "citat": "Scrisorile de Garantie Bancara/ Acreditivele Documentare emise din ordinul Clientului vor fi guvernate de legislatia romana specifica si, dupa caz, de regulile, uzantele si practicile internationale uniforme aplicabile acestor produse, adoptate si publicate de catre Camera Internationala de Comert de la Paris",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1622,
+    "citire_cache": 6321,
+    "scriere_cache": 28065,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0876547
+  }
+}

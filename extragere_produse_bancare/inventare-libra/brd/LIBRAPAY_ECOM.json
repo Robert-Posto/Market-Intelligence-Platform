@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/en/companies/sme/current-activity/receipt-and-collection",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "E-commerce (Receipt and collection / Accept Card)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina BRD pentru companii (SME) descrie serviciul de acceptare a plăților cu cardul în mediul online (e-Commerce), destinat firmelor care vând online – același tip de produs (gateway de plăți online) și același segment (persoane juridice) ca LibraPay eCommerce.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina confirmă existența serviciului de acceptare carduri online pentru companii, dar textul accesibil nu conține cifre concrete de comision sau tarife, acestea fiind probabil disponibile doar după autentificare sau la cerere.",
+      "citat": "E-commerce Discover the e-Commerce service of card acceptance in the electronic environment. BRD offers you a full package to help you carry out your business in the online environment:",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/en/companies/sme/current-activity/receipt-and-collection",
+    "https://www.brd.ro/companii/intreprinderi-mici-si-mijlocii/activitate-curenta/incasari-si-colectare",
+    "https://www.brd.ro/en/companies/sme/current-activity/receipt-and-collection"
+  ],
+  "durata_s": 62,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4844,
+    "citire_cache": 70220,
+    "scriere_cache": 53078,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.195195
+  }
+}

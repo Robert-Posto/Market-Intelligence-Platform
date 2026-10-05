@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Contul George pentru afacerea ta (Pachetul George Business)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un pachet/abonament bancar pentru persoane juridice (cont curent, card de debit business, internet/mobile banking), ca la Libra Abonament PRIME, dar la BCR comisionul nu este unul fix de 95 lei/lună ci variază lunar în funcție de numărul de tranzacții (de la 49 la 349 RON, cu reduceri până la 50%); include un singur card de debit Business (nu 2 carduri) și nu menționează explicit conturi simultane lei/EUR/USD sau serviciu de tip Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată a pachetului de cont business George cu cifre despre plafonul de cifră de afaceri (1 mil. euro) și reducerile de comision (-10%, -20%), dar fără suma fixă a abonamentului, care se găsește doar în tarife.",
+      "citat": "Conceput pentru afaceri de până la 1 mil. euro, ONG-uri și Asociații de Proprietari, pachetul George îți răsplătește plățile digitale cu comisioane 0 și reduceri dinamice la administrare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de servicii – clienți PJ: Cont George pentru afacerea ta",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife descrie explicit pachetul 'Cont George pentru afacerea ta' pentru persoane juridice (cont curent + card de debit + internet banking), echivalent funcțional al Abonamentului PRIME Libra, dar comisionul de administrare este variabil pe tranșe de tranzacții (49–349 RON/lună), nu un abonament fix de 95 lei, iar cardul business este unul singur, nu 2 carduri, și nu se menționează conturi simultane în 3 valute sau Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit grila de comisioane pe tranșe de tranzacții pentru pachetul Cont George pentru afacerea ta, cu valori numerice clare.",
+      "pagina_pdf": 5,
+      "citat": "În funcție de numărul de plăți electronice efectuate prin serviciul internet banking George într-o lună, comisionul standard de administrare Pachet este de 49 RON pentru 0-4 plăți, 129 RON pentru 10-19 plăți și 349 RON pentru 200+ plăți.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/contul-curent-bcr-business"
+  ],
+  "durata_s": 455,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4115,
+    "citire_cache": 34794,
+    "scriere_cache": 69317,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2214133
+  }
+}

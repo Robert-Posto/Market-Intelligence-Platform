@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/finantare/credit-prosumatori",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru Prosumatori",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Finanțare pentru firme care investesc în capacități de producție de energie din surse regenerabile (fotovoltaic/eolian), de la zero, pentru autoconsum - același tip de produs și segment (persoane juridice) ca CREDIT_ENERGIE_VERDE de la Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: procent de finanțare, plafon per MW, perioade de utilizare, grație și rambursare.",
+      "citat": "Finanțarea până la 85% din valoarea totală a proiectului, dar nu mai mult de 900.000 euro/ MW instalat. Perioada de utilizare a creditului până la 12 luni, Perioada de grație până la 12 luni, Perioada de rambursare până la 10 ani",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/finantare/credit-prosumatori#:~:text=Finan%C8%9Barea%20p%C3%A2n%C4%83%20la%2085%25%20din,rambursare%20p%C3%A2n%C4%83%20la%2010%20ani"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/finantare/credit-prosumatori"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 963,
+    "citire_cache": 42128,
+    "scriere_cache": 39422,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1166226
+  }
+}

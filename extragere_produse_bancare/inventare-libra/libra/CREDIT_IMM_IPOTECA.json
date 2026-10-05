@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/Persoane_juridice/Credit_IMM_cu_ipoteca_imobiliara/383",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit IMM cu ipotecă imobiliară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului Credit IMM de la Libra, în cadrul secțiunii 'Credit IMM / Companii până la 1M euro', descrie exact varianta cu ipotecă imobiliară: sumă maximă 1 milion lei, 84 luni pentru activitate curentă și 180 luni pentru credit ipotecar/investiții, identic cu descrierea produsului căutat.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina oficială dedicată, cu secțiune explicită 'Credit IMM cu ipotecă imobiliară' și cifrele exacte de sumă și termene menționate în text.",
+      "citat": "Credit IMM cu ipotecă imobiliară - Credit pentru dezvoltarea afacerii sau pentru susținerea activității curente - Poți obține până la 1 milion de lei - Perioada maximă: - Credit activitate curentă în rate: 84 luni - Credit ipotecar sau de investiții: 180 luni",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/Persoane_juridice/Credit_IMM_cu_ipoteca_imobiliara/383#:~:text=Credit%20IMM%20cu%20ipotec%C4%83%20imobiliar%C4%83,sau%20de%20investi%C8%9Bii%3A%20180%20luni"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/Persoane_juridice/Credit_IMM_cu_ipoteca_imobiliara/383",
+    "https://www.librabank.ro/credite_imm"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2757,
+    "citire_cache": 85603,
+    "scriere_cache": 67552,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21358660000000002
+  }
+}

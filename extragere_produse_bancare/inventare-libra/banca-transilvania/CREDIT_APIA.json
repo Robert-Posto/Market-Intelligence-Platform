@@ -1,0 +1,47 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/news/comunicate-de-presa/banca-transilvania-lanseaza-creditul-apia-100-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact același tip de produs: credit de avans pe adeverința APIA pentru persoane juridice (fermieri/companii agricole), acordat până la 90% din subvenția de încasat, cu rambursare la momentul încasării subvenției de la APIA - identic ca structură cu Credit APIA de la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Comunicatul oficial de presă al băncii descrie explicit condițiile produsului (destinație, procent, perioadă, garanție) cu cifre concrete, deși nu este pagina-produs propriu-zisă (care necesită JavaScript și nu a putut fi accesată static).",
+      "citat": "Destinație: achiziția de materii prime și mărfuri, pentru salarii, respectiv plata utilităților, taxelor la stat și către furnizori; Suma acordată: până la 90% din suma pe care urmează să o primească un client BT, ca subvenție; Perioada împrumutului: se acordă pe o perioada până la primirea subvenției; Garanția este subvenția care urmează să fie primită de la APIA.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/news/comunicate-de-presa/banca-transilvania-lanseaza-creditul-apia-100-online#:~:text=Destina%C8%9Bie%3A%20achizi%C8%9Bia%20de%20materii%20prime,fie%20primit%C4%83%20de%20la%20APIA."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantari-agricole/credit-apia",
+    "https://en.bancatransilvania.ro/companies/financing/credits/credit-apia",
+    "https://www.bancatransilvania.ro/pentru-companii/finantari-agricole/credite-bancare-agri/",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole/credit-de-5-ori-subventia",
+    "https://intreb.bancatransilvania.ro/ce-este-creditul-apia/",
+    "https://www.bancatransilvania.ro/news/comunicate-de-presa/banca-transilvania-lanseaza-creditul-apia-100-online",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-apia",
+    "https://en.bancatransilvania.ro/companies/financing/credits/credit-apia",
+    "https://blog.bancatransilvania.ro/pentru-antreprenori/creditul-apia-finantare-rapida-pentru-cei-care-construiesc-agricultura-romaniei",
+    "https://intreb.bancatransilvania.ro/ce-este-creditul-apia/"
+  ],
+  "durata_s": 123,
+  "consum": {
+    "intrare": 128995,
+    "iesire": 8760,
+    "citire_cache": 295694,
+    "scriere_cache": 86062,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6198838
+  }
+}

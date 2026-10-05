@@ -1,0 +1,48 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "SMART_SAFE",
+  "denumire": "Smart Safe",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Smart Cashbox",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Smart Cashbox este un echipament automatizat de depunere numerar multivalută pentru persoane juridice, cu creditare automată a contului, deci același tip de nevoie (depunere cash cu înregistrare rapidă în cont, pentru firme) ca Smart Safe de la Libra. Diferă însă canalul: informațiile publice ale Raiffeisen (inclusiv comunicatele despre echipamentele similare de tip 'Smart Dropbox') arată că aceste mașini sunt instalate în sucursale/agenții ale băncii, nu la sediul/locația clientului cum este cazul Smart Safe (partener Force One), ceea ce reprezintă o diferență de canal relevantă.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Documentul de tarife corporații conține explicit denumirea produsului 'Smart Cashbox' și comisionul de 4 lei/depunere, dar nu există o pagină dedicată publică ce confirme locația exactă a echipamentelor (la client vs în agenție).",
+      "pagina_pdf": 3,
+      "citat": "Depuneri la Smart Cashbox Raiffeisen Bank 4 lei/depunere Depuneri la Multifuncționalele Raiffeisen Bank 0,08% aplicat contului beneficiar",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (17 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/administrare-numerar/smart-cashbox",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/operatiuni-curente/administrare-numerar.html",
+    "https://banking.raiffeisen.ro/info-desk/",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf",
+    "https://raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/administrare-numerar/colectare-facturi-numerar",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/servicii-electronice/atm-si-multifunctionale.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/administrare-numerar/smart-cashbox.html",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/operatiuni-curente/administrare-numerar.html"
+  ],
+  "durata_s": 77,
+  "consum": {
+    "intrare": 125170,
+    "iesire": 5865,
+    "citire_cache": 327215,
+    "scriere_cache": 104665,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6360954999999999
+  }
+}

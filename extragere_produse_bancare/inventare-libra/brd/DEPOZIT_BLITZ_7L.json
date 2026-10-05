@@ -1,0 +1,61 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/dobanzi-pf.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen 150 zile (promoțional)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BRD are, în ghidul curent de dobânzi pentru persoane fizice, un depozit la termen special pe 150 de zile (~5 luni) cu dobândă fixă de 5,60%, fără opțiune de reînnoire automată — un depozit promoțional de scurtă durată, dar cu termen diferit (5 luni) față de Blitz-ul Libra (7 luni) și valabil doar pentru persoane fizice, nu și pentru persoane juridice (pentru firme BRD oferă doar Depozitul 5.000 standard, fără variantă promoțională de 150 de zile).",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul oficial de dobânzi standard pentru persoane fizice, aflat în vigoare începând cu 21.09.2026, listează explicit termenul special de 150 de zile cu rata fixă de 5,60% și menționează condiția specială (fără reînnoire automată), ceea ce îl diferențiază de depozitele standard.",
+      "citat": "150* 5.60% - 2.00% 5.60% - 2.00% Bonusul de dobanda nu se acorda pentru depozitele la termen pe 150 zile. Depozitul la termen pe 150 zile se poate constitui doar fara optiune de reinnoire automata.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/term-deposit",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Term Deposit / Depozitul la termen (tranșa 150 zile)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina publică dedicată depozitului la termen afișează aceeași tranșă specială de 150 de zile (5 luni) cu dobândă de 5,60%, diferită ca termen (5 luni, nu 7 luni) de Blitz-ul Libra și disponibilă doar pentru persoane fizice, nu și pentru companii.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "La deschiderea directă a paginii, conținutul cu cifre nu s-a încărcat în HTML-ul static (doar meniul de navigare), dar pagina este confirmată ca fiind cea curentă a produsului, iar valorile tranșei de 150 zile au fost văzute în varianta indexată a aceleiași pagini.",
+      "pagina_pdf": null,
+      "citat": "Term deposits in LEI fixed interest rate (% / year) | at the counter / via MyBRD | via YOU BRD | 90 | 3 months | 3,50% | - | 4,00% | - | *150 | 5 months | 5,60% | - | 5,60% | -",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/_files/pdf/Depozitul-la-termen_PF_RO.pdf",
+    "https://www.brd.ro/depozitul-la-termen",
+    "https://www.brd.ro/_files/pdf/Depozitul-la-termen_companii_mici_RO.pdf",
+    "https://www.brd.ro/en/term-deposit",
+    "https://www.brd.ro/depozitul-la-termen",
+    "https://www.brd.ro/en/term-deposit",
+    "https://www.brd.ro/_files/pdf/dobanzi-pf.pdf"
+  ],
+  "durata_s": 118,
+  "consum": {
+    "intrare": 16,
+    "iesire": 10222,
+    "citire_cache": 373872,
+    "scriere_cache": 99544,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4258864
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/internet-banking/RoPay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată serviciului național de plăți instant prin telefon mobil (scanare QR, plată prin număr de telefon/alias), pentru persoane fizice, identic ca tip de produs cu RoPay de la Libra Bank.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului RoPay, cu explicații detaliate despre funcționare, limite și canale de utilizare.",
+      "citat": "RoPay este serviciul național de plăți instant dezvoltat de băncile din România, oferit de ING direct în Home'Bank și acoperă multiple situații de inițiere a plăților în lei cu telefonul mobil: prin scanarea codului QR RoPay, plata prin numărul de telefon",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/informatii-utile/RoPay-disponibil",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay pentru ING Business Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta RoPay dedicată persoanelor juridice (antreprenori/IMM) prin ING Business Web, cu comisioane explicite de încasare, acoperind segmentul juridic al produsului Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Articol dedicat lansării RoPay pentru clienți business, cu cifre concrete despre comisioane și termenul promoției.",
+      "citat": "Clienții ING din categoria antreprenorilor pot activa acum RoPay direct din ING Business, într-un proces complet digital, și beneficiază până la 1 iulie 2027 de costuri promoționale de 0% pentru plățile încasate de la persoanele fizice clienți ING și doar 0,25% pentru plățile încasate de la clienții altor bănci",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/arhiva/Ghidul-Platilor-01-05-2021-bk20250630.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Serviciul RoPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ghidul Plăților (fișa/condițiile produsului) descrie explicit Serviciul RoPay, cu limite de sumă și mecanism de funcționare, document contractual aplicabil produsului.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document contractual oficial cu secțiune dedicată RoPay, inclusiv limite maxime tranzacționale exprimate numeric.",
+      "citat": "Limitele maxime pentru sumele tranzactionate prin RoPay sunt de 49.999 Lei pentru platile intre persoane si de 99.999 Lei pentru platile E-commerce si POS.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1893,
+    "citire_cache": 6309,
+    "scriere_cache": 39534,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11903480000000001
+  }
+}

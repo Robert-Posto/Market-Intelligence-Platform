@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/economii/depozit-fresh-money.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit Fresh Money",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt depozite la termen promoționale cu dobândă majorată peste oferta standard, dar Fresh Money este doar pentru persoane fizice (nu și juridice) și are maturitate de 4 luni (nu 7 luni) și este condiționat de aducerea de fonduri noi la bancă.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele (dobândă, sumă minimă, maturitate) pentru depozitul promoțional de bani noi.",
+      "citat": "Depozit Fresh Money - depozitul pentru sume noi · Lei, Eur Maturitate · 4 luni Rata anuala a dobanzii · 6.20% Lei / 2.50% Eur Suma minima · 500 lei / 100 Eur Optiuni la maturitate · Inchidere la maturitate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/economii-si-plasamente/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite standard IMM la termen",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul depozit la termen pentru persoane juridice la Raiffeisen, dar nu are caracter promoțional (este dobânda standard pe tranșe valorice), segmentul este limitat la IMM (nu toate persoanele juridice) și nu există maturitate de 7 luni, cea mai apropiată fiind 6 luni.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul listează explicit dobânzile standard pentru depozitele IMM pe mai multe maturități, inclusiv 6 luni, dar fără variantă promoțională de 7 luni.",
+      "citat": "Depozite standard IMM * in LEI · Depozite pe transe valorice, pe baza de contract, cu rata fixa de dobanda si plata lunara a dobanzii · 6 luni · 4,80%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3729,
+    "citire_cache": 6350,
+    "scriere_cache": 32993,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1210505
+  }
+}

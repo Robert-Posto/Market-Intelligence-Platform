@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_HIPOCRATE",
+  "denumire": "Credit Hipocrate (medici)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/ExpertMedical",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BRD Expert Medical",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Segment dedicat explicit medicilor/profesiilor liberale medicale organizate ca persoane juridice (cabinete, clinici), cu oferte de finanțare a activității curente (linie de credit, capital de lucru), investiții (modernizare cabinet, echipament medical) și credite imobiliare — corespunde exact descrierii Credit Hipocrate.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina este dedicata integral segmentului medical PJ si enumera explicit tipurile de finantare (linie de credit, capital de lucru, credit de investitii, scrisori de garantie), dar nu afiseaza cifre proprii (dobanzi/sume) specifice segmentului medical, acestea fiind la produsele generale linkate.",
+      "citat": "Continuă să salvezi lumea; noi îți oferim sprijinul nostru prin oferta noastră financiară dedicată profesiilor liberale și profesiilor liberale organizate ca persoane juridice ce aparțin sectorului medical.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/finantare/credite-de-investitii/creditul-simplu-profesii-liberale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul pentru Nevoi Nenominalizate Profesii Liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este instrumentul de finanțare a investițiilor către care trimite hub-ul BRD Expert Medical pentru medicii organizați ca persoane juridice/profesii liberale, dar produsul este general pentru toate profesiile liberale, nu are termeni (sume, dobânzi) distincți dedicați exclusiv sectorului medical.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina conține cifrele concrete ale creditului (sume minime/maxime, perioade de creditare) folosit ca soluție de finanțare pentru profesiile liberale, inclusiv cele din sectorul medical, dar nu este o pagină dedicată exclusiv medicilor.",
+      "citat": "Suma minimă este 20.000 RON Suma maximă este 400.000 RON Suma minimă este 20.000 RON Suma maximă este 5.000.000 RON Pentru creditele fără garanții materiale perioada de creditare este de maximum 36 luni Pentru creditele cu ipotecă imobiliara perioada de creditare este de maximum 120 luni",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/ExpertMedical",
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/finantare/credite-de-investitii-pfa",
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/finantare/activitate-curenta-pfa"
+  ],
+  "durata_s": 65,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5321,
+    "citire_cache": 71207,
+    "scriere_cache": 63522,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22627239999999998
+  }
+}

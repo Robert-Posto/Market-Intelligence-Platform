@@ -1,0 +1,36 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "LEASING_FINANCIAR",
+  "denumire": "Leasing financiar (Libra Development IFN)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/leasing-financiar/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Leasing Financiar (Raiffeisen Leasing)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de leasing financiar pentru persoane juridice (societăți comerciale și PFA), acordat prin IFN-ul grupului (Raiffeisen Leasing IFN S.A.), acoperind autovehicule, echipamente și utilaje, exact ca produsul Libra oferit prin Libra Development IFN.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține definiția, durata minimă, moneda, tipul de dobândă și criteriile de eligibilitate, dar nu precizează procente exacte de avans sau durata maximă în ani.",
+      "citat": "Durata minimă: un an. Durata maximă: în funcție de bunul finanțat. Moneda: Lei sau Euro. Dobânda: variabilă sau fixă. Avans: în funcție de indicatorii financiari ai companiei și tipul bunului finanțat. Asigurare pe perioada contractului: pentru toate bunurile finanțate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 10,
+  "consum": {
+    "intrare": 4,
+    "iesire": 810,
+    "citire_cache": 6376,
+    "scriere_cache": 32425,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0904457
+  }
+}

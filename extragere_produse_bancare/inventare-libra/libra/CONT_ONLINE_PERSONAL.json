@@ -1,0 +1,84 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/cont-online-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont online personal / Card și cont online persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact produsului Cont Online Personal pentru persoane fizice, deschis 100% online, cu card de debit asociat.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre explicite despre comisioane, condiții de eligibilitate și termene de livrare card.",
+      "citat": "Contul online Libra nu are comision de administrare. Aplicația Libra Bank și Libra desktop și multe alte operațiuni uzuale sunt gratuite. Pentru transferuri și retrageri de la ATM, comisioanele depind de pachetul pe care ești încadrat.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-online-persoane-fizice#:~:text=Contul%20online%20Libra%20nu%20are,pachetul%20pe%20care%20e%C8%99ti%20%C3%AEncadrat."
+    },
+    {
+      "url": "https://www.librabank.ro/cont-curent-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont curent persoane fizice (Cont online personal)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina care descrie contul curent pentru persoane fizice deschis 100% online, același produs ca Cont Online Personal, cu detalii despre comisioane și livrare card.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină cu descriere a produsului și cifre privind comisioane și termene de livrare card.",
+      "citat": "Contul nu are comision de administrare și include acces gratuit la aplicațiile Libra pentru mobile și desktop, transferuri gratuite în lei și euro și opțiunea de card de debit digital disponibil imediat sau fizic livrat în 1-3 zile lucrătoare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PF.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife Comisioane si Beneficii pentru clientii persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife care conține explicit comisioanele pentru contul curent în lei pentru persoane fizice, inclusiv deschidere/administrare gratuită și pachetele Silver/Gold/Platinum asociate contului online.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document PDF oficial de tarife, cu tabel explicit pentru 'CONTURI IN LEI SI VALUTA' care include deschidere, administrare și pachetele de cont curent, direct legat din pagina produsului Cont Online Personal.",
+      "citat": "Deschidere cont gratuit Administrare cont gratuit Pachet de cont curent Silver ( fost Activ)* gratuit Pachet de cont curent Gold ( fost Premium)* 20 Pachet de cont curent Platinum (fost VIP)* 50",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://contonline.librabank.ro/pf/cont-online-personal",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Online Personal",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de aplicare/flux de deschidere dedicată exact produsului Cont Online Personal, dar conținutul text extras nu conține cifre (pagina se încarcă dinamic via JS).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este clar pagina dedicată produsului (titlu, descriere, flux în 4 pași), dar la extragerea HTTP simplă nu au apărut cifre, fiind necesară randare JS pentru conținutul complet.",
+      "citat": "Deschide acum un cont curent, 100% digital, cu zero costuri, căruia îi poți adăuga un card de debit. Vezi mai jos condițiile deschiderii de cont",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/cont-online-persoane-fizice",
+    "https://contonline.librabank.ro/pf/cont-online-personal",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PF.pdf"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2468,
+    "citire_cache": 86346,
+    "scriere_cache": 73737,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2263077
+  }
+}

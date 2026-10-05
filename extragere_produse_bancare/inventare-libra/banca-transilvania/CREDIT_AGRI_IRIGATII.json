@@ -1,0 +1,41 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_AGRI_IRIGATII",
+  "denumire": "Credit soluții pentru irigații (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite Verzi - categoria Agricultură durabilă",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BT nu are un credit dedicat exclusiv irigațiilor prin InvestEU; are un credit verde generic pentru companii care, în categoria 'Agricultură durabilă', include explicit investiții în utilaje agricole și irigații, alături de alte tipuri de investiții sustenabile (energie verde, eficiență energetică, apă și deșeuri). Segmentul de clienți (companii/antreprenori) e comparabil, dar produsul nu e limitat la irigații și nu are finanțare InvestEU menționată explicit.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este pagina dedicată a produsului de credit care numește explicit 'utilaje agricole și irigații' ca tip de investiție eligibilă, dar nu conține cifre specifice (dobândă, comision, sumă maximă, termen) pentru sub-categoria irigații; termenii generali (perioade flexibile, grație) sunt menționați fără valori numerice.",
+      "citat": "Agricultură durabilă - Susținem producția Minimum Till, No Till - Investiții precum: utilaje agricole și irigații, tehnologii smart (GPS, drone, stații meteo) sau soluții energetice pentru ferme.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi#:~:text=Agricultur%C4%83%20durabil%C4%83%20%2D%20Sus%C8%9Binem%20produc%C8%9Bia,sau%20solu%C8%9Bii%20energetice%20pentru%20ferme."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi",
+    "https://www.bancatransilvania.ro/en/companii/finantari-agricole",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi/compara",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi/compara#taxe"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 65218,
+    "iesire": 3684,
+    "citire_cache": 277753,
+    "scriere_cache": 99922,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.47263160000000004
+  }
+}

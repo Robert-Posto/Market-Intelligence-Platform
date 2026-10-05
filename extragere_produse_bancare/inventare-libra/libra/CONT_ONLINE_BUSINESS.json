@@ -1,0 +1,84 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/deschidere-cont-bancar-online-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont online business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este chiar pagina dedicată din meniul 'Conturi persoane juridice' > 'Cont online business', cu descrierea procesului 100% online și grila de abonamente operaționale cu cifre.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv produsului, cu tabel complet de prețuri pentru abonamentele operaționale (Cont Deștept, Rise IMM, Shine IMM) și carduri business asociate.",
+      "citat": "Pachete operaționale pentru companii cu cifra de afaceri sub 5 milioane lei: Cont Deștept Pentru companii noi, Rise IMM, Shine IMM, mPOS – comision carduri persoane fizice 0,59%, 0,59%, 0,59%, Gratuit 12 luni, 50 lei/lună, 100 lei/lună",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/deschidere-cont-bancar-online-persoane-juridice#:~:text=Pachete%20opera%C8%9Bionale%20pentru%20companii%20cu,luni%2C%2050%20lei%2Flun%C4%83%2C%20100%20lei%2Flun%C4%83"
+    },
+    {
+      "url": "https://www.librabank.ro/cont-bancar-persoana-juridica",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont bancar persoană juridică / Cont online business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub pentru conturile persoane juridice, din care pornește linkul direct către 'Cont online business' și care descrie tipurile de cont business, inclusiv cel pentru companii până la 5M lei care corespunde contului online business standard.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Conține descrierea generală a tipului de cont business și link direct către documentul de tarife, dar cifrele detaliate sunt pe pagina dedicată, nu aici.",
+      "citat": "1. Cont bancar pentru persoană juridică - companii până la 5 M lei - administrare lunară cont pentru persoane juridice RON; administrare lunară cont valută; mobile banking; plăți online instant; încasări lei; plăți online euro SEPA; card business Standard și Gold",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-bancar-persoana-juridica#:~:text=1.%20Cont%20bancar%20pentru%20persoan%C4%83,card%20business%20Standard%20%C8%99i%20Gold"
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Taxe și comisioane persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru persoane juridice, legat direct din pagina 'Cont online business' și din pagina hub, acoperind comisioanele contului.",
+      "incredere": 0.75,
+      "explicatie_incredere": "PDF de tarife referit explicit din pagina produsului Cont online business; nu am putut extrage textul direct dar linkul este confirmat ca document oficial de taxe și comisioane PJ.",
+      "citat": "Taxe și comisioane persoane juridice",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (5 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonamente operaționale asociate contului online business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina descrie un produs conex (Cont Online 2 în 1, care combină contul business cu unul personal) dar conține exact aceeași grilă de abonamente operaționale ale contului online business, deci diferă canalul/structura (2 conturi legate vs. 1 cont simplu).",
+      "incredere": 0.7,
+      "explicatie_incredere": "Tabelul de abonamente operaționale reprodus aici este identic cu cel de pe pagina dedicată Cont Online Business, dar produsul principal descris e varianta 2-in-1.",
+      "citat": "Cont Deștept Pentru companii noi · Rise IMM · Shine IMM Administrare lunară cont RON · Abonament IMM · Abonament IMM · Abonament IMM mPOS – comision carduri persoane fizice · 0,59% · 0,59% · 0,59% ✦ Gratuit 12 luni · 50 lei/lună · 100 lei/lună",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/cont_online_business",
+    "https://www.librabank.ro/",
+    "https://www.librabank.ro/deschidere-cont-bancar-online-persoane-juridice",
+    "https://www.librabank.ro/cont-bancar-persoana-juridica"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2959,
+    "citire_cache": 95663,
+    "scriere_cache": 82521,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2550411
+  }
+}

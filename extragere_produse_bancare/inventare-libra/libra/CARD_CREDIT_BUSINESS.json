@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CARD_CREDIT_BUSINESS",
+  "denumire": "Card de credit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/card-credit-persoane-juridice-pentru-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit pentru persoane juridice (companii) - Visa Business Gold & Card firmă Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact cardului de credit pentru persoane juridice (companii) de la Libra, cu cele două variante (Standard și Gold), limite, costuri și condiții de rambursare.",
+      "incredere": 0.97,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagină dedicată a produsului, cu cifre explicite (limită, cost emitere, abonament lunar, comision retrageri) pentru ambele variante de card.",
+      "citat": "Card de credit pentru companii Visa Business Gold Până la 500.000 lei Fără a depăși 5% din Cifra de afaceri aferentă ultimului bilanț anual Perioadă de valabilitate/plan de rambursare Maximum 36 de luni, dobândă lunar, principalul la scadență",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/card-credit-persoane-juridice-pentru-companii#:~:text=Card%20de%20credit%20pentru%20companii,dob%C3%A2nd%C4%83%20lunar%2C%20principalul%20la%20scaden%C8%9B%C4%83"
+    },
+    {
+      "url": "https://www.librabank.ro/documente/carduri/comisioane_Libra_Business_Gold_Credit.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Visa Business – Gold Credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi, comisioane și taxe pentru varianta Gold a cardului de credit business pentru persoane juridice.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "PDF cu toate comisioanele și taxele explicite pentru cardul de credit Visa Business Gold.",
+      "pagina_pdf": 1,
+      "citat": "Comision de emitere card 150 RON Comision de reemitere card 25 RON Comision de administrare a cardului/contului de card 5 RON/luna Dobanda aferenta descoperitului de cont neautorizat: 50% pe an.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente/carduri/comisioane_Libra_Business_Standard_Credit.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Visa Business – Standard Credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi, comisioane și taxe pentru varianta Standard a cardului de credit business pentru persoane juridice.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "PDF cu toate comisioanele și taxele explicite pentru cardul de credit Visa Business Standard.",
+      "pagina_pdf": 1,
+      "citat": "Comision de emitere card 30 RON Comision de reemitere card 25 RON Comision de administrare a cardului/contului de card 4 RON/luna Dobanda aferenta descoperitului de cont neautorizat: 50% pe an.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/card-credit-persoane-juridice-pentru-companii",
+    "https://www.librabank.ro/cum-procedez",
+    "https://www.librabank.ro/documente/carduri/comisioane_Libra_Business_Gold_Credit.pdf",
+    "https://www.librabank.ro/documente/carduri/comisioane_Libra_Business_Standard_Credit.pdf"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2203,
+    "citire_cache": 86091,
+    "scriere_cache": 59715,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1885517
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet ING FIX Util (parte din gama Pachetele ING Fix cont curent)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este abonamentul lunar operațional pentru persoane juridice (firme, PFA, microîntreprinderi) cu cont curent, card business, internet/mobile banking, plăți interne nelimitate incluse și acceptare POS/SoftPOS — exact tipul și segmentul produsului Libra Abonament RISE.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetelor ING FIX pentru companii conține tabelul cu componentele și prețul exact al pachetului de bază (40 RON/lună), echivalent funcțional al abonamentului lunar Libra.",
+      "citat": "Pachet FIX Util(40 RON/luna) Cont curent RON ✓ Business Card ✓ ING Business, platforma de internet și mobile banking ✓ Depunere de numerar la ATM ING ✓ Acceptare la plată prin POS (primul cont) ✓ Plăți în RON intre conturile proprii sau către alți clienți ING Romania ✓1 Plăți în RON (ING-altă bancă) ✓2 Retragere de numerar la ATM ING ✓3",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Pachet%20FIX%20Util%2840%20RON%2Fluna%29%20Cont,numerar%20la%20ATM%20ING%20%E2%9C%933"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+    "https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 94975,
+    "iesire": 2497,
+    "citire_cache": 48895,
+    "scriere_cache": 49494,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.348434
+  }
+}

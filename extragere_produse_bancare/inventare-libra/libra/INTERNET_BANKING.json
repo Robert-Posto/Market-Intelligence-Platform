@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Operațiuni prin internet/mobile banking (Tarife și Comisioane Persoane Juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice conține o coloană dedicată 'Operatiuni prin internet/mobile banking' cu comisioane specifice acestui canal, inclusiv instalarea și abonamentul de alerte Internet Banking.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Este documentul oficial de tarife al băncii pentru persoane juridice, cu linii explicite despre serviciul Internet Banking (instalare, alerte, semnătură electronică) și valori numerice clare.",
+      "pagina_pdf": 7,
+      "citat": "Abonament alerte internet banking – prin SMS - 10 lei Abonament alerte internet banking – prin e-mail gratuit Comision de utilizare a serviciilor online de semnare a documentelor emise/semnate de client, aferente serviciilor prestate de banca - 10 lei / semnatura",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/mobile-banking",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Aplicația Libra pentru mobile banking (Internet & Mobile Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina oficială dedicată serviciilor de Internet și Mobile Banking ale Libra, cu mențiune explicită că acoperă atât persoane fizice cât și persoane juridice.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Este pagina dedicată a produsului de Mobile/Internet Banking, dar textul descriptiv nu conține un tabel de tarife sau cifre specifice pentru segmentul business, doar descrierea funcționalităților.",
+      "dovada_metoda": "Conținutul a fost extras direct din HTML fără elemente JavaScript dinamice vizibile; nu există cifre de tarife, doar mențiunea 'gratuit' pentru aplicație.",
+      "citat": "Aplicația Libra pentru mobile banking este disponibilă gratuit pe iOS, Android și Huawei AppGallery și permite gestionarea completă a conturilor bancare de pe telefon, plăți în lei și valută, schimb valutar, depozite, credite online și portare bani.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/mobile-banking#:~:text=Aplica%C8%9Bia%20Libra%20pentru%20mobile%20banking,credite%20online%20%C8%99i%20portare%20bani."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/cont-curent-imm",
+    "https://www.librabank.ro/mobile-banking",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 104,
+  "consum": {
+    "intrare": 8,
+    "iesire": 9659,
+    "citire_cache": 93358,
+    "scriere_cache": 103255,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3734151
+  }
+}

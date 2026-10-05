@@ -1,0 +1,74 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent Nelimitat (4 variante: Nelimitat în rețeaua BT, Nelimitat & 10, Nelimitat & 25, Nelimitat All Inclusive)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este abonamentul corporate de cont curent pentru persoane juridice cu tranzacții nelimitate în lei/valută/rețea proprie și card de debit business inclus, echivalent funcțional cu Abonamentul PRESTIGE de la Libra; diferă structura cardurilor (Visa Business Silver nelimitat vs. 5 standard+2 Gold la Libra) și nu se menționează explicit un serviciu tip Live FX.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de comisioane pentru persoane juridice conține un tabel dedicat 'Pachete de cont curent' cu cele 4 variante Nelimitat, prețurile lunare exacte și facilitățile incluse (operațiuni, card, internet banking).",
+      "pagina_pdf": 3,
+      "citat": "Servicii abonament Nelimitat în rețeaua BT 29 lei / lună Nelimitat & 10 46 lei / lună Nelimitat & 25 76 lei / lună Nelimitat All Inclusive 129 lei / lună",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Unlimited Current Account Package (Pachet de cont curent Nelimitat)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului pentru persoane juridice prezintă cele 4 variante de abonament lunar cu operațiuni nelimitate și card de debit Visa Business Silver inclus, echivalentul funcțional al Abonamentului PRESTIGE (corporate) de la Libra; nu menționează explicit servicii de tip Live FX și cardurile nu sunt segmentate Standard/Gold ca la Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Este pagina-produs oficială a băncii, cu cele 4 pachete listate explicit cu prețuri lunare și beneficii incluse (carduri, internet banking, operațiuni interbancare).",
+      "citat": "Unlimited All Inclusive 129 lei / month Unlimited Operations with any bank Internet & Mobile Banking with BT Go Preferential fees at POS",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat#:~:text=Unlimited%20All%20Inclusive%20129%20lei,Go%20Preferential%20fees%20at%20POS"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/nelimitat.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Nelimitat - pachet de cont curent pentru companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Broșură de prezentare a pachetului Nelimitat pentru companii, care descrie cele 4 variante de abonament lunar (29-129 lei) cu operațiuni nelimitate și carduri de debit incluse, corespondent al Abonamentului PRESTIGE de la Libra pentru segmentul persoane juridice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Broșură oficială PDF dedicată exclusiv acestui produs, cu prețurile celor 4 variante (29-129 lei/lună) și lista de beneficii incluse în pachetul de bază.",
+      "pagina_pdf": 1,
+      "citat": "5 retrageri gratuite de la orice ATM BT, cu cardul Visa Business Silver; Abonament lunar inclus pentru BT24 Internet & Mobile Banking; Carduri de debit Visa Business Silver câte vrei – emiterea și mentenanța anuală e gratuită; Abonament lunar pentru BT ALERT 40, cu 40 sms-uri lunare incluse",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+    "https://www.bancatransilvania.ro/nelimitat.pdf",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 92,
+  "consum": {
+    "intrare": 12,
+    "iesire": 7242,
+    "citire_cache": 199358,
+    "scriere_cache": 135242,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4504206
+  }
+}

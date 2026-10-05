@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/economii/cont-de-economii.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de economii Super Acces Plus",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un cont de economii la vedere, cu dobândă la sold diferențiată pe tranșe valorice și acces oricând la bani prin retrageri/depuneri, exact ca produsul Libra. Diferă segmentul de clienți: pagina și oferta descrisă sunt dedicate exclusiv persoanelor fizice (deschidere din Smart Mobile, vârstă minimă titular 18 ani); Raiffeisen nu are un cont de economii similar flexibil pentru persoane juridice, doar depozite la termen IMM.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Este pagina dedicată produsului, cu calculator de dobândă și tranșe valorice explicite în text.",
+      "citat": "Cont de economii Rata de dobanda pentru Lei * (pe an) <=50,000 2.00% Cont de economii Rata de dobanda pentru Lei * (pe an) 50,001 - 300,000 2.50% Cont de economii Rata de dobanda pentru Lei * (pe an) >300,000 3.00%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/economii.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii Super Acces Plus",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina compară toate produsele de economisire ale băncii; rândul dedicat „Cont de economii” confirmă caracteristicile: fără sumă minimă, termen nelimitat, retrageri și depuneri oricând, dar segmentul vizat este tot persoane fizice (vârstă minimă titular 18 ani).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document general de comparație a produselor de economisire în care contul de economii apare explicit cu valorile dobânzii.",
+      "citat": "Cont de economii Moneda contului: LEI, EUR, USD Suma minimă de deschidere: fără sumă minimă de deschidere Termen de constituire: nelimitat Nivel dobândă: până la 3% pe an pentru LEI si de 0,50% pe an pentru EUR și 0,30% pentru USD",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://banking.raiffeisen.ro/info-desk/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont de economii Super Acces Plus",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife și dobânzi pentru persoane fizice listează explicit tranșele de dobândă ale contului de economii Super Acces Plus, confirmând că produsul este oferit doar în secțiunea Persoane Fizice (separat de ofertele IMM, care conțin doar depozite la termen).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina de tarife/dobânzi oficiale conține un tabel dedicat contului de economii Super Acces Plus cu valori numerice ale dobânzii pe tranșe.",
+      "citat": "CONT DE ECONOMII SUPER ACCES PLUS Rata anuala a dobanzii (*) (*pentru fiecare fractiune din suma depusa care se incadreaza intr-o transa valorica) <=50,000 2.50% 50,001 - 300,000 3.00%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3877,
+    "citire_cache": 43828,
+    "scriere_cache": 53051,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1801751
+  }
+}

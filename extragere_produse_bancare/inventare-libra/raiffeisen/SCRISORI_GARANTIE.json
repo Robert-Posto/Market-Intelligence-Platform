@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://banking.raiffeisen.ro/info-desk/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție (Tarife corporații / Brosura taxe și comisioane IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Lista de tarife și comisioane conține secțiunea dedicată 'Scrisori de garanție' cu toate comisioanele de emitere, modificare și executare, atât pentru garanții emise cât și primite, pentru persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document/pagină cu cifre explicite de comisioane procentuale și sume minime pentru scrisori de garanție bancară, segmentate pe IMM și Corporații.",
+      "citat": "Emitere/majorare valoare/prelungire valabilitate/scrisori de garantie cu text conform standardelor bancii · 0,25% pe trimestru sau fracțiune de trimestru, min. 50 euro/trimestru sau fracțiune de trimestru Emitere/majorare valoare/prelungire valabilitate/ scrisori de garantie cu text nestandard · 0,50% pe trimestru sau fracțiune de trimestru, min.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/schimburi-comerciale-garantia-bancara.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoarea de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat garantării obligațiilor comerciale (licitații, avansuri, buna execuție, plăți vamale) pentru persoane juridice (IMM), exact ca Scrisorile de garanție bancară Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului cu descriere detaliată și criteriul de eligibilitate (cifră de afaceri), dar fără comisioane procentuale explicite pe pagină.",
+      "citat": "Angajament ferm, irevocabil și necondiționat al băncii de a plăti o anumită sumă unui beneficiar în cazul neîndeplinirii de către clientul Raiffeisen Bank a unor obligații contractuale, precum onorarea plăților sau prestarea unui serviciu.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/garantii-si-acreditive/garantie-bancara/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină secundară a aceluiași produs de scrisori de garanție bancară pentru companii, descriind angajamentul ferm de plată al băncii.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată produsului dar fără cifre concrete (procente, sume minime).",
+      "citat": "Dacă afacerea ta își desfășoară activitatea având la bază derularea unei serii de contracte comerciale, cu scrisorile de garanție bancară emise de Raiffeisen Bank, beneficiezi de un angajament ferm de plată, prin care îți poți respecta condițiile agreate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1540,
+    "citire_cache": 6330,
+    "scriere_cache": 22296,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07241399999999999
+  }
+}

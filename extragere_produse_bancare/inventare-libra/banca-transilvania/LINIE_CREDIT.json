@@ -1,0 +1,47 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/en/companii/credit-rapid",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Quick credit / Quick line of credit (Credit rapid / Linie de credit rapidă)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs BT dedicat firmelor pentru capital de lucru: linie de credit reînnoibilă (revolving), atașată contului curent, dobândă calculată zilnic doar pe suma folosită, exact ca produsul Libra pentru acoperirea decalajului dintre încasări și plăți.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Este pagina dedicată a produsului de credit rapid/linie de credit pentru companii, cu cifre concrete despre plafon (4.000.000 lei) și durată (24 luni), deși unele cifre se referă la creditul rapid în ansamblu, nu strict la linia de credit.",
+      "citat": "Practically, the bank offers you a loan with a term of up to 24 months and thus helps you overcome the temporary deficits of your working capital.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/companii/credit-rapid#:~:text=Practically%2C%20the%20bank%20offers%20you,deficits%20of%20your%20working%20capital."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/pentru-companii/corporate/credite-corporate/produse-de-creditare-corporate/",
+    "https://www.bancatransilvania.ro/companii/finantare",
+    "https://www.bancatransilvania.ro/pentru-companii/corporate/credite-corporate/produse-de-creditare-corporate/",
+    "https://www.bancatransilvania.ro/companii/finantare#credite",
+    "https://www.bancatransilvania.ro/companii/credit-rapid",
+    "https://intreb.bancatransilvania.ro/de-ce-este-avantajoasa-linia-de-credit/",
+    "https://www.bancatransilvania.ro/en/companii/credit-rapid",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+    "https://www.bancatransilvania.ro/companii/credit-rapid",
+    "https://www.bancatransilvania.ro/companii/credit-rapid/compara-creditele",
+    "https://www.bancatransilvania.ro/en/companii/credit-rapid/compara-creditele"
+  ],
+  "durata_s": 84,
+  "consum": {
+    "intrare": 102898,
+    "iesire": 5564,
+    "citire_cache": 335765,
+    "scriere_cache": 120547,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6299565
+  }
+}

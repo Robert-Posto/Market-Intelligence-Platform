@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credit-nevoi-personale-fara-ipoteca",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit nevoi personale: Libra Way (Credit de consum fără ipotecă)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fără justificare, fără garanții, pentru persoane fizice, cu sumă maximă și termen comparabile cu produsul Libra descris (până la 150.000 lei, max 60 luni), corespunzând exact codului CREDIT_NEVOI_PERSONALE.",
+      "incredere": 0.97,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu titlu, dobânzi, sumă maximă, termen și exemplu reprezentativ complet.",
+      "citat": "Credit nevoi personale: până la 150.000 lei fără garanții Dobândă credit de consum fără ipotecă: - Cu condiția încasării salariului la Libra: 3% + IRCC (8.68%) - Fără condiție de virare salarială: 4.50% % + IRCC (10.18%)",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credit-nevoi-personale-fara-ipoteca#:~:text=Credit%20nevoi%20personale%3A%20p%C3%A2n%C4%83%20la,4.50%25%20%25%20%2B%20IRCC%20%2810.18%25%29"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credit-nevoi-personale-fara-ipoteca"
+  ],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1274,
+    "citire_cache": 23083,
+    "scriere_cache": 43086,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12508360000000002
+  }
+}

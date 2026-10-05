@@ -1,0 +1,49 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CONT_DEZVOLTATOR",
+  "denumire": "Contul Dezvoltatorului",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Contul Dezvoltatorului (încredere 0.55) — Este singura pagină publicată de Libra Internet Bank care descrie explicit produsul 'Contul Dezvoltatorului': un cont curent dedicat dezvoltatorilor imobiliari de locuințe, prin care aceștia încasează avansurile clienților și efectuează plățile aferente proiectului, deschis exclusiv în sucursală — corespunde exact descrierii produsului căutat."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.librabank.ro/Stiri/Libra-lanseaza-Contul-Dezvoltatorului-primul-produs-bancar-dedicat-dezvoltatorilor-imobiliari-din-Romania-pentru-administrarea-separata-a-fondurilor-/3396",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Contul Dezvoltatorului",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este singura pagină publicată de Libra Internet Bank care descrie explicit produsul 'Contul Dezvoltatorului': un cont curent dedicat dezvoltatorilor imobiliari de locuințe, prin care aceștia încasează avansurile clienților și efectuează plățile aferente proiectului, deschis exclusiv în sucursală — corespunde exact descrierii produsului căutat.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Este comunicatul oficial de lansare al produsului, publicat pe site-ul băncii și confirmă segmentul de clienți, scopul contului și canalul de deschidere (sucursală), dar nu conține cifre de dobânzi, comisioane sau plafoane specifice produsului, deoarece nu există (încă) o pagină dedicată de produs cu tarife publicate separat.",
+      "citat": "Libra Internet Bank pune la dispoziția dezvoltatorilor imobiliari de locuințe un cont curent dedicat, prin care aceștia pot încasa avansurile achitate de clienți și efectua plățile aferente proiectului pentru care a fost deschis. Contul Dezvoltatorului poate fi deschis în orice sucursală Libra Internet Bank.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/Stiri/Libra-lanseaza-Contul-Dezvoltatorului-primul-produs-bancar-dedicat-dezvoltatorilor-imobiliari-din-Romania-pentru-administrarea-separata-a-fondurilor-/3396#:~:text=Libra%20Internet%20Bank%20pune%20la,orice%20sucursal%C4%83%20Libra%20Internet%20Bank."
+    }
+  ],
+  "deschise": [
+    "https://www.librabank.ro/",
+    "https://www.librabank.ro/credit-investitii-imobiliare",
+    "https://www.librabank.ro/Stiri",
+    "https://www.librabank.ro/Stiri/Libra-lanseaza-Contul-Dezvoltatorului-primul-produs-bancar-dedicat-dezvoltatorilor-imobiliari-din-Romania-pentru-administrarea-separata-a-fondurilor-/3396",
+    "https://www.librabank.ro/cont-dezvoltator",
+    "https://www.librabank.ro/cont-bancar-persoana-juridica",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+    "https://www.librabank.ro/cont-curent-dezvoltatori-imobiliari",
+    "https://www.librabank.ro/contul-dezvoltatorului"
+  ],
+  "durata_s": 61,
+  "consum": {
+    "intrare": 120339,
+    "iesire": 4519,
+    "citire_cache": 343824,
+    "scriere_cache": 125427,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6682003000000001
+  }
+}

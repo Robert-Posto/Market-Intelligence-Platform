@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/activitate-curenta/linie-de-credit",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare Linie de credit (PJ)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Linie de credit revolving pentru persoane juridice (IMM), destinată finanțării activității curente / capitalului de lucru, cu posibilitate de reutilizare pe măsura rambursărilor - exact tipul de produs și segmentul Libra (firme).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit sumele minime/maxime, perioada de creditare și garanțiile necesare pentru linia de credit PJ.",
+      "citat": "Este un credit destinat finanțării activității curente, de tip revolving care se poate reutiliza pe măsură ce se fac rambursări, pentru nevoi permanente de lichidități. Suma minimă este 20.000 RON sau 4.000 EUR, Suma maximă este 5.000.000 RON sau 1.000.000 EUR, Perioada de creditare este de maximum 12 luni sau 24 luni, în funcție de situația companiei.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/linie-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare Linie de credit (revolving sau non-revolving cu rate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina generală a produsului linie de credit pentru companii, descrisă ca facilitate de credit pe termen scurt pentru acoperirea nevoilor curente de capital de lucru, cu variante revolving și non-revolving.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina conține descrierea funcționării, perioadele de creditare (12/24 luni) și tipurile de garanții, deși e o pagină umbrelă pentru PJ/PFA/Profesii liberale.",
+      "citat": "Linia de credit este o facilitate de credit pe termen scurt atașată contului curent al companiei, în vederea fluidizării fluxului de numerar sau pentru acoperirea nevoilor curente de capital de lucru. Până la 12 luni revolving sau 24 luni cu rambursare în rate în cazul PFA.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/activitate-curenta/linie-de-credit",
+    "https://www.brd.ro/linie-de-credit"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1482,
+    "citire_cache": 37241,
+    "scriere_cache": 55416,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1608202
+  }
+}

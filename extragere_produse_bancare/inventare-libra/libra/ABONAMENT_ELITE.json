@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/cont-bancar-firma",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonament ELITE (Abonamente operaționale companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată abonamentelor operaționale pentru companii prezintă explicit coloana ELITE cu exact aceleași caracteristici descrise de Libra: 225 lei/lună, 50 plăți lei (inclusiv instant), 50 plăți SEPA, 50 încasări lei, 50 încasări euro, 50 instrumente de debit (cec/BO/cambie) și până la 3 carduri Business Standard.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina conține tabelul complet cu cifrele exacte pentru abonamentul ELITE, identice cu descrierea produsului Libra (225 lei, 50 operațiuni, 3 carduri).",
+      "citat": "Plăți lei din aplicație, inclusiv plăți instant / lunar | 25 | 50 | Nelimitat | Plăți online euro SEPA | - | 50 | Nelimitat | Încasări lei | 25 | 50 | Nelimitat | Încasări euro | - | 50 | Nelimitat | Încasări / plăți cec, bilet la ordin, cambie | - | 50 | Nelimitat | Card Business Standard | pana la 2 carduri | pana la 3 carduri | pana la 5 carduri | Cost lunar | 95 lei | 225 lei | 295 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/facem",
+    "https://www.librabank.ro/cont-curent-companii",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 64,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4993,
+    "citire_cache": 81409,
+    "scriere_cache": 86322,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2820328
+  }
+}

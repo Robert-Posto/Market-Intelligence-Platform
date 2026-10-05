@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/ipotecar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit ING Ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit ipotecar pentru persoane fizice, destinat achiziției unei locuințe și refinanțării unui alt credit ipotecar, cu discount de dobândă pentru imobile clasă energetică A (echivalent Credit Verde); diferă ușor prin perioada maximă (30 ani la ING față de 420 luni/35 ani la Libra).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre explicite despre sumă minimă, procent maxim finanțat, perioadă de creditare și dobânzi.",
+      "citat": "Suma minimă pe care o poți finanța prin ING Ipotecar este 13000 RON. Suma maximă nu trebuie să depășească 85% din valoarea evaluată a imobilului adus în garanție.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/persoane-fizice/credite/ipotecar#:~:text=Suma%20minim%C4%83%20pe%20care%20o,a%20imobilului%20adus%20%C3%AEn%20garan%C8%9Bie."
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/ing-credit-pentru-investitii-imobiliare-cu-garantie-ipotecara",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Credit pentru investiții imobiliare cu garanție ipotecară",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Tot credit ipotecar pentru persoane fizice, destinat achiziție/construcție/modernizare locuință, dar diferă prin avans 0% și sumă maximă mai mare (1.500.000 lei), fiind orientat spre investiții imobiliare, nu credit ipotecar standard de achiziție.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre explicite despre sumă maximă, dobândă și perioadă de creditare.",
+      "citat": "până la 1500000 lei rata anuală a dobânzii 9,51 % perioada de creditare 3 - 30 ani",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (17 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/persoane-fizice/credite/ipotecar",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/marea-notif-dec-2025/Ratele-Dobanzilor.pdf"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 44592,
+    "iesire": 5319,
+    "citire_cache": 12710,
+    "scriere_cache": 35614,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.233951
+  }
+}

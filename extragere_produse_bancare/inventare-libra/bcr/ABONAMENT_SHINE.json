@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont George pentru afacerea ta",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife detaliază exact comisionul de administrare al pachetului George pentru afacerea ta (variabil, 49-349 RON/lună în funcție de numărul de plăți electronice, cu reduceri până la 50%), plus cardul business inclus gratuit și comisioane POS negociate per client - structură diferită de abonamentul fix 100 lei/lună cu mPOS 0,59% de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife care conține un tabel explicit cu sumele comisionului de administrare pentru pachetul corespunzător, plus secțiunea despre carduri și acceptare la plată (POS).",
+      "pagina_pdf": 5,
+      "citat": "În funcție de numărul de plăți electronice efectuate prin serviciul internet banking George într-o lună 0 5 10 20 50 100 200+ Comision standard administrare Pachet 49 RON 79 RON 129 RON 169 RON 269 RON 299 RON 349 RON",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "George pentru afacerea ta",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament/pachet operațional pentru firme, PFA și microîntreprinderi, cu cont curent lei+valută, card de debit business, plăți instant și online banking - aceeași categorie de produs și segment ca Abonament SHINE, dar costul de administrare este variabil (în funcție de tranzacții, cu reduceri dinamice până la 50%) și nu un abonament fix de 100 lei/lună, iar comisionul mPOS nu e un procent fix ca la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată a produsului descrie clar structura și beneficiile pachetului, dar cifrele exacte de comision (tranșele RON) nu apar direct în acest text, fiind detaliate doar în documentul de tarife.",
+      "citat": "Conceput pentru afaceri de până la 1 mil. euro, ONG-uri și Asociații de Proprietari, pachetul George îți răsplătește plățile digitale cu comisioane 0 și reduceri dinamice la administrare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetul-ideal-bcr"
+  ],
+  "durata_s": 50,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3874,
+    "citire_cache": 106060,
+    "scriere_cache": 75386,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.248433
+  }
+}

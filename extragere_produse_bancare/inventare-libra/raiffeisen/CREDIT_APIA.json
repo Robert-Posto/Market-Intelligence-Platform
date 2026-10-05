@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/finantare-subventii-agricole-apia.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare subvenții agricole - APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pe termen scurt pentru firme/PFA din agricultură, garantat cu adeverința APIA, până la 90% din subvenție, cu plata dobânzii/principalului la încasarea subvenției - identic cu CREDIT_APIA de la Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu toate cifrele relevante (sumă, procent, dobândă, eligibilitate) explicit menționate.",
+      "citat": "Tipul creditului: credit pe termen scurt Suma minimă: 25.000 LEI Suma maximă: 5.000.000 LEI, dar nu mai mult de 90% din Subvenția APIA. Moneda: LEI Dobândă avantajoasă: ROBOR 6M + 2%.",
+      "rol_pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/solutii-de-finantare/credite-apia-finantarea-subventiilor-agricole.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțarea subvențiilor agricole - APIA (corporații)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Variantă a aceluiași produs APIA, dedicată segmentului corporații, cu aceiași parametri de finanțare (90% din subvenție) și rata dobânzii penalizatoare precizată.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului cu cifre explicite (procent finanțare, termen, dobândă penalizatoare).",
+      "citat": "Valoarea finanțării: maximum 90% din subvenția APIA. Perioada de finanțare: până la momentul efectuării plății subvențiilor de către APIA. Rata dobânzii penalizatoare = 15% p.a., valabilă pentru toate facilitățile de credit și toate valutele în care este denominată facilitatea.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1199,
+    "citire_cache": 6349,
+    "scriere_cache": 26345,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0791303
+  }
+}

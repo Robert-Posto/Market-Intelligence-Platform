@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de servicii – Cont George pentru afacerea ta",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice conține un capitol dedicat 'Pachet de servicii – clienți PJ' pentru Contul George pentru afacerea ta, cu grila exactă de comisioane lunare de administrare în funcție de numărul de tranzacții, echivalentul unui abonament operațional/pachet cont.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document oficial de tarife, cu tabel explicit de comisioane standard și comisioane reduse (până la 50%) pentru pachetul de cont al persoanelor juridice.",
+      "citat": "Minim Maxim Comision standard administrare Pachet Comision administrare Pachet cu reducerea maximă 50% 0 5 10 20 50 100 200+ 4 9 19 49 99 199 49 RON 79 RON 129 RON 169 RON 269 RON 299 RON 349 RON 24,5 RON 39,5 RON 64,5 RON 84,5 RON 134,5 RON 149,5 RON 174,5 RON",
+      "pagina_pdf": 5,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Contul George pentru afacerea ta (Pachet George Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este un pachet/abonament de cont curent pentru persoane juridice și PFA (firme, microîntreprinderi), cu comision unic lunar ce include cont curent, card de debit și internet banking, exact ca un 'abonament operațional' pentru firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului descrie explicit structura de comisioane și reducerile aplicabile pachetului, dar cifrele exacte pe trepte sunt detaliate în documentul de tarife asociat.",
+      "citat": "Conceput pentru afaceri de până la 1 mil. euro, ONG-uri și Asociații de Proprietari, pachetul George îți răsplătește plățile digitale cu comisioane 0 și reduceri dinamice la administrare.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/conturi-si-tranzactii/conturi/contul-curent",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3377,
+    "citire_cache": 39876,
+    "scriere_cache": 74443,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22786469999999998
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/ecommerce",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING WebPay (e-Commerce)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Serviciu de acceptare a plăților online cu cardul pentru comercianți cu magazin online/facturare online, pentru persoane juridice - exact corespondentul LibraPay eCommerce.",
+      "incredere": 0.97,
+      "incredere_metoda": 0.97,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit comisionul, moneda, termenul de decontare și condițiile de utilizare pentru serviciul e-commerce.",
+      "citat": "Comisionul este de 0.8% pentru orice tranzacție, indiferent de card. Monedele în care un comerciant poate să-și deschidă un cont la ING Bank, și prin urmare să încaseze tranzacțiile prin serviciul ING WebPay, sunt RON și EURO.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/ecommerce#:~:text=Comisionul%20este%20de%200.8%25%20pentru,WebPay%2C%20sunt%20RON%20%C8%99i%20EURO."
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Cerere-pentru-acordarea-Serviciului-de-Acceptare-la-plata-a-cardurilor.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "ING WebPay (e-Commerce) - Cerere Acceptare la plata a cardurilor",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Formularul de comandă pentru serviciul Ecommerce (ING WebPay) pentru persoane juridice, cu detalii de configurare a magazinului online și comisioane.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Documentul conține secțiunea FISIER DE COMANDA ECOMMERCE cu câmpuri pentru comisioane și detalii ale contului de acceptare, dar fără valori numerice fixe tipărite.",
+      "citat": "Solicit: - acordarea serviciului de: POS asistat POS neasistat Ecommerce SoftPOS ... Comision carduri ING / POS ING Comision carduri alte banci / POS ING",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/ing-in-romania/informatii-utile/documente-contractuale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "ING WebPay (e-Commerce) - documente contractuale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina listează documentele contractuale aferente serviciului ING WebPay (Anexa Ghidul Serviciilor ING WebPay, Anexa Condițiile Generale de Acceptare la Plata a Cardurilor) alături de Lista de Taxe și comisioane pentru persoane juridice.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina este un hub de linkuri către documentele contractuale ale serviciului, inclusiv Ghidul ING WebPay, dar textul extras nu conține cifrele direct, ele fiind în PDF-urile linkate.",
+      "citat": "Anexa Ghidul Serviciilor ING WebPay - Anexa Taxe si Comisioane Scheme de Carduri - Lista de Taxe si comisioane pentru persoane juridice PFA si alte entitati (30 Septembrie 2026)",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/ecommerce",
+    "https://ing.ro/ing-in-romania/informatii-utile/documente-contractuale"
+  ],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1785,
+    "citire_cache": 45086,
+    "scriere_cache": 64522,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.18818419999999997
+  }
+}

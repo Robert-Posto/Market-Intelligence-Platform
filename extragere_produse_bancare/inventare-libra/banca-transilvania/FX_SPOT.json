@@ -1,0 +1,44 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/curs-valutar/in-cont",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar (Schimb valutar)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina dedicată operațiunilor de schimb valutar la vedere (cumpărare/vânzare valută la cursul zilei) în conturile BT, disponibilă atât persoanelor fizice cât și persoanelor juridice (secțiunea Business/Companii trimite tot la această pagină), exact tipul de produs FX spot descris de Libra.",
+      "incredere": 0.88,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina conține un tabel actualizat zilnic cu cursurile de cumpărare și vânzare pentru principalele valute, plus un convertor valutar, deci cifrele produsului sunt prezente direct în conținut.",
+      "citat": "Cotații variabile pentru tranzacțiile valutare efectuate în aplicațiile BT Pay, BT Go, BTUltra sau la ghișeu, din contul BT. Valuta Curs BNR Cumpărare Vânzare Evoluție EUR 5.2567 5.2040 5.3240",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/curs-valutar/in-cont#:~:text=Cota%C8%9Bii%20variabile%20pentru%20tranzac%C8%9Biile%20valutare,Evolu%C8%9Bie%20EUR%205.2567%205.2040%205.3240"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/curs-valutar",
+    "https://www.bancatransilvania.ro/companii/corporate",
+    "https://www.bancatransilvania.ro/en/curs-valutar",
+    "https://www.bancatransilvania.ro/en/companii/corporate",
+    "https://www.bancatransilvania.ro/curs-valutar/in-cont",
+    "https://www.bancatransilvania.ro/companii/corporate",
+    "https://www.bancatransilvania.ro/curs-valutar/in-cont",
+    "https://www.bancatransilvania.ro/companii/corporate"
+  ],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 103882,
+    "iesire": 4808,
+    "citire_cache": 197022,
+    "scriere_cache": 90043,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5203559
+  }
+}

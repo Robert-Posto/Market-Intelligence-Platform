@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm/pachet-imm-cont-curent-ultra.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de cont curent IMM Ultra",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pachetul corporate de top pentru firme la Raiffeisen (cont curent + card + plăți nelimitate + consilier dedicat), ca și Abonamentul ELITE de la Libra, dar diferă structura: Ultra oferă plăți NELIMITATE (nu 50/lună ca la Libra), un singur card Visa Business Gold (nu 3 carduri) și nu menționează un serviciu de tip Live FX.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată a pachetului Ultra conține explicit prețul lunar și toate beneficiile incluse, inclusiv cardul și tipurile de plăți nelimitate.",
+      "citat": "Pachetul ULTRA pentru afacerea ta: plati interbancare nelimitate, cont curent in EUR si USD, card Visa Business Gold, consilier bancar dedicat.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm/pachet-imm-cont-curent-ultra.html#:~:text=Pachetul%20ULTRA%20pentru%20afacerea%20ta%3A,Business%20Gold%2C%20consilier%20bancar%20dedicat."
+    },
+    {
+      "url": "https://bank.raiffeisen.ro/ro/pachete-de-cont-curent-imm/home.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "simulator",
+      "denumire_la_banca": "Pachetul de cont curent IMM Ultra (comparator pachete IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Comparatorul oficial de pachete IMM confirmă poziționarea Ultra ca pachet corporate premium, cu preț și beneficii diferite de structura Abonamentului ELITE Libra (plăți nelimitate vs. 50/lună, un singur card Gold vs. 3 carduri, fără Live FX menționat).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Tabelul comparativ afișează explicit prețul de 199 lei/lună și toate limitele de tranzacții pentru pachetul Ultra, alături de celelalte pachete IMM.",
+      "citat": "ULTRA 199 lei /lună Consilier bancar dedicat în Agenție, Call Center dedicat Card debit Visa Business Gold NELIMITAT plăți către alte bănci în lei, online (inclusiv plăți Instant) NELIMITAT plăti către alte bănci în EUR/USD, online",
+      "citat_verificat": true,
+      "link_live": "https://bank.raiffeisen.ro/ro/pachete-de-cont-curent-imm/home.html#:~:text=ULTRA%20199%20lei%20%2Flun%C4%83%20Consilier,alte%20b%C4%83nci%20%C3%AEn%20EUR%2FUSD%2C%20online"
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale/20260901-Tarife-si-comisioane-IMM-si-profesii-liberale.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent Clienți IMM - Ultra",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Broșura de tarife și comisioane IMM conține tabelul complet cu pachetul Ultra (comision 199 lei/lună, plăți nelimitate, card Visa Business GOLD), fiind cel mai apropiat echivalent structural de Abonamentul ELITE de la Libra, deși diferă limitele (nelimitat vs. 50/lună) și numărul de carduri incluse.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul oficial de tarife conține tabelul '1.1 Pachete de cont curent Clienți IMM' cu coloana Ultra și valorile exacte (199 lei, card GOLD, plăți nelimitate), deși extragerea de text din PDF amestecă ordinea celulelor tabelului.",
+      "citat": "Comision lunar de administrare Pachet de cont curent (lei) 39 59 89 129 199 Card business de debit SILVER SILVER SILVER SILVER GOLD Plăţi inter-bancare în LEI, online (inclusiv plati instant) 5 10 Nelimitate Nelimitate",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm/pachet-imm-cont-curent-ultra.html",
+    "https://bank.raiffeisen.ro/ro/pachete-de-cont-curent-imm/home.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale/20260901-Tarife-si-comisioane-IMM-si-profesii-liberale.pdf.coredownload.pdf"
+  ],
+  "durata_s": 77,
+  "consum": {
+    "intrare": 8,
+    "iesire": 6752,
+    "citire_cache": 68984,
+    "scriere_cache": 62935,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2386703
+  }
+}

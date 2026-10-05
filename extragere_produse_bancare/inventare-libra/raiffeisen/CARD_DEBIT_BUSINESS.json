@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/carduri-de-debit-visa-business.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Carduri de debit Visa Business (Silver, Gold, Platinum, MFM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit atașat unui cont curent, emis pentru persoane juridice (IMM), exact ca produsul Libra Card de debit business.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu descriere detaliată, comisioane (0% la comercianți) și costuri (card MFM 30 lei/an).",
+      "citat": "Card de debit VISA Business atașat unui cont curent în Lei sau Euro Îl poți utiliza în țară și străinătate. Poți să stabilești o limită zilnică de cheltuială pentru fiecare card.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-debit-visa-business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Carduri de debit Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași pagină de produs (variantă de URL) dedicată cardurilor de debit business pentru persoane juridice, cu variante Silver/Gold/Platinum/MFM și cifre concrete.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Conține cifrele de eligibilitate pentru rulaj (5.000 lei Gold, 7.500 lei Platinum) și costul cardului MFM (30 lei/an).",
+      "citat": "Pentru a fi eligibil este necesar un rulaj minim de 5.000 lei pe o perioadă variabilă de referință, calculată de la a 5-a duminică anterioară accesului, incluzând duminica accesului dacă acesta are loc în această zi",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/card-de-debit-visa-platinum.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Visa Business Platinum",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată variantei premium a cardului de debit business pentru persoane juridice, cu beneficii și condiții de rulaj specificate.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagină dedicată exclusiv variantei Platinum, cu cifre despre comision 0%, vizite gratuite și prag de rulaj minim de 7.500 lei.",
+      "citat": "Accesul gratuit în Saloanele Business Class este disponibil doar pentru cardurile care au înregistrat tranzacții pentru achiziția de bunuri si servicii la comercianți prin intermediul POS-urilor (fizic sau online) decontate în valoare de minim 7,500 de lei",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1499,
+    "citire_cache": 6324,
+    "scriere_cache": 40066,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1164278
+  }
+}

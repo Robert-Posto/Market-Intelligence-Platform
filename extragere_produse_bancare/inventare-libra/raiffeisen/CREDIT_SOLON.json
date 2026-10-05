@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_SOLON",
+  "denumire": "Credit Solon (juriști)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credit-de-investitii-profesii-liberale.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții Profesii Liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit dedicat segmentului Profesii Liberale (notari, avocați, executori judecătorești fac parte din această categorie reglementată), dar Raiffeisen nu are un produs numit/dedicat explicit juriștilor (notari+avocați+executori+practicieni insolvență) ca la Libra, ci unul generic pentru toate profesiile liberale și e limitat la credit de investiții (nu capital de lucru).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține cifre explicite (sumă minimă, avans, perioadă de grație, perioadă de rambursare) pentru creditul destinat profesiilor liberale, segment care include notarii, avocații și executorii judecătorești.",
+      "citat": "Credit destinat pentru finanțarea activității persoanelor ce desfășoară profesii liberale. Suma: minim 2.000 Euro. Perioadă de grație: până la 6 luni. Perioadă de rambursare: până la 180 luni. Avans: minim 10% din valoarea totală a investiției.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credit-de-investitii-profesii-liberale.html#:~:text=Credit%20destinat%20pentru%20finan%C8%9Barea%20activit%C4%83%C8%9Bii,din%20valoarea%20total%C4%83%20a%20investi%C8%9Biei."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane standard IMM și Profesii Liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife acoperă explicit segmentul Profesii Liberale (care include notari, avocați, executori judecătorești) dar nu conține un rând dedicat specific creditului Profesii Liberale, ci tarife generale de cont/operațiuni aplicabile acestui segment.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Documentul confirmă aplicabilitatea tarifelor la Profesii Liberale, dar nu detaliază dobânzi/comisioane specifice creditului de investiții pentru acest segment.",
+      "citat": "Tariful este aplicabil persoanelor juridice cu cifra de afaceri mai mică de 5 milioane euro și companiilor fără cifră de afaceri sau fără personalitate juridică (inclusiv Profesii Liberale, PFA, PFI etc).",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credit-de-investitii-profesii-liberale.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2433,
+    "citire_cache": 62716,
+    "scriere_cache": 54473,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1730717
+  }
+}

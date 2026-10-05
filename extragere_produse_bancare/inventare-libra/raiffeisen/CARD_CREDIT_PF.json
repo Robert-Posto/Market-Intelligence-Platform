@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri/cardul-de-cumparaturi-standard.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Raiffeisen Standard (Card de cumpărături Standard)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Linie de credit revolving în RON, pentru persoane fizice, cu perioadă de grație de 56 de zile și rate fără dobândă la comercianți parteneri - același tip de produs și segment ca CARD_CREDIT_PF; diferă doar plafonul maxim (50.000 RON la Raiffeisen vs. 100.000 RON la Libra) și formula de calcul a limitei.",
+      "incredere": 0.95,
+      "incredere_metoda": "http",
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit limita de credit, perioada de grație, dobânda și exemplul de cost total (DAE).",
+      "citat": "Cardul de Cumparaturi Standard Raiffeisen iti ofera pana la 12 rate fara dobanda si 56 de zile perioada de gratie. Card de credit în Lei, pentru persoane fizice. Limita de credit între 700 și 50.000 Lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/carduri/20231024-ghid-utilizare-carduri-cumparaturi.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Ghid card de cumpărături (carduri de credit Raiffeisen)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul explică mecanismul perioadei de grație de 56 de zile, dobânda 0% la rambursare integrală și rata minimă de 5% - condiții echivalente cu linia revolving RON cu grație descrisă pentru produsul Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": "http",
+      "explicatie_incredere": "PDF oficial al băncii, dedicat cardurilor de cumpărături (credit), cu cifre explicite despre perioada de grație, dobândă și rambursare minimă.",
+      "citat": "pana la 56 de zile in care poti utiliza banii bancii, fara sa platesti dobanda. Nu platesti dobanda, pentru platile la comercianti, daca rambursezi integral pana la data scadenta, suma mentionata la rubrica Suma totala de plata in perioada curenta din raportul de activitate.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Compară carduri de credit (grila Standard/eMAG/Platinum/Signature)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila comparativă prezintă explicit limita de credit, condițiile de eligibilitate (venit, vechime) și tipul de rambursare pentru cardul Standard, echivalent cu CARD_CREDIT_PF.",
+      "incredere": 0.8,
+      "incredere_metoda": "http",
+      "explicatie_incredere": "Pagina conține tabelul comparativ cu cifrele exacte (limită, venit minim, vechime) pentru fiecare card de credit, inclusiv Standard.",
+      "citat": "Card credit Raiffeisen Standard - 0% comision pentru plăti la comercianți, oriunde în lume - Rambursare flexibilă, minim 5% lunar - Limita de credit: 700 și 50.000 RON - Vârsta: 22 si 65 ani - Venit minim: 510 EUR/solicitant",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2011,
+    "citire_cache": 6350,
+    "scriere_cache": 38490,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11761300000000001
+  }
+}

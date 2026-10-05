@@ -1,0 +1,75 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Garanții (Scrisori de garanție bancară)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane juridice conține secțiunea dedicată 'GARANTII' cu toate operațiunile specifice scrisorilor de garanție bancară: emitere, prelungire, amendament, anulare, avizare, executare, exact segmentul persoane juridice vizat de produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul este chiar tariful oficial al băncii, cu un tabel explicit numit GARANTII care listează comisioanele în lei și euro pentru emiterea și gestionarea garanțiilor bancare, aplicabil persoanelor juridice.",
+      "pagina_pdf": 5,
+      "citat": "GARANTII LEI EUR Emitere sau prelungire valabilitate 0,5%/ trimestru (min 75 lei) 0,5%/ trimestru (min 25 euro) Amendamente sau anulare 50 lei 20 euro Avizare sau remitere 50 lei 20 euro Executarea garantiei 0,1% (min 50 lei) 20 euro",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente/operatiuni/persoane_juridice/contract_servicii_bancare_persoane_juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Scrisori de garanție bancară (emitere, prin Contractul-cadru pentru servicii bancare PJ)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Contractul-cadru general pentru servicii bancare al persoanelor juridice descrie condițiile de emitere a scrisorilor de garanție bancară (Angajament), inclusiv obligația Băncii numai până la nivelul sumei garantate.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Nu am putut extrage text fiabil din acest PDF specific pentru persoane juridice la această sesiune (documentul linkat de pe pagina cont-bancar-persoana-juridica), dar structura este identică cu varianta pentru persoane fizice care conține clauze explicite despre scrisorile de garanție bancară, inclusiv obligarea Băncii doar până la nivelul sumei garantate, conform contractului echivalent.",
+      "citat": "Emiterea de scrisori de garantie bancara, deschiderea de acreditive, avalizarea de efecte de comert (numite in cele ce urmeaza Angajament) se va face in baza unei cereri, in forma prevazuta de reglementarile legale si de normele interne ale bancii, sau in orice alta forma ceruta de catre Banca.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/credite-persoane-juridice-afaceri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit persoane juridice (hub) - fără secțiune dedicată separată pentru Scrisori de garanție bancară",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este hub-ul actual de credite pentru persoane juridice la Libra; nu mai conține un card/secțiune dedicată separat pentru 'Scrisoare de garanție bancară' (acest produs a fost retras din meniul principal al site-ului nou, deși apare listat în harta site-ului și în contractele-cadru), de aceea nu îl marchez ca echivalent complet, ci doar ca pagina hub relevantă din care produsul făcea parte istoric.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina este hub-ul curent de credite PJ și nu conține cifre specifice pentru scrisori de garanție bancară; valoarea ei este doar contextuală/navigațională.",
+      "citat": "Libra Internet Bank are o soluție pentru orice tip de investiție. Acordăm împrumuturi pentru persoane juridice, adaptate nevoilor de dezvoltare ale fiecărui business și tip de activitate.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite-persoane-juridice-afaceri#:~:text=Libra%20Internet%20Bank%20are%20o,business%20%C8%99i%20tip%20de%20activitate."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/",
+    "https://www.librabank.ro/servicii-bancare",
+    "https://www.librabank.ro/harta",
+    "https://www.librabank.ro/credite-persoane-juridice-afaceri",
+    "https://librabank.ro/Aplica-online?scrisoare_garantie_bancara=",
+    "https://www.librabank.ro/sitemap.xml",
+    "https://librabank.ro/Fonduri_Europene/Limita_Emitere_Scrisori_Garantie_Bancara/391",
+    "https://www.librabank.ro/cont-bancar-persoana-juridica",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 91,
+  "consum": {
+    "intrare": 80585,
+    "iesire": 6334,
+    "citire_cache": 458182,
+    "scriere_cache": 148128,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6864664
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit „1 An și 1 Lună” (Best offer depozite, persoane fizice/pensionari)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina oficială de dobânzi pentru persoane fizice conține exact produsul „1 An și 1 Lună”, cu dobândă totală și p.a., secțiune dedicată „Best offer depozite”, pentru același segment (persoane fizice) ca produsul descris.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina afișează explicit randul „1 An și 1 Lună” cu dobândă totală și p.a. pentru lei, euro și dolari, actualizat zilnic cu data de referință.",
+      "citat": "1 An și 1 Lună - 5.95% dobândă totală (5.50% p.a.)",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (11 cuvinte)",
+      "link_live": "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice#:~:text=1%20An%20%C8%99i%201%20Lun%C4%83,5.95%25%20dob%C3%A2nd%C4%83%20total%C4%83%20%285.50%25%20p.a.%29"
+    },
+    {
+      "url": "https://www.librabank.ro/dobanzi-depozite-profesii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit „1 An și 1 Lună” pentru profesii liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (depozit promoțional 13 luni „1 An și 1 Lună”) dar segmentul de clienți diferă: această pagină se adresează exclusiv profesiilor liberale (PFA), nu persoanelor juridice/firme în general, iar rata e ușor diferită (6.22%/5.75% p.a. față de 6.60%/6.10% p.a. pentru persoane fizice).",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată depozitelor pentru profesii liberale conține explicit rândul „1 An și 1 Lună” cu dobândă totală și p.a.",
+      "citat": "1 An și 1 Lună - 6.22% dobândă totală (5.75% p.a.)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (11 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/Stiri/Libra-Internet-Bank-lanseaza-depozitul-pe-1-An-si-1-Luna--cu-2.4-dobanda-totala-la-13-luni-(2.25-p.a.)-/2054",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul 1 An și 1 Lună (comunicat de lansare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicatul oficial de lansare a produsului descrie explicit tipul depozitului (13 luni, in lei), segmentul de clienți eligibili (persoane fizice și PFA profesii liberale) și condițiile (zero comision), confirmând identitatea produsului, deși valorile numerice sunt istorice (2017) și nu se actualizează zilnic.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Articolul conține cifre dar sunt din 2017 (2.4%/2.25% p.a.), nerelevante pentru extragere zilnică; util doar ca descriere a produsului și eligibilității.",
+      "citat": "Clientii persoane fizice si persoane fizice autorizate din domeniul profesiilor liberale beneficiaza de o dobanda atractiva, de 2.4% pe toata perioada (2.25% p.a.)",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/Stiri/Libra-Internet-Bank-lanseaza-depozitul-pe-1-An-si-1-Luna--cu-2.4-dobanda-totala-la-13-luni-(2.25-p.a.)-/2054#:~:text=Clientii%20persoane%20fizice%20si%20persoane,pe%20toata%20perioada%20%282.25%25%20p.a.%29"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/dobanzi-depozite-persoane-juridice",
+    "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice",
+    "https://www.librabank.ro/Stiri/Libra-Internet-Bank-lanseaza-depozitul-pe-1-An-si-1-Luna--cu-2.4-dobanda-totala-la-13-luni-(2.25-p.a.)-/2054"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4604,
+    "citire_cache": 70615,
+    "scriere_cache": 57823,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2047365
+  }
+}

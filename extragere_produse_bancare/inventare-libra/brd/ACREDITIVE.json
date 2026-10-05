@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/activitate-curenta/securizarea-tranzactiilor-internationale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditivul documentar (Securizarea tranzacțiilor internaționale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată, pentru segmentul de firme (IMM), care descrie exact produsul acreditiv documentar emis de bancă în relația import/export, identic ca natură cu Acreditive documentare Libra pentru persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată integral produsului, cu explicarea mecanismului, tipurilor de acreditiv și beneficiilor, destinată explicit companiilor (persoane juridice/PFA).",
+      "citat": "Acreditivul documentar este un angajament de plată, contra documente, asumat de bancă, pentru buna derulare a relației companiei cu terții. Părțile implicate în derularea unui acreditiv documentar sunt: ordonatorul, banca emitentă, banca beneficiarului și beneficiarul.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive export/import",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane destinat persoanelor juridice, care conține secțiuni dedicate explicit acreditivelor de export și import, cu toate comisioanele și pragurile aferente.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife pentru persoane juridice, cu rânduri explicite pentru Acreditive export/Lei Primite și Acreditive import/Lei Emise, inclusiv procente și plafoane minime/maxime.",
+      "pagina_pdf": 12,
+      "citat": "Acreditive export/ Lei Primite Avizare deschidere / majorare valoare 0.10%, min. 75 EUR, max. 1.500 EUR Avizare modificare 25 EUR / operatiune Prezentare documente pentru onorare (plata la vedere) 0.15%, min. 75 EUR, max. 2.000 EUR",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/activitate-curenta/securizarea-tranzactiilor-internationale",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1589,
+    "citire_cache": 34519,
+    "scriere_cache": 124950,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3351808
+  }
+}

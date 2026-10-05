@@ -1,0 +1,80 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-fei",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garanții FEI (programele FEI Competitivitate și FEI Sustenabilitate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact produsul echivalent: credite pentru companii dezvoltate cu Fondul European de Investiții în cadrul programelor Competitivitate și Sustenabilitate, susținute de InvestEU, la fel ca produsul Libra InvestEU Competitivitate/Sustenabilitate.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "Este pagina dedicată a produsului (confirmată prin indexarea motorului de căutare cu text specific despre cele două programe), dar fetch-ul direct HTTP nu a putut reda conținutul deoarece site-ul BT este o aplicație SPA ce necesită randare JavaScript; conținutul citat provine din rezultatele de căutare care au indexat pagina.",
+      "citat": "Create în parteneriat cu Fondul European de Investiții, cele două programe oferă afacerii tale (înregistrată și cu activitate în România) credite ușor de accesat în lei și în euro, pe o perioadă de 3-15 ani cu garanții europene",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garanții FEI (Programe Speciale pentru Companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub 'Programe Speciale' descrie explicit produsul Credite cu garanții FEI (programele FEI Competitivitate și FEI Sustenabilitate) alături de cifrele de finanțare, garanție și eligibilitate, echivalent cu produsul Libra InvestEU.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "Pagina conține un paragraf dedicat cu numele exact al celor două programe FEI și cifre asociate (procent de garantare, plafoane), dar conținutul este amestecat cu alte programe speciale (BID, Skills&Education) pe aceeași pagină, iar fetch-ul direct HTTP a fost blocat tehnic (SPA).",
+      "citat": "Creditele cu garanții FEI sunt finanțări acordate prin programele FEI Competitivitate și FEI Sustenabilitate, dezvoltate în parteneriat cu Fondul European de Investiții. Ele se adresează IMM‑urilor din România și oferă",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/news/comunicate-de-presa/banca-transilvania-si-fondul-european-de-investitii-acord-pentru-sustinerea-imm-urilor",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Programele Competitivitate (SME Competitiveness Guarantee) și Sustenabilitate (SME Sustainability Guarantee) cu garanție FEI/InvestEU",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicatul de presă descrie oficial lansarea acelorași două programe (Competitivitate și Sustenabilitate) garantate de FEI și susținute de InvestEU, cu cifre despre plafonul de credit și procentul de garanție, exact segmentul și tipul de produs ca la Libra.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul conține cifre concrete (7,5 milioane euro, garanție 70%) despre programul echivalent, dar este un comunicat de presă din 2023 (nu o pagină de produs actualizată zilnic), util doar ca sursă complementară de context istoric.",
+      "citat": "Companiile vor putea accesa prin intermediul Băncii Transilvania credite de până la 7,5 milioane de euro atât pentru capital de lucru, cât și pentru investiții, cu garanții de maxim 70% din valoarea facilităților de credit.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/news/comunicate-de-presa/banca-transilvania-si-fondul-european-de-investitii-acord-pentru-sustinerea-imm-urilor#:~:text=Companiile%20vor%20putea%20accesa%20prin,din%20valoarea%20facilit%C4%83%C8%9Bilor%20de%20credit."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/news/comunicate-de-presa/banca-transilvania-si-fondul-european-de-investitii-acord-pentru-sustinerea-imm-urilor",
+    "https://www.bancatransilvania.ro/companii/finantare#credite",
+    "https://www.bancatransilvania.ro/companii/finantare",
+    "https://www.bancatransilvania.ro/pentru-companii/corporate/credite-corporate/produse-de-creditare-corporate/",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-fei",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+    "https://beta.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-fei",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-fei",
+    "https://intreb.bancatransilvania.ro/fondul-european-de-investitii/"
+  ],
+  "durata_s": 114,
+  "consum": {
+    "intrare": 95816,
+    "iesire": 9274,
+    "citire_cache": 452034,
+    "scriere_cache": 118281,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6704813
+  }
+}

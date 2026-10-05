@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/dobanzi-depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului Depozit la termen, acoperă explicit atât persoane fizice cât și persoane juridice, cu monede, termene și o cifră exemplu de dobândă.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina centrală a produsului, cu link-uri către sub-paginile pe segmente și o cifră de dobândă concretă în text.",
+      "citat": "De exemplu, pentru un depozit standard pentru persoane fizice, cu o durată de 6 luni, avem: lei - dobândă 4.75% euro - dobândă 1.95% dolari - dobândă 2.25%",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/dobanzi-depozite-la-termen#:~:text=De%20exemplu%2C%20pentru%20un%20depozit,1.95%25%20dolari%20%2D%20dob%C3%A2nd%C4%83%202.25%25"
+    },
+    {
+      "url": "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Dobânzi depozite bancare pentru persoane fizice, inclusiv pensionari",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila de dobânzi pentru depozitul la termen destinat persoanelor fizice, cu toate termenele și valutele, corespunzând segmentului persoane fizice din produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată cu grilă completă de dobânzi pe termene și valute, plus comisioane și condiții.",
+      "citat": "7 zile 2.50% · 1 lună 4.25% · 3 luni 4.50% 6 luni 4.75% · 9 luni 5.00% · 12 luni 5.25% Comisionul de administrare pentru depozite este ZERO.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/dobanzi-depozite-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Dobânzi depozite persoane juridice (firme)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila de dobânzi pentru depozitul la termen destinat persoanelor juridice (firme), cu termene standard și pe termen lung, corespunzând segmentului persoane juridice din produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată cu grilă completă de dobânzi pe termene și valute pentru firme, plus descrierea celor două tipuri de depozite.",
+      "citat": "depozite firme standard (lei, euro și USD) – de la 7 zile la 12 luni; Compania nu poate accesa suma depusă înainte de încheierea perioadei convenite, iar dobânda este plătită la finalul acesteia.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/dobanzi-depozite-la-termen",
+    "https://www.librabank.ro/dobanzi-depozite-companii"
+  ],
+  "durata_s": 26,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2450,
+    "citire_cache": 37841,
+    "scriere_cache": 56895,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17431770000000002
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont (și card) George, 100% online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane fizice, deschis 100% online prin aplicația George, cu acces digital complet - corespunde exact descrierii CONT_ONLINE_PERSONAL.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre exacte despre comisioane de administrare pe cele trei variante de card (Standard/Gold/Platinum) și pragurile de venit necesare pentru gratuitate.",
+      "citat": "Dacă nu sunt îndeplinite condițiile, comisionul de administrare este de 15 lei/lună pentru Contul George 3.0 Standard, 30 lei/lună pentru Contul Gold și 50 lei/lună pentru Contul Platinum.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george#:~:text=Dac%C4%83%20nu%20sunt%20%C3%AEndeplinite%20condi%C8%9Biile%2C,50%20lei%2Flun%C4%83%20pentru%20Contul%20Platinum."
+    },
+    {
+      "url": "https://www.bcr.ro/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/documente-de-infomare-comisioane/Document_de_informare_cu_privire_la_comisioane_CCB_cont_George.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachet George",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de informare precontractuală (FIPC) dedicat exact pachetului de cont curent George pentru persoane fizice, incluzând card de debit și acces digital complet.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial FIPC cu denumirea explicită a contului (Pachet George) și valori exacte ale comisioanelor pentru toate operațiunile principale.",
+      "citat": "George, conţinȃnd: - administrarea Cont curent în lei; - furnizarea unui Card de debit MasterCard George; - Internet Banking, Mobile Banking şi Phone Banking; Lunar: 6/0** Lei Comision anual total: 72/0** Lei",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/help-center-contul-george/ca_i-bani-pl_tesc-pentru-contul-george-",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont George",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de help-center explică exact structura de comisioane curentă a contului George pentru persoane fizice, în funcție de tipul de card.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține cifre actualizate și detaliate despre comisioanele lunare și pragurile de alimentare pentru fiecare variantă de cont George.",
+      "citat": "Altfel, comisionul este de: - 8 Lei/ lună pentru cont George cu Card George Standard; - 20 lei/ luna pentru cont George cu Card George Gold; - 40 lei/ luna pentru cont George cu Card George Platinum",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george",
+    "https://www.bcr.ro/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/documente-de-infomare-comisioane/Document_de_informare_cu_privire_la_comisioane_CCB_cont_George.pdf"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2408,
+    "citire_cache": 152636,
+    "scriere_cache": 68267,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22529469999999996
+  }
+}

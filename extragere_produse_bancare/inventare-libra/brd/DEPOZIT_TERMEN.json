@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Depozitul-la-termen_PF_RO.pdf?_tab_8pdf=",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozitul la termen (Persoane Fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen cu dobândă fixă, destinat persoanelor fizice care doresc să fructifice lichidități din cont curent, exact ca produsul Libra pentru segmentul persoane fizice.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul este ghidul oficial de dobânzi pentru Depozitul la termen PF, cu termene (1 lună, 3 luni, 6 luni, 12 luni) și procente explicite, inclusiv bonusuri pentru constituire online.",
+      "citat": "Pentru depozitele la termen în LEI (1 lună, 3 luni, 6 luni, 12 luni) constituite prin serviciul de internet și mobile banking YOU BRD, se acordă un bonus de 0.50% în plus față de dobânda standard acordată în agențiile BRD, conform tabelului de mai sus.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Depozitul-la-termen_companii_mici_RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozitul 5.000 (Companii Mici / Persoane Juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen cu dobândă fixă dedicat persoanelor juridice (companii mici), constituit prin virament din contul curent al firmei, corespunzând segmentului persoane juridice al produsului Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Ghidul oficial de dobânzi pentru companii mici prezintă explicit ratele pentru Depozitul 5.000 pe termene de 30, 90, 180 și 365 de zile, în RON, EUR și USD, cu sumă minimă de constituire.",
+      "citat": "GHID DOBÂNZI DEPOZITE LA TERMEN Depozitul 5.000 Dobândă fixă (%/ an) Număr zile RON EUR USD 30 0.50% 1.50% 3.50% 90 4.00% 1.00% 2.00% 180 1.25% 2.25% 4.30% 365 1.50% 2.50% 4.50% Sumă minimă 5.000 RON 5.000 EUR 5.000 USD",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 73,
+  "consum": {
+    "intrare": 4,
+    "iesire": 7013,
+    "citire_cache": 6345,
+    "scriere_cache": 28015,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1414445
+  }
+}

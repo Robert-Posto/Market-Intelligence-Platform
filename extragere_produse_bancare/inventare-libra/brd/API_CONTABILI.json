@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/activitate-curenta/internet-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BRD@ffice - Internet Banking (integrare ERP)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același segment (PJ/PFA) și aceeași funcție de bază - integrarea cu programele de contabilitate/ERP ale firmei - dar la BRD aceasta este o funcționalitate inclusă în serviciul general de internet banking BRD@ffice (export extrase CAMT/MT940/csv), nu un produs API dedicat exclusiv contabililor/integrărilor contabile precum la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie explicit funcționalitatea de integrare automată a extraselor de cont în aplicațiile de gestiune financiar-contabilă (ERP), dar nu este un produs API de sine stătător și nu conține cifre/tarife proprii.",
+      "citat": "Posibilă integrare automată a extraselor de cont în aplicațiile de gestiune financiar-contabila (ERP) ale companiei dumneavoastră; Diminuarea costurilor tranzacționale fața de operațiunile derulate pe suport hârtie.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/features-security-brd-office",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "BRD Office - funcționalități integrare ERP",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Detaliază tehnic aceeași funcționalitate de integrare cu aplicațiile de gestiune financiar-contabilă (export extrase în formate XML/CAMT, MT940, csv pentru ERP), la nivelul serviciului general de internet banking pentru companii, nu ca produs API dedicat contabililor.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Confirmă formatele de export (CAMT.052/053, MT940/942, csv) destinate importului în aplicațiile ERP, dar fără tarife sau termeni comerciali proprii produsului.",
+      "citat": "Unloading of the end-of-day statements in XML (CAMT.053) / MT940 / .csv formats or of the intraday statements in the MT942 / XML (CAMT.052) formats, in order to support the import in your ERP app",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/activitate-curenta/internet-banking",
+    "https://www.brd.ro/companii/documente-utile"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2880,
+    "citire_cache": 27253,
+    "scriere_cache": 46362,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1501676
+  }
+}

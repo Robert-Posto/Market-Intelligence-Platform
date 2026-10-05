@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul SMART IMM (Pachete Non-Retail, cifra de afaceri <5M EURO)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un pachet de cont curent/abonament lunar pentru persoane juridice (segment IMM/corporate, cifră de afaceri <5M EUR), cu tranzacții incluse la preț fix, dar structura e modulară (pachet de bază + opțiuni plătite separat pentru plăți nelimitate lei/EUR) în loc de un abonament unic cu totul inclus (tranzacții nelimitate + 7 carduri + Live FX) ca la Libra PRESTIGE; cardurile business (inclusiv Corporate) se tarifează separat pe card, nu sunt incluse gratuit în pachet ca la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul oficial de tarife al BRD pentru persoane juridice listează explicit pachetul SMART IMM cu prețul pachetului de bază și costurile opțiunilor de plăți nelimitate lei/EUR.",
+      "pagina_pdf": 23,
+      "citat": "Gestionarea pachetelor de produse SMART IMM, astfel: Pachet de Baza, la care pot fi adaugate: 24 LEI/ luna; Toate transferurile de credit interbancare (catre alte banci din Romania sau catre trezorerie), non-urgente, in Lei efectuate online din contul suport sau din contul in Lei inclus in pachet 88 LEI/ luna; Toate transferurile de credit, non-urgente, in EURO, efectuate online, ordonate catre tari din spatiul SEPA, precum si toate transferurile de credit, non-urgente, in alte valute, efectuate online (inclusiv Euro ordonat catre tari din afara spatiului SEPA) 70 LEI/ luna",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/companies/sme1-50m-euro/cash-management/smart-imm-package",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "SMART IMM PACKAGE",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagină dedicată pachetului de cont curent pentru companii (segment IMM 1-50M EUR), cu plăți și încasări incluse la preț fix lunar, similar ca scop cu Abonament PRESTIGE, dar pornește de la un preț de bază mult mai mic (24 RON/lună) și nu include carduri Gold/Live FX în pachetul standard descris.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina de produs descrie explicit componența și costul pachetului de bază SMART IMM, cu cifre concrete (24 RON/lună, 2 conturi RON, 2 conturi valută, 1 card business).",
+      "citat": "Acquire the basic package at 24 RON/ month and you will have: 2 current accounts in RON 2 current account in foreign currency ( EUR and/or USD) 1 business card (issuing and management fee) BRD@ffice (management fee)",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-2-50m-euro/pachete-cont-curent",
+    "https://www.brd.ro/en/companies/sme1-50m-euro/cash-management/smart-imm-package",
+    "https://www.brd.ro/companii/imm-1-50m-euro/cash-management/pachet-smart-imm",
+    "https://www.brd.ro/companii/imm1-50m-euro/cash-management/pachetul-smart-imm",
+    "https://www.brd.ro/smart-imm",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 39987,
+    "iesire": 5211,
+    "citire_cache": 199803,
+    "scriere_cache": 155983,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5620021000000001
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/mastercard-gold-debit/mastercard_gold.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Mastercard Gold Debit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit premium pentru persoane fizice, cu acces gratuit în saloanele Business Lounge, exact ca beneficiul 'lounge' din Card de debit Gold Libra; diferă doar mecanismul (număr de accesări/an vs. general).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial BT actualizat, dedicat exclusiv beneficiului de lounge al cardului Mastercard Gold Debit, cu cifre exacte (intrări gratuite, taxe, prag de tranzacționare).",
+      "pagina_pdf": 1,
+      "citat": "Începând cu 1 iulie 2026, dacă ai un card Mastercard Gold de la Banca Transilvania, ai 4 intrări gratuite/ an în saloanele Business Lounge din Aeroportul Internațional Henri Coandă București și Aeroportul Internațional Cluj-Napoca, pentru maximum 4 ore/acces.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Index/Pentru-tine/Carduri/Conditii-asigurare-calatorie-in-strainatate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Mastercard Gold Debit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Condițiile de asigurare de călătorie asociate cardului Mastercard Gold Debit (menționat explicit în lista cardurilor bancare acoperite), echivalent cu asigurarea de călătorie din Card de debit Gold Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de condiții precontractuale (poliță Groupama) care numește explicit MASTERCARD GOLD DEBIT printre cardurile acoperite și oferă cifrele exacte ale limitelor de despăgubire.",
+      "pagina_pdf": 1,
+      "citat": "Card bancar: carduri emise de Banca Transilvania cuprinzând: MASTERCARD GOLD DEBIT, VISA BUSINESS GOLD/SILVER, VISA PLATINUM DEBIT, FLYING BLUE CLASSIC, FLYING BLUE PREMIUM, STAR GOLD, STAR PLATINUM, MCLAREN GOLD sau MASTERCARD FORTE pentru MEDICI. Limita maxima de despagubire pentru detinatorii contractului va fi de 1.000.000 euro/an.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://en.bancatransilvania.ro/companies/card-accounts/business-cards/debit-cards",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BT Visa Business Gold Debit Card",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echivalentul pentru segmentul persoane juridice (companii) al cardului Gold Libra: card de debit business cu acces la lounge și asigurare de călătorie, dar cu taxă anuală și condiții diferite de cel pentru persoane fizice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină dedicată cardurilor de debit business ale BT, care descrie explicit cardul Visa Business Gold cu beneficiile relevante și taxa administrativă anuală de 50 Lei.",
+      "citat": "The BT Visa Business Gold Debit Card gives you airport lounge access, travel insurance and other premium benefits. The administration fee for this type of card is 50 Lei per year.",
+      "citat_verificat": true,
+      "link_live": "https://en.bancatransilvania.ro/companies/card-accounts/business-cards/debit-cards#:~:text=The%20BT%20Visa%20Business%20Gold,is%2050%20Lei%20per%20year."
+    },
+    {
+      "url": "https://en.bancatransilvania.ro/en/retail-clients/cards/mastercard-gold-debit/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "MasterCard Gold Debit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de produs a cardului de debit Gold pentru persoane fizice, cu tarifele de emitere și administrare, comparabile cu taxa anuală de 48 lei a cardului Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Conținut văzut direct în rezultatele de căutare cu cifre explicite (taxă emitere, taxă administrare anuală, plafon contactless); nu a putut fi re-verificat prin fetch direct din cauza unei restricții tehnice a instrumentului.",
+      "citat": "When you receive the card you must pay RON 50, equivalent of the issuing fee. The annual account management fee is RON 80.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/en/retail-clients/cards/mastercard-gold-debit/",
+    "https://www.bancatransilvania.ro/carduri/carduri-de-debit/mastercard-gold-debit",
+    "https://www.bancatransilvania.ro/en/retail-clients/cards/mastercard-gold-debit/",
+    "https://www.bancatransilvania.ro/files/mastercard-gold-debit/mastercard_gold.pdf",
+    "https://en.bancatransilvania.ro/companies/card-accounts/business-cards/debit-cards",
+    "https://www.bancatransilvania.ro/en/carduri/carduri-de-debit",
+    "https://www.bancatransilvania.ro/it/carduri/carduri-de-debit/compara-cardurile-de-debit?card1=gold&card2=visa_classic",
+    "https://en.bancatransilvania.ro/cards/debit-cards/mastercard-gold-debit/how-do-i-make-my-card",
+    "https://en.bancatransilvania.ro/en/retail-clients/cards/mastercard-gold-debit/",
+    "https://en.bancatransilvania.ro/en/retail-clients/cards/mastercard-gold-debit",
+    "https://www.bancatransilvania.ro/files/app/media/Index/Pentru-tine/Carduri/Conditii-asigurare-calatorie-in-strainatate.pdf"
+  ],
+  "durata_s": 131,
+  "consum": {
+    "intrare": 324800,
+    "iesire": 10768,
+    "citire_cache": 112502,
+    "scriere_cache": 135291,
+    "apeluri": 1,
+    "cost_estimat_usd": 1.1180078999999998
+  }
+}

@@ -79,6 +79,14 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 024 | sursele cu nota `ROBOTS:` care figurau `activ` trec pe `blocat` (ING 48, Patria 16, BRD 1) |
 | 025 | completează `observatii_din_campanii`: se ascund și programul de loialitate eMAG Raiffeisen (`program-loialitate`, 76 de valori) și paginile TBI `landing-pages/lcp-*` (finanțări la comercianți parteneri, 29); doar vederea, `CREATE OR REPLACE` |
 | 026 | aplicații iOS: `app_release.descriere` (textul din magazin) și `vazut_ultima` pe `app_release`/`app_screenshot`; `load_mobil.py` face upsert în loc de `DELETE`, deci versiunile și capturile vechi rămân; starea de acum în vederile `app_release_curente` și `app_screenshot_curente` |
+| 027 | fluxul `extragere_produse_bancare` (comparația cu Libra): `produse_libra` (cele 57 de produse, axa comparației, separată de `catalog_libra`), `discovery_libra`, `comparatie_libra` |
+| 028 | `banci.acces_restricted`: banca refuză accesul automat (403 / WAF), deci fluxul nu o accesează |
+| 029 | discovery o dată, colectare zilnică: starea jobului pe `discovery_libra` (ultima verificare, status, cod HTTP) și `inventar_libra` pentru valori (scoasă de 030) |
+| 030 | structura finală a comparației: `discovery_libra` → `surse_libra`, `comparatie_libra` refăcută (interval, scenariu, citat, link la paragraf), `descopera_concurenta` |
+| 031 | `surse_libra.not_found`: produsul Libra nu există la bancă / nu e publicat |
+| 032 | `hashes_libra`: amprenta fiecărei surse la ultima extracție (document neschimbat = fără apel la model) |
+| 033 | `comparatie_libra.scenariu` (jsonb): codul de scenariu descompus (sumă, perioadă, valută, referință) |
+| 034 | `products_discovery`: produsele concurenței fără echivalent în catalogul Libra; înlocuiește `descopera_concurenta` |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 

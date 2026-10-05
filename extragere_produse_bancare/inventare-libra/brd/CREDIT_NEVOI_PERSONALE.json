@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/persoane-fizice/credite/credite-de-nevoi-personale/creditul-expresso",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul Expresso (Credit de Nevoi Personale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără justificarea destinației, fără garanții imobiliare, cu perioadă maximă de 5 ani (60 luni) și sumă maximă de până la 250.000 lei — corespunde direct creditului de nevoi personale Libra (fără justificare, până la 60 luni, fără garanții).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele: dobândă, sumă maximă, perioadă maximă și exemplul reprezentativ cu DAE.",
+      "citat": "Rata dobânzii este cuprinsă între 5,70% și 20,68% și este oferită clienților în funcție de o serie de elemente avute în vedere în analiza cererii de credit, precum optiunea de incasare a veniturilor in contul curent BRD, incheierea unei asigurari de viata, refinantarea",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/persoane-fizice/credite/credite-de-nevoi-personale/creditul-expresso"
+  ],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1365,
+    "citire_cache": 36898,
+    "scriere_cache": 43248,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12916160000000002
+  }
+}

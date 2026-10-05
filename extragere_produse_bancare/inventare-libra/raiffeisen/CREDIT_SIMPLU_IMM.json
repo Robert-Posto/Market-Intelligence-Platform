@@ -1,0 +1,36 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/programe-eif-creditul-easi.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul EaSI pentru microîntreprinderi",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite de business fără garanții reale (imobiliare), acordate pe scoring/criterii simple, în lei, pentru segmentul IMM/micro. Diferă însă: creditul Raiffeisen este garantat printr-un program extern dedicat (Fondul European de Investiții - EaSI), este limitat strict la microîntreprinderi cu maxim 9 angajați și cifră de afaceri sub 1 milion euro, iar destinația include și investiții productive, nu doar capital de lucru ca la Libra; plafonul maxim (240.000 lei) și termenul (12-60 luni) sunt apropiate dar nu identice cu cele Libra (20.000-200.000 lei, max 48 luni).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu cifre explicite despre sumă, termen și condiții de eligibilitate, dar produsul e structural diferit prin legătura cu garanția externă EIF.",
+      "citat": "Creditul EaSI se acordă pentru: Microîntreprinderi indiferent de forma de organizare sau domeniul de activitate, cu maxim 9 angajați. Valuta: lei Perioada de rambursare: între 12 și 60 de luni. Suma acordată: maxim 240.000 lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3334,
+    "citire_cache": 6363,
+    "scriere_cache": 26662,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10127560000000001
+  }
+}

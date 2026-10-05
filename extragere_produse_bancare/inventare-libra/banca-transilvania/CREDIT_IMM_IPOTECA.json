@@ -1,0 +1,58 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții (pentru companii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este creditul BT pentru companii destinat achiziției de clădiri, utilaje și mijloace de transport, garantat cu garanții reale, cu durată de până la 15 ani (180 luni) — identic cu componenta de investiții a produsului Libra (180 luni). Diferă însă de produsul Libra prin faptul că nu include și componenta de linie de credit pentru activitate curentă (84 luni) și nu menționează explicit ipoteca imobiliară ca garanție obligatorie, ci generic 'garanții reale'.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului de investiții pentru companii, cu cifre concrete privind durata (15 ani) și perioada de grație (36 luni), dar fără dobânzi/comisioane explicite și fără mențiune directă a ipotecii imobiliare ca garanție.",
+      "citat": "Poți accesa suma integral sau eșalonat, pe o perioadă de până la 15 ani, în funcție de ritmul proiectului tău. Ai 36 de luni perioadă de grație, ca să te concentrezi pe dezvoltare, nu pe rambursare imediată.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii#:~:text=Po%C8%9Bi%20accesa%20suma%20integral%20sau,dezvoltare%2C%20nu%20pe%20rambursare%20imediat%C4%83."
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/credit-rapid/compara-creditele",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Creditul rapid / Linia de credit rapidă cu garanții materiale (pentru IMM-uri)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă componenta de finanțare a activității curente/capital de lucru pentru firme, cu opțiunea garanțiilor materiale (posibil inclusiv ipotecă imobiliară) și sume mari (până la 4.000.000 lei), dar durata maximă (10 ani pentru creditul cu garanții, 24 luni pentru linia de credit) și pragurile de sumă diferă de cele din produsul Libra (50.000-1 mil. RON, linie max. 600k, 84 luni).",
+      "incredere": 0.65,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagină de comparație cu cifre explicite despre sume maxime, durate și comisioane pentru creditul rapid/linia de credit cu garanții materiale, dar fără a specifica explicit ipoteca imobiliară drept garanție.",
+      "citat": "Până la 10 ani pentru creditul rapid cu garanții materiale Până la 5 ani pentru creditul rapid fără garanții materiale... 4.000.000 Lei pentru creditul rapid cu garanții materiale 2.000.000 Lei pentru creditul rapid fără garanții materiale... Comision de acordare 1,50% (minim 500 lei) Comision de gestiune 0,15% / lună (la soldul mediu al creditului)",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/credit-rapid/compara-creditele#:~:text=P%C3%A2n%C4%83%20la%2010%20ani%20pentru,%28la%20soldul%20mediu%20al%20creditului%29"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/credite-pentru-companii",
+    "https://www.bancatransilvania.ro/imm",
+    "https://www.bancatransilvania.ro/",
+    "https://www.bancatransilvania.ro/site-map",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+    "https://www.bancatransilvania.ro/companii/credit-rapid",
+    "https://www.bancatransilvania.ro/companii/credit-rapid/compara-creditele"
+  ],
+  "durata_s": 89,
+  "consum": {
+    "intrare": 28274,
+    "iesire": 5080,
+    "citire_cache": 236193,
+    "scriere_cache": 99889,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4043091
+  }
+}

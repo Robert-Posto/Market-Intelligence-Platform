@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "SMART IMM (Pachete Non-Retail, cifra de afaceri <5M EURO)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un pachet de cont curent corporate pentru persoane juridice, cu abonament lunar de bază plus opțiuni/trepte pentru volum de tranzacții (transferuri interne, SEPA, CEC/BO) și conturi suplimentare — aceeași idee ca Abonamentul ELITE de la Libra. Diferă însă structura: la BRD prețul crește modular în funcție de pachetul de tranzacții ales (24 → 88 → 70 LEI/lună pe componente separate), nu printr-un singur abonament all-inclusive de 225 lei/lună cu 50 plăți+50 SEPA+50 instrumente de debit+3 carduri+Live FX incluse simultan; nu am găsit o mențiune explicită a unui serviciu de tip „Live FX” în pachet.",
+      "incredere": 0.78,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice prezintă explicit structura pachetului SMART IMM, cu cifre concrete pentru fiecare nivel de tranzacții incluse, dar nu există o pagină de produs dedicată cu toate caracteristicile descrise narativ ca la Libra.",
+      "pagina_pdf": 23,
+      "citat": "Gestionarea pachetelor de produse SMART IMM, astfel: Pachet de Baza, la care pot fi adaugate: 24 LEI/ luna; 10 transferuri de credit, interbancare BRD - alte banci din Romania, non-urgente, in Lei, efectuate online din contul suport sau din contul in lei inclus in pachet 28 LEI/luna; Toate transferurile de credit interbancare (catre alte banci din Romania sau catre trezorerie), non-urgente, in Lei efectuate online din contul suport sau din contul in Lei inclus in pachet 88 LEI/luna; Toate transferurile de credit, non-urgente, in EURO, efectuate online, ordonate catre tari din spatiul SEPA, precum si toate transferurile de credit, non-urgente, in alte valute, efectuate online (inclusiv Euro ordonat catre tari din afara spatiului SEPA) 70 LEI/luna; Gestionarea conturilor suplimentare 12 LEI/luna",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/premier-lei",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+    "https://www.brd.ro/smart-imm"
+  ],
+  "durata_s": 69,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4458,
+    "citire_cache": 231365,
+    "scriere_cache": 157637,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.48496550000000005
+  }
+}

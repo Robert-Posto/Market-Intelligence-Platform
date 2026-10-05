@@ -1,0 +1,29 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Banca Transilvania a aderat la schema RoPay, dar serviciul este documentat exclusiv pentru persoane fizice, prin aplicația BT Pay, pentru transferuri/încasări față în față între indivizi (ex.: 'facilitand pentru clientii persoane fizice aflate fata in fata posibilitatea de a efectua tranzactii prin scanarea unui cod QR'; Termenii RoPay BT vorbesc de 'utilizator' persoană fizică, iar limita e 3.000 lei/tranzacție, fără comision doar pentru persoane fizice). Nu există nicio pagină, document de tarife sau condiții care să descrie o soluție RoPay/QR dedicată persoanelor juridice (comercianți/firme) pentru încasări instant, inclusiv în weekend, integrată în infrastructura digitală a afacerii. Pagina de cont business (companii/cont-online) menționează doar încasări clasice prin POS/POS App/e-commerce cu card (comisioane 0,7% și 0,9%), care sunt un mecanism tehnic diferit (acceptare carduri) față de schema instant RoPay bazată pe QR, deci nu calitativ echivalent sau suficient de similar pentru a fi raportat ca atare. Nu am găsit nicio mențiune a unui produs de tip 'RoPay pentru afaceri/comercianți' la BT în paginile deschise (bancatransilvania.ro, intreb.bancatransilvania.ro, blog.bancatransilvania.ro)."
+  },
+  "deschise": [
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+    "https://www.bancatransilvania.ro/companii",
+    "https://www.bancatransilvania.ro/en/companii/cont-online?b=VWJ1STM5SWpTRUJGQWVCOStoQ3BWMklzcEZocU1ueHpMeTY1SS8vbk80OEdJM3dYbGlkZVVoNC9lSHl3Z1RBVDpPc2xBOHEzMHZtamRSTDM2K0ptQnN3PT0%3D",
+    "https://www.bancatransilvania.ro/",
+    "https://intreb.bancatransilvania.ro/ce-este-ropay-si-ropay-alias/",
+    "https://intreb.bancatransilvania.ro/solutii-pentru-companii/"
+  ],
+  "durata_s": 68,
+  "consum": {
+    "intrare": 42270,
+    "iesire": 5357,
+    "citire_cache": 236647,
+    "scriere_cache": 87376,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4038794
+  }
+}

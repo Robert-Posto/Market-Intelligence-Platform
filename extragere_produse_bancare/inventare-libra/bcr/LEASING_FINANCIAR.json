@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "LEASING_FINANCIAR",
+  "denumire": "Leasing financiar (Libra Development IFN)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/presa/informatii-de-presa/2022/06/20/solutii-leasing-financiar-auto-bcr-leasing",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "BCR Leasing - soluții de finanțare în leasing financiar pentru auto și echipamente",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (leasing financiar auto și echipamente, prin IFN-ul grupului) și același segment (corporate, microîntreprinderi, PFA), dar diferă termenul maxim (5 ani la BCR vs. până la 7 ani auto la Libra) și avansul minim (de la 10% la BCR vs. de la 15%/20% la Libra).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Comunicat oficial BCR Leasing cu cifre concrete despre avans, termen și dobândă pentru produsul de leasing financiar auto și echipamente destinat companiilor, dar nu este o pagină de produs permanentă actualizată zilnic.",
+      "citat": "Soluțiile de finanțare în leasing ale autovehiculelor și echipamentelor au fost dezvoltate pentru a încuraja investițiile sustenabile și oferă antreprenorilor numeroase avantaje, de la o perioadă de finanțare de până la 5 ani, cu avans începând de la 10% din prețul bunului finantat și o dobândă variabilă în euro pe an de la 2,5% + indicele EURIBOR la 3 luni.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/presa/informatii-de-presa/2022/06/20/solutii-leasing-financiar-auto-bcr-leasing#:~:text=Solu%C8%9Biile%20de%20finan%C8%9Bare%20%C3%AEn%20leasing,indicele%20EURIBOR%20la%203%20luni."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcrleasing.ro/",
+    "https://www.bcr.ro/ro/presa/informatii-de-presa/2022/06/20/solutii-leasing-financiar-auto-bcr-leasing",
+    "https://www.bcr.ro/leasingro",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr-leasing_ro/Anexa_B_aferenta_Contractului_de_LEASING_FINANCIAR%20_Conditii_Contractuale_Generale_versiunea_01_valabil_din_data_de_20_iulie_2020.pdf?forceDownload=1"
+  ],
+  "durata_s": 135,
+  "consum": {
+    "intrare": 39430,
+    "iesire": 2826,
+    "citire_cache": 92431,
+    "scriere_cache": 101081,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3783087
+  }
+}

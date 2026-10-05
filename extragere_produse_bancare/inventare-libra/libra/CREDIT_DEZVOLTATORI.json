@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_DEZVOLTATORI",
+  "denumire": "Credit pentru dezvoltatori imobiliari",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credit-investitii-imobiliare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit investiții imobiliare (Credite real estate / Proiecte rezidențiale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată, pentru persoane juridice (dezvoltatori imobiliari), descriind finanțare pe etape de proiect (achiziție teren, construcție, promovare, vânzare) cu consultanță specializată (ingineri și consultanți financiari in-house) - corespunde exact produsului Libra CREDIT_DEZVOLTATORI.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este pagina dedicată exact acestui produs (regăsită și în meniul Credite > Persoane juridice > Proiecte rezidențiale), cu descriere detaliată a beneficiilor și a etapelor finanțate, dar fără un tabel explicit de dobânzi/comisioane/sume numerice specifice creditului.",
+      "citat": "Credit pentru investiții imobiliare adaptat nevoilor fiecărui proiect! Dezvoltarea pieței rezidențiale din România a cunoscut un avans semnificativ în ultimii ani, iar accesul la soluții de finanțare specializate a jucat un rol esențial în această evoluție. 25.000 de apartamente, realizate cu finanțare de la Libra, în cadrul proiectelor rezidențiale.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credit-investitii-imobiliare#:~:text=Credit%20pentru%20investi%C8%9Bii%20imobiliare%20adaptat,Libra%2C%20%C3%AEn%20cadrul%20proiectelor%20reziden%C8%9Biale."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credit-investitii-imobiliare",
+    "https://www.librabank.ro/credite-persoane-juridice-afaceri"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3389,
+    "citire_cache": 109387,
+    "scriere_cache": 76514,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2470684
+  }
+}

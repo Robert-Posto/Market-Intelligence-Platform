@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/fonduri-nerambursabile/banca-de-investitii-si-dezvoltare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanția Băncii de Investiții și Dezvoltare (BID) pentru IMM-uri",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit de investiții pentru IMM/PJ garantat de o instituție financiară internațională) și același segment de clienți, dar garantul este BID (Banca de Investiții și Dezvoltare), nu BERD ca la produsul Libra; procentul de garantare standard e 70% (extins 80%) față de 80% fix la Libra, iar plafonul și termenele (10 mil. lei, 12-120 luni) sunt aproape identice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele privind plafonul de garantare, procentele și termenele creditelor de investiții acoperite de garanția BID.",
+      "citat": "Astfel, antreprenorii pot accesa credite garantate de până la 10 milioane de lei / proiect, cu garanții care acoperă până la 70% din valoarea creditului. În plus, pentru companiile deținute de femei, start-up-uri sau afaceri inovatoare și verzi, garanția poate urca până la 80%.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/fonduri-nerambursabile/banca-de-investitii-si-dezvoltare#:~:text=Astfel%2C%20antreprenorii%20pot%20accesa%20credite,poate%20urca%20p%C3%A2n%C4%83%20la%2080%25."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/fonduri-nerambursabile/banca-de-investitii-si-dezvoltare"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2154,
+    "citire_cache": 39812,
+    "scriere_cache": 38480,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1257144
+  }
+}

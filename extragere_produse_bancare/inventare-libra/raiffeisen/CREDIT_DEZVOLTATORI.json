@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_DEZVOLTATORI",
+  "denumire": "Credit pentru dezvoltatori imobiliari",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/solutii-de-finantare/finantarea-proiectelor-imobiliare.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțarea proiectelor imobiliare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat persoanelor juridice pentru finanțarea pe faze de dezvoltare a proiectelor imobiliare, incluzând explicit proiecte rezidențiale, cu analiză de proiect, garanții pe activele proiectului și consultanță specializată - corespunde direct descrierii creditului Libra pentru dezvoltatori imobiliari.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea exactă a finanțării pentru proiecte imobiliare în diverse stadii de dezvoltare, inclusiv proiecte rezidențiale, și o cifră concretă (rata dobânzii penalizatoare de 15% p.a.).",
+      "citat": "Credite pentru proiecte imobiliare aflate în diverse stadii de dezvoltare. Rata dobânzii penalizatoare = 15% p.a., valabilă pentru toate Facilitățile de credit și toate valutele în care este denominata facilitatea.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/solutii-de-finantare/finantarea-proiectelor-imobiliare.html#:~:text=Credite%20pentru%20proiecte%20imobiliare%20aflate,%C3%AEn%20care%20este%20denominata%20facilitatea."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/corporatii/expertiza/expertiza-sectoriala/sectorul-imobliar.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Sectorul imobiliar - Soluții dedicate companiilor din sectorul imobiliar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de expertiză sectorială confirmă acoperirea proiectelor rezidențiale pentru dezvoltatori, cu finanțare în faza de dezvoltare și contacte dedicate pe tip de proiect, susținând produsul de finanțare a proiectelor imobiliare.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina menționează explicit finanțarea proiectelor rezidențiale și faza de dezvoltare, dar nu conține cifre financiare (dobânzi/comisioane), fiind mai degrabă o pagină de prezentare a expertizei sectoriale.",
+      "citat": "Cu peste 10 ani de experiență în finanțarea unora din cele mai mari proiecte imobiliare din România, avem capacitatea de a acoperi toata gama de dezvoltări imobiliare: spații de birouri, centre comerciale și parcuri de retail, spații logistice și de depozitare, proiecte rezidențiale, hoteluri.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/solutii-de-finantare/finantarea-proiectelor-imobiliare.html"
+  ],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1605,
+    "citire_cache": 39160,
+    "scriere_cache": 36799,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11589150000000001
+  }
+}

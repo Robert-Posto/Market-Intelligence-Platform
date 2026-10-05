@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Convenții privind acceptarea la plată prin RoPay P2M, E-Commerce Deep Link și QR Code",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este serviciul de încasare (acceptare la plată) prin RoPay destinat comercianților/persoanelor juridice, prin QR Code și Deep Link, exact ca RoPay for Business de la Libra, aplicabil atât pentru plăți intrabancare cât și interbancare, disponibil non-stop.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice conține o secțiune dedicată (6.5) cu comisioanele explicite pentru acceptarea plăților prin RoPay P2M, E-Commerce Deep Link și QR Code.",
+      "citat": "6.5. Conventii privind acceptarea la plata prin RoPay P2M, E-Commerce Deep Link si QR Code Acceptare plati prin RoPay P2M, E-Commerce Deep Link si QR Code o Acceptare plati intrabancare prin RoPay P2M, E-Commerce Deep Link si QR Code 0.25% + 0.50 LEI / tranzactie o Acceptare plati intrerbancare prin RoPay P2M, E-Commerce Deep Link si QR Code 0.25% + 0.50 LEI / tranzactie",
+      "pagina_pdf": 15,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice-EN.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "RoPay P2M, E-Commerce Deep Link and QR Code agreements",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în limba engleză a aceluiași document de tarife pentru persoane juridice, cu aceeași secțiune dedicată acceptării plăților RoPay pentru comercianți (companii).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Confirmă aceleași comisioane pentru acceptarea plăților RoPay de către persoane juridice, atât pentru circuit intrabancar cât și interbancar.",
+      "citat": "RoPay P2M, E-Commerce Deep Link and QR Code agreements Acceptance of payments via RoPay P2M, E-Commerce Deep Link, and QR Code acceptance of intrabank payments via RoPay P2M, E-Commerce Deep Link and QR Code 0.25% + 0.50 RON / transaction acceptance of interbank payments via RoPay P2M, E-Commerce Deep Link and QR Code 0.25% + 0.50 RON / transaction",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/activitate-curenta/YOU"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1907,
+    "citire_cache": 29131,
+    "scriere_cache": 119520,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3237082
+  }
+}

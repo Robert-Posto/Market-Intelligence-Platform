@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/mfp",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Programul de Emisiuni de titluri de stat FIDELIS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (titluri de stat, investiție cu cupon fix, intermediate de bancă), dar FIDELIS este destinat exclusiv persoanelor fizice, în timp ce produsul Libra PLASAMENTE acoperă atât persoane fizice cât și juridice; pentru segmentul PJ corespondentul este calculatorul de titluri de stat de pe brd.ro/piețe financiare.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată a băncii, cu cifre explicite despre cupoane, maturități și valori minime de subscriere pentru titlurile de stat FIDELIS.",
+      "citat": "Programul FIDELIS oferă posibilitatea investirii în titluri de stat denominate în RON și Euro, cu cupon fix, plătibil anual; Valoarea minimă a unei subscrieri este de 5.000 RON pentru emisiunile în RON la 2 ani, 4 ani și 10 ani, 500 RON pentru emisiunea in RON dedicata donatorilor de sânge,1000 EUR pentru emisiunile în EUR la 3 ani si 10 ani.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/government-securities",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "simulator",
+      "denumire_la_banca": "Government Securities Calculator (Calculator Titluri de Stat)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă titluri de stat tranzacționabile prin BRD, dar este orientat spre segmentul de companii/piețe de capital (listat sub meniul Companii/SME și Piețe financiare) cu prețuri indicative, nu neapărat identic structurat ca un produs unic pentru persoane fizice și juridice deopotrivă ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina conține un tabel cu cifre reale (randamente, cupoane, scadențe) pentru titluri de stat românești și euroobligațiuni, fiind simulatorul oficial al băncii pentru acest produs, accesibil atât din meniul persoanelor fizice/companii cât și din Piețe financiare.",
+      "citat": "Government bonds & Treasury bills available on September 2nd 2026 - prices are INDICATIVE | Maturity | ISIN | Coupon(%) | Coupon frequency** | Yield to maturity(%)* | Face Amount | 28/10/2026 | RON7NMKOKQG2 | 7.2 | Annual | 2.273 | 5000",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/en/government-securities",
+    "https://www.brd.ro/piata-financiara/piata-valutara-si-monetara",
+    "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/economii-si-investitii/titluri-de-stat",
+    "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/economii-si-investitii/plasamente",
+    "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/economii-si-investitii/calculator-titluri-de-stat"
+  ],
+  "durata_s": 57,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4480,
+    "citire_cache": 174192,
+    "scriere_cache": 93242,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3127634
+  }
+}

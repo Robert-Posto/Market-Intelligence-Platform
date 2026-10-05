@@ -1,0 +1,56 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este creditul BT pentru persoane juridice destinat achiziției de clădiri (imobile) pentru sediul companiei sau extinderea activității, deci corespunde direct segmentului și scopului creditului imobiliar pentru firme de la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului pentru companii menționează explicit achiziția de clădiri ca destinație și conține cifre despre perioadă (până la 15 ani) și perioada de grație (36 luni), dar nu afișează dobânda sau comisioanele curente.",
+      "citat": "Poți accesa suma integral sau eșalonat, pe o perioadă de până la 15 ani, în funcție de ritmul proiectului tău. Ai 36 de luni perioadă de grație, ca să te concentrezi pe dezvoltare, nu pe rambursare imediată.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii#:~:text=Po%C8%9Bi%20accesa%20suma%20integral%20sau,dezvoltare%2C%20nu%20pe%20rambursare%20imediat%C4%83."
+    },
+    {
+      "url": "https://campanie.bancatransilvania.ro/babe-fara-drame/pentru-afacerea-ta/oferta-credit-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credit de investiții (ofertă)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină de ofertă/campanie pentru același produs Credit de investiții destinat firmelor (inclusiv achiziție de spații), cu dobânda și perioada maximă afișate explicit.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Conține cifre concrete de dobândă și durată pentru Creditul de investiții, dar este o pagină de campanie/ofertă limitată în timp, nu documentul standard de tarife al băncii; conținutul a fost obținut din rezultatele căutării, fetch direct nereușit.",
+      "citat": "Dobândă ZERO + ROBOR6M în prima lună apoi 3.5% + ROBOR6M ... Poți accesa suma integral sau eșalonat, pe o perioadă de până la 10 ani, în funcție de ritmul proiectului tău.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+    "https://www.bancatransilvania.ro/companii/finantare#credite",
+    "https://www.bancatransilvania.ro/en/companii/finantare/credite/credit-de-investitii",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+    "https://campanie.bancatransilvania.ro/babe-fara-drame/pentru-afacerea-ta/oferta-credit-investitii",
+    "https://campanie.bancatransilvania.ro/babe-fara-drame/pentru-afacerea-ta/oferta-credit-investitii/"
+  ],
+  "durata_s": 60,
+  "consum": {
+    "intrare": 215777,
+    "iesire": 4187,
+    "citire_cache": 102745,
+    "scriere_cache": 78551,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6903505
+  }
+}

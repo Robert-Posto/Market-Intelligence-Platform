@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/brdxbid",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BRD x BID – Garanția de Portofoliu IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact același tip de produs: finanțare în lei pentru firme (IMM), garantată de Banca de Investiții și Dezvoltare (BID) în proporție de 70% (până la 80% pentru antreprenoriat feminin/companii verzi), acoperind atât investiții cât și capital de lucru, la fel ca produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Este pagina dedicată a produsului BRD x BID, cu cifrele exacte ale garanției, plafoanelor de finanțare și maturităților, identice ca structură cu produsul Libra.",
+      "citat": "Suport din partea BID: garanție de stat până la 70% (pentru companiile deținute de antreprenoriat feminin, sau companii inovatoare și verzi, garanția poate urca până la 80%). Valoare finanțare: între 20.000 și 5.000.000 lei, maturitate extinsă între 12 si 120 luni.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/brd-si-banca-de-investitii-si-dezvoltare-romaniei-isi-unesc-fortele-pentru-sprijinirea-dezvoltarii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Garanție de portofoliu pentru IMM (BRD-BID)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicatul oficial descrie aceeași garanție BID pentru IMM, cu acoperire de 70-80% pentru credite de investiții și capital de lucru, confirmând condițiile produsului.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este comunicatul de presă oficial BRD care detaliază parametrii exacți ai garanției BID (procente, tipuri de credit, perioade), completând datele din pagina produsului.",
+      "citat": "Produsul se adresează IMM-urilor din toate sectoarele economice și oferă finanțări pentru investiții și capital de lucru, cu perioade de rambursare de până la 10 ani, acoperind până la 70% din valoarea finanțărilor acordate IMM-urilor eligibile, respectiv până la 80%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/brdxbid"
+  ],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1416,
+    "citire_cache": 37153,
+    "scriere_cache": 43071,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1292801
+  }
+}

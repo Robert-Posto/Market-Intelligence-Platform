@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul de nevoi personale George",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără garanții, fără justificarea destinației, cu termen până la 60 de luni (120 luni doar pentru refinanțări de credite vechi fără sumă suplimentară) și plafon până la 250.000 lei în funcție de venituri - corespunde tipologic creditului de nevoi personale Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele relevante: dobânzi, DAE, exemple reprezentative, comisioane și termene.",
+      "citat": "Dobânda standard este fixă, cuprinsă între 7,99% și 14,99%/an (DAE de la 8,59% la 18,91%) și diferă în funcție de mai multe variabile utilizate în analiza cererii de credit, istoricul relației cu banca, venitul realizat, vechimea locului de munca, ratele în derulare și comportamentul de plată, sumă, perioada creditului, etc.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george#:~:text=Dob%C3%A2nda%20standard%20este%20fix%C4%83%2C%20cuprins%C4%83,plat%C4%83%2C%20sum%C4%83%2C%20perioada%20creditului%2C%20etc."
+    },
+    {
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/george/credit/Creditul_DIVERS_BCR_credite_noi_si_refinantari_BCR_BCR.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Creditul de nevoi personale George (Dobânzi şi comisioane Împrumutul pentru nevoi personale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi și comisioane legat direct din pagina produsului echivalent, aplicabil creditelor noi și refinanțărilor pentru nevoi personale.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document PDF dedicat, linkat explicit de pe pagina produsului drept sursa oficială de dobânzi și comisioane pentru acest credit.",
+      "citat": "Dobânzi şi comisioane Împrumutul pentru nevoi personale (PDF, 398 KB)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (10 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george",
+    "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-nevoi-personale"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1831,
+    "citire_cache": 41366,
+    "scriere_cache": 44994,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1390802
+  }
+}

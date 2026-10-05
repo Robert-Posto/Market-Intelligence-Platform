@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/pachet-imm-cont-curent-optim/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de cont curent IMM Optim",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt pachete/abonamente lunare pentru firme și PFA care includ cont curent în lei plus cont în valută, card de debit business și un număr de plăți interbancare (inclusiv instant) incluse. Diferă însă numărul de tranzacții incluse (10 la Optim vs. 25 la PRIME), numărul de carduri (1 vs. 2 la PRIME) și faptul că Optim nu menționează explicit un serviciu de tip Live FX, iar contul valutar e doar EUR sau USD, nu EUR și USD simultan ca la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetului Optim conține explicit prețul lunar (79 lei) și toate cifrele relevante (număr de plăți, retrageri, tip cont valutar, card inclus).",
+      "citat": "Cu doar 79 lei/luna, te bucuri de: Beneficii exclusive ale pachetului OPTIM: 10 plati interbancare in lei, online (inclusiv plati instant) 10 plati interbancare in EUR/USD, online 10 plati si incasari cu cecuri, bilete la ordin si cambii 5 retrageri numerar in lei de la orice ATM al oricarei banci din Romania",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent IMM (comparator Start/Plus/Optim/Extra/Ultra)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Tabelul comparativ arată, pentru fiecare treaptă de preț (29-199 lei/lună), numărul de plăți interbancare și dacă e inclus cont curent EUR/USD și tipul de card, permițând verificarea rapidă a pachetului cel mai apropiat ca preț și beneficii de Abonamentul PRIME (95 lei/lună); nu există însă o treaptă identică ca structură (25 plăți + 2 carduri + Live FX).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina conține un tabel comparativ cu cifrele exacte (preț lunar, număr plăți, cont valutar) pentru toate pachetele IMM, util pentru extragerea automată a valorilor.",
+      "citat": "Toate pachetele includ | Cont curent principal și cont de card în lei, încasări nelimitate în orice monedă prin OP (inclusiv incasari instant), plăţi intra-bancare în lei şi valuta nelimitate online, plăţi şi încasari intrabancare cu bilete la ordin şi cec-uri",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4828,
+    "citire_cache": 6366,
+    "scriere_cache": 23980,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1095112
+  }
+}

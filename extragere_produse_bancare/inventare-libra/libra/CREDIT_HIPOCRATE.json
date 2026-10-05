@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_HIPOCRATE",
+  "denumire": "Credit Hipocrate (medici)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credite_cabinete_medicale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit HIPOCRATE (pentru nevoi de afaceri / investiții / Start-Up / Discount)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exclusiv creditelor pentru cabinete medicale, acoperind direct variantele Credit HIPOCRATE pentru activitate curentă, investiții și echipamente, exact segmentul și scopul produsului Libra CREDIT_HIPOCRATE.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată produsului, cu denumirile variantelor HIPOCRATE și cifre concrete (sume, termene) în text.",
+      "citat": "Credit cabinete medicale - Poți obține rapid până la 250.000 lei Fără documente suplimentare pentru justificarea utilizarea sumei din credit Credit Hipocrate pentru cabinete medicale - Fără condiții de avans Posibilitatea rambursării anticipate din surse proprii, fără costuri suplimentare Perioadă de creditare extinsă de până la 25 ani",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite_cabinete_medicale#:~:text=Credit%20cabinete%20medicale%20%2D%20Po%C8%9Bi,de%20p%C3%A2n%C4%83%20la%2025%20ani"
+    },
+    {
+      "url": "https://www.librabank.ro/credit-profesii-liberale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credit profesii liberale (varianta pentru medici, include creditele HIPOCRATE)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina către care trimit toate link-urile variantelor HIPOCRATE de pe pagina dedicată cabinetelor medicale; conține dobânda fixă și condițiile aplicabile creditelor cu ipotecă pentru profesii liberale, categorie din care fac parte medicii.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina conține cifre (dobândă fixă, perioadă) aplicabile creditelor cu ipotecă, dar nu menționează explicit denumirea HIPOCRATE, fiind o pagină generală pentru toate profesiile liberale.",
+      "citat": "Dobândă fixă 8,99% în primii 5 ani Destinată exclusiv clienților Profesii Liberale (PFA, SRL, PFI) Doar pentru credite garantate cu ipoteci imobiliare",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credite_cabinete_medicale",
+    "https://www.librabank.ro/Profesii_liberale/medici/Linie_de_credit_HIPOCRATE/78"
+  ],
+  "durata_s": 435,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3004,
+    "citire_cache": 78403,
+    "scriere_cache": 62137,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2010791
+  }
+}

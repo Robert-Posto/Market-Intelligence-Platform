@@ -1,0 +1,70 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul Imobiliar-Ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru persoane fizice destinat achiziției, construcției sau refinanțării unei locuințe, cu variantă verde disponibilă în simulator, exact ca produsul Libra (achiziție/construcție/refinanțare, inclusiv Credit Verde).",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete despre dobândă, durată și sume, plus simulator care oferă și varianta Verde.",
+      "citat": "Dobândă fixă introductorie în primii 3 ani începând de la 5,05%. Durata creditului poate fi de până la 30 de ani. Dobândă mai mică dacă încasezi venitul la BT.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar#:~:text=Dob%C3%A2nd%C4%83%20fix%C4%83%20introductorie%20%C3%AEn%20primii,dac%C4%83%20%C3%AEncasezi%20venitul%20la%20BT."
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar/exemple-reprezentative",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credit imobiliar-ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina prezintă exemple reprezentative complete (DAE, dobândă, rată lunară, cost total) pentru creditul imobiliar-ipotecar destinat persoanelor fizice, incluzând și opțiunea de credit imobiliar-ipotecar verde.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document/pagina afișează direct tabelul cu dobânzi fixe introductorii, DAE și costuri, specific pentru acest produs.",
+      "citat": "Credit imobiliar-ipotecar în lei cu dobândă fixă introductorie 3 ani, cu încasare venituri la BT (rate descrescătoare) Valoarea imobilului 352.941 lei Avansul minim (%) 15% Valoarea creditului 300.000 lei Durata împrumutului 30 ani (360 rate lunare) Dobânda Fixă primii 3 ani 5,10% apoi variabilă 7,66% DAE (Dobândă anuală efectivă) 7,22%",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar/exemple-reprezentative#:~:text=Credit%20imobiliar%2Dipotecar%20%C3%AEn%20lei%20cu,DAE%20%28Dob%C3%A2nd%C4%83%20anual%C4%83%20efectiv%C4%83%29%207%2C22%25"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/BT_Creditul_imobiliar_ipotecar_03102016.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul Imobiliar/Ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Fișă de produs/exemplu reprezentativ pentru același Credit Imobiliar/Ipotecar destinat persoanelor fizice, cu descrierea destinației (achiziție, construire, finalizare, extindere, refinanțare) identică cu produsul Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Document istoric (2016) cu cifre de dobândă și DAE explicite pentru produs, dar valorile sunt vechi și pot să nu mai fie actualizate de bancă la această adresă statică.",
+      "citat": "Creditul Imobiliar/Ipotecar este produsul oferit de Banca Transilvania pentru achizitionarea, construirea, finalizarea sau extinderea unui imobil sau pentru refinantarea unui credit pe care l-ai contractat deja pentru una din",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/credite/creditele-imobiliare/creditul-imobiliar-ipotecar",
+    "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar/exemple-reprezentative",
+    "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar"
+  ],
+  "durata_s": 441,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3425,
+    "citire_cache": 178912,
+    "scriere_cache": 89757,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2944449
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/creditul-pentru-nevoi-nenominalizate-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru Nevoi Nenominalizate IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit pentru IMM/PJ care finanțează atât activitatea curentă (trezorerie) cât și mici investiții, cu opțiune de garantare prin ipotecă imobiliară, la fel ca produsul Libra care acoperă ambele destinații. Diferă însă plafonul (max. 400.000 RON față de 1 mil. RON la Libra) și termenul maxim (60-120 luni față de până la 180 luni pentru investiții la Libra).",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit sumele și perioadele pentru varianta cu ipotecă imobiliară, dar plafonul e mult mai mic decât la Libra.",
+      "citat": "Suma minimă este 20.000 RON Suma maximă este 400.000 RON Pentru creditele cu ipotecă perioada de creditare este de maximum 60-120 luni, în functie de sectorul de activitate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/finantare/credite-de-investitii/credite-de-investitii-imobiliare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de investiții imobiliare PFA PL",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit garantat cu ipotecă imobiliară destinat investițiilor imobiliare, pentru segmentul PFA/profesii liberale (parte din segmentul vizat de produsul Libra: firme și PFA). Spre deosebire de Libra, acest produs BRD acoperă doar componenta de investiții (nu și linia pentru activitate curentă) și are plafoane/termene diferite (200.000–5.000.000 RON, 120-240 luni față de 50.000-1.000.000 RON și 84/180 luni la Libra).",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagină dedicată de produs cu cifre clare (sume minime/maxime, perioadă, procent de finanțare), dar acoperă doar segmentul PFA și doar componenta de investiții, nu linia de credit pentru activitate curentă.",
+      "citat": "Suma minimă este 200.000 RON sau 40.000 EUR Suma maximă este 5.000.000 RON sau 1.000.000 EUR. Perioada de creditare pentru creditele de investiții imobiliare este de maximum 120 de luni sau maximum 240 luni, calculate în funcție de sectorul de activitate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/credite-de-investitii/credite-de-investitii-imobiliare",
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/credite-de-investitii/creditul-simplu-imm"
+  ],
+  "durata_s": 71,
+  "consum": {
+    "intrare": 6,
+    "iesire": 6564,
+    "citire_cache": 31058,
+    "scriere_cache": 50124,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1971736
+  }
+}

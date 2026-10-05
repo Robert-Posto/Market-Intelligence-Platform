@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/acceptare-carduri/acceptare-carduri-prin-epos.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acceptare carduri prin E-POS",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Terminal fizic de acceptare carduri la locația comerciantului, destinat firmelor/IMM-urilor (persoane juridice), exact ca produsul Libra POS_FIZIC: pentru orice afacere cu vânzare fizică (retail, HoReCa, servicii).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată oficială a produsului de terminal POS fizic pentru IMM, cu detalii concrete despre decontare și valute, dar fără un tabel de comisioane publicat (acestea sunt oferite personalizat de banca, conform documentului de tarife).",
+      "citat": "Decontare rapidă Banii tăi, în contul tău, în doar o zi lucrătoare (T+1). Flexibilitate Acceptă plăți în lei, euro sau dolari, pe același terminal.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/acceptare-carduri/acceptare-carduri-prin-epos.html#:~:text=Decontare%20rapid%C4%83%20Banii%20t%C4%83i%2C%20%C3%AEn,sau%20dolari%2C%20pe%20acela%C8%99i%20terminal."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/acceptare-carduri/acceptare-carduri-prin-epos.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf"
+  ],
+  "durata_s": 41,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3279,
+    "citire_cache": 81309,
+    "scriere_cache": 67782,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21852280000000002
+  }
+}

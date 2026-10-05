@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/ropay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (plăți instant prin telefon, cod QR, deep-link, alias IBAN), oferit de BRD sub același nume de schemă națională RoPay, disponibil persoanelor fizice prin aplicația YOU BRD, cu gratuitate și plafoane precizate.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată RoPay conține cifre explicite despre plafoane și comisioane.",
+      "citat": "Suma maximă admisă este de 49.999,99 RON / tranzacție pentru toate scenariile de utilizare RoPay, cu excepția RoPay e-commerce / cumpărături online și RoPay POS QR, unde suma maximă permisă este 100.000 RON / tranzacție.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/activitate-curenta/YOU",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay (în YOU BRD pentru PFA și profesii liberale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași funcționalitate RoPay, de această dată documentată pentru segmentul de persoane juridice/PFA, cu plafoane specifice per tranzacție și pe zi.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina pentru PFA/profesii liberale listează explicit plafoanele RoPay pentru acest segment.",
+      "citat": "Plătile proximitate prin cod QR RoPay: 49.999,999 lei / tranzacție",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (10 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/Ghid_tarife_comisioane_9.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Plăți instant prin cod QR (RoPay)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane al BRD listează explicit liniile RoPay (intrabancar și interbancar), cu valorile comisioanelor aplicate.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "PDF-ul de tarife conține rândul dedicat RoPay cu valoarea comisionului (gratuit) atât pentru plăți intrabancare cât și interbancare.",
+      "citat": "Plati instant prin cod QR (RoPay) intre clientii BRD gratuit - - - Plati interbancare instant prin cod QR (RoPay) - - - gratuit",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1686,
+    "citire_cache": 6309,
+    "scriere_cache": 27163,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0860373
+  }
+}

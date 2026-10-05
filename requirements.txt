@@ -12,3 +12,8 @@ anthropic>=1.8      # doar ingest/structureaza_depozite.py (pas LLM, netestat li
 duckdb>=1.5
 pillow>=12.0      # import PIL, doar ingest/fetch_logos_wiki.py (decupeaza marginile albe)
 openpyxl>=3.1     # doar ingest/load_catalog_libra.py (citește Excel-ul cu catalogul Libra)
+# fluxul extragere_produse_bancare (flow-html.py, scripturile de discovery)
+httpx>=0.28
+python-dotenv>=1.2
+selectolax>=0.4
+trafilatura>=2.2

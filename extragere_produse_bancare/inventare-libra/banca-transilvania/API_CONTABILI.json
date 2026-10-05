@@ -1,0 +1,38 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://go.bancatransilvania.ro/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BT Go – Integrare facturare FGO & SPV",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BT nu are un produs API dedicat pentru integrare cu programe de contabilitate terțe; cel mai apropiat este integrarea BT Go cu FGO, care conectează facturarea/SPV cu contul bancar, dar este o funcție de facturare în aplicația de banking, nu un API B2B expus pentru sisteme de contabilitate externe.",
+      "incredere": 0.4,
+      "explicatie_incredere": "Pagina descrie o integrare de facturare/SPV cu o cifră concretă (12 luni gratuite), dar nu este un API pentru contabili în sensul cerut de produsul Libra, ci o funcționalitate internă a aplicației de business banking.",
+      "citat": "Emite, trimite și plătește facturi din BT Go. Integrarea cu FGO permite conectarea contului tău SPV. Astfel, toate facturile tale sunt asociate automat cu plățile și încasările - totul într-un singur loc. Ai 12 luni gratuite la abonament dacă nu ai mai avut FGO.",
+      "citat_verificat": true,
+      "link_live": "https://go.bancatransilvania.ro/#:~:text=Emite%2C%20trimite%20%C8%99i%20pl%C4%83te%C8%99te%20facturi,nu%20ai%20mai%20avut%20FGO."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://go.bancatransilvania.ro/",
+    "https://stup.bancatransilvania.ro/servicii/servicii-de-business/facturare-contabilitate",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 448,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2562,
+    "citire_cache": 151889,
+    "scriere_cache": 127475,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3747053
+  }
+}

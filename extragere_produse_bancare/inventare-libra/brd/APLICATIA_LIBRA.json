@@ -1,0 +1,86 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/persoane-fizice/online-banking/you",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "YOU BRD",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "YOU BRD este aplicația de mobile (și internet) banking a BRD pentru persoane fizice, cu funcționalități de plată prin cod QR (RoPay) și acces la Click to Pay, similar cu Aplicația Libra Bank v4 (Libra Voice, RoPay, Click to Pay).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată aplicației YOU BRD descrie explicit funcționalitatea RoPay (plăți/încasări instant prin cod QR) direct din aplicație, cu trimitere la Click to Pay în meniul de card.",
+      "citat": "Plătești și încasezi instant prin cod QR (RoPay) Plătești și încasezi instant prin cod QR afișat în YOU BRD Mobile, utilizând RoPay.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/ropay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "RoPay (în aplicația YOU BRD)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "RoPay este funcționalitatea de plăți instant prin cod QR/deep-link din aplicația YOU BRD, corespondentul direct al funcției RoPay menționate explicit în descrierea Aplicației Libra Bank v4.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina RoPay a BRD conține cifre exacte despre comisioane (0 lei) și plafoane de tranzacție pentru serviciul RoPay oferit prin aplicația YOU BRD.",
+      "citat": "Suma maximă admisă este de 49.999,99 RON / tranzacție pentru toate scenariile de utilizare RoPay, cu excepția RoPay e-commerce / cumpărături online și RoPay POS QR, unde suma maximă permisă este 100.000 RON / tranzacție.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/click-pay-faq",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Click to Pay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Click to Pay este funcționalitatea de plată online fără introducerea manuală a datelor cardului, activată din aplicația de mobile banking YOU BRD, corespondentul direct al Click to Pay menționat în descrierea Aplicației Libra Bank v4.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina FAQ Click to Pay a BRD descrie explicit activarea funcționalității din aplicația de mobile banking (YOU BRD) și confirmă costul (gratuit).",
+      "citat": "Click to Pay is free. There are no fees or additional charges for paying with Click to Pay.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (18 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/activitate-curenta/YOU",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "YOU BRD (pentru PFA și Profesii liberale)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este varianta aplicației YOU BRD disponibilă pentru segmentul de business, dar acoperă doar PFA și profesii liberale, nu întreaga categorie de persoane juridice/companii vizată de Aplicația Libra Bank; funcționalitățile RoPay sunt identice cu cele din varianta pentru persoane fizice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată YOU BRD pentru PFA și profesii liberale menționează explicit RoPay și numărul mare de utilizatori ai aplicației, dar segmentul acoperit (PFA) este mai restrâns decât persoanele juridice generale.",
+      "citat": "Peste 1,8 milioane de clienți folosesc YOU BRD. Plătești și încasezi instant prin cod QR (RoPay) Plătești și încasezi instant prin cod QR afișat în YOU BRD Mobile, utilizând RoPay.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/persoane-fizice/online-banking/you",
+    "https://www.brd.ro/en/companies/sme/current-activity/mobile-banking",
+    "https://www.brd.ro/you",
+    "https://www.brd.ro/persoane-fizice/mybrd/mybrd-mobile"
+  ],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 10,
+    "iesire": 5924,
+    "citire_cache": 181265,
+    "scriere_cache": 95696,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.33475299999999997
+  }
+}

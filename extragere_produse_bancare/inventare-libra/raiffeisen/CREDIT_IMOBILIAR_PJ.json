@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-investitiilor/credit-de-investitii-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Raiffeisen nu are un produs dedicat exclusiv creditului imobiliar pentru firme; cel mai apropiat este creditul general de investiții IMM, care printre destinațiile finanțate include explicit achiziția și reparația de imobile, alături de bunuri, autoturisme și echipamente - deci e un credit de investiții generalist, nu unul dedicat strict imobiliarelor ca la Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre concrete (sumă minimă, avans, perioadă de rambursare, garanții) și menționează explicit achizițiile/reparațiile imobiliare ca destinație eligibilă, dar produsul nu este dedicat exclusiv imobiliarelor.",
+      "citat": "Suma minimă: 7.000 Euro sau echivalentul în Lei. Perioada de rambursare: maximum 120 luni. Avans: minim 15% Garanții: mix de garanții ce include ipoteca mobiliară asupra conturilor curente, garanție personală de tip fidejusiune, garanții mobiliare/imobiliare reale în conformitate cu reglementările băncii.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-investitiilor/credit-de-investitii-imm/#:~:text=Suma%20minim%C4%83%3A%207.000%20Euro%20sau,%C3%AEn%20conformitate%20cu%20reglement%C4%83rile%20b%C4%83ncii."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-investitiilor/credit-de-investitii-imm/",
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-investitiilor/credit-imobiliar/",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3184,
+    "citire_cache": 74383,
+    "scriere_cache": 63293,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2049651
+  }
+}

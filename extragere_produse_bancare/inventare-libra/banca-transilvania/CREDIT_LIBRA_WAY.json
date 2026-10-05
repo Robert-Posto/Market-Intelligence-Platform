@@ -1,0 +1,38 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/credite/credite-de-nevoi/creditul-de-nevoi-personale-standard?ver=1",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul de Nevoi Personale (Standard)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ambele sunt credite de consum fara garantii, fara justificarea destinatiei, destinate persoanelor fizice, in RON, cu rambursare in rate egale sau descrescatoare pe maxim 5 ani; difera usor plafoanele (BT: 5.000-250.000 lei vs Libra: 10.000-150.000 lei).",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicata produsului contine explicit dobanda, plafonul de creditare, perioada maxima si tipul de rate, exact cifrele cautate.",
+      "citat": "Creditele de Nevoi Personale BT ► Cu sau fără Asigurare de viață ► Dobândă fixă sau variabilă ► Împrumută până la 250.000 lei ► Calculează ratele ► Fă o simulare",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/credite/credite-de-nevoi/creditul-de-nevoi-personale-standard?ver=1#:~:text=Creditele%20de%20Nevoi%20Personale%20BT,ratele%20%E2%96%BA%20F%C4%83%20o%20simulare"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/credite/credite-de-nevoi/creditul-de-nevoi-personale-standard?ver=1",
+    "https://tab.bancatransilvania.ro/credite/credite-de-nevoi/creditul-de-nevoi-personale-standard/simulator"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 40919,
+    "iesire": 4707,
+    "citire_cache": 12044,
+    "scriere_cache": 33344,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21467679999999997
+  }
+}

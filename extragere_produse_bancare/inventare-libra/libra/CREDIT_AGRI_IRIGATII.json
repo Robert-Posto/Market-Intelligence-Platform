@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_AGRI_IRIGATII",
+  "denumire": "Credit soluții pentru irigații (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credite-fonduri-europene",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru irigații (în cadrul programului InvestEU / Credite fonduri europene)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată programelor cu fonduri europene (InvestEU) pentru persoane juridice listează explicit creditul pentru irigații destinat fermierilor/firmelor din agricultură, cu plafonul maxim, exact tipul de produs Libra (credit de investiții pentru irigații, persoane juridice, garanție europeană InvestEU).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține explicit cifra pentru creditul de irigații (până la 1 milion lei) în secțiunea despre cine poate beneficia de credite fonduri europene/InvestEU, dar nu are o pagină separată doar pentru irigații.",
+      "citat": "Fermieri și firme active în agricultură sau asociații/cooperative agricole: inputuri (până la 0,7 milioane de lei), achiziționarea de echipamente agricole (până la 1 milion de lei), irigații (până la 1 milion de lei).",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite-fonduri-europene#:~:text=Fermieri%20%C8%99i%20firme%20active%20%C3%AEn,la%201%20milion%20de%20lei%29."
+    },
+    {
+      "url": "https://www.librabank.ro/credit-investeu-intrebari",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit InvestEU - condiții pentru categoria agricultori",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "FAQ-ul programului InvestEU dă perioada maximă de rambursare specifică pentru categoria agricultori (60-84 luni), relevantă pentru creditul de irigații, dar nu detaliază separat produsul de irigații; termenul diferă parțial de cel Libra (12-60 luni) menționat pentru produs.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul conține cifre de termen pentru creditele InvestEU acordate agricultorilor, categorie care include și creditul pentru irigații, dar nu menționează explicit 'irigații' ca linie separată.",
+      "citat": "Perioada maximă de rambursare a creditelor prin programul InvestEU este între 24 şi 120 de luni pentru clienţii din categoria Profesii Liberale, între 60 şi 84 de luni pentru agricultori și între 36 şi 72 de luni pentru restul companiilor.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/credit-agricultura-fermieri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit agricultură - Sisteme de irigații",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată creditelor pentru agricultură (Agribusiness) a Libra listează explicit 'Sisteme de irigații' ca tip de credit oferit fermierilor/firmelor agricole, același segment și tip de produs ca cel căutat, dar fără cifre specifice pentru irigații pe această pagină.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Produsul de irigații este menționat explicit în lista de credite pentru agricultură, dar pagina nu afișează cifre (dobândă, termen, sumă) separate pentru irigații, ci doar titlul produsului.",
+      "citat": "Libra susține fermierii români prin credite pentru agricultură. Îți oferim credit următoarele credite pentru agricultură: Scontare subvenție APIA, Terenuri agricole, Inputuri culturi agricole, Echipamente agricole, Sisteme de irigații",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credite-fonduri-europene",
+    "https://www.librabank.ro/credit-agricultura-fermieri",
+    "https://librabank.ro/Fonduri_Europene/Credit_Achizitionare_Input-uri_Agricole_EaSI/401"
+  ],
+  "durata_s": 71,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5217,
+    "citire_cache": 90420,
+    "scriere_cache": 66163,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.23567749999999998
+  }
+}

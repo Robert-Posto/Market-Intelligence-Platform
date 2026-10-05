@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "POS Standard BRD (Conventii privind acceptarea cardurilor bancare, utilizarea POS)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este terminalul POS fizic oferit de BRD persoanelor juridice pentru acceptarea plăților cu cardul la locația comerciantului, cu comisioane de tranzacționare, gestiune operațională și garanție terminal - exact profilul produsului Libra Terminal POS fizic.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife, în vigoare din 21.09.2026, conține o secțiune dedicată explicit 'Solutia Standard BRD' pentru POS fizic, cu toate comisioanele numerice relevante.",
+      "pagina_pdf": 14,
+      "citat": "6.1. Conventii privind acceptarea cardurilor bancare, utilizarea POS - Solutia Standard BRD Comision pentru acceptarea la plata a cardurilor emise de BRD 0.15 LEI + 0.70 LEI / tranzactie Comision neutilizare POS (se aplica doar pentru un volum tranzactionat mai mic de 3.000 LEI / POS / luna) 50 LEI / POS / luna Gestiune operationala POS 5 EUR / luna / POS Garantie terminal POS 300 EUR/ POS",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-sub-1m-euro/activitate-curenta/incasare-si-colectare",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1876,
+    "citire_cache": 43441,
+    "scriere_cache": 121978,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3324052
+  }
+}

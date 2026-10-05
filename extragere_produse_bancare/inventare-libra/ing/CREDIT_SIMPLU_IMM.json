@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/credit-ing-util",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit ING Util (Credit ING Util instant)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite la termen pentru firme mici/microîntreprinderi, fără garanții materiale, acordate rapid pe baza unei verificări automate (scoring). Diferă plaja de sumă (ING: 15.000-500.000 lei vs Libra: 20.000-200.000 lei) și plafonul de eligibilitate pe cifră de afaceri (ING cere CA minimă 100.000 lei și maximă 9.000.000 lei, fără formula 1,5x CA medie lunară folosită de Libra); termenul maxim este identic ca ordin de mărime (ING max. 5 ani vs Libra max. 48 luni).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: sumă minimă/maximă, termen maxim, condiții de eligibilitate și tipul de garanții.",
+      "citat": "Cu creditul la termen ING Credit Util poți primi între 15.000 lei și 500.000 lei, în funcție de dimensiunea afacerii tale. Îți oferim până la 500.000 lei pe o perioadă de maxim 5 ani, pentru cheltuielile curente sau cheltuieli specifice desfășurării activității companiei.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/solutii-de-finantare/credit-ing-util#:~:text=Cu%20creditul%20la%20termen%20ING,cheltuieli%20specifice%20desf%C4%83%C8%99ur%C4%83rii%20activit%C4%83%C8%9Bii%20companiei."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/solutii-de-finantare/credit-ing-util"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1573,
+    "citire_cache": 37624,
+    "scriere_cache": 44499,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1345143
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/credite-de-investitii/creditul-simplu-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul Simplu IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru persoane juridice (IMM), destinat micilor investiții, acordat fără garanție imobiliară (variantă), cu sume minime/maxime și termene comparabile cu Credit Simplu IMM de la Libra (20.000-200.000 lei, max 48 luni, scoring, fără garanție imobiliară).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit sumele minime/maxime, termenele de creditare și tipurile de garanții pentru varianta fără garanție materială.",
+      "citat": "Pentru varianta fară garanție materială: Suma minimă este 20.000 RON Suma maximă este 150.000 RON. Pentru creditele fără ipotecă perioada de creditare este de maximum 36-60 de luni, in functie de sectorul de activitate",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/credite-de-investitii/creditul-simplu-imm"
+  ],
+  "durata_s": 14,
+  "consum": {
+    "intrare": 6,
+    "iesire": 962,
+    "citire_cache": 36984,
+    "scriere_cache": 42972,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12445880000000001
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/economii/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit clasic la termen pentru persoane fizice, în Lei/EUR/USD, pe diverse maturități, cu dobândă fixă - corespunde exact produsului Libra Depozit la termen pentru segmentul persoane fizice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată a produsului, cu grilă completă de dobânzi pe valute și termene, sume minime și opțiuni la maturitate.",
+      "citat": "Depozite la termen in Lei · 3 luni · 500 Lei · 4.70% · reinnoire automata Depozite la termen in Lei · 12 luni · 500 Lei · 5.20% · reinnoire automata",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/economii-si-plasamente/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen pentru IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen dedicat clienților persoane juridice (IMM), constituit din fonduri disponibile pe termene fixe, cu dobândă fixă plătită lunar - corespunde segmentului persoane juridice al produsului Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată cu descrierea produsului, eligibilitate client (cifra de afaceri până la 5 mil EUR), și grilă completă de dobânzi pe valute și termene.",
+      "citat": "Depozite standard IMM * in LEI · Depozite pe transe valorice, pe baza de contract, cu rata fixa de dobanda si plata lunara a dobanzii · 12 luni · 4,90%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/managementul-lichiditatilor/depozit-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit la termen (corporații)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen dedicat clienților corporate (persoane juridice mari), cu dobânzi fixe pe maturități standard în RON/EUR/USD, pentru lichidități disponibile - varianta corporate a produsului Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată cu grilă de dobânzi actualizată (13.03.2025) pe valute și termene pentru clienți corporații.",
+      "citat": "INSTRUMENTE DE ECONOMISIRE IN LEI, EUR si USD - CLIENTI CORPORATII valabile incepand cu data de 13.03.2025 Depozite standard corporatii * in LEI - CORPORATII · Depozite cu scadenta unica , avand rata anuala fixa de dobanda si cu virarea automata a soldului si a dobanzii in cont curent la scadenta · 1 saptamana · 3,85%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1567,
+    "citire_cache": 6354,
+    "scriere_cache": 33273,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10013129999999999
+  }
+}

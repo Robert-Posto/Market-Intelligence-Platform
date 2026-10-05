@@ -1,0 +1,74 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/tranzactii-valutare/platforma-de-schimb-valutar-raiffeisen-etreasury/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "R-Flex: Platforma de schimb valutar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "R-Flex este, ca și Live FX, o platformă online dedicată de schimb valutar (distinctă de tranzacțiile clasice prin dealer), accesibilă din contul online, pentru clienți persoane juridice cu tranzacții valutare frecvente.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată R-Flex descrie explicit platforma, eligibilitatea (persoane juridice), funcționalitățile (autentificare 3 factori, alerte de preț, actualizare solduri la 60 secunde) și linkul de logare, deci conține toate datele relevante ale produsului.",
+      "citat": "R-Flex este o platformă modernă, web-based, modulară și personalizabilă, care încorporează elemente de înaltă securitate, garantând maximă siguranță în tranzacții. Criterii de eligibilitate: Clienți persoane juridice Raiffeisen Bank cu cont curent în lei și valută.",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/r-flex/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "R-Flex",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină suplimentară de prezentare a aceleiași platforme R-Flex, cu detalii despre interval orar de tranzacționare și caracteristici tehnice, confirmând natura de platformă de schimb valutar online separată de tranzacțiile clasice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Conține cifre concrete (interval orar 08:30-18:00, autentificare cu 3 factori) despre funcționarea platformei, dar e în mare parte redundantă cu pagina principală de produs.",
+      "citat": "Poti tranzactiona la rate competitive, in intervalul 08:30 - 18:00 de pe orice dispozitiv! Securitatea informatiei incepand de la logare (autentificare cu 3 factori).",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/home/premium-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Schimb valutar personalizat (Premium Banking)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un schimb valutar cu curs dinamic/preferențial accesat direct din Internet/Mobile Banking, dar diferă segmentul (doar clienți Premium Banking, nu toți clienții persoane fizice) și nu este o platformă de sine stătătoare, ci o funcționalitate integrată în aplicația existentă, cu interval orar limitat (8:30-18:00) față de acces permanent.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina menționează explicit valutele acoperite, intervalul orar și existența unui curs dinamic etichetat în aplicație, dar nu oferă o pagină de produs complet dedicată, separată.",
+      "citat": "Poți face schimburi valutare la un curs mai avantajos decât cel standard, între conturile tale, în RON, EUR, USD și GBP, de luni până vineri de la 8:30 la 18:00.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/home/premium-banking.html#:~:text=Po%C8%9Bi%20face%20schimburi%20valutare%20la,de%20la%208%3A30%20la%2018%3A00."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/tranzactii-valutare/platforma-de-schimb-valutar-raiffeisen-etreasury/",
+    "https://www.raiffeisen.ro/ro/home/premium-banking.html"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2925,
+    "citire_cache": 31754,
+    "scriere_cache": 37250,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1287378
+  }
+}

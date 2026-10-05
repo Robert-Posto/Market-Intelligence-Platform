@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Integrare facturare digitală cu contul Raiffeisen (prin SmartBill / SmartFintech - Smart Accounts) (încredere 0.55) — Este singura soluție găsită la Raiffeisen care conectează contul firmei cu un program de gestiune/facturare (SmartBill), similar ca scop cu API Contabili de la Libra (integrare bancă-program contabil), dar limitată la un singur partener (SmartBill) și la facturare/gestiune, nu la contabilitate propriu-zisă, și nu e descrisă ca API deschis pentru orice program contabil."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Integrare facturare digitală cu contul Raiffeisen (prin SmartBill / SmartFintech - Smart Accounts)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singura soluție găsită la Raiffeisen care conectează contul firmei cu un program de gestiune/facturare (SmartBill), similar ca scop cu API Contabili de la Libra (integrare bancă-program contabil), dar limitată la un singur partener (SmartBill) și la facturare/gestiune, nu la contabilitate propriu-zisă, și nu e descrisă ca API deschis pentru orice program contabil.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Secțiunea FAQ descrie explicit mecanismul de integrare bancă-SmartBill prin serviciul Smart Accounts, dar nu conține cifre (comisioane/termene) proprii integrării, doar denumirea serviciilor implicate.",
+      "citat": "Cum pot integra facturarea digitală cu contul meu Raiffeisen? Integrarea se realizează prin intermediul companiei partenere SmartBill, prin compania SmartFintech. Aceasta asigură serviciul Smart Accounts, care permite transmiterea datelor din bancă în conturile clienților SmartBill.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm.html#:~:text=Cum%20pot%20integra%20facturarea%20digital%C4%83,banc%C4%83%20%C3%AEn%20conturile%20clien%C8%9Bilor%20SmartBill."
+    }
+  ],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm.html"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4009,
+    "citire_cache": 29594,
+    "scriere_cache": 33185,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1289833
+  }
+}

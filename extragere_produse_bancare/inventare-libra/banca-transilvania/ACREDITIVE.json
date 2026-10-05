@@ -1,0 +1,38 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "VIII. Acreditive (Acreditive de import/emise și Acreditive de export/primite)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea VIII 'Acreditive' din lista de tarife BT pentru persoane juridice acoperă exact acreditivele documentare de import și export, același tip de produs și același segment de clienți (firme) ca produsul Libra ACREDITIVE.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul conține un tabel complet, dedicat, cu denumirea 'Acreditive' și toate comisioanele aferente (emitere, avizare, verificare documente, confirmare, modificare/anulare) exprimate în procente și sume fixe pentru LEI și EUR.",
+      "pagina_pdf": 21,
+      "citat": "Emitere/majorare/prelungire acreditiv - în LEI 0,15% / trim. sau fracțiune de trim., min.300 LEI/ trim. sau fractiune de trim. Emitere/majorare/prelungire acreditiv - în EUR 0,15% / trim. sau fracțiune de trim., min.75 EUR/ trim. sau fractiune de trim.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1445,
+    "citire_cache": 50128,
+    "scriere_cache": 110817,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.30153009999999997
+  }
+}

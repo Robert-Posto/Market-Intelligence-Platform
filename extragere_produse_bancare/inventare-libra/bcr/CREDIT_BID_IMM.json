@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/fonduri-nerambursabile/banca-de-investitii-si-dezvoltare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanția Băncii de Investiții și Dezvoltare pentru IMM-uri",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit în lei pentru persoane juridice (IMM), garantat de BID, cu procente de garantare 70-80% și plafon de 10 milioane lei/tranzacție, pentru investiții și capital de lucru - identic ca tip, segment și garant cu produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu cifre complete despre procente de garantare, plafoane și condiții.",
+      "citat": "Astfel, antreprenorii pot accesa credite garantate de până la 10 milioane de lei / proiect, cu garanții care acoperă până la 70% din valoarea creditului. În plus, pentru companiile deținute de femei, start-up-uri sau afaceri inovatoare și verzi, garanția poate urca până la 80%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/presa/informatii-de-presa/2025/11/07/bcr-devine-primul-partener-al-bancii-de-investitii-si-dezvoltare-din-romania-in-sustinerea-imm-urilor-prin-mecanismul-de-garantare-a-portofoliilor-de-credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Garanția Băncii de Investiții și Dezvoltare (BID) pentru IMM-uri",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicat de presă oficial BCR care confirmă și detaliază cifrele parteneriatului BID: plafon, procente de garantare și perioada maximă, pentru același produs/credit destinat IMM-urilor.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Comunicat oficial al băncii cu cifre explicite despre produsul de credit garantat BID, deși e format de presă, nu pagină de produs.",
+      "citat": "Garanția BID poate ajunge până la 10 milioane de lei pentru fiecare credit, acoperind până la 70% din valoare creditului, iar pentru companiile deținute de femei, start-up-uri și firme inovatoare, procentul de garantare poate ajunge până la 80%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1498,
+    "citire_cache": 6387,
+    "scriere_cache": 34105,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1015279
+  }
+}

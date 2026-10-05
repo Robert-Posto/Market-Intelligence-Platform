@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/depozitul-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la Termen BCR (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen cu dobândă fixă pentru persoane fizice, pentru sume disponibile în cont, exact ca produsul Libra DEPOZIT_TERMEN pentru segmentul persoane fizice.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit dobânzile curente, termenele și condițiile depozitului la termen.",
+      "citat": "Pentru că te gândești la viitor, ai acum dobândă la depozitele constituite cu sume noi, atât în lei cât și în euro, de până la: 6% pe an în lei, 2,25% pe an în euro.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/depozitul-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la termen BCR pentru microîntreprinderi, PFA, IMM și companii mari",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru firme (microîntreprinderi, PFA, IMM, companii mari) constituit din disponibilitățile din conturile curente ale companiei, echivalent cu produsul Libra pentru persoane juridice.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată business conține termenele, sumele minime și condițiile depozitului la termen pentru firme, cu cifre explicite.",
+      "citat": "Suma minimă de constituire prin virament este de 5.000 RON, 3.000 USD, 3.000 EUR, 2.000 GBP sau 5.000 CHF. Rata dobânzii la termen este fixă din momentul constituirii depozitului până la scadența sa.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2086,
+    "citire_cache": 40064,
+    "scriere_cache": 35615,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11792230000000001
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Conturi-tranzactii/conturi-2025/George-Business-Beneficii-Pachete.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul George Business COMPAS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pachetul corporate de top al BCR pentru firme: cont curent, card de debit business inclus (cu opțiune MasterCard Business Gold), tranzacții nelimitate la unele categorii și 200 tranzacții gratuite/lună la altele, comision lunar fix. Diferă de Libra prin preț (400 lei vs 295 lei), numărul de carduri incluse gratuit (doar 1 card inclus, nu 5+2 Gold) și lipsa mențiunii explicite a serviciului Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial BCR cu grila comparativă a celor 4 pachete George Business, incluzând explicit prețul, numărul de conturi, tipurile de carduri și tranzacțiile incluse pentru pachetul COMPAS.",
+      "citat": "Tip Pachet George Business START DINAMIC FLUX COMPAS Prețul pachetului 100 Lei 150 Lei 250 Lei 400 Lei Card de Debit Business (Lei) 1 1 1 1 Card Visa Business RON, MasterCard Business RON, MasterCard George Business RON, MasterCard Business Gold RON",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetul-xpert-bcr",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele George Business (Start, Dinamic, Flux, Compas)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina dedicată conturilor curente pentru companii prezintă familia de pachete corporate George Business, cu card de debit și operațiuni nelimitate la unele categorii de tranzacții, segment și tip de produs identice cu Abonamentul Prestige, dar structurate pe mai multe trepte de preț/beneficii, nu un singur abonament fix cu 7 carduri incluse.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina descrie structura și beneficiile generale ale pachetelor (card inclus, operațiuni nelimitate cu zero comisioane) dar cifrele exacte de preț nu apar direct în textul paginii, fiind linkate către PDF-ul cu grila de beneficii.",
+      "citat": "Pachetul tău George Business îți aduce zero comisioane la: Administrarea a trei conturi curente în lei sau în valută; Utilizarea serviciului George Business; Emiterea și mentenanța anuală a cardului de debit Mastercard Business/ VISA Business",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont George pentru afacerea ta (Pachet de servicii clienți PJ)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Tariful de comisioane pentru persoane juridice arată comisionul de administrare variabil (49-349 RON/lună în funcție de volumul de tranzacții) al pachetului de cont curent corporate cu card de debit inclus, dar nu este un abonament fix lunar cu număr fix de carduri ca la Libra Prestige.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice detaliază structura comisionului de administrare al pachetului standard de cont curent business, inclusiv cardurile asociate, dar nu este un pachet premium cu 7 carduri și Live FX precum Prestige.",
+      "citat": "Comision standard administrare Pachet 0 4 49 RON, 5 9 79 RON, 10 19 129 RON, 20 49 169 RON, 50 99 269 RON, 100 199 299 RON, 200+ 349 RON",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/pachetul-xpert-bcr",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Conturi-tranzactii/conturi-2025/George-Business-Beneficii-Pachete.pdf"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4355,
+    "citire_cache": 104232,
+    "scriere_cache": 79406,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.26292740000000003
+  }
+}

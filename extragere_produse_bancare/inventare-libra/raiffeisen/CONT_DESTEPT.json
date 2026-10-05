@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/pachet-imm-cont-curent-start/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent IMM Start",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pachetul de cont curent dedicat firmelor la început de drum (persoane juridice, PFA, profesii liberale), cu taxă de administrare zero pe durata statutului de start-up, card de debit, internet/mobile banking și plăți nelimitate în lei intrabancare, exact ca segmentul și scopul produsului Libra Cont Deștept.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit condițiile de start-up, prețul standard și lista de servicii incluse.",
+      "citat": "Raiffeisen Bank îți oferă pachetul de cont curent IMM Start, cu taxa de administrare ZERO în lunile în care îndeplinești condițiile de start-up (mai puțin de 12 luni de la înființare). Venim în întâmpinarea nevoilor firmei tale pentru un început de succes!",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/pachet-imm-cont-curent-start/#:~:text=Raiffeisen%20Bank%20%C3%AE%C8%9Bi%20ofer%C4%83%20pachetul,pentru%20un%20%C3%AEnceput%20de%20succes%21"
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Start",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub cu toate pachetele de cont curent IMM prezintă pachetul Start cu prețul standard de 39 lei/lună și condiția de taxă zero pentru clienții start-up, confirmând cifrele din pagina dedicată.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține tabelul/lista cu prețul exact al pachetului Start și mențiunea explicită a reducerii pentru start-up, alături de celelalte pachete pentru comparație.",
+      "citat": "Pachetul Start 39 lei/lună 24/7 internet & mobile banking Asistență în agentie și Call Center Card debit Visa Business Silver NELIMITAT depuneri în lei la ATM Raiffeisen Taxă de administrare 0 pentru clienții Start-Up*",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/pachet-imm-cont-curent-start/",
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/"
+  ],
+  "durata_s": 38,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3273,
+    "citire_cache": 33547,
+    "scriere_cache": 39803,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1389589
+  }
+}

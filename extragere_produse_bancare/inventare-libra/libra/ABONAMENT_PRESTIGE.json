@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/cont-curent-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonament PRESTIGE (Abonamente operaționale companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată conturilor pentru companii de la Libra Bank conține tabelul complet al abonamentelor operaționale Prime/Elite/Prestige, exact segmentul persoane juridice, cu costul lunar de 295 lei, tranzacții nelimitate în lei și euro SEPA și cardurile incluse (5 Standard + 2 Gold), corespunzând integral produsului ABONAMENT_PRESTIGE.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina afișează direct, în format tabelar, toate cifrele cerute de produs: cost 295 lei/lună, 5 carduri Standard, 2 carduri Gold, plăți/încasări lei și euro SEPA nelimitate.",
+      "citat": "Plăți lei din aplicație, inclusiv plăți instant / lunar · 25 · 50 · Nelimitat Plăți online euro SEPA · - · 50 · Nelimitat Încasări lei · 25 · 50 · Nelimitat Încasări euro · - · 50 · Nelimitat Card Business Standard · pana la 2 carduri · pana la 3 carduri · pana la 5 carduri Card Business Gold · - · - · pana la 2 carduri Cost lunar · 95 lei · 225 lei · 295 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-curent-companii#:~:text=Pl%C4%83%C8%9Bi%20lei%20din%20aplica%C8%9Bie%2C%20inclusiv,225%20lei%20%C2%B7%20295%20lei"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/facem",
+    "https://www.librabank.ro/cont-curent-companii",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 57,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4590,
+    "citire_cache": 80464,
+    "scriere_cache": 85550,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2758838
+  }
+}

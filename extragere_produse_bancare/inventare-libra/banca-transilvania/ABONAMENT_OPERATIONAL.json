@@ -1,0 +1,42 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent Nelimitat (Nelimitat în rețeaua BT / Nelimitat & 10 / Nelimitat & 25 / Nelimitat All Inclusive)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact tipul de produs 'abonament operațional / pachet de cont' pentru persoane juridice: un abonament lunar cu comision fix care include servicii de administrare cont, card, internet banking și un număr de operațiuni incluse, la fel ca Abonamentul Operațional de la Libra.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice conține un capitol dedicat 'II. Pachete de cont curent' cu cele 4 variante de abonament, prețurile lunare exacte și serviciile incluse în fiecare.",
+      "citat": "Servicii abonament Nelimitat în rețeaua BT 29 lei / lună Nelimitat & 10 46 lei / lună Nelimitat & 25 76 lei / lună Nelimitat All Inclusive 129 lei / lună",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat"
+  ],
+  "durata_s": 50,
+  "consum": {
+    "intrare": 101176,
+    "iesire": 3734,
+    "citire_cache": 246949,
+    "scriere_cache": 114209,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5746043000000001
+  }
+}

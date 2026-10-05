@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/extra-rol",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Extra'ROL - linie de credit atașată contului curent",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot o linie de credit/descoperit de cont atașat contului curent, pentru persoane fizice, cu dobândă percepută doar pe suma utilizată - același tip de produs și segment ca Overdraft Libra. Diferă însă plafonul (ING: max 3 salarii nete, max 50.000 lei vs Libra: max 6 salarii, max 70.000 lei) și faptul că ING solicită ipotecă mobiliară asupra conturilor ca garanție.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: plafon, dobândă, DAE, comisioane și durata liniei de credit.",
+      "citat": "Între 1000 lei și 50000 lei, în limita a maxim 3 venituri lunare nete. 5 ani, cu posibilitate de prelungire automată pe perioade succesive de 5 ani dacă îndeplinești condițiile de eligibilitate. Dobânda este de 16,12% (IRCC + 10,55%).",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/persoane-fizice/credite/extra-rol#:~:text=%C3%8Entre%201000%20lei%20%C8%99i%2050000,de%2016%2C12%25%20%28IRCC%20%2B%2010%2C55%25%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/persoane-fizice/credite/extra-rol"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2924,
+    "citire_cache": 33475,
+    "scriere_cache": 39951,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.13582450000000001
+  }
+}

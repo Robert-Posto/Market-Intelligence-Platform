@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/economii/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen 12 luni (Lei) - Raiffeisen",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (depozit la termen) și același segment (persoane fizice), dar Raiffeisen nu are un termen de 13 luni (1 an și 1 lună); cel mai apropiat este depozitul standard pe 12 luni, fără caracterul promoțional/bonus al produsului Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina de dobânzi complete listează explicit rata pentru depozitul în lei pe 12 luni, dar nu există un termen de 13 luni la această bancă.",
+      "citat": "Vino cu salariul la Raiffeisen și ai dobândă preferențială la depozitele în lei și euro pe termen de 3, 6 și 12 luni, în condiții de eligibilitate client, primești o dobândă de 5,20% p.a. pentru depozitele în Lei pe 12 luni, 5% pentru cele în Lei pe 3 luni",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/economii-si-plasamente/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit standard IMM 12 luni (Lei/EUR) - Raiffeisen",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (depozit la termen pentru firme) și același segment (persoane juridice/IMM), dar termenul maxim disponibil este de 12 luni, fără variantă promoțională pe 13 luni cum are Libra; dobânda se plătește lunar, nu la scadență.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul dedicat depozitelor IMM conține tabel cu rate explicite pentru termenul de 12 luni în toate valutele, dar nu există termen de 13 luni.",
+      "citat": "Depozite standard IMM in LEI, Depozite pe transe valorice, pe baza de contract, cu rata fixa de dobanda si plata lunara a dobanzii, 12 luni, 4,90%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3273,
+    "citire_cache": 6361,
+    "scriere_cache": 33465,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11767269999999999
+  }
+}

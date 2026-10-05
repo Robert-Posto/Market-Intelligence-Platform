@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_DEZVOLTATORI",
+  "denumire": "Credit pentru dezvoltatori imobiliari",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: REF, Infrastructure & Contractors - finanțare proiecte imobiliare (Wholesale Banking / Companii Mari) (încredere 0.55) — Este singura soluție dedicată de la ING pentru finanțarea proiectelor imobiliare ale dezvoltatorilor (credite structurate pe proiect, cu consultanță sectorială specializată), dar segmentul de clienți diferă: ING o oferă prin divizia Wholesale Banking pentru 'Companii mari' (corporații mari), nu pentru segmentul general de persoane juridice/PFA vizat de produsul Libra. În plus, pagina nu publică cifre concrete (dobânzi, comisioane, praguri de sumă sau termene), fiind doar o descriere de expertiză sectorială cu date de contact ale Sector Head-ului dedicat."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://ing.ro/companii-mari/expertiza-noastra-sectoriala",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "REF, Infrastructure & Contractors - finanțare proiecte imobiliare (Wholesale Banking / Companii Mari)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singura soluție dedicată de la ING pentru finanțarea proiectelor imobiliare ale dezvoltatorilor (credite structurate pe proiect, cu consultanță sectorială specializată), dar segmentul de clienți diferă: ING o oferă prin divizia Wholesale Banking pentru 'Companii mari' (corporații mari), nu pentru segmentul general de persoane juridice/PFA vizat de produsul Libra. În plus, pagina nu publică cifre concrete (dobânzi, comisioane, praguri de sumă sau termene), fiind doar o descriere de expertiză sectorială cu date de contact ale Sector Head-ului dedicat.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina confirmă explicit existența unui produs dedicat de finanțare pentru dezvoltatori imobiliari ('credite structurate pe proiect'), dar nu conține valori numerice verificabile, doar descriere calitativă și contact.",
+      "citat": "Sprijinim dezvoltarea proiectelor imobiliare și a infrastructurii din România, oferind companiilor din acest sector produse și servicii specializate: produse de finanțare - credite structurate pe proiect, emiterea de scrisori de garanție, etc.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/companii-mari/expertiza-noastra-sectoriala#:~:text=Sprijinim%20dezvoltarea%20proiectelor%20imobiliare%20%C8%99i,de%20scrisori%20de%20garan%C8%9Bie%2C%20etc."
+    }
+  ],
+  "deschise": [
+    "https://ing.ro/companii-mari/expertiza-noastra-sectoriala",
+    "https://ing.ro/companii-mari/solutiile-noastre"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3117,
+    "citire_cache": 81477,
+    "scriere_cache": 58200,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19298140000000003
+  }
+}

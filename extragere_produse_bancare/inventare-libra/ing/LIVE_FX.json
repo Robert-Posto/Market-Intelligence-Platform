@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/curs-valutar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar - Persoane fizice (schimb valutar online prin Home'Bank)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Platformă online de schimb valutar cu curs personalizat, actualizat în timp real, disponibilă direct în Home'Bank (internet banking), pentru persoane fizice - corespunde descrierii Live FX ca platformă online diferită de schimbul clasic prin dealer.",
+      "incredere": 0.88,
+      "explicatie_incredere": "Pagina dedicată conține cifre concrete (praguri de 20.000 USD, cursuri BCE/BNR) și explică mecanismul în timp real prin Home'Bank.",
+      "citat": "Cursurile sunt actualizate în timp real și îți pot oferi posibilitatea unor câștiguri la schimburile valutare realizate, raportat la cursul standard. În plus, poți avea un curs și mai bun pentru sume ce depășesc 20.000 USD, indiferent de pachet.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/curs-valutar-pj",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar persoane juridice (schimb valutar online prin ING Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Platformă online de schimb valutar cu curs actualizat în timp real, disponibilă direct în platforma ING Business (internet banking pentru firme), pentru persoane juridice - segmentul business al Live FX.",
+      "incredere": 0.88,
+      "explicatie_incredere": "Pagina dedicată persoanelor juridice conține cifre (prag de 20.000 EUR, interval orar 9.00-17.00, cursuri BCE/BNR) și descrie explicit platforma online.",
+      "citat": "În ING Business vei găsi cursul valutar actualizat în timp real, aliniat la evoluția piețelor valutare (în intervalul 9.00-17.00), direct în platformă. Iar dacă ai o sumă mai mare de 20.000 EUR, îți putem oferi un curs și mai bun indiferent de Pachet.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/tranzactii-valutare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Tranzacții valutare ING (platformă de schimb valutar pentru companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Platformă dedicată pentru tranzacții valutare frecvente ale firmelor, cu rate preferențiale adaptate volumului de schimburi, executate online prin ING Business, fără deplasare la bancă - segment similar cu Live FX pentru clienți cu schimburi valutare frecvente.",
+      "incredere": 0.82,
+      "explicatie_incredere": "Pagina descrie explicit o platformă pentru tranzacții valutare frecvente și rate preferențiale în funcție de volum, dar cifrele exacte ale cursurilor nu apar aici (sunt pe pagina de curs valutar PJ).",
+      "citat": "Pornind de la aceste nevoi, am gândit o platformă prietenoasă pentru tranzacțiile de curs valutar prin care ne adaptăm oferta către dumneavoastră propunându-vă rate de schimb valutar preferențiale, în funcție de volumul anual de schimburi valutare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2665,
+    "citire_cache": 6383,
+    "scriere_cache": 23435,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0865221
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent BT&25 (parte din gama Nelimitat)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ambele sunt abonamente lunare de cont curent business pentru persoane juridice, cu un pachet de operațiuni incluse, carduri business incluse și acces la internet/mobile banking; Libra PRIME are 25 plăți instant + 25 încasări la 95 lei/lună, iar BT&25 are 25 de operațiuni interbancare incluse la 76 lei/lună, deci este treapta de pachet cea mai apropiată ca număr de operațiuni incluse.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina de comparație a pachetelor BT afișează explicit prețul lunar și numărul de operațiuni incluse pentru pachetul BT&25, echivalentul funcțional al abonamentului Libra PRIME pentru IMM.",
+      "citat": "BT&25 76 Lei/lună Operațiuni interbancare în lei și valută online sau cu cec și bilet la ordin - 10 25 Nelimitat Încasări interbancare în lei și valută cu ordin de plată, inclusiv instant Nelimitat Nelimitat Nelimitat Nelimitat",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent#:~:text=BT%2625%2076%20Lei%2Flun%C4%83%20Opera%C8%9Biuni%20interbancare,instant%20Nelimitat%20Nelimitat%20Nelimitat%20Nelimitat"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent"
+  ],
+  "durata_s": 41,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3562,
+    "citire_cache": 36215,
+    "scriere_cache": 43708,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.15214499999999997
+  }
+}

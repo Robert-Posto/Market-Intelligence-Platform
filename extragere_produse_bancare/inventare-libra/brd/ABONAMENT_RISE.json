@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/en/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos-nelimitat",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de Cont Curent ANTREPRENOR CURAJOS NELIMITAT BRD",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente operaționale lunare pentru firme/PFA, cu cont curent, card de debit business, încasări nelimitate și opțiune de retrageri/POS. Diferă structura prețului: la BRD doar încasările și plățile intra-BRD sunt nelimitate incluse în prețul de bază (29 lei/lună), iar plățile interbancare nelimitate se adaugă separat contra cost (64 lei/lună în plus), spre deosebire de Libra care oferă plăți/încasări nelimitate integral la un singur preț fix (50 lei/lună).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată a pachetului, cu toate cifrele (preț de bază și opțiuni suplimentare) prezentate explicit în text.",
+      "citat": "Icon 5 interbank payments BRD - other banks in Romania/Treasury in Lei; 14 lei / month Icon Unlimited interbank payments BRD - other banks in Romania/Treasury in Lei; Lei 64/month Preț 29 lei / month",
+      "citat_verificat": true,
+      "link_live": "https://www.brd.ro/en/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos-nelimitat#:~:text=Icon%205%20interbank%20payments%20BRD,Pre%C8%9B%2029%20lei%20%2F%20month"
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul CURAJOS NELIMITAT BRD (Pachete Retail Companii Mici)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă structura pachetului echivalent funcțional cu Abonamentul RISE (abonament lunar pentru firme mici, cu plăți/încasări incluse și opțiuni plătite pentru nelimitat total), dar la BRD costul total pentru plăți complet nelimitate (bază+extraopțiune) depășește 50 lei/lună.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife, în vigoare din 21.09.2026, cu cifrele exacte ale pachetului CURAJOS NELIMITAT BRD și ale comisioanelor pentru EasyPOS/gestiune pachete Small Business.",
+      "pagina_pdf": 22,
+      "citat": "Gestionarea pachetului de produse CURAJOS NELIMITAT BRD, astfel: Pachet de Baza, la care pot fi adaugate: 29 LEI/ luna* Toate platile interbancare (BRD - alte banci din Romania/trezorerie) in lei, efectuate prin serviciile de Internet si Mobile banking incluse in Pachet, din contul suport, non-urgente 64 LEI/ luna*",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos-nelimitat",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos-nelimitat",
+    "https://www.brd.ro/en/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos-nelimitat",
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos"
+  ],
+  "durata_s": 73,
+  "consum": {
+    "intrare": 100507,
+    "iesire": 5149,
+    "citire_cache": 256877,
+    "scriere_cache": 128294,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6246144
+  }
+}

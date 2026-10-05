@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite ING Profesional / ING Fix (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Depozit la termen pentru persoane juridice, dar termenul maxim afișat este de 1 an (nu 13 luni) iar dobânda standard (4,50% lei) nu este o ofertă promoțională precum cea de ~6,10% a Libra pentru persoane juridice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul oficial de dobânzi pentru companii prezintă explicit grila de termene și ratele pentru depozitele la termen, dar nu există o variantă promoțională de 13 luni.",
+      "citat": "Termen 7 zile 1 lună 3 luni 1 an. Suma minimă de constituire a unui depozit este 1.000 unităţi. La lichidarea înainte de scadenta a depozitelor la termen se acorda dobanda de cont curent deschis in valuta respectiva. Lei 1.75% 3.75% 4.00% 4.50% Euro 0.10% 1.00% 1.50% 1.70%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "ING Depozit la termen (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen clasic pentru persoane fizice, dar ING nu are o campanie promoțională de 13 luni: termenul maxim standard este de 1 an, iar dobânda (până la 5% p.a.) nu este o ofertă promoțională precum cea de 6,60%/6,10% a Libra.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina conține cifrele actuale de dobândă pentru depozitele la termen pe 1 an, dar nu există un produs promoțional de 13 luni echivalent.",
+      "citat": "Pentru sumele în lei depuse în ING Depozit de care vrei să nu te atingi timp de 1 an de zile, primești o dobândă de până la  5% pe an. Iar pentru depozitele in euro deschise pe o perioadă de 1 an, primești o dobandă de până la 2%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4497,
+    "citire_cache": 6352,
+    "scriere_cache": 31145,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1241109
+  }
+}

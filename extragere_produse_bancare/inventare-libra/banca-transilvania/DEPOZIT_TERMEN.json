@@ -1,0 +1,86 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (Term deposit) - persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de dobânzi pentru persoane fizice permite alegerea explicită a tipului de cont 'Term deposit' și afișează grila completă de dobânzi pe valute și termene, exact ca produsul Libra DEPOZIT_TERMEN pentru persoane fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată de dobânzi conține tabele complete cu procente pentru toate termenele (1-36 luni) și valutele (RON, EUR, USD) pentru depozitul la termen.",
+      "citat": "1 month 4,00% - 3 months 4,50% 4,25% 6 months 4,70% 4,50% 12 months 5,25% 5,00% 24 months 5,85% – 36 months 6,25% –",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/economii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (Term deposit) - persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de dobânzi 'Interest income from corporate savings' permite selectarea tipului de cont 'Term deposit' pentru companii și afișează grila de dobânzi corespunzătoare, echivalent segmentului persoane juridice al produsului Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată companiilor conține tabele complete cu dobânzi pentru depozitul la termen pe RON, EUR și USD, inclusiv opțiuni de dobândă fixă și progresivă pe 36 luni, plus dobânzi negociabile pentru sume mari.",
+      "citat": "1 month 4,00% - 3 months 4,50% 4,25% 6 months 4,70% 4,50% 12 months 5,25% 5,00% 24 months 5,85% - 36 months (fixed interest) 6,25% -",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/termeni-si-conditii-depozite-BT24",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Depozit la termen / depozit clasic BT",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de termeni și condiții pentru depozitele constituite prin BT24 descrie exact mecanismul depozitului clasic la termen (lichidare anticipată, dobândă la vedere, garantare FGDB), corespunzător produsului Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document de condiții generale al produsului, cu cifra plafonului de garantare, dar fără grila de dobânzi propriu-zisă.",
+      "citat": "Depozitele constituite sunt garantate de Fondul de garantare a depozitelor în sistemul bancar, în limita unui plafon de garantare de 100.000 euro echivalent pe deponent, în condițiil",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/depozite-la-termen/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Depozite la termen",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina explică formula de calcul a dobânzii pentru depozitele la termen BT și condițiile de lichidare anticipată, relevante pentru DEPOZIT_TERMEN.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Conține formula de calcul a dobânzii brute, dar fără procente concrete actuale pentru fiecare termen.",
+      "citat": "Noi calculăm dobânda depozitelor la termen după următoarea formulă: Dobânda brută = (Valoarea nominală x Numărul de zile efective x Rata dobânzii) / 360 x",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/pentru-companii/imm/imm-utile/imm-depozite/dobanzi-imm/",
+    "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/en/companii/economii/dobanzi"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2893,
+    "citire_cache": 73917,
+    "scriere_cache": 64943,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2060869
+  }
+}

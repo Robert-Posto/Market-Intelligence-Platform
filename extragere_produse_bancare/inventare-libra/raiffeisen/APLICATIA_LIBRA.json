@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/digital-banking/mobile-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Raiffeisen Smart Mobile",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicație de mobile banking pentru persoane fizice, cu funcționalități echivalente Libra Voice/RoPay/Click to Pay: plăți, transferuri, RoPay fără IBAN, autentificare biometrică.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată aplicației Smart Mobile conține descrierea funcțională completă și cifre tehnice (versiuni minime de sistem de operare).",
+      "citat": "Aplicația Raiffeisen Smart Mobile poate fi descărcate din Google Play Store, App Store, AppGallery (pentru telefoane Huawei cu acces la serviciile Google). Versiunea minimă pentru utilizarea aplicatiei Smart Mobile este Android 8.0, iar pentru iPhone, versiunea minimă este iOS 16.4.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/servicii-electronice/mobile-banking-raiffeisen-smart-mobile.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Raiffeisen Smart Business (Mobile Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicație de mobile banking dedicată companiilor (IMM/persoane juridice), acoperind segmentul business al Libra, cu plăți, depozite și autentificare prin SmartToken.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată aplicației Smart Business pentru companii conține descrierea funcțională și cerințele tehnice cu cifre (versiuni minime OS).",
+      "citat": "Aplicațiile Raiffeisen Smart Business și Raiffeisen SmartToken pot fi descărcate din Google Play Store, App Store, AppGallery (pentru telefoane Huawei cu acces la serviciile Google). Pentru Android, în prezent, versiunea minimă este Android 8.0, iar pentru iPhone, versiunea minimă este iOS 15.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/smart-mobile-termeni/20240314-smart-mobile-termeni-si-conditii.pdf.coredownload.inline.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Raiffeisen Smart Mobile - Termeni și condiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de termeni și condiții al serviciului de mobile banking Smart Mobile (persoane fizice), cu reguli tehnice precise (lungime cod utilizator) și condiții de utilizare.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document contractual oficial care detaliază condițiile tehnice de utilizare ale aplicației Smart Mobile, cu valori numerice concrete.",
+      "citat": "Smart Mobile Clientul sa-si modifice Codul de utilizator (trebuie sa contina minim 8 si maxim 50 caractere alfanumerice) si sa activeze aplicatia si profilul Raiffeisen SmartToken.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3666,
+    "citire_cache": 6353,
+    "scriere_cache": 43635,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1470261
+  }
+}

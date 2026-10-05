@@ -1,0 +1,1917 @@
+{
+  "meta": {
+    "versiune": 2,
+    "generat": "2026-09-22",
+    "descriere": "Catalog de produse bancare pentru piața din România. Înlocuiește cele 13 categorii din produse_bancare.json, care amestecau produse reale cu măsuri (dae, dobanda-nominala, marja-ircc, robor-euribor, curs-valutar-propriu). Aici sunt numai produse; măsurile devin câmpuri în vocabularul fiecărui produs.",
+    "de_ce_separarea": "În primul lot de extracție, `comision_administrare_lunar` a apărut sub 8 etichete de produs și `dae` sub 7, fiindcă fiecare produs primea un apel separat și fiecare apel vedea tot textul paginii. Un DAE nu e un produs, e o cifră care descrie un credit.",
+    "surse": [
+      "340 de documente crawlate de la 28 de bănci din România (inventar-*.json): segmente de URL și câmpurile `dovada`",
+      "613 valori extrase efectiv (observatii-*.json)",
+      "produse_bancare.json v1, pentru cele 13 categorii existente",
+      "analiza-acces-per-banca.md, pentru ce e accesibil per bancă",
+      "verificare web: programul Noua Casă activ în 2026 (plafon 500 mil. lei, avans 5%/15%, praguri 70.000/140.000 EUR), IMM Invest pentru firme"
+    ],
+    "cum_se_folosesc_keywords": "Două roluri diferite. (1) În promptul din `sistem()`, ca listă de sinonime: ajută modelul să recunoască produsul când pagina îl numește altfel decât noi. (2) În `taie()`, ca ancoră de fragmentare — rol rămas doar pentru documentele care depășesc bugetul de caractere. ATENȚIE: potrivirea din `taie()` nu normalizează diacriticele, deci keywordurile sunt scrise fără ele; textul paginii le are, iar `taxe si comisioane` nu prinde `Taxe și comisioane`. Normalizarea trebuie reparată înainte ca lista să fie de încredere în rolul (2).",
+    "acoperire_masurata": "Coloana `vazut_la_banci` numără la câte dintre cele 28 de bănci crawlate apare produsul, judecat după URL-uri și dovezi. Zero nu înseamnă că produsul nu există — inventarele au căutat doar cele 13 ținte din v1.",
+    "campuri": "`campuri` e vocabularul închis care intră ca `enum` în schema uneltei `raporteaza`. Modelul alege din listă sau raportează `altele`; frecvența lui `altele` e semnalul că lista trebuie lărgită. Câmpurile de creditare nu se dau produselor care nu sunt credite: un POS nu are DAE, iar oferirea câmpului invită modelul să-l umple cu ceva.",
+    "interval": "`interval.valoare_num` se aplică DOAR valorilor în procente sau puncte procentuale. Pentru sume nu există un interval plauzibil per produs: un comision de analiză dosar de 900 lei și o dobândă de 9% sunt amândouă normale, dar nu încap în același interval.",
+    "de_ce_nu_mai_e_prefix": "v2 a scos MASURILE dintre produse, dar a lasat cinci campuri date la toate cele 31: comision_administrare_lunar/anual, comision_deschidere, conditie_scutire si altele. Masurat pe 4.511 observatii, `comision_administrare_lunar` ajunsese la 25 de produse — de trei ori mai raspandit decat cele 8 care au motivat v2. Trei defecte distincte: (1) la credite concura cu `comision_administrare_credit`, deci acelasi fapt se imparte intre trei campuri (54/13/9 valori); (2) la banking-digital, plati-transferuri, acceptare-carduri si altele prindea comisionul CONTULUI CURENT, 33 de valori duplicate ale aceluiasi pret; (3) amesteca suma lunara fixa cu procentul din sold, care sunt structuri de pret diferite. Acum campul se da doar produselor care au un cost recurent propriu, iar la credite exista doua campuri separate pe structura. `conditie_scutire` a fost scos: 18 valori in total, iar `conditii` de pe fiecare observatie il inlocuieste integral.",
+    "trepte": "`trepte` spune PE CE AXE variază prețul unui produs, și în ce puncte. Fără el, o dobândă de depozit la 3 luni și una la 12 ajung în același clasament, iar cea mai mare câștigă fără să însemne nimic.\n\nDE CE NU SE NUMEȘTE `interval`: numele e deja luat de plaja de plauzibilitate a lui `valoare_num` ([0, 100] pentru dobânzi), folosită de `valideaza()` ca să respingă cifre absurde. Sunt două lucruri fără legătură — unul e o verificare, celălalt e o dimensiune a produsului — și un singur nume pentru amândouă ar face imposibil de citit ce respinge validarea.\n\nFORMA: o treaptă are `puncte` (grilă discretă: băncile publică la 12, 24, 36 de luni) SAU `benzi` (praguri: comisionul de rambursare anticipată se schimbă la un an) SAU `puncte_text` (valute). `campuri` limitează treapta la prețurile care chiar depind de ea: suma maximă a unui credit nu depinde de perioadă, deci nu primește treaptă.\n\nCE NU ÎNSEAMNĂ: nu înmulțește apelurile de extracție. Pagina conține deja toată grila; modelul o citește o dată și raportează fiecare valoare cu treapta ei. Un apel per punct de grilă ar costa de șapte ori mai mult ca să obțină aceleași cifre.\n\n`puncte` nu e o listă închisă. O valoare publicată la 18 luni se înregistrează la 18; punctele sunt axa pe care se aliniază comparația, nu un filtru."
+  },
+  "masuri": {
+    "descriere": "Ce NU mai sunt produse. Devin câmpuri în vocabularul produselor, deci nu mai primesc apel de extracție propriu. Economia e directă: pe cele 4 bănci deja extrase, apelurile pe `dae`, `dobanda-nominala`, `marja-ircc` și `robor-euribor` au reprodus valori pe care produsele reale le prinseseră deja.",
+    "lista": [
+      "dae",
+      "dobanda_nominala",
+      "dobanda_min",
+      "dobanda_max",
+      "dobanda_fixa",
+      "dobanda_variabila",
+      "marja_banca",
+      "ircc",
+      "robor",
+      "euribor",
+      "curs_cumparare",
+      "curs_vanzare"
+    ]
+  },
+  "produse": [
+    {
+      "id": "cont-curent",
+      "nume": "Cont curent și pachete",
+      "segment": "retail",
+      "grup": "conturi-si-carduri",
+      "vazut_la_banci": 24,
+      "keywords": [
+        "cont curent",
+        "pachet de cont",
+        "abonament",
+        "cont de baza",
+        "cont curent in lei",
+        "cont multivaluta",
+        "pachet cont",
+        "cont de plati",
+        "cont pentru salariu"
+      ],
+      "cauta": "Costul lunar al pachetului sau abonamentului, comisionul de administrare, deschiderea contului, condițiile de scutire. Reține pe ce treaptă de pachet se aplică fiecare cost.",
+      "campuri": [
+        "comision_administrare_lunar",
+        "comision_deschidere",
+        "cost_lunar",
+        "comision_retragere_atm",
+        "comision_retragere_ghiseu",
+        "comision_depunere_numerar",
+        "comision_plata_intrabancara",
+        "comision_plata_interbancara",
+        "comision_incasare",
+        "comision_emitere_card",
+        "comision_administrare_card",
+        "comision_livrare_card",
+        "comision_consultare_sold",
+        "taxa_dezactivare",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "card-debit",
+      "nume": "Card de debit",
+      "segment": "retail",
+      "grup": "conturi-si-carduri",
+      "vazut_la_banci": 11,
+      "keywords": [
+        "card de debit",
+        "card de cumparaturi",
+        "card contactless",
+        "card Visa",
+        "card Mastercard",
+        "emitere card",
+        "reemitere card",
+        "card suplimentar",
+        "card virtual"
+      ],
+      "cauta": "Comision de emitere, de administrare lunară sau anuală, de livrare, de reemitere. Retrageri de la ATM propriu și de la alte bănci.",
+      "campuri": [
+        "comision_administrare_lunar",
+        "comision_administrare_anual",
+        "comision_emitere_card",
+        "comision_administrare_card",
+        "comision_livrare_card",
+        "comision_reemitere_card",
+        "comision_retragere_atm",
+        "comision_retragere_atm_alta_banca",
+        "comision_interogare_sold",
+        "comision_conversie_valutara",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "card-credit",
+      "nume": "Card de credit",
+      "segment": "retail",
+      "grup": "conturi-si-carduri",
+      "vazut_la_banci": 14,
+      "keywords": [
+        "card de credit",
+        "perioada de gratie",
+        "rate fara dobanda",
+        "cashback",
+        "limita de credit",
+        "suma minima de plata",
+        "card de credit cu rate"
+      ],
+      "cauta": "Dobândă, DAE, perioadă de grație în zile, număr de rate fără dobândă, comision de retragere numerar, sumă minimă de plată, cashback.",
+      "campuri": [
+        "comision_administrare_lunar",
+        "comision_administrare_anual",
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit",
+        "perioada_gratie",
+        "numar_rate_fara_dobanda",
+        "comision_retragere_numerar",
+        "comision_emitere_card",
+        "suma_minima_plata",
+        "limita_credit",
+        "cashback_maxim",
+        "comision_conversie_valutara",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "economii",
+      "nume": "Cont de economii",
+      "segment": "retail",
+      "grup": "economisire",
+      "vazut_la_banci": 9,
+      "keywords": [
+        "cont de economii",
+        "cont de acumulare",
+        "economii",
+        "cont de economii pentru copii",
+        "KidCont",
+        "junior"
+      ],
+      "cauta": "Dobânda pe tranșe de sold, condițiile de acordare, comisionul de administrare. Pragurile de sumă sunt condiții, nu valori.",
+      "campuri": [
+        "comision_administrare_lunar",
+        "comision_deschidere",
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "perioada_credit",
+        "suma_minima",
+        "dobanda_la_scadenta",
+        "dobanda_lunara",
+        "prag_sold",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          30
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            0,
+            50000,
+            250000
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "Băncile publică „tranșe valorice ale soldului”: dobânda scade sau crește pe praguri, iar o singură cifră per bancă ar fi una dintre ele aleasă la întâmplare."
+        },
+        {
+          "id": "valuta",
+          "nume": "Valuta",
+          "dimensiune": "valuta",
+          "unitate": null,
+          "puncte_text": [
+            "RON",
+            "EUR",
+            "USD"
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "Dobânda la RON și la EUR nu sunt două oferte care se compară, sunt două produse. Puse pe aceeași axă, orice bancă cu depozit în EUR apare ca fiind cea mai slabă de pe piață."
+        }
+      ]
+    },
+    {
+      "id": "depozit-termen",
+      "nume": "Depozit la termen",
+      "segment": "retail",
+      "grup": "economisire",
+      "vazut_la_banci": 18,
+      "keywords": [
+        "depozit la termen",
+        "depozit",
+        "depozit cu capitalizare",
+        "depozit escaladar",
+        "dobanda la scadenta",
+        "dobanda lunara",
+        "depozit in valuta",
+        "scadenta"
+      ],
+      "cauta": "Dobânda pe monedă și scadență, separat pentru plata la scadență și plata lunară. Diferența dintre ele e o decizie de politică a băncii.",
+      "campuri": [
+        "comision_administrare_lunar",
+        "comision_deschidere",
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "perioada_credit",
+        "suma_minima",
+        "dobanda_la_scadenta",
+        "dobanda_lunara",
+        "capitalizare",
+        "prag_sold",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          30
+        ]
+      },
+      "trepte": [
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            1,
+            3,
+            6,
+            9,
+            12,
+            24,
+            36
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "Măsurat în observațiile colectate: 1, 3, 6 și 12 luni apar la câte 12 bănci fiecare, ca linii ale aceleiași grile publicate. O dobândă de depozit fără durata ei nu e o cifră, e o jumătate de cifră."
+        },
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            0,
+            50000,
+            250000
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "„sumă sub 50.000 RON” și „sumă între 50.000 și 250.000 RON” apar explicit în date. Pragurile sunt începuturi de bandă, nu sume exacte."
+        },
+        {
+          "id": "valuta",
+          "nume": "Valuta",
+          "dimensiune": "valuta",
+          "unitate": null,
+          "puncte_text": [
+            "RON",
+            "EUR",
+            "USD"
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "Dobânda la RON și la EUR nu sunt două oferte care se compară, sunt două produse. Puse pe aceeași axă, orice bancă cu depozit în EUR apare ca fiind cea mai slabă de pe piață."
+        }
+      ]
+    },
+    {
+      "id": "nevoi-personale",
+      "nume": "Credit de nevoi personale",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 16,
+      "keywords": [
+        "nevoi personale",
+        "credit de consum",
+        "imprumut personal",
+        "credit fara garantii",
+        "credit rapid",
+        "credit online",
+        "credit de nevoi"
+      ],
+      "cauta": "Dobândă fixă sau variabilă, DAE, sumă maximă, perioadă maximă, comision de analiză dosar, exemplul reprezentativ complet.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            5000,
+            10000,
+            20000,
+            30000,
+            50000,
+            75000,
+            100000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Sumele din exemplele reprezentative găsite: 2.500, 5.000, 10.000, 30.000, 45.000, 50.000, 75.000. Grila acoperă plaja lor; 30.000 e punctul cel mai des publicat și e scenariul de referință."
+        },
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            12,
+            24,
+            36,
+            48,
+            60,
+            84,
+            120
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "24, 48 și 60 de luni apar direct în condițiile colectate. DAE depinde de perioadă chiar la dobândă egală, fiindcă amortizează comisioanele fixe pe altă durată."
+        },
+        {
+          "id": "perioada_ramasa",
+          "nume": "Perioada rămasă până la scadență",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "benzi": [
+            {
+              "pana_la": 12,
+              "eticheta": "sub un an"
+            },
+            {
+              "de_la": 12,
+              "eticheta": "peste un an"
+            }
+          ],
+          "campuri": [
+            "comision_rambursare_anticipata"
+          ],
+          "de_ce": "OUG 50/2010 art. 67: comisionul e plafonat la 1% când perioada rămasă depășește un an și la 0,5% altfel. Nu e o alegere comercială, dar e chiar motivul pentru care o singură cifră per bancă e greșită — în datele colectate apar amândouă, la aceeași bancă, iar tabelul le arăta ca pe două bănci diferite."
+        }
+      ]
+    },
+    {
+      "id": "nevoi-personale-ipoteca",
+      "nume": "Nevoi personale cu ipotecă",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 6,
+      "keywords": [
+        "nevoi personale cu ipoteca",
+        "credit cu garantie imobiliara",
+        "credit ipotecar pentru nevoi personale",
+        "credit cu garantie"
+      ],
+      "cauta": "Dobândă și DAE, perioadă maximă, procent maxim din valoarea garanției, costul evaluării și al asigurării.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "procent_din_garantie",
+        "cost_evaluare",
+        "cost_asigurare",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          40
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            50000,
+            100000,
+            150000,
+            200000,
+            300000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Plaja uzuală pentru credite cu garanție imobiliară."
+        },
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            60,
+            120,
+            180,
+            240,
+            300
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Perioade lungi, permise de garanție."
+        },
+        {
+          "id": "perioada_ramasa",
+          "nume": "Perioada rămasă până la scadență",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "benzi": [
+            {
+              "pana_la": 12,
+              "eticheta": "sub un an"
+            },
+            {
+              "de_la": 12,
+              "eticheta": "peste un an"
+            }
+          ],
+          "campuri": [
+            "comision_rambursare_anticipata"
+          ],
+          "de_ce": "OUG 50/2010 art. 67: comisionul e plafonat la 1% când perioada rămasă depășește un an și la 0,5% altfel. Nu e o alegere comercială, dar e chiar motivul pentru care o singură cifră per bancă e greșită — în datele colectate apar amândouă, la aceeași bancă, iar tabelul le arăta ca pe două bănci diferite."
+        }
+      ]
+    },
+    {
+      "id": "ipotecar",
+      "nume": "Credit ipotecar și imobiliar",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 20,
+      "keywords": [
+        "credit ipotecar",
+        "credit imobiliar",
+        "achizitie locuinta",
+        "ipotecar",
+        "imobiliar",
+        "credit pentru casa",
+        "dobanda fixa pe perioada initiala",
+        "avans minim"
+      ],
+      "cauta": "Dobândă fixă pe perioada introductorie și pe cât timp, dobânda variabilă ulterioară ca indice plus marjă, avans minim, perioadă maximă, DAE, comisioane.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "dobanda_fixa_introductiva",
+        "perioada_dobanda_fixa",
+        "dobanda_variabila_ulterioara",
+        "avans_minim",
+        "ircc",
+        "robor",
+        "euribor",
+        "cost_asigurare",
+        "cost_evaluare",
+        "varsta_minima",
+        "vechime_munca_minima",
+        "depozit_colateral",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          40
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            100000,
+            150000,
+            250000,
+            300000,
+            500000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "„credit de 250.000 LEI pe 360 luni” apare la 12 observații, „300.000 pe 30 ani” la 6. Grila e construită în jurul lor."
+        },
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            120,
+            180,
+            240,
+            300,
+            360
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "360 de luni e maximul legal uzual; sub 120 creditul ipotecar practic nu se publică."
+        },
+        {
+          "id": "perioada_ramasa",
+          "nume": "Perioada rămasă până la scadență",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "benzi": [
+            {
+              "pana_la": 12,
+              "eticheta": "sub un an"
+            },
+            {
+              "de_la": 12,
+              "eticheta": "peste un an"
+            }
+          ],
+          "campuri": [
+            "comision_rambursare_anticipata"
+          ],
+          "de_ce": "OUG 50/2010 art. 67: comisionul e plafonat la 1% când perioada rămasă depășește un an și la 0,5% altfel. Nu e o alegere comercială, dar e chiar motivul pentru care o singură cifră per bancă e greșită — în datele colectate apar amândouă, la aceeași bancă, iar tabelul le arăta ca pe două bănci diferite."
+        }
+      ]
+    },
+    {
+      "id": "refinantare",
+      "nume": "Refinanțare",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 8,
+      "keywords": [
+        "refinantare",
+        "refinantare credite",
+        "preluare credit",
+        "consolidare credite",
+        "refinantare externa",
+        "muta creditul"
+      ],
+      "cauta": "Dobândă și DAE la refinanțare, dacă diferă de creditul nou. Condiția de refinanțare externă contează: multe bănci dau o marjă mai mică dacă aduci credit de la altă bancă.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "dobanda_fixa_introductiva",
+        "perioada_dobanda_fixa",
+        "dobanda_variabila_ulterioara",
+        "ircc",
+        "suma_refinantabila",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          40
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            30000,
+            50000,
+            100000,
+            200000,
+            300000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Acoperă și refinanțarea de consum, și cea ipotecară."
+        },
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            60,
+            120,
+            180,
+            240,
+            360
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Idem."
+        },
+        {
+          "id": "perioada_ramasa",
+          "nume": "Perioada rămasă până la scadență",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "benzi": [
+            {
+              "pana_la": 12,
+              "eticheta": "sub un an"
+            },
+            {
+              "de_la": 12,
+              "eticheta": "peste un an"
+            }
+          ],
+          "campuri": [
+            "comision_rambursare_anticipata"
+          ],
+          "de_ce": "OUG 50/2010 art. 67: comisionul e plafonat la 1% când perioada rămasă depășește un an și la 0,5% altfel. Nu e o alegere comercială, dar e chiar motivul pentru care o singură cifră per bancă e greșită — în datele colectate apar amândouă, la aceeași bancă, iar tabelul le arăta ca pe două bănci diferite."
+        }
+      ]
+    },
+    {
+      "id": "noua-casa",
+      "nume": "Noua Casă",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 12,
+      "keywords": [
+        "Noua Casa",
+        "prima casa",
+        "program guvernamental",
+        "garantie de stat",
+        "FNGCIMM",
+        "plafon de garantare",
+        "comision de garantare"
+      ],
+      "cauta": "Avansul minim pe praguri de valoare (5% până la 70.000 EUR, 15% între 70.001 și 140.000 EUR), marja peste indice, comisionul de garantare, plafonul programului. Program activ în 2026, cu plafon de 500 milioane lei.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "avans_minim",
+        "plafon_program",
+        "marja_peste_indice",
+        "comision_garantare",
+        "procent_garantat_stat",
+        "ircc",
+        "termen_maxim",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          40
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            70000,
+            140000,
+            250000,
+            350000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Programul are praguri proprii: 70.000 și 140.000 EUR sunt limitele de preț ale locuinței, iar creditul se așază sub ele."
+        },
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            240,
+            300,
+            360
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Perioade specifice programului."
+        }
+      ]
+    },
+    {
+      "id": "credit-auto",
+      "nume": "Credit auto",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 3,
+      "keywords": [
+        "credit auto",
+        "achizitie autoturism",
+        "credit pentru masina",
+        "prima masina",
+        "credit vehicul"
+      ],
+      "cauta": "Dobândă, DAE, avans minim, perioadă maximă, dacă e condiționat de asigurare CASCO.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "avans_minim",
+        "cost_asigurare",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          40
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            25000,
+            45000,
+            75000,
+            100000,
+            125000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "125.000 lei apare la 8 observații, 75.000 la 4, 45.000 la 3 — chiar exemplele publicate de bănci."
+        },
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            12,
+            24,
+            36,
+            48,
+            60,
+            84
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "60 de luni e punctul comun al exemplelor."
+        },
+        {
+          "id": "perioada_ramasa",
+          "nume": "Perioada rămasă până la scadență",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "benzi": [
+            {
+              "pana_la": 12,
+              "eticheta": "sub un an"
+            },
+            {
+              "de_la": 12,
+              "eticheta": "peste un an"
+            }
+          ],
+          "campuri": [
+            "comision_rambursare_anticipata"
+          ],
+          "de_ce": "OUG 50/2010 art. 67: comisionul e plafonat la 1% când perioada rămasă depășește un an și la 0,5% altfel. Nu e o alegere comercială, dar e chiar motivul pentru care o singură cifră per bancă e greșită — în datele colectate apar amândouă, la aceeași bancă, iar tabelul le arăta ca pe două bănci diferite."
+        }
+      ]
+    },
+    {
+      "id": "overdraft-pf",
+      "nume": "Descoperit de cont (persoane fizice)",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 7,
+      "keywords": [
+        "descoperit de cont",
+        "overdraft",
+        "linie de credit pe card de salariu",
+        "facilitate de descoperit",
+        "limita de descoperit"
+      ],
+      "cauta": "Dobândă, comision de acordare sau de administrare, limita ca multiplu al venitului, condiția de virare a salariului.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "limita_credit",
+        "multiplu_venit",
+        "comision_acordare",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            1000,
+            3000,
+            5000,
+            10000,
+            20000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Limita de descoperit se publică pe praguri, de regulă ca multiplu de venit."
+        }
+      ]
+    },
+    {
+      "id": "credit-verde",
+      "nume": "Credit verde",
+      "segment": "retail",
+      "grup": "credite",
+      "vazut_la_banci": 2,
+      "keywords": [
+        "credit verde",
+        "eficienta energetica",
+        "panouri fotovoltaice",
+        "locuinta verde",
+        "certificat energetic",
+        "reducere verde"
+      ],
+      "cauta": "Reducerea de dobândă sau de marjă față de creditul standard, și condiția care o declanșează — clasa energetică a locuinței, tipul investiției.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "reducere_dobanda",
+        "avans_minim",
+        "clasa_energetica",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          40
+        ]
+      },
+      "trepte": [
+        {
+          "id": "suma",
+          "nume": "Suma",
+          "dimensiune": "suma",
+          "unitate": "lei",
+          "puncte": [
+            20000,
+            50000,
+            100000,
+            200000
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Plajă largă: acoperă și panouri fotovoltaice, și locuință verde."
+        },
+        {
+          "id": "perioada",
+          "nume": "Perioada",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "puncte": [
+            36,
+            60,
+            120,
+            240,
+            360
+          ],
+          "campuri": [
+            "dae",
+            "dobanda_nominala",
+            "dobanda_fixa",
+            "dobanda_variabila",
+            "dobanda_min",
+            "dobanda_max",
+            "rata_lunara",
+            "total_platibil",
+            "marja_banca"
+          ],
+          "de_ce": "Idem."
+        },
+        {
+          "id": "perioada_ramasa",
+          "nume": "Perioada rămasă până la scadență",
+          "dimensiune": "perioada",
+          "unitate": "luni",
+          "benzi": [
+            {
+              "pana_la": 12,
+              "eticheta": "sub un an"
+            },
+            {
+              "de_la": 12,
+              "eticheta": "peste un an"
+            }
+          ],
+          "campuri": [
+            "comision_rambursare_anticipata"
+          ],
+          "de_ce": "OUG 50/2010 art. 67: comisionul e plafonat la 1% când perioada rămasă depășește un an și la 0,5% altfel. Nu e o alegere comercială, dar e chiar motivul pentru care o singură cifră per bancă e greșită — în datele colectate apar amândouă, la aceeași bancă, iar tabelul le arăta ca pe două bănci diferite."
+        }
+      ]
+    },
+    {
+      "id": "schimb-valutar",
+      "nume": "Schimb valutar",
+      "segment": "retail",
+      "grup": "operatiuni",
+      "vazut_la_banci": 15,
+      "keywords": [
+        "curs valutar",
+        "schimb valutar",
+        "curs de schimb",
+        "cumparare",
+        "vanzare",
+        "curs BNR",
+        "spread",
+        "transfer valutar"
+      ],
+      "cauta": "Marja băncii față de cursul de referință (BNR sau BCE), în procente sau în lei pe unitatea de valută, pe fiecare valută; comisionul de schimb, dacă există. Cotațiile proprii de cumpărare și vânzare doar împreună cu valuta lor. Fiecare valoare spune valuta în `trepte` (dimensiune valuta). Cursul brut fără valută nu se poate compara.",
+      "campuri": [
+        "curs_cumparare",
+        "curs_vanzare",
+        "curs_referinta_bnr",
+        "spread",
+        "marja_curs_referinta",
+        "comision_schimb",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      },
+      "trepte": [
+        {
+          "id": "valuta",
+          "nume": "Valuta",
+          "dimensiune": "valuta",
+          "unitate": null,
+          "puncte_text": [
+            "EUR",
+            "USD",
+            "GBP",
+            "CHF"
+          ],
+          "campuri": [
+            "curs_cumparare",
+            "curs_vanzare",
+            "curs_referinta_bnr",
+            "spread",
+            "marja_curs_referinta",
+            "comision_schimb"
+          ],
+          "de_ce": "Un curs fără valută nu e o cifră: la ING, „curs BNR 4,78” stătea lângă EUR/RON 5,2785 de la Libra, deși nu putea fi EUR. Marja față de referință se compară doar pe aceeași valută."
+        }
+      ]
+    },
+    {
+      "id": "plati-transferuri",
+      "nume": "Plăți și transferuri",
+      "segment": "retail",
+      "grup": "operatiuni",
+      "vazut_la_banci": 13,
+      "keywords": [
+        "plati",
+        "transferuri",
+        "plata interbancara",
+        "plata intrabancara",
+        "SEPA",
+        "plata instant",
+        "plata urgenta",
+        "SWIFT",
+        "plata externa",
+        "Western Union",
+        "incasari"
+      ],
+      "cauta": "Comisioane pe canal — la ghișeu versus online — și pe tip: în aceeași bancă, interbancar, extern, urgent, instant. Pragurile de sumă sunt condiții.",
+      "campuri": [
+        "comision_plata_intrabancara",
+        "comision_plata_interbancara",
+        "comision_plata_externa",
+        "comision_plata_urgenta",
+        "comision_plata_instant",
+        "comision_incasare",
+        "comision_sepa",
+        "prag_suma",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "banking-digital",
+      "nume": "Internet și mobile banking",
+      "segment": "retail",
+      "grup": "digital",
+      "vazut_la_banci": 8,
+      "keywords": [
+        "internet banking",
+        "mobile banking",
+        "aplicatie",
+        "digital banking",
+        "token",
+        "abonament internet banking",
+        "cont online"
+      ],
+      "cauta": "Costul abonamentului dacă există, comisionul pe tranzacție online față de ghișeu, costul dispozitivului de autentificare.",
+      "campuri": [
+        "cost_lunar",
+        "comision_tranzactie_online",
+        "cost_dispozitiv_autentificare",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "asigurari",
+      "nume": "Asigurări prin bancă",
+      "segment": "retail",
+      "grup": "alte",
+      "vazut_la_banci": 4,
+      "keywords": [
+        "asigurare",
+        "bancassurance",
+        "asigurare de viata",
+        "asigurare locuinta",
+        "PAD",
+        "asigurare CASCO",
+        "prima de asigurare"
+      ],
+      "cauta": "Costul asigurării ca primă lunară sau procent, și dacă e obligatorie pentru credit. Asigurarea prin bancă e adesea condiția pentru o dobândă mai mică.",
+      "campuri": [
+        "prima_lunara",
+        "prima_procent",
+        "obligatorie_pentru_credit",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "investitii-retail",
+      "nume": "Investiții pentru persoane fizice",
+      "segment": "retail",
+      "grup": "alte",
+      "vazut_la_banci": 5,
+      "keywords": [
+        "fond de investitii",
+        "titluri de stat",
+        "Fidelis",
+        "Tezaur",
+        "custodie",
+        "tranzactionare",
+        "bursa",
+        "unitati de fond",
+        "portofoliu"
+      ],
+      "cauta": "Comisioane de subscriere, răscumpărare și administrare, comisionul de custodie, comisionul de tranzacționare. Randamentele istorice nu sunt prețuri.",
+      "campuri": [
+        "comision_subscriere",
+        "comision_rascumparare",
+        "comision_administrare_fond",
+        "comision_custodie",
+        "comision_tranzactionare",
+        "suma_minima",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "pensii",
+      "nume": "Pensie facultativă",
+      "segment": "retail",
+      "grup": "alte",
+      "vazut_la_banci": 2,
+      "keywords": [
+        "pensie facultativa",
+        "Pilon III",
+        "pensie privata",
+        "contributie lunara",
+        "fond de pensii"
+      ],
+      "cauta": "Contribuția minimă, comisionul de administrare, comisionul din contribuție.",
+      "campuri": [
+        "contributie_minima",
+        "comision_administrare_fond",
+        "comision_din_contributie",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "private-banking",
+      "nume": "Private banking",
+      "segment": "retail",
+      "grup": "alte",
+      "vazut_la_banci": 6,
+      "keywords": [
+        "private banking",
+        "wealth management",
+        "clienti premium",
+        "Premium Club",
+        "segment affluent",
+        "consiliere financiara"
+      ],
+      "cauta": "Costul lunar al pachetului, pragul de eligibilitate ca sumă administrată sau venit, comisionul de consiliere.",
+      "campuri": [
+        "cost_lunar",
+        "prag_eligibilitate",
+        "comision_consiliere",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "cont-curent-pj",
+      "nume": "Cont curent persoane juridice",
+      "segment": "imm-corporate",
+      "grup": "conturi-si-carduri",
+      "vazut_la_banci": 14,
+      "keywords": [
+        "cont curent persoane juridice",
+        "cont firma",
+        "pachet pentru firme",
+        "cont PFA",
+        "cont IMM",
+        "abonament firme",
+        "cont corporate"
+      ],
+      "cauta": "Costul lunar al pachetului, comisionul de administrare, ce operațiuni sunt incluse și de la ce prag se taxează suplimentar.",
+      "campuri": [
+        "comision_administrare_lunar",
+        "comision_administrare_anual",
+        "comision_deschidere",
+        "cost_lunar",
+        "comision_plata_intrabancara",
+        "comision_plata_interbancara",
+        "comision_incasare",
+        "comision_depunere_numerar",
+        "comision_retragere_ghiseu",
+        "operatiuni_incluse",
+        "prag_suma",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "linie-credit",
+      "nume": "Linie de credit și capital de lucru",
+      "segment": "imm-corporate",
+      "grup": "finantare",
+      "vazut_la_banci": 11,
+      "keywords": [
+        "linie de credit",
+        "overdraft",
+        "capital de lucru",
+        "credit pentru activitatea curenta",
+        "facilitate revolving",
+        "descoperit de cont firme",
+        "finantare pe termen scurt"
+      ],
+      "cauta": "Dobândă ca indice plus marjă, comision de acordare și de neutilizare, perioada de valabilitate, garanțiile cerute.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "comision_acordare",
+        "comision_neutilizare",
+        "limita_credit",
+        "perioada_valabilitate",
+        "ircc",
+        "robor",
+        "euribor",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          60
+        ]
+      }
+    },
+    {
+      "id": "credit-investitii",
+      "nume": "Credit de investiții",
+      "segment": "imm-corporate",
+      "grup": "finantare",
+      "vazut_la_banci": 9,
+      "keywords": [
+        "credit de investitii",
+        "finantare investitii",
+        "credit pe termen lung",
+        "achizitie echipamente",
+        "credit imobiliar comercial"
+      ],
+      "cauta": "Dobândă, perioadă maximă, contribuția proprie minimă, comision de analiză și de administrare.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "contributie_proprie_minima",
+        "ircc",
+        "robor",
+        "euribor",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          60
+        ]
+      }
+    },
+    {
+      "id": "imm-invest",
+      "nume": "Programe garantate de stat pentru firme",
+      "segment": "imm-corporate",
+      "grup": "finantare",
+      "vazut_la_banci": 3,
+      "keywords": [
+        "IMM Invest",
+        "program garantat de stat",
+        "garantie de stat",
+        "FNGCIMM",
+        "IMM Prod",
+        "Rural Invest",
+        "Garant Construct",
+        "plafon de garantare"
+      ],
+      "cauta": "Procentul garantat de stat, plafonul, comisionul de garantare, dobânda plafonată dacă programul o impune. Statul garantează 50% din finanțare pentru un singur credit de investiții sau linie de capital de lucru per beneficiar.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "procent_garantat_stat",
+        "plafon_program",
+        "comision_garantare",
+        "dobanda_plafonata",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          60
+        ]
+      }
+    },
+    {
+      "id": "factoring",
+      "nume": "Factoring",
+      "segment": "imm-corporate",
+      "grup": "finantare",
+      "vazut_la_banci": 13,
+      "keywords": [
+        "factoring",
+        "scontare",
+        "finantarea creantelor",
+        "factoring cu regres",
+        "factoring fara regres",
+        "forfetare",
+        "cesiune de creanta"
+      ],
+      "cauta": "Costul ca procent din valoarea facturilor, procentul finanțat din factură, comisionul de administrare, tipurile de factoring. Prețurile sunt adesea negociate.",
+      "campuri": [
+        "cost_procent_valoare_facturi",
+        "procent_finantat",
+        "comision_administrare",
+        "comision_analiza",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          60
+        ]
+      }
+    },
+    {
+      "id": "leasing",
+      "nume": "Leasing",
+      "segment": "imm-corporate",
+      "grup": "finantare",
+      "vazut_la_banci": 8,
+      "keywords": [
+        "leasing",
+        "leasing financiar",
+        "leasing operational",
+        "valoare reziduala",
+        "avans leasing",
+        "leasing auto",
+        "leasing echipamente",
+        "perioada de finantare"
+      ],
+      "cauta": "Avansul minim și maxim, valoarea reziduală, perioada de finanțare, dobânda dacă e publicată. Intervalele se extrag ca valori separate min și max.",
+      "campuri": [
+        "avans_min",
+        "avans_max",
+        "valoare_reziduala_min",
+        "valoare_reziduala_max",
+        "perioada_finantare_min",
+        "perioada_finantare_max",
+        "dobanda_nominala",
+        "comision_administrare",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "garantii-acreditive",
+      "nume": "Garanții și acreditive",
+      "segment": "imm-corporate",
+      "grup": "trade-finance",
+      "vazut_la_banci": 7,
+      "keywords": [
+        "scrisoare de garantie bancara",
+        "garantie bancara",
+        "acreditiv",
+        "credit documentar",
+        "garantie de buna executie",
+        "garantie de participare la licitatie",
+        "aval",
+        "SGB"
+      ],
+      "cauta": "Comisionul de emitere ca procent pe trimestru sau pe an, comisionul minim, comisionul de modificare, colateralul cerut.",
+      "campuri": [
+        "comision_deschidere",
+        "comision_emitere_procent",
+        "comision_emitere_minim",
+        "comision_modificare",
+        "colateral_procent",
+        "perioada_valabilitate",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "trade-finance",
+      "nume": "Trade finance",
+      "segment": "imm-corporate",
+      "grup": "trade-finance",
+      "vazut_la_banci": 8,
+      "keywords": [
+        "trade finance",
+        "incasso documentar",
+        "finantarea comertului",
+        "finantare import",
+        "finantare export",
+        "credit de export",
+        "scrisoare de credit"
+      ],
+      "cauta": "Comisioane pe operațiune documentară, de emitere, de negociere, de confirmare.",
+      "campuri": [
+        "comision_emitere_procent",
+        "comision_negociere",
+        "comision_confirmare",
+        "comision_incasso",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "cash-management",
+      "nume": "Cash management și trezorerie",
+      "segment": "imm-corporate",
+      "grup": "operatiuni",
+      "vazut_la_banci": 17,
+      "keywords": [
+        "cash management",
+        "trezorerie",
+        "incasari si plati",
+        "cash pooling",
+        "escrow",
+        "cont escrow",
+        "colectare numerar",
+        "plati de salarii",
+        "direct debit"
+      ],
+      "cauta": "Comisionul lunar de serviciu și cel pe tranzacție. Prețurile sunt rareori publice; confirmarea existenței produsului e un rezultat valid.",
+      "campuri": [
+        "comision_deschidere",
+        "comision_serviciu_lunar",
+        "comision_tranzactie",
+        "comision_colectare_numerar",
+        "comision_plati_salarii",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "acceptare-carduri",
+      "nume": "Acceptare carduri și POS",
+      "segment": "imm-corporate",
+      "grup": "operatiuni",
+      "vazut_la_banci": 6,
+      "keywords": [
+        "POS",
+        "acceptare card",
+        "terminal POS",
+        "plati online",
+        "e-commerce",
+        "gateway de plata",
+        "comision de acceptare",
+        "chirie POS"
+      ],
+      "cauta": "Comisionul pe tranzacție ca procent, chiria lunară a terminalului, comisionul pentru plăți online.",
+      "campuri": [
+        "comision_tranzactie_procent",
+        "chirie_pos_lunara",
+        "comision_online",
+        "prag_suma",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          100
+        ]
+      }
+    },
+    {
+      "id": "agro",
+      "nume": "Finanțare agricolă",
+      "segment": "imm-corporate",
+      "grup": "finantare",
+      "vazut_la_banci": 4,
+      "keywords": [
+        "credit agricol",
+        "APIA",
+        "subventii",
+        "fermier",
+        "adeverinta APIA",
+        "credit pentru agricultura",
+        "capital de lucru agricol"
+      ],
+      "cauta": "Dobânda, perioada corelată cu ciclul agricol, procentul finanțat din subvenția APIA, garanțiile.",
+      "campuri": [
+        "dobanda_nominala",
+        "dobanda_min",
+        "dobanda_max",
+        "dobanda_fixa",
+        "dobanda_variabila",
+        "dae",
+        "marja_banca",
+        "marja_banca_min",
+        "marja_banca_max",
+        "perioada_credit",
+        "perioada_maxima",
+        "rata_lunara",
+        "suma_credit",
+        "suma_maxima",
+        "total_platibil",
+        "comision_analiza_dosar",
+        "comision_rambursare_anticipata",
+        "comision_administrare_credit_lunar_lei",
+        "comision_administrare_credit_procent_sold",
+        "procent_din_subventie",
+        "perioada_ciclu_agricol",
+        "ircc",
+        "robor",
+        "altele"
+      ],
+      "interval": {
+        "valoare_num": [
+          0,
+          60
+        ]
+      }
+    }
+  ]
+}

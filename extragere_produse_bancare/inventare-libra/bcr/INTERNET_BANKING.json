@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Conturi-tranzactii/conturi-2025/George-Business-Beneficii-Pachete.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "George Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de pachete arată explicit rândul 'Electronic banking: George Business' inclus în toate cele patru pachete, cu prețul lunar al pachetului care include acest serviciu de internet/mobile banking pentru firme.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Tabel oficial cu cele 4 pachete George Business, fiecare incluzând explicit serviciul de 'Electronic banking' (George Business) și prețul lunar al pachetului (100/150/250/400 Lei).",
+      "pagina_pdf": 3,
+      "citat": "Tip Pachet George Business START DINAMIC FLUX COMPAS Electronic banking George Business George Business George Business George Business Prețul pachetului 100 Lei 150 Lei 250 Lei 400 Lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/george-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "George Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Platformă de digital banking (internet + aplicație mobilă George Business România) dedicată persoanelor juridice (IMM-uri și companii mari), exact segmentul și tipul de produs ca Internet & Mobile Banking business de la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului descrie explicit funcționalitățile de internet și mobile banking pentru firme, cu linkuri către pachete și aplicația mobilă, dar fără cifre de preț direct în textul paginii.",
+      "citat": "George Business de la BCR este singurul cont de business 100% online, unde platesti doar cat tranzactionezi. Este solutia de digital corporate banking dezvoltata pentru a ajuta IMM-urile si companiile mari sa-si administreze inteligent si simplu conturile de business.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/conturi-si-tranzactii/internet-banking/e-bcr",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "e-BCR",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Serviciu de internet banking web pentru persoane juridice (companii), similar ca scop cu Internet & Mobile Banking business, dar este o aplicație web bazată pe Token, fără componentă de aplicație mobilă dedicată precum George Business.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului e-BCR conține descrierea serviciului pentru persoane juridice și comisionul lunar de mentenanță exprimat în cifre.",
+      "citat": "e-BCR este o aplicație web destinată persoanelor juridice, care permite gestionarea eficientă a operațiunilor bancare, inclusiv plăți interne și internaționale, schimburi valutare și administrarea conturilor.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/conturi-si-tranzactii/internet-banking/e-bcr",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/internet-banking",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Conturi-tranzactii/conturi-2025/George-Business-Beneficii-Pachete.pdf"
+  ],
+  "durata_s": 50,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4588,
+    "citire_cache": 84844,
+    "scriere_cache": 55598,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20185980000000003
+  }
+}

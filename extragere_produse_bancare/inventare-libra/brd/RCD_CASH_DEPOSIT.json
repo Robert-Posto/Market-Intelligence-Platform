@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Utilizare automate bancare pentru depunere de numerar (card BRDepo)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice confirmă că utilizarea automatelor bancare pentru depunere de numerar este gratuită și precizează limitele zilnice de depunere pe cardurile business (inclusiv BRDepo), însă nu menționează un termen de creditare de tip 'aceeași zi până la o oră fixă' precum la Libra RCD Cash Deposit, iar depunerea se face prin automat/card, nu prin echipament de numărare la ghișeu.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife pentru PJ conține atât comisionul (gratuit) pentru utilizarea automatelor de depunere numerar, cât și un tabel explicit cu limitele zilnice de depunere pe valută a cardurilor business.",
+      "pagina_pdf": 37,
+      "citat": "LIMITE DE DEPUNERE NUMERAR AFERENTE CARDURILOR BUSINESS** Valuta card Numar maxim tranzactii/zi Valoare maxima depunere/zi RON 20 60.000 RON EUR 20 12.000 EUR USD 20 12.000USD",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/carduri-de-debit-business-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Business BRDepo",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele produse permit depunerea rapidă de bancnote RON pentru persoane juridice (firme), dar canalul diferă: Libra RCD Cash Deposit este un echipament de numărare/validare operat la ghișeul sucursalei cu creditare garantată în aceeași zi până la ora 16:00, în timp ce BRDepo este un card de debit business care permite depunerea de numerar la automatele (multifuncționalele) BRD, fără confirmarea explicită a unui termen de creditare de tip 'aceeași zi până la o oră fixă'.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina descrie explicit cardul BRDepo ca instrument dedicat exclusiv depunerilor de numerar la automatele BRD pentru companii, dar nu conține cifre despre limite de depunere sau termene de creditare.",
+      "citat": "Primești informații în timp real despre tranzacțiile efectuate și soldul disponibil, fără a mai fi necesară înregistrarea lor într-o evidență contabilă separată. Caracteristicile produsului - Aria de utilizare: naţională şi internaţională; - Monedă: Lei/ Euro/ USD; - Valabilitate: 3 ani cu reînnoire automată.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/carduri-de-debit-business-imm",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf"
+  ],
+  "durata_s": 104,
+  "consum": {
+    "intrare": 6,
+    "iesire": 9351,
+    "citire_cache": 26354,
+    "scriere_cache": 116835,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3908803
+  }
+}

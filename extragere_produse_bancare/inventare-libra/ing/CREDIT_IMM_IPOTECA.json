@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite pentru persoane juridice (IMM) garantate cu ipotecă imobiliară, destinate activității de investiții ale companiei. Diferă însă structura și plafoanele: produsul ING este un credit unic de investiții (100.000–4.900.000 lei, max. 10 ani), fără componenta de linie de credit pentru activitate curentă inclusă în același produs, spre deosebire de produsul Libra care combină linie (max. 600.000 lei) și credit de investiții (până la 180 luni) sub un plafon total de 50.000–1.000.000 lei.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete (plafoane, perioade, tipuri de garanții) și menționează explicit ipoteca imobiliară ca garanție principală.",
+      "citat": "Ipotecă imobiliară de rang I pe activul achiziționat sau pe altă proprietate (spațiu de birouri/comercial/teren intravilan) deținută de companie; Ipotecă imobiliară de rang I pe o proprietate (rezidențială/comercială/teren intravilan) deținută de un terț (persoană fizică)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2213,
+    "citire_cache": 6369,
+    "scriere_cache": 35711,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11268929999999999
+  }
+}

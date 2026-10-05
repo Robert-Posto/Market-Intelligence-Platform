@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/schimb-valutar-live",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Live FX / Platforma de schimb valutar Libra",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact produsului Live FX (platformă de schimb valutar online, curs în timp real, direct din aplicație/Internet Banking), descrie și segmentul persoane fizice (Gold/Platinum) și persoane juridice (abonament business).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea completă, canalul (aplicație/Internet Banking), segmentele de clienți și valorile marjelor de curs.",
+      "citat": "Pe pachetele Platinum și Gold, persoanele fizice beneficiază de marje reduse la curs. Platforma de schimb valutar este inclusă, fără cost suplimentar, pentru: Persoane fizice cu pachetele Gold și Platinum, Persoane juridice cu abonament business",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/pachete",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Platformă schimb valutar curs live",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila pachetelor de beneficii Libra listează explicit marjele de curs pentru Platforma schimb valutar curs live (Live FX) pe fiecare pachet.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul general de pachete conține produsul explicit cu valorile marjelor (0,02 Gold, 0,01 Platinum) și limita de 100.000 EUR/zi.",
+      "citat": "Beneficii incluse | Silver | Gold | Platinum Platformă schimb valutar curs live | – | Marja 0,02 | Marja 0,01 Schimbul valutar cu marja redusa este disponibil doar din meniul Mai multe din aplicatia Libra Bank, în limita a 100.000 EUR/zi.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/cont-curent-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Platformă schimb valutar curs live",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de cont curent persoane fizice listează același tabel de pachete cu marjele Live FX aplicabile persoanelor fizice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Tabel cu valorile marjelor pentru persoane fizice, confirmând cifrele din pagina dedicată produsului.",
+      "citat": "Beneficii incluse | Silver | Gold | Platinum Platformă schimb valutar curs live | – | Marjă 0,02 | Marjă 0,01",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente/manual_mobile_banking/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Platforma de schimb valutar (Live FX)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Manualul descrie funcționarea Platformei de schimb valutar din aplicația mobilă, cu marjele exacte față de cursul interbancar și limitele de tranzacționare.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de utilizare care detaliază marjele (0,02 Gold, 0,01 Platinum) și limita de 5.000 EUR pentru tranzacții în afara programului.",
+      "citat": "Pachetele Gold si Platinum ofera un curs de schimb valutar mai avantajos, cu marja fata de cursul interbancar de 0,02 (Gold), respectiv 0,01 (Platinum). Marja preferentiala se aplica exclusiv prin Platforma de schimb valutar, accesibila din meniul lateral al aplicatiei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1721,
+    "citire_cache": 6304,
+    "scriere_cache": 26056,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.08361880000000001
+  }
+}

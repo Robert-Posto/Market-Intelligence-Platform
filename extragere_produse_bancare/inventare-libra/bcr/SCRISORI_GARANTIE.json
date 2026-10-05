@@ -1,0 +1,88 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PJ_RO_sept2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție bancară (SGB/CGB/acreditive stand-by) și avaluri",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife care conține secțiunea dedicată cu toate comisioanele aplicabile scrisorilor de garanție bancară pentru persoane juridice.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "PDF oficial, secțiune dedicată cu denumirea exactă a produsului și cifre precise pentru comisioane de analiză, emitere și modificare.",
+      "citat": "SCRISORI DE GARANȚIE BANCARĂ ȘI AVALURI GARANTATE INTEGRAL CU DEPOZIT COLATERAL Comision de analiză 150 LEI Comision de emitere sau majorare valoare și/sau extindere valabilitate 1 % /an min. 150 LEI 1 % /an min. 100 EUR",
+      "pagina_pdf": 11,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/trade-finance/scrisoarea-de-garantie-bancara",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoarea de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat companiilor, emis de bancă ca angajament de plată către un beneficiar în cazul neîndeplinirii obligațiilor contractuale ale clientului - exact tipul și segmentul produsului Libra Scrisori de garanție bancară.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată descrie clar produsul și trimite către tariful de comisioane pentru cifre, dar nu conține ea însăși valori numerice.",
+      "citat": "Scrisoarea de garanție bancară emisă de BCR este un instrument esențial pentru companiile care derulează tranzacții comerciale sau financiare, în special pe piețele internaționale.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/trade-finance/scrisoarea-de-garantie-bancara#:~:text=Scrisoarea%20de%20garan%C8%9Bie%20bancar%C4%83%20emis%C4%83,%C3%AEn%20special%20pe%20pie%C8%9Bele%20interna%C8%9Bionale."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/managementul-riscurilor/riscuri-comerciale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoarea de garanție bancară (Riscuri comerciale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină secundară care listează Scrisoarea de garanție bancară printre soluțiile de reducere a riscurilor comerciale pentru companii, confirmând existența produsului echivalent.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Menționează explicit produsul dar fără cifre, doar descriere generală.",
+      "citat": "Alege de la BCR una din solutiile de riscuri comerciale: Scrisoarea de garantie bancara, Contul Escrow BCR sau Acreditivul documentar de export.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/conditii-generale-creditare-garantare/Conditii-Generale-de-Creditare-aplicabile-incepand-cu-20-mai-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Instrument de Garantare (scrisoare de garanție bancară)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Condițiile Generale de Creditare definesc scrisoarea de garanție bancară ca instrument de garantare emis de BCR, aplicabil persoanelor juridice, cu termenii și condițiile contractuale.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Document de condiții generale relevant, dar acest link nu a fost deschis direct; pe baza versiunii anterioare similare s-a confirmat conținutul despre scrisori de garanție bancară cu definiții și clauze, fără cifre tarifare proprii.",
+      "citat": "Instrument de Garantare inseamna (i) scrisoarea de garantie bancara emisa in conditiile Contractului de Credit la solicitarea Imprumutatului, in baza careia Banca isi asuma un angajament irevocabil si neconditionat de plata a unei sume fata de Beneficiarul Instrumentului de Garantare",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/trade-finance/scrisoarea-de-garantie-bancara",
+    "https://www.bcr.ro/ro/business/informatii-utile",
+    "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PJ_RO_sept2026.pdf"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2556,
+    "citire_cache": 76193,
+    "scriere_cache": 85061,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2534671
+  }
+}

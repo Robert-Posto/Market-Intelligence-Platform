@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/card-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit business (Card Business / Business Gold / Business Medical)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este chiar pagina produsului Libra 'Card de debit business', accesibilă direct din meniul 'Carduri > Persoane juridice > Card de debit business', cu variantele Business, Business Gold și Business Medical.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată conține prețurile de abonament lunar, comisioanele de retragere și costurile de emitere pentru toate cele trei variante ale cardului de debit business.",
+      "citat": "4 lei/lună ## Cardul Business Control asupra cheltuielilor efectuate - Limite de utilizare pentru fiecare posesor de card în parte Costuri avantajoase pentru retrageri - 0,30% pentru retrageri la bancomatele Euronet",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/card-business#:~:text=4%20lei%2Flun%C4%83%20%23%23%20Cardul%20Business,pentru%20retrageri%20la%20bancomatele%20Euronet"
+    },
+    {
+      "url": "https://www.librabank.ro/documente/carduri/comisioane_Libra_Business_Standard.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Libra Business - Standard (card de debit business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru cardul de debit/credit business Libra Business Standard, linkat direct din pagina produsului sub 'Documente utile'.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "PDF-ul oficial anexat la contract listează explicit toate comisioanele aferente cardului Libra Business Standard (emitere, administrare, retragere numerar).",
+      "citat": "Comision de emitere card 30 RON Comision de reemitere card 25 RON Comision pentru operatiuni la comerciantii din Romania, cu exceptia tranzactiilor de tip jocuri de 0 RON noroc (gambling)",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/Profesii_liberale/arhitecti/Cardul_LIBRA_BUSINESS/344",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Cardul Visa Libra Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină mai veche care descrie detaliat caracteristicile cardului de debit business pentru companii și PFA: limite zilnice, valabilitate, monedă și comisioane.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina arhivată conține cifre concrete (limite de tranzacționare, comisioane, valabilitate) dar este o pagină secundară/legacy, nu cea principală din meniu.",
+      "citat": "Beneficiari: persoane juridice/persoane fizice autorizate, rezidente si nerezidente, aferente categoriilor professionals si IMM; Limite zilnice pentru tranzactii: 5.000 lei pentru retrageri de la ATM si 10.000 lei pentru tranzactii la comercianti",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/card-business"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4587,
+    "citire_cache": 36951,
+    "scriere_cache": 43937,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1631147
+  }
+}

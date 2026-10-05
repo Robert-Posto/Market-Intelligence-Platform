@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/en/companies/sme/current-accounts-packages/optimist-entrepreneur-package-plus",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de Cont Curent ANTREPRENOR OPTIMIST PLUS (The Optimist Entrepreneur Plus)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente lunare operaţionale pentru firme/PFA (segment IMM<1M EUR cifră de afaceri) care includ cont curent, card de debit şi un pachet de plăţi la preţ fix lunar de 100 lei - acelaşi preţ ca SHINE. Diferă însă: pachetul BRD descris aici are cont doar în LEI (nu menţionează cont în EUR), cardul este Mastercard/Visa standard (nu 'Gold'), iar pachetul nu include explicit mPOS sau plăţi instant, spre deosebire de SHINE care le include pe toate.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conţine explicit preţul (100 RON/lună) şi componenţa pachetului (cont curent, card debit, plăţi incluse), dar nu confirmă monedă EUR sau mPOS, de unde clasificarea ca similar şi nu echivalent.",
+      "citat": "The package includes a wide range of products, services and banking operations at an advantageous price of only 100 lei/month CURRENT ACCOUNT IN RON with monthly administration included in the package price DEBIT CARD Mastercard / Visa that include a wide range of benefits",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-optimist-plus",
+    "https://www.brd.ro/en/companies/sme1-50m-euro/cash-management/smart-imm-package",
+    "https://www.brd.ro/companii/imm1-50m-euro/cash-management/pachetul-smart-imm",
+    "https://www.brd.ro/en/companies/sme/current-accounts-packages/optimist-entrepreneur-package-plus",
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-optimist-plus"
+  ],
+  "durata_s": 87,
+  "consum": {
+    "intrare": 12,
+    "iesire": 7600,
+    "citire_cache": 203635,
+    "scriere_cache": 83840,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.326351
+  }
+}

@@ -1,0 +1,362 @@
+{
+ "banca": "libra",
+ "total": 29,
+ "pe_motiv": {
+  "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra": 17,
+  "axa Libra: prețurile RoPay: RoPay are produsul lui Libra, ROPAY": 4,
+  "axa Libra: InvestEU Microfinanțare: InvestEU are produsul lui Libra, CREDIT_INVESTEU_PJ": 4,
+  "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr": 2,
+  "dobândă penalizatoare (descoperit neautorizat / întârziere), nu dobânda produsului": 1,
+  "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 1
+ },
+ "valori": [
+  {
+   "url": "https://www.librabank.ro/documente/carduri/comisioane_Libra_Business_Gold_Credit.pdf",
+   "produse": [
+    "CARD_CREDIT_BUSINESS"
+   ],
+   "camp": "dobanda_fixa",
+   "valoare_num": 50,
+   "unitate": "procent",
+   "citat": "Dobanda aferenta descoperitului de cont neautorizat: 50% pe an. Aceasta dobanda este fixa pe toata perioada aplicarii ei.",
+   "incredere": 0.6,
+   "motiv": "dobândă penalizatoare (descoperit neautorizat / întârziere), nu dobânda produsului"
+  },
+  {
+   "url": "https://librabank.ro/plati?desk_lbk=",
+   "produse": [
+    "APLICATIA_LIBRA"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "RoPay este gratuit, iar pentru a-l putea utiliza asigură-te că ai instalată ultima versiune a aplicației Libra",
+   "incredere": 0.9,
+   "motiv": "axa Libra: prețurile RoPay: RoPay are produsul lui Libra, ROPAY"
+  },
+  {
+   "url": "https://librabank.ro/plati?desk_lbk=",
+   "produse": [
+    "APLICATIA_LIBRA"
+   ],
+   "camp": "altele",
+   "valoare_num": 49999.99,
+   "unitate": "lei",
+   "citat": "Per tranzacție: Lei: 49.999,99 / Euro: 2.000",
+   "incredere": 0.85,
+   "motiv": "axa Libra: prețurile RoPay: RoPay are produsul lui Libra, ROPAY"
+  },
+  {
+   "url": "https://librabank.ro/plati?desk_lbk=",
+   "produse": [
+    "APLICATIA_LIBRA"
+   ],
+   "camp": "altele",
+   "valoare_num": 2000,
+   "unitate": "eur",
+   "citat": "Per tranzacție: Lei: 49.999,99 / Euro: 2.000",
+   "incredere": 0.85,
+   "motiv": "axa Libra: prețurile RoPay: RoPay are produsul lui Libra, ROPAY"
+  },
+  {
+   "url": "https://librabank.ro/plati?desk_lbk=",
+   "produse": [
+    "APLICATIA_LIBRA"
+   ],
+   "camp": "altele",
+   "valoare_num": 20000,
+   "unitate": "eur",
+   "citat": "Limită zilnică (plăți instant + RoPay + către fintech-uri): 20.000 euro sau echivalent lei",
+   "incredere": 0.85,
+   "motiv": "axa Libra: prețurile RoPay: RoPay are produsul lui Libra, ROPAY"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "ABONAMENT_SHINE"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 0,
+   "unitate": "altele",
+   "citat": "Administrare lunară cont RON\n\nAdministrare lunară cont valută\n\nAplicatia Libra pentru desktop\n\nAplicatia Libra pentru mobile\n\nPlăți online în lei\n\nPlăți instant lei\n\nÎncasări lei",
+   "incredere": 0.7,
+   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
+  },
+  {
+   "url": "https://www.librabank.ro/contdestept",
+   "produse": [
+    "CONT_DESTEPT"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 0,
+   "unitate": "numar",
+   "citat": "Comision ZERO la extrasele de cont din Internet Banking",
+   "incredere": 0.7,
+   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
+  },
+  {
+   "url": "https://www.librabank.ro/credit-investeu-intrebari",
+   "produse": [
+    "CREDIT_INVESTITII"
+   ],
+   "camp": "perioada_maxima",
+   "valoare_num": 120,
+   "unitate": "luni",
+   "citat": "CREDIT DE INVESTITII: min. 3 luni – max. 120 luni;",
+   "incredere": 0.8,
+   "motiv": "axa Libra: InvestEU Microfinanțare: InvestEU are produsul lui Libra, CREDIT_INVESTEU_PJ"
+  },
+  {
+   "url": "https://www.librabank.ro/credit-investeu-intrebari",
+   "produse": [
+    "CREDIT_INVESTITII"
+   ],
+   "camp": "suma_maxima",
+   "valoare_num": 248000,
+   "unitate": "lei",
+   "citat": "Valoarea maximă ce poate fi obținută prin credit este de 248.000 de lei.",
+   "incredere": 0.8,
+   "motiv": "axa Libra: InvestEU Microfinanțare: InvestEU are produsul lui Libra, CREDIT_INVESTEU_PJ"
+  },
+  {
+   "url": "https://www.librabank.ro/credit-investeu-intrebari",
+   "produse": [
+    "CREDIT_INVESTITII"
+   ],
+   "camp": "contributie_proprie_minima",
+   "valoare_num": 15,
+   "unitate": "procent",
+   "citat": "Procent maxim finanțat din investiție: 85% din valoarea investiției fără TVA.",
+   "incredere": 0.7,
+   "motiv": "axa Libra: InvestEU Microfinanțare: InvestEU are produsul lui Libra, CREDIT_INVESTEU_PJ"
+  },
+  {
+   "url": "https://www.librabank.ro/credit-investeu-intrebari",
+   "produse": [
+    "CREDIT_INVESTITII"
+   ],
+   "camp": "altele",
+   "valoare_num": 6,
+   "unitate": "luni",
+   "citat": "Credite pentru investiții: maximum 6 luni, la începutul perioadei de creditare pentru rambursarea principalului;",
+   "incredere": 0.7,
+   "motiv": "axa Libra: InvestEU Microfinanțare: InvestEU are produsul lui Libra, CREDIT_INVESTEU_PJ"
+  },
+  {
+   "url": "https://www.librabank.ro/Stiri/Libra_Internet_Bank_ofer%C4%83_%C8%99i_%C3%AEn_2024_finan%C8%9B%C4%83ri_fermierilor_care_beneficiaz%C4%83_de_subven%C8%9Bii_APIA/3311",
+   "produse": [
+    "CREDIT_APIA"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "altele",
+   "citat": "dobânda aplicată este calculată după formula ROBOR la 6 luni plus 2%",
+   "incredere": 0.6,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "cost_lunar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "✦ Gratuit\n12 luni",
+   "incredere": 0.7,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "cost_lunar",
+   "valoare_num": 50,
+   "unitate": "lei",
+   "citat": "12 luni 50 lei/lună",
+   "incredere": 0.8,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "cost_lunar",
+   "valoare_num": 100,
+   "unitate": "lei",
+   "citat": "100\nlei/lună",
+   "incredere": 0.8,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "cost_lunar",
+   "valoare_num": 95,
+   "unitate": "lei",
+   "citat": "până la 2 carduri 95 lei/lună",
+   "incredere": 0.8,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "cost_lunar",
+   "valoare_num": 225,
+   "unitate": "lei",
+   "citat": "225\nlei/lună",
+   "incredere": 0.8,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "cost_lunar",
+   "valoare_num": 295,
+   "unitate": "lei",
+   "citat": "295\nlei/lună",
+   "incredere": 0.8,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 25,
+   "unitate": "numar",
+   "citat": "Plăți lei din aplicație, inclusiv plăți instant / lunar\n\n25\n\n50\n\nNelimitat",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 50,
+   "unitate": "numar",
+   "citat": "Plăți lei din aplicație, inclusiv plăți instant / lunar\n\n25\n\n50\n\nNelimitat",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": null,
+   "unitate": "altele",
+   "citat": "Plăți lei din aplicație, inclusiv plăți instant / lunar\n\n25\n\n50\n\nNelimitat",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 25,
+   "unitate": "numar",
+   "citat": "Încasări lei\n\n25\n\n50\n\nNelimitat",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 50,
+   "unitate": "numar",
+   "citat": "Încasări lei\n\n25\n\n50\n\nNelimitat",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": null,
+   "unitate": "altele",
+   "citat": "Încasări lei\n\n25\n\n50\n\nNelimitat",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 2,
+   "unitate": "numar",
+   "citat": "Retrageri numerar de la ATM Euronet\n\n2\n\n3\n\n5",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 3,
+   "unitate": "numar",
+   "citat": "Retrageri numerar de la ATM Euronet\n\n2\n\n3\n\n5",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 5,
+   "unitate": "numar",
+   "citat": "Retrageri numerar de la ATM Euronet\n\n2\n\n3\n\n5",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "altele",
+   "valoare_num": 0.59,
+   "unitate": "procent",
+   "citat": "mPOS – comision carduri persoane fizice\n\n0,59%\n\n0,59%\n\n0,59%",
+   "incredere": 0.7,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  },
+  {
+   "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "altele",
+   "valoare_num": 0.3,
+   "unitate": "procent",
+   "citat": "0,30% pentru retrageri la bancomatele Euronet.",
+   "incredere": 0.6,
+   "motiv": "axa Libra: prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"
+  }
+ ]
+}

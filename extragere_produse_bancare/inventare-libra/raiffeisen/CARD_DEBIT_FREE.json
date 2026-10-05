@@ -1,0 +1,89 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri/cardul-galben.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul debit Raiffeisen Standard (Cardul Galben)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit pentru persoane fizice, fără cost de emitere și cu administrare gratuită sub condiții simple, la fel ca produsul Libra Card de debit Free; are și beneficii (cashback/avantaje) asociate contului asociat.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre concrete (plafon de 1.000 lei încasări, 15 lei comision dacă nu se face o plată lunară) și descrierea completă a cardului standard fără costuri.",
+      "citat": "Devino client, deschide cont Zero Simplu și ai ZERO costuri cu doar 1.000 de lei încasări lunare și o plată cu cardul pe lună! Dacă nu reușești să faci o plată cu cardul pe lună, plătești 15 lei comisionul de administrare pachet pentru luna respectivă și te bucuri de aceleași beneficii!",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri/cardul-galben.html#:~:text=Devino%20client%2C%20deschide%20cont%20Zero,te%20bucuri%20de%20acelea%C8%99i%20beneficii%21"
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf/20251120-Tarife-si-comisioane-standard-persoane-fizice.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de debit - Visa lei (Cardul Galben)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife standard pentru persoane fizice conține secțiunea dedicată taxelor cardului de debit standard (Cardul Galben), echivalent al Card de debit Free.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de tarife, actualizat la 20 noiembrie 2025, cu tabel explicit pentru taxa de emitere (0 lei) și taxa anuală de administrare (25 lei) a cardului de debit Visa lei.",
+      "pagina_pdf": 7,
+      "citat": "Taxă inițială de furnizare (emitere/înlocuire la expirare) card* 0 lei Taxă anuală de administrare card** 25 lei Prin intermediul EPOS 0 lei Depunere inițială minimă în cont pentru fiecare card de debit ataşat*** 25 lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de debit Visa Business (IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife standard IMM arată taxa anuală de administrare (50/100/300 lei) pentru cardul de debit Visa Business, confirmând că varianta business a cardului de debit Raiffeisen nu este gratuită, spre deosebire de Card de debit Free al Libra, care e fără costuri de emitere/administrare pentru PJ.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de tarife, valabil din 01 septembrie 2026, cu secțiune dedicată cardurilor de debit Visa Business și cifrele exacte ale taxelor anuale.",
+      "pagina_pdf": 7,
+      "citat": "Taxă anuală administrare card Visa Business lei SILVER/GOLD/PLATINUM 50 lei/ 100 lei/ 300 lei VISA BUSINESS EURO 15 euro Taxă emitere card gratuit",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-debit-visa-business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Visa Business Silver",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit dedicat persoanelor juridice (IMM), același tip de produs și segment ca varianta de firmă a Libra Card de debit Free, dar diferă prin faptul că la Raiffeisen cardul de debit business nu este gratuit (are taxă anuală de administrare), spre deosebire de produsul Libra care este fără costuri de emitere sau administrare.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina dedicată descrie clar produsul și beneficiile (0% comision la comercianți, fără comision de schimb valutar în Euro), dar nu afișează direct cifra taxei anuale; aceasta se regăsește în documentul de tarife IMM asociat.",
+      "citat": "card de debit contactless atașat unui cont curent în Lei sau Euro recuperare TVA extern prin Tax Back plățile efectuate la comercianți au 0% comision",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-debit-visa-business/#:~:text=card%20de%20debit%20contactless%20ata%C8%99at,la%20comercian%C8%9Bi%20au%200%25%20comision"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri/cardul-galben.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf/20251120-Tarife-si-comisioane-standard-persoane-fizice.pdf.coredownload.pdf",
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-debit-visa-business/",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf"
+  ],
+  "durata_s": 64,
+  "consum": {
+    "intrare": 12,
+    "iesire": 5111,
+    "citire_cache": 272303,
+    "scriere_cache": 128521,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.42689710000000003
+  }
+}

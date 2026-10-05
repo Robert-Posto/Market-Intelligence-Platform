@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/acceptare-carduri/acceptare-carduri-prin-internet-e-commerce.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acceptare Carduri prin Internet, E-commerce",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat acceptării de plăți online cu cardul pentru clienți persoane juridice (IMM) cu magazin online, identic ca tip și segment cu LibraPay eCommerce.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina este dedicată exclusiv produsului de acceptare plăți online pentru firme și conține termeni operaționali concreți (valute acceptate, termen de decontare).",
+      "citat": "Deschide-ți magazinul online și începe să vinzi oriunde, oricând. Platforma noastră E-commerce te ajută să accepți plăți cu cardul în lei, euro și dolari, direct pe site-ul tău. Plata instant: Banii intră în contul tău în doar o zi lucrătoare.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/acceptare-carduri/acceptare-carduri-prin-internet-e-commerce.html#:~:text=Deschide%2D%C8%9Bi%20magazinul%20online%20%C8%99i%20%C3%AEncepe,%C3%AEn%20doar%20o%20zi%20lucr%C4%83toare."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Servicii de acceptare carduri (EPOS și e-commerce)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife standard pentru persoane juridice (corporații) menționează explicit serviciul de acceptare carduri prin e-commerce, confirmând existența produsului, chiar dacă prețul este personalizat.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Produsul apare explicit în documentul de tarife, dar fără valori fixe publice ale comisionului, acestea fiind stabilite individual per client.",
+      "pagina_pdf": 10,
+      "citat": "Pentru serviciile de acceptare la plată a cardurilor prin EPOS și/sau e-commerce se va solicita responsabilului de clientelă dedicat oferta personalizată, în funcție de obiectul de activitate al companiei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/acceptare-carduri/acceptare-carduri-prin-internet-e-commerce.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3583,
+    "citire_cache": 159070,
+    "scriere_cache": 91395,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2961515
+  }
+}

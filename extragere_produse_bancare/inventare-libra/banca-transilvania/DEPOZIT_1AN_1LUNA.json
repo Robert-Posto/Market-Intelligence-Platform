@@ -1,0 +1,55 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen 12 luni (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Banca Transilvania nu are un depozit promoțional de 13 luni cu dobândă dublă (6,60%/6,10%) precum Libra; grila standard de dobânzi se oprește la 12 luni cu o singură rată fixă, apoi trece direct la 24 și 36 luni, fără tranșa de 13 luni.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina oficială de dobânzi pentru persoane fizice conține cifrele exacte pentru depozitul standard de 12 luni, cel mai apropiat tenor de cel promoțional de 13 luni al Libra, dar nu există un produs promoțional echivalent.",
+      "citat": "Period Interest collected at maturity / year Interest collected monthly / year 12 months 5,25% 5,00% 24 months 5,85% – 36 months 6,25% –",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi#:~:text=Period%20Interest%20collected%20at%20maturity,%E2%80%93%2036%20months%206%2C25%25%20%E2%80%93"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/en/companii/economii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen 12 luni (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pentru persoane juridice, BT oferă aceeași structură de tenori standard (1,3,6,12,24,36 luni) fără o variantă promoțională de 13 luni cu dobândă totală combinată, diferă și segmentul de dobânzi negociate pentru sume mari.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina de dobânzi pentru companii listează explicit rata pentru depozitul de 12 luni (5,25%), cel mai apropiat tenor standard, dar nu conține un produs promoțional pe 13 luni comparabil cu cel de la Libra.",
+      "citat": "Period Interest collected at maturity / year Interest collected monthly / year 12 months 5,25% 5,00% 24 months 5,85% – 36 months (fixed interest) 6,25% –",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/companii/economii/dobanzi#:~:text=Period%20Interest%20collected%20at%20maturity,months%20%28fixed%20interest%29%206%2C25%25%20%E2%80%93"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+    "https://campanie.bancatransilvania.ro/bank-friday/depozit-termen-lei-6-si-12-luni",
+    "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/en/economii-si-investitii/economii",
+    "https://www.bancatransilvania.ro/en/companii/economii/dobanzi",
+    "https://campanie.bancatransilvania.ro/bank-friday/depozit-termen-lei-6-si-12-luni"
+  ],
+  "durata_s": 62,
+  "consum": {
+    "intrare": 87557,
+    "iesire": 4755,
+    "citire_cache": 37880,
+    "scriere_cache": 52934,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.362575
+  }
+}

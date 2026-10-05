@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet ING FIX Complet",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente lunare pentru companii, cu cost fix, care includ cont curent, card business, plăți în lei și valută și instrumente de debit (cecuri/bilete la ordin). Diferă structura: Libra ELITE specifică plafoane exacte (50 plăți/încasări, 50 SEPA, 50 instrumente de debit, 3 carduri, Live FX) la 225 lei/lună, în timp ce ING FIX Complet costă 250 RON/lună și oferă aceleași categorii de servicii dar fără un plafon numeric declarat (plăți nelimitate), iar Live FX nu e menționat explicit ca serviciu separat.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată pachetelor de cont curent pentru companii, cu tabel comparativ ce indică explicit prețul și componența pachetului cel mai complet (FIX Complet, 250 RON), echivalentul cel mai apropiat de abonamentul corporate ELITE.",
+      "citat": "Pachet FIX Complet (250 RON) Cont curent RON ✓ Business Card ✓ ING Business, platforma de internet și mobile banking ✓ Depunere de numerar la ATM ING ✓ Acceptare la plată prin POS (primul cont) ✓ Plăți în RON intre conturile proprii sau către alți clienți ING Romania ✓ Plăți în RON (ING-altă bancă) ✓ Retragere de numerar la ATM ING - Până la 25.000 RON retrageri lunare de numerar la ATM ING ✓ Cont curent în valută ✓ Transferuri în valută ✓ Instrumente de debit (cecuri și bilete la ordin) ✓",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Pachet%20FIX%20Complet%20%28250%20RON%29,%C8%99i%20bilete%20la%20ordin%29%20%E2%9C%93"
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de produse și servicii pentru afacerea ta (inclusiv Pachet FIX Complet)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă taxa lunară de administrare pentru întreaga gamă de pachete de cont curent pentru firme, inclusiv pachetul cel mai complet (250 lei), echivalentul cel mai apropiat de abonamentul corporate ELITE al Libra.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document PDF oficial de taxe și comisioane pentru persoane juridice, care listează explicit taxa de administrare lunară pentru fiecare pachet, inclusiv pachetul complet de 250 lei.",
+      "pagina_pdf": 1,
+      "citat": "Pachete de produse și servicii pentru afacerea ta Administrare lunară pachet 0 lei 30 lei 40 lei 70 lei 150 lei 165 lei 250 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4186,
+    "citire_cache": 40305,
+    "scriere_cache": 47195,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16792049999999997
+  }
+}

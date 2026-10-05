@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/carduri-de-cumparaturi/cardul-de-credit-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de credit, 100% online (Standard)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving RON pentru persoane fizice, cu perioadă de grație și rate fără dobândă la comercianți, exact ca produsul Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele cheie: perioadă de grație, număr de rate, DAE, condiții de eligibilitate.",
+      "citat": "ai până la 12 rate egale fără dobândă oriunde în lume, la achiziții de minimum 600 de lei, primești bani înapoi pentru cumpărăturile făcute cu cardul la partenerii George Moneyback, ai perioada de grație de până la 55 de zile, pentru orice plată",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/carduri-de-cumparaturi/cardul-de-credit-online#:~:text=ai%20p%C3%A2n%C4%83%20la%2012%20rate,de%20zile%2C%20pentru%20orice%20plat%C4%83"
+    },
+    {
+      "url": "https://www.bcr.ro/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Carduri-de-cumparaturi/documente-utile/Tarife_Comisioane_Carduri_Credit_Standard_Gold.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Costuri pentru cardul de credit BCR Standard / Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane dedicat exclusiv cardurilor de credit BCR Standard și Gold, cu toate comisioanele și dobânzile aplicabile.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "PDF oficial de tarife care conține explicit dobânda curentă, DAE, comisioane de emitere/administrare pentru cardul de credit Standard și Gold.",
+      "pagina_pdf": 1,
+      "citat": "Card standard: Dobanda Anuala Efectiva (DAE) este de 12.1% pentru un card de credit BCR cu o limita de credit de 5.367 RON, utilizata imediat si in intregime, 40% pentru retragere numerar si 60% pentru o plata in rate la comercianti cu 0% dobanda. Rata anuala a dobanzii: 28% fixa; Valoarea ratei lunare: 464 RON",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/carduri-de-cumparaturi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de cumpărături / Card de credit BCR",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina principală a produsului card de credit pentru persoane fizice, cu condiții de eligibilitate pe venit, echivalentă cu produsul Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina conține cifre despre rate fără dobândă, cashback și condiții de eligibilitate (venit minim, vârstă).",
+      "citat": "Ai până la 12 rate cu 0% dobândă* la achiziții de minimum 600 lei. Să ai vârsta între 18 şi 70 de ani şi venituri salariale nete mai mari sau egale cu 2.500 lei/lună la data solicitării cardului de credit sau venituri din pensii raportate la ANAF.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/carduri-de-cumparaturi#:~:text=Ai%20p%C3%A2n%C4%83%20la%2012%20rate,din%20pensii%20raportate%20la%20ANAF."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/carduri-de-cumparaturi",
+    "https://www.bcr.ro/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Carduri-de-cumparaturi/documente-utile/Tarife_Comisioane_Carduri_Credit_Standard_Gold.pdf",
+    "https://www.bcr.ro/ro/persoane-fizice/carduri-de-cumparaturi/cardul-de-credit-online"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2701,
+    "citire_cache": 76033,
+    "scriere_cache": 42975,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14967009999999997
+  }
+}

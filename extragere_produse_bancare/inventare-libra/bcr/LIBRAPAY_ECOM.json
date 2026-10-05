@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/solutii-de-plata-si-colectare/servicii-acceptare-carduri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "GP Webpay (Plată online - Global Payments)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este soluția dedicată persoanelor juridice pentru acceptarea plăților online cu cardul (gateway de plată integrat în magazin online/facturare), exact ca LibraPay eCommerce - diferă doar furnizorul tehnologic (Global Payments) și denumirea comercială.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina este dedicată serviciilor de acceptare carduri pentru business, cu secțiune explicită 'Plată online – GP Webpay' și cifre despre acoperire (comercianți, terminale, limbi, valute), deși cifrele sunt la nivel de ansamblu Global Payments, nu separat doar pentru online.",
+      "citat": "Prin colaborarea cu BCR, Global Payments furnizează în România servicii de acceptare a cardurilor pentru peste 8.000 de comercianți parteneri și gestionează o rețea de peste 15.000 de terminale de plată. Portalul GP Webpay permite tranzacții online sigure și rapide, poate fi integrat cu ușurință cu cele mai frecvent întâlnite plug-inuri și add-onuri, gamă variată de metode de plată: Visa, Mastercard, Google Pay și Apple Pay, plăți în RON, Euro și USD, disponibil în 19 versiuni lingvistice.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/solutii-de-plata-si-colectare/servicii-acceptare-carduri#:~:text=Prin%20colaborarea%20cu%20BCR%2C%20Global,disponibil%20%C3%AEn%2019%20versiuni%20lingvistice."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/solutii-de-plata-si-colectare/servicii-acceptare-carduri",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/solutii-de-plata-si-colectare"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1292,
+    "citire_cache": 39202,
+    "scriere_cache": 39719,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1200699
+  }
+}

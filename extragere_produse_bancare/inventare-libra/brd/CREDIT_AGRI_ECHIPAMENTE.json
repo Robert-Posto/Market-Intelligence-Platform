@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/agricultura/credite-de-investitii-echipamente",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Agricultură - Finanțare Credite de investiții echipamente (AGRI PJ)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții dedicat agriculturii, pentru persoane juridice, destinat achiziției de utilaje/mașini agricole, cu perioadă de creditare de până la 84 luni - identică cu intervalul 12-84 luni al produsului Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată a produsului, cu cifre explicite (sumă minimă/maximă, procent finanțare, perioadă 84 luni), deși nu menționează explicit garanția InvestEU.",
+      "citat": "Creditarea se acordă pentru utilare, retehnologizare, modernizare fermă animale, achiziționarea de mașini agricole și echipament agricol, achiziționarea de mijloace de transport specifice destinate transportului de mărfuri, animale etc. Se poate acorda maximum 75% din valoarea proiectului creditat (fără TVA). Perioada de creditare este de maximum 84 luni.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/agricultura/credite-de-investitii-echipamente"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1565,
+    "citire_cache": 36452,
+    "scriere_cache": 42543,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1293099
+  }
+}

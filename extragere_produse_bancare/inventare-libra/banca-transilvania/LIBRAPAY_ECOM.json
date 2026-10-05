@@ -1,0 +1,39 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/conturi-carduri/ecommerce",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "E-commerce / BT eComm (acceptare plăți online cu cardul pentru magazine online)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași categorie de produs (gateway/serviciu de acceptare plăți online cu cardul pentru comercianți online) și același segment de clienți (companii/IMM/PFA cu magazin online), doar că la BT figurează ca serviciu inclus în oferta de cont de business, nu ca pagină de produs de sine stătător.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina conține explicit rândul de tarif 'Comision de procesare E-commerce' cu valoarea curentă și cea anterioară, dar este parte dintr-un pachet de cont de business, nu o pagină dedicată exclusiv produsului eCommerce.",
+      "citat": "Comision de procesare BT POS APP ~~0,9%~~ 0,7% +0,1 lei Comision de procesare POS ~~0,9%~~ 0,7% Comision de procesare E-commerce ~~1.00%~~ 0,9%",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/conturi-carduri/ecommerce#:~:text=Comision%20de%20procesare%20BT%20POS,de%20procesare%20E%2Dcommerce%20~~1.00%25~~%200%2C9%25"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://tab.bancatransilvania.ro/companii/conturi-carduri/ecommerce",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/ecommerce",
+    "https://www.bancatransilvania.ro/companii/solutii-de-plata",
+    "https://www.bancatransilvania.ro/pentru-companii/imm/imm-solutii-digitale/imm-e-commerce/"
+  ],
+  "durata_s": 55,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3886,
+    "citire_cache": 134142,
+    "scriere_cache": 58088,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21092840000000002
+  }
+}

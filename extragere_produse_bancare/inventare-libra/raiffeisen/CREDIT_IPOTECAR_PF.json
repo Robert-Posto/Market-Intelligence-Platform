@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/credite/credit-imobiliar-casa-ta.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit ipotecar Casa Ta",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit ipotecar pentru achiziție locuință/teren, construcție sau renovare) pentru persoane fizice, dar termenul maxim este de 30 de ani (vs. 420 luni/35 ani la Libra) și valoarea maximă este de 300.000 EUR echivalent (vs. 15 mil. lei la Libra).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: dobânzi, DAE, sume, perioadă, avans.",
+      "citat": "Destinație: achiziție locuință sau teren, construcție sau renovare. Valoare: între 5.000 și 300.000 Euro (echivalentul în Lei). Perioada: între 3 și 30 de ani.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/credite/credit-imobiliar-casa-ta-verde.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit ipotecar Casa Ta Verde",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Corespunde componentei „Credit Verde” din produsul Libra (achiziție imobil cu certificare energetică verde), dar este un produs separat, dedicat doar achiziției de locuințe verzi, cu termen maxim 30 ani și valoare maximă 300.000 EUR (vs. 420 luni/15 mil. lei la Libra).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului verde conține dobânzi, DAE, sume și condiții de eligibilitate explicite.",
+      "citat": "Destinație: achiziția de imobil ce deține certificarea Green Homes acordată de RoGBC sau achiziția de imobil ce deține un certificat clasa B (emis dupa 15.02.2023)/A/superioară sau ROGBC. Valoare: între 5.000 și 300.000 Euro (echivalentul în Lei).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/persoane-fizice/produsele-noastre/credite/credite-de-refinantare/credit-de-refinantare-garantat-cu-ipoteca/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de refinanțare garantat cu ipotecă (Flexicredit Integral)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă componenta de refinanțare locuință din produsul Libra, pentru persoane fizice, dar valoarea maximă este de 200.000 EUR echivalent și termenul maxim 30 ani (vs. 15 mil. lei / 420 luni la Libra).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului de refinanțare ipotecară conține dobânzi, DAE, valori și perioade explicite.",
+      "citat": "Valuta: Lei Valoare: intre 5.000 și 200.000 Euro (echivalentul în Lei). Perioada: minimum 6 luni și maximum 30 de ani.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2873,
+    "citire_cache": 6364,
+    "scriere_cache": 36285,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1207233
+  }
+}

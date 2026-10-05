@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/ropay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay for Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată secțiunii RoPay for Business de pe site-ul Libra, destinată persoanelor juridice, descrie exact același produs: încasări instant prin cod QR, disponibil non-stop, inclusiv weekend.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina conține o secțiune dedicată „RoPay for Business” cu beneficii și un număr concret (sub 10 secunde), fiind pagina oficială a produsului.",
+      "citat": "RoPay for Business este o nouă soluție simplă și rapidă prin care poți primi bani instant de la clienți, doar prin scanarea unui cod QR. Încasări în mai puțin de 10 secunde; Funcționează non-stop, inclusiv în weekenduri și sărbători; Costuri avantajoase; Integrare facilă în infrastructura digitală a afacerii tale.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/ropay#:~:text=RoPay%20for%20Business%20este%20o,infrastructura%20digital%C4%83%20a%20afacerii%20tale."
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Incasare RoPay (comerciant)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice conține explicit linia de comision pentru încasările prin RoPay realizate de comercianți, exact produsul RoPay for Business.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul oficial de tarife și comisioane pentru persoane juridice listează explicit comisionul pentru „Incasare RoPay (comerciant)” cu valoare procentuală și plafon maxim.",
+      "pagina_pdf": 2,
+      "citat": "Incasare RoPay (comerciant)1 0,5% din valoarea fiecarei tranzactii, max 150 lei. Comisionul poate fi negociat prin contract de aderare la serviciul RoPay.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente/formulare/termeni-si-conditii-utilizare-servicii-ropay.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "RoPay (servicii pentru comercianți P2B/P2M)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de termeni și condiții RoPay reglementează explicit și serviciul pentru comercianți (P2B/P2M), inclusiv condiția ca persoana juridică să semneze un contract de aderare, parte a aceluiași produs RoPay for Business.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Documentul menționează explicit plățile către comercianți (P2B/P2M) și condițiile de înrolare a persoanelor juridice ca și comercianți RoPay, dar comisioanele concrete sunt trimise către documentul de tarife.",
+      "citat": "Serviciile RoPay vor fi utilizabile strict in vederea efectuarii unor plati uzuale (P2P - plati intre persoane fizice) si plata catre comercianti (P2B/P2M), platile fiind executate în timp real cu decontare instantanee în contul Pentru a dobandi statutul de comerciant inrolat la RoPay, o persoana juridica trebuie sa semneze in prealabil un contract de aderare la serviciul RoPay cu Banca.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/ropay",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3109,
+    "citire_cache": 31887,
+    "scriere_cache": 73981,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22243190000000002
+  }
+}

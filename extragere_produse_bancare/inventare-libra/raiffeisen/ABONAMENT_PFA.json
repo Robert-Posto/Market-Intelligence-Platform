@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/pachet-imm-cont-curent-start/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent IMM Start",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet lunar pentru PFA/profesii liberale/IMM la început de drum, cu cont curent, card de debit business, internet și mobile banking, la fel ca Abonamentul PFA de la Libra, dar fără limita explicită de 50 operațiuni/lună (multe servicii sunt NELIMITATE).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetului conține prețul exact, lista de servicii incluse și criteriul de eligibilitate care menționează explicit PFA și profesii liberale.",
+      "citat": "Cu doar 39 lei/lună, beneficiezi de: Produse bancare de bază: Cont curent principal în lei, Card debit Visa Business Silver. Criterii de eligibilitate: Persoane juridice cu cifra de afaceri până la 5 milioane Euro, entități fără personalitate juridica, PFA sau profesii liberale.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/pachet-imm-cont-curent-start/#:~:text=Cu%20doar%2039%20lei%2Flun%C4%83%2C%20beneficiezi,juridica%2C%20PFA%20sau%20profesii%20liberale."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/pachete-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Start (comparator pachete IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Tabelul comparativ al pachetelor de cont curent IMM arată explicit prețul și serviciile pachetului Start (29 Lei/lună în acest comparator), varianta de bază potrivită PFA/profesii liberale.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină cu grilă/comparator de pachete care include coloana Start cu preț și servicii, dar valoarea diferă ușor între pagini (29 vs 39 lei) din cauza versiunilor de campanie.",
+      "citat": "| Pret (pe luna) | 29 Lei Aplica acum | 49 Lei Aplica acum | 79 Lei Aplica acum | 119 Lei Aplica acum | 199 Lei Aplica acum |",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale/20260901-Tarife-si-comisioane-IMM-si-profesii-liberale.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane IMM și profesii liberale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru pachetele IMM (inclusiv Start, destinat și PFA/profesii liberale) cu toate comisioanele pentru operațiuni neincluse în pachet.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Document PDF legat direct din pagina produsului Start ca sursă completă de tarife; conține probabil valorile exacte ale pachetului Start, dar nu l-am putut deschide direct pentru verificare integrală.",
+      "citat": "Pentru informatii complete referitoare la costurile tranzactiilor neincluse in pachet si comisioanele de procesare a platilor interne si externe decontate prin sistemul de compensare SENT (Transfond) sau sistemul de decontare REGIS (BNR) accesați brosura Tarife si comisioane IMM.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/pachet-imm-cont-curent-start/",
+    "https://www.raiffeisen.ro/pachete-imm/"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2143,
+    "citire_cache": 29757,
+    "scriere_cache": 35822,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1169484
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/pentru-companii/finantari-agricole/credite-bancare-agri/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru achiziția de utilaje și echipamente agricole",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ambele sunt credite de investiții pentru achiziția de utilaje/echipamente agricole, destinate persoanelor juridice active în agricultură (vegetal/zootehnie); nu se menționează explicit garanția InvestEU sau intervalul 12-84 luni, doar destinația și segmentul de clienți.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina listează produsul cu descriere clară a destinației (achiziție utilaje agricole) și a segmentului de clienți, dar fără cifre concrete (dobândă, comision, termen) în textul indexat disponibil.",
+      "citat": "Creditul pentru achizitia de utilaje si echipamente agricole se adreseaza clientilor cu activitate in zootehnie si culturi vegetale si are ca destinatie achizitia de utilaje agricole.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/cine-poate-sa-obtina-un-credit-pentru-achizitia-de-utilaje-sau-echipamente-agricole/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul pentru achiziția de utilaje și echipamente agricole",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată din secțiunea de întrebări frecvente a băncii, care explică exact eligibilitatea pentru acest credit (sector vegetal și zootehnie, achiziție utilaje agricole), confirmând existența produsului echivalent celui de la Libra.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Confirmă existența și segmentul de clienți ai produsului, dar conținutul disponibil nu include cifre (dobândă, comision, termen de rambursare).",
+      "citat": "Creditul pentru achiziția de utilaje și echipamente agricole se adresează persoanelor cu activitate în sectorul vegetal și zootehnie, care doresc să achiziționeze utilaje agricole pentru:",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/pentru-companii/finantari-agricole/credite-bancare-agri/",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi",
+    "https://intreb.bancatransilvania.ro/cine-poate-sa-obtina-un-credit-pentru-achizitia-de-utilaje-sau-echipamente-agricole/",
+    "https://www.bancatransilvania.ro/pentru-companii/finantari-agricole",
+    "https://www.bancatransilvania.ro/en/companii/finantari-agricole",
+    "https://en.bancatransilvania.ro/companies/finantari-agricole/credit-pentru-culturi-agricole",
+    "https://www.bancatransilvania.ro/pentru-companii/finantari-agricole/credite-bancare-agri/",
+    "https://www.bancatransilvania.ro/pentru-companii/fonduri-europene-si-credite-specializate/",
+    "https://intreb.bancatransilvania.ro/cine-poate-sa-obtina-un-credit-pentru-achizitia-de-utilaje-sau-echipamente-agricole"
+  ],
+  "durata_s": 109,
+  "consum": {
+    "intrare": 129090,
+    "iesire": 7726,
+    "citire_cache": 280263,
+    "scriere_cache": 112531,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6728201
+  }
+}

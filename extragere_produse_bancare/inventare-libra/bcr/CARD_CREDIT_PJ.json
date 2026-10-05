@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/finantare/carduri-de-credit/business-cardul-de-credit-visa-ron",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de Credit George Visa Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (card de credit business revolving, cu linie de credit atașată și perioadă de grație) și același segment (microîntreprinderi/PFA), dar plafonul maxim este de doar 80.000 lei, mult sub intervalul Libra de 10.000–500.000 lei, și condiția de eligibilitate limitează cifra de afaceri la 1 milion EUR.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele cheie: limita de credit, perioada de grație și condițiile de acordare.",
+      "citat": "Cardul de credit George Visa Business în RON este o soluție financiară digitală destinată microîntreprinderilor, oferind: Limita de credit: până la 80.000 RON Comisioane: zero comision de acordare, emitere și administrare în primul an Perioadă de grație: până la 55 de zile pentru cumpărături la comercianți, POS sau online",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/finantare/carduri-de-credit",
+    "https://www.bcr.ro/ro/business/general/finantare/carduri-de-credit/corporate-cardul-de-credit-eur",
+    "https://www.bcr.ro/ro/business/general/finantare/carduri-de-credit/visa-business-ron",
+    "https://www.bcr.ro/ro/business/general/finantare/carduri-de-credit/business-cardul-de-credit-visa-ron"
+  ],
+  "durata_s": 38,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3429,
+    "citire_cache": 113826,
+    "scriere_cache": 46808,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1740952
+  }
+}
