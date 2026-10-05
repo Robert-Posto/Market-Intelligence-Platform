@@ -1068,6 +1068,29 @@ def catalog_libra():
     )
 
 
+def products_discovery(q):
+    """Produsele concurenței fără echivalent în catalogul Libra (tabela `products_discovery`).
+
+    Vine din `extragere_produse_bancare/descopera_produse.py` (proiect-it): pagini de
+    produs găsite pe site-ul băncii, clasificate de model, cu citatul verificat în
+    pagină. Un rând cu banca Libra înseamnă „Libra îl are pe site, dar nu e în
+    catalog”. `nou` = apărut în ultimele 35 de zile (o rulare lunară), `retras` = nevăzut
+    la ultima rulare a băncii. Fără tabelă: `disponibil: false`, nu 500.
+    """
+    if not interoghează("SELECT to_regclass('public.products_discovery') IS NOT NULL AS e")[0]["e"]:
+        return {"disponibil": False}
+    produse = interoghează(
+        """SELECT p.id, b.slug AS banca, b.nume AS nume_banca, p.denumire_produs, p.descriere_produs,
+                  p.link, p.segment, p.categorie,
+                  to_char(p.created_at, 'YYYY-MM-DD') AS created_at,
+                  to_char(p.vazut_la, 'YYYY-MM-DD') AS vazut_la,
+                  p.created_at > now() - interval '35 days' AS nou,
+                  p.vazut_la < max(p.vazut_la) OVER (PARTITION BY p.id_banca) - interval '1 day' AS retras
+             FROM products_discovery p JOIN banci b ON b.id = p.id_banca
+            ORDER BY p.categorie, p.denumire_produs""")
+    return {"disponibil": True, "produse": produse}
+
+
 def comparatie_libra(q):
     """Produsele Libra față de echivalentele lor la concurență (tabela `comparatie_libra`).
 
@@ -1703,6 +1726,7 @@ RUTE = {
     "/api/comunicate": comunicate,
     "/api/catalog_libra": lambda q: catalog_libra(),
     "/api/comparatie_libra": comparatie_libra,
+    "/api/products_discovery": products_discovery,
     "/api/matrice": matrice,
     "/api/celula": celula,
     "/api/rate": rate,

@@ -13,6 +13,7 @@ export const PAGINI = [
   {grup:"Analiză", chei:[
     {id:"versus",  nume:"Versus Libra", pdf:"", t:"Versus Libra", l:"Libra față de până la trei bănci alese — unde câștigă, unde pierde, pe prețuri, dobânzi, aplicație, rețea și recenzii."},
     {id:"banca",   nume:"Fișă bancă", pdf:"", t:"Fișă bancă", l:"Tot ce avem despre o bancă, într-un singur loc."},
+    {id:"concurenta", nume:"Descoperă concurența", pdf:"", t:"Descoperă concurența", l:"Ce oferă celelalte bănci și Libra nu are în catalog: ce e produsul, pentru cine și unde se găsește."},
     {id:"istoric", nume:"Istoric & schimbări", pdf:"", t:"Istoric și schimbări de preț", l:"Ce și-au schimbat băncile la prețuri: același serviciu, altă dată de vigoare, altă valoare."},
   ]},
   {grup:"Date & guvernanță", chei:[
@@ -21,7 +22,7 @@ export const PAGINI = [
   ]},
 ];
 
-export const PORTATE = new Set(["produse"]);
+export const PORTATE = new Set(["produse", "concurenta"]);
 export const VECHI = process.env.NEXT_PUBLIC_MIP_VECHI || "http://localhost:8765";
 export const toatePag = PAGINI.flatMap(g => g.chei);
 export const pagina = id => toatePag.find(p => p.id === id);
