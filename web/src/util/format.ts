@@ -21,9 +21,18 @@ export function compara(a: unknown, b: unknown, locale: string): number {
 
 /** „Romana” găsește „Română”: căutarea ignoră diacriticele și majusculele. */
 export const faraDiacritice = (t: string) =>
-  String(t).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+  String(t).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 
 /** Câte zile au trecut de la o dată (0 = azi). */
 export function zileDeLa(t: string): number {
   return Math.floor((Date.now() - new Date(t).getTime()) / 86400000)
+}
+
+/** Data scurtă după limbă: 30.09.2026 în română, 30/09/2026 în engleză; din ISO (AAAA-LL-ZZ…). */
+export function formatZi(d: string | null | undefined, locale: string): string {
+  if (!d) return '?'
+  const s = String(d).slice(0, 10)
+  const [a, l, z] = s.split('-')
+  if (!a || !l || !z) return s
+  return locale.startsWith('ro') ? `${z}.${l}.${a}` : `${z}/${l}/${a}`
 }

@@ -25,7 +25,10 @@ export interface CerereSertar {
   banca: string
   camp: string
   unitate: string
+  /** categoria (depozite / credite / conturi_carduri): `nominala` e și dobândă de depozit, și de credit */
   scenariu: string
+  termen?: string
+  produs?: string
 }
 
 /** Textul românesc al datelor: „retrasă din ofertă” e scris de bancă, nu de noi. */
@@ -51,7 +54,7 @@ export default function Sertar({ cerere, onClose }: { cerere: CerereSertar | nul
     queryKey: ['celula', cerere],
     enabled: !!cerere,
     queryFn: () =>
-      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: '', produs: '' }),
+      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '' }),
   })
   const titlu = cerere ? `${meta.data?.nume[cerere.banca] ?? cerere.banca} · ${etNume(cerere.camp, t)}` : ''
   return (

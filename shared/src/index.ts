@@ -68,20 +68,6 @@ export const StareTabel = z.object({
 })
 export const Stare = z.array(StareTabel)
 
-export const ContSocial = z
-  .object({ slug: z.string(), retea: z.string(), url: z.string().nullable() })
-  .passthrough()
-export const Retele = z.array(ContSocial)
-
-export const Campanii = z
-  .object({
-    randuri: z.array(
-      z.object({ banca: z.string(), stare: z.string().nullable(), in_comparatie: z.boolean().nullable().optional() }).passthrough(),
-    ),
-    rulare: z.object({ campanii: data, comunicate: data }).passthrough().nullable().optional(),
-  })
-  .passthrough()
-
 export const Sumar = z
   .object({ totaluri: z.array(z.object({ ce: z.string(), n: z.number() })) })
   .passthrough()
@@ -193,3 +179,8 @@ export const ValoareDovada = z
   .passthrough()
 export type ValoareDovada = z.infer<typeof ValoareDovada>
 export const Celula = z.array(ValoareDovada)
+
+export * from './rate_mobil'
+export * from './campanii'
+export * from './reclame'
+export * from './youtube_retele'

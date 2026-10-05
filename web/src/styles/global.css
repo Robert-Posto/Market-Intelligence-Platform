@@ -180,3 +180,34 @@ table.t.rl .num { text-align: right }
   nav { width: auto; height: auto }
   main { height: auto }
 }
+
+/* 2.4: banda de cifre cu băncile ca „chips” și bara de filtre a secțiunilor (din revamp-ul 30.09) */
+.cm-bara .filtre { gap: 8px 10px }
+.cm-bara .filtre + .filtre { margin-top: 8px }
+.cm-info { margin-left: auto; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; align-self: center }
+.cm-banda { display: flex; gap: 10px 20px; align-items: center; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 9px 16px; margin-bottom: 14px; box-shadow: var(--umbra) }
+.cm-cifre { display: flex; gap: 20px; flex: none }
+.cm-cifre > div { display: flex; flex-direction: column; cursor: default }
+.cm-cifre b { font-family: var(--mono); font-size: 19px; font-weight: 500; line-height: 1.15; white-space: nowrap }
+.cm-cifre b small { font-size: 11px; color: var(--muted); font-weight: 400 }
+.cm-cifre span { font-size: 11px; color: var(--muted); white-space: nowrap }
+.cm-chipuri { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; min-width: 0; border-left: 1px solid var(--line); padding-left: 18px }
+.cm-et { font-size: 11px; color: var(--muted); margin-right: 3px }
+button.cm-chip { font: inherit; padding: 2px 9px; font-size: 12px; line-height: 1.5; border-radius: 999px; background: var(--bg);
+  border: 1px solid var(--line-2); color: var(--ink); cursor: pointer; display: inline-flex; gap: 6px; align-items: baseline; white-space: nowrap }
+button.cm-chip:disabled { cursor: default }
+button.cm-chip b { font-family: var(--mono); font-weight: 500; font-size: 11.5px }
+button.cm-chip.zero b { color: var(--muted) }
+button.cm-chip.ref { border-color: var(--accent); background: var(--accent-tint) }
+button.cm-chip.activ { background: var(--accent); border-color: var(--accent); color: var(--on-accent) }
+button.cm-chip.activ b { color: inherit }
+/* numele băncii nu se rupe în mijlocul cuvântului în tabelele 2.4 */
+.cm-sec td .cl-banca .nm { overflow-wrap: normal; hyphens: manual }
+
+/* paginare */
+.pagini { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 12px; font-size: 12px; color: var(--muted) }
+
+/* distribuția pe stele: o bară stivuită 5★ → 1★ */
+.stele-bar { display: flex; height: 12px; border-radius: 3px; overflow: hidden; background: var(--bg); border: 1px solid var(--line) }
+.stele-bar span { display: block; height: 100% }

@@ -20,9 +20,9 @@ export const PAGINI: Grup[] = [
     chei: [
       { id: 'overview', pdf: '', mutata: true },
       { id: 'produse', pdf: '2.1', mutata: true },
-      { id: 'rate', pdf: '2.2', mutata: false },
-      { id: 'mobil', pdf: '2.3', mutata: false },
-      { id: 'campanii', pdf: '2.4', mutata: false },
+      { id: 'rate', pdf: '2.2', mutata: true },
+      { id: 'mobil', pdf: '2.3', mutata: true },
+      { id: 'campanii', pdf: '2.4', mutata: true },
       { id: 'retea', pdf: '2.5', mutata: false },
       { id: 'context', pdf: '2.6', mutata: false },
     ],
