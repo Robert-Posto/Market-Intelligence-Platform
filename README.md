@@ -258,9 +258,11 @@ cu „merge". S-a întâmplat de două ori, ambele din același motiv: un ghilim
 ### Interfața nouă (React, în lucru pe ramura `stack-scc`)
 
 Trecerea la stack-ul Sales Command Center (02.10.2026): `web/` (React 18,
-Vite 6, Ant Design 5) și `shared/` (schemele Zod ale API-ului). Sunt mutate
-Overview și 2.1; celelalte pagini trimit la aplicația veche. Datele vin tot de
-la `app/server.py`, prin proxy-ul Vite.
+Vite 6, Ant Design 5) și `shared/` (schemele Zod ale API-ului). La 05.10.2026
+sunt mutate toate cele 12 pagini, harta (`#/harta?banca=…`, MapLibre) și
+vizualizatorul PDF (`#/document?u=…&p=…&q=…`, PDF.js); aplicația veche din
+`app/` rămâne neatinsă. Datele vin tot de la `app/server.py`, prin proxy-ul Vite;
+colectarea rămâne în Python.
 
 ```bash
 npm install                 # Node 20+
@@ -270,7 +272,7 @@ npm run typecheck && npm run build   # înainte de commit, după orice modificar
 ```
 
 Textele sunt în `web/src/i18n/dict/*.ts`, câte o pereche `[română, engleză]`
-pe cheie (1.137 la 02.10.2026). Datele băncilor (servicii, citate, recenzii)
+pe cheie (1.137 la 02.10.2026, plus cele adăugate la mutarea paginilor). Datele băncilor (servicii, citate, recenzii)
 nu se traduc: sunt dovezi. Rulările manuale nu se pot porni din `npm run dev`:
 serverul refuză cererile de pe alt port, iar verificarea nu se slăbește.
 

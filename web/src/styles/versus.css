@@ -1,1 +1,78 @@
 /* Stilurile zonei „versus”; global.css rămâne pentru ce e comun. */
+
+/* ---- bara de sus: băncile alese și selectorul ---- */
+.vs-alege { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; align-self: center }
+.vs-alege .ant-tag.pill { font-size: 12px; margin-inline-end: 0 }
+/* fereastra selectorului stă în <body> (Popover), nu sub .vs */
+.vs-pop { width: 316px }
+.vs-pop .ant-input-affix-wrapper.cauta { min-width: 0; width: 100% }
+.vs-opt { max-height: 300px; overflow: auto; display: flex; flex-direction: column; gap: 6px; margin-top: 8px }
+.vs-opt .ant-checkbox-wrapper { margin-inline-start: 0; font-size: 12.5px }
+.vs-pop-jos { display: flex; gap: 8px; align-items: center; margin-top: 8px; font-size: 12px }
+.vs-pop-jos .ant-btn { margin-left: auto }
+
+/* casetele de sus: „fără date la Libra” e informativă, nu un scor */
+.kpi.vs-kpi > div.inactiv { border-style: dashed; border-color: var(--line-2); background: none; box-shadow: none }
+
+/* ---- Versus: carduri sus, apoi caracteristici grupate; fără derulare orizontală,
+   ca să meargă capul fix al secțiunilor (overflow pe un părinte îl oprește) ---- */
+.vs { overflow: visible }
+.vs-bara { display: grid; grid-template-columns: var(--vsc); background: var(--bg); border-bottom: 1px solid var(--line); align-items: stretch }
+.vs-cap0 { padding: 12px 10px; display: flex; align-items: flex-end; font-size: 11.5px; color: var(--muted); letter-spacing: .02em;
+  text-transform: uppercase }
+.vs-card { border-left: 1px solid var(--line); padding: 12px 11px 11px; position: relative; display: flex; flex-direction: column; gap: 2px }
+.vs-card.ref { background: var(--accent-tint) }
+.vs-tag { position: absolute; right: 9px; top: 9px; font-size: 9px; text-transform: uppercase; letter-spacing: .04em; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: 1px 6px }
+.vs-logo { height: 30px; display: flex; align-items: center; margin-bottom: 5px }
+.vs-logo img { max-height: 30px; max-width: 104px; object-fit: contain }
+.vs-init { font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--muted); border: 1px solid var(--line); border-radius: 7px;
+  padding: 2px 8px }
+.vs-nume { font-size: 13.5px; font-weight: 600; line-height: 1.25 }
+.vs-cifre { margin-top: 8px; display: flex; flex-direction: column; gap: 5px }
+.vs-cifre b { font-family: var(--mono); font-size: 13px; font-weight: 500; display: block }
+.vs-cifre span { display: block; font-size: 9.5px; color: var(--muted); line-height: 1.3 }
+@media (max-width: 760px) { .vs-cifre { display: none } }
+
+/* secțiunile: Collapse AntD fără chenar; capul (antetul Collapse) fix sub bara de filtre */
+.ant-collapse.vs-sec { margin-top: 16px; border-radius: 0 }
+.ant-collapse.vs-sec > .ant-collapse-item > .ant-collapse-header { position: sticky; top: var(--sub-bara, 40px); z-index: 4; padding: 0;
+  cursor: pointer; border-radius: 0 }
+.ant-collapse.vs-sec > .ant-collapse-item > .ant-collapse-header > .ant-collapse-header-text { flex: 1; min-width: 0 }
+.ant-collapse.vs-sec > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box { padding: 0 !important }
+.vs-sec-cap { display: grid; grid-template-columns: var(--vsc); align-items: end; background: var(--surface); border-radius: 8px 8px 0 0;
+  border: 1px solid var(--line); border-bottom: none }
+.vs-sec-cap .t { font-family: var(--serif); font-size: 15px; padding: 9px 10px; line-height: 1.5 }
+.vs-sec-cap .t::before { content: "▸ "; color: var(--muted); font-size: 11px }
+.ant-collapse-item-active > .ant-collapse-header .vs-sec-cap .t::before { content: "▾ " }
+.vs-sec-cap .t span { display: block; font-family: var(--mono); font-size: 9.5px; color: var(--muted); margin-top: 2px }
+.vs-sec-cap .c { font-family: var(--mono); font-size: 10.5px; color: var(--muted); padding: 9px 8px; text-align: right;
+  border-left: 1px solid var(--line); line-height: 1.5 }
+.vs-sec-cap .c.ref { color: var(--accent); font-weight: 600 }
+.ant-collapse.vs-sec > .ant-collapse-item:not(.ant-collapse-item-active) .vs-sec-cap { border-bottom: 1px solid var(--line); border-radius: 8px }
+.vs-rand { display: grid; grid-template-columns: var(--vsc); border: 1px solid var(--line); border-top: none; align-items: center }
+.vs-rand.alt { background: var(--surface) }
+.vs-rand:last-child { border-radius: 0 0 8px 8px }
+.vs-lab { padding: 9px 10px; min-width: 0 }
+.vs-lab b { display: block; font-size: 12.5px; font-weight: 600; line-height: 1.3 }
+.vs-lab span { display: block; font-size: 10.5px; color: var(--muted); line-height: 1.4; margin-top: 2px }
+.vs-lab em { display: block; font-size: 9.5px; color: var(--warn); font-style: normal; margin-top: 3px }
+.vs-cel { padding: 7px 8px; border-left: 1px solid var(--line); text-align: right; min-width: 0 }
+.vs-cel.gol { color: var(--muted); text-align: center; font-size: 12px }
+
+/* celula de comparație: valoarea, la ce se aplică, câte variante mai sunt */
+.vs .celula { cursor: pointer; border-radius: 6px; display: block; padding: 2px 3px; text-align: right; position: relative; min-width: 0 }
+.vs .celula:hover { background: var(--accent-tint); outline: 1px solid var(--accent) }
+.vs .v-pref { display: block; color: var(--muted); font-size: 9.5px; line-height: 1.2 }
+.vs .v-gratis { color: var(--ok); opacity: .85 }
+.vs .v-num { font-family: var(--mono); font-size: 13.5px; font-weight: 500; white-space: nowrap }
+.vs .v-ctx { display: block; color: var(--muted); font-size: 10px; line-height: 1.3; margin-top: 1px; font-weight: 400; max-width: 15ch;
+  margin-left: auto; overflow-wrap: anywhere }
+.vs .v-n { position: absolute; left: 5px; top: 4px; color: var(--muted); font-size: 9.5px; font-family: var(--mono); border: 1px solid var(--line);
+  border-radius: 999px; padding: 0 4px; line-height: 1.45 }
+.vs .best .v-num { font-weight: 700; color: var(--ink) }
+.vs .best .v-num::before { content: "★ "; color: var(--aur); font-size: .9em }
+/* Libra e cea mai slabă pe rând: fără fundal, o etichetă cu contur — pereche
+   cu „cel mai bun” (plină). Fundalul bej-gălbui de înainte păta tabelul. */
+.vs-slab { display: block; width: max-content; margin: 4px 0 0 auto; padding: 0 7px; border-radius: 999px; border: 1px solid var(--accent);
+  color: var(--accent); font: 600 9px "IBM Plex Sans", sans-serif; text-transform: uppercase; letter-spacing: .04em }

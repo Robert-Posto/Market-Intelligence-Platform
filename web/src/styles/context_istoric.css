@@ -1,1 +1,36 @@
 /* Stilurile zonei „context_istoric”; global.css rămâne pentru ce e comun. */
+
+/* scumpire = portocaliu (rău pentru client), ieftinire = verde; `.sus` / `.jos` din aplicația veche */
+.ci-sus { color: var(--warn); font-weight: 600 }
+.ci-jos { color: var(--ok); font-weight: 600 }
+
+/* ---- 2.6 Context de piață ---- */
+.ci-filtre { margin-bottom: 14px }
+/* săgeata din pivot, lipită de cifră */
+.ci-sageata { font-size: 10px; margin-left: 3px }
+
+/* ---- Istoric & schimbări ---- */
+/* casetele pe bancă: clic = doar banca, încă un clic = toate */
+.ci-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 11px }
+button.ci-tile { font: inherit; color: inherit; text-align: left; background: none; border: 1px solid var(--line); border-radius: 10px;
+  padding: 13px; cursor: pointer; width: 100%; display: flex; flex-direction: column; justify-content: flex-start }
+button.ci-tile:hover { border-color: var(--line-2) }
+button.ci-tile.ales { outline: 2px solid var(--accent) }
+.ci-tile > span { display: block }
+.ci-tile .nm { font-weight: 600; font-size: 12.5px }
+.ci-tile .n { font-family: var(--mono); font-size: 22px; font-weight: 500 }
+.ci-tile .l { color: var(--muted); font-size: 11.5px; margin-top: 2px }
+
+/* grupurile pe bancă: capul în chenar, ca <summary> din aplicația veche, tabelul în secțiunea de dedesubt */
+.ant-collapse.ci-grupuri > .ant-collapse-item { margin-bottom: 12px; border: 0 }
+.ant-collapse.ci-grupuri > .ant-collapse-item > .ant-collapse-header { background: var(--surface); border: 1px solid var(--line);
+  border-radius: 11px; padding: 11px 16px; align-items: center }
+.ant-collapse.ci-grupuri .ant-collapse-content-box { padding: 0 !important }
+.ant-collapse.ci-grupuri .ant-collapse-content-box > section { margin: 6px 0 0 }
+.ci-grup-cap { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center }
+.ci-grup-cap .mono { font-size: 12px }
+
+/* BCR are 729 de schimbări: tabelul derulează în chenarul lui (70vh, ca `.wrap` din aplicația veche), cu antetul fix */
+.ci-tabel .ant-table-content { max-height: 70vh; overflow: auto }
+.ci-tabel .ant-table-thead > tr > th { position: sticky; top: 0; z-index: 2 }
+.ci-tabel td .serv { font-weight: 500 }

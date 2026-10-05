@@ -226,3 +226,6 @@ button.cm-chip.activ b { color: inherit }
 /* rândurile clicabile (Tabel cu onRand) și cel ales */
 .ant-table-wrapper.t tr.clic > td { cursor: pointer }
 .ant-table-wrapper.t tr.ales > td { background: var(--warn-tint) }
+
+/* caseta KPI fără date: chenar punctat, fără fundal (Versus „Fără date la Libra”) */
+.kpi > div.inactiv { border-style: dashed; border-color: var(--line-2); background: none; box-shadow: none }

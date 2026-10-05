@@ -1,4 +1,5 @@
-import { createContext, Fragment, useContext, useMemo, useState, type ReactNode } from 'react'
+import { Fragment, useContext, useMemo, useState, type ReactNode } from 'react'
+import { LangContext } from './context'
 import { DICT } from './dict'
 
 /**
@@ -28,7 +29,7 @@ function inlocuieste(text: string, params?: Params): string {
   return text.replace(/\{([a-zA-Z0-9_]+)\}/g, (m, k: string) => (k in params ? String(params[k]) : m))
 }
 
-interface LangState {
+export interface LangState {
   lang: Lang
   setLang: (l: Lang) => void
   /** textul simplu, cu parametrii puși în locul lui {nume} */
@@ -39,7 +40,6 @@ interface LangState {
   locale: string
 }
 
-const LangContext = createContext<LangState>(null as never)
 
 export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(citesteLimba)
@@ -83,6 +83,11 @@ export function useLang(): LangState {
  */
 const RE_TAG = /<(\/?)(b|i|br|a|span|mark|small|code)((?:\s+[a-z-]+="[^"]*")*)\s*\/?>/g
 
+/** Există cheia în dicționar? Pentru etichetele construite din date (conceptele `camp.*`), fără avertisment în consolă. */
+export function areCheie(k: string): k is DictKey {
+  return k in DICT
+}
+
 export function T({ k, params }: { k: DictKey; params?: Record<string, ReactNode> }) {
   const { lang } = useLang()
   const intrare = DICT[k] as readonly [string, string] | undefined
@@ -90,9 +95,15 @@ export function T({ k, params }: { k: DictKey; params?: Record<string, ReactNode
   return <>{randeaza(text, params)}</>
 }
 
-function atribute(s: string): Record<string, string> {
+/** Atributele etichetei; parametrii text/număr se pun și aici (href="{url}"), cei React nu pot. */
+function atribute(s: string, params?: Record<string, ReactNode>): Record<string, string> {
   const out: Record<string, string> = {}
-  for (const m of s.matchAll(/([a-z-]+)="([^"]*)"/g)) out[m[1]!] = m[2]!
+  for (const m of s.matchAll(/([a-z-]+)="([^"]*)"/g)) {
+    out[m[1]!] = m[2]!.replace(/\{([a-zA-Z0-9_]+)\}/g, (orig, k: string) => {
+      const v = params?.[k]
+      return typeof v === 'string' || typeof v === 'number' ? String(v) : orig
+    })
+  }
   return out
 }
 
@@ -130,7 +141,7 @@ function randeaza(text: string, params?: Record<string, ReactNode>): ReactNode[]
       const nod = stiva.length > 1 ? stiva.pop()! : null
       if (nod) stiva[stiva.length - 1]!.copii.push(element(nod, `e${n++}`))
     } else {
-      stiva.push({ tag: tag!, attrs: atribute(m[3] ?? ''), copii: [] })
+      stiva.push({ tag: tag!, attrs: atribute(m[3] ?? '', params), copii: [] })
     }
   }
   stiva[stiva.length - 1]!.copii.push(...cuParametri(text.slice(ultim), params, `t${n++}`))
@@ -143,7 +154,15 @@ function randeaza(text: string, params?: Record<string, ReactNode>): ReactNode[]
 
 function element(nod: Nod, key: string): ReactNode {
   const { tag, attrs, copii } = nod
-  if (tag === 'a') return <a key={key} href={attrs.href}>{copii}</a>
+  if (tag === 'a') {
+    // doar adrese web sau relative: un parametru `javascript:` nu devine legătură executabilă
+    const href = attrs.href && /^(https?:|#|\/)/i.test(attrs.href) ? attrs.href : undefined
+    return (
+      <a key={key} href={href} target={attrs.target} rel={attrs.target === '_blank' ? 'noopener' : attrs.rel}>
+        {copii}
+      </a>
+    )
+  }
   if (tag === 'span') return <span key={key} className={attrs.class}>{copii}</span>
   if (tag === 'b') return <b key={key}>{copii}</b>
   if (tag === 'i') return <i key={key}>{copii}</i>

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import AppShell from './layout/AppShell'
 import Overview from './pages/Overview'
@@ -12,17 +13,18 @@ import Versus from './pages/Versus'
 import Banca from './pages/Banca'
 import SursePagina from './pages/SursePagina'
 import Coada from './pages/Coada'
-import Harta from './pages/Harta'
-import Document from './pages/Document'
-import InLucru from './pages/InLucru'
-import { TOATE } from './pagini'
+
+/* maplibre-gl și pdfjs-dist sunt aproape jumătate din pachet (2,6 MB într-un singur fișier la 05.10.2026):
+   se încarcă doar când se deschide harta sau un document, nu pe fiecare pagină */
+const Harta = lazy(() => import('./pages/Harta'))
+const Document = lazy(() => import('./pages/Document'))
 
 export default function App() {
   return (
     <Routes>
       {/* harta și vizualizatorul PDF ocupă tot ecranul, ca în aplicația veche (harta.html, pdf.html) */}
-      <Route path="/harta" element={<Harta />} />
-      <Route path="/document" element={<Document />} />
+      <Route path="/harta" element={<Suspense fallback={null}><Harta /></Suspense>} />
+      <Route path="/document" element={<Suspense fallback={null}><Document /></Suspense>} />
       <Route element={<AppShell />}>
         <Route path="/overview" element={<Overview />} />
         <Route path="/produse" element={<Produse />} />
@@ -36,9 +38,6 @@ export default function App() {
         <Route path="/banca" element={<Banca />} />
         <Route path="/surse" element={<SursePagina />} />
         <Route path="/coada" element={<Coada />} />
-        {TOATE.filter((p) => !p.mutata).map((p) => (
-          <Route key={p.id} path={`/${p.id}`} element={<InLucru id={p.id} />} />
-        ))}
         {/* pagina 2.7 s-a mutat în 2.3 (ca în aplicația veche) */}
         <Route path="/sentiment" element={<Navigate to="/mobil?la=recenzii" replace />} />
         <Route path="*" element={<Navigate to="/overview" replace />} />

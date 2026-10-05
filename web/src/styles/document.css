@@ -1,1 +1,43 @@
-/* Stilurile zonei „document”; global.css rămâne pentru ce e comun. */
+/* Stilurile zonei „document”; global.css rămâne pentru ce e comun.
+   Vizualizatorul PDF (#/document) ocupă tot ecranul, fără meniu, ca pdf.html:
+   antetul vișiniu al barei laterale, bara cu citatul și navigarea, foile. */
+.doc-pagina { height: 100%; display: flex; flex-direction: column; background: var(--bg); color: var(--ink) }
+
+.doc-antet { background: linear-gradient(90deg, var(--nav), var(--nav-2)); color: var(--nav-ink); padding: 11px 18px;
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center }
+.doc-antet h1 { font-family: var(--serif); font-size: 16px; line-height: 1.5; margin: 0; font-weight: 600 }
+.doc-antet h1 i { color: var(--nav-slab); font-style: italic }
+.doc-antet .sp { flex: 1 }
+.doc-antet .ant-btn { font-size: 12.5px }
+
+.doc-bara { background: var(--surface); border-bottom: 1px solid var(--line); padding: 9px 18px; display: flex; flex-wrap: wrap;
+  gap: 10px 16px; align-items: center; font-size: 12.5px }
+.doc-bara .cit { flex: 1; min-width: 220px; color: var(--muted) }
+/* același galben ca evidențierea din pagină; textul rămâne închis și în tema întunecată,
+   unde --ink e deschis și citatul nu se mai citea pe galben */
+.doc-bara .cit b { color: #2a1f22; background: #ffe9a8; padding: 0 3px; border-radius: 2px }
+.doc-bara .nav { display: flex; gap: 6px; align-items: center }
+.doc-bara .ant-btn { font-size: 12.5px }
+.doc-bara .pg { font-family: var(--mono) }
+
+.doc-zona { flex: 1; min-height: 0; overflow: auto; padding: 18px; display: flex; flex-direction: column; align-items: center; gap: 16px }
+.doc-foi { flex: none; display: flex; flex-direction: column; align-items: center; gap: 16px }
+.doc-foi[hidden] { display: none }
+.doc-foaie { position: relative; flex: none; box-shadow: 0 2px 14px rgba(58, 22, 28, .14); background: #fff; border-radius: 3px }
+.doc-foaie canvas { display: block; border-radius: 3px }
+/* Evidențierea: dreptunghiuri desenate peste pagină, din pozițiile reale ale
+   textului date de PDF.js. Deasupra stratului de text, dar fără să oprească
+   selecția: textul de sub ea se poate copia. */
+.doc-marcaj { position: absolute; background: rgba(255, 213, 74, .45); outline: 1.5px solid rgba(214, 158, 0, .85); border-radius: 2px;
+  pointer-events: none; mix-blend-mode: multiply }
+
+.doc-stare { padding: 22px; color: var(--muted); font-size: 13px; text-align: center; max-width: 62ch; line-height: 1.6;
+  overflow-wrap: anywhere }
+/* doar titlul stării pe rând separat; citatul din fraza de sub el rămâne în text */
+.doc-stare > b:first-child { color: var(--ink); display: block; margin-bottom: 5px }
+.doc-stare b { color: var(--ink) }
+/* numele parametrului: cu stilul implicit, o singură literă `u` nu se distingea în frază */
+.doc-stare code { font-family: var(--mono); font-size: 12px; color: var(--ink); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 4px; padding: 0 4px }
+/* subliniat ca în pdf.html: în mijlocul frazei, fără linie nu se vedea că e legătură (AntD scoate sublinierea) */
+.doc-stare a { color: var(--accent); text-decoration: underline }

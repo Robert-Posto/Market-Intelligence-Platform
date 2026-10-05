@@ -1,1 +1,61 @@
-/* Stilurile zonei „surse_coada”; global.css rămâne pentru ce e comun. */
+/* Stilurile zonei „surse_coada” (Surse și Coada de verificare); global.css rămâne pentru ce e comun.
+   Totul sub `.sc` sau cu prefixul `sc-`, ca să nu atingă alte pagini: CSS-ul încărcat de Vite e global. */
+
+/* titlul secțiunilor pliate: nota de lângă h2 e text obișnuit, nu serif, ca în aplicația veche */
+.sc .ant-collapse.pliat h2 .note { font-family: "IBM Plex Sans", system-ui, sans-serif; font-weight: 400; margin-left: 4px }
+
+/* ---- Surse: casetele de bilanț (clic = filtrul pe stare) ---- */
+.sc-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 11px }
+/* buton, ca să meargă și din tastatură; conținutul sus, nu centrat cum pune browserul într-un buton întins pe grilă */
+button.sc-tile { font: inherit; color: inherit; text-align: left; background: none; border: 1px solid var(--line); border-radius: 10px;
+  padding: 13px; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-start }
+button.sc-tile:hover { border-color: var(--line-2) }
+button.sc-tile.activ { outline: 2px solid var(--accent) }
+.sc-tile .n { display: block; font-family: var(--mono); font-size: 22px; font-weight: 500 }
+.sc-tile .e { display: block; font-weight: 600; font-size: 12.5px; margin-top: 2px }
+.sc-tile .l { display: block; color: var(--muted); font-size: 11.5px; margin-top: 2px }
+
+/* pastilele cu motivele eșecului: clic = filtrul, cea aleasă încercuită */
+.sc-motive { margin: 12px 0 0; max-width: none }
+.sc-motiv { cursor: pointer; display: inline-block }
+.sc-motiv .ant-tag.pill { cursor: pointer }
+.sc-motiv.activ .ant-tag.pill { outline: 2px solid var(--warn) }
+
+/* acoperirea pe bancă: bara verde, procentul dedesubt (ca .stele-bar din tabelul vechi) */
+.sc .stele-bar span.sc-plin { background: var(--ok) }
+.sc-procent { font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-left: 6px }
+
+/* antetele pe un rând, ca în tabelele vechi („ÎNCERCATE, FĂRĂ DATE”, „ANTET PIERDUT”) */
+.sc .ant-table-wrapper.t .ant-table-thead > tr > th { white-space: nowrap }
+/* tabelul surselor la 1440 px: pastilele din „Stare” („descoperit, peste plafonul pe produs”) nu se rup, iar
+   numele băncii se poate rupe oriunde (global.css), deci „Bank of China (CEE) Ltd” ajungea o literă pe rând,
+   40 de rânduri. Numele băncii are o lățime minimă, iar numele fișierului (până la 70 de caractere) se rupe
+   el, ca tabelul să încapă în chenar; rolul („pagină de produs”) rămâne pe un rând. */
+.sc-surse .ant-table-wrapper.t td .cl-banca { min-width: 150px }
+.sc-surse .ant-table-wrapper.t td.sc-fisier { overflow-wrap: anywhere }
+.sc .ant-table-wrapper.t td.sc-rol { white-space: nowrap }
+.sc .ant-table-wrapper.t td .pill, .sc .ant-table-wrapper.t td .ant-tag.pill { white-space: nowrap }
+.sc .ant-table-wrapper.t td.mono, .sc .ant-table-wrapper.t th.mono { font-family: var(--mono); font-size: 12px }
+
+/* bifa din bara de filtre stă pe linia câmpurilor, nu a etichetelor de deasupra lor */
+.sc .bara-fixa .ant-checkbox-wrapper.sc-bifa { align-self: end; padding-bottom: 5px; font-size: 12.5px; color: var(--ink); margin-inline-start: 0 }
+.sc-n { margin-left: auto; align-self: center }
+
+/* ---- Coada: matricea bancă × motiv (clic pe cifră = rândurile respective) ---- */
+/* golul „·” la mijloc, ca în tabelul vechi; coloanele cu cifre au alinierea la dreapta pusă inline de AntD */
+.sc-matrice .ant-table-wrapper.t td.gol { text-align: center !important }
+.sc .ant-table-wrapper.t td.mc.best b { font-weight: 700; color: var(--ink) }
+.sc .ant-table-wrapper.t td.mc.best b::before { content: "★ "; color: var(--aur); font-size: .9em }
+
+/* grupele pe bancă și serviciu folosesc tiparul sertarului cu dovezi (.grupe, .g-cap, .r din global.css);
+   citatul de pe rând are cifra marcată ca în sertar */
+.sc .r .rc mark { background: var(--warn-tint); color: var(--ink); font-weight: 600; padding: 0 2px; border-radius: 2px }
+.sc .r .rc .ant-tag.pill { margin-left: 4px }
+
+/* seria de valori a aceluiași serviciu: cele din coadă marcate */
+.sc-serie { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; padding: 8px 11px; background: var(--bg);
+  border-bottom: 1px solid var(--line); font-size: 11px }
+.sc-serie .et { color: var(--muted) }
+.sc-serie .v { font-family: var(--mono); font-size: 11px; padding: 1px 6px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface); cursor: default }
+.sc-serie .v.aici { border-color: var(--warn); background: var(--warn-tint); color: var(--warn); font-weight: 600 }
