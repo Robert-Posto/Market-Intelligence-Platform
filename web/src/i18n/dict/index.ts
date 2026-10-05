@@ -18,6 +18,7 @@ import { extra_versus } from './extra_versus'
 import { extra_banca } from './extra_banca'
 import { extra_surse_coada } from './extra_surse_coada'
 import { extra_document } from './extra_document'
+import { android } from './android'
 
 export const DICT = {
   ...comun,
@@ -39,4 +40,5 @@ export const DICT = {
   ...extra_banca,
   ...extra_surse_coada,
   ...extra_document,
+  ...android,
 } as const

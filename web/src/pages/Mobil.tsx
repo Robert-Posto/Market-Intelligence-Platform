@@ -9,6 +9,7 @@ import { Despre, EtichetaBanca, Eroare, SeIncarca } from '../components/comune'
 import { Tabel, type Coloana } from '../components/Tabel'
 import { T, useLang } from '../i18n'
 import { num } from '../util/format'
+import Android from './rate_mobil/android/Android'
 import Capturi from './rate_mobil/Capturi'
 import { BaraRecenzii, ListaRecenzii, type FiltruRecenzii } from './rate_mobil/Recenzii'
 import '../styles/rate_mobil.css'
@@ -22,8 +23,8 @@ const curat = (o: Record<string, string>) => Object.fromEntries(Object.entries(o
  * 2.3 Aplicații mobile și recenzii. Pagina 2.7 (Sentiment) s-a mutat aici, la
  * cererea lui Robert (25.09): și aplicația, și recenziile vin din același loc
  * (pagina publică din store), iar întrebările merg împreună („ce notă are
- * aplicația și de ce se plâng oamenii”). Un comutator iOS / Android; Android nu
- * e încă colectat.
+ * aplicația și de ce se plâng oamenii”). Un comutator iOS / Android; Android vine
+ * din analiza statică a APK-urilor (05.10.2026), nu din Google Play: fără note și recenzii.
  */
 export default function Mobil() {
   const [sp, setSp] = useSearchParams()
@@ -37,20 +38,6 @@ export default function Mobil() {
       </div>
       {plat === 'android' ? <Android /> : <Ios />}
     </>
-  )
-}
-
-function Android() {
-  const { t } = useLang()
-  return (
-    <section>
-      <div className="gol-stare">
-        <b>{t('mobil.android_titlu')}</b>
-        {t('mobil.android_necolectat')}
-      </div>
-      <h4 className="mb-h4">{t('mobil.ce_va_contine')}</h4>
-      <p className="note">{t('mobil.android_descriere')}</p>
-    </section>
   )
 }
 

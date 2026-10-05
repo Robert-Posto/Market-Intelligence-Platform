@@ -1,0 +1,77 @@
+/* 2.3, ramura Android (pages/rate_mobil/android/); global.css rămâne pentru ce e comun.
+   Fișierul se încarcă pentru toată aplicația (îl importă Android.tsx), deci regulile stau sub .an-*. */
+
+.an-bara .an-n { align-self: center; margin-left: auto }
+.an-nowrap { white-space: nowrap }
+.an-sub { margin-top: 2px; font-size: 11px }
+.an-ver { font-size: 10.5px }
+.an-sec .ant-table-wrapper.t .ant-tag.pill { white-space: nowrap }
+
+/* 24 de rânduri și până la 16 coloane: tabelul derulează în chenarul lui, cu antetul fix (ca istoricul) */
+.an-tabel .ant-table-content { max-height: 70vh; overflow: auto }
+.an-tabel .ant-table-thead > tr > th { position: sticky; top: 0; z-index: 2 }
+/* matricele (13–16 coloane) derulează și pe orizontală: aplicația rămâne la vedere, cu fundalul rândului ei */
+.an-tabel .ant-table-wrapper.t .ant-table-tbody > tr > td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface) }
+.an-tabel .ant-table-wrapper.t .ant-table-thead > tr > th:first-child { left: 0; z-index: 3 }
+.an-tabel .ant-table-wrapper.t .ant-table-tbody > tr.libra > td:first-child { background: var(--accent-tint) }
+.an-tabel .ant-table-wrapper.t .ant-table-tbody > tr.ant-table-row:hover > td:first-child { background: var(--accent-tint) }
+.an-captura { display: inline-block; min-width: 9ch; max-width: 14ch; font-size: 12px; line-height: 1.35; cursor: default }
+/* matricele: celulele la mijloc, antetele scurte nu se rup literă cu literă */
+.an-mx .ant-table-wrapper.t td.an-c, .an-mx .ant-table-wrapper.t th { text-align: center }
+.an-mx .ant-table-wrapper.t th:first-child { text-align: left }
+.an-mx .ant-table-wrapper.t th { min-width: 64px }
+/* numele lungi („Banca Română de Credite și Investiții (BRCI)”) se rup pe rânduri, nu lățesc coloana */
+.an-tabel .ant-table-wrapper.t td:first-child .cl-banca { min-width: 160px }
+/* matricele derulează oricum pe orizontală: acolo numele băncii are loc pe 1–2 rânduri */
+.an-mx .ant-table-wrapper.t td:first-child .cl-banca { min-width: 200px }
+
+/* verdictele: formă și culoare (bifă plină, bifă în contur, liniuță, semn de întrebare) */
+.an-v { display: inline-block; width: 22px; height: 22px; line-height: 20px; text-align: center; border-radius: 999px;
+  font: 600 11px var(--mono); border: 1px solid transparent; cursor: default }
+.an-v.sigur { background: var(--ok); color: var(--surface) }
+.an-v.probabil { background: var(--ok-tint); color: var(--ok); border-color: var(--ok) }
+.an-v.absent { color: var(--muted); border-color: var(--line-2) }
+.an-v.neconcludent { color: var(--muted); border: 1px dashed var(--line-2) }
+.an-leg { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12px; color: var(--muted); margin: 0 0 12px }
+.an-leg > span { display: inline-flex; gap: 6px; align-items: center }
+.an-leg b { color: var(--ink); font-weight: 600 }
+
+/* bifele din permisiuni și portofele */
+.an-da { color: var(--ink); font-weight: 600; white-space: nowrap }
+.an-fundal { font: 400 10px var(--mono); color: var(--warn) }
+.cap-d.an-semnal.sigur { color: var(--ok); opacity: 1 }
+
+.an-pills { display: inline-flex; flex-wrap: wrap; gap: 4px 0 }
+.an-avert { margin: 0 0 14px }
+
+/* explicația secțiunii și „Despre date” pe același rând până se deschid (ca .cs-note la 2.4) */
+.an-note { display: flex; flex-wrap: wrap; align-items: flex-start; column-gap: 18px }
+.an-note > .ant-collapse.despre { flex: 0 0 auto; max-width: 100% }
+.an-leg-r { display: block; margin-top: 4px }
+
+/* schimbările: un bloc pe aplicație */
+.an-sch { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px 4px; margin-bottom: 12px }
+.an-sch-cap { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin-bottom: 6px; cursor: pointer }
+.an-sch-cap:hover b { text-decoration: underline }
+
+/* listele (biblioteci, permisiuni, profil): mono, pe coloane când încap */
+ul.an-lista { list-style: none; margin: 0; padding: 0; font: 11.5px/1.65 var(--mono) }
+ul.an-lista li { overflow-wrap: anywhere; break-inside: avoid }
+ul.an-lista.an-col { columns: 2 300px; column-gap: 24px }
+ul.an-lista.an-trk { font-family: inherit; font-size: 12.5px }
+ul.an-lista.an-trk li { padding: 3px 0 }
+ul.an-lista .ant-tag.pill { font-size: 9.5px; line-height: 1.4; padding: 0 5px }
+.an-sec ul.an-lista { max-width: 72ch }
+.ant-btn.an-mai { padding: 0; height: auto; font-size: 11.5px }
+.an-cutie { max-height: 50vh; overflow: auto; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px }
+
+/* sertarul */
+dl.an-fapte { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px 16px; margin: 4px 0 14px }
+dl.an-fapte dt { font: 500 10px var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--muted) }
+dl.an-fapte dd { margin: 2px 0 0; font-size: 12.5px; overflow-wrap: anywhere }
+.callout.an-nota { margin-bottom: 12px; border-color: var(--line-2); background: var(--bg) }
+.an-corp { padding: 10px 11px 12px }
+.an-d-sub { margin: 0 0 8px }
+.an-profil + .an-profil { margin-top: 6px }
+.an-profil .mb-h4, .an-ecran .mb-h4 { margin-top: 10px }
+.an-ecran .an-text { white-space: pre-line; font-size: 12.5px; line-height: 1.55; padding: 4px 0; border-top: 1px dotted var(--line); max-width: 75ch }
