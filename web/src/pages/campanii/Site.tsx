@@ -6,6 +6,7 @@ import { useCampanii } from '../../api/campanii'
 import type { Meta } from '../../api/meta'
 import { Banda, BaraSectiune, Chip } from '../../components/Banda'
 import { Despre, EtichetaBanca, Eroare, Pill, SeIncarca } from '../../components/comune'
+import { linkDocument } from '../../components/Dovezi'
 import { Tabel } from '../../components/Tabel'
 import { T, useLang, type DictKey } from '../../i18n'
 import { deLaServer } from '../../i18n/server'
@@ -399,7 +400,7 @@ function CelulaDocumente({ r }: { r: Campanie }) {
     const et = ROL[x.rol] ? t(ROL[x.rol]!) : x.rol
     if (x.format === 'pdf' && x.in_bronze) {
       return lk(
-        `/pdf.html?u=${encodeURIComponent(x.url)}&p=1&q=${encodeURIComponent(x.rol === 'regulament' ? q : '')}`,
+        linkDocument(x.url, 1, x.rol === 'regulament' ? q : ''),
         `📄 ${et}`,
         t(x.fara_text ? 'campanii.site.doc_bronze_scanat_titlu' : 'campanii.site.doc_bronze_titlu', { url: x.url }),
       )

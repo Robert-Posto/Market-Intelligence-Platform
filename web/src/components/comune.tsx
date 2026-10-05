@@ -49,13 +49,13 @@ export function Pill({ tip, title, children }: { tip?: 'ok' | 'amb'; title?: str
 }
 
 /** Explicațiile lungi, pliate: pagina începe cu datele, nu cu textul. */
-export function Despre({ children, titlu }: { children: ReactNode; titlu?: DictKey }) {
+export function Despre({ children, titlu, eticheta }: { children: ReactNode; titlu?: DictKey; eticheta?: ReactNode }) {
   const { t } = useLang()
   return (
     <Collapse
       ghost
       className="despre"
-      items={[{ key: 'd', label: <span className="despre-cap">ⓘ {t(titlu ?? 'comun.despre_date')}</span>, children: <div className="note">{children}</div> }]}
+      items={[{ key: 'd', label: <span className="despre-cap">ⓘ {eticheta ?? t(titlu ?? 'comun.despre_date')}</span>, children: <div className="note">{children}</div> }]}
     />
   )
 }

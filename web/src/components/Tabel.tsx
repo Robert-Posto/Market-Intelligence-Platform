@@ -1,5 +1,5 @@
 import { useMemo, useState, type ReactNode } from 'react'
-import { Table } from 'antd'
+import { Table, Tooltip } from 'antd'
 import type { ColumnType } from 'antd/es/table'
 import { useLang } from '../i18n'
 import { compara } from '../util/format'
@@ -15,6 +15,8 @@ import { compara } from '../util/format'
 export interface Coloana<R> {
   cheie: string
   cap: ReactNode
+  /** explicația din antet, la hover (`titlu` din tabelul vechi) */
+  titlu?: string
   /** valoarea după care se sortează; fără ea, coloana nu e sortabilă */
   s?: (r: R) => unknown
   val: (r: R) => ReactNode
@@ -31,6 +33,7 @@ export function Tabel<R>({
   implicit,
   gol,
   clasaRand,
+  onRand,
 }: {
   randuri: R[]
   coloane: Coloana<R>[]
@@ -39,6 +42,8 @@ export function Tabel<R>({
   implicit?: [string, 'ascend' | 'descend']
   gol?: ReactNode
   clasaRand?: (r: R) => string
+  /** clic pe tot rândul (deschide sertarul, filtrează); un clic pe un link din rând nu ajunge aici */
+  onRand?: (r: R) => void
 }) {
   const { t, locale } = useLang()
   const [sort, setSort] = useState<[string, 'ascend' | 'descend'] | null>(implicit ?? null)
@@ -62,7 +67,7 @@ export function Tabel<R>({
 
   const cols: ColumnType<R>[] = coloane.map((c) => ({
     key: c.cheie,
-    title: c.cap,
+    title: c.titlu ? <Tooltip title={c.titlu}>{c.cap}</Tooltip> : c.cap,
     // fără `align` pe celelalte: AntD îl pune inline și ar bate alinierea din CSS (celulele matricei, la dreapta)
     align: c.num ? 'right' : undefined,
     className: c.num ? 'num' : undefined,
@@ -83,7 +88,8 @@ export function Tabel<R>({
       dataSource={lista}
       rowKey={cheieRand}
       pagination={false}
-      rowClassName={(r) => [libra && libra(r) === 'libra' ? 'libra' : '', clasaRand?.(r) ?? ''].join(' ').trim()}
+      rowClassName={(r) => [libra && libra(r) === 'libra' ? 'libra' : '', onRand ? 'clic' : '', clasaRand?.(r) ?? ''].join(' ').trim()}
+      onRow={onRand ? (r) => ({ onClick: (e) => { if (!(e.target as HTMLElement).closest('a, button')) onRand(r) } }) : undefined}
       onChange={(_p, _f, s) => {
         const x = Array.isArray(s) ? s[0] : s
         setSort(x?.order ? [String(x.columnKey), x.order] : null)

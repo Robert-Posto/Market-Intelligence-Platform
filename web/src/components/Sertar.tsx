@@ -8,6 +8,7 @@ import { T, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { compara, num } from '../util/format'
 import { Pill } from './comune'
+import { CitatEvidentiat, citatUtil, LinkSursa, MOTIV_CHEIE } from './Dovezi'
 import { etDesc, etNume, unitTxt } from './valori'
 
 /**
@@ -33,19 +34,6 @@ export interface CerereSertar {
 
 /** Textul românesc al datelor: „retrasă din ofertă” e scris de bancă, nu de noi. */
 const RE_RETRAS = /retras[ăae]? din ofert|nu mai (sunt|este) disponibil/i
-
-/** Motivele din bază (vederea coada_verificare) -> cheia explicației în dicționar. */
-const MOTIV_CHEIE: Record<string, string> = {
-  'antet de coloana pierdut': 'antet_coloana_pierdut',
-  'prag de suma pierdut': 'prag_suma_pierdut',
-  'sumă implauzibilă': 'suma_implauzibila',
-  'procent implauzibil': 'procent_implauzibil',
-  'extras de LLM: tipul și produsul de confirmat': 'extras_llm',
-  'încredere scăzută': 'incredere_scazuta',
-  'validator: SUSPECT': 'validator_suspect',
-  'peste pragul de plauzibilitate': 'peste_prag_plauzibilitate',
-  'ambiguu, motiv nenotat': 'ambiguu_motiv_nenotat',
-}
 
 export default function Sertar({ cerere, onClose }: { cerere: CerereSertar | null; onClose: () => void }) {
   const { t } = useLang()
@@ -170,35 +158,6 @@ function Corp({ date, camp, unitate }: { date: ValoareDovada[]; camp: string; un
   )
 }
 
-/** Citatul merită arătat doar dacă spune ceva în plus față de cifră (la 2.378 de rânduri din PDF, `citat` era chiar valoarea). */
-function citatUtil(r: ValoareDovada): string | null {
-  const c = (r.citat || '').trim()
-  if (!c) return null
-  return /^[0-9][0-9.,\s]*(lei|euro|eur|usd|ron|%)?$/i.test(c) ? null : c
-}
-
-/**
- * Citatul cu cifra evidențiată: se marchează exact numărul observației, cu
- * marginile verificate, ca „20” să nu se marcheze în „2024”. Altfel citatul
- * rămâne neatins. Citatul e textul documentului și nu se traduce.
- */
-function CitatEvidentiat({ r }: { r: ValoareDovada }) {
-  const c = r.citat ?? ''
-  const t = c.length > 260 ? c.slice(0, 259) + '…' : c
-  if (r.valoare === null || r.valoare === undefined) return <>{t}</>
-  const v = Number(r.valoare)
-  const forme = [...new Set([String(v), v.toFixed(2), v.toFixed(2).replace('.', ',')])]
-  for (const f of forme) {
-    const i = t.indexOf(f)
-    if (i < 0) continue
-    const inainte = i > 0 ? t[i - 1]! : ' '
-    const dupa = t[i + f.length] ?? ' '
-    if (/[0-9]/.test(inainte) || /[0-9.,]/.test(dupa)) continue
-    return <>{t.slice(0, i)}<mark>{f}</mark>{t.slice(i + f.length)}</>
-  }
-  return <>{t}</>
-}
-
 function Rand({ r }: { r: ValoareDovada }) {
   const { t, lang, locale } = useLang()
   const [des, setDes] = useState(false)
@@ -241,51 +200,4 @@ function Rand({ r }: { r: ValoareDovada }) {
       </div>
     </div>
   )
-}
-
-/**
- * Trei nivele de dovadă, arătate diferit fiindcă nu sunt același lucru:
- *   ↗ document   linkul duce la cifra însăși (PDF-ul exact sau pagina web)
- *   ⌂ pagină     pagina de pe care banca publică documentul — NU e documentul
- *   (fără link)  numele fișierului și pagina din PDF, verificabile manual
- * La PDF se deschide vizualizatorul propriu (pdf.html), nu fișierul brut:
- * Chrome ignoră `search=`, iar extensia Adobe pierde `#page=`.
- */
-function LinkSursa({ r }: { r: ValoareDovada }) {
-  const { t } = useLang()
-  if (r.metoda_extractie === 'catalog') {
-    return <Pill title={t('sertar.sursa.catalog_tooltip')}>{t('sertar.sursa.catalog_intern', { fisier: r.fisier || r.sursa || '' })}</Pill>
-  }
-  const pg = r.pagina ? t('sertar.sursa.pagina_abrev', { pagina: r.pagina }) : ''
-  const scurta = (s: string | null) => {
-    const x = String(s || '').replace(/^https?:\/\/(www\.)?/, '')
-    return x.length > 44 ? x.slice(0, 43) + '…' : x
-  }
-  if (r.link) {
-    if (r.tip_sursa === 'document') {
-      const u = `/pdf.html?u=${encodeURIComponent(r.link)}&p=${r.pagina || 1}&q=${encodeURIComponent(r.citat || '')}`
-      return (
-        <Tooltip title={t('sertar.sursa.document_tooltip', { pagina: r.pagina || 1 })}>
-          <a className="sursa" href={u} target="_blank" rel="noopener">↗ {scurta(r.fisier || r.sursa)}{pg} ⤷</a>
-        </Tooltip>
-      )
-    }
-    return (
-      <Tooltip title={t('sertar.sursa.pagina_web_tooltip', { link: r.link })}>
-        <a className="sursa" href={`${r.link}${r.ancora || ''}`} target="_blank" rel="noopener">↗ {scurta(r.sursa)}{r.ancora ? ' ⤷' : ''}</a>
-      </Tooltip>
-    )
-  }
-  const fisier = <Pill title={t('sertar.sursa.fisier_tooltip')}>{scurta(r.fisier || r.sursa)}{pg}</Pill>
-  if (r.link_pagina) {
-    return (
-      <>
-        {fisier}{' '}
-        <Tooltip title={t('sertar.sursa.pagina_banca_tooltip', { motiv: r.pagina_documente_motiv || '' })}>
-          <a className="sursa pagina" href={r.link_pagina} target="_blank" rel="noopener">{t('sertar.sursa.pagina_banca')}</a>
-        </Tooltip>
-      </>
-    )
-  }
-  return fisier
 }

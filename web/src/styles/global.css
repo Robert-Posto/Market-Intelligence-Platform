@@ -216,3 +216,13 @@ button.cm-chip.activ b { color: inherit }
 /* distribuția pe stele: o bară stivuită 5★ → 1★ */
 .stele-bar { display: flex; height: 12px; border-radius: 3px; overflow: hidden; background: var(--bg); border: 1px solid var(--line) }
 .stele-bar span { display: block; height: 100% }
+
+/* starea goală a unei liste după filtre (2.2, 2.3, istoric, coadă) */
+.gol-stare { border: 1px dashed var(--line); border-radius: 11px; padding: 22px; text-align: center; color: var(--muted); font-size: 13px }
+.gol-stare b { color: var(--ink); display: block; margin-bottom: 5px; font-size: 14px }
+/* eticheta plină „cea mai bună” / „prioritar” / „nou”, pereche cu „cea mai slabă” (doar contur) */
+.eticheta-best { display: inline-block; margin-top: 4px; padding: 1px 7px; border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  font: 600 9px "IBM Plex Sans", sans-serif; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap }
+/* rândurile clicabile (Tabel cu onRand) și cel ales */
+.ant-table-wrapper.t tr.clic > td { cursor: pointer }
+.ant-table-wrapper.t tr.ales > td { background: var(--warn-tint) }

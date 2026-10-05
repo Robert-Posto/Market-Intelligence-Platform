@@ -23,23 +23,23 @@ export const PAGINI: Grup[] = [
       { id: 'rate', pdf: '2.2', mutata: true },
       { id: 'mobil', pdf: '2.3', mutata: true },
       { id: 'campanii', pdf: '2.4', mutata: true },
-      { id: 'retea', pdf: '2.5', mutata: false },
-      { id: 'context', pdf: '2.6', mutata: false },
+      { id: 'retea', pdf: '2.5', mutata: true },
+      { id: 'context', pdf: '2.6', mutata: true },
     ],
   },
   {
     grup: 'pagini.grup.analiza',
     chei: [
-      { id: 'versus', pdf: '', mutata: false },
-      { id: 'banca', pdf: '', mutata: false },
-      { id: 'istoric', pdf: '', mutata: false },
+      { id: 'versus', pdf: '', mutata: true },
+      { id: 'banca', pdf: '', mutata: true },
+      { id: 'istoric', pdf: '', mutata: true },
     ],
   },
   {
     grup: 'pagini.grup.date_guvernanta',
     chei: [
-      { id: 'surse', pdf: '', mutata: false },
-      { id: 'coada', pdf: '', mutata: false },
+      { id: 'surse', pdf: '', mutata: true },
+      { id: 'coada', pdf: '', mutata: true },
     ],
   },
 ]

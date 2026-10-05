@@ -1,0 +1,6 @@
+import InLucru from './InLucru'
+
+/** În lucru: o mută agentul care deține fișierul. */
+export default function Retea() {
+  return <InLucru id="retea" />
+}

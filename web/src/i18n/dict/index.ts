@@ -12,6 +12,12 @@ import { extra_rate_mobil } from './extra_rate_mobil'
 import { extra_campanii_site } from './extra_campanii_site'
 import { extra_campanii_reclame } from './extra_campanii_reclame'
 import { extra_campanii_youtube } from './extra_campanii_youtube'
+import { extra_retea } from './extra_retea'
+import { extra_context_istoric } from './extra_context_istoric'
+import { extra_versus } from './extra_versus'
+import { extra_banca } from './extra_banca'
+import { extra_surse_coada } from './extra_surse_coada'
+import { extra_document } from './extra_document'
 
 export const DICT = {
   ...comun,
@@ -27,4 +33,10 @@ export const DICT = {
   ...extra_campanii_site,
   ...extra_campanii_reclame,
   ...extra_campanii_youtube,
+  ...extra_retea,
+  ...extra_context_istoric,
+  ...extra_versus,
+  ...extra_banca,
+  ...extra_surse_coada,
+  ...extra_document,
 } as const
