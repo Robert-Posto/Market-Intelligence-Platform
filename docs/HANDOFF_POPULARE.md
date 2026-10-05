@@ -21,7 +21,6 @@ extracție   (ingest/populare_initiala.py) → citește `surse`, scrie `observat
 ```
 
 Detaliile, cu cifrele înainte/după: `docs/IMBUNATATIRI.md`.
-Designul și planul: `docs/superpowers/specs/` și `docs/superpowers/plans/`.
 
 ## Ce ai de făcut după `git pull`
 
