@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { App, Button, Select } from 'antd'
 import { Rulari as RulariSchema, type ComandaRulare, type RulareCurenta, type Rulari as RulariT } from '@mcc/shared'
-import { api, apiPost } from '../api/client'
+import { api, apiPost, SERVER_OPRIT } from '../api/client'
 import type { Meta } from '../api/meta'
 import { Pill, Pliat } from '../components/comune'
 import { T, useLang } from '../i18n'
@@ -30,7 +30,7 @@ export default function Rulari({ m }: { m: Meta }) {
     >
       <section>
         {rq.error ? (
-          <p className="note" style={{ color: 'var(--warn)' }}>{t('rulari.eroare_stare', { eroare: deLaServer((rq.error as Error).message, lang) })}</p>
+          <p className="note" style={{ color: 'var(--warn)' }}>{(rq.error as Error).message === SERVER_OPRIT ? t('comun.server_oprit') : t('rulari.eroare_stare', { eroare: deLaServer((rq.error as Error).message, lang) })}</p>
         ) : d ? (
           <Corp d={d} m={m} />
         ) : (

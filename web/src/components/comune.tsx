@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Collapse, Tag, Tooltip } from 'antd'
 import { Link } from 'react-router-dom'
+import { SERVER_OPRIT } from '../api/client'
 import type { Meta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
 import { zileDeLa } from '../util/format'
@@ -72,7 +73,18 @@ export function Pliat({ titlu, children, deschis }: { titlu: ReactNode; children
 }
 
 export function Eroare({ e }: { e: unknown }) {
+  const { t } = useLang()
   const mesaj = e instanceof Error ? e.message : String(e)
+  if (mesaj === SERVER_OPRIT) {
+    return (
+      <section>
+        <p className="note" style={{ color: 'var(--warn)', margin: 0 }}>
+          {t('comun.server_oprit')}
+          {import.meta.env.DEV && <> {t('comun.server_oprit_dev')}</>}
+        </p>
+      </section>
+    )
+  }
   return (
     <section>
       <p className="note" style={{ color: 'var(--warn)' }}>

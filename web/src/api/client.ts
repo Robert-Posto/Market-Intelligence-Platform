@@ -8,6 +8,9 @@ import type { z } from 'zod'
  * Serverul Python trimite erorile ca `{eroare: "..."}` cu 200, deci câmpul se
  * verifică explicit, ca în aplicația veche.
  */
+/** Mesajul-semnal pentru „serverul de date nu răspunde”; îl traduce componenta Eroare. */
+export const SERVER_OPRIT = 'SERVER_OPRIT'
+
 export class ApiError extends Error {
   constructor(
     public status: number,
@@ -29,6 +32,9 @@ export async function api<S extends z.ZodTypeAny>(cale: string, schema: S, param
   if (corp && typeof corp === 'object' && 'eroare' in corp && (corp as { eroare: unknown }).eroare) {
     throw new ApiError(res.status, String((corp as { eroare: unknown }).eroare))
   }
+  // Fără corp JSON și cu eroare: serverul de date nu răspunde (în dezvoltare, proxy-ul Vite
+  // întoarce 500 gol când app/server.py e oprit). Pagina arată atunci un mesaj clar, nu „HTTP 500”.
+  if (!res.ok && corp === null) throw new ApiError(res.status, SERVER_OPRIT)
   if (!res.ok) throw new ApiError(res.status, `HTTP ${res.status}`)
   const rez = schema.safeParse(corp)
   if (!rez.success) {

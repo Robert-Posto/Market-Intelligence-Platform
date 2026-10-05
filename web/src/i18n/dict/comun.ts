@@ -215,4 +215,6 @@ export const comun = {
   "camp.rate_fara_dobanda.descriere": ["numărul de rate oferite la 0%", "the number of instalments offered at 0%"],
   "camp.nume_produs.eticheta": ["Nume de produs", "Product name"],
   "camp.nume_produs.descriere": ["denumirea comercială, fără cifră atașată", "the commercial name, with no figure attached"],
+  "comun.server_oprit": ["Serverul de date nu răspunde, deci pagina nu are ce afișa.", "The data server is not responding, so the page has nothing to show."],
+  "comun.server_oprit_dev": ["În dezvoltare: pornește app/server.py (portul 8765) și reîncarcă pagina.", "In development: start app/server.py (port 8765) and reload the page."],
 } as const
