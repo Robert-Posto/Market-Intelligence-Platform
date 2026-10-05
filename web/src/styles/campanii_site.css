@@ -1,0 +1,26 @@
+/* Stilurile paginilor mutate de agentul „campanii_site”; global.css rămâne pentru ce e comun.
+   2.4: comutatorul de secțiuni, Campanii pe site-uri, Comunicate, tabelul surselor. Fișierul se
+   încarcă pentru toată aplicația (îl importă Campanii.tsx), deci regulile stau sub .cm-bara / .cm-sec. */
+
+/* comutatorul: cifra secțiunii lângă nume, mică și mono, ca în aplicația veche */
+.cm-taburi .n { font-family: var(--mono); font-size: 10px; opacity: .75; margin-left: 4px }
+
+/* filtrele din bara fixă, mai strânse decât la 2.1, ca .cm-bara în aplicația veche: șase pe un rând la 1440 px */
+.cm-bara label.f { gap: 3px }
+.cm-bara .ant-input-affix-wrapper.cauta { min-width: 0; width: 190px }
+/* bifa pe linia câmpurilor, nu a etichetelor de deasupra lor */
+.cm-bara .ant-checkbox-wrapper.bifa { font-size: 12.5px; color: var(--ink); align-self: flex-end; align-items: center; min-height: 32px }
+
+/* celulele care nu se rup: banca, perioada, documentele */
+.ant-table-wrapper.t td.cs-nowrap { white-space: nowrap }
+.cm-sec .ant-table-wrapper.t .ant-tag.pill { white-space: nowrap }
+
+/* beneficiul (citat din document) și motivul stării, sub valoarea principală */
+.cs-ben { font-size: 11.5px; margin-top: 2px; max-width: 70ch; white-space: normal }
+.cs-motiv { font-size: 11px; margin-top: 3px; max-width: 30ch; white-space: normal }
+details.cs-docs > summary { cursor: pointer; font-size: 11.5px }
+
+/* „Băncile fără campanii” și „Despre date” stau pe același rând până se deschid; deschise, nu se
+   strâng una lângă alta, ci trec una sub alta (ca details inline-block în aplicația veche) */
+.cs-note { display: flex; flex-wrap: wrap; align-items: flex-start; column-gap: 18px }
+.cs-note > .ant-collapse.despre { flex: 0 0 auto; max-width: 100% }
