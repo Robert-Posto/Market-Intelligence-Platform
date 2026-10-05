@@ -133,8 +133,8 @@ putea deschide Overview acolo. Testele au rulat pe o copie, `mip_stack`, cu migr
    răspunde la `/api` și `/pdf` (cel mai mic pas: `app/server.py` să servească `web/dist`),
    sau serverul Fastify din stack-ul SCC. Decizia e a lui Doru, care face instalarea.
 2. **Urcarea în `Libra-Bank/marketing-command-center`**, cum a cerut Doru, după ce te uiți.
-3. **CLAUDE.md** descrie încă doar `app/` (tabelul de verificări, regula ghilimelelor din
-   `<script>`): trebuie adăugat `web/` cu `npm run typecheck && npm run build`.
+3. **Pagini noi:** pașii, regulile și ce se refolosește sunt în `CLAUDE.md`, secțiunea
+   „Interfața (`web/`)” — de acolo îi citește și Claude Code, la fiecare sesiune.
 4. **`app/index.html`, `harta.html`, `pdf.html`** rămân până se decide livrarea; după aceea
    se pot șterge.
 5. **Engleza** — verificată de un om din bancă.
