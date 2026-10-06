@@ -76,6 +76,10 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
 
 /* pastila: Tag AntD cu forma veche (rotunjită, mono, mică) */
 .ant-tag.pill { border-radius: 999px; font-family: var(--mono); font-size: 10.5px; line-height: 1.5; padding: 0 7px; margin-inline-end: 4px }
+/* pastilele verzi și portocalii din culorile temei: fundalul calculat de AntD din --ok / --warn ieșea prea închis
+   în tema luminoasă (2,7:1 și 3,8:1 la verificarea axe din 06.10.2026); așa trec de 4,5:1 în ambele teme */
+.ant-tag.pill.ant-tag-success { color: var(--ok); background: var(--ok-tint); border-color: var(--ok) }
+.ant-tag.pill.ant-tag-warning { color: var(--warn); background: var(--warn-tint); border-color: var(--warn) }
 
 /* cifre-cheie sus */
 .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-bottom: 18px }
