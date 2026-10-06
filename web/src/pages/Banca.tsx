@@ -119,7 +119,7 @@ function Casete({ r, m, l }: { r: BancaAcoperire; m: Meta; l: { sucursale: numbe
   return (
     <div className="kpi bk-kpi">
       <div>
-        <div className="e">{logo && <img className="bk-logo" src={logo} alt="" />}{m.nume[r.slug] ?? r.slug}</div>
+        <div className="e">{logo && <img className="bk-logo sigla" src={logo} alt="" />}{m.nume[r.slug] ?? r.slug}</div>
         <div className="l">
           {r.blocate
             ? <Pill tip="amb">{t('banca.kpi_site_blocat')}</Pill>

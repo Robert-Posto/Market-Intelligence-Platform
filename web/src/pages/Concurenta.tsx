@@ -110,7 +110,7 @@ export default function Concurenta() {
           <div className="pc-lista">
             {peCat[k]!.map((p) => (
               <a key={p.id} className="pc-produs" href={p.link} target="_blank" rel="noopener noreferrer">
-                <span className="pc-banca">{m.logo[p.banca] && <img src={m.logo[p.banca]} alt="" />}{nume(p.banca)}</span>
+                <span className="pc-banca">{m.logo[p.banca] && <img className="sigla" src={m.logo[p.banca]} alt="" />}{nume(p.banca)}</span>
                 {/* denumirea și descrierea vin de pe site-ul băncii: nu se traduc */}
                 <span className="pc-nume">
                   {p.denumire_produs}

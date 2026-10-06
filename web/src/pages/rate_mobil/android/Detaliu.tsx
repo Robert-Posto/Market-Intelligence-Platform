@@ -85,6 +85,7 @@ function Corp({ a, ix }: { a: AplicatieAndroid; ix: Index }) {
       children: (
         <div className="an-corp">
           <Tabel
+            lipit={false}
             randuri={versiuni}
             cheieRand={(v) => v.version_name}
             coloane={[

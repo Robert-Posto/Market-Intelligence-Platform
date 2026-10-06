@@ -2,9 +2,9 @@ import { theme, type ThemeConfig } from 'antd'
 
 /**
  * Tema MIP peste Ant Design: aceeași paletă ca aplicația veche (fildeș cald +
- * vișiniu), cu varianta întunecată după setarea sistemului, cum făcea și
- * `prefers-color-scheme` din CSS-ul vechi. Culorile stau și ca variabile CSS
- * în global.css, pentru elementele care nu sunt componente AntD.
+ * vișiniu), luminoasă sau întunecată după alegerea din meniu (src/tema). Culorile
+ * stau și ca variabile CSS în global.css, pentru elementele care nu sunt
+ * componente AntD; scripts/verifica_tema.mjs verifică că sunt aceleași.
  */
 const LUMINOS = {
   bg: '#f5f1ec', surface: '#fffdfa', ink: '#2a1f22', muted: '#6e615d', line: '#e3dad0', line2: '#d6cabd',

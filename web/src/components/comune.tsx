@@ -19,7 +19,7 @@ export function EtichetaBanca({ slug, m, fisa, tag, doarLogo }: {
   const faraNume = doarLogo && !!logo
   const corp = (
     <span className={faraNume ? 'cl-banca doar-logo' : 'cl-banca'}>
-      {logo && <img src={logo} alt={faraNume ? nume : ''} title={faraNume ? nume : undefined} />}
+      {logo && <img className="sigla" src={logo} alt={faraNume ? nume : ''} title={faraNume ? nume : undefined} />}
       {!faraNume && <span className="nm">{nume}</span>}
       {tag && slug === 'libra' && <span className="tag-libra">{t('comun.tag_libra_noi')}</span>}
     </span>
