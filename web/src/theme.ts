@@ -38,6 +38,10 @@ export function temaMip(intunecat: boolean): ThemeConfig {
       fontFamily: "'IBM Plex Sans', system-ui, sans-serif",
       fontFamilyCode: "'IBM Plex Mono', monospace",
       fontSize: 13,
+      // Animațiile AntD întârziau starea aleasă a comutatoarelor (Segmented: limba, iOS/Android, Grafic/Tabel):
+      // textul devenea alb abia la capătul alunecării, după ~380 ms, și în build-ul compilat. Fără ele, 27–45 ms
+      // (măsurat 06.10.2026). Sertarele și meniurile se deschid acum fără animație.
+      motion: false,
     },
     components: {
       Table: {
