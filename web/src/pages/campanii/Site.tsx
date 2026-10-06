@@ -307,7 +307,7 @@ function Rezultat({ lista, m }: { lista: Rand[]; m: Meta }) {
         cheieRand={(r) => String(r.id ?? `${r.banca}|${r.url}|${r.titlu}`)}
         libra={(r) => r.banca}
         coloane={[
-          { cheie: 'banca', cap: t('campanii.comun.banca'), s: (r) => m.nume[r.banca] ?? r.banca, td: () => ({ className: 'cs-nowrap' }),
+          { cheie: 'banca', cap: t('campanii.comun.banca'), s: (r) => m.nume[r.banca] ?? r.banca,
             val: (r) => {
               const o = r.organizator ? ORG[r.organizator] : undefined
               return (
@@ -320,7 +320,7 @@ function Rezultat({ lista, m }: { lista: Rand[]; m: Meta }) {
           { cheie: 'campanie', cap: t('campanii.site.col_campanie'), s: (r) => r.titlu || '', val: (r) => <CelulaCampanie r={r} /> },
           { cheie: 'perioada', cap: <Tooltip title={t('campanii.site.col_perioada_titlu')}>{t('campanii.site.col_perioada')}</Tooltip>,
             s: inceput,
-            td: (r) => ({ className: 'mono cs-nowrap', title: r.fereastra_citat ? t('campanii.site.citat_perioada_tooltip', { citat: r.fereastra_citat }) : undefined }),
+            td: (r) => ({ className: 'mono', title: r.fereastra_citat ? t('campanii.site.citat_perioada_tooltip', { citat: r.fereastra_citat }) : undefined }),
             val: (r) => <CelulaPerioada r={r} /> },
           { cheie: 'segment', cap: t('campanii.site.segment'), s: (r) => r.segment || '', val: (r) => r.segment || '—' },
           { cheie: 'categorie', cap: t('campanii.site.categorie'), s: (r) => r.categorie_produs || '',
@@ -342,7 +342,7 @@ function CelulaCampanie({ r }: { r: Campanie }) {
     <>
       {dinUrl ? (
         <>
-          <b title={t('campanii.site.titlu_din_adresa_titlu', { eticheta: r.titlu || '' })}>{dinUrl}</b>{' '}
+          <b className="cs-titlu" title={t('campanii.site.titlu_din_adresa_titlu', { eticheta: r.titlu || '' })}>{dinUrl}</b>{' '}
           <span className="gri" style={{ fontSize: 11 }}>{t('campanii.site.din_adresa_paranteze')}</span>
         </>
       ) : (
@@ -360,7 +360,7 @@ function CelulaPerioada({ r }: { r: Campanie }) {
   const din = r.sursa_ferestrei === 'eticheta_link' ? t('campanii.site.din_eticheta_linkului') : r.sursa_ferestrei === 'url' ? t('campanii.site.din_adresa') : ''
   return (
     <>
-      {formatZi(r.fereastra_start, locale)} – {formatZi(r.fereastra_sfarsit, locale)}
+      <span className="cs-data">{formatZi(r.fereastra_start, locale)}</span> – <span className="cs-data">{formatZi(r.fereastra_sfarsit, locale)}</span>
       {din && <div className="gri" style={{ fontSize: 11 }}>{din}</div>}
       {r.act_aditional && <> <Pill tip="amb" title={t('campanii.site.act_aditional_titlu')}>{t('campanii.site.act_aditional')}</Pill></>}
     </>

@@ -375,7 +375,7 @@ function Rezultat({ d, m, f, onSorteaza, onPagina }: {
   const cuTitlu = (cap: string, titlu: string) => <Tooltip title={titlu}><span>{cap}</span></Tooltip>
   const coloane: ColumnType<ReclamaGoogle>[] = [
     {
-      key: 'banca', title: t('campanii.comun.banca'), className: 'nw', ...sortabil('banca'),
+      key: 'banca', title: t('campanii.comun.banca'), ...sortabil('banca'),
       render: (_, r) => (
         <>
           <EtichetaBanca slug={r.banca} m={m} fisa />
