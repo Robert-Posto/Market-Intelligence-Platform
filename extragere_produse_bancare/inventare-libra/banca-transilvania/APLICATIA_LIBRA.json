@@ -1,53 +1,23 @@
 {
-  "generat": "2026-09-30",
+  "generat": "2026-10-05",
   "banca": "banca-transilvania",
   "cod": "APLICATIA_LIBRA",
   "denumire": "Aplicația Libra Bank (Mobile Banking)",
   "model": "claude-sonnet-5",
   "surse": [
     {
-      "url": "https://www.bancatransilvania.ro/en/migrare-aplicatii-bt-pay-bt-go",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "BT Pay (persoane fizice) și BT Go (persoane juridice)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Aceasta este pagina oficială care descrie cele două aplicații de mobile/internet banking ale BT — BT Pay pentru persoane fizice și BT Go pentru persoane juridice — care înlocuiesc vechile NeoBT/BT24, exact ca aplicația Libra ce acoperă ambele segmente de clienți.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagina dedicată tranziției la BT Pay/BT Go conține descrierea funcționalităților și cifre concrete (plafon credit, valabilitate transferuri) pentru cele două aplicații corespunzătoare.",
-      "citat": "Soon, you will be able to do banking from your phone using only 2 applications: BT Pay (for individuals) and BT Go (for legal entities). BT Pay and BT Go will gradually replace NeoBT and BT24.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://go.bancatransilvania.ro/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "BT Go",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată aplicației BT Go, echivalentul pentru persoane juridice al aplicației Libra (plăți, extrase, carduri, facturare, investiții) cu ofertă de 2 ani fără costuri și cont deschis în 15 minute.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina produsului conține cifre concrete privind durata deschiderii contului și perioada gratuită de utilizare.",
-      "citat": "Hai în cea mai mare comunitate de antreprenori din România direct din aplicație, în doar 15 minute și ai 2 ani fără costuri.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.bancatransilvania.ro/en/cont-online",
+      "url": "https://www.bancatransilvania.ro/en/wallet-bt-pay/ghid-android",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
       "denumire_la_banca": "BT Pay",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina descrie funcționalitățile aplicației BT Pay pentru persoane fizice (echivalent Libra Mobile Banking): plăți, transferuri, credite, investiții, cu cifre despre plafonul creditului și numărul fondurilor de investiții.",
+      "motiv_potrivire": "BT Pay este aplicația unică de mobile banking a Băncii Transilvania, disponibilă atât pentru persoane fizice cât și pentru persoane juridice (carduri BT pentru 'natural persons' și 'legal entities'), și include exact funcționalitățile RoPay/RoPay Alias și Click to Pay menționate în descrierea produsului Libra.",
       "incredere": 0.85,
-      "explicatie_incredere": "Conține cifre explicite despre plafonul de credit accesibil din aplicație și numărul de fonduri de investiții disponibile.",
-      "citat": "You apply for a personal loan, directly from the app. You save easily for your desires, benefiting monthly from progressive interest depending on the amount in the account.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "explicatie_incredere": "Este pagina oficială ghid a aplicației BT Pay, care descrie explicit funcționalitățile RoPay Alias și Click to Pay, segmentate pe persoane fizice și juridice, deși valorile monetare explicite (comisioane) apar doar ca 'gratuit'.",
+      "citat": "At the first payment, regardless of the chosen method and the payment amount, you will be required to authenticate. Payments made through BT Pay are not charged any fee.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
       "link_live": null
     },
     {
@@ -57,24 +27,28 @@
       "rol": "conditii",
       "denumire_la_banca": "BT Pay",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul de termeni și condiții al aplicației BT Pay, echivalentul Libra Mobile Banking, descrie funcționalitățile de plată (contactless, transferuri card-la-card, RoPay) similare cu RoPay/Click to Pay din aplicația Libra.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Documentul juridic descrie explicit funcționalitățile de plată RoPay și transfer între carduri, dar nu conține cifre de tarife (acestea sunt în alt document).",
-      "citat": "By using the RoPay service, the user accepts the general terms and conditions regarding instant payments between banks in Romania.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "motiv_potrivire": "Documentul de termeni și condiții al aplicației BT Pay confirmă că produsul este destinat atât persoanelor fizice cât și persoanelor juridice, la fel ca aplicația Libra Bank, și reglementează funcționalitățile Click to Pay și RoPay.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de condiții pentru BT Pay care precizează explicit eligibilitatea pentru persoane fizice și juridice și include praguri de vârstă (8-18 ani) pentru utilizatorii minori, fiind documentul juridic al produsului echivalent.",
+      "citat": "If you are between 8 completed years and 18 incomplete years old, you will be able to use BT Pay with a card issued in your name, but which is attached to your parent's account.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro#:~:text=If%20you%20are%20between%208,attached%20to%20your%20parent%27s%20account."
     }
   ],
   "gol": null,
-  "deschise": [],
-  "durata_s": 33,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bancatransilvania.ro/bt-pay",
+    "https://www.bancatransilvania.ro/en/wallet-bt-pay/ghid-android",
+    "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro"
+  ],
+  "durata_s": 80,
   "consum": {
-    "intrare": 4,
-    "iesire": 2704,
-    "citire_cache": 5978,
-    "scriere_cache": 43001,
+    "intrare": 33028,
+    "iesire": 6623,
+    "citire_cache": 51351,
+    "scriere_cache": 73130,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1357461
+    "cost_estimat_usd": 0.32538120000000004
   }
 }

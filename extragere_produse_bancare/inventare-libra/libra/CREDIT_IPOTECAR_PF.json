@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-06",
   "banca": "libra",
   "cod": "CREDIT_IPOTECAR_PF",
   "denumire": "Credit ipotecar / investiții imobiliare",
@@ -12,12 +12,12 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Credit ipotecar",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată a Libra Bank pentru Credit ipotecar (achiziție imobil/apartament, persoane fizice), include varianta Credit Ipotecar Verde pentru Green Homes, exact componentele descrise în produsul Libra CREDIT_IPOTECAR_PF.",
+      "motiv_potrivire": "Este chiar pagina dedicată produsului Libra 'Credit ipotecar' pentru persoane fizice, pentru achiziție imobil/apartament, care include și varianta Credit Ipotecar Verde menționată explicit în descrierea produsului.",
       "incredere": 0.95,
-      "explicatie_incredere": "Pagina de produs conține cifre complete: dobânzi, avans minim, venit minim, exemplu reprezentativ cu DAE.",
-      "citat": "Pentru venituri din România: dobândă credit ipotecar variabilă, începând de la 2,15% + IRCC* sau fixă, 7.84% în primii 3 ani. Credit Ipotecar Verde - pentru imobile Green Homes (certificate sau în curs de certificare) Dobândă variabilă: marjă redusă cu 0,25 puncte procentuale față de standard; dobândă fixă: 7,84% în primii 3 ani.",
+      "explicatie_incredere": "Pagină dedicată, cu dobânzi, avans, venituri minime, comisioane și exemplu reprezentativ complet pentru creditul ipotecar standard și varianta verde.",
+      "citat": "Pentru venituri din România: dobândă credit ipotecar variabilă, începând de la 2,15% + IRCC sau fixă, 7.84% în primii 3 ani. Credit Ipotecar Verde - pentru imobile Green Homes (certificate sau în curs de certificare) Dobândă variabilă: marjă redusă cu 0,25 puncte procentuale față de standard",
       "citat_verificat": true,
-      "link_live": "https://www.librabank.ro/dobanda-simulare-imprumut-credit-ipotecar#:~:text=Pentru%20venituri%20din%20Rom%C3%A2nia%3A%20dob%C3%A2nd%C4%83,7%2C84%25%20%C3%AEn%20primii%203%20ani."
+      "link_live": "https://www.librabank.ro/dobanda-simulare-imprumut-credit-ipotecar#:~:text=Pentru%20venituri%20din%20Rom%C3%A2nia%3A%20dob%C3%A2nd%C4%83,puncte%20procentuale%20fa%C8%9B%C4%83%20de%20standard"
     },
     {
       "url": "https://www.librabank.ro/credit-investitii-imobiliare-in-constructie",
@@ -26,28 +26,28 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Credit investiții imobiliare în curs de edificare",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina Libra pentru creditul ipotecar de construcție/achiziție locuință finalizată sau în curs de edificare și refinanțare, persoane fizice, corespunde componentelor construcție/refinanțare din produsul Libra CREDIT_IPOTECAR_PF.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagina de produs conține cifre complete pe segmentul românilor cu venituri din România și din străinătate: valoare maximă, perioadă, avans, dobândă.",
-      "citat": "Valoare maximă 5.000.000 lei Perioadă rambursare până la 35 de ani Avans de la 15% Monedă RON sau EUR Rate egale sau descrescătoare Dobandă fixă 6,99% în primii 3 ani, apoi de la 2,15% + IRCC sau variabilă de la 2,15% + IRCC pe toată perioada.",
+      "motiv_potrivire": "Pagină dedicată variantei de credit ipotecar pentru achiziția/construcția unei locuințe aflate în curs de edificare, acoperind componenta de 'construcție' din descrierea produsului Libra, cu sumă maximă, perioadă și dobânzi specifice.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagină dedicată cu cifre complete: sumă maximă, perioadă de rambursare, avans minim și structura dobânzii pentru creditul de investiții imobiliare în construcție, plus trimitere la pagina creditului ipotecar standard pentru imobile finalizate/refinanțare.",
+      "citat": "Valoare maximă 5.000.000 lei Perioadă rambursare până la 35 de ani Avans de la 15% Monedă RON sau EUR Rate egale sau descrescătoare Dobandă fixă 6,99% în primii 3 ani, apoi de la 2,15% + IRCC",
       "citat_verificat": true,
-      "link_live": "https://www.librabank.ro/credit-investitii-imobiliare-in-constructie#:~:text=Valoare%20maxim%C4%83%205.000.000%20lei%20Perioad%C4%83,%2B%20IRCC%20pe%20toat%C4%83%20perioada."
+      "link_live": "https://www.librabank.ro/credit-investitii-imobiliare-in-constructie#:~:text=Valoare%20maxim%C4%83%205.000.000%20lei%20Perioad%C4%83,de%20la%202%2C15%25%20%2B%20IRCC"
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.librabank.ro/Persoane_fizice/Credit_ipotecar_pentru_investitii_imobiliare/264",
+    "https://www.librabank.ro/Persoane_fizice/Credit_STANDARD_INVESTITII_IMOBILIARE/264",
     "https://www.librabank.ro/dobanda-simulare-imprumut-credit-ipotecar",
     "https://www.librabank.ro/credit-investitii-imobiliare-in-constructie"
   ],
-  "durata_s": 46,
+  "durata_s": 85,
   "consum": {
-    "intrare": 10,
-    "iesire": 3770,
-    "citire_cache": 157189,
-    "scriere_cache": 82306,
+    "intrare": 8,
+    "iesire": 7035,
+    "citire_cache": 83557,
+    "scriere_cache": 78303,
     "apeluri": 1,
-    "cost_estimat_usd": 0.2749228
+    "cost_estimat_usd": 0.2828349
   }
 }

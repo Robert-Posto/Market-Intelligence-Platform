@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-06",
+  "banca": "cec",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/persoane-fizice/credite/credite-pentru-investitii-imobiliare/credite-ipotecare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul ipotecar în lei cu dobândă variabilă",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit ipotecar pentru persoane fizice, destinat achiziție/construcție de locuință și refinanțare de credite imobiliare, cu sumă maximă și durată comparabile (2.800.000 lei, până la 35 de ani), la fel ca produsul Libra de achiziție/construcție/refinanțare.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit dobânda, suma maximă, durata și comisioanele pentru creditul ipotecar/imobiliar, inclusiv mențiunea refinanțării.",
+      "citat": "Poți împrumuta până la 85% din valoarea locuinței cu dobândă variabilă atractivă. Beneficiezi de o dobândă mai mică dacă îți încasezi veniturile prin CEC Bank. Poți inclusiv să refinanțezi alte credite.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/persoane-fizice/credite/credite-ipotecare/credit-ipotecar-casa-mea-verde",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul ipotecar Casa Mea Verde",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Corespunde componentei „Credit Verde” din produsul Libra: este tot un credit ipotecar pentru persoane fizice, dar dedicat exclusiv locuințelor cu consum energetic redus, cu dobândă redusă față de creditul standard.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține explicit dobânzile, suma maximă (2.800.000 lei) și condițiile de eligibilitate energetică pentru acest credit verde.",
+      "citat": "Credit ipotecar pentru locuințe verzi: ai dobânzi reduse cu 0,1pp față de dobânda standard, dacă încasezi veniturile la CEC Bank și facturi reduse la utilități.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Creditul Ipotecar imobiliar (dobândă variabilă / fixă 3-5 ani)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial cu exemple reprezentative de calcul (DAE, rată, sumă totală) pentru toate variantele de credit ipotecar imobiliar pentru persoane fizice, inclusiv cea cu dobândă variabilă folosită pentru achiziție și refinanțare.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document PDF oficial publicat de bancă, cu cifre exacte (sumă, durată, DAE) pentru creditul ipotecar imobiliar, deși este un document general de exemple și nu pagina dedicată produsului.",
+      "citat": "Creditul Ipotecar imobiliar cu dobandă variabilă Caracteristici credit: Suma maximă: 2.800.000 lei Suma împrumutată 300.000 lei Durata creditului 275 luni Rata lunară 2.476,30 lei 2.573,63 lei Suma totală de plată 669.229,53 lei 696.262,90 lei DAE (%/an) 7,71% 7,82%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 74,
+  "consum": {
+    "intrare": 4,
+    "iesire": 6869,
+    "citire_cache": 6348,
+    "scriere_cache": 33033,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1525501
+  }
+}

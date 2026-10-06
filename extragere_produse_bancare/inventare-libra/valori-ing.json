@@ -3044,56 +3044,6 @@
    }
   },
   {
-   "cheie": "https://ing.ro/imm/Economii/depozite-la-termen||depozit la termen (companii)",
-   "url": "https://ing.ro/imm/Economii/depozite-la-termen",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "Depozit la termen (companii)",
-   "focus": "Produsul băncii: „Depozit la termen (companii)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1225,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-html",
-   "format_efectiv": "html",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": "selectolax",
-   "content_hash": "76f840906b565fb23877d34a35fbf9fb600de01c16bdae9d702589ddeb5c7b63",
-   "observatii": [
-    {
-     "id": "18808de37c1d63aeee86706909917d20",
-     "id_url": 1225,
-     "id_produs": "depozit-termen",
-     "camp": null,
-     "not_found": true,
-     "not_found_motiv": "nepublicat",
-     "nota": "Textul menționează depozitele la termen (standard și premium) cu perioade (1 zi, 7 zile, 1, 3, 12 luni) și sume minime, dar nu publică nicio valoare numerică de dobândă (nominală, la scadență sau lunară) pentru niciuna dintre scadențe sau valute - se spune doar că dobânzile sunt \"fixe și avantajoase\" sau variabile în funcție de piață, fără cifre concrete.",
-     "content_hash": "76f840906b565fb23877d34a35fbf9fb600de01c16bdae9d702589ddeb5c7b63",
-     "conditii": [],
-     "necesita_verificare": false,
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "22accd876c2267327b1f9167d8a5c386edeac30f4ee9b142a1dbb9876bdf53fa"
-    }
-   ],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 10,
-   "tokeni": {
-    "intrare": 4654,
-    "iesire": 234
-   }
-  },
-  {
    "cheie": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--2-Iunie-2023--.pdf||pachete de produse și servicii pentru afacerea ta (ing fix)",
    "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--2-Iunie-2023--.pdf",
    "tip": "pdf",
@@ -3715,7 +3665,7 @@
    "produse_v2": [
     "economii"
    ],
-   "stare": "extras",
+   "stare": "neschimbat",
    "motiv": null,
    "flow": "flow-html",
    "format_efectiv": "html",
@@ -3741,10 +3691,10 @@
    ],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 9,
+   "durata_s": 1,
    "tokeni": {
-    "intrare": 11956,
-    "iesire": 300
+    "intrare": 0,
+    "iesire": 0
    }
   },
   {
@@ -5253,69 +5203,6 @@
    }
   },
   {
-   "cheie": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen||ing depozit la termen",
-   "url": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "ING Depozit la termen",
-   "focus": "Produsul băncii: „ING Depozit la termen”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1224,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-html",
-   "format_efectiv": "html",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": "selectolax",
-   "content_hash": "0e76e061bf1ee2d4f9feda37541b455244cb0bfd5409c0f4f858a91fa6f17f29",
-   "observatii": [
-    {
-     "id": "5569c7f4d6fc543554ccda0ec2a5bb94",
-     "id_url": 1224,
-     "id_produs": "depozit-termen",
-     "camp": null,
-     "not_found": true,
-     "not_found_motiv": "negasit_in_pagina",
-     "nota": "Pagina este despre Cont de economii și Depozit Bonus; pentru „Depozit la termen” clasic apare doar o mențiune generică „Dobânzi de până la 5% p.a. pentru depozitele la termen”, fără defalcare pe monedă, perioadă sau sumă, fără distincție dobândă la scadență/lunară.",
-     "content_hash": "0e76e061bf1ee2d4f9feda37541b455244cb0bfd5409c0f4f858a91fa6f17f29",
-     "conditii": [],
-     "necesita_verificare": false,
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "8981904faee78814331457b132f126ccd2b8bec1d17c467fa719ac583f3fe536"
-    }
-   ],
-   "respinse": [
-    {
-     "produs": "depozit-termen",
-     "camp": "dobanda_max",
-     "cod_scenariu": null,
-     "valoare_num": 5,
-     "unitate": "procent",
-     "incredere": 0.5,
-     "citat": "Dobânzi de până la 5% p.a. pentru depozitele la termen",
-     "motive": [
-      "încredere 0.5 sub pragul 0.6"
-     ]
-    }
-   ],
-   "scrise": 0,
-   "durata_s": 11,
-   "tokeni": {
-    "intrare": 5826,
-    "iesire": 304
-   }
-  },
-  {
    "cheie": "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Lista-de-taxe-si-comisioane.pdf||ing personal (credit de nevoi personale ing)",
    "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Lista-de-taxe-si-comisioane.pdf",
    "tip": "pdf",
@@ -6369,7 +6256,7 @@
    "produse_v2": [
     "economii"
    ],
-   "stare": "extras",
+   "stare": "neschimbat",
    "motiv": null,
    "flow": "flow-html",
    "format_efectiv": "html",
@@ -6497,10 +6384,10 @@
    ],
    "respinse": [],
    "scrise": 4,
-   "durata_s": 9,
+   "durata_s": 4,
    "tokeni": {
-    "intrare": 5696,
-    "iesire": 506
+    "intrare": 0,
+    "iesire": 0
    }
   },
   {
@@ -6658,56 +6545,6 @@
    "tokeni": {
     "intrare": 28656,
     "iesire": 1045
-   }
-  },
-  {
-   "cheie": "https://ing.ro/persoane-fizice/internet-banking/homebank||ing home'bank",
-   "url": "https://ing.ro/persoane-fizice/internet-banking/homebank",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "ING Home'Bank",
-   "focus": "Produsul băncii: „ING Home'Bank”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 938,
-     "id_produs_libra": 10,
-     "cod": "APLICATIA_LIBRA",
-     "v2": "banking-digital"
-    }
-   ],
-   "produse_v2": [
-    "banking-digital"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-html",
-   "format_efectiv": "html",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": "selectolax",
-   "content_hash": "4825b9c3c0fe975fecc7f978dead09ec23775d664fc4b0d99662b1d3fd9f4998",
-   "observatii": [
-    {
-     "id": "3ac2885a8058654279ae2742702fe238",
-     "id_url": 938,
-     "id_produs": "banking-digital",
-     "camp": null,
-     "not_found": true,
-     "not_found_motiv": "negasit_in_pagina",
-     "nota": "Textul descrie funcționalitățile aplicației ING Home'Bank (gratuită), dar nu conține cifre despre cost de abonament, comision pe tranzacție online față de ghișeu sau cost dispozitiv de autentificare pentru acest produs; menționează doar că aplicația e gratuită, fără detalii numerice specifice cerute.",
-     "content_hash": "4825b9c3c0fe975fecc7f978dead09ec23775d664fc4b0d99662b1d3fd9f4998",
-     "conditii": [],
-     "necesita_verificare": false,
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "cf7f216fdb56648110a7ac662776f152480e9282827701e265c554fcd2d014b0"
-    }
-   ],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 5,
-   "tokeni": {
-    "intrare": 4865,
-    "iesire": 198
    }
   },
   {
@@ -9163,339 +9000,6 @@
    }
   },
   {
-   "cheie": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf||depozite la termen - ing profesional/ing fix",
-   "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf",
-   "tip": "pdf",
-   "metoda": "http",
-   "denumire_la_banca": "Depozite la termen - ING Profesional/ING Fix",
-   "focus": "Produsul băncii: „Depozite la termen - ING Profesional/ING Fix”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1226,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-pdf",
-   "format_efectiv": "pdf",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": null,
-   "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-   "observatii": [
-    {
-     "id": "d16923e9c6c13f8cea8d3c69e5b9b5bf",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.75,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "1.75% 3.75% 4.00% 4.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 7,
-       "valoare_text": "zile"
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    },
-    {
-     "id": "4b68b408835c49841308845491067d68",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 3.75,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "1.75% 3.75% 4.00% 4.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 1
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    },
-    {
-     "id": "2dc4abf5374e7f9e0ace9c5285a16421",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 4.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "1.75% 3.75% 4.00% 4.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 3
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    },
-    {
-     "id": "725608cd4e978e80cfca5400428d58c8",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 4.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "1.75% 3.75% 4.00% 4.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 12
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    },
-    {
-     "id": "fb6a5e707eb8fa56586146964f2fcffc",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 0.1,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "0.10% 1.00% 1.50% 1.70%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 7,
-       "valoare_text": "zile"
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    },
-    {
-     "id": "d8871e0cc211272727baad11d05a014c",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "0.10% 1.00% 1.50% 1.70%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 1
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    },
-    {
-     "id": "17be83962c9866f3ff82a1fcd32ebdc4",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "0.10% 1.00% 1.50% 1.70%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 3
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    },
-    {
-     "id": "06c62a22d9359ef656b012b5cc87827c",
-     "id_url": 1226,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.7,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "0.10% 1.00% 1.50% 1.70%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 12
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
-    }
-   ],
-   "respinse": [],
-   "scrise": 8,
-   "durata_s": 10,
-   "tokeni": {
-    "intrare": 5149,
-    "iesire": 1186
-   }
-  },
-  {
    "cheie": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent||pachetele ing fix cont curent",
    "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
    "tip": "html",
@@ -9763,7 +9267,7 @@
    "produse_v2": [
     "economii"
    ],
-   "stare": "extras",
+   "stare": "neschimbat",
    "motiv": null,
    "flow": "flow-pdf",
    "format_efectiv": "pdf",
@@ -9997,10 +9501,10 @@
    ],
    "respinse": [],
    "scrise": 5,
-   "durata_s": 9,
+   "durata_s": 1,
    "tokeni": {
-    "intrare": 5023,
-    "iesire": 1028
+    "intrare": 0,
+    "iesire": 0
    }
   },
   {
@@ -10592,17 +10096,17 @@
      "citat": "Finanțare de până la 1500000 lei",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9cdf45c12f5009a7ca54edf8c287ead5e3701bd04cace97342709fd891d7e610"
+     "bronze_sha256": "84729b9b6ae671b046d93ac2c244ac3f9d51b387eee057360a7adeab89498045"
     },
     {
      "id": "294e9e0742f149e5fd60431d82267692",
@@ -10620,17 +10124,17 @@
      "citat": "Creditul cu ipotecă cu 0% avans, ca să prinzi liniștit oportunitățile imobiliare",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.8,
+     "confidence": 0.7,
      "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9cdf45c12f5009a7ca54edf8c287ead5e3701bd04cace97342709fd891d7e610"
+     "bronze_sha256": "84729b9b6ae671b046d93ac2c244ac3f9d51b387eee057360a7adeab89498045"
     },
     {
      "id": "7b20965c80a3fd4b29c0843727f3b173",
@@ -10654,11 +10158,11 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9cdf45c12f5009a7ca54edf8c287ead5e3701bd04cace97342709fd891d7e610"
+     "bronze_sha256": "84729b9b6ae671b046d93ac2c244ac3f9d51b387eee057360a7adeab89498045"
     },
     {
      "id": "29b34095a0195bfa6f77f5bac15fc422",
@@ -10682,11 +10186,11 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9cdf45c12f5009a7ca54edf8c287ead5e3701bd04cace97342709fd891d7e610"
+     "bronze_sha256": "84729b9b6ae671b046d93ac2c244ac3f9d51b387eee057360a7adeab89498045"
     },
     {
      "id": "559f6ea0ba475a6c5e86de85714de4e9",
@@ -10702,21 +10206,21 @@
      "conditii": [
       "achiziție imobil, nu refinanțare"
      ],
-     "eticheta_libera": "sumă oferită pentru taxe notariale, inclusă în credit",
+     "eticheta_libera": "sumă oferită pentru taxe notariale la achiziție imobil",
      "citat": "Poți opta să primești 3000 lei din valoarea creditului direct în contul curent cu care să plătești costurile necesare achiziției imobilului",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.7,
+     "confidence": 0.6,
      "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9cdf45c12f5009a7ca54edf8c287ead5e3701bd04cace97342709fd891d7e610"
+     "bronze_sha256": "84729b9b6ae671b046d93ac2c244ac3f9d51b387eee057360a7adeab89498045"
     },
     {
      "id": "559f6ea0ba475a6c5e86de85714de4e9",
@@ -10732,29 +10236,29 @@
      "conditii": [
       "refinanțare de credite de la alte bănci"
      ],
-     "eticheta_libera": "sumă oferită pentru costuri, în cazul refinanțării",
+     "eticheta_libera": "sumă oferită pentru refinanțare",
      "citat": "în cazul refinanțărilor de credite de la alte bănci, primești 1500 lei din valoarea creditului",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.7,
+     "confidence": 0.6,
      "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9cdf45c12f5009a7ca54edf8c287ead5e3701bd04cace97342709fd891d7e610"
+     "bronze_sha256": "84729b9b6ae671b046d93ac2c244ac3f9d51b387eee057360a7adeab89498045"
     }
    ],
    "respinse": [],
-   "scrise": 4,
+   "scrise": 6,
    "durata_s": 12,
    "tokeni": {
-    "intrare": 5345,
-    "iesire": 827
+    "intrare": 6939,
+    "iesire": 860
    }
   },
   {
@@ -11327,12 +10831,18 @@
      "id_produs_libra": 36,
      "cod": "CREDIT_LIBRA_WAY",
      "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1207,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
     }
    ],
    "produse_v2": [
     "nevoi-personale"
    ],
-   "stare": "extras",
+   "stare": "neschimbat",
    "motiv": null,
    "flow": "flow-html",
    "format_efectiv": "html",
@@ -11587,10 +11097,10 @@
     }
    ],
    "scrise": 7,
-   "durata_s": 19,
+   "durata_s": 2,
    "tokeni": {
-    "intrare": 6965,
-    "iesire": 1679
+    "intrare": 0,
+    "iesire": 0
    }
   },
   {
@@ -11847,7 +11357,7 @@
    "produse_v2": [
     "economii"
    ],
-   "stare": "extras",
+   "stare": "neschimbat",
    "motiv": null,
    "flow": "flow-html",
    "format_efectiv": "html",
@@ -11972,286 +11482,10 @@
    ],
    "respinse": [],
    "scrise": 1,
-   "durata_s": 12,
+   "durata_s": 3,
    "tokeni": {
-    "intrare": 6664,
-    "iesire": 541
-   }
-  },
-  {
-   "cheie": "https://ing.ro/persoane-fizice/credite/ing-personal||ing personal - credit de nevoi personale",
-   "url": "https://ing.ro/persoane-fizice/credite/ing-personal",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "ING Personal - Credit de nevoi personale",
-   "focus": "Produsul băncii: „ING Personal - Credit de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1207,
-     "id_produs_libra": 37,
-     "cod": "CREDIT_NEVOI_PERSONALE",
-     "v2": "nevoi-personale"
-    }
-   ],
-   "produse_v2": [
-    "nevoi-personale"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-html",
-   "format_efectiv": "html",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": "selectolax",
-   "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-   "observatii": [
-    {
-     "id": "39cbd09e52a027ba1010b8b9903f731f",
-     "id_url": 1207,
-     "id_produs": "nevoi-personale",
-     "camp": "comision_administrare_credit_procent_sold",
-     "cod_scenariu": null,
-     "valoare_num": 0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "0 comision de administrare credit",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": "neconditionat",
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "abdb3fba5ff61beaa95ca56b864402dcebd35d773d961840c724661054c9f557"
-    },
-    {
-     "id": "e11b82ab3644434f11e3c07c5aafb79b",
-     "id_url": 1207,
-     "id_produs": "nevoi-personale",
-     "camp": "suma_maxima",
-     "cod_scenariu": null,
-     "valoare_num": 200000,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "Până la 200.000 lei, banii pe loc",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": "neconditionat",
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "abdb3fba5ff61beaa95ca56b864402dcebd35d773d961840c724661054c9f557"
-    },
-    {
-     "id": "e9a65306fa4f04e917bb1fe6011f661d",
-     "id_url": 1207,
-     "id_produs": "nevoi-personale",
-     "camp": "comision_analiza_dosar",
-     "cod_scenariu": null,
-     "valoare_num": 0,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-     "conditii": [
-      "angajatorul are încheiată o convenție salarială cu ING"
-     ],
-     "eticheta_libera": null,
-     "citat": "0 lei pentru analiza dosarului, dacă angajatorul tău are încheiată o convenție salarială cu ING, altfel 200 de lei doar dacă se acordă creditul",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „comision_analiza_dosar” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": "alt_scenariu",
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "abdb3fba5ff61beaa95ca56b864402dcebd35d773d961840c724661054c9f557"
-    },
-    {
-     "id": "e9a65306fa4f04e917bb1fe6011f661d",
-     "id_url": 1207,
-     "id_produs": "nevoi-personale",
-     "camp": "comision_analiza_dosar",
-     "cod_scenariu": null,
-     "valoare_num": 200,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-     "conditii": [
-      "se plătește doar dacă se acordă creditul"
-     ],
-     "eticheta_libera": null,
-     "citat": "altfel 200 de lei doar dacă se acordă creditul",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „comision_analiza_dosar” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": "neconditionat",
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "abdb3fba5ff61beaa95ca56b864402dcebd35d773d961840c724661054c9f557"
-    },
-    {
-     "id": "5bc639f99cec25956df257f6f30bc4f2",
-     "id_url": 1207,
-     "id_produs": "nevoi-personale",
-     "camp": "comision_rambursare_anticipata",
-     "cod_scenariu": null,
-     "valoare_num": 0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-     "conditii": [
-      "dobândă variabilă"
-     ],
-     "eticheta_libera": null,
-     "citat": "0% comision rambursare de anticipată daca alegi dobanda variabila",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": "alt_scenariu",
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "abdb3fba5ff61beaa95ca56b864402dcebd35d773d961840c724661054c9f557"
-    },
-    {
-     "id": "efb68edb3abfda3f6ffef0d84cf072d8",
-     "id_url": 1207,
-     "id_produs": "nevoi-personale",
-     "camp": "comision_rambursare_anticipata",
-     "cod_scenariu": null,
-     "valoare_num": 0.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-     "conditii": [
-      "credit cu dobândă fixă"
-     ],
-     "eticheta_libera": null,
-     "citat": "0,5% sau 1% în funcție de perioada rămasă, pentru creditul cu rata fixa",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.6,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": "neconditionat",
-     "trepte": [
-      {
-       "dimensiune": "perioada_ramasa",
-       "pana_la": 12
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "abdb3fba5ff61beaa95ca56b864402dcebd35d773d961840c724661054c9f557"
-    },
-    {
-     "id": "cf6d8f2bb6dc3d110d786cd80dd893d2",
-     "id_url": 1207,
-     "id_produs": "nevoi-personale",
-     "camp": "comision_rambursare_anticipata",
-     "cod_scenariu": null,
-     "valoare_num": 1,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "11c370b3da3b404808908682081c554077165bc7ef632cdffba7aecb9fbae4c2",
-     "conditii": [
-      "credit cu dobândă fixă"
-     ],
-     "eticheta_libera": null,
-     "citat": "0,5% sau 1% în funcție de perioada rămasă, pentru creditul cu rata fixa",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.6,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": "neconditionat",
-     "trepte": [
-      {
-       "dimensiune": "perioada_ramasa",
-       "de_la": 12
-      }
-     ],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "abdb3fba5ff61beaa95ca56b864402dcebd35d773d961840c724661054c9f557"
-    }
-   ],
-   "respinse": [
-    {
-     "produs": "nevoi-personale",
-     "camp": "dobanda_fixa",
-     "cod_scenariu": "NP_30K_60L_MIN",
-     "valoare_num": 5.99,
-     "unitate": "procent",
-     "incredere": 0.4,
-     "citat": "Dobândă fixă între\n5,99% - 15,99%.",
-     "motive": [
-      "încredere 0.4 sub pragul 0.6"
-     ]
-    },
-    {
-     "produs": "nevoi-personale",
-     "camp": "dobanda_fixa",
-     "cod_scenariu": "NP_30K_60L_MAX",
-     "valoare_num": 15.99,
-     "unitate": "procent",
-     "incredere": 0.4,
-     "citat": "Dobândă fixă între\n5,99% - 15,99%.",
-     "motive": [
-      "încredere 0.4 sub pragul 0.6"
-     ]
-    }
-   ],
-   "scrise": 6,
-   "durata_s": 17,
-   "tokeni": {
-    "intrare": 6957,
-    "iesire": 1600
+    "intrare": 0,
+    "iesire": 0
    }
   },
   {
@@ -13198,12 +12432,1276 @@
    }
   },
   {
-   "cheie": "https://ing.ro/persoane-fizice/credite/ipotecar||credit ing ipotecar",
+   "cheie": "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Termene-s-i-Condit-ii-Depozite-la-termen.pdf||termeni și condiții specifice depozitelor la termen pentru persoane fizice",
+   "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Termene-s-i-Condit-ii-Depozite-la-termen.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Termeni și condiții specifice Depozitelor la termen pentru persoane fizice",
+   "focus": "Produsul băncii: „Termeni și condiții specifice Depozitelor la termen pentru persoane fizice”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1348,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "f61e451a47c2b09d3644cc3eb00e75471b319fc2331caf22ad220d8210119649",
+   "observatii": [
+    {
+     "id": "fe4ff12acf29260fb7dd47c0779ac9ed",
+     "id_url": 1348,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul descrie doar termenii și condițiile generale ale Depozitelor la termen (reguli de deschidere, calcul dobândă, desființare) și tarife pentru conturi curente/carduri, dar nu conține nicio Listă de Dobânzi cu valori numerice ale ratei dobânzii pe monedă, sumă sau perioadă pentru Depozitul la termen - textul face trimitere la o „Listă de Dobânzi” separată, nepublicată aici.",
+     "content_hash": "f61e451a47c2b09d3644cc3eb00e75471b319fc2331caf22ad220d8210119649",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c4f48f84563d17948d867a181413bcd0061ae54212bda47b4c3f96ac7bc9d3a5"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 11253,
+    "iesire": 242
+   }
+  },
+  {
+   "cheie": "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf||lista de dobânzi - depozite la termen (ing profesional/ing fix - persoane juridice)",
+   "url": "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Lista de Dobânzi - Depozite la termen (ING Profesional/ING Fix - persoane juridice)",
+   "focus": "Produsul băncii: „Lista de Dobânzi - Depozite la termen (ING Profesional/ING Fix - persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1349,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+   "observatii": [
+    {
+     "id": "858823fe1d5f2672157d0c19207e5c4b",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "7 zile"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "f25ec329c3c52c6df0234f4ba0f06277",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "54f3220c32c8000f6e1b6ef018fe65d0",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "4ca2f3c7ffadd3fc5c04955e71671594",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "7e02e7aca30f74f5426216af717e5c70",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "7 zile"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "47c8ea4e884fa6f768add535706d1295",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "c3d207c2714d50584fb430473c534c91",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "c547e02095bdfab75d6f9e4bab6fa606",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "756d6e30990a42a1d327420f6bad07fa",
+     "id_url": 1349,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1000,
+     "unitate": "altele",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă de constituire a unui depozit este 1.000 unităţi.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 14,
+   "tokeni": {
+    "intrare": 18377,
+    "iesire": 1385
+   }
+  },
+  {
+   "cheie": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen||depozit la termen (ing depozit) - persoane fizice",
+   "url": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (ING Depozit) - persoane fizice",
+   "focus": "Produsul băncii: „Depozit la termen (ING Depozit) - persoane fizice”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1406,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "0e76e061bf1ee2d4f9feda37541b455244cb0bfd5409c0f4f858a91fa6f17f29",
+   "observatii": [
+    {
+     "id": "686c75765896e6b476efe1eb6a8c9477",
+     "id_url": 1406,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_max",
+     "cod_scenariu": null,
+     "valoare_num": 5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "0e76e061bf1ee2d4f9feda37541b455244cb0bfd5409c0f4f858a91fa6f17f29",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Dobânzi de până la 5% p.a. pentru depozitele la termen",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6cc23f531e0b19abb7a79dc234a92712a8969e7c98f5fb6af79a2f89bc245e45"
+    }
+   ],
+   "respinse": [],
+   "scrise": 1,
+   "durata_s": 7,
+   "tokeni": {
+    "intrare": 6373,
+    "iesire": 279
+   }
+  },
+  {
+   "cheie": "https://ing.ro/imm/Economii/depozite-la-termen||depozite la termen - companii (imm)",
+   "url": "https://ing.ro/imm/Economii/depozite-la-termen",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen - companii (IMM)",
+   "focus": "Produsul băncii: „Depozite la termen - companii (IMM)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1407,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "76f840906b565fb23877d34a35fbf9fb600de01c16bdae9d702589ddeb5c7b63",
+   "observatii": [
+    {
+     "id": "c7c3b9378dccb56cd3de60025e6a2132",
+     "id_url": 1407,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "nepublicat",
+     "nota": "Textul menționează depozitele la termen (standard și premium) cu durate și sume minime, dar nu publică nicio valoare numerică de dobândă - pentru depozitul premium se precizează explicit că ratele variază și trebuie consultate în ING Business Web, iar pentru cel standard nu apare nicio cifră de dobândă.",
+     "content_hash": "76f840906b565fb23877d34a35fbf9fb600de01c16bdae9d702589ddeb5c7b63",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "31eccbb017f437276908d1973d3f22799b18b268f823fc9ebfedfe2b289ed605"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 6,
+   "tokeni": {
+    "intrare": 5192,
+    "iesire": 192
+   }
+  },
+  {
+   "cheie": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf||depozite la termen - ing profesional/ing fix (persoane juridice)",
+   "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen - ING Profesional/ING Fix (persoane juridice)",
+   "focus": "Produsul băncii: „Depozite la termen - ING Profesional/ING Fix (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1226,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+   "observatii": [
+    {
+     "id": "5d1e574e8ba3a2dd29d273c0c1fb2b57",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "7 zile"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "5d4b734ba27e9f7ca462e7b954a0241d",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "1 luna"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "93ffffcd8789686dc8338f762964bdcd",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "3 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "61c0e484293e782559d2583338b318a3",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Depozite la termen Lei 1.75% 3.75% 4.00% 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "1 an"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "0c3595d3ed0433aa0034a29c3d666f9e",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "7 zile"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "083f98c22acb6840968ead0636a9f7d5",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "1 luna"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "d8cf6ff8226583097ab93ea1cb56ea0c",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "3 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "2974e57ccfd5ad18fcefe63664b196a3",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Euro 0.10% 1.00% 1.50% 1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 8 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "1 an"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    },
+    {
+     "id": "d9c190b62ffd521f420786433004519e",
+     "id_url": 1226,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1000,
+     "unitate": "numar",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4528f2ca4649dae9a20e496d0faae399d61e0c6196c1b07f3ebbf183c0206a33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă de constituire a unui depozit este 1.000 unităţi.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3350a78109beaeb68954fae6d208b3f7427f374bfa5d6a8b05ec2061c054e7db"
+    }
+   ],
+   "respinse": [],
+   "scrise": 7,
+   "durata_s": 13,
+   "tokeni": {
+    "intrare": 5691,
+    "iesire": 1362
+   }
+  },
+  {
+   "cheie": "https://ing.ro/imm/Internet-banking/ING-Business||ing business (aplicație mobile banking pentru imm)",
+   "url": "https://ing.ro/imm/Internet-banking/ING-Business",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "ING Business (aplicație mobile banking pentru IMM)",
+   "focus": "Produsul băncii: „ING Business (aplicație mobile banking pentru IMM)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1457,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "d384de998cef4bcb9fd54603986cd1e345a6f1074de05a1b5e86d29dc3617b5b",
+   "observatii": [
+    {
+     "id": "124c3f6b27c1bceaa8a81182c703ddf2",
+     "id_url": 1457,
+     "id_produs": "banking-digital",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "d384de998cef4bcb9fd54603986cd1e345a6f1074de05a1b5e86d29dc3617b5b",
+     "conditii": [],
+     "eticheta_libera": "cost activare aplicație",
+     "citat": "ING Business este aplicația de internet și mobile banking, cu activare gratuită pentru antreprenorii ING",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "434f1779c068cc310f37e86be0713e6a6ca48867a5bf3f9e4aa63f1a3a37cf52"
+    }
+   ],
+   "respinse": [],
+   "scrise": 1,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 3314,
+    "iesire": 253
+   }
+  },
+  {
+   "cheie": "https://ing.ro/persoane-fizice/internet-banking/homebank||ing home'bank (persoane fizice)",
+   "url": "https://ing.ro/persoane-fizice/internet-banking/homebank",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "ING Home'Bank (persoane fizice)",
+   "focus": "Produsul băncii: „ING Home'Bank (persoane fizice)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1456,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "4825b9c3c0fe975fecc7f978dead09ec23775d664fc4b0d99662b1d3fd9f4998",
+   "observatii": [
+    {
+     "id": "12f929a8aa97538330ba117b5a769286",
+     "id_url": 1456,
+     "id_produs": "banking-digital",
+     "camp": "cost_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4825b9c3c0fe975fecc7f978dead09ec23775d664fc4b0d99662b1d3fd9f4998",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Home’Bank este aplicația ta prietenoasă si gratuită de internet și mobile banking",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ef457b42a9391744a8c7906ca59613a16769fef554bd8a828e397cd555e0a8e2"
+    }
+   ],
+   "respinse": [],
+   "scrise": 1,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4873,
+    "iesire": 253
+   }
+  },
+  {
+   "cheie": "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf||ing ipotecar / credite de investiții imobiliare cu garanție ipotecară",
+   "url": "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "ING Ipotecar / Credite de investiții imobiliare cu garanție ipotecară",
+   "focus": "Produsul băncii: „ING Ipotecar / Credite de investiții imobiliare cu garanție ipotecară”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1520,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+   "observatii": [
+    {
+     "id": "35bb8ad719717be4fbeb3f3360a6d25c",
+     "id_url": 1520,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_CUASIG_IRCC",
+     "valoare_num": 3.95,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [
+      "cu asigurare de viață"
+     ],
+     "eticheta_libera": null,
+     "citat": "Cu asigurare de viață 3,95% 9,52%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "5856c8a19572abb3c3e3401d7969a8f1",
+     "id_url": 1520,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_CUASIG_IRCC",
+     "valoare_num": 9.52,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [
+      "cu asigurare de viață",
+      "dobândă variabilă (Marjă+IRCC)"
+     ],
+     "eticheta_libera": null,
+     "citat": "Cu asigurare de viață 3,95% 9,52%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "b91879cc57420496fd95a0e23b2705f1",
+     "id_url": 1520,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [
+      "fără asigurare de viață"
+     ],
+     "eticheta_libera": null,
+     "citat": "Fără asigurare de viață 4,25% 9,82%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „marja_banca” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "exact",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "c523e7a210d638ad4d1740e096fb3d75",
+     "id_url": 1520,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": null,
+     "valoare_num": 9.82,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [
+      "fără asigurare de viață",
+      "dobândă variabilă (Marjă+IRCC)"
+     ],
+     "eticheta_libera": null,
+     "citat": "Fără asigurare de viață 4,25% 9,82%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_variabila” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "exact",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "72ad2ece975699c76d353e03c4de7671",
+     "id_url": 1520,
+     "id_produs": "ipotecar",
+     "camp": "ircc",
+     "cod_scenariu": null,
+     "valoare_num": 5.57,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": "2026-10-31",
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "se va aplica cotaţia IRCC, cu valoarea de 5,57% valabilă până la 31.10.2026",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "61ebd70b1235a45ff98d8355ad3373dd",
+     "id_url": 1520,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 12.52,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [
+      "cu asigurare de viață",
+      "dobândă penalizatoare, calculată prin adăugarea a 3% la Rata anuală a dobânzii"
+     ],
+     "eticheta_libera": "dobândă penalizatoare - Credit investiții imobiliare cu garanție, cu asigurare de viață",
+     "citat": "Credit investiţii imobiliare cu garanție, cu asigurare de viață3 12,52%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    },
+    {
+     "id": "61ebd70b1235a45ff98d8355ad3373dd",
+     "id_url": 1520,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 12.82,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b71a17654aa21ee56dc94d4089ee79f90f2a74463503bee9720749a072758925",
+     "conditii": [
+      "fără asigurare de viață",
+      "dobândă penalizatoare, calculată prin adăugarea a 3% la Rata anuală a dobânzii"
+     ],
+     "eticheta_libera": "dobândă penalizatoare - Credit investiții imobiliare cu garanție, fără asigurare de viață",
+     "citat": "Credit investiţii imobiliare cu garanție, fără asigurare de viață3 12,82%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e46c9b2a417b319d3dc4b90f3aae7a4a7d02b27ce12ffaa62d94b22371625b94"
+    }
+   ],
+   "respinse": [],
+   "scrise": 7,
+   "durata_s": 18,
+   "tokeni": {
+    "intrare": 19726,
+    "iesire": 1470
+   }
+  },
+  {
+   "cheie": "https://ing.ro/persoane-fizice/credite/ipotecar||ing ipotecar (credit ipotecar cu dobândă fixă 3 sau 5 ani / variabilă)",
    "url": "https://ing.ro/persoane-fizice/credite/ipotecar",
    "tip": "html",
    "metoda": "http",
-   "denumire_la_banca": "Credit ING Ipotecar",
-   "focus": "Produsul băncii: „Credit ING Ipotecar”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "denumire_la_banca": "ING Ipotecar (Credit ipotecar cu dobândă fixă 3 sau 5 ani / variabilă)",
+   "focus": "Produsul băncii: „ING Ipotecar (Credit ipotecar cu dobândă fixă 3 sau 5 ani / variabilă)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
    "legaturi": [
     {
      "id_sursa": 1211,
@@ -13223,216 +13721,6 @@
    "metoda_sanitizare": "selectolax",
    "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
    "observatii": [
-    {
-     "id": "60f4329590a9efce83b6eec55542637d",
-     "id_url": 1211,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_3ANI_MIN",
-     "valoare_num": 4.79,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
-     "conditii": [
-      "dobândă fixă primii 3 ani, oferta promoțională până pe 15 octombrie",
-      "valoare minimă din intervalul publicat"
-     ],
-     "eticheta_libera": null,
-     "citat": "în primii 3 ani:\n4.79% - 6.59%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.6,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
-    },
-    {
-     "id": "6e5919438c4d5111e2fc6b058f5bf11c",
-     "id_url": 1211,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_3ANI_MAX",
-     "valoare_num": 6.59,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
-     "conditii": [
-      "dobândă fixă primii 3 ani, oferta promoțională până pe 15 octombrie",
-      "valoare maximă din intervalul publicat"
-     ],
-     "eticheta_libera": null,
-     "citat": "în primii 3 ani:\n4.79% - 6.59%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.6,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
-    },
-    {
-     "id": "fb50db44cfea57cf2f535b8834b36362",
-     "id_url": 1211,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_5ANI_MIN",
-     "valoare_num": 5.29,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
-     "conditii": [
-      "dobândă fixă primii 5 ani, oferta promoțională până pe 15 octombrie",
-      "valoare minimă din intervalul publicat"
-     ],
-     "eticheta_libera": null,
-     "citat": "în primii 5 ani:\n5,29% și 7,09%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.6,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
-    },
-    {
-     "id": "0a7f9be078985ac54caa5591f8068926",
-     "id_url": 1211,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_5ANI_MAX",
-     "valoare_num": 7.09,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
-     "conditii": [
-      "dobândă fixă primii 5 ani, oferta promoțională până pe 15 octombrie",
-      "valoare maximă din intervalul publicat"
-     ],
-     "eticheta_libera": null,
-     "citat": "în primii 5 ani:\n5,29% și 7,09%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.6,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
-    },
-    {
-     "id": "d22bcc955797c383276e0f100357a42c",
-     "id_url": 1211,
-     "id_produs": "ipotecar",
-     "camp": "perioada_dobanda_fixa",
-     "cod_scenariu": null,
-     "valoare_num": 3,
-     "unitate": "ani",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "Credit ipotecar cu dobândă fixă 3 ani sau 5 ani",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „perioada_dobanda_fixa” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
-    },
-    {
-     "id": "d22bcc955797c383276e0f100357a42c",
-     "id_url": 1211,
-     "id_produs": "ipotecar",
-     "camp": "perioada_dobanda_fixa",
-     "cod_scenariu": null,
-     "valoare_num": 5,
-     "unitate": "ani",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "Credit ipotecar cu dobândă fixă 3 ani sau 5 ani",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „perioada_dobanda_fixa” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
-    },
-    {
-     "id": "fb4059fce2c9a666bd0f9b84b0ebd528",
-     "id_url": 1211,
-     "id_produs": "ipotecar",
-     "camp": "altele",
-     "cod_scenariu": null,
-     "valoare_num": 0.3,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
-     "conditii": [
-      "încheierea unei asigurări de viață atașate creditului ipotecar"
-     ],
-     "eticheta_libera": "reducere dobândă pentru asigurare de viață atașată creditului",
-     "citat": "primești si reducere de 0,3% la rata dobânzii creditului ca să ai si ratele mai mici la credit",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "ing",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
-    },
     {
      "id": "eac4d8644c7903ac45f3a22c1dca1330",
      "id_url": 1211,
@@ -13455,18 +13743,18 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
+     "bronze_sha256": "04e4a7fd4709dfb564e50a0a1e56b34da4d5ec18f572fa0dfac5f422e72f0cb9"
     },
     {
-     "id": "516da166359567d8fdfc9efdd3aee6ac",
+     "id": "bdacbf6885d92a539add0f67a0be2ac1",
      "id_url": 1211,
      "id_produs": "ipotecar",
      "camp": "comision_analiza_dosar",
-     "cod_scenariu": null,
+     "cod_scenariu": "IPO_CONVENTIE_SALARIALA",
      "valoare_num": 0,
      "unitate": "lei",
      "valid_from": null,
@@ -13476,20 +13764,20 @@
       "angajatorul are încheiată o convenție salarială cu ING"
      ],
      "eticheta_libera": null,
-     "citat": "0 lei pentru analiza dosarului, când angajatorul tău are încheiată o convenție salarială cu ING",
+     "citat": "0 lei pentru analiza dosarului, când angajatorul tău are încheiată o convenție salarială cu ING, altfel 900 de lei, doar dacă creditul se acordă.",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.8,
+     "confidence": 0.7,
      "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „comision_analiza_dosar” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
+     "bronze_sha256": "04e4a7fd4709dfb564e50a0a1e56b34da4d5ec18f572fa0dfac5f422e72f0cb9"
     },
     {
      "id": "516da166359567d8fdfc9efdd3aee6ac",
@@ -13503,8 +13791,7 @@
      "valid_to": null,
      "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
      "conditii": [
-      "angajatorul nu are convenție salarială cu ING",
-      "se percepe doar dacă creditul se acordă"
+      "creditul se acordă"
      ],
      "eticheta_libera": null,
      "citat": "altfel 900 de lei, doar dacă creditul se acordă",
@@ -13516,11 +13803,11 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": "câmpul „comision_analiza_dosar” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
+     "bronze_sha256": "04e4a7fd4709dfb564e50a0a1e56b34da4d5ec18f572fa0dfac5f422e72f0cb9"
     },
     {
      "id": "0185ad9c2f1ab5be574bed5d51bcf653",
@@ -13535,137 +13822,215 @@
      "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
      "conditii": [],
      "eticheta_libera": null,
-     "citat": "poți face rambursări anticipate parțiale și închide creditul, ambele gratuite",
+     "citat": "Din Home’Bank poți face rambursări anticipate parțiale și închide creditul, ambele gratuite.",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.7,
+     "confidence": 0.8,
      "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
+     "bronze_sha256": "04e4a7fd4709dfb564e50a0a1e56b34da4d5ec18f572fa0dfac5f422e72f0cb9"
     },
     {
-     "id": "fb4059fce2c9a666bd0f9b84b0ebd528",
+     "id": "dbe8f1b84710f25cab2b875fc8441bae",
      "id_url": 1211,
      "id_produs": "ipotecar",
      "camp": "altele",
-     "cod_scenariu": null,
+     "cod_scenariu": "IPO_ASIGURARE_VIATA",
+     "valoare_num": 0.3,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
+     "conditii": [
+      "încheierea asigurării de viață ING atașată creditului ipotecar"
+     ],
+     "eticheta_libera": "reducere dobândă pentru asigurare de viață ING atașată creditului",
+     "citat": "primești si reducere de 0,3% la rata dobânzii creditului ca să ai si ratele mai mici la credit",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "ing",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "04e4a7fd4709dfb564e50a0a1e56b34da4d5ec18f572fa0dfac5f422e72f0cb9"
+    },
+    {
+     "id": "9e70e6a2132e72570872e90498574c28",
+     "id_url": 1211,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": "IPO_TAXE_NOTARIALE",
      "valoare_num": 3000,
      "unitate": "lei",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
      "conditii": [
-      "achiziție de imobil, sumă acordată din valoarea creditului"
+      "achiziție imobil, opțional"
      ],
-     "eticheta_libera": "sumă oferită pentru taxe notariale la achiziție",
+     "eticheta_libera": "sumă acordată suplimentar pentru taxe notariale la achiziție",
      "citat": "Poți opta să primești 3000 lei din valoarea creditului direct în contul curent cu care să plătești costurile necesare achiziției imobilului",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.7,
+     "confidence": 0.6,
      "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
+     "bronze_sha256": "04e4a7fd4709dfb564e50a0a1e56b34da4d5ec18f572fa0dfac5f422e72f0cb9"
     },
     {
-     "id": "fb4059fce2c9a666bd0f9b84b0ebd528",
+     "id": "bc0f9372f540bc691f8731b00fda6c1c",
      "id_url": 1211,
      "id_produs": "ipotecar",
      "camp": "altele",
-     "cod_scenariu": null,
+     "cod_scenariu": "IPO_REFINANTARE",
      "valoare_num": 1500,
      "unitate": "lei",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "4553fdcb7becf2131bc7dbaeb8478b520dc24987e36824d1e5963f64a2be78d4",
      "conditii": [
-      "refinanțare de credite de la alte bănci"
+      "refinanțare credit de la altă bancă"
      ],
-     "eticheta_libera": "sumă oferită pentru costuri la refinanțare",
+     "eticheta_libera": "sumă acordată suplimentar pentru refinanțare credite de la alte bănci",
      "citat": "în cazul refinanțărilor de credite de la alte bănci, primești 1500 lei din valoarea creditului",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.7,
+     "confidence": 0.6,
      "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "ing",
      "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "9690d6c7bf82f56e1e599d367a1b72f81c6fe0b02c931d4be7c03d22838387db"
+     "bronze_sha256": "04e4a7fd4709dfb564e50a0a1e56b34da4d5ec18f572fa0dfac5f422e72f0cb9"
     }
    ],
    "respinse": [
     {
      "produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_3ANI_ALT_MIN",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_PROMO_3ANI",
      "valoare_num": 4.79,
      "unitate": "procent",
-     "incredere": 0.5,
-     "citat": "4.79% - 5.79%",
+     "incredere": 0.4,
+     "citat": "în primii 3 ani:\n4.79% - 6.59%",
      "motive": [
-      "încredere 0.5 sub pragul 0.6"
+      "încredere 0.4 sub pragul 0.6"
      ]
     },
     {
      "produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_3ANI_ALT_MAX",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_PROMO_3ANI",
+     "valoare_num": 6.59,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "în primii 3 ani:\n4.79% - 6.59%",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_STANDARD_3ANI",
+     "valoare_num": 4.79,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "4.79% - 5.79%",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_STANDARD_3ANI",
      "valoare_num": 5.79,
      "unitate": "procent",
-     "incredere": 0.5,
+     "incredere": 0.3,
      "citat": "4.79% - 5.79%",
      "motive": [
-      "încredere 0.5 sub pragul 0.6"
+      "încredere 0.3 sub pragul 0.6"
      ]
     },
     {
      "produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_5ANI_ALT_MIN",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_PROMO_5ANI",
      "valoare_num": 5.29,
      "unitate": "procent",
-     "incredere": 0.5,
-     "citat": "5.29% - 6.29%",
+     "incredere": 0.4,
+     "citat": "în primii 5 ani:\n5,29% și 7,09%",
      "motive": [
-      "încredere 0.5 sub pragul 0.6"
+      "încredere 0.4 sub pragul 0.6"
      ]
     },
     {
      "produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_IPOTECAR_5ANI_ALT_MAX",
-     "valoare_num": 6.29,
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_PROMO_5ANI",
+     "valoare_num": 7.09,
      "unitate": "procent",
-     "incredere": 0.5,
+     "incredere": 0.3,
+     "citat": "în primii 5 ani:\n5,29% și 7,09%",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_STANDARD_5ANI",
+     "valoare_num": 5.29,
+     "unitate": "procent",
+     "incredere": 0.3,
      "citat": "5.29% - 6.29%",
      "motive": [
-      "încredere 0.5 sub pragul 0.6"
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_STANDARD_5ANI",
+     "valoare_num": 6.29,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "5.29% - 6.29%",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
      ]
     }
    ],
-   "scrise": 11,
-   "durata_s": 23,
+   "scrise": 6,
+   "durata_s": 28,
    "tokeni": {
-    "intrare": 5763,
-    "iesire": 2411
+    "intrare": 7388,
+    "iesire": 2728
    }
   }
  ]

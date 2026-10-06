@@ -1,0 +1,85 @@
+{
+  "generat": "2026-10-05",
+  "banca": "procredit",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/persoane-fizice/depozit-la-termen/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit la termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru persoane fizice, în LEI sau EUR, cu dobânzi pe maturități multiple, exact același tip de produs ca DEPOZIT_TERMEN Libra pentru segmentul persoane fizice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu tabel complet de dobânzi pe maturități și condiții (sumă minimă, garantare FGDB).",
+      "citat": "Depozitul la termen poate fi constituit în LEI sau în EURO, pe o perioadă de cel putin 1 lună, fiind necesară o sumă minimă de 500 LEI, respectiv 500 EURO. Nu se percepe comision la deschiderea depozitului sau pentru administrarea acestuia, iar fondurile sunt garantate în limita a 100.000 EURO/deponent de Fondul de Garantare a Depozitelor Bancare.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/persoane-fizice/depozit-la-termen/#:~:text=Depozitul%20la%20termen%20poate%20fi,de%20Garantare%20a%20Depozitelor%20Bancare."
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/10/Dobanzi-produse-de-economisire-PF-01.10.2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi care listează explicit produsul Depozite la Termen pentru persoane fizice pe toate maturitățile, în LEI și EUR.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF oficial al băncii, actualizat de la 01.10.2026, cu tabel complet de dobânzi pentru Depozite la Termen PF.",
+      "pagina_pdf": 1,
+      "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% - EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00% Suma minimă pentru constituire depozit la termen este de 500 LEI, respectiv 500 EURO.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/06/Dobanzi-produse-de-economisire-PJ-RO-01.05.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi care listează explicit produsul Depozit la termen pentru persoane juridice, cu dobânzi pe 3/6/12 luni în LEI și EUR și suma minimă.",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF oficial al băncii valabil din 01.05.2025, cu tabel de dobânzi și condiții pentru Depozit la termen PJ, deși data este mai veche decât lista PF.",
+      "pagina_pdf": 1,
+      "citat": "Depozit la termen 5,00% - 3 luni 5,25% 2,15% 6 luni 5,50% 2,10% 12 luni Valoare minimă 50.000 LEI/10.000 EUR",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/depozite-la-termen/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen dedicat companiilor (persoane juridice), destinat excedentului de lichidități din conturi, exact segmentul PJ cerut de produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată cu caracteristici și sume concrete (minim 50.000 LEI/10.000 EUR, termene 3/6/12 luni), dar fără procentele de dobândă afișate direct pe pagină (trimite către lista de prețuri).",
+      "citat": "Constituire rapidă prin Internet Banking: Poți constitui depozitul online, simplu și rapid, în LEI sau EUR, pe termene de 3, 6 și 12 luni. Suma minimă de constituire: Poți începe să economisești cu o sumă minimă de 50.000 LEI sau 10.000 EUR.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/depozite-la-termen/#:~:text=Constituire%20rapid%C4%83%20prin%20Internet%20Banking%3A,50.000%20LEI%20sau%2010.000%20EUR."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/persoane-fizice/depozit-la-termen/",
+    "https://www.procreditbank.ro/companii/depozite-la-termen/",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/10/Dobanzi-produse-de-economisire-PF-01.10.2026.pdf",
+    "https://www.procreditbank.ro/wp-content/uploads/2025/06/Dobanzi-produse-de-economisire-PJ-RO-01.05.2025.pdf"
+  ],
+  "durata_s": 41,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3744,
+    "citire_cache": 156794,
+    "scriere_cache": 80415,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2698563
+  }
+}

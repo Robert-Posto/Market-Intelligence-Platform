@@ -1,0 +1,85 @@
+{
+  "generat": "2026-10-05",
+  "banca": "revolut",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/legal/pre-contractual-information-instant-access-savings-account/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Instant Access Savings",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Fișa de informații precontractuale arată clar că produsul este 'Demand deposit' cu termen 'Indefinite' (poate fi închis oricând), spre deosebire de un depozit la termen cu scadență fixă precum cel de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tip Deposit Information Sheet cu tipul produsului, termenul și ratele de dobândă pe fiecare plan de abonament.",
+      "citat": "Product type Demand deposit Currency RON. Term Indefinite. The Instant Access Savings can be closed at any time. Interest rate (RON) Standard: 2.50% p.a. (gross rate) Plus: 2.50% p.a. (gross rate) Premium: 3.00% p.a. (gross rate)Metal: 3.75% p.a. (gross rate)Ultra: 4.25% p.a. (gross rate)",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/en-RO/legal/pre-contractual-information-instant-access-savings-account/#:~:text=Product%20type%20Demand%20deposit%20Currency,rate%29Ultra%3A%204.25%25%20p.a.%20%28gross%20rate%29"
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/business-deposit-information-sheet/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Business Instant Access Savings",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Fișa de informații pentru depozitul de business arată dobânzi variabile pe planuri (Grow/Scale/Enterprise) pentru un cont de economii la vedere pentru firme, fără termen fix, spre deosebire de depozitul la termen Libra pentru persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial Deposit Information Sheet pentru business cu tipul produsului (demand deposit), termenul (indefinit) și ratele de dobândă exprimate în procente pe fiecare plan.",
+      "citat": "Product type · Demand deposit Currency · RON Term · Indefinite. Interest rate (Grow) · 2.5% p.a. gross rate Interest rate (Scale) · 3% p.a. gross rate Interest rate (Enterprise) · 4% p.a. gross rate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/instant-access-savings/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Economii cu acces instant (Instant Access Savings)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Revolut nu are un depozit la termen clasic cu scadență fixă; cel mai apropiat produs este un cont de economii cu dobândă variabilă și acces instant la fonduri (depozit la vedere), deci diferă exact caracteristica 'termen' (fără scadență fixă, retragere oricând) față de Depozitul la termen Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată a produsului de economii conține explicit procentele de dobândă și condițiile de acces, dar produsul nu are termen fix precum un depozit la termen.",
+      "citat": "Deschide un cont de economii cu acces instant pentru o dobândă majorată de 5,50% pe an, plătită zilnic. Disponibil pentru orice plan timp de 6 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/business-savings/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Business Instant Access Savings (Contul de Economii de Business cu acces instant)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pentru segmentul persoane juridice, Revolut oferă tot un cont de economii la vedere (demand deposit), fără termen fix și cu plafon de depunere de 50.000.000 RON, diferit structural de un depozit la termen cu scadență.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul de termeni și condiții pentru firme confirmă tipul de cont (depozit la vedere) și plafonul maxim de depunere, dar trimite spre un alt document pentru procentul exact de dobândă.",
+      "citat": "The total amount of money you can add to your Business Instant Access Savings (regardless of how many Business Instant Access Savings you have) is limited to RON 50,000,000.",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/en-RO/legal/business-savings/#:~:text=The%20total%20amount%20of%20money,is%20limited%20to%20RON%2050%2C000%2C000."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/ro-RO/business-savings/",
+    "https://www.revolut.com/en-RO/legal/pre-contractual-information-instant-access-savings-account/",
+    "https://www.revolut.com/ro-RO/legal/business-savings-how-does-it-work/",
+    "https://www.revolut.com/en-RO/legal/pre-contractual-information-business-savings-account/",
+    "https://www.revolut.com/en-RO/legal/business-savings/"
+  ],
+  "durata_s": 91,
+  "consum": {
+    "intrare": 41057,
+    "iesire": 8324,
+    "citire_cache": 145722,
+    "scriere_cache": 65643,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.35860590000000003
+  }
+}

@@ -38,7 +38,9 @@ import os
 import re
 import sys
 import time
+import unicodedata
 from collections import defaultdict
+from datetime import date
 from pathlib import Path
 
 import psycopg2
@@ -59,6 +61,7 @@ import search_data_by_source as S        # noqa: E402
 from scenariu_libra import descompune, interval, potrivire   # noqa: E402
 import reguli_valori                      # noqa: E402
 from descopera_surse_libra import link_live   # noqa: E402
+from jurnal_joburi import FaraJurnal, Job      # noqa: E402
 
 DSN = os.environ.get("MIP_DSN", "host=localhost port=5432 dbname=mip user=mip password=mip")
 MAPARE = json.loads((AICI / "mapare_libra_v2.json").read_text(encoding="utf-8"))["mapare"]
@@ -163,7 +166,7 @@ def scenariu_din(o: dict) -> dict | None:
             sc.setdefault("moneda", "RON")
         elif dim == "perioada":
             if v is not None:
-                sc["perioada_luni"] = v
+                sc["perioada_luni"] = _luni(v, o.get("citat"), o.get("id_produs") in GRILE)
             elif de_la is not None or pana_la is not None:
                 sc.setdefault("etichete", []).append(
                     f"perioadă {de_la if de_la is not None else ''}–{pana_la if pana_la is not None else ''} luni")
@@ -172,8 +175,272 @@ def scenariu_din(o: dict) -> dict | None:
                 "perioadă rămasă " + (f"peste {de_la} luni" if de_la is not None else f"sub {pana_la} luni"))
         elif dim == "valuta" and tr.get("valoare_text"):
             sc["valuta"] = tr["valoare_text"].upper()
+        elif dim in AXE_TEXT and tr.get("valoare_text"):
+            x = _axa_text(dim, tr["valoare_text"])
+            if x:
+                sc[dim] = x
         sc["din_trepte"] = True
     return sc or None
+
+
+# ── GRILA DE DEPOZIT ────────────────────────────────────────────────
+# Pe 05.10.2026, cele 247 de dobânzi de depozit aveau canalul doar ca text în
+# condiție (154), plata dobânzii ca tip de câmp (79 dobanda_la_scadenta /
+# dobanda_lunara) și 166 de coduri de scenariu diferite. Cum `conditie` e în cheia
+# unică, aceeași celulă din tabelul băncii intra de două ori dacă textul diferea
+# cu un cod sau un „ş” cu sedilă (BRD: „1 lună, EUR, ghișeu, 0,50%”, de două ori).
+# La produsele cu grilă, dimensiunile vin din `trepte` (produse_bancare_v2.json),
+# iar `conditie` o scrie codul, mereu în același format.
+
+# Contul de economii are aceleași axe în catalog (suma = treapta de sold, valuta). Pe 06.10.2026,
+# în afara grilei: moneda goală la toate cele 87 de dobânzi (EUR/USD amestecate cu RON), codurile
+# NP_… în condiție și aceeași treaptă de două ori (Patria: „sold între 5.000 și 10.000 RON” /
+# „sold disponibil în contul de economii între…”).
+GRILE = {"depozit-termen", "economii"}
+
+# Axele text ale grilei, aduse la valorile din catalog. Ce nu se recunoaște nu se păstrează.
+AXE_TEXT = {
+    "canal": [("online", "online"), ("internet", "online"), ("mobile", "online"), ("aplicat", "online"),
+              ("app", "online"), ("ghiseu", "ghiseu"), ("agenti", "ghiseu"), ("unitat", "ghiseu")],
+    "plata_dobanzii": [("scadent", "la_scadenta"), ("lunar", "lunar"), ("capitaliz", "capitalizare")],
+    "oferta": [("promo", "promotie"), ("special", "promotie"), ("standard", "standard")],
+}
+ETICHETE_GRILA = {"online": "online", "ghiseu": "ghișeu", "la_scadenta": "plata la scadență",
+                  "lunar": "plata lunară", "capitalizare": "capitalizare", "promotie": "promoție"}
+# O condiție care e EXACT o dimensiune („la ghișeu”, „prin YOU BRD”, „valuta EUR”) completează
+# treapta, dacă modelul n-a pus-o, și iese din text. Doar potrivirea întreagă: „depozit standard
+# pentru pensionari” spune și segmentul, deci rămâne.
+DIM_DIN_TEXT = [
+    ("canal", re.compile(r"^(la\s+)?(ghiseu|agentie|unitate)$|^depunere\s+la\s+(ghiseu|agentie)$"), "ghiseu"),
+    ("canal", re.compile(r"^(prin\s+|constituire\s+prin\s+)?(you\s*brd|online|internet\s*/?\s*mobile\s*banking|"
+                         r"internet\s*banking|mobile\s*banking|aplicatia\s+mobila)$"), "online"),
+    ("plata_dobanzii", re.compile(r"^(plata\s+(dobanzii\s+)?)?la\s+scadenta$"), "la_scadenta"),
+    ("plata_dobanzii", re.compile(r"^(plata\s+(dobanzii\s+)?)?lunar[a]?$"), "lunar"),
+]
+VALUTA_DIN_TEXT = re.compile(r"^valuta\s+([a-z]{3})$")
+# Condiție care doar repetă treapta de sumă („sold peste 100.000 RON”, „suma depusă între 5.000 și
+# 10.000”): iese din text când treapta e deja în scenariu, altfel aceeași celulă intră de două ori.
+SUMA_DIN_TEXT = re.compile(r"^(pentru\s+)?(un\s+)?(sold|suma|soldul)\b.*\d")
+
+
+def _fara_diacritice(s: str) -> str:
+    return "".join(ch for ch in unicodedata.normalize("NFD", s) if unicodedata.category(ch) != "Mn")
+
+
+def _axa_text(dim: str, txt: str) -> str | None:
+    t = _fara_diacritice(txt).lower()
+    return next((v for k, v in AXE_TEXT[dim] if k in t), None)
+
+
+def _luni(v: float, citat: str | None, grila: bool = False) -> float:
+    """
+    Zilele raportate pe axa de luni. Exim (05.10.2026): „90 zile” a ieșit 90 de luni; BRD:
+    „90 3 luni 0.50%” (coloana de zile, apoi luni) a ieșit tot 90. Dacă citatul spune „N luni”,
+    N rămâne; dacă spune „N zile”, sau la o grilă de depozit N trece de 60 (niciun depozit
+    colectat nu avea peste 48 de luni), N sunt zile: 30 / 90 / 180 / 365 -> 1 / 3 / 6 / 12.
+    """
+    if not v or v < 28 or v != int(v):
+        return v
+    n, c = int(v), citat or ""
+    if re.search(rf"(?<![\d.,]){n}\s*(?:de\s+)?luni", c, re.I):
+        return v
+    # tabelele BRD: coloana de zile, apoi durata în cuvinte („30 1 lună”, „730* 2 ani”)
+    m = re.search(rf"(?<![\d.,]){n}\*?\s+(\d+)\s*(lun\w*|an\w*)", c, re.I)
+    if m:
+        luni = int(m.group(1)) * (1 if m.group(2).lower().startswith("lun") else 12)
+        if abs(luni * 30.4 - n) <= 0.1 * n:
+            return luni
+    if re.search(rf"(?<![\d.,]){n}\s*(?:de\s+)?zile", c, re.I) or (grila and n > 60):
+        return round(n / 30)
+    return v
+
+
+def _cond_curata(c: str) -> str:
+    # „ş/ţ” cu sedilă și „ș/ț” cu virgulă sunt aceeași literă: altfel aceeași condiție dă două chei
+    c = c.replace("ş", "ș").replace("ţ", "ț").replace("Ş", "Ș").replace("Ţ", "Ț")
+    return re.sub(r"\s+", " ", c).strip(" ;,.")
+
+
+def grila(o: dict, sc: dict | None, conditii: list[str]) -> tuple[dict, dict, list[str], str | None]:
+    """
+    O valoare dintr-o grilă de depozit: câmpul, scenariul, condițiile și moneda, în formă fixă.
+      - dobanda_la_scadenta / dobanda_lunara sunt aceeași dobândă anuală, cu altă plată
+        (BRD, 2 ani: 1,65% la scadență, 2,95% lunar): devin dobanda_nominala + plata_dobanzii;
+      - valuta trece în coloana `moneda` (din cheie), nu în text;
+      - `conditie` = dimensiunile structurate, în ordine fixă, apoi condițiile libere rămase
+        (ex. „deține pachet Gold”), curățate și sortate; codul de scenariu nu mai intră.
+    """
+    sc = dict(sc or {})
+    camp = o.get("camp")
+    if camp in ("dobanda_la_scadenta", "dobanda_lunara"):
+        sc.setdefault("plata_dobanzii", "la_scadenta" if camp == "dobanda_la_scadenta" else "lunar")
+        o = {**o, "camp": "dobanda_nominala"}
+    # Treapta de sumă e un început de bandă (catalogul v2): „de la 200” fără capăt e ≥ 200, nu
+    # 200–200 (Nexent), iar „de la 0” fără capăt nu e o treaptă (BCR: 0–0 lei).
+    if sc.get("suma") == 0:
+        # „de la 0” nu e un capăt: „0–500.000” și „sub 500.000” sunt aceeași treaptă (tbi)
+        sc["suma"] = None
+        if sc.get("suma_max") is None:
+            sc.pop("suma"); sc.pop("suma_max", None)
+    if sc.get("suma") is not None and sc.get("suma_max") is None:
+        sc["suma_max"] = None
+    are_suma = sc.get("suma") is not None or sc.get("suma_max") is not None
+    libere = set()
+    for c in map(_cond_curata, conditii):
+        if not c or c == o.get("cod_scenariu"):
+            continue
+        t = _fara_diacritice(c).lower()
+        mv = VALUTA_DIN_TEXT.match(t)
+        if mv:
+            sc.setdefault("valuta", mv.group(1).upper())
+            continue
+        dim = next(((d, v) for d, rx, v in DIM_DIN_TEXT if rx.match(t)), None)
+        if dim:
+            sc.setdefault(dim[0], dim[1])
+            continue
+        # doar la economii: la depozitele Garanti, textul ăsta ține separate două grile diferite
+        # pe aceeași celulă (EUR 1 lună ≥ 50.000: 1,30% și 1,50%), deci nu e o simplă dublură
+        if are_suma and o.get("id_produs") == "economii" and SUMA_DIN_TEXT.match(t):
+            continue
+        libere.add(c)
+    valuta = sc.get("valuta")
+    moneda = {"LEI": "RON"}.get(valuta, valuta) if valuta else None
+    if moneda:
+        sc["valuta"] = moneda
+        # treapta de sold e în valuta contului: „sold > 5.000 USD” nu e 5.000 lei (Exim)
+        if are_suma:
+            sc["moneda"] = moneda
+    if are_suma:
+        sc["banda"] = True
+    # oferta care cere ceva în plus (program de beneficii, plăți programate, promoție): nu e
+    # prețul standard, deci nu e referința, chiar dacă suma și valuta se potrivesc
+    cond = sorted(c for c in libere if CONDITIONAT.search(t := _fara_diacritice(c).lower())
+                  and not DUPA_PROMOTIE.search(t))
+    if sc.get("oferta") == "promotie":
+        cond.insert(0, "promoție")
+    if cond:
+        sc["conditionat"] = cond
+    return o, sc, _fixe(sc) + sorted(libere), moneda
+
+
+# Condiții libere care fac din valoare o ofertă condiționată, nu prețul standard al produsului.
+CONDITIONAT = re.compile(r"program\w* de beneficii|\bpachet|\bnivel\b|salariu|plat\w* programat|scheduled|"
+                         r"promo|oferta special|campani|client\w* nou|scadent|minim \d+ (zile|luni)")
+# „se aplică după expirarea perioadei promoționale” e chiar dobânda standard (ProCredit 2,5%)
+DUPA_PROMOTIE = re.compile(r"dupa (expirarea|incheierea|terminarea)")
+
+
+def _fixe(sc: dict) -> list[str]:
+    """Dimensiunile structurate ale grilei, ca text în ordine fixă (partea fixă din `conditie`)."""
+    fixe = [ETICHETE_GRILA[sc[k]] for k in ("canal", "plata_dobanzii") if sc.get(k) in ETICHETE_GRILA]
+    if sc.get("oferta") == "promotie":
+        fixe.append(ETICHETE_GRILA["promotie"])
+    if sc.get("suma") is not None or sc.get("suma_max") is not None:
+        de_la, pana_la = sc.get("suma"), sc.get("suma_max")
+        fixe.append(f"sumă {de_la:g}–{pana_la:g}" if de_la is not None and pana_la is not None
+                    else f"sumă ≥ {de_la:g}" if de_la is not None else f"sumă < {pana_la:g}")
+    return fixe
+
+
+# ── CONTUL DE ECONOMII ──────────────────────────────────────────────
+# Pe 06.10.2026: 6–14 procente pe bancă, din trepte, valute, dubluri, variante și rezumate.
+# Treptele vin de multe ori doar ca începuturi („de la 25.000”, „de la 50.000”): fără capăt,
+# 40.000 lei ar cădea în toate treptele de sub el. O dobândă fără treaptă e valabilă la orice
+# sold doar dacă documentul nu are trepte; altfel e un rezumat („până la 3%”).
+
+def inchide_benzi(randuri: list[dict]) -> list[dict]:
+    """
+    Treptele de sold ale unui document, pe (câmp, valută, canal, plata dobânzii, condiționat):
+      - o treaptă deschisă („≥ 25.000”) se închide la începutul treptei următoare, exclusiv;
+      - o valoare fără treaptă, într-un grup fără trepte, e valabilă la orice sold (`banda`);
+      - o valoare fără treaptă, într-un grup cu trepte, care repetă cifra unei trepte, e un
+        rezumat și iese; una cu altă cifră rămâne, fără bandă (nespecificat la referință).
+    """
+    grupe: dict[tuple, list[dict]] = defaultdict(list)
+    for r in randuri:
+        sc = r["sc"]
+        if r["o"].get("id_produs") != "economii" or sc is None:
+            continue
+        sc["axa"] = "sold"      # pentru fara_rezumate_sold, care vede banca întreagă
+        grupe[(r["o"].get("camp"), sc.get("valuta"), sc.get("canal"), sc.get("plata_dobanzii"),
+               tuple(sc.get("conditionat") or ()))].append(r)
+    scoase = set()
+    for g in grupe.values():
+        cu = [r for r in g if r["sc"].get("banda")]
+        starturi = sorted({r["sc"]["suma"] for r in cu if r["sc"].get("suma") is not None})
+        for r in cu:
+            sc = r["sc"]
+            if sc.get("suma") is not None and sc.get("suma_max") is None:
+                urm = next((s for s in starturi if s > sc["suma"]), None)
+                if urm is not None:
+                    sc["suma_max"], sc["suma_max_exclusiv"] = urm, True
+                    r["conditii"] = _fixe(sc) + [c for c in r["conditii"] if not c.startswith("sumă ")]
+        for r in g:
+            if r["sc"].get("banda"):
+                continue
+            if not cu:
+                # dobânda unică: orice sold. Nu și „dobânda maximă/minimă”: e capătul unei plaje
+                # (Raiffeisen: „până la nivelul maxim de 3%”), nu dobânda la un sold anume
+                if r["o"].get("camp") not in ("dobanda_max", "dobanda_min"):
+                    r["sc"]["banda"] = True
+            elif r["o"].get("valoare_num") in {x["o"].get("valoare_num") for x in cu}:
+                scoase.add(id(r))
+    return [r for r in randuri if id(r) not in scoase]
+
+
+# „altele” cu o etichetă care e de fapt un câmp din vocabularul produsului
+RECLASARE_ALTELE = [
+    (re.compile(r"retrager\w* (de )?numerar|numerar.*retrager|retrager\w* .*ghiseu"), "comision_retragere_ghiseu"),
+    (re.compile(r"^(?!.*minim).*(suma|sold|prag)\w* maxim"), "suma_maxima"),
+    (re.compile(r"varst"), "varsta_minima"),
+]
+_CAMPURI_V2 = {p["id"]: set(p.get("campuri") or [])
+               for p in json.loads((AICI / "produse_bancare_v2.json").read_text(encoding="utf-8"))["produse"]}
+
+DATA_RO = r"(\d{1,2})[./](\d{1,2})[./](\d{4})"
+EXPIRAT = re.compile(r"(valabil\w*|aplicabil\w*|se aplica)[^.;]{0,60}?pana (la|pe|in)\s*(data de\s*)?" + DATA_RO)
+
+
+def respins_economii(o: dict, conditii: list[str], url: str = "") -> str | None:
+    """
+    Motivul pentru care o valoare nu e a contului de economii azi, sau None. Doar la economii:
+    la alte produse, „lista de tarife valabilă până la …” cu o dată trecută e adesea tot lista
+    în vigoare, iar regula ar șterge bănci întregi.
+    """
+    if o.get("id_produs") != "economii":
+        return None
+    text = _fara_diacritice(" ".join([o.get("citat") or "", *conditii])).lower()
+    m = EXPIRAT.search(text)
+    if m:
+        try:
+            if date(int(m.group(6)), int(m.group(5)), int(m.group(4))) < date.today():
+                return f"ofertă expirată ({m.group(4)}.{m.group(5)}.{m.group(6)})"
+        except ValueError:
+            pass
+    # și URL-ul, dar doar „depozit la termen”: BRD „Capitalizare lunara 1,50%” venea din
+    # Depozitul-la-termen_companii_mici_RO.pdf, iar tbi își publică dobânda contului de
+    # economii în Dobanzi-depozite_TBI…pdf, care rămâne
+    u = url.lower()
+    # (ING „ing-economii-si-depozite-la-termen” e chiar pagina contului de economii)
+    if ("depozit" in text and "economi" not in text) or (re.search(r"depozit\w*[-_ ]la[-_ ]termen", u)
+                                                         and "economi" not in u):
+        return "valoare de depozit la termen, nu de cont de economii"
+    return None
+
+
+# Pagina variantei pentru firme (BRD YOU Save Business 2%): altă ofertă decât cea standard.
+PAGINA_FIRME = re.compile(r"business|companii|juridic|/imm|profesii-liberale|corporate", re.I)
+
+
+def reclaseaza_altele(o: dict) -> dict:
+    if o.get("camp") != "altele" or not o.get("eticheta_libera"):
+        return o
+    t = _fara_diacritice(o["eticheta_libera"]).lower()
+    permise = _CAMPURI_V2.get(o.get("id_produs"), set())
+    for rx, camp in RECLASARE_ALTELE:
+        if camp in permise and rx.search(t):
+            return {**o, "camp": camp}
+    return o
 
 
 def _respinge(grup: dict, o: dict, motiv: str, cod: str | None = None) -> None:
@@ -185,7 +452,7 @@ def _respinge(grup: dict, o: dict, motiv: str, cod: str | None = None) -> None:
 
 def randuri_comparatie(idb: int, grup: dict, rez: dict, slug: str | None = None) -> list[tuple]:
     """Observațiile acceptate de flow -> rânduri comparatie_libra, una per produs Libra legat."""
-    out = []
+    pregatite = []
     for o in rez.get("observatii") or []:
         if o.get("not_found") or not o.get("camp") or not o.get("citat"):
             continue
@@ -196,16 +463,36 @@ def randuri_comparatie(idb: int, grup: dict, rez: dict, slug: str | None = None)
         if corectat is None:
             _respinge(grup, o, motiv_respins)
             continue
-        o = corectat
+        o = reclaseaza_altele(corectat)
         unitate, moneda = UNITATI.get(o.get("unitate"), (o.get("unitate"), None))
         conditii = [c if isinstance(c, str) else json.dumps(c, ensure_ascii=False)
                     for c in (o.get("conditii") or [])]
+        motiv_respins = respins_economii(o, conditii, grup["url"])
+        if motiv_respins:
+            _respinge(grup, o, motiv_respins)
+            continue
         sc = scenariu_din(o)
-        if sc and sc.get("valuta"):
-            # valuta face parte din cheia valorii: EUR și USD nu sunt aceeași condiție
-            conditii.insert(0, f"valuta {sc['valuta']}")
-        if o.get("cod_scenariu"):
-            conditii.insert(0, str(o["cod_scenariu"]))
+        if o.get("id_produs") in GRILE:
+            o, sc, conditii, m = grila(o, sc, conditii)
+            moneda = m or moneda
+            if o.get("id_produs") == "economii" and PAGINA_FIRME.search(grup["url"]):
+                sc["conditionat"] = [*(sc.get("conditionat") or []), "variantă pentru firme"]
+                conditii.append("variantă pentru firme")
+        else:
+            if sc and sc.get("valuta"):
+                # valuta face parte din cheia valorii: EUR și USD nu sunt aceeași condiție
+                conditii.insert(0, f"valuta {sc['valuta']}")
+            if o.get("cod_scenariu"):
+                conditii.insert(0, str(o["cod_scenariu"]))
+        if o.get("camp") == "altele" and o.get("eticheta_libera"):
+            # ce este valoarea: fără ea, „altele: 0,4%” nu spune nimic (24 din 24 la economii o aveau)
+            # și două „altele” diferite cu aceleași condiții ar cădea pe aceeași cheie
+            conditii.insert(0, _cond_curata(o["eticheta_libera"]))
+        pregatite.append({"o": o, "sc": sc, "conditii": conditii, "unitate": unitate, "moneda": moneda})
+
+    out = []
+    for p in inchide_benzi(pregatite):
+        o, sc, conditii, unitate, moneda = p["o"], p["sc"], p["conditii"], p["unitate"], p["moneda"]
         for e in o.get("etichete_reguli") or []:
             # „dobândă medie” și dobânda de listă sunt două valori, nu una ambiguă: intră în cheie
             conditii.append(e)
@@ -252,7 +539,8 @@ def randuri_comparatie(idb: int, grup: dict, rez: dict, slug: str | None = None)
                 sc_l = sc_l or {}
                 sc_l["referinta"] = ref
             out.append((idb, leg["id_produs_libra"], leg["id_sursa"], o["camp"],
-                        o.get("valoare_num"), None if o.get("valoare_num") is not None else o.get("eticheta_libera"),
+                        o.get("valoare_num"),
+                        o.get("eticheta_libera") if o.get("valoare_num") is None or o["camp"] == "altele" else None,
                         unitate, moneda, "; ".join(cond_l) or None, o["citat"], link,
                         "llm", round(float(o.get("confidence") or 0), 2), ambiguu, motiv,
                         json.dumps(sc_l, ensure_ascii=False) if sc_l else None, *interval(sc_l)))
@@ -263,9 +551,65 @@ def _fmt(r: tuple) -> str:
     return f"{r[4]:g} {r[6] or ''}".strip() if r[4] is not None else str(r[5])
 
 
+def fara_rezumate_sold(randuri: list[tuple]) -> list[tuple]:
+    """
+    Ce face `inchide_benzi` pe un document, pe banca întreagă: o dobândă „la orice sold” dintr-un
+    document fără trepte, când alt document al băncii are treptele (ING: „2%” pe o pagină,
+    grila 0 / 0,5 / 0,75 / 1 / 2% pe alta), e un rezumat. Dacă repetă cifra unei trepte iese;
+    altfel rămâne, dar nu mai e valabilă la orice sold, deci nici referință.
+    """
+    sc = [json.loads(r[15]) if r[15] else {} for r in randuri]
+    cu_trepte = defaultdict(set)
+    datate = set()
+    for r, s in zip(randuri, sc):
+        if s.get("axa") != "sold":
+            continue
+        # o promoție pe o treaptă nu face din dobânda standard un rezumat (ProCredit 5,4% / 2,5%)
+        if (s.get("suma") is not None or s.get("suma_max") is not None) and not s.get("conditionat"):
+            cu_trepte[(r[1], r[3], r[7])].add(r[4])
+        if _in_vigoare_din(r[8]):
+            datate.add((r[1], r[3], r[7], r[16], r[17]))
+    out = []
+    for r, s in zip(randuri, sc):
+        if s.get("axa") != "sold":
+            out.append(r); continue
+        k = (r[1], r[3], r[7])
+        nespecificat = False
+        if s.get("banda") and s.get("suma") is None and s.get("suma_max") is None and k in cu_trepte:
+            if r[4] in cu_trepte[k]:
+                continue
+            s.pop("banda")
+            nespecificat = True
+        # tbi: 6% dintr-un PDF din 09.2025, 5% „valabil începând cu 30.03.2026” pe aceeași treaptă:
+        # valoarea fără dată nu mai e cea în vigoare, deci nu e referința
+        if (*k, r[16], r[17]) in datate and not _in_vigoare_din(r[8]):
+            nespecificat = True
+        if nespecificat:
+            if s.get("referinta"):
+                s["referinta"] = {**s["referinta"], "potrivire": "nespecificat"}
+            r = (*r[:15], json.dumps(s, ensure_ascii=False), *r[16:])
+        out.append(r)
+    return out
+
+
+IN_VIGOARE_DIN = re.compile(r"(valabil\w*|aplicabil\w*) (incepand|de la data de|din)\s*(cu\s*)?(data de\s*)?" + DATA_RO)
+
+
+def _in_vigoare_din(conditie: str | None) -> bool:
+    """Condiția spune „valabil începând cu <dată>”, iar data a trecut."""
+    m = IN_VIGOARE_DIN.search(_fara_diacritice(conditie or "").lower())
+    try:
+        return bool(m) and date(int(m.group(7)), int(m.group(6)), int(m.group(5))) <= date.today()
+    except ValueError:
+        return False
+
+
 def rezolva(randuri: list[tuple]) -> list[tuple]:
     """
-    Un rând per cheia unică din comparatie_libra (produs, câmp, monedă, condiție).
+    Un rând per cheia unică din comparatie_libra (produs, câmp, interval, monedă, condiție),
+    aceeași ca ux_comparatie_libra. Intervalul (durata) lipsea din cheie: era mascat cât
+    timp codul de scenariu stătea în condiție; fără el, la BRD (05.10.2026) dobânzile la
+    1, 3, 6 și 12 luni ajungeau pe aceeași cheie și rămânea una singură.
 
     - o singură valoare pe cheie, sau aceeași cifră găsită de mai multe ori
       (în pagini diferite, ori de două ori în aceeași pagină): un rând, neambiguu;
@@ -273,9 +617,10 @@ def rezolva(randuri: list[tuple]) -> list[tuple]:
       condiție): rămâne cea cu încrederea cea mai mare, marcată ambiguu, cu
       alternativele în motiv. Înainte, cealaltă se pierdea în tăcere la ON CONFLICT.
     """
+    randuri = fara_rezumate_sold(randuri)
     grupe: dict[tuple, list[tuple]] = defaultdict(list)
     for r in randuri:
-        grupe[(r[1], r[3], r[7], r[8] or "")].append(r)
+        grupe[(r[1], r[3], r[16], r[17], r[18], r[7], r[8] or "")].append(r)
     out = []
     for g in grupe.values():
         g.sort(key=lambda r: -(r[12] or 0))
@@ -400,7 +745,7 @@ def noteaza(idb: int, grup: dict, rez: dict, schimbat: bool) -> None:
 
 
 async def un_url(idb: int, slug: str, grup: dict, sem: asyncio.Semaphore,
-                 anterior: dict | None, forteaza: bool) -> dict:
+                 anterior: dict | None, forteaza: bool, job: Job) -> dict:
     produse_v2 = sorted({l["v2"] for l in grup["legaturi"]})
     # Amprenta se compară doar dacă avem și valorile rulării anterioare: altfel un
     # document neschimbat ar lăsa produsul fără valori la rescrierea băncii.
@@ -416,6 +761,12 @@ async def un_url(idb: int, slug: str, grup: dict, sem: asyncio.Semaphore,
                                       "hash_anterior": h_ant})
         except Exception as e:
             rez = {"stare": "eroare", "motiv": f"{type(e).__name__}: {e}", "observatii": []}
+    b = rez.get("bilant") or {}
+    job.consum(S.fh.MODEL, {"intrare": b.get("tokeni_intrare", 0), "iesire": b.get("tokeni_iesire", 0)},
+               apeluri=b.get("apeluri"))
+    if rez.get("stare") in ("eroare", "blocat"):
+        # blocat = 403 sau robots: nu se ocolește (regula echipei), dar sursa rămâne fără date azi
+        job.eroare(f"[{rez['stare']}] {rez.get('motiv') or 'fără motiv'}", context=grup["url"])
     neschimbat = rez.get("stare") == "neschimbat"
     noteaza(idb, grup, rez, schimbat=not neschimbat)
     if neschimbat:
@@ -464,6 +815,15 @@ async def main() -> None:
                         "atingă amprentele și data ultimei verificări a surselor")
     arg = a.parse_args()
 
+    # jurnalul (jobs / jobs_error) doar pentru rularea reală: simularea și
+    # rescrierea din JSON nu descarcă și nu cheamă modelul
+    jurnal = (FaraJurnal() if arg.simulare or arg.din_json
+              else Job("extragere", banca=arg.banca, model=S.fh.MODEL, parametri=vars(arg)))
+    with jurnal as job:
+        await ruleaza(arg, job)
+
+
+async def ruleaza(arg, job: Job) -> None:
     with psycopg2.connect(DSN) as conn:
         idb, grupuri = surse_de_extras(conn, arg.banca)
     cale = IESIRE / f"valori-{arg.banca}.json"
@@ -542,7 +902,7 @@ async def main() -> None:
                 else:
                     del rezultate[k]
     start = time.time()
-    for f in asyncio.as_completed([un_url(idb, arg.banca, g, sem, anterioare.get(g["cheie"]), arg.forteaza)
+    for f in asyncio.as_completed([un_url(idb, arg.banca, g, sem, anterioare.get(g["cheie"]), arg.forteaza, job)
                                    for g in de_facut]):
         r = await f
         rezultate[r["cheie"]] = r
@@ -577,6 +937,7 @@ async def main() -> None:
     ti = sum((r.get("tokeni") or {}).get("intrare", 0) for r in rulate)
     te = sum((r.get("tokeni") or {}).get("iesire", 0) for r in rulate)
     cost = preturi.cost(S.fh.MODEL, ti, te)
+    job.rezumat = f"{dict(stari)}; {total} rânduri scrise în comparatie_libra"
     spune(f"\n{arg.banca}: GATA — {dict(stari)}; {total} rânduri scrise în comparatie_libra; "
           f"cost estimat ${(cost or 0):.2f} ({ti} tokeni in / {te} out, fără cache); "
           f"{round((time.time() - start) / 60)} min")

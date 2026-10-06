@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-05",
+  "banca": "exim",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2024/08/Ghid-Mobile-Banking-1.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "e-ximBanking (Mobile Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este ghidul oficial al aplicației de mobile banking e-ximBanking, destinată persoanelor fizice, cu funcționalități comparabile Aplicației Libra (vizualizare conturi, plăți, carduri, depozite, schimb valutar, token mobil integrat, biometrie) — același tip de produs (aplicație de mobile banking) pentru același segment de bază (persoane fizice).",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document dedicat exclusiv aplicației de Mobile Banking, cu detalii funcționale concrete și cifre privind securitatea (blocare după un număr fix de încercări eronate).",
+      "citat": "Utilizarea Mobile Token in aplicatia Internet Banking presupune accesarea functiei ,,integrate'' in cadrul aplicatiei de Mobile Banking, prin introducerea codului de acces setat initial de utilizator. Dupa activarea cu succes a Token-ului integrat, acesta se va bloca la 5 incercari eronate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2024/12/Termeni-si-conditii-Internet-si-Mobile-Banking_februarie-2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Aplicația mobilă e-xim Banking / serviciul Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de Termeni și condiții reglementează explicit serviciul de Mobile Banking (aplicația e-xim Banking) pentru persoane fizice, inclusiv activarea, autentificarea biometrică, token mobil integrat și termene de acces — același tip de produs și segment ca Aplicația Libra Bank.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document contractual dedicat serviciului de Internet/Mobile Banking, cu termene concrete (ex. 48 de ore pentru activarea accesului) și definirea explicită a aplicației mobile e-xim Banking.",
+      "citat": "Clientul IB, personal sau prin Utilizatorii mandatati, va putea accesa serviciul de Internet Banking e-xim Banking in maximum 48 de ore de la data aprobarii de catre Banca a contractului specific depus.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2025/06/11/transactional-offers/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Internet/Mobile Banking (e-ximBanking) - pachet tranzacțional pentru firme",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul de persoane juridice al Aplicației Libra (care e tot pentru persoane fizice și juridice): e-ximBanking este inclus ca serviciu de mobile banking în pachetul tranzacțional pentru firme, dar aici apare doar ca o componentă a unui abonament de cont curent business, nu ca produs de sine stătător cu tarif propriu.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina de ofertă tranzacțională pentru firme menționează explicit administrarea lunară a Internet/Mobile Banking (e-ximBanking) ca parte a abonamentului, cu sumă fixă lunară.",
+      "citat": "BASE SUBSCRIPTION – RON 25/MONTH Free facilities (administrative and transactional) Opening of the current account; Monthly administration of current accounts in RON and foreign currency; Issuance and administration of the debit card included in the offer; Monthly administration of Internet/Mobile Banking (e-ximBanking);",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4177,
+    "citire_cache": 6344,
+    "scriere_cache": 32967,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1254643
+  }
+}

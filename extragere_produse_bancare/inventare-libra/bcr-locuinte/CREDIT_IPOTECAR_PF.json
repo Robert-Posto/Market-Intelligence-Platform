@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-06",
+  "banca": "bcr-locuinte",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcrlocuinte.ro/ro/creditare/creditul-locativ",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru domeniul locativ Bauspar (Creditul Locativ)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite ipotecare pentru domeniul locativ destinate persoanelor fizice, dar la BCR BpL accesarea creditului necesită obligatoriu un contract de economisire-creditare (sistem Bauspar colectiv), durata e mult mai scurtă (max. 120 luni față de 420 luni la Libra) și sumele sunt mult mai mici, fără plafonul de 15 mil. lei al creditului ipotecar clasic.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit dobânda, comisioanele, durata maximă și un exemplu de calcul cu sume concrete.",
+      "citat": "Rata dobânzii este fixă de 5%/an sau 6%/an(în funcție de tarif), pe toată perioada de creditare; Comision de analiză dosar credit - 0 lei; Comision lunar de administrare (din valoarea soldului): 0,05%; Durată credit: până la 120 de luni(în funcție de tarif)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcrlocuinte.ro/"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2111,
+    "citire_cache": 6374,
+    "scriere_cache": 22581,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07884530000000001
+  }
+}

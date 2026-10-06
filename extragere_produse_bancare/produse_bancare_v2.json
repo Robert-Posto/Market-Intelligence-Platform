@@ -196,6 +196,9 @@
         "dobanda_la_scadenta",
         "dobanda_lunara",
         "prag_sold",
+        "suma_maxima",
+        "comision_retragere_ghiseu",
+        "varsta_minima",
         "altele"
       ],
       "interval": {
@@ -261,7 +264,7 @@
         "depozit in valuta",
         "scadenta"
       ],
-      "cauta": "Dobânda pe monedă și scadență, separat pentru plata la scadență și plata lunară. Diferența dintre ele e o decizie de politică a băncii.",
+      "cauta": "Grila de dobânzi ANUALE a depozitului: fiecare celulă din tabelul băncii e o valoare separată, cu durata, valuta, canalul (online / ghișeu), pragul de sumă, plata dobânzii și tipul ofertei în `trepte`. Dobânda se raportează mereu ca `dobanda_nominala`; plata la scadență sau lunară e treapta `plata_dobanzii`, nu alt câmp. Citatul e RÂNDUL întreg din tabel (durata, apoi toate coloanele lui), nu doar celula: „1,20%” singur se găsește de zece ori în pagină și nu dovedește din ce rând vine.",
       "campuri": [
         "comision_administrare_lunar",
         "comision_deschidere",
@@ -299,6 +302,8 @@
           ],
           "campuri": [
             "dobanda_nominala",
+            "dobanda_la_scadenta",
+            "dobanda_lunara",
             "dobanda_fixa",
             "dobanda_min",
             "dobanda_max",
@@ -318,6 +323,8 @@
           ],
           "campuri": [
             "dobanda_nominala",
+            "dobanda_la_scadenta",
+            "dobanda_lunara",
             "dobanda_fixa",
             "dobanda_min",
             "dobanda_max",
@@ -337,12 +344,75 @@
           ],
           "campuri": [
             "dobanda_nominala",
+            "dobanda_la_scadenta",
+            "dobanda_lunara",
             "dobanda_fixa",
             "dobanda_min",
             "dobanda_max",
             "dae"
           ],
           "de_ce": "Dobânda la RON și la EUR nu sunt două oferte care se compară, sunt două produse. Puse pe aceeași axă, orice bancă cu depozit în EUR apare ca fiind cea mai slabă de pe piață."
+        },
+        {
+          "id": "plata_dobanzii",
+          "nume": "Plata dobânzii",
+          "dimensiune": "plata_dobanzii",
+          "unitate": null,
+          "puncte_text": [
+            "la_scadenta",
+            "lunar",
+            "capitalizare"
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_la_scadenta",
+            "dobanda_lunara",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "Pe 05.10.2026, la BRD, aceeași durată avea două dobânzi (1,65% la scadență, 2,95% lunar), iar modelul le salva ca două câmpuri diferite (dobanda_la_scadenta / dobanda_lunara, 79 de valori): erau aceeași dobândă anuală, cu altă plată."
+        },
+        {
+          "id": "canal",
+          "nume": "Canal",
+          "dimensiune": "canal",
+          "unitate": null,
+          "puncte_text": [
+            "online",
+            "ghiseu"
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_la_scadenta",
+            "dobanda_lunara",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "154 din 247 de dobânzi de depozit (05.10.2026) aveau canalul doar ca text în condiție („la ghișeu”, „prin YOU BRD”, „Internet/Mobile banking”): nu se putea filtra, iar ghișeul și online-ul aceleiași bănci se amestecau."
+        },
+        {
+          "id": "oferta",
+          "nume": "Tip ofertă",
+          "dimensiune": "oferta",
+          "unitate": null,
+          "puncte_text": [
+            "standard",
+            "promotie"
+          ],
+          "campuri": [
+            "dobanda_nominala",
+            "dobanda_la_scadenta",
+            "dobanda_lunara",
+            "dobanda_fixa",
+            "dobanda_min",
+            "dobanda_max",
+            "dae"
+          ],
+          "de_ce": "O dobândă promoțională (Blitz, „ofertă specială”, bonus pentru client nou) lângă una standard face clasamentul fals; trebuie marcată de document, nu ghicită din nume."
         }
       ]
     },

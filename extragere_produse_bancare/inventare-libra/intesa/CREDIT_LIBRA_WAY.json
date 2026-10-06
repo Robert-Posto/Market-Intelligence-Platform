@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-06",
+  "banca": "intesa",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/persoane-fizice/credite/credit-nevoi-personale.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără destinație/justificare specifică, în LEI, cu dobândă fixă, perioadă de creditare 12-60 luni și sumă maximă 150.000 lei — aceiași parametri cheie ca la Libra Way.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: dobândă, sumă, perioadă, exemplu reprezentativ de calcul.",
+      "citat": "Pentru un credit de consum în valoare de 50.000 LEI, acordat pe o perioadă de 5 de ani, rambursabil în 60 de rate lunare egale, dacă se încasează venitul în contul curent deschis la Intesa Sanpaolo Bank costurile sunt următoarele: rată medie de dobândă fixă de 7,90%, comision de analiză dosar de 200 LEI.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Lista-costuri-credite-PF-02.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife și comisioane listează explicit produsul CREDIT DE NEVOI PERSONALE (credite noi și refinanțare) cu valorile creditului, dobânda și comisioanele aplicabile, valabil din 02.10.2025.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de costuri cu cifre exacte pentru produsul corespunzător: interval valoare credit, dobândă, comision analiză dosar.",
+      "citat": "CREDIT DE NEVOI PERSONALE (credite noi și refinanțare, începând cu 02.10.2025). Rata dobânzii este cuprinsă între 6,90% și 11,90% și este stabilită în funcție de o serie de elemente avute în vedere în analiza cererii de credit.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/persoane-fizice/credite.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub de credite persoane fizice descrie pe scurt produsul corespunzător cu principalele caracteristici: dobândă fixă, perioadă de creditare până la 60 de luni, sumă maximă 150.000 lei.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagină generală (hub) dar cu cifrele cheie ale produsului menționate explicit.",
+      "citat": "Credit de nevoi personale cu dobândă fixă. Dobândă fixă pe toata perioada de creditare, Perioadă de creditare de până la 60 de luni, pănă la 150.000 lei credit de nevoi personale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1779,
+    "citire_cache": 6405,
+    "scriere_cache": 26315,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0848665
+  }
+}

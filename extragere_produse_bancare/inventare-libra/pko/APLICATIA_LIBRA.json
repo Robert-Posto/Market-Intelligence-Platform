@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-05",
+  "banca": "pko",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Aplicația mobilă iPKO biznes",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este aceeași categorie de produs (aplicație de mobile banking) ca Libra, dar la PKO Bank Polski Sucursala București serviciul este disponibil exclusiv clienților corporate/persoane juridice (sucursala deservește doar clienți corporate), nu și persoanelor fizice ca la Libra.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul oficial de tarife al băncii menționează explicit aplicația mobilă iPKO biznes și comisioanele (0 RON) pentru operațiuni efectuate prin ea, dar fără descriere funcțională detaliată.",
+      "pagina_pdf": 5,
+      "citat": "Atribuirea codului PIN: 1) prin infoline sau în aplicația mobilă iPKO biznes 0 RON 2) trimis prin poștă 16 RON 23. Schimbarea PIN-ului prin infoline sau la bancomatul Băncii sau în aplicația mobilă iPKO biznes 0 RON",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4015,
+    "citire_cache": 44754,
+    "scriere_cache": 53259,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1822683
+  }
+}

@@ -28,6 +28,7 @@ import json
 import os
 import sys
 import time
+import traceback
 from collections import Counter
 from datetime import date
 from pathlib import Path
@@ -43,6 +44,7 @@ load_dotenv(AICI / ".env")
 import preturi                                          # noqa: E402
 from candidati_produse import Blocat, candidati         # noqa: E402
 from clasifica_produse import MODEL, clasifica          # noqa: E402
+from jurnal_joburi import FaraJurnal, Job               # noqa: E402
 
 DSN = os.environ.get("MIP_DSN", "host=localhost port=5432 dbname=mip user=mip password=mip")
 IESIRE = AICI / "inventare-produse"
@@ -88,7 +90,7 @@ def scrie_db(idb: int, noi: list[dict]) -> int:
     return n
 
 
-async def o_banca(slug: str, arg) -> None:
+async def o_banca(slug: str, arg, job: Job) -> None:
     idb = banca_db(slug)
     IESIRE.mkdir(exist_ok=True)
     cale = IESIRE / f"produse-{slug}.json"
@@ -102,6 +104,7 @@ async def o_banca(slug: str, arg) -> None:
     c = await candidati(slug)
     if c.get("blocat"):
         spune(f"{slug}: BLOCAT — {c['blocat']}. Se documentează ca blocat, nu se ocolește.")
+        job.eroare(f"blocat la candidați: {c['blocat']}", context=slug)
         return
     lista = c["candidati"]
     spune(f"{slug}: {c['statistica']['adrese_brute']} adrese, {len(lista)} candidați; "
@@ -139,11 +142,16 @@ async def o_banca(slug: str, arg) -> None:
             if blocaj:
                 return {**x, "rezultat": "nerulat", "motiv": "banca s-a blocat între timp"}
             try:
-                return await clasifica(ai, x, catalog, coduri)
+                r = await clasifica(ai, x, catalog, coduri)
+                job.consum(MODEL, r.get("tokeni"))
+                return r
             except Blocat as e:
+                if not blocaj:   # o singură eroare: restul candidaților nu mai rulează din același motiv
+                    job.eroare(f"banca s-a blocat la clasificare: {e}", context=x["url"])
                 blocaj.append(str(e))
                 return {**x, "rezultat": "nerulat", "motiv": f"blocat: {e}"}
             except Exception as e:
+                job.eroare("".join(traceback.format_exception(e)), context=x["url"])
                 return {**x, "rezultat": "respins", "motiv": f"{type(e).__name__}: {e}"}
 
     rez = await asyncio.gather(*(unul(x) for x in lista))
@@ -168,6 +176,9 @@ async def o_banca(slug: str, arg) -> None:
         "cost_estimat_usd": round(cost, 4), "tokeni": dict(tok),
         **pe}, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
     scrise = scrie_db(idb, pe["nou"]) if not arg.fara_db else 0
+    job.rezumat = (f"{len(pe['nou'])} noi, {len(pe['echivalent'])} cu echivalent Libra, "
+                   f"{len(pe['de_verificat'])} de verificat, {len(pe['respins'])} respinse; "
+                   f"{scrise} rânduri în products_discovery")
     spune(f"{slug}: {len(pe['nou'])} noi, {len(pe['echivalent'])} cu echivalent Libra, "
           f"{len(pe['de_verificat'])} de verificat, {len(pe['respins'])} respinse"
           + (f", {len(pe['nerulat'])} nerulate (BLOCAT: {blocaj[0]})" if blocaj else "")
@@ -190,7 +201,12 @@ async def main() -> None:
     a.add_argument("--fara-db", action="store_true", help="clasifică și scrie JSON, dar nu în bază")
     arg = a.parse_args()
     for slug in [s.strip() for s in arg.banca.split(",") if s.strip()]:
-        await o_banca(slug, arg)
+        # un job per bancă: costul și erorile se citesc pe bancă în pagina Logging.
+        # Simularea și rescrierea din JSON nu cheamă modelul: nu sunt joburi.
+        jurnal = (FaraJurnal() if arg.simulare or arg.din_json
+                  else Job("produse_noi", banca=slug, model=MODEL, parametri={**vars(arg), "banca": slug}))
+        with jurnal as job:
+            await o_banca(slug, arg, job)
 
 
 if __name__ == "__main__":

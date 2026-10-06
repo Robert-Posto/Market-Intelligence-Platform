@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-06",
+  "banca": "procredit",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/persoane-fizice/cont-economii-flexsave/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "FlexSave – cont de economii (Persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii în lei/euro cu dobândă la sold zilnic, acces oricând la bani, fără sumă minimă, pentru persoane fizice - același tip de produs și segment ca Libra Cont de economii.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului FlexSave, cu cifre explicite despre dobândă și mod de calcul.",
+      "citat": "Alegi FlexSave și beneficiezi de o dobândă de: 3% pe an pentru economiile în LEI, 0,20% pe an pentru cele în EURO. Dobânda se calculează zilnic la soldul existent în contul de economii la finalul zilei și se virează în prima zi a lunii următoare în contul curent.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/persoane-fizice/cont-economii-flexsave/#:~:text=Alegi%20FlexSave%20%C8%99i%20beneficiezi%20de,lunii%20urm%C4%83toare%20%C3%AEn%20contul%20curent."
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/cont-economii-profit-plus/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ProFit Plus – Cont de economii pentru companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii pentru persoane juridice, cu acces oricând la fonduri și dobândă, corespunzând segmentului de firme al produsului Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului pentru companii cu dobânzi explicite (promoțională și standard menționată în simulator).",
+      "citat": "Beneficiezi de o dobândă promoțională de 5,4% pe an pentru LEI și 1,6% pe an pentru EURO, aplicabilă în primele 3 luni de la deschiderea contului, pentru fonduri noi. Pentru LEI, simularea are ca bază de calcul o dobândă de 5,40% pe an pentru perioada promoțională și o dobândă standard de 2,50% pe an pentru restul perioadei, dacă este cazul.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/cont-economii-profit-plus/#:~:text=Beneficiezi%20de%20o%20dob%C3%A2nd%C4%83%20promo%C8%9Bional%C4%83,restul%20perioadei%2C%20dac%C4%83%20este%20cazul."
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/06/Dobanzi-produse-de-economisire-PJ-RO-01.05.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii (Persoane juridice) - listă de dobânzi",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial cu dobânzile standard aplicate contului de economii pentru persoane juridice, completând pagina ProFit Plus cu rata standard (non-promoțională).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document PDF cu tabel explicit de dobânzi pentru 'Cont de economii' și 'Cont de economii PLUS' persoane juridice.",
+      "citat": "Cont de economii 2,50% - 0,20% n/a; Cont de economii PLUS 2,50% - 0,20% Sold minim 1.000.000 LEI/200.000 EUR. Listă de dobânzi pentru produsele de economisire este valabilă începând cu data de 01.05.2025.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/persoane-fizice/cont-economii-flexsave/",
+    "https://www.procreditbank.ro/companii/cont-economii-profit-plus/"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2431,
+    "citire_cache": 34066,
+    "scriere_cache": 51961,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1610377
+  }
+}

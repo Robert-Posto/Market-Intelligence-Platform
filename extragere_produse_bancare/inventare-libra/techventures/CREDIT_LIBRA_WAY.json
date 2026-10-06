@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-06",
+  "banca": "techventures",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/persoane-fizice/credite-de-nevoi-personale-fara-garantii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de nevoi personale fără garanții reale imobiliare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără justificarea scopului, fără garanții reale, în lei, rambursare în rate egale sau descrescătoare - același tip de produs și segment ca Libra Way; diferă plafonul maxim (15.000 EUR vs 150.000 RON) și perioada maximă (5 ani vs 60 luni, practic identic).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: dobândă, comisioane, exemplu DAE, sumă, termen, tip rambursare.",
+      "citat": "Se acordă pentru finanțarea oricărui proiect personal, fără a fi necesară justificarea scopului utilizării banilor. Creditul se poate acorda și pentru refinanțarea altor credite. Suma finanțată: maximum 15.000 EUR (sau echivalentul în lei). Perioada de acordare: până la 5 ani.",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/persoane-fizice/credite-de-nevoi-personale-fara-garantii#:~:text=Se%20acord%C4%83%20pentru%20finan%C8%9Barea%20oric%C4%83rui,acordare%3A%20p%C3%A2n%C4%83%20la%205%20ani."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/persoane-fizice/credite-de-nevoi-personale-fara-garantii"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 902,
+    "citire_cache": 37452,
+    "scriere_cache": 25332,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0798564
+  }
+}

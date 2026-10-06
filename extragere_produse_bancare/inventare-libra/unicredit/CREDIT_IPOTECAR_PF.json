@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-06",
+  "banca": "unicredit",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/borrowing/mortgage-loans.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mortgage Loans / Credit Ipotecar (Real Estate Purchase Loan, Green Mortgage, Refinancing Loan, Home Construction Loan)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată a UniCredit pentru persoane fizice acoperă exact același tip de produs ca cel Libra: credit ipotecar pentru achiziție locuință, construcție, refinanțare, inclusiv variantă verde, cu ipotecă de rang I asupra imobilului.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu parametri (valoare, perioadă, avans) și exemple de calcul complete (dobânzi, DAE, rate, comisioane) pentru fiecare variantă (achiziție, verde, refinanțare, construcție).",
+      "citat": "The \"Mortgage Loan for Home Acquisition\" has the following parameters: Currency: lei; Value: maximum 350.000 euros (or the equivalent amount in lei); Downpayment: from 15%; Time period: 3 to 35 years; Guarantee: first rank mortgage on the purchased house",
+      "tip_potrivire_detaliu": null,
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/persoane-fizice/borrowing/mortgage-loans.html#:~:text=The%20%22Mortgage%20Loan%20for%20Home,mortgage%20on%20the%20purchased%20house"
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/CD-103-Comisioane-Dobanzi-ProduseCreditare-PersoaneFizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Credit Ipotecar/ Imobiliar de achiziție locuință/ refinanțare, inclusiv Verde",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și dobânzi conține un tabel dedicat exact produsului 'Credit Ipotecar/Imobiliar de achiziție locuință/refinanțare, inclusiv Verde', cu dobânzi fixe/variabile, DAE, comisioane și exemple de calcul pentru 300.000 Lei pe 25 ani (300 rate), identic ca structură cu produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document oficial de tarife, actualizat (valabil din 01.10.2026), cu cifre exacte (dobânzi, DAE, comisioane) pentru produsul echivalent.",
+      "pagina_pdf": 2,
+      "citat": "TIP CREDIT ÎN LEI CREDIT IPOTECAR/ IMOBILIAR DE ACHIZIȚIE LOCUINȚĂ/ REFINANȚARE, INCLUSIV VERDE1, cu rate de dobândă fixe si ulterior variabile, diferite atat cele fixe, cat si cele variabile, în funcție de îndeplinirea sau neîndeplinirea unor condiții. Rata anuală a dobânzii fixe în primii 3 ani/ 5 ani 5,99% 4,99%1/ 5,29% 7,00% 5,25%1/ 5,60%",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/persoane-fizice/Credite/credite-ipoteca.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/CD-103-Comisioane-Dobanzi-ProduseCreditare-PersoaneFizice.pdf",
+    "https://www.unicredit.ro/en/persoane-fizice/borrowing/mortgage-loans.html"
+  ],
+  "durata_s": 31,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2509,
+    "citire_cache": 96360,
+    "scriere_cache": 71646,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.223493
+  }
+}

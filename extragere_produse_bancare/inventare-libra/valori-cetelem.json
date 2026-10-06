@@ -1,0 +1,73 @@
+{
+ "banca": "cetelem",
+ "urluri": [
+  {
+   "cheie": "https://www.cetelem.ro/credite/credite-online?cid=0000094c80bfc5b084a12aa1e2fcc077||credit de nevoi personale cetelem (aplicare online)",
+   "url": "https://www.cetelem.ro/credite/credite-online?cid=0000094c80bfc5b084a12aa1e2fcc077",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale Cetelem (aplicare online)",
+   "focus": "Produsul băncii: „Credit de nevoi personale Cetelem (aplicare online)”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1617,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "eroare",
+   "motiv": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.cetelem.ro/credite/credite-online?cid=0000094c80bfc5b084a12aa1e2fcc077'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cetelem.ro/credite/credit-de-nevoi-personale?cid=000009b62fe4552ec4a53bc076c8806f||credit de nevoi personale cetelem",
+   "url": "https://www.cetelem.ro/credite/credit-de-nevoi-personale?cid=000009b62fe4552ec4a53bc076c8806f",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale Cetelem",
+   "focus": "Produsul băncii: „Credit de nevoi personale Cetelem”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1616,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "eroare",
+   "motiv": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.cetelem.ro/credite/credite-online?cid=0000035e6c41b73de426298941c5af9c'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  }
+ ]
+}

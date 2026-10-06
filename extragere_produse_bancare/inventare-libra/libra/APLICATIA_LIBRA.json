@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-05",
   "banca": "libra",
   "cod": "APLICATIA_LIBRA",
   "denumire": "Aplicația Libra Bank (Mobile Banking)",
@@ -12,71 +12,59 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Aplicația Libra pentru mobile banking",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Este chiar pagina dedicată produsului Aplicația Libra Bank (Mobile Banking), descriind funcționalitățile complete ale aplicației v4 pentru persoane fizice și juridice.",
-      "incredere": 0.95,
-      "explicatie_incredere": "Pagină dedicată exclusiv aplicației de mobile banking, cu descrierea funcționalităților și a cel puțin o cifră concretă (bonusul de 25% din dobândă la retragere parțială).",
-      "citat": "Constituire depozit și cont de economii - Retragere parțială din depozit fără a pierde dobânda — primești 25% din dobânda acumulată pentru suma retrasă - Alimentare cont prin card emis de altă bancă din România",
+      "motiv_potrivire": "Pagina dedicată exact produsului Libra - aplicația de mobile banking v4 cu funcționalitățile descrise (plăți, schimb valutar, depozite, investiții TradeVille), pentru persoane fizice și juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina oficială dedicată aplicației, cu text descriptiv și cifra de 25% dobândă acumulată la retragerea parțială din depozit prin aplicație.",
+      "citat": "Retragere parțială din depozit fără a pierde dobânda — primești 25% din dobânda acumulată pentru suma retrasă",
       "citat_verificat": true,
-      "link_live": "https://www.librabank.ro/mobile-banking#:~:text=Constituire%20depozit%20%C8%99i%20cont%20de,de%20alt%C4%83%20banc%C4%83%20din%20Rom%C3%A2nia"
+      "avertisment": "citat scurt (17 cuvinte)",
+      "link_live": "https://www.librabank.ro/mobile-banking#:~:text=Retragere%20par%C8%9Bial%C4%83%20din%20depozit%20f%C4%83r%C4%83,dob%C3%A2nda%20acumulat%C4%83%20pentru%20suma%20retras%C4%83"
     },
     {
-      "url": "https://librabank.ro/plati?desk_lbk=",
+      "url": "https://www.librabank.ro/plati?desk_lbk=",
       "tip": "html",
       "metoda": "http",
       "rol": "conditii",
-      "denumire_la_banca": "RoPay / Plăți instant prin aplicația Libra",
+      "denumire_la_banca": "Plăți instant și RoPay prin aplicația Libra mobile banking",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina descrie RoPay și plățile instant, funcționalități efectuate exclusiv prin aplicația Libra de mobile banking, cu limitele exacte per tranzacție și zilnic.",
+      "motiv_potrivire": "Pagina de servicii de plată detaliază limitele operaționale exacte ale plăților instant și RoPay efectuate din aplicația Libra de mobile banking, parte din produsul analizat.",
       "incredere": 0.85,
-      "explicatie_incredere": "Document general de servicii de plată, dar conține explicit limitele numerice ale RoPay și plăților instant accesate din aplicația de mobile banking.",
-      "citat": "Limite plăți instant Persoane fizice: - Per tranzacție: Lei: 49.999,99 / Euro: 2.000 - Limită zilnică (plăți instant + RoPay + către fintech-uri): 20.000 euro sau echivalent lei",
+      "explicatie_incredere": "Document/pagină oficială cu cifrele exacte ale limitelor de tranzacționare pentru aplicația de mobile banking, separat pe persoane fizice și juridice.",
+      "citat": "Persoane fizice: Per tranzacție: Lei: 49.999,99 / Euro: 2.000 Limită zilnică (plăți instant + RoPay + către fintech-uri): 20.000 euro sau echivalent lei",
       "citat_verificat": true,
-      "link_live": "https://librabank.ro/plati?desk_lbk=#:~:text=Limite%20pl%C4%83%C8%9Bi%20instant%20Persoane%20fizice%3A,20.000%20euro%20sau%20echivalent%20lei"
+      "link_live": "https://www.librabank.ro/plati?desk_lbk=#:~:text=Persoane%20fizice%3A%20Per%20tranzac%C8%9Bie%3A%20Lei%3A,20.000%20euro%20sau%20echivalent%20lei"
     },
     {
-      "url": "https://www.librabank.ro/click-to-pay",
+      "url": "https://www.librabank.ro/ropay",
       "tip": "html",
       "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Click to Pay (în aplicația Libra Bank)",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay în aplicația Libra Bank",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina descrie serviciul Click to Pay, activat și gestionat din aplicația Libra Bank, exact una dintre componentele enumerate în definiția produsului.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagină dedicată serviciului Click to Pay, cu precizarea explicită că activarea se face din aplicația Libra Bank și că serviciul este gratuit.",
-      "citat": "Disponibil pentru cardurile personale Mastercard de la Libra Bank. Poate fi folosit pentru cumpărături online la haine, electronice, servicii sau orice altceva, la comercianții care afișează semnul Click to Pay. Se activează din aplicația Libra Bank.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.librabank.ro/AI-Banking",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Libra Voice / AI Banking (în aplicația Libra)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina descrie Libra Voice, componenta de AI banking bazată pe voce integrată în aplicația Libra pentru mobile banking, menționată explicit în definiția produsului.",
-      "incredere": 0.6,
-      "explicatie_incredere": "Pagină dedicată serviciului Libra Voice, cu detalii despre disponibilitate (versiune de testare, persoane fizice titulari de cont) dar fără cifre tarifare.",
-      "citat": "“Libra Voice” este disponibilă, în versiunea de testare, pentru toți clienții persoane fizice, titulari de cont. Acest serviciu se găsește în aplicația Libra pentru mobile banking pe ecranul de start, iar activarea se face prin apăsarea butonului de chat.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "motiv_potrivire": "Pagina dedicată serviciului RoPay, funcționalitate inclusă explicit în descrierea produsului Libra (Libra Voice, RoPay, Click to Pay), accesibilă doar din aplicația de mobile banking.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină oficială dedicată RoPay, cu detalii funcționale și o cifră de performanță (încasare în sub 10 secunde) pentru RoPay for Business, parte a aplicației.",
+      "citat": "Ce înseamnă pentru tine? Încasări în mai puțin de 10 secunde; Funcționează non-stop, inclusiv în weekenduri și sărbători; Costuri avantajoase;",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/ropay#:~:text=Ce%20%C3%AEnseamn%C4%83%20pentru%20tine%3F%20%C3%8Encas%C4%83ri,weekenduri%20%C8%99i%20s%C4%83rb%C4%83tori%3B%20Costuri%20avantajoase%3B"
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.librabank.ro/mobile-banking",
-    "https://librabank.ro/plati?desk_lbk="
+    "https://www.librabank.ro/plati?desk_lbk=",
+    "https://www.librabank.ro/click-to-pay",
+    "https://www.librabank.ro/documente/tarife-comisioane-persoane-fizice.pdf",
+    "https://www.librabank.ro/ropay"
   ],
-  "durata_s": 67,
+  "durata_s": 44,
   "consum": {
-    "intrare": 6,
-    "iesire": 6317,
-    "citire_cache": 39217,
-    "scriere_cache": 58295,
+    "intrare": 62318,
+    "iesire": 3635,
+    "citire_cache": 98402,
+    "scriere_cache": 81888,
     "apeluri": 1,
-    "cost_estimat_usd": 0.21676289999999998
+    "cost_estimat_usd": 0.3853864
   }
 }

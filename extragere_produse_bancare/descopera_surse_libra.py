@@ -24,6 +24,10 @@ Rezultate:
                                                  și potrivirea (echivalent/similar)
 
 Un produs care are deja fișier e sărit (reluare gratuită), cu excepția --forteaza.
+
+Termen: --timeout secunde pe produs (implicit 180, 0 = fără), numărate de când
+produsul începe să ruleze, nu de când așteaptă în coadă. Un produs negăsit în
+termen e socotit blocat: eroare în jobs_error, fără JSON, deci rerularea îl reia.
 """
 from __future__ import annotations
 
@@ -34,6 +38,7 @@ import re
 import sys
 import threading
 import time
+import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import date
 from pathlib import Path
@@ -43,6 +48,7 @@ import psycopg2
 
 import preturi
 import targetedCrawl as T
+from jurnal_joburi import FaraJurnal, Job
 
 AICI = Path(__file__).parent
 IESIRE = AICI / "inventare-libra"
@@ -225,25 +231,29 @@ def link_live(url: str, citat: str) -> str:
 
 # ── un produs ─────────────────────────────────────────────────────
 
-def un_produs(banca: dict, idb: int, p: dict) -> dict:
+def un_produs(banca: dict, idb: int, p: dict, timeout_s: float = 0) -> dict:
     e_libra = banca["id"] == "libra"
     produs = {"id": p["cod"], "nume": p["denumire"]}
     cerere = (f"Găsește sursele pentru produsul Libra „{p['denumire']}” ({p['cod']})"
               + ("" if e_libra else " sau echivalentul lui la această bancă") + ", apoi apelează `gata`.")
     start = time.time()
+    # un singur termen pe produs: reîncercările și reluarea „fără motiv” intră tot în el
+    termen = start + timeout_s if timeout_s else None
 
     def o_rulare(cer: str) -> dict:
         # La 9 cereri simultane au căzut 7 conexiuni (WinError 10054), iar PLASAMENTE
         # a picat de două ori la rând, la 15 s distanță. Trei încercări, pauză crescătoare.
         for tentativa in (1, 2, 3):
             try:
-                return T.ruleaza(banca, produs, prompt_sistem=sistem(p, e_libra), gata=GATA, cerere=cer)
+                return T.ruleaza(banca, produs, prompt_sistem=sistem(p, e_libra), gata=GATA, cerere=cer,
+                                 termen=termen)
             except Exception as e:  # conexiune închisă, 529, 5xx
                 spune(f"  ! {p['cod']}: {type(e).__name__}: {e} (tentativa {tentativa})")
-                if tentativa == 3:
+                pauza = 20 * tentativa ** 2
+                if tentativa == 3 or (termen and time.time() + pauza >= termen):
                     return {"surse": [], "_deschise": [], "_texte": {}, "_usage": {},
                             "_eroare": f"{type(e).__name__}: {e}"}
-                time.sleep(20 * tentativa ** 2)
+                time.sleep(pauza)
 
     rez = o_rulare(cerere)
     gol_fara_motiv = lambda r: (not r.get("surse") and not (r.get("gol") or {}).get("motiv")
@@ -372,11 +382,22 @@ def main() -> None:
     a.add_argument("--prioritare", action="store_true")
     a.add_argument("--paralel", type=int, default=3)
     a.add_argument("--forteaza", action="store_true")
+    a.add_argument("--timeout", type=float, default=180,
+                   help="secunde pe produs (implicit 180); după ele produsul e eroare de timeout. 0 = fără termen")
     a.add_argument("--simulare", action="store_true")
     a.add_argument("--din-json", action="store_true",
                    help="rescrie surse_libra din inventare-libra/<banca>/*.json, fără apeluri la API")
     arg = a.parse_args()
 
+    # jurnalul (jobs / jobs_error) doar pentru rularea reală: simularea și
+    # rescrierea din JSON nu cheamă modelul
+    jurnal = (FaraJurnal() if arg.simulare or arg.din_json
+              else Job("discovery", banca=arg.banca, model=T.MODEL, parametri=vars(arg)))
+    with jurnal as job:
+        ruleaza(arg, job)
+
+
+def ruleaza(arg, job: Job) -> None:
     banca = T.incarca_banca(arg.banca)
     with psycopg2.connect(DSN) as conn:
         idb = id_banca(conn, arg.banca)
@@ -397,7 +418,8 @@ def main() -> None:
         return
     de_rulat = [p for p in produse if arg.forteaza or not (dosar / f"{p['cod']}.json").exists()]
     spune(f"{banca['nume']}: {len(de_rulat)} de rulat, {len(produse) - len(de_rulat)} sărite "
-          f"(au rezultat), paralel {arg.paralel}, model {T.MODEL}, domenii {', '.join(T.domenii_permise(banca))}")
+          f"(au rezultat), paralel {arg.paralel}, model {T.MODEL}, "
+          f"termen {f'{arg.timeout:g} s/produs' if arg.timeout else 'fără'}, domenii {', '.join(T.domenii_permise(banca))}")
     if arg.simulare:
         for p in de_rulat:
             spune(f"  [simulare] {p['cod']:28} {p['segment'] or '':6} {p['denumire']}")
@@ -405,7 +427,7 @@ def main() -> None:
 
     total, gasite, erori, start = 0.0, 0, [], time.time()
     with ThreadPoolExecutor(max_workers=arg.paralel) as ex:
-        viitoare = {ex.submit(un_produs, banca, idb, p): p for p in de_rulat}
+        viitoare = {ex.submit(un_produs, banca, idb, p, arg.timeout): p for p in de_rulat}
         for f in as_completed(viitoare):
             p = viitoare[f]
             try:
@@ -413,12 +435,15 @@ def main() -> None:
             except Exception as e:
                 erori.append(p["cod"])
                 spune(f"EROARE  {p['cod']:28} {type(e).__name__}: {e}")
+                job.eroare("".join(traceback.format_exception(e)), context=p["cod"])
                 continue
             c = r["consum"].get("cost_estimat_usd") or 0
             total += c
+            job.consum(T.MODEL, r["consum"])
             if r.get("eroare"):
                 erori.append(p["cod"])
                 spune(f"EROARE  {p['cod']:28} {r['eroare'][:120]}")
+                job.eroare(r["eroare"], context=p["cod"])
             elif r["surse"]:
                 gasite += 1
                 ver = sum(1 for s in r["surse"] if s.get("citat_verificat"))
@@ -429,6 +454,7 @@ def main() -> None:
                 g = r.get("gol") or {}
                 spune(f"GOL     {p['cod']:28} {g.get('motiv', '?')}: {(g.get('nota') or '')[:90]}, ${c:.2f}")
 
+    job.rezumat = f"{gasite}/{len(de_rulat)} produse cu surse, {len(erori)} erori"
     spune(f"\n{banca['id']}: {gasite}/{len(de_rulat)} produse cu surse, {len(erori)} erori, "
           f"cost estimat ${total:.2f}, durata {round((time.time() - start) / 60)} min")
     if erori:

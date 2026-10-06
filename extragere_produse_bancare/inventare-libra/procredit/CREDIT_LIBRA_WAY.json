@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-06",
+  "banca": "procredit",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/persoane-fizice/credit-de-nevoi-personale/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără destinație justificată, în RON, perioadă max. 60 luni, sumă între 5.000 și 150.000 RON - corespunde direct tipului, segmentului și termenilor produsului Libra Way (10.000-150.000 RON, max 60 luni).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre complete privind suma, dobânda, perioada și exemple de calcul.",
+      "citat": "Suma acordată: Între 5.000 LEI și 150.000 LEI – tu decizi cât ai nevoie! Dobânda: Fixă între 7,40% – 12,40% pe toată durata creditului – stabilitate și predictibilitate financiară. Perioada de rambursare: Până la 60 de luni – ai suficient timp să îți gestionezi bugetul.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/09/lista-de-dobanzi-si-comisioane-produse-de-creditare-pf.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi și comisioane pentru persoane fizice conține un rând dedicat „Credit de nevoi personale” cu monedă, maturitate, tip dobândă și comisioane, corespunzător produsului Libra Way.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de dobânzi/comisioane în care produsul apare explicit cu valori și exemplu de calcul.",
+      "citat": "Pentru un credit de nevoi personale în sumă de 50 000 RON, acordat pe o perioadă de 60 luni (5 ani), cu dobânda fixă de 7,40% comision de analiză 200 RON și comision de înregistrare a garanțiilor de 89 RON, comision lunar de administrare pachet ProActive 0 RON.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/"
+  ],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1206,
+    "citire_cache": 6390,
+    "scriere_cache": 33735,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0976835
+  }
+}

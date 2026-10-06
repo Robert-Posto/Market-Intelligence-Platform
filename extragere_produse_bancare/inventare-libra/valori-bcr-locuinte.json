@@ -1,0 +1,501 @@
+{
+ "banca": "bcr-locuinte",
+ "urluri": [
+  {
+   "cheie": "https://www.bcrlocuinte.ro/ro/creditare/creditul-locativ||creditul pentru domeniul locativ bauspar (creditul locativ)",
+   "url": "https://www.bcrlocuinte.ro/ro/creditare/creditul-locativ",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul pentru domeniul locativ Bauspar (Creditul Locativ)",
+   "focus": "Produsul băncii: „Creditul pentru domeniul locativ Bauspar (Creditul Locativ)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1539,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+   "observatii": [
+    {
+     "id": "69999422b1cbd10f92a0e67db0537efb",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_BAUSPAR_VAR_TARIF",
+     "valoare_num": 5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "în funcție de tarif ales",
+      "necesită contract de economisire-creditare Bauspar"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobânda redusă și fixă de 5%/an sau 6%/an pe toata perioada de creditare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_fixa” apare de 2 ori cu același cod_scenariu „IPO_BAUSPAR_VAR_TARIF”",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "69999422b1cbd10f92a0e67db0537efb",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_BAUSPAR_VAR_TARIF",
+     "valoare_num": 6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "în funcție de tarif ales",
+      "necesită contract de economisire-creditare Bauspar"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobânda redusă și fixă de 5%/an sau 6%/an pe toata perioada de creditare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_fixa” apare de 2 ori cu același cod_scenariu „IPO_BAUSPAR_VAR_TARIF”",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "8257ddd8e71f8c5c853f25b8c16a8c2d",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiză dosar credit - 0 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "d6aed2a66d7a1657e1dce54535a83e89",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_procent_sold",
+     "cod_scenariu": null,
+     "valoare_num": 0.05,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision lunar de administrare (din valoarea soldului): 0,05%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_administrare_credit_procent_sold” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "148b540fea684dc4d8d17e3992380c98",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Rambursǎri anticipate integrale sau parţiale, fǎrǎ plata unor comisioane suplimentare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "05ccf429e7c210ca1b6ed46e201c4881",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "cost_evaluare",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Raportul de evaluare este gratuit",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "0100a4673320d4382d3b9dc7602ee576",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "cost_asigurare",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Asigurare de viaţă gratuită",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "4072e5d6c9de6aef92958c7486ea1731",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_25K_84L_PLANCASA",
+     "valoare_num": 5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "suma contractată 50.000 lei",
+      "sumă creditată 25.000 lei",
+      "tariful « Plan de casă »"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobandă fixă: 5%/an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 84
+      }
+     ],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "92ac6fb9089306f2826ec882d2c7e2a2",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "IPO_25K_84L_PLANCASA",
+     "valoare_num": 353.35,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "suma contractată 50.000 lei",
+      "sumă creditată 25.000 lei",
+      "tariful « Plan de casă »"
+     ],
+     "eticheta_libera": null,
+     "citat": "Rată lunară fixă: 353.35 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 84
+      }
+     ],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "2976e9a670216a075408dbe001735d85",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_25K_84L_PLANCASA",
+     "valoare_num": 5.98,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "suma contractată 50.000 lei",
+      "sumă creditată 25.000 lei",
+      "tariful « Plan de casă »"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobândă anuală efectivă (DAE): 5,98%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 84
+      }
+     ],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "6649595426a0367abf8f64542308c949",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_procent_sold",
+     "cod_scenariu": "IPO_25K_84L_PLANCASA",
+     "valoare_num": 0.05,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "suma contractată 50.000 lei",
+      "sumă creditată 25.000 lei",
+      "tariful « Plan de casă »"
+     ],
+     "eticheta_libera": null,
+     "citat": "Comision lunar de administrare credit*: 0,05%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 84
+      }
+     ],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "9d95a576da4fd9fc1d55544c69acc13c",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_25K_84L_PLANCASA",
+     "valoare_num": 30406,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "suma contractată 50.000 lei",
+      "sumă creditată 25.000 lei",
+      "tariful « Plan de casă »"
+     ],
+     "eticheta_libera": null,
+     "citat": "Valoarea totală platibilă: 30.406 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 84
+      }
+     ],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    },
+    {
+     "id": "7b5b379ec40f1575e69b554cf41de0e3",
+     "id_url": 1539,
+     "id_produs": "ipotecar",
+     "camp": "perioada_credit",
+     "cod_scenariu": "IPO_25K_84L_PLANCASA",
+     "valoare_num": 84,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9e71957f2e3b5835c97c7b6f8978b63fec7ff24063bfee2b94d95e8301f2f312",
+     "conditii": [
+      "suma contractată 50.000 lei",
+      "sumă creditată 25.000 lei",
+      "tariful « Plan de casă »"
+     ],
+     "eticheta_libera": null,
+     "citat": "Durată totală credit, în luni/nr. maxim de rate: 84",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 84
+      }
+     ],
+     "id_banca": "bcr-locuinte",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "236f47ef710dddbd4a6bfb30061509b4fb156a0fe1c1603850e8ed32bd47228d"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 120,
+     "unitate": "luni",
+     "incredere": 0.8,
+     "citat": "Durată credit: până la 120 de luni(în funcție de tarif)",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    }
+   ],
+   "scrise": 11,
+   "durata_s": 23,
+   "tokeni": {
+    "intrare": 7545,
+    "iesire": 2538
+   }
+  }
+ ]
+}

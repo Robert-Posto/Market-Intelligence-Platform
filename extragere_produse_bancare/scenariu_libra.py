@@ -169,6 +169,12 @@ def potrivire(cod_libra: str, v2: str, camp: str, sc: dict | None,
         if k == "valuta":
             v = (sc.get("valuta") or "").upper().replace("LEI", "RON")
             stari.append("nespecificat" if not v else "exact" if v == r else "alt")
+        elif k == "suma" and sc.get("banda"):
+            # treaptă de sold (grilă): referința e în bandă sau nu; fără capete = orice sold
+            lo, hi = sc.get("suma"), sc.get("suma_max")
+            peste = lo is None or r >= lo
+            sub = hi is None or (r < hi if sc.get("suma_max_exclusiv") else r <= hi)
+            stari.append("exact" if peste and sub else "alt")
         elif k == "suma":
             lo, hi = sc.get("suma"), sc.get("suma_max")
             if lo is None:
@@ -200,6 +206,10 @@ def potrivire(cod_libra: str, v2: str, camp: str, sc: dict | None,
         if ben:
             out["potrivire"] = "aproximativ"
             out["motiv"] = "aceeași sumă și perioadă, dar pentru un profil cu beneficii: " + ", ".join(ben)
+        elif sc.get("conditionat"):
+            # grilele (extrage_comparatie_libra.grila): program de beneficii, plăți programate, promoție
+            out["potrivire"] = "aproximativ"
+            out["motiv"] = "ofertă condiționată: " + "; ".join(sc["conditionat"])
     return out
 
 

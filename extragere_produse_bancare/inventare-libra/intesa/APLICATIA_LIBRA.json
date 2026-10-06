@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-05",
+  "banca": "intesa",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/digical-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Digical Mobile & Internet Banking",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este aplicația de mobile banking a Intesa Sanpaolo pentru persoane fizice, cu funcționalități similare Libra (plăți instant #withPAY, autentificare #withKEY, Split&Share), dar spre deosebire de Libra, care servește și persoane fizice și juridice printr-o singură aplicație, Digical Mobile & Internet Banking este exclusiv pentru persoane fizice; companiile folosesc un canal separat (Internet Banking INBIZ + aplicația mToken), nu o aplicație completă de mobile banking.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată a serviciului conține cifre concrete (limite zilnice/lunare de tranzacționare și limite pentru schimb valutar) direct legate de aplicație.",
+      "citat": "d) Limit per transaction for currency exchanges: 19,999.99 EUR equivalent/transaction (currency/RON) respectively 99,999.99 EUR equivalent/transaction in the case of conversions (currency/currency) Transaction limits for operations carried out through Digical Mobile & Internet Banking can be increased at the customer's request, through a written request submitted to the Bank's headquarters.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-magnifica.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Digical Mobile & Internet Banking (în cadrul pachetului MAGNIFICA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de pachet cont pentru persoane fizice care listează explicit comisionul lunar al serviciului de mobile/internet banking; segmentul acoperit (doar persoane fizice) diferă de Libra, care acoperă și persoane juridice.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Documentul general de pachet conține valoarea exactă a comisionului lunar pentru Mobile & Internet Banking, dar nu este o pagină dedicată exclusiv aplicației.",
+      "citat": "Monthly management fee for current accounts in Lei and Euro **8 LEI** - Monthly management fee Mobile&Internet Banking **2 EURO equivalent** - Issuing fee for Visa Inspire Platinum LEI **200 LEI**",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/digical-banking.html"
+  ],
+  "durata_s": 96,
+  "consum": {
+    "intrare": 6,
+    "iesire": 9008,
+    "citire_cache": 42232,
+    "scriere_cache": 54077,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2337309
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "generat": "2026-10-06",
+  "banca": "garanti",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Economus",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila de dobânzi pentru contul de economii Economus pentru persoane fizice, cu procente și plafoane pentru ordinul de plată programată, corespunzătoare segmentului și tipului de produs CONT_ECONOMII.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată dobânzilor și comisioanelor pentru depozite și conturi de economii, cu tabel explicit pentru ECONOMUS saving account, persoane fizice, cu procente curente.",
+      "citat": "Interests - ECONOMUS saving account 1. Individuals and Authorized Natural Persons Currency Limit amount for opening the account The limit amount for the scheduled payment order Interest Rate RON N/A Between 50 - 10.000 RON 3,00% EUR N/A Between 10 - 2.500 EUR 1,00%",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/#:~:text=Interests%20%2D%20ECONOMUS%20saving%20account,10%20%2D%202.500%20EUR%201%2C00%25"
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/interest-rates-and-fees-for-sme-and-pfa-savings-accounts/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Economus (SME & PFA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila de dobânzi pentru contul de economii Economus destinat IMM și PFA, acoperind și segmentul persoane juridice al produsului Libra CONT_ECONOMII.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document dedicat dobânzilor Economus pentru segmentul business (SME/PFA), cu procente explicite pentru RON și EUR.",
+      "citat": "Economus interest rates Savings account for SMEs Currency Amount limit foropening an account Amount limit forthe scheduled payment order Interest rate RON Does not exist Between 100 - 10.000 RON 0,65% EUR Does not exist Between 25 - 2.500 EUR 0,25%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/savings-accounts/economus/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Economus",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii pentru persoane fizice, cu dobândă zilnică capitalizată, acces instant la fonduri și fără sumă minimă blocată - același tip de produs și segment ca CONT_ECONOMII Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului descrie caracteristicile (capitalizare zilnică, acces instant) dar nu conține cifrele de dobândă, acestea fiind pe pagina de dobânzi.",
+      "citat": "Economus, a saving account which gives you the possibility to save any amount of money, any time you want with instant access to your funds. You have daily capitalization of the interest, You receive an interest similar to a term deposit, which is calculated and capitalized daily into your account",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont de economii (Economus)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane fizice confirmă gratuitatea deschiderii și administrării contului de economii, aplicabil produsului Economus.",
+      "incredere": 0.8,
+      "explicatie_incredere": "PDF oficial de tarife, actualizat noiembrie 2025, menționează explicit comisioanele contului de economii (0 lei deschidere, 0 lei administrare).",
+      "citat": "Deschidere cont de economii Gratuit Taxă administrare cont de economii Gratuit Rata dobânzii cont curent în LEI și în orice valută 0%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/persoane-fizice/conturi-de-economii/economus/",
+    "https://www.garantibbva.ro/persoane-fizice/dobanzi-si-comisioane-depozite-persoane-fizice/",
+    "https://www.garantibbva.ro/en/individuals/savings-accounts/economus/",
+    "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 22776,
+    "iesire": 2362,
+    "citire_cache": 41355,
+    "scriere_cache": 45852,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.192073
+  }
+}

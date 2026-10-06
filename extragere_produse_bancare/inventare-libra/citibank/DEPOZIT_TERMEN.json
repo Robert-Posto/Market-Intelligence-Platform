@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-05",
+  "banca": "citibank",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Money Market – Deposits (Standard and broken-date maturities)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un depozit la termen destinat plasării lichidităților excedentare, aceeași natură ca Depozitul la termen Libra, dar Citibank Europe plc – Sucursala România deservește exclusiv persoane juridice/clienți instituționali (și-a vândut portofoliul retail în 2013), nu și persoane fizice ca Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina dedicată produsului de depozit pentru lichidități excedentare, dar textul public nu conține cifre concrete (dobânzi, sume minime); ratele sunt comunicate preferențial prin platforma CitiFX Pulse sau telefonic.",
+      "citat": "For placing the excess liquidity, we offer the possibility to book deposits in lei or foreign currency at preferential rates, through our on-line platform CitiFX Pulse® or by telephone (confirmation with our treasury department).",
+      "citat_verificat": true,
+      "link_live": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html#:~:text=For%20placing%20the%20excess%20liquidity%2C,%28confirmation%20with%20our%20treasury%20department%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2658,
+    "citire_cache": 34204,
+    "scriere_cache": 22289,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0891593
+  }
+}

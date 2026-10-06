@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-06",
+  "banca": "tbi",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/product/creditul-tau-personal/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul tau personal (Credit de Nevoi Personale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fără justificare, pentru persoane fizice, fără garanții, cu sume mari și perioadă de rambursare comparabilă cu produsul Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține sumele maxime, perioada de rambursare și exemple reprezentative de dobândă și DAE.",
+      "citat": "Pana la 150.000 lei, in doar cateva minute Proces 100% online, de oriunde ai fi, fara drumuri la banca Ai nevoie doar de buletin, daca veniturile tale sunt raportate la ANAF",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2024/02/Lista_de_dobanzi_taxe_si_comisioane_CASH_-Februarie_2024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Credit de nevoi personale standard / Credit de nevoi personale standard Online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi, taxe și comisioane pentru persoane fizice listează explicit comisionul de analiză, dobânda și comisionul de rambursare anticipată pentru Creditul de nevoi personale standard, inclusiv varianta Online.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "PDF oficial al băncii cu valori numerice exacte pentru comisioane și dobânzi aplicabile produsului de credit de nevoi personale.",
+      "citat": "Credit de nevoi personale standard Comisioane Comision de analiza 340 Lei suma fixa, la solicitarea clientului poate fi finantata de creditor Dobanda (fixa) incepand de la 20.40% si pana la 49.9%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 405,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1820,
+    "citire_cache": 6349,
+    "scriere_cache": 32036,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09956780000000001
+  }
+}

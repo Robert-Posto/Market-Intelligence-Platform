@@ -1,0 +1,24 @@
+/* Rulare manuală: butonul „Începe job” și modalul lui */
+.rm-start { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: 18px }
+.rm-start-butoane { display: flex; align-items: center; gap: 16px }
+
+.rm-pas { margin-bottom: 16px }
+.rm-pas h4, .rm-estimare h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
+  font-family: var(--mono); font-weight: 500; margin: 0 0 8px }
+.rm-tipuri { display: flex; flex-direction: column; gap: 6px; width: 100% }
+/* fiecare tip e un card: numele și ce face, ca alegerea să nu se facă după un cuvânt */
+.rm-tip { display: flex; align-items: flex-start; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin: 0 }
+.rm-tip.ant-radio-wrapper-checked { border-color: var(--accent); background: var(--accent-tint) }
+.rm-tip b { display: block; font-size: 13px }
+.rm-tip .sub { white-space: normal }
+.rm-produs { display: flex; justify-content: space-between; gap: 12px; min-width: 0 }
+.rm-produs span:first-child { overflow: hidden; text-overflow: ellipsis }
+.rm-produs .mono { font-size: 11px; flex: none }
+
+.rm-estimare { border-top: 1px solid var(--line); padding-top: 12px }
+.rm-cifre { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 24px }
+.rm-cifre > div { display: flex; flex-direction: column }
+.rm-cifre > div .gri { font-size: 11.5px }
+.rm-cifre b { font-family: var(--mono); font-size: 24px; font-weight: 600; color: var(--ink) }
+.rm-baza { grid-column: 1 / -1; margin: 4px 0 0 }
+.rm-estimare .callout { margin-top: 8px }

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-06",
+  "banca": "garanti",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/personal-loan-and-refinancing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale (Personal needs loan and refinancing / Standard loan)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este creditul general de consum pentru persoane fizice, fără garanții reale, fără destinație impusă (nevoi personale), acordat în RON, pe o perioadă maximă comparabilă (60 luni), cu rambursare în rate egale - același tip de produs și același segment de clienți ca Libra Way.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată a produsului, conține explicit sumele, perioada maximă, veniturile minime și structura de dobânzi și comisioane pentru varianta standard a creditului de nevoi personale.",
+      "citat": "Maximum lending limit and currency: 250,000 Lei Maximum lending period: 5 years It is granted for personal needs or for refinancing of consumer loans regardless of the date of granting, with or without additional amount; The minimum income required is: 2000 RON for all types of income and 1500 RON for income from pension.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/individuals/personal-loan-and-refinancing/#:~:text=Maximum%20lending%20limit%20and%20currency%3A,RON%20for%20income%20from%20pension."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/persoane-fizice/credit-de-nevoi-personale-si-refinantare/",
+    "https://www.garantibbva.ro/en/individuals/personal-loan-and-refinancing/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2522,
+    "citire_cache": 43468,
+    "scriere_cache": 47654,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1530606
+  }
+}

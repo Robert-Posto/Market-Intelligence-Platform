@@ -1,10 +1,25 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-06",
   "banca": "bcr",
   "cod": "CREDIT_IPOTECAR_PF",
   "denumire": "Credit ipotecar / investiții imobiliare",
   "model": "claude-sonnet-5",
   "surse": [
+    {
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Credite/casa-mea/CASA-MEA-BCR-RON.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credit imobiliar/ipotecar Casa Mea BCR",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi și comisioane pentru creditul ipotecar/imobiliar destinat achiziției sau refinanțării de locuințe pentru persoane fizice, cu tabel complet de dobânzi pe categorii de clienți.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document PDF actualizat (01/10/2026) cu tabel detaliat de dobânzi, comisioane, sumă minimă/maximă, termen maxim și exemple de calcul pentru creditul ipotecar.",
+      "citat": "Suma maximă: îţi oferim până la 85% din valoarea investiţiei, nu mai mult de 5.100.000 LEI; Termen maxim: 30 ani; Avans minim: 25% din valoarea investiţiei dacă deţii în proprietate o locuinţă.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
     {
       "url": "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-bcr",
       "tip": "html",
@@ -12,12 +27,13 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Creditul Casa Mea",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Credit ipotecar pentru persoane fizice destinat achiziției/construcției/amenajării unei locuințe, cu refinanțare inclusă, exact ca produsul Libra Credit ipotecar PF.",
-      "incredere": 0.95,
-      "explicatie_incredere": "Pagina dedicată conține dobânzi, comisioane, sumă și termen exacte ale exemplului reprezentativ pentru produsul ipotecar standard.",
-      "citat": "Dobândă fixă în primii 3 ani, client cu venit ≥ 10.000 lei și nivel Max/Max Invest în cadrul Programului de beneficii: 4,99%/an fixă în primii 3 ani, ulterior variabilă 7,87%/an (IRCC + 2,30%): Rata în primii 3 ani 2.135 lei, ulterior 2.696 lei; Valoare totală plătibilă: 782.300 lei; DAE = 7,65%.",
+      "motiv_potrivire": "Credit ipotecar/imobiliar pentru persoane fizice destinat achiziției de locuință sau refinanțării altor credite ipotecare/imobiliare, cu dobândă fixă inițială și apoi variabilă IRCC, exact ca produsul Libra pentru persoane fizice.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre exacte: dobânzi, rate, DAE și exemple reprezentative pentru creditul ipotecar standard.",
+      "citat": "Alege creditul Casa Mea și poți obține o dobândă fixă în primii 3 ani de 4,99%, ulterior IRCC + 2,3% atunci când ai un venit ≥ 10.000 lei și nivelul tău în Programul de beneficii este: Max sau Max Invest.",
+      "pagina_pdf": null,
       "citat_verificat": true,
-      "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-bcr#:~:text=Dob%C3%A2nd%C4%83%20fix%C4%83%20%C3%AEn%20primii%203,782.300%20lei%3B%20DAE%20%3D%207%2C65%25."
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-bcr#:~:text=Alege%20creditul%20Casa%20Mea%20%C8%99i,este%3A%20Max%20sau%20Max%20Invest."
     },
     {
       "url": "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-natura",
@@ -26,57 +42,29 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Creditul Casa Mea Natura",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Varianta verde a creditului ipotecar BCR, corespunzătoare componentei 'Credit Verde' menționată explicit în descrierea produsului Libra, cu sumă minimă/maximă și termen precizate.",
-      "incredere": 0.95,
-      "explicatie_incredere": "Pagina dedicată conține suma minimă/maximă, avansul minim, termenul maxim și dobânda exactă pentru creditul verde.",
+      "motiv_potrivire": "Varianta verde a creditului ipotecar BCR pentru persoane fizice (locuințe eficiente energetic/case verzi), corespunde componentei 'Credit Verde' din produsul Libra, cu aceleași plafoane de sumă și termen ca restul creditelor ipotecare BCR.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată conține cifre exacte despre dobândă, sumă minimă/maximă (45.000-5.100.000 RON) și termen maxim de 30 ani pentru creditul verde.",
       "citat": "Suma minimă contractată este de 45.000 RON, iar suma maximă pe care o poți obține este de până la 85% din valoarea investiției (nu mai mult de 5.100.000 RON), pe un termen de maximum 30 de ani.",
+      "pagina_pdf": null,
       "citat_verificat": true,
       "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-natura#:~:text=Suma%20minim%C4%83%20contractat%C4%83%20este%20de,de%20maximum%2030%20de%20ani."
-    },
-    {
-      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Credite/casa-mea/CASA-MEA-BCR-RON.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "dobanzi",
-      "denumire_la_banca": "Creditul Casa Mea - Dobânzi și comisioane",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul oficial de dobânzi și comisioane pentru creditul ipotecar Casa Mea, linkat direct din pagina produsului ca sursă completă de informații.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Document PDF dedicat exclusiv acestui produs, linkat explicit ca sursă de 'informații complete despre Dobânzi și Comisioane'.",
-      "citat": "Dobânzi şi comisioane CASA MEA BCR (PDF, 498 KB)",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (9 cuvinte)",
-      "link_live": null
-    },
-    {
-      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Credite/credite-pentru-casa/Fisa-de-prezentare-BCR_Casa-Mea-NaturA_optiunea-LOCUINTE-VERZI-ROGBC.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Fișa de prezentare BCR Casa Mea Natura - opțiunea Locuințe Verzi",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Fișa de produs dedicată variantei verzi a creditului ipotecar, echivalentul direct al 'Credit Verde' menționat în descrierea produsului Libra.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document de condiții/fișă de produs legat direct din pagina Casa Mea Natura, specific opțiunii pentru locuințe verzi.",
-      "citat": "Fisa de prezentare BCR Casa Mea Natura optiunea LOCUINTE VERZI (PDF, 454 KB)",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (13 cuvinte)",
-      "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-bcr",
-    "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-natura"
+    "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-casa/casa-mea-natura",
+    "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Credite/casa-mea/CASA-MEA-BCR-RON.pdf"
   ],
-  "durata_s": 25,
+  "durata_s": 40,
   "consum": {
-    "intrare": 6,
-    "iesire": 2458,
-    "citire_cache": 44148,
-    "scriere_cache": 50335,
+    "intrare": 8,
+    "iesire": 3208,
+    "citire_cache": 91148,
+    "scriere_cache": 69659,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1592591
+    "cost_estimat_usd": 0.2244731
   }
 }

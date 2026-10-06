@@ -31,8 +31,14 @@ TEST = [
      "banca": "optional", "internet": False, "estimare_min": 2, "estimare_banca_min": 1},
     {"id": "pebanca", "nume": "Pe bancă", "ce": "test", "argumente": ["-c", "pass"],
      "banca": "obligatoriu", "internet": False, "estimare_banca_min": 10},
+    # ca joburile din pagina „Rulare manuală”: băncile fluxului de extragere și un produs obligatoriu
+    {"id": "peprodus", "nume": "Pe produs", "ce": "test", "argumente": ["-c", "pass"],
+     "banca": "obligatoriu", "produs": "obligatoriu", "banci": "extragere", "internet": False,
+     "estimare_banca_min": 1},
 ]
 SLUGS = ["bcr", "libra", "vista"]
+SLUGS_EXTRAGERE = ["bcr", "cec"]
+PRODUSE = ["CONT_ECONOMII", "DEPOZIT_TERMEN"]
 
 
 def asteapta(conditie, sec=15):
@@ -47,7 +53,8 @@ def asteapta(conditie, sec=15):
 class Baza(unittest.TestCase):
     def setUp(self):
         self.dir = tempfile.mkdtemp(prefix="rulari_test_")
-        self.r = rulari.Rulari(comenzi=TEST, dir_rulari=self.dir, slugs=lambda: SLUGS)
+        self.r = rulari.Rulari(comenzi=TEST, dir_rulari=self.dir, slugs=lambda: SLUGS,
+                               produse=lambda: PRODUSE, slugs_extragere=lambda: SLUGS_EXTRAGERE)
 
     def tearDown(self):
         if self.r.curenta:
@@ -76,10 +83,29 @@ class ListaAlba(Baza):
             self.r.valideaza("pebanca", None)
 
     def test_argv_doar_din_lista(self):
-        c, b = self.r.valideaza("iese3", "bcr")
-        self.assertEqual(self.r.argv(c, b)[-2:], ["--banca", "bcr"])
-        c, b = self.r.valideaza("iese3", "")
-        self.assertNotIn("--banca", self.r.argv(c, b))
+        c, b, p = self.r.valideaza("iese3", "bcr")
+        self.assertEqual(self.r.argv(c, b, p)[-2:], ["--banca", "bcr"])
+        c, b, p = self.r.valideaza("iese3", "")
+        self.assertNotIn("--banca", self.r.argv(c, b, p))
+
+    def test_produs(self):
+        c, b, p = self.r.valideaza("peprodus", "cec", "CONT_ECONOMII")
+        self.assertEqual(self.r.argv(c, b, p)[-4:], ["--banca", "cec", "--produse", "CONT_ECONOMII"])
+        # produsul trece doar dacă e în listă, ca un singur element: nimic altceva nu ajunge în argv
+        for p in ("NU_EXISTA", "CONT_ECONOMII,DEPOZIT_TERMEN", "CONT_ECONOMII --forteaza", ["CONT_ECONOMII"], 3, None, ""):
+            with self.assertRaises(rulari.Respins):
+                self.r.valideaza("peprodus", "cec", p)
+        # comenzile fără produs nu primesc unul
+        with self.assertRaises(rulari.Respins):
+            self.r.valideaza("pebanca", "bcr", "CONT_ECONOMII")
+
+    def test_banci_extragere(self):
+        # joburile fluxului de comparație iau băncile din banci.json al fluxului, nu din banks.py
+        self.r.valideaza("peprodus", "cec", "CONT_ECONOMII")
+        with self.assertRaises(rulari.Respins):
+            self.r.valideaza("peprodus", "vista", "CONT_ECONOMII")
+        with self.assertRaises(rulari.Respins):
+            self.r.valideaza("pebanca", "cec")
 
     def test_comenzile_reale(self):
         """Fiecare comandă reală: script existent în repo, fără parametrii interziși."""
@@ -145,6 +171,21 @@ class Pornire(Baza):
         self.assertTrue(os.path.isfile(os.path.join(self.dir, r["log"])))
         ultima = next(c for c in self.r.stare()["comenzi"] if c["id"] == "iese3")["ultima"]
         self.assertEqual(ultima["cod"], 3)
+
+    def test_mediu_fara_cheia_serverului(self):
+        """Jobul #172: placeholder-ul din .env-ul serverului ajungea în proces și bătea cheia fluxului."""
+        cmd = [{"id": "mediu", "nume": "Mediu", "ce": "test", "banca": None, "internet": False, "estimare_min": 1,
+                "argumente": ["-c", "import os; print('CHEIE', os.environ.get('ANTHROPIC_API_KEY'), "
+                                    "'MANUAL', os.environ.get('MIP_RULARE_MANUALA'))"],
+                "fara_mediu": ["ANTHROPIC_API_KEY"]}]
+        r = rulari.Rulari(comenzi=cmd, dir_rulari=self.dir, slugs=lambda: SLUGS)
+        os.environ["ANTHROPIC_API_KEY"] = "placeholder"
+        try:
+            r.porneste("mediu")
+            self.assertTrue(asteapta(lambda: r.curenta is None))
+        finally:
+            del os.environ["ANTHROPIC_API_KEY"]
+        self.assertIn("CHEIE None MANUAL 1", r.istoric()[-1]["ultimele"])
 
     def test_reluare_dupa_repornire(self):
         """Serverul repornit cât rulează ceva nu lasă să pornească al doilea proces."""
@@ -216,7 +257,8 @@ class Http(unittest.TestCase):
         cls.server_mod = server
         cls.vechi = server.RULARI
         cls.dir = tempfile.mkdtemp(prefix="rulari_http_")
-        server.RULARI = rulari.Rulari(comenzi=TEST, dir_rulari=cls.dir, slugs=lambda: SLUGS)
+        server.RULARI = rulari.Rulari(comenzi=TEST, dir_rulari=cls.dir, slugs=lambda: SLUGS,
+                                      produse=lambda: PRODUSE, slugs_extragere=lambda: SLUGS_EXTRAGERE)
         cls.srv = server.Server(("::", 0), server.Handler)
         cls.port = cls.srv.server_address[1]
         threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
@@ -263,8 +305,9 @@ class Http(unittest.TestCase):
         self.assertEqual(cod, 200)
         self.assertTrue(d["activ"])
         self.assertEqual(d["token"], self.server_mod.RULARI.token)
-        self.assertEqual([c["id"] for c in d["comenzi"]], ["numara", "iese3", "pebanca"])
+        self.assertEqual([c["id"] for c in d["comenzi"]], ["numara", "iese3", "pebanca", "peprodus"])
         self.assertEqual(d["banci"], SLUGS)
+        self.assertEqual(d["banci_joburi"], SLUGS_EXTRAGERE)
 
     def test_get_inactiv_fara_token(self):
         os.environ["MIP_PERMITE_RULARI"] = "0"

@@ -39,5 +39,11 @@ loguri/origini/
 # rulările manuale din Overview (app/rulari.py): jurnale, istoric, rularea curentă
 loguri/rulari/
 
-# dependențe npm (rădăcina și web/)
+# interfața React (web/, shared/): dependențele, build-ul și cache-ul Vite nu se versionează
 node_modules/
+web/dist/
+web/.vite/
+
+# Claude Code: copiile de lucru ale agenților și permisiunile de pe fiecare laptop
+.claude/worktrees/
+.claude/settings.local.json

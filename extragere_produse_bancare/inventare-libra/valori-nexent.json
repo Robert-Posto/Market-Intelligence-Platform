@@ -1,0 +1,1410 @@
+{
+ "banca": "nexent",
+ "urluri": [
+  {
+   "cheie": "https://www.nexentbank.ro/Deposits-for-Corporations||deposits for corporations / depozite corporate",
+   "url": "https://www.nexentbank.ro/Deposits-for-Corporations",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Deposits for Corporations / Depozite Corporate",
+   "focus": "Produsul băncii: „Deposits for Corporations / Depozite Corporate”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1410,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "trafilatura",
+   "content_hash": "93f8480018b09812afb061aceae30b36102a861d00605e7700d710365a55eed3",
+   "observatii": [
+    {
+     "id": "8f8ba0bb20f8c0d14193e075390945ae",
+     "id_url": 1410,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul conține doar politica de cookie-uri a site-ului, fără nicio informație despre depozite la termen sau dobânzi.",
+     "content_hash": "93f8480018b09812afb061aceae30b36102a861d00605e7700d710365a55eed3",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "9cb04c29ae22e6cb8f63da79d028a46b14e91355cfb83555a3c2bc3f74a33bed"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 8520,
+    "iesire": 123
+   }
+  },
+  {
+   "cheie": "https://www.nexentbank.ro/en/retail-banking/Savings/Deposits||term deposits / depozite la termen",
+   "url": "https://www.nexentbank.ro/en/retail-banking/Savings/Deposits",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Term Deposits / Depozite la termen",
+   "focus": "Produsul băncii: „Term Deposits / Depozite la termen”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1409,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "trafilatura",
+   "content_hash": "a9d53ace37f619fbe8fc081e3752a88ee96e2054e8d75a9a153b6be63d877f61",
+   "observatii": [
+    {
+     "id": "a6487ac7cccc70ecd9495e02abe617bc",
+     "id_url": 1409,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul furnizat conține doar politica de cookie-uri a site-ului, fără nicio informație despre depozite la termen (dobânzi, sume, perioade etc.).",
+     "content_hash": "a9d53ace37f619fbe8fc081e3752a88ee96e2054e8d75a9a153b6be63d877f61",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cce4638309ab0471c3c49ef4a354fefb719446093bf7d7476532b7e0dc8c0e98"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 7493,
+    "iesire": 136
+   }
+  },
+  {
+   "cheie": "https://www.nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii||monet - mobile banking pentru companii",
+   "url": "https://www.nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "monet - Mobile Banking pentru companii",
+   "focus": "Produsul băncii: „monet - Mobile Banking pentru companii”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1471,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "eroare",
+   "motiv": "HTTPStatusError: Server error '503 Service Unavailable' for url 'https://www.nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.nexentbank.ro/en/monet||monet - mobile banking (persoane fizice)",
+   "url": "https://www.nexentbank.ro/en/monet",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "monet - Mobile Banking (persoane fizice)",
+   "focus": "Produsul băncii: „monet - Mobile Banking (persoane fizice)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1470,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "eroare",
+   "motiv": "HTTPStatusError: Server error '503 Service Unavailable' for url 'https://www.nexentbank.ro/en/monet'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.nexentbank.ro/upload/media/document/0001/05/8124bab48315864694aba5e46ef2b74c786675e2.pdf||monet - mobile banking - ghidul utilizatorului",
+   "url": "https://www.nexentbank.ro/upload/media/document/0001/05/8124bab48315864694aba5e46ef2b74c786675e2.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "monet - Mobile Banking - Ghidul Utilizatorului",
+   "focus": "Produsul băncii: „monet - Mobile Banking - Ghidul Utilizatorului”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1472,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "eroare",
+   "motiv": "HTTPStatusError: Server error '503 Service Unavailable' for url 'https://www.nexentbank.ro/upload/media/document/0001/05/8124bab48315864694aba5e46ef2b74c786675e2.pdf'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.nexentbank.ro/Blog/Creditul-ipotecar-imobiliar-ACASA||creditul ipotecar-imobiliar acasă",
+   "url": "https://www.nexentbank.ro/Blog/Creditul-ipotecar-imobiliar-ACASA",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul ipotecar-imobiliar ACASĂ",
+   "focus": "Produsul băncii: „Creditul ipotecar-imobiliar ACASĂ”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1547,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "trafilatura",
+   "content_hash": "31d27f44154ddfa5aa71ab2e79c5e1ef2b04ce6c93ff5205d0ed53072ed3dbcd",
+   "observatii": [
+    {
+     "id": "4deaab5af3ac8f2b927b6c2946468668",
+     "id_url": 1547,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "31d27f44154ddfa5aa71ab2e79c5e1ef2b04ce6c93ff5205d0ed53072ed3dbcd",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Avansul minim pentru creditul ipotecar variază între 15% și 20% în funcție de proiectele de modificare a regulilor pentru împrumuturile imobiliare elaborate de BNR.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "baeb3e17120bc16486f4ade2b4579777c996668cd1cdee3052f19ad877e9d1fd"
+    },
+    {
+     "id": "4deaab5af3ac8f2b927b6c2946468668",
+     "id_url": 1547,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "31d27f44154ddfa5aa71ab2e79c5e1ef2b04ce6c93ff5205d0ed53072ed3dbcd",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Avansul minim pentru creditul ipotecar variază între 15% și 20% în funcție de proiectele de modificare a regulilor pentru împrumuturile imobiliare elaborate de BNR.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "baeb3e17120bc16486f4ade2b4579777c996668cd1cdee3052f19ad877e9d1fd"
+    },
+    {
+     "id": "c6235b1ebb61925c50b4e26162487152",
+     "id_url": 1547,
+     "id_produs": "ipotecar",
+     "camp": "varsta_minima",
+     "cod_scenariu": null,
+     "valoare_num": 18,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "31d27f44154ddfa5aa71ab2e79c5e1ef2b04ce6c93ff5205d0ed53072ed3dbcd",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Are vârsta minimă împlinită de 18 ani și vârsta maximă specifică contractului de credit ipotecar",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "baeb3e17120bc16486f4ade2b4579777c996668cd1cdee3052f19ad877e9d1fd"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 11,
+   "tokeni": {
+    "intrare": 8090,
+    "iesire": 696
+   }
+  },
+  {
+   "cheie": "https://www.nexentbank.ro/upload/media/document/0001/07/711531f84df26fed0d140f1f5508025d3209767c.pdf||creditul imobiliar creditul acasa",
+   "url": "https://www.nexentbank.ro/upload/media/document/0001/07/711531f84df26fed0d140f1f5508025d3209767c.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul imobiliar Creditul ACASA",
+   "focus": "Produsul băncii: „Creditul imobiliar Creditul ACASA”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1546,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+   "observatii": [
+    {
+     "id": "aaf53a2eef47253dfb95213e92aaeee2",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 30,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "5 ani - 30 ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "4888d7b1cd462a559e283392bffbb421",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "clientul nu deține în proprietate o locuință"
+     ],
+     "eticheta_libera": null,
+     "citat": "Avans minim 15% in cazul in care clientul nu detine in proprietate o locuinta",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "4888d7b1cd462a559e283392bffbb421",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "clientul deține deja în proprietate o locuință"
+     ],
+     "eticheta_libera": null,
+     "citat": "Avans minim 25% in cazul in care clientul detine in proprietate o locuinta",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "d9b2f7d5bbb358369ca1dc8a42599821",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "ircc",
+     "cod_scenariu": null,
+     "valoare_num": 5.68,
+     "unitate": "procent",
+     "valid_from": "2026-01-01",
+     "valid_to": "2026-03-31",
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "A fost considerat IRCC valabil pentru perioada 01.01.2026 - 31.03.2026 egal cu 5,68%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "36ddf2efb71fdb8f2eb1d50cb02998b1",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_250K_360L_FARA_CARD",
+     "valoare_num": 8.68,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "client fără card de credit/salariu emis de bancă",
+      "rate egale/descrescătoare"
+     ],
+     "eticheta_libera": null,
+     "citat": "pentru un credit în valoare de 250.000 LEI acordat pe o perioadă de 360 luni, cu o rată de dobândă variabilă* de 8,68% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "a0f3317c323c0dcfd2c3ba3e67b1e955",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_250K_360L_CARD",
+     "valoare_num": 8.43,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "client deține card de credit sau card de salariu emis de Nexent Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "pentru un credit în valoare de 250.000 LEI acordat pe o perioadă de 360 luni, cu o rată de dobândă variabilă* de 8,43% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "d293be4982966b47166e707c4953b7fe",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_FARA_CARD_ANUITATI",
+     "valoare_num": 9.21,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "fără card de credit/salariu",
+      "rate egale (anuități)"
+     ],
+     "eticheta_libera": null,
+     "citat": "Rate egale (anuitati): DAE** este 9,21%, rata lunară este 1.954,40 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "396737e55eac85ba59744d8cdaf2fb14",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "IPO_250K_360L_FARA_CARD_ANUITATI",
+     "valoare_num": 1954.4,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "fără card de credit/salariu",
+      "rate egale (anuități)"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunară este 1.954,40 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "e033053410663370af0e2a32d9591730",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_250K_360L_FARA_CARD_ANUITATI",
+     "valoare_num": 713681.94,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "fără card de credit/salariu",
+      "rate egale (anuități)"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoarea totală plătibilă 713.681,94 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "5917b7be7f8f01a5e4a008effa3f5397",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_FARA_CARD_DESCRESCATOR",
+     "valoare_num": 9.26,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "fără card de credit/salariu",
+      "rate descrescătoare (principal egal)"
+     ],
+     "eticheta_libera": null,
+     "citat": "Rate descrescatoare (principal egal): DAE** este 9,26%, rata lunară este 2.532,34 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "cbf3943092a7071af58b2d37bf2a893b",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "IPO_250K_360L_FARA_CARD_DESCRESCATOR",
+     "valoare_num": 2532.34,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "fără card de credit/salariu",
+      "rate descrescătoare (principal egal)"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunară este 2.532,34 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "0d74a2add75dc0d7ab9d52ace2f29442",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_250K_360L_FARA_CARD_DESCRESCATOR",
+     "valoare_num": 587011.16,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "fără card de credit/salariu",
+      "rate descrescătoare (principal egal)"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoarea totală plătibilă 587.011,16 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "937c942451ccc53273786238797ddb4c",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_CARD_ANUITATI",
+     "valoare_num": 8.94,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "client deține card de credit/salariu emis de bancă",
+      "rate egale (anuități)"
+     ],
+     "eticheta_libera": null,
+     "citat": "Rate egale (anuitati): DAE** este 8,94%, rata lunară este 1.910,02 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "e9c4759d657e5183903f8fabda121d35",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_CARD_DESCRESCATOR",
+     "valoare_num": 8.99,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "sumă 250.000 LEI, perioadă 360 luni",
+      "client deține card de credit/salariu emis de bancă",
+      "rate descrescătoare (principal egal)"
+     ],
+     "eticheta_libera": null,
+     "citat": "Rate descrescatoare (principal egal): DAE** este 8,99%, rata lunară este 2.479,41 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "06a646ec083621234f07a5b74ae3c1d5",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "aveti dreptul, in orice moment, sa rambursati anticipat creditul, integral sau partial... fara plata vreunei compensatii",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "440a23da7af737ba29a2c1144db94339",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "cost_asigurare",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "poliță de asigurare obligatorie PAD"
+     ],
+     "eticheta_libera": null,
+     "citat": "Costul acestei polite de asigurare obligatorie PAD este 20 EUR pe an si a fost inclusa in calculul DAE",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „cost_asigurare” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "440a23da7af737ba29a2c1144db94339",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "cost_asigurare",
+     "cod_scenariu": null,
+     "valoare_num": 0.12,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "polița de asigurare facultativă încheiată cu Ergo Asigurari S.A."
+     ],
+     "eticheta_libera": null,
+     "citat": "costul estimativ cu prima de asigurare anuala este de 0.12% aplicat la valoarea evaluata a imobilului si a fost inclus in calculul DAE",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „cost_asigurare” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "b7d6548444e067eb381bec79cc48d2e5",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 3,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [],
+     "eticheta_libera": "dobândă penalizatoare",
+     "citat": "Dobanda penalizatoare se calculeaza pe baza de procent fix in valoare de 3 puncte procentuale care se adauga la rata dobanzii curente",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "b7d6548444e067eb381bec79cc48d2e5",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 250,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [
+      "servicii la cererea clientului: emitere acorduri, evaluări suplimentare etc."
+     ],
+     "eticheta_libera": "comision unic pentru servicii la cerere (acorduri, evaluări suplimentare etc.)",
+     "citat": "Comision unic: 250 LEI.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    },
+    {
+     "id": "b7d6548444e067eb381bec79cc48d2e5",
+     "id_url": 1546,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 3,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a4625ba855d36f8509e2e19745335bc369756c61907208d78deead2cf6ea234f",
+     "conditii": [],
+     "eticheta_libera": "comision plăți prin virament inclus în DAE",
+     "citat": "comisionul pentru plati prin virament 3 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "13b17e672baf83c3b313db6824c5a79fd5a7cd7936ce1ace30d520563069559f"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "puncte_procentuale",
+     "incredere": 0.9,
+     "citat": "IRCC* + 3,00 p.p. marja fixa",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "puncte_procentuale",
+     "incredere": 0.9,
+     "citat": "IRCC* + 2,75 p.p. marja fixa",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    }
+   ],
+   "scrise": 20,
+   "durata_s": 41,
+   "tokeni": {
+    "intrare": 13879,
+    "iesire": 4835
+   }
+  },
+  {
+   "cheie": "https://www.nexentbank.ro/en/retail-banking/Savings/Savings-Account||savings account / contul de economii",
+   "url": "https://www.nexentbank.ro/en/retail-banking/Savings/Savings-Account",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Savings Account / Contul de economii",
+   "focus": "Produsul băncii: „Savings Account / Contul de economii”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1663,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "trafilatura",
+   "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+   "observatii": [
+    {
+     "id": "21bed4d2fb1ef66eceb660d2fc4b4f14",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [
+      "dobândă disponibilă în unități teritoriale / Internet Banking"
+     ],
+     "eticheta_libera": null,
+     "citat": "0 | 2.00% | 3.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 6 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 0
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    },
+    {
+     "id": "21bed4d2fb1ef66eceb660d2fc4b4f14",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [
+      "dobândă disponibilă pentru monet (interpretare neclară în text)"
+     ],
+     "eticheta_libera": null,
+     "citat": "0 | 2.00% | 3.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 6 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 0
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    },
+    {
+     "id": "8d16fe059afc2788b49f3e89ca8231a3",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "0 | 0.00% | 0.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 6 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 0
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    },
+    {
+     "id": "3717463ece8f7d7a44beecdc6b13a4aa",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [
+      "suma depusă depășește nivelul minim stabilit pentru monedă"
+     ],
+     "eticheta_libera": null,
+     "citat": "200 | 0.10% | 0.15%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 6 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 200
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    },
+    {
+     "id": "8c65a34e90afe5394c5ad75ed7ef45f4",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "0 | 0.00% | 0.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 6 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 0
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    },
+    {
+     "id": "f095cab640c0eb4a370d889c594d95f5",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [
+      "suma depusă depășește nivelul minim stabilit pentru monedă"
+     ],
+     "eticheta_libera": null,
+     "citat": "200 | 0.10% | 0.15%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 6 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 200
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    },
+    {
+     "id": "177723886ee0767cc59cff4d1ad9e669",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 200,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [
+      "nivel minim pentru calculul dobânzii la cont de economii în EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "Min amount / interest rate saving accounts | 200 | 200",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    },
+    {
+     "id": "177723886ee0767cc59cff4d1ad9e669",
+     "id_url": 1663,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 200,
+     "unitate": "usd",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd3ee483264da7ae00206c691b7051988ffa76831236c904613fd38066691012",
+     "conditii": [
+      "nivel minim pentru calculul dobânzii la cont de economii în USD"
+     ],
+     "eticheta_libera": null,
+     "citat": "Min amount / interest rate saving accounts | 200 | 200",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "nexent",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cdf04e062eaf0a517ee471847bde58083ef577c827e1c18d1d879f5caee6ffca"
+    }
+   ],
+   "respinse": [],
+   "scrise": 8,
+   "durata_s": 14,
+   "tokeni": {
+    "intrare": 5272,
+    "iesire": 1263
+   }
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+/* Stilurile zonei „banca”; global.css rămâne pentru ce e comun. */
+
+/* butoanele spre celelalte pagini, la dreapta selectorului de bancă */
+.bk-butoane { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto }
+
+/* cinci casete pe un rând la 1440 px, ca în aplicația veche (minimul comun de 230 px le rupea 4 + 1) */
+.kpi.bk-kpi { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) }
+.bk-logo { max-height: 26px; max-width: 120px; display: block; margin-bottom: 6px }
+
+/* catalogul intern Libra: titlul și filtrele pe același rând */
+.bk-catalog-cap { align-items: center; margin-bottom: 14px }
+.bk-catalog-cap h2 { margin: 0 }
+.bk-catalog-n { font-size: 12px; font-weight: 400 }
+/* derulare în tabel (70% din ecran), cu antetul fix: AntD derulează pe orizontală în .ant-table-content,
+   iar un părinte care derulează ar lega antetul lipicios de el, nu de chenarul de 70vh */
+.bk-catalog-wrap { max-height: 70vh; overflow: auto }
+.bk-catalog-wrap .ant-table-wrapper.t .ant-table-content { overflow: visible !important }
+.bk-catalog-wrap .ant-table-wrapper.t .ant-table-thead > tr > th { position: sticky; top: 0; z-index: 2 }
+.bk-detalii .ant-collapse.despre { margin-top: 4px }
+.bk-detalii .note { max-width: 70ch; margin: 0 }
+
+/* recenziile (aceleași reguli ca în 2.3, unde stau în rate_mobil.css); săgeata nu rămâne singură pe rând */
+.bk-toate { white-space: nowrap }
+.bk-recenzii .rec { border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; margin-bottom: 9px }
+.bk-recenzii .rec-cap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px }
+.bk-recenzii .rec-cap .rec-data { font-size: 10.5px; margin-left: auto }
+.bk-recenzii .rec-stele { font-size: 13px; letter-spacing: 1px }
+.bk-recenzii .rec-stele.bun { color: var(--ok) }
+.bk-recenzii .rec-stele.rau { color: var(--warn) }
+.bk-recenzii .rec-txt { font-size: 12.5px; line-height: 1.6 }

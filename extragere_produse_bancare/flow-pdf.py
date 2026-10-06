@@ -286,6 +286,7 @@ async def proceseaza(
                 "produse_gasite": sum(1 for r in rezultate.values() if r["gasit"]),
                 "valori_acceptate": sum(len(r["valori"]) for r in rezultate.values()),
                 "valori_respinse": sum(len(r["respinse"]) for r in rezultate.values()),
+                "apeluri": sum(1 for r in rezultate.values() if r["tokeni"]),
                 "tokeni_intrare": sum((r["tokeni"] or {}).get("intrare", 0)
                                       for r in rezultate.values()),
                 "tokeni_iesire": sum((r["tokeni"] or {}).get("iesire", 0)

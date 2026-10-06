@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-05",
+  "banca": "nexent",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/monet",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "monet - Mobile Banking (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este aplicația de mobile banking a băncii pentru persoane fizice, cu funcționalități echivalente (plăți, transferuri, depozite, carduri) celor din Aplicația Libra Bank.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată aplicației monet pentru persoane fizice conține cifre concrete (comisioane, dobânzi) legate direct de folosirea aplicației.",
+      "citat": "0 commission for interbank transfers made through monet application, regardless of the amount or currency of the transaction; +0.5% extra interest compared to the standard interest for deposits constituted through the monet application, regardless of the amount or currency of the deposit.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "monet - Mobile Banking pentru companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este varianta aplicației de mobile banking a băncii dedicată persoanelor juridice, completând segmentul corporate acoperit și de Aplicația Libra Bank.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată descrie explicit aplicația monet pentru clienți corporate, cu activarea gratuită menționată ca beneficiu, dar fără alte cifre detaliate de tarife în textul vizibil.",
+      "citat": "monet este aplicatia de mobile banking, cu activare gratuita pentru persoanele juridice, care te ajută să ai grijă de afacerea ta, simplu, rapid si sigur.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii#:~:text=monet%20este%20aplicatia%20de%20mobile,ta%2C%20simplu%2C%20rapid%20si%20sigur."
+    },
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/05/8124bab48315864694aba5e46ef2b74c786675e2.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "monet - Mobile Banking - Ghidul Utilizatorului",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ghidul utilizatorului al aplicației monet descrie serviciile și produsele disponibile în platformă atât pentru persoane fizice cât și pentru persoane juridice, similar scopului documentației Aplicației Libra Bank.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Documentul descrie în detaliu funcționalitățile aplicației monet pentru ambele segmente de clienți, inclusiv perioadele de depozit, dar nu conține tarife numerice explicite.",
+      "citat": "Clientul, in functie de tipul acestuia, persoana fizica sau juridica, poate opta pentru unul dintre produsele care sunt disponibile in platforma de Mobile Banking, astfel: Clienti persoane fizice: Cont curent, Cont de economii sau depozite.",
+      "pagina_pdf": 5,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/monet",
+    "https://www.nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3685,
+    "citire_cache": 42391,
+    "scriere_cache": 63294,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2035752
+  }
+}

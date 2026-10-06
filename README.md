@@ -87,6 +87,8 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 032 | `hashes_libra`: amprenta fiecărei surse la ultima extracție (document neschimbat = fără apel la model) |
 | 033 | `comparatie_libra.scenariu` (jsonb): codul de scenariu descompus (sumă, perioadă, valută, referință) |
 | 034 | `products_discovery`: produsele concurenței fără echivalent în catalogul Libra; înlocuiește `descopera_concurenta` |
+| 036 | jurnalul joburilor: `job_types` (tipurile; unul nou e un `INSERT`), `jobs` (durată, tokeni, cost estimat, `errors` ținut de trigger), `jobs_error` (eroarea în `TEXT`, legată prin `id_job`), vederea `v_jobs`; scrise de `extragere_produse_bancare/jurnal_joburi.py`, citite de pagina Logging (`/api/jobs`) |
+| 037 | `jobs.runed_manually` (bool, implicit `FALSE`): jobul pornit din pagina „Rulare manuală”; `jurnal_joburi.py` îl scrie `TRUE` când procesul are `MIP_RULARE_MANUALA=1` (pusă de `app/rulari.py`); `v_jobs` primește coloana la coadă; pagina „Joburi și erori” o arată ca AUTOMAT / MANUAL |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
@@ -106,8 +108,8 @@ curentă e doar popularea inițială — cât de multe date reale se pot aduna.
 Automatizarea peste o acoperire proastă ar ascunde golurile.
 
 **Excepția, intenționată (01.10.2026, decizia lui Robert):** butoanele
-„Rulează” din Overview, până acum mockup înghețat, sunt deblocate ca **rulări
-manuale** — „doar ca să ai opțiunea să actualizezi manual” scripturile care
+„Rulează” din Overview (din 06.10.2026 în pagina „Rulare manuală”, grupul Jobs),
+până acum mockup înghețat, sunt deblocate ca **rulări manuale** — „doar ca să ai opțiunea să actualizezi manual” scripturile care
 altfel ar rula automat. Nu e scheduler: nu pornește nimic singur. Funcționează
 **doar pe laptopul lui Robert**, cu `MIP_PERMITE_RULARI=1` în `.env`; fără
 variabila asta (pe serverul comun), secțiunea arată „Rulările manuale sunt
@@ -176,12 +178,35 @@ python ingest/microsoft_ad_library.py [--banca <slug>]   # ~10 cereri/min, oprir
 Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi
 rescrie. Rularea repetată nu dublează. `--banca <slug>` restrânge la o bancă.
 
-### Rulări manuale (Overview)
+### Rulări manuale (pagina „Rulare manuală”)
 
-Secțiunea pliată „Rulări manuale” din Overview pornește, la cerere, un script
-dintr-o **listă fixă** (`app/rulari.py`, `COMENZI`). Activă doar cu
-`MIP_PERMITE_RULARI=1` în `.env` (în `.env.example` e `0`); serverul trebuie
-repornit după ce schimbi variabila.
+Pagina „Rulare manuală” (grupul Jobs, `#/rulare`; până pe 06.10.2026 secțiunea
+pliată din Overview) pornește, la cerere, un script dintr-o **listă fixă**
+(`app/rulari.py`, `COMENZI`). Activă doar cu `MIP_PERMITE_RULARI=1` în `.env`
+(în `.env.example` e `0`); serverul trebuie repornit după ce schimbi variabila.
+
+Se pornește **doar de pe aceeași origine cu serverul**: `npm run build`, apoi
+`http://localhost:8765/app/#/rulare` (serverul servește `web/dist` pe `/app/`). Din Vite
+(`localhost:5173`) pornirea e refuzată intenționat cu „Origin nepermis”; acolo pagina doar
+arată estimarea și starea.
+
+**„Începe job”** deschide un modal pentru cele trei joburi ale fluxului de
+comparație cu Libra (`JOBURI`, id-ul = codul din `job_types`): tipul, banca (din
+`extragere_produse_bancare/banci.json`, 30) și, la discovery și extragere, produsul
+(un cod activ din `produse_libra`). Cu toate alese, `GET /api/rulare_manuala/estimare`
+dă costul și durata din joburile încheiate (`v_jobs`): aceeași bancă și produs, apoi
+același produs, apoi aceeași bancă, apoi orice job de același tip. **Aceste joburi cheamă
+modelul, deci costă** (06.10.2026: discovery $0,04–0,53 pe produs, extragere $0–0,37);
+pornirea e clicul explicit de după estimare. Fiecare proces pornit din pagină primește
+`MIP_RULARE_MANUALA=1`, deci jobul apare în „Joburi și erori” ca MANUAL (migrarea 037).
+
+| job | ce rulează | bancă | produs |
+|---|---|---|---|
+| Discovery surse | `extragere_produse_bancare/descopera_surse_libra.py --forteaza --banca X --produse P` | obligatoriu | obligatoriu |
+| Extragere date | `extragere_produse_bancare/extrage_comparatie_libra.py --banca X --produse P` | obligatoriu | obligatoriu |
+| Produse pe care Libra nu le are | `extragere_produse_bancare/descopera_produse.py --banca X` | obligatoriu | — |
+
+Scripturile de colectare, sub buton:
 
 | comandă | ce rulează | bancă | rețea | estimare inițială |
 |---|---|---|---|---|
@@ -212,8 +237,10 @@ repornit după ce schimbi variabila.
   portul nostru, `Origin` (dacă e trimis) aceeași pagină, `Content-Type:
   application/json` și antetul `X-MIP-Token` (aleator, generat la pornirea
   serverului, primit de pagină prin `GET /api/rulari`). Din cerere ajung în
-  linia de comandă doar id-ul comenzii (căutat în listă) și slug-ul băncii
-  (căutat în `ingest/banks.py` + tabela `banci`). Teste: `python app/test_rulari.py`.
+  linia de comandă doar id-ul comenzii (căutat în listă), slug-ul băncii
+  (căutat în `ingest/banks.py` + tabela `banci`, la joburi în `banci.json` al
+  fluxului) și, la joburi, codul produsului (căutat în `produse_libra`, un singur
+  cod). Teste: `python app/test_rulari.py`.
 
 ### Pachetul Playwright (`crawler/`)
 
@@ -262,6 +289,27 @@ complet albă, iar serverul răspunde vesel cu 200 — din terminal arată ident
 cu „merge". S-a întâmplat de două ori, ambele din același motiv: un ghilimet
 `"` ASCII pus în loc de `”` într-un text românesc, care închide șirul devreme
 și doboară tot blocul `<script>`. Verificatorul localizează automat bucata.
+
+### Interfața nouă (React, în lucru pe ramura `stack-scc`)
+
+Trecerea la stack-ul Sales Command Center (02.10.2026): `web/` (React 18,
+Vite 6, Ant Design 5) și `shared/` (schemele Zod ale API-ului). La 05.10.2026
+sunt mutate toate cele 12 pagini, harta (`#/harta?banca=…`, MapLibre) și
+vizualizatorul PDF (`#/document?u=…&p=…&q=…`, PDF.js); aplicația veche din
+`app/` rămâne neatinsă. Datele vin tot de la `app/server.py`, prin proxy-ul Vite;
+colectarea rămâne în Python.
+
+```bash
+npm install                 # Node 20+
+python app/server.py        # API-ul, pe :8765
+npm run dev                 # interfața nouă, pe http://localhost:5173
+npm run typecheck && npm run build   # înainte de commit, după orice modificare în web/ sau shared/
+```
+
+Textele sunt în `web/src/i18n/dict/*.ts`, câte o pereche `[română, engleză]`
+pe cheie (1.137 la 02.10.2026, plus cele adăugate la mutarea paginilor). Datele băncilor (servicii, citate, recenzii)
+nu se traduc: sunt dovezi. Rulările manuale nu se pot porni din `npm run dev`:
+serverul refuză cererile de pe alt port, iar verificarea nu se slăbește.
 
 ---
 

@@ -95,37 +95,6 @@
    }
   },
   {
-   "url": "https://www.bancatransilvania.ro/companii/economii/dobanzi",
-   "tip": "html",
-   "metoda": "http",
-   "legaturi": [
-    {
-     "id_sursa": 315,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
    "url": "https://www.bancatransilvania.ro/pentru-companii/start-up/start-up-solutii-digitale/bt24-internet-banking-companii/",
    "tip": "html",
    "metoda": "http",
@@ -281,37 +250,6 @@
    "respinse": [],
    "scrise": 0,
    "durata_s": 1,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "url": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar/exemple-reprezentative",
-   "tip": "html",
-   "metoda": "http",
-   "legaturi": [
-    {
-     "id_sursa": 340,
-     "id_produs_libra": 35,
-     "cod": "CREDIT_IPOTECAR_PF",
-     "v2": "ipotecar"
-    }
-   ],
-   "produse_v2": [
-    "ipotecar"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -585,117 +523,6 @@
    }
   },
   {
-   "url": "https://intreb.bancatransilvania.ro/care-este-dobanda-pentru-contul-de-economii/",
-   "tip": "html",
-   "metoda": "http",
-   "legaturi": [
-    {
-     "id_sursa": 179,
-     "id_produs_libra": 19,
-     "cod": "CONT_ECONOMII",
-     "v2": "economii"
-    }
-   ],
-   "produse_v2": [
-    "economii"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-html",
-   "format_efectiv": "html",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": "trafilatura",
-   "content_hash": "a2f0248c39df45ee45c68e035ee5a373e2f95cf5ab74bbff2123abb105420813",
-   "observatii": [
-    {
-     "id": "f8cfa2d37ba012d27acedb40699d9d54",
-     "id_url": 179,
-     "id_produs": "economii",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": "NP_100K_499K",
-     "valoare_num": 3.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2f0248c39df45ee45c68e035ee5a373e2f95cf5ab74bbff2123abb105420813",
-     "conditii": [
-      "sold între 100.000,00 lei și 499.999,99 lei"
-     ],
-     "eticheta_libera": null,
-     "citat": "Pentru sume între 100.000,00 lei și 499.999,99 lei dobânda este 3,50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "de_la": 100000,
-       "pana_la": 500000
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "banca-transilvania",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "127fb8aabedefecd3b8d8388a036f4fbec9c970b2bc4e56eb7d32af169d17cc0"
-    },
-    {
-     "id": "8dc81b8bc7ff76c1344c218bb7f931ff",
-     "id_url": 179,
-     "id_produs": "economii",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": "NP_500K_PLUS",
-     "valoare_num": 3.65,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2f0248c39df45ee45c68e035ee5a373e2f95cf5ab74bbff2123abb105420813",
-     "conditii": [
-      "sold mai mare de 500.000,00 lei"
-     ],
-     "eticheta_libera": null,
-     "citat": "pentru sume mai mari de 500.000,00 lei dobânda este 3,65%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "de_la": 500000
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "banca-transilvania",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "127fb8aabedefecd3b8d8388a036f4fbec9c970b2bc4e56eb7d32af169d17cc0"
-    }
-   ],
-   "respinse": [],
-   "scrise": 2,
-   "durata_s": 7,
-   "tokeni": {
-    "intrare": 3716,
-    "iesire": 523
-   }
-  },
-  {
    "url": "https://intreb.bancatransilvania.ro/care-va-fi-dobanda-mea-la-overdraft/",
    "tip": "html",
    "metoda": "http",
@@ -844,12 +671,6 @@
      "id_produs_libra": 43,
      "cod": "DEPOZIT_TERMEN",
      "v2": "depozit-termen"
-    },
-    {
-     "id_sursa": 177,
-     "id_produs_libra": 19,
-     "cod": "CONT_ECONOMII",
-     "v2": "economii"
     }
    ],
    "produse_v2": [
@@ -2227,37 +2048,6 @@
    }
   },
   {
-   "url": "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro",
-   "tip": "html",
-   "metoda": "http",
-   "legaturi": [
-    {
-     "id_sursa": 13,
-     "id_produs_libra": 10,
-     "cod": "APLICATIA_LIBRA",
-     "v2": "banking-digital"
-    }
-   ],
-   "produse_v2": [
-    "banking-digital"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
    "url": "https://www.bancatransilvania.ro/conturi-si-operatiuni/conturi/abonament-cont-curent",
    "tip": "html",
    "metoda": "http",
@@ -2395,37 +2185,6 @@
    "respinse": [],
    "scrise": 0,
    "durata_s": 7,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "url": "https://www.bancatransilvania.ro/files/app/media/Asset/App/BT-Pay/Termeni-si-conditii-conturi-de-economii-BT-Pay-RO.pdf",
-   "tip": "pdf",
-   "metoda": "http",
-   "legaturi": [
-    {
-     "id_sursa": 178,
-     "id_produs_libra": 19,
-     "cod": "CONT_ECONOMII",
-     "v2": "economii"
-    }
-   ],
-   "produse_v2": [
-    "economii"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -3481,6 +3240,528 @@
    "tokeni": {
     "intrare": 0,
     "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/en/companii/economii/dobanzi||term deposit - interest income from corporate savings",
+   "url": "https://www.bancatransilvania.ro/en/companii/economii/dobanzi",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Term deposit - Interest income from corporate savings",
+   "focus": "Produsul băncii: „Term deposit - Interest income from corporate savings”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1339,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/pentru-tine/economii/depozite-la-termen/depozite-pe-perioade-clasice/||depozit la termen (depozite pe perioade clasice)",
+   "url": "https://www.bancatransilvania.ro/pentru-tine/economii/depozite-la-termen/depozite-pe-perioade-clasice/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (depozite pe perioade clasice)",
+   "focus": "Produsul băncii: „Depozit la termen (depozite pe perioade clasice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1337,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/companii/economii/compara-produsele-de-economisire||depozit la termen (persoane juridice)",
+   "url": "https://www.bancatransilvania.ro/companii/economii/compara-produsele-de-economisire",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozit la termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1338,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/companii/economii/dobanzi||depozit la termen (persoane juridice)",
+   "url": "https://www.bancatransilvania.ro/companii/economii/dobanzi",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozit la termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1396,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi||term deposit / depozit la termen (persoane fizice)",
+   "url": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Term deposit / Depozit la termen (persoane fizice)",
+   "focus": "Produsul băncii: „Term deposit / Depozit la termen (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1397,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro||bt pay",
+   "url": "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "BT Pay",
+   "focus": "Produsul băncii: „BT Pay”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1483,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/en/wallet-bt-pay/ghid-android||bt pay",
+   "url": "https://www.bancatransilvania.ro/en/wallet-bt-pay/ghid-android",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "BT Pay",
+   "focus": "Produsul băncii: „BT Pay”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1482,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar/exemple-reprezentative||creditul imobiliar-ipotecar",
+   "url": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar/exemple-reprezentative",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul Imobiliar-Ipotecar",
+   "focus": "Produsul băncii: „Creditul Imobiliar-Ipotecar”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1517,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/campanie/online/creditul-imobiliar-ipotecar||creditul imobiliar-ipotecar",
+   "url": "https://www.bancatransilvania.ro/campanie/online/creditul-imobiliar-ipotecar",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul imobiliar-ipotecar",
+   "focus": "Produsul băncii: „Creditul imobiliar-ipotecar”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1518,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/credite/creditele-imobiliare/creditul-imobiliar-ipotecar/conditii-de-acordare||creditul imobiliar-ipotecar",
+   "url": "https://www.bancatransilvania.ro/credite/creditele-imobiliare/creditul-imobiliar-ipotecar/conditii-de-acordare",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul Imobiliar-Ipotecar",
+   "focus": "Produsul băncii: „Creditul Imobiliar-Ipotecar”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1516,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/files/app/media/Asset/App/BT-Pay/Termeni-si-conditii-conturi-de-economii-BT-Pay-RO.pdf||cont de economii (bt pay)",
+   "url": "https://www.bancatransilvania.ro/files/app/media/Asset/App/BT-Pay/Termeni-si-conditii-conturi-de-economii-BT-Pay-RO.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de economii (BT Pay)",
+   "focus": "Produsul băncii: „Cont de economii (BT Pay)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 178,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi||cont de economii",
+   "url": "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de economii",
+   "focus": "Produsul băncii: „Cont de economii”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 177,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://intreb.bancatransilvania.ro/care-este-dobanda-pentru-contul-de-economii/||cont de economii (persoane juridice)",
+   "url": "https://intreb.bancatransilvania.ro/care-este-dobanda-pentru-contul-de-economii/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de economii (persoane juridice)",
+   "focus": "Produsul băncii: „Cont de economii (persoane juridice)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 179,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "trafilatura",
+   "content_hash": "a2f0248c39df45ee45c68e035ee5a373e2f95cf5ab74bbff2123abb105420813",
+   "observatii": [
+    {
+     "id": "e1a7b4dcbd09080028b0ae08391890ac",
+     "id_url": 179,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_100K_499999_RON",
+     "valoare_num": 3.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2f0248c39df45ee45c68e035ee5a373e2f95cf5ab74bbff2123abb105420813",
+     "conditii": [
+      "sold între 100.000,00 lei și 499.999,99 lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "Pentru sume între 100.000,00 lei și 499.999,99 lei dobânda este 3,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 100000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banca-transilvania",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5b7b1a130e9726b8c8cb5038031a1a903384bf5e09457ee1136403622a569081"
+    },
+    {
+     "id": "1299ecb8b6368769e754c64b56e54509",
+     "id_url": 179,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_500K_PLUS_RON",
+     "valoare_num": 3.65,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2f0248c39df45ee45c68e035ee5a373e2f95cf5ab74bbff2123abb105420813",
+     "conditii": [
+      "sold mai mare de 500.000,00 lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "pentru sume mai mari de 500.000,00 lei dobânda este 3,65%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banca-transilvania",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5b7b1a130e9726b8c8cb5038031a1a903384bf5e09457ee1136403622a569081"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 8,
+   "tokeni": {
+    "intrare": 3918,
+    "iesire": 546
    }
   }
  ]

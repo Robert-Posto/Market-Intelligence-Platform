@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-06",
+  "banca": "unicredit",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/Credite/credite-realizari-personale.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul de Realizari Personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fara ipoteca si fara destinatie justificata, pentru persoane fizice, in RON, rambursabil in rate egale sau descrescatoare pe pana la 60 de luni, acelasi tip si segment ca si Libra Way.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicata produsului contine explicit sumele, dobanzile si durata creditului, cu exemple reprezentative de calcul.",
+      "citat": "pentru un Credit de Realizari Personale oferit de UniCredit Consumer Financing IFN S.A. (ca urmare a indeplinirii criteriilor de eligibilitate) prin UniCredit Bank S.A. (intermediar de credit cu titlu auxiliar exclusiv al creditelor oferite de UniCredit Consumer Financing IFN S.A.), in valoare de 250.000 Lei, pe o perioada de 60 de luni",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/Documentecredite/Document%20exemple%20reprezentative.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul de Realizari Personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document cu exemple reprezentative de calcul (dobanda, DAE, comisioane, durata, valoare totala) pentru acelasi produs de credit de nevoi personale fara ipoteca.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "PDF-ul contine tabele cu exemple reprezentative de calcul pentru Creditul de Realizari Personale, cu sume, dobanzi si DAE explicite.",
+      "citat": "Exemple reprezentative de calcul pentru produsul financiar Creditul de Realizari Personale. Creditul de realizari personale Nu Nu 120.000 Lei 60 luni 13,99 420 Lei 10 Lei 2.829,67 Lei 169.779,84 Lei 15,80%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/persoane-fizice/Credite/credite-realizari-personale.html",
+    "https://www.unicredit.ro/en/persoane-fizice/borrowing/personal-loans.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/persoane-fizice/Credite/credite-realizari-personale.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2646,
+    "citire_cache": 84138,
+    "scriere_cache": 59514,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1920886
+  }
+}

@@ -9,7 +9,8 @@
   "credit_ipotecar": "350.000 lei / 300 luni e exemplul publicat la BCR (6 DAE) și Raiffeisen (350.500 lei, 7 DAE); BRD dă 330.000 / 360, Libra 250.000 / 180. Nu există un punct publicat de toți; ăsta e cel mai des.",
   "nevoi_personale": "30.000 lei / 60 luni, același ca NP_30K_60L_BAZA din scenarii.json, pe care extracția îl cere deja.",
   "depozite": "Durata produsului Libra, în lei: depozitul promoțional de 13 luni se compară cu oferte de ~12 luni (aproximativ), nu cu dobânda la 1 lună.",
-  "fx": "EUR / RON, perechea pe care o publică toate băncile."
+  "fx": "EUR / RON, perechea pe care o publică toate băncile.",
+  "cont_economii": "Sold de 40.000 lei, nu 50.000: 50.000 e granița dintre trepte la Exim, Raiffeisen, Vista și ING, iar extracția nu păstrează dacă pragul e inclus — o bancă ar avea două cifre de referință. Treptele sunt benzi (scenariu.banda), nu sume exacte."
  },
  "produse": {
   "CREDIT_IPOTECAR_PF": {
@@ -76,11 +77,13 @@
    }
   },
   "CONT_ECONOMII": {
-   "id": "EC_RON",
-   "nume": "sold în lei",
+   "id": "EC_40K_RON",
+   "nume": "sold de 40.000 lei, ofertă standard",
    "parametri": {
+    "suma": 40000,
     "valuta": "RON"
-   }
+   },
+   "pret_de_lista": true
   },
   "FX_SPOT": {
    "id": "FX_EUR",

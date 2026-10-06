@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-06",
+  "banca": "exim",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/11/09/cont-flexibil/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Flexibil",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii în lei/EUR/USD pentru persoane fizice, cu dobândă variabilă în funcție de soldul zilnic și posibilitate de depunere/retragere oricând, exact ca produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu tabele complete de dobânzi pe tranșe de sold și monedă, publicată direct de bancă.",
+      "citat": "Dobanzi: procente variabile, in functie de soldul inregistrat la sfarsitul zilei: Moneda Lei sold zilnic ≤ 50.000 > 50.000 % (p/a) 3,50 4,00",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/09/cont-flexibil/#:~:text=Dobanzi%3A%20procente%20variabile%2C%20in%20functie,50.000%20%25%20%28p%2Fa%29%203%2C50%204%2C00"
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/04/Lista-Dobanzi-Conturi-in-vigoare-cu-08.06.2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii „Flexibil”",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi al băncii care listează explicit ratele pentru Contul de economii „Flexibil”, pe tranșe de sold și monedă, actualizat periodic.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document PDF oficial, cu dată de intrare în vigoare, care conține tabelul complet de dobânzi pentru acest produs.",
+      "citat": "Cont de economii Flexibil Lei ≤50.000 Lei 3,50 2,88 RON suma minima deschidere cont x %dobanda x 30/365 x 100 >50.000 Lei 4,00 EUR ≤ 5.000 EUR 1,00",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ssl.eximbank.ro/persoane-fizice/economisire/cont-flexibil/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/04/Lista-Dobanzi-Conturi-in-vigoare-cu-08.06.2026.pdf",
+    "https://www.eximbank.ro/en/2022/11/09/flexible-account/",
+    "https://www.eximbank.ro/2022/11/09/cont-flexibil/",
+    "https://www.eximbank.ro/2022/11/09/cont-flexibil/"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 39022,
+    "iesire": 2149,
+    "citire_cache": 118542,
+    "scriere_cache": 52400,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2542424
+  }
+}

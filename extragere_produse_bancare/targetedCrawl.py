@@ -27,12 +27,14 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-from anthropic import Anthropic
+import httpx
+from anthropic import Anthropic, APITimeoutError
 from dotenv import load_dotenv
 
 import preturi
@@ -241,12 +243,48 @@ def text_din_rezultat(bloc) -> tuple[str, str] | None:
     return c.get("url", ""), sursa.get("data", "")
 
 
+class TermenDepasit(Exception):
+    """Termenul rulării a trecut; `usage` = tokenii răspunsului întrerupt, cât s-au raportat."""
+
+    def __init__(self, usage=None):
+        super().__init__("termen depășit")
+        self.usage = usage
+
+
+def _apel(client, betas: list[str], argumente: dict, termen: float | None):
+    """
+    Un apel în flux. Cu `termen` (moment time.time()), apelul se întrerupe când
+    trece: evenimentele fluxului se verifică pe rând, iar `timeout` pe cerere
+    acoperă conexiunea care nu mai trimite nimic.
+    """
+    if termen is None:
+        flux_ctx = (client.beta.messages.stream(betas=betas, **argumente) if betas
+                    else client.messages.stream(**argumente))
+        with flux_ctx as flux:
+            return flux.get_final_message()
+    ramas = termen - time.time()
+    if ramas <= 0:
+        raise TermenDepasit()
+    flux_ctx = (client.beta.messages.stream(betas=betas, timeout=ramas, **argumente) if betas
+                else client.messages.stream(timeout=ramas, **argumente))
+    with flux_ctx as flux:
+        for _ in flux:
+            if time.time() > termen:
+                raise TermenDepasit(getattr(flux.current_message_snapshot, "usage", None))
+        return flux.get_final_message()
+
+
 def ruleaza(banca: dict, produs: dict, prompt_sistem: str | None = None,
-            gata: dict | None = None, cerere: str | None = None) -> dict:
+            gata: dict | None = None, cerere: str | None = None,
+            termen: float | None = None) -> dict:
     """
     Bucla pentru o bancă × un produs. Promptul, unealta `gata` și cererea se
     pot da din afară (descopera_surse_libra.py le dă pentru produsele Libra);
     implicit sunt cele pentru catalogul v2.
+
+    `termen` (moment time.time()): după el bucla se oprește, chiar în mijlocul
+    unui apel, și întoarce `_eroare` cu `_timeout`; tokenii de până atunci rămân
+    în `_usage`.
     """
     client = Anthropic()
     domenii = domenii_permise(banca)
@@ -283,12 +321,17 @@ def ruleaza(banca: dict, produs: dict, prompt_sistem: str | None = None,
         if CACHE:
             argumente["cache_control"] = {"type": "ephemeral"}
 
-        if betas:
-            with client.beta.messages.stream(betas=betas, **argumente) as flux:
-                r = flux.get_final_message()
-        else:
-            with client.messages.stream(**argumente) as flux:
-                r = flux.get_final_message()
+        try:
+            r = _apel(client, betas, argumente, termen)
+        # httpx.TimeoutException: în timpul fluxului SDK-ul nu-l împachetează în APITimeoutError
+        # (Citibank, CONT_ECONOMII, 06.10: ReadTimeout la 189 s, cu tokenii pierduți)
+        except (TermenDepasit, APITimeoutError, httpx.TimeoutException) as e:
+            if not isinstance(e, TermenDepasit) and (termen is None or time.time() < termen - 1):
+                raise   # timeout de rețea înainte de termen: îl tratează reîncercările apelantului
+            if getattr(e, "usage", None):
+                preturi.aduna_usage(usage, e.usage)
+            return {"surse": [], "_deschise": deschise, "_texte": texte, "_usage": usage, "_timeout": True,
+                    "_eroare": f"timeout: nimic găsit în termen, după {tura + 1} ture și {len(deschise)} pagini"}
         preturi.aduna_usage(usage, r.usage)
 
         for bloc in r.content:

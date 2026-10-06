@@ -1,5 +1,6 @@
-"""Rulările manuale din Overview: o listă fixă de scripturi de colectare,
-pornite la cerere din interfață.
+"""Rulările manuale (pagina „Rulare manuală”, grupul Jobs; până pe 06.10.2026 în
+Overview): o listă fixă de scripturi de colectare și cele trei joburi ale fluxului
+de comparație cu Libra (`JOBURI`), pornite la cerere din interfață.
 
 De ce: scripturile ar rula în mod normal automat (stratul autonom, încă
 înghețat); până atunci, Robert vrea „doar opțiunea să actualizeze manual”, de
@@ -90,6 +91,38 @@ COMENZI = [
      "argumente": ["ingest/populare_initiala.py", "--din-bronze", "--llm-rezerva"], "banca": "obligatoriu", "internet": False,
      "mediu": FARA_LLM_PLATIT, "estimare_banca_min": 10},
 ]
+
+# Joburile fluxului de comparație cu Libra (pagina „Rulare manuală”, grupul Jobs): id-ul e
+# codul din `job_types`, ca estimarea să se ia din `jobs`. SPRE DEOSEBIRE de cele de mai sus,
+# cheamă modelul, deci costă (06.10.2026: discovery $0,04–0,53 pe produs, extragere
+# $0–0,37); pagina arată estimarea de cost înainte de pornire, iar pornirea e un clic
+# explicit după ea. Băncile sunt cele din `extragere_produse_bancare/banci.json` (30), nu
+# cele din `ingest/banks.py`; produsul e un cod din `produse_libra`, verificat pe listă.
+# Fiecare script își scrie singur jobul în `jobs` / `jobs_error` (jurnal_joburi.py).
+# `fara_mediu`: cheia API vine din `extragere_produse_bancare/.env`, citită de scripturi cu
+# load_dotenv, care NU suprascrie o variabilă existentă. Serverul pune în mediu `.env`-ul din
+# rădăcină (config.py), unde ANTHROPIC_API_KEY e un placeholder: jobul #172 (06.10.2026) a
+# moștenit-o și a primit 401 „API key is invalid”. Fără ea în mediu, ca din terminal.
+FARA_CHEIA_SERVERULUI = ["ANTHROPIC_API_KEY"]
+JOBURI = [
+    {"id": "discovery", "nume": "Discovery surse",
+     "ce": "Caută pe site-ul băncii echivalentul produsului Libra și îi salvează sursele (surse_libra); refăcut chiar dacă există deja, cu limita de 3 minute.",
+     "argumente": ["extragere_produse_bancare/descopera_surse_libra.py", "--forteaza"],
+     "banca": "obligatoriu", "produs": "obligatoriu", "banci": "extragere", "grup": "joburi", "platit": True,
+     "internet": True, "estimare_banca_min": 1, "fara_mediu": FARA_CHEIA_SERVERULUI},
+    {"id": "extragere", "nume": "Extragere date",
+     "ce": "Descarcă sursele găsite la discovery și extrage valorile produsului (comparatie_libra); documentele neschimbate nu se plătesc din nou.",
+     "argumente": ["extragere_produse_bancare/extrage_comparatie_libra.py"],
+     "banca": "obligatoriu", "produs": "obligatoriu", "banci": "extragere", "grup": "joburi", "platit": True,
+     "internet": True, "estimare_banca_min": 1, "fara_mediu": FARA_CHEIA_SERVERULUI},
+    {"id": "produse_noi", "nume": "Produse pe care Libra nu le are",
+     "ce": "Parcurge site-ul băncii (sitemap, meniuri) și clasifică paginile de produs fără echivalent în catalogul Libra (products_discovery).",
+     "argumente": ["extragere_produse_bancare/descopera_produse.py"],
+     "banca": "obligatoriu", "produs": None, "banci": "extragere", "grup": "joburi", "platit": True,
+     "internet": True, "estimare_banca_min": 15, "fara_mediu": FARA_CHEIA_SERVERULUI},
+]
+COMENZI = COMENZI + JOBURI
+CALE_BANCI_EXTRAGERE = os.path.join(RADACINA, "extragere_produse_bancare", "banci.json")
 
 GAZDE = ("localhost", "127.0.0.1", "[::1]")
 RANDURI_JURNAL = 30
@@ -190,14 +223,24 @@ def _acum():
     return datetime.datetime.now().astimezone()
 
 
+def _slugs_extragere():
+    with open(CALE_BANCI_EXTRAGERE, encoding="utf-8") as f:
+        return [b["id"] for b in json.load(f)["banci"]]
+
+
 class Rulari:
     def __init__(self, comenzi=COMENZI, dir_rulari=DIR_RULARI, slugs=lambda: [],
-                 interpretor=sys.executable, radacina=RADACINA):
+                 interpretor=sys.executable, radacina=RADACINA, produse=lambda: [],
+                 slugs_extragere=_slugs_extragere):
         self.comenzi = {c["id"]: c for c in comenzi}
         self.ordine = [c["id"] for c in comenzi]
         self.dir = dir_rulari
         self._sursa_slugs = slugs
         self._slugs = None
+        self._sursa_produse = produse
+        self._produse = None
+        self._sursa_slugs_extragere = slugs_extragere
+        self._slugs_extragere = None
         self.interpretor = interpretor
         self.radacina = radacina
         self.token = secrets.token_urlsafe(32)
@@ -217,22 +260,49 @@ class Rulari:
                 return []
         return self._slugs
 
-    def valideaza(self, id_comanda, banca):
+    def slugs_extragere(self):
+        if not self._slugs_extragere:
+            try:
+                self._slugs_extragere = sorted(set(self._sursa_slugs_extragere()))
+            except Exception:
+                return []
+        return self._slugs_extragere
+
+    def produse(self):
+        """Codurile active din `produse_libra`: singurele care pot ajunge în `--produse`."""
+        if not self._produse:
+            try:
+                self._produse = sorted(set(self._sursa_produse()))
+            except Exception:
+                return []
+        return self._produse
+
+    def valideaza(self, id_comanda, banca, produs=None):
         c = self.comenzi.get(id_comanda) if isinstance(id_comanda, str) else None
         if c is None:
             raise Respins("comandă necunoscută")
+        banci = self.slugs_extragere() if c.get("banci") == "extragere" else self.slugs()
         if banca in (None, ""):
             banca = None
-        elif not isinstance(banca, str) or banca not in self.slugs():
+        elif not isinstance(banca, str) or banca not in banci:
             raise Respins("bancă necunoscută")
         if banca and c["banca"] is None:
             raise Respins(f"„{c['nume']}” nu se rulează pe o bancă")
         if not banca and c["banca"] == "obligatoriu":
             raise Respins(f"„{c['nume']}” cere o bancă")
-        return c, banca
+        if produs in (None, ""):
+            produs = None
+        elif not isinstance(produs, str) or produs not in self.produse():
+            raise Respins("produs necunoscut")
+        if produs and c.get("produs") is None:
+            raise Respins(f"„{c['nume']}” nu se rulează pe un produs")
+        if not produs and c.get("produs") == "obligatoriu":
+            raise Respins(f"„{c['nume']}” cere un produs")
+        return c, banca, produs
 
-    def argv(self, c, banca):
-        return [self.interpretor, "-u"] + list(c["argumente"]) + (["--banca", banca] if banca else [])
+    def argv(self, c, banca, produs=None):
+        return ([self.interpretor, "-u"] + list(c["argumente"]) + (["--banca", banca] if banca else [])
+                + (["--produse", produs] if produs else []))
 
     # ---------------- istoric și estimare ----------------
 
@@ -274,25 +344,29 @@ class Rulari:
 
     # ---------------- pornire / oprire ----------------
 
-    def porneste(self, id_comanda, banca=None):
-        c, banca = self.valideaza(id_comanda, banca)
+    def porneste(self, id_comanda, banca=None, produs=None):
+        c, banca, produs = self.valideaza(id_comanda, banca, produs)
         with self.lacat:
             if self.curenta:
                 raise Ocupat(f"rulează deja: {self.comenzi.get(self.curenta['id'], {}).get('nume', self.curenta['id'])}")
             os.makedirs(self.dir, exist_ok=True)
             inceput = _acum()
             cale_log = self._cale(f"{c['id']}_{inceput:%Y%m%d_%H%M%S}.log")
-            argv = self.argv(c, banca)
-            mediu = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", **c.get("mediu", {}))
+            argv = self.argv(c, banca, produs)
+            # MIP_RULARE_MANUALA: jurnal_joburi.py scrie jobul cu runed_manually = TRUE (migrarea 037)
+            mediu = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", MIP_RULARE_MANUALA="1",
+                         **c.get("mediu", {}))
+            for k in c.get("fara_mediu", ()):
+                mediu.pop(k, None)
             with open(cale_log, "w", encoding="utf-8") as log:
-                log.write(f"# {c['nume']}{' · ' + banca if banca else ''} · pornit din Overview la "
+                log.write(f"# {c['nume']}{' · ' + banca if banca else ''}{' · ' + produs if produs else ''} · pornit manual la "
                           f"{inceput:%Y-%m-%d %H:%M:%S}\n# {' '.join(argv[1:])}\n")
                 log.flush()
                 p = subprocess.Popen(argv, cwd=self.radacina, stdout=log, stderr=subprocess.STDOUT,
                                      stdin=subprocess.DEVNULL, env=mediu,
                                      start_new_session=(os.name != "nt"))
             estimare_s, _, _ = self.estimare(c["id"], banca)
-            self.curenta = {"id": c["id"], "banca": banca, "inceput": inceput.isoformat(timespec="seconds"),
+            self.curenta = {"id": c["id"], "banca": banca, "produs": produs, "inceput": inceput.isoformat(timespec="seconds"),
                             "t0": time.time(), "pid": p.pid, "log": os.path.basename(cale_log),
                             "estimare_s": estimare_s, "oprit": False}
             self._scrie_curenta()
@@ -320,7 +394,7 @@ class Rulari:
         if self.curenta is not cur:
             return
         sfarsit = _acum()
-        rand = {"id": cur["id"], "banca": cur["banca"], "inceput": cur["inceput"],
+        rand = {"id": cur["id"], "banca": cur["banca"], "produs": cur.get("produs"), "inceput": cur["inceput"],
                 "sfarsit": sfarsit.isoformat(timespec="seconds"),
                 "durata_s": round(time.time() - cur["t0"]), "cod": cod, "oprit": bool(cur["oprit"]),
                 "log": cur["log"], "ultimele": coada_fisier(self._cale(cur["log"]), RANDURI_ISTORIC)}
@@ -371,12 +445,14 @@ class Rulari:
         for id_c in self.ordine:
             c = self.comenzi[id_c]
             e = {"id": id_c, "nume": c["nume"], "ce": c["ce"], "internet": c["internet"],
-                 "banca": c["banca"]}
+                 "banca": c["banca"], "produs": c.get("produs"), "grup": c.get("grup"),
+                 "platit": bool(c.get("platit"))}
             if c["banca"] != "obligatoriu":
                 e["estimare_s"], e["estimare_sursa"], e["masurate"] = self.estimare(id_c, None, ist)
             if c["banca"]:
                 e["estimare_banca_s"], e["estimare_banca_sursa"], _ = self.estimare(id_c, ORICE_BANCA, ist)
-                e["estimari_banca"] = {b: self.estimare(id_c, b, ist)[0] for b in banci
+                lista = self.slugs_extragere() if c.get("banci") == "extragere" else banci
+                e["estimari_banca"] = {b: self.estimare(id_c, b, ist)[0] for b in lista
                                        if any(r.get("id") == id_c and r.get("banca") == b for r in ist)}
             ale = [r for r in ist if r.get("id") == id_c]
             e["ultima"] = ale[-1] if ale else None
@@ -385,8 +461,10 @@ class Rulari:
         curenta = None
         if cur:
             curenta = {k: cur[k] for k in ("id", "banca", "inceput", "estimare_s", "oprit", "log")}
+            curenta["produs"] = cur.get("produs")
             curenta["nume"] = self.comenzi.get(cur["id"], {}).get("nume", cur["id"])
             curenta["scurs_s"] = round(time.time() - cur["t0"])
             curenta["jurnal"] = coada_fisier(self._cale(cur["log"]), RANDURI_JURNAL)
             curenta["dupa_repornire"] = bool(cur.get("orfan"))
-        return {"activ": activ(), "comenzi": comenzi, "banci": banci, "curenta": curenta}
+        return {"activ": activ(), "comenzi": comenzi, "banci": banci, "banci_joburi": self.slugs_extragere(),
+                "curenta": curenta}

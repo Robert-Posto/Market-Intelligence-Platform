@@ -1,0 +1,685 @@
+{
+ "banca": "cec",
+ "urluri": [
+  {
+   "cheie": "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice||depozite la termen în lei (persoane juridice)",
+   "url": "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen în lei (persoane juridice)",
+   "focus": "Produsul băncii: „Depozite la termen în lei (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1367,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/2026-06/Termeni%20si%20conditii%20Mobile%20si%20Interne%20Banking_editie%20valabila%20din%20data%20de%2003.08.2026.pdf||depozit la termen cu rată fixă a dobânzii (pf și pj)",
+   "url": "https://www.cec.ro/sites/default/files/2026-06/Termeni%20si%20conditii%20Mobile%20si%20Interne%20Banking_editie%20valabila%20din%20data%20de%2003.08.2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen cu rată fixă a dobânzii (PF și PJ)",
+   "focus": "Produsul băncii: „Depozit la termen cu rată fixă a dobânzii (PF și PJ)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1291,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/dobanzi-depozite-valuta-companii||depozit la termen în valută (persoane juridice)",
+   "url": "https://www.cec.ro/dobanzi-depozite-valuta-companii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen în valută (persoane juridice)",
+   "focus": "Produsul băncii: „Depozit la termen în valută (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1369,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei||depozite la termen în lei (persoane fizice)",
+   "url": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen în lei (persoane fizice)",
+   "focus": "Produsul băncii: „Depozite la termen în lei (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1366,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-valuta||depozite la termen în valută (persoane fizice)",
+   "url": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-valuta",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen în valută (persoane fizice)",
+   "focus": "Produsul băncii: „Depozite la termen în valută (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1368,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/mobile-banking||cec app, aplicația de mobile banking (persoane fizice)",
+   "url": "https://www.cec.ro/mobile-banking",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "CEC app, aplicația de Mobile Banking (persoane fizice)",
+   "focus": "Produsul băncii: „CEC app, aplicația de Mobile Banking (persoane fizice)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1442,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/click-pay||click to pay (cec bank)",
+   "url": "https://www.cec.ro/click-pay",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Click to Pay (CEC Bank)",
+   "focus": "Produsul băncii: „Click to Pay (CEC Bank)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1441,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/mobile-banking-persoane-juridice||mobile banking pentru afacerea ta (cec bank mobile banking - persoane juridice)",
+   "url": "https://www.cec.ro/mobile-banking-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mobile Banking pentru afacerea ta (CEC Bank Mobile Banking - persoane juridice)",
+   "focus": "Produsul băncii: „Mobile Banking pentru afacerea ta (CEC Bank Mobile Banking - persoane juridice)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1440,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/credite/credite-pentru-investitii-imobiliare/credite-ipotecare||creditul ipotecar în lei cu dobândă variabilă",
+   "url": "https://www.cec.ro/persoane-fizice/credite/credite-pentru-investitii-imobiliare/credite-ipotecare",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul ipotecar în lei cu dobândă variabilă",
+   "focus": "Produsul băncii: „Creditul ipotecar în lei cu dobândă variabilă”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1540,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf||creditul ipotecar imobiliar (dobândă variabilă / fixă 3-5 ani)",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul Ipotecar imobiliar (dobândă variabilă / fixă 3-5 ani)",
+   "focus": "Produsul băncii: „Creditul Ipotecar imobiliar (dobândă variabilă / fixă 3-5 ani)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1542,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/credite/credite-ipotecare/credit-ipotecar-casa-mea-verde||creditul ipotecar casa mea verde",
+   "url": "https://www.cec.ro/persoane-fizice/credite/credite-ipotecare/credit-ipotecar-casa-mea-verde",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul ipotecar Casa Mea Verde",
+   "focus": "Produsul băncii: „Creditul ipotecar Casa Mea Verde”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1541,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/dobanzi-credite-persoane-fizice.pdf||nevoi personale dobanda fixa",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/dobanzi-credite-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Nevoi personale dobanda fixa",
+   "focus": "Produsul băncii: „Nevoi personale dobanda fixa”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1578,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/credite/credite-nevoi-personale/credit-online-de-nevoi-personale||creditul de nevoi personale online",
+   "url": "https://www.cec.ro/persoane-fizice/credite/credite-nevoi-personale/credit-online-de-nevoi-personale",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul de nevoi personale online",
+   "focus": "Produsul băncii: „Creditul de nevoi personale online”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1577,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/dobanzi-credite-persoane-fizice.pdf||nevoi personale dobânda fixă / creditul de nevoi personale",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/dobanzi-credite-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Nevoi personale dobânda fixă / Creditul de nevoi personale",
+   "focus": "Produsul băncii: „Nevoi personale dobânda fixă / Creditul de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1569,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/credite/credite-nevoi-personale/credit-online-de-nevoi-personale||credit de nevoi personale online (cu dobândă fixă)",
+   "url": "https://www.cec.ro/persoane-fizice/credite/credite-nevoi-personale/credit-online-de-nevoi-personale",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale online (cu dobândă fixă)",
+   "focus": "Produsul băncii: „Credit de nevoi personale online (cu dobândă fixă)”.\nCorespunde produsului Libra: „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1568,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf||campanie nevoi personale cu dobândă fixă / creditul de nevoi personale cu dobândă fixă",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Campanie nevoi personale cu dobândă fixă / Creditul de nevoi personale cu dobândă fixă",
+   "focus": "Produsul băncii: „Campanie nevoi personale cu dobândă fixă / Creditul de nevoi personale cu dobândă fixă”.\nCorespunde produsului Libra: „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1570,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf||campanie nevoi personale cu dobanda fixa",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Campanie nevoi personale cu dobanda fixa",
+   "focus": "Produsul băncii: „Campanie nevoi personale cu dobanda fixa”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1579,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/dobanzi-depozite-cont-economii||contul de economii (persoane fizice)",
+   "url": "https://www.cec.ro/dobanzi-depozite-cont-economii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Contul de economii (persoane fizice)",
+   "focus": "Produsul băncii: „Contul de economii (persoane fizice)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1624,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/dobanzi-depozite-companii-cont-de-economii||contul de economii pentru persoane juridice",
+   "url": "https://www.cec.ro/dobanzi-depozite-companii-cont-de-economii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Contul de economii pentru persoane juridice",
+   "focus": "Produsul băncii: „Contul de economii pentru persoane juridice”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1625,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/termeni_si_conditii_ib_mb_final_2.pdf||contul de economii (persoane fizice și juridice)",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/termeni_si_conditii_ib_mb_final_2.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Contul de economii (persoane fizice și juridice)",
+   "focus": "Produsul băncii: „Contul de economii (persoane fizice și juridice)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1626,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  }
+ ]
+}

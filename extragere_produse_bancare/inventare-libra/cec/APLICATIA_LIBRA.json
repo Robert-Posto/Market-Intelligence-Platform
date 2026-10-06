@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-05",
+  "banca": "cec",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/mobile-banking-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mobile Banking pentru afacerea ta (CEC Bank Mobile Banking - persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea pentru persoane juridice a aceleiași aplicații de mobile banking, cu RoPay și Open Banking, acoperind segmentul business al produsului Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina conține explicit comisionul lunar al serviciului (20 lei/lună) și descrie funcționalitățile RoPay și Open Banking pentru firme.",
+      "citat": "Poți contracta serviciul Mobile Banking separat, din orice sucursală CEC Bank. Comisionul este de 20 lei/lună. Obții serviciul Mobile Banking în mod gratuit, dacă contractezi unul din pachetele de cont bancar de la CEC Bank.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/click-pay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Click to Pay (CEC Bank)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Serviciul Click to Pay al CEC Bank, activat și gestionat din aplicația CEC app, corespunde exact componentei Click to Pay menționate în descrierea produsului Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată Click to Pay descrie explicit activarea prin CEC app, cardurile acceptate (Visa/Mastercard) și lipsa comisionului.",
+      "citat": "Îți înregistrezi cardurile, Visa sau Mastercard, o singură dată și plătești, în siguranță, oriunde vezi pictograma Click to Pay, fără niciun comision. Pentru utilizarea Click to Pay nu se aplică nicio taxă.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/mobile-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "CEC app, aplicația de Mobile Banking (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicație de mobile banking cu aceleași funcționalități cheie ca Libra: RoPay (plăți instant QR), Open Banking (agregare conturi de la alte bănci) și acces pentru persoane fizice și juridice (multiusers).",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată descrie funcționalitățile RoPay și Open Banking, plus modul de activare și costul serviciului, dar fără un tabel de comisioane explicit în acest text.",
+      "citat": "RoPay. Plăți și incasări instant cu telefonul mobil prin cod QR, procesate în maximum 10 secunde de la inițierea plății. Poți activa accesul la Mobile Banking în orice sucursală sau online, cu ZERO drumuri la bancă, accesând unul din Pachetele de cont bancar sau din Internet Banking.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1875,
+    "citire_cache": 6337,
+    "scriere_cache": 34450,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1061504
+  }
+}

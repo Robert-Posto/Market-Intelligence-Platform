@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-05",
+  "banca": "revolut",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/ways-to-bank/mobile-banking/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mobile Banking (Aplicația Revolut)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pagina dedicată aplicației de mobile banking Revolut (acces cont, transferuri, carduri, securitate), echivalentul funcțional al Aplicației Libra Bank. Diferă segmentul: pagina descrie aplicația pentru persoane fizice; Revolut are un produs separat (Revolut Business) pentru persoane juridice, nu o aplicație unică pentru ambele segmente ca la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina este dedicată explicit mobile banking-ului Revolut și conține cifre concrete (160+ țări, 38 monede, 80+ milioane clienți), dar acoperă doar segmentul persoane fizice.",
+      "citat": "Deschide un cont bancar Revolut online și îți poți gestiona banii dintr-o singură aplicație de mobile banking, oricând, oriunde. Alătură-te celor Peste 80 de milioane de clienți la nivel global și descarcă aplicația noastră de online banking pentru iOS sau Android.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/en-RO/",
+    "https://www.revolut.com/en-RO/ways-to-bank/mobile-banking/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 28215,
+    "iesire": 2823,
+    "citire_cache": 12708,
+    "scriere_cache": 33715,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1714891
+  }
+}

@@ -1,0 +1,44 @@
+Citibank Europe plc — Sucursala România: 1 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, domenii citibank.com
+  [ 1] https://www.citibank.com/icg/sa/emea/romania/english/about-us.html
+  [cautare] Citibank Romania term deposit corporate
+  [ 2] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/capital-market.html
+  [cautare] citibank.com romania english products-services treasury "time deposit"
+  [ 3] https://www.citibank.com/icg/sa/emea/romania/english/products-services.html
+  [ 4] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury.html
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [cautare] citibank.com icg sa emea romania english products-services treasury cash-management
+  [ 5] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/
+  [ 6] https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/
+  [ 7] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html
+       ! url_not_in_prior_context
+  [ 8] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html
+       ! url_not_in_prior_context
+  [ 9] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/foreign-market.html
+       ! url_not_in_prior_context
+  [10] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html
+       ! url_not_in_prior_context
+  [cautare] citibank.com romania products-services treasury money-market.html
+  [11] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html
+  ! DEPOZIT_TERMEN: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: The final block in an assistant message cannot be `thinking`.'}, 'request_id': 'req_011CfivpACtogbrKd44zz9Cw'} (tentativa 1)
+  [ 1] https://www.citibank.com/icg/sa/emea/romania/english/about-us.html
+  [cautare] Citibank Romania term deposit corporate
+  [ 2] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury.html
+  [cautare] citibank.com romania treasury "time deposit" OR "term deposit" standard products
+       ! url_not_in_prior_context
+  [ 3] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/liquidity-management.html
+  [ 4] https://www.citibank.com/icg/sa/emea/romania/english/products-services.html
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 5] https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/capital-market.html
+  [ 6] https://www.citibank.com/icg/sa/emea/romania/english/products-services/financing-solutions/commercial-bank.html
+  [cautare] site:citibank.com icg/sa/emea/romania treasury deposit
+  [ 7] https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/treasury/
+  [ 8] https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/treasury/money-market.html
+       ! url_not_in_prior_context
+  [ 9] https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/treasury/money-market.html
+       ! url_not_in_prior_context
+  [cautare] citibank.com romania treasury money-market.html piata monetara depozit
+GOL     DEPOZIT_TERMEN               nepublicat: Citibank Europe plc – Sucursala România deservește exclusiv clienți corporate/instituționa, $0.37
+
+citibank: 0/1 produse cu surse, 0 erori, cost estimat $0.37, durata 3 min

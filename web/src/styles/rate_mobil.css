@@ -1,0 +1,177 @@
+/* Stilurile paginilor mutate de agentul „rate_mobil”; global.css rămâne pentru ce e comun. */
+
+/* stare goală: 2.2 fără valori pe filtru, 2.3 Android necolectat */
+
+/* ---- 2.2 Rate & indicatori ---- */
+.rt-reper { margin-left: auto; text-align: right }
+/* cea mai bună valoare pe coloană: steluța aurie în fața cifrei și eticheta plină dedesubt */
+.ant-table-wrapper.t td.mc.best b { font-weight: 700; color: var(--ink) }
+.ant-table-wrapper.t td.mc.best b::before { content: "★ "; color: var(--aur); font-size: .9em }
+.rt-best { display: block; width: max-content; margin: 4px 0 0 auto; padding: 1px 7px; border-radius: 999px; background: var(--accent);
+  color: var(--on-accent); font: 600 9px "IBM Plex Sans", sans-serif; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap }
+/* termenul și oferta sub cifră: se rup pe rânduri, aliniate la dreapta ca cifra */
+td.mc .sub.ctx { white-space: normal; max-width: 24ch; margin-left: auto }
+
+/* rânduri clicabile (2.2 tabelul plat, 2.3 aplicațiile) și banca aleasă în 2.3 */
+.ant-table-wrapper.t tr.clic > td { cursor: pointer }
+.ant-table-wrapper.t .ant-table-tbody > tr.ant-table-row.ales > td { background: var(--warn-tint) }
+
+/* ---- 2.3 Aplicații & recenzii ---- */
+.mb-comutator { margin-bottom: 16px }
+.mb-nowrap { white-space: nowrap }
+.mb-lista-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 4px }
+.mb-lista-cap h2 { margin: 0 }
+
+/* un card pe aplicație: sus cifrele (lățime fixă, ca băncile să se alinieze) și capturile; jos rezumatul AI și magazinele */
+.mb-carduri { display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px }
+.mb-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; box-shadow: var(--umbra) }
+.mb-card.ales { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) }
+.mb-card-sus { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 20px }
+.mb-card-jos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--line) }
+.mb-card-info { display: flex; flex-direction: column; gap: 8px; min-width: 0 }
+.mb-btn-compara { margin-left: auto }
+.mb-sigla { display: block; height: 34px; max-width: 160px; object-fit: contain; object-position: left center; align-self: flex-start }
+.mb-sigla-txt { font-size: 14px; font-weight: 600 }
+.mb-nota { display: flex; align-items: center; gap: 10px; margin-top: 4px }
+/* stelele, nota și evaluările un bloc, despărțit de restul cardului */
+.mb-rating { display: flex; flex-direction: column; gap: 6px }
+.mb-nota-cifra { font-family: var(--mono); font-size: 18px; font-weight: 550; color: var(--ink) }
+/* numărul de evaluări e cifra pusă în față: arată baza de utilizatori, nota singură nu */
+.mb-volum { display: flex; flex-direction: column; line-height: 1.1 }
+.mb-volum b { font-family: var(--mono); font-size: 30px; font-weight: 600; letter-spacing: -.01em; color: var(--ink) }
+.mb-volum span { font-size: 11.5px; color: var(--muted); margin-top: 3px }
+.mb-stele { display: inline-block; max-width: 100% }
+.mb-stele .stele-bar { max-width: 100% }
+.mb-versiune { font-size: 12.5px }
+.mb-btn-rec { align-self: flex-start; margin-top: auto }
+
+/* capturile la vedere: o bandă care derulează lateral (Raiffeisen are 10, Salt 4 — 06.10.2026) */
+.mb-card-capturi { display: flex; flex-direction: column; gap: 6px; min-width: 0 }
+.mb-banda, .as-capturi { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 6px }
+.mb-banda:focus-visible, .as-capturi:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px }
+.ap-miniatura { flex: none; padding: 0; border: 0; background: none; cursor: zoom-in; scroll-snap-align: start; border-radius: 10px }
+.ap-miniatura img { display: block; width: auto; border-radius: 10px; border: 1px solid var(--line); background: var(--bg) }
+.ap-miniatura:hover img, .ap-miniatura:focus-visible img { border-color: var(--accent) }
+.mb-banda-nota { font-size: 10.5px }
+.mb-fara-capturi { display: flex; align-items: center; justify-content: center; min-height: 120px; border: 1px dashed var(--line-2);
+  border-radius: 9px; font-size: 12px }
+
+/* stelele SVG: aurii ca în store, golul în culoarea liniilor */
+:root { --stea: #ff9f0a; --stea-gol: var(--line-2) }
+.ap-stele { display: inline-flex; gap: 2px; line-height: 0 }
+
+.ap-eticheta { font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-family: var(--mono);
+  margin-bottom: 8px; width: max-content; max-width: 100% }
+.ap-rezumat-gol { font-size: 12px; margin: 0 }
+
+/* rezumatul AI: textul, apoi plusurile și minusurile în două coloane */
+.ap-rezumat-txt { font-size: 13px; line-height: 1.6; margin: 0 0 10px; max-width: 95ch }
+.ap-pro-contra { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px }
+.ap-pro-contra ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px }
+.ap-pro-contra li { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; line-height: 1.45 }
+.ap-pro-contra li .anticon { flex: none; margin-top: 2px; font-size: 14px }
+.ap-pro .anticon { color: var(--ok) }
+.ap-contra .anticon { color: var(--warn) }
+.ap-rezumat.compact .ap-pro-contra { grid-template-columns: minmax(0, 1fr) }
+
+@media (max-width: 900px) {
+  .mb-card-sus, .mb-card-jos { grid-template-columns: minmax(0, 1fr); gap: 12px }
+  .ap-pro-contra { grid-template-columns: minmax(0, 1fr) }
+}
+
+.ant-collapse.despre.mb-nou { margin: 0 }
+.mb-nou-txt { white-space: pre-line; max-width: 60ch; margin: 0 0 6px }
+.mb-h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-family: var(--mono);
+  font-weight: 500; margin: 18px 0 8px }
+.mb-bara-titlu { font-family: var(--serif); font-size: 16px; margin-right: 6px }
+
+/* recenziile */
+.rec { border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; margin-bottom: 9px }
+.rec-cap { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px }
+.rec-cap .nm { white-space: nowrap }
+/* sigla mare, stelele sub ea; restul antetului în dreapta */
+.rec-cap { align-items: flex-start }
+.rec-banca { display: flex; flex-direction: column; gap: 6px }
+.rec-sigla { display: block; height: 26px; max-width: 150px; object-fit: contain; object-position: left center }
+.rec-meta { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin-left: auto }
+.rec-cap .rec-data { font-size: 10.5px }
+.rec-utile { font-size: 11px }
+.rec-stele { font-size: 13px; letter-spacing: 1px }
+.rec-stele.bun { color: var(--ok) }
+.rec-stele.rau { color: var(--warn) }
+.rec-txt { font-size: 12.5px; line-height: 1.6 }
+.rec-txt.rec-raspuns { margin-top: 7px; padding: 7px 10px; border-left: 3px solid var(--accent); background: var(--accent-tint);
+  border-radius: 0 7px 7px 0; font-size: 12px }
+
+/* capturile din App Store, în sertar */
+.mb-capturi { display: flex; flex-wrap: wrap; gap: 10px }
+.mb-capturi img { display: block; height: 300px; border-radius: 9px; border: 1px solid var(--line) }
+
+/* comparația Libra vs. o bancă, așezată ca pagina aplicației din App Store */
+.as-alege { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 14px }
+.as-coloane { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px }
+.as-pagina { border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: var(--surface); min-width: 0 }
+.as-antet { display: flex; gap: 14px; align-items: flex-start; padding-bottom: 14px; border-bottom: 1px solid var(--line) }
+.as-icon { flex: none; width: 84px; height: 84px; border-radius: 20px; border: 1px solid var(--line); background: #fff;
+  display: flex; align-items: center; justify-content: center; padding: 10px; overflow: hidden }
+.as-icon img { max-width: 100%; max-height: 100%; object-fit: contain }
+.as-icon span { font: 600 30px var(--serif); color: #2a1f22 }
+/* iconița reală din Google Play umple pătratul, ca în store */
+.as-icon.real { padding: 0 }
+.as-icon.real img { width: 100%; height: 100%; object-fit: cover }
+.as-pagina .ap-stele { margin-top: 10px }
+.as-antet-txt { min-width: 0 }
+.as-antet-txt h3 { margin: 2px 0 2px; font-size: 19px; font-weight: 700; line-height: 1.25 }
+.as-buton { display: inline-block; margin-top: 10px; padding: 4px 16px; border-radius: 999px; background: #0a84ff; color: #fff;
+  font-weight: 600; font-size: 12.5px; text-decoration: none }
+.as-buton:hover { background: #0071e3; color: #fff }
+.as-sectiune { padding-top: 14px }
+.as-sectiune + .as-sectiune { margin-top: 14px; border-top: 1px solid var(--line) }
+.as-sectiune h4 { margin: 0 0 10px; font-size: 15px; font-weight: 700 }
+.as-note { display: flex; gap: 18px; align-items: flex-end }
+.as-nota-mare { display: flex; flex-direction: column; align-items: center; flex: none }
+.as-nota-mare b { font-size: 50px; font-weight: 700; line-height: 1; letter-spacing: -.02em }
+.as-nota-mare .gri { font-size: 12px; font-weight: 600 }
+.as-histograma { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px }
+.as-rand-stea { display: flex; align-items: center; gap: 8px }
+.as-stele-mici { width: 46px; text-align: right; font-size: 8px; letter-spacing: 1px; color: var(--muted); flex: none }
+.as-bara { flex: 1; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden }
+.as-bara span { display: block; height: 100%; background: var(--muted); border-radius: 2px }
+.as-volum-mare { margin-top: 6px }
+.as-recenzii { font-size: 12px; margin-top: 4px }
+.as-gol { display: flex; align-items: center; justify-content: center; min-height: 160px; border: 1px dashed var(--line-2);
+  border-radius: 12px; font-size: 12.5px; text-align: center; padding: 12px }
+
+@media (max-width: 900px) {
+  .as-coloane { grid-template-columns: minmax(0, 1fr) }
+}
+/* modalul ocupă 90% din înălțime: antetul și alegerea băncii stau sus, coloanele derulează */
+.as-modal .ant-modal-content { height: 90vh; display: flex; flex-direction: column }
+.as-modal .ant-modal-body { flex: 1; min-height: 0; overflow-y: auto }
+
+/* toate capturile unei aplicații, 4 pe rând */
+.ap-grila { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px }
+.ap-grila .ap-miniatura { width: 100% }
+.ap-grila .ap-miniatura img { width: 100%; height: auto }
+.ap-grila-modal .ant-modal-body { max-height: 80vh; overflow-y: auto }
+@media (max-width: 700px) {
+  .ap-grila { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+}
+
+/* 2.3 Android, secțiunea Google Play: aceleași carduri ca la iOS, cu analiza APK dedesubt */
+.an-descarcari { display: flex; align-items: baseline; gap: 7px; width: max-content; max-width: 100%; margin: 12px 0 6px }
+.an-descarcari .anticon { color: #34a853; font-size: 18px; align-self: center }
+.an-descarcari b { font-family: var(--mono); font-size: 22px; font-weight: 600 }
+.an-descarcari span { font-size: 11.5px; color: var(--muted) }
+.an-apk { min-width: 0 }
+.mb-card-apk { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line) }
+.mb-card-apk .an-apk-cifre { grid-template-columns: repeat(6, minmax(0, 1fr)) }
+.an-butoane { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto }
+.rp-bara { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-bottom: 8px }
+.an-apk-cifre { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 16px; margin: 0 0 6px }
+.an-apk-cifre dt { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-family: var(--mono) }
+.an-apk-cifre dd { margin: 2px 0 0; font-size: 13px; font-weight: 600 }
+@media (max-width: 900px) {
+  .an-apk-cifre, .mb-card-apk .an-apk-cifre { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+}

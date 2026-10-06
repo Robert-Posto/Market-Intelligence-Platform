@@ -1,0 +1,76 @@
+{
+  "generat": "2026-10-05",
+  "banca": "patria",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/persoane-fizice/digital-banking/noua-patria-online-pentru-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Patria Mobile Banking (Internet & Mobile Banking Patria Online)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată aplicației de mobile banking pentru persoane fizice (descărcare, activare token, autentificare, plăți instant), același tip de produs ca Aplicația Libra Bank pentru segmentul persoane fizice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina este dedicată explicit aplicației Patria Mobile Banking și descrie în detaliu funcționalitățile și procesul de activare, dar nu conține cifre de tip dobândă/comision (produsul e un serviciu, nu un instrument financiar cu preț).",
+      "dovada_metoda": "Conținut extras direct ca text HTML din rezultatul căutării, fără elemente care să indice necesitatea JavaScript.",
+      "citat": "A. Descarcă aplicația Patria Mobile Banking din App Store și/sau Google Play pe telefonul tău mobil – aplicația are funcționalitatea de token inclusă, acesta fiind necesar pentru înregistrare.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://corporate.patriabank.ro/Corporate/Home/Documents/ghid-de-utilizare-al-serviciului-de-Internet-Banking-Persoane-Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Patria Mobile Banking (token mobil pentru Persoane Juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Aceeași aplicație de mobile banking este folosită și de clienții persoane juridice, dar cu acces doar la funcționalitățile publice (token mobil), spre deosebire de aplicația Libra care oferă acces complet ambelor segmente.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de utilizare (ghid PDF) care confirmă explicit că aplicația e comună persoanelor fizice și juridice, dar cu funcționalități limitate pentru cele din urmă.",
+      "dovada_metoda": "Document PDF cu text extras direct.",
+      "pagina_pdf": 5,
+      "citat": "Aplicația Patria Mobile Banking este comuna utilizatorilor Persoane Fizice și Persoane Juridice cu mențiunea ca Persoanele Juridice pot utiliza doar tokenul mobil și au acces doar la funcționalitățile publice din cadrul acesteia.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/digital-banking/internet-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Patria Mobile Banking (pentru clienți persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina serviciului de Internet Banking pentru firme confirmă utilizarea aceleiași aplicații Patria Mobile Banking și pe segmentul companii, cu măsuri de securitate aplicate de la o dată precisă (29 ianuarie 2026), dar funcționalitatea completă (gen Click to Pay/RoPay din Libra) nu e descrisă pentru acest segment.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina menționează explicit aplicația și o dată de implementare a unei măsuri de securitate, dar nu oferă alte cifre specifice produsului.",
+      "dovada_metoda": "Conținut HTML extras cu text și dată calendaristică explicită.",
+      "citat": "Începând cu data de 29 ianuarie 2026, serviciul de Internet Banking va include un nou set de măsuri de control al utilizării aplicației Patria Mobile Banking instalată pe dispozitivele tale mobile.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/persoane-fizice/digital-banking/noua-patria-online-pentru-persoane-fizice",
+    "https://www.patriabank.ro/afaceri-mici/digital-banking",
+    "https://www.patriabank.ro/persoane-fizice/digital-banking/noua-patria-online-pentru-persoane-fizice"
+  ],
+  "durata_s": 90,
+  "consum": {
+    "intrare": 60115,
+    "iesire": 8223,
+    "citire_cache": 12682,
+    "scriere_cache": 31969,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2849189
+  }
+}

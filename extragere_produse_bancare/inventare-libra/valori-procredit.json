@@ -1,0 +1,5109 @@
+{
+ "banca": "procredit",
+ "urluri": [
+  {
+   "cheie": "https://www.procreditbank.ro/ro/imm-uri/produse-de-economisire/depozite||depozite la termen (imm-uri)",
+   "url": "https://www.procreditbank.ro/ro/imm-uri/produse-de-economisire/depozite",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen (IMM-uri)",
+   "focus": "Produsul băncii: „Depozite la termen (IMM-uri)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1294,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "8da64bf738b0145249833a37513f9470623ac3ed083be93bb0b197ec8e54b1da",
+   "observatii": [
+    {
+     "id": "829c2e26747a30713a2597b328c2a5b0",
+     "id_url": 1294,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie caracteristicile generale ale depozitelor la termen (termene 3/6/12 luni, sumă minimă 50.000 LEI sau 10.000 EUR, dobândă fixă, capitalizare sau transfer lunar) dar nu conține nicio valoare numerică de dobândă; pagina trimite către un document extern ('aici') pentru lista dobânzilor, care nu este inclus în text.",
+     "content_hash": "8da64bf738b0145249833a37513f9470623ac3ed083be93bb0b197ec8e54b1da",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "613262a73d1d19553603fdaece2ba82a99ae591e9451597cca19dd4b6f6892c1"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 6,
+   "tokeni": {
+    "intrare": 5064,
+    "iesire": 221
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/wp-content/uploads/files/Lista_preturi_PJ_RO_01.08.2023.pdf||depozit la termen (persoane juridice)",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/files/Lista_preturi_PJ_RO_01.08.2023.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozit la termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1295,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "b948a04a9fa62ffcbe00a6644039c008ba4d704b7febc841dd43fbfaf11a93c7",
+   "observatii": [
+    {
+     "id": "9fc227600212ba2be2c2c3382df80882",
+     "id_url": 1295,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b948a04a9fa62ffcbe00a6644039c008ba4d704b7febc841dd43fbfaf11a93c7",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "5,75% - 3 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "51e8fcb7f0aef6864f39f2e2c066a6d652a20801c313d513a414b781478289bc"
+    },
+    {
+     "id": "7ff3d087f9751c02f20937478a60b3f2",
+     "id_url": 1295,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b948a04a9fa62ffcbe00a6644039c008ba4d704b7febc841dd43fbfaf11a93c7",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "Depozit la termen 6,50% 1,00% 6 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "51e8fcb7f0aef6864f39f2e2c066a6d652a20801c313d513a414b781478289bc"
+    },
+    {
+     "id": "429094a5c5d57bcec77bf060ad444f77",
+     "id_url": 1295,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b948a04a9fa62ffcbe00a6644039c008ba4d704b7febc841dd43fbfaf11a93c7",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "Depozit la termen 6,50% 1,00% 6 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 10000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "51e8fcb7f0aef6864f39f2e2c066a6d652a20801c313d513a414b781478289bc"
+    },
+    {
+     "id": "5954a2f082965fb350c13b9784ca607b",
+     "id_url": 1295,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b948a04a9fa62ffcbe00a6644039c008ba4d704b7febc841dd43fbfaf11a93c7",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "6,75% 1,20% 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "51e8fcb7f0aef6864f39f2e2c066a6d652a20801c313d513a414b781478289bc"
+    },
+    {
+     "id": "0188db533544f5224060299e82872926",
+     "id_url": 1295,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b948a04a9fa62ffcbe00a6644039c008ba4d704b7febc841dd43fbfaf11a93c7",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "6,75% 1,20% 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 10000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "51e8fcb7f0aef6864f39f2e2c066a6d652a20801c313d513a414b781478289bc"
+    }
+   ],
+   "respinse": [],
+   "scrise": 5,
+   "durata_s": 12,
+   "tokeni": {
+    "intrare": 10317,
+    "iesire": 1036
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/persoane-fizice/depozit-la-termen/||depozit la termen (persoane fizice)",
+   "url": "https://www.procreditbank.ro/persoane-fizice/depozit-la-termen/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (persoane fizice)",
+   "focus": "Produsul băncii: „Depozit la termen (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1293,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+   "observatii": [
+    {
+     "id": "44f40c91bb4feee5d762e752940867a7",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 5,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "628dd037603ba4446a7087112110bd2b",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 6,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "2df974f1d2111579f44416f6e4aec5f7",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 6,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "9e72bb08e5a978cb911ebd88c8bf2f8e",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 6,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "f5035a5b88a7cd79da4f6e961334a67d",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 6,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "dbabf0fb08f685b6c892f7aad48619c8",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "14 luni 6,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 14
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "8f5651d325920673a1f09ff42db8b66e",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "fdb01fdd052a5e976c036ba8eba2a888",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "a40808ef14265fd662b5c3ca77cad418",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "9c392e51e4d6c4e11129666f126d93a8",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 2,40%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "3027b790dbdb9922175fd57f7b9b4bc7",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "d15599fa97ec4fcaa6764114ef55c98d",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "08a640fd792e2300d5f42a56061a28cb",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "eebb293f8dc1476e27263e60659bd4b1",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "bf22ec83cf62bf4bf06d79a18d2d7647",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "0fb3c497324cb763a2c66e173a00665b",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 luni 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "a4a40e80fc1fdf309bc354d6c5ebbbcd",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "fiind necesară o sumă minimă de 500 LEI, respectiv 500 EURO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "062222efcc66c67d9e27afed4b7a1d4b",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "fiind necesară o sumă minimă de 500 LEI, respectiv 500 EURO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "f3f57592a2f0fe50bec1ada9abf39bdc",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "comision_deschidere",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Nu se percepe comision la deschiderea depozitului sau pentru administrarea acestuia",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    },
+    {
+     "id": "ffbe91b2190f82604f23e7991c64e107",
+     "id_url": 1293,
+     "id_produs": "depozit-termen",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e65a32b4924a3e782a3a3772c94df77ccf89f9d772d34024f043d1c804a96ff7",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Nu se percepe comision la deschiderea depozitului sau pentru administrarea acestuia",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d466da28c5cd00c666c0a9a3151d82b3f2e572bd8cd077b11d49ad9b7cc42e9e"
+    }
+   ],
+   "respinse": [],
+   "scrise": 19,
+   "durata_s": 18,
+   "tokeni": {
+    "intrare": 5938,
+    "iesire": 2265
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/companii/depozite-la-termen/||depozite la termen (persoane juridice)",
+   "url": "https://www.procreditbank.ro/companii/depozite-la-termen/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozite la termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1414,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "8da64bf738b0145249833a37513f9470623ac3ed083be93bb0b197ec8e54b1da",
+   "observatii": [
+    {
+     "id": "406ba1eecb70e4e780ebb8a7b009c35b",
+     "id_url": 1414,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar caracteristicile generale ale depozitului la termen pentru companii (termene 3/6/12 luni, sumă minimă 50.000 LEI sau 10.000 EUR, dobândă fixă, capitalizare sau transfer lunar), dar nu conține nicio valoare numerică concretă de dobândă - pentru acestea trimite către o pagină separată (\"lista dobânzilor\"), care nu face parte din acest text.",
+     "content_hash": "8da64bf738b0145249833a37513f9470623ac3ed083be93bb0b197ec8e54b1da",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "7681084541bb5b343742f4bd2873fa0d3d0d5a03de72bd10e5bc01f90eb7f8d5"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 6,
+   "tokeni": {
+    "intrare": 5589,
+    "iesire": 231
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/wp-content/uploads/2025/06/Dobanzi-produse-de-economisire-PJ-RO-01.05.2025.pdf||depozit la termen (persoane juridice)",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2025/06/Dobanzi-produse-de-economisire-PJ-RO-01.05.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozit la termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1413,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+   "observatii": [
+    {
+     "id": "18fe012caf5f760077c68a9383a7a413",
+     "id_url": 1413,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "DT_50K_3L_RON",
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": "2025-05-01",
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "5,00% - 3 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    },
+    {
+     "id": "21807c811b73b7207d750739cfb25f03",
+     "id_url": 1413,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "DT_50K_6L_RON",
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": "2025-05-01",
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "5,25% 2,15% 6 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    },
+    {
+     "id": "650a8806710a2effd036c1719b3c8181",
+     "id_url": 1413,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "DT_10K_6L_EUR",
+     "valoare_num": 2.15,
+     "unitate": "procent",
+     "valid_from": "2025-05-01",
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "5,25% 2,15% 6 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 10000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    },
+    {
+     "id": "ede1620b534984e1b8b2722312c864ce",
+     "id_url": 1413,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "DT_50K_12L_RON",
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": "2025-05-01",
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "5,50% 2,10% 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    },
+    {
+     "id": "90dde617a14b7cb4bd4215f725e302be",
+     "id_url": 1413,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "DT_10K_12L_EUR",
+     "valoare_num": 2.1,
+     "unitate": "procent",
+     "valid_from": "2025-05-01",
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [
+      "Valoare minimă 50.000 LEI/10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "5,50% 2,10% 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 10000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    },
+    {
+     "id": "990144afcb5b9fd32b76ed68b27c44fe",
+     "id_url": 1413,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 50000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Valoare minimă 50.000 LEI/10.000 EUR",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    }
+   ],
+   "respinse": [],
+   "scrise": 5,
+   "durata_s": 13,
+   "tokeni": {
+    "intrare": 4701,
+    "iesire": 1335
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/wp-content/uploads/2026/10/Dobanzi-produse-de-economisire-PF-01.10.2026.pdf||depozit la termen (persoane fizice)",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/10/Dobanzi-produse-de-economisire-PF-01.10.2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (persoane fizice)",
+   "focus": "Produsul băncii: „Depozit la termen (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1412,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+   "observatii": [
+    {
+     "id": "84a43ad48ae6b117230b1fbbf92cda2b",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "cb934df3f845fffd4b34b890c504e8d5",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "dd81c007e408d9eb26fa119eb6bd2f69",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "f6d9a9875130b9a24d62c4e0c5deed05",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "f74571196bc365cd290fd1905f91b69c",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "db481630134374622b26ed3d144603a0",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 14
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "f5139d9793708abc88d601765a377ec8",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "8c7a4e117c62f7507d9c351d88794744",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "b03594213a9aa00e1f2fcfc365bdd28f",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "LEI 3,00% 5,00% 6,50% 6,70% 6,80% 6,70% 6,00% 5,50% 5,50% -",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "31df47ba33cc417e80705583c392ce7b",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "62d0f68994cf55a4d75be9e65ac6ceba",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "70918a3650cdecb8cca64d4c812dc6f3",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "d3a9a7fe69f80015938dca07e77645b5",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "48b5caf0baf2fec0e8bddaf32d5f9414",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "7ea5c3b13bbe4fea043fb10d1a1bd2f1",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 14
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "9d0c76d88637a9f6daa55758974fdbbb",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "4ce6b02d9d1c6b43e73c95baf7b0131f",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EURO 0,20% 1,80% 2,40% 2,75% 3,00% 2,75% - 1,80% 2,00% 2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 17 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "4b474bf362c8e4dbe0d704bfbb97753e",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă pentru constituire depozit la termen este de 500 LEI, respectiv 500 EURO.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    },
+    {
+     "id": "3659ab4c169d22d7b181a48d26d07714",
+     "id_url": 1412,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "612a596296f1a8714494a6c98a0c707b39212f31c49f41d14f02cd2255f0f1e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă pentru constituire depozit la termen este de 500 LEI, respectiv 500 EURO.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ca1a69e5c023a7e993b66d8e9b2ba34d9c0c61b591491f47ba0d2e6c74f00619"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 23,
+   "tokeni": {
+    "intrare": 4919,
+    "iesire": 2998
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/persoane-fizice/aplicatia-mbnk/||procredit mobile banking – mb@nk",
+   "url": "https://www.procreditbank.ro/persoane-fizice/aplicatia-mbnk/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "ProCredit Mobile Banking – MB@nk",
+   "focus": "Produsul băncii: „ProCredit Mobile Banking – MB@nk”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1480,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "06ee75ec744e07b39fe7e7c72f2e062f3f8db7a59c76753f12b20b707f0a4bc8",
+   "observatii": [
+    {
+     "id": "60f7ca7fbaa065e597edc89f4b5a97cb",
+     "id_url": 1480,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie funcționalitățile aplicației ProCredit Mobile Banking (MB@nk) și MobileSign, dar nu conține nicio cifră privind cost abonament, comision pe tranzacție online față de ghișeu sau cost dispozitiv de autentificare.",
+     "content_hash": "06ee75ec744e07b39fe7e7c72f2e062f3f8db7a59c76753f12b20b707f0a4bc8",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "794c883d6b57c4de32033cdf174ef0e7231f638e34c51c67e4983aa7dbd44884"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 7,
+   "tokeni": {
+    "intrare": 4470,
+    "iesire": 174
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/procredit-romania-mobile-banking/||procredit romania (noua aplicație de mobile banking)",
+   "url": "https://www.procreditbank.ro/procredit-romania-mobile-banking/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "ProCredit Romania (noua aplicație de Mobile Banking)",
+   "focus": "Produsul băncii: „ProCredit Romania (noua aplicație de Mobile Banking)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1481,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "ffeb5f45cea252d9526cb744de7e194a1401d09ccd05b4c04d88bbc0509e7ff6",
+   "observatii": [
+    {
+     "id": "0270ed1db7ec60ee535ed0cd481d7843",
+     "id_url": 1481,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar funcționalitățile și caracteristicile aplicației de mobile banking ProCredit (design, securitate, acces), fără nicio mențiune de costuri, abonamente, comisioane sau prețuri pentru dispozitive de autentificare.",
+     "content_hash": "ffeb5f45cea252d9526cb744de7e194a1401d09ccd05b4c04d88bbc0509e7ff6",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d30a03d5552600804cd984de194e3181865ee2ba03a7cef2c7f115453f546d45"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 7,
+   "tokeni": {
+    "intrare": 3994,
+    "iesire": 168
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/wp-content/uploads/files/Caracteristici%20generale%20ale%20Mobile%20Banking.pdf||mb@nk – caracteristici generale ale serviciului de mobile banking",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/files/Caracteristici%20generale%20ale%20Mobile%20Banking.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "MB@nk – Caracteristici generale ale serviciului de Mobile Banking",
+   "focus": "Produsul băncii: „MB@nk – Caracteristici generale ale serviciului de Mobile Banking”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1479,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "8ae429365a69005c7cd3b8ecb495ca29bb586bd124bd41133f67358c1367aba0",
+   "observatii": [
+    {
+     "id": "8c0298b281c89fa049a91f026e444fb5",
+     "id_url": 1479,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul descrie doar caracteristicile funcționale, condițiile de accesare și răspunderea părților pentru serviciul MB@nk, fără a menționa costuri concrete (abonament, comision per tranzacție, cost dispozitiv de autentificare). Textul face trimitere generică la „Lista de Prețuri afișată pe site-ul www.procreditbank.ro” pentru comisioane, dar nu furnizează cifre.",
+     "content_hash": "8ae429365a69005c7cd3b8ecb495ca29bb586bd124bd41133f67358c1367aba0",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "9c16a0be8861dbf449d38a7310eed5fb9661d583e86e93c38c317437011fc0b8"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 8,
+   "tokeni": {
+    "intrare": 8725,
+    "iesire": 228
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/wp-content/uploads/files/Lista_Preturi_PF_RO_24_04_2024.pdf||credit imobiliar (listă prețuri persoane fizice)",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/files/Lista_Preturi_PF_RO_24_04_2024.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Credit imobiliar (listă prețuri persoane fizice)",
+   "focus": "Produsul băncii: „Credit imobiliar (listă prețuri persoane fizice)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1510,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "8ec80a76ab56b0214a71dd8883f61ee4475f51335090616ab2a53bb5f5a810f8",
+   "observatii": [
+    {
+     "id": "ba554bb11f32f13e3fd2b3f3b336ca1d",
+     "id_url": 1510,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 360,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8ec80a76ab56b0214a71dd8883f61ee4475f51335090616ab2a53bb5f5a810f8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Credit imobiliar Până la 360 Variabilă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8aca803f6a2d18d36cd974edca7a64b330bdebdb7f5245f0ff885060846727c9"
+    },
+    {
+     "id": "f19b0c2ef95f78f2f6409a86530fa5e9",
+     "id_url": 1510,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_VENIT_INCASAT_LEI",
+     "valoare_num": 2.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8ec80a76ab56b0214a71dd8883f61ee4475f51335090616ab2a53bb5f5a810f8",
+     "conditii": [
+      "Rata de dobândă este valabilă cu condiția încasării venitului în contul deschis la ProCredit Bank",
+      "în caz contrar dobânda se majorează cu un punct procentual"
+     ],
+     "eticheta_libera": null,
+     "citat": "LEI IRCC + 2.20%**",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "pana_la": 360
+      },
+      {
+       "dimensiune": "suma",
+       "valoare_text": "LEI"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8aca803f6a2d18d36cd974edca7a64b330bdebdb7f5245f0ff885060846727c9"
+    },
+    {
+     "id": "85e8cce8997ded34d03dd51585c5ef36",
+     "id_url": 1510,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_VENIT_INCASAT_LEI",
+     "valoare_num": 2.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8ec80a76ab56b0214a71dd8883f61ee4475f51335090616ab2a53bb5f5a810f8",
+     "conditii": [
+      "Rata de dobândă este valabilă cu condiția încasării venitului în contul deschis la ProCredit Bank",
+      "în caz contrar dobânda se majorează cu un punct procentual"
+     ],
+     "eticheta_libera": null,
+     "citat": "LEI IRCC + 2.20%**",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8aca803f6a2d18d36cd974edca7a64b330bdebdb7f5245f0ff885060846727c9"
+    },
+    {
+     "id": "55b2a4d3c80b524661a0fd19890c8fc0",
+     "id_url": 1510,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_EUR_VENIT_INCASAT",
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8ec80a76ab56b0214a71dd8883f61ee4475f51335090616ab2a53bb5f5a810f8",
+     "conditii": [
+      "credit în EURO (nu în LEI, scenariul cere credit în LEI)",
+      "Rata de dobândă este valabilă cu condiția încasării venitului în contul deschis la ProCredit Bank",
+      "în caz contrar dobânda se majorează cu un punct procentual"
+     ],
+     "eticheta_libera": null,
+     "citat": "EURO EURIBOR 6 luni + 3.00%**",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8aca803f6a2d18d36cd974edca7a64b330bdebdb7f5245f0ff885060846727c9"
+    },
+    {
+     "id": "2f6e6d53c508ec1c2912be3bc59df513",
+     "id_url": 1510,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8ec80a76ab56b0214a71dd8883f61ee4475f51335090616ab2a53bb5f5a810f8",
+     "conditii": [
+      "clientul nu încasează venitul în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": "majorare dobândă fără încasare venit",
+     "citat": "În cazul în care această condiție nu este respectată, dobânda se majorează cu un punct procentual.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "exact",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8aca803f6a2d18d36cd974edca7a64b330bdebdb7f5245f0ff885060846727c9"
+    }
+   ],
+   "respinse": [],
+   "scrise": 4,
+   "durata_s": 15,
+   "tokeni": {
+    "intrare": 10769,
+    "iesire": 1078
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/landing/creditul-prohome-cu-dobanda-mixta/||creditul imobiliar prohome cu dobândă mixtă",
+   "url": "https://www.procreditbank.ro/landing/creditul-prohome-cu-dobanda-mixta/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul imobiliar ProHome cu dobândă mixtă",
+   "focus": "Produsul băncii: „Creditul imobiliar ProHome cu dobândă mixtă”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1509,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+   "observatii": [
+    {
+     "id": "e3ccccf5ade5a86ed57d38e936b52b29",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa_introductiva",
+     "cod_scenariu": "IPO_250K_360L_VENIT",
+     "valoare_num": 5.19,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobândă fixă 5,19% în primii 3 ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "bb13abfb91c1c134f7fd230d2674552d",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "perioada_dobanda_fixa",
+     "cod_scenariu": null,
+     "valoare_num": 3,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "5,19% dobândă fixă în primii 3 ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "8b383bbff3217aef067d1b9d4097c5f1",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila_ulterioara",
+     "cod_scenariu": "IPO_250K_360L_VENIT",
+     "valoare_num": 2.5,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "Ulterior, dobândă variabilă de IRCC + 2,5%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "7c5dc185d6f5ea0175f75a79da9e0705",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_250K_360L_VENIT",
+     "valoare_num": 8.07,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobândă variabilă 8,07% (IRCC + 2,50%) pentru perioada urmatoare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "e7044fc248268adc2ee858e2346a1e54",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_VENIT",
+     "valoare_num": 7.58,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE va fi de 7,58% total dobândă și costuri 387,369.60 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "f1c615f8f04bd3ebdfb55742ad67b81e",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_250K_360L_VENIT",
+     "valoare_num": 637369.6,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoare totală plătibilă a creditului de   637,369.60 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "bc0255f578a73a850e7035afd6064f4e",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_250K_360L_FARA_VENIT",
+     "valoare_num": 5.89,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank",
+      "suma 250.000 RON, perioadă 360 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobândă fixă 5.89% pentru primele 36 de luni (3 ani)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "d26d78472e1e0a2a4ee0484edc203fc2",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_250K_360L_FARA_VENIT",
+     "valoare_num": 8.77,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank",
+      "suma 250.000 RON, perioadă 360 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobândă variabilă 8,77% (IRCC + 3.20%) pentru perioada următoare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "c1e8ff8ff96659be4a5130d2f3344366",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_250K_360L_FARA_VENIT",
+     "valoare_num": 3.2,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank",
+      "suma 250.000 RON, perioadă 360 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobândă variabilă 8,77% (IRCC + 3.20%) pentru perioada următoare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "909dd8d3b1352cdc4b01e011e4a190b4",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_FARA_VENIT",
+     "valoare_num": 8.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank",
+      "suma 250.000 RON, perioadă 360 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE va fi de  8,30%, total dobândă și costuri 431,920.09\n\nRON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "1fec6527afe99bf371d276e61456bbd9",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_250K_360L_FARA_VENIT",
+     "valoare_num": 681920.09,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank",
+      "suma 250.000 RON, perioadă 360 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoare totală plătibilă a creditului de 681,920.09 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "8a90e531aeb169d4fd3e18859628b57b",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 30,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Perioadă de creditare: până la 30 ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "c21f8035a5721a17cf7171386fbb4386",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 1250000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Valoarea creditului: între 250.000 – 1.250.000 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "794c9a24d21737feeae103237d3239d1",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Avans: minim 15% din valoarea imobilului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "92ae1124455c8c70c99cea3f79610ffe",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiză dosar: 500 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "72c7f340c2b4cea0203d5d9da475a729",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "comision de administrare ProActive 0 RON lunar",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "22eba91bb249a6ddb58b9659cfa14e19",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 178,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": "comision de înregistrare a garanțiilor",
+     "citat": "comision de înregistrare a garanțiilor (ipotecă mobiliară asupra conturilor curente și ipotecă mobiliară asupra poliței de asigurare) de 178 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "720827527679662c6ce54ffc0a1e8163",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "varsta_minima",
+     "cod_scenariu": null,
+     "valoare_num": 18,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "ai între 18 și 67 de ani (la data ultimei scadențe a creditului)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "a7e7ae644cee18405dd2efa5f4d022db",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "vechime_munca_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "cel puțin 1 an vechime neintreruptă în muncă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    },
+    {
+     "id": "6b2a186b88f30e91f1b57123d85d807d",
+     "id_url": 1509,
+     "id_produs": "ipotecar",
+     "camp": "ircc",
+     "cod_scenariu": null,
+     "valoare_num": 5.57,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9d4d8244eb9c02c95b439f00fb55b8f08bfb8cc39854206e8bd57eeeb83d83ad",
+     "conditii": [
+      "valoare IRCC folosită în exemplul de calcul, perioadă contractuală 01.10.2026-01.10.2056"
+     ],
+     "eticheta_libera": null,
+     "citat": "IRCC = 5,57%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "44577c44902e5c85be5af62d8b65729de7fc1fec7e71cf9a9def8832104e7788"
+    }
+   ],
+   "respinse": [],
+   "scrise": 18,
+   "durata_s": 33,
+   "tokeni": {
+    "intrare": 7744,
+    "iesire": 3917
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/persoane-fizice/credit-imobiliar-ipotecar/||credit imobiliar-ipotecar (prohome / progreen imobiliar)",
+   "url": "https://www.procreditbank.ro/persoane-fizice/credit-imobiliar-ipotecar/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit imobiliar-ipotecar (ProHome / ProGreen imobiliar)",
+   "focus": "Produsul băncii: „Credit imobiliar-ipotecar (ProHome / ProGreen imobiliar)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1508,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+   "observatii": [
+    {
+     "id": "4aeab930ca3e0fe154bb9076af229557",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_VAR_LEI_VENIT",
+     "valoare_num": 2.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [
+      "încasarea venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "2,20%* + IRCC",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 1250000
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "2b0dd87b0d4c86c6fb1223a974a3bd31",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [
+      "credit acordat în LEI"
+     ],
+     "eticheta_libera": null,
+     "citat": "Avans minim de 15% din valoarea imobilului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "2b0dd87b0d4c86c6fb1223a974a3bd31",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [
+      "credit acordat în EURO"
+     ],
+     "eticheta_libera": null,
+     "citat": "și de 25% pentru cel acordat în EURO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "01dc5569b60c76f41a01878f280567fc",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 30,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Perioadă de creditare de până la 30 de ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "2316c8ba9bb74a7355b6f4145dc7c4ac",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 1250000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Valoarea maximă pe care o poți accesa prin acest credit este de 1.250.000 LEI / 250.000 EURO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "8f9ac495afad2badc5e1212ccf8e3af3",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiză a dosarului de credit: 500 de LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "7a846895008d004f610c5da364d817b0",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 178,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": "comision înregistrare în arhiva electronică",
+     "citat": "Comision de înregistrare în arhiva electronică: 178 de LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "4a75e661cc3a3e240e54000db8094cc8",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision pentru rambursarea anticipată: ZERO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "125c7cae8cc6764ec673209737ee168d",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision pentru administrarea creditului: ZERO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "8a4cbf2bd8c74873cea16627759413fa",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_250K_360L_LEI_FARA_VENIT",
+     "valoare_num": 8.47,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [
+      "sumă 250.000 RON (nu 350.000)",
+      "perioadă 360 luni (nu 300)",
+      "fără încasarea venitului în contul ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "cu dobânda variabilă de 8,47% (IRCC + 2,90%)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "2bd1a0f9a23041f54db772a5a33a4e8d",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_LEI_FARA_VENIT",
+     "valoare_num": 8.84,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [
+      "sumă 250.000 RON (nu 350.000)",
+      "perioadă 360 luni (nu 300)",
+      "fără încasarea venitului în contul ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE va fi de 8,84%, total dobândă și costuri 441,164.81 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "87b32238e3fd1278e24645c0a259eaa1",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_250K_360L_LEI_FARA_VENIT",
+     "valoare_num": 691164.81,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [
+      "sumă 250.000 RON (nu 350.000)",
+      "perioadă 360 luni (nu 300)",
+      "fără încasarea venitului în contul ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoare totală plătibilă a creditului de 691,164.81 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "e64d461fed517f2147887f30ca123e8e",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "varsta_minima",
+     "cod_scenariu": null,
+     "valoare_num": 18,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "ai cel putin 18 ani si maxim 67 de ani la data ultimei scadente a creditului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    },
+    {
+     "id": "d22db38dac7a6ee7a135b64dce1ae061",
+     "id_url": 1508,
+     "id_produs": "ipotecar",
+     "camp": "vechime_munca_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "891be6aab825c9d7c24a742c3d31d312b928e05e87d39a3d6ce97b496bd2b7e3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "cu minim 1 an vechime totala neîntreruptă în muncă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ff105406dbeaa83872f22cfc32d4439df152e9ad2ffab778d6c25d4601158fd9"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_VAR_LEI_FARA_VENIT",
+     "valoare_num": 2.9,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "cu un punct procentual în primele 36 luni și 0,7% în restul perioadei",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": null,
+     "valoare_num": 2.6,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "2,6% * + EURIBOR 6 luni pentru creditul în EURO",
+     "motive": [
+      "citatul nu apare în textul sursă",
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_250K_360L_LEI_VENIT",
+     "valoare_num": 7.77,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "cu dobânda variabilă de 7,77% (IRCC + 2,20%)",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_360L_LEI_VENIT",
+     "valoare_num": 8.08,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "DAE va fi de 8,08% total dobândă și costuri 379,041.00 RON",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_250K_360L_LEI_VENIT",
+     "valoare_num": 647041.0,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "valoare totală plătibilă a creditului de 647,041.00 RON",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_50KEUR_360L_EUR_VENIT",
+     "valoare_num": 5.195,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "cu dobânda variabilă de 5,195 % (EURIBOR 6 luni + 2.60%)",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_50KEUR_360L_EUR_VENIT",
+     "valoare_num": 5.45,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "DAE va fi de 5.45%, total dobândă și costuri 49,512.93 EUR",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_50KEUR_360L_EUR_FARA_VENIT",
+     "valoare_num": 5.895,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "cu dobânda variabilă de 5.895% (EURIBOR 6 luni + 3.30%)",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_50KEUR_360L_EUR_FARA_VENIT",
+     "valoare_num": 6.19,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "DAE va fi de 6,19%, total dobândă și costuri 57,440.01 EURO",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 9,
+   "durata_s": 35,
+   "tokeni": {
+    "intrare": 10984,
+    "iesire": 4210
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/persoane-fizice/credit-de-nevoi-personale/||credit de nevoi personale",
+   "url": "https://www.procreditbank.ro/persoane-fizice/credit-de-nevoi-personale/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale",
+   "focus": "Produsul băncii: „Credit de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoi personale”; „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1580,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1574,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+   "observatii": [
+    {
+     "id": "64c807ed9d69d381beca26bf973975c1",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 150000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Între 5.000 LEI și 150.000 LEI – tu decizi cât ai nevoie!",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "0fe3deb7f7619059ff90d4f58e37abfc",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 60,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Până la 60 de luni – ai suficient timp să îți gestionezi bugetul.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "c802073ba49ac80d713876793566c0bf",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_150K_60L_REFIVENIT",
+     "valoare_num": 7.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [
+      "suma 150.000 RON pe 60 luni",
+      "opțiunea de refinanțare externă",
+      "încasarea venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "cu dobânda fixă de 7,40% comision de analiză 200 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_fixa” apare de 2 ori cu același cod_scenariu „NP_150K_60L_REFIVENIT”",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 150000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "946bd02c015e43c40a112bc0d2242f43",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_150K_60L_REFIVENIT",
+     "valoare_num": 7.74,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [
+      "suma 150.000 RON pe 60 luni",
+      "opțiunea de refinanțare externă",
+      "încasarea venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE va fi de 7.74%, total dobândă și costuri 30,257.50 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 150000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "152d4de74f9bb2c236b25bb869c93ee9",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_150K_60L_REFIVENIT",
+     "valoare_num": 180257.5,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [
+      "suma 150.000 RON pe 60 luni",
+      "opțiunea de refinanțare externă",
+      "încasarea venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoare totală plătibilă a creditului de 180,257.50 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 150000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "819e8ea30b3a05faade191e1407ea78e",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 200,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "comision de analiză 200 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "4e32ee3448c6fdcd8bfd076c3b1d2f0a",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 89,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [],
+     "eticheta_libera": "comision de înregistrare a garanțiilor",
+     "citat": "comision de înregistrare a garanțiilor (ipotecă mobiliară asupra conturilor curente și ipotecă mobiliară asupra veniturilor) de 89 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "b30143ae764931551f8cc09bf4aa8d15",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_150K_60L_FARAREFI_FARAVENIT",
+     "valoare_num": 10.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [
+      "suma 150.000 RON pe 60 luni",
+      "fără opțiunea de refinanțare externă",
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "cu dobânda fixă de 10,40%, comision de analiză 200 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 150000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "d99a69fd1faaa5772065224168bd5a54",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_150K_60L_FARAREFI_FARAVENIT",
+     "valoare_num": 11,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [
+      "suma 150.000 RON pe 60 luni",
+      "fără opțiunea de refinanțare externă",
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE va fi de 11%, total dobândă și costuri 43,369.19 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 150000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    },
+    {
+     "id": "b90b97c18e41a33b64d25b3a55244a52",
+     "id_url": 1580,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_150K_60L_FARAREFI_FARAVENIT",
+     "valoare_num": 193369.19,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "9099aabadef76c7001e056afb5c6ba1526af83f3846e604527d25312e1a304bf",
+     "conditii": [
+      "suma 150.000 RON pe 60 luni",
+      "fără opțiunea de refinanțare externă",
+      "fără respectarea condiției de încasare venit în contul curent deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoare totală plătibilă a creditului de 193,369.19 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 150000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "16f908ab96bcfdcfc1ad4c447265915f5875ec260eb9283e2faf566cbd261a6a"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_150K_60L_REFIVENIT",
+     "valoare_num": 7.4,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "Fixă între 7,40%  – 12,40% pe toată durata creditului",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": null,
+     "valoare_num": 12.4,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "Fixă între 7,40%  – 12,40% pe toată durata creditului",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": null,
+     "valoare_num": 7.74,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "(DAE între 7,74% și 16,14%)",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": null,
+     "valoare_num": 16.14,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "(DAE între 7,74% și 16,14%)",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "comision lunar de administrare pachet ProActive 0 RON",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 20,
+   "durata_s": 28,
+   "tokeni": {
+    "intrare": 7747,
+    "iesire": 2788
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/wp-content/uploads/2025/09/lista-de-dobanzi-si-comisioane-produse-de-creditare-pf.pdf||credit de nevoi personale",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2025/09/lista-de-dobanzi-si-comisioane-produse-de-creditare-pf.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale",
+   "focus": "Produsul băncii: „Credit de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoi personale”; „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1581,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1575,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+   "observatii": [
+    {
+     "id": "2818646af74e4cd8c5bb6073838b9ede",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_MIN_DOBANDA",
+     "valoare_num": 7.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "dobândă minimă posibilă, depinde de istoricul relației cu banca, încasarea venitului, vechime etc."
+     ],
+     "eticheta_libera": null,
+     "citat": "Rata anuala a dobanzii2 de la 7,40%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "bad4d714cebfa9c22aefdc88a3d6ca8f",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_MAX_DOBANDA",
+     "valoare_num": 10.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "dobândă maximă posibilă, depinde de istoricul relației cu banca, încasarea venitului, vechime etc."
+     ],
+     "eticheta_libera": null,
+     "citat": "Rata anuala a dobanzii2 de la 7,40% de la 7,40% 12,55% la 10,40% la 10,40%",
+     "citat_original": "la 10,40%",
+     "citat_aparitii": 5,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "5a3183c828a4bb1d867e0517067164b8",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 200,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision analiza dosar 200 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "a48fcc63e60b2d2049838195ef20292a",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "perioada rămasă până la scadență mai mare de un an"
+     ],
+     "eticheta_libera": null,
+     "citat": "1 % din valoarea creditului rambursata anticipat, daca perioada de timp dintre data rambursarii anticipate si data convenita pentru incetarea contractului de credit este mai mare de un an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "de_la": 12
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "653b03a9ad39854e14d9c35ee3276e35",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "perioada rămasă până la scadență nu mai mare de un an"
+     ],
+     "eticheta_libera": null,
+     "citat": "0,5% din valoarea creditului rambursata anticipat, daca perioada de timp dintre data rambursarii anticipate si data convenita pentru incetarea contractului de credit nu este mai mare de un an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "pana_la": 12
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "9f52056150d80164d279b9b89c07ba8c",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 5,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Maturitate pana la 5 ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "5c8cd66e9a67550a699e399fb0c68652",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 100,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [],
+     "eticheta_libera": "comision unic pentru servicii solicitate de client",
+     "citat": "Comision unic pentru servicii solicitate de client 100 LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "5c8cd66e9a67550a699e399fb0c68652",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 89,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [],
+     "eticheta_libera": "comision inscriere/stergere/modificare garantie in RNPM",
+     "citat": "Comision inscriere/ stergere/ modificare garantie in RNPM 89 LEI/ aviz",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "05d3eb1e33b5c75e64008bad409f3b4b",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_50K_60L_VENIT",
+     "valoare_num": 7.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "suma 50.000 RON (nu 30.000)",
+      "perioadă 60 luni",
+      "cu respectarea condiției de încasare a venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "Pentru un credit de nevoi personale în sumă de 50 000 RON, acordat pe o perioadă de 60 luni (5 ani), cu dobânda fixă de 7,40%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "d57e2ec4f317f9d5949ee1c0972c6b60",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_50K_60L_VENIT",
+     "valoare_num": 7.92,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "suma 50.000 RON (nu 30.000)",
+      "perioadă 60 luni",
+      "cu respectarea condiției de încasare a venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE va fi de 7.92%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "ac4665d5ee1fd21ae33bf37336bd0e01",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_50K_60L_VENIT",
+     "valoare_num": 60253.68,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "suma 50.000 RON (nu 30.000)",
+      "perioadă 60 luni",
+      "cu respectarea condiției de încasare a venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoare totală plătibilă a creditului de 60,253.68 ron",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "10a2645243efd3b1f2597322ebb97e23",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_50K_60L_FARAVENIT",
+     "valoare_num": 9.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "suma 50.000 RON (nu 30.000)",
+      "perioadă 60 luni",
+      "fără respectarea condiției de încasare a venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "cu dobânda fixă de 9,40%, comision de analiză 200 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "a0ff25e542f56db45f8f5e9de1dff4b8",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_50K_60L_FARAVENIT",
+     "valoare_num": 10.09,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "suma 50.000 RON (nu 30.000)",
+      "perioadă 60 luni",
+      "fără respectarea condiției de încasare a venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE va fi de 10.09%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    },
+    {
+     "id": "e10d5778cc240c8ecc02005ed6b5a586",
+     "id_url": 1581,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_50K_60L_FARAVENIT",
+     "valoare_num": 63138.88,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b96d08742624a8e1e4df3ebf95f8bdadad5605c41d8aa6958a29d267ada75df0",
+     "conditii": [
+      "suma 50.000 RON (nu 30.000)",
+      "perioadă 60 luni",
+      "fără respectarea condiției de încasare a venitului în contul deschis la ProCredit Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoare totală plătibilă a creditului de 63,138.88 RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7baf9166b23fdc79fd5d1509a25c0a860abff7c1598bc8f797b73ffc578f51e"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_DAE_MIN",
+     "valoare_num": 7.92,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "DAE între 7,92% și 13,50%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_DAE_MAX",
+     "valoare_num": 13.5,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "DAE între 7,92% și 13,50%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 24,
+   "durata_s": 34,
+   "tokeni": {
+    "intrare": 25942,
+    "iesire": 3594
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/persoane-fizice/cont-economii-flexsave/||flexsave – cont de economii (persoane fizice)",
+   "url": "https://www.procreditbank.ro/persoane-fizice/cont-economii-flexsave/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "FlexSave – cont de economii (Persoane fizice)",
+   "focus": "Produsul băncii: „FlexSave – cont de economii (Persoane fizice)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1640,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "82e05110914bb203558e26d9ce6d361eefd5c9ad43a951426bdbed79284dd401",
+   "observatii": [
+    {
+     "id": "165797c15911cc4c694f89850d671eec",
+     "id_url": 1640,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "82e05110914bb203558e26d9ce6d361eefd5c9ad43a951426bdbed79284dd401",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3% pe an pentru economiile în LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6a239bce5a568795fe792d3a62bc9584067eca5bdd47d831aa94f53628663eee"
+    },
+    {
+     "id": "5211050339b6f1e2edbdd8fd7b7ef2f9",
+     "id_url": 1640,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "82e05110914bb203558e26d9ce6d361eefd5c9ad43a951426bdbed79284dd401",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "0,20% pe an pentru cele în EURO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6a239bce5a568795fe792d3a62bc9584067eca5bdd47d831aa94f53628663eee"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 5359,
+    "iesire": 369
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/wp-content/uploads/2025/06/Dobanzi-produse-de-economisire-PJ-RO-01.05.2025.pdf||cont de economii (persoane juridice) - listă de dobânzi",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2025/06/Dobanzi-produse-de-economisire-PJ-RO-01.05.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de economii (Persoane juridice) - listă de dobânzi",
+   "focus": "Produsul băncii: „Cont de economii (Persoane juridice) - listă de dobânzi”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1642,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+   "observatii": [
+    {
+     "id": "37bf778cf2d80e7a4a6a89e652312563",
+     "id_url": 1642,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": "2025-05-01",
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Cont de economii 2,50% 0,20% n/a",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    },
+    {
+     "id": "b4e727d6cc69582398680e4443f754b2",
+     "id_url": 1642,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": "2025-05-01",
+     "valid_to": null,
+     "content_hash": "bd7bb4f598872103ef69daffdade32e1466ad7864803f8fc8d1fa0be685b7c33",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Cont de economii 2,50% 0,20% n/a",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5fa02bce3a7484b65ff400834e538e1715ee860ca09d2b1089a2290c20011254"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 7,
+   "tokeni": {
+    "intrare": 4050,
+    "iesire": 453
+   }
+  },
+  {
+   "cheie": "https://www.procreditbank.ro/companii/cont-economii-profit-plus/||profit plus – cont de economii pentru companii",
+   "url": "https://www.procreditbank.ro/companii/cont-economii-profit-plus/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "ProFit Plus – Cont de economii pentru companii",
+   "focus": "Produsul băncii: „ProFit Plus – Cont de economii pentru companii”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1641,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "061dd46acb904fa74b739db1b58606c5b98fd383a4024cb44e336aa88ee2e2e0",
+   "observatii": [
+    {
+     "id": "f87f74d88f30707d1f61d8f6f6713128",
+     "id_url": 1641,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_3M_PROMO_LEI",
+     "valoare_num": 5.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": "2026-10-31",
+     "content_hash": "061dd46acb904fa74b739db1b58606c5b98fd383a4024cb44e336aa88ee2e2e0",
+     "conditii": [
+      "dobândă promoțională valabilă doar până la 31.10.2026, pentru primele 3 luni de la deschiderea contului, pentru fonduri noi",
+      "sume de până la 3.000.000 LEI"
+     ],
+     "eticheta_libera": null,
+     "citat": "5,4 % p.a. dobândă la LEI",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 3000000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a5c2c677f1a0f033c755731d63bf0d986a620e726064fc4fd817380bdd3562e9"
+    },
+    {
+     "id": "71d1ba4a736ca4cc0be9b56e71fca499",
+     "id_url": 1641,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_3M_PROMO_EUR",
+     "valoare_num": 1.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": "2026-10-31",
+     "content_hash": "061dd46acb904fa74b739db1b58606c5b98fd383a4024cb44e336aa88ee2e2e0",
+     "conditii": [
+      "dobândă promoțională valabilă doar până la 31.10.2026, pentru primele 3 luni de la deschiderea contului, pentru fonduri noi",
+      "sume de până la 500.000 EURO"
+     ],
+     "eticheta_libera": null,
+     "citat": "1,6 % p.a. dobândă la EURO",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a5c2c677f1a0f033c755731d63bf0d986a620e726064fc4fd817380bdd3562e9"
+    },
+    {
+     "id": "a8a993df93c9844136c3fe8911210266",
+     "id_url": 1641,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "STANDARD_LEI",
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "061dd46acb904fa74b739db1b58606c5b98fd383a4024cb44e336aa88ee2e2e0",
+     "conditii": [
+      "se aplică după expirarea perioadei promoționale de 3 luni sau după 31.12.2026"
+     ],
+     "eticheta_libera": null,
+     "citat": "o dobândă standard de 2,50% pe an pentru restul perioadei, dacă este cazul",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "procredit",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a5c2c677f1a0f033c755731d63bf0d986a620e726064fc4fd817380bdd3562e9"
+    }
+   ],
+   "respinse": [],
+   "scrise": 3,
+   "durata_s": 11,
+   "tokeni": {
+    "intrare": 5421,
+    "iesire": 858
+   }
+  }
+ ]
+}

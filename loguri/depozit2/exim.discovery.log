@@ -1,0 +1,16 @@
+Exim Banca Românească: 1 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, domenii eximbank.ro
+  [cautare] eximbank.ro depozit la termen persoane fizice
+  [cautare] eximbank.ro depozit la termen companii dobanda
+  [cautare] eximbank.ro "depozit la termen" companii IMM persoane juridice dobanda
+  [ 1] https://www.eximbank.ro/2022/11/09/even-more-deposits/
+       ! url_not_in_prior_context
+  [ 2] https://www.eximbank.ro/2022/11/09/even-more-deposits/
+  [ 3] https://www.eximbank.ro/2025/12/12/depozitul-plus-lei/
+       ! url_not_in_prior_context
+       ! url_not_accessible
+  [ 4] https://www.eximbank.ro/
+  [ 5] https://www.eximbank.ro/2022/11/09/si-mai-multe-depozite/
+  [ 6] https://www.eximbank.ro/2022/12/05/depozite-si-investitii-imm-2-10-mil-lei/
+GATA    DEPOZIT_TERMEN               3 surse, 2 citate verificate, echivalent, $0.32, 40s — Depozite la termen
+
+exim: 1/1 produse cu surse, 0 erori, cost estimat $0.32, durata 1 min

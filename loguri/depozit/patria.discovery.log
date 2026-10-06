@@ -1,0 +1,18 @@
+Patria Bank: 1 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, domenii patriabank.ro
+  [cautare] Patria Bank depozit la termen dobanda
+  [cautare] patriabank.ro depozite persoane fizice
+  [ 1] https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare
+  [ 2] https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/persoane-fizice/economii/depozite-bancare
+  [ 4] https://www.patriabank.ro/afaceri-mici/depozite/depozite-la-termen
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 5] https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare
+  [ 6] https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen
+       ! url_not_accessible
+       ! url_not_accessible
+GATA    DEPOZIT_TERMEN               2 surse, 0 citate verificate, echivalent, $0.31, 41s — Depozite Bancare (depozit la termen pentru persoane fizice)
+
+patria: 1/1 produse cu surse, 0 erori, cost estimat $0.31, durata 1 min

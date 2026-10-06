@@ -1,0 +1,83 @@
+{
+  "generat": "2026-10-05",
+  "banca": "creditcoop",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Condiții Generale de Afaceri - Internet Banking creditcoop.online",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Definește contractual serviciul de internet banking disponibil permanent (24/7) pentru clienți, cu autentificare prin Utilizator/Parolă/SMS OTP, dar ca aplicație/serviciu informatic accesat prin internet, nu ca aplicație mobilă nativă cu funcții precum cele din Libra Bank.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul de condiții generale conține definiția exactă a serviciului, inclusiv program de disponibilitate (24/7) și metodele de identificare/securitate folosite.",
+      "citat": "este aplicația/serviciul informatic furnizat Clientului de către Bancă, aplicație/serviciu care facilitează atât vizualizarea cât și efectuarea operațiunilor bancare prin internet; serviciul permite clientului accesarea la distanță a unor servicii bancare fără a mai fi necesară deplasarea la bancă; operațiunile se pot efectua de către client/utilizatorul autorizat 24 de ore din 24, 7 zile din 7.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.creditcoop.ro/fisiere/Manual-utilizare-Internet-Banking-CREDITCOOP.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Ghidul utilizatorului CREDITCOOP Internet Banking",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul confirmă că serviciul este o aplicație web accesată prin link sau cod QR, cu suport limitat la anumite browsere (Chrome pe Android, Safari pe iOS), deci diferă structural de o aplicație mobilă nativă descărcabilă precum Libra Bank.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Documentul tehnic descrie clar modul de acces ca aplicație web prin browser, cu cerințe tehnice explicite, confirmând diferența de canal față de o aplicație mobilă nativă.",
+      "citat": "Pentru a accesa aplicația web CREDITCOOP Internet Banking accesați următorul link: https://creditcoop.online/IBCOOP sau scanați codul QR. După accesarea paginii folosiți formularul de autentificare pentru a vă autentifica în aplicație.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.creditcoop.ro/internet-banking-personal/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking Personal (creditcoop.online)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este canalul digital de self-service bancar pentru persoane fizice, accesibil de pe computer sau smartphone, dar este o aplicație web (nu o aplicație mobilă nativă) și nu include funcții precum asistent vocal, RoPay sau Click to Pay prezente la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie platforma de internet banking pentru persoane fizice, dar nu conține cifre financiare, fiind mai degrabă o prezentare generală a canalului.",
+      "citat": "CREDITCOOP își aduce serviciile și mai aproape de tine prin lansarea platformei de internet banking creditcoop.online. Acum, poți realiza operațiuni bancare rapid și eficient, direct de pe computer sau smartphone, fără a mai fi nevoie să vizitezi o agenție.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.creditcoop.ro/internet-banking-afaceri/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking Afaceri (creditcoop.online)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echivalentul pentru persoane juridice al canalului digital de banking, dar rămâne o aplicație web accesată din browser, nu o aplicație mobilă nativă cu funcții de tip Libra Voice, RoPay sau Click to Pay.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina confirmă existența unui canal digital dedicat afacerilor, fără cifre sau detalii tehnice despre funcționalități specifice.",
+      "citat": "CREDITCOOP vine în sprijinul afacerii tale prin lansarea platformei de internet banking creditcoop.online. Gândită special pentru nevoile persoanelor juridice, această soluție îți permite să gestionezi eficient finanțele companiei tale, oricând și oriunde.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 6,
+    "iesire": 5157,
+    "citire_cache": 31820,
+    "scriere_cache": 33675,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1421335
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-06",
+  "banca": "intesa",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/persoane-fizice/credite/credit-ipotecar-campanie.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit ipotecar / Credit ipotecar Verde",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit ipotecar pentru persoane fizice destinat achiziției sau refinanțării unei locuințe, inclusiv variantă verde (imobil eficient energetic), exact ca produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată conține cifre complete: dobânzi, comisioane, exemplu reprezentativ de calcul, DAE.",
+      "citat": "Pentru un credit ipotecar în valoare de 350.000 RON, acordat pe o perioadă de 25 ani, rambursabil în 300 de rate lunare egale, dacă se încasează venitul în contul curent deschis la Intesa Sanpaolo Bank și se optează pentru asigurarea de viață, costurile sunt următoarele: rată de dobândă fixă în primii 3 ani de 5,09%, rată de dobândă variabilă începând cu anul 4 de 7,95%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/kfs/caracteristici-credit-imobiliar.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul pentru investiții imobiliare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de informații precontractuale (FIPC) pentru creditul de investiții imobiliare destinat achiziției/refinanțării de locuințe pentru persoane fizice, cu durata 60-420 luni, identic cu plafonul Libra de 420 luni.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de caracteristici al produsului, cu toate cifrele: durată, avans minim, comisioane, exemplu de calcul.",
+      "pagina_pdf": 1,
+      "citat": "Durata creditului: 60 luni – 420 luni Tipul de rambursare: Aveti dreptul sa alegeti modalitatea prin care veti rambursa Creditul: in rate egale (anuitati) sau in rate descrescatoare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Lista-costuri-credite-PF-02.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Creditul pentru investiții imobiliare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Lista de costuri și dobânzi pentru creditele persoane fizice include un capitol dedicat creditului pentru investiții imobiliare, cu dobânzi fixe/variabile pentru credite acordate începând cu 02.10.2025.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document general de tarife, dar produsul Credit pentru investiții imobiliare apare explicit cu un tabel de dobânzi pentru intervalul 50.000-2.000.000 lei.",
+      "citat": "Rata dobânzii 5,90% Variabilă incepând cu anul 4 3,20% + IRCC Rata dobânzii minime posibile 4,89% 2,19% + IRCC Creditul pentru investiții imobiliare (credite noi acordate începând cu 02.10.2025)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2074,
+    "citire_cache": 6372,
+    "scriere_cache": 34772,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10895239999999999
+  }
+}

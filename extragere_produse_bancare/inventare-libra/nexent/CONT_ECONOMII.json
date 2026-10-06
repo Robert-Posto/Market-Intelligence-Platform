@@ -1,0 +1,45 @@
+{
+  "generat": "2026-10-06",
+  "banca": "nexent",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/retail-banking/Savings/Savings-Account",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Savings Account / Contul de economii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii pentru persoane fizice, cu dobândă la sold, calculată zilnic și acces permanent la fonduri prin retrageri/depuneri oricând - aceeași structură ca produsul Libra, dar segmentul acoperit este doar persoane fizice (nu și juridice, care au un produs separat fără dobânzi publicate).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține tabelul complet de dobânzi pe valute și praguri de sumă, cu data de la care se aplică.",
+      "citat": "The interest rates are variable and are applied starting with the date of 02.07.2024 The interest rate is calculated daily, but it is registered monthly in the savings account, in the first working day of the month, over the deposit amount",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/retail-banking/Savings/Savings-Account#:~:text=The%20interest%20rates%20are%20variable,month%2C%20over%20the%20deposit%20amount"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/persoane-fizice/Economii/Contul-de-economii",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Produse-de-economisire",
+    "https://www.nexentbank.ro/dobanzi-cotatii-si-cursuri/dobanzi",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Saving-Products",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Saving-Products/Saving-Account-for-SMEs",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Produse-de-economisire/Cont-de-economii-IMM",
+    "https://www.nexentbank.ro/en/retail-banking/Savings/Savings-Account"
+  ],
+  "durata_s": 76,
+  "consum": {
+    "intrare": 18,
+    "iesire": 5235,
+    "citire_cache": 558603,
+    "scriere_cache": 134047,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4992241
+  }
+}

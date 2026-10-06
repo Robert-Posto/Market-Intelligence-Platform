@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-06",
+  "banca": "nexent",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/711531f84df26fed0d140f1f5508025d3209767c.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul imobiliar Creditul ACASA",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document oficial de condiții (Ghid de informații generale) pentru creditul imobiliar destinat achiziției sau refinanțării unei locuințe, persoane fizice; diferă termenul maxim (5-30 ani la Nexent vs. până la 420 luni la Libra) și nu există o limită maximă publicată a sumei creditului.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Documentul conține explicit scopul creditului (achiziție/refinanțare locuință), perioada de creditare, avansul minim și exemple de calcul cu dobândă, DAE, rată lunară și cost total.",
+      "citat": "acordat pe o perioadă de 360 luni, cu o rată de dobândă variabilă* de 8,43% pe an: Rate egale (anuitati): DAE este 8,94%, rata lunară este 1.910,02 LEI, costul total al creditului este 447.888,74 LEI, valoarea totală plătibilă 697.888,74 LEI.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/Blog/Creditul-ipotecar-imobiliar-ACASA",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul ipotecar-imobiliar ACASĂ",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit ipotecar/imobiliar pentru persoane fizice, achiziție/refinanțare locuință) și același segment de clienți, dar termenul maxim la Nexent este de 30 ani (360 luni) față de până la 420 luni la Libra, iar Nexent nu publică o limită maximă explicită a sumei de credit și nu are o variantă dedicată 'Credit Verde'.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie explicit produsul Creditul ACASĂ (achiziție și refinanțare locuință) și garanțiile aferente, dar nu conține toate cifrele (dobândă, DAE) direct în acest text.",
+      "citat": "Avansul minim pentru creditul ipotecar variază între 15% și 20% în funcție de proiectele de modificare a regulilor pentru împrumuturile imobiliare elaborate de BNR.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/persoane-fizice/Credite/Creditul-Acasa"
+  ],
+  "durata_s": 72,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5501,
+    "citire_cache": 91308,
+    "scriere_cache": 73155,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2561751
+  }
+}

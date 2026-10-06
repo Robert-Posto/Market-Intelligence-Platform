@@ -1,0 +1,21 @@
+{
+  "name": "marketing-command-center",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Libra Bank — Marketing Command Center: monitorizarea concurenței bancare din date publice",
+  "workspaces": [
+    "shared",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm -w web run dev",
+    "build": "npm -w shared run build && npm -w web run build",
+    "typecheck": "npm -w shared run build && npm -w web run typecheck"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "google-play-scraper": "^10.1.3"
+  }
+}

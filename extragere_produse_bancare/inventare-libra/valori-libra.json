@@ -13749,7 +13749,7 @@
    "produse_v2": [
     "economii"
    ],
-   "stare": "extras",
+   "stare": "neschimbat",
    "motiv": null,
    "flow": "flow-html",
    "format_efectiv": "html",
@@ -13868,10 +13868,10 @@
    ],
    "respinse": [],
    "scrise": 3,
-   "durata_s": 8,
+   "durata_s": 0,
    "tokeni": {
-    "intrare": 5025,
-    "iesire": 709
+    "intrare": 0,
+    "iesire": 0
    }
   },
   {
@@ -13916,8 +13916,8 @@
      "citat": "Nu. Serviciul este gratuit – nu plătești nicio taxă suplimentară.",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
@@ -13930,11 +13930,11 @@
     }
    ],
    "respinse": [],
-   "scrise": 0,
-   "durata_s": 3,
+   "scrise": 1,
+   "durata_s": 4,
    "tokeni": {
     "intrare": 4511,
-    "iesire": 273
+    "iesire": 284
    }
   },
   {
@@ -14634,10 +14634,41 @@
    "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
    "observatii": [
     {
-     "id": "3cd24a4515785c444b281821d8cd9614",
+     "id": "c0b973d289445f3967836c409d599f7b",
      "id_url": 877,
      "id_produs": "ipotecar",
-     "camp": "marja_banca_min",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_VAR_MIN",
+     "valoare_num": 2.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
+     "conditii": [
+      "pentru venituri din România",
+      "valoare minimă de start, variază în funcție de criterii de risc"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobândă credit ipotecar variabilă, începând de la 2,15% + IRCC*",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
+    },
+    {
+     "id": "df4b513e7a4eab36bf880a21298f33f7",
+     "id_url": 877,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_min",
      "cod_scenariu": null,
      "valoare_num": 2.15,
      "unitate": "procent",
@@ -14646,27 +14677,55 @@
      "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
      "conditii": [],
      "eticheta_libera": null,
-     "citat": "dobândă credit ipotecar variabilă, începând de la 2,15% + IRCC*",
+     "citat": "Dobânda creditului ipotecar este cuprinsă între 2,15% + IRCC și 2,75% + IRCC",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
+     "confidence": 0.85,
+     "necesita_verificare": false,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „marja_banca_min” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
     },
     {
-     "id": "095ab9b44a361f903f9415d2868b00aa",
+     "id": "790e14ae4a37dff220fbbca43db3fa9e",
+     "id_url": 877,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_max",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Dobânda creditului ipotecar este cuprinsă între 2,15% + IRCC și 2,75% + IRCC",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
+    },
+    {
+     "id": "e2c3c9f4e0ea00817591e57ab1a3d69a",
      "id_url": 877,
      "id_produs": "ipotecar",
      "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": null,
+     "cod_scenariu": "IPO_FIX_3ANI",
      "valoare_num": 7.84,
      "unitate": "procent",
      "valid_from": null,
@@ -14683,7 +14742,7 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -14711,7 +14770,7 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -14735,13 +14794,13 @@
      "citat": "Avans la credit ipotecar Minimum 15%",
      "citat_original": "Minimum 15%",
      "citat_aparitii": null,
-     "confidence": 0.85,
+     "confidence": 0.9,
      "necesita_verificare": false,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -14769,7 +14828,7 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -14797,209 +14856,26 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
     },
     {
-     "id": "9443dd3ff633c8d8abc06132d2231359",
-     "id_url": 877,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_variabila",
-     "cod_scenariu": null,
-     "valoare_num": 7.71,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "cu o dobândă variabilă de 7,71%, compusă din IRCC + marja băncii de 2,15%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
-    },
-    {
-     "id": "9ce38b93fde30949f7f042699bc8b4e2",
-     "id_url": 877,
-     "id_produs": "ipotecar",
-     "camp": "marja_banca",
-     "cod_scenariu": null,
-     "valoare_num": 2.15,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "compusă din IRCC + marja băncii de 2,15%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
-    },
-    {
-     "id": "65def3678e69911e6cbcd1817b4dad59",
-     "id_url": 877,
-     "id_produs": "ipotecar",
-     "camp": "rata_lunara",
-     "cod_scenariu": null,
-     "valoare_num": 2344.69,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "plătești o rată lunară de 2.344,69 lei",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
-    },
-    {
-     "id": "77b63954615fdc14927ac6386defc219",
-     "id_url": 877,
-     "id_produs": "ipotecar",
-     "camp": "dae",
-     "cod_scenariu": null,
-     "valoare_num": 8.09,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "cu DAE 8,09%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
-    },
-    {
-     "id": "da58065500901181b0b6a3ea7f0bc60f",
-     "id_url": 877,
-     "id_produs": "ipotecar",
-     "camp": "total_platibil",
-     "cod_scenariu": null,
-     "valoare_num": 423602.26,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "valoarea totală de rambursat fiind 423.602,26 lei",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
-    },
-    {
-     "id": "ba2ebd7a75e696fb543f322971eb0b89",
+     "id": "ad289381b450e770433704e3fb4a7ea0",
      "id_url": 877,
      "id_produs": "ipotecar",
      "camp": "suma_credit",
-     "cod_scenariu": null,
+     "cod_scenariu": "IPO_250K_180L_EXEMPLU",
      "valoare_num": 250000,
      "unitate": "lei",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
-     "conditii": [],
+     "conditii": [
+      "exemplu reprezentativ pentru 250.000 lei pe 180 luni, nu 350.000 lei pe 300 luni"
+     ],
      "eticheta_libera": null,
      "citat": "pentru un credit de 250.000 lei, pe 15 ani (180 luni)",
      "citat_original": null,
@@ -15010,86 +14886,232 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
     },
     {
-     "id": "1b49ac71c9a0ef5a3dadb9ded70e7b98",
+     "id": "4e2bab39e11dbf1faa9e4772b13dd537",
      "id_url": 877,
      "id_produs": "ipotecar",
-     "camp": "perioada_credit",
-     "cod_scenariu": null,
-     "valoare_num": 180,
-     "unitate": "luni",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_250K_180L_EXEMPLU",
+     "valoare_num": 7.71,
+     "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
-     "conditii": [],
+     "conditii": [
+      "exemplu reprezentativ pentru 250.000 lei pe 180 luni"
+     ],
      "eticheta_libera": null,
-     "citat": "pe 15 ani (180 luni)",
+     "citat": "cu o dobândă variabilă de 7,71%, compusă din IRCC + marja băncii de 2,15%",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.9,
+     "confidence": 0.85,
      "necesita_verificare": false,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
     },
     {
-     "id": "3cd24a4515785c444b281821d8cd9614",
+     "id": "6101190c9858c7ef47b6ba7cc2e59606",
      "id_url": 877,
      "id_produs": "ipotecar",
-     "camp": "marja_banca_min",
-     "cod_scenariu": null,
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_250K_180L_EXEMPLU",
      "valoare_num": 2.15,
      "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
      "conditii": [
-      "nivelul veniturilor, sursa veniturilor sau gradul de risc asociat acestora"
+      "exemplu reprezentativ pentru 250.000 lei pe 180 luni"
      ],
      "eticheta_libera": null,
-     "citat": "Dobânda creditului ipotecar este cuprinsă între 2,15% + IRCC și 2,75% + IRCC",
+     "citat": "compusă din IRCC + marja băncii de 2,15%",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
+     "confidence": 0.85,
+     "necesita_verificare": false,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „marja_banca_min” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [],
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
     },
     {
-     "id": "af67bc790ba31250fd916e95af59fbde",
+     "id": "9e5bf00ef3a1c1941144d6226a35a78c",
      "id_url": 877,
      "id_produs": "ipotecar",
-     "camp": "marja_banca_max",
-     "cod_scenariu": null,
-     "valoare_num": 2.75,
+     "camp": "rata_lunara",
+     "cod_scenariu": "IPO_250K_180L_EXEMPLU",
+     "valoare_num": 2344.69,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
+     "conditii": [
+      "exemplu reprezentativ pentru 250.000 lei pe 180 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "plătești o rată lunară de 2.344,69 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
+    },
+    {
+     "id": "e61e7826ac8a715dd1cb79230d130e74",
+     "id_url": 877,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_250K_180L_EXEMPLU",
+     "valoare_num": 8.09,
      "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
      "conditii": [
-      "nivelul veniturilor, sursa veniturilor sau gradul de risc asociat acestora"
+      "exemplu reprezentativ pentru 250.000 lei pe 180 luni"
      ],
      "eticheta_libera": null,
-     "citat": "Dobânda creditului ipotecar este cuprinsă între 2,15% + IRCC și 2,75% + IRCC",
+     "citat": "cu DAE 8,09%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
+    },
+    {
+     "id": "0583c00a7cd917f0cd7f0e67d7843f45",
+     "id_url": 877,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_250K_180L_EXEMPLU",
+     "valoare_num": 423602.26,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
+     "conditii": [
+      "exemplu reprezentativ pentru 250.000 lei pe 180 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoarea totală de rambursat fiind 423.602,26 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e4d54b70d8e175ff711b52b181e49e2be7c8cd97b5e80dee2cdbf74f707781a1"
+    },
+    {
+     "id": "5147da51e0bb6c7f9950175a1912fedf",
+     "id_url": 877,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.25,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "b76cf1362e05a427c6897890cca45b1b476a326890ad0a391acc985a11c7503c",
+     "conditii": [
+      "pentru imobile Green Homes (certificate sau în curs de certificare)"
+     ],
+     "eticheta_libera": "marjă redusă pentru Credit Ipotecar Verde",
+     "citat": "Dobândă variabilă: marjă redusă cu 0,25 puncte procentuale față de standard",
      "citat_original": null,
      "citat_aparitii": null,
      "confidence": 0.8,
@@ -15098,7 +15120,7 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -15108,15 +15130,14 @@
    "respinse": [
     {
      "produs": "ipotecar",
-     "camp": "perioada_maxima",
+     "camp": "ircc",
      "cod_scenariu": null,
-     "valoare_num": 420,
-     "unitate": "luni",
-     "incredere": 0.5,
-     "citat": "până la 420 luni, max. 15 mil. lei",
+     "valoare_num": 5.56,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "IRCC valabil de la 01.07.2026: 5.56%",
      "motive": [
-      "citatul nu apare în textul sursă",
-      "încredere 0.5 sub pragul 0.6"
+      "încredere 0.3 sub pragul 0.6"
      ]
     },
     {
@@ -15125,7 +15146,7 @@
      "cod_scenariu": null,
      "valoare_num": 3,
      "unitate": "luni",
-     "incredere": 0.8,
+     "incredere": 0.85,
      "citat": "Vechime în muncă: minimum 3 luni",
      "motive": [
       "citatul nu apare în textul sursă"
@@ -15133,22 +15154,22 @@
     },
     {
      "produs": "ipotecar",
-     "camp": "ircc",
+     "camp": "cost_asigurare",
      "cod_scenariu": null,
-     "valoare_num": 5.56,
-     "unitate": "procent",
-     "incredere": 0.3,
-     "citat": "*IRCC valabil de la 01.07.2026: 5.56%",
+     "valoare_num": 0,
+     "unitate": "altele",
+     "incredere": 0.4,
+     "citat": "Va fi necesară încheierea unei polițe de asigurare pentru locuința care face obiectul garanției din contractul de credit ipotecar.",
      "motive": [
-      "încredere 0.3 sub pragul 0.6"
+      "încredere 0.4 sub pragul 0.6"
      ]
     }
    ],
-   "scrise": 7,
-   "durata_s": 28,
+   "scrise": 15,
+   "durata_s": 27,
    "tokeni": {
-    "intrare": 5842,
-    "iesire": 1958
+    "intrare": 7436,
+    "iesire": 3299
    }
   },
   {
@@ -15314,7 +15335,7 @@
    "produse_v2": [
     "economii"
    ],
-   "stare": "extras",
+   "stare": "neschimbat",
    "motiv": null,
    "flow": "flow-pdf",
    "format_efectiv": "pdf",
@@ -15392,10 +15413,10 @@
     }
    ],
    "scrise": 1,
-   "durata_s": 28,
+   "durata_s": 17,
    "tokeni": {
-    "intrare": 91074,
-    "iesire": 1148
+    "intrare": 0,
+    "iesire": 0
    }
   },
   {
@@ -16571,11 +16592,11 @@
    "content_hash": "3ec7ad89fd53be2552896faa9d837c412a75dce97d166931b848c1c4fd0a5472",
    "observatii": [
     {
-     "id": "ae1dd31507c6682d08fee98911384f4e",
+     "id": "c8d1db1d23c92e066584d0e9f0322a2e",
      "id_url": 910,
      "id_produs": "depozit-termen",
      "camp": "dobanda_nominala",
-     "cod_scenariu": null,
+     "cod_scenariu": "PF_6L_RON",
      "valoare_num": 4.75,
      "unitate": "procent",
      "valid_from": null,
@@ -16588,12 +16609,12 @@
      "citat": "lei - dobândă 4.75%",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "conflict_scenariu": null,
      "potrivire_scenariu": null,
      "trepte": [
       {
@@ -16610,11 +16631,11 @@
      "bronze_sha256": "56f6dbe9d51adb567937e9c7aac6a7f8115b3fd8b4ec23faa2274cf175c383da"
     },
     {
-     "id": "31feccb891d417db7fd71d9fccf5b76d",
+     "id": "7b3b0b76c91284ab1ecccd319505b449",
      "id_url": 910,
      "id_produs": "depozit-termen",
      "camp": "dobanda_nominala",
-     "cod_scenariu": null,
+     "cod_scenariu": "PF_6L_EUR",
      "valoare_num": 1.95,
      "unitate": "procent",
      "valid_from": null,
@@ -16627,12 +16648,12 @@
      "citat": "euro - dobândă 1.95%",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "conflict_scenariu": null,
      "potrivire_scenariu": null,
      "trepte": [
       {
@@ -16649,11 +16670,11 @@
      "bronze_sha256": "56f6dbe9d51adb567937e9c7aac6a7f8115b3fd8b4ec23faa2274cf175c383da"
     },
     {
-     "id": "e4bbdbd83eef547c21d4bda9bb5762ab",
+     "id": "b8563e99628a71a731eeee702bfc9631",
      "id_url": 910,
      "id_produs": "depozit-termen",
      "camp": "dobanda_nominala",
-     "cod_scenariu": null,
+     "cod_scenariu": "PF_6L_USD",
      "valoare_num": 2.25,
      "unitate": "procent",
      "valid_from": null,
@@ -16666,12 +16687,12 @@
      "citat": "dolari - dobândă 2.25%",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "conflict_scenariu": null,
      "potrivire_scenariu": null,
      "trepte": [
       {
@@ -16692,8 +16713,8 @@
    "scrise": 3,
    "durata_s": 6,
    "tokeni": {
-    "intrare": 4764,
-    "iesire": 639
+    "intrare": 5298,
+    "iesire": 645
    }
   },
   {
@@ -17316,7 +17337,7 @@
    "focus": "Produsul băncii: „Dobânzi depozite persoane juridice (firme)”.\nAcesta e produsul Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
    "legaturi": [
     {
-     "id_sursa": 912,
+     "id_sursa": 1384,
      "id_produs_libra": 43,
      "cod": "DEPOZIT_TERMEN",
      "v2": "depozit-termen"
@@ -17334,27 +17355,1039 @@
    "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
    "observatii": [
     {
-     "id": "0cd27050da71b7621579fa0a3c4e6e0c",
-     "id_url": 912,
+     "id": "b4295adb0798a2700e3fa9b9a460acd2",
+     "id_url": 1384,
      "id_produs": "depozit-termen",
-     "camp": null,
-     "not_found": true,
-     "not_found_motiv": "negasit_in_pagina",
-     "nota": "Documentul prezintă doar dobânzi pentru depozite persoane juridice (firme). Produsul căutat, „Depozit la termen”, este definit explicit ca produs pentru persoane fizice (lichidități din cont curent, recomandare pe baza soldurilor persoanelor fizice), deci datele din acest document aparțin altui produs/segment de clienți și nu pot fi raportate aici.",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
      "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
      "conditii": [],
+     "eticheta_libera": null,
+     "citat": "7 zile 2.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
      "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "zile"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "c125a19e16a0712b1dc634f2ed8d2d49",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 4.25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "luna"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "a0c203fe9bc2854a613a43d333b8b158",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "581e3467767b9082d1029502d3fc19ea",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 4.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "2a68a62ae747a1bdc2d68272075b7564",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "4.75% 9 luni 5.0%",
+     "citat_original": "9 luni 5.0%",
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "10af1c14f5413c8be01297c6d5b5e47f",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 5.25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "9f548904470103aba1a03b7316e446b2",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni 5.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "473d9a9a0affed45a20d526de6b7f068",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni 5.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "01ec831c3effd54c0d98e4da9a7d81e6",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 luni 5.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "247dc819833ac6c4b5cb1cf1310209ff",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 1.10%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "8e08edfdfcd0e548b95fd8b53bed92f7",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 1.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "0f097f9796302726e27718595e2c2417",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "9e43cda3f62ba0173ad0dbd84023fe1c",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.85,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 1.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "2129eea1cb0c13f94dcbb4638cbd6243",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 2.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "3efb924f4d773763f7568103a52bdc48",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni 1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "958835e9e98a410c2aa54edd07a6ba4a",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni 1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "e248e54d63e68fb32b2ba315c59659a1",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 luni 1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "da2081193a489db254dc19ec23c91601",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 1.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "1fc5be51d330f90e4eb995f057abaf2d",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "e7b44648a949a5e05c9d1145719f89fb",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 2.25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "d6b2af1fc1af9406d16415303aa9a74a",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 2.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "4dd11f11eca4381d190a61744f7e0d00",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "24ed1f5cacc59bbe37f965597054ac0f",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni 3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "587601ed62c3005b2d6e91c998d5d364",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni 3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
+    },
+    {
+     "id": "ace54f0f4ecdf5ec00fa36dcfcf7dfe1",
+     "id_url": 1384,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a1bcf2558d0225deb7b308a9f050cd583d5f73060287d963dad634adc04062b0",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 luni 3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 25 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "4cc8f3ba72ad9da4f83be76e129d39d3501f2b0c697db0fe1f9527671dcdaac1"
     }
    ],
    "respinse": [],
-   "scrise": 0,
-   "durata_s": 4,
+   "scrise": 25,
+   "durata_s": 25,
    "tokeni": {
-    "intrare": 4979,
-    "iesire": 215
+    "intrare": 5513,
+    "iesire": 3787
    }
   },
   {
@@ -17825,1328 +18858,6 @@
    "tokeni": {
     "intrare": 4350,
     "iesire": 765
-   }
-  },
-  {
-   "cheie": "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice||dobânzi depozite bancare pentru persoane fizice, inclusiv pensionari",
-   "url": "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "Dobânzi depozite bancare pentru persoane fizice, inclusiv pensionari",
-   "focus": "Produsul băncii: „Dobânzi depozite bancare pentru persoane fizice, inclusiv pensionari”.\nAcesta e produsul Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 911,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-html",
-   "format_efectiv": "html",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": "selectolax",
-   "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-   "observatii": [
-    {
-     "id": "d1a08ea422b4dcb4e5c991eef9fab648",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 2.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "7 zile\n\n2.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 7,
-       "valoare_text": "7 zile"
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "3920d29bece8d47bc74d34415136c333",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 4.25,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "1 lună\n\n4.25%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 1
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "69548e04e621fea732186537d2114891",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 4.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "3 luni\n\n4.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 3
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "ae8e99e6476fc9f77a967edcc445cd6a",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 4.75,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "6 luni\n\n4.75%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 6
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "c096c50301df50837f9eeca62a839353",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 5.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "9 luni\n\n5.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 9
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "152569a050b39e565ec0379596db5d49",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 5.25,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "12 luni\n\n5.25%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 12
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "1e139f395603f514bd048c3fdfa146d3",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 5.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "18 luni\n\n5.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 18
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "120cbc9b314fecadb7c1c90a5dad99b2",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 5.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "24 luni\n\n5.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 24
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "83c75965742e45efe7a4841bd5d86316",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 5.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "36 luni\n\n5.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 36
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "76740cb1fcb0b6e9e3d9e6c33d9748c8",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.25,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "1 lună\n\n1.25%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 1
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "f2eaca3259581bd4ef071d0431661444",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.7,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "3 luni\n\n1.70%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 3
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "f48e86b0bb921323b66f686a43427d86",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.95,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "6 luni\n\n1.95%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 6
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "7cf152880fe55542f77857e30590e70e",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 2.1,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "9 luni\n\n2.10%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 9
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "95063b193c995356bfcd1a5e566f4696",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 2.15,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "12 luni\n\n2.15%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 12
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "3a7b1d49dec28d93235521d5fb9d496f",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.75,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "18 luni\n\n1.75%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 18
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "b500ad0af86d3c99646ead529a77e2b0",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.75,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "24 luni\n\n1.75%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 24
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "8b22e5ef7f41424865fd5064368dca23",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.75,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "36 luni\n\n1.75%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 36
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "4c911965c5f3cf18f5c74b31816a858c",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "1 lună\n\n1.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 1
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "8520f91c1ecb54285e6090cc072f1714",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 1.75,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "3 luni\n\n1.75%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 3
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "2d7bff56e0fcd8166128e791bc072074",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 2.25,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "6 luni\n\n2.25%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 6
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "30ae88acf51634a3dc5660a57e3529e6",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 2.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "9 luni\n\n2.50%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 9
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "3825b1b2c371ec84048ba45f7dae053c",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 3.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "12 luni\n\n3.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 12
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "d952089870a2ab96423c45a7ffa215d0",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 3.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "18 luni\n\n3.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 18
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "a13109f10e49c5cf637fbdb39840fc92",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 3.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "24 luni\n\n3.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 24
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "a16b2b702109c88c736ab3852897738d",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": null,
-     "valoare_num": 3.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "36 luni\n\n3.00%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 29 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 36
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "abcabbc6492c64d66a398d04fa080af9",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": "NP_RON_7L_BLITZ",
-     "valoare_num": 5.0,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [
-      "ofertă specială Blitz, 7 luni, LEI"
-     ],
-     "eticheta_libera": null,
-     "citat": "Blitz 7 luni -\n5.00% p.a.",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.7,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 7
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "5bb83ff2eae5d45e806110ff6f7a25e0",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_la_scadenta",
-     "cod_scenariu": "NP_RON_13L_BESTOFFER",
-     "valoare_num": 5.95,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [
-      "ofertă specială 1 An și 1 Lună, dobândă totală la scadență, LEI"
-     ],
-     "eticheta_libera": null,
-     "citat": "1 An și 1 Lună -\n5.95%\ndobândă totală (\n5.50% p.a.\n)",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.7,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 13
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "229c1e32788673ad0e96acc5e50e04bb",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": "NP_RON_13L_BESTOFFER",
-     "valoare_num": 5.5,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [
-      "ofertă specială 1 An și 1 Lună, p.a., LEI"
-     ],
-     "eticheta_libera": null,
-     "citat": "1 An și 1 Lună -\n5.95%\ndobândă totală (\n5.50% p.a.\n)",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.7,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 13
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "f448c3f41cc87f643fc275a1ea4d4687",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": "NP_EUR_7L_BLITZ",
-     "valoare_num": 2.2,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [
-      "ofertă specială Blitz, 7 luni, EUR"
-     ],
-     "eticheta_libera": null,
-     "citat": "Blitz 7 luni -\n2.20% p.a.",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.7,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 7
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "125513010cbdfcd448cfb0ebf90b7c01",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_la_scadenta",
-     "cod_scenariu": "NP_EUR_13L_BESTOFFER",
-     "valoare_num": 2.43,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [
-      "ofertă specială 1 An și 1 Lună, dobândă totală la scadență, EUR"
-     ],
-     "eticheta_libera": null,
-     "citat": "1 An și 1 Lună -\n2.43%\ndobândă totală (\n2.25% p.a.\n)",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.7,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 13
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "02809c2678285e39e0a1010058538b11",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "dobanda_nominala",
-     "cod_scenariu": "NP_EUR_13L_BESTOFFER",
-     "valoare_num": 2.25,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [
-      "ofertă specială 1 An și 1 Lună, p.a., EUR"
-     ],
-     "eticheta_libera": null,
-     "citat": "1 An și 1 Lună -\n2.43%\ndobândă totală (\n2.25% p.a.\n)",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.7,
-     "necesita_verificare": true,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "perioada",
-       "valoare": 13
-      },
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "a5939e9dea95fba5add6ec6338666b4d",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "suma_minima",
-     "cod_scenariu": null,
-     "valoare_num": 100,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "constitui un depozit cu o sumă minimă de 100 lei, 100 EURO sau 100 USD",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "RON"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "1c511f7b2c7458d605bf67089dc0e4b3",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "suma_minima",
-     "cod_scenariu": null,
-     "valoare_num": 100,
-     "unitate": "eur",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "constitui un depozit cu o sumă minimă de 100 lei, 100 EURO sau 100 USD",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "EUR"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "d4bbde3fa6c22dd2235cebe66029f747",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "suma_minima",
-     "cod_scenariu": null,
-     "valoare_num": 100,
-     "unitate": "usd",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "constitui un depozit cu o sumă minimă de 100 lei, 100 EURO sau 100 USD",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "valuta",
-       "valoare_text": "USD"
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    },
-    {
-     "id": "b5b39b8f88e6fc651b0a5f2b1ba5cdc7",
-     "id_url": 911,
-     "id_produs": "depozit-termen",
-     "camp": "comision_deschidere",
-     "cod_scenariu": null,
-     "valoare_num": 0,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "ZERO comision la constituire și la scadență depozite pentru persoane fizice și pensionari",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
-    }
-   ],
-   "respinse": [],
-   "scrise": 35,
-   "durata_s": 31,
-   "tokeni": {
-    "intrare": 5581,
-    "iesire": 4625
    }
   },
   {
@@ -20034,8 +19745,8 @@
      "citat": "Aplicația Libra pentru mobile banking este disponibilă gratuit pe iOS, Android și Huawei AppGallery",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.8,
-     "necesita_verificare": true,
+     "confidence": 0.9,
+     "necesita_verificare": false,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
@@ -20049,10 +19760,10 @@
    ],
    "respinse": [],
    "scrise": 1,
-   "durata_s": 5,
+   "durata_s": 4,
    "tokeni": {
     "intrare": 3965,
-    "iesire": 252
+    "iesire": 254
    }
   },
   {
@@ -20182,11 +19893,11 @@
    "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
    "observatii": [
     {
-     "id": "8114f031f361e71a94188bb839a09dfd",
+     "id": "a3060c4f6c5d7af77131d62349014f6e",
      "id_url": 878,
      "id_produs": "ipotecar",
      "camp": "suma_maxima",
-     "cod_scenariu": "NP_VENIT_RO",
+     "cod_scenariu": null,
      "valoare_num": 5000000,
      "unitate": "lei",
      "valid_from": null,
@@ -20196,7 +19907,7 @@
       "venituri din România"
      ],
      "eticheta_libera": null,
-     "citat": "5.000.000\nlei",
+     "citat": "5.000.000 lei pe 35 de ani",
      "citat_original": null,
      "citat_aparitii": null,
      "confidence": 0.9,
@@ -20204,19 +19915,49 @@
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "conflict_scenariu": "câmpul „suma_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "b01a2eb8d871d3d71fd444587d521504",
+     "id": "a3060c4f6c5d7af77131d62349014f6e",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 2000000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "venituri din străinătate, inclusiv self-employment și PFA"
+     ],
+     "eticheta_libera": null,
+     "citat": "Valoare maximă 2.000.000 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "4ec51ee53e5debbc5459bb25fe265097",
      "id_url": 878,
      "id_produs": "ipotecar",
      "camp": "perioada_maxima",
-     "cod_scenariu": "NP_VENIT_RO",
+     "cod_scenariu": null,
      "valoare_num": 35,
      "unitate": "ani",
      "valid_from": null,
@@ -20226,7 +19967,7 @@
       "venituri din România"
      ],
      "eticheta_libera": null,
-     "citat": "până la\n35 de ani",
+     "citat": "Perioadă rambursare până la 35 de ani",
      "citat_original": null,
      "citat_aparitii": null,
      "confidence": 0.9,
@@ -20234,19 +19975,49 @@
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "conflict_scenariu": "câmpul „perioada_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "ac54207f637639a6139e318774fc941b",
+     "id": "4ec51ee53e5debbc5459bb25fe265097",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 30,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "venituri din străinătate, inclusiv self-employment și PFA"
+     ],
+     "eticheta_libera": null,
+     "citat": "Perioadă rambursare până la 30 de ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „perioada_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "313f8c7a697f4591d6d667c09e30de9e",
      "id_url": 878,
      "id_produs": "ipotecar",
      "camp": "avans_minim",
-     "cod_scenariu": "NP_VENIT_RO",
+     "cod_scenariu": null,
      "valoare_num": 15,
      "unitate": "procent",
      "valid_from": null,
@@ -20256,37 +20027,68 @@
       "venituri din România"
      ],
      "eticheta_libera": null,
-     "citat": "cu finanțare de până la 5.000.000 lei pe 35 de ani, avans de la 15%, dobândă fixă 6,99% în primii 3 ani — fără comision de analiză, evaluare sau administrare.",
-     "citat_original": "de la\n15%",
-     "citat_aparitii": 2,
+     "citat": "Avans de la 15%",
+     "citat_original": null,
+     "citat_aparitii": null,
      "confidence": 0.9,
      "necesita_verificare": false,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "9d6f1dda60c4b7f47b34d5e4cfb27fa7",
+     "id": "313f8c7a697f4591d6d667c09e30de9e",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "venituri din străinătate"
+     ],
+     "eticheta_libera": null,
+     "citat": "Avans de la 20%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "efa3f66a3421db694cca86964d695a72",
      "id_url": 878,
      "id_produs": "ipotecar",
      "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_VENIT_RO",
+     "cod_scenariu": "IPO_VENIT_RO",
      "valoare_num": 6.99,
      "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
      "conditii": [
-      "venituri din România"
+      "venituri din România",
+      "dobândă fixă primii 3 ani"
      ],
      "eticheta_libera": null,
-     "citat": "fixă 6,99% în primii 3 ani, apoi de la 2,15% + IRCC",
+     "citat": "dobândă fixă 6,99% în primii 3 ani",
      "citat_original": null,
      "citat_aparitii": null,
      "confidence": 0.9,
@@ -20295,18 +20097,18 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "afb7f3e31b68c3be69b03dc9956b8c90",
+     "id": "861117075b09341e7b6d42ea972a5dfa",
      "id_url": 878,
      "id_produs": "ipotecar",
      "camp": "perioada_dobanda_fixa",
-     "cod_scenariu": "NP_VENIT_RO",
+     "cod_scenariu": null,
      "valoare_num": 3,
      "unitate": "ani",
      "valid_from": null,
@@ -20316,7 +20118,7 @@
       "venituri din România"
      ],
      "eticheta_libera": null,
-     "citat": "fixă 6,99% în primii 3 ani, apoi de la 2,15% + IRCC",
+     "citat": "fixă 6,99% în primii 3 ani",
      "citat_original": null,
      "citat_aparitii": null,
      "confidence": 0.9,
@@ -20325,25 +20127,26 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "aede28a5ff5cf29933e78a0618dc0477",
+     "id": "7f3474a4e9ca8f2a2edd304012310401",
      "id_url": 878,
      "id_produs": "ipotecar",
      "camp": "marja_banca_min",
-     "cod_scenariu": "NP_VENIT_RO",
+     "cod_scenariu": null,
      "valoare_num": 2.15,
      "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
      "conditii": [
-      "venituri din România"
+      "venituri din România",
+      "dobândă variabilă ulterioară primilor 3 ani"
      ],
      "eticheta_libera": null,
      "citat": "apoi de la 2,15% + IRCC",
@@ -20354,206 +20157,27 @@
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "conflict_scenariu": "câmpul „marja_banca_min” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "a560cea7cf5616d42c07a26b69338d45",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_variabila_ulterioara",
-     "cod_scenariu": "NP_VENIT_RO",
-     "valoare_num": 2.15,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [
-      "venituri din România"
-     ],
-     "eticheta_libera": null,
-     "citat": "variabilă de la 2,15% + IRCC pe toată perioada",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "46ea67130b4afa38d183b05743c3a59a",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "suma_maxima",
-     "cod_scenariu": "NP_VENIT_STRAINATATE",
-     "valoare_num": 2000000,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [
-      "venituri din străinătate, inclusiv self-employment și PFA"
-     ],
-     "eticheta_libera": null,
-     "citat": "2.000.000\nlei",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "091ae0f8b9d1fc0a60e6792a88663854",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "perioada_maxima",
-     "cod_scenariu": "NP_VENIT_STRAINATATE",
-     "valoare_num": 30,
-     "unitate": "ani",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [
-      "venituri din străinătate, inclusiv self-employment și PFA"
-     ],
-     "eticheta_libera": null,
-     "citat": "până la\n30 de ani",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "07f152553213a8b3c9f5bff349df3741",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "avans_minim",
-     "cod_scenariu": "NP_VENIT_STRAINATATE",
-     "valoare_num": 20,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [
-      "venituri din străinătate, inclusiv self-employment și PFA"
-     ],
-     "eticheta_libera": null,
-     "citat": "Avans de la 20%",
-     "citat_original": "de la\n20%",
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "a378d113d4aad72725e08aaa440cbadf",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_fixa_introductiva",
-     "cod_scenariu": "NP_VENIT_STRAINATATE",
-     "valoare_num": 6.99,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [
-      "venituri din străinătate, inclusiv self-employment și PFA"
-     ],
-     "eticheta_libera": null,
-     "citat": "fixă 6,99% în primii 3 ani, apoi de la 2,50% + IRCC",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "9bb8f5b55afaf8b1c6e708d31591f790",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "perioada_dobanda_fixa",
-     "cod_scenariu": "NP_VENIT_STRAINATATE",
-     "valoare_num": 3,
-     "unitate": "ani",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [
-      "venituri din străinătate, inclusiv self-employment și PFA"
-     ],
-     "eticheta_libera": null,
-     "citat": "fixă 6,99% în primii 3 ani, apoi de la 2,50% + IRCC",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "81acdd9954cab3f5c41070bb4276f6d9",
+     "id": "7f3474a4e9ca8f2a2edd304012310401",
      "id_url": 878,
      "id_produs": "ipotecar",
      "camp": "marja_banca_min",
-     "cod_scenariu": "NP_VENIT_STRAINATATE",
+     "cod_scenariu": null,
      "valoare_num": 2.5,
      "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
      "conditii": [
-      "venituri din străinătate, inclusiv self-employment și PFA"
+      "venituri din străinătate",
+      "dobândă variabilă ulterioară primilor 3 ani"
      ],
      "eticheta_libera": null,
      "citat": "apoi de la 2,50% + IRCC",
@@ -20564,38 +20188,70 @@
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "conflict_scenariu": "câmpul „marja_banca_min” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "480be033d4006f5b3a81324b44cde81e",
+     "id": "f17d5d4e4337b3e14f3eeb665c687d3c",
      "id_url": 878,
      "id_produs": "ipotecar",
-     "camp": "dobanda_variabila_ulterioara",
-     "cod_scenariu": "NP_VENIT_STRAINATATE",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": null,
+     "valoare_num": 2.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "venituri din România",
+      "opțiune dobândă variabilă pe toată perioada, marjă peste IRCC"
+     ],
+     "eticheta_libera": null,
+     "citat": "variabilă de la 2,15% + IRCC pe toată perioada",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_variabila” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "f17d5d4e4337b3e14f3eeb665c687d3c",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": null,
      "valoare_num": 2.5,
      "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
      "conditii": [
-      "venituri din străinătate, inclusiv self-employment și PFA"
+      "venituri din străinătate",
+      "opțiune dobândă variabilă pe toată perioada, marjă peste IRCC"
      ],
      "eticheta_libera": null,
      "citat": "variabilă de la 2,50% + IRCC pe toată perioada",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.85,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "conflict_scenariu": "câmpul „dobanda_variabila” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -20614,7 +20270,7 @@
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
      "conditii": [],
      "eticheta_libera": null,
-     "citat": "0 lei analiză dosar",
+     "citat": "fără comision de analiză, evaluare sau administrare",
      "citat_original": null,
      "citat_aparitii": null,
      "confidence": 0.9,
@@ -20623,7 +20279,7 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -20642,7 +20298,7 @@
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
      "conditii": [],
      "eticheta_libera": null,
-     "citat": "0 lei evaluare",
+     "citat": "0 lei analiză dosar | 0 lei evaluare | 0 lei administrare cont",
      "citat_original": null,
      "citat_aparitii": null,
      "confidence": 0.9,
@@ -20651,7 +20307,7 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
@@ -20679,109 +20335,37 @@
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
      "trepte": [],
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     },
     {
-     "id": "07f200a81bfbf80cea6a8d855f2166fb",
+     "id": "184de2cf5b653058615724e049df9b0d",
      "id_url": 878,
      "id_produs": "ipotecar",
-     "camp": "suma_credit",
+     "camp": "dae",
      "cod_scenariu": null,
-     "valoare_num": 250000,
-     "unitate": "lei",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "Pentru un credit de 250.000 lei, pe 15 ani",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "7bbdddcc9192320b9c94b7166d718a61",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_fixa",
-     "cod_scenariu": null,
-     "valoare_num": 6.99,
+     "valoare_num": 7.77,
      "unitate": "procent",
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "dobândă fixă în primii 3 ani 6.99%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
+     "conditii": [
+      "exemplu reprezentativ: 250.000 lei, 15 ani"
      ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "f763f370fb96ed11225947a7fa702d03",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "dobanda_variabila",
-     "cod_scenariu": null,
-     "valoare_num": 7.71,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [],
      "eticheta_libera": null,
-     "citat": "urmând o dobândă variabilă 7,71%, compusa din IRCC+ marja băncii de 2.15%",
+     "citat": "cu DAE 7.77%",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
      "trepte": [
       {
        "dimensiune": "suma",
@@ -20807,18 +20391,20 @@
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [],
+     "conditii": [
+      "exemplu reprezentativ: 250.000 lei, 15 ani, primii 3 ani dobândă fixă"
+     ],
      "eticheta_libera": null,
      "citat": "În primii 3 ani plătești o rată de 1,484.18 lei",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": "câmpul „rata_lunara” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
      "trepte": [
       {
        "dimensiune": "suma",
@@ -20844,55 +20430,20 @@
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [],
+     "conditii": [
+      "exemplu reprezentativ: 250.000 lei, 15 ani, după anii 3-15 dobândă variabilă"
+     ],
      "eticheta_libera": null,
      "citat": "urmând o rată de 2,463.05",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": "câmpul „rata_lunara” apare de 2 ori, iar această valoare nu are cod_scenariu",
-     "potrivire_scenariu": null,
-     "trepte": [
-      {
-       "dimensiune": "suma",
-       "valoare": 250000
-      },
-      {
-       "dimensiune": "perioada",
-       "valoare": 180
-      }
-     ],
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
-    },
-    {
-     "id": "184de2cf5b653058615724e049df9b0d",
-     "id_url": 878,
-     "id_produs": "ipotecar",
-     "camp": "dae",
-     "cod_scenariu": null,
-     "valoare_num": 7.77,
-     "unitate": "procent",
-     "valid_from": null,
-     "valid_to": null,
-     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [],
-     "eticheta_libera": null,
-     "citat": "cu DAE 7.77%",
-     "citat_original": null,
-     "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
-     "not_found": false,
-     "not_found_motiv": null,
-     "nota": null,
-     "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
      "trepte": [
       {
        "dimensiune": "suma",
@@ -20918,18 +20469,20 @@
      "valid_from": null,
      "valid_to": null,
      "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
-     "conditii": [],
+     "conditii": [
+      "exemplu reprezentativ: 250.000 lei, 15 ani"
+     ],
      "eticheta_libera": null,
      "citat": "valoarea totală de rambursat fiind 425.315,09",
      "citat_original": null,
      "citat_aparitii": null,
-     "confidence": 0.9,
-     "necesita_verificare": false,
+     "confidence": 0.8,
+     "necesita_verificare": true,
      "not_found": false,
      "not_found_motiv": null,
      "nota": null,
      "conflict_scenariu": null,
-     "potrivire_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
      "trepte": [
       {
        "dimensiune": "suma",
@@ -20943,6 +20496,205 @@
      "id_banca": "libra",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "7bbdddcc9192320b9c94b7166d718a61",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": null,
+     "valoare_num": 6.99,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "exemplu reprezentativ: 250.000 lei, 15 ani, primii 3 ani"
+     ],
+     "eticheta_libera": null,
+     "citat": "cu dobândă fixă în primii 3 ani 6.99%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "f763f370fb96ed11225947a7fa702d03",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": null,
+     "valoare_num": 7.71,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "exemplu reprezentativ: 250.000 lei, 15 ani, după anii 3-15"
+     ],
+     "eticheta_libera": null,
+     "citat": "urmând o dobândă variabilă 7,71%, compusa din IRCC+ marja băncii de 2.15%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_variabila” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 180
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "cd9fe13e40c510167607fd12859d81bf",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 2000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "beneficiu inclus în ofertă, condiționat de utilizarea creditului"
+     ],
+     "eticheta_libera": "decontare costuri notariale",
+     "citat": "Decontarea costurilor notariale în limita a 2.000 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "cd9fe13e40c510167607fd12859d81bf",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 1000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "venit din România",
+      "utilizarea integrală a creditului"
+     ],
+     "eticheta_libera": "cashback",
+     "citat": "Cashback de 1.000 lei la utilizarea integrală a creditului (venit din România)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "cd9fe13e40c510167607fd12859d81bf",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 2000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "venit din străinătate"
+     ],
+     "eticheta_libera": "decontare bilet de avion",
+     "citat": "Decontare bilet de avion de până la 2.000 lei (venit din strainătate)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
+    },
+    {
+     "id": "cd9fe13e40c510167607fd12859d81bf",
+     "id_url": 878,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 18,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "60e23169c6ae6ade3721b800a6686e216f4e7ad07187d50ec9833dd898c11097",
+     "conditii": [
+      "exemplu reprezentativ: 250.000 lei, 15 ani"
+     ],
+     "eticheta_libera": "perioadă de grație la principal",
+     "citat": "În primele 18 luni, clientul beneficiază de o perioadă de grație pentru plata ratelor de principal",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "36909fcec639f7b0133c0d40161490f9e3b3b959c9b8aedbc051b26fe9022d7f"
     }
    ],
    "respinse": [
@@ -20953,17 +20705,17 @@
      "valoare_num": 5.56,
      "unitate": "procent",
      "incredere": 0.3,
-     "citat": "*IRCC valabil de la 01.07.2026: 5.56%",
+     "citat": "IRCC valabil de la 01.07.2026: 5.56%",
      "motive": [
       "încredere 0.3 sub pragul 0.6"
      ]
     }
    ],
-   "scrise": 23,
-   "durata_s": 21,
+   "scrise": 25,
+   "durata_s": 30,
    "tokeni": {
-    "intrare": 5894,
-    "iesire": 2964
+    "intrare": 7488,
+    "iesire": 3581
    }
   },
   {
@@ -21427,6 +21179,1536 @@
    "tokeni": {
     "intrare": 6275,
     "iesire": 2700
+   }
+  },
+  {
+   "cheie": "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice||dobânzi depozite bancare pentru persoane fizice, inclusiv pensionari",
+   "url": "https://www.librabank.ro/dobanzi-depozite-bancare-pentru-pensionari-persoane-fizice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Dobânzi depozite bancare pentru persoane fizice, inclusiv pensionari",
+   "focus": "Produsul băncii: „Dobânzi depozite bancare pentru persoane fizice, inclusiv pensionari”.\nAcesta e produsul Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 911,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+   "observatii": [
+    {
+     "id": "6362f1170953c8f7d254320c9cc736b6",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_RON_7L_BESTOFFER",
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [
+      "ofertă Best offer Blitz"
+     ],
+     "eticheta_libera": null,
+     "citat": "Blitz 7 luni -\n5.00% p.a.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "7 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "oferta",
+       "valoare_text": "promotie"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "dbaabe3cc8edcce631c8dbd1afdf8a41",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_RON_13L_BESTOFFER_TOTALA",
+     "valoare_num": 5.95,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [
+      "ofertă Best offer, dobândă totală la 1 An și 1 Lună"
+     ],
+     "eticheta_libera": null,
+     "citat": "1 An și 1 Lună -\n5.95%\ndobândă totală (\n5.50% p.a.\n)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 13,
+       "valoare_text": "1 An și 1 Lună"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "oferta",
+       "valoare_text": "promotie"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "54d200fce1b40a0358e81f78394e958d",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_RON_13L_BESTOFFER_PA",
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [
+      "ofertă Best offer, exprimat p.a."
+     ],
+     "eticheta_libera": null,
+     "citat": "1 An și 1 Lună -\n5.95%\ndobândă totală (\n5.50% p.a.\n)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 13,
+       "valoare_text": "1 An și 1 Lună"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "oferta",
+       "valoare_text": "promotie"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "d1a08ea422b4dcb4e5c991eef9fab648",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "7 zile\n\n2.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "7 zile"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "6dc3fb20c807697501790b38a778ca05",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună\n\n4.25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "1 lună"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "737e37b02d2486bfcc18f6285b277388",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni\n\n4.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "3 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "2ff2de5b64af9e8d3749b6a35aa5fedc",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni\n\n4.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6,
+       "valoare_text": "6 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "143a22e9633f24933ecf309029d2eb24",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni\n\n5.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9,
+       "valoare_text": "9 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "0166b5045f256d10fd5ba57d9b19d8fc",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni\n\n5.25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "12 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "c2bd457c792866722f91c1926352bef0",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni\n\n5.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18,
+       "valoare_text": "18 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "4c37d44a2269b2f1cfc14f4f38ab0c44",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni\n\n5.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24,
+       "valoare_text": "24 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "7f4bb8b0a7d9a943f7d87f1bcb8a3054",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 luni\n\n5.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36,
+       "valoare_text": "36 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "15e064a8ab3327eee215d9714af681ec",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_EUR_7L_BESTOFFER",
+     "valoare_num": 2.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [
+      "ofertă Best offer Blitz"
+     ],
+     "eticheta_libera": null,
+     "citat": "Blitz 7 luni -\n2.20% p.a.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 7,
+       "valoare_text": "7 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "oferta",
+       "valoare_text": "promotie"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "b19580436dee1ab08c1a0542f04e0e7d",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_EUR_13L_BESTOFFER_TOTALA",
+     "valoare_num": 2.43,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [
+      "ofertă Best offer, dobândă totală la 1 An și 1 Lună"
+     ],
+     "eticheta_libera": null,
+     "citat": "1 An și 1 Lună -\n2.43%\ndobândă totală (\n2.25% p.a.\n)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 13,
+       "valoare_text": "1 An și 1 Lună"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "oferta",
+       "valoare_text": "promotie"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "01bd1a927d31a5e74bae9fe53549547e",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_EUR_13L_BESTOFFER_PA",
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [
+      "ofertă Best offer, exprimat p.a."
+     ],
+     "eticheta_libera": null,
+     "citat": "1 An și 1 Lună -\n2.43%\ndobândă totală (\n2.25% p.a.\n)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 13,
+       "valoare_text": "1 An și 1 Lună"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "oferta",
+       "valoare_text": "promotie"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "5d165c26d64361ffe2a22971f80dce70",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună\n\n1.25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "1 lună"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "d548a9b69ebb66ce28cb34c5dc789166",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni\n\n1.70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "3 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "ce4b8185bebcc71acd2bf5a3767059de",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.95,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni\n\n1.95%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6,
+       "valoare_text": "6 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "f495574ae5b7253bc069ff4bb4fbaf81",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni\n\n2.10%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9,
+       "valoare_text": "9 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "2ae97857592dbe1046fbdf2e268e604c",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni\n\n2.15%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "12 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "6b4811dda691ee7e746d4caf8e34731f",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni\n\n1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18,
+       "valoare_text": "18 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "ea89a3b812983b8c1020f705be3b88c6",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni\n\n1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24,
+       "valoare_text": "24 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "34ca054c9e9e86e1f8ee089c40eaa8cb",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 luni\n\n1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36,
+       "valoare_text": "36 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "d6dcae9e51cc73e2b254601de3a635da",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună\n\n1.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "1 lună"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "64c0766d8188e928f4f74b667dcfdbed",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni\n\n1.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "3 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "319aac1dd51f8ef5558ddc6788c212aa",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni\n\n2.25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6,
+       "valoare_text": "6 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "9c3338df7e09628140d7b4cf4e9b3d0c",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni\n\n2.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9,
+       "valoare_text": "9 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "06139335eaf39510c02bf639efec62c8",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni\n\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "12 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "84e94314a130d2ac6ec556acf9083605",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 luni\n\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18,
+       "valoare_text": "18 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "ef3247b0f0ecb7d3c01cd361a232e86d",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 luni\n\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24,
+       "valoare_text": "24 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "c5c85c1c172bab19bf844249d1d5a0ad",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 luni\n\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 31 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36,
+       "valoare_text": "36 luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "a5939e9dea95fba5add6ec6338666b4d",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 100,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Poți să constitui un depozit cu o sumă minimă de 100 lei, 100 EURO sau 100 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "1c511f7b2c7458d605bf67089dc0e4b3",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 100,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Poți să constitui un depozit cu o sumă minimă de 100 lei, 100 EURO sau 100 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "d4bbde3fa6c22dd2235cebe66029f747",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 100,
+     "unitate": "usd",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Poți să constitui un depozit cu o sumă minimă de 100 lei, 100 EURO sau 100 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "b5b39b8f88e6fc651b0a5f2b1ba5cdc7",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "comision_deschidere",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "ZERO comision la constituire și la scadență depozite pentru persoane fizice și pensionari",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    },
+    {
+     "id": "2578caed2efcffb1b66d44182feb911d",
+     "id_url": 911,
+     "id_produs": "depozit-termen",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a2619cc5ec86a3e27770dde96d417d8eb2fa29e22d387cf489c85bb3b4d1e2b6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comisionul de administrare pentru depozite este ZERO.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4ebc84ce6c7c8cbd66c139ca0c5484f9c334442aea7e760e85df08a176e75620"
+    }
+   ],
+   "respinse": [],
+   "scrise": 36,
+   "durata_s": 34,
+   "tokeni": {
+    "intrare": 6115,
+    "iesire": 5245
+   }
+  },
+  {
+   "cheie": "https://www.librabank.ro/plati?desk_lbk=||plăți instant și ropay prin aplicația libra mobile banking",
+   "url": "https://www.librabank.ro/plati?desk_lbk=",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Plăți instant și RoPay prin aplicația Libra mobile banking",
+   "focus": "Produsul băncii: „Plăți instant și RoPay prin aplicația Libra mobile banking”.\nAcesta e produsul Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1468,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "578a88b50f8952a22b30a1596d57e2d98c8f488e73783f5a07dfbf04932624a4",
+   "observatii": [
+    {
+     "id": "740453eecfd97f784745d6adb574ae60",
+     "id_url": 1468,
+     "id_produs": "banking-digital",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "578a88b50f8952a22b30a1596d57e2d98c8f488e73783f5a07dfbf04932624a4",
+     "conditii": [],
+     "eticheta_libera": "cost RoPay (transfer prin cod QR)",
+     "citat": "RoPay este gratuit",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "0b67849951f7044760327fe6a18d687ef0e12ba21cf08dadf0b0cf5ed2af97d1"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4089,
+    "iesire": 250
+   }
+  },
+  {
+   "cheie": "https://www.librabank.ro/ropay||ropay în aplicația libra bank",
+   "url": "https://www.librabank.ro/ropay",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "RoPay în aplicația Libra Bank",
+   "focus": "Produsul băncii: „RoPay în aplicația Libra Bank”.\nAcesta e produsul Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1469,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "45ca9c8764ec0d22e77ecde2fd03c0e80ec739779c4be259fa1572543d31e72e",
+   "observatii": [
+    {
+     "id": "5846a6c52f4c994bf32d800fa7321418",
+     "id_url": 1469,
+     "id_produs": "banking-digital",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "45ca9c8764ec0d22e77ecde2fd03c0e80ec739779c4be259fa1572543d31e72e",
+     "conditii": [],
+     "eticheta_libera": "cost utilizare serviciu RoPay (transfer prin număr telefon/cod QR)",
+     "citat": "RoPay este gratuit, iar Libra Internet Bank este printre primele bănci din România care oferă acest serviciu clienților săi.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "1c57d7d0fa0efbe46bf6910e23ff22d857538049b10a007e9f55c7938df6ba43"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 3667,
+    "iesire": 310
    }
   }
  ]

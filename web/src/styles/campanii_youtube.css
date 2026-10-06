@@ -1,0 +1,37 @@
+/* Stilurile paginilor mutate de agentul „campanii_youtube”; global.css rămâne pentru ce e comun. */
+
+/* ---- 2.4 Rețele sociale: tabelul bancă × rețea ---- */
+.rs-ic { display: inline-flex; align-items: center; justify-content: center }
+.rs-ic svg { width: 14px; height: 14px; display: block }
+.ant-table-thead .rs-ic { vertical-align: -3px; margin-right: 6px }
+.rs-ic.facebook { color: #1877f2 }
+.rs-ic.linkedin { color: #0a66c2 }
+.rs-ic.instagram { color: #d62976 }
+.rs-ic.tiktok { color: var(--ink) }
+.ant-table-wrapper.t td.rs-c { white-space: nowrap }
+.ant-table-wrapper.t td.rs-c a { color: var(--ink); text-decoration: none; display: inline-block; max-width: 170px; overflow: hidden;
+  text-overflow: ellipsis; vertical-align: bottom; font-size: 12.5px }
+.ant-table-wrapper.t td.rs-c a:hover { color: var(--accent); text-decoration: underline }
+.ant-table-wrapper.t td.rs-c .ant-tag.pill { font-size: 9.5px; display: block; width: fit-content; margin-top: 3px }
+.rs-tabel .rs-nr { white-space: nowrap }
+.cm-bara .rs-n { font-size: 12px; align-self: center }
+.cm-bara .rs-leg { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 11.5px; color: var(--muted);
+  margin: 0 0 0 auto; align-self: center }
+
+/* ---- 2.4 YouTube: un singur canal la vedere ---- */
+/* linkurile spre YouTube și spre pagina băncii rămân subliniate, ca în aplicația veche (AntD le scoate sublinierea) */
+.yt-banda .yt-canal a, .yt-tabel a { text-decoration: underline }
+.yt-banda .yt-canal { display: flex; flex-direction: column; gap: 2px; flex: none; max-width: 230px; font-size: 13px }
+.yt-banda .yt-canal .ant-tag.pill { align-self: flex-start }
+.yt-banda .yt-id { font-size: 11.5px }
+.yt-banda .yt-nou { font-size: 11px; color: var(--muted); max-width: 165px; line-height: 1.35; flex: none }
+.cm-bara .yt-n { font-size: 12px; margin-left: auto; align-self: center }
+.cm-bara .yt-bifa { display: flex; align-items: center; align-self: center }
+.cm-bara .yt-bifa .ant-checkbox-wrapper { font-size: 12.5px }
+.yt-fara-date { margin-bottom: 12px }
+.yt-tabel .yt-cap { margin: 0 0 10px; max-width: none }
+.ant-table-wrapper.t td.yt-zi { white-space: nowrap }
+/* eticheta „nou”: pastila plină a aplicației vechi (eticheta-best), lipită de titlu */
+.yt-tabel .yt-et-nou { display: inline-block; margin: 0 0 0 6px; vertical-align: 1px; padding: 1px 7px; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent); font: 600 9px "IBM Plex Sans", sans-serif; text-transform: uppercase;
+  letter-spacing: .04em; white-space: nowrap }

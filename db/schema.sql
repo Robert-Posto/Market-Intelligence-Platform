@@ -216,7 +216,7 @@ CREATE TABLE app_screenshot (
 -- ---------------------------------------------------------------------
 CREATE TABLE indici_referinta (
     id          BIGSERIAL PRIMARY KEY,
-    indice      TEXT NOT NULL CHECK (indice IN ('ircc', 'robor', 'euribor')),
+    indice      TEXT NOT NULL CHECK (indice IN ('ircc', 'robor', 'robid', 'euribor')),
     scadenta    TEXT,            -- '3M', '6M' - relevant mai ales pentru robor/euribor
     valoare     NUMERIC(6, 4) NOT NULL,
     valabil_din DATE NOT NULL,

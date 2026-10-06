@@ -1,0 +1,105 @@
+{
+ "banca": "citibank",
+ "urluri": [
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html||money market – deposits (standard and broken-date maturities)",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Money Market – Deposits (Standard and broken-date maturities)",
+   "focus": "Produsul băncii: „Money Market – Deposits (Standard and broken-date maturities)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1386,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "476a492a1622a82502d57006eb0a8231e5d1b4e1284715b4dd69c1f546dba01d",
+   "observatii": [
+    {
+     "id": "ba65d68f0390113643565dfd89c1eea5",
+     "id_url": 1386,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul menționează produsul „Deposits (Standard and broken-date maturities)” doar descriptiv, fără nicio cifră de dobândă, sumă minimă, durată sau alt parametru numeric asociat.",
+     "content_hash": "476a492a1622a82502d57006eb0a8231e5d1b4e1284715b4dd69c1f546dba01d",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "0724d5b411637aa09cbdf76ca9180f5d22d38e4bb9e31f4a2dee57e00aa925b3"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4874,
+    "iesire": 151
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html||citidirect be® mobile",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "CitiDirect BE® Mobile",
+   "focus": "Produsul băncii: „CitiDirect BE® Mobile”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1462,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "7e7b6743b9742cea5d26f5f5c3bbe1f35f97767a26378ad3ca36862f28691318",
+   "observatii": [
+    {
+     "id": "adc88a9c191d5ae2bd5f948e9c749a51",
+     "id_url": 1462,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie funcționalitățile și beneficiile CitiDirect BE Mobile (aplicație de mobile banking pentru companii), dar nu conține nicio valoare numerică privind costul abonamentului, comisioane pentru tranzacții online sau costul vreunui dispozitiv de autentificare pentru acest produs specific.",
+     "content_hash": "7e7b6743b9742cea5d26f5f5c3bbe1f35f97767a26378ad3ca36862f28691318",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d87ae00e4cea0d05c0e5106c74cbc472534cc3e63ee398a65cd1e24759851107"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 7290,
+    "iesire": 193
+   }
+  }
+ ]
+}

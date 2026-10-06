@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-05",
+  "banca": "techventures",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/mobile-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mobile Banking (aplicația TechVentures ONline)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicație de mobile banking dedicată, disponibilă atât pentru persoane fizice cât și pentru companii, cu funcționalități de cont, plăți, carduri, depozite și credite - același tip de produs și segment ca Aplicația Libra Bank.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului descrie explicit funcționalitățile aplicației de mobile banking și conține cifra de reducere a comisioanelor cu 50% față de ghișeu, deși nu are alte cifre specifice (dobânzi, sume).",
+      "citat": "Comisioanele pentru operațiuni sunt cu 50% mai mici decât la ghișeu plăți în lei și valută, cu comisioane mai mici cu 50% decât cele la ghișeu",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/mobile-banking#:~:text=Comisioanele%20pentru%20opera%C8%9Biuni%20sunt%20cu,50%25%20dec%C3%A2t%20cele%20la%20ghi%C8%99eu"
+    },
+    {
+      "url": "https://techventures.bank/storage/files/limite-standard-de-operare-pe-internet-si-mobile-banking.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Limite standard de operare pe Internet și Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document legat direct din pagina Mobile Banking, conține limitele operaționale (sume, plafoane) aplicabile aplicației de mobile banking, echivalent produsului Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document de condiții dedicat explicit limitelor operaționale ale Mobile Banking, linkuit direct din pagina produsului, dar nu a fost verificat conținutul exact al cifrelor.",
+      "citat": "Limite standard de operare pe Internet și Mobile Banking",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (9 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/storage/files/manual-de-utilizare-mobile-banking.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Manual de utilizare Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Manualul de utilizare al aplicației TechVentures ONline Mobile Banking, legat direct din pagina dedicată produsului.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Document de utilizare al aplicației, util pentru detalii funcționale, dar incert dacă conține cifre tarifare specifice.",
+      "citat": "Manual de utilizare Mobile Banking",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (5 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/mobile-banking"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1414,
+    "citire_cache": 18863,
+    "scriere_cache": 27363,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0863321
+  }
+}

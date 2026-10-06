@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-06",
+  "banca": "vista",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Vista Superflex",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum negarantat, fără justificarea utilizării sumelor, pe termen de până la 60 de luni, destinat persoanelor fizice — corespunde exact profilului creditului de nevoi personale Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține descrierea completă a produsului (fără justificare, fără garanție reală/ipotecă) plus cifrele exacte: sumă minimă, durată maximă și dobânzi.",
+      "citat": "Minimum 4.200 lei sau 1.000 Euro. Durată maximă: până la 60 luni. Dobândă variabilă, pe toată durata creditului: IRCC + Marjă fixă 8 p.p. Dobândă fixă, pe toată durata creditului: 12,5% pe an.",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-fizice/credite#:~:text=Minimum%204.200%20lei%20sau%201.000,durata%20creditului%3A%2012%2C5%25%20pe%20an."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-fizice/credite"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1837,
+    "citire_cache": 42812,
+    "scriere_cache": 49532,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1507744
+  }
+}

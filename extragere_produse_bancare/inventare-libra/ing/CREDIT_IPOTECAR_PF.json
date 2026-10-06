@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-06",
   "banca": "ing",
   "cod": "CREDIT_IPOTECAR_PF",
   "denumire": "Credit ipotecar / investiții imobiliare",
@@ -10,44 +10,44 @@
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Credit ING Ipotecar",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Credit ipotecar pentru persoane fizice, destinat achiziției unei locuințe și refinanțării unui alt credit ipotecar, cu discount de dobândă pentru imobile clasă energetică A (echivalent Credit Verde); diferă ușor prin perioada maximă (30 ani la ING față de 420 luni/35 ani la Libra).",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagina dedicată produsului conține cifre explicite despre sumă minimă, procent maxim finanțat, perioadă de creditare și dobânzi.",
+      "denumire_la_banca": "ING Ipotecar (Credit ipotecar cu dobândă fixă 3 sau 5 ani / variabilă)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit ipotecar pentru achiziție/construcție/refinanțare locuință, inclusiv variantă EcoLife echivalentă Credit Verde) și același segment (persoane fizice), dar perioada maximă e de 30 ani (360 luni) față de 420 luni la Libra, iar suma maximă e mult mai mică (cca 1,2 mil. lei față de 15 mil. lei la Libra).",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține cifre complete: dobânzi, avans minim, perioadă, sumă minimă/maximă finanțabilă.",
       "citat": "Suma minimă pe care o poți finanța prin ING Ipotecar este 13000 RON. Suma maximă nu trebuie să depășească 85% din valoarea evaluată a imobilului adus în garanție.",
-      "citat_verificat": true,
-      "link_live": "https://ing.ro/persoane-fizice/credite/ipotecar#:~:text=Suma%20minim%C4%83%20pe%20care%20o,a%20imobilului%20adus%20%C3%AEn%20garan%C8%9Bie."
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
     },
     {
-      "url": "https://ing.ro/persoane-fizice/credite/ing-credit-pentru-investitii-imobiliare-cu-garantie-ipotecara",
-      "tip": "html",
+      "url": "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "ING Credit pentru investiții imobiliare cu garanție ipotecară",
+      "rol": "dobanzi",
+      "denumire_la_banca": "ING Ipotecar / Credite de investiții imobiliare cu garanție ipotecară",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Tot credit ipotecar pentru persoane fizice, destinat achiziție/construcție/modernizare locuință, dar diferă prin avans 0% și sumă maximă mai mare (1.500.000 lei), fiind orientat spre investiții imobiliare, nu credit ipotecar standard de achiziție.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată produsului conține cifre explicite despre sumă maximă, dobândă și perioadă de creditare.",
-      "citat": "până la 1500000 lei rata anuală a dobânzii 9,51 % perioada de creditare 3 - 30 ani",
+      "motiv_potrivire": "Documentul oficial de dobânzi listează explicit ING Ipotecar alături de indicele IRCC folosit la calculul ratei, confirmând aceleași caracteristici de produs ca pe pagina dedicată (dobândă variabilă legată de IRCC, aplicabilă persoanelor fizice).",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de tip listă de dobânzi (PDF), valabil curent, care menționează explicit ING Ipotecar și indicele IRCC folosit la calculul dobânzii.",
+      "citat": "Valorile indicilor de referinţă ce intră în calculul ratelor de dobandă: Pentru ExtraRol, ING Personal, ING Ipotecar, Credite de investiții imobiliare cu garanție ipotecară și Prima Casă se va aplica cotaţia IRCC, cu valoarea de 5,57% valabilă până la 31.10.2026",
       "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (17 cuvinte)",
+      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
-  "deschise": [
-    "https://ing.ro/persoane-fizice/credite/ipotecar",
-    "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/marea-notif-dec-2025/Ratele-Dobanzilor.pdf"
-  ],
-  "durata_s": 56,
+  "deschise": [],
+  "durata_s": 35,
   "consum": {
-    "intrare": 44592,
-    "iesire": 5319,
-    "citire_cache": 12710,
-    "scriere_cache": 35614,
+    "intrare": 4,
+    "iesire": 2767,
+    "citire_cache": 6355,
+    "scriere_cache": 32633,
     "apeluri": 1,
-    "cost_estimat_usd": 0.233951
+    "cost_estimat_usd": 0.1105315
   }
 }
