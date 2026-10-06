@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -30,27 +30,16 @@ import './styles/global.css'
 import App from './App'
 import { LangProvider, useLang } from './i18n'
 import { temaMip } from './theme'
+import { TemaProvider, useTema } from './tema'
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60_000, retry: 1, refetchOnWindowFocus: false } },
 })
 
-function useIntunecat(): boolean {
-  const mq = typeof window !== 'undefined' ? window.matchMedia('(prefers-color-scheme: dark)') : null
-  const [d, setD] = useState(mq?.matches ?? false)
-  useEffect(() => {
-    if (!mq) return
-    const f = (e: MediaQueryListEvent) => setD(e.matches)
-    mq.addEventListener('change', f)
-    return () => mq.removeEventListener('change', f)
-  }, [mq])
-  return d
-}
-
 /** ConfigProvider stă sub LangProvider, ca limba să schimbe și textele AntD. */
 function CuTema() {
   const { lang } = useLang()
-  const intunecat = useIntunecat()
+  const { intunecat } = useTema()
   useEffect(() => {
     dayjs.locale(lang === 'en' ? 'en' : 'ro')
     document.documentElement.lang = lang
@@ -71,7 +60,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <LangProvider>
-        <CuTema />
+        <TemaProvider>
+          <CuTema />
+        </TemaProvider>
       </LangProvider>
     </QueryClientProvider>
   </React.StrictMode>,

@@ -28,7 +28,7 @@ export function CardBanca({ b, m, app, loc, acop }: {
     <div className={b === REFERINTA ? 'vs-card ref' : 'vs-card'}>
       {b === REFERINTA && <span className="vs-tag">{t('versus.card_referinta')}</span>}
       <div className="vs-logo">
-        {m.logo[b] ? <img src={m.logo[b]} alt={nume} /> : <span className="vs-init">{nume.slice(0, 2).toUpperCase()}</span>}
+        {m.logo[b] ? <img className="sigla" src={m.logo[b]} alt={nume} /> : <span className="vs-init">{nume.slice(0, 2).toUpperCase()}</span>}
       </div>
       <div className="vs-nume">
         <Tooltip title={t('versus.card_fisa_title')}>

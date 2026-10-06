@@ -1,6 +1,9 @@
 /* Paleta aplicației vechi (fildeș cald + vișiniu); aceleași valori stau în
-   theme.ts pentru componentele AntD. */
+   theme.ts pentru componentele AntD (verificat de scripts/verifica_tema.mjs).
+   Tema întunecată vine din data-theme pe <html> (src/tema), nu direct din sistem. */
 :root {
+  color-scheme: light;
+  --stele-4: #7fb893; --stele-2: #d9a441;
   --bg: #f5f1ec; --surface: #fffdfa; --ink: #2a1f22; --muted: #6e615d; --line: #e3dad0;
   --line-2: #d6cabd;
   --warn: #98550b; --warn-tint: #f8ead6; --ok: #2b7044; --ok-tint: #e5efe1; --aur: #b58a2c;
@@ -13,15 +16,15 @@
   --serif: "Source Serif 4", Georgia, serif;
   --mono: "IBM Plex Mono", monospace;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1b1517; --surface: #251d1f; --ink: #efe6e2; --muted: #b4a5a0; --line: #3a2e30;
-    --line-2: #4a3b3d;
-    --warn: #e3a95a; --warn-tint: #3a2a16; --ok: #7fcb97; --ok-tint: #1d3024; --aur: #dcb567;
-    --accent: #e7a3ab; --accent-tint: #3b2428; --on-accent: #2a1216;
-    --umbra: none;
-    --nav: #4e1520; --nav-2: #3a0f18; --marca: #e7a3ab; --nav-activ-ink: #f2d7d3;
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --stele-4: #4e9466; --stele-2: #c08a3e;
+  --bg: #1b1517; --surface: #251d1f; --ink: #efe6e2; --muted: #b4a5a0; --line: #3a2e30;
+  --line-2: #4a3b3d;
+  --warn: #e3a95a; --warn-tint: #3a2a16; --ok: #7fcb97; --ok-tint: #1d3024; --aur: #dcb567;
+  --accent: #e7a3ab; --accent-tint: #3b2428; --on-accent: #2a1216;
+  --umbra: none;
+  --nav: #4e1520; --nav-2: #3a0f18; --marca: #e7a3ab; --nav-activ-ink: #f2d7d3;
 }
 * { box-sizing: border-box }
 html, body, #root { height: 100% }
@@ -53,7 +56,7 @@ nav a .pdf { position: absolute; right: 20px; top: 50%; transform: translateY(-5
 nav a.activ .pdf { color: var(--marca); opacity: 1 }
 nav .picior { margin-top: auto; padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
   border-top: 1px solid var(--nav-line); font-family: var(--mono); font-size: 9.5px; line-height: 1.6; color: var(--nav-footer-ink) }
-nav .picior .limba { margin-top: 8px }
+nav .picior .comutatoare { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px }
 
 /* ---- conținut ---- */
 main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 60px }
@@ -106,6 +109,10 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
 .ant-table-wrapper.t .ant-table-content { overflow-x: auto }
 .cl-banca { display: flex; align-items: center; gap: 8px; min-width: 0 }
 .cl-banca img { max-height: 18px; max-width: 54px; object-fit: contain; flex: none }
+/* siglele pe fundal închis: multe sunt negre sau bleumarin, fără fundal propriu (BRD, CEC, UniCredit, Libra,
+   Raiffeisen, ING…). În tema întunecată stau pe alb, ca pe hartă; culorile băncii nu se ating. Albul e
+   desenat cu umbră, nu cu padding: logo-ul ocupă același loc în ambele teme, iar tabelele nu sar la comutare. */
+:root[data-theme="dark"] img.sigla { background: #fff; box-shadow: 0 0 0 3px #fff; border-radius: 2px }
 .cl-banca .nm { font-size: 12.5px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; hyphens: auto }
 .tag-libra { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .05em; color: var(--accent);
   border: 1px solid var(--accent); border-radius: 999px; padding: 0 5px; margin-left: 6px; vertical-align: middle }
@@ -123,7 +130,15 @@ td.mc b { font-family: var(--mono); font-size: 13.5px; font-weight: 500 }
 td.mc .g { display: block; color: var(--ok); font-size: 10.5px }
 .ant-table-wrapper.t td.gol { color: var(--muted); text-align: center }
 .cap-d { display: block; text-transform: none; letter-spacing: 0; font-family: "IBM Plex Sans", sans-serif; font-size: 10px;
-  line-height: 1.3; margin-top: 2px; opacity: .85; font-weight: 400; max-width: 22ch }
+  line-height: 1.3; margin-top: 2px; font-weight: 400; max-width: 22ch }
+
+/* capul lipit (components/lipire.tsx): tabelul capului ia exact lățimile măsurate în corp, iar rândul
+   fantomă (textul capului, invizibil, de înălțime zero) face coloanele din corp cel puțin cât capul */
+.ant-table-wrapper.t .ant-table-header > table { table-layout: fixed !important; width: 1px !important }
+.ant-table-wrapper.t tr.cap-fantoma > td { padding-top: 0 !important; padding-bottom: 0 !important; border: 0 !important; height: 0;
+  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .03em; font-weight: 500 }
+.fantoma { display: flex; height: 0; overflow: hidden; visibility: hidden }
+.fantoma-sort { flex: none; width: 22px }
 
 /* bara de filtre rămâne sus la derulare (derulează <main>, nu documentul) */
 .bara-fixa { position: sticky; top: -26px; z-index: 8; background: var(--bg); margin: -6px -30px 14px; padding: 12px 30px 10px;

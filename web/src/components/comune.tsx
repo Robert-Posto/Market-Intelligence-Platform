@@ -12,7 +12,7 @@ export function EtichetaBanca({ slug, m, fisa, tag }: { slug: string; m: Meta; f
   const logo = m.logo[slug]
   const corp = (
     <span className="cl-banca">
-      {logo && <img src={logo} alt="" />}
+      {logo && <img className="sigla" src={logo} alt="" />}
       <span className="nm">{m.nume[slug] ?? slug}</span>
       {tag && slug === 'libra' && <span className="tag-libra">{t('comun.tag_libra_noi')}</span>}
     </span>

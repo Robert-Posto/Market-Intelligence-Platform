@@ -268,4 +268,8 @@ export const comun = {
   "camp.robor_valoare.descriere": ["valoarea ROBOR citată în documentul băncii", "the ROBOR value quoted in the bank's document"],
   "camp.cashback.eticheta": ["Cashback", "Cashback"],
   "camp.cashback.descriere": ["procentul returnat la plățile cu cardul", "the percentage returned on card payments"],
+  "comun.tema.eticheta": ["Tema", "Theme"],
+  "comun.tema.luminos": ["Luminos", "Light"],
+  "comun.tema.intunecat": ["Întunecat", "Dark"],
+  "comun.tema.sistem": ["Ca sistemul", "System"],
 } as const

@@ -1,3 +1,4 @@
+import { DesktopOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'
 import { Segmented } from 'antd'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
@@ -5,11 +6,13 @@ import { Sumar } from '@mcc/shared'
 import { api } from '../api/client'
 import { T, useLang, type Lang } from '../i18n'
 import { PAGINI, TOATE, cheie } from '../pagini'
+import { useTema, type Tema } from '../tema'
 import { num } from '../util/format'
 
-/** Bara laterală, titlul paginii și comutatorul de limbă. */
+/** Bara laterală, titlul paginii, comutatoarele de limbă și de temă. */
 export default function AppShell() {
   const { t, lang, setLang, locale } = useLang()
+  const { tema, setTema } = useTema()
   const { pathname } = useLocation()
   const id = pathname.replace(/^\//, '').split('/')[0] || 'overview'
   const pagina = TOATE.find((p) => p.id === id) ?? TOATE[0]!
@@ -47,16 +50,32 @@ export default function AppShell() {
               params={{ banci: num(g('bănci'), locale, 0), surse: num(g('surse'), locale, 0), valori: num(g('observații'), locale, 0) }}
             />
           )}
-          <div className="limba">
-            <Segmented<Lang>
-              size="small"
-              value={lang}
-              onChange={setLang}
-              options={[
-                { label: 'RO', value: 'ro' },
-                { label: 'EN', value: 'en' },
-              ]}
-            />
+          {/* limba și tema pe același rând: meniul trebuie să încapă fără derulare la 720 px */}
+          <div className="comutatoare">
+            <div className="limba">
+              <Segmented<Lang>
+                size="small"
+                value={lang}
+                onChange={setLang}
+                options={[
+                  { label: 'RO', value: 'ro' },
+                  { label: 'EN', value: 'en' },
+                ]}
+              />
+            </div>
+            <div className="tema">
+              <Segmented<Tema>
+                size="small"
+                value={tema}
+                onChange={setTema}
+                aria-label={t('comun.tema.eticheta')}
+                options={[
+                  { value: 'luminos', title: t('comun.tema.luminos'), label: <SunOutlined aria-label={t('comun.tema.luminos')} /> },
+                  { value: 'intunecat', title: t('comun.tema.intunecat'), label: <MoonOutlined aria-label={t('comun.tema.intunecat')} /> },
+                  { value: 'sistem', title: t('comun.tema.sistem'), label: <DesktopOutlined aria-label={t('comun.tema.sistem')} /> },
+                ]}
+              />
+            </div>
           </div>
         </div>
       </nav>
