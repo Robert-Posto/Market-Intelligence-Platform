@@ -15,6 +15,9 @@ const INTUNECAT = {
   warn: '#e3a95a', ok: '#7fcb97', accent: '#e7a3ab', accentTint: '#3b2428', onAccent: '#2a1216',
 }
 
+/** Cât alunecă evidențierea unui comutator; `Comutator` așteaptă atât pe paginile grele, iar culoarea din global.css la fel. */
+export const ALUNECARE_COMUTATOR_MS = 150
+
 export function temaMip(intunecat: boolean): ThemeConfig {
   const c = intunecat ? INTUNECAT : LUMINOS
   return {
@@ -57,9 +60,12 @@ export function temaMip(intunecat: boolean): ThemeConfig {
       Collapse: { headerPadding: '0 0 10px 0', contentPadding: '0', headerBg: 'transparent' },
       // Butonul ales devine alb abia după alunecare: cu duratele implicite (0,3 s + 0,2 s), la ~380 ms după
       // apăsare, deși pagina se schimba în 11–28 ms (măsurat 06.10.2026). Mai scurt doar aici; restul păstrează animațiile.
+      // Comutatorul mic (sortarea din 2.3) avea opțiunea aleasă cu colțuri de 2 px, aproape drepte lângă
+      // butoanele de 8 px; acum ca opțiunile comutatorului normal (6 px).
       Segmented: {
         itemSelectedBg: c.accent, itemSelectedColor: c.onAccent, trackBg: c.surface,
-        motionDurationSlow: '0.15s', motionDurationMid: '0.1s',
+        motionDurationSlow: `${ALUNECARE_COMUTATOR_MS / 1000}s`, motionDurationMid: '0.1s',
+        borderRadiusXS: 6,
       },
       Tag: { defaultBg: 'transparent' },
     },

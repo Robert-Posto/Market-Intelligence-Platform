@@ -98,8 +98,8 @@ livrare. Cum s-a făcut trecerea: `docs/HANDOFF_REACT.md`.
   niciun text scris direct în componentă. Datele băncilor (servicii, citate, recenzii, titluri) nu se
   traduc. Textele românești trimise de server trec prin `deLaServer`. Un concept nou din vocabular
   cere `camp.<slug>.eticheta`.
-- **Refolosește, nu rescrie:** `Tabel` (Libra prima, golurile jos), `Sertar` și `Dovezi` (orice PDF
-  prin `linkDocument`), `Despre`, `Pill`, `Banda`, `Paginare`; numerele și datele prin `num` / `formatZi`.
+- **Refolosește, nu rescrie:** `Tabel` (Libra prima, golurile jos), `Sertar` și `Dovezi` (orice PDF prin
+  `linkDocument`), `Despre`, `Pill`, `Banda`, `Paginare`, `Comutator` (nu `Segmented`); `num` / `formatZi`.
 - **Filtrele stau în adresă** (`useSearchParams`), ca o vedere să se poată trimite.
 - Fără CDN; un pachet din afara stack-ului SCC se adaugă doar după ce întrebi.
 - În `app/`, textele românești din `<script>` folosesc „…” sau ”, niciodată `"` ASCII: o ghilimea

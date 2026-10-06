@@ -1,5 +1,5 @@
 import { useMemo, useState, type ComponentType } from 'react'
-import { Input, Segmented, Select } from 'antd'
+import { Input, Select } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { useAndroid } from '../../../api/android'
 import { useMeta } from '../../../api/meta'
@@ -14,6 +14,7 @@ import { eticheta, indexeaza, sePotriveste, type PropsSectiune, type Sectiune } 
 import Portofele from './Portofele'
 import Schimbari from './Schimbari'
 import TrackerePermisiuni from './TrackerePermisiuni'
+import { Comutator } from '../../../components/Comutator'
 import '../../../styles/android.css'
 
 const SECTIUNI: { k: Sectiune; nume: DictKey; C: ComponentType<PropsSectiune> }[] = [
@@ -79,7 +80,7 @@ export default function Android() {
     <>
       <div className="bara-fixa an-bara">
         <div className="filtre">
-          <Segmented<Sectiune> value={sec.k} onChange={(v) => schimba('s', v)}
+          <Comutator<Sectiune> value={sec.k} onChange={(v) => schimba('s', v)}
             options={SECTIUNI.map(({ k, nume }) => ({ value: k, label: t(nume) }))} />
           <label className="f">{t('mobil.android_framework')}
             <Select value={fw} onChange={(v: string) => schimba('fw', v)} style={{ minWidth: 170 }} popupMatchSelectWidth={false}

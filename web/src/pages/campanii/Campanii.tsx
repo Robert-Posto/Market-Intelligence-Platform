@@ -1,5 +1,5 @@
-import { useEffect, useState, type ComponentType } from 'react'
-import { Segmented, Tooltip } from 'antd'
+import type { ComponentType } from 'react'
+import { Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { useCampanii, useComunicate } from '../../api/campanii'
 import { useMeta } from '../../api/meta'
@@ -16,6 +16,7 @@ import Site from './Site'
 import Surse from './Surse'
 import type { PropsSectiune } from './tipuri'
 import YouTube from './YouTube'
+import { Comutator } from '../../components/Comutator'
 import '../../styles/campanii_site.css'
 
 type Cheie = 'site' | 'comunicate' | 'google' | 'bing' | 'youtube' | 'retele'
@@ -44,15 +45,10 @@ export default function Campanii() {
   const bing = useBing()
   const yt = useYoutube()
   const rs = useRetele()
-  const sec = SECTIUNI.find((x) => x.k === sp.get('s')) ?? SECTIUNI[0]!
-  // Secțiunea vine din adresă, iar React Router 7 o schimbă într-o tranziție: ecranul vechi rămâne până se
-  // desenează cel nou (Reclame Google: ~300 ms compilat, ~500 ms în dezvoltare, 06.10.2026). Tabul apăsat se
-  // mută imediat, din starea locală; adresa îl prinde din urmă.
-  const [tab, setTab] = useState<Cheie>(sec.k)
-  useEffect(() => setTab(sec.k), [sec.k])
 
   if (meta.error) return <Eroare e={meta.error} />
   if (!meta.data) return <SeIncarca />
+  const sec = SECTIUNI.find((x) => x.k === sp.get('s')) ?? SECTIUNI[0]!
 
   // câte are fiecare secțiune, pe comutator; până vine răspunsul, tabul rămâne fără cifră
   const n: Record<Cheie, number | undefined> = {
@@ -66,11 +62,13 @@ export default function Campanii() {
   }
 
   const taburi = (
-    <Segmented<Cheie>
+    <Comutator<Cheie>
       className="cm-taburi"
-      value={tab}
+      // secțiunile sunt grele: desenarea lor oprea alunecarea pe loc
+      dupaAlunecare
+      value={sec.k}
       // ca mergi() din aplicația veche: adresa nouă are doar secțiunea, filtrele celei vechi se pierd
-      onChange={(k) => { setTab(k); setSp({ s: k }) }}
+      onChange={(k) => setSp({ s: k })}
       options={SECTIUNI.map(({ k, nume, titlu }) => {
         const x = n[k]
         return {

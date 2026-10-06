@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState, type CSSProperties } from 'react'
-import { Segmented } from 'antd'
+
 import { useSearchParams } from 'react-router-dom'
 import { useMeta } from '../api/meta'
 import { useRate } from '../api/rate_mobil'
@@ -15,6 +15,7 @@ import {
   type Bilant, type SectiuneExtra, type SectiunePret,
 } from './versus/model'
 import { SectiuneExtraVs, SectiunePretVs } from './versus/Sectiune'
+import { Comutator } from '../components/Comutator'
 import '../styles/versus.css'
 
 const TABURI: [string, DictKey][] = [
@@ -106,7 +107,7 @@ export default function Versus() {
             {alese.length ? alese.map((b) => <Pill key={b}>{scurt(b, m.nume)}</Pill>) : <span className="gri">{t('versus.nicio_banca')}</span>}
             <AlegeBanci key={alese.join(',')} toate={toateBanci} alese={alese} m={m} onAplica={(sel) => mergi({ banci: sel.join(',') })} />
           </div>
-          <Segmented style={{ marginLeft: 'auto' }} value={arata} onChange={(v) => mergi({ arata: v })}
+          <Comutator style={{ marginLeft: 'auto' }} value={arata} onChange={(v) => mergi({ arata: v })}
             options={TABURI.map(([v, k]) => ({ value: v, label: t(k) }))} />
         </div>
       </div>
