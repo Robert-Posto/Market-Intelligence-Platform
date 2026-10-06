@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react'
+import { useEffect, useState, type ComponentType } from 'react'
 import { Segmented, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { useCampanii, useComunicate } from '../../api/campanii'
@@ -44,10 +44,15 @@ export default function Campanii() {
   const bing = useBing()
   const yt = useYoutube()
   const rs = useRetele()
+  const sec = SECTIUNI.find((x) => x.k === sp.get('s')) ?? SECTIUNI[0]!
+  // Secțiunea vine din adresă, iar React Router 7 o schimbă într-o tranziție: ecranul vechi rămâne până se
+  // desenează cel nou (Reclame Google: ~300 ms compilat, ~500 ms în dezvoltare, 06.10.2026). Tabul apăsat se
+  // mută imediat, din starea locală; adresa îl prinde din urmă.
+  const [tab, setTab] = useState<Cheie>(sec.k)
+  useEffect(() => setTab(sec.k), [sec.k])
 
   if (meta.error) return <Eroare e={meta.error} />
   if (!meta.data) return <SeIncarca />
-  const sec = SECTIUNI.find((x) => x.k === sp.get('s')) ?? SECTIUNI[0]!
 
   // câte are fiecare secțiune, pe comutator; până vine răspunsul, tabul rămâne fără cifră
   const n: Record<Cheie, number | undefined> = {
@@ -63,9 +68,9 @@ export default function Campanii() {
   const taburi = (
     <Segmented<Cheie>
       className="cm-taburi"
-      value={sec.k}
+      value={tab}
       // ca mergi() din aplicația veche: adresa nouă are doar secțiunea, filtrele celei vechi se pierd
-      onChange={(k) => setSp({ s: k })}
+      onChange={(k) => { setTab(k); setSp({ s: k }) }}
       options={SECTIUNI.map(({ k, nume, titlu }) => {
         const x = n[k]
         return {

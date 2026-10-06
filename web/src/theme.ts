@@ -38,10 +38,6 @@ export function temaMip(intunecat: boolean): ThemeConfig {
       fontFamily: "'IBM Plex Sans', system-ui, sans-serif",
       fontFamilyCode: "'IBM Plex Mono', monospace",
       fontSize: 13,
-      // Animațiile AntD întârziau starea aleasă a comutatoarelor (Segmented: limba, iOS/Android, Grafic/Tabel):
-      // textul devenea alb abia la capătul alunecării, după ~380 ms, și în build-ul compilat. Fără ele, 27–45 ms
-      // (măsurat 06.10.2026). Sertarele și meniurile se deschid acum fără animație.
-      motion: false,
     },
     components: {
       Table: {
@@ -59,7 +55,12 @@ export function temaMip(intunecat: boolean): ThemeConfig {
       },
       Drawer: { paddingLG: 22 },
       Collapse: { headerPadding: '0 0 10px 0', contentPadding: '0', headerBg: 'transparent' },
-      Segmented: { itemSelectedBg: c.accent, itemSelectedColor: c.onAccent, trackBg: c.surface },
+      // Butonul ales devine alb abia după alunecare: cu duratele implicite (0,3 s + 0,2 s), la ~380 ms după
+      // apăsare, deși pagina se schimba în 11–28 ms (măsurat 06.10.2026). Mai scurt doar aici; restul păstrează animațiile.
+      Segmented: {
+        itemSelectedBg: c.accent, itemSelectedColor: c.onAccent, trackBg: c.surface,
+        motionDurationSlow: '0.15s', motionDurationMid: '0.1s',
+      },
       Tag: { defaultBg: 'transparent' },
     },
   }
