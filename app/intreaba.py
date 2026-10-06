@@ -165,6 +165,9 @@ def prompt(ctx):
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
         "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept.",
+        "- Când banca și serviciul sunt clare, tip = cautare, chiar dacă serviciul nu are concept și "
+        "nu-l recunoști: aplicația caută text_cautat în tarifele băncii, iar tu nu știi ce conțin "
+        "tarifele, deci nu pune neclar pentru că nu ești sigur că serviciul există.",
         "- categorie: doar la dobânzi (depozite, credite, conturi și carduri); la comisioane, null. "
         "La o dobândă, conceptul e unul din cele ale categoriei (lista „Categorii” de la final); "
         "„dobânda” fără alt detaliu e `nominala`.",

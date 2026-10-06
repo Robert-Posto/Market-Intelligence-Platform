@@ -146,6 +146,9 @@ class Schema(unittest.TestCase):
         self.assertIn("depozite (Dobânzi la depozite; concepte: nominala)", text)
         # „și la BRD?” după BCR dădea [bcr, brd] (live): continuarea înlocuiește banca
         self.assertIn("înlocuiește băncile anterioare", text)
+        # „datoria vamală la BCR” ieșea `neclar` cu text_cautat completat (evaluarea din 06.10.2026):
+        # modelul nu vede tarifele, deci nu el decide dacă serviciul există
+        self.assertIn("nu știi ce conțin tarifele", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
         self.assertEqual(text, intreaba.prompt(CTX))
 
