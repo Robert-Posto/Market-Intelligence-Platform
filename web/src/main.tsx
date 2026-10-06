@@ -27,7 +27,9 @@ import '@fontsource/source-serif-4/latin-ext-600.css'
 import '@fontsource/source-serif-4/latin-700.css'
 import '@fontsource/source-serif-4/latin-ext-700.css'
 import './styles/global.css'
+import './styles/auth.css'
 import App from './App'
+import { SesiuneProvider } from './auth'
 import { LangProvider, useLang } from './i18n'
 import { temaMip } from './theme'
 import { TemaProvider, useTema } from './tema'
@@ -47,10 +49,13 @@ function CuTema() {
   return (
     <ConfigProvider locale={lang === 'en' ? enUS : roRO} theme={temaMip(intunecat)}>
       <AntApp>
+        {/* fără sesiune, SesiuneProvider arată pagina de logare în loc de aplicație; hash-ul rămâne, deci după logare ne întoarcem la aceeași pagină */}
         {/* HashRouter: adresele rămân `#/produse?grup=…`, ca linkurile salvate din aplicația veche să meargă */}
-        <HashRouter>
-          <App />
-        </HashRouter>
+        <SesiuneProvider>
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </SesiuneProvider>
       </AntApp>
     </ConfigProvider>
   )

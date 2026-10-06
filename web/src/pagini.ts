@@ -8,6 +8,8 @@ export interface Pagina {
   id: string
   pdf: string
   mutata: boolean
+  /** doar pentru rolul admin: meniul o ascunde analistului, iar ruta arată „Acces interzis” */
+  admin?: true
 }
 export interface Grup {
   grup: DictKey
@@ -48,8 +50,8 @@ export const PAGINI: Grup[] = [
     // „Rulare manuală” le pornește de mână (până pe 06.10.2026 rulările manuale stăteau în Overview)
     grup: 'pagini.grup.logging',
     chei: [
-      { id: 'logging', pdf: '', mutata: true },
-      { id: 'rulare', pdf: '', mutata: true },
+      { id: 'logging', pdf: '', mutata: true, admin: true },
+      { id: 'rulare', pdf: '', mutata: true, admin: true },
     ],
   },
 ]
