@@ -187,18 +187,33 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
   const [toate, setToate] = useState(false)
   const concept = i.concept ? etNume(i.concept, t) : t('intreaba.text', { text: i.text_cautat ?? '' })
   if (rb.total === 0) {
+    // filtrele intră în mesaj: „nu avem dobânda nominală la ING” era fals, ING avea 2, fără termen citit
+    const filtre = [
+      i.termen && eticheta(`intreaba.termen.${i.termen}`, i.termen, t),
+      i.produs_credit && eticheta(`intreaba.produs.${i.produs_credit}`, i.produs_credit, t),
+    ].filter(Boolean).join(' · ')
     return (
       <div className="intreaba-fisa">
         <EtichetaBanca slug={rb.banca} m={m} fisa />
         <p>
-          {t('intreaba.zero', { concept, banca: m.nume[rb.banca] ?? rb.banca })}
+          {t('intreaba.zero', { concept: filtre ? `${concept} · ${filtre}` : concept, banca: m.nume[rb.banca] ?? rb.banca })}
           {rb.stare_banca && <> {t(rb.stare_banca === 'blocata' ? 'intreaba.stare.blocata' : 'intreaba.stare.fara_surse')}</>}
+          {!!rb.fara_filtre && <> {tn('intreaba.fara_filtre', rb.fara_filtre)}</>}
+          {!!rb.fara_filtre && i.concept && (
+            <Button size="small" type="link" onClick={() => onDovezi({
+              banca: rb.banca, camp: i.concept!, unitate: '', scenariu: i.categorie ?? '', termen: '', produs: '',
+            })}>
+              {t('intreaba.vezi_le')}
+            </Button>
+          )}
         </p>
       </div>
     )
   }
   const vizibile = toate ? rb.randuri : rb.randuri.slice(0, PRIMELE)
   const cuUnitate = (v: number, u: string) => num(v, locale) + unitTxt(u, t)
+  // categoria spune ceva doar când grupele diferă (dobândă de depozit vs. de credit)
+  const multeCategorii = new Set(rb.rezumat.map((g) => g.categorie)).size > 1
   return (
     <div className="intreaba-fisa">
       <div className="intreaba-fisa-cap">
@@ -216,7 +231,7 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
               ? tn('intreaba.rezumat_egal', g.n, { val: cuUnitate(g.minim, g.unitate) })
               : tn('intreaba.rezumat', g.n, { min: cuUnitate(g.minim, g.unitate), max: cuUnitate(g.maxim, g.unitate) })}
             {g.gratuite > 0 && <> · {tn('intreaba.gratuite', g.gratuite)}</>}
-            {rb.rezumat.length > 1 && <> · <span className="note">{eticheta(`intreaba.categorie.${g.categorie}`, g.categorie, t)}</span></>}
+            {multeCategorii && <> · <span className="note">{eticheta(`intreaba.categorie.${g.categorie}`, g.categorie, t)}</span></>}
             {rb.mod === 'concept' && i.concept && (
               <Button size="small" type="link" onClick={() => onDovezi({
                 banca: rb.banca, camp: i.concept!, unitate: g.unitate, scenariu: g.categorie,
@@ -234,7 +249,12 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
       </table>
       {rb.randuri.length > PRIMELE && (
         <Button size="small" type="link" onClick={() => setToate(!toate)}>
-          {toate ? t('intreaba.arata_mai_putine') : tn('intreaba.arata_toate', rb.randuri.length)}
+          {toate
+            ? t('intreaba.arata_mai_putine')
+            // BCR · Administrare cont are 570 de valori, din care răspunsul aduce 50: „toate (50)” ar minți
+            : rb.total > rb.randuri.length
+              ? t('intreaba.arata_primele', { n: rb.randuri.length, total: rb.total })
+              : tn('intreaba.arata_toate', rb.randuri.length)}
         </Button>
       )}
       {rb.limitat && <p className="note">{t('intreaba.limitat', { n: rb.randuri.length })}</p>}

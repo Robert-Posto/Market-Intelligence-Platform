@@ -261,6 +261,24 @@ class Intrebari(unittest.TestCase):
         d = self.fa(ClientFals(interp(banci=["brd"])), stare_banca=lambda b: "blocata").intreaba("BRD?")
         self.assertEqual((d["raspunsuri"][0]["total"], d["raspunsuri"][0]["stare_banca"]), (0, "blocata"))
 
+    def test_zero_cu_termen_spune_cate_sunt_fara(self):
+        """ING are 2 dobânzi la depozite, dar niciuna cu termen citit din text (mip_merge, 06.10.2026):
+        „nu avem valori” fără asta s-ar citi „ING nu are depozite”."""
+        def cauta(banca, concept, categorie, termen, produs, text):
+            self.cautari.append(termen)
+            return [] if termen else [rand(3.5, "procent", "depozite"), rand(3.6, "procent", "depozite")]
+        c = ClientFals(interp(banci=["ing"], concept="nominala", categorie="depozite", termen="12"))
+        q = intreaba.Intrebari(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
+                               client=c, dir_jurnal=self.dir)
+        r = q.intreaba("ING, depozit pe 12 luni?")["raspunsuri"][0]
+        self.assertEqual((r["total"], r["fara_filtre"], self.cautari), (0, 2, ["12", None]))
+
+    def test_fara_filtre_doar_cand_filtrul_a_golit(self):
+        r = self.fa(ClientFals(interp())).intreaba("BCR?")["raspunsuri"][0]
+        self.assertIsNone(r["fara_filtre"])                    # are valori
+        r = self.fa(ClientFals(interp(banci=["brd"]))).intreaba("BRD?")["raspunsuri"][0]
+        self.assertIsNone(r["fara_filtre"])                    # zero, dar fără filtre de golit
+
     def test_multe_randuri_taiate_la_50(self):
         self.randuri["bcr"] = [rand(i) for i in range(120)]
         r = self.fa(ClientFals(interp())).intreaba("BCR?")["raspunsuri"][0]

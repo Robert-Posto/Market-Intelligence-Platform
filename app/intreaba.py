@@ -321,6 +321,12 @@ class Intrebari:
         text = None if interp["concept"] else interp["text_cautat"]
         randuri = self._cauta(banca, interp["concept"], interp["categorie"], interp["termen"],
                               interp["produs_credit"], text)
+        # termenul și tipul de credit se citesc din textul băncii, deci pot goli un răspuns: ING avea
+        # 2 dobânzi la depozite, niciuna cu termen recunoscut (mip_merge, 06.10.2026); fișa spune atunci
+        # câte sunt fără filtru, ca „nu avem valori” să nu se citească „banca n-are depozite”
+        fara_filtre = None
+        if not randuri and (interp["termen"] or interp["produs_credit"]):
+            fara_filtre = len(self._cauta(banca, interp["concept"], interp["categorie"], None, None, text))
         return {
             "banca": banca,
             "mod": "text" if text else "concept",
@@ -331,6 +337,7 @@ class Intrebari:
             "rezumat": rezuma(randuri),
             "randuri": randuri[:MAX_RANDURI],
             "stare_banca": None if randuri else self._stare_banca(banca),
+            "fara_filtre": fara_filtre,
         }
 
     def intreaba(self, intrebare, anterior=None):

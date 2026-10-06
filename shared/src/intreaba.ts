@@ -44,6 +44,8 @@ export const RaspunsBanca = z
     rezumat: z.array(GrupaRezumat),
     randuri: z.array(ValoareDovada),
     stare_banca: z.enum(['blocata', 'fara_surse']).nullable(),
+    /** zero valori din cauza termenului / tipului de credit: câte sunt fără ele */
+    fara_filtre: z.number().nullable(),
   })
   .passthrough()
 export type RaspunsBanca = z.infer<typeof RaspunsBanca>
