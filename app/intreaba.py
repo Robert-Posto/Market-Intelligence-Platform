@@ -12,8 +12,30 @@ autentificare (06.10.2026), iar cheia ar fi folosibilă de oricine din rețeaua 
 Modulul nu știe de HTTP și nici de SQL: serverul îi dă funcțiile de citire, ca la `rulari.py`.
 """
 
+import datetime
+import importlib.util
 import json
 import os
+import secrets
+import threading
+
+RADACINA = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DIR_JURNAL = os.path.join(RADACINA, "loguri", "intreaba")
+MAX_TOKENS = 400        # interpretarea are sub 200 de tokeni; marja e pentru `clarificare`
+TIMEOUT_S = 30.0
+
+
+def _incarca_preturi():
+    # tabelul de prețuri al fluxului de comparație, un singur loc; încărcat după cale, nu prin
+    # sys.path, ca modulele din extragere_produse_bancare/ să nu acopere modulele din app/ și ingest/
+    spec = importlib.util.spec_from_file_location(
+        "preturi", os.path.join(RADACINA, "extragere_produse_bancare", "preturi.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+preturi = _incarca_preturi()
 
 MODEL_IMPLICIT = "claude-haiku-4-5"    # ales de Nicolae pe 06.10.2026; MIP_INTREABA_MODEL îl schimbă
 # `npm run dev`: proxy-ul Vite (fără changeOrigin) păstrează Host-ul paginii, localhost:5173
@@ -29,6 +51,30 @@ CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text
 
 class Respins(Exception):
     """Cerere greșită (400): întrebare goală sau prea lungă, interpretare anterioară invalidă."""
+
+
+class EroareModel(Exception):
+    """Apelul la model n-a reușit (502); mesajul e pentru utilizator."""
+
+
+def mesaj_eroare(exc):
+    """Mesajul pentru utilizator, de la eroarea cea mai specifică la cea generală (retryable sau nu)."""
+    import anthropic
+    if isinstance(exc, anthropic.AuthenticationError):
+        return "Cheia Anthropic e respinsă (401). Verifică ANTHROPIC_API_KEY din .env."
+    if isinstance(exc, anthropic.RateLimitError):
+        return "Prea multe cereri la Anthropic (429). Încearcă din nou peste un minut."
+    if isinstance(exc, anthropic.APITimeoutError):
+        return f"Modelul n-a răspuns în {int(TIMEOUT_S)} s. Încearcă din nou."
+    if isinstance(exc, anthropic.APIConnectionError):
+        return "Nu s-a putut ajunge la api.anthropic.com (rețea sau proxy)."
+    if isinstance(exc, anthropic.APIStatusError):
+        return f"API-ul Anthropic a răspuns cu eroarea {exc.status_code}."
+    return f"Eroare la apelul modelului ({exc.__class__.__name__})."
+
+
+def _acum():
+    return datetime.datetime.now().astimezone().isoformat(timespec="seconds")
 
 
 def _gol(tip="neclar"):
@@ -196,3 +242,113 @@ def rezuma(randuri):
         g["maxim"] = max(g["maxim"], v)
         g["gratuite"] += int(v == 0)
     return sorted(grupe.values(), key=lambda g: (-g["n"], g["categorie"], g["unitate"]))
+
+
+class Intrebari:
+    """O întrebare → interpretarea modelului → valorile din bază. Fără HTTP și fără SQL: serverul
+    dă funcțiile de citire (`context`, `cauta`, `stare_banca`), ca la `rulari.Rulari`."""
+
+    def __init__(self, context, cauta, stare_banca, client=None, dir_jurnal=DIR_JURNAL):
+        self._sursa_context = context
+        self._cauta = cauta
+        self._stare_banca = stare_banca
+        self._client = client
+        self.dir = dir_jurnal
+        # separat de tokenul rulărilor: pagina asta are voie și de pe Vite (:5173), rulările nu
+        self.token = secrets.token_urlsafe(32)
+        self._lacat = threading.Lock()
+        self._lacat_jurnal = threading.Lock()
+        self._pregatit = None
+
+    def stare(self):
+        return {"activ": activ(), "model": model()}
+
+    def _context(self):
+        # o conexiune nouă la Postgres costă ~2 s pe Windows, iar promptul trebuie să rămână identic
+        # între întrebări ca să intre în cache: se construiește o dată, la prima întrebare; după o
+        # încărcare de date nouă se reface la repornirea serverului
+        with self._lacat:
+            if self._pregatit is None:
+                ctx = self._sursa_context()
+                self._pregatit = (ctx, prompt(ctx), schema(ctx))
+            return self._pregatit
+
+    def _clientul(self):
+        if self._client is None:
+            import anthropic
+            self._client = anthropic.Anthropic(timeout=TIMEOUT_S, max_retries=2)
+        return self._client
+
+    def _cheama(self, m, sistem, sch, intrebare, anterior):
+        import anthropic
+        continut = intrebare if anterior is None else (
+            "Interpretarea întrebării anterioare: " + json.dumps(anterior, ensure_ascii=False)
+            + "\nÎntrebarea curentă: " + intrebare)
+        try:
+            r = self._clientul().messages.create(
+                model=m,
+                max_tokens=MAX_TOKENS,
+                system=[{"type": "text", "text": sistem, "cache_control": {"type": "ephemeral"}}],
+                messages=[{"role": "user", "content": continut}],
+                output_config={"format": {"type": "json_schema", "schema": sch}},
+            )
+        except anthropic.APIError as exc:
+            raise EroareModel(mesaj_eroare(exc)) from None
+        tokeni = preturi.aduna_usage({}, r.usage)
+        tokeni.pop("apeluri", None)
+        text = next((b.text for b in r.content if getattr(b, "type", None) == "text"), "")
+        try:
+            brut = json.loads(text)
+        except ValueError:
+            brut = None
+        return brut, tokeni, r.stop_reason
+
+    def _raspuns(self, banca, interp):
+        text = None if interp["concept"] else interp["text_cautat"]
+        randuri = self._cauta(banca, interp["concept"], interp["categorie"], interp["termen"],
+                              interp["produs_credit"], text)
+        return {
+            "banca": banca,
+            "mod": "text" if text else "concept",
+            "total": len(randuri),
+            # căutarea după text e tăiată la MAX_RANDURI în SQL, deci totalul real poate fi mai mare
+            "limitat": bool(text) and len(randuri) >= MAX_RANDURI,
+            "ambigue": sum(1 for r in randuri if r.get("ambiguu")),
+            "rezumat": rezuma(randuri),
+            "randuri": randuri[:MAX_RANDURI],
+            "stare_banca": None if randuri else self._stare_banca(banca),
+        }
+
+    def intreaba(self, intrebare, anterior=None):
+        intrebare = verifica_intrebarea(intrebare)
+        anterior = verifica_anterior(anterior)
+        ctx, sistem, sch = self._context()
+        m = model()
+        rand = {"data": _acum(), "intrebare": intrebare, "model": m}
+        try:
+            brut, tokeni, stop = self._cheama(m, sistem, sch, intrebare, anterior)
+        except EroareModel as exc:
+            rand["eroare"] = str(exc)
+            self._jurnal(rand)
+            raise
+        if stop in ("refusal", "max_tokens"):
+            interp, ignorate = _gol(), []
+        else:
+            interp, ignorate = valideaza(brut, ctx)
+        raspunsuri = [self._raspuns(b, interp) for b in interp["banci"]] if interp["tip"] == "cautare" else []
+        cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"], tokeni["scriere_cache"])
+        rand.update(interpretare=interp, stop=stop, randuri={r["banca"]: r["total"] for r in raspunsuri},
+                    tokeni=tokeni, cost_usd=cost)
+        self._jurnal(rand)
+        return {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
+                "model": m, "tokeni": tokeni, "cost_usd": cost}
+
+    def _jurnal(self, rand):
+        """Un rând pe întrebare, ca să se vadă unde greșește interpretarea. Nu oprește răspunsul."""
+        try:
+            os.makedirs(self.dir, exist_ok=True)
+            with self._lacat_jurnal:
+                with open(os.path.join(self.dir, rand["data"][:7] + ".jsonl"), "a", encoding="utf-8") as f:
+                    f.write(json.dumps(rand, ensure_ascii=False, default=str) + "\n")
+        except OSError:
+            pass
