@@ -1,0 +1,41 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/cont-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Online de Business / Contul Primul An Gratuit (Deschide Cont Online Business 24/7)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pachetul BT pentru firme/PFA nou înființate sau existente: cont curent, card, online banking, plăți nelimitate gratuite și comisioane POS preferențiale — foarte apropiat de Cont Deștept, dar perioada gratuită este de 24 de luni (ofertă campanie sept-dec 2026) și nu este limitat strict la start-up-uri, ci și la firme existente care nu au cont la BT.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele comisioanelor POS/E-commerce și durata gratuității, iar linkul de meniu 'Contul primul an gratuit' redirecționează spre aceeași pagină, confirmând că este produsul curent echivalent.",
+      "citat": "Acceptă plăți la POS/POS App sau online, și ai comisioane preferențiale la toate încasările cu cardul. Comision de procesare BT POS APP ~~0,9%~~ 0,7% +0,1 lei Comision de procesare POS ~~0,9%~~ 0,7% Comision de procesare E-commerce ~~1.00%~~ 0,9%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/contul-primul-an-gratuit",
+    "https://intreb.bancatransilvania.ro/cat-ma-costa-pachetul-contul-primul-an-gratuit/",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/contul-primul-an-gratuit",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/contul-primul-an-gratuit"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3820,
+    "citire_cache": 137181,
+    "scriere_cache": 64282,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2263612
+  }
+}

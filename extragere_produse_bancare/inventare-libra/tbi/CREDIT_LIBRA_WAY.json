@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-06",
+  "banca": "tbi",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/product/creditul-tau-personal/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul tau personal",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru nevoi personale, persoane fizice, fara justificare, in RON, cu perioada 12-60 luni si valoare maxima 150.000 lei, aplicat 100% online - corespunde direct cu Credit nevoie personale Libra Way (nevoi personale, RON, max 60 luni, max 150.000 RON).",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicata a produsului contine explicit sumele maxime, perioada de rambursare si exemple de dobanzi/DAE pentru creditul de nevoi personale standard online.",
+      "citat": "Pana la 150.000 lei, in doar cateva minute - Proces 100% online, de oriunde ai fi, fara drumuri la banca - Ai nevoie doar de buletin, daca veniturile tale sunt raportate la ANAF",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2024/02/Lista_de_dobanzi_taxe_si_comisioane_CASH_-Februarie_2024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Credit de nevoi personale standard Online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobanzi, taxe si comisioane pentru persoane fizice include sectiunea dedicata 'Credit de nevoi personale standard Online', cu comisioane si plaja de dobanzi aplicabile, acelasi tip de produs ca Libra Way.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document PDF oficial de tarife care listeaza explicit comisionul de analiza si plaja de dobanzi pentru Credit de nevoi personale standard Online.",
+      "citat": "Credit de nevoi personale standard Online Comisioane Comision de analiza 299 Lei suma fixa, la solicitarea clientului poate fi finantata de creditor Dobanzi Dobanda (fixa) tinand cont de tipul/profilul Clientului; credit cu sau fara codebitor; credit cu sau fara asigurare de viata; incepand de la 20.40% si pana la 49.9%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2337,
+    "citire_cache": 6397,
+    "scriere_cache": 33023,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1072149
+  }
+}

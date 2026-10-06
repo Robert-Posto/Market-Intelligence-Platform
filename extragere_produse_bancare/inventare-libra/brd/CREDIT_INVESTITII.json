@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/credite-de-investitii/credite-de-investitii-imobiliare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de investiții imobiliare (PJ)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții pentru persoane juridice (IMM), destinat achiziției/construcției de imobile pentru activitatea companiei - aceeași categorie de produs (credit de investiții pentru firme) ca produsul Libra, componenta imobiliară.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu cifre complete despre sume, perioadă și condiții.",
+      "citat": "Suma minimă este 200.000 RON sau 40.000 EUR - Suma maximă este 5.000.000 RON sau 1.000.000 EUR Perioada de creditare este de maximum 120 luni, cu excepția profesiilor liberale și a domeniului IT organizate ca societăți comerciale, unde perioada de creditare este de maximum 240 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/credite-de-investitii/credite-de-investitii-echipamente",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de investiții echipamente (PJ)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții pentru persoane juridice (IMM), destinat achiziției de mijloace de transport, echipamente și utilaje - componenta de echipamente a creditului de investiții pentru firme, echivalentă cu produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu cifre complete despre sume, perioadă, garanții și procent de finanțare.",
+      "citat": "Suma minimă este 50.000 RON - Suma maximă este 5.000.000 RON Care este perioada de creditare? Perioada maximă de creditare este de 84 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1432,
+    "citire_cache": 6309,
+    "scriere_cache": 31245,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0937023
+  }
+}

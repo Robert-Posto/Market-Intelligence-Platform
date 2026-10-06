@@ -1,0 +1,48 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Pachetul de Cont Curent ANTREPRENOR CURAJOS (încredere 0.55) — Este tot un cont curent pentru persoane juridice, cu aplicare online și card business inclus, dar nu este un produs exclusiv-online (e un pachet cont curent clasic cu opțiune de aplicare online) și este restricționat la firme cu cifră de afaceri sub 1 milion EUR, spre deosebire de Cont Online Business Libra care vizează orice PJ/PFA și e gestionat exclusiv online; BRD listează separat, pe segmentul IMM 2-50M Euro, un flux dedicat „Deschide cont 100% ONLINE”, dar acesta e găzduit pe platforma de onboarding online.brd.ro (exclusă ca internet banking/aplicație, inaccesibilă pentru extragere de conținut)."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de Cont Curent ANTREPRENOR CURAJOS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un cont curent pentru persoane juridice, cu aplicare online și card business inclus, dar nu este un produs exclusiv-online (e un pachet cont curent clasic cu opțiune de aplicare online) și este restricționat la firme cu cifră de afaceri sub 1 milion EUR, spre deosebire de Cont Online Business Libra care vizează orice PJ/PFA și e gestionat exclusiv online; BRD listează separat, pe segmentul IMM 2-50M Euro, un flux dedicat „Deschide cont 100% ONLINE”, dar acesta e găzduit pe platforma de onboarding online.brd.ro (exclusă ca internet banking/aplicație, inaccesibilă pentru extragere de conținut).",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina descrie clar pachetul de cont curent PJ cu pragul de cifră de afaceri și aplicare online, dar nu este produsul „exclusiv online” echivalent exact, ci cel mai apropiat substitut descriptiv accesibil.",
+      "citat": "Pachetul pentru operațiuni curente dedicat antreprenorilor curajoși, dar calculați, care îți ușurează gestiunea cheltuielilor de zi cu zi pentru un cost fix lunar. Ofertă dedicată clienților cu cifra de afaceri de până la 1MIL Euro (echivalentul în lei).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-2-50m-euro/activitate-curenta/deschide-cont-100-online",
+    "https://www.brd.ro/companii",
+    "http://online.brd.ro/deschide-cont-pj",
+    "https://www.brd.ro/smart-imm",
+    "https://online.brd.ro/deschide-cont-pj",
+    "https://www.brd.ro/companii/imm-peste-1m-euro",
+    "https://www.brd.ro/companii/documente-utile",
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent"
+  ],
+  "durata_s": 173,
+  "consum": {
+    "intrare": 14,
+    "iesire": 12919,
+    "citire_cache": 245163,
+    "scriere_cache": 95423,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4168081
+  }
+}

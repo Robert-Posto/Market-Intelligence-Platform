@@ -1,0 +1,46 @@
+{
+  "generat": "2026-10-06",
+  "banca": "techventures",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/persoane-fizice/credite-pentru-achizitie-locuinta",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru achiziție locuință",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs destinat persoanelor fizice pentru achiziție/construcție/refinanțare de locuință, cu garanție imobiliară — același tip de produs și segment ca CREDIT_IPOTECAR_PF. Diferă plafonul maxim (750.000 EUR vs. 15 mil. lei la Libra) și perioada maximă (30 ani / 360 luni vs. 420 luni la Libra).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate elementele cheie: monedă, sumă finanțată, avans minim, perioadă, dobândă și exemplu DAE complet.",
+      "citat": "Suma finanțată: maximum 85% din valoarea garanțiilor imobiliare, dar nu mai mult de 750.000 EUR, în funcție de valuta creditului vs. moneda în care se obțin veniturile și dacă există sau nu alte imobile în proprietate.",
+      "dovada_metoda": "Conținutul textual complet al paginii (caracteristici, dobândă, exemplu DAE) a fost obținut direct, fără a fi nevoie de randare JavaScript; accesul direct prin web_fetch a fost blocat de robots.txt, dar conținutul a fost recuperat prin căutare.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/persoane-fizice/credite-pentru-achizitie-locuinta",
+    "https://techventures.bank/persoane-fizice/credite-de-refinantare",
+    "https://techventures.bank/persoane-fizice/credite-pentru-achizitie-locuinta",
+    "https://techventures.bank/persoane-fizice/credite",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/persoane-fizice/credite-pentru-achizitie-locuinta"
+  ],
+  "durata_s": 58,
+  "consum": {
+    "intrare": 119591,
+    "iesire": 3490,
+    "citire_cache": 43688,
+    "scriere_cache": 29971,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3577471
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CONT_DEZVOLTATOR",
+  "denumire": "Contul Dezvoltatorului",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont Escrow",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BT nu are un produs explicit numit „Contul Dezvoltatorului” conform Legii 207/2025; cel mai apropiat este Contul Escrow generic pentru persoane juridice, disponibil în LEI și EUR, folosit pentru încasarea și gestionarea sumelor (ex. avansuri) până la îndeplinirea unor condiții contractuale. Nu este menționată explicit destinația de proiect imobiliar/dezvoltator sau obligativitatea deschiderii doar în sucursală.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul de tarife conține o secțiune dedicată XIII. Cont Escrow cu comisioane explicite în LEI și EUR, dar nu există o pagină dedicată sau fișă de produs care să confirme legătura cu proiectele imobiliare/Legea 207/2025.",
+      "pagina_pdf": 26,
+      "citat": "XIII. Cont Escrow Tip Operațiune Valoare comision 1. Cont Escrow Comision gestiune cont Escrow - în LEI 0,5% din sumele încasate, min 50 LEI / lună Comision gestiune cont Escrow - în EUR 0,5% din sumele încasate, min 15 EUR / lună",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1566,
+    "citire_cache": 138767,
+    "scriere_cache": 102245,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2990419
+  }
+}

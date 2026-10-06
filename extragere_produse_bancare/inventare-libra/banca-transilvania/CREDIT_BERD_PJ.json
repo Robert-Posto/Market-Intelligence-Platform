@@ -1,0 +1,69 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-fei",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanții FEI (programele FEI Competitivitate și FEI Sustenabilitate)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit de investiții/capital de lucru pentru IMM cu garanție de portofoliu de 80%, finanțat prin FEI (nu BERD) în cadrul PNRR/InvestEU; plafonul maxim este 2 mil. EUR/9,7 mil. lei, mai mic decât cei 10 mil. lei de la Libra, iar durata e de 3-15 ani față de 12-120 luni la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele programului (procent garanție, plafon maxim, valută, durată), confirmate și în rezultatele de căutare care au indexat conținutul paginii.",
+      "citat": "Creditele cu garanții FEI sunt finanțări acordate prin programele FEI Competitivitate și FEI Sustenabilitate, dezvoltate în parteneriat cu Fondul European de Investiții. Acestea pot accesa până la 2 milioane euro (sau 9,7 milioane lei) pentru investiții sau capital de lucru, cu garanție FEI. 80% din credit este garantat de FEI, ceea ce înseamnă zero garanții materiale pentru liniile de credit revolving sau creditele pe termen mediu.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-bid",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanții BID (Garanția de portofoliu pentru IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit de investiții pentru IMM cu garanție de portofoliu de 70% (nu 80% ca la Libra) finanțat prin Banca de Investiții și Dezvoltare din fonduri NextGenerationEU/PNRR, nu prin BERD; plafonul de 14 mil. lei și durata de max. 120 luni pentru investiții sunt comparabile cu cele de la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele: procent garanție, plafon maxim al finanțării și durata maximă pentru investiții.",
+      "citat": "Obții finanțări la un cost mult mai avantajos si cu un aport propriu redus și beneficiezi de garanții de 70% din valoarea împrumutului · Primești credite în lei, valoarea max a finantarii fiind de 14.000.000 lei · Perioada de creditare pentru investitii - max 120 luni iar pentru facilitatile de capital de lucru cu rate-non-revolving - max 48 luni.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Programe speciale pentru companii (Credit cu garanții FEI / Credit BID)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina-hub prezintă comparativ ambele programe de garanție europeană (FEI și BID) pentru IMM, cu cifrele lor cheie, dar nu este specific dedicată unui singur produs precum cel Libra cu garanție BERD.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina hub confirmă existența și cifrele principale (procent garanție, durată) pentru ambele programe similare, verificate direct prin acces la pagină.",
+      "citat": "Credit cu garanții FEI - Pentru IMM-uri din diverse domenii. - Garanții europene de până la 70%. Credit BID - Investiții: până la 120 luni. - Aport propriu redus și costuri mult mai avantajoase.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/finantare/programe-speciale#:~:text=Credit%20cu%20garan%C8%9Bii%20FEI%20%2D,%C8%99i%20costuri%20mult%20mai%20avantajoase."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-fei",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-bid",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/compara"
+  ],
+  "durata_s": 74,
+  "consum": {
+    "intrare": 10,
+    "iesire": 5669,
+    "citire_cache": 171997,
+    "scriere_cache": 80141,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.29146190000000005
+  }
+}

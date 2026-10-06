@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/arhiva-pj/Tarife-si-Comisioane-pentru-Persoane-Juridice-Anexa-1-pentru-Persoane-Juridice-care-utilizeaza-ING-Business-9-decembrie.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife dedicat exclusiv clienților persoane juridice care utilizează platforma ING Business (echivalentul exact al Internet & Mobile Banking business Libra), cu comision explicit de administrare lunară.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Conținutul documentului, obținut prin indexarea motorului de căutare (accesul direct prin web_fetch a fost blocat de permisiunile site-ului/robots.txt), conține explicit secțiunea IV.a. ING Business cu taxa de instalare și administrare lunară.",
+      "dovada_metoda": "Conținutul literal a fost confirmat prin rezultatele web_search; fetch direct a returnat eroare de permisiune pe acest folder al site-ului.",
+      "pagina_pdf": 1,
+      "citat": "Comisioanele pentru Tarife si Comisioane pentru persoane juridice, Anexa 1 versiune valabila incepand cu data de 9 Decembrie 2022 IV Sisteme electronice de plata si servicii aferente Comision IV a. ING Business Instalare Fara comision Administrare ING Business EUR 20/ companie/ luna",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING Business (inclus în pachetele ING Fix)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina pachetelor ING Fix pentru firme arată că platforma ING Business de internet și mobile banking este inclusă în toate pachetele de cont curent pentru companii, cu costurile lunare ale pachetelor respective.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina conține tabelul cu prețurile pachetelor (40, 70, 150, 165, 250 RON/lună) în care ING Business apare explicit ca serviciu inclus, oferind context tarifar indirect pentru produs.",
+      "citat": "Servicii incluse în pachet FIX Util(40 RON) FIX Online (70 RON) FIX RON (150 RON) FIX Valută (165 RON) FIX Complet (250 RON) ING Business, platforma de internet si mobile banking",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/Internet-banking/ING-Business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată descrie ING Business ca aplicația de internet și mobile banking pentru persoane juridice (IMM/antreprenori), cu activare gratuită, exact corespondentul produsului Libra Internet & Mobile Banking business.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este pagina oficială dedicată produsului și confirmă segmentul de clienți (firme) și funcționalitățile, dar nu conține cifre de tarife explicite pe pagină (acestea sunt în documentul de tarife separat).",
+      "citat": "ING Business este aplicația de internet și mobile banking, cu activare gratuită pentru antreprenorii ING, care te ajută să ai grijă de afacerea ta, simplu și sigur.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/Internet-banking/ING-Business#:~:text=ING%20Business%20este%20aplica%C8%9Bia%20de,afacerea%20ta%2C%20simplu%20%C8%99i%20sigur."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/arhiva-pj/Tarife-si-Comisioane-pentru-Persoane-Juridice-Anexa-1-pentru-Persoane-Juridice-care-utilizeaza-ING-Business-9-decembrie.pdf",
+    "https://ing.ro/imm/Internet-banking/ING-Business",
+    "https://ing.ro/ing-in-romania/informatii-utile/documente-contractuale",
+    "https://ing.ro/dam/jcr:123a90d5-4fec-460b-b98e-7d77151321c0/Tarife%20si%20Comisioane%20pentru%20Persoane%20Juridice.pdf"
+  ],
+  "durata_s": 109,
+  "consum": {
+    "intrare": 53769,
+    "iesire": 9813,
+    "citire_cache": 91032,
+    "scriere_cache": 59773,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3733069
+  }
+}

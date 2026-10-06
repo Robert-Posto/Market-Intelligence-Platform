@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-05",
+  "banca": "tbi",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/product/depozitul-simplu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul Simplu",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen clasic, in agentie, pentru lichiditati temporar neutilizate, cu dobanda fixa si posibilitate de lichidare anticipata - corespunde direct produsului Libra DEPOZIT_TERMEN pentru segmentul persoane fizice.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicata produsului contine grila completa de dobanzi pe valute si termene, plus conditiile de lichidare anticipata.",
+      "citat": "Alege depozitele tbi bank si motiveaza-ti economiile in LEI, EURO sau USD; dobanzile noastre sunt competitive si fixe pe durata depozitului; fara costuri pentru deschiderea, administrarea, depunerea sau retragerea in numerar a banilor din depozit la scadenta; daca lichidezi anticipat depozitul, beneficiezi de o dobanda egala cu cea practicata la contul curent standard.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2025/09/Dobanzi-depozite_TBI_26septembrie2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozitul Simplu / Depozitul Online / Depozit persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobanzi care acopera atat depozitele la termen pentru persoane fizice (Depozitul Simplu si Online) cat si pentru persoane juridice, cu toate termenele si valutele.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document PDF dedicat exclusiv dobanzilor la depozite, cu tabele separate pentru persoane fizice si persoane juridice si cifre exacte pe fiecare termen.",
+      "citat": "RON | 7,40% | 7,50% 6,60% 7,50% | 5,75% | 6,25% | 5,50% | 5,50% | 5,50% | 5,50% ... II. Persoane Juridice Moneda / Termen 1 lună 3 luni 6 luni 12 luni RON 4,50% 5,00% 6,00% 6,10%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/companii/depozite/depozit-persoane-juridice/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit pentru companii (Depozit persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen dedicat firmelor (PFA, liber profesionisti, companii) pentru surplusul de lichiditate din conturile curente, corespunzand segmentului persoane juridice al produsului Libra DEPOZIT_TERMEN.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicata descrie explicit produsul, segmentul de clienti si termenele/comisioanele, dar nu afiseaza procentele de dobanda (acestea sunt in documentul separat de dobanzi).",
+      "citat": "Poti alege intre diferite perioade de maturitate (1, 3, 6 sau 12 luni) si valute (RON, EUR sau USD) comisioane depunere numerar: 0 LEI/EUR/USD comision reinnoire depozit: 0 LEI/EUR/USD Ratele dobanzilor sunt calculate anual si sunt fixe pe toata durata contractului de depozit.",
+      "citat_verificat": true,
+      "link_live": "https://tbibank.ro/companii/depozite/depozit-persoane-juridice/#:~:text=Poti%20alege%20intre%20diferite%20perioade,toata%20durata%20contractului%20de%20depozit."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/persoane-juridice/depozite-business/",
+    "https://tbibank.ro/wp-content/uploads/2025/09/Dobanzi-depozite_TBI_26septembrie2025.pdf",
+    "https://tbibank.ro/companii/depozite/depozit-persoane-juridice/"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3696,
+    "citire_cache": 113110,
+    "scriere_cache": 50680,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.18630200000000002
+  }
+}

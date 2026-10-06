@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/dobanzi-pf.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozitul la termen – tranșa de 150 zile (dobândă promoțională)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BRD nu are un depozit promoțional de 13 luni (1 an și 1 lună) identic cu cel Libra, dar în grila sa de 'Depozite la termen' există o tranșă specială de 150 zile (5 luni) cu dobândă semnificativ mai mare decât restul tranșelor standard (5,60% față de 3,50-4,00% la termenele vecine), marcată cu * și cu restricții speciale (fără reînnoire automată, fără bonus YOU BRD) — exact comportamentul unui produs promoțional cu dobândă ridicată, dar pe un termen diferit (150 zile vs 396 zile) și, conform celui mai recent ghid pentru companii (Depozitul 5.000, document 11.04.2026), tranșa de 150 zile nu mai apare la persoane juridice, deci segmentul acoperit cu certitudine este doar persoane fizice, nu și persoane juridice ca la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul oficial de dobânzi standard pentru persoane fizice conține explicit tranșa promoțională de 150 zile cu valoarea dobânzii, dar termenul (5 luni) diferă substanțial de cel al produsului Libra (13 luni) și nu există confirmare că aceeași tranșă promoțională se aplică și persoanelor juridice în documentul curent.",
+      "citat": "150* 5.60% - 2.00% 5.60% - 2.00% ... *Bonusul de dobanda nu se acorda pentru depozitele la termen pe 150 zile. Depozitul la termen pe 150 zile se poate constitui doar fara optiune de reinnoire automata.",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/_files/pdf/dobanzi-pf.pdf",
+    "https://www.brd.ro/_files/pdf/Depozitul-la-termen_companii_mici_RO.pdf",
+    "https://www.brd.ro/calea-brd/produse-de-economisire",
+    "https://www.brd.ro/depozitul-la-termen"
+  ],
+  "durata_s": 68,
+  "consum": {
+    "intrare": 12,
+    "iesire": 4914,
+    "citire_cache": 171249,
+    "scriere_cache": 72077,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2636063
+  }
+}

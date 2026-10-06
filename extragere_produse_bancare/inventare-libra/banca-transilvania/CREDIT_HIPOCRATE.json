@@ -1,0 +1,54 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_HIPOCRATE",
+  "denumire": "Credit Hipocrate (medici)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Regulament-oficial/Campanie/2024/Medici-Familie-si-Medicina-Generala.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit pentru investiții medicale (Divizia pentru Medici - credite persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact același tip de produs: credit pentru persoane juridice (SRL/PFA din domeniul medical) destinat achiziției, construcției, extinderii, amenajării cabinetului/clinicii medicale și dotării cu echipamente medicale - identic ca scop cu Credit Hipocrate de la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul oficial al campaniei DPM pentru persoane juridice conține secțiunea dedicată produsului cu toate cifrele (valoare maximă, perioadă, garanții, finanțare procentuală).",
+      "citat": "Valoarea creditului este de până la 600.000 eur, in echivalent LEI; Perioada creditului de până la 15 ani Garanțiile pentru acordarea creditului pot fi imobiliare, mobiliare sau un mixt de garanții imobiliare si mobiliare; Finanțarea poate fi până la 100% din valoarea investiției; Destinație- credit de investiții medicale.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://campanie.bancatransilvania.ro/diviziapentrumedici/credite/credit-pentru-investitii-medicale",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții medicale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exclusiv acestui produs de credit pentru persoane juridice din domeniul medical (medici colaboratori pe PFA/SRL), cu destinație identică: achiziția, construcția, extinderea, amenajarea cabinetului/clinicii medicale și dotarea cu echipamente.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina este confirmată ca fiind dedicată exact acestui produs (titlu și conținut din rezultatele de căutare arată cifrele produsului), dar accesul direct la pagină a eșuat la încercarea de fetch, posibil din cauza randării JavaScript.",
+      "citat": "Garanțiile pentru acordarea creditului pot fi imobiliare, mobiliare sau un mixt de garanții imobiliare și mobiliare · Finanțarea poate fi până la 100% din valoarea investiției · Poți să iei creditul pentru achiziția, construcția, extinderea, amenajarea cabinetului/clinicii medicale și dotarea cu echipamente medicale · Ești medic colaborator, mai exact încasezi contravaloarea prestării serviciilor tale medicale pe un PFA/SRL de la operatori medicali.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/divizia-pentru-medici",
+    "https://www.bancatransilvania.ro/files/app/media/Regulament-oficial/Campanie/2024/Medici-Familie-si-Medicina-Generala.pdf",
+    "https://intreb.bancatransilvania.ro/divizia-pentru-medici/",
+    "https://campanie.bancatransilvania.ro/diviziapentrumedici/credite/credit-pentru-investitii-medicale",
+    "https://campanie.bancatransilvania.ro/diviziapentrumedici/credite/credit-pentru-investitii-medicale"
+  ],
+  "durata_s": 97,
+  "consum": {
+    "intrare": 148047,
+    "iesire": 5221,
+    "citire_cache": 103862,
+    "scriere_cache": 60091,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5193039
+  }
+}

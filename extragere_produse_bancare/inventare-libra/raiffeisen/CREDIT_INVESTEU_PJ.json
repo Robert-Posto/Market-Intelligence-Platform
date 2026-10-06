@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/competitivitate-eif.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Competitivitate EIF (program de finanțare cu garanție InvestEU/EIF pentru IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit pentru activitatea curentă și credit de investiții, garantat prin schema InvestEU/EIF) și același segment (IMM/PJ), dar plafonul maxim e mult mai mic: până la 1,7 milioane EUR per credit, față de 250k-10 mil. pentru activitate curentă și 15-20 mil. RON pentru investiții la Libra; durata creditelor de investiții este de max. 120 luni (se încadrează în intervalul 12-120 luni de la Libra), dar linia de credit e limitată la 24+24 luni.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată programului Competitivitate EIF, cu cifre explicite pentru sume, valute, avans și durate pentru ambele tipuri de credit (investiții și activitate curentă).",
+      "citat": "Valoarea creditului: până la 1.7 milioane EUR, exclus refinanțări Durata creditului: max. 120 luni (inclusiv perioada de grație) de la semnarea contractului de credit.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/competitivitate-eif.html#:~:text=Valoarea%20creditului%3A%20p%C3%A2n%C4%83%20la%201.7,la%20semnarea%20contractului%20de%20credit."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/despre-noi/comunicate-de-presa/2023/acord-intre-fondul-european-de-investitii-si-raiffeisen-bank-romania.html",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/competitivitate-eif.html",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/sustenabilitate-eif.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 42301,
+    "iesire": 2586,
+    "citire_cache": 83294,
+    "scriere_cache": 47950,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2469958
+  }
+}

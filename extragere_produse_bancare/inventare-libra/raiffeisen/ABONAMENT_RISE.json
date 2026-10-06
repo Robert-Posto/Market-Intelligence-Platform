@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm/pachet-imm-cont-curent-plus.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de cont curent IMM Plus",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pachetul Plus este cel mai apropiat ca preț standard (59 lei/lună, cu promoție 0 lei primele 24 luni) de abonamentul RISE (50 lei/lună), pentru același segment IMM/PFA, dar include doar 5 plăți interbancare lunare incluse (nu plăți/încasări nelimitate) și nu menționează mPOS sau un număr fix de carduri business incluse.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată Pachetului Plus conține explicit comisionul standard (59 Lei/lună) și limitele de tranzacții incluse (5 plăți interbancare lei, 5 EUR/USD, 2 retrageri numerar), suficiente pentru comparație directă.",
+      "citat": "Pachetul PLUS de la Raiffeisen Bank pentru IMM-uri: cont curent, card de debit, Internet si Mobile Banking si beneficii exclusive, de la doar 49 lei/luna. Pachetul de cont curent IMM Plus 0 Lei*/lună, primele 24 luni, dacă devii client *Comisionul standard este de 59 Lei/lună",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent IMM (Start / Plus / Optim / Extra / Ultra)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (abonament/pachet operațional de cont curent pentru firme/PFA, cu plăți online, card business, retrageri) și același segment (IMM/PFA), dar structura diferă: Raiffeisen oferă mai multe trepte de preț cu plafoane diferite de tranzacții (nu un singur abonament cu plăți/încasări nelimitate la 50 lei ca RISE); cel mai apropiat ca preț este Pachetul Plus (49 lei/lună) dar acesta are doar 5 plăți interbancare incluse, nu nelimitat ca la RISE, iar comisionul mPOS nu este menționat în acest pachet.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina conține tabelul comparativ cu toate pachetele de cont curent IMM, prețurile lunare și limitele de tranzacții/retrageri/card, dar niciun pachet nu replică exact structura 'tot nelimitat + 2 carduri + mPOS 0,59%' a RISE.",
+      "citat": "Comparator | Start | Plus | Optim | Alegerea recomandata / Extra | Ultra | Toate pachetele includ | Cont curent principal și cont de card în lei, încasări nelimitate în orice monedă prin OP (inclusiv incasari instant), plăţi intra-bancare în lei şi valuta nelimitate online, plăţi şi încasari intrabancare cu bilete la ordin şi cec-uri",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3148,
+    "citire_cache": 6360,
+    "scriere_cache": 24928,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09508
+  }
+}

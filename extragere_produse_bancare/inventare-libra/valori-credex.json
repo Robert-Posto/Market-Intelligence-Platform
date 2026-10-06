@@ -1,0 +1,718 @@
+{
+ "banca": "credex",
+ "urluri": [
+  {
+   "cheie": "https://credex.ro/credit-de-nevoi-personale/||credit de nevoi personale",
+   "url": "https://credex.ro/credit-de-nevoi-personale/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale",
+   "focus": "Produsul băncii: „Credit de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”; „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1589,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1593,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "95844e4dc93c637114c3628cd48525f2aaf41f8033be9e7e2a77fffe7a91aa0f",
+   "observatii": [
+    {
+     "id": "361c488900d785d69699d0a0593b9f53",
+     "id_url": 1589,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_10K_24L_PROMO",
+     "valoare_num": 11.99,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "95844e4dc93c637114c3628cd48525f2aaf41f8033be9e7e2a77fffe7a91aa0f",
+     "conditii": [
+      "sumă 10.000 lei, perioadă 24 luni, valoare minimă de start, variază în funcție de profilul de risc"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobanda incepand de la 11.99%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8128d2ee1b23c7fcf4ac38f719b33e3b5a45f1b645d7e03843cbdb2a28a86599"
+    },
+    {
+     "id": "084c8b442e17b9ded99ab7c3f4e64b39",
+     "id_url": 1589,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_10K_24L_BAZA",
+     "valoare_num": 11.99,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "95844e4dc93c637114c3628cd48525f2aaf41f8033be9e7e2a77fffe7a91aa0f",
+     "conditii": [
+      "exemplu pentru 10.000 lei pe 24 luni, nu pentru 30.000 lei pe 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii este 11.99% (fixa pe toata durata contractului)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8128d2ee1b23c7fcf4ac38f719b33e3b5a45f1b645d7e03843cbdb2a28a86599"
+    },
+    {
+     "id": "d724b855901cf80fde812ab374de475b",
+     "id_url": 1589,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_min",
+     "cod_scenariu": null,
+     "valoare_num": 11.99,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "95844e4dc93c637114c3628cd48525f2aaf41f8033be9e7e2a77fffe7a91aa0f",
+     "conditii": [
+      "valoarea depinde de profilul de risc al clientului"
+     ],
+     "eticheta_libera": null,
+     "citat": "Valoarea dobanzii fixe este intre 11.99% și 47% pe an si este calculata in functie de profilul de risc al clientului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8128d2ee1b23c7fcf4ac38f719b33e3b5a45f1b645d7e03843cbdb2a28a86599"
+    },
+    {
+     "id": "9497ab6d41451dc069c6472990cc0aa0",
+     "id_url": 1589,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_max",
+     "cod_scenariu": null,
+     "valoare_num": 47,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "95844e4dc93c637114c3628cd48525f2aaf41f8033be9e7e2a77fffe7a91aa0f",
+     "conditii": [
+      "valoarea depinde de profilul de risc al clientului"
+     ],
+     "eticheta_libera": null,
+     "citat": "Valoarea dobanzii fixe este intre 11.99% și 47% pe an si este calculata in functie de profilul de risc al clientului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8128d2ee1b23c7fcf4ac38f719b33e3b5a45f1b645d7e03843cbdb2a28a86599"
+    },
+    {
+     "id": "fc699a7a5b3f7c8228a436f8846eac87",
+     "id_url": 1589,
+     "id_produs": "nevoi-personale",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 100000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "95844e4dc93c637114c3628cd48525f2aaf41f8033be9e7e2a77fffe7a91aa0f",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Poti lua un credit de pana la 100,000 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8128d2ee1b23c7fcf4ac38f719b33e3b5a45f1b645d7e03843cbdb2a28a86599"
+    },
+    {
+     "id": "4eec203b68f2b005c0fecaf0e864a34d",
+     "id_url": 1589,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 59,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "95844e4dc93c637114c3628cd48525f2aaf41f8033be9e7e2a77fffe7a91aa0f",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Perioada imprumutului este de minim 6 luni pana la 59 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8128d2ee1b23c7fcf4ac38f719b33e3b5a45f1b645d7e03843cbdb2a28a86599"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_10K_24L_BAZA",
+     "valoare_num": 18.37,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "dobanda anuala efectiva (DAE) este de 18.37%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_10K_24L_BAZA",
+     "valoare_num": 494.34,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "rata lunara este de 494.34 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_10K_24L_BAZA",
+     "valoare_num": 11864.16,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "valoarea totala platibila este de 11,864.16 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_10K_24L_BAZA",
+     "valoare_num": 290,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "comisionul de analiza a dosarului (finantat de creditor) este de 290 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": "NP_10K_24L_BAZA",
+     "valoare_num": 10,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "comisionul lunar de administrare este de 10 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 12,
+   "durata_s": 18,
+   "tokeni": {
+    "intrare": 6675,
+    "iesire": 1922
+   }
+  },
+  {
+   "cheie": "https://credex.ro/intrebari-si-raspunsuri/||credit de nevoi personale",
+   "url": "https://credex.ro/intrebari-si-raspunsuri/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale",
+   "focus": "Produsul băncii: „Credit de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1594,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+   "observatii": [
+    {
+     "id": "727d8a30810036c336a13f964c989a06",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 100000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "100.000 lei este suma maxima pentru creditul de nevoi personale",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "764a22dbb1702e41a5dd2d4a61e81024",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 5,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Rambursezi intre 6 luni si 5 ani.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "52d3e1422fbf9b4f3804558d1dc26cc2",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 290,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiză dosar: 290 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "be6dab99ed9b3b34f228a72a66f57e29",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": "NP_10K_24L_EXEMPLU",
+     "valoare_num": 10,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "exemplul reprezentativ este pentru 10.000 lei pe 24 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "Comision lunar de administrare: 10 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "e95aad5b4437f73a491080332785753a",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_30K_60L_BAZA",
+     "valoare_num": 18,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "valoarea minimă 'de la 18%', variază în funcție de analiza de risc"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobândă fixă de la 18%/an, în funcție de analiza de risc.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "253cedd634e372f4cb9de0384de324a2",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "perioada de creditare rămasă mai mare de 12 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "Comision de rambursare anticipată: 1% din valoarea creditului rambursat anticipat, dacă perioada de creditare ramasă este mai mare de 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "de_la": 12
+      }
+     ],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "fc30a69247a7f4b0e47fd26c000606e6",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "perioada de creditare rămasă mai mică sau egală cu 12 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "respectiv 0,5% la valoarea creditului rambursat anticipat, dacă perioada de creditare rămasă este mai mică sau egală cu 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "pana_la": 12
+      }
+     ],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "c68f508237bda14f81c350a9828335c5",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "plata anticipată a întregului credit până la prima scadență"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dacă clientul plătește anticipat tot creditul până la prima scadență, atunci beneficiază de ZERO costuri.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "5ae78c5c36322c6654aa0542a80a895c",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_10K_24L_EXEMPLU",
+     "valoare_num": 18,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "exemplul reprezentativ: 10.000 lei, 24 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii este 18% (fixa pe toata durata contractului)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 10000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      }
+     ],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "24aec25944e73bb58122c5afcde2b163",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_10K_24L_EXEMPLU",
+     "valoare_num": 523.72,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "exemplul reprezentativ: 10.000 lei, 24 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunara este de 523.72 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 10000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      }
+     ],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "cae9f79e784141c713be8d7c17aca8af",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_10K_24L_EXEMPLU",
+     "valoare_num": 12569.26,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "exemplul reprezentativ: 10.000 lei, 24 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "valoarea totala platibila este de 12,569.26 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 10000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      }
+     ],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    },
+    {
+     "id": "4e081d1bd37051ca5febdf4dc14d0cd3",
+     "id_url": 1594,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_10K_24L_EXEMPLU",
+     "valoare_num": 25.58,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c018664ec342acaebbf4be2a7dcc2b256027a78198e5dec67eb473606d885cfc",
+     "conditii": [
+      "exemplul reprezentativ: 10.000 lei, 24 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobanda anuala efectiva (DAE) este de 25.58%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 10000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      }
+     ],
+     "id_banca": "credex",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8d5f71d259192d16bc1f4a2064eec673a3c79f92930720fd2d72fd046d6eadf2"
+    }
+   ],
+   "respinse": [],
+   "scrise": 12,
+   "durata_s": 22,
+   "tokeni": {
+    "intrare": 14441,
+    "iesire": 2534
+   }
+  }
+ ]
+}

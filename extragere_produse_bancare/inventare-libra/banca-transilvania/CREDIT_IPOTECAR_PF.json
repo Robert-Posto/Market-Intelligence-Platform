@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-06",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/credite/creditele-imobiliare/creditul-imobiliar-ipotecar/conditii-de-acordare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul Imobiliar-Ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru persoane fizice destinat achiziției, construcției sau renovării unei locuințe, garantat prin ipotecă imobiliară, cu durată de până la 30 de ani - același tip de produs și segment ca CREDIT_IPOTECAR_PF de la Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată produsului conține simulator, dobânzi, avans minim și durată, deci cifrele produsului sunt explicite.",
+      "citat": "Dobândă fixă introductorie în primii 3 ani începând de la 5,05%. Costuri complete. Stabilitate timp de 3 sau 5 ani pentru creditele cu dobândă fixă introductorie. Durata creditului poate fi de până la 30 de ani.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/credit-imobiliar-ipotecar/exemple-reprezentative",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Creditul Imobiliar-Ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina oficială cu exemple reprezentative de dobânzi și costuri pentru Creditul Imobiliar-Ipotecar, echivalentul produsului ipotecar Libra pentru persoane fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată cu tabele de exemple reprezentative (dobândă, DAE, rată, valoare totală) pentru fiecare variantă a produsului.",
+      "citat": "Credit imobiliar-ipotecar în lei cu dobândă fixă introductorie 3 ani, cu încasare venituri la BT (rate descrescătoare) Valoarea imobilului 352.941 lei Avansul minim (%) 15% Valoarea avansului minim 52.941 lei Valoarea creditului 300.000 lei Durata împrumutului 30 ani (360 rate lunare) Dobânda Fixă primii 3 ani 5,10% apoi variabilă 7,66% (IRCC + 2,10pp) Rata lunară Începând de la 2.108 lei DAE (Dobândă anuală efectivă) 7,22%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/campanie/online/creditul-imobiliar-ipotecar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Creditul imobiliar-ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de campanie curentă pentru același produs (credit imobiliar-ipotecar cu dobândă variabilă), cu comision de analiză și durată de creditare explicite.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină de ofertă curentă cu cifre explicite despre dobândă, comision de analiză și durata creditării pentru produsul echivalent.",
+      "citat": "Dobândă de la 9,13% (IRCC + 3,15 pp) 400 lei comision de analiză pentru creditele în lei Perioadă de creditare de până la 30 de ani",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3361,
+    "citire_cache": 6373,
+    "scriere_cache": 35602,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1238976
+  }
+}

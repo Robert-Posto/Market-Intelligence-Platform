@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-05",
+  "banca": "creditcoop",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/depozit-creditcoop/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul CREDITCOOP",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen clasic pentru persoane fizice, cu dobândă fixă, sumă minimă și termen de constituire - corespunde segmentului persoane fizice al produsului Libra Depozit la termen.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: suma minimă și termenul de constituire.",
+      "citat": "Suma minimă de constituire este de 500 lei Termen de constituire 14 de luni Posibilitatea prelungirii depozitelor pe o perioadă identică celei inițiale Dobânda poate fi ridicată la scadență, lunar sau capitalizată",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.creditcoop.ro/depozit-firme-standard/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Standard (depozit pentru firme)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen destinat persoanelor juridice/firmelor, cu termene flexibile între 1 și 24 de luni, dobândă fixă sau variabilă - corespunde segmentului business al produsului Libra Depozit la termen.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului pentru firme conține cifre concrete despre sumă minimă, termene și condiții.",
+      "citat": "Suma minimă de constituire este de 200 lei Termene de constituire cuprinse între o lună și 24 de luni Posibilitatea prelungirii automate a depozitelor pe o perioadă identică celei inițiale Dobânda poate fi ridicată la scadență, lunar sau capitalizată",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Depozit la termen - Condiții Generale de Afaceri",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de condiții generale definește și reglementează depozitul la termen aplicabil tuturor clienților (persoane fizice și juridice), inclusiv modul de constituire, lichidare și garantare.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de condiții generale care definește depozitul la termen și regulile de constituire/lichidare, dar fără grilă de dobânzi specifică.",
+      "citat": "Clientul poate solicita Băncii constituirea de depozite la termen din disponibilul aflat în contul său în conformitate cu oferta Băncii şi termenii şi condiţiile specifice produsului.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1868,
+    "citire_cache": 6363,
+    "scriere_cache": 23038,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0775556
+  }
+}

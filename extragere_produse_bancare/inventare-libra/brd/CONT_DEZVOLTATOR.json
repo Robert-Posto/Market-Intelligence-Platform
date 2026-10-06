@@ -1,0 +1,29 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CONT_DEZVOLTATOR",
+  "denumire": "Contul Dezvoltatorului",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "BRD nu are un produs dedicat dezvoltatorilor imobiliari conform Legii 207/2025 (cont de încasare avansuri + plată costuri proiect). Banca oferă doar un produs general de 'Conturi speciale' care include conturi ESCROW generice pentru companii (https://www.brd.ro/companii/imm-peste-1m-euro/cash-management/conturi-speciale), descris ca fiind pentru orice tranzacție comercială între parteneri (garanții, cauțiuni, plăți condiționate), fără nicio mențiune despre proiecte imobiliare, Legea 207/2025, avansuri de la cumpărători persoane fizice sau un flux dedicat de plată a costurilor de construcție. Conform regulii explicite din sarcină (produs general vs. produs dedicat unei industrii precum dezvoltatorii imobiliari = produs_inexistent), nu am raportat acest cont generic drept echivalent/similar."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/business-peste-3m-euro/cash-management/solutii-de-nisa-cont-escrow",
+    "https://www.brd.ro/companii/corporate/cash-management/conturi-cu-destinatie-speciala",
+    "https://www.brd.ro/en/business-over-3m-euro/cash-management/niche-solutions-%E2%80%93-escrow-account",
+    "https://www.brd.ro/en/companies/corporate-banking/cash-management/special-purpose-accounts",
+    "https://www.brd.ro/companii/imm-peste-1m-euro/cash-management/conturi-speciale"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 16071,
+    "iesire": 3150,
+    "citire_cache": 145825,
+    "scriere_cache": 69762,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.267212
+  }
+}

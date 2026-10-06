@@ -1,0 +1,83 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/en/credite/credite-de-nevoi/creditul-overdraft",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Overdraft (Descoperit de cont)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic: linie de credit pe cont curent pentru persoane fizice, plafon in functie de venit, dobanda doar pe suma utilizata - aceleasi caracteristici ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicata a produsului contine cifrele exacte (plafon, procent minim venit, conditii de eligibilitate).",
+      "citat": "Through overdraft or account overdraft with us, you can get up to 6 salaries / 6 pensions, within the maximum limit of 50,000 RON, provided you fit within the debt ratio.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/care-va-fi-dobanda-mea-la-overdraft/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Overdraft (Descoperit de cont)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina din centrul de intrebari al bancii care detaliaza exact nivelul dobanzii aplicate produsului Overdraft, in functie de incasarea sau nu a salariului la BT.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Contine procentele exacte de dobanda pentru Overdraft, diferentiate pe segmentul de client (cu/fara salariu la BT).",
+      "citat": "Dobândă preferențială, mai avantajoasă de 14%/an. Daca nu încasezi salariul la BT dobânda e de 17%/an.",
+      "citat_verificat": false,
+      "avertisment": "citat scurt (16 cuvinte); citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Regulament-oficial/Campanie/Ovedraft-dobanda-fixa-8-procente-Persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Overdraft (Descoperit de cont)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Regulament oficial de campanie pentru Overdraft destinat persoanelor fizice, cu formula exacta a dobanzii variabile aplicate produsului.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial (regulament campanie) cu formula exacta a dobanzii (IRCC + marja) aplicabile produsului Overdraft pentru persoane fizice.",
+      "citat": "cerere pentru contractarea unui Overdraft (Descoperit de cont) prin intermediul aplicatiei BT Pay, beneficiaza de dobanda variabila compusa din IRCC + 4%/an daca nu incaseaza drepturile de natura salariala de la un angajator cu conventie la banca.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/care-sunt-criteriile-de-acordare-ale-overdraft-ului/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Overdraft (Descoperit de cont)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de conditii/eligibilitate pentru produsul Overdraft, echivalentul direct al Overdraft PF de la Libra, cu praguri de venit si vechime.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina oficiala BT care listeaza explicit criteriile de eligibilitate (venit minim 800 lei, vechime 3 luni) pentru Overdraft, dar fara plafonul maxim in lei.",
+      "citat": "Să fii persoană fizică de cetățenie română; Să ai un cont curent și un card de debit la BT; Să ai un venit lunar eligibil mai mare de 800 lei; Să ai cel puțin 3 luni vechime la locul actual de muncă; Să poți dovedi că ești beneficiar de venituri cu caracter permanent.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/credite/credite-de-nevoi/creditul-overdraft",
+    "https://intreb.bancatransilvania.ro/care-va-fi-dobanda-mea-la-overdraft/"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2912,
+    "citire_cache": 34092,
+    "scriere_cache": 36212,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1264804
+  }
+}

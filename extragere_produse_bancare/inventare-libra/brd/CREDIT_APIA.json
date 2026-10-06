@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Prezentare_credit_APIA_BRD.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de activitate curentă acordat persoanelor juridice/PFA pe baza adeverinței APIA, avans de până la 90% din subvenție, rambursare automată din subvenția încasată - identic ca tip și segment cu CREDIT_APIA Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document PDF dedicat exclusiv acestui produs, cu toate cifrele: dobândă, comision, perioadă, garanții.",
+      "pagina_pdf": 2,
+      "citat": "DOBANDA: ROBOR 6M+2% Dobanda se calculeaza lunar si se percepe o singura data, la finalul creditului, din subventia platita de APIA. COMISION DE ACORDARE CREDIT: 1% din valoarea creditului acordat",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/subventii-apia-corp",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului Creditul APIA pentru companii/PFA, cu structura FAQ ce conține valoarea finanțării, perioada și modul de rambursare, corespunzând produsului Libra CREDIT_APIA.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagină HTML dedicată exclusiv produsului, cu cifre explicite despre suma maximă de finanțare și garanții.",
+      "citat": "Creditul APIA reprezintă un mijloc rapid de finanțare a cheltuielilor curente generate de campania agricolă, prin care beneficiezi de un avans de maxim 90% din valoarea subvențiilor pe care urmează să le încasezi de la APIA.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/agricultura/subventii-apia",
+    "https://www.brd.ro/_files/pdf/Prezentare_credit_APIA_BRD.pdf"
+  ],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1630,
+    "citire_cache": 46426,
+    "scriere_cache": 62461,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.18174970000000001
+  }
+}

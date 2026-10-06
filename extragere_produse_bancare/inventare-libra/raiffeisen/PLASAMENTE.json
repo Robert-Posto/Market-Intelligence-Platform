@@ -1,0 +1,84 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/economii-si-plasamente/titluri-de-stat.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Titluri de stat pentru IMM-uri",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată plasamentelor în titluri de stat (certificate de trezorerie și obligațiuni) pentru clienți persoane juridice, segmentul IMM, cu sumă minimă și criterii explicite.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina produsului conține cifre exacte: suma minimă de investiție și pragul de eligibilitate pentru clienți persoane juridice.",
+      "citat": "Suma minimă a investiției: 50 000 Euro sau echivalent în alte valute. Clienți persoane juridice Raiffeisen Bank cu cifra de afaceri de până la 5 milioane Euro.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/economii-si-plasamente/titluri-de-stat.html#:~:text=Suma%20minim%C4%83%20a%20investi%C8%9Biei%3A%2050,p%C3%A2n%C4%83%20la%205%20milioane%20Euro."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/investitii/instrumente-financiare-cu-venit-fix.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Instrumente financiare cu venit fix (corporații)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta pentru companii mari a aceluiași produs de plasament în titluri de stat/obligațiuni, cu aceeași sumă minimă de investiție ca la IMM.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului pentru segmentul corporații conține cifra sumei minime de investiție.",
+      "citat": "La Raiffeisen ai instrumente financiare cu venit fix: certificate de trezorerie, obligațiuni de stat, obligatiuni municipale si corporative. Sume min. 50.000 Euro.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/guvernanta/mifid/20250516-document-de-informare-privind-costurile-estimative-ex-ante-aferente-titlurilor-de-valoare-clienti-institutionali.pdf.coredownload.inline.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comisioane tranzacționare și custodie titluri de valoare (incl. titluri de stat)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife care listează explicit comisioanele aplicate tranzacțiilor cu titluri de stat pe piața primară și secundară, locală și externă, pentru clienți care investesc în acest tip de instrumente.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de tarife cu cifre exacte (procente și valori) aplicabile explicit titlurilor de stat.",
+      "citat": "Comisioane piata primara pentru titluri de stat 0,60% din suma adjudecata minimum 100 RON sau echivalentul in valuta decontarii, Marja de tranzactionare maximala aplicabila Tranzactiilor cu titluri de stat pe piata secundara locala 1%.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/investitii/titluri-cu-venit-fix.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Titluri cu venit fix (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată investițiilor în certificate de trezorerie și obligațiuni de stat pentru persoane fizice, exact segmentul și tipul de produs Libra (plasamente/titluri de stat).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina este dedicată produsului și conține cifre (prag de eligibilitate 60.000 EUR), dar nu afișează randamente curente.",
+      "citat": "Criterii minime de eligibilitate: clienți Raiffeisen Private Banking sau Premium cu active în administrare >= 60,000 EUR echivalent în Grupul Raiffeisen România.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/investitii/titluri-cu-venit-fix.html#:~:text=Criterii%20minime%20de%20eligibilitate%3A%20clien%C8%9Bi,echivalent%20%C3%AEn%20Grupul%20Raiffeisen%20Rom%C3%A2nia."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/investitii/titluri-cu-venit-fix-centenar.html",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/economii-si-plasamente/titluri-de-stat.html",
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/investitii/titluri-cu-venit-fix.html"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4170,
+    "citire_cache": 91510,
+    "scriere_cache": 52392,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.190998
+  }
+}

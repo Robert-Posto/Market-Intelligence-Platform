@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-06",
+  "banca": "garanti",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit Imobiliar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru persoane fizice destinat achiziției de locuință, cu ipotecă de rang I, perioadă lungă de rambursare și plafon fără limită maximă, exact ca produsul Libra de achiziție/construcție/refinanțare locuință.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu caracteristici complete și tabel de dobânzi/comisioane actualizat.",
+      "citat": "Plafonul minim de creditare este de 10.000 EUR sau echivalentul în Lei. Nu există plafon maxim de creditare Perioada maximă de creditare: 30 ani Avans: începând de la 15% pentru creditele în Lei",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar/#:~:text=Plafonul%20minim%20de%20creditare%20este,15%25%20pentru%20creditele%20%C3%AEn%20Lei"
+    },
+    {
+      "url": "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar-locuinte-cu-eficienta-energetica/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit imobiliar pentru locuințe eficiente energetic",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta verde a creditului ipotecar pentru persoane fizice, echivalentă cu componenta 'Credit Verde' menționată explicit în produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată, cu caracteristici și grilă de dobânzi proprii pentru locuințe certificate verde.",
+      "citat": "Creditul Imobiliar pentru locuinte eficiente energetic se acordă pentru achiziția unui imobil de natură rezidențială care este certificat de către Romania Green Building Council. Plafonul minim de creditare este de 10.000 EUR echivalentul în RON. Nu există plafon maxim de creditare.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar-locuinte-cu-eficienta-energetica/#:~:text=Creditul%20Imobiliar%20pentru%20locuinte%20eficiente,exist%C4%83%20plafon%20maxim%20de%20creditare."
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/06/GHID_HL_GPL-_ro_01.07.2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul de achiziție imobil (Credit imobiliar)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ghid oficial de informații precontractuale (FIPC-like) care descrie exact creditul imobiliar/ipotecar pentru persoane fizice, cu destinații (achiziție, refinanțare, întregire drept de proprietate), durate 3-30 ani și LTV/avans.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de reglementare al băncii, cu cifre complete (durate, DAE, LTV, avans) pentru produsul echivalent.",
+      "citat": "3 ani - 30 ani pentru achizitia de imobile de natura rezidentiala; 3 ani - 20 ani pentru achizitia de terenuri; 3 ani - 10 ani pentru achizitia de spatii comerciale",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/persoane-fizice/credite/credit-imobiliar/",
+    "https://www.garantibbva.ro/en/individuals/mortgage-loan/",
+    "https://www.garantibbva.ro/campanii-curente/campanie-credite-imobiliare-pentru-achizitie-imobil-de-la-dezvoltatorii-imobiliari-parteneri/",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/06/GHID_HL_GPL-_ro_01.07.2026.pdf",
+    "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar/",
+    "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar-locuinte-cu-eficienta-energetica/"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 29753,
+    "iesire": 3346,
+    "citire_cache": 121531,
+    "scriere_cache": 99731,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.36659970000000003
+  }
+}

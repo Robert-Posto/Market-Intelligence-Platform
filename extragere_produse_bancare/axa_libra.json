@@ -1,0 +1,41 @@
+{
+  "nota": "Axa comparației: la Libra, fiecare produs își ia valorile doar din paginile lui. `exclus` = pagina e a altui produs Libra (valorile ei ar dubla sau ar amesteca produsele); `variante` = pagină legitimă a aceluiași produs, dar pentru o variantă: valorile primesc eticheta, ca să nu se compare cu produsul de bază ca și cum ar fi același. Paginile nelistate sunt principale. Se aplică la extracție și la --din-json (reguli_valori.axa_libra).",
+  "verificat": "2026-10-02, pe surse_libra (banca libra) și catalogul produse_libra",
+  "produse": {
+    "APLICATIA_LIBRA": {
+      "exclus": {"https://librabank.ro/plati?desk_lbk=": "prețurile RoPay: RoPay are produsul lui Libra, ROPAY"}
+    },
+    "CONT_ONLINE_BUSINESS": {
+      "exclus": {"https://www.librabank.ro/cont-bancar-online-2in1": "prețurile abonamentelor RISE / SHINE, nu ale contului; abonamentele au produsele lor Libra"}
+    },
+    "CREDIT_INVESTITII": {
+      "exclus": {"https://www.librabank.ro/credit-investeu-intrebari": "InvestEU Microfinanțare: InvestEU are produsul lui Libra, CREDIT_INVESTEU_PJ"}
+    },
+    "CREDIT_IPOTECAR_PF": {
+      "variante": {"https://www.librabank.ro/credit-investitii-imobiliare-in-constructie": "locuință în construcție"}
+    },
+    "CARD_CREDIT_PF": {
+      "variante": {"https://www.librabank.ro/documente/carduri/Card-Credit-Avanpost-Gold.pdf": "Avanpost"}
+    },
+    "CARD_DEBIT_FREE": {
+      "variante": {"https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Free.pdf": "Avanpost"}
+    },
+    "CARD_DEBIT_GOLD": {
+      "variante": {"https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Gold.pdf": "Avanpost"}
+    },
+    "DEPOZIT_1AN_1LUNA": {
+      "variante": {"https://www.librabank.ro/dobanzi-depozite-profesii": "profesii liberale"}
+    },
+    "CREDIT_PROFESII": {
+      "variante": {"https://www.librabank.ro/credite-it-online": "Libra IT"}
+    }
+  },
+  "dubluri": {
+    "nota": "Perechi de coduri Libra care, pe site-ul Libra, sunt aceeași pagină și același produs. Discovery le dă același echivalent la concurență, deci aceleași valori apar de două ori. Nu se unesc automat: catalogul e decizia echipei.",
+    "perechi": [
+      {"coduri": ["CREDIT_NEVOI_PERSONALE", "CREDIT_LIBRA_WAY"], "pagina": "https://www.librabank.ro/credit-nevoi-personale-fara-ipoteca"},
+      {"coduri": ["CREDIT_IMM_IPOTECA", "CREDIT_IMOBILIAR_PJ"], "pagina": "https://www.librabank.ro/Persoane_juridice/Credit_IMM_cu_ipoteca_imobiliara/383"},
+      {"coduri": ["CARD_CREDIT_BUSINESS", "CARD_CREDIT_PJ"], "pagina": "https://www.librabank.ro/card-credit-persoane-juridice-pentru-companii"}
+    ]
+  }
+}

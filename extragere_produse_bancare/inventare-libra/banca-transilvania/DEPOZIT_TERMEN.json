@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-05",
+  "banca": "banca-transilvania",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/economii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina oficială BT de dobânzi pentru produsele de economisire ale persoanelor juridice, cu tab dedicat 'Depozit la termen', exact tipul de produs Libra (depozit la termen pentru lichidități) și segmentul persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată dobânzilor la depozitul la termen, cu grilă completă de dobânzi pe valute și termene, pentru persoane juridice.",
+      "citat": "Dobânda pentru depozitele în lei Perioada Dobânda încasată la scadență / an Dobânda încasată lunar / an 1 lună 4,00% - 3 luni 4,50% 4,25% 6 luni 4,70% 4,50% 12 luni 5,25% 5,00% 24 luni 5,85% - 36 luni (dobândă fixă) 6,25%",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/economii/dobanzi#:~:text=Dob%C3%A2nda%20pentru%20depozitele%20%C3%AEn%20lei,36%20luni%20%28dob%C3%A2nd%C4%83%20fix%C4%83%29%206%2C25%25"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Term deposit / Depozit la termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina oficială BT de dobânzi pentru economii persoane fizice, cu tab 'Term deposit' (Depozit la termen), aceeași natură de produs ca cel Libra, pentru segmentul persoane fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată dobânzilor la depozitul la termen pentru persoane fizice, cu grilă completă de dobânzi pe valute și termene.",
+      "citat": "Interest for deposits in lei Period Interest collected at maturity / year Interest collected monthly / year 1 month 4,00% - 3 months 4,50% 4,25% 6 months 4,70% 4,50%",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi#:~:text=Interest%20for%20deposits%20in%20lei,4%2C25%25%206%20months%204%2C70%25%204%2C50%25"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/economii/dobanzi",
+    "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/en/companii/economii/dobanzi",
+    "https://www.bancatransilvania.ro/termeni-si-conditii-depozite-BT24",
+    "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/companii/economii/dobanzi",
+    "https://www.bancatransilvania.ro/en/termeni-si-conditii-depozite-BT24"
+  ],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 137648,
+    "iesire": 4132,
+    "citire_cache": 42546,
+    "scriere_cache": 69780,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4995752
+  }
+}

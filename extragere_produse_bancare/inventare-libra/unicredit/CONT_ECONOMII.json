@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-06",
+  "banca": "unicredit",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii în Lei, cu dobândă fixă calculată zilnic la soldul contului, pentru persoane fizice - același tip de produs și segment ca la Libra; UniCredit are și o campanie temporară cu dobândă majorată pentru fonduri noi, similar structurii pe tranșe a Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife și dobânzi conține tabelul exact cu rata dobânzii standard (2,50% Lei) și rata promoțională pentru fonduri noi (3,50% Lei) aplicabile Contului de economii pentru persoane fizice.",
+      "pagina_pdf": 12,
+      "citat": "CONTURI DE ECONOMII CU DOBÂNDĂ FIXĂ (% PE AN) MONEDA LEI Euro USD Cont de economii 2.50 0.50 1.00 Cont de economii Junior 2.50 0.50 1.00 CONTURI DE ECONOMII CU FONDURI NOI CU DOBÂNDĂ FIXĂ (%/AN) VALABILE ÎN INTERVALUL 01.07.2026 - 30.09.2026 MONEDA LEI Cont de economii 3.50 Cont de economii Junior 3.50",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/saving-and-investing/savings-accounts.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Savings account (Cont de economii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului de economisire pentru persoane fizice, cu dobândă calculată zilnic la soldul contului, acces permanent la bani - aceeași structură și segment ca produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține direct ratele dobânzii aplicabile (2,50% Lei, 0,50% EUR, 1,00% USD) și modul de calcul/plată al dobânzii.",
+      "citat": "Interest rate (% per year) LEI 2,50% EUR 0,50% USD 1,00% The interest will be calculated on the daily balance of the savings account and will be transferred monthly to the current account or will be capitalized in the savings account, according to your option.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii (persoane juridice/SME)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii cu dobândă variabilă, pe tranșe de sold, destinat clienților persoane juridice (SME) - acoperă segmentul business al produsului Libra, deși structura de dobândă e pe tranșe de sumă, nu pe perioadă de deținere ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul de tarife și dobânzi pentru SME conține un tabel explicit cu rata dobânzii variabile pentru Conturile de economii, defalcată pe tranșe de sold.",
+      "citat": "Conturi de economii cu dobândă variabilă (% pe an) 3.000 LEI / 1.000 EUR – 30.000 0,05 0,00 30.001 - 300.000 0,10 0,00 >300.001 0,20 0,00",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/persoane-fizice/economisire-si-investitii/conturi-de-economii.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf"
+  ],
+  "durata_s": 65,
+  "consum": {
+    "intrare": 6,
+    "iesire": 5811,
+    "citire_cache": 42345,
+    "scriere_cache": 90274,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.292276
+  }
+}

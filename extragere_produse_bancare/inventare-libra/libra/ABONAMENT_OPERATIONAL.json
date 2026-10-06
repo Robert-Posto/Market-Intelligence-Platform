@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://librabank.ro/Persoane_juridice/Abonament_operational_IMM/381",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonamente operaționale companii (Prime / Elite / Prestige)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată abonamentelor operaționale (pachete de cont) pentru persoane juridice cu cifra de afaceri peste 5 milioane lei, exact tipul de produs ABONAMENT_OPERATIONAL.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina produsului conține tabelul complet cu cele trei variante de abonament (Prime, Elite, Prestige) și toate costurile lunare și limitele incluse.",
+      "citat": "Retrageri numerar de la ATM Euronet 2 3 5 Plăți lei din aplicație, inclusiv plăți instant / lunar 25 50 Nelimitat Plăți online euro SEPA - 50 Nelimitat Încasări lei 25 50 Nelimitat Cost lunar 95 lei 225 lei 295 lei",
+      "citat_verificat": true,
+      "link_live": "https://librabank.ro/Persoane_juridice/Abonament_operational_IMM/381#:~:text=Retrageri%20numerar%20de%20la%20ATM,lei%20225%20lei%20295%20lei"
+    },
+    {
+      "url": "https://www.librabank.ro/cont-curent-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonamente operaționale companii (Cont Deștept / Rise IMM / Shine IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată abonamentelor operaționale pentru companii cu cifra de afaceri sub 5 milioane lei, segmentul complementar al aceluiași produs de tip pachet de cont pentru firme.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina conține tabelul detaliat al celor trei pachete operaționale (Cont Deștept, Rise IMM, Shine IMM) cu costurile lunare și serviciile incluse.",
+      "citat": "Card Business Standard 1 până la 2 - Card Business Gold - - până la 2 mPOS – comision carduri persoane fizice 0,59% 0,59% 0,59% Firme nou înființate: Gratuit 12 luni 50 lei 100 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-curent-imm#:~:text=Card%20Business%20Standard%201%20p%C3%A2n%C4%83,luni%2050%20lei%20100%20lei"
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane - Persoane Juridice (administrare cont)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul general de tarife pentru persoane juridice conține comisionul standard de administrare lunară a contului, componenta de bază facturată separat de abonamentele operaționale.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul este linkuit direct de pe paginile de abonament operațional și conține comisionul de administrare cont pentru persoane juridice, dar nu detaliază explicit pachetele Prime/Elite/Prestige sau Cont Deștept/Rise/Shine.",
+      "citat": "Administrare cont Persoane Juridice* 10 lei / cont/ luna Administrare cont Alte Forme de Organizare 5 lei / cont/ luna",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://librabank.ro/Persoane_juridice/Abonament_operational_IMM/381",
+    "https://www.librabank.ro/cont-curent-imm",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3138,
+    "citire_cache": 69950,
+    "scriere_cache": 87179,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2633335
+  }
+}

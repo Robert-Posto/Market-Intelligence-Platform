@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/Persoane_juridice/Limita_de_finantare_in_baza_acreditivului_de_import/426",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Limita de finanțare în baza acreditivului de import",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o pagină dedicată la Libra însăși pentru finanțare pe baza acreditivelor de import (nu acoperă și acreditivele de export, deci e un sub-tip al produsului general Acreditive documentare).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată cu cifre concrete despre procentul de finanțare și garanții pentru acreditivul de import.",
+      "citat": "Finantare de pana la 90% din valoarea acreditivului de import irevocabil, cu plata la termen, diminuata cu toleranta prevazuta de acesta; Poti aduce garantii flexibile",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive de export / Acreditive de import",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife și comisioane pentru persoane juridice conține secțiuni explicite ACREDITIVE DE EXPORT și ACREDITIVE DE IMPORT cu toate comisioanele aferente.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife, specific persoanelor juridice, cu tabel complet de comisioane pentru acreditive de export și import.",
+      "citat": "ACREDITIVE DE IMPORT EUR Preavizare 25 euro Deschidere/ majorare/ prelungire valabilitate 0,2%/ trimestru (min 75 euro) Angajament de acceptare/ plata diferata 0,15%/ trimestru (min 75 euro)",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente/operatiuni/persoane_juridice/contract_servicii_bancare_persoane_juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Acreditive (facilități de credit)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Contractul-cadru de servicii bancare pentru persoane juridice detaliază condițiile contractuale ale acreditivelor documentare (deschidere, plată, verificare documente) plus un tabel de tarife pentru acreditive de export/import.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document contractual general PJ care conține clauze specifice și tarife pentru acreditive, dar nu e dedicat exclusiv acestui produs.",
+      "citat": "Acreditivele deschise de Banca, din ordinul Clientului, se emit in limita disponibilitatilor in cont ale acestuia sau/si a creditelor pe care Banca le acorda in acest scop.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1580,
+    "citire_cache": 21852,
+    "scriere_cache": 24693,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0819149
+  }
+}

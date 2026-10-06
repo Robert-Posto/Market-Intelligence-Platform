@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-activitatii-curente/credit-pentru-capital-in-agricultura/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru capitalul de lucru în agricultură",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite pentru firme/PFA din agricultură, cu rambursare corelată cu sezonalitatea (ciclul agricol), destinate acoperirii cheltuielilor curente (inputuri, întreținere culturi). Diferă însă termenul: produsul Raiffeisen este pe termen scurt, maxim 18 luni cu posibilitate de reînnoire, față de 24-48 luni la Libra, și nu este structurat ca linie de credit garantată prin InvestEU, ci ca produs propriu al băncii cu trageri unice sau multiple.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu toate cifrele relevante (sumă minimă, termen, valută, garanții, eligibilitate) prezentate explicit în text.",
+      "citat": "Credit pe termen scurt pentru acoperirea necesarului de capital de lucru în agricultură. Suma minimă: 7.000 Euro (credit acordat exclusiv în Lei). Trageri: unice sau multiple. Perioadă de rambursare: termen maxim 18 luni, cu posibilitate de reînnoire.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-activitatii-curente/credit-pentru-capital-in-agricultura/#:~:text=Credit%20pe%20termen%20scurt%20pentru,luni%2C%20cu%20posibilitate%20de%20re%C3%AEnnoire."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-activitatii-curente/credit-pentru-capital-in-agricultura/"
+  ],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1346,
+    "citire_cache": 37952,
+    "scriere_cache": 36552,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1124424
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credite-imm-garantate-de-bid.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite IMM garantate de BID",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit în lei cu garanție de la Banca de Investiții și Dezvoltare (BID) de 70-80%, pentru IMM, destinat atât investițiilor cât și activității curente - identic ca tip și segment cu produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu cifre explicite despre procentul de garantare, monedă și segmentul de clienți.",
+      "citat": "Raiffeisen Bank, în parteneriat cu Banca de Investiții și Dezvoltare BID, oferă credite IMM garantate de BID în lei, cu acces mai ușor la finanțare și costuri reduse față de creditele standard. garanție BID de până la 80% din valoarea finanțării, finanțare în moneda lei, cost redus și perioadă de finanțare extinsă față de creditele obișnuite.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/solutii-de-finantare/credite-garantate-de-bid.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite garantate de BID",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina echivalentă pentru segmentul corporații descrie același program BID, cu aceleași procente de garantare (70-80%) și tipuri de credite (investiții și capital de lucru) ca produsul Libra pentru IMM.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre explicite privind procentul de garantare și condițiile programului BID.",
+      "citat": "garanție de maximum 70% din valoarea finanțării garanție de maximum 80% din valoarea finanțării pentru companiile inovatoare și pentru companiile ai căror acționari majoritari/administratori sunt femei",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/despre-noi/comunicate-de-presa/2025/raiffeisen-bank-romania-isi-extinde-capacitatea-de-finantare-a-imm-urilor-cu-1-miliard-de-lei.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credite IMM garantate de BID (program/convenție BID-Raiffeisen)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicat de presă care detaliază plafonul total de garantare (710 milioane lei), perioada maximă de garantare (10 ani) și procentele de acoperire (70-80%) ale programului BID, relevante pentru dimensiunea și condițiile produsului.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial al băncii cu cifre concrete despre plafonul de garantare și procentele de acoperire ale programului BID, deși e un comunicat de presă nu pagina de produs.",
+      "citat": "Astfel, Raiffeisen Bank va putea finanța companiile care au cifră de afaceri de până în 50 de milioane de euro cu sume în valoare totală de peste 1 miliard de lei, beneficiind de un plafon de garantare de 710 milioane lei. Acest mecanism acoperă până la 70% din valoarea creditului, dar poate ajunge până la 80% pentru anumiți beneficiari",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2232,
+    "citire_cache": 6346,
+    "scriere_cache": 32661,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1052497
+  }
+}

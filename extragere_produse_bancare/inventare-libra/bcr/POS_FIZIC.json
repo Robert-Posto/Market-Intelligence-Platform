@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/Tarif_comisioane_PJ_1Dec.PDF",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Servicii de acceptare carduri (POS) – Tarif de comisioane BCR pentru persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul conține o secțiune dedicată „POS” cu comisioanele pentru serviciul de acceptare la plată cu cardul prin terminal fizic, pentru clienți persoane juridice — exact același tip de produs și segment ca POS_FIZIC Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "PDF-ul de tarife pentru persoane juridice are un capitol explicit „1. POS” cu comisioane numerice (comision procesare, comision servicii acceptare, comision dezinstalare), direct legate de terminalul POS fizic pentru comercianți.",
+      "citat": "Comision servicii acceptare 55 LEI / POS / lună Se percepe când volumul lunar/POS este mai mic de 1.000 LEI. Comision dezinstalare POS 50 LEI / POS Se percepe în cazul în care clientul solicită rezilierea contractului în primul an de la instalare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/solutii-de-plata-si-colectare/servicii-acceptare-carduri"
+  ],
+  "durata_s": 59,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5429,
+    "citire_cache": 72602,
+    "scriere_cache": 47196,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1868164
+  }
+}

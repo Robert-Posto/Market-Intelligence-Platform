@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul ING FIX Complet",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este abonamentul corporate cel mai complet al ING (cost fix lunar, cont curent RON+valută, Business Card, tranzacții nelimitate în lei, transferuri valutare, instrumente de debit), pentru același segment de persoane juridice/PFA ca Abonamentul PRESTIGE. Diferă însă prețul (250 RON vs 295 lei), numărul de carduri incluse (ING oferă un singur Business Card standard per cont, nu 5 standard + 2 Gold) și nu menționează explicit un serviciu de tip 'Live FX' (platformă de tranzacționare valutară live), ci doar 'Transferuri în valută'.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetelor ING Fix prezintă explicit tariful (250 RON/lună) și toate serviciile incluse în pachetul cel mai complet (FIX Complet), comparabil ca structură cu abonamentul corporate Libra.",
+      "citat": "Pachet FIX Complet (250 RON) Cont curent RON ✓ Business Card ✓ ING Business, platforma de internet și mobile banking ✓ Cont curent în valută ✓ Transferuri în valută ✓ Instrumente de debit (cecuri și bilete la ordin) ✓",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Pachet%20FIX%20Complet%20%28250%20RON%29,%C8%99i%20bilete%20la%20ordin%29%20%E2%9C%93"
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--2-Iunie-2023--.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de produse și servicii pentru afacerea ta (ING FIX)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice/PFA detaliază costurile și serviciile incluse pentru toate pachetele ING FIX (inclusiv FIX Complet), confirmând structura de abonament lunar cu tranzacții incluse, similară cu Abonamentul PRESTIGE, dar fără precizarea unui număr fix de carduri Gold sau a unui serviciu Live FX.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "PDF-ul oficial de tarife conține tabelul cu toate pachetele ING FIX și serviciile incluse (depuneri, retrageri, încasări nelimitate), însă nu menționează explicit numărul de carduri Gold sau un produs Live FX echivalent celui din abonamentul Libra.",
+      "citat": "Pentru Clienții persoane juridice cu cifra de afaceri mai mare de 9.000.000 lei pachetul ING FIX Complet include un număr de 20 (douăzeci) de plăți lunare si 20 (douăzeci) de încasări lunare prin instrumente de debit de tip cec sau bilet la ordin.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent"
+  ],
+  "durata_s": 26,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2019,
+    "citire_cache": 38441,
+    "scriere_cache": 45345,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1412527
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-05",
+  "banca": "ing",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/internet-banking/homebank",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Home'Bank (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași categorie de produs (aplicație de mobile/internet banking) pentru segmentul persoane fizice, cu plăți instant, cerere de plată și autentificare biometrică, similar cu Libra Voice/RoPay/Click to Pay.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată aplicației conține cifre tehnice (versiuni minime de SO) și descrie funcționalitățile cheie ale aplicației.",
+      "citat": "Descarca Home'Bank din Google Play Versiune minimă: Android 10.0 QR Descarca Home'Bank din Google Play Descarca Home'Bank din Apple Store Versiune minimă: iOS 16.0 QR Descarca Home'Bank din Apple Store",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/Internet-banking/ING-Business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Business (aplicație mobile banking pentru IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași categorie de produs (aplicație de mobile banking), dar pentru segmentul persoane juridice/IMM, completând astfel segmentul business acoperit de Libra; include operațiuni de plată, schimb valutar și autentificare biometrică.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată aplicației ING Business conține cerințele tehnice (versiuni minime de SO) și descrierea funcționalităților principale pentru antreprenori.",
+      "citat": "ING Business este aplicația de internet și mobile banking, cu activare gratuită pentru antreprenorii ING, care te ajută să ai grijă de afacerea ta, simplu și sigur. Descarca Ing Business din Google Play Versiune minimă: Android 9.0 Descarca Ing Business din Apple Store Versiune minimă: iOS 15.4",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2964,
+    "citire_cache": 6344,
+    "scriere_cache": 40477,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.13210929999999999
+  }
+}

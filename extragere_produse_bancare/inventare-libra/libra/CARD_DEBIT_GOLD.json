@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/card-de-debit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată tipurilor de carduri de debit de la Libra Bank, secțiunea Card Gold descrie exact produsul CARD_DEBIT_GOLD: asigurare de călătorie, acces Business Lounge, cashback și dobândă la sold peste 500 lei.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Este pagina dedicată tipurilor de card de debit, cu secțiune proprie pentru Card Gold care conține toate cifrele cerute (comision administrare, cost emitere, dobândă, condiții).",
+      "citat": "Primești 1% dobândă anuală la banii de pe card - Acordată lunar, atunci când soldul pe card este mai mare de 500 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/card-de-debit#:~:text=Prime%C8%99ti%201%25%20dob%C3%A2nd%C4%83%20anual%C4%83%20la,mai%20mare%20de%20500%20lei"
+    },
+    {
+      "url": "https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Gold.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Avanpost Gold (Card Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi, comisioane și taxe pentru cardul Gold, linkat direct din pagina de card de debit ca 'Taxe și comisioane card debit Gold'.",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF oficial 'DOBANZI, COMISIOANE, TAXE SI ALTE COSTURI Avanpost Gold' cu toate cifrele relevante pentru cardul de debit Gold, inclusiv dobânda la sold și comisionul de administrare.",
+      "citat": "Dobanda cont curent de card (se aplica la sold mai mare de 500 RON) 1% Comision de administrare a cardului/contului de card 8 RON/luna Comision de emitere plastic 20 RON",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/card-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina generală de carduri pentru persoane fizice include secțiunea Card Gold cu descriere și cifre de comision/emitere identice cu produsul CARD_DEBIT_GOLD.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Secțiune dedicată Card Gold cu cifre explicite (comision administrare, cost emitere), dar pagina acoperă și alte tipuri de carduri (Free, Gold EUR, credit).",
+      "citat": "Trei variante de design, Black, Roz sau Camuflaj, la alegere - Administrarea cardului prin aplicația Libra pentru desktop - Comision de administrare: 8 lei/luna - Cost emitere plastic: 20 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/card-persoane-fizice#:~:text=Trei%20variante%20de%20design%2C%20Black%2C,Cost%20emitere%20plastic%3A%2020%20lei"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/card-de-debit",
+    "https://www.librabank.ro/card-persoane-fizice",
+    "https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Gold.pdf",
+    "https://www.librabank.ro/card-business"
+  ],
+  "durata_s": 68,
+  "consum": {
+    "intrare": 8,
+    "iesire": 6497,
+    "citire_cache": 82624,
+    "scriere_cache": 68115,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2517983
+  }
+}

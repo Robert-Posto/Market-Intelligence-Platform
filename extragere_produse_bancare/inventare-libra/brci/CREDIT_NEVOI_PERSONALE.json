@@ -1,0 +1,45 @@
+{
+  "generat": "2026-10-06",
+  "banca": "brci",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Credit pentru nevoi personale cu garanţie imobiliară (încredere 0.55) — Este singurul credit de nevoi personale pentru persoane fizice la BRCI pentru care am putut obține conținut cu cifre; diferă esențial de produsul Libra prin faptul că necesită garanție ipotecară imobiliară (Libra oferă credit fără garanții), are plafon mult mai mare (până la 1.125.000 lei vs 70.000–200.000 lei la Libra) și dobândă variabilă legată de ROBOR. Perioada de finanțare de 60 de luni coincide cu cea de la Libra. Site-ul BRCI listează separat și un produs numit simplu „Credit pentru nevoi personale” (fără garanție imobiliară) care ar fi echivalentul real, dar pagina acestuia nu a putut fi accesată din cauza blocării domeniului brci.ro pentru fetch direct."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.brci.ro/ro/produse/credit-pentru-nevoi-personale-cu-garantie-imobiliara.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru nevoi personale cu garanţie imobiliară",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul credit de nevoi personale pentru persoane fizice la BRCI pentru care am putut obține conținut cu cifre; diferă esențial de produsul Libra prin faptul că necesită garanție ipotecară imobiliară (Libra oferă credit fără garanții), are plafon mult mai mare (până la 1.125.000 lei vs 70.000–200.000 lei la Libra) și dobândă variabilă legată de ROBOR. Perioada de finanțare de 60 de luni coincide cu cea de la Libra. Site-ul BRCI listează separat și un produs numit simplu „Credit pentru nevoi personale” (fără garanție imobiliară) care ar fi echivalentul real, dar pagina acestuia nu a putut fi accesată din cauza blocării domeniului brci.ro pentru fetch direct.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Conținutul paginii conține cifre exacte (sumă, DAE, rată, comision) dar produsul descris este varianta garantată, nu cea fără garanții ca la Libra.",
+      "citat": "Suma creditului: 150.000 lei, numărul de rate lunare: 60, rata dobânzii: Robor la 3 luni + 4,5%, comision de analiză: 1.000 lei, suma totală a dobânzii: 31.365,47 lei, valoarea totală de plată: 181.365,47 lei, DAE: 8.30%, rata lunară: 3.022,76 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/credit-pentru-nevoi-personale.html",
+    "https://www.brci.ro/ro/produse/credit-pentru-nevoi-personale-cu-garantie-imobiliara.html",
+    "https://brci.ro/ro/produse/credit-pentru-nevoi-personale.html",
+    "https://brci.ro/ro/produse/scrisoare-garantie.html"
+  ],
+  "durata_s": 100,
+  "consum": {
+    "intrare": 57266,
+    "iesire": 5517,
+    "citire_cache": 30636,
+    "scriere_cache": 22882,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2330342
+  }
+}

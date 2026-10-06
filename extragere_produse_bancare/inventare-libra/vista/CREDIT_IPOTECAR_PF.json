@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-06",
+  "banca": "vista",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Vista Home / Vista Green Home / Programul Noua Casă (Credite pentru investiţii imobiliare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit imobiliar pentru persoane fizice, destinat achiziției/construcției/refinanțării unei locuințe, cu durată maximă de 420 luni (35 ani) - exact ca produsul Libra; include și varianta verde Vista Green Home, echivalentă cu 'Credit Verde' de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată de produs conține explicit durata maximă de 420 luni, procentul de finanțare și condițiile de venit, corespunzând termenilor Libra pentru Credit ipotecar/investiții imobiliare.",
+      "citat": "Minimum 33.000 Lei Contribuţie proprie minim 15% din preţ sau din valoarea devizului estimativ Suma finanţată poate fi de până la 85% din valoarea garanţiei Moneda: Lei Durata creditului: maximum până la 420 luni (35 ani).",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/carduri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Vista Home (Credite pentru investiţii imobiliare în Lei)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiune dedicată creditului imobiliar pentru persoane fizice (Vista Home), cu dobândă, comisioane și exemplu de calcul DAE pentru un credit ipotecar pe 30 de ani, același segment și scop ca produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține cifre explicite (dobândă, comisioane, exemplu DAE) pentru creditul Vista Home, deși este publicată alături de alte produse de card/cont pe aceeași pagină.",
+      "citat": "500 RON comision de analiză dosar (plătibil o singura data, când se acordă creditul); dobândă variabilă după formula IRCC + marjă fixă 2,85% comisionul anual de administrare a creditului de 200 Lei, plătibil anual",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-fizice/carduri#:~:text=500%20RON%20comision%20de%20analiz%C4%83,de%20200%20Lei%2C%20pl%C4%83tibil%20anual"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-fizice/credite",
+    "https://www.vistabank.ro/persoane-fizice/carduri"
+  ],
+  "durata_s": 100,
+  "consum": {
+    "intrare": 8,
+    "iesire": 8209,
+    "citire_cache": 91560,
+    "scriere_cache": 64399,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2614155
+  }
+}

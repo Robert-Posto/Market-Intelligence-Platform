@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-06",
+  "banca": "banorient",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont Premium (min. 250.000)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife/dobânzi arată explicit nivelul dobânzii pentru Cont Premium, condiționat de un sold minim de 250.000 (în valuta contului) și cu rate de 0,01%-0,10%, net inferioare și structurate diferit față de cele 2,00-3,00% p.a. pe trepte de vechime ale Contului de economii Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul oficial de tarife/dobânzi al băncii conține linia explicită cu denumirea produsului (Cont Premium, min. 250.000) și valorile dobânzii pe monede.",
+      "citat": "Moneda EUR USD RON Cont curent 0.01 % 0.01 % 0.01 % Cont Premium(min. 250,000) in in valuta contului / Cont Escrow 0.01 % 0.01 % 0.10 % Cont curent / Carduri - Dobândă penalizatoare 3.00 % 5.00 % 5.00 %",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Moneda%20EUR%20USD%20RON%20Cont,%25%205.00%20%25%205.00%20%25"
+    },
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "\"BANORIENT Premium\" Sight account (Contul BANORIENT Premium)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de tip cont cu dobândă calculată la soldul zilnic, deschis atât persoanelor fizice cât și juridice, la fel ca Cont de economii Libra; diferă însă esențial: este structurat ca un cont la vedere Premium ce necesită un sold minim (prag) pentru a beneficia de dobânda preferențială, nu are trepte de dobândă în funcție de vechime (6-12 luni/3-6 luni/nelimitat) ca la Libra, iar nivelul dobânzii (vezi tarife) este mult sub cel al Libra (sub 1% vs 2-3%).",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina descrie clar structura produsului (cont la vedere, dobândă pe sold zilnic, prag minim) dar nu conține cifre; cifrele exacte se găsesc în documentul de tarife/dobânzi al băncii.",
+      "citat": "Contul BANORIENT Premium este un cont la vedere oferit de BANQUE BANORIENT FRANCE Romania clienţilor săi persoane fizice sau juridice, titulari ai unui cont curent. Banca va acorda clientului o dobândă lunară preferenţială, în funcţie de soldul înregistrat pe cont la sfârşitul fiecărei zi bancare, cu condiţia ca soldul să nu depăşească un nivel minim stabilit.",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/products-and-services#:~:text=Contul%20BANORIENT%20Premium%20este%20un,dep%C4%83%C5%9Feasc%C4%83%20un%20nivel%20minim%20stabilit."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges",
+    "https://www.banorientfrance.com/romanian/romania/form-downloads",
+    "https://www.banorientfrance.com/english/romania/form-downloads",
+    "https://www.banorientfrance.com/english/romania/products-and-services"
+  ],
+  "durata_s": 74,
+  "consum": {
+    "intrare": 12,
+    "iesire": 5932,
+    "citire_cache": 108228,
+    "scriere_cache": 36584,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17244959999999998
+  }
+}

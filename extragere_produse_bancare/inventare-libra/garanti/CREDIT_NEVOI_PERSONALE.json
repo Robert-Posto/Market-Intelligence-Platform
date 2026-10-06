@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-06",
+  "banca": "garanti",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/personal-loan-and-refinancing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale și refinanțare (Personal needs loan and refinancing)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără garanții reale imobiliare, fără justificarea destinației, cu termen maxim de 5 ani (60 luni) - același tip de produs și segment ca CREDIT_NEVOI_PERSONALE de la Libra Bank.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată conține explicit sumele maxime, dobânzile, comisioanele și exemplul de calcul DAE pentru produsul standard fără garanții.",
+      "citat": "The Annual Percentage Rate of charge (APR) is 14.01 % p.a., for a personal loan in the amount of RON 45,000 over a period of 60 months, repaid in equal instalments. The interest rate is 9.76% p.a., variable, consisting of IRCC 3M + 4.20% the bank's margin, the financing fee is RON 0, and the monthly servicing charge is RON 75.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/individuals/personal-loan-and-refinancing/#:~:text=The%20Annual%20Percentage%20Rate%20of,servicing%20charge%20is%20RON%2075."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/individuals/personal-loan-and-refinancing/",
+    "https://www.garantibbva.ro/individuals/personal-loan-and-refinancing/"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 40088,
+    "iesire": 3547,
+    "citire_cache": 12686,
+    "scriere_cache": 35375,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2066207
+  }
+}

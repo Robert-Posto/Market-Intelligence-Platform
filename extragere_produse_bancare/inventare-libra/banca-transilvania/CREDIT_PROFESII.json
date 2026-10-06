@@ -1,0 +1,62 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_PROFESII",
+  "denumire": "Credite alte profesii liberale (Freud/Vitruvius/Paccioli/Libra IT)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/credit-rapid",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite rapide pentru afacerea ta (linie de credit / credit de capital de lucru pentru IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit general pentru companii/PFA/profesii liberale (linie de credit sau credit rapid), fără segmentare pe tipul de profesie liberală (psihologi, arhitecți, contabili, IT) ca la Libra; acoperă însă același segment de clienți persoane juridice/PFA.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține suma maximă finanțabilă și condițiile de acordare, dar nu detaliază dobânzi/comisioane exacte și nu menționează explicit profesiile liberale ca segment separat.",
+      "citat": "Poți lua linia de credit rapidă și creditul rapid cu sau fără garanții materiale. Ai de ales dintre soluții de creditare rapidă cu durata între 2 și 10 ani. până la 4.000.000 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/credit-rapid#:~:text=Po%C8%9Bi%20lua%20linia%20de%20credit,ani.%20p%C3%A2n%C4%83%20la%204.000.000%20lei"
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit BT Mic (pentru afaceri mici, inclusiv profesii liberale)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BT Mic finanțează explicit PFA și profesii liberale (notar, avocat etc.), fiind cel mai apropiat produs de creditare pentru profesii liberale, dar este generic (orice profesie liberală, nu doar psihologi/arhitecți/contabili/IT) și oferit de o subsidiară (BT Mic IFN) cu plafon pe cifra de afaceri.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina explică eligibilitatea (inclusiv profesii liberale) și un prag numeric clar (cifra de afaceri anuală de până la 1 milion RON), dar nu conține dobânzi/comisioane, iar produsul propriu-zis e găzduit pe btmic.ro, domeniu neinclus.",
+      "citat": "o companie cu minimum 3 luni de activitate economică, indiferent ca e SRL, PFA, II (întreprindere individuală); profesie liberală (notar, avocat etc.); sau IF (întreprindere / asociație familială). Pentru a fi eligibil însă, cifra de afaceri anuală, conform ultimului bilanț anual depus, trebuie să fie de până la 1 milion de RON.",
+      "citat_verificat": true,
+      "link_live": "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/#:~:text=o%20companie%20cu%20minimum%203,la%201%20milion%20de%20RON."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/divizia-pentru-medici",
+    "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/",
+    "https://www.bancatransilvania.ro/companii/divizia-pentru-medici",
+    "https://www.bancatransilvania.ro/companii/finantare/credite",
+    "https://www.bancatransilvania.ro/en/companii/finantare/credite/credit-de-investitii",
+    "https://www.bancatransilvania.ro/en/companii/credit-rapid",
+    "https://www.bancatransilvania.ro/en/companii/credit-rapid/compara-creditele",
+    "https://www.bancatransilvania.ro/companii/credit-rapid/compara-creditele",
+    "https://www.bancatransilvania.ro/en/companii/credit-rapid/compara-creditele",
+    "https://www.bancatransilvania.ro/companii/credit-rapid",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii"
+  ],
+  "durata_s": 117,
+  "consum": {
+    "intrare": 130509,
+    "iesire": 6094,
+    "citire_cache": 475500,
+    "scriere_cache": 130319,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.7428554999999999
+  }
+}

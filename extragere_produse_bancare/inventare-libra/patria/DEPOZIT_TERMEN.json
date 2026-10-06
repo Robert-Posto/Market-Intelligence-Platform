@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-05",
+  "banca": "patria",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/d/20",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Ratele de dobandă la produsele de economisire adresate persoanelor fizice (Depozitul Patria Clasic)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial cu grila de dobânzi pentru toate variantele de depozit la termen pentru persoane fizice, echivalentul direct al DEPOZIT_TERMEN pentru acest segment.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document PDF dedicat exclusiv ratelor de dobândă la depozitele la termen, cu tabele complete pe termen, monedă și tip de plată a dobânzii.",
+      "citat": "DEPOZITUL PATRIA CLASIC Moneda Plata dobanzii Termen depozit/Procent de dobanda p.a. 1 luna 3 luni 6 luni 12 luni 24 luni LEI La scadenta 3.75% 4.25% 4.75% 5.25% 5.50%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen pentru firme mici și mijlocii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată depozitului la termen pentru persoane juridice (firme mici și mijlocii), aceeași utilitate ca DEPOZIT_TERMEN Libra pentru segmentul juridic - plasarea surplusului de lichiditate din contul curent.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina produsului conține cifre concrete despre termene, monede și sume minime de constituire pentru depozitul la termen al firmelor.",
+      "citat": "poți alege maturitatea care se potrivește afacerii tale: peste noapte (overnight) cu scadență fixă pentru: 1 lună, 3 luni, 6 luni, 12 luni și 24 luni, un depozit la termen: 500 LEI/150 EUR/150 USD, un depozit pentru companie cu scadență variabilă: 50.000 LEI/USD/EUR",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite bancare (Depozitul Patria Clasic / Senior Plus) - persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen clasic pentru persoane fizice, destinat plasării economiilor/lichidităților din cont curent, cu termene de la 1 la 25 de luni - același tip de produs și segment ca DEPOZIT_TERMEN Libra pentru persoane fizice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete (plafon garantare 100.000 EUR, termene 1-25 luni) dar nu tabelul complet de dobânzi.",
+      "citat": "Siguranța economiilor tale: Depozitele bancare sunt garantate prin Fondul de Garantare a Depozitelor Bancare, în limita a 100.000 EUR, echivalent în lei/deponent/bancă.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Lista de tarife și comisioane - Persoane juridice (Constituire depozite la termen)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice listează explicit costul constituirii depozitelor la termen, confirmând gratuitatea serviciului pentru acest produs echivalent.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de tarife în care depozitul la termen pentru persoane juridice apare explicit cu valoarea comisionului (gratuit).",
+      "citat": "Deschidere/inchidere cont curent gratuit Constituire depozite la termen gratuit Constituire depozit Escrow 0.25% din suma depozitului, min 1.000 LEI sau 200 EUR /200 USD (se percepe in valuta depozituluiEscrow)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4527,
+    "citire_cache": 6342,
+    "scriere_cache": 30724,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1233564
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-06",
+  "banca": "techventures",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/persoane-fizice/conturi-de-economii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de economii (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (cont de economii cu acces permanent la fonduri, dobândă acumulată) și același segment (persoane fizice), dar dobânda se diferențiază pe tranșe valorice (sold), nu pe termenul de păstrare a banilor ca la Libra (3-6 luni, 6-12 luni).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține descrierea completă a produsului și tabelul cu procentele de dobândă pe tranșe valorice.",
+      "citat": "Tranșe valorice în funcție de care se bonifică dobânda la contul curent de economii RON până la 500.000 RON, inclusiv 1,20% peste 500.000 RON până la 1.000.000 RON, inclusiv 1,20%",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/companii/conturi-de-economii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de economii (companii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (cont de economii cu acces permanent la disponibil) și același segment (persoane juridice), dar dobânda este structurată pe tranșe valorice (ex. 0,20%-0,50% în RON) și nu pe termene de păstrare (3-6/6-12 luni) ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține descrierea produsului pentru firme și tabelul complet de dobânzi pe tranșe valorice și valute.",
+      "citat": "Tranșe valorice în funcție de care se bonifică dobânda la contul curent de economii RON până la 500.000 RON, inclusiv 0,20% peste 500.000 RON până la 1.000.000 RON, inclusiv 0,40%",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1776,
+    "citire_cache": 6347,
+    "scriere_cache": 21589,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0730099
+  }
+}

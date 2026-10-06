@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele ING Fix (cont curent pentru start-up / Pachet FIX Util)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pachetul de cont curent pentru firme nou-înființate (segment explicit 'Start-up' în simulator), cu cont, card, online banking ING Business și plăți în lei incluse, la fel ca Cont Deștept. Diferă însă durata gratuității: ING oferă 3-4 luni gratuite (în campania curentă), nu 12 luni ca la Libra, iar pachetul de bază (FIX Util) costă 40 RON/lună după perioada promoțională.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetelor ING Fix conține cifre explicite (luni gratuite, cost lunar al pachetelor) și un selector de categorie de client care include explicit 'Start-up'.",
+      "citat": "Deschide contul online până pe 31 decembrie 2026 și primești 3 luni gratuite la pachetul ING FIX. Încasezi prin POS sau SoftPOS? Primești încă 1 lună gratuită.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Deschide%20contul%20online%20p%C3%A2n%C4%83%20pe,Prime%C8%99ti%20%C3%AEnc%C4%83%201%20lun%C4%83%20gratuit%C4%83."
+    },
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/softpos",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING SoftPOS (comision pentru companii Micro/IMM cu Pachet FIX)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Corespunde componentei mPOS 0,59% din Cont Deștept: ING oferă aceeași categorie de serviciu (POS mobil pe telefon, fără administrare) pentru firme mici/start-up, dar la un comision ușor diferit (0,6% în loc de 0,59%) și legat de pachetul de cont ales.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată SoftPOS conține secțiunea 'Costuri' cu cifre exacte pentru comisionul per tranzacție, segmentat pe tipul de pachet de cont (FIX vs Profesional).",
+      "citat": "Pentru companiile Micro și IMM Pachet FIX: 0 administrare | 0,6% per tranzacție Pachet Profesional: 0 administrare| 0,8% per tranzacție",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/softpos#:~:text=Pentru%20companiile%20Micro%20%C8%99i%20IMM,0%20administrare%7C%200%2C8%25%20per%20tranzac%C8%9Bie"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+    "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/softpos"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2617,
+    "citire_cache": 90654,
+    "scriere_cache": 62792,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2012968
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-06",
+  "banca": "credex",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://credex.ro/credit-de-nevoi-personale/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit de consum pentru persoane fizice, fără justificarea destinației, monedă RON) și același segment de clienți, dar diferă plafonul maxim (100.000 lei față de 150.000 RON la Libra Way), perioada maximă (59 luni față de 60 luni) și faptul că Credex este IFN, nu bancă, nu oferă explicit rambursare în rate descrescătoare.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține cifrele exacte ale produsului: sumă minimă/maximă, perioadă, dobândă, comisioane și exemplu reprezentativ complet.",
+      "citat": "Rate fixe pe toata durata creditului; Bani instant pe cardul tau; 100% online; Poti lua un credit de pana la 100,000 lei; Perioada imprumutului este de minim 6 luni pana la 59 luni; Nu se solicita documente justificative.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://credex.ro/"
+  ],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1006,
+    "citire_cache": 6379,
+    "scriere_cache": 24542,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07269880000000001
+  }
+}

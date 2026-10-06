@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/sustenabilitate/credite-verzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Instrumentul financiar de Sustenabilitate (Credite verzi) - componenta PNRR/InvestEU",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de activitate curentă/investiții pentru companii (IMM și întreprinderi mici cu capitalizare medie), cu referință explicită la sprijinul InvestEU și plafoane de expunere InvestEU, dar acoperă doar pilonul Sustenabilitate (nu și Competitivitate), are plafon maxim diferit (7,5 mil EUR/37,5 mil RON față de 15-20 mil RON la Libra) și tenori ușor diferiți (12-48 luni revolving, 36-180 luni non-revolving).",
+      "incredere": 0.78,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține cifre exacte (plafoane, tenori, monedă) și menționează explicit sprijinul InvestEU ca limită de expunere (Obligor Limit), dar produsul este încadrat formal ca instrument de garantare PNRR/RRF, nu ca 'Credit InvestEU' de sine stătător.",
+      "citat": "Instrumentul financiar de Sustenabilitate este un produs de garantare de tip garanții de portofoliu (RRF Sustainability Portfolio), ce se subscrie pilonului de instrumente financiare din cadrul PNRR şi vizează sprijinirea adaptării companiilor şi proceselor de business la schimbările climatice și tranziția verde",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/sustenabilitate/credite-verzi",
+    "https://www.brd.ro/credite-sustenabile-corp"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2971,
+    "citire_cache": 86536,
+    "scriere_cache": 60207,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1975507
+  }
+}

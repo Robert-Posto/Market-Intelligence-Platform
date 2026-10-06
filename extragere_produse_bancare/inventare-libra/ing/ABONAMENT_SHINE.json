@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati-25-Iulie-2024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Listă de Taxe și Comisioane pentru persoane juridice, PFA și alte entități (pachete ING Fix)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă administrarea lunară a fiecărui pachet ING Fix (inclusiv FIX Valută, 165 lei), echivalentul comisionului fix de abonament al Libra SHINE, dar la o valoare diferită de 100 lei.",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF-ul de tarife și comisioane conține explicit grila prețurilor lunare ale fiecărui pachet ING Fix, inclusiv FIX Valută, aplicabil persoanelor juridice și PFA.",
+      "pagina_pdf": 2,
+      "citat": "Internet și Mobile banking : ING Business  | √  | √  | √  | √  | √  | √  | √  | Depuneri numerar la ATM ING  | nelimitat  | nelimitat  | nelimitat  | nelimitat  | nelimitat  | nelimitat  | nelimitat  | Retrageri lunare în lei la ATM ING incluse în pachet  | -  | -  | 5.000  | 5.000  | 25.000  | 25.000  | 25.000  | Administrare lunară pachet 0 lei 30 lei 40 lei 70 lei 150 lei 165 lei 250 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele ING Fix (în special varianta FIX Valută, 165 RON/lună)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "ING nu are un abonament unic de tip operațional lei+euro cu mPOS la preț fix de 100 lei, ci o familie de pachete ING Fix cu costuri diferite; varianta cea mai apropiată de Abonament SHINE este FIX Valută (165 RON/lună), care include cont curent RON și valută, card business și internet/mobile banking, dar prețul (165 vs 100 lei) și structura (pachet separat de SoftPOS) diferă.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată pachetelor ING Fix conține tabelul cu serviciile incluse și prețul exact al variantei FIX Valută, relevantă pentru compania cu operațiuni în lei și euro.",
+      "citat": "Servicii incluse în pachet | FIX Util(40 RON) | FIX Online (70 RON)  | FIX RON (150 RON)  | FIX Valută (165 RON)  | FIX Complet (250 RON)  | --- | --- | --- | --- | --- | --- | Cont curent RON | ✓ | ✓ | ✓ | ✓ | ✓ | Business Card | ✓ | ✓ | ✓ | ✓ | ✓ | ING Business, platforma de internet si mobile banking | ✓ | ✓ | ✓ | ✓ | ✓",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/softpos",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING SoftPOS (serviciul de acceptare carduri pentru clienții cu pachet ING Fix)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Corespunde componentei mPOS 0,59% din abonamentul Libra SHINE, dar la ING comisionul pentru clienții cu pachet FIX este 0,6% (nu 0,59%) și e un serviciu separat de administrare lunară a contului, nu inclus direct în preț.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina produsului SoftPOS afișează explicit comisioanele pe tranzacție pentru pachetele FIX și Profesional.",
+      "citat": "Pentru companiile Micro și IMM Pachet FIX: 0 administrare | 0,6% per tranzacție Pachet Profesional: 0 administrare| 0,8% per tranzacție Pentru companii mari Preț personalizat în funcție de volume și tipuri de carduri acceptate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 4,
+    "iesire": 5467,
+    "citire_cache": 6333,
+    "scriere_cache": 37099,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1486921
+  }
+}

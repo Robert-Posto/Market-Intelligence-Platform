@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/finantare-comerciala/acreditivul-documentar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditivul documentar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat firmelor (IMM/companii), identic ca tip cu Acreditive documentare Libra: angajament de plată irevocabil condiționat de prezentarea documentelor, folosit pentru tranzacții comerciale de import/export.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv produsului Acreditivul documentar, cu descrierea mecanismului, modurilor de utilizare și avantajelor.",
+      "citat": "Acreditivul Documentar reprezintă angajamentul de plată irevocabil al Băncii Cumpărătorului (Banca Emitentă), asumat în baza instrucțiunilor și în numele Cumpărătorului (Ordonatorul), în favoarea Vânzătorului (Beneficiarul), prin care plata mărfii livrate/serviciilor prestate va fi efectuata de către Banca Emitentă numai la prezentarea de către Vânzător a documentelor solicitate in acreditiv.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--29-August-2025-.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditiv documentar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Lista de taxe și comisioane pentru persoane juridice conține secțiunea dedicată Acreditiv documentar de import (emis) și de export (primit), cu comisioane exprimate în procente și sume minime/maxime.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife în vigoare (29 August 2025) care listează explicit comisioanele pentru acreditivul documentar de import și export, cu valori procentuale și minime/maxime în euro.",
+      "citat": "Emitere/ extindere valabilitate/ majorare valoare: cu gaj pe depozit cu facilitate de credit 0.2% pe trimestru, min. 100 euro Comision de risc negociabil",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/finantare-comerciala/acreditivul-standby",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditivul standby",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Variantă de acreditiv oferită tot persoanelor juridice, dar cu rol de garantare (similar scrisorii de garanție), nu de mecanism principal de plată ca acreditivul documentar comercial.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină dedicată produsului, fără cifre proprii, dar descrie explicit diferența față de acreditivul documentar comercial și cadrul legal aplicabil.",
+      "citat": "Spre deosebire de Acreditivul Documentar, Acreditivul 'Standby' nu este principalul mecanism de plată al tranzacției comerciale la care se referă, întrucât el îndeplinește doar rolul unui instrument de garantare, similar Scrisorii de Garanție Bancare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1558,
+    "citire_cache": 6303,
+    "scriere_cache": 24435,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0779361
+  }
+}

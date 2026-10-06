@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-06",
+  "banca": "cetelem",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cetelem.ro/credite/credit-de-nevoi-personale?cid=000009b62fe4552ec4a53bc076c8806f",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale Cetelem",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este creditul de consum pentru persoane fizice, fara justificarea destinatiei (fara adeverinta de venit), in RON, cu rate fixe, fara garantii pana la 150.000 lei si durata maxima de 60 luni — acelasi tip de produs si segment ca CREDIT_LIBRA_WAY. Suma minima afisata in simulator este 1.000 lei (mai mica decat minimul Libra de 10.000 RON), diferenta fiind notata ca atare.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicata a produsului contine cifre explicite (dobanda, plafon, comisioane), dar textul provine dintr-o versiune mai veche a paginii (oferta mentionata ca valabila pana la 23.04.2020) iar banca a anuntat in martie 2023 sistarea progresiva a acordarii de credite noi in Romania, ceea ce creeaza incertitudine asupra disponibilitatii curente.",
+      "citat": "Il poti solicita FARA ADEVERINTA DE VENIT Ai RATE FIXE pe durata intregului credit Dobanda fixa, incepand de la 8,9%***** 0 comision de analiza 0 comision de administrare 0 garantii pana la 150.000 lei Nu este nevoie sa-ti aduci salariul la noi.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.cetelem.ro/credite/credite-online?cid=0000094c80bfc5b084a12aa1e2fcc077",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "simulator",
+      "denumire_la_banca": "Credit de nevoi personale Cetelem (aplicare online)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeasi categorie de credit de consum pentru persoane fizice, fara garantii, cu rate fixe in RON si durata 6-60 luni; plafonul maxim afisat aici (225.000 lei) este mai mare decat cel al Libra Way (150.000 RON), posibil din cauza unei campanii/versiuni diferite a paginii.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina de simulare/aplicare contine exemplul de calcul cu dobanda, DAE si rata, dar textul pare preluat dintr-o campanie din 2022, iar banca a anuntat ulterior (martie 2023) incetarea progresiva a activitatii de creditare in Romania, deci datele pot fi perimate.",
+      "citat": "Exemplu de calcul pentru Creditul de nevoi personale: pentru un credit in valoare de 80.000 lei, respectiv 40.000 lei pe o perioada de 60 luni, cu o dobanda anuala fixa de 9,4%, respectiv 11,4%, comision lunar de administrare 0 lei, comision de analiza 0 lei, rata lunara fixa este 1.676,2 lei, respectiv 877,65 lei, DAE 9,81%, respectiv 12,01%, iar valoarea totala platibila este 100.572 lei, respectiv 52.659 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cetelem.ro/",
+    "https://www.cetelem.ro/credite/credit-de-nevoi-personale?cid=000009b62fe4552ec4a53bc076c8806f",
+    "https://www.cetelem.ro/comunicate-de-presa?cid=0000096a3811ed77c46a99f8f3f92db3",
+    "https://www.cetelem.ro/credite/credite-online?cid=0000094c80bfc5b084a12aa1e2fcc077"
+  ],
+  "durata_s": 118,
+  "consum": {
+    "intrare": 62861,
+    "iesire": 7461,
+    "citire_cache": 46185,
+    "scriere_cache": 38486,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.305784
+  }
+}

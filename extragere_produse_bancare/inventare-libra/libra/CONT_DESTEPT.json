@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/contdestept",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Deștept",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact produsului Cont Deștept pentru companii nou-create, persoane juridice, cu gratuitate 12 luni.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină landing dedicată exclusiv acestui produs, cu toate cifrele de cost/comisioane.",
+      "citat": "Beneficiari: companiile infiintate in ultimele 12 luni. Perioada de valabilitate: nelimitat Costuri: gratuit pentru primele 12 luni de la deschiderea contului*",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/contdestept#:~:text=Beneficiari%3A%20companiile%20infiintate%20in%20ultimele,luni%20de%20la%20deschiderea%20contului%2A"
+    },
+    {
+      "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont Deștept",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Tabelul de abonamente operaționale pentru companii sub 5M lei include coloana Cont Deștept cu toate comisioanele sale.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Tabel oficial cu valorile exacte ale pachetului Cont Deștept, inclusiv mPOS și gratuitatea de 12 luni.",
+      "citat": "Cont Deștept Pentru companii noi · Rise IMM · Shine IMM mPOS – comision carduri persoane fizice 0,59% 0,59% 0,59% ✦ Gratuit 12 luni 50 lei/lună 100 lei/lună",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-bancar-online-2in1#:~:text=Cont%20De%C8%99tept%20Pentru%20companii%20noi,luni%2050%20lei%2Flun%C4%83%20100%20lei%2Flun%C4%83"
+    },
+    {
+      "url": "https://www.librabank.ro/cont-curent-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont Deștept",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina Cont curent IMM listează abonamentul Cont Deștept alături de Rise IMM și Shine IMM, cu comisioane și beneficii exacte.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document general de produs IMM în care Cont Deștept apare explicit cu valorile sale (mPOS 0,59%, gratuit 12 luni).",
+      "citat": "Cont Deștept · Rise IMM · Shine IMM mPOS – comision carduri persoane fizice · 0,59% · 0,59% · 0,59% Firme nou înființate: Gratuit 12 luni · 50 lei · 100 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/contdestept",
+    "https://www.librabank.ro/cont-bancar-online-2in1"
+  ],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1604,
+    "citire_cache": 34588,
+    "scriere_cache": 42415,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1290071
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/Stiri/Libra_Internet_Bank_ofer%C4%83_%C8%99i_%C3%AEn_2024_finan%C8%9B%C4%83ri_fermierilor_care_beneficiaz%C4%83_de_subven%C8%9Bii_APIA/3311",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare fermieri pe baza convenției APIA (Credit APIA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Articolul descrie exact creditul de activitate curentă pe adeverința APIA acordat persoanelor juridice/fermierilor, cu procent din subvenție, dobândă și perioadă de grație până la încasarea APIA, identic ca mecanism cu produsul Libra CREDIT_APIA.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este cea mai recentă comunicare oficială de pe site despre convenția APIA, cu cifre explicite (procent din subvenție, formula dobânzii, termen de rambursare, grație), dar este format de știre, nu pagină de produs permanentă.",
+      "citat": "Valoarea maximă a creditului oferit de Libra Internet Bank este de până la 90% din valoarea subvenției pentru 2024, iar dobânda aplicată este calculată după formula ROBOR la 6 luni plus 2%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/credit-agricultura-fermieri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scontare subvenție APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina curentă de produs 'Agribusiness' a băncii, în care 'Scontare subvenție APIA' apare listată explicit printre creditele pentru agricultură oferite fermierilor (persoane juridice), corespunzător produsului CREDIT_APIA.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina este activă și menționează denumirea produsului APIA, dar nu conține cifre (procent, dobândă, termen) - acestea apar doar în comunicatele de presă legate.",
+      "citat": "Îți oferim credit următoarele credite pentru agricultură: Scontare subvenție APIA Terenuri agricole Inputuri culturi agricole Echipamente agricole Sisteme de irigații",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/harta",
+    "https://www.librabank.ro/credite-agricultura",
+    "https://www.librabank.ro/Agricultura",
+    "https://www.librabank.ro/documente/credite_persoane_juridice/credit_APIA_finantare_ferma.pdf",
+    "https://www.librabank.ro/Stiri"
+  ],
+  "durata_s": 474,
+  "consum": {
+    "intrare": 12,
+    "iesire": 6705,
+    "citire_cache": 195641,
+    "scriere_cache": 77830,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.30077719999999997
+  }
+}

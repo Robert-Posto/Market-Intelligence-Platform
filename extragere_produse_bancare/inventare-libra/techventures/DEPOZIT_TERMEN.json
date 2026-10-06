@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-05",
+  "banca": "techventures",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la termen (companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru persoane juridice, constituit din sume disponibile în contul curent, cu dobândă fixă și perioade de 1-12 luni - corespunde exact segmentului de firme al produsului Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată cu descriere, caracteristici și tabel complet de dobânzi pe valute și perioade.",
+      "citat": "Constituirea depozitului se face din sumele disponibile în contul curent al clientului. Sumele sunt garantate de stat, în limita plafonului comunicat de Fondul de Garantare a Depozitelor Bancare – în prezent 100.000 euro sau echivalent.",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/depozite-la-termen#:~:text=Constituirea%20depozitului%20se%20face%20din,prezent%20100.000%20euro%20sau%20echivalent."
+    },
+    {
+      "url": "https://techventures.bank/persoane-fizice/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru persoane fizice, cu dobândă fixă, deschidere online și garantare FGDB, corespunzător segmentului retail al produsului Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată cu tabel complet de dobânzi, sume minime și condiții de constituire.",
+      "citat": "Dacă vrei să economisești peste 5.000 RON, 1.200 EUR sau 1.800 USD și îți dorești un depozit personalizat, poți negocia cu Departamentul Trezorerie și Piețe Financiare termenul dorit de constituire și dobânda.",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/persoane-fizice/depozite-la-termen#:~:text=Dac%C4%83%20vrei%20s%C4%83%20economise%C8%99ti%20peste,dorit%20de%20constituire%20%C8%99i%20dob%C3%A2nda."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/depozite-la-termen",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/persoane-fizice/depozite-la-termen"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1951,
+    "citire_cache": 43893,
+    "scriere_cache": 31703,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10756210000000001
+  }
+}

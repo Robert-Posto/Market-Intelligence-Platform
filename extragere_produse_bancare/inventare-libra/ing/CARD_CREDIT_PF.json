@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/credit-card",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Credit Card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving pentru persoane fizice, în lei, cu perioadă de grație, rate fără dobândă la comercianți și limită calculată în funcție de venitul net lunar - același tip de produs și segment ca produsul Libra CARD_CREDIT_PF.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit toate cifrele cheie: plafon maxim, dobândă, perioadă de grație și condiții de venit.",
+      "citat": "Ai până la 45 de zile perioadă de grație în care poți rambursa suma pe care ai împrumutat-o, dacă nu vrei să o împarți în rate. Asta înseamnă până la 45 de zile în care nu plătești dobândă deloc.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/faq-credit-card",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "ING Credit Card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina FAQ detaliază condițiile precontractuale ale aceluiași produs (card de credit revolving PF): dobândă, taxe, eligibilitate și rate fără dobândă.",
+      "incredere": 0.88,
+      "explicatie_incredere": "Document de tip FIPC/FAQ cu cifrele exacte ale dobânzii (0% vs 25%) și taxelor pentru produsul corespunzător.",
+      "citat": "Dobânda la ING Credit Card este următoarea: 0% pentru cumpărăturile făcute cu cardul, cu condiția să returnezi integral până la data scadentă suma folosită sau rata aferentă – dacă optezi pentru plata în rate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credit card (ING Credit Card)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Lista oficială de dobânzi pentru persoane fizice, valabilă curent, include rândul dedicat produsului Credit card cu rata anuală a dobânzii/DAE aferentă.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Documentul oficial de dobânzi conține un rând explicit pentru produsul Credit card, dar extragerea de text din tabel este parțial fragmentată.",
+      "citat": "ING Ipotecar cu asigurare de viață* Credit card* 28,00% Dobândă Personalizată ^1 Cu asigurare de viață Fără asigurare de viață Dobânda standard",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 68,
+  "consum": {
+    "intrare": 6,
+    "iesire": 6272,
+    "citire_cache": 44932,
+    "scriere_cache": 53811,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20624589999999998
+  }
+}

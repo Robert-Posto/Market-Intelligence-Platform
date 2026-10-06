@@ -1,0 +1,58 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://intreb.bancatransilvania.ro/cum-fac-un-schimb-valutar-negociat-din-aplicatia-bt-go/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Schimb valutar negociat (BT Go)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "La fel ca Live FX, este un schimb valutar online cu curs în timp real oferit direct din platforma de banking (BT Go), diferit de schimbul valutar standard/prin dealer; diferă însă prin faptul că e disponibil doar pentru companii (BT Go) și are prag minim de sumă și interval orar limitat, spre deosebire de Live FX care e descris ca disponibil non-stop pentru toți clienții.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată explică pas cu pas funcționalitatea și conține cifre concrete despre prag minim, interval orar și valabilitatea ofertei de curs.",
+      "citat": "Ține cont că poți efectua un schimb valutar negociat pentru minim 25.000 EUR/USD/GBP vs. RON sau echivalentul a 10.000 EUR pentru alte perechi valutare și doar în zilele lucrătoare între 09:00 și 17.30.",
+      "rol_secundar": null,
+      "citat_verificat": true,
+      "link_live": "https://intreb.bancatransilvania.ro/cum-fac-un-schimb-valutar-negociat-din-aplicatia-bt-go/#:~:text=%C8%9Aine%20cont%20c%C4%83%20po%C8%9Bi%20efectua,lucr%C4%83toare%20%C3%AEntre%2009%3A00%20%C8%99i%2017.30."
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/curs-valutar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Curs valutar / Schimb valutar online (BT)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pagina hub de schimb valutar a BT, accesibilă atât din meniul Personal cât și Business, care afișează cursurile actualizate zilnic și menționează explicit posibilitatea schimbului valutar direct din aplicațiile mobile/internet banking; nu este însă o platformă dedicată de tranzacționare FX ca Live FX, ci mai degrabă un centru de informare + convertor.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina conține un tabel de curs valutar cu cifre exacte de cumpărare/vânzare, actualizat zilnic, plus convertor valutar, dar nu detaliază produsul 'platformă de schimb online' ca atare.",
+      "citat": "Indiferent cum alegi să faci schimbul valutar: în unitățile BT, direct din aplicațiile mobile sau cu cardul BT în străinătate, aici găsești rapid toate informațiile de care ai nevoie.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/curs-valutar#:~:text=Indiferent%20cum%20alegi%20s%C4%83%20faci,informa%C8%9Biile%20de%20care%20ai%20nevoie."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/curs-valutar",
+    "https://intreb.bancatransilvania.ro/cum-fac-un-schimb-valutar-negociat-din-aplicatia-bt-go/",
+    "https://www.bancatransilvania.ro/en/curs-valutar",
+    "https://intreb.bancatransilvania.ro/valuta/",
+    "https://m.bancatransilvania.ro/curs-valutar-spot/",
+    "https://www.bancatransilvania.ro/curs-valutar"
+  ],
+  "durata_s": 65,
+  "consum": {
+    "intrare": 66742,
+    "iesire": 5180,
+    "citire_cache": 216885,
+    "scriere_cache": 86108,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.443931
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/activitate-curenta/scrisori-de-garantie-bancara",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată exact produsului 'Scrisori de garanție bancară' pentru persoane juridice (segment IMM), aceeași categorie de instrument bancar ca la Libra: garanție bancară emisă la cererea clientului companie pentru participare la licitație, bună execuție, restituire avans etc.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina este dedicată integral produsului, denumit identic 'Scrisori de garanție bancară', și conține cifre concrete despre sumă maximă, perioadă și mod de rambursare.",
+      "citat": "Suma maximă este 5.000.000 RON sau 1.000.000 EUR Care este perioada de creditare? Perioada de creditare este de maximum 60 luni. Plătești doar un comision trimestrial, fără a fi necesară rambursarea.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/activitate-curenta/securizarea-tranzactiilor-internationale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Garanțiile Bancare Internaționale / Scrisori de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină complementară care detaliază tipurile de scrisori de garanție bancară (licitație, avans, bună execuție, bună plată), condițiile de garantare și modul de emitere pentru companii.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina descrie explicit tipurile de scrisori de garanție bancară și condițiile aferente (garanții acceptate, canal de emitere, valabilitate), dar fără cifre de sumă/termen specifice ca pagina dedicată.",
+      "citat": "Scrisoare de garanție bancară de participare la licitație; Scrisoare de garanție bancară de returnare a avansului; Scrisoare de garanție bancară de bună execuție; Scrisoare de garanție bancară de bună plată.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/activitate-curenta/securizarea-tranzactiilor-internationale",
+    "https://www.brd.ro/companii/corporate-banking/finantare/scrisori-de-garantie",
+    "https://www.brd.ro/companii/corporate",
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/activitate-curenta/scrisori-de-garantie-bancara"
+  ],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 30754,
+    "iesire": 3160,
+    "citire_cache": 95060,
+    "scriere_cache": 70522,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.288425
+  }
+}

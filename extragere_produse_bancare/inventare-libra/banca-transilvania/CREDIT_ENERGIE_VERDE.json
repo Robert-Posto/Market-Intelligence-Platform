@@ -1,0 +1,70 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/credite-pentru-panouri-fotovoltaice",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru panouri fotovoltaice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată explicit finanțării investițiilor în capacități de producție fotovoltaică pentru firme (autoconsum sau vânzare de energie), inclusiv date despre durata de viață a tehnologiei și perioada de amortizare a investiției, la fel ca produsul Libra pentru energie verde.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina de produs dedicată creditelor pentru panouri fotovoltaice conține cifre concrete despre durata de viață a tehnologiei (25 de ani) și perioada de amortizare a investiției (4-7 ani), specifice acestui tip de finanțare.",
+      "citat": "Durata vieții tehnologiei actuale de până la 25 de ani îți permite să câștigi bani, investiția amortizându-se în 4-7 ani",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi/compara",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "conditii",
+      "denumire_la_banca": "Compară Creditele Verzi pentru Companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Tabelul de comparație a creditelor verzi BT include explicit destinația 'Construcție și echipare parcuri fotovoltaice' și 'Instalații complete pentru prosumatori', cu procentele de cofinanțare/aport propriu cerute, corespunzând exact tipului de finanțare descris la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este pagina de comparare a creditelor verzi pentru companii, cu procente concrete (aport propriu/cofinanțare) aplicabile investițiilor de tip parc fotovoltaic și prosumator, categoriile care corespund produsului Libra.",
+      "citat": "Parc Fotovoltaic: 15–30%; Prosumator: min. 10% ... Parc Fotovoltaic: 15–30%; Prosumator: min. 10% ... Documente pentru garanțiile reale propuse, în cazul în care creditul este garantat cu garanții reale",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite Verzi",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs pentru persoane juridice, finanțare pentru investiții în producția de energie din surse regenerabile (parcuri fotovoltaice, instalații pentru autoconsum, sisteme de stocare), exact segmentul și scopul creditului Libra pentru energie verde; pagina include și centrale eoliene în lista de investiții eligibile (conform documentației conexe a campaniei).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată produsului descrie clar scopul și tipurile de investiții eligibile, dar textul indexat nu conține cifre exacte (dobânzi/comisioane); acestea apar pe subpagina de comparare a creditelor.",
+      "citat": "Creditele verzi sunt finanțări destinate companiilor care vor să investească în producerea de energie verde (în special panouri fotovoltaice), fie pentru consum propriu, fie pentru a susține economia prin producție de energie regenerabilă.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi/compara",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-pentru-panouri-fotovoltaice",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credite-verzi/compara"
+  ],
+  "durata_s": 99,
+  "consum": {
+    "intrare": 8,
+    "iesire": 8583,
+    "citire_cache": 96414,
+    "scriere_cache": 66348,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.27099880000000004
+  }
+}

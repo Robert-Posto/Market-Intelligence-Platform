@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/card-de-zi-cu-zi-simplu",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "CARD DE ZI CU ZI SIMPLU (pachet cu Card de debit Mastercard/Visa Standard)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit standard, gratuit la emitere/administrare, cu acces la platforma de cashback BRD, dar este oferit doar persoanelor fizice (printr-un pachet de cont curent), nu și persoanelor juridice ca la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit prețul 'GRATUIT/lună' și descrie cardul de debit cu administrare anuală gratuită.",
+      "citat": "CARD DEBIT MASTERCARD/VISA STANDARD cu administrare anuală gratuită și livrare la domiciliu prin curier. Preț: GRATUIT/lună cu doar o tranzacție de plată pe luna, realizată prin YOU BRD sau cu cardul de debit BRD la comercianți",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/carduri-de-zi-cu-zi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Carduri de Zi cu Zi (grila pachetelor: Simplu, Plus, Gold, Platinum)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Grila arată toate variantele de card de debit gratuit pentru persoane fizice; nu există o variantă echivalentă, gratuită, dedicată persoanelor juridice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina listează explicit condițiile de preț pentru fiecare pachet, inclusiv varianta complet gratuită (Simplu).",
+      "citat": "CARD DE ZI CU ZI SIMPLU Preț: GRATUIT/lună* +Cont curent in Lei +CARD DEBIT MASTERCARD/VISA STANDARD +YOU BRD +INTEROGĂRI SOLD LA ATM BRD +RETRAGERI DE NUMERAR DE LA BRD +MULTICURRENCY",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/cashback",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Programul CASHBACK din YOU BRD (pentru carduri de debit BRD)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă mecanismul de cashback la comercianți parteneri asociat cardului de debit, similar cu cashback-ul Libra, dar disponibil doar persoanelor fizice.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina descrie explicit funcționarea programului de cashback legat de cardul de debit, dar fără cifre procentuale generale (acestea variază per partener).",
+      "citat": "Vei beneficia automat de noua funcționalitate CASHBACK direct din aplicația de mobile banking YOU BRD dacă ai un card de debit sau de credit activ, în calitate de persoană fizică.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/card-de-zi-cu-zi-simplu",
+    "https://www.brd.ro/carduri-de-debit-business-imm",
+    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/carduri-de-zi-cu-zi",
+    "https://www.brd.ro/_files/pdf/Comisioane_Carduri.pdf"
+  ],
+  "durata_s": 464,
+  "consum": {
+    "intrare": 10,
+    "iesire": 5091,
+    "citire_cache": 154093,
+    "scriere_cache": 87340,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3000986
+  }
+}

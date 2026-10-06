@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credite-verzi-pentru-achizitia-de-panouri-fotovoltaice.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite verzi pentru achiziția de panouri fotovoltaice (IMM Credit Verde Fotovoltaice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru persoane juridice (IMM) destinat finanțării sau refinanțării capacităților de producție fotovoltaică, exact ca produsul Libra CREDIT_ENERGIE_VERDE; nu acoperă eolian explicit, dar e același tip de produs și segment.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: sume minime/maxime, avans, garanții, perioadă de utilizare și rambursare.",
+      "citat": "Suma minimă: 7.000 EUR (sau echivalent lei) Suma maximă: • 100.000 eur pentru creditele negarantate • Peste 100.000 eur pentru creditele garantate Perioada de rambursare: max. 120 luni",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credite-verzi-pentru-achizitia-de-panouri-fotovoltaice.html#:~:text=Suma%20minim%C4%83%3A%207.000%20EUR%20%28sau,de%20rambursare%3A%20max.%20120%20luni"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credite-verzi-pentru-achizitia-de-panouri-fotovoltaice.html"
+  ],
+  "durata_s": 12,
+  "consum": {
+    "intrare": 6,
+    "iesire": 994,
+    "citire_cache": 40642,
+    "scriere_cache": 39986,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1180454
+  }
+}

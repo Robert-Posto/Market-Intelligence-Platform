@@ -1,8 +1,7 @@
 # Market Intelligence Platform
 
-Monitorizarea concurenței bancare din România: date publice de la 30 de bănci (comisioane, dobânzi,
-aplicații, recenzii, indici BNR), normalizate într-un vocabular comun și comparate într-o aplicație
-read-only. Prototip în lucru.
+Monitorizarea concurenței bancare din România: date publice de la 30 de bănci (comisioane, dobânzi, aplicații,
+recenzii, indici BNR), normalizate într-un vocabular comun și comparate într-o aplicație read-only. Prototip.
 
 Python 3.12 (colectare, API) · PostgreSQL 16 (Docker, containerul `mip-db`) · interfața în React
 (`web/`, stack-ul SCC) · Playwright + pdfplumber · Windows.
@@ -74,9 +73,9 @@ interpolat. `/pdf` servește doar URL-uri înregistrate în `surse`, altfel devi
 Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
 `app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
 
-**Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice. Prioritatea e popularea inițială,
-nu automatizarea. Butoanele din Overview sunt deblocate deliberat (01.10.2026) doar ca rulări manuale
-(README, „Rulări manuale”).
+**Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice: prioritatea e popularea inițială.
+Rulările manuale (pagina „Rulare manuală”, README) sunt deblocate deliberat; joburile de comparație cu
+Libra costă, deci pornesc doar după estimarea de cost.
 
 **Dependențe.** Orice pachet nou importat intră în `requirements.txt` (Python) sau `package.json`
 (`web/`) în același commit.

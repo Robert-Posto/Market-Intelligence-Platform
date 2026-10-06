@@ -1,0 +1,74 @@
+{
+  "generat": "2026-10-05",
+  "banca": "exim",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/11/09/si-mai-multe-depozite/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen clasic pentru persoane fizice, cu plată a dobânzii la scadență sau lunar, disponibil la ghișeu și online, exact corespondentul produsului Libra pentru segmentul persoane fizice.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată conține tabele complete cu dobânzi pe termene și valute, plus caracteristici (sumă minimă, comisioane).",
+      "citat": "Disponibil la ghiseele bancii si prin Internet Banking Valuta: RON, EUR, USD, GBP, CHF Suma minima: 500 RON, 150 EUR/USD/GBP/CHF Tabel rate dobanzi (%/an): Perioada RON EUR USD 30 zile 4,20 1,30 2,15 90 zile 5,00 1,55 2,65 180 zile 5,30 1,80 2,80 365 zile 5,40 2,00 3,00",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/09/si-mai-multe-depozite/#:~:text=Disponibil%20la%20ghiseele%20bancii%20si,365%20zile%205%2C40%202%2C00%203%2C00"
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/depozite-si-investitii-imm-2-10-mil-lei/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen standard (secțiunea Depozite și investiții, IMM 2-10 mil LEI)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru firme destinat exact administrării excedentului de lichiditate din conturile curente, aceeași recomandare de utilizare ca produsul Libra pentru persoane juridice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit scopul (excedent de lichiditate), plafoanele minime și faptul că dobânzile variază după valută, termen și sumă, dar nu afișează direct tabelul de dobânzi (trimite la Documente utile).",
+      "citat": "DEPOZITE LA TERMEN STANDARD – Pentru o administrare eficienta a excedentului de lichiditate existent pot fi constituite depozite in lei sau in valuta la rate de dobanda preferentiale. Plasamentele peste suma minima de 100.000 RON, 50.000 EUR sau USD sunt eligibile pentru negociere.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/12/05/depozite-si-investitii-imm-2-10-mil-lei/#:~:text=DEPOZITE%20LA%20TERMEN%20STANDARD%20%E2%80%93,USD%20sunt%20eligibile%20pentru%20negociere."
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/depozite-si-investitii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen standard (secțiunea Depozite și investiții, IMM >10 mil LEI / Corporate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași structură de produs ca pagina IMM 2-10 mil LEI, dar pentru segmentul de companii mai mari (IMM >10 mil LEI), menținând aceeași descriere a depozitului standard pentru excedent de lichiditate.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina nu a fost deschisă direct, dar structura meniului arată un link identic 'Depozite si investitii' folosit și pentru segmentul Corporate/IMM >10 mil, cu conținut probabil analog paginii IMM 2-10 mil confirmate.",
+      "citat": "DEPOZITE LA TERMEN STANDARD – Pentru o administrare eficienta a excedentului de lichiditate existent pot fi constituite depozite in lei sau in valuta la rate de dobanda preferentiale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/11/09/even-more-deposits/",
+    "https://www.eximbank.ro/2022/11/09/even-more-deposits/",
+    "https://www.eximbank.ro/2025/12/12/depozitul-plus-lei/",
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/11/09/si-mai-multe-depozite/",
+    "https://www.eximbank.ro/2022/12/05/depozite-si-investitii-imm-2-10-mil-lei/"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 61045,
+    "iesire": 3443,
+    "citire_cache": 86315,
+    "scriere_cache": 57503,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3175405
+  }
+}

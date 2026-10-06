@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-05",
+  "banca": "pko",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dobânzilor.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen negociat (Negotiated term deposit)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen pentru plasarea surplusului de lichidități, dar la PKO Bank Polski Sucursala București produsul este disponibil DOAR pentru clienți corporate (persoane juridice), sucursala deservind exclusiv clienți corporativi, spre deosebire de produsul Libra care se adresează atât persoanelor fizice cât și juridice. De asemenea dobânda este negociată individual, nu publicată ca grilă fixă.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de rate ale dobânzilor al sucursalei listează explicit secțiunea DEPOZITE LA TERMEN NEGOCIATE cu produsul Depozit la termen negociat.",
+      "pagina_pdf": 1,
+      "citat": "DEPOZITE LA TERMEN NEGOCIATE NEGOTIATED TERM DEPOSITS 4. Depozit la termen negociat Negotiated term deposit Rata dobânzii este negociată în fiecare caz The interest rate is negotiated in every case",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.pkobp.pl/api/public/0ba9b6a9-2505-4090-acc1-e1c9d0d9218d.pdf?content-disposition=filename=Comunicarea_privind_sumele_minime_ale_conturilor_de_depozit_la_termen_cu_termene_negociate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Depozit la termen (lokata terminowa) pe warunkach negocjowanych – clienți ai sucursalelor străine",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul stabilește sumele minime pentru depozitele la termen negociate disponibile clienților corporate ai Sucursalei București, confirmând că produsul este dedicat exclusiv segmentului corporate/instituțional, nu persoanelor fizice ca la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial, datat 10.02.2026, care listează explicit Sucursala București (Oddział Rumunia) și sumele minime pe valute pentru depozitul la termen negociat.",
+      "pagina_pdf": 1,
+      "citat": "Kwoty minimalne Rachunków lokat terminowych na warunkach negocjowanych dla klientów PKO BP S.A., Varsovia, Sucursala Bucuresti (Oddział Rumunia) PLN 1 000 000 5 000 000 EUR 250 000 1 000 000 RON n/a 7 500 000",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dobânzilor.pdf",
+    "https://www.pkobp.pl/api/public/0ba9b6a9-2505-4090-acc1-e1c9d0d9218d.pdf?content-disposition=filename=Comunicarea_privind_sumele_minime_ale_conturilor_de_depozit_la_termen_cu_termene_negociate.pdf",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3102,
+    "citire_cache": 75437,
+    "scriere_cache": 67140,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21397739999999998
+  }
+}

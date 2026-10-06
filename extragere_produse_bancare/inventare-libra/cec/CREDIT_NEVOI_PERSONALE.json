@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-06",
+  "banca": "cec",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/persoane-fizice/credite/credite-nevoi-personale/credit-online-de-nevoi-personale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale online (cu dobândă fixă)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără justificarea destinației, fără garanții și avans, sumă maximă 220.000 lei (în sucursale) / 120.000 lei (online), durată maximă 5 ani (60 luni) - corespunde exact profilului CREDIT_NEVOI_PERSONALE de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele relevante: dobândă, DAE, sumă maximă, durată, comisioane.",
+      "citat": "Suma maximă: 220.000 lei pentru creditele contractate în sucursale, 120.000 pentru creditele online Durata maximă: 5 ani, durată minimă 1 an DAE maximă: 9,76% Avans: fără garanții și avans",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/dobanzi-credite-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Nevoi personale dobânda fixă / Creditul de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi care listează explicit produsele de credit de nevoi personale fără garanții, cu rate ale dobânzii pentru clienți cu și fără încasare de venituri prin bancă.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document PDF public cu grila de dobânzi, produsul apare explicit cu valori numerice actualizate.",
+      "citat": "Nevoi personale dobânda fixă 7,99%/an – dobândă fixă cu încasarea veniturilor prin CEC Bank 9,49%/an – dobândă fixă fără încasarea veniturilor prin CEC Bank",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Campanie nevoi personale cu dobândă fixă / Creditul de nevoi personale cu dobândă fixă",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Exemple reprezentative de calcul pentru creditul de nevoi personale fără garanții, cu sumă maximă 220.000 lei, incluzând DAE, rată lunară și comisioane.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document PDF cu exemple de calcul reprezentative, incluzând toate costurile (dobândă, DAE, comision) pentru produsul corespunzător.",
+      "citat": "Campanie nevoi personale cu dobândă fixă Caracteristici credit: Suma maximă: 220.000 lei Rata dobânzii: 6,99%/an cu încasare venituri prin CEC Bank DAE (%/an) 8,72% 10,32%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1811,
+    "citire_cache": 6333,
+    "scriere_cache": 30103,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0946421
+  }
+}

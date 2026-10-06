@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/piata-valutara/tranzactii-valutare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Tranzacții valutare (Spot și ordine la curs fix)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este exact produsul de schimb valutar spot (decontare imediată/max 2 zile lucrătoare), dar pagina este plasată în secțiunea Piețe financiare/Companii, orientată spre clienți corporate și trezorerie, nu explicit spre persoane fizice ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată definește explicit produsul Spot cu termenul de decontare, fiind confirmată atât prin accesare directă cât și prin rezultatul motorului de căutare.",
+      "citat": "Spot tranzacții de schimb valutar cu decontare în maxim 2 zile lucrătoare Ordine la curs fix Plasarea ordinelor de schimb valutar la nivelul solicitat, pentru sume peste un anumit nivel",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/exchange-rates",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Curs Valutar (Account Exchange Rates)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila zilnică de curs valutar BRD (cumpărare/vânzare) aplicată schimburilor valutare în cont, disponibilă atât pentru persoane fizice cât și juridice, corespunde componentei de curs pentru tranzacțiile FX spot.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina conține valori numerice zilnice concrete de curs (cumpărare/vânzare BRD) pentru principalele valute, actualizate zilnic, dar nu este pagina dedicată exclusiv tranzacțiilor spot negociate.",
+      "citat": "Daily updated exchange rates for exchanges within the account, at the exchange office or using cards, and exchange interest rates available at BRD. Currency code EUR USD GBP NBR rate 5.2786 4.6397 6.1522 BRD buys (RON) 5.2010 4.5640 6.0500 BRD sells (RON) 5.3560 4.7320 6.2490",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/piata-valutara/tranzactii-valutare",
+    "https://www.brd.ro/curs-valutar-si-dobanzi-de-referinta"
+  ],
+  "durata_s": 109,
+  "consum": {
+    "intrare": 8,
+    "iesire": 9845,
+    "citire_cache": 79323,
+    "scriere_cache": 56177,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2547731
+  }
+}

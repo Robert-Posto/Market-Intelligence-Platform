@@ -32,6 +32,7 @@ export const PAGINI: Grup[] = [
     chei: [
       { id: 'versus', pdf: '', mutata: true },
       { id: 'banca', pdf: '', mutata: true },
+      { id: 'concurenta', pdf: '', mutata: true },
       { id: 'istoric', pdf: '', mutata: true },
     ],
   },
@@ -40,6 +41,15 @@ export const PAGINI: Grup[] = [
     chei: [
       { id: 'surse', pdf: '', mutata: true },
       { id: 'coada', pdf: '', mutata: true },
+    ],
+  },
+  {
+    // joburile fluxului de comparație (discovery, extragere, produse noi): durata, costul, erorile;
+    // „Rulare manuală” le pornește de mână (până pe 06.10.2026 rulările manuale stăteau în Overview)
+    grup: 'pagini.grup.logging',
+    chei: [
+      { id: 'logging', pdf: '', mutata: true },
+      { id: 'rulare', pdf: '', mutata: true },
     ],
   },
 ]

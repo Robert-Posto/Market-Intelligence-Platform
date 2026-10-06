@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/Curs_valutar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Curs valutar Libra Internet Bank - online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina conține grila zilnică de cotații spot (cumpărare/vânzare) pentru schimbul valutar online al Libra, pentru persoane fizice și juridice, exact datele numerice ale produsului FX_SPOT.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Conține tabele explicite cu cursurile de schimb practicate de Libra pentru operațiuni online și la sucursale, actualizate zilnic, direct legate de serviciul de schimb valutar.",
+      "citat": "Deviza · Primești (RON) · Platești (RON) - 1 EUR · 5,2050 · 5,3150 - 1 USD · 4,5200 · 4,6500 - 1 GBP · 6,0550 · 6,2000 - 1 CHF · 5,4850 · 5,6350 Actualizat la 2026-09-18",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/Curs_valutar#:~:text=Deviza%20%C2%B7%20Prime%C8%99ti%20%28RON%29%20%C2%B7,%C2%B7%205%2C6350%20Actualizat%20la%202026%2D09%2D18"
+    },
+    {
+      "url": "https://www.librabank.ro/schimb-valutar-live",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Schimb valutar online / Platforma de schimb valutar Libra (Live FX)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este chiar pagina dedicată produsului de schimb valutar (spot, la curs live) al Libra Bank, disponibilă atât pentru persoane fizice cât și pentru persoane juridice, deci corespunde exact codului FX_SPOT.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina descrie în detaliu produsul, perechile valutare tranzacționabile și segmentele eligibile (PF cu pachete Gold/Platinum, PJ cu abonament business), dar nu afișează explicit valoarea numerică a marjei pe pagina însăși.",
+      "citat": "Platforma de schimb valutar Libra este un serviciu de schimb valutar dinamic disponibil în aplicația Libra Bank. Îți permite tranzacții în EUR-RON, RON-EUR, USD-RON, RON-USD, EUR-USD și USD-RON în timp real, la cursuri actualizate continuu, 24 de ore din 24, 7 zile din 7, fără comisioane ascunse.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/schimb-valutar-live#:~:text=Platforma%20de%20schimb%20valutar%20Libra,din%207%2C%20f%C4%83r%C4%83%20comisioane%20ascunse."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/schimb-valutar-live",
+    "https://www.librabank.ro/Curs_valutar",
+    "https://www.librabank.ro/servicii-bancare"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3338,
+    "citire_cache": 38760,
+    "scriere_cache": 70788,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21811400000000003
+  }
+}

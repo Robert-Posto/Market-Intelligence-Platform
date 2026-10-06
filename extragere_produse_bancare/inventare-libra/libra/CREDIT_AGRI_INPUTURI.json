@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credite-fonduri-europene",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite fonduri europene - InvestEU (componenta pentru fermieri, inputuri agricole)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina descrie explicit componenta de finanțare pentru inputuri agricole în cadrul programului InvestEU, destinată fermierilor și firmelor din agricultură, persoane juridice, exact ca produsul Libra CREDIT_AGRI_INPUTURI.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina este pagina oficială a programului InvestEU la Libra și conține cifra exactă pentru componenta de inputuri agricole (până la 0,7 milioane lei), dar nu este o pagină 100% dedicată doar acestui subprodus.",
+      "citat": "Fermieri și firme active în agricultură sau asociații/cooperative agricole: inputuri (până la 0,7 milioane de lei), achiziționarea de echipamente agricole (până la 1 milion de lei), irigații (până la 1 milion de lei).",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite-fonduri-europene#:~:text=Fermieri%20%C8%99i%20firme%20active%20%C3%AEn,la%201%20milion%20de%20lei%29."
+    },
+    {
+      "url": "https://www.librabank.ro/credit-investeu-intrebari",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit InvestEU - Microfinanțare, Linie de credit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "FAQ-ul programului InvestEU descrie termenul liniei de credit (min 3 - max 24 luni, prelungibilă până la maxim 48 luni), corelat cu intervalul 24-48 luni din produsul Libra, dar textul este general pentru program, nu specific doar pentru inputuri agricole.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul conține cifrele exacte ale termenului liniei de credit (24-48 luni) în cadrul InvestEU, dar se referă la componenta Microfinanțare în general, nu exclusiv la subprodusul pentru inputuri agricole.",
+      "citat": "LINIE DE CREDIT: min. 3 luni – max. 24 luni* Prelungirea liniei: Linia de credit se poate prelungi cu max. 24 luni. Perioada maximă calculată de la data inițială a acordării liniei, împreună cu noua prelungire, să nu depășească 48 luni.",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credit-investeu-intrebari#:~:text=LINIE%20DE%20CREDIT%3A%20min.%203,s%C4%83%20nu%20dep%C4%83%C8%99easc%C4%83%2048%20luni."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credite-fonduri-europene",
+    "https://www.librabank.ro/credit-investeu-intrebari",
+    "https://www.librabank.ro/credit-agricultura-fermieri"
+  ],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4801,
+    "citire_cache": 73195,
+    "scriere_cache": 53725,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1969775
+  }
+}

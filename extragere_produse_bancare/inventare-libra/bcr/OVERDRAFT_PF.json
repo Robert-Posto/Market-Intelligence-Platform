@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Descoperit_de_cont_individual.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Descoperit de cont individual",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Fișa de produs/condiții precontractuale pentru descoperitul de cont destinat persoanelor fizice (salariați și pensionari), cu plafon, dobândă, DAE și costuri detaliate - corespondent direct al OVERDRAFT_PF.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document dedicat exclusiv acestui produs, cu toate cifrele relevante (plafon, DAE, dobândă variabilă, perioadă de acordare).",
+      "citat": "Plafon acordat: minim: 500 lei şi maxim 70.000 lei, fără a depăşi 4 salarii/3 pensii nete, DAE: 19,23%, calculat pentru un plafon de descoperit de cont de 5.367 lei, acordat pe 24 luni; dobândă variabilă: 17,05%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/credite/descoperit-de-cont",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperit de cont (George Overdraft)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de tip overdraft/descoperit de cont autorizat pentru persoane fizice (salariați/pensionari), cu dobândă percepută doar pe suma utilizată, plafon până la 70.000 lei fără a depăși echivalentul a 4 salarii/3 pensii nete - aceeași categorie de produs și segment de clienți ca OVERDRAFT_PF, diferența fiind plafonul exprimat în salarii (4 la BCR vs. 6 la Libra).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre explicite despre dobândă, DAE, plafon maxim și costuri.",
+      "citat": "Poti obtine o linie de credit sub forma unui descoperit de cont de pana la 70.000 RON fara a depasi echivalentul a 4 salarii lunare nete, daca esti angajat, si 3 pensii lunare, daca esti pensionar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/help-center/credite-descoperit-faq-01",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Descoperit de cont",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină de tip FAQ care confirmă plafonul maxim și regula de calcul pentru descoperitul de cont la persoane fizice, same segment ca OVERDRAFT_PF.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină cu cifra plafonului maxim, dar fără dobânzi; complementară paginii principale.",
+      "citat": "Poti obtine o linie de credit sub forma unui descoperit de cont de pana la 70.000 RON fara a depasi echivalentul a 4 salarii lunare nete, daca esti angajat, si 3 pensii lunare, daca esti pensionar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1933,
+    "citire_cache": 6384,
+    "scriere_cache": 27545,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0894773
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "LEASING_FINANCIAR",
+  "denumire": "Leasing financiar (Libra Development IFN)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/leasing",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare Leasing (BRD Sogelease)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina dedicată produsului de leasing financiar oferit prin filiala BRD Sogelease IFN, pentru persoane juridice și PFA, acoperind atât auto/mijloace de transport cât și echipamente (construcții, agricole, medicale, IT) — exact tipul și segmentul produsului Libra Leasing financiar.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina conține cifrele exacte ale produsului (sume minime/maxime de finanțare și perioade de creditare), fiind pagina oficială dedicată acestui produs.",
+      "citat": "Leasing-ul financiar este o soluție rapidă și simplă de finanțare pentru achiziția de autovehicule, mijloace de transport, echipamente de construcții, echipamente agricole, medicale și IT. Îți putem acorda o finanțare de maximum 90% din valoarea bunului finanțat, în funcție de sectorul de activitate.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/leasing",
+    "https://www.brd.ro/leasing-pjpfa"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2241,
+    "citire_cache": 76398,
+    "scriere_cache": 54267,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1733731
+  }
+}

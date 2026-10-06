@@ -1,0 +1,99 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de Cont Curent ANTREPRENOR CURAJOS",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet lunar de cont curent (abonament operațional) dedicat firmelor (IMM cu cifră de afaceri sub 1M euro), incluzând cont curent, card de debit și online banking la un cost fix lunar - exact tipul de produs 'abonament operațional / pachet cont' pentru persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit prețul pachetului și componentele incluse.",
+      "citat": "Pachetul include o gamă largă de produse, servicii și operațiuni bancare la un preț avantajos de doar 40 lei / lună. CONT CURENT ÎN LEI cu administrare lunară inclusa în prețul pachetului CARD DEBIT Mastercard / Visa ce includ o gamă variată de beneficii",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/pachete-cont-curent/Antreprenor-Curajos-PFA-PL",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de Cont Curent ANTREPRENOR CURAJOS PFA și Profesii Liberale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta aceluiași tip de pachet operațional de cont curent, destinată segmentului PFA/profesii liberale, menționat explicit și în descrierea produsului Libra (persoane juridice: firme, PFA).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține explicit prețul pachetului pentru PFA și serviciile incluse.",
+      "citat": "Pachetul include o gamă largă de produse, servicii și operațiuni bancare la un preț avantajos de doar 20 lei / lună CONT CURENT ÎN LEI cu administrare lunară inclusă în prețul pachetului",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/profit-agro",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de Cont Curent PROFIT AGRO",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Tot un pachet/abonament lunar de cont curent pentru persoane juridice (firme/PFA), dar dedicat unui segment specific (producători agricoli), deci similar, nu echivalent general.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține prețul pachetului (10 lei/lună) și componentele incluse.",
+      "citat": "Pachetul include o gamă largă de produse, servicii și operațiuni bancare la un preț avantajos de doar 10 lei / lună CONT CURENT ÎN LEI cu administrare lunară inclusă în prețul pachetului",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Gestionarea conturilor curente / Pachete Non-Retail (SMART IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice conține comisionul de administrare a contului curent și menționează pachetele SMART IMM, dar aceste pachete sunt destinate unui segment de companii mai mare (cifră de afaceri <5M euro), diferit de pachetul de bază Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de tarife cu cifre explicite pentru administrarea conturilor, dar pachetele descrise (SMART IMM) vizează un alt segment de companii.",
+      "citat": "Gestionarea conturilor curente (inclusiv cont fiduciar si cont procedura de insolventa - standard) 24 LEI / luna / cont (echivalent in valuta contului)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://campanii.brd.ro/suntantreprenor/pachete-de-servicii-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de servicii IMM (Start-up, Companii mici, Standard, Plus, Premium)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grilă de pachete/abonamente lunare de cont curent pentru firme și PFA, pe trepte de cifră de afaceri, cu număr de operațiuni incluse și preț abonament - același tip de produs ca ABONAMENT_OPERATIONAL.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina de campanie listează pachetele cu caracteristici dar prețurile unor trepte nu sunt complet vizibile în conținutul extras (pagina poate necesita randare pentru cifrele complete).",
+      "citat": "Toate pachetele includ: Cont curent Card de debit Internet Banking Token securitate Plati intrabancare online nelimitat Incasari si depuneri nelimitate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos",
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/pachete-cont-curent/Antreprenor-Curajos-PFA-PL"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3574,
+    "citire_cache": 33355,
+    "scriere_cache": 51757,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1718155
+  }
+}

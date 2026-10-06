@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-05",
+  "banca": "vista",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/depozite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la Termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de depozit la termen clasic, disponibil în RON/EUR/USD, pe mai multe termene (1-12 luni), destinat persoanelor fizice; corespunde segmentului și tipului de produs Libra DEPOZIT_TERMEN.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată depozitelor la termen pentru persoane fizice, cu grilă completă de dobânzi pe termene și valute, plus condiții (sumă minimă/maximă, comisioane zero).",
+      "citat": "Cu Depozitele la Termen de la Vista Bank, beneficiați de dobânzi atractive, comision ZERO pentru retragerea de numerar la scadență și de o gamă variată a opțiunilor din punct de vedere al termenelor și monedei: | Termen | Dobânda anuală | RON | EUR | USD | 1 lună | 4,25% | 0,50% | 1,00% | 12 luni | 5,50% | 2,00% | 3,00%",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-fizice/depozite#:~:text=Cu%20Depozitele%20la%20Termen%20de,5%2C50%25%20%7C%202%2C00%25%20%7C%203%2C00%25"
+    },
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la Termen (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași familie de produs - depozit la termen clasic, disponibil persoanelor juridice (și fizice), cu grilă de dobânzi pe termene și valute, fără destinație specifică unui credit, exact ca produsul Libra DEPOZIT_TERMEN pentru segmentul PJ.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată depozitelor la termen pentru persoane juridice, cu grilă completă de dobânzi, sumă minimă/maximă și condiții explicite, inclusiv mențiunea disponibilității pentru persoane fizice și juridice.",
+      "citat": "Cu Depozitele la Termen de la Vista Bank, beneficiați de dobânzi atractive și de o gamă variată a opțiunilor din punct de vedere al termenelor și monedei: Termen 1 lună 4,25% RON, 3 luni 5,10% RON, 6 luni 5,25% RON, 12 luni 5,50% RON",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-juridice/depozite-la-termen#:~:text=Cu%20Depozitele%20la%20Termen%20de,RON%2C%2012%20luni%205%2C50%25%20RON"
+    },
+    {
+      "url": "https://www.vistabank.ro/trezorerie",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen (Trezorerie - piață monetară)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea de Trezorerie descrie același tip de depozit la termen standard, pentru persoane fizice și juridice, cu scadențe standard și valute multiple, confirmând segmentul și tipul de produs.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de trezorerie care menționează explicit produsul 'Depozite la termen' cu scadențe și valute, dar fără grila completă de dobânzi (trimite la 'Rate Dobânzi Standard').",
+      "citat": "Depozitele sunt destinate persoanelor fizice și juridice, oferind randamente atractive; Scadenţele standard pentru depozite: 1 săptămână, o lună, 3 luni, 6 luni, 9 luni, 12 luni (Rate Dobȃnzi Standard). Valuta: RON, EUR, USD, GBP, CHF",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-fizice/depozite-la-termen",
+    "https://www.vistabank.ro/persoane-juridice/depozite-la-termen",
+    "https://www.vistabank.ro/persoane-fizice",
+    "https://www.vistabank.ro/persoane-fizice/depozite"
+  ],
+  "durata_s": 31,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2849,
+    "citire_cache": 146711,
+    "scriere_cache": 65530,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22167720000000002
+  }
+}

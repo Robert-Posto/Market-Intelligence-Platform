@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CARD_CREDIT_BUSINESS",
+  "denumire": "Card de credit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/carduri-de-credit.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Visa Business (Silver/Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit destinat exclusiv persoanelor juridice (IMM), pentru cheltuieli de afaceri, exact ca produsul Libra Card de credit business.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: sumă maximă, scadență, perioadă de grație, procent minim de rambursare.",
+      "citat": "Suma maximă: 100.000 lei, dar nu mai mult de 10% din Cifra de Afaceri a companiei calculată pe baza ultimului bilanț, pentru an financiar întreg, depus la Administrația Financiară. Scadența creditului: 48 luni. Perioada de valabilitate a cardului: 48 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-credit/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Visa Business (Silver/Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași pagină de produs (versiune alternativă a URL-ului) cu detalii complete de eligibilitate și garanții pentru cardul de credit business IMM.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Conține aceleași cifre plus informații suplimentare despre garanții solicitate, oferind o imagine completă a produsului.",
+      "citat": "Eligibilitate Suma maxima: 100.000 lei, dar nu mai mult de 10% din Cifra de Afaceri a companiei calculata pe baza ultimului bilant, pentru an financiar intreg, depus la Administratia Financiara. Scadenta creditului: 48 luni. Garantii solicitate: ipoteca mobiliara pe conturile deschise la Raiffeisen Bank.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://raiffeisen.ro/corporatii/produse-si-servicii/operatiuni-curente/carduri/cardul-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Visa Business (Silver/Gold) / Card de cumpărături Silver",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de corporații prezintă același card de credit business cu limita de credit și condiții de eligibilitate pentru persoane juridice.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagină dedicată cu cifre explicite despre limita de credit, perioada de grație și rambursare minimă.",
+      "citat": "Limită de credit de până la 10.000 RON pentru cardul de credit obținut digital Perioada de graţie de până la 45 zile Curs valutar avantajos Comerţ electronic prin 3D Secure",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1492,
+    "citire_cache": 6324,
+    "scriere_cache": 35395,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1046803
+  }
+}

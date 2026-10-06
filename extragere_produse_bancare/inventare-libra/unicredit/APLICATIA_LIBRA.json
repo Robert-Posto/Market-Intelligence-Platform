@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-05",
+  "banca": "unicredit",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/digital/mobile-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "UniCredit Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicația de mobile banking pentru persoane fizice a UniCredit, care include exact aceleași funcționalități menționate la Libra: plăți instant RoPay și plăți digitale prin Click to Pay.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată aplicației descrie explicit funcționalitățile RoPay și Click to Pay, echivalente cu cele din descrierea produsului Libra.",
+      "citat": "Send or request money from your friends using only their phone number or by scanning/generating a QR code, with no IBAN and no waiting time. Secure digital payments with Click to Pay, Google Pay si Apple Pay Make fast, secure digital payments directly from Mobile Banking.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/imm/digital/businessmobile-info.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Business Mobile",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicația de mobile banking dedicată persoanelor juridice, liber-profesioniștilor și PFA-urilor la UniCredit, corespunzătoare segmentului de persoane juridice acoperit de aplicația Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit aplicația Business Mobile ca instrument de plată cu acces la distanță dedicat persoanelor juridice și PFA, cu detalii despre activare și costuri (ZERO costuri de administrare).",
+      "citat": "instrumentul de plata cu acces la distanta dedicat persoanelor juridice, liber profesionistilor si persoanelor fizice autorizate, se redenumeste Business Mobile. ZERO costuri de administrare, acces rapid si sigur la conturile si cardurile afacerii tale, oricand, oriunde.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/asistenta/mobile-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina FAQ a aplicației Mobile Banking pentru persoane fizice conține costul lunar al serviciului, informație de tip tarif/comision.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Conține o cifră exactă (comision lunar de inactivitate) aplicabilă aplicației Mobile Banking.",
+      "citat": "Cat costa Mobile Banking? 3 lei/luna pentru utilizatorii care nu s-au logat in ultimele 90 de zile. Mai multe detalii regasesti aici.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2456,
+    "citire_cache": 6345,
+    "scriere_cache": 42459,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1319845
+  }
+}

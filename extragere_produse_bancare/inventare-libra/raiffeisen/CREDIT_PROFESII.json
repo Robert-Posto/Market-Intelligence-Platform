@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_PROFESII",
+  "denumire": "Credite alte profesii liberale (Freud/Vitruvius/Paccioli/Libra IT)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credit-de-investitii-profesii-liberale.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții Profesii Liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit de investiții dedicat persoanelor juridice/PFA care desfășoară profesii liberale în cadrul unui ordin profesional (ex. contabili, arhitecți, psihologi), la fel ca segmentul Freud/Vitruvius/Paccioli din produsul Libra. Diferă însă acoperirea: produsul Raiffeisen vizează explicit profesii liberale organizate în ordine profesionale, nu firme IT (CAEN 62/63), componentă acoperită de Libra prin „Libra IT”; de asemenea nu se precizează o dobândă explicită, ci doar condiții de sumă/termen/avans.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu cifre concrete despre sumă minimă, avans, perioadă de rambursare și eligibilitate pentru profesii liberale, dar nu menționează firme IT.",
+      "citat": "Suma: minim 2.000 Euro. Utilizare: trageri unice sau multiple într-o perioadă de maxim 60 zile. Perioadă de grație: până la 6 luni. Perioadă de rambursare: până la 180 luni. Avans: minim 10% din valoarea totală a investiției. Valuta: Lei, Euro.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credit-de-investitii-profesii-liberale.html#:~:text=Suma%3A%20minim%202.000%20Euro.%20Utilizare%3A,a%20investi%C8%9Biei.%20Valuta%3A%20Lei%2C%20Euro."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/credit-de-investitii-profesii-liberale.html"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2228,
+    "citire_cache": 31594,
+    "scriere_cache": 30628,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1051808
+  }
+}

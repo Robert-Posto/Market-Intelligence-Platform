@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-06",
+  "banca": "exim",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/11/09/creditul-de-nevoi-personale/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fara justificarea utilizarii fondurilor, in RON, perioada maxima 60 luni, rambursare in rate egale sau descrescatoare, acelasi segment (persoane fizice) si acelasi tip de produs ca CREDIT_LIBRA_WAY; diferă plafonul maxim (200.000 RON fără asigurare) si existenta unei asigurari optionale, dar caracteristicile de baza sunt comparabile.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicata produsului contine toate cifrele cerute: suma minima/maxima, perioada maxima, dobanzi fixe si variabile, comisioane si exemple reprezentative de calcul DAE.",
+      "citat": "Creditul pentru nevoi personale ne-nominalizate: pana la 200.000 lei, pe o perioada de pana la 60 de luni. Suma minima 2.000 LEI, Suma maxima 110.000 RON – cu asigurare 200.000 RON – fara asigurare, Perioada maxima 60 luni.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/09/creditul-de-nevoi-personale/#:~:text=Creditul%20pentru%20nevoi%20personale%20ne%2Dnominalizate%3A,asigurare%2C%20Perioada%20maxima%2060%20luni."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/11/09/creditul-de-nevoi-personale/"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1013,
+    "citire_cache": 35660,
+    "scriere_cache": 40117,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1175665
+  }
+}

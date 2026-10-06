@@ -9,12 +9,12 @@ import { Tabel } from '../components/Tabel'
 import { T, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { num } from '../util/format'
-import Rulari from './Rulari'
 
 /**
  * Overview, punctul de intrare (revamp 25.09 în aplicația veche): șapte carduri
  * pe categoriile 2.1–2.7 — cifra-cheie, câte bănci din 30, prospețimea, link —
- * apoi acoperirea pe bănci. Tabelul tehnic și rulările manuale stau pliate.
+ * apoi acoperirea pe bănci. Tabelul tehnic stă pliat. Rulările manuale s-au mutat
+ * pe 06.10.2026 în pagina „Rulare manuală” (grupul Jobs).
  */
 export default function Overview() {
   const { t, lang, locale } = useLang()
@@ -110,8 +110,6 @@ export default function Overview() {
           />
         </section>
       </Pliat>
-
-      <Rulari m={m} />
     </>
   )
 }

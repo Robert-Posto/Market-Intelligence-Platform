@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor/creditul-pentru-investitii-ipotecar",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru investiții sau ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții pentru persoane juridice (firme), destinat achiziției de active fixe, terenuri/clădiri, utilaje și modernizare/extindere a afacerii - același tip de produs și același segment (companii) ca produsul Libra CREDIT_INVESTITII.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este pagina dedicată exact acestui produs la BCR (credit de investiții/ipotecar pentru persoane juridice), dar textul nu conține cifre publice (dobânzi, comisioane, procente sau termene exacte), acestea fiind negociate individual.",
+      "citat": "Creditul pentru investitii / ipotecar pentru persoane juridice de la BCR este un produs de creditare acordat în scopul refinantarii cheltuielilor aferente proiectelor de investitii realizate din surse proprii, in lei sau valuta.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor/creditul-pentru-investitii-ipotecar#:~:text=Creditul%20pentru%20investitii%20%2F%20ipotecar,proprii%2C%20in%20lei%20sau%20valuta."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/micro/finantare/credit-pentru-finantarea-proiectelor-de-investitii",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru finanțarea planurilor de investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit de investiții pentru firme) dar varianta este destinată specific microîntreprinderilor și PFA-urilor (segment micro), nu întregii categorii de persoane juridice ca pagina generală de business.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagină dedicată produsului de credit de investiții pentru microîntreprinderi/PFA, dar fără cifre publicate (dobânzi, comisioane, plafoane); termenii exacți se stabilesc individual.",
+      "citat": "Creditul pentru investiții ajută o afacere mică să crească, să se modernizeze și să devină competitivă, fără a bloca fluxul de numerar din activitatea curentă.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/micro/finantare/credit-pentru-finantarea-proiectelor-de-investitii#:~:text=Creditul%20pentru%20investi%C8%9Bii%20ajut%C4%83%20o,de%20numerar%20din%20activitatea%20curent%C4%83."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/informatii-utile",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarif de comisioane BCR pentru persoane juridice / Condiții Generale de Creditare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document general de tarife și condiții de creditare pentru persoane juridice, aplicabil inclusiv creditelor de investiții corporate, unde se găsesc comisioanele standard aferente operațiunilor de creditare.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Documentele (PDF) listate aici conțin comisioane generale aplicabile persoanelor juridice și condițiile generale de creditare, dar nu izolează explicit linia de preț a creditului de investiții față de alte produse de creditare.",
+      "citat": "Tarif comisioane pentru persoane juridice valabil 01.08.2026 Tarif comisioane pentru PDAI valabil incepand cu 01.08.2026 Condiții Generale de Creditare - aplicabile începând cu data de 20 mai 2026",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor/creditul-pentru-investitii-ipotecar",
+    "https://www.bcr.ro/ro/business/micro/finantare/credit-pentru-finantarea-proiectelor-de-investitii",
+    "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor",
+    "https://www.bcr.ro/ro/despre-noi/informatii-generale/dobanzi-si-comisioane"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 41244,
+    "iesire": 5572,
+    "citire_cache": 94902,
+    "scriere_cache": 63662,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3163434
+  }
+}

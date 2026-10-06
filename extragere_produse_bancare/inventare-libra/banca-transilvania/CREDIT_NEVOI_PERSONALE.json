@@ -1,0 +1,55 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/credite/credite-de-nevoi/creditul-de-nevoi-personale-standard",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este creditul de consum fără destinație justificată pentru persoane fizice, fără garanții, cu sumă maximă și durată comparabile cu produsul Libra (credit de nevoi personale, fără justificarea utilizării banilor, până la 5 ani).",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Este pagina dedicată produsului, cu titlu, calculator de credit și cifrele exacte ale dobânzii, sumei maxime și perioadei de rambursare afișate direct în text.",
+      "citat": "Creditele de Nevoi Personale BT ► Cu sau fără Asigurare de viață ► Dobândă fixă sau variabilă ► Împrumută până la 250.000 lei ► Calculează ratele ► Fă o simulare",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/credite/credite-de-nevoi/compara-creditele",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina comparator confirmă perioada de rambursare și destinația liberă (fără justificare) a creditului de nevoi personale, aceeași categorie ca produsul Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Comparatorul afișează datele produsului 'Creditul de nevoi personale' într-un tabel, dar structura de tip grilă face dificilă separarea clară a cifrelor pe rânduri pentru extragere automată.",
+      "citat": "COMPARĂ CREDITELE DE NEVOI Alege tipul credituluiCreditul de nevoi personale Creditul de nevoi personale Credit de nevoi personale garantat cu ipotecă Credit de nevoi curente cu destinație imobiliară",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/credite/credite-de-nevoi/creditul-de-nevoi-personale-standard",
+    "https://www.bancatransilvania.ro/credite/credite-de-nevoi/compara-creditele",
+    "https://www.bancatransilvania.ro/credite/credite-de-nevoi/compara-creditele"
+  ],
+  "durata_s": 76,
+  "consum": {
+    "intrare": 45361,
+    "iesire": 6733,
+    "citire_cache": 49623,
+    "scriere_cache": 64616,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.32951660000000005
+  }
+}

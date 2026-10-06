@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf/20260421-Tarife-si-comisioane-standard-persoane-fizice.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Plăți instant prin RoPay",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife și comisioane standard pentru persoane fizice conține un rând dedicat explicit 'Plăți instant prin RoPay' cu valoarea comisionului, dar se referă doar la segmentul persoane fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit 'Plăți instant prin RoPay' cu comisionul de 0 lei pentru clientul persoană fizică.",
+      "citat": "Plăți instant prin RoPay | A. În lei | Raiffeisen Smart Mobile | 0 lei",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (15 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/despre-noi/comunicate-de-presa/2025/raiffeisen-bank-adera-la-ropay-transferuri-instant-cu-numar-telefon-smart-mobile.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay (prin Raiffeisen Smart Mobile)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (plăți instant folosind numărul de telefon în loc de IBAN, via sistemul național RoPay operat de TRANSFOND), dar la Raiffeisen serviciul este descris explicit doar pentru persoane fizice, nu și pentru persoane juridice ca la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Comunicat de presă dedicat lansării serviciului RoPay la Raiffeisen, cu descrierea funcționalității, dar fără cifre de cost explicite în acest text (menționează doar 'gratuit').",
+      "citat": "Raiffeisen Bank România anunță aderarea la sistemul național de plăți instant RoPay. În urma acestei integrări, clienții persoane fizice pot trimite și primi bani instant, în orice moment, utilizând doar numărul de telefon, fără a mai fi nevoie să introducă IBAN-ul destinatarului.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/digital-banking/mobile-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay (în aplicația Smart Mobile)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina dedicată Mobile Banking descrie funcționalitatea RoPay (transfer prin număr de telefon) și listează costurile pentru Plăți Instant, dar serviciul este oferit doar persoanelor fizice, nu și persoanelor juridice ca la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina produsului conține descrierea RoPay și un tabel de costuri explicit cu valori pentru Plăți Instant (0.45 Lei), aplicabile și transferurilor RoPay.",
+      "citat": "Descoperă RoPay – noua funcționalitate din aplicația Smart Mobile, prin care poți trimite sau primi bani direct în cont, folosind doar numărul de telefon. Plăți Instant · 0 Lei · 0.45 Lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 426,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2453,
+    "citire_cache": 6318,
+    "scriere_cache": 38975,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12323910000000002
+  }
+}

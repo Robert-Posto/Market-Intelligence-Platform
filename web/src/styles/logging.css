@@ -1,0 +1,71 @@
+/* Logging (lg-*): joburile fluxului de comparație. Culorile tipurilor: paleta categorială
+   validată pe suprafețele MIP (validate_palette.js, 05.10.2026), cu pași proprii pe întunecat,
+   nu o inversare automată. Ordinea e cea din job_types: discovery, extragere, produse noi. */
+:root { --lg-1: #2a78d6; --lg-2: #eb6834; --lg-3: #1baf7a }
+@media (prefers-color-scheme: dark) {
+  :root { --lg-1: #3987e5; --lg-2: #d95926; --lg-3: #199e70 }
+}
+
+.lg { transition: opacity .12s ease }
+.lg-filtre { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-bottom: 14px }
+.lg-select { min-width: 240px }
+.lg-viu { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted) }
+.lg-cap { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px }
+.lg-cap h2 { margin-bottom: 2px }
+.lg-cap .note { margin: 0 }
+/* cinci cifre pe un rând de la ~1000 px: cu minimul global de 230 px, a cincea rămânea singură dedesubt */
+.lg .kpi { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)) }
+.kpi .n.lg-atentie { color: var(--warn) }
+
+/* graficul: cromul recesiv, o treaptă față de suprafață */
+.lg-grafic { position: relative; width: 100%; min-height: 260px }
+.lg-grafic svg { display: block; overflow: visible }
+.lg-grila { stroke: var(--line); stroke-width: 1 }
+.lg-baza { stroke: var(--line-2); stroke-width: 1 }
+.lg-axa { fill: var(--muted); font-family: var(--mono); font-size: 10.5px; font-variant-numeric: tabular-nums }
+.lg-coloana { fill: var(--accent-tint) }
+.lg-tip { position: absolute; top: 4px; pointer-events: none; z-index: 2;
+  background: var(--surface); border: 1px solid var(--line-2); border-radius: 9px; padding: 9px 11px;
+  box-shadow: 0 2px 8px rgba(42, 31, 34, .08); min-width: 240px; font-size: 12px }
+.lg-tip.stanga { transform: translateX(-100%) }
+.lg-tip-zi { color: var(--muted); font-size: 11px; margin-bottom: 5px }
+.lg-tip-rand { display: grid; grid-template-columns: 14px 64px 1fr; align-items: center; gap: 6px; padding: 1px 0 }
+.lg-tip-rand .v { font-family: var(--mono); font-weight: 600; text-align: right; font-variant-numeric: tabular-nums }
+.lg-tip-rand .n { color: var(--muted); line-height: 1.3 }
+.lg-tip-total { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 4px }
+/* cheia de identitate: o linie scurtă în culoarea tipului; textul rămâne în cerneală */
+.lg-cheie { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; flex: none }
+.lg-legenda { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line);
+  font-size: 12.5px }
+.lg-legenda b { font-weight: 500; color: var(--muted); margin-left: 4px }
+
+/* joburile: până la 300 de rânduri; derulează în chenarul lor, cu antetul fix, ca erorile să rămână aproape */
+.lg-joburi .ant-table-wrapper.t .ant-table-content { max-height: 560px; overflow: auto }
+.lg-joburi .ant-table-wrapper.t .ant-table-thead > tr > th { position: sticky; top: 0; z-index: 1 }
+.lg-joburi .ant-table-wrapper.t tr.lg-ales > td { background: var(--accent-tint) }
+.lg-joburi .ant-table-wrapper.t tr.lg-ales > td:first-child { box-shadow: inset 4px 0 var(--accent) }
+/* doar cifrele și momentul nu se rup; numele băncii („BRD — Groupe Société Générale”) trece pe două rânduri,
+   altfel tabelul ieșea cu 58 px din chenar la 1440 px */
+.lg-joburi .ant-table-wrapper.t td.num, .lg-joburi .ant-table-wrapper.t td:first-child { white-space: nowrap }
+.lg-tip-job { display: inline-flex; align-items: center }
+
+.lg-detalii { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; margin: 0 0 12px; padding: 9px 12px;
+  background: var(--bg); border-radius: 9px; font-size: 12.5px }
+.lg-detalii dt { color: var(--muted) }
+.lg-detalii dd { margin: 0; min-width: 0; overflow-wrap: anywhere }
+
+.lg-erori { list-style: none; margin: 0; padding: 0 }
+.lg-erori li { padding: 9px 10px; border-bottom: 1px solid var(--line); border-radius: 8px }
+.lg-erori li:last-child { border-bottom: none }
+.lg-erori li:hover { background: var(--bg) }
+.lg-eroare-meta { display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: 11.5px; color: var(--muted); min-width: 0 }
+.lg-context { color: var(--ink); max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.lg-eroare-titlu { font-size: 13px; margin-top: 2px; overflow-wrap: anywhere }
+.lg-eroare-tot summary { font-size: 11.5px; color: var(--accent); cursor: pointer; margin-top: 3px; width: max-content }
+.lg-eroare-tot pre { margin: 6px 0 0; padding: 9px 11px; background: var(--bg); border-radius: 8px; white-space: pre-wrap;
+  overflow-wrap: anywhere; max-height: 340px; overflow: auto; font-size: 11.5px }
+
+@media (max-width: 760px) {
+  .lg-cap { flex-direction: column }
+  .lg-select { min-width: 0; width: 100% }
+}

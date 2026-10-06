@@ -1,0 +1,878 @@
+{
+ "banca": "brci",
+ "urluri": [
+  {
+   "cheie": "https://www.brci.ro/files/public/fisiere/DOBANZI%20DEPOZITE%20LA%20TERMEN%20PJ%2003.02.2025_cs.pdf||depozite la termen - dobânzi standard persoane juridice",
+   "url": "https://www.brci.ro/files/public/fisiere/DOBANZI%20DEPOZITE%20LA%20TERMEN%20PJ%2003.02.2025_cs.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen - Dobânzi standard persoane juridice",
+   "focus": "Produsul băncii: „Depozite la termen - Dobânzi standard persoane juridice”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1315,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+   "observatii": [
+    {
+     "id": "9421a65452401b9be04e3dc4d22d114f",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 LUNA 4,25% 1,25% 1.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "dc2391a3d65bf3b917a67239ff0089fd",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.25,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 LUNA 4,25% 1,25% 1.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "2fee7a294e2a7fac2be030fb641bf7ea",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.85,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 LUNA 4,25% 1,25% 1.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "d050e3d69969cc72fc0427b6a63212f8",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 LUNI 5,00% 1,85% 2,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "b13bc1783422798745ba63d990ad79b5",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.85,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 LUNI 5,00% 1,85% 2,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "b2c979ba86ae7ec8817507881fa6d12d",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 LUNI 5,00% 1,85% 2,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "128888180bb67aa2db60b83e312e178e",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 LUNI 5,25% 2,00% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "6d88862eeba0061abd08469fa120139f",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 LUNI 5,25% 2,00% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "4c5f24d78c8ec1d33535b744965ee7c8",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 LUNI 5,25% 2,00% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "2fc93bc70a20c27e641cae3a977362be",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.35,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 LUNI 5,35% 2,15% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "a1af2dbc647ea61c0c5020371c59d5dd",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.15,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 LUNI 5,35% 2,15% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "f6f8dcfb96db970a7cfc9862d29b6f5d",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 LUNI 5,35% 2,15% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "abe5d4eebf3d2bf173d78e03a963090f",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI 5,50% 2,25% 3,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "0e7d0ee21986cbdf4eae61aaa7ccf3ac",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI 5,50% 2,25% 3,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "eb4ca0b13d443d9b48f1b2cfedb9f6cd",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.25,
+     "unitate": "procent",
+     "valid_from": "2025-02-03",
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI 5,50% 2,25% 3,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "7073f5f2987bd8a066fdca1f57d35a54",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 2000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minima de constituire a depozitelor este 2.000 lei/500 Euro/500 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "c11b74d9781c47f8938048a36f0f077e",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minima de constituire a depozitelor este 2.000 lei/500 Euro/500 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    },
+    {
+     "id": "f9cff64d29b2ac1a81aa1fa2b0e05720",
+     "id_url": 1315,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "usd",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "99f40057f47896ee98bfe07c30c56d23c564906af2386947ae9e7b142c492199",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minima de constituire a depozitelor este 2.000 lei/500 Euro/500 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5788aaf223f5f0e9dceb9f9656d4bcf55d1d40274f615930bb6a47211da46816"
+    }
+   ],
+   "respinse": [],
+   "scrise": 18,
+   "durata_s": 18,
+   "tokeni": {
+    "intrare": 5143,
+    "iesire": 2565
+   }
+  },
+  {
+   "cheie": "https://www.brci.ro/ro/produse/depozite/documente.html||depozite la termen (persoane juridice)",
+   "url": "https://www.brci.ro/ro/produse/depozite/documente.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozite la termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1425,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "trafilatura",
+   "content_hash": "b7238fbc0c57ce183083e1ee778b4372d9d8e991b16418b2d842bcf9d078dea6",
+   "observatii": [
+    {
+     "id": "e57820843e0cc16f3672a1954980bf60",
+     "id_url": 1425,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul menționează doar modalitățile de constituire a unui depozit la termen, fără nicio cifră privind dobânzi, sume minime sau alte condiții.",
+     "content_hash": "b7238fbc0c57ce183083e1ee778b4372d9d8e991b16418b2d842bcf9d078dea6",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "7a5f59e14d111d6e159abd8b44a37a4ee5773f12aa714931cd5f148608e9e727"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4552,
+    "iesire": 133
+   }
+  },
+  {
+   "cheie": "https://www.brci.ro/ro/produse/depozitul-la-termen.html||depozite la termen (persoane fizice)",
+   "url": "https://www.brci.ro/ro/produse/depozitul-la-termen.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen (persoane fizice)",
+   "focus": "Produsul băncii: „Depozite la termen (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1423,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "89dd623e12e0a9ab19f82189a742c87c51d73683ea5837e7ab5317b6a3e39ce0",
+   "observatii": [
+    {
+     "id": "22f4e21e2cbeab2fce58fb0085f428a2",
+     "id_url": 1423,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar caracteristicile generale ale depozitului (monede, termene, sumă minimă) dar nu conține nicio valoare numerică a dobânzii; secțiunea „Dobânzi” face trimitere la „LISTA DOBANZI” care nu este inclusă în text, deci nu există cifre concrete de raportat.",
+     "content_hash": "89dd623e12e0a9ab19f82189a742c87c51d73683ea5837e7ab5317b6a3e39ce0",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1c7f7890745d196055809aa852539b8be797f56c07235d7bebed5962aa04e15"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4939,
+    "iesire": 194
+   }
+  },
+  {
+   "cheie": "https://www.brci.ro/ro/produse/credit-pentru-nevoi-personale-cu-garantie-imobiliara.html||credit pentru nevoi personale cu garanție imobiliară",
+   "url": "https://www.brci.ro/ro/produse/credit-pentru-nevoi-personale-cu-garantie-imobiliara.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit pentru nevoi personale cu garanție imobiliară",
+   "focus": "Produsul băncii: „Credit pentru nevoi personale cu garanție imobiliară”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1614,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "eroare",
+   "motiv": "HTTPStatusError: Client error '404 Not Found' for url 'https://www.brci.ro/ro/produse/credit-pentru-nevoi-personale-cu-garantie-imobiliara.html'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.brci.ro/ro/produse/cont-de-economii-1.html||cont de economii",
+   "url": "https://www.brci.ro/ro/produse/cont-de-economii-1.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de economii",
+   "focus": "Produsul băncii: „Cont de economii”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1660,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "f204b5443730bbaa95709e0c5a5f49ab6e9fb64c27189afc1829c8536fffb014",
+   "observatii": [
+    {
+     "id": "0087bce220206168af0ccd6014032ceb",
+     "id_url": 1660,
+     "id_produs": "economii",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul menționează Contul de economii și faptul că dobânda e diferențiată pe tranșe de sume, dar valorile concrete ale dobânzilor sunt într-un document separat (\"Dobânzi - Descărcați\"), care nu este inclus în text. Nu există cifre concrete de dobândă, comisioane sau praguri în textul furnizat.",
+     "content_hash": "f204b5443730bbaa95709e0c5a5f49ab6e9fb64c27189afc1829c8536fffb014",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "brci",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a2e4ab46432649cc4a03f30bc8b1e8972b71b9b432c617622d0129dd1f3df240"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 4286,
+    "iesire": 199
+   }
+  }
+ ]
+}

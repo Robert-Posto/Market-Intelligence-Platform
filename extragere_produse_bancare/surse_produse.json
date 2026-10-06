@@ -1,0 +1,63 @@
+{
+ "nota": "De unde pornește descoperirea produselor (candidati_produse.py): paginile de meniu și sitemap-urile fiecărei bănci, plus ce mai trebuie exclus. Sitemap-urile declarate în robots.txt se adaugă singure. `sectiuni` restrâng candidații la căile de produs; fără ele, orice pagină de pe domeniu e candidat și clasificarea decide.",
+ "excluse_comune": "/(blog|stiri|noutati|news|presa|media|comunicate|campanii?|promotii?|concurs\\w*|faq|intrebari\\w*|ajutor|help|suport|termeni|conditii-generale|politica|cookie\\w*|gdpr|confidentialitate|contact|cariere|jobs?|sucursale|agentii|atm|harta|despre(-noi)?|investitori|guvernanta|rapoarte|evenimente|login|autentificare|cauta|search|esg|sustenabilitate|responsabilitate\\w*|scoala\\w*|educatie\\w*|ghid\\w*|sfaturi|articole?|povesti|inspiratie|evenimente\\w*|anunturi|vanzari|licitatii|video|documente|buletin\\w*|noutati\\w*|glosar|calculator\\w*|simulator\\w*|program-de-fidelitate|parteneri|sponsorizari|arhiva|general|info|24-banking|lp)(/|$)",
+ "banci": {
+  "bcr": {
+   "start": [
+    "https://www.bcr.ro/ro/persoane-fizice",
+    "https://www.bcr.ro/ro/business"
+   ],
+   "sitemap": [
+    "https://www.bcr.ro/sitemap.xml"
+   ],
+   "sectiuni": [
+    "/ro/persoane-fizice/",
+    "/ro/business/",
+    "/ro/companii/",
+    "/ro/imm/"
+   ]
+  },
+  "ing": {
+   "start": [
+    "https://ing.ro/persoane-fizice",
+    "https://ing.ro/imm"
+   ],
+   "sitemap": [
+    "https://ing.ro/sitemap.xml"
+   ],
+   "sectiuni": [
+    "/persoane-fizice/",
+    "/imm/",
+    "/corporate/"
+   ]
+  },
+  "libra": {
+   "start": [
+    "https://www.librabank.ro/"
+   ],
+   "sitemap": [
+    "https://www.librabank.ro/sitemap.xml"
+   ],
+   "sectiuni": []
+  },
+  "raiffeisen": {
+   "start": [
+    "https://www.raiffeisen.ro/ro/home.html",
+    "https://www.raiffeisen.ro/ro/imm.html"
+   ],
+   "sitemap": [
+    "https://www.raiffeisen.ro/ro/sitemap.xml"
+   ],
+   "sectiuni": [
+    "/ro/persoane-fizice/",
+    "/persoane-fizice/",
+    "/ro/imm/",
+    "/imm/",
+    "/ro/corporatii/",
+    "/corporatii/"
+   ]
+  }
+ },
+ "excluse_oriunde": "(blog|scoala|ghid|esg|eveniment|stiri|noutati|articol|campani|concurs|webinar|podcast|interviu|studiu|raport|comunicat|help|informatii-utile|popriri|actualizare-date|in-sprijinul-tau|despre-bani|expertiza|instrumente-utile|contacteaza|contabili)",
+ "nota_excluse": "`excluse_comune` se potrivește doar pe un segment întreg de cale (/atm/ da, /tratament/ nu); `excluse_oriunde` prinde cuvintele editoriale și în interiorul unui segment (bcr-scoala-de-business, Business-blog)."
+}

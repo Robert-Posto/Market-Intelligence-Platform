@@ -6,14 +6,21 @@ import type { Meta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
 import { zileDeLa } from '../util/format'
 
-/** Numele și sigla băncii; `fisa` duce la fișa băncii, `tag` marchează Libra cu „noi”. */
-export function EtichetaBanca({ slug, m, fisa, tag }: { slug: string; m: Meta; fisa?: boolean; tag?: boolean }) {
+/**
+ * Numele și sigla băncii; `fisa` duce la fișa băncii, `tag` marchează Libra cu „noi”.
+ * `doarLogo`: sigla mai mare, fără nume (numele rămâne în alt / title); fără siglă, numele.
+ */
+export function EtichetaBanca({ slug, m, fisa, tag, doarLogo }: {
+  slug: string; m: Meta; fisa?: boolean; tag?: boolean; doarLogo?: boolean
+}) {
   const { t } = useLang()
   const logo = m.logo[slug]
+  const nume = m.nume[slug] ?? slug
+  const faraNume = doarLogo && !!logo
   const corp = (
-    <span className="cl-banca">
-      {logo && <img src={logo} alt="" />}
-      <span className="nm">{m.nume[slug] ?? slug}</span>
+    <span className={faraNume ? 'cl-banca doar-logo' : 'cl-banca'}>
+      {logo && <img src={logo} alt={faraNume ? nume : ''} title={faraNume ? nume : undefined} />}
+      {!faraNume && <span className="nm">{nume}</span>}
       {tag && slug === 'libra' && <span className="tag-libra">{t('comun.tag_libra_noi')}</span>}
     </span>
   )

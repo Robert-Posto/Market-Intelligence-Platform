@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Libra Bank are o linie de produse API Banking / Open Banking (API.Payments, API.Accounts, API.Investigator, API.FX) disponibilă prin portalul api.librabank.ro, descrisă pe paginile https://www.librabank.ro/Open-Banking și https://www.librabank.ro/API_Banking. Acestea sunt API-uri generice de plăți/solduri/verificare CUI, nu o integrare dedicată cu programele de contabilitate (gen SAGA, WinMentor etc.) destinată special firmelor de contabilitate. Pagina de profesii liberale (cont-bancar-profesii-liberale) menționează 'contabililor' doar ca segment de clienți pentru contul curent PFA, nu ca produs de integrare software. Nu există nicio pagină, document de tarife sau FIPC care să descrie un produs numit 'API Contabili' sau o integrare specifică cu software de contabilitate; conform regulii explicite din cerință, Open Banking generic nu este echivalent cu o integrare pentru contabili."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/API_Banking",
+    "https://www.librabank.ro/cont-bancar-profesii-liberale",
+    "https://www.librabank.ro/API_Banking"
+  ],
+  "durata_s": 443,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2246,
+    "citire_cache": 129801,
+    "scriere_cache": 65727,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2127577
+  }
+}

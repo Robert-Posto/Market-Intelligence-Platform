@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-06",
+  "banca": "brci",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/cont-de-economii-1.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de economii",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (cont de economii cu dobândă la sold, fără termen fix, depuneri/retrageri libere), dar la BRCI este listat exclusiv în secțiunea Persoane fizice (fără variantă dedicată pentru persoane juridice, spre deosebire de Libra care acoperă ambele segmente); pagina nu afișează grila exactă de procente pe tranșe, doar structura generală a dobânzii diferențiate.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina dedicată confirmă existența produsului și caracteristicile (dobândă diferențiată pe tranșe, termen nelimitat, retrageri oricând), dar nu listează explicit procentele numerice pe tranșe de sumă/timp precum la Libra.",
+      "citat": "Dobândă diferențiată, aplicată pe tranșe de sume; Termen de constituire nelimitat; Se pot efectua transferuri și schimburi valutare din contul de economii în contul curent oricând, fără limită de tranzacții; Oferă posibilitatea efectuării unui număr nelimitat de depuneri și retrageri de numerar; Veniturile din dobânzile aferente instrumentelor de economisire se impozitează cu 10%",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/cont-de-economii-1.html",
+    "https://www2.brci.ro/"
+  ],
+  "durata_s": 71,
+  "consum": {
+    "intrare": 19993,
+    "iesire": 2967,
+    "citire_cache": 31911,
+    "scriere_cache": 27407,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1445557
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/depozitul-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la Termen BCR - Dobândă promoțională (depozit pe 5 luni, sume noi)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt depozite promoționale pentru sume noi, cu dobândă bonificată, pentru persoane fizice; diferă termenul (5 luni la BCR vs 13 luni la Libra) și nivelul dobânzii.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată depozitului promoțional conține explicit cifrele campaniei curente și perioada de valabilitate.",
+      "citat": "Până la 6% dobândă la depozitul la termen pe 5 luni - sume noi ai acum dobândă la depozitele constituite cu sume noi, atât în lei cât și în euro, de până la: 6% pe an în lei, 2,25% pe an în euro. Campanie activă în perioada 15 Septembrie 2026 – 31 Decembrie 2026.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/depozitul-la-termen#:~:text=P%C3%A2n%C4%83%20la%206%25%20dob%C3%A2nd%C4%83%20la,2026%20%E2%80%93%2031%20Decembrie%202026."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/depozitul-la-termen/microintreprinderi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul promo pe 2 luni (microîntreprinderi și PFA) - George Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Depozit promoțional pentru sume noi, destinat persoanelor juridice (microîntreprinderi/PFA), dar cu termen de doar 2 luni față de 13 luni la Libra, și dobândă fixă unică de 5% (nu structură 6,60%/6,10%).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține explicit dobânda, termenul campaniei și condițiile pentru depozitul promoțional pentru firme.",
+      "citat": "În perioada 17.06.2026 - 30.11.2026 ai ofertă la depozitul promo 2 luni. Dacă aduci bani noi în conturile companiei tale, poți constitui un depozit promo pe 2 luni, cu dobândă 5%, conform condițiilor campaniei.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/depozitul-la-termen/microintreprinderi#:~:text=%C3%8En%20perioada%2017.06.2026%20%2D%2030.11.2026,dob%C3%A2nd%C4%83%205%25%2C%20conform%20condi%C8%9Biilor%20campaniei."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/depozitul-la-termen",
+    "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/depozitul-la-termen/microintreprinderi"
+  ],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2208,
+    "citire_cache": 41438,
+    "scriere_cache": 43578,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1393246
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://moneytrade.bcr.ro/userguide.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "MONEY TRADE BCR - tranzacții de schimb valutar (FX Trading, inclusiv SPOT)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ghidul descrie platforma de tranzacționare valutară pusă la dispoziția companiilor de BCR, cu opțiune explicită de decontare 'SPOT' (data valutei = ziua curentă + 2), echivalentul schimbului valutar spot pentru persoane juridice.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Documentul este ghidul oficial de utilizare a platformei de tranzacționare valutară pentru companii și conține explicit definiția tranzacției SPOT, intervalul orar de tranzacționare și un exemplu de curs aplicat.",
+      "citat": "obtinerea de informatii din piata valutara in intervalul 9:00 - 17:30; efectuarea de operatiuni de schimb valutar si depozite la termen in intervalul 9:00 - 17:30.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/curs-valutar",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar BCR / Schimb valutar online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată conversiei valutare la cursul BCR pentru persoane fizice, realizată între conturile proprii (online/George), exact tipul de operațiune 'schimb valutar spot' pentru segmentul persoane fizice.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "Pagina este clar dedicată produsului (curs valutar / schimb valutar), dar tabelul cu cursurile zilnice (Vindem/Cumpărăm) se încarcă dinamic prin JavaScript, nefiind vizibil în HTML static, deci necesită extractor playwright.",
+      "citat": "Conform Regulamentului (UE) 2021/1230 titularul unui cont, persoana fizica, va primi o notificare electronica pentru fiecare card emis de catre BCR, utilizat pentru tranzacţii la POS, online sau retrageri de numerar de la ATM pe teritoriul Uniunii Europene",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/curs-valutar#:~:text=Conform%20Regulamentului%20%28UE%29%202021%2F1230%20titularul,ATM%20pe%20teritoriul%20Uniunii%20Europene"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/curs-valutar",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/managementul-riscurilor/riscul-valutar"
+  ],
+  "durata_s": 110,
+  "consum": {
+    "intrare": 28185,
+    "iesire": 9613,
+    "citire_cache": 44922,
+    "scriere_cache": 48551,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2828619
+  }
+}

@@ -1,0 +1,15 @@
+Salt Bank: 1 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, domenii saltbank.ro
+  [cautare] Salt Bank depozit la termen dobanda
+  [cautare] saltbank.ro depozit
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank depozit economii dobanda procent
+  [ 2] https://www.saltbank.ro/economii
+  [ 3] https://www.saltbank.ro/depozit
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro/
+       ! url_not_allowed
+GOL     DEPOZIT_TERMEN               blocat_de_robots: Nu am putut accesa domeniul saltbank.ro (eroare de permisiune la fetch), iar căutările web, $0.06
+
+salt: 0/1 produse cu surse, 0 erori, cost estimat $0.06, durata 0 min

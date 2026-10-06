@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul de nevoi personale George",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fără garanții reale, pentru persoane fizice, în lei, fără justificarea destinației, cu rate fixe și perioadă de rambursare de până la 60 de luni (ca și Libra Way), sume comparabile (Libra: 10.000-150.000 RON; BCR: până la 250.000 lei).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit dobânzile, suma maximă și durata maximă, exact tipul de cifre cerute.",
+      "citat": "Poți rambursa creditul oricând vrei tu, în până la 60 de luni, în cazul împrumuturilor noi şi al celor destinate refinanţării împrumuturilor acordate după 8 iulie 2020.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george#:~:text=Po%C8%9Bi%20rambursa%20creditul%20oric%C3%A2nd%20vrei,acordate%20dup%C4%83%208%20iulie%202020."
+    },
+    {
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/george/credit/Creditul_DIVERS_BCR_credite_noi_si_refinantari_BCR_BCR.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul Divers BCR (document de dobânzi și comisioane pentru Creditul de nevoi personale George)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi și comisioane, legat direct din pagina Creditului de nevoi personale George, descrie valoarea (2.000-250.000 lei), durata (până la 5 ani pentru credite noi) și rambursarea în rate egale sau descrescătoare, caracteristici identice cu Libra Way.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document PDF cu caracteristici și costuri explicite ale produsului, legat oficial de pagina produsului echivalent.",
+      "pagina_pdf": 1,
+      "citat": "Valoare: – de la 2.000 lei la 250.000 lei, în funcţie de produsele de creditare deţinute, respectiv de gradul de îndatorare existent la momentul solicitării creditului Rambursare: – in rate egale lunare sau in rate lunare descrescătoare pe toată durata împrumutului",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-nevoi-personale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul de nevoi personale George",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub de credite pentru persoane fizice prezintă Creditul de nevoi personale George cu aceleași caracteristici (fără ipotecă, rate fixe, sumă maximă, 100% online), echivalent segmentului și tipului produsului Libra Way.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina generală de credite conține cifre despre sumă și tip de dobândă, dar trimite către pagina dedicată pentru detalii complete.",
+      "citat": "Până la 250.000 lei în cont, fără drumuri la bancă și 100% online. Rate fixe lunare, pe toată perioada creditului. Dobândă fixă. ZERO comision de administrare credit",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-nevoi-personale#:~:text=P%C3%A2n%C4%83%20la%20250.000%20lei%20%C3%AEn,ZERO%20comision%20de%20administrare%20credit"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george",
+    "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-nevoi-personale",
+    "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/george/credit/Creditul_DIVERS_BCR_credite_noi_si_refinantari_BCR_BCR.pdf"
+  ],
+  "durata_s": 58,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5816,
+    "citire_cache": 81936,
+    "scriere_cache": 50997,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2020557
+  }
+}

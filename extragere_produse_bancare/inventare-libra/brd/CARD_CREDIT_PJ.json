@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/activitate-curenta/card-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit persoane juridice (Card de Credit Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este o linie de credit revolving atașată unui card business, cu perioadă de grație și dobândă zero la plățile la comercianți, destinată persoanelor juridice (PJ) — același tip de produs și același segment ca produsul Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele cheie: suma minimă/maximă de finanțare și perioada de creditare.",
+      "citat": "Suma minimă este 20.000 RON Suma maximă este 150.000 RON Care este perioada de creditare? Perioada de creditare este de 24 luni.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-1m-euro/finantare/activitate-curenta/card-de-credit"
+  ],
+  "durata_s": 14,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1187,
+    "citire_cache": 29925,
+    "scriere_cache": 35963,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1077745
+  }
+}

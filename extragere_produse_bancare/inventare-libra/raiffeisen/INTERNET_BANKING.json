@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale/20260901-Tarife-si-comisioane-IMM-si-profesii-liberale.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Noul Raiffeisen Online IMM / Raiffeisen Smart Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este serviciul de internet banking și mobile banking dedicat exclusiv clienților persoane juridice (IMM, PFA, profesii liberale), exact același tip de produs și segment ca Internet & Mobile Banking business de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul oficial de tarife al băncii listează explicit produsul la secțiunea 7.7 cu valoarea abonamentului lunar.",
+      "citat": "7.7 Noul Raiffeisen Online IMM/ Raiffeisen Smart Business Pentru alte tipuri de operatiuni poti solicita informatii cu privire la costuri, responsabilului de client dedicat sau in orice agentie Raiffeisen Bank. Abonament lunar gratuit",
+      "pagina_pdf": 10,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/servicii-electronice/mobile-banking-smart-business.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Raiffeisen Smart Business (mobile banking) / Noul Raiffeisen Online IMM (internet banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată descrie serviciul de mobile banking pentru companii IMM, oferit împreună cu internet banking-ul de business (Noul Raiffeisen Online IMM), același segment și tip de produs ca Libra Internet & Mobile Banking business.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina de produs dedicată menționează explicit gratuitatea serviciului și condițiile de activare, deși cifrele de tarifare detaliate sunt în broșura de tarife.",
+      "citat": "Serviciul Smart Business este oferit gratuit alături de serviciul de internet banking, Raiffeisen Online IMM. Pentru a beneficia de avantajele noii aplicații, trebuie doar să-ți activezi serviciul din internet banking, unde îți vei seta o parolă de acces.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/servicii-electronice/mobile-banking-smart-business.html#:~:text=Serviciul%20Smart%20Business%20este%20oferit,seta%20o%20parol%C4%83%20de%20acces."
+    },
+    {
+      "url": "https://banking.raiffeisen.ro/info-desk/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Noul Raiffeisen Online IMM / Raiffeisen Smart Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina Info Desk a băncii confirmă, în cadrul broșurii de taxe și comisioane IMM, aceeași informație despre abonamentul la serviciul de internet/mobile banking pentru persoane juridice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Conține aceeași linie tarifară explicită regăsită și în PDF-ul oficial, confirmând valoarea abonamentului.",
+      "citat": "7.7 Noul Raiffeisen Online IMM / Raiffeisen Smart Business - Abonament lunar · Gratuit - Pentru alte tipuri de operatiuni poti solicita informatii cu privire la costuri, responsabilului de client dedicat sau in orice agentie Raiffeisen Bank.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/servicii-electronice/mobile-banking-smart-business.html",
+    "https://www.raiffeisen.ro/ro/imm/in-sprijinul-tau/informatii-utile.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale/20260901-Tarife-si-comisioane-IMM-si-profesii-liberale.pdf.coredownload.pdf"
+  ],
+  "durata_s": 67,
+  "consum": {
+    "intrare": 8,
+    "iesire": 6207,
+    "citire_cache": 89110,
+    "scriere_cache": 72158,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.260303
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-05",
+  "banca": "vista",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/vista-internet-si-mobile-banking?tab=ropay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Vista Internet și Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este aplicația de mobile banking a Vista Bank, disponibilă pentru persoane fizice și juridice, cu funcționalități echivalente (RoPay prin cod QR, Click to Pay/plăți fără contact, token integrat), exact ca aplicația Libra Bank v4.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată descrie explicit aplicația Vista Mobile Banking, funcționalitățile RoPay (QR, alias) și securitatea biometrică/token, cu detalii concrete precum limita tranzacțiilor și gratuitatea serviciului.",
+      "citat": "Totodată, aplicația Vista Mobile Banking integrează funcționalitatea de securitate Appshielding, care îi asigură o înalta protecție împotriva unei game largi de atacuri cibernetice sofisticate. Mai mult, aplicația Vista Mobile Banking integrează și Antivirusul Malwarelytics, o componentă de securitate ce protejează întregul dumneavoastră dispozitiv mobil împotriva eventualelor aplicații malițioase (mobile malware).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/despre-noi/noutati/vista-bank-lanseaza-platile-instant-ropay-intre-persoane-fizice-prin-cod-qr-direct-din-aplicatiile-de-mobile-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay în Vista Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Anunțul oficial despre lansarea RoPay (plăți instant prin cod QR) direct din aplicația Vista Mobile Banking, funcționalitate echivalentă cu RoPay din Aplicația Libra Bank.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Comunicatul de presă conține cifre concrete despre limita și gratuitatea tranzacțiilor RoPay, funcționalitate integrată explicit în aplicația de mobile banking.",
+      "citat": "Tranzacțiile sunt procesate în cateva secunde, au o limită de 49.999 lei pentru o plată și sunt gratuite atât pentru Plătitor, cât și pentru Beneficiar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/User%20Manual_Vista%20MB_IB_EN_jul24.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Vista Mobile Banking - User Manual",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Manualul oficial de utilizare al aplicației Vista Mobile Banking, cu detalii tehnice despre funcționalități, limite (ex. număr maxim de conturi, perioada extraselor) și condiții de utilizare, echivalent cu manualul aplicației Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial PDF cu cifre concrete despre funcționalitățile aplicației (versiuni OS suportate, limite de conturi, perioada extraselor).",
+      "citat": "person users, a maximum of 5 current accounts can be opened: in RON, EUR, USD, GBP and CHF. Legal entities cannot open current accounts through the Internet/Mobile Banking application.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1631,
+    "citire_cache": 6346,
+    "scriere_cache": 41819,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12213470000000001
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/en/companii/finantare/credite/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții (Investment credit)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat de creditare pentru persoane juridice (firme, PFA) destinat achiziției de spații, echipamente, utilaje și mijloace de transport - exact tipul și segmentul produsului Libra Credit de investiții.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată oficială a produsului 'Credit de investiții' pentru companii, cu descrierea destinației creditului și cifre privind perioada de creditare și perioada de grație.",
+      "citat": "You can access the full amount or in installments, over a period of up to 15 years, depending on the pace of your project. You have 36 months grace period, to focus on development, not on immediate repayment.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/companii/finantare/credite/credit-de-investitii#:~:text=You%20can%20access%20the%20full,development%2C%20not%20on%20immediate%20repayment."
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credite BEI / BID / FEI pentru investiții (Programe speciale pentru companii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Sunt tot credite de investiții pentru firme, dar acordate prin programe speciale cu garanții europene (BEI, BID, FEI), cu plafoane, maturități și reduceri de dobândă specifice, diferite de creditul standard de investiții.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit condiții numerice (plafoane, maturități, reduceri de dobândă) pentru creditele de investiții acordate prin programele speciale BEI/BID/FEI, dar nu este pagina principală a produsului standard.",
+      "citat": "Creditele BEI3 beneficiază de o reducere de dobândă de 0,25% pe an, ceea ce le face mai accesibile. Sunt potrivite în special pentru investiții, mai ales pentru achiziția de echipamente, cu maturități între 5 și 7 ani.",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+    "https://campanie.bancatransilvania.ro/babe-fara-drame/pentru-afacerea-ta/oferta-credit-investitii",
+    "https://www.bancatransilvania.ro/en/companii/finantare/credite/credit-de-investitii",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/credit-de-investitii",
+    "https://www.bancatransilvania.ro/pentru-companii/corporate/credite-corporate/produse-de-creditare-corporate/",
+    "https://campanie.bancatransilvania.ro/babe-fara-drame/pentru-afacerea-ta/oferta-credit-investitii"
+  ],
+  "durata_s": 69,
+  "consum": {
+    "intrare": 109608,
+    "iesire": 4882,
+    "citire_cache": 179995,
+    "scriere_cache": 79148,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.501905
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/digital-banking/ropay-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay George",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Serviciu de plăți și încasări instant în lei prin număr de telefon (sau cod QR), integrat în aplicația de mobile banking, pentru persoane fizice - același tip de produs ca RoPay Libra pentru segmentul PF.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată RoPay descrie explicit funcționarea prin număr de telefon/cod QR și menționează zero comision pentru persoane fizice.",
+      "citat": "RoPay îți permite să tranzacționezi instant în lei prin cod QR sau număr de telefon, fără a fi necesar să introduci datele plătitorului sau beneficiarului. Este gratuit (ZERO comision pentru plățile sau încasările efectuate); Faci plăți sau încasezi 24/7",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/ropay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay pentru companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta RoPay dedicată companiilor/persoanelor juridice, pentru încasări instant prin cod QR/număr de telefon - corespunde segmentului juridic din produsul Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată business conține o cifră concretă (timp maxim de procesare de 10 secunde) specifică serviciului RoPay pentru companii.",
+      "citat": "RoPay este serviciul de plăți instant al BCR care permite comercianților să încaseze bani în timp real, în maximum 10 secunde, direct în contul lor.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/micro/ropay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay pentru afacerea ta (micro/PFA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Variantă RoPay dedicată microîntreprinderilor și PFA, acoperind segmentul de persoane juridice mici, cu plăți instant prin număr de telefon/cod QR fără IBAN.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține disponibilitatea 24/7 și specifică lipsa comisioanelor, fiind orientată explicit către microîntreprinderi și PFA.",
+      "citat": "Primeste plati instant, 24/7, fara IBAN si fara comisioane ascunse. Solutie simpla si rapida pentru microintreprinderi si PFA.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (18 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2587,
+    "citire_cache": 6359,
+    "scriere_cache": 38094,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12238480000000002
+  }
+}

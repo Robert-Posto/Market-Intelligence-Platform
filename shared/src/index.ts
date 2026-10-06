@@ -79,6 +79,10 @@ export const ComandaRulare = z
     ce: z.string(),
     internet: z.boolean(),
     banca: z.string().nullable(),
+    // joburile fluxului de comparație (pagina „Rulare manuală”): cer un produs, costă, au grupul „joburi”
+    produs: z.string().nullable().optional(),
+    grup: z.string().nullable().optional(),
+    platit: z.boolean().optional(),
     estimare_s: z.number().optional(),
     estimare_sursa: z.string().optional(),
     estimare_banca_s: z.number().optional(),
@@ -103,6 +107,7 @@ export const RulareCurenta = z
   .object({
     nume: z.string(),
     banca: z.string().nullable().optional(),
+    produs: z.string().nullable().optional(),
     inceput: data,
     scurs_s: z.number(),
     estimare_s: z.number().nullable().optional(),
@@ -119,11 +124,52 @@ export const Rulari = z
     activ: z.boolean(),
     comenzi: z.array(ComandaRulare),
     banci: z.array(z.string()),
+    banci_joburi: z.array(z.string()).optional(),
     curenta: RulareCurenta.nullable(),
     token: z.string().optional(),
   })
   .passthrough()
 export type Rulari = z.infer<typeof Rulari>
+
+/** Ce se poate alege în modalul „Începe job” (/api/rulare_manuala). */
+export const RulareManualaCatalog = z
+  .object({
+    tipuri: z.array(z.object({
+      id: z.string(),
+      denumire: z.string(),
+      descriere: z.string(),
+      ce: z.string(),
+      produs: z.string().nullable(),
+    }).passthrough()),
+    banci: z.array(z.string()),
+    produse: z.array(z.object({
+      cod: z.string(),
+      denumire: z.string(),
+      segment: z.string().nullable(),
+      categorie_cod: z.string().nullable(),
+      prioritar: z.boolean(),
+    }).passthrough()),
+  })
+  .passthrough()
+export type RulareManualaCatalog = z.infer<typeof RulareManualaCatalog>
+
+/** Costul și durata unui job înainte de pornire, din joburile încheiate (/api/rulare_manuala/estimare). */
+export const RulareManualaEstimare = z
+  .object({
+    tip: z.string(),
+    estimare: z.object({
+      nivel: z.enum(['banca_produs', 'produs', 'banca', 'tip']),
+      n: z.number(),
+      cost_med: z.number(),
+      cost_min: z.number(),
+      cost_max: z.number(),
+      durata_med: z.number().nullable(),
+      durata_max: z.number().nullable(),
+    }).nullable(),
+    surse: z.object({ gasite: z.number(), negasite: z.number(), ultima: z.string().nullable() }).nullable(),
+  })
+  .passthrough()
+export type RulareManualaEstimare = z.infer<typeof RulareManualaEstimare>
 
 export const CelulaMatrice = z
   .object({
@@ -189,4 +235,6 @@ export * from './context_istoric'
 export * from './versus'
 export * from './banca'
 export * from './surse_coada'
+export * from './comparatie_libra'
+export * from './jobs'
 export * from './android'

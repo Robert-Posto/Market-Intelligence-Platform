@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-05",
+  "banca": "garanti",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/mobile-banking/what-can-it-do/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanti BBVA Mobile (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicația de mobile banking pentru persoane fizice a Garanti BBVA, cu aceleași funcții de bază (plăți, transferuri, schimb valutar, economii, Bonus Card) ca Aplicația Libra Bank.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată aplicației Garanti BBVA Mobile conține descrierea funcționalităților și un tabel explicit cu limite de tranzacționare în lei și valută.",
+      "citat": "Internal payments in Lei 500.000 Lei 500.000 Lei 1 Leu Internal payments in Lei 500.000 Lei 500.000 Lei 1 Leu Payments in other currency except Lei 500.000 Lei 500.000 Lei 1 Leu Foreign Exchange 1.000.000 Lei 1.000.000 Lei 1 Leu Arbitrage 200.000 USD 200.000 USD 1 USD",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/individuals/mobile-banking/what-can-it-do/#:~:text=Internal%20payments%20in%20Lei%20500.000,USD%20200.000%20USD%201%20USD"
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/mobile-banking/what-can-it-do/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanti BBVA Mobile (IMM și PFA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este versiunea de mobile banking pentru IMM și PFA, segment apropiat dar nu identic cu 'persoane juridice' în sens larg (corporate); limitele de tranzacționare diferă de varianta pentru persoane fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată aplicației pentru IMM/PFA conține descrierea funcțiilor și un tabel cu limite de tranzacționare specifice acestui segment, diferite de cele pentru persoane fizice.",
+      "citat": "Internal payments in Lei 2.000.000 Lei 2.000.000 Lei 1 Leu | Payments to other banks in Lei 2.000.000 Lei 2.000.000 Lei 1 Leu | Payments in other currency except Lei 2.000.000 Lei 2.000.000 Lei 10 Lei | Foreign Exchange 2.000.000 Lei 2.000.000 Lei 1 Leu | Arbitrage 300.000 USD 300.000 USD 1 USD",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/persoane-fizice/mobile-banking/",
+    "https://www.garantibbva.ro/en/individuals/mobile-banking/what-can-it-do/"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3402,
+    "citire_cache": 43586,
+    "scriere_cache": 47488,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1614692
+  }
+}

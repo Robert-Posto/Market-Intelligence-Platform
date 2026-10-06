@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/BCR_Dobanzi_pentru_contul_curent_si_produsele_de_economisire_PF.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Contul de economii MAXICONT",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii în lei (și EUR/USD) cu dobândă variabilă la sold, retrageri/depuneri oricând, pentru persoane fizice — același tip de produs și segment ca CONT_ECONOMII Libra pentru persoane fizice.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial de dobânzi al băncii care prezintă explicit nivelul dobânzii standard și pe niveluri de beneficii pentru contul de economii Maxicont în LEI, EUR și USD.",
+      "citat": "CONTUL DE ECONOMII MAXICONT (% pe an, dobândă variabilă standard) Moneda LEI EUR USD Sold minim 0 LEI 0 EUR 0 USD Dobânda 2,00 0,10 0,10",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/maxicont-pfa",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "MAXICONT PFA",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un cont de economii cu dobânzi pe tranșe și acces liber la sume, dar segmentul este restrâns doar la PFA (persoane fizice autorizate), nu la întregul segment de persoane juridice (societăți comerciale) cum presupune produsul Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului prezintă explicit costurile (comision de administrare, comisioane retragere numerar) dar dobânzile exacte sunt într-un tabel care nu s-a încărcat în conținutul text extras.",
+      "citat": "MAXICONT în RON: 0,4%, minim 6 RON MAXICONT în EUR: 0,5%, minim 3 EUR pentru sume mai mici de 100.000 EUR şi 2,5% pentru sume mai mari de 100.000 EUR",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/maxicont-pfa#:~:text=MAXICONT%20%C3%AEn%20RON%3A%200%2C4%25%2C%20minim,mai%20mari%20de%20100.000%20EUR"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/contul-de-economii",
+    "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/maxicont-pfa",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/BCR_Dobanzi_pentru_contul_curent_si_produsele_de_economisire_PF.pdf"
+  ],
+  "durata_s": 71,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4464,
+    "citire_cache": 80656,
+    "scriere_cache": 69141,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2336397
+  }
+}

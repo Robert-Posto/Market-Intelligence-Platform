@@ -1,0 +1,53 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent Nelimitat (Nelimitat în rețeaua BT / Nelimitat & 10 / Nelimitat & 25 / Nelimitat All Inclusive)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice confirmă aceleași 4 variante de abonament lunar corporate cu plăți, încasări, card de debit business și internet banking incluse, echivalent funcțional cu Abonamentul ELITE Libra, dar cu plafoane diferite de tranzacții (10/25/nelimitat, nu 50 fix) și doar un tip de card business inclus, fără mențiune de Live FX.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este documentul oficial 'Comisioane persoane juridice' (Septembrie 2026), secțiunea II 'Pachete de cont curent', cu tabelul complet de prețuri și servicii incluse pentru fiecare treaptă a pachetului corporate.",
+      "pagina_pdf": 3,
+      "citat": "Servicii abonament Nelimitat în rețeaua BT 29 lei / lună Nelimitat & 10 46 lei / lună Nelimitat & 25 76 lei / lună Nelimitat All Inclusive 129 lei / lună Plăți interbancare în lei și valută Online (inclusiv instant) sau operatiuni cu cec și bilet la ordin* 10 25 Nelimitat",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent Nelimitat (variantele Nelimitat în Rețeaua BT, BT&10, BT&25, Nelimitat All Inclusive)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul abonament lunar pentru persoane juridice care grupează plăți/încasări lei-valută, operațiuni SEPA, carduri de business și internet banking într-un preț fix lunar, la fel ca Abonamentul ELITE Libra; diferă însă structura (BT are 4 trepte cu plafoane de 10/25/nelimitat operațiuni, nu un plafon fix de 50 ca la Libra, iar cardurile incluse sunt Visa Business Silver, nu 3 carduri distincte) și nu menționează explicit un serviciu de tip Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată de comparare a pachetelor conține prețurile lunare exacte (29/46/76/129 lei) și lista completă de servicii incluse pentru fiecare treaptă a abonamentului corporate.",
+      "citat": "Nelimitat în Rețeaua BT 29 Lei/lună BT&10 46 Lei/lună BT&25 76 Lei/lună Nelimitat All Inclusive 129 Lei/lună Card de debit Visa Business Silver emitere și mentenanță anuală Nelimitat BT Alert 40 include 40 SMS-uri",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent#:~:text=Nelimitat%20%C3%AEn%20Re%C8%9Beaua%20BT%2029,Alert%2040%20include%2040%20SMS%2Duri"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3868,
+    "citire_cache": 39227,
+    "scriere_cache": 113465,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3301999
+  }
+}

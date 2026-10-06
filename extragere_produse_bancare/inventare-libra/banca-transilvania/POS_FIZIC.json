@@ -1,0 +1,63 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "POS (comision de încasare POS)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de comisioane pentru persoane juridice conține un tabel dedicat cu comisionul de încasare (procesare) prin terminalul POS fizic, alături de comisionul BT POS App, aplicabil exact companiilor/PFA-urilor cu vânzare fizică care folosesc un terminal POS al băncii.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Este documentul oficial de tarife și comisioane pentru persoane juridice (Septembrie 2026), publicat de bancă, cu cifra exactă a comisionului de procesare pentru terminalul POS.",
+      "dovada_metoda": "PDF descărcat direct de pe domeniul bancatransilvania.ro; textul cu valorile comisioanelor este extras din tabelul de pe pagina 4 a documentului.",
+      "pagina_pdf": 4,
+      "citat": "Comision de administrare BT POS APP 10 lei Comision de încasare BT POS APP pentru cardurile persoanelor fizice 0,9% 0,7% + 0,1 lei Comision de încasare POS pentru cardurile persoanelor fizice 0,9% 0.7%",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/en/companii/solutii-de-plata",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "POS (POS de la BT / terminal POS fizic)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată soluțiilor de plată pentru companii prezintă explicit terminalul POS fizic (hardware, la sediul comerciantului) ca soluție de acceptare la plată cu cardul, alături de POS App și E-commerce, destinat exact segmentului persoane juridice/PFA cu vânzare fizică, identic cu produsul Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina-produs oficială (Soluții de plată > POS) și conține cifre concrete (comision zero de instalare pentru POS, 10 lei/lună pentru BT POS App), dar valorile de comision procentual complete sunt doar în documentul de tarife.",
+      "dovada_metoda": "Conținutul textual a fost livrat direct ca HTML/markdown de pe pagina live, fără a fi nevoie de randare JS suplimentară pentru cifrele afișate.",
+      "citat": "RECOMMENDED POS - ZERO installation fee - Ergonomic design and easy to use - Included signaling materials BT POS App - Only 10 lei/month - You send the digital receipt - As sure as a classic POS - Do you control who has access to the POS",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/companii/solutii-de-plata#:~:text=RECOMMENDED%20POS%20%2D%20ZERO%20installation,has%20access%20to%20the%20POS"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/solutii-de-plata",
+    "https://www.bancatransilvania.ro/en/companii/solutii-de-plata",
+    "https://www.bancatransilvania.ro/companii/solutii-de-plata/compara-solutiile-de-plata",
+    "https://www.bancatransilvania.ro/en/companii/solutii-de-plata/compara-solutiile-de-plata",
+    "https://www.bancatransilvania.ro/pentru-companii/imm/imm-conturi-si-operatiuni/imm-pos/",
+    "https://beta.bancatransilvania.ro/companii/conturi-carduri/pos",
+    "https://www.bancatransilvania.ro/taxe-si-comisioane",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 137,
+  "consum": {
+    "intrare": 205829,
+    "iesire": 10238,
+    "citire_cache": 357554,
+    "scriere_cache": 172085,
+    "apeluri": 1,
+    "cost_estimat_usd": 1.0157612999999999
+  }
+}

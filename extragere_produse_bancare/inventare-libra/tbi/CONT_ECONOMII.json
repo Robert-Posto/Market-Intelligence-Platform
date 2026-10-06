@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-06",
+  "banca": "tbi",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/product/contul-de-economii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Contul de Economii",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (cont de economii cu dobândă la sold zilnic, acces oricând la bani), dar la tbi bank este disponibil doar pentru persoane fizice, nu și pentru persoane juridice ca la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit procentul de dobândă, condițiile de acces și plafonul de 500.000 lei.",
+      "citat": "Dobanda de 5% pe an Calculata zilnic si adaugata in cont in ultima zi calendaristica a fiecarei luni. Ai acces oricand la banii tai Zero comision de administrare",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2025/03/Informare-actualizare-dobanzi-Depozite_20-feb2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de Economii",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document oficial de dobânzi care listează separat Contul de Economii pentru Persoane Fizice, cu sumă plafon și procent; produsul Libra acoperă și persoane juridice, aici nu apare secțiune echivalentă pentru PJ.",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF-ul oficial de dobânzi conține un rând dedicat explicit 'CONT DE ECONOMII' cu plafonul de sold și procentul aplicabil, inclusiv data de la care se schimbă dobânda.",
+      "citat": "Sold pana la 500.000 LEI (inclusiv) (*) 6,00% p.a., dobanda calculata zilnic si postata lunar (*) incepand cu data de 30.03.2026, dobanda aplicabila va fi 5,00% p.a.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2025/09/Dobanzi-depozite_TBI_26septembrie2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de Economii",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de dobânzi care confirmă valoarea procentuală pentru Contul de Economii, doar pentru persoane fizice; Libra oferă produsul și pentru persoane juridice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF-ul arată clar rândul 'CONT DE ECONOMII - Persoane Fizice' cu procentul aplicabil și modul de calcul al dobânzii.",
+      "citat": "Sold pana la 500.000 RON (inclusiv) 6,00% p.a., dobanda calculata zilnic si postata lunar",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (14 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1469,
+    "citire_cache": 6360,
+    "scriere_cache": 36135,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1063075
+  }
+}

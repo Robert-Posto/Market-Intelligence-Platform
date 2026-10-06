@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_PROFESII",
+  "denumire": "Credite alte profesii liberale (Freud/Vitruvius/Paccioli/Libra IT)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/creditul-simplu-profesii-liberale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul Simplu Profesii Liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit dedicat profesiilor liberale și sectorului IT (nu doar unui IMM generic), ca și produsul Libra, dar BRD nu separă oferta pe profesii specifice (psihologi, arhitecți, contabili) ca Libra, ci are un singur produs unic pentru toate profesiile liberale plus IT, iar segmentul vizat este în primul rând PFA/profesii liberale, nu explicit persoane juridice de tip SRL.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit segmentul țintă (profesii liberale și sectorul IT) și cifrele de finanțare, dar nu detaliază pe profesii individuale precum Libra.",
+      "citat": "Este un credit care se adresează profesiilor liberale și sectorului IT care te ajută să completezi resursele proprii atunci când acestea nu-ți sunt suficiente. Suma minimă este 20.000 RON iar suma maximă este 300.000 RON pentru varianta fără garanție materială, respectiv 500.000 RON pentru varianta cu ipotecă imobiliară.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/finantare/credite-de-investitii/creditul-simplu-profesii-liberale",
+    "https://www.brd.ro/creditul-simplu-profesii-liberale"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2714,
+    "citire_cache": 78486,
+    "scriere_cache": 55118,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.18064819999999998
+  }
+}

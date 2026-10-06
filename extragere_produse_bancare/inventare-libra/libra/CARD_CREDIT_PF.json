@@ -1,0 +1,86 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/card-de-credit-cumparaturi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit (cumpărături) - 100% online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului Libra pentru persoane fizice, cu perioadă de grație, 3 rate fără dobândă, plafon până la 100.000 lei / 6 salarii, exact ca în descrierea produsului CARD_CREDIT_PF.",
+      "incredere": 0.97,
+      "explicatie_incredere": "Pagina produsului conține toate cifrele cheie: grație, rate fără dobândă, plafon, dobândă, DAE.",
+      "citat": "Până la 56 de zile perioadă de grație sau 3 rate fără dobândă - află detalii Dobândă card de credit: 12,25% + IRCC după perioada de grație",
+      "rol_pagina": null,
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/card-de-credit-cumparaturi#:~:text=P%C3%A2n%C4%83%20la%2056%20de%20zile,IRCC%20dup%C4%83%20perioada%20de%20gra%C8%9Bie"
+    },
+    {
+      "url": "https://www.librabank.ro/documente/carduri/Card-Credit-Avanpost-Gold.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Avanpost Gold Credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi, comisioane și taxe pentru cardul de credit Avanpost Gold, linkat direct din pagina produsului CARD_CREDIT_PF ca 'lista de taxe și comisioane'.",
+      "incredere": 0.92,
+      "explicatie_incredere": "PDF cu toate comisioanele și dobânda de descoperit neautorizat specifice cardului de credit, legat explicit din pagina produsului.",
+      "citat": "Comision de emitere plastic 20 RON Comision de reemitere card 25 RON Comision de administrare a cardului/contului de card 8 RON/luna",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/tranzactii-in-rate-card-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Împărțire tranzacții în rate - Card de credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată mecanismului de 3 rate fără dobândă al cardului de credit Libra, cu pragul minim de 1.000 RON și data scadenței, parte din produsul CARD_CREDIT_PF.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Conține cifrele exacte ale condiției de rate fără dobândă menționate în descrierea produsului.",
+      "citat": "Tranzacțiile mai mari de 1.000 de lei, efectuate cu cardul de credit Libra, pot fi împărțite în 3 rate egale, fără dobândă. Opțiunea este disponibilă pentru clienții Libra doar în aplicația Libra Journey",
+      "rol_pagina": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente/carduri/Conditii_eligibilitate_card_Gold.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Card de credit - Condiții de eligibilitate",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de condiții precontractuale cu criteriile de eligibilitate pentru cardul de credit al persoanelor fizice, legat direct din pagina produsului CARD_CREDIT_PF.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de condiții pentru cardul de credit, cu cifre de vârstă, vechime și solduri minime.",
+      "citat": "Vârsta: 18–75 ani (neîmpliniți) la scadența finală a creditului; Cel puțin 6 luni vechime la actualul angajator Sold mediu în contul deschis la Libra de cel puțin 20.000 lei echivalent în ultimele 6 luni",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/card-de-credit-cumparaturi",
+    "https://www.librabank.ro/documente/carduri/Card-Credit-Avanpost-Gold.pdf",
+    "https://www.librabank.ro/documente/carduri/Conditii_eligibilitate_card_Gold.pdf"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5377,
+    "citire_cache": 90534,
+    "scriere_cache": 61982,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22684780000000002
+  }
+}

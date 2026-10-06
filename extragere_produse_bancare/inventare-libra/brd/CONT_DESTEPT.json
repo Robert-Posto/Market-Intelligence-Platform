@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Antreprenor Curajos Nelimitat BRD Start Up",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice confirmă explicit comisionul 0 lei/lună pentru 12 luni al pachetului de start-up Antreprenor Curajos Nelimitat, echivalentul direct al Cont Deștept (gratuit 12 luni pentru firme nou-înființate).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de tarife care conține cifrele exacte (0 RON/lună, valabilitate 12 luni) pentru pachetul echivalent destinat firmelor nou înființate.",
+      "pagina_pdf": 22,
+      "citat": "Gestionarea pachetului de baza Antreprenor Curajos Nelimitat BRD Start Up Gratuit (gestionare pachet) Campanie Start Up: Pachetul de baza beneficiaza de o tarifare preferentiala de 0 Ron/luna, iar oferta este valabila 12 luni de la data achizitionarii pachetului.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/companii/imm-sub-1m-euro/pachete-cont-curent/start-up-antreprenor-curajos-nelimitat",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "START-UP ANTREPRENOR CURAJOS NELIMITAT BRD",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în limba engleză a paginii dedicate pachetului de start-up pentru firme (persoane juridice), gratuit 12 luni, cu plăți incluse prin online banking - echivalent direct cu Cont Deștept.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține explicit cifrele privind gratuitatea de 12 luni și condițiile pachetului de start-up pentru firme.",
+      "citat": "Free of charge basic package for the first year from the purchase date. This offer remains valid for 12 months from the purchase date. After this period expires—12 months from the purchase date—the package will automatically switch to the standard pricing",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/start-up-antreprenor-curajos-nelimitat",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "START-UP ANTREPRENOR CURAJOS NELIMITAT BRD",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet de cont curent dedicat exclusiv firmelor înființate de mai puțin de 12 luni (start-up), cu cifra de afaceri sub 1M EUR, gratuit în primul an - același segment (persoane juridice) și același concept ca Cont Deștept.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "Este pagina dedicată exactă a produsului echivalent, dar conținutul extras nu a inclus cifrele vizibile ale paginii (necesită randare JS); cifrele sunt confirmate separat în alte surse.",
+      "citat": "Alege pachetul care se potrivește start-up-ului tău; toate trei sunt dedicate afacerilor care au sub 12 luni de activitate: Start-Up Antreprenor curajos PFA / PL dedicat PFA și PL Află mai multe START-UP ANTREPRENOR CURAJOS dedicat companiilor cu cifra de afaceri sub 1mil de EUR",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/en/companii/imm-sub-1m-euro/pachete-cont-curent/start-up-antreprenor-curajos-nelimitat",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/start-up-antreprenor-curajos-nelimitat"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3016,
+    "citire_cache": 147685,
+    "scriere_cache": 132471,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.39089050000000003
+  }
+}
