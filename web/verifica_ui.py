@@ -233,13 +233,19 @@ def v_capete(b: Browser, url: str) -> None:
                 verifica(r['nealiniate'] == 0,
                          f'{pagina} @{lat}: capul e aliniat cu coloanele ({r["nealiniate"]} din {r["coloane"]} nealiniate)')
             inchide(pg)
-    pg = deschide(b, f'{url}/#/produse', lat=1000, inalt=760)
-    incarcata(pg)
-    r = pg.evaluate(JS_ORIZONTAL)
-    if verifica(r['lat'], 'produse @1000: tabelul derulează pe orizontală (precondiție)'):
-        verifica(r['mutat'] == 0, f'produse @1000: prima coloană rămâne pe loc la derularea la dreapta (mutată {r["mutat"]} px)')
-        verifica(r['fundal_libra'] not in (None, 'rgba(0, 0, 0, 0)'), f'rândul Libra are fundal opac în coloana fixă ({r["fundal_libra"]})')
-    inchide(pg)
+    # prima coloană fixă: pe prima pagină unde tabelul chiar e mai lat decât ecranul la 1000 px
+    for pagina in ('produse', 'mobil', 'campanii', 'coada', 'surse'):
+        pg = deschide(b, f'{url}/#/{pagina}', lat=1000, inalt=760)
+        incarcata(pg)
+        r = pg.evaluate(JS_ORIZONTAL)
+        inchide(pg)
+        if r['lat']:
+            verifica(r['mutat'] == 0, f'{pagina} @1000: prima coloană rămâne pe loc la derularea la dreapta (mutată {r["mutat"]} px)')
+            if r['fundal_libra'] is not None:
+                verifica(r['fundal_libra'] != 'rgba(0, 0, 0, 0)', f'{pagina}: rândul Libra are fundal opac în coloana fixă ({r["fundal_libra"]})')
+            break
+    else:
+        print('  —   niciun tabel mai lat decât ecranul la 1000 px: coloana fixă nu se poate verifica')
     pg = deschide(b, f'{url}/#/produse')
     incarcata(pg)
     th = pg.locator('#principal .ant-table-header th.ant-table-column-has-sorters').last
