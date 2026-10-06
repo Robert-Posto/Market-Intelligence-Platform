@@ -142,13 +142,18 @@ class Securitate(unittest.TestCase):
         self.assertIsNone(rulari.verifica_cerere(dict(ok, **{"X-MIP-Token": "abc"}), 8765, "abc"))
 
     def test_port_vite_doar_cand_e_cerut(self):
-        """`porturi_extra` e doar pentru „Întreabă datele”; rulările rămân pe portul serverului."""
-        vite = {"Host": "localhost:5173", "Origin": "http://localhost:5173"}
+        """`porturi_extra` e doar pentru „Întreabă datele”; rulările rămân pe portul serverului.
+
+        Proxy-ul Vite (forma scurtă din vite.config.ts) rescrie Host-ul la ținta lui, dar lasă
+        Origin pe pagină: măsurat pe 06.10.2026, Host 127.0.0.1:<țintă>, Origin http://localhost:5174."""
+        vite = {"Host": "localhost:8765", "Origin": "http://localhost:5173"}
         self.assertIsNotNone(rulari.verifica_cerere(vite, 8765))
         self.assertIsNone(rulari.verifica_cerere(vite, 8765, porturi_extra=(5173,)))
-        self.assertIsNotNone(rulari.verifica_cerere(
-            {"Host": "localhost:8765", "Origin": "http://localhost:5173"}, 8765, porturi_extra=(5173,)))
-        self.assertIsNotNone(rulari.verifica_cerere({"Host": "evil.com:5173"}, 8765, porturi_extra=(5173,)))
+        self.assertIsNone(rulari.verifica_cerere(dict(vite, Host="127.0.0.1:8765"), 8765, porturi_extra=(5173,)))
+        # Host-ul rămâne strict pe portul serverului; Origin doar pagina noastră sau cea din Vite
+        self.assertIsNotNone(rulari.verifica_cerere(dict(vite, Host="localhost:5173"), 8765, porturi_extra=(5173,)))
+        for o in ("http://localhost:5174", "http://evil.com:5173", "https://localhost:5173"):
+            self.assertIsNotNone(rulari.verifica_cerere(dict(vite, Origin=o), 8765, porturi_extra=(5173,)), o)
 
 
 class Pornire(Baza):

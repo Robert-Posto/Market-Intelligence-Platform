@@ -2197,7 +2197,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                                       RULARI.token if cu_token else None)
 
     def _refuz_intrebari(self, cu_token):
-        """Ca la rulări, dar permite și pagina din `npm run dev` (Host localhost:5173)."""
+        """Ca la rulări, dar permite și pagina din `npm run dev` (Origin localhost:5173)."""
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
                                       INTREBARI.token if cu_token else None,
                                       porturi_extra=(intreaba.PORT_VITE,))

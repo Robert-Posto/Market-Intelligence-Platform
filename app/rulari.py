@@ -154,15 +154,18 @@ def verifica_cerere(antete, port, token=None, porturi_extra=()):
     Origin (când e trimis) exact pagina noastră, iar la scriere un token
     aleator, pe care îl primește doar pagina noastră, prin GET.
 
-    `porturi_extra`: doar pentru „Întreabă datele”, care merge și din `npm run dev`: proxy-ul Vite
-    păstrează Host-ul paginii (localhost:5173), iar Origin trebuie să fie tot pagina din Host.
-    Rulările nu-l primesc, deci pentru ele nu se schimbă nimic.
+    `porturi_extra`: doar pentru „Întreabă datele”, care merge și din `npm run dev`. Proxy-ul
+    Vite (forma scurtă din vite.config.ts) rescrie Host-ul la server, dar lasă Origin pe pagina
+    Vite: măsurat pe 06.10.2026, Host 127.0.0.1:<țintă>, Origin http://localhost:5174. Deci
+    Host-ul rămâne strict, iar porturile în plus se acceptă doar la Origin, tot pe nume de
+    loopback. Rulările nu-l primesc, deci pentru ele nu se schimbă nimic.
     """
     gazda = antete.get("Host") or ""
-    if gazda not in {f"{g}:{p}" for g in GAZDE for p in (port, *porturi_extra)}:
+    if gazda not in {f"{g}:{port}" for g in GAZDE}:
         return "Host nepermis"
     origine = antete.get("Origin")
-    if origine is not None and origine != f"http://{gazda}":
+    permise = {f"http://{gazda}"} | {f"http://{g}:{p}" for g in GAZDE for p in porturi_extra}
+    if origine is not None and origine not in permise:
         return "Origin nepermis"
     site = antete.get("Sec-Fetch-Site")
     if site is not None and site not in ("same-origin", "none"):

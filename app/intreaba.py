@@ -38,7 +38,8 @@ def _incarca_preturi():
 preturi = _incarca_preturi()
 
 MODEL_IMPLICIT = "claude-haiku-4-5"    # ales de Nicolae pe 06.10.2026; MIP_INTREABA_MODEL îl schimbă
-# `npm run dev`: proxy-ul Vite (fără changeOrigin) păstrează Host-ul paginii, localhost:5173
+# `npm run dev`: pagina e pe :5173; proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne
+# http://localhost:5173 (vezi rulari.verifica_cerere, `porturi_extra`)
 PORT_VITE = 5173
 LUNGIME_MAX = 500
 MAX_BANCI = 3

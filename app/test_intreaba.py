@@ -386,11 +386,12 @@ class Http(unittest.TestCase):
         self.assertEqual(self.cere("GET", "/api/intreaba", host=f"evil.com:{self.port}")[0], 403)
 
     def test_post_merge_si_din_vite(self):
+        """Din `npm run dev`, proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne :5173."""
         t = self.token()
-        for host in (f"localhost:{self.port}", "localhost:5173"):
+        for origine in (f"http://localhost:{self.port}", "http://localhost:5173", "http://127.0.0.1:5173"):
             cod, d = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"},
-                               {"X-MIP-Token": t, "Origin": f"http://{host}"}, host)
-            self.assertEqual(cod, 200, (host, d))
+                               {"X-MIP-Token": t, "Origin": origine, "Sec-Fetch-Site": "same-origin"})
+            self.assertEqual(cod, 200, (origine, d))
             self.assertEqual(d["raspunsuri"][0]["banca"], "bcr")
 
     def test_post_refuzat(self):
@@ -401,9 +402,9 @@ class Http(unittest.TestCase):
             ({"X-MIP-Token": "gresit"}, None),                            # token greșit
             ({"X-MIP-Token": self.server_mod.RULARI.token}, None),        # tokenul rulărilor nu e bun aici
             (ok, f"evil.com:{self.port}"),                                # Host străin
-            (ok, "localhost:5174"),                                       # alt port
+            (ok, "localhost:5173"),                                       # Host-ul rămâne portul serverului
             (dict(ok, Origin="http://evil.com"), None),                   # Origin străin
-            (dict(ok, Origin="http://localhost:5173"), None),             # Origin diferit de Host
+            (dict(ok, Origin="http://localhost:5174"), None),             # alt port decât Vite
             (dict(ok, **{"Sec-Fetch-Site": "cross-site"}), None),
         ]
         n = len(self.client.cereri)
