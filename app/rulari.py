@@ -143,7 +143,7 @@ class Ocupat(Exception):
     """Rulează deja ceva (HTTP 409)."""
 
 
-def verifica_cerere(antete, port, token=None):
+def verifica_cerere(antete, port, token=None, porturi_extra=()):
     """None dacă cererea vine de pe pagina noastră; altfel motivul refuzului.
 
     `verify_request` din server oprește deja tot ce nu e de pe loopback, dar
@@ -153,9 +153,13 @@ def verifica_cerere(antete, port, token=None):
     rebinding). De aceea: Host doar numele de loopback cu portul nostru,
     Origin (când e trimis) exact pagina noastră, iar la scriere un token
     aleator, pe care îl primește doar pagina noastră, prin GET.
+
+    `porturi_extra`: doar pentru „Întreabă datele”, care merge și din `npm run dev`: proxy-ul Vite
+    păstrează Host-ul paginii (localhost:5173), iar Origin trebuie să fie tot pagina din Host.
+    Rulările nu-l primesc, deci pentru ele nu se schimbă nimic.
     """
     gazda = antete.get("Host") or ""
-    if gazda not in {f"{g}:{port}" for g in GAZDE}:
+    if gazda not in {f"{g}:{p}" for g in GAZDE for p in (port, *porturi_extra)}:
         return "Host nepermis"
     origine = antete.get("Origin")
     if origine is not None and origine != f"http://{gazda}":

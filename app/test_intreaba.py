@@ -319,6 +319,128 @@ class CuvinteCautare(unittest.TestCase):
         self.assertEqual(server._cuvinte_cautare(""), [])
 
 
+class Http(unittest.TestCase):
+    """Rutele din server, pe un port liber, cu un client fals în locul modelului."""
+
+    @classmethod
+    def setUpClass(cls):
+        import server
+        cls.server_mod = server
+        cls.vechi = server.INTREBARI
+        cls.client = ClientFals(interp())
+        server.INTREBARI = intreaba.Intrebari(
+            context=lambda: CTX, cauta=lambda *a: [rand(5)], stare_banca=lambda b: None,
+            client=cls.client, dir_jurnal=tempfile.mkdtemp(prefix="intreaba_http_"))
+        cls.srv = server.Server(("::", 0), server.Handler)
+        cls.port = cls.srv.server_address[1]
+        threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
+        cls.env_vechi = {k: os.environ.get(k) for k in ("MIP_PERMITE_INTREBARI", "ANTHROPIC_API_KEY")}
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.srv.shutdown()
+        cls.srv.server_close()
+        cls.server_mod.INTREBARI = cls.vechi
+        for k, v in cls.env_vechi.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+
+    def setUp(self):
+        os.environ["MIP_PERMITE_INTREBARI"] = "1"
+        os.environ["ANTHROPIC_API_KEY"] = "sk-ant-" + "x" * 90
+
+    def cere(self, metoda, cale, corp=None, antete=None, host=None):
+        c = http.client.HTTPConnection("127.0.0.1", self.port, timeout=10)
+        h = {"Host": host or f"localhost:{self.port}"}
+        if corp is not None:
+            h["Content-Type"] = "application/json"
+            corp = json.dumps(corp)
+        h.update(antete or {})
+        c.request(metoda, cale, body=corp, headers=h)
+        r = c.getresponse()
+        d = r.read().decode("utf-8")
+        c.close()
+        try:
+            return r.status, json.loads(d)
+        except ValueError:
+            return r.status, d
+
+    def token(self):
+        return self.cere("GET", "/api/intreaba")[1]["token"]
+
+    def test_get(self):
+        cod, d = self.cere("GET", "/api/intreaba")
+        self.assertEqual((cod, d["activ"], d["model"]), (200, True, "claude-haiku-4-5"))
+        self.assertEqual(d["token"], self.server_mod.INTREBARI.token)
+        self.assertNotEqual(d["token"], self.server_mod.RULARI.token)
+
+    def test_get_inactiv_fara_token(self):
+        os.environ["ANTHROPIC_API_KEY"] = "placehold1"
+        cod, d = self.cere("GET", "/api/intreaba")
+        self.assertEqual((cod, d["activ"]), (200, False))
+        self.assertNotIn("token", d)
+
+    def test_get_host_strain(self):
+        self.assertEqual(self.cere("GET", "/api/intreaba", host=f"evil.com:{self.port}")[0], 403)
+
+    def test_post_merge_si_din_vite(self):
+        t = self.token()
+        for host in (f"localhost:{self.port}", "localhost:5173"):
+            cod, d = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"},
+                               {"X-MIP-Token": t, "Origin": f"http://{host}"}, host)
+            self.assertEqual(cod, 200, (host, d))
+            self.assertEqual(d["raspunsuri"][0]["banca"], "bcr")
+
+    def test_post_refuzat(self):
+        t = self.token()
+        ok = {"X-MIP-Token": t}
+        cazuri = [
+            ({}, None),                                                   # fără token
+            ({"X-MIP-Token": "gresit"}, None),                            # token greșit
+            ({"X-MIP-Token": self.server_mod.RULARI.token}, None),        # tokenul rulărilor nu e bun aici
+            (ok, f"evil.com:{self.port}"),                                # Host străin
+            (ok, "localhost:5174"),                                       # alt port
+            (dict(ok, Origin="http://evil.com"), None),                   # Origin străin
+            (dict(ok, Origin="http://localhost:5173"), None),             # Origin diferit de Host
+            (dict(ok, **{"Sec-Fetch-Site": "cross-site"}), None),
+        ]
+        n = len(self.client.cereri)
+        for antete, host in cazuri:
+            cod, _ = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"}, antete, host)
+            self.assertEqual(cod, 403, (antete, host))
+        self.assertEqual(len(self.client.cereri), n)   # niciun apel plătit
+
+    def test_post_inactiv(self):
+        t = self.token()
+        os.environ["MIP_PERMITE_INTREBARI"] = "0"
+        cod, d = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"}, {"X-MIP-Token": t})
+        self.assertEqual(cod, 403)
+        self.assertIn("MIP_PERMITE_INTREBARI", d["eroare"])
+
+    def test_post_forma(self):
+        ok = {"X-MIP-Token": self.token()}
+        self.assertEqual(self.cere("POST", "/api/intreaba", {"intrebare": ""}, ok)[0], 400)
+        self.assertEqual(self.cere("POST", "/api/intreaba", {"intrebare": "a" * 501}, ok)[0], 400)
+        self.assertEqual(self.cere("POST", "/api/intreaba", ["BCR?"], ok)[0], 400)
+        self.assertEqual(self.cere("POST", "/api/intreaba", {"intrebare": "x" * 5000}, ok)[0], 400)
+        cod, _ = self.cere("POST", "/api/intreaba", None, dict(ok, **{"Content-Type": "text/plain"}))
+        self.assertEqual(cod, 415)
+
+    def test_eroare_model_502(self):
+        import anthropic
+        ok = {"X-MIP-Token": self.token()}
+        vechi = self.server_mod.INTREBARI._client
+        self.server_mod.INTREBARI._client = ClientFals(exceptie=fara_init(anthropic.APIConnectionError))
+        try:
+            cod, d = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"}, ok)
+        finally:
+            self.server_mod.INTREBARI._client = vechi
+        self.assertEqual(cod, 502)
+        self.assertIn("api.anthropic.com", d["eroare"])
+
+
 class Preturi(unittest.TestCase):
     def test_modelele_de_ales_au_pret(self):
         """MIP_INTREABA_MODEL poate fi schimbat; fără preț, costul ar apărea „necunoscut”."""

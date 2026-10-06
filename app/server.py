@@ -2196,8 +2196,61 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
                                       RULARI.token if cu_token else None)
 
+    def _refuz_intrebari(self, cu_token):
+        """Ca la rulări, dar permite și pagina din `npm run dev` (Host localhost:5173)."""
+        return rulari.verifica_cerere(self.headers, self.server.server_address[1],
+                                      INTREBARI.token if cu_token else None,
+                                      porturi_extra=(intreaba.PORT_VITE,))
+
+    def _corp_json(self, limita):
+        """Corpul JSON al unui POST, sau None după ce eroarea a fost deja trimisă.
+
+        JSON obligatoriu: un formular de pe alt site nu poate trimite application/json fără
+        preflight CORS, pe care nu-l acceptăm."""
+        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
+            self._json(415, {"eroare": "se acceptă doar application/json"})
+            return None
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            n = -1
+        if not 0 <= n <= limita:
+            self._json(400, {"eroare": "corp prea mare"})
+            return None
+        try:
+            corp = json.loads(self.rfile.read(n) or b"{}")
+            if not isinstance(corp, dict):
+                raise ValueError
+        except ValueError:
+            self._json(400, {"eroare": "JSON invalid"})
+            return None
+        return corp
+
+    def _post_intreaba(self):
+        if not intreaba.activ():
+            self._json(403, {"eroare": "Întrebările sunt oprite pe acest server (MIP_PERMITE_INTREBARI sau cheia Anthropic)"})
+            return
+        motiv = self._refuz_intrebari(cu_token=True)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        corp = self._corp_json(4096)    # întrebarea (500) + interpretarea anterioară (1000), cu marjă
+        if corp is None:
+            return
+        try:
+            self._json(200, INTREBARI.intreaba(corp.get("intrebare"), corp.get("anterior")))
+        except intreaba.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except intreaba.EroareModel as exc:
+            self._json(502, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(500, {"eroare": f"{exc.__class__.__name__}: {exc}"})
+
     def do_POST(self):
         cale = urllib.parse.urlparse(self.path).path
+        if cale == "/api/intreaba":
+            self._post_intreaba()
+            return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
             return
@@ -2208,24 +2261,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if motiv:
             self._json(403, {"eroare": motiv})
             return
-        # JSON obligatoriu: un formular de pe alt site nu poate trimite
-        # application/json fără preflight CORS, pe care nu-l acceptăm
-        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
-            self._json(415, {"eroare": "se acceptă doar application/json"})
-            return
-        try:
-            n = int(self.headers.get("Content-Length") or 0)
-        except ValueError:
-            n = -1
-        if not 0 <= n <= 2048:
-            self._json(400, {"eroare": "corp prea mare"})
-            return
-        try:
-            corp = json.loads(self.rfile.read(n) or b"{}")
-            if not isinstance(corp, dict):
-                raise ValueError
-        except ValueError:
-            self._json(400, {"eroare": "JSON invalid"})
+        corp = self._corp_json(2048)
+        if corp is None:
             return
         try:
             if cale.endswith("/porneste"):
@@ -2241,6 +2278,17 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/intreaba":
+            # tot cu Host/Origin, ca /api/rulari: răspunsul poartă tokenul de scriere
+            motiv = self._refuz_intrebari(cu_token=False)
+            if motiv:
+                self._json(403, {"eroare": motiv})
+                return
+            date = INTREBARI.stare()
+            if date["activ"]:
+                date["token"] = INTREBARI.token
+            self._json(200, date)
+            return
         if parsed.path == "/api/rulari":
             # tot cu Host/Origin: răspunsul poartă tokenul de scriere, deci
             # nu trebuie să-l poată citi o pagină cu DNS rebinding

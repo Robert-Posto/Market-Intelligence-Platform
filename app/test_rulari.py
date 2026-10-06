@@ -141,6 +141,15 @@ class Securitate(unittest.TestCase):
         self.assertIsNotNone(rulari.verifica_cerere(dict(ok, **{"X-MIP-Token": "abd"}), 8765, "abc"))
         self.assertIsNone(rulari.verifica_cerere(dict(ok, **{"X-MIP-Token": "abc"}), 8765, "abc"))
 
+    def test_port_vite_doar_cand_e_cerut(self):
+        """`porturi_extra` e doar pentru „Întreabă datele”; rulările rămân pe portul serverului."""
+        vite = {"Host": "localhost:5173", "Origin": "http://localhost:5173"}
+        self.assertIsNotNone(rulari.verifica_cerere(vite, 8765))
+        self.assertIsNone(rulari.verifica_cerere(vite, 8765, porturi_extra=(5173,)))
+        self.assertIsNotNone(rulari.verifica_cerere(
+            {"Host": "localhost:8765", "Origin": "http://localhost:5173"}, 8765, porturi_extra=(5173,)))
+        self.assertIsNotNone(rulari.verifica_cerere({"Host": "evil.com:5173"}, 8765, porturi_extra=(5173,)))
+
 
 class Pornire(Baza):
     def test_un_singur_proces_si_oprire(self):
