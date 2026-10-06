@@ -1,0 +1,36 @@
+/**
+ * Rândurile din spatele unei celule (/api/celula), folosite de Sertar și de „Întreabă datele”.
+ * Separat de index.ts ca alte fișiere din shared să le poată importa fără import circular.
+ */
+import { z } from 'zod'
+
+/** O valoare din sertarul cu dovezi (/api/celula). */
+export const ValoareDovada = z
+  .object({
+    valoare: z.number().nullable(),
+    valoare_text: z.string().nullable(),
+    unitate: z.string().nullable(),
+    cod_scenariu: z.string().nullable(),
+    citat: z.string().nullable(),
+    confidence: z.number().nullable(),
+    ambiguu: z.boolean(),
+    motiv_ambiguu: z.string().nullable(),
+    metoda_extractie: z.string().nullable(),
+    serviciu: z.string().nullable(),
+    sectiune: z.string().nullable(),
+    conditie: z.string().nullable(),
+    frecventa: z.string().nullable(),
+    detaliu: z.string().nullable(),
+    pagina: z.number().nullable(),
+    nr_aparitii: z.number().nullable(),
+    sursa: z.string().nullable(),
+    tip_sursa: z.string().nullable(),
+    link: z.string().nullable(),
+    link_pagina: z.string().nullable(),
+    pagina_documente_motiv: z.string().nullable(),
+    fisier: z.string().nullable(),
+    ancora: z.string().nullable(),
+  })
+  .passthrough()
+export type ValoareDovada = z.infer<typeof ValoareDovada>
+export const Celula = z.array(ValoareDovada)
