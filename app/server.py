@@ -579,7 +579,8 @@ def _cuvinte_cautare(text):
     for c in re.findall(r"[^\W_]+", (text or "").lower().translate(_DIACRITICE)):
         if len(c) < 3:
             continue
-        c = c[:-2] if len(c) >= 6 else c[:-1] if len(c) == 5 else c
+        if not c.isdigit():     # „100000” tăiat la „1000” ar potrivi orice sumă care îl conține
+            c = c[:-2] if len(c) >= 6 else c[:-1] if len(c) == 5 else c
         if c not in cuvinte:
             cuvinte.append(c)
     return cuvinte[:5]

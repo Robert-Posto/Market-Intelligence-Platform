@@ -237,6 +237,11 @@ def _categorie(r):
     return (r.get("cod_scenariu") or "").split("|")[0]
 
 
+# „gratuit” are sens doar la comisioane: pe mip erau 21 de dobânzi neambigue de 0% (06.10.2026),
+# iar „2 gratuite” lângă o dobândă la card s-ar citi ca un comision
+CATEGORII_COMISION = ("comision", "comisioane")
+
+
 def rezuma(randuri):
     """Pe unitate și categorie: câte valori, intervalul, câte gratuite; fără cele ambigue, ca în Sertar.
 
@@ -254,7 +259,7 @@ def rezuma(randuri):
         g["n"] += 1
         g["minim"] = min(g["minim"], v)
         g["maxim"] = max(g["maxim"], v)
-        g["gratuite"] += int(v == 0)
+        g["gratuite"] += int(v == 0 and cheie[1] in CATEGORII_COMISION)
     return sorted(grupe.values(), key=lambda g: (-g["n"], g["categorie"], g["unitate"]))
 
 
@@ -356,10 +361,16 @@ class Intrebari:
             interp, ignorate = _gol(), []
         else:
             interp, ignorate = valideaza(brut, ctx)
-        raspunsuri = [self._raspuns(b, interp) for b in interp["banci"]] if interp["tip"] == "cautare" else []
         cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"], tokeni["scriere_cache"])
-        rand.update(interpretare=interp, stop=stop, randuri={r["banca"]: r["total"] for r in raspunsuri},
-                    tokeni=tokeni, cost_usd=cost)
+        rand.update(interpretare=interp, stop=stop, tokeni=tokeni, cost_usd=cost)
+        try:
+            raspunsuri = [self._raspuns(b, interp) for b in interp["banci"]] if interp["tip"] == "cautare" else []
+        except Exception as exc:
+            # apelul la model s-a plătit deja: întrebarea intră în jurnal și când cade baza
+            rand["eroare"] = f"{exc.__class__.__name__}: {exc}"
+            self._jurnal(rand)
+            raise
+        rand["randuri"] = {r["banca"]: r["total"] for r in raspunsuri}
         self._jurnal(rand)
         return {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
                 "model": m, "tokeni": tokeni, "cost_usd": cost}

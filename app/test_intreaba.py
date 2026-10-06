@@ -203,6 +203,12 @@ class Rezumat(unittest.TestCase):
         self.assertEqual(r[1]["unitate"], "eur")
         self.assertEqual(len(r), 2)
 
+    def test_gratuite_doar_la_comisioane(self):
+        """O dobândă de 0% nu e „gratuită”: pe mip erau 21 de dobânzi neambigue de 0% (review, 06.10.2026)."""
+        r = intreaba.rezuma([rand(0, "procent", "conturi_carduri|x"), rand(0), rand(0, "lei", "comisioane|y")])
+        self.assertEqual({x["categorie"]: x["gratuite"] for x in r},
+                         {"conturi_carduri": 0, "comision": 1, "comisioane": 1})
+
     def test_dobanzi_de_depozit_si_credit_separat(self):
         """`nominala` fără categorie: dobânzile de depozit și de credit nu ajung în același interval."""
         r = intreaba.rezuma([rand(6.5, "procent", "depozite|12"), rand(9.9, "procent", "credite|ipotecar")])
@@ -329,6 +335,19 @@ class Intrebari(unittest.TestCase):
         self.assertEqual(randuri[0]["randuri"], {"bcr": 2})
         self.assertIn("api.anthropic.com", randuri[1]["eroare"])
 
+    def test_jurnal_si_cand_cade_baza(self):
+        """Apelul la model s-a plătit deja; dacă baza cade după el, întrebarea tot intră în jurnal."""
+        def cauta(*a):
+            raise RuntimeError("baza nu răspunde")
+        q = intreaba.Intrebari(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
+                               client=ClientFals(interp()), dir_jurnal=self.dir)
+        with self.assertRaises(RuntimeError):
+            q.intreaba("BCR?")
+        with open(os.path.join(self.dir, os.listdir(self.dir)[0]), encoding="utf-8") as f:
+            rand_jurnal = json.loads(f.readline())
+        self.assertIn("baza nu răspunde", rand_jurnal["eroare"])
+        self.assertEqual(rand_jurnal["tokeni"]["intrare"], 1200)
+
     def test_stare_si_token(self):
         q = self.fa(ClientFals(interp()))
         self.assertEqual(set(q.stare()), {"activ", "model"})
@@ -346,6 +365,11 @@ class CuvinteCautare(unittest.TestCase):
         self.assertEqual(server._cuvinte_cautare("a de la card card"), ["card"])
         self.assertEqual(server._cuvinte_cautare("unu doi trei patru cinci sase sapte"),
                          ["unu", "doi", "trei", "patr", "cinc"])
+
+    def test_cifrele_nu_se_taie(self):
+        """„100000” tăiat la „1000” ar potrivi orice sumă care conține 1000 (review, 06.10.2026)."""
+        import server
+        self.assertEqual(server._cuvinte_cautare("plafon 100000 lei 2024"), ["plaf", "100000", "lei", "2024"])
 
     def test_flexiunea_romaneasca(self):
         """„datoria vamală” trebuie să găsească „datoriei vamale” (BCR, 13 valori): pe subșirul exact
