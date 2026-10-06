@@ -178,6 +178,17 @@ class Validare(unittest.TestCase):
         curat, _ = intreaba.valideaza(interp(concept=None, text_cautat="  datoria vamală "), CTX)
         self.assertEqual((curat["tip"], curat["text_cautat"]), ("cautare", "datoria vamală"))
 
+    def test_neclar_cu_banca_si_ce_devine_cautare(self):
+        """Spec: `neclar` = lipsește banca sau valoarea. Haiku punea `neclar` pe „datoria vamală la
+        BCR” cu text_cautat completat și o clarificare falsă („nu se găsește în tarifele BCR”),
+        în 2 evaluări din 2 (06.10.2026), deși căutarea găsește 13 valori."""
+        curat, _ = intreaba.valideaza(interp(tip="neclar", concept=None, text_cautat="datoriei vamale",
+                                             clarificare="Termenul nu se găsește în tarifele BCR."), CTX)
+        self.assertEqual((curat["tip"], curat["text_cautat"], curat["clarificare"]),
+                         ("cautare", "datoriei vamale", None))
+        curat, _ = intreaba.valideaza(interp(tip="neclar", clarificare="Debit sau credit?"), CTX)
+        self.assertEqual((curat["tip"], curat["clarificare"]), ("cautare", None))
+
     def test_clarificare_pastrata(self):
         curat, _ = intreaba.valideaza(
             interp(tip="neclar", banci=[], concept=None, clarificare="La ce bancă?"), CTX)

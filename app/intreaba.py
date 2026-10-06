@@ -223,8 +223,13 @@ def valideaza(brut, ctx):
     curat["banci"] = banci[:MAX_BANCI]
     curat["text_cautat"] = _text(brut.get("text_cautat"), 80)
     curat["clarificare"] = _text(brut.get("clarificare"), 300)
-    if curat["tip"] == "cautare" and not (curat["banci"] and (curat["concept"] or curat["text_cautat"])):
+    cu_ce = bool(curat["banci"] and (curat["concept"] or curat["text_cautat"]))
+    if curat["tip"] == "cautare" and not cu_ce:
         curat["tip"] = "neclar"
+    elif curat["tip"] == "neclar" and cu_ce:
+        # cu bancă și valoare nu e neclar (spec); Haiku punea neclar pe servicii fără concept, cu o
+        # clarificare care afirma că serviciul „nu se găsește în tarife”, fals (evaluarea, 06.10.2026)
+        curat["tip"], curat["clarificare"] = "cautare", None
     return curat, banci[MAX_BANCI:]
 
 
