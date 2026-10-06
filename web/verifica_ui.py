@@ -1,4 +1,4 @@
-"""Verificările interfeței React în browser, cu Playwright: tema și capetele de tabel lipite.
+"""Verificările interfeței React în browser, cu Playwright: tema, capetele de tabel lipite, derularea laterală.
 
 Cere serverul API (`python app/server.py`, :8765) și interfața (`npm run dev`) pornite.
     python web/verifica_ui.py                      # toate, pe http://localhost:5173
@@ -275,6 +275,30 @@ JS_AXE = """() => axe.run(document, { runOnly: { type: 'rule', values: ['color-c
   .then(r => r.violations.flatMap(v => v.nodes.map(n => n.target.join(' ') + ' · ' + (n.any[0] ? n.any[0].message : ''))))"""
 
 
+LATERAL = [f'campanii?s={x}' for x in ('site', 'comunicate', 'google', 'bing', 'youtube', 'retele')] + [
+    'produse', 'rate?categorie=credite', 'coada', 'surse']
+JS_LATERAL = """() => {
+  const m = document.querySelector('#principal')
+  const rau = []
+  for (const e of [m, ...m.querySelectorAll('.ant-table-body, .ant-table-content, .ant-table-sticky-scroll')]) {
+    if (e.scrollWidth > e.clientWidth + 1) rau.push((e.id || e.className).slice(0, 40) + ' ' + e.scrollWidth + '>' + e.clientWidth)
+  }
+  return rau
+}"""
+
+
+def v_scroll_lateral(b: Browser, url: str) -> None:
+    """Nicio derulare pe orizontală la 1280 px și la 1440 px: nici pagina (<main>), nici tabelele."""
+    for lat, inalt in ((1440, 900), (1280, 800)):
+        for pagina in LATERAL:
+            pg = deschide(b, f'{url}/#/{pagina}', lat=lat, inalt=inalt)
+            incarcata(pg)
+            pg.wait_for_timeout(1000)
+            rau = pg.evaluate(JS_LATERAL)
+            verifica(not rau, f'{pagina} @{lat}: fără derulare pe orizontală{" (" + "; ".join(rau) + ")" if rau else ""}')
+            inchide(pg)
+
+
 def v_contrast(b: Browser, url: str) -> None:
     axe = next((c for c in AXE if c.exists()), None)
     if not verifica(axe is not None, 'axe-core instalat (npm install)'):
@@ -309,6 +333,7 @@ VERIFICARI: dict[str, Callable[[Browser, str], None]] = {
     'harta': v_harta,
     'sigle': v_sigle,
     'capete': v_capete,
+    'lateral': v_scroll_lateral,
     'contrast': v_contrast,
     'capturi': v_capturi,
 }
