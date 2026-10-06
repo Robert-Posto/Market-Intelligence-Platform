@@ -1,0 +1,20 @@
+/* „Întreabă datele” (#/intreaba): întrebarea sus, fișele de răspuns dedesubt, cele noi jos */
+.intreaba-oprit { margin-bottom: 14px; max-width: 900px }
+.intreaba-intrebare { max-width: 900px; margin-bottom: 18px }
+.intreaba-butoane { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 }
+.intreaba-mesaje { display: flex; flex-direction: column; gap: 14px; max-width: 900px }
+.intreaba-mesaj { border: 1px solid var(--line); border-radius: 9px; background: var(--surface); padding: 12px 16px }
+.intreaba-q { font-family: var(--serif); font-size: 15px; margin: 0 0 8px; color: var(--ink) }
+.intreaba-inteles { margin: 0 0 10px }
+.intreaba-fisa { border-top: 1px solid var(--line-2); padding: 10px 0 }
+.intreaba-fisa-cap { display: flex; align-items: center; gap: 10px; margin-bottom: 6px }
+.intreaba-rezumat { margin: 4px 0 8px; padding-left: 18px }
+.intreaba-valori { width: 100%; border-collapse: collapse; font-size: 12.5px }
+.intreaba-valori td { padding: 5px 8px 5px 0; border-top: 1px solid var(--line-2); vertical-align: top }
+.intreaba-valori td.valoare { font-family: var(--mono); white-space: nowrap }
+.intreaba-valori tr.ambiguu { opacity: .7 }
+.intreaba-eroare { color: var(--warn) }
+.intreaba-subsol { margin: 8px 0 0 }
+@media (max-width: 640px) {
+  .intreaba-valori td.valoare { white-space: normal }
+}

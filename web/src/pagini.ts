@@ -34,6 +34,7 @@ export const PAGINI: Grup[] = [
       { id: 'banca', pdf: '', mutata: true },
       { id: 'concurenta', pdf: '', mutata: true },
       { id: 'istoric', pdf: '', mutata: true },
+      { id: 'intreaba', pdf: '', mutata: true },
     ],
   },
   {
