@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import { Segmented } from 'antd'
+
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Sumar } from '@mcc/shared'
 import { api } from '../api/client'
 import { T, useLang, type Lang } from '../i18n'
 import { PAGINI, TOATE, cheie } from '../pagini'
 import { num } from '../util/format'
+import { Comutator } from '../components/Comutator'
 
 /** Bara laterală, titlul paginii și comutatorul de limbă. */
 export default function AppShell() {
@@ -48,7 +49,7 @@ export default function AppShell() {
             />
           )}
           <div className="limba">
-            <Segmented<Lang>
+            <Comutator<Lang>
               size="small"
               value={lang}
               onChange={setLang}

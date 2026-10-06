@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Button, Checkbox, Segmented, Tooltip } from 'antd'
+import { Button, Checkbox, Tooltip } from 'antd'
 import { Link, useSearchParams } from 'react-router-dom'
 import type { ReteaBanca, ReteaPunct } from '@mcc/shared'
 import { useMeta } from '../api/meta'
@@ -9,6 +9,7 @@ import { T, useLang } from '../i18n'
 import { num } from '../util/format'
 import { pregatesteSigle, type Sigle, type TipLocatie } from './harta/desen'
 import Mapa from './harta/Mapa'
+import { Comutator } from '../components/Comutator'
 import '../styles/retea.css'
 
 const FARA_BANCI: ReteaBanca[] = []
@@ -91,7 +92,7 @@ export default function Harta() {
 
           <div className="ht-bloc">
             <h2>{t('harta.filtru_tip.titlu')}</h2>
-            <Segmented<'' | TipLocatie>
+            <Comutator<'' | TipLocatie>
               block
               className="ht-segment"
               value={tip}

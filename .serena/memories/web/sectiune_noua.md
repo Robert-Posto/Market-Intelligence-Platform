@@ -8,4 +8,5 @@
 6. Verificare: `npm run typecheck && npm run build`, pagina în RO și EN, consola curată.
 - `Sertar` e legat de `/api/celula` (prețuri); pentru alt detaliu, Drawer AntD cu același aspect (ca în `web/src/pages/rate_mobil/android/Detaliu.tsx`).
 - Excepție, nu model: datele Google Play din 2.3 sunt fișiere locale citite la build (`import.meta.glob` în `pages/rate_mobil/dateLocale.ts`). Lipsa fișierului dă „necolectat”, nu eroare de build; pe server ajung doar dacă există pe laptopul care rulează `deploy/deploy.sh`.
+- Comutatoarele: `components/Comutator.tsx`, niciodată `Segmented` direct. Alege la apăsare (`pointerdown`, nu la ridicare), ține opțiunea local până o confirmă adresa (React Router 7 o schimbă într-o tranziție) și anunță pagina după două cadre, ca alunecarea să pornească prima. Pe o pagină grea, `dupaAlunecare` (model: `pages/campanii/Campanii.tsx`), altfel desenarea oprește alunecarea. Durata e `ALUNECARE_COMUTATOR_MS` din `theme.ts`; culoarea pornită la apăsare e în `styles/global.css`.
 - Orice `href` din date colectate se verifică la `http(s)` (React 18 nu blochează `javascript:`); model: `web/src/pages/Document.tsx`, `web/src/i18n/index.tsx`.

@@ -231,3 +231,11 @@ button.cm-chip.activ b { color: inherit }
 
 /* caseta KPI fără date: chenar punctat, fără fundal (Versus „Fără date la Libra”) */
 .kpi > div.inactiv { border-style: dashed; border-color: var(--line-2); background: none; box-shadow: none }
+
+/* Comutatoare (Segmented): AntD face textul alb abia după alunecare, prin -item-selected. Inputul e însă
+   bifat din clipa apăsării, deci culoarea pornește atunci și ajunge odată cu evidențierea (0,15 s, theme.ts).
+   Dublura .ant-segmented bate regula de hover a AntD, care altfel ținea textul închis sub cursor. */
+.ant-segmented.ant-segmented .ant-segmented-item:has(> .ant-segmented-item-input:checked):not(.ant-segmented-item-disabled) {
+  color: var(--on-accent);
+  transition: color .15s ease-in;
+}
