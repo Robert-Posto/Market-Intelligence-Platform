@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { useMeta, type Meta } from '../api/meta'
 import { useMobil, useSentiment } from '../api/rate_mobil'
 import { BareStele } from '../components/BareStele'
-import { Despre, Eroare, SeIncarca } from '../components/comune'
+import { Despre, Eroare, SeIncarca, SiglaBanca } from '../components/comune'
 import { T, useLang } from '../i18n'
 import { num } from '../util/format'
 import Android from './rate_mobil/android/Android'
@@ -200,7 +200,7 @@ function Sigla({ slug, m }: { slug: string; m: Meta }) {
   const nume = m.nume[slug] ?? slug
   const logo = m.logo[slug]
   return logo
-    ? <Tooltip title={nume}><img className="mb-sigla" src={logo} alt={nume} /></Tooltip>
+    ? <Tooltip title={nume}><span className="mb-sigla"><SiglaBanca src={logo} nume={nume} marime="card" /></span></Tooltip>
     : <span className="mb-sigla-txt">{nume}</span>
 }
 

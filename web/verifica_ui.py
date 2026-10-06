@@ -153,17 +153,22 @@ def v_harta(b: Browser, url: str) -> None:
 
 
 JS_SIGLE = r"""() => {
-  const imgs = [...document.querySelectorAll('img')].filter(i => /\/logos\//.test(i.src) && !i.closest('.ht-zona, .ht-panou, .maplibregl-popup'))
-  const incarcate = imgs.filter(i => i.complete && i.naturalWidth > 0)
-  const r = incarcate[0] ? incarcate[0].getBoundingClientRect() : null
-  return { total: imgs.length, fara_sigla: imgs.filter(i => !i.classList.contains('sigla')).length,
-           fundal: imgs[0] ? getComputedStyle(imgs[0]).backgroundColor : null,
-           marime: r ? [Math.round(r.width), Math.round(r.height)] : null }
+  // sigla în cutia standard `.sg`; excepții: harta (are propria zonă) și iconița aplicației (.as-icon: pătrat alb fix)
+  const imgs = [...document.querySelectorAll('img')].filter(i => /\/logos\//.test(i.src) && !i.closest('.ht-zona, .ht-panou, .maplibregl-popup, .as-icon'))
+  const cutii = imgs.map(i => i.parentElement).filter(c => c && c.classList.contains('sg'))
+  const incarcate = cutii.filter(c => c.firstElementChild.complete && c.firstElementChild.naturalWidth > 0)
+  const dim = (c) => { const r = c.getBoundingClientRect(); return Math.round(r.width) + 'x' + Math.round(r.height) }
+  const dupa = {}
+  cutii.forEach(c => { const m = [...c.classList].find(x => x.startsWith('sg-')); (dupa[m] = dupa[m] || new Set()).add(dim(c)) })
+  return { total: imgs.length, fara_cutie: imgs.length - cutii.length,
+           fundal: cutii[0] ? getComputedStyle(cutii[0]).backgroundColor : null,
+           marimi: Object.fromEntries(Object.entries(dupa).map(([k, v]) => [k, [...v].sort().join(',')])),
+           incarcate: incarcate.length }
 }"""
 
 
 def v_sigle(b: Browser, url: str) -> None:
-    for pagina in ('produse', 'banca?b=bcr', 'versus'):
+    for pagina in ('produse', 'banca?b=bcr', 'versus', 'concurenta', 'mobil'):
         rez = {}
         for tema in ('luminos', 'intunecat'):
             pg = deschide(b, f'{url}/#/{pagina}', tema=tema)
@@ -172,11 +177,17 @@ def v_sigle(b: Browser, url: str) -> None:
             rez[tema] = pg.evaluate(JS_SIGLE)
             inchide(pg)
         l, i = rez['luminos'], rez['intunecat']
+        if i['total'] == 0 and pagina == 'concurenta':
+            # fără produse descoperite (products_discovery gol) pagina nu desenează nicio siglă: nu e ce verifica
+            print('  —   concurenta: niciun produs în baza de date, nicio siglă de verificat')
+            continue
         verifica(i['total'] > 0, f'{pagina}: are logo-uri ({i["total"]})')
-        verifica(i['fara_sigla'] == 0, f'{pagina}: toate logo-urile au clasa .sigla ({i["fara_sigla"]} fără)')
-        verifica(i['fundal'] == 'rgb(255, 255, 255)', f'{pagina}, întunecat: logo pe alb ({i["fundal"]})')
-        verifica(l['fundal'] == 'rgba(0, 0, 0, 0)', f'{pagina}, luminos: logo fără fundal, ca azi ({l["fundal"]})')
-        verifica(l['marime'] == i['marime'], f'{pagina}: logo-ul ocupă același loc în ambele teme ({l["marime"]} / {i["marime"]})')
+        verifica(i['fara_cutie'] == 0, f'{pagina}: toate logo-urile sunt în cutia standard .sg ({i["fara_cutie"]} fără)')
+        verifica(all(len(v.split(',')) == 1 for v in i['marimi'].values()),
+                 f'{pagina}: într-un context, toate cutiile au aceeași mărime ({i["marimi"]})')
+        verifica(i['fundal'] == 'rgb(255, 255, 255)', f'{pagina}, întunecat: cutia e albă ({i["fundal"]})')
+        verifica(l['fundal'] == 'rgba(0, 0, 0, 0)', f'{pagina}, luminos: cutia fără fundal ({l["fundal"]})')
+        verifica(l['marimi'] == i['marimi'], f'{pagina}: cutia are aceeași mărime în ambele teme ({l["marimi"]} / {i["marimi"]})')
 
 
 CAPETE = ['produse', 'rate', 'mobil', 'coada', 'surse', 'overview', 'campanii']
