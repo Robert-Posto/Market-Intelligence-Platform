@@ -2,6 +2,7 @@ import { Tooltip } from 'antd'
 import { Link } from 'react-router-dom'
 import type { VersusExtra } from '@mcc/shared'
 import type { Meta } from '../../api/meta'
+import { SiglaBanca } from '../../components/comune'
 import { useLang } from '../../i18n'
 import { num } from '../../util/format'
 import { REFERINTA } from './model'
@@ -28,7 +29,7 @@ export function CardBanca({ b, m, app, loc, acop }: {
     <div className={b === REFERINTA ? 'vs-card ref' : 'vs-card'}>
       {b === REFERINTA && <span className="vs-tag">{t('versus.card_referinta')}</span>}
       <div className="vs-logo">
-        {m.logo[b] ? <img className="sigla" src={m.logo[b]} alt={nume} /> : <span className="vs-init">{nume.slice(0, 2).toUpperCase()}</span>}
+        {m.logo[b] ? <SiglaBanca src={m.logo[b]} nume={nume} marime="card" /> : <span className="vs-init">{nume.slice(0, 2).toUpperCase()}</span>}
       </div>
       <div className="vs-nume">
         <Tooltip title={t('versus.card_fisa_title')}>

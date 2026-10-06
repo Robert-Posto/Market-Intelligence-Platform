@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import type { ReteaBanca, ReteaPunct } from '@mcc/shared'
 import { useMeta } from '../api/meta'
 import { useLocatii } from '../api/retea'
-import { Eroare } from '../components/comune'
+import { Eroare, SiglaBanca } from '../components/comune'
 import { T, useLang } from '../i18n'
 import { num } from '../util/format'
 import { pregatesteSigle, type Sigle, type TipLocatie } from './harta/desen'
@@ -132,7 +132,7 @@ export default function Harta() {
                   }}
                 >
                   <span className="ht-bara" style={{ background: sigle?.culori[b.slug] ?? '#9aa7b4' }} />
-                  {logo[b.slug] && <img className="ht-logo" src={logo[b.slug]} alt={b.nume} />}
+                  {logo[b.slug] && <SiglaBanca src={logo[b.slug]!} nume={b.nume} />}
                   <Tooltip title={b.nume} mouseEnterDelay={0.4}><span className="ht-nume">{b.nume}</span></Tooltip>
                   <span className="ht-n">{t('harta.lista_banci.numar', { sucursale: b.sucursale, atm: b.atm })}</span>
                 </Checkbox>

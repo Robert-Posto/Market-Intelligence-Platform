@@ -5,7 +5,7 @@
 
 /* cinci casete pe un rând la 1440 px, ca în aplicația veche (minimul comun de 230 px le rupea 4 + 1) */
 .kpi.bk-kpi { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) }
-.bk-logo { max-height: 26px; max-width: 120px; display: block; margin-bottom: 6px }
+.bk-logo { display: block; margin-bottom: 6px }
 
 /* catalogul intern Libra: titlul și filtrele pe același rând */
 .bk-catalog-cap { align-items: center; margin-bottom: 14px }
