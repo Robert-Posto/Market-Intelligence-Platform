@@ -270,8 +270,10 @@ def e_resetare(exc):
         vazute.add(id(e))
         if isinstance(e, ConnectionResetError):
             return True
-        de_vazut += [e.__cause__, e.__context__, getattr(e, "reason", None)]
-        de_vazut += [a for a in getattr(e, "args", ()) if isinstance(a, BaseException)]
+        # `reason` nu e mereu o excepție: la SSLError e textul motivului
+        # („CERTIFICATE_VERIFY_FAILED”), iar BRCI a căzut pe el (mcc-test, 06.10.2026).
+        legate = [e.__cause__, e.__context__, getattr(e, "reason", None), *getattr(e, "args", ())]
+        de_vazut += [a for a in legate if isinstance(a, BaseException)]
     return bool(re.search(r"ConnectionResetError|reset by peer|WinError 10054|ECONNRESET", str(exc)))
 
 
