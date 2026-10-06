@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { Button, Segmented, Tooltip } from 'antd'
+import { Button, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { useMeta, type Meta } from '../api/meta'
 import { useMobil, useSentiment } from '../api/rate_mobil'
@@ -11,6 +11,7 @@ import Android from './rate_mobil/android/Android'
 import { CeENou, Galerie, RezumatAi, Stele } from './rate_mobil/Piese'
 import ComparaLibra, { type RandAplicatie } from './rate_mobil/ComparaLibra'
 import { BaraRecenzii, ListaRecenzii, type FiltruRecenzii } from './rate_mobil/Recenzii'
+import { Comutator } from '../components/Comutator'
 import '../styles/rate_mobil.css'
 
 type Rand = RandAplicatie
@@ -32,7 +33,7 @@ export default function Mobil() {
     <>
       <div className="filtre mb-comutator">
         {/* App Store și Google Play sunt nume proprii: aceeași etichetă în ambele limbi */}
-        <Segmented value={plat} onChange={(v) => setSp({ platforma: v })}
+        <Comutator value={plat} onChange={(v) => setSp({ platforma: v })}
           options={[{ value: 'ios', label: 'iOS · App Store' }, { value: 'android', label: 'Android · Google Play' }]} />
       </div>
       {plat === 'android' ? <Android /> : <Ios />}
@@ -91,7 +92,7 @@ function Ios() {
       <section className="apl-tabel">
         <div className="mb-lista-cap">
           <h2>{t('mobil.aplicatiile')}</h2>
-          <Segmented size="small" value={ordine} onChange={(o) => mergi({ ordine: o === 'volum' ? '' : String(o) })}
+          <Comutator size="small" value={ordine} onChange={(o) => mergi({ ordine: o === 'volum' ? '' : String(o) })}
             options={ORDINI.map((o) => ({ value: o, label: t(`mobil.ordine_${o}`) }))} />
           <Button type="primary" className="mb-btn-compara" onClick={() => setCompara(true)}>{t('mobil.compara_buton')}</Button>
         </div>

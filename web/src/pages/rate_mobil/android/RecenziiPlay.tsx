@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Modal, Segmented } from 'antd'
+import { Modal } from 'antd'
 import type { Meta } from '../../../api/meta'
 import { useLang } from '../../../i18n'
 import { recenziiPlay } from '../dateLocale'
 import { CardRecenzie } from '../Recenzii'
+import { Comutator } from '../../../components/Comutator'
 
 type Filtru = 'toate' | 'negative' | 'pozitive'
 
@@ -28,7 +29,7 @@ export default function RecenziiPlay({ pachet, banca, m, onClose }: {
     <Modal open={!!pachet} onCancel={() => { setFiltru('toate'); onClose() }} footer={null} centered width="min(980px, 94vw)" destroyOnHidden
       className="ap-grila-modal" title={<span className="sertar-titlu">{t('mobil.rec_play_titlu', { banca: m.nume[banca] ?? banca })}</span>}>
       <div className="rp-bara">
-        <Segmented<Filtru> value={filtru} onChange={setFiltru} options={[
+        <Comutator<Filtru> value={filtru} onChange={setFiltru} options={[
           { value: 'toate', label: `${t('mobil.toate')} (${toate.length})` },
           { value: 'negative', label: `1–2★ (${negative})` },
           { value: 'pozitive', label: `4–5★ (${toate.filter((r) => r.nota >= 4).length})` },

@@ -1,5 +1,5 @@
 import { useMemo, useState, type ReactNode } from 'react'
-import { Input, Segmented, Select } from 'antd'
+import { Input, Select } from 'antd'
 import { Link, useSearchParams } from 'react-router-dom'
 import type { Indici, Rate as RateT } from '@mcc/shared'
 import { useMeta } from '../api/meta'
@@ -11,6 +11,7 @@ import { etDesc, etNume } from '../components/valori'
 import { T, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { faraDiacritice, num } from '../util/format'
+import { Comutator } from '../components/Comutator'
 import '../styles/rate_mobil.css'
 
 type CelulaRata = RateT['celule'][number]
@@ -179,7 +180,7 @@ export default function Rate() {
     <>
       <div className="bara-fixa">
         <div className="filtre">
-          <Segmented value={cat} onChange={(v) => mergi({ categorie: v })} options={CATEGORII.map(([v, k]) => ({ value: v, label: t(k) }))} />
+          <Comutator value={cat} onChange={(v) => mergi({ categorie: v })} options={CATEGORII.map(([v, k]) => ({ value: v, label: t(k) }))} />
           {cat === 'depozite' && (
             <label className="f">{t('rate.termen')}
               <Select value={termen} onChange={(v) => mergi({ categorie: cat, termen: v })} style={{ minWidth: 200 }} popupMatchSelectWidth={false}

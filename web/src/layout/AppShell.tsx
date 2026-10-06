@@ -1,6 +1,5 @@
 import { DesktopOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'
-import { Segmented } from 'antd'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Sumar } from '@mcc/shared'
 import { api } from '../api/client'
@@ -8,6 +7,7 @@ import { T, useLang, type Lang } from '../i18n'
 import { PAGINI, TOATE, cheie } from '../pagini'
 import { useTema, type Tema } from '../tema'
 import { num } from '../util/format'
+import { Comutator } from '../components/Comutator'
 
 /** Bara laterală, titlul paginii, comutatoarele de limbă și de temă. */
 export default function AppShell() {
@@ -53,7 +53,7 @@ export default function AppShell() {
           {/* limba și tema pe același rând: meniul trebuie să încapă fără derulare la 720 px */}
           <div className="comutatoare">
             <div className="limba">
-              <Segmented<Lang>
+              <Comutator<Lang>
                 size="small"
                 value={lang}
                 onChange={setLang}
@@ -64,7 +64,7 @@ export default function AppShell() {
               />
             </div>
             <div className="tema">
-              <Segmented<Tema>
+              <Comutator<Tema>
                 size="small"
                 value={tema}
                 onChange={setTema}

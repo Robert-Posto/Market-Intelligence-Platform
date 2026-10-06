@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Input, Segmented, Select } from 'antd'
+import { Input, Select } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { Matrice } from '@mcc/shared'
 import { api } from '../api/client'
@@ -11,6 +11,7 @@ import { Tabel } from '../components/Tabel'
 import { etDesc, etNume } from '../components/valori'
 import { T, useLang, type DictKey } from '../i18n'
 import { faraDiacritice, num } from '../util/format'
+import { Comutator } from '../components/Comutator'
 
 const GRUPURI: [string, DictKey][] = [
   ['cont_curent', 'produse.grup_cont_curent'],
@@ -65,7 +66,7 @@ export default function Produse() {
     <>
       <div className="bara-fixa">
         <div className="filtre">
-          <Segmented value={grup} onChange={(v) => schimba('grup', v)} options={GRUPURI.map(([v, k]) => ({ value: v, label: t(k) }))} />
+          <Comutator value={grup} onChange={(v) => schimba('grup', v)} options={GRUPURI.map(([v, k]) => ({ value: v, label: t(k) }))} />
           <label className="f">{t('produse.filtru_segment')}
             <Select value={seg} onChange={(v) => schimba('segment', v)} style={{ minWidth: 220 }}
               options={SEGMENTE.map(([v, k]) => ({ value: v, label: t(k) }))} />

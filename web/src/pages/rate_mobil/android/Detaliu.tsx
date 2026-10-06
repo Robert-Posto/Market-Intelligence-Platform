@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react'
-import { Button, Collapse, Drawer, Input, Segmented } from 'antd'
+import { Button, Collapse, Drawer, Input } from 'antd'
 import type { AplicatieAndroid, BiblioteciAndroid, TextEcranAndroid } from '@mcc/shared'
 import { useBiblioteciAndroid } from '../../../api/android'
 import type { Meta } from '../../../api/meta'
@@ -10,6 +10,7 @@ import { faraDiacritice, formatZi, num } from '../../../util/format'
 import { Captura } from './comune'
 import { categorii, cheie, decodeaza, eticheta, grupPermisiune, GRUPURI_PERMISIUNI, permScurt, TIPURI_PROFIL, type Index } from './model'
 import { ListaSchimbari } from './Schimbari'
+import { Comutator } from '../../../components/Comutator'
 
 /**
  * Detaliul unei aplicații, în același sertar ca dovezile din 2.1 și capturile iOS
@@ -260,7 +261,7 @@ function Biblioteci({ date, ultima }: { date: BiblioteciAndroid; ultima: string 
   return (
     <>
       <div className="s-bara">
-        {versiuni.length > 1 && <Segmented<string> value={ver} onChange={setVer} options={versiuni} />}
+        {versiuni.length > 1 && <Comutator<string> value={ver} onChange={setVer} options={versiuni} />}
         <Input className="cauta" allowClear placeholder={t('mobil.android_d_cauta_biblioteca')} value={cauta} onChange={(e) => setCauta(e.target.value)}
           style={{ width: 240 }} />
         <span className="note">{tn('mobil.android_n_biblioteci', l.length)}</span>
