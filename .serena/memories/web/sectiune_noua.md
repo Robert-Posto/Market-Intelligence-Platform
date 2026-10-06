@@ -3,10 +3,12 @@
 1. `db/migration_NNN_<nume>.sql` (următorul număr; tabele cu `provenienta`), rând în tabelul „Migrări” din README.
 2. Loader în `ingest/` (tranzacție unică, numărători de control, test în `ingest/test_*.py`).
 3. Funcție + intrare în `RUTE` în `app/server.py`; listele mari la cerere (`?param=`), nu în răspunsul principal. Repornește serverul după modificare.
-4. Schemă Zod în `shared/src/<zonă>.ts` + export în `shared/src/index.ts`.
+4. Schemă Zod în `shared/src/<zonă>.ts` + export în `shared/src/index.ts`. O schemă din alt fișier se importă din fișierul ei (ex. `./celula`), niciodată din `./index` (import circular: `index` re-exportă fișierul, iar constanta e încă nedefinită).
 5. Cererea în `web/src/api/<zonă>.ts`; pagina sau secțiunea în `web/src/pages/…`; textele în `web/src/i18n/dict/<zonă>.ts` + înregistrare în `dict/index.ts`; CSS în `web/src/styles/<zonă>.css`.
 6. Verificare: `npm run typecheck && npm run build`, pagina în RO și EN, consola curată.
 - `Sertar` e legat de `/api/celula` (prețuri); pentru alt detaliu, Drawer AntD cu același aspect (ca în `web/src/pages/rate_mobil/android/Detaliu.tsx`).
 - Excepție, nu model: datele Google Play din 2.3 sunt fișiere locale citite la build (`import.meta.glob` în `pages/rate_mobil/dateLocale.ts`). Lipsa fișierului dă „necolectat”, nu eroare de build; pe server ajung doar dacă există pe laptopul care rulează `deploy/deploy.sh`.
 - Comutatoarele: `components/Comutator.tsx`, niciodată `Segmented` direct. Alege la apăsare (`pointerdown`, nu la ridicare), ține opțiunea local până o confirmă adresa (React Router 7 o schimbă într-o tranziție) și anunță pagina după două cadre, ca alunecarea să pornească prima. Pe o pagină grea, `dupaAlunecare` (model: `pages/campanii/Campanii.tsx`), altfel desenarea oprește alunecarea. Durata e `ALUNECARE_COMUTATOR_MS` din `theme.ts`; culoarea pornită la apăsare e în `styles/global.css`.
+- POST cu răspuns validat: `apiPostValidat(cale, corp, token, Schema)` din `api/client.ts` (aruncă `ApiError` ca `api`); `apiPost` rămâne pentru rulări (întoarce `{eroare}`). Un POST plătit nu trece prin `useQuery`.
+- Proxy-ul Vite (forma scurtă `'/api': PYTHON`) rescrie Host-ul la :8765, dar Origin rămâne `localhost:5173`: o rută POST care trebuie să meargă din `npm run dev` folosește `porturi_extra` din `rulari.verifica_cerere` (permite doar Origin-ul în plus; Host rămâne strict). Rulările nu-l folosesc.
 - Orice `href` din date colectate se verifică la `http(s)` (React 18 nu blochează `javascript:`); model: `web/src/pages/Document.tsx`, `web/src/i18n/index.tsx`.
