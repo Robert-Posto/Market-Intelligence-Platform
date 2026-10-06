@@ -57,6 +57,9 @@ export function temaMip(intunecat: boolean): ThemeConfig {
       Collapse: { headerPadding: '0 0 10px 0', contentPadding: '0', headerBg: 'transparent' },
       Segmented: { itemSelectedBg: c.accent, itemSelectedColor: c.onAccent, trackBg: c.surface },
       Tag: { defaultBg: 'transparent' },
+      // colorTextLightSolid e setat mai sus la cerneala de pe accent (închisă pe întunecat); tooltip-ul îl folosește
+      // ca text, deci ieșea #2a1216 pe gri (contrast ~1,4). Pe întunecat primește fundal și text din paletă.
+      Tooltip: intunecat ? { colorBgSpotlight: c.line2, colorTextLightSolid: c.ink } : {},
     },
   }
 }

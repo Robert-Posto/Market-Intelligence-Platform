@@ -280,7 +280,7 @@ def v_capete(b: Browser, url: str) -> None:
 
 
 PAGINI = ['overview', 'produse', 'rate', 'mobil', 'campanii', 'retea', 'context', 'versus', 'banca',
-          'istoric', 'surse', 'coada', 'harta']
+          'istoric', 'surse', 'coada', 'harta', 'concurenta', 'logging', 'rulare']
 AXE = [AICI / 'node_modules' / 'axe-core' / 'axe.min.js', AICI.parent / 'node_modules' / 'axe-core' / 'axe.min.js']
 JS_AXE = """() => axe.run(document, { runOnly: { type: 'rule', values: ['color-contrast'] } })
   .then(r => r.violations.flatMap(v => v.nodes.map(n => n.target.join(' ') + ' · ' + (n.any[0] ? n.any[0].message : ''))))"""

@@ -7,6 +7,7 @@
   --bg: #f5f1ec; --surface: #fffdfa; --ink: #2a1f22; --muted: #6e615d; --line: #e3dad0;
   --line-2: #d6cabd;
   --warn: #98550b; --warn-tint: #f8ead6; --ok: #2b7044; --ok-tint: #e5efe1; --aur: #b58a2c;
+  --err: #a3262a; --err-tint: #fbe9e7;
   --accent: #7a1e2c; --accent-tint: #f5e8e6; --on-accent: #fffdfa;
   --umbra: 0 1px 2px rgba(74, 32, 36, .05);
   --nav: #6e1a28; --nav-2: #561420; --nav-ink: #f6ece6; --nav-slab: #e6c9b5;
@@ -22,6 +23,7 @@
   --bg: #1b1517; --surface: #251d1f; --ink: #efe6e2; --muted: #b4a5a0; --line: #3a2e30;
   --line-2: #4a3b3d;
   --warn: #e3a95a; --warn-tint: #3a2a16; --ok: #7fcb97; --ok-tint: #1d3024; --aur: #dcb567;
+  --err: #f19590; --err-tint: #3a1c1d;
   --accent: #e7a3ab; --accent-tint: #3b2428; --on-accent: #2a1216;
   --umbra: none;
   --nav: #4e1520; --nav-2: #3a0f18; --marca: #e7a3ab; --nav-activ-ink: #f2d7d3;
@@ -51,6 +53,10 @@ nav a { display: flex; align-items: center; padding: clamp(5px, 0.7vh, 6px) 42px
 nav a:hover { background: var(--nav-hover); color: var(--nav-ink) }
 nav a.activ, nav a.activ:hover { background: var(--nav-activ-bg); color: var(--nav-activ-ink); font-weight: 600;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%) }
+/* tastatura: resetul AntD scoate conturul linkurilor, iar meniul rămânea fără stare de focus; conturul stă în interior
+   (clip-path-ul de pe linkul activ ar tăia unul exterior), iar pe activ ia culoarea textului ca să se vadă pe fondul lui */
+nav a:focus-visible { outline: 2px solid var(--nav-ink); outline-offset: -2px }
+nav a.activ:focus-visible { outline-color: var(--nav-activ-ink) }
 nav a .pdf { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 10px;
   color: var(--nav-slab); opacity: .75 }
 nav a.activ .pdf { color: var(--marca); opacity: 1 }
@@ -80,6 +86,12 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
    în tema luminoasă (2,7:1 și 3,8:1 la verificarea axe din 06.10.2026); așa trec de 4,5:1 în ambele teme */
 .ant-tag.pill.ant-tag-success { color: var(--ok); background: var(--ok-tint); border-color: var(--ok) }
 .ant-tag.pill.ant-tag-warning { color: var(--warn); background: var(--warn-tint); border-color: var(--warn) }
+/* la fel pentru roșu (eșuat, abandonat) și auriu (pornit manual) din Joburi și erori: culorile prestabilite ale AntD dădeau
+   3,0:1 / 2,8:1 pe luminos și 4,0:1 pe întunecat (axe, 06.10.2026) */
+.ant-tag.pill.ant-tag-error { color: var(--err); background: var(--err-tint); border-color: var(--err) }
+.ant-tag.pill.ant-tag-gold { color: var(--warn); background: var(--warn-tint); border-color: var(--warn) }
+/* selectul deschis estompează valoarea aleasă la culoarea de placeholder (1,8:1 pe luminos, 2,3:1 pe întunecat); !important, fiindcă selectorul AntD are specificitate mai mare */
+.ant-select.ant-select-open .ant-select-selection-item { color: var(--muted) !important }
 
 /* cifre-cheie sus */
 .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-bottom: 18px }
