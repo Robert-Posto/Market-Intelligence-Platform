@@ -1,4 +1,4 @@
-"""„Întreabă datele” (pagina #/intreaba): o întrebare despre o valoare a unei bănci → parametrii
+"""Vox (pagina #/vox): o întrebare despre o valoare a unei bănci → parametrii
 unei căutări în baza noastră.
 
 Modelul doar înțelege întrebarea, nu răspunde el: întoarce un JSON cu schemă strictă (băncile,
@@ -7,7 +7,7 @@ server, aceeași funcție ca Sertar-ul din 2.1. Modelul nu vede nicio valoare ș
 cifră; spre Anthropic pleacă doar întrebarea, lista băncilor și lista conceptelor (date publice),
 nimic din catalogul intern Libra. Singurul text al modelului care ajunge pe ecran e `clarificare`.
 
-Activ NUMAI local, cu `MIP_PERMITE_INTREBARI=1` și o cheie reală în `.env`: `mcc-test` n-are
+Activ NUMAI local, cu `MIP_PERMITE_VOX=1` și o cheie reală în `.env`: `mcc-test` n-are
 autentificare (06.10.2026), iar cheia ar fi folosibilă de oricine din rețeaua internă.
 Modulul nu știe de HTTP și nici de SQL: serverul îi dă funcțiile de citire, ca la `rulari.py`.
 """
@@ -20,7 +20,7 @@ import secrets
 import threading
 
 RADACINA = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DIR_JURNAL = os.path.join(RADACINA, "loguri", "intreaba")
+DIR_JURNAL = os.path.join(RADACINA, "loguri", "vox")
 MAX_TOKENS = 400        # interpretarea are sub 200 de tokeni; marja e pentru `clarificare`
 TIMEOUT_S = 30.0
 
@@ -37,7 +37,7 @@ def _incarca_preturi():
 
 preturi = _incarca_preturi()
 
-MODEL_IMPLICIT = "claude-haiku-4-5"    # ales de Nicolae pe 06.10.2026; MIP_INTREABA_MODEL îl schimbă
+MODEL_IMPLICIT = "claude-haiku-4-5"    # ales de Nicolae pe 06.10.2026; MIP_VOX_MODEL îl schimbă
 # `npm run dev`: pagina e pe :5173; proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne
 # http://localhost:5173 (vezi rulari.verifica_cerere, `porturi_extra`)
 PORT_VITE = 5173
@@ -85,17 +85,18 @@ def _gol(tip="neclar"):
 
 def cheie_reala():
     """Pe 06.10.2026, `.env`-ul din rădăcină avea în ANTHROPIC_API_KEY un placeholder de 10
-    caractere (jobul 172); o cheie reală începe cu `sk-ant-` și are peste 100 de caractere."""
+    caractere (jobul 172); cheia reală pusă atunci începe cu `sk-ant-` și are 108. Pragul de 40
+    desparte orice placeholder scurt de o cheie, fără să depindă de lungimea exactă a cheilor."""
     k = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     return k.startswith("sk-ant-") and len(k) >= 40
 
 
 def activ():
-    return os.environ.get("MIP_PERMITE_INTREBARI", "").strip() == "1" and cheie_reala()
+    return os.environ.get("MIP_PERMITE_VOX", "").strip() == "1" and cheie_reala()
 
 
 def model():
-    return os.environ.get("MIP_INTREABA_MODEL", "").strip() or MODEL_IMPLICIT
+    return os.environ.get("MIP_VOX_MODEL", "").strip() or MODEL_IMPLICIT
 
 
 def verifica_intrebarea(intrebare):
@@ -149,7 +150,7 @@ def prompt(ctx):
     """Promptul de sistem, construit din bază. Identic între întrebări (fără dată, fără ordine
     aleatoare): cache-ul promptului cere un prefix stabil."""
     linii = [
-        "Ești interpretul paginii „Întreabă datele” din Marketing Command Center (Libra Bank).",
+        "Ești interpretul paginii Vox din Marketing Command Center (Libra Bank).",
         "Utilizatorul întreabă, în română sau în engleză, despre o valoare publicată de o bancă din "
         "România: un comision, o dobândă, o limită.",
         "Sarcina ta: traduci întrebarea în parametrii unei căutări în baza noastră. NU răspunzi la "
@@ -263,7 +264,7 @@ def rezuma(randuri):
     return sorted(grupe.values(), key=lambda g: (-g["n"], g["categorie"], g["unitate"]))
 
 
-class Intrebari:
+class Vox:
     """O întrebare → interpretarea modelului → valorile din bază. Fără HTTP și fără SQL: serverul
     dă funcțiile de citire (`context`, `cauta`, `stare_banca`), ca la `rulari.Rulari`."""
 

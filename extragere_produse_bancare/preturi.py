@@ -26,7 +26,7 @@ ACTUALIZAT = "2026-06-24"
 PRETURI = {
     "claude-fable-5-1": (10.0, 50.0),
     "claude-fable-5": (10.0, 50.0),
-    # adăugate pe 06.10.2026 pentru MIP_INTREABA_MODEL („Întreabă datele”), din tabelul de prețuri
+    # adăugate pe 06.10.2026 pentru MIP_VOX_MODEL (Vox), din tabelul de prețuri
     # Anthropic din 25.09.2026
     "claude-opus-5-5": (4.0, 20.0),
     "claude-sonnet-5-5": (2.0, 10.0),

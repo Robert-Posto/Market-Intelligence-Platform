@@ -1,0 +1,20 @@
+/* Vox (#/vox): întrebarea sus, fișele de răspuns dedesubt, cele noi jos */
+.vox-oprit { margin-bottom: 14px; max-width: 900px }
+.vox-intrebare { max-width: 900px; margin-bottom: 18px }
+.vox-butoane { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 }
+.vox-mesaje { display: flex; flex-direction: column; gap: 14px; max-width: 900px }
+.vox-mesaj { border: 1px solid var(--line); border-radius: 9px; background: var(--surface); padding: 12px 16px }
+.vox-q { font-family: var(--serif); font-size: 15px; margin: 0 0 8px; color: var(--ink) }
+.vox-inteles { margin: 0 0 10px }
+.vox-fisa { border-top: 1px solid var(--line-2); padding: 10px 0 }
+.vox-fisa-cap { display: flex; align-items: center; gap: 10px; margin-bottom: 6px }
+.vox-rezumat { margin: 4px 0 8px; padding-left: 18px }
+.vox-valori { width: 100%; border-collapse: collapse; font-size: 12.5px }
+.vox-valori td { padding: 5px 8px 5px 0; border-top: 1px solid var(--line-2); vertical-align: top }
+.vox-valori td.valoare { font-family: var(--mono); white-space: nowrap }
+.vox-valori tr.ambiguu { opacity: .7 }
+.vox-eroare { color: var(--warn) }
+.vox-subsol { margin: 8px 0 0 }
+@media (max-width: 640px) {
+  .vox-valori td.valoare { white-space: normal }
+}

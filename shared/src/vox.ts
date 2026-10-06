@@ -1,15 +1,15 @@
 /**
- * „Întreabă datele” (/api/intreaba): starea funcției și răspunsul la o întrebare, scrise după
- * app/intreaba.py din 06.10.2026. Interpretarea vine de la model, dar trece prin validarea
+ * Vox (/api/vox): starea funcției și răspunsul la o întrebare, scrise după
+ * app/vox.py din 06.10.2026. Interpretarea vine de la model, dar trece prin validarea
  * serverului; valorile (`randuri`) au forma rândurilor din /api/celula.
  */
 import { z } from 'zod'
 import { ValoareDovada } from './celula'
 
-export const IntrebariStare = z
+export const VoxStare = z
   .object({ activ: z.boolean(), model: z.string(), token: z.string().optional() })
   .passthrough()
-export type IntrebariStare = z.infer<typeof IntrebariStare>
+export type VoxStare = z.infer<typeof VoxStare>
 
 export const Interpretare = z.object({
   tip: z.enum(['cautare', 'neclar', 'in_afara']),

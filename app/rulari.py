@@ -154,7 +154,7 @@ def verifica_cerere(antete, port, token=None, porturi_extra=()):
     Origin (când e trimis) exact pagina noastră, iar la scriere un token
     aleator, pe care îl primește doar pagina noastră, prin GET.
 
-    `porturi_extra`: doar pentru „Întreabă datele”, care merge și din `npm run dev`. Proxy-ul
+    `porturi_extra`: doar pentru Vox, care merge și din `npm run dev`. Proxy-ul
     Vite (forma scurtă din vite.config.ts) rescrie Host-ul la server, dar lasă Origin pe pagina
     Vite: măsurat pe 06.10.2026, Host 127.0.0.1:<țintă>, Origin http://localhost:5174. Deci
     Host-ul rămâne strict, iar porturile în plus se acceptă doar la Origin, tot pe nume de

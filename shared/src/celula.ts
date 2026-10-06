@@ -1,5 +1,5 @@
 /**
- * Rândurile din spatele unei celule (/api/celula), folosite de Sertar și de „Întreabă datele”.
+ * Rândurile din spatele unei celule (/api/celula), folosite de Sertar și de Vox.
  * Separat de index.ts ca alte fișiere din shared să le poată importa fără import circular.
  */
 import { z } from 'zod'

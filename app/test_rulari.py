@@ -142,7 +142,7 @@ class Securitate(unittest.TestCase):
         self.assertIsNone(rulari.verifica_cerere(dict(ok, **{"X-MIP-Token": "abc"}), 8765, "abc"))
 
     def test_port_vite_doar_cand_e_cerut(self):
-        """`porturi_extra` e doar pentru „Întreabă datele”; rulările rămân pe portul serverului.
+        """`porturi_extra` e doar pentru Vox; rulările rămân pe portul serverului.
 
         Proxy-ul Vite (forma scurtă din vite.config.ts) rescrie Host-ul la ținta lui, dar lasă
         Origin pe pagină: măsurat pe 06.10.2026, Host 127.0.0.1:<țintă>, Origin http://localhost:5174."""

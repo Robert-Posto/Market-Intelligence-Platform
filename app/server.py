@@ -40,7 +40,7 @@ import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului
 # trebuia facuta in toate trei. Un singur loc, o singura valoare.
 from normalizeaza import PRAGURI  # noqa: E402
 import rulari  # noqa: E402  (app/, langa server)
-import intreaba  # noqa: E402  (app/, langa server)
+import vox  # noqa: E402  (app/, langa server)
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
 # Vederea tine regula o singura data (`stare_data NOT IN (ISTORIC, DUBLURA)`) -
@@ -560,7 +560,7 @@ def matrice(q):
     }
 
 
-# Căutarea după text („Întreabă datele”): ce nu are concept stă în găleata `comision` (3.859 de
+# Căutarea după text (Vox): ce nu are concept stă în găleata `comision` (3.859 de
 # valori în observatii_curente, baza mip, 06.10.2026) și n-ar fi găsit de nicio căutare pe `camp`.
 # Fără diacritice pe ambele părți: întrebarea vine adesea scrisă fără ele, tarifele cu ele.
 _DIACRITICE = str.maketrans("ăâîșşțţ", "aaisstt")
@@ -602,8 +602,8 @@ def celula(q):
     Unde lipseste, `sursa` + `pagina` rman verificabile manual - un link greșit
     ar fi mai rau decat niciun link.
     """
-    # cu `text` și fără `camp` („Întreabă datele”): toate conceptele băncii, filtrate după cuvinte,
-    # cel mult intreaba.MAX_RANDURI rânduri; fără `text` totul rămâne ca înainte
+    # cu `text` și fără `camp` (Vox): toate conceptele băncii, filtrate după cuvinte,
+    # cel mult vox.MAX_RANDURI rânduri; fără `text` totul rămâne ca înainte
     camp = (q.get("camp") or [""])[0]
     cuvinte = _cuvinte_cautare((q.get("text") or [""])[0])
     if not (q.get("banca") and (camp or cuvinte)):
@@ -643,7 +643,7 @@ def celula(q):
              AND (%s = '' OR split_part(coalesce(o.cod_scenariu, ''), '|', 1) = %s)"""
         + extra + """
            ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num"""
-        + (f" LIMIT {intreaba.MAX_RANDURI}" if cuvinte else ""),
+        + (f" LIMIT {vox.MAX_RANDURI}" if cuvinte else ""),
         (q["banca"][0], camp, camp,
          (q.get("unitate") or [""])[0], (q.get("unitate") or [""])[0],
          categorie, categorie) + p_extra,
@@ -1905,8 +1905,8 @@ def _produse_rulari():
 RULARI = rulari.Rulari(slugs=_slugs_rulari, produse=_produse_rulari)
 
 
-def _context_intrebari():
-    """Băncile și conceptele pe care le vede modelul din „Întreabă datele”. Doar concepte cu valori
+def _context_vox():
+    """Băncile și conceptele pe care le vede modelul din Vox. Doar concepte cu valori
     numerice (127 în baza mip, 06.10.2026), fără găleata `comision`; fiecare cu 2–3 denumiri reale
     din tarife, ca modelul să lege „retragere de la bancomat” de `retragere_numerar` fără să
     dublăm etichetele din interfață sau vocabularul."""
@@ -1945,15 +1945,15 @@ def _context_intrebari():
     }
 
 
-def _cauta_intrebari(banca, concept, categorie, termen, produs, text):
-    """Valorile unei bănci pentru „Întreabă datele”, prin `celula`: aceleași rânduri, linkuri și
+def _cauta_vox(banca, concept, categorie, termen, produs, text):
+    """Valorile unei bănci pentru Vox, prin `celula`: aceleași rânduri, linkuri și
     nivele de dovadă ca Sertar-ul din 2.1, o singură interogare de întreținut."""
     r = celula({"banca": [banca], "camp": [concept or ""], "scenariu": [categorie or ""],
                 "termen": [termen or ""], "produs": [produs or ""], "text": [text or ""]})
     return r if isinstance(r, list) else []
 
 
-def _stare_banca_intrebari(banca):
+def _stare_banca_vox(banca):
     """De ce n-are banca valori: toate sursele blocate (WAF, robots.txt) sau nicio sursă. Altfel
     „nu avem valori” s-ar citi ca „banca nu are comisionul”."""
     r = interoghează(
@@ -1966,8 +1966,8 @@ def _stare_banca_intrebari(banca):
     return "fara_surse" if n == 0 else "blocata" if blocate == n else None
 
 
-INTREBARI = intreaba.Intrebari(context=_context_intrebari, cauta=_cauta_intrebari,
-                               stare_banca=_stare_banca_intrebari)
+VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox,
+                               stare_banca=_stare_banca_vox)
 
 
 def rulare_manuala_catalog(q):
@@ -2199,11 +2199,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
                                       RULARI.token if cu_token else None)
 
-    def _refuz_intrebari(self, cu_token):
+    def _refuz_vox(self, cu_token):
         """Ca la rulări, dar permite și pagina din `npm run dev` (Origin localhost:5173)."""
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
-                                      INTREBARI.token if cu_token else None,
-                                      porturi_extra=(intreaba.PORT_VITE,))
+                                      VOX.token if cu_token else None,
+                                      porturi_extra=(vox.PORT_VITE,))
 
     def _corp_json(self, limita):
         """Corpul JSON al unui POST, sau None după ce eroarea a fost deja trimisă.
@@ -2213,15 +2213,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
             self._json(415, {"eroare": "se acceptă doar application/json"})
             return None
-        try:
-            n = int(self.headers.get("Content-Length") or 0)
-        except ValueError:
-            n = -1
-        if not 0 <= n <= limita:
+        if self._brut is None or len(self._brut) > limita:
             self._json(400, {"eroare": "corp prea mare"})
             return None
         try:
-            corp = json.loads(self.rfile.read(n) or b"{}")
+            corp = json.loads(self._brut or b"{}")
             if not isinstance(corp, dict):
                 raise ValueError
         except ValueError:
@@ -2229,11 +2225,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return None
         return corp
 
-    def _post_intreaba(self):
-        if not intreaba.activ():
-            self._json(403, {"eroare": "Întrebările sunt oprite pe acest server (MIP_PERMITE_INTREBARI sau cheia Anthropic)"})
+    def _post_vox(self):
+        if not vox.activ():
+            self._json(403, {"eroare": "Vox e oprit pe acest server (MIP_PERMITE_VOX sau cheia Anthropic)"})
             return
-        motiv = self._refuz_intrebari(cu_token=True)
+        motiv = self._refuz_vox(cu_token=True)
         if motiv:
             self._json(403, {"eroare": motiv})
             return
@@ -2241,18 +2237,31 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if corp is None:
             return
         try:
-            self._json(200, INTREBARI.intreaba(corp.get("intrebare"), corp.get("anterior")))
-        except intreaba.Respins as exc:
+            self._json(200, VOX.intreaba(corp.get("intrebare"), corp.get("anterior")))
+        except vox.Respins as exc:
             self._json(400, {"eroare": str(exc)})
-        except intreaba.EroareModel as exc:
+        except vox.EroareModel as exc:
             self._json(502, {"eroare": str(exc)})
         except Exception as exc:
             self._json(500, {"eroare": f"{exc.__class__.__name__}: {exc}"})
 
+    def _citeste_corpul(self, limita=4096):
+        """Octeții corpului, citiți înaintea oricărui refuz, sau None dacă lipsesc ori depășesc limita.
+
+        Un 403 trimis cu corpul necitit închidea socket-ul cu date în buffer, iar Windows răspundea
+        cu RST: clientul vedea ConnectionAbortedError în loc de 403 (măsurat pe 06.10.2026: 3 rulări
+        din 25 ale testelor, la fiecare din 1.000 de cereri refuzate cu un corp de 3 KB)."""
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return None
+        return self.rfile.read(n) if 0 <= n <= limita else None
+
     def do_POST(self):
         cale = urllib.parse.urlparse(self.path).path
-        if cale == "/api/intreaba":
-            self._post_intreaba()
+        self._brut = self._citeste_corpul()
+        if cale == "/api/vox":
+            self._post_vox()
             return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
@@ -2281,15 +2290,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
-        if parsed.path == "/api/intreaba":
+        if parsed.path == "/api/vox":
             # tot cu Host/Origin, ca /api/rulari: răspunsul poartă tokenul de scriere
-            motiv = self._refuz_intrebari(cu_token=False)
+            motiv = self._refuz_vox(cu_token=False)
             if motiv:
                 self._json(403, {"eroare": motiv})
                 return
-            date = INTREBARI.stare()
+            date = VOX.stare()
             if date["activ"]:
-                date["token"] = INTREBARI.token
+                date["token"] = VOX.token
             self._json(200, date)
             return
         if parsed.path == "/api/rulari":

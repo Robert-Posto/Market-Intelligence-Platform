@@ -1,5 +1,7 @@
 # „Întreabă datele”: planul de implementare
 
+> **Redenumit Vox** pe 06.10.2026, la cererea lui Nicolae: `app/vox.py`, `/api/vox`, `#/vox`, `MIP_PERMITE_VOX`, `MIP_VOX_MODEL`, `loguri/vox/`, cheile `vox.*` din `i18n`. Documentul păstrează numele de la scriere („Întreabă datele”, `intreaba`).
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Scop:** o pagină `#/intreaba` unde cineva scrie o întrebare despre o valoare a unei bănci și

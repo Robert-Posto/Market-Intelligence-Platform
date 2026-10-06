@@ -70,7 +70,7 @@ export async function apiPost(cale: string, corp: unknown, token: string): Promi
 }
 
 /**
- * POST cu răspuns validat („Întreabă datele”): aceleași antete ca apiPost (JSON + token), dar
+ * POST cu răspuns validat (Vox): aceleași antete ca apiPost (JSON + token), dar
  * erorile se aruncă, ca la `api`, iar răspunsul trece prin schemă. Ruta permite și Vite (:5173).
  */
 export async function apiPostValidat<S extends z.ZodTypeAny>(cale: string, corp: unknown, token: string, schema: S): Promise<z.infer<S>> {

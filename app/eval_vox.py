@@ -1,13 +1,13 @@
-"""Evaluarea interpretării din „Întreabă datele”: întrebări reale, cu interpretarea așteptată
-(app/intreaba_exemple.json). Compară doar câmpurile scrise în `asteptat`.
+"""Evaluarea interpretării din Vox: întrebări reale, cu interpretarea așteptată
+(app/vox_exemple.json). Compară doar câmpurile scrise în `asteptat`.
 
 Fiecare întrebare e un apel real la model, deci costă. Fără `--da`, scriptul arată doar câte
 întrebări sunt și estimarea. Contextul (băncile, conceptele) vine din baza din MIP_DSN, ca la
 server; valorile nu se caută (evaluarea e doar a interpretării), iar jurnalul merge într-un
-director temporar, nu în loguri/intreaba/.
+director temporar, nu în loguri/vox/.
 
-Rulare:  python app/eval_intreaba.py          # estimarea, fără niciun apel
-         python app/eval_intreaba.py --da     # apelurile reale
+Rulare:  python app/eval_vox.py          # estimarea, fără niciun apel
+         python app/eval_vox.py --da     # apelurile reale
 """
 
 import argparse
@@ -20,12 +20,11 @@ AICI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AICI)
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-import intreaba  # noqa: E402
+import vox  # noqa: E402
 import server  # noqa: E402  (funcțiile de citire din bază)
 
 # măsurat pe 06.10.2026 (Haiku 4.5, mip_merge): $0,0015 pe întrebare cu promptul în cache
-# (11.568 de tokeni de intrare); prima întrebare scrie cache-ul, ~$0,014 (rularea fără cache cald:
-# $0,0500 pe 25 de întrebări)
+# (11.568 de tokeni de intrare); prima întrebare scrie cache-ul, $0,0147 (măsurat în pagină)
 COST_PRIMA, COST_ESTIMAT = 0.014, 0.0015
 
 
@@ -47,18 +46,18 @@ def main():
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--da", action="store_true", help="fă apelurile reale (costă)")
     a = p.parse_args()
-    with open(os.path.join(AICI, "intreaba_exemple.json"), encoding="utf-8") as f:
+    with open(os.path.join(AICI, "vox_exemple.json"), encoding="utf-8") as f:
         exemple = json.load(f)
     estimat = COST_PRIMA + (len(exemple) - 1) * COST_ESTIMAT
-    print(f"{len(exemple)} întrebări, model {intreaba.model()}, cost estimat ~${estimat:.2f}")
+    print(f"{len(exemple)} întrebări, model {vox.model()}, cost estimat ~${estimat:.2f}")
     if not a.da:
         print("Fără --da nu se face niciun apel.")
         return 0
-    if not intreaba.cheie_reala():
+    if not vox.cheie_reala():
         print("ANTHROPIC_API_KEY din .env nu e o cheie reală.")
         return 2
-    q = intreaba.Intrebari(context=server._context_intrebari, cauta=lambda *x: [],
-                           stare_banca=lambda b: None, dir_jurnal=tempfile.mkdtemp(prefix="eval_intreaba_"))
+    q = vox.Vox(context=server._context_vox, cauta=lambda *x: [],
+                           stare_banca=lambda b: None, dir_jurnal=tempfile.mkdtemp(prefix="eval_vox_"))
     corecte, cost, intrare = 0, 0.0, 0
     for i, e in enumerate(exemple, 1):
         d = q.intreaba(e["intrebare"], e.get("anterior"))

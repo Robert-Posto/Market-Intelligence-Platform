@@ -1,5 +1,7 @@
 # „Întreabă datele”: chatbot minimal pentru căutarea de valori
 
+> **Redenumit Vox** pe 06.10.2026, la cererea lui Nicolae: `app/vox.py`, `/api/vox`, `#/vox`, `MIP_PERMITE_VOX`, `MIP_VOX_MODEL`, `loguri/vox/`, cheile `vox.*` din `i18n`. Documentul păstrează numele de la scriere („Întreabă datele”, `intreaba`).
+
 Design aprobat în discuție pe 06.10.2026 (Nicolae Cherascu). Ramura: `intreaba-datele`.
 
 ## Scop

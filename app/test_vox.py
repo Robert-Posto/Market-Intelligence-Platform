@@ -1,8 +1,8 @@
-"""Teste offline pentru „Întreabă datele” (app/intreaba.py și rutele din server).
+"""Teste offline pentru Vox (app/vox.py și rutele din server).
 
 Fără rețea și fără cheie: modelul e un client fals, care întoarce JSON-ul dat de test.
 
-Rulare:  python app/test_intreaba.py
+Rulare:  python app/test_vox.py
 """
 
 import http.client
@@ -19,7 +19,7 @@ sys.path.insert(0, AICI)
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-import intreaba  # noqa: E402
+import vox  # noqa: E402
 
 CTX = {
     "banci": [{"slug": "bcr", "nume": "BCR"}, {"slug": "brd", "nume": "BRD"},
@@ -83,7 +83,7 @@ def fara_init(clasa, **atribute):
 class Configurare(unittest.TestCase):
     def setUp(self):
         self.vechi = {k: os.environ.get(k)
-                      for k in ("MIP_PERMITE_INTREBARI", "ANTHROPIC_API_KEY", "MIP_INTREABA_MODEL")}
+                      for k in ("MIP_PERMITE_VOX", "ANTHROPIC_API_KEY", "MIP_VOX_MODEL")}
 
     def tearDown(self):
         for k, v in self.vechi.items():
@@ -93,51 +93,51 @@ class Configurare(unittest.TestCase):
                 os.environ[k] = v
 
     def test_activ_cere_variabila_si_cheie_reala(self):
-        os.environ["MIP_PERMITE_INTREBARI"] = "1"
+        os.environ["MIP_PERMITE_VOX"] = "1"
         os.environ["ANTHROPIC_API_KEY"] = "sk-ant-" + "x" * 90
-        self.assertTrue(intreaba.activ())
+        self.assertTrue(vox.activ())
         for cheie in ("", "placehold1", "sk-ant-...", "sk-ant-scurt"):
             os.environ["ANTHROPIC_API_KEY"] = cheie
-            self.assertFalse(intreaba.activ(), cheie)
+            self.assertFalse(vox.activ(), cheie)
         os.environ["ANTHROPIC_API_KEY"] = "sk-ant-" + "x" * 90
-        os.environ["MIP_PERMITE_INTREBARI"] = "0"
-        self.assertFalse(intreaba.activ())
+        os.environ["MIP_PERMITE_VOX"] = "0"
+        self.assertFalse(vox.activ())
 
     def test_model_implicit_haiku(self):
-        os.environ.pop("MIP_INTREABA_MODEL", None)
-        self.assertEqual(intreaba.model(), "claude-haiku-4-5")
-        os.environ["MIP_INTREABA_MODEL"] = "claude-sonnet-5-5"
-        self.assertEqual(intreaba.model(), "claude-sonnet-5-5")
+        os.environ.pop("MIP_VOX_MODEL", None)
+        self.assertEqual(vox.model(), "claude-haiku-4-5")
+        os.environ["MIP_VOX_MODEL"] = "claude-sonnet-5-5"
+        self.assertEqual(vox.model(), "claude-sonnet-5-5")
 
 
 class Intrare(unittest.TestCase):
     def test_intrebarea(self):
-        self.assertEqual(intreaba.verifica_intrebarea("  Cât costă?  "), "Cât costă?")
-        self.assertEqual(len(intreaba.verifica_intrebarea("a" * 500)), 500)
+        self.assertEqual(vox.verifica_intrebarea("  Cât costă?  "), "Cât costă?")
+        self.assertEqual(len(vox.verifica_intrebarea("a" * 500)), 500)
         for rau in ("", "   ", None, 3, ["x"], "a" * 501):
-            with self.assertRaises(intreaba.Respins):
-                intreaba.verifica_intrebarea(rau)
+            with self.assertRaises(vox.Respins):
+                vox.verifica_intrebarea(rau)
 
     def test_anterior(self):
-        self.assertIsNone(intreaba.verifica_anterior(None))
-        self.assertEqual(intreaba.verifica_anterior(interp())["concept"], "administrare_cont")
+        self.assertIsNone(vox.verifica_anterior(None))
+        self.assertEqual(vox.verifica_anterior(interp())["concept"], "administrare_cont")
         for rau in ("text", ["x"], {"tip": "cautare", "altceva": 1}, interp(text_cautat="x" * 2000)):
-            with self.assertRaises(intreaba.Respins):
-                intreaba.verifica_anterior(rau)
+            with self.assertRaises(vox.Respins):
+                vox.verifica_anterior(rau)
 
 
 class Schema(unittest.TestCase):
     def test_enum_din_liste(self):
-        s = intreaba.schema(CTX)
+        s = vox.schema(CTX)
         p = s["properties"]
         self.assertEqual(p["banci"]["items"]["enum"], ["bcr", "brd", "ing", "libra"])
         self.assertEqual(p["concept"]["anyOf"][0]["enum"], ["administrare_cont", "nominala"])
         self.assertEqual(p["termen"]["anyOf"][0]["enum"], list(CTX["termene"]))
-        self.assertEqual(sorted(s["required"]), sorted(intreaba.CHEI))
+        self.assertEqual(sorted(s["required"]), sorted(vox.CHEI))
         self.assertIs(s["additionalProperties"], False)
 
     def test_prompt_contine_listele_si_regula(self):
-        text = intreaba.prompt(CTX)
+        text = vox.prompt(CTX)
         self.assertIn("ing: ING Bank", text)
         self.assertIn("administrare_cont · eur, lei · comision · 997 · Administrare cont curent", text)
         self.assertIn("NU răspunzi", text)
@@ -150,54 +150,54 @@ class Schema(unittest.TestCase):
         # modelul nu vede tarifele, deci nu el decide dacă serviciul există
         self.assertIn("nu știi ce conțin tarifele", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
-        self.assertEqual(text, intreaba.prompt(CTX))
+        self.assertEqual(text, vox.prompt(CTX))
 
 
 class Validare(unittest.TestCase):
     def test_bun(self):
-        curat, ignorate = intreaba.valideaza(interp(banci=["bcr", "brd"]), CTX)
+        curat, ignorate = vox.valideaza(interp(banci=["bcr", "brd"]), CTX)
         self.assertEqual((curat["tip"], curat["banci"], ignorate), ("cautare", ["bcr", "brd"], []))
 
     def test_dubluri_si_peste_trei(self):
-        curat, ignorate = intreaba.valideaza(interp(banci=["bcr", "bcr", "brd", "ing", "libra"]), CTX)
+        curat, ignorate = vox.valideaza(interp(banci=["bcr", "bcr", "brd", "ing", "libra"]), CTX)
         self.assertEqual(curat["banci"], ["bcr", "brd", "ing"])
         self.assertEqual(ignorate, ["libra"])
 
     def test_slug_sau_enum_inexistent(self):
         for rau in (interp(banci=["nu-exista"]), interp(concept="inventat"), interp(categorie="comision"),
                     interp(termen="24"), interp(produs_credit="leasing"), interp(tip="altul"), None, "x"):
-            curat, _ = intreaba.valideaza(rau, CTX)
+            curat, _ = vox.valideaza(rau, CTX)
             self.assertEqual(curat["tip"], "neclar", rau)
             self.assertIsNone(curat["clarificare"], rau)
             self.assertEqual(curat["banci"], [], rau)
 
     def test_cautare_fara_banca_sau_fara_ce(self):
-        self.assertEqual(intreaba.valideaza(interp(banci=[]), CTX)[0]["tip"], "neclar")
-        self.assertEqual(intreaba.valideaza(interp(concept=None, text_cautat=None), CTX)[0]["tip"], "neclar")
-        self.assertEqual(intreaba.valideaza(interp(concept=None, text_cautat="   "), CTX)[0]["tip"], "neclar")
-        curat, _ = intreaba.valideaza(interp(concept=None, text_cautat="  datoria vamală "), CTX)
+        self.assertEqual(vox.valideaza(interp(banci=[]), CTX)[0]["tip"], "neclar")
+        self.assertEqual(vox.valideaza(interp(concept=None, text_cautat=None), CTX)[0]["tip"], "neclar")
+        self.assertEqual(vox.valideaza(interp(concept=None, text_cautat="   "), CTX)[0]["tip"], "neclar")
+        curat, _ = vox.valideaza(interp(concept=None, text_cautat="  datoria vamală "), CTX)
         self.assertEqual((curat["tip"], curat["text_cautat"]), ("cautare", "datoria vamală"))
 
     def test_neclar_cu_banca_si_ce_devine_cautare(self):
         """Spec: `neclar` = lipsește banca sau valoarea. Haiku punea `neclar` pe „datoria vamală la
         BCR” cu text_cautat completat și o clarificare falsă („nu se găsește în tarifele BCR”),
         în 2 evaluări din 2 (06.10.2026), deși căutarea găsește 13 valori."""
-        curat, _ = intreaba.valideaza(interp(tip="neclar", concept=None, text_cautat="datoriei vamale",
+        curat, _ = vox.valideaza(interp(tip="neclar", concept=None, text_cautat="datoriei vamale",
                                              clarificare="Termenul nu se găsește în tarifele BCR."), CTX)
         self.assertEqual((curat["tip"], curat["text_cautat"], curat["clarificare"]),
                          ("cautare", "datoriei vamale", None))
-        curat, _ = intreaba.valideaza(interp(tip="neclar", clarificare="Debit sau credit?"), CTX)
+        curat, _ = vox.valideaza(interp(tip="neclar", clarificare="Debit sau credit?"), CTX)
         self.assertEqual((curat["tip"], curat["clarificare"]), ("cautare", None))
 
     def test_clarificare_pastrata(self):
-        curat, _ = intreaba.valideaza(
+        curat, _ = vox.valideaza(
             interp(tip="neclar", banci=[], concept=None, clarificare="La ce bancă?"), CTX)
         self.assertEqual(curat["clarificare"], "La ce bancă?")
 
 
 class Rezumat(unittest.TestCase):
     def test_pe_unitate_fara_ambigue(self):
-        r = intreaba.rezuma([rand(0), rand(5), rand(15), rand(999, ambiguu=True), rand(2, "eur"), rand(None)])
+        r = vox.rezuma([rand(0), rand(5), rand(15), rand(999, ambiguu=True), rand(2, "eur"), rand(None)])
         self.assertEqual(r[0], {"unitate": "lei", "categorie": "comision", "n": 3,
                                 "minim": 0, "maxim": 15, "gratuite": 1})
         self.assertEqual(r[1]["unitate"], "eur")
@@ -205,32 +205,32 @@ class Rezumat(unittest.TestCase):
 
     def test_gratuite_doar_la_comisioane(self):
         """O dobândă de 0% nu e „gratuită”: pe mip erau 21 de dobânzi neambigue de 0% (review, 06.10.2026)."""
-        r = intreaba.rezuma([rand(0, "procent", "conturi_carduri|x"), rand(0), rand(0, "lei", "comisioane|y")])
+        r = vox.rezuma([rand(0, "procent", "conturi_carduri|x"), rand(0), rand(0, "lei", "comisioane|y")])
         self.assertEqual({x["categorie"]: x["gratuite"] for x in r},
                          {"conturi_carduri": 0, "comision": 1, "comisioane": 1})
 
     def test_dobanzi_de_depozit_si_credit_separat(self):
         """`nominala` fără categorie: dobânzile de depozit și de credit nu ajung în același interval."""
-        r = intreaba.rezuma([rand(6.5, "procent", "depozite|12"), rand(9.9, "procent", "credite|ipotecar")])
+        r = vox.rezuma([rand(6.5, "procent", "depozite|12"), rand(9.9, "procent", "credite|ipotecar")])
         self.assertEqual({(x["categorie"], x["maxim"]) for x in r}, {("depozite", 6.5), ("credite", 9.9)})
 
 
 class Intrebari(unittest.TestCase):
     def setUp(self):
-        self.dir = tempfile.mkdtemp(prefix="intreaba_test_")
+        self.dir = tempfile.mkdtemp(prefix="vox_test_")
         self.cautari = []
         self.randuri = {"bcr": [rand(0), rand(15)], "brd": []}
-        self.model_vechi = os.environ.pop("MIP_INTREABA_MODEL", None)
+        self.model_vechi = os.environ.pop("MIP_VOX_MODEL", None)
 
     def tearDown(self):
         if self.model_vechi is not None:
-            os.environ["MIP_INTREABA_MODEL"] = self.model_vechi
+            os.environ["MIP_VOX_MODEL"] = self.model_vechi
 
     def fa(self, client, stare_banca=lambda b: None):
         def cauta(banca, concept, categorie, termen, produs, text):
             self.cautari.append((banca, concept, categorie, termen, produs, text))
             return self.randuri.get(banca, [])
-        return intreaba.Intrebari(context=lambda: CTX, cauta=cauta, stare_banca=stare_banca,
+        return vox.Vox(context=lambda: CTX, cauta=cauta, stare_banca=stare_banca,
                                   client=client, dir_jurnal=self.dir)
 
     def test_cautare_pe_concept(self):
@@ -274,7 +274,7 @@ class Intrebari(unittest.TestCase):
             self.cautari.append(termen)
             return [] if termen else [rand(3.5, "procent", "depozite"), rand(3.6, "procent", "depozite")]
         c = ClientFals(interp(banci=["ing"], concept="nominala", categorie="depozite", termen="12"))
-        q = intreaba.Intrebari(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
+        q = vox.Vox(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
                                client=c, dir_jurnal=self.dir)
         r = q.intreaba("ING, depozit pe 12 luni?")["raspunsuri"][0]
         self.assertEqual((r["total"], r["fara_filtre"], self.cautari), (0, 2, ["12", None]))
@@ -317,14 +317,14 @@ class Intrebari(unittest.TestCase):
             (fara_init(anthropic.InternalServerError, status_code=529), "529"),
         ]
         for exc, text in cazuri:
-            with self.assertRaises(intreaba.EroareModel) as e:
+            with self.assertRaises(vox.EroareModel) as e:
                 self.fa(ClientFals(exceptie=exc)).intreaba("BCR?")
             self.assertIn(text, str(e.exception))
 
     def test_jurnal(self):
         import anthropic
         self.fa(ClientFals(interp())).intreaba("BCR?")
-        with self.assertRaises(intreaba.EroareModel):
+        with self.assertRaises(vox.EroareModel):
             self.fa(ClientFals(exceptie=fara_init(anthropic.APIConnectionError))).intreaba("BRD?")
         fisiere = os.listdir(self.dir)
         self.assertEqual(len(fisiere), 1)
@@ -339,7 +339,7 @@ class Intrebari(unittest.TestCase):
         """Apelul la model s-a plătit deja; dacă baza cade după el, întrebarea tot intră în jurnal."""
         def cauta(*a):
             raise RuntimeError("baza nu răspunde")
-        q = intreaba.Intrebari(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
+        q = vox.Vox(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
                                client=ClientFals(interp()), dir_jurnal=self.dir)
         with self.assertRaises(RuntimeError):
             q.intreaba("BCR?")
@@ -389,21 +389,21 @@ class Http(unittest.TestCase):
     def setUpClass(cls):
         import server
         cls.server_mod = server
-        cls.vechi = server.INTREBARI
+        cls.vechi = server.VOX
         cls.client = ClientFals(interp())
-        server.INTREBARI = intreaba.Intrebari(
+        server.VOX = vox.Vox(
             context=lambda: CTX, cauta=lambda *a: [rand(5)], stare_banca=lambda b: None,
-            client=cls.client, dir_jurnal=tempfile.mkdtemp(prefix="intreaba_http_"))
+            client=cls.client, dir_jurnal=tempfile.mkdtemp(prefix="vox_http_"))
         cls.srv = server.Server(("::", 0), server.Handler)
         cls.port = cls.srv.server_address[1]
         threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
-        cls.env_vechi = {k: os.environ.get(k) for k in ("MIP_PERMITE_INTREBARI", "ANTHROPIC_API_KEY")}
+        cls.env_vechi = {k: os.environ.get(k) for k in ("MIP_PERMITE_VOX", "ANTHROPIC_API_KEY")}
 
     @classmethod
     def tearDownClass(cls):
         cls.srv.shutdown()
         cls.srv.server_close()
-        cls.server_mod.INTREBARI = cls.vechi
+        cls.server_mod.VOX = cls.vechi
         for k, v in cls.env_vechi.items():
             if v is None:
                 os.environ.pop(k, None)
@@ -411,7 +411,7 @@ class Http(unittest.TestCase):
                 os.environ[k] = v
 
     def setUp(self):
-        os.environ["MIP_PERMITE_INTREBARI"] = "1"
+        os.environ["MIP_PERMITE_VOX"] = "1"
         os.environ["ANTHROPIC_API_KEY"] = "sk-ant-" + "x" * 90
 
     def cere(self, metoda, cale, corp=None, antete=None, host=None):
@@ -431,28 +431,28 @@ class Http(unittest.TestCase):
             return r.status, d
 
     def token(self):
-        return self.cere("GET", "/api/intreaba")[1]["token"]
+        return self.cere("GET", "/api/vox")[1]["token"]
 
     def test_get(self):
-        cod, d = self.cere("GET", "/api/intreaba")
+        cod, d = self.cere("GET", "/api/vox")
         self.assertEqual((cod, d["activ"], d["model"]), (200, True, "claude-haiku-4-5"))
-        self.assertEqual(d["token"], self.server_mod.INTREBARI.token)
+        self.assertEqual(d["token"], self.server_mod.VOX.token)
         self.assertNotEqual(d["token"], self.server_mod.RULARI.token)
 
     def test_get_inactiv_fara_token(self):
         os.environ["ANTHROPIC_API_KEY"] = "placehold1"
-        cod, d = self.cere("GET", "/api/intreaba")
+        cod, d = self.cere("GET", "/api/vox")
         self.assertEqual((cod, d["activ"]), (200, False))
         self.assertNotIn("token", d)
 
     def test_get_host_strain(self):
-        self.assertEqual(self.cere("GET", "/api/intreaba", host=f"evil.com:{self.port}")[0], 403)
+        self.assertEqual(self.cere("GET", "/api/vox", host=f"evil.com:{self.port}")[0], 403)
 
     def test_post_merge_si_din_vite(self):
         """Din `npm run dev`, proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne :5173."""
         t = self.token()
         for origine in (f"http://localhost:{self.port}", "http://localhost:5173", "http://127.0.0.1:5173"):
-            cod, d = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"},
+            cod, d = self.cere("POST", "/api/vox", {"intrebare": "BCR?"},
                                {"X-MIP-Token": t, "Origin": origine, "Sec-Fetch-Site": "same-origin"})
             self.assertEqual(cod, 200, (origine, d))
             self.assertEqual(d["raspunsuri"][0]["banca"], "bcr")
@@ -472,45 +472,53 @@ class Http(unittest.TestCase):
         ]
         n = len(self.client.cereri)
         for antete, host in cazuri:
-            cod, _ = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"}, antete, host)
+            cod, _ = self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, antete, host)
             self.assertEqual(cod, 403, (antete, host))
         self.assertEqual(len(self.client.cereri), n)   # niciun apel plătit
 
+    def test_refuzul_ajunge_ca_403_nu_ca_conexiune_intrerupta(self):
+        """Un 403 trimis cu corpul necitit închidea socket-ul cu date în buffer; Windows răspundea cu
+        RST, iar clientul vedea ConnectionAbortedError (3 din 25 de rulări ale testelor, 06.10.2026).
+        În pagină, un token expirat ar fi apărut ca „serverul nu răspunde”."""
+        for _ in range(1000):
+            cod, _ = self.cere("POST", "/api/vox", {"intrebare": "x" * 3000}, {"X-MIP-Token": "gresit"})
+            self.assertEqual(cod, 403)
+
     def test_post_inactiv(self):
         t = self.token()
-        os.environ["MIP_PERMITE_INTREBARI"] = "0"
-        cod, d = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"}, {"X-MIP-Token": t})
+        os.environ["MIP_PERMITE_VOX"] = "0"
+        cod, d = self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, {"X-MIP-Token": t})
         self.assertEqual(cod, 403)
-        self.assertIn("MIP_PERMITE_INTREBARI", d["eroare"])
+        self.assertIn("MIP_PERMITE_VOX", d["eroare"])
 
     def test_post_forma(self):
         ok = {"X-MIP-Token": self.token()}
-        self.assertEqual(self.cere("POST", "/api/intreaba", {"intrebare": ""}, ok)[0], 400)
-        self.assertEqual(self.cere("POST", "/api/intreaba", {"intrebare": "a" * 501}, ok)[0], 400)
-        self.assertEqual(self.cere("POST", "/api/intreaba", ["BCR?"], ok)[0], 400)
-        self.assertEqual(self.cere("POST", "/api/intreaba", {"intrebare": "x" * 5000}, ok)[0], 400)
-        cod, _ = self.cere("POST", "/api/intreaba", None, dict(ok, **{"Content-Type": "text/plain"}))
+        self.assertEqual(self.cere("POST", "/api/vox", {"intrebare": ""}, ok)[0], 400)
+        self.assertEqual(self.cere("POST", "/api/vox", {"intrebare": "a" * 501}, ok)[0], 400)
+        self.assertEqual(self.cere("POST", "/api/vox", ["BCR?"], ok)[0], 400)
+        self.assertEqual(self.cere("POST", "/api/vox", {"intrebare": "x" * 5000}, ok)[0], 400)
+        cod, _ = self.cere("POST", "/api/vox", None, dict(ok, **{"Content-Type": "text/plain"}))
         self.assertEqual(cod, 415)
 
     def test_eroare_model_502(self):
         import anthropic
         ok = {"X-MIP-Token": self.token()}
-        vechi = self.server_mod.INTREBARI._client
-        self.server_mod.INTREBARI._client = ClientFals(exceptie=fara_init(anthropic.APIConnectionError))
+        vechi = self.server_mod.VOX._client
+        self.server_mod.VOX._client = ClientFals(exceptie=fara_init(anthropic.APIConnectionError))
         try:
-            cod, d = self.cere("POST", "/api/intreaba", {"intrebare": "BCR?"}, ok)
+            cod, d = self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, ok)
         finally:
-            self.server_mod.INTREBARI._client = vechi
+            self.server_mod.VOX._client = vechi
         self.assertEqual(cod, 502)
         self.assertIn("api.anthropic.com", d["eroare"])
 
 
 class Preturi(unittest.TestCase):
     def test_modelele_de_ales_au_pret(self):
-        """MIP_INTREABA_MODEL poate fi schimbat; fără preț, costul ar apărea „necunoscut”."""
+        """MIP_VOX_MODEL poate fi schimbat; fără preț, costul ar apărea „necunoscut”."""
         for m in ("claude-haiku-4-5", "claude-sonnet-5-5", "claude-opus-5-5"):
-            self.assertIsNotNone(intreaba.preturi.cost(m, 1000, 100), m)
-        self.assertAlmostEqual(intreaba.preturi.cost("claude-opus-5-5", 1_000_000, 0), 4.0)
+            self.assertIsNotNone(vox.preturi.cost(m, 1000, 100), m)
+        self.assertAlmostEqual(vox.preturi.cost("claude-opus-5-5", 1_000_000, 0), 4.0)
 
 
 if __name__ == "__main__":
