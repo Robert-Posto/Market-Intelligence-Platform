@@ -244,6 +244,38 @@ Scripturile de colectare, sub buton:
   fluxului) și, la joburi, codul produsului (căutat în `produse_libra`, un singur
   cod). Teste: `python app/test_rulari.py`.
 
+### Întreabă datele (pagina `#/intreaba`)
+
+O întrebare despre **o valoare** a unei bănci („Cât costă administrarea contului la BCR?”), în
+română sau engleză. Modelul (`app/intreaba.py`) doar traduce întrebarea în banca, conceptul,
+categoria și termenul căutat, cu schemă strictă; valorile, citatele și documentele vin din
+`observatii_curente` prin `celula()`, ca Sertar-ul din 2.1. Modelul nu vede nicio valoare și nu
+scrie nicio cifră; singurul lui text pe ecran e o întrebare înapoi, etichetată ca atare. Ce n-are
+concept (găleata `comision`) se caută după text în denumirile și citatele băncii, cu cuvintele
+tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
+text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
+
+- Activă **doar local**: `MIP_PERMITE_INTREBARI=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
+  apoi repornește serverul. Pe `mcc-test` rămâne oprită: serverul n-are încă autentificare.
+- Merge și din `npm run dev`: proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne
+  `localhost:5173`, deci ruta acceptă și acest Origin (rulările nu).
+- Modelul: `claude-haiku-4-5` (`MIP_INTREABA_MODEL`). Măsurat pe 06.10.2026 (`mip_merge`):
+  11.568 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0015
+  pe întrebare cu promptul în cache; prima întrebare îl scrie, ~$0,014 (din rularea fără cache
+  cald: $0,0500 pe 25 de întrebări).
+- Evaluarea interpretării (`python app/eval_intreaba.py --da`, 25 de întrebări reale): 25 din 25
+  corecte pe 06.10.2026, $0,0368. Înainte de ultimele două corecturi ieșeau 22 și 23 din 25:
+  Haiku marca „neclar” serviciile fără concept, cu o clarificare falsă („nu se găsește în
+  tarife”), iar „incoming payment” la BRD a ieșit o dată `transfer_credit` în loc de `incasare`
+  (răspunsul variază între rulări).
+- Când termenul sau tipul de credit golesc răspunsul, fișa spune câte valori sunt fără filtru: ING
+  are 2 dobânzi la depozite, niciuna cu termen citit din textul băncii.
+- Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
+  nouă, repornește serverul.
+- Conversația nu se salvează și nu intră în adresă: un link deschis ar porni un apel plătit.
+  Jurnalul întrebărilor e local, în `loguri/intreaba/AAAA-LL.jsonl`.
+- Teste fără rețea: `python app/test_intreaba.py`.
+
 ### Pachetul Playwright (`crawler/`)
 
 `--pas playwright` și `load_bnr.py` citesc din `date/pachet/`, un instantaneu
@@ -518,7 +550,7 @@ comparații și apare în coadă, cu citatul din document.
 ## Structură
 
 ```
-app/          server.py (API read-only) · rulari.py (rulările manuale) · index.html (SPA, 12 pagini)
+app/          server.py (API read-only) · rulari.py (rulările manuale) · intreaba.py (Întreabă datele) · index.html (SPA, 12 pagini)
               harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
 ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
               scraper.py = stiva HTTP (robots.txt, User-Agent, pauze), folosită

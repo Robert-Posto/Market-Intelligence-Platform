@@ -72,6 +72,9 @@ vedere îngheață lista de coloane, iar API-ul dă 500 deși tabela are coloana
 interpolat. `/pdf` servește doar URL-uri înregistrate în `surse`, altfel devine proxy deschis.
 Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
 `app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
+Tot cu o variabilă, `MIP_PERMITE_INTREBARI=1` (și o cheie reală), `POST /api/intreaba` cheamă
+modelul doar ca să interpreteze întrebarea (`app/intreaba.py`): nu scrie în bază, iar cifrele vin
+din bază, niciodată de la model.
 
 **Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice: prioritatea e popularea inițială.
 Rulările manuale (pagina „Rulare manuală”, README) sunt deblocate deliberat; joburile de comparație cu
