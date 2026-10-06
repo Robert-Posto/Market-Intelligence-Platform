@@ -32,6 +32,8 @@ CTX = {
     ],
     "categorii": {"depozite": "Dobânzi la depozite", "credite": "Dobânzi la credite",
                   "conturi_carduri": "Conturi și carduri"},
+    "concepte_categorie": {"depozite": ["nominala"], "credite": ["nominala", "dae", "marja_ircc"],
+                           "conturi_carduri": ["nominala", "comision_procent"]},
     "termene": {"scurt": "1–3 luni", "6": "4–6 luni", "12": "7–12 luni", "lung": "peste 12 luni",
                 "necunoscut": "termen nespecificat"},
     "produse": {"ipotecar": "Ipotecar / imobiliar", "nevoi_personale": "Nevoi personale",
@@ -139,6 +141,11 @@ class Schema(unittest.TestCase):
         self.assertIn("ing: ING Bank", text)
         self.assertIn("administrare_cont · eur, lei · comision · 997 · Administrare cont curent", text)
         self.assertIn("NU răspunzi", text)
+        # „Ce dobândă dă ING la depozitul pe 12 luni?” ieșea fără concept (06.10.2026, live): slug-ul
+        # `nominala` nu spune „dobândă”, deci fiecare categorie își arată conceptele
+        self.assertIn("depozite (Dobânzi la depozite; concepte: nominala)", text)
+        # „și la BRD?” după BCR dădea [bcr, brd] (live): continuarea înlocuiește banca
+        self.assertIn("înlocuiește băncile anterioare", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
         self.assertEqual(text, intreaba.prompt(CTX))
 

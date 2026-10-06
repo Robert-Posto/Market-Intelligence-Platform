@@ -165,10 +165,13 @@ def prompt(ctx):
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
         "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept.",
-        "- categorie: doar la dobânzi (depozite, credite, conturi și carduri); la comisioane, null.",
+        "- categorie: doar la dobânzi (depozite, credite, conturi și carduri); la comisioane, null. "
+        "La o dobândă, conceptul e unul din cele ale categoriei (lista „Categorii” de la final); "
+        "„dobânda” fără alt detaliu e `nominala`.",
         "- termen și produs_credit: doar dacă întrebarea le spune.",
         "- Dacă primești interpretarea întrebării anterioare, întrebarea curentă o poate continua "
-        "(„și la BRD?”, „dar pe 6 luni?”): păstrezi ce nu se schimbă.",
+        "(„și la BRD?”, „dar pe 6 luni?”): păstrezi ce nu se schimbă. O bancă numită în continuare "
+        "(„și la BRD?”) înlocuiește băncile anterioare, nu se adaugă la ele.",
         "",
         "Băncile (slug: nume):",
     ]
@@ -179,7 +182,9 @@ def prompt(ctx):
         linii.append(f"{c['camp']} · {', '.join(c['unitati'])} · {', '.join(c['categorii'])} · {c['n']} · {exemple}")
     linii += [
         "",
-        "Categorii: " + "; ".join(f"{k} ({v})" for k, v in ctx["categorii"].items()),
+        "Categorii: " + "; ".join(
+            f"{k} ({v}; concepte: {', '.join(ctx['concepte_categorie'].get(k, []))})"
+            for k, v in ctx["categorii"].items()),
         "Termene: " + "; ".join(f"{k} ({v})" for k, v in ctx["termene"].items()),
         "Tipuri de credit: " + "; ".join(f"{k} ({v})" for k, v in ctx["produse"].items()),
     ]

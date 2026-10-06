@@ -1937,6 +1937,8 @@ def _context_intrebari():
         "banci": banci,
         "concepte": concepte,
         "categorii": {k: v["titlu"] for k, v in GRUPURI_RATE.items()},
+        # aceleași concepte ca pagina 2.2; fără ele „dobânda la depozit” ieșea fără concept (live)
+        "concepte_categorie": {k: v["campuri"] for k, v in GRUPURI_RATE.items()},
         "termene": {**{k: v[0] for k, v in TERMENE.items()}, "necunoscut": "termen nespecificat"},
         "produse": dict(PRODUSE_CREDIT),
     }
