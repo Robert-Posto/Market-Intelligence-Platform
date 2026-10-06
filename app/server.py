@@ -17,6 +17,7 @@ import csv
 import http.server
 import json
 import os
+import re
 import socket
 import socketserver
 import statistics
@@ -39,6 +40,7 @@ import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului
 # trebuia facuta in toate trei. Un singur loc, o singura valoare.
 from normalizeaza import PRAGURI  # noqa: E402
 import rulari  # noqa: E402  (app/, langa server)
+import intreaba  # noqa: E402  (app/, langa server)
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
 # Vederea tine regula o singura data (`stare_data NOT IN (ISTORIC, DUBLURA)`) -
@@ -558,6 +560,31 @@ def matrice(q):
     }
 
 
+# Căutarea după text („Întreabă datele”): ce nu are concept stă în găleata `comision` (3.859 de
+# valori în observatii_curente, baza mip, 06.10.2026) și n-ar fi găsit de nicio căutare pe `camp`.
+# Fără diacritice pe ambele părți: întrebarea vine adesea scrisă fără ele, tarifele cu ele.
+_DIACRITICE = str.maketrans("ăâîșşțţ", "aaisstt")
+_TEXT_CAUTARE = ("translate(lower(coalesce(o.serviciu, '') || ' ' || coalesce(o.citat, '')), "
+                 "'ăâîșşțţ', 'aaisstt')")
+
+
+def _cuvinte_cautare(text):
+    """Cuvintele unei căutări după text: litere și cifre (fără `%` sau `_`, care în LIKE ar fi
+    wildcard-uri), de cel puțin 3 caractere, fără dubluri, cel mult 5.
+
+    Fiecare cuvânt e tăiat la rădăcină (6+ litere pierd ultimele 2, 5 litere ultima): pe subșirul
+    exact, „datoria vamală” nu găsea „Decontarea electronică a datoriei vamale” la BCR (0 rânduri
+    din 13, mip, 06.10.2026); flexiunea românească schimbă tocmai finalul cuvântului."""
+    cuvinte = []
+    for c in re.findall(r"[^\W_]+", (text or "").lower().translate(_DIACRITICE)):
+        if len(c) < 3:
+            continue
+        c = c[:-2] if len(c) >= 6 else c[:-1] if len(c) == 5 else c
+        if c not in cuvinte:
+            cuvinte.append(c)
+    return cuvinte[:5]
+
+
 def celula(q):
     """Toate valorile din spatele unei celule, cu ce reprezinta si de unde vin.
 
@@ -574,7 +601,11 @@ def celula(q):
     Unde lipseste, `sursa` + `pagina` rman verificabile manual - un link greșit
     ar fi mai rau decat niciun link.
     """
-    if not (q.get("banca") and q.get("camp")):
+    # cu `text` și fără `camp` („Întreabă datele”): toate conceptele băncii, filtrate după cuvinte,
+    # cel mult intreaba.MAX_RANDURI rânduri; fără `text` totul rămâne ca înainte
+    camp = (q.get("camp") or [""])[0]
+    cuvinte = _cuvinte_cautare((q.get("text") or [""])[0])
+    if not (q.get("banca") and (camp or cuvinte)):
         return {"eroare": "lipsește banca sau camp"}
     # `camp` singur nu e destul la dobanzi: `nominala` inseamna si dobanda de
     # depozit si dobanda de credit. Fara filtrul pe categorie, sertarul deschis
@@ -593,6 +624,9 @@ def celula(q):
     if produs in PRODUSE_CREDIT:
         extra += f" AND {PRODUS_CREDIT} = %s"
         p_extra = (produs,)
+    for c in cuvinte:
+        extra += f" AND {_TEXT_CAUTARE} LIKE %s"
+        p_extra += ("%" + c + "%",)
     rows = interoghează(
         """SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
@@ -603,12 +637,13 @@ def celula(q):
            FROM observatii_curente o
            JOIN surse s ON s.id = o.id_sursa
            JOIN banci b ON b.id = s.id_banca
-           WHERE b.slug = %s AND o.camp = %s
+           WHERE b.slug = %s AND (%s = '' OR o.camp = %s)
              AND (%s = '' OR o.unitate = %s)
              AND (%s = '' OR split_part(coalesce(o.cod_scenariu, ''), '|', 1) = %s)"""
         + extra + """
-           ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num""",
-        (q["banca"][0], q["camp"][0],
+           ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num"""
+        + (f" LIMIT {intreaba.MAX_RANDURI}" if cuvinte else ""),
+        (q["banca"][0], camp, camp,
          (q.get("unitate") or [""])[0], (q.get("unitate") or [""])[0],
          categorie, categorie) + p_extra,
     )
@@ -1867,6 +1902,69 @@ def _produse_rulari():
 
 
 RULARI = rulari.Rulari(slugs=_slugs_rulari, produse=_produse_rulari)
+
+
+def _context_intrebari():
+    """Băncile și conceptele pe care le vede modelul din „Întreabă datele”. Doar concepte cu valori
+    numerice (127 în baza mip, 06.10.2026), fără găleata `comision`; fiecare cu 2–3 denumiri reale
+    din tarife, ca modelul să lege „retragere de la bancomat” de `retragere_numerar` fără să
+    dublăm etichetele din interfață sau vocabularul."""
+    banci = interoghează("SELECT slug, nume FROM banci ORDER BY slug")
+    concepte = interoghează(
+        """SELECT o.camp, count(*)::int AS n,
+                  array_agg(DISTINCT coalesce(o.unitate, '')) AS unitati,
+                  array_agg(DISTINCT split_part(coalesce(o.cod_scenariu, ''), '|', 1)) AS categorii
+           FROM observatii_curente o
+           WHERE o.valoare_num IS NOT NULL AND o.camp IS NOT NULL AND o.camp <> 'comision'
+           GROUP BY 1 ORDER BY 1""")
+    exemple = interoghează(
+        """SELECT camp, serviciu FROM (
+             SELECT o.camp, o.serviciu,
+                    row_number() OVER (PARTITION BY o.camp ORDER BY count(*) DESC, o.serviciu) AS rn
+             FROM observatii_curente o
+             WHERE o.valoare_num IS NOT NULL AND o.camp <> 'comision'
+               AND coalesce(o.serviciu, '') <> ''
+             GROUP BY 1, 2) x
+           WHERE rn <= 3 ORDER BY camp, rn""")
+    pe_camp = {}
+    for e in exemple:
+        pe_camp.setdefault(e["camp"], []).append(e["serviciu"])
+    for c in concepte:
+        c["unitati"] = sorted(u for u in c["unitati"] if u)
+        c["categorii"] = sorted(x for x in c["categorii"] if x)
+        c["exemple"] = pe_camp.get(c["camp"], [])
+    return {
+        "banci": banci,
+        "concepte": concepte,
+        "categorii": {k: v["titlu"] for k, v in GRUPURI_RATE.items()},
+        "termene": {**{k: v[0] for k, v in TERMENE.items()}, "necunoscut": "termen nespecificat"},
+        "produse": dict(PRODUSE_CREDIT),
+    }
+
+
+def _cauta_intrebari(banca, concept, categorie, termen, produs, text):
+    """Valorile unei bănci pentru „Întreabă datele”, prin `celula`: aceleași rânduri, linkuri și
+    nivele de dovadă ca Sertar-ul din 2.1, o singură interogare de întreținut."""
+    r = celula({"banca": [banca], "camp": [concept or ""], "scenariu": [categorie or ""],
+                "termen": [termen or ""], "produs": [produs or ""], "text": [text or ""]})
+    return r if isinstance(r, list) else []
+
+
+def _stare_banca_intrebari(banca):
+    """De ce n-are banca valori: toate sursele blocate (WAF, robots.txt) sau nicio sursă. Altfel
+    „nu avem valori” s-ar citi ca „banca nu are comisionul”."""
+    r = interoghează(
+        """SELECT count(s.id)::int AS n, count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate
+           FROM banci b LEFT JOIN surse s ON s.id_banca = b.id
+           WHERE b.slug = %s""", (banca,))
+    if not r:
+        return None
+    n, blocate = r[0]["n"], r[0]["blocate"]
+    return "fara_surse" if n == 0 else "blocata" if blocate == n else None
+
+
+INTREBARI = intreaba.Intrebari(context=_context_intrebari, cauta=_cauta_intrebari,
+                               stare_banca=_stare_banca_intrebari)
 
 
 def rulare_manuala_catalog(q):

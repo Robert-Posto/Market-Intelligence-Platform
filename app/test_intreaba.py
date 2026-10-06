@@ -297,6 +297,28 @@ class Intrebari(unittest.TestCase):
         self.assertNotEqual(q.token, self.fa(ClientFals(interp())).token)
 
 
+class CuvinteCautare(unittest.TestCase):
+    def test_cuvinte_cautare(self):
+        import server
+        self.assertEqual(server._cuvinte_cautare("Plată facturi"), ["plat", "factu"])
+        self.assertEqual(server._cuvinte_cautare("ȘTERGERE Ţară"), ["sterge", "tara"])
+        # niciun wildcard LIKE (%, _) și niciun semn ajung în parametru
+        self.assertEqual(server._cuvinte_cautare("100% gratuit_x'; drop--"), ["100", "gratu", "drop"])
+        self.assertEqual(server._cuvinte_cautare("a de la card card"), ["card"])
+        self.assertEqual(server._cuvinte_cautare("unu doi trei patru cinci sase sapte"),
+                         ["unu", "doi", "trei", "patr", "cinc"])
+
+    def test_flexiunea_romaneasca(self):
+        """„datoria vamală” trebuie să găsească „datoriei vamale” (BCR, 13 valori): pe subșirul exact
+        căutarea dădea 0 rânduri (măsurat pe mip, 06.10.2026)."""
+        import server
+        cuvinte = server._cuvinte_cautare("datoria vamală")
+        self.assertEqual(cuvinte, ["dator", "vama"])
+        self.assertTrue(all(c in "decontarea electronica a datoriei vamale" for c in cuvinte))
+        self.assertEqual(server._cuvinte_cautare(None), [])
+        self.assertEqual(server._cuvinte_cautare(""), [])
+
+
 class Preturi(unittest.TestCase):
     def test_modelele_de_ales_au_pret(self):
         """MIP_INTREABA_MODEL poate fi schimbat; fără preț, costul ar apărea „necunoscut”."""
