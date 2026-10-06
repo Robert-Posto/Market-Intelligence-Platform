@@ -5,4 +5,5 @@
 - După o coloană nouă în `observations`: rulează `db/sincronizeaza_vederi.sql` (altfel `SELECT *` din vedere îngheață coloanele și API-ul dă 500).
 - Încărcările sunt idempotente prin `provenienta` (campanii, android) sau prin metoda de extracție (`populare`): fiecare încărcare șterge doar ce a scris ea.
 - Băncile blocate (WAF/robots) se documentează în `surse.nota_extractie` și au 0 cereri; lista: `BLOCATE` din `ingest/campanii_config.py` și jurnalul `loguri/origini_blocate.jsonl`.
+- Comparația produselor Libra cu concurența nu trece prin `observations` și nici prin vederile de mai sus: tabele proprii, `mem:date/comparatie_libra`.
 - Prețurile Libra: produsele vin din catalogul intern (`catalog_libra`, `BANCI_CU_CATALOG` în `ingest/normalizeaza.py`), nu de pe web.
