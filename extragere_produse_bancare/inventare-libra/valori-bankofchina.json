@@ -1,0 +1,2222 @@
+{
+ "banca": "bankofchina",
+ "urluri": [
+  {
+   "cheie": "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360670.html||corporate time deposits",
+   "url": "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360670.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Corporate Time Deposits",
+   "focus": "Produsul băncii: „Corporate Time Deposits”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1393,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "35f749f7399aa2e71c8109c8a10c0cc30c995a59ad6cf60b516b39fcd57a337b",
+   "observatii": [
+    {
+     "id": "843fde9c465690ea360ae22918df30d9",
+     "id_url": 1393,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar caracteristicile generale ale depozitelor la termen (valute acceptate, perioade disponibile, reînnoire automată), dar nu conține nicio valoare numerică pentru dobândă, comisioane sau alte cifre concrete.",
+     "content_hash": "35f749f7399aa2e71c8109c8a10c0cc30c995a59ad6cf60b516b39fcd57a337b",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e13bfbbacc256664c32bfd4cc5d626d94c63a865bc67ecfd17280d188a981a31"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 4790,
+    "iesire": 166
+   }
+  },
+  {
+   "cheie": "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf||depozite la termen",
+   "url": "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen",
+   "focus": "Produsul băncii: „Depozite la termen”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1305,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+   "observatii": [
+    {
+     "id": "648ceec34295f16b9cb256867b84a0de",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.05,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON <250.000 0.05 0.15 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "d3ffdcb86cf9cff7ce026674bce8db34",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON <250.000 0.05 0.15 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "3d167d4d5414c7400745065179df6d9b",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON <250.000 0.05 0.15 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "469a79db661e8affaa8c4b0cb306864d",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON <250.000 0.05 0.15 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 250000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "da046d0b37910856497dd8c7b4c9d242",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥250.000; <1.000.000 0.10 0.20 0.25 0.35",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 250000,
+       "pana_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "8ec03d4b694081fa1aa7b2db9331713c",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥250.000; <1.000.000 0.10 0.20 0.25 0.35",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 250000,
+       "pana_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "5b8dee8bdb1420137c1bf18a4768beb1",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥250.000; <1.000.000 0.10 0.20 0.25 0.35",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 250000,
+       "pana_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "a0027a659e2c1aa0be93e0c8bb1b152f",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.35,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥250.000; <1.000.000 0.10 0.20 0.25 0.35",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 250000,
+       "pana_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "5ab6223afb7068a4b38b392ecd3da6a3",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 1.000.000 0.15 0.25 0.35 0.45",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "3877cc8cb05ca852ae2a5d10058bce25",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 1.000.000 0.15 0.25 0.35 0.45",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "59b41831af529f9422fc5f69028a0aee",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.35,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 1.000.000 0.15 0.25 0.35 0.45",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "acaf90fbc83cc0d4b902e6db90e8b23f",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.45,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 1.000.000 0.15 0.25 0.35 0.45",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 1000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "e0828fac9e0bb3e097163fed87fedd18",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR <50.000 0.00 0.00 0.00 0.01",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "9d74742402cbe78eae8a44cd0943fff2",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR <50.000 0.00 0.00 0.00 0.01",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "0540110e1478d90745a717cf50030a3a",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR <50.000 0.00 0.00 0.00 0.01",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "89d8721afc1169cf55860eb11f345bc5",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR <50.000 0.00 0.00 0.00 0.01",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "80a853760f26e7f83a5402cf1cecea75",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; <500.000 0.00 0.00 0.01 0.02",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "ddadc5fac36dbc8708b8b2089ab66da4",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; <500.000 0.00 0.00 0.01 0.02",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "3af4de441039e375d0f3dc54473c4ea7",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; <500.000 0.00 0.00 0.01 0.02",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "b3c8f8922def55542cdec0fe5a77cd8e",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.02,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; <500.000 0.00 0.00 0.01 0.02",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "3208a049470bfcc5b8eef0006830ce76",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.01 0.01 0.02 0.03",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "85f176f5c49c4ed9931ba94cfb9b162b",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.01 0.01 0.02 0.03",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "081dade94e3cffad9424b98b295f74d6",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.02,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.01 0.01 0.02 0.03",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "d54a2dba8e4056e8df8f82b9c4199e7e",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.03,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.01 0.01 0.02 0.03",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "9f90f9f962d7f73c1081031efaeb6b4c",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD <50.000 0.01 0.01 0.05 0.10",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "26b4cd06215a8ed75a93a10b56d724c6",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD <50.000 0.01 0.01 0.05 0.10",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "6eb18c6c15f5275391aa3159cd0208a6",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.05,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD <50.000 0.01 0.01 0.05 0.10",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "a879696515acf18e3d9a57f44179434e",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD <50.000 0.01 0.01 0.05 0.10",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "ce5b443754279eb2c3bdd8206f7af711",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.02,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; < 500.000 0.02 0.05 0.10 0.15",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "c93bf25b9c0177ab05971f324a517b3c",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.05,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; < 500.000 0.02 0.05 0.10 0.15",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "532bcda073832097a036239e806adab1",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; < 500.000 0.02 0.05 0.10 0.15",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "07b8179d7a0cc4616db65fb124519299",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥50.000; < 500.000 0.02 0.05 0.10 0.15",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 50000,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "dcc51e5ec03af5b637b950ce14f90bcb",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.05,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.05 0.10 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "0f9095ce20dabdf273e7cd7f1f2c371e",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.05 0.10 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "e7fb52240475ed9bcd9124143ddc2165",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.05 0.10 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "78f2a0c6d37385bb91095fe4996f00cb",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 500.000 0.05 0.10 0.20 0.30",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "d97b5a8810d725e7c3308a1712d3de41",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "CNY <500.000 0.10 0.20 0.40 0.50",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "ef125d4324c005fa41233b47f0011352",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "CNY <500.000 0.10 0.20 0.40 0.50",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "aa614dfa37cd3230d4085c364fde49af",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "CNY <500.000 0.10 0.20 0.40 0.50",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "00be754fc922e07b213a3c9e4fdf014a",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "CNY <500.000 0.10 0.20 0.40 0.50",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "b19541a841372a996eec3384f6e96fa0",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥500.000; < 3.000.000 0.15 0.30 0.50 0.60",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000,
+       "pana_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "c414633dfb5eba6771df4b1af8bb91ef",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥500.000; < 3.000.000 0.15 0.30 0.50 0.60",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000,
+       "pana_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "908627534580a097833508465c27d2a8",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥500.000; < 3.000.000 0.15 0.30 0.50 0.60",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000,
+       "pana_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "bd4d0ecdf6ac39790916f72230f8e50e",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥500.000; < 3.000.000 0.15 0.30 0.50 0.60",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 500000,
+       "pana_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "9bf42ed158f7eda78b3308020c136cb8",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 3.000.000 0.25 0.40 0.60 0.75",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "efac0a386bb31feed070655146a93f82",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 3.000.000 0.25 0.40 0.60 0.75",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "8db2945e975d9ccc970d5084eb4a253e",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 3.000.000 0.25 0.40 0.60 0.75",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "416f0b53e58782747fa60e9d6e33062f",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "≥ 3.000.000 0.25 0.40 0.60 0.75",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 48 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "suma",
+       "de_la": 3000000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "81f722de417d8a7e57cfe6c00e4393e7",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 6000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Sumă minimă pentru depozitele la termen pentru o săptămână (pe suport hârtie): 6.000 RON / 10.000 EUR/ 10.000 USD/ 20.000 CNY",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "2a562f6151e49668d6c9730ec28a3e78",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 10000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Sumă minimă pentru depozitele la termen pentru o săptămână (pe suport hârtie): 6.000 RON / 10.000 EUR/ 10.000 USD/ 20.000 CNY",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "f9aa3be7c31c982374a79573d5369f25",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 10000,
+     "unitate": "usd",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Sumă minimă pentru depozitele la termen pentru o săptămână (pe suport hârtie): 6.000 RON / 10.000 EUR/ 10.000 USD/ 20.000 CNY",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    },
+    {
+     "id": "e0c804ec1a14ebdd67eb2ae0f57be810",
+     "id_url": 1305,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 20000,
+     "unitate": "altele",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6f4e3a3582bef0e13962b45afb343638531dfb6c533fe6de7b840d0751bcad30",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Sumă minimă pentru depozitele la termen pentru o săptămână (pe suport hârtie): 6.000 RON / 10.000 EUR/ 10.000 USD/ 20.000 CNY",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "CNY"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "bankofchina",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5f7a9c86a6abb8fbfcbdb04e3be21eda2209ca5480e0ad3f884f1dd1d4863951"
+    }
+   ],
+   "respinse": [],
+   "scrise": 52,
+   "durata_s": 58,
+   "tokeni": {
+    "intrare": 10852,
+    "iesire": 7946
+   }
+  }
+ ]
+}

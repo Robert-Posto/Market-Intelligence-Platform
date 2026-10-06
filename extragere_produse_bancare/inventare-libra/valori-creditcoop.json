@@ -1,0 +1,652 @@
+{
+ "banca": "creditcoop",
+ "urluri": [
+  {
+   "cheie": "https://www.creditcoop.ro/depozit-creditcoop/||depozitul creditcoop",
+   "url": "https://www.creditcoop.ro/depozit-creditcoop/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozitul CREDITCOOP",
+   "focus": "Produsul băncii: „Depozitul CREDITCOOP”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1363,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "821bec472793594e74e90202ad197d6f1819ebfe665e4d73f1aceb6e1b67d3b8",
+   "observatii": [
+    {
+     "id": "ddb7c33333f78db68e888b053cc69733",
+     "id_url": 1363,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie condiții generale ale Depozitului CREDITCOOP (sumă minimă 500 lei, termen 14 luni, plata dobânzii la scadență/lunar/capitalizat) dar nu conține nicio valoare numerică a dobânzii nominale sau DAE, deci nu există cifre de raportat pentru grila de dobânzi.",
+     "content_hash": "821bec472793594e74e90202ad197d6f1819ebfe665e4d73f1aceb6e1b67d3b8",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "80fca5660f37b861ecc7aa64caea586e0a76676db078fa49bca4f3579a391128"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 15,
+   "tokeni": {
+    "intrare": 4819,
+    "iesire": 201
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/depozit-firme-standard/||standard (depozit pentru firme)",
+   "url": "https://www.creditcoop.ro/depozit-firme-standard/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Standard (depozit pentru firme)",
+   "focus": "Produsul băncii: „Standard (depozit pentru firme)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1364,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "6968d2bd0da7a942336e3e3dd48af51378b432d8322cda0a23bfb9d1784b9f27",
+   "observatii": [
+    {
+     "id": "5ff45c5932dddc98a7e00937667ac73f",
+     "id_url": 1364,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar caracteristici generale ale depozitului Standard (sumă minimă 200 lei, termene 1-24 luni, moduri de plată a dobânzii), dar nu conține nicio valoare numerică concretă pentru dobândă (procent) sau DAE, deci nu există cifre de raportat.",
+     "content_hash": "6968d2bd0da7a942336e3e3dd48af51378b432d8322cda0a23bfb9d1784b9f27",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "9be160cd16a9fb0cdd479bc78dd332369136757b147f214253ddd587955cf599"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 15,
+   "tokeni": {
+    "intrare": 4833,
+    "iesire": 186
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf||depozit la termen - condiții generale de afaceri",
+   "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen - Condiții Generale de Afaceri",
+   "focus": "Produsul băncii: „Depozit la termen - Condiții Generale de Afaceri”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1365,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+   "observatii": [
+    {
+     "id": "95293c2263cfbf9ebe514b60f83c711a",
+     "id_url": 1365,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul este un cadru general (CGA) pentru organizațiile cooperatiste CREDITCOOP și conține doar prevederi generale, calitative, despre depozitul la termen (definiții, mod de constituire, garantare FGDB, formula de calcul a dobânzii D=S*n*r%/365, posibilitatea băncii de a modifica dobânzile). Nu există niciun tabel sau cifră concretă de dobândă nominală, DAE, comision sau sumă minimă pentru Depozitul la termen; textul trimite la „Lista de dobânzi” și „Lista de comisioane și taxe” afișate separat la sediile băncii, care nu sunt incluse în acest document.",
+     "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "9d2b44b15f0230ae6ccde000a347b1d48c8d36d06cce14ea6532e996c8eb6118"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 17,
+   "tokeni": {
+    "intrare": 72412,
+    "iesire": 315
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/internet-banking-personal/||internet banking personal (creditcoop.online)",
+   "url": "https://www.creditcoop.ro/internet-banking-personal/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Internet Banking Personal (creditcoop.online)",
+   "focus": "Produsul băncii: „Internet Banking Personal (creditcoop.online)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1476,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "0e5456df2a8571298fc29a8b59a19f4b46a8e0f590a2cd63589a74485ac54479",
+   "observatii": [
+    {
+     "id": "64453ec3531644106bcb2b1aafb0350a",
+     "id_url": 1476,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar general platforma creditcoop.online (beneficii, accesibilitate), fără nicio cifră privind cost abonament, comisioane tranzacții online sau cost dispozitiv de autentificare.",
+     "content_hash": "0e5456df2a8571298fc29a8b59a19f4b46a8e0f590a2cd63589a74485ac54479",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "95ba0cdfc39870e0c41fbd6277d6146dfe5ac1a15369f89f88319b37bd7889f4"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 19,
+   "tokeni": {
+    "intrare": 3361,
+    "iesire": 152
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf||condiții generale de afaceri - internet banking creditcoop.online",
+   "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Condiții Generale de Afaceri - Internet Banking creditcoop.online",
+   "focus": "Produsul băncii: „Condiții Generale de Afaceri - Internet Banking creditcoop.online”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1474,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+   "observatii": [
+    {
+     "id": "0e79f64ef5c1879a337d7974eec96c9d",
+     "id_url": 1474,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul descrie pe larg condițiile de utilizare, securitate, obligații și răspunderi pentru serviciul Internet Banking-creditcoop.online, dar nu conține nicăieri valori numerice concrete pentru cost abonament lunar, comision pe tranzacție online versus ghișeu, sau costul unui dispozitiv de autentificare (ex. token). Se menționează doar că tarifele/comisioanele sunt stabilite în documente separate („Lista de comisioane și taxe”, „Document de informare cu privire la comisioane”) care nu sunt incluse în acest text, și autentificarea se face prin user/parolă/SMS OTP, fără costuri asociate menționate.",
+     "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "9d2b44b15f0230ae6ccde000a347b1d48c8d36d06cce14ea6532e996c8eb6118"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 19,
+   "tokeni": {
+    "intrare": 70863,
+    "iesire": 317
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/internet-banking-afaceri/||internet banking afaceri (creditcoop.online)",
+   "url": "https://www.creditcoop.ro/internet-banking-afaceri/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Internet Banking Afaceri (creditcoop.online)",
+   "focus": "Produsul băncii: „Internet Banking Afaceri (creditcoop.online)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1477,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "2b71e9c89520af1745938072b45a593b2db0b92eeecd9da2ed025b20af6e6ac8",
+   "observatii": [
+    {
+     "id": "676ba4669aa9d9db0759ec82aed1ac01",
+     "id_url": 1477,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar general platforma creditcoop.online (beneficii, acces) fără nicio informație despre costuri, abonament, comisioane sau dispozitiv de autentificare.",
+     "content_hash": "2b71e9c89520af1745938072b45a593b2db0b92eeecd9da2ed025b20af6e6ac8",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e7548f04f6e08cce59b1a4070d14c053edc0e3f066517a531db5bc68df5ec2ca"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 22,
+   "tokeni": {
+    "intrare": 3335,
+    "iesire": 141
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/fisiere/Manual-utilizare-Internet-Banking-CREDITCOOP.pdf||ghidul utilizatorului creditcoop internet banking",
+   "url": "https://www.creditcoop.ro/fisiere/Manual-utilizare-Internet-Banking-CREDITCOOP.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Ghidul utilizatorului CREDITCOOP Internet Banking",
+   "focus": "Produsul băncii: „Ghidul utilizatorului CREDITCOOP Internet Banking”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1475,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "e14d02f7df295bec8f23537c2f748e33d7533001e8e011c588eb30c777ad3078",
+   "observatii": [
+    {
+     "id": "415a6d5fe2c9411b7830f3c48ed28cd5",
+     "id_url": 1475,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul este un ghid de utilizare funcțională a aplicației CREDITCOOP Internet Banking (autentificare, plăți, depozite, credite, profil etc.) și nu conține nicio informație despre costuri: nu există mențiuni despre abonament lunar, comision pe tranzacție online versus ghișeu sau costul unui dispozitiv de autentificare (se folosește doar autorizare prin SMS, fără token fizic menționat cu cost).",
+     "content_hash": "e14d02f7df295bec8f23537c2f748e33d7533001e8e011c588eb30c777ad3078",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "af89ff96b731c5a9442b5ce76059fd519f16ad37e04f32f203f7e0f7eec1dbe4"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 23,
+   "tokeni": {
+    "intrare": 25687,
+    "iesire": 236
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/credite-pentru-investitii-imobiliare/||credite pentru investiții imobiliare (credit imobiliar-ipotecar)",
+   "url": "https://www.creditcoop.ro/credite-pentru-investitii-imobiliare/",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Credite pentru investiții imobiliare (Credit imobiliar-ipotecar)",
+   "focus": "Produsul băncii: „Credite pentru investiții imobiliare (Credit imobiliar-ipotecar)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1534,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "d8bf32854d5ffa675d5a439713a8b714ba5cd0fc6ebc25a5bbc3cd7bade2301c",
+   "observatii": [
+    {
+     "id": "0de60289aecc78c035d93326715ed946",
+     "id_url": 1534,
+     "id_produs": "ipotecar",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "nepublicat",
+     "nota": "Textul descrie calitativ Creditul imobiliar-ipotecar (avantaje, acte necesare, venituri acceptate) dar nu publică nicio cifră concretă (dobândă, DAE, avans minim, perioadă, comisioane) pentru acest produs; există doar mențiuni generale despre un simulator de rate și despre factori care influențează dobânda, fără valori numerice.",
+     "content_hash": "d8bf32854d5ffa675d5a439713a8b714ba5cd0fc6ebc25a5bbc3cd7bade2301c",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ded30d48cb7411cf7dc87d2d35ac61d9a6fe49dc95cf25f6329846a6648b8d1"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 10,
+   "tokeni": {
+    "intrare": 7495,
+    "iesire": 212
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/credit-nevoi-personale/||credit nevoi personale",
+   "url": "https://www.creditcoop.ro/credit-nevoi-personale/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit nevoi personale",
+   "focus": "Produsul băncii: „Credit nevoi personale”.\nCorespunde produsului Libra: „Credit nevoi personale”; „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1604,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1611,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "81fd01ecf4b67511bca2f25e99bb8bce7a4e7d9eff6044706669ffd699c6f89c",
+   "observatii": [
+    {
+     "id": "5f03f1ead6a45ff24a215e72a5fc30b9",
+     "id_url": 1604,
+     "id_produs": "nevoi-personale",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "nepublicat",
+     "nota": "Pagina descrie doar calitativ produsul „Credit nevoi personale” (avantaje, acte necesare, venituri acceptate) și menționează existența unui simulator de rate, dar nu publică nicio cifră concretă (dobândă, DAE, comisioane, sume, perioade) pentru acest produs.",
+     "content_hash": "81fd01ecf4b67511bca2f25e99bb8bce7a4e7d9eff6044706669ffd699c6f89c",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "e853546093970f95e5f16ae65e517202cf281fbde63e8771ea20fcc7fcb9417f"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 3,
+   "tokeni": {
+    "intrare": 6810,
+    "iesire": 185
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/intrebari-frecvente/||credit nevoi personale",
+   "url": "https://www.creditcoop.ro/intrebari-frecvente/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit nevoi personale",
+   "focus": "Produsul băncii: „Credit nevoi personale”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1612,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "a58c2fe6156830939c9676d7e0eed092de66fab09a51e88648c8793f2fcf8d9f",
+   "observatii": [
+    {
+     "id": "defccdd8079ea039f40cee3204167fe6",
+     "id_url": 1612,
+     "id_produs": "nevoi-personale",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul conține întrebări frecvente generale despre credite, depozite și despre cardul de credit CREDITCOOP, dar nu conține cifre sau date specifice despre creditul de nevoi personale (dobândă, DAE, sumă maximă, perioadă, comisioane etc.). Singurele valori numerice de credit găsite se referă la cardul de credit CREDITCOOP (Visa Classic VIP/Standard), care este un produs diferit, nu creditul de nevoi personale.",
+     "content_hash": "a58c2fe6156830939c9676d7e0eed092de66fab09a51e88648c8793f2fcf8d9f",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5ee03b2e1a7a67053e3a823327be8809dcfd2d3a00cdf05abfe5d7ca4aa5f6b0"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 14303,
+    "iesire": 247
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/acces-cont-economii/||acces cont economii (personal)",
+   "url": "https://www.creditcoop.ro/acces-cont-economii/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Acces cont economii (Personal)",
+   "focus": "Produsul băncii: „Acces cont economii (Personal)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1650,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "9920b1f511c57a8209020cf2815bed405010605a19db3d5dd81ef4d76ef15382",
+   "observatii": [
+    {
+     "id": "d3d05ea0f26155fb7e68faeeb0009a76",
+     "id_url": 1650,
+     "id_produs": "economii",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "nepublicat",
+     "nota": "Textul descrie produsul \"Acces cont economii\" (beneficii, suma minimă de 100 lei, dobândă variabilă) dar nu publică nicio valoare numerică pentru dobândă, DAE sau comisioane - doar mențiuni generale (\"dobândă atractivă\", \"dobândă variabilă\"), fără cifre concrete.",
+     "content_hash": "9920b1f511c57a8209020cf2815bed405010605a19db3d5dd81ef4d76ef15382",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "99b144571c1182b653409c23d139898a533ff73ed7b9502949e55f5ee8894d84"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 3,
+   "tokeni": {
+    "intrare": 4185,
+    "iesire": 196
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/depozit-firme-acces-cont-economii/||acces cont economii (business)",
+   "url": "https://www.creditcoop.ro/depozit-firme-acces-cont-economii/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Acces cont economii (Business)",
+   "focus": "Produsul băncii: „Acces cont economii (Business)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1651,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "2b00435c71cc857f126804161d8eeebf398997acfe7f67821f4e0729de70a4c4",
+   "observatii": [
+    {
+     "id": "b4dacc8eb0b52b937c563702ad98ab93",
+     "id_url": 1651,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2b00435c71cc857f126804161d8eeebf398997acfe7f67821f4e0729de70a4c4",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă de constituire este de 500 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "336708efafd9c411ba63c4a5db85ddf1b8c7dc2d4fddd71271fb036ecf0dee42"
+    },
+    {
+     "id": "319a27175fbaa86c3531aced82ebc953",
+     "id_url": 1651,
+     "id_produs": "economii",
+     "camp": "comision_deschidere",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2b00435c71cc857f126804161d8eeebf398997acfe7f67821f4e0729de70a4c4",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Fără comision la constituirea depozitului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "336708efafd9c411ba63c4a5db85ddf1b8c7dc2d4fddd71271fb036ecf0dee42"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 4180,
+    "iesire": 285
+   }
+  }
+ ]
+}

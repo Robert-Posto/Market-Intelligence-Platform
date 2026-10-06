@@ -9,6 +9,7 @@ import { faraDiacritice, num } from '../../../util/format'
 import Aplicatii from './Aplicatii'
 import Detaliu from './Detaliu'
 import Functionalitati from './Functionalitati'
+import Magazin from './Magazin'
 import { eticheta, indexeaza, sePotriveste, type PropsSectiune, type Sectiune } from './model'
 import Portofele from './Portofele'
 import Schimbari from './Schimbari'
@@ -16,6 +17,7 @@ import TrackerePermisiuni from './TrackerePermisiuni'
 import '../../../styles/android.css'
 
 const SECTIUNI: { k: Sectiune; nume: DictKey; C: ComponentType<PropsSectiune> }[] = [
+  { k: 'magazin', nume: 'mobil.android_s.magazin', C: Magazin },
   { k: 'aplicatii', nume: 'mobil.android_s.aplicatii', C: Aplicatii },
   { k: 'functionalitati', nume: 'mobil.android_s.functionalitati', C: Functionalitati },
   { k: 'trackere', nume: 'mobil.android_s.trackere', C: TrackerePermisiuni },
@@ -24,10 +26,11 @@ const SECTIUNI: { k: Sectiune; nume: DictKey; C: ComponentType<PropsSectiune> }[
 ]
 
 /**
- * 2.3, Android: analiza statică a APK-urilor (pachetul lui Nicolae din 05.10.2026),
- * nu pagina din Google Play — fără notă, recenzii sau capturi de magazin. Cinci
- * secțiuni pe un comutator, ca la 2.4 (o singură secțiune pe ecran, aleasă în
- * adresă: `?platforma=android&s=portofele`); filtrele din bară se aplică tuturor.
+ * 2.3, Android: prima secțiune e pagina din Google Play (notă, evaluări, descărcări,
+ * capturi; ingest/google_play_app.mjs, 06.10.2026), restul sunt analiza statică a
+ * APK-urilor (pachetul lui Nicolae din 05.10.2026). Șase secțiuni pe un comutator, ca la
+ * 2.4 (o singură secțiune pe ecran, aleasă în adresă: `?platforma=android&s=portofele`);
+ * filtrele din bară se aplică tuturor.
  * Clic pe o aplicație, în orice secțiune, deschide detaliul ei.
  */
 export default function Android() {

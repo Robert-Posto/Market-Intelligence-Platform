@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/finantare/finantarea-activitatii-curente/linia-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit BCR",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de creditare revolving pentru firme și IMM-uri, destinat finanțării capitalului de lucru și acoperirii decalajului dintre plăți și încasări, exact ca LINIE_CREDIT Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu descriere detaliată, caracteristici și cifre (perioadă de creditare, tip revolving), identică ca tip și segment cu produsul Libra.",
+      "citat": "Produs de creditare de tip revolving, cu trageri şi rambursări multiple în cadrul perioadei de creditare, în limita plafonului disponibil. Ai o perioadă de creditare de până la 36 de luni, cu o scadență unică stabilită în ultima zi a perioadei de creditare – simplu fără griji, în lei sau valută.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/finantare/finantarea-activitatii-curente",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțarea activității curente - Linie de credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub listează linia de credit alături de overdraft și alte produse de finanțare a activității curente pentru IMM-uri, cu descrierea exactă a liniei de credit ca produs revolving multi-tragere.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină generală despre finanțarea activității curente care include descrierea specifică a liniei de credit ca produs distinct, dar cu mai puține cifre decât pagina dedicată.",
+      "citat": "Produs de creditare de tip revolving, cu trageri şi rambursări multiple în cadrul perioadei de creditare, în limita plafonului disponibil. Cu BCR ai acces la surse flexibile de finanţare (linie de credit, overdraft) pentru stocuri, salarii, furnizori sau creştere.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1079,
+    "citire_cache": 6420,
+    "scriere_cache": 36595,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1035695
+  }
+}

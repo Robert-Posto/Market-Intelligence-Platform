@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-05",
+  "banca": "raiffeisen",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/economii/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen clasic pentru persoane fizice, în Lei/EUR/USD, cu dobândă fixă, pe diverse maturități - corespunde exact produsului Libra Depozit la termen pentru segmentul persoane fizice.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține grila completă de dobânzi, sume minime și termene pentru toate valutele.",
+      "citat": "Depozite la termen in Lei · 12 luni · 500 Lei · 5.20% · reinnoire automata Depozite la termen in Lei · 24 luni · 500 Lei · 6.40% · inchidere la maturitate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/economii-si-plasamente/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen pentru IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen clasic pentru persoane juridice (IMM), cu dobândă fixă și plată lunară, pe mai multe valute și termene - corespunde segmentului persoane juridice din produsul Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului IMM conține grila de dobânzi pe valute și termene, plus limita minimă de constituire.",
+      "citat": "Depozite standard IMM in LEI Depozite pe transe valorice, pe baza de contract, cu rata fixa de dobanda si plata lunara a dobanzii Termen de depunere Rata anuala de dobanda(%) 1 luna 4,25% 3 luni 4,55% 6 luni 4,80% 12 luni 4,90%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/persoane-fizice/in-sprijinul-tau/informatii-utile/dobanzi-si-costuri-complete/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen (Oferta produse de economisire PF)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial cu dobânzile curente și istorice pentru depozitele la termen persoane fizice, în Lei și valută, inclusiv dobânzile de lichidare anticipată.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina de dobânzi și costuri complete conține valorile actualizate periodic pentru fiecare tip și termen de depozit.",
+      "citat": "Depozit cu rata de dobanda fixa, plata sau capitalizarea dobanzii la scadenta. 12 luni - cu reinnoire automata 5.20% Depozit rata de dobanda fixa, cu virarea soldului si dobanzii in cont curent la scadenta. 24 luni - fara reinnoire automata 6.40%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1835,
+    "citire_cache": 6354,
+    "scriere_cache": 36810,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11165380000000001
+  }
+}

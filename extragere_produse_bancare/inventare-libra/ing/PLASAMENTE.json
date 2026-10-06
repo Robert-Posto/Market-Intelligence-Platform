@@ -1,0 +1,32 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "blocat_de_robots",
+    "nota": "ING Bank oferă servicii legate de titluri de stat (este dealer primar pe piața titlurilor de stat și păstrează conturi de titluri de stat pentru clienți la BNR-SaFIR), dar singurele documente dedicate acestui subiect (ex: 'Documentul cu informații esențiale din perspectiva art. 38 alin. 6 CSDR', Documentul de prezentare MiFID) sunt fișiere PDF găzduite sub calea /dam/ care este blocată pentru acces automat (eroare de permisiune la fiecare încercare de fetch pe orice URL /dam/...). Nu există o pagină HTML dedicată, needlocată, cu cifre concrete (dobânzi/comisioane/sume) pentru achiziția de titluri de stat, nici pentru persoane fizice, nici pentru persoane juridice. Produsul retail de investiții al ING (pagina 'Investiții' / ING Invest, https://ing.ro/persoane-fizice/economii-si-investitii/investitii) acoperă explicit doar acțiuni, ETF-uri și fonduri mutuale listate la BVB și pe piețe europene, fără menționarea titlurilor de stat ca instrument tranzacționabil direct de retail. Pagina generală pentru companii 'Soluții complexe pentru piețele financiare' (https://ing.ro/imm/operatiuni-curente/solutii-complexe-pentru-pietele-financiare) menționează generic 'Obligațiuni' și 'Depozite la termen' în trezorerie, dar fără nicio cifră și fără a numi explicit titluri de stat ca produs dedicat."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/persoane-fizice/economii-si-investitii/investitii",
+    "https://ing.ro/dam/jcr:592ddc91-9b7c-4834-970c-fc7a1d57efc7/documentul-cu-informatii-esentiale-din-perspectiva-art.-38---alineatul-6-din-csdr.pdf",
+    "https://ing.ro/companii-mari/solutiile-noastre",
+    "https://www.ing.ro/dam/jcr:592ddc91-9b7c-4834-970c-fc7a1d57efc7/documentul-cu-informatii-esentiale-din-perspectiva-art.-38---alineatul-6-din-csdr.pdf",
+    "https://ing.ro/robots.txt",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/COMISIOANE-ING-Invest.pdf",
+    "https://ing.ro/ing-in-romania/informatii-utile/mifid",
+    "https://ing.ro/imm/operatiuni-curente/solutii-complexe-pentru-pietele-financiare"
+  ],
+  "durata_s": 105,
+  "consum": {
+    "intrare": 266078,
+    "iesire": 8242,
+    "citire_cache": 255736,
+    "scriere_cache": 94827,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.9027907
+  }
+}

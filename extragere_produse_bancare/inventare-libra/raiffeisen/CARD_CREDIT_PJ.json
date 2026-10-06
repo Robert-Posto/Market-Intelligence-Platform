@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-credit/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Visa Business (Silver/Gold)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (card de credit revolving business, cu perioadă de grație) și același segment (persoane juridice/IMM), dar diferă plafonul maxim și baza de calcul: Raiffeisen limitează la 100.000 lei / max. 10% din CA și scadență fixă de 48 luni, față de 10.000–500.000 lei / max. 5% din CA la Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele relevante: sumă maximă, scadență, perioadă de grație, rambursare minimă și garanții.",
+      "citat": "Suma maxima: 100.000 lei, dar nu mai mult de 10% din Cifra de Afaceri a companiei calculata pe baza ultimului bilant, pentru an financiar intreg, depus la Administratia Financiara. Scadenta creditului: 48 luni. Perioada de valabilitate a cardului: 48 luni. Perioada de gratie: pana la 45 zile (include perioada de 15 zile in care trebuie rambursata suma minima lunara). Modalitatea de rambursare: suma minima ce trebuie rambursata lunar din soldul creditului, este de 10%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/carduri-de-credit.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Visa Business (Silver/Gold)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Variantă a aceleiași pagini de produs (card de credit business revolving pentru PJ), cu aceleași cifre de eligibilitate și plafon ca varianta anterioară.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre identice privind suma maximă, scadența și eligibilitatea.",
+      "citat": "Suma maximă: 100.000 lei, dar nu mai mult de 10% din Cifra de Afaceri a companiei calculată pe baza ultimului bilanț, pentru an financiar întreg, depus la Administrația Financiară. Scadența creditului: 48 luni. Perioada de valabilitate a cardului: 48 luni. Perioada de grație: până la 45 zile (include perioada de 15 zile în care trebuie rambursată suma minimă lunară).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de credit persoane juridice - VISA Business Silver / VISA Business Gold",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de tarife și comisioane pentru carduri de credit persoane juridice (Visa Business Silver/Gold), aceeași linie de produs identificată mai sus, cu comisioane explicite pentru emitere/retrageri.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit secțiunea 10.2 Carduri de credit persoane juridice cu denumirile Visa Business Silver/Gold și comisioane, dar nu conține plafoanele de sumă din pagina de produs.",
+      "citat": "10.2 Carduri de credit persoane juridice VISA Business Silver VISA Business Gold VISA Business lei VISA Business euro CARD MFM*** 30 LEI",
+      "pagina_pdf": 10,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2636,
+    "citire_cache": 6357,
+    "scriere_cache": 30059,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10278689999999999
+  }
+}

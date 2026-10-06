@@ -1,0 +1,82 @@
+{
+  "generat": "2026-10-05",
+  "banca": "brd",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/persoane-fizice/online-banking/you",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "YOU BRD (aplicație de mobile și internet banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este aplicația actuală de mobile banking a BRD pentru persoane fizice, cu funcționalități echivalente celor din Libra (plăți instant, cod QR / RoPay, deschidere conturi și depozite online, administrare carduri).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată YOU BRD conține descrierea funcționalităților și cifre concrete despre limitele și viteza plăților instant.",
+      "citat": "Zi sau noapte, orice transfer ajunge instant în contul ales, între băncile participante la sistemul de plăți interbancare. Principalele beneficii: poți transfera sume mai mici de 50.000 Lei, plata se va procesa în maximum 20 de secunde, fără comision diferențiat, beneficiezi de serviciu ca persoană fizică.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Practical%20user%20guide%20for%20MyBRD%20Mobile.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "MyBRD Mobile - Ghid practic de utilizare",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ghidul descrie condițiile tehnice și limitele de tranzacționare pentru serviciul de mobile banking MyBRD Mobile, aplicabil atât persoanelor fizice cât și persoanelor autorizate/juridice, cu cifre concrete privind limitele de transfer.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul conține explicit limitele numerice de tranzacționare pentru MyBRD Mobile, diferențiate pe tip de client.",
+      "citat": "As an extra security measure, MyBRD Mobile service provides transactional functionalities based on 2 types of limits: The limit for each transaction: RON 30,000. The limit for the amount of transactions: RON 50,000/day for Natural Persons and RON 100,000/day for Self-Employed Persons.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/persoane-fizice/mybrd/mybrd-mobile",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "MyBRD Mobile",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este aplicația anterioară de mobile banking a BRD pentru persoane fizice, aflată în proces de înlocuire cu YOU BRD; oferă funcționalități similare (plăți, QR, token mobil, ContALL) dar este un produs în retragere, nu cel curent.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie clar funcționalitățile aplicației, dar fără cifre tarifare directe pe pagină; este produsul istoric, în curs de înlocuire cu YOU BRD.",
+      "citat": "Poți să îți adaugi toate conturile, de la BRD și alte bănci și să îți urmărești toate tranzacțiile, împărțite pe categorii. Și știi exact pe ce s-au dus banii, nu doar când s-au dus.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/en/companies/sme/current-activity/mobile-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "MyBRD Mobile (Mobile banking IMM<1M Euro)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echivalentul aplicației de mobile banking pentru segmentul companii (IMM), însă funcționalitățile descrise sunt mai limitate decât aplicația Libra (RoPay, Click to Pay) și nu conține cifre tarifare pe pagină.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina este dedicată mobile banking-ului pentru companii mici (IMM<1M Euro), dar descrierea funcționalităților nu include valori numerice specifice.",
+      "citat": "Information about all BRD accounts – MyBRD Mobile shows your account balance, transactions history and status; Transfers between own accounts no matter the currency or to national beneficiaries; You can define beneficiaries that you will then select during transfers; Bill payments.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 444,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4912,
+    "citire_cache": 46521,
+    "scriere_cache": 58657,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2050787
+  }
+}

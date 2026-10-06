@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/en/companies/sme1-50m-euro/cash-management/smart-imm-package",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul SMART IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament/pachet corporate pentru persoane juridice care include mai multe conturi curente multivalutare (RON + EUR/USD) și un card business la un cost fix lunar, ca și ABONAMENT_PRIME. Diferă însă segmentul vizat (clienți Corporate cu cifră de afaceri până la 5 mil. EUR, nu generic IMM/PFA), numărul de carduri incluse (1, nu 2) și nu este menționat explicit un serviciu de tip Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată pachetului SMART IMM, cu prețul de bază și componentele incluse (conturi, card, BRD@ffice) prezentate explicit în text.",
+      "citat": "Acquire the basic package at 24 RON/ month and you will have: • 2 current accounts in RON • 2 current account in foreign currency ( EUR and/or USD) • 1 business card (issuing and management fee) • BRD@ffice (management fee)",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de produse SMART IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice detaliază comisionul pachetului de bază SMART IMM și extraopțiunile de transferuri interbancare (ex. 10 transferuri/lună), echivalentul componentei de plăți incluse din abonamentul Libra, dar structurate altfel (pachet de bază + extraopțiuni plătite separat, nu un singur preț all-inclusive cu 25 de plăți instant).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul oficial de tarife include o secțiune dedicată explicit pachetelor SMART IMM (cod 15.2) cu sume concrete pentru administrare și transferuri.",
+      "citat": "Gestionarea pachetelor de produse SMART IMM, astfel: Pachet de Baza, la care pot fi adaugate: 10 transferuri de credit, interbancare BRD - alte banci din Romania, non-urgente,",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent",
+    "https://campanii.brd.ro/suntantreprenor/pachete-de-servicii-imm.html",
+    "https://www.brd.ro/companii/imm-sub-1m-euro/pachete-cont-curent/antreprenor-curajos",
+    "https://www.brd.ro/smart-imm",
+    "https://www.brd.ro/companii/imm1-50m-euro/cash-management/pachet-smart-imm",
+    "https://www.brd.ro/en/companies/sme1-50m-euro/cash-management/smart-imm-package",
+    "https://www.brd.ro/companii/imm1-50m-euro/cash-management/pachetul-smart-imm"
+  ],
+  "durata_s": 80,
+  "consum": {
+    "intrare": 24326,
+    "iesire": 6796,
+    "citire_cache": 216820,
+    "scriere_cache": 83700,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.369226
+  }
+}

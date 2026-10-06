@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri/card-debit-visa-gold.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card debit Raiffeisen Gold (Visa Debit Gold)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (card de debit premium, persoane fizice) cu acces lounge și beneficii de călătorie, dar la Raiffeisen nu are asigurare de călătorie inclusă, cashback sau dobândă la sold, iar taxa anuală e mult mai mare (200 lei vs 48 lei la Libra); numărul de intrări gratuite lounge este 3/an, nu retrageri ATM gratuite.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre concrete (3 intrări lounge/an, prag 2.000 lei, comision zero la retrageri condiționat de pachet de cont).",
+      "citat": "Beneficiezi de 3 intrări anuale gratuite în Business Lounge-urile din aeroporturile din România și Viena, la plăți de minimum 2.000 de lei. Beneficiezi de ZERO comision la retrageri în lei, de la mii de ATM-uri din țară, oricând ai nevoie, fără să fii nevoit să cauți un bancomat Raiffeisen, dacă îți faci și pachet de cont curent.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri/card-debit-visa-gold.html#:~:text=Beneficiezi%20de%203%20intr%C4%83ri%20anuale,%C8%99i%20pachet%20de%20cont%20curent."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf/20260901-Tarife-si-comisioane-standard-persoane-fizice.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Visa Gold (card de debit)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife standard persoane fizice conține un tabel dedicat cardurilor de debit, cu coloana 'Visa Gold / Visa Platinum', unde apar taxele anuale și comisioanele de retragere numerar aplicabile cardului Gold.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife, cu valori explicite pentru cardul Visa Gold (taxă emitere, taxă anuală, comision retragere numerar).",
+      "pagina_pdf": 7,
+      "citat": "Comision administrativ Taxă inițială de furnizare (emitere/înlocuire la expirare) card* 0 lei 70 lei Taxă anuală de administrare card** 25 lei 200 lei Taxă de livrare card**** 15 lei 15 lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-debit-visa-business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card debit Visa Business Gold",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Variantă pentru persoane juridice a cardului de debit cu acces lounge, dar fără cashback, fără dobândă la sold și fără retrageri gratuite lunare menționate explicit; pragul de rulaj pentru lounge este 5.000 lei, diferit de cel de la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată cardurilor de debit Business conține o secțiune separată pentru varianta Gold, cu cifre despre rulaj minim și numărul de vizite gratuite în lounge.",
+      "citat": "3 intrări gratuite pe an în saloanele Business Lounge din Otopeni, Cluj, și Timișoara. Pentru a fi eligibil este necesar un rulaj minim de 5.000 lei pe o perioadă variabilă de referință, calculată de la a 5-a duminică anterioară accesului.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-debit-visa-business/#:~:text=3%20intr%C4%83ri%20gratuite%20pe%20an,a%205%2Da%20duminic%C4%83%20anterioar%C4%83%20accesului."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/carduri/card-debit-visa-gold.html",
+    "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/carduri-de-debit-visa-business/",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf/20260901-Tarife-si-comisioane-standard-persoane-fizice.pdf.coredownload.pdf"
+  ],
+  "durata_s": 67,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4887,
+    "citire_cache": 96556,
+    "scriere_cache": 82942,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2755522
+  }
+}

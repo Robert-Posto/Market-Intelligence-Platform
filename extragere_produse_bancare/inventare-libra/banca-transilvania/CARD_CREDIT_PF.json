@@ -1,0 +1,72 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Star Forte — Card de credit persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de comisioane care listează separat, cu toate cifrele, cardul de credit Star Forte pentru persoane fizice (dobândă, DAE, comisioane de administrare, penalizări), analog CARD_CREDIT_PF.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF-ul oficial 'Comisioane persoane fizice Septembrie 2026' conține un tabel dedicat integral cardului Star Forte, cu toate cifrele actualizate.",
+      "pagina_pdf": 16,
+      "citat": "Star Forte — Card de credit persoane fizice Deschiderea contului de card 0 LEI Emitere card MASTERCARD FORTE cu cip 20 LEI / card Administrare anuală/card deținător 25 LEI/ card Dobândă anuală fixă 24%/ an Dobândă Anuală Efectivă, calculată la un credit în valoare de 10.000 lei 26.77%/ an",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/carduri/carduri-de-cumparaturi/compara-cardurile-star",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit STAR (Forte / Gold / Platinum)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving RON pentru persoane fizice, cu perioadă de grație și rate fără dobândă la comercianți parteneri, exact ca produsul Libra CARD_CREDIT_PF.",
+      "incredere": 0.93,
+      "explicatie_incredere": "Pagina oficială de comparare a cardurilor STAR conține cifrele exacte pentru fiecare variantă: venit minim, sumă maximă și perioada de grație.",
+      "tip_pdf_optional": null,
+      "citat": "Venit minim obligatoriu 800 lei 4.000 lei 12.000 lei Suma maximă 25.000 lei 50.000 lei 150.000 lei Perioada de grație Până la 55 zile Până la 55 zile Până la 55 zile",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/carduri/carduri-de-cumparaturi/compara-cardurile-star#:~:text=Venit%20minim%20obligatoriu%20800%20lei,zile%20P%C3%A2n%C4%83%20la%2055%20zile"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/en/carduri/carduri-de-cumparaturi/star-card",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Star Card (STAR Forte/Gold/Platinum) - Credit card for shopping",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată descrie explicit cardul de credit STAR ca linie de credit revolving cu perioadă de grație de 55 zile și plată în rate fără dobândă la comercianți parteneri, echivalent funcțional cu CARD_CREDIT_PF.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina de produs conține cifrele cheie (perioadă de grație 55 zile, până la 18/24 rate fără dobândă) dar este varianta în limba engleză a site-ului.",
+      "citat": "You have a grace period of 55 days for both types of transactions: card purchases or cash withdrawals. You shop up to 18 installments without interest and without fees.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/cardul-de-credit-star-forte-100-online/",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-fizice.pdf",
+    "https://www.bancatransilvania.ro/carduri/carduri-de-cumparaturi/star-card",
+    "https://blog.bancatransilvania.ro/educatie-financiara/cum-folosesti-in-avantajul-tau-cardul-de-cumparaturi",
+    "https://www.bancatransilvania.ro/en/carduri/carduri-de-cumparaturi/compara-cardurile-star",
+    "https://www.bancatransilvania.ro/carduri/carduri-de-cumparaturi/compara-cardurile-star"
+  ],
+  "durata_s": 76,
+  "consum": {
+    "intrare": 134043,
+    "iesire": 5368,
+    "citire_cache": 512489,
+    "scriere_cache": 187246,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.8923787999999999
+  }
+}

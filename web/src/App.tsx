@@ -11,8 +11,11 @@ import Context from './pages/Context'
 import Istoric from './pages/Istoric'
 import Versus from './pages/Versus'
 import Banca from './pages/Banca'
+import Concurenta from './pages/Concurenta'
 import SursePagina from './pages/SursePagina'
 import Coada from './pages/Coada'
+import Logging from './pages/Logging'
+import RulareManuala from './pages/RulareManuala'
 
 /* maplibre-gl și pdfjs-dist sunt aproape jumătate din pachet (2,6 MB într-un singur fișier la 05.10.2026):
    se încarcă doar când se deschide harta sau un document, nu pe fiecare pagină */
@@ -36,8 +39,11 @@ export default function App() {
         <Route path="/istoric" element={<Istoric />} />
         <Route path="/versus" element={<Versus />} />
         <Route path="/banca" element={<Banca />} />
+        <Route path="/concurenta" element={<Concurenta />} />
         <Route path="/surse" element={<SursePagina />} />
         <Route path="/coada" element={<Coada />} />
+        <Route path="/logging" element={<Logging />} />
+        <Route path="/rulare" element={<RulareManuala />} />
         {/* pagina 2.7 s-a mutat în 2.3 (ca în aplicația veche) */}
         <Route path="/sentiment" element={<Navigate to="/mobil?la=recenzii" replace />} />
         <Route path="*" element={<Navigate to="/overview" replace />} />

@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Business Card (Visa Business Manager)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este cardul de debit atașat conturilor curente pentru firme/PFA la ING, inclus standard în toate pachetele de cont curent pentru companii (ING Fix și ING Profesional), exact ca segment (persoane juridice) și funcție (card de debit business) ca produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru firme descrie explicit cardul 'Visa Business Manager' ca parte standard a ofertei de business, cu detalii despre tranzacțiile permise.",
+      "citat": "Toate pachetele ING FIX, dar și oferta ING Profesional includ: un cont curent, un card Visa Business Manager și sistemul de Internet Banking, ING Business.",
+      "metoda_dovada": "http",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card Visa Business Manager",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice/PFA conține o secțiune dedicată comisioanelor pentru cardul de debit business 'Visa Business Manager' (emitere, administrare anuală), același tip de produs și segment ca CARD_DEBIT_BUSINESS.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Lista oficială de taxe și comisioane pentru persoane juridice conține rândul explicit cu comisioanele cardului Visa Business Manager, inclusiv taxa de administrare 0 lei pentru primul card inclus în pachet.",
+      "citat": "Taxa de administrare card este 0 lei în cazul primului card de tip VISA Business în RON inclus în pachetul de cont curent achiziționat de Client.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati-25-Iulie-2024.pdf",
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+    "https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/arhiva-pj/Tarife-si-Comisioane-pentru-Persoane-Juridice--Anexa-1-pentru-Persoane-Juridice-care-utilizeaza-ING-Business-11-Noiembrie-2022.pdf0",
+    "https://ing.ro/dam/jcr:22cb2431-0cb2-499e-8c75-9bf65af1ffd3/Termeni%20si%20conditii%20privind%20Utilizarea%20Cardurilor%20pentru%20Persoane%20Juridice%20si%20Alte%20Entitati%2016%20septembrie%202022.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Tarife-si-Comisioane-pentru-Persoane-Juridice.pdf"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 141790,
+    "iesire": 6780,
+    "citire_cache": 93127,
+    "scriere_cache": 52274,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5006904000000001
+  }
+}

@@ -11,7 +11,8 @@
  */
 export const android = {
   // ---- bara și secțiunile ----
-  "mobil.android_s.aplicatii": ["Aplicații", "Apps"],
+  "mobil.android_s.magazin": ["Google Play", "Google Play"],
+  "mobil.android_s.aplicatii": ["Aplicații (APK)", "Apps (APK)"],
   "mobil.android_s.functionalitati": ["Funcționalități", "Features"],
   "mobil.android_s.trackere": ["Trackere și permisiuni", "Trackers & permissions"],
   "mobil.android_s.portofele": ["Portofele", "Wallets"],

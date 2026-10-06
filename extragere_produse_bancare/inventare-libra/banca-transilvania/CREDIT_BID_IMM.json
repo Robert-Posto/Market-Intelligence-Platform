@@ -1,0 +1,58 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://intreb.bancatransilvania.ro/ce-avantaje-ofera-creditele-cu-garantii-bid-pentru-imm-uri/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanții BID (Credit BID)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact același tip de produs ca la Libra: credit pentru IMM/persoane juridice garantat de Banca de Investiții și Dezvoltare (BID), cu garanție de 70% din valoarea creditului, destinat atât investițiilor cât și capitalului de lucru, în lei.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina descrie explicit beneficiile și cifrele concrete ale produsului Credit cu garanții BID (procent garanție, plafon maxim, maturități), fiind pagina de referință pentru acest produs în secțiunea Întreb BT.",
+      "citat": "Printre beneficii se numără: garanție de 70% din valoarea creditului, ceea ce reduce semnificativ garanțiile cerute de bancă; contribuție proprie redusă, ceea ce ajută firmele să pornească investițiile mai ușor; finanțare disponibilă doar în lei, până la 14.000.000 lei; maturități extinse: până la 120 luni pentru investiții și până la 48 luni pentru capital de lucru (facilități nerambursabile).",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/ce-conditii-trebuie-sa-indeplineasca-o-firma-pentru-accesa-un-credit-cu-garantii-bid/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit cu garanții BID (Credit BID)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Detaliază condițiile de eligibilitate (ajutor de minimis, plafon 300.000 EUR/3 ani) pentru același produs de credit garantat BID destinat IMM-urilor, segment identic cu produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține condiția specifică de ajutor de minimis aplicabilă exact garanției BID, confirmând mecanismul de garantare identic cu cel descris la Libra.",
+      "citat": "Pentru a accesa finanțarea, firma trebuie să fie eligibilă pentru ajutor de minimis, deoarece garanția BID implică verificarea plafonului de maxim 300.000 EUR pe trei ani consecutivi.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-bid",
+    "https://intreb.bancatransilvania.ro/ce-avantaje-ofera-creditele-cu-garantii-bid-pentru-imm-uri/",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/credit-cu-garantii-bid",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale",
+    "https://www.bancatransilvania.ro/companii/finantare/programe-speciale/compara",
+    "https://intreb.bancatransilvania.ro/ce-avantaje-ofera-creditele-cu-garantii-bid-pentru-imm-uri/",
+    "https://intreb.bancatransilvania.ro/ce-conditii-trebuie-sa-indeplineasca-o-firma-pentru-accesa-un-credit-cu-garantii-bid/"
+  ],
+  "durata_s": 133,
+  "consum": {
+    "intrare": 12,
+    "iesire": 10773,
+    "citire_cache": 242824,
+    "scriere_cache": 98612,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4028488
+  }
+}

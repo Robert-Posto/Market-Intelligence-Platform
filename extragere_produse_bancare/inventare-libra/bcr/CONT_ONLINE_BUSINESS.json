@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Contul George pentru afacerea ta (Cont Online George Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane juridice (PFA, SRL, microîntreprinderi), deschis 100% online prin aplicația George, cu card de debit business atașat și pachet de servicii operaționale - corespunde exact Cont Online Business de la Libra: cont PJ digital cu card business.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: termene de deschidere, procente de reducere la comisioane și condițiile pachetului.",
+      "citat": "Pachetul George pentru afacerea ta începe cu: 3 LUNI cu ZERO comision de administrare, 12 LUNI cu ZERO comision pentru facturarea prin Smart EasyBill, 2 LUNI de contabilitate GRATUITĂ și 30% reducere la serviciile de modificare date firma și recodificare CAEN prin REGNET",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george#:~:text=Pachetul%20George%20pentru%20afacerea%20ta,%C8%99i%20recodificare%20CAEN%20prin%20REGNET"
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-valuta-george",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Contul George în valută 100% online",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Variantă a aceluiași cont de business George, dar dedicată conturilor în valută (USD, EUR, GBP, CHF) pentru afaceri cu tranzacții internaționale, diferă moneda față de contul standard în lei.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie clar produsul și procesul de deschidere, dar cifrele concrete de comisioane lipsesc, fiind orientative (timp de deschidere).",
+      "citat": "Contul Online în Valută George este un cont curent digital dedicat afacerilor care desfășoară tranzacții în valută. Acesta permite gestionarea eficientă a operațiunilor financiare internaționale, oferind acces la multiple valute precum USD, EUR, GBP, CHF și altele.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/digital-banking/cont-online-george"
+  ],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1267,
+    "citire_cache": 37413,
+    "scriere_cache": 36096,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11040460000000002
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-09-30",
+  "banca": "bcr",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor/creditul-pentru-investitii-ipotecar",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru investiții/ipotecar (componenta ipotecar, persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este produsul de creditare pentru persoane juridice (companii, IMM) destinat finanțării proiectelor imobiliare, garantat cu ipotecă reală, echivalent funcțional al unui 'credit imobiliar persoane juridice'; BCR îl include ca și componentă 'ipotecar' în cadrul creditului de investiții pentru firme.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Este pagina dedicată a produsului corect identificat (segment persoane juridice, garanție ipotecară, destinație imobiliară), dar pagina nu publică cifre concrete (dobândă, comision, plafon) - acestea fiind stabilite individual per client/proiect, practică tipică pentru creditele corporate ipotecare.",
+      "citat": "Proiecte imobiliare (prin componenta „ipotecar”) sau refinanțarea unor astfel de investiții. Astfel, produsul este potrivit pentru: companii industriale, agricole, comerciale, dezvoltatori imobiliari, întreprinderi mici și mijlocii cu planuri de creștere sau reconsolidare.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor/creditul-pentru-investitii-ipotecar#:~:text=Proiecte%20imobiliare%20%28prin%20componenta%20%E2%80%9Eipotecar%E2%80%9D%29,planuri%20de%20cre%C8%99tere%20sau%20reconsolidare."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor/creditul-pentru-investitii-ipotecar",
+    "https://www.bcr.ro/ro/business/general/finantare/finantarea-investitiilor"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2980,
+    "citire_cache": 118833,
+    "scriere_cache": 47541,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1724391
+  }
+}

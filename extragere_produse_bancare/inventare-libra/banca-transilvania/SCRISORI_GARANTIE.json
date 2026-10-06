@@ -1,0 +1,68 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție/ Acreditive Stand by",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane juridice conține o secțiune dedicată integral scrisorilor de garanție bancară emise și primite, cu procente și sume exacte de comision.",
+      "incredere": 0.92,
+      "explicatie_incredere": "PDF oficial 'Comisioane persoane juridice' cu secțiunea X 'Scrisori de garanție/ Acreditive Stand by' conținând comisioane exacte pentru emitere, majorare, prelungire, modificare și avizare a scrisorilor de garanție.",
+      "pagina_pdf": 24,
+      "citat": "Emitere / majorare / prelungire scrisoare de garanţie, garantată cu cash colateral - în LEI 0,25% / trim. sau fracțiune de trim., min. 100 LEI / trim. sau fracțiune de trim. Modificare/ Anulare scrisoare de garanție - în LEI 75 LEI",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/scrisori-de-garantie-bancara/scrisori-de-buna-executie-si-de-contragarantii-bancare",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "conditii",
+      "denumire_la_banca": "Scrisori de bună execuție și de contragaranții bancare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Subpagina descrie exact un plafon pentru eliberarea de scrisori de garanție bancară (bună execuție/contragaranție) pentru persoane juridice, cu plafoane exprimate în lei, acoperind aceeași nevoie ca produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată unui subtip de SGB, cu cifre exacte despre plafonul maxim negarantat și garantat; conținutul e livrat prin JavaScript, deci extragerea automată a cifrelor necesită randare completă (playwright).",
+      "citat": "Îți oferim posibilitatea de a accesa un plafon revolving pentru eliberarea de scrisori de garanție bancară de bună execuție sau de contra-garanție bancară de până la 1.600.000 de lei – valoare maximă negarantată, sau de până la 4.000.000 de lei – valoare maximă garantată.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/scrisori-de-garantie-bancara",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact acestui tip de produs pentru persoane juridice: scrisori de garanție bancară (participare la licitații, bună execuție, plată/restituire avans, contragaranții), identică ca funcție cu produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina principală dedicată produsului la BT, cu descriere și cifre (termen de valabilitate), dar site-ul randează conținutul prin JavaScript, astfel încât un fetch simplu nu extrage cifrele - e nevoie de randare completă a paginii.",
+      "citat": "Banca Transilvania emite mai multe tipuri de scrisori de garanție: pentru participare la licitații, pentru bună execuție, pentru plată și restituirea avansului, dar și contragaranții bancare. Acestea sunt folosite în special în cadrul contractelor comerciale și de achiziții publice, pentru a garanta plata obligațiilor, participarea la licitații sau executarea corectă a lucrărilor.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/credite/scrisori-de-garantie-bancara",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/scrisori-de-garantie-bancara/scrisori-de-buna-executie-si-de-contragarantii-bancare",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf"
+  ],
+  "durata_s": 57,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3937,
+    "citire_cache": 98813,
+    "scriere_cache": 110909,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3364251
+  }
+}

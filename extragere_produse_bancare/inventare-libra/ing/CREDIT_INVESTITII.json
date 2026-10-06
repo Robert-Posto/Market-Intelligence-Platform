@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat pentru persoane juridice (SRL/SA), destinat finanțării/refinanțării proiectelor de investiții (mașini, utilaje, echipamente, imobile), exact ca produsul Libra Credit de investiții pentru firme/PFA.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: sume minime/maxime, perioadă, grad de finanțare, garanții, mod de tragere și rambursare.",
+      "citat": "Poți să obții între 100 000 lei și 4.900.000 lei; Perioadă de finanțare extinsă, de până la 10 ani; Poți refinanța creditele sau leasing-urile contractate în condiții mai puțin avantajoase; Poți refinanța investițiile pe care le-ai făcut din surse proprii, în ultimele 12 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/Credit-cu-garantie-BID-pentru-IMM",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit cu garanție BID pentru IMM - Credit de investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru firme, dar dedicat exclusiv companiilor cu cifră de afaceri peste 9.000.000 lei și cu garanție de la BID (Banca de Investiții și Dezvoltare), deci diferă segmentul de mărime a firmei și structura de garantare față de creditul general de investiții.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține cifre precise despre valoarea creditului, procentul de garantare și perioada pentru varianta de credit de investiții cu garanție BID.",
+      "citat": "Până la 14 milioane lei pe o perioadă de până la 10 ani - Până la 18 milioane lei (echivalent euro) pe o perioadă de până la 10 ani. Valoarea creditului trebuie să se încadreze în pragul de ajutor de minimis.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1134,
+    "citire_cache": 6309,
+    "scriere_cache": 37229,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1056823
+  }
+}

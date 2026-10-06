@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/piata-valutara/tranzactii-valutare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Anyma Online Trading Platform (tranzacționare pe internet a schimburilor valutare)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singura platformă BRD de schimb valutar online cu cotații în timp real, distinctă de tranzacțiile FX clasice (Spot/ordine la curs fix prin dealer). Diferă de Live FX prin faptul că este o platformă de tranzacționare pe piețe de capital/valutare separată (necesită cont/contract dedicat de investiții, posibil cost adițional), nu o funcție integrată gratuit în Internet/Mobile Banking standard, și se adresează atât persoanelor fizice cât și juridice ca investitori, nu strict clienților cu schimburi valutare frecvente din operațiuni curente.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina descrie explicit platforma online cu cotații personalizate actualizate în timp real pentru schimb valutar, dar nu publică cifre (comisioane/sume) direct pe pagină.",
+      "citat": "Platforma de tranzacționare pe internet a schimburilor valutare oferă cotații personalizate, actualizate în timp real, și o completă libertate de decizie a momentului efectuării tranzacției.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/online-trading/anyma-online-trading",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Anyma Online Trading",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Oferă acces online la cotații valutare în timp real pentru tranzacționare, ca și Live FX, dar este poziționată ca platformă de tranzacționare pe piețe de capital (contra cost, cu modul FX dedicat), disponibilă separat atât pentru investitori persoane fizice cât și corporate, nu ca o componentă nativă și gratuită a Internet Banking-ului de retail/business precum Live FX.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată Anyma descrie funcționalitatea de tranzacționare valutară în timp real și modulul Foreign Exchange, dar menționează doar generic 'contra cost' fără a publica un comision sau o sumă exactă.",
+      "citat": "Acces pe pieţe de capital externe (Londra, Frankfurt, Paris, Viena, Zurich, Amsterdam şi Bruxelles) cu posibilitatea de a tranzacţiona cu date în timp real, contra cost",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/online-trading/anyma-online-trading",
+    "https://www.brd.ro/piete-financiare/piata-valutara-si-monetara/piata-valutara/tranzactii-valutare",
+    "https://www.brd.ro/_files/pdf/4.Anexa_2_Comisioane.pdf",
+    "https://www.brd.ro/companii/documente-utile"
+  ],
+  "durata_s": 106,
+  "consum": {
+    "intrare": 12,
+    "iesire": 7575,
+    "citire_cache": 203290,
+    "scriere_cache": 76095,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3066695
+  }
+}

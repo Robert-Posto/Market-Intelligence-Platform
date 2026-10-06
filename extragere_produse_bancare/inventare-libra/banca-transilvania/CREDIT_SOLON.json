@@ -1,0 +1,60 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_SOLON",
+  "denumire": "Credit Solon (juriști)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "BT Mic",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă explicit eligibilitatea profesiilor liberale (notar, avocat etc.) pentru creditul BT Mic, dar produsul nu este dedicat exclusiv juriștilor, ci tuturor afacerilor mici cu cifră de afaceri sub 1 milion RON.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina FAQ oficială BT precizează condițiile de eligibilitate și menționează explicit profesia liberală de notar/avocat, alături de un prag concret al cifrei de afaceri.",
+      "citat": "poți lua un împrumut de la BT Mic chiar și dacă ești persoană fizică, cu activități economice, de exemplu, producător agricol sau alt tip de persoană fizică înregistrată fiscal, iar cifra de afaceri anuală trebuie să fie de până la 1 milion de RON",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/#:~:text=po%C8%9Bi%20lua%20un%20%C3%AEmprumut%20de,la%201%20milion%20de%20RON"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/bt-mic",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BT Mic",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BT Mic este un credit general pentru afaceri mici (SRL, PFA, II, profesii liberale) fără destinație exclusivă pentru juriști, spre deosebire de Credit Solon care vizează explicit notari, avocați, executori judecătorești și practicieni în insolvență; segmentul e mai larg, dar include și profesiile liberale juridice.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre (plafonul de creditare), dar accesul direct a fost blocat, informația provenind dintr-un fragment indexat al paginii.",
+      "citat": "Poti imprumuta pana la 120.000 de lei fara garantii materiale, insa o garantie imobiliara poate urca suma pana la",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (19 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/bt-mic",
+    "https://www.btmic.ro/",
+    "https://www.bancatransilvania.ro/companii/finantare/credite",
+    "https://intreb.bancatransilvania.ro/credite-afaceri-mici/",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/bt-mic",
+    "https://www.bancatransilvania.ro/companii",
+    "https://www.bancatransilvania.ro/en/companii"
+  ],
+  "durata_s": 71,
+  "consum": {
+    "intrare": 299259,
+    "iesire": 4094,
+    "citire_cache": 172914,
+    "scriere_cache": 73696,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.8582808
+  }
+}

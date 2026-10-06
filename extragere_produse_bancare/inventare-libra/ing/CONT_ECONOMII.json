@@ -1,0 +1,82 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Economii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii în lei pentru persoane fizice, dobândă fixă unică (2%) cu acces oricând la bani fără pierderea dobânzii acumulate - același tip de produs și segment ca CONT_ECONOMII Libra, dar fără benzi de dobândă în funcție de vechimea sumei (3-6 luni / 6-12 luni) ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului ING Economii conține explicit procentul de dobândă curent și descrierea caracteristicilor (acces oricând, 0 comisioane).",
+      "citat": "Ai dobândă avantajoasa de 2% pe an - Primești o dobândă de până la 6% pe an cu Depozit Bonus pe 4 luni - Ai acces oricând la bani, fără să pierzi dobânda acumulată - Transferi instantaneu bani din contul curent, prin Home'Bank",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/Economii/Cont-de-economii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de economii (ING Business / persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cont de economii pentru companii, cu dobândă calculată la sold zilnic și acordată lunar, dar mecanismul diferă: ING aplică dobândă doar peste un prag minim de 25.000 lei și crescătoare pe praguri de sold, nu pe benzi de vechime/termen (3-6, 6-12 luni) ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului pentru firme conține explicit mecanismul de dobândă pe praguri și pragul minim de 25.000 lei.",
+      "citat": "Dobânda se aplică sumelor zilnice care depășesc 25.000 lei și devine mai avantajoasă pe măsură ce soldul contului crește. Pragurile și ratele de dobândă aplicabile pot fi consultate în documentul Lista de dobânzi ING Profesional_ING Fix, iar dobânda se plătește lunar, direct în contul de economii.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii (ING Profesional/ING Fix)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document oficial de dobânzi pentru persoane juridice care confirmă pragul minim de 25.000 lei și dobânda 0% sub acest prag, diferit de structura pe benzi de termen a produsului Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de tarife/dobânzi oficial, cu valorile concrete aplicabile contului de economii pentru firme, inclusiv pragul sub care dobânda e 0%.",
+      "citat": "Conturi de economii Rata anuala a dobanzii Mentiuni Conturi de economii în lei Dobânda se primește lunar, direct în contul de economii. Sold până la 25,000 lei 0.00% Dobânda se aplică zilnic la sume începând cu 25,000 lei/cont.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/economii-si-investitii/faq-economii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "ING Economii / Depozit Bonus",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de întrebări frecvente explică modul de calcul și plafonul maxim pentru care se bonifică dobânda la contul de economii persoane fizice, echivalent segmentului retail al CONT_ECONOMII Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document conex paginii de produs, cu cifre concrete despre plafonul de 1.000.000 lei și modul de acordare a dobânzii, dar nu conține procentul curent.",
+      "citat": "Nu există o sumă minimă pe care să fie necesar să o ai în contul de economii. Există însă o sumă maximă pentru care se acordă dobânda bancară de 1.000.000 lei/cont.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 4,
+    "iesire": 5069,
+    "citire_cache": 6351,
+    "scriere_cache": 32197,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.13246070000000001
+  }
+}

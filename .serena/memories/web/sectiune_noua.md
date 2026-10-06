@@ -7,4 +7,5 @@
 5. Cererea în `web/src/api/<zonă>.ts`; pagina sau secțiunea în `web/src/pages/…`; textele în `web/src/i18n/dict/<zonă>.ts` + înregistrare în `dict/index.ts`; CSS în `web/src/styles/<zonă>.css`.
 6. Verificare: `npm run typecheck && npm run build`, pagina în RO și EN, consola curată.
 - `Sertar` e legat de `/api/celula` (prețuri); pentru alt detaliu, Drawer AntD cu același aspect (ca în `web/src/pages/rate_mobil/android/Detaliu.tsx`).
+- Excepție, nu model: datele Google Play din 2.3 sunt fișiere locale citite la build (`import.meta.glob` în `pages/rate_mobil/dateLocale.ts`). Lipsa fișierului dă „necolectat”, nu eroare de build; pe server ajung doar dacă există pe laptopul care rulează `deploy/deploy.sh`.
 - Orice `href` din date colectate se verifică la `http(s)` (React 18 nu blochează `javascript:`); model: `web/src/pages/Document.tsx`, `web/src/i18n/index.tsx`.

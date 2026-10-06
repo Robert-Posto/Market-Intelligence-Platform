@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/Persoane_juridice/Creditul_CAPITAL/202",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit CAPITAL",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este o linie de credit reînnoibilă, pe 24 de luni, destinată persoanelor juridice pentru activitatea curentă (plăți furnizori, salarii, viramente bugetare) - același tip de produs (linie de credit revolving pentru capital de lucru) și același segment (firme) ca produsul Libra descris; singura restricție notabilă este plafonul de 200.000 RON și eligibilitatea limitată la județele unde Libra are sucursale.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit termenul 'linie de credit', perioada (24 luni) și suma maximă (200.000 RON), deci cifrele cheie sunt prezente direct în text.",
+      "citat": "Destinatia creditului · Activitate curenta : plati catre furnizori ,salarii, viramente bugete stat sau refinantarea altor credite de activitate curenta, fara a se limita la acestea. Perioada · Maxim 24 luni. Suma maxima 200000 RON",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/Persoane_juridice/Creditul_CAPITAL/202",
+    "https://www.librabank.ro/Persoane_juridice/Creditul_CAPITAL/202",
+    "https://www.librabank.ro/credite_imm",
+    "https://www.librabank.ro/documente-utile",
+    "https://www.librabank.ro/Persoane_juridice/Creditul_CAPITAL/202"
+  ],
+  "durata_s": 65,
+  "consum": {
+    "intrare": 121456,
+    "iesire": 5419,
+    "citire_cache": 37535,
+    "scriere_cache": 41674,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.408794
+  }
+}

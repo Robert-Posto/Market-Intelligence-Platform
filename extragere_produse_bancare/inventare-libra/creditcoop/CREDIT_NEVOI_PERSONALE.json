@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-06",
+  "banca": "creditcoop",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/credit-nevoi-personale/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de credit de consum fără justificarea destinației, destinat persoanelor fizice, cu dobândă fixă sau variabilă, posibilitate de rambursare flexibilă și fără giranți pentru sume mici - corespunde direct creditului de nevoi personale Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată exact acestui produs, cu avantajele și condițiile descrise explicit, inclusiv un prag numeric (10.000 lei) pentru care nu sunt necesari giranți.",
+      "citat": "nu este necesară justificarea modului de utilizare a creditului; poți refinanța credite în condiții avantajoase și poți chiar primi o sumă suplimentară pe care o poți folosi cum vrei tu; alege să-ți încasezi pensia prin noi și vei beneficia de avantaje la produsele de creditare: ZERO comision de analiza dosar la acordarea oricarui credit, fără giranți pentru creditele de până la 10.000 lei.",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/credit-nevoi-personale/#:~:text=nu%20este%20necesar%C4%83%20justificarea%20modului,de%20p%C3%A2n%C4%83%20la%2010.000%20lei."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/credit-nevoi-personale/",
+    "https://noul.creditcoop.ro/en/node/142"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 31183,
+    "iesire": 2155,
+    "citire_cache": 37034,
+    "scriere_cache": 36356,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1822128
+  }
+}

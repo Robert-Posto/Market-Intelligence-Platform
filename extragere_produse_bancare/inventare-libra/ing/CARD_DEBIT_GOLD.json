@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/more",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Visa Gold (inclus în Pachetul ING More)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un card de debit premium pentru persoane fizice cu asigurare, cashback (prin ING Bazar) și acces lounge, ca și Card de debit Gold Libra, dar la ING vine ca parte a unui pachet de cont lunar (39 lei/lună) nu ca produs de sine stătător cu taxă anuală fixă de 48 lei, iar dobânda nu se aplică la soldul cardului ci la economiile Round Up; de asemenea, nu există variantă dedicată persoanelor juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetului ING More prezintă explicit cardul Visa Gold inclus, cu cifrele de cost, dobândă Round Up și beneficiile de lounge/asigurare.",
+      "citat": "Cu ING More ai de toate: 10% dobândă Round UP, asigurare afecțiuni grave, Visa Gold, 3 intrări/an în lounge-uri și 0 comisioane. Toate acestea la 39 lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/go",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Opțiunea ING Gold (card de debit Gold atașat pachetului ING Go)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Descrie taxa lunară a opțiunii Gold (29 lei/lună, gratuită la tranzacții de minim 5000 lei/lună) și retragerile gratuite nelimitate la ATM, diferit de structura Libra cu taxă anuală fixă de 48 lei și doar 3 retrageri gratuite/lună.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține cifrele exacte ale costului opțiunii Gold și condițiile de gratuitate, plus regulile de retragere numerar aplicabile cardului Gold.",
+      "citat": "Taxa de administrare pentru opțiunea GOLD este de 29 lei/luna sau este gratuită în urmatoarele cazuri: - dacă ai tranzacții cu cardul de minim 5000 de RON/ lună - dacă ai activat opțiunea în cadrul unei oferte care prevedea gratuitate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/faq-pachete",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Card Gold (acces Business Lounge)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă beneficiul de acces în lounge pentru deținătorii de card Gold, condiționat de un prag minim de tranzacții (5000 lei), spre deosebire de Libra unde lounge-ul pare inclus fără prag de cheltuieli.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina FAQ precizează condițiile concrete (sumă minimă 5000 lei, 3 intrări gratuite) pentru accesul în lounge cu cardul Gold.",
+      "citat": "Deții ING GO cu card Gold cu care ai cumpărat bunuri sau servicii de la comercianți (plăţi decontate atât la POS fizic cât și POS virtual, excluzând transferurile de bani către alte carduri) în valoare de minim 5000 lei - ai 3 intrări gratuite, doar pentru titularul cardului, fără invitați.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/jcr:fcf57c39-9c9a-4c70-aff4-9c4fa3d5128f/Conditii%20Generale%20privind%20optiunea%20ING%20Gold.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Opțiunea ING Gold (card de debit Gold cu asigurare de călătorie)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul descrie asigurarea de călătorie inclusă cardului Gold (valabilă global, acoperind titularul și familia), similară cu asigurarea de călătorie din cardul Libra, dar taxele exacte sunt trimise către Lista de taxe și comisioane, nu sunt redate numeric aici.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Documentul precontractual confirmă existența asigurării de călătorie și structura costurilor pentru opțiunea Gold, dar valorile numerice ale taxelor sunt menționate doar prin trimitere la alt document.",
+      "citat": "Asigurarea de călătorie acoperă nevoile de asistență de urgență în timpul călătoriei și este valabilă în toată lumea, cu excepția Coreei de Nord.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 59,
+  "consum": {
+    "intrare": 6,
+    "iesire": 5234,
+    "citire_cache": 38108,
+    "scriere_cache": 49336,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1833136
+  }
+}

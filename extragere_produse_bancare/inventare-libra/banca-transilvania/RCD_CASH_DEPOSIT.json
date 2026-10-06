@@ -1,0 +1,57 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depunere numerar la automatele BT (BT Express Plus / BT Cash&Drop)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echipamentul BT de depunere bancnote RON folosit și de persoane juridice (prin împuterniciți/delegați), similar ca funcție cu RCD Cash Deposit al Libra; diferă faptul că documentul e o grilă generală de comisioane, nu o pagină dedicată produsului, și nu specifică explicit ora limită de creditare în aceeași zi.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul conține explicit rândul cu comisionul pentru depunerea de numerar la automatele BT (secțiunea V. Operațiuni cu numerar), aplicabil persoanelor juridice, dar nu detaliază orele de procesare/creditare.",
+      "pagina_pdf": 8,
+      "citat": "V. Operațiuni cu numerar Tip Operațiune Valoare comision 1. Operațiuni cu numerar Depunere efectuată la automatele BT gratuit Depunere efectuată de către împuterniciţi sau delegaţi la ghișeul băncii 0,1%, min. 10 LEI",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/idea-bank/Persoane-juridice/Ghid-bun-venit-la-BT.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "BT Cash&Drop",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă denumirea comercială a echipamentului BT destinat depunerilor de numerar în contul societății (persoane juridice) — BT Cash&Drop — analog funcțional cu RCD Cash Deposit de la Libra, dar documentul e un ghid de tranziție pentru clienți Idea::Bank, nu pagina oficială de produs, și nu conține cifre despre ora limită de creditare.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Textul menționează explicit numele echipamentului 'BT Cash&Drop' pentru depuneri de numerar în contul societății de către împuterniciți/delegați sau terți, dar fără detalii tarifare proprii în acest document (acestea sunt în broșura de comisioane).",
+      "pagina_pdf": 16,
+      "citat": "Depuneri de numerar în contul societății, efectuate la BT Express Plus sau BT Cash&Drop de către împuterniciți/delegați sau terți.",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (19 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+    "https://www.bancatransilvania.ro/files/app/media/idea-bank/Persoane-juridice/Ghid-bun-venit-la-BT.pdf",
+    "https://blog.bancatransilvania.ro/educatie-financiara/ce-operatiuni-poti-face-la-automatul-bt-express-diferenta-dintre-bt-express-si-bt-express-plus"
+  ],
+  "durata_s": 50,
+  "consum": {
+    "intrare": 179554,
+    "iesire": 3179,
+    "citire_cache": 81633,
+    "scriere_cache": 177046,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.8498396
+  }
+}

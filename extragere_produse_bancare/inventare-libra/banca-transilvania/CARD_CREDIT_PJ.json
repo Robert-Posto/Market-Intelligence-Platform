@@ -1,0 +1,86 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Card-credit-Visa-Business-Silver.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de credit Visa Business Silver (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane dedicat exact acestui card de credit business pentru persoane juridice, cu toate comisioanele relevante inclusiv comisionul de administrare a plafonului de credit.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF oficial de tarife cu cifre exacte pentru cardul de credit business PJ: comision administrare plafon 2%, minim 50 lei, comision numerar 2,5%.",
+      "pagina_pdf": 1,
+      "citat": "Comision administrare lunară a plafonului de credit* 2%, minim 50 Lei ATM/POS BT pt. numerar 2,5%, min. 2,5 Lei Administrare anuală cont de card 50 Lei/card",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/conturi-carduri/carduri-business/card-de-credit-visa-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de credit VISA Business (Silver/Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving pentru persoane juridice/PFA, cu perioadă de grație, destinat activității curente a firmei - același tip de produs și segment ca CARD_CREDIT_PJ Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre concrete: perioadă de grație de 55 zile, plăți în 18 rate fără dobândă.",
+      "citat": "You have up to 55 days grace period. You pay in up to 18 installments without interest. Recover the VAT for external payments.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/conturi-carduri/carduri-business/card-de-credit-visa-business/compara-cardurile-de-credit-visa-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Compară cardurile de credit VISA Business (Silver/Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de comparație a celor două variante ale cardului de credit business PJ arată costurile explicite (emitere, administrare, comision numerar) pentru produsul echivalent.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Tabel cu costuri explicite pentru cardul de credit business: emitere, administrare anuală, comision retragere numerar.",
+      "citat": "Emission 0 lei 50 lei Administration 50 lei/year 100 lei/year Commission for cash withdrawals from BT ATMs and POS terminals 2.5%, min. 2.5 Lei 2.5%, min. 2.5 Lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/business-credit-card-pentru-imm/ghidulcarduluidecredit.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Ghidul cardului de credit business (Visa Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ghid explicativ al cardului de credit revolving pentru firme (PJ/PFA/II), cu exemplu numeric de limită de credit și perioadă de grație, exact ca produsul Libra descris.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document dedicat produsului cu exemplu concret de limită de credit (30.000 lei) și mecanism de grație până la 25 ale lunii următoare.",
+      "pagina_pdf": 2,
+      "citat": "Beneficiezi de un card de credit pe firma ta. Sa zicem ca ai o limita aprobata de 30.000 lei. In luna in curs ai efectuat plati cu cardul in valoare de 10.000 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/carduri-business/card-de-credit-visa-business",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/carduri-business/card-de-credit-visa-business/compara-cardurile-de-credit-visa-business",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/carduri-business/card-de-credit-visa-business",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/carduri-business/card-de-credit-visa-business/solicita-cardul",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/carduri-business/card-de-credit-visa-business/compara-cardurile-de-credit-visa-business",
+    "https://www.bancatransilvania.ro/files/business-credit-card-pentru-imm/ghidulcarduluidecredit.pdf",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Card-credit-Visa-Business-Silver.pdf"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 35263,
+    "iesire": 3452,
+    "citire_cache": 199790,
+    "scriere_cache": 86836,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.362094
+  }
+}

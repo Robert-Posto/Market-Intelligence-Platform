@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-06",
+  "banca": "vista",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/vista-internet-si-mobile-banking?tab=ropay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay (Plăți instant contactless, Cod QR și Alias)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este același sistem național RoPay de plăți instant prin telefon mobil (contactless, cod QR, alias pe bază de număr de telefon), disponibil persoanelor fizice și, prin componenta QR, și plăți către persoane juridice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului RoPay la Vista Bank, cu toate cifrele cheie: limită de tranzacție, gratuitate, termen de autorizare.",
+      "citat": "Limita maximă admisă este de 49.999,99 LEI / tranzacție. IMPORTANT: operațiunile RoPay se realizează numai din aplicațiile de mobile banking ale băncilor, care asigură un mediu securizat destinat plăților.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/despre-noi/noutati/vista-bank-lanseaza-in-premiera-nationala-platile-instant-ropay-contactless-intre-persoane-fizice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay Contactless",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicat de presă dedicat lansării RoPay Contactless, cu limită de tranzacție și caracteristici (gratuit, instant) pentru plăți prin telefon între persoane fizice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină de știri cu cifre concrete despre produsul RoPay, dar nu e pagina tehnică permanentă de produs.",
+      "citat": "Plățile sunt procesate în lei, cu o limită de 49.999 lei per tranzacție și sunt disponibile doar pe telefoanele mobile echipate cu sistem de operare Android.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000312_Anexa_1_CGA_PF_RO_Iulie_2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "RoPay (încasări/transferuri intrabancare și interbancare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și condiții pentru persoane fizice conține explicit liniile RoPay cu valoarea comisionului.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife (Anexa 1 CGA PF) care listează explicit toate tipurile de tranzacții RoPay cu comisionul aferent.",
+      "citat": "Incasari intrabancare RoPay Fara comision Incasari interbancare RoPay Fara comision Transferuri intrabancare RoPay Fara comision",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (15 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1574,
+    "citire_cache": 6311,
+    "scriere_cache": 34223,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10256770000000001
+  }
+}

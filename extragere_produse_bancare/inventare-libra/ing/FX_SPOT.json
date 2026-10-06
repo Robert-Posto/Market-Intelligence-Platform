@@ -1,0 +1,82 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/curs-valutar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar - Persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată schimbului valutar la vedere (spot) pentru persoane fizice, cu cursuri de cumpărare/vânzare actualizate, prag de 20.000 EUR pentru curs preferențial și exemplu concret de economie la 1.000 EUR - corespunde exact produsului FX_SPOT pentru segmentul persoane fizice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina este dedicată exclusiv cursului valutar/schimbului valutar, conține un exemplu numeric concret (71,30 RON economisiți la 1.000 EUR) și praguri de sumă (20.000 EUR), deși valorile curente ale cursului sunt populate dinamic.",
+      "citat": "Spre exemplu, dacă cumperi 1.000 EUR plătești cu 71,30 RON mai puțin decât la cursul standard. Iar dacă ai o sumă mai mare de 20.000 EUR, îți putem oferi un curs și mai bun indiferent de Pachet.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/persoane-fizice/curs-valutar#:~:text=Spre%20exemplu%2C%20dac%C4%83%20cumperi%201.000,mai%20bun%20indiferent%20de%20Pachet."
+    },
+    {
+      "url": "https://ing.ro/curs-valutar-pj",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar standard aplicabil persoanelor juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată schimbului valutar la vedere pentru persoane juridice (IMM și companii mari), cu curs standard, prag de 20.000 EUR pentru curs mai bun și mențiune explicită a posibilității unui curs personalizat pentru volume mari - echivalent direct al FX_SPOT pentru segmentul firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată explicit persoanelor juridice, cu exemplu numeric concret și precizarea clară a segmentului de clienți căruia i se adresează cursul afișat.",
+      "citat": "Spre exemplu, dacă cumperi 1.000 EUR plătești cu 71,30 RON mai puțin decât la cursul standard. Cursurile sunt aplicabile exclusiv clienților persoane juridice IMM și companii mari.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/curs-valutar-pj#:~:text=Spre%20exemplu%2C%20dac%C4%83%20cumperi%201.000,juridice%20IMM%20%C8%99i%20companii%20mari."
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/termenii-standard-ing-pentru-tranzactiile-de-schimb-valutar.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Termenii Standard ING pentru Tranzacțiile de Schimb Valutar la Vedere (Spot)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document contractual dedicat exclusiv tranzacțiilor de schimb valutar la vedere (spot), descriind practicile ING ca dealer pe piața FX - corespondentul direct al condițiilor FX_SPOT, aplicabil clienților persoane juridice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Titlul și conținutul documentului se referă explicit la tranzacțiile FX spot, însă fragmentul disponibil este descriptiv (natura relației de tranzacționare) și nu conține cifre de marjă sau comision.",
+      "citat": "Termenii Standard ING pentru Tranzactiile de Schimb Valutar la Vedere (Spot) Acesti termeni standard au rolul de a clarifica natura relatiei de tranzactionare intre dumneavoastra si ING Bank NV si firmele afiliate.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/tranzactii-valutare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Tranzacții valutare (Schimburi valutare ING pentru firme)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină de prezentare a produsului de schimb valutar pentru firme/IMM, executat prin platforma ING Business, cu rate preferențiale în funcție de volumul anual de tranzacționare - același tip de produs (FX spot) pentru segmentul persoane juridice.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina descrie clar produsul de schimb valutar pentru firme și conține un criteriu de segmentare numeric (cifră de afaceri 9-22 milioane RON), dar nu publică marje sau comisioane exacte, acestea fiind negociate individual.",
+      "citat": "Schimburi valutare pentru nevoile firmelor cu cifra de afaceri intre 9-22 milioane RON. Schimburi conectate la piata si la volumul tranzactiilor firmei.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/operatiuni-curente/tranzactii-valutare#:~:text=Schimburi%20valutare%20pentru%20nevoile%20firmelor,si%20la%20volumul%20tranzactiilor%20firmei."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/persoane-fizice/curs-valutar",
+    "https://ing.ro/imm/operatiuni-curente/tranzactii-valutare",
+    "https://ing.ro/curs-valutar-pj",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/termenii-standard-ing-pentru-tranzactiile-de-schimb-valutar.pdf"
+  ],
+  "durata_s": 64,
+  "consum": {
+    "intrare": 55601,
+    "iesire": 5635,
+    "citire_cache": 93854,
+    "scriere_cache": 59288,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.33454280000000003
+  }
+}

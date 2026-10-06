@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_AGRI_IRIGATII",
+  "denumire": "Credit soluții pentru irigații (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/sustenabilitate/credite-verzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite verzi (Programul Sustenabilitate, cu garanție InvestEU)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BRD nu are un credit dedicat exclusiv irigațiilor; are un credit verde general, garantat prin InvestEU, în care 'Investiții verzi în agricultură și silvicultură' este doar una din categoriile eligibile, alături de alte domenii (eficiență energetică, economie circulară etc.). Segmentul e IMM/companii ca la Libra, dar scopul e mult mai larg decât irigațiile, iar perioada minimă (180 luni) diferă mult de intervalul 12-60 luni al produsului Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina este dedicată programului de credite verzi susținut prin InvestEU, cu cifre concrete despre plafoane și procente de finanțare, dar nu detaliază o sub-componentă specifică pentru sisteme de irigații.",
+      "citat": "Pentru creditele de investiții Maximum 90% din valoarea proiectului (fără TVA) , fără a depăși limita maximă de 37.5 M RON/7.5M EUR valoarea cumulată a creditelor acordate în cadrul acestui Program și orice alt credit acordat de Bancă sau altă entitate și care beneficiază de sprijin InvestEU, conform Declarației pe proprie răspundere privind limita de expunere (Obligor Limit) nu va depăși suma de 7,500,000 EUR",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/sustenabilitate/credite-verzi",
+    "https://www.brd.ro/credite-sustenabile-corp"
+  ],
+  "durata_s": 110,
+  "consum": {
+    "intrare": 10,
+    "iesire": 9515,
+    "citire_cache": 133085,
+    "scriere_cache": 65709,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2860595
+  }
+}

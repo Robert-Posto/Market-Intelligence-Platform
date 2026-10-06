@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/george-pfa-profesii-liberale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "George pentru PFA și Profesii Liberale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul/pachetul BCR dedicat PFA și profesiilor liberale (persoane juridice/PFA), cu cont curent, card de debit business, IB/MB (George) incluse — același segment ca Abonament PFA Libra. Diferă structura de preț: în loc de un abonament fix lunar cu un număr de operațiuni incluse, BCR oferă comisioane 0 la plăți electronice și reduceri procentuale (până la 50%) la comisionul de administrare, condiționate de rulaj.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre explicite despre comisioane și condiții de reducere pentru segmentul PFA.",
+      "citat": "Ai 0 comisioane la plățile electronice și transferuri și poți beneficia de o reducere de 50% la comisionul de administrare. Pentru a beneficia de cea mai bună ofertă, asigură-te că îndeplinești condițiile de mai jos: Rulaj în BCR de minim 10.000 lei pe toate conturile din BCR (PF & PFA)",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/digital-banking/george-pfa-profesii-liberale#:~:text=Ai%200%20comisioane%20la%20pl%C4%83%C8%9Bile,din%20BCR%20%28PF%20%26%20PFA%29"
+    },
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/Tarif_comisioane_PFA_1oct2020.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent PFA - XPERT BCR / XPERT PLUS BCR",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "XPERT BCR este un pachet lunar de cont curent pentru PFA (comision fix de administrare lunară, servicii atașate), structural cel mai apropiat de conceptul de 'abonament' Libra pentru PFA, însă fără un plafon explicit de operațiuni incluse lunar și cu o valoare de abonament diferită (7 RON față de 29 lei).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit pachetele de cont curent PFA cu valorile comisionului de administrare lunară.",
+      "pagina_pdf": 6,
+      "citat": "Pachete de cont curent PFA XPERT BCR XPERT PLUS BCR Administrare lunară pachet de produse şi servicii ataşate 7 RON 35 RON Pachete de cont curent (retrase de la vânzare) PACHET PFA STANDARD PACHET PFA PLUS Administrare lunară pachet de produse şi servicii ataşate 20 RON 30 RON",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/digital-banking/george-pfa-profesii-liberale",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/Tarif_comisioane_PFA_1oct2020.pdf"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3881,
+    "citire_cache": 37757,
+    "scriere_cache": 52272,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17705339999999997
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/jcr:f41cd771-56c0-4ab2-a78d-19e930b78e32/Document%20de%20Informare%20ING%20Go.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING Go - Document de informare cu privire la comisioane",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document oficial de tarife care confirmă comisionul 0 lei la emiterea și administrarea cardului de debit Visa RON atașat pachetului ING Go, exclusiv pentru persoane fizice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Documentul precontractual de comisioane detaliază explicit, cu cifre, costurile de emitere și administrare a cardului de debit inclus în pachetul ING Go.",
+      "citat": "ING Go Lunar: 0 Lei Pachet de servicii care include administrarea contului curent în Lei (maximum 3 conturi) – comision lunar 0 / 15 Lei ; emiterea cardului Visa RON/Visa RON Virtual – comision 0 Lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/go",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Go (pachet cont curent cu card de debit principal)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit emis și administrat gratuit (în condiții de venit recurent), ca la Libra, dar disponibil doar pentru persoane fizice (Libra e și pentru persoane juridice), iar beneficiile de tip 'cashback' sunt reduceri ING Bazar/Round Up, nu cashback generic la parteneri.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată pachetului ING Go descrie explicit condițiile de gratuitate a cardului și contului, cu cifre concrete (700 lei venit, 15 lei/lună fără îndeplinirea condițiilor).",
+      "citat": "Pachetul ING GO include cel puțin un cont curent în lei și un card principal, cu taxe de administrare 0 dacă încasezi cel puțin 700 lei și faci cel puțin o plată pe lună.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Business Card (inclus în pachetele ING Fix cont curent)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit pentru persoane juridice, inclus în toate pachetele ING Fix; cel mai ieftin pachet (Fix Valută) este gratuit (0 RON/lună) și include Business Card, însă celelalte pachete au costuri lunare fixe, spre deosebire de cardul Libra fără costuri de emitere/administrare, și nu se menționează cashback la parteneri.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina pachetelor de cont curent pentru firme menționează explicit includerea unui 'Business Card' în fiecare pachet, cu valorile costurilor lunare în tabel.",
+      "citat": "Pachet FIX Valută ( 0 RON ). Cont curent RON. Business Card. ING Business, platforma de internet și mobile banking. Depunere de numerar la ATM ING.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 92,
+  "consum": {
+    "intrare": 6,
+    "iesire": 8500,
+    "citire_cache": 38112,
+    "scriere_cache": 45893,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20736690000000002
+  }
+}

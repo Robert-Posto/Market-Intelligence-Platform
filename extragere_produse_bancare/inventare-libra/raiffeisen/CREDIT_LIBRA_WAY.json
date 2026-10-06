@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/credite/credit-de-nevoi-personale-fara-ipoteca.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Flexicredit - Credit de nevoi personale fără ipotecă",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fără ipotecă, pentru persoane fizice, fără justificarea destinației, în Lei, pe maximum 5 ani (60 luni), la fel ca Libra Way.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: dobândă, plafoane valorice, termen și condiții.",
+      "citat": "Valoare credit: intre 500 și 50.000 Euro (echivalentul în Lei). Moneda: Lei. Termen de rambursare: între 18 luni și 5 ani. Garanții: nu sunt necesare. Asigurare de viață opțională.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/credite/credit-de-nevoi-personale-fara-ipoteca.html#:~:text=Valoare%20credit%3A%20intre%20500%20%C8%99i,necesare.%20Asigurare%20de%20via%C8%9B%C4%83%20op%C8%9Bional%C4%83."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/costuri/2025/credite/credite-nevoi-personale/costuri-complete-flexicredit-standard/20251203-Costuri-complete-Flexicredit-standard.pdf.coredownload.inline.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Flexicredit FARA Refinantare Externa (document costuri complete)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de costuri complete pentru creditul de nevoi personale nenominalizat, fără ipotecă, cu toate tarifele și comisioanele aplicabile.",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF oficial de tarife și comisioane, actualizat 03.12.2025, cu tabel complet de costuri pentru acest produs.",
+      "citat": "Tip credit: Credit pentru nevoi personale nenominalizate Valuta: Lei Valoare: 500 Euro (in echivalent Lei) - 50.000 Euro (in echivalent Lei) Perioada maxima: 5 ani.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/costuri/2025/credite/credite-nevoi-personale/costuri-complete-flexicredit-standard/20251203-Costuri-complete-Flexicredit-standard.pdf.coredownload.inline.pdf",
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/credite/credit-de-nevoi-personale-fara-ipoteca.html"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3929,
+    "citire_cache": 43670,
+    "scriere_cache": 54104,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.183296
+  }
+}

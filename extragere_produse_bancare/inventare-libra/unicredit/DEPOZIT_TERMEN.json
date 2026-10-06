@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-05",
+  "banca": "unicredit",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/saving-and-investing/term-deposits.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Term deposits / Depozite la Termen",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Depozit la termen pentru persoane fizice, cu termene de 3, 6 și 12 luni, exact ca produsul Libra DEPOZIT_TERMEN pe segmentul persoane fizice - sumele stau în cont curent și se mută într-un depozit la termen separat.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține un tabel complet de dobânzi fixe pentru depozitele în Lei, EUR și USD pe 3, 6 și 12 luni.",
+      "citat": "Deposit LEI with automatic extension to 5,50% per year 3 months 5,00% 6 months 5,30% 12 months 5,50% Deposit EURO with automatic extension to 2,10% per year 3 months 1,70% 6 months 1,90% 12 months 2,10%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (clienți persoane juridice cu cifra de afaceri <1 milion Euro, liber profesioniști și PFA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document general de dobânzi pentru depozite la termen ale persoanelor juridice (micro-întreprinderi), echivalentul produsului Libra DEPOZIT_TERMEN pe segmentul persoane juridice; nu este un produs dedicat unei industrii/profesii, ci oferta standard de depozit.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul oficial de tarife și dobânzi conține un tabel explicit cu ratele dobânzii pentru depozitele la termen pe 6 și 12 luni, în LEI, EUR și USD, cu sumele minime de constituire.",
+      "pagina_pdf": 11,
+      "citat": "6 luni < 150.000 5,2 5,2 1,9 3,0 ≥ 150.000 5,5 5,2 1,9 3,0 Suma minimă de constituire 10.000 10.000 3.000 3.000 12 luni Dobandă 5,2 5,2 2,0 3,3 Suma minimă de constituire 10.000 10.000 3.000 3.000",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/persoane-fizice/Economisire-si-investitii/depozite-la-termen.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf"
+  ],
+  "durata_s": 100,
+  "consum": {
+    "intrare": 6,
+    "iesire": 10297,
+    "citire_cache": 39074,
+    "scriere_cache": 70328,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2866168
+  }
+}

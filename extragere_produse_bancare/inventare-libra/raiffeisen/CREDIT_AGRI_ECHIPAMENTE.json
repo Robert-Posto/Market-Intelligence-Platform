@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/creditul-pentru-investitii-in-agricultura.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru investiții în agricultură",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit de investiții pentru firme din agricultură, destinat explicit achiziției de utilaje agricole (tractoare, combine, sisteme de irigații), la fel ca produsul Libra. Diferă însă: termenul maxim este de 120 luni (vs 12-84 luni la Libra), nu se menționează explicit garanția InvestEU/program european dedicat, iar eligibilitatea cere minim 100 Ha teren agricol și cifră de afaceri sub 5 milioane Euro, condiții absente la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre complete despre sumă, termen, avans, garanții și eligibilitate.",
+      "citat": "Creditul poate fi utilizat în scopul achiziției de terenuri agricole, silozuri, tractoare, combine, sisteme de irigații și alte echipamente cu specific agricol. Suma minimă: 7.000 Euro. Perioada de rambursare: maturitate corelată cu durata investiției, maxim 120 luni (termen mediu sau lung).",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/creditul-pentru-investitii-in-agricultura.html#:~:text=Creditul%20poate%20fi%20utilizat%20%C3%AEn,luni%20%28termen%20mediu%20sau%20lung%29."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Creditul pentru investiții în agricultură",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de tarife și comisioane IMM, legat direct din pagina produsului de credit investiții agricultură; conține probabil comisioanele aplicabile acestui credit, dar nu a fost verificat conținutul exact.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Document general de tarife IMM linkat din pagina produsului, nu a fost deschis pentru a confirma că produsul apare explicit cu valori.",
+      "citat": "Tarife și comisioane IMM și profesii liberale",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (7 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/creditul-pentru-investitii-in-agricultura.html"
+  ],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1512,
+    "citire_cache": 33204,
+    "scriere_cache": 31618,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10081780000000001
+  }
+}

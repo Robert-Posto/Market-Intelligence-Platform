@@ -9,10 +9,11 @@ import { T, useLang } from '../i18n'
 import { deLaServer } from '../i18n/server'
 
 /**
- * Rulări manuale (Overview): scripturile de colectare care ar rula automat,
- * pornite la cerere. Doar pe laptopul cu MIP_PERMITE_RULARI=1; altfel butoanele
- * rămân dezactivate. Lista e fixă, pe server (app/rulari.py): din pagină pleacă
- * doar id-ul comenzii și, unde se poate, banca. Un singur proces odată.
+ * Rulări manuale (pagina „Rulare manuală”; până pe 06.10.2026 în Overview): scripturile
+ * de colectare care ar rula automat, pornite la cerere, și rularea curentă, oricare ar fi
+ * (inclusiv un job pornit din modalul „Începe job”). Doar pe laptopul cu MIP_PERMITE_RULARI=1;
+ * altfel butoanele rămân dezactivate. Lista e fixă, pe server (app/rulari.py): din pagină
+ * pleacă doar id-ul comenzii și, unde se poate, banca. Un singur proces odată.
  * Cât rulează ceva, starea se cere la 2 s, ca în aplicația veche.
  */
 export default function Rulari({ m }: { m: Meta }) {
@@ -41,7 +42,7 @@ export default function Rulari({ m }: { m: Meta }) {
   )
 }
 
-function useDurata() {
+export function useDurata() {
   const { t } = useLang()
   return (s: number | null | undefined) => {
     if (s === null || s === undefined) return '—'
@@ -139,7 +140,7 @@ function Corp({ d, m }: { d: RulariT; m: Meta }) {
         return (
           <div className="rl-curenta">
             <div className="rl-cap">
-              <b>{t('rulari.ruleaza_acum', { nume: deLaServer(cur.nume, lang) })}{cur.banca ? ' · ' + numeBanca(cur.banca) : ''}</b>
+              <b>{t('rulari.ruleaza_acum', { nume: deLaServer(cur.nume, lang) })}{cur.banca ? ' · ' + numeBanca(cur.banca) : ''}{cur.produs ? ' · ' + cur.produs : ''}</b>
               <span className="note">{cur.dupa_repornire ? t('rulari.pornita_la_repornire', { ora: ora(cur.inceput) }) : t('rulari.pornita_la', { ora: ora(cur.inceput) })}</span>
               <span style={{ marginLeft: 'auto' }}>
                 <Button onClick={() => opreste(cur)} disabled={cur.oprit}>{cur.oprit ? t('rulari.se_opreste') : t('rulari.opreste')}</Button>
@@ -164,7 +165,8 @@ function Corp({ d, m }: { d: RulariT; m: Meta }) {
           </tr>
         </thead>
         <tbody>
-          {d.comenzi.map((c) => (
+          {/* joburile fluxului de comparație se pornesc din modalul „Începe job”, cu produsul și estimarea de cost */}
+          {d.comenzi.filter((c) => c.grup !== 'joburi').map((c) => (
             <tr key={c.id}>
               <td><b>{deLaServer(c.nume, lang)}</b><span className="sub" style={{ maxWidth: '62ch' }}>{deLaServer(c.ce, lang)}</span></td>
               <td className="rl-n">{c.internet ? <Pill tip="amb">{t('rulari.cu_internet')}</Pill> : <Pill tip="ok">{t('rulari.fara_internet')}</Pill>}</td>

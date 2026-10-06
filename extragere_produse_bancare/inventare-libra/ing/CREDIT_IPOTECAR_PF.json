@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-06",
+  "banca": "ing",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/ipotecar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Ipotecar (Credit ipotecar cu dobândă fixă 3 sau 5 ani / variabilă)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit ipotecar pentru achiziție/construcție/refinanțare locuință, inclusiv variantă EcoLife echivalentă Credit Verde) și același segment (persoane fizice), dar perioada maximă e de 30 ani (360 luni) față de 420 luni la Libra, iar suma maximă e mult mai mică (cca 1,2 mil. lei față de 15 mil. lei la Libra).",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține cifre complete: dobânzi, avans minim, perioadă, sumă minimă/maximă finanțabilă.",
+      "citat": "Suma minimă pe care o poți finanța prin ING Ipotecar este 13000 RON. Suma maximă nu trebuie să depășească 85% din valoarea evaluată a imobilului adus în garanție.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/jcr:4e61c812-e255-4780-9786-38ce0c00adbd/rate_dobanzi.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "ING Ipotecar / Credite de investiții imobiliare cu garanție ipotecară",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de dobânzi listează explicit ING Ipotecar alături de indicele IRCC folosit la calculul ratei, confirmând aceleași caracteristici de produs ca pe pagina dedicată (dobândă variabilă legată de IRCC, aplicabilă persoanelor fizice).",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de tip listă de dobânzi (PDF), valabil curent, care menționează explicit ING Ipotecar și indicele IRCC folosit la calculul dobânzii.",
+      "citat": "Valorile indicilor de referinţă ce intră în calculul ratelor de dobandă: Pentru ExtraRol, ING Personal, ING Ipotecar, Credite de investiții imobiliare cu garanție ipotecară și Prima Casă se va aplica cotaţia IRCC, cu valoarea de 5,57% valabilă până la 31.10.2026",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2767,
+    "citire_cache": 6355,
+    "scriere_cache": 32633,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1105315
+  }
+}

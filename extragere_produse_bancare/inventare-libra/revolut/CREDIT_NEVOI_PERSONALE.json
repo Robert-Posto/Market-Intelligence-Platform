@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-06",
+  "banca": "revolut",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/personal-loans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Personal Loans (Credite de nevoi personale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fără garanții, fără justificarea destinației, pentru persoane fizice, termen până la 60 de luni, sumă 2.000-200.000 lei - aceleași caracteristici ca produsul Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține exemplu reprezentativ cu dobândă, DAE, sumă totală de plată și termen.",
+      "citat": "Apply for Revolut personal loans between lei 2,000 and lei 200,000. Representative example for Revolut loan: Borrow 45.000 lei for 60 months with a fixed annual interest rate of 9.40%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/personal-loans/100000-ron-loan/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "simulator",
+      "denumire_la_banca": "100.000 RON loan (Credite de nevoi personale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină de simulare pentru o sumă specifică a aceluiași credit de nevoi personale negarantat, cu dobândă, DAE și termen de 60 luni.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Conține exemplu concret cu DAE, dobândă fixă, termen și plăți lunare pentru suma de 100.000 RON din aceeași gamă de credit.",
+      "citat": "Let's say you borrow 100.000 RON for 60 months with a fixed annual interest rate of 7,4%. The total amount you'll pay is 119.988,36 RON, with monthly payments of 1.999,81 RON.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://help.revolut.com/en-RO/help/credit-products/loans/applying-for-a-personal-loan/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Personal Loans (Credite de nevoi personale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de condiții/eligibilitate pentru creditul de nevoi personale negarantat, oferit prin aplicație, pentru persoane fizice cetățeni români.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina de ajutor descrie explicit condițiile de eligibilitate, plafonul sumei și procesul de aplicare pentru acest credit.",
+      "citat": "Revolut offers unsecured personal loans between the values of RON2,000–RON200,000. You can apply for and manage your loan through your Revolut app.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1281,
+    "citire_cache": 6350,
+    "scriere_cache": 29744,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.088448
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-05",
+  "banca": "procredit",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/files/Caracteristici%20generale%20ale%20Mobile%20Banking.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "MB@nk – Caracteristici generale ale serviciului de Mobile Banking",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de condiții al serviciului de mobile banking al băncii (MB@nk), echivalent funcțional cu aplicația Libra, dar documentul se referă strict la serviciul pentru persoane fizice și conține o limită numerică de schimb valutar.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de caracteristici/condiții al serviciului MB@nk, cu listă explicită de funcționalități și o limită numerică (schimb valutar până la 20.000 EUR/GBP/USD).",
+      "citat": "Logare biometric ă (amprent ă/recunoa ș tere facial ă) Vizualizarea situa ț iei financiare a conturilor proprii în timp real; Transferuri în lei ș i în valut ă, între conturile proprii; Schimburi valutare pân ă în 20.000 EUR/GBP/USD/echivalent în LEI",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/persoane-fizice/aplicatia-mbnk/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ProCredit Mobile Banking – MB@nk",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este aplicația de mobile banking a băncii, dar această pagină este dedicată exclusiv segmentului persoane fizice, spre deosebire de aplicația Libra care acoperă și persoane juridice.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Pagină dedicată aplicației MB@nk cu descrierea funcționalităților (plăți, transferuri, gestiune carduri), dar fără cifre concrete de tarife în text.",
+      "citat": "Prin intermediul aplicației Mobile Banking, ai posibilitatea de a vizualiza soldurile conturilor, tranzacţiile efectuate, condițiile aferente depozitelor la termen și ale creditelor, de a deschide depozite la termen, de a bloca/debloca carduri emise, efectua transferuri între conturile proprii (în aceeași monedă), efectua transferuri naționale în LEI, de a efectua transferuri intrabancare prin intermediul numărului de telefon, de a efectua schimb valutar între conturi.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/procredit-romania-mobile-banking/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ProCredit Romania (noua aplicație de Mobile Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este aplicația de mobile banking a băncii, disponibilă atât pentru persoane fizice cât și pentru persoane juridice, exact ca aplicația Libra Bank (v4).",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Este pagina dedicată noii aplicații de mobile banking, acoperă ambele segmente (PF și PJ), dar nu conține cifre concrete de dobânzi/comisioane, doar descriere funcțională și acces la migrare.",
+      "citat": "Persoane fizice - clienți existenți Migrezi în câteva minute la noua aplicație - simplu și fără riscuri. Persoane juridice Activare pentru compania ta Persoane juridice - clienți existenți Accesezi experiența premium și pentru activitatea ta profesională.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 68,
+  "consum": {
+    "intrare": 6,
+    "iesire": 6190,
+    "citire_cache": 41776,
+    "scriere_cache": 46027,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1853347
+  }
+}

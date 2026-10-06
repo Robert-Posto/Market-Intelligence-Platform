@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credit-investeu-intrebari",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit de investiții (InvestEU - Microfinanțare)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru persoane juridice, dar e o variantă specifică limitată la programul InvestEU/Microfinanțare, cu plafon de 248.000 lei și garanție FEI de 80%, diferit de un credit de investiții generic negarantat de un program UE.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul FAQ enumeră explicit 'CREDIT DE INVESTITII' cu termen minim și maxim, plus valoarea maximă și procentul de finanțare, deci are cifre precise, dar e specific unui program de garantare european cu plafon redus.",
+      "citat": "CREDIT PENTRU ACTIVITATE CURENTA: min. 3 luni – max. 84 luni; CREDIT DE INVESTITII: min. 3 luni – max. 120 luni; LINIE DE CREDIT: min. 3 luni – max. 24 luni",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credit-investeu-intrebari#:~:text=CREDIT%20PENTRU%20ACTIVITATE%20CURENTA%3A%20min.,luni%20%E2%80%93%20max.%2024%20luni"
+    },
+    {
+      "url": "https://www.librabank.ro/credite_imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit IMM cu ipotecă imobiliară - Credit de investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina de credite pentru persoane juridice (companii până la 1M euro cifră de afaceri) care enumeră explicit 'Credit ipotecar sau de investiții' ca variantă de credit, cu sumă maximă și termen, pentru același segment (firme) și aceeași destinație (investiții).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina conține un bloc dedicat cu cifre concrete pentru creditul de investiții (sumă maximă și durată maximă), chiar dacă e integrat într-o pagină mai largă de Credit IMM.",
+      "citat": "Credit pentru dezvoltarea afacerii sau pentru susținerea activității curente Poți obține până la 1 milion de lei Perioada maximă: Credit activitate curentă în rate: 84 luni Credit ipotecar sau de investiții: 180 luni",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite_imm#:~:text=Credit%20pentru%20dezvoltarea%20afacerii%20sau,sau%20de%20investi%C8%9Bii%3A%20180%20luni"
+    },
+    {
+      "url": "https://www.librabank.ro/Persoane_juridice/Credit_de_INVESTITII/137",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit firmă pentru investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată (slug-ul URL este chiar 'Credit_de_INVESTITII') face parte din pagina generală de credite pentru companii/persoane juridice și descrie explicit secțiunea 'Credit firmă pentru investiții', același tip de produs și același segment (persoane juridice) ca produsul Libra căutat.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Este pagina cu denumirea exactă a produsului, dar secțiunea despre creditul de investiții conține doar destinațiile (construcție/achiziție spații, echipamente și utilaje), fără cifre de dobândă, comision, sumă sau termen.",
+      "citat": "Construcția sau achiziția de spații de producție, depozitare sau spații comerciale Achiziționarea de echipamente și utilaje",
+      "citat_verificat": false,
+      "avertisment": "citat scurt (16 cuvinte); citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/Persoane_juridice/Credit_de_INVESTITII/137",
+    "https://www.librabank.ro/credite_imm",
+    "https://www.librabank.ro/credit-investeu-intrebari"
+  ],
+  "durata_s": 100,
+  "consum": {
+    "intrare": 8,
+    "iesire": 8684,
+    "citire_cache": 75181,
+    "scriere_cache": 61579,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2558397
+  }
+}

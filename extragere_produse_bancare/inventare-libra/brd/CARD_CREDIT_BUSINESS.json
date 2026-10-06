@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CARD_CREDIT_BUSINESS",
+  "denumire": "Card de credit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/activitate-curenta/card-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Business (Card de credit persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit pentru firme (persoane juridice), cu linie de credit, dobândă zero în perioada de grație la plăți cu cardul - același tip de produs și segment ca produsul Libra pentru persoane juridice/firme.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată exclusiv produsului, cu descriere, sumă minimă/maximă și perioadă de creditare explicite.",
+      "citat": "Cardul de Credit Business este soluţia ideală pentru tine și afacerea ta când nu vrei să te foloseşti de fondurile proprii pentru a acoperi nevoile curente ale firmei (plată bunuri și servicii la POS sau online, retragere numerar la ATM). Suma minimă este 20.000 RON - Suma maximă este 150.000 RON Care este perioada de creditare? Perioada de creditare este de 24 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/finantare/activitate-curenta/card-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Business PFA-PL",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Variantă a aceluiași card de credit business destinată PFA/profesii liberale, segment acoperit explicit de produsul Libra (firme, PFA).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată cardului de credit business pentru PFA, cu sumă minimă/maximă și perioadă de creditare explicite.",
+      "citat": "Suma minimă este 20.000 RON - Suma maximă este 150.000 RON Care este perioada de creditare? Perioada de creditare este de 24 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "MasterCard Card de Credit Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife și comisioane pentru persoane juridice conține un rând dedicat cardului MasterCard Card de Credit Business, cu comisioane de administrare, reemitere și retragere numerar.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife în care produsul apare explicit, cu valori numerice pentru administrare card, reemitere și alte operațiuni.",
+      "citat": "MasterCard Business, MasterCard Business BRDepo 22 LEI / an / card MasterCard Business Silver 55 LEI / an / card VISA Business Silver 55 LEI / an / card VISA Business Fermier 35 LEI / an / card MasterCard Corporate 150 LEI / an / card MasterCard Card de Credit Business 100 LEI / an / card",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 4,
+    "iesire": 6278,
+    "citire_cache": 6315,
+    "scriere_cache": 27747,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1334185
+  }
+}

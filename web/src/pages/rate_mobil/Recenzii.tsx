@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { Button, Select } from 'antd'
 import type { Sentiment } from '@mcc/shared'
 import type { Meta } from '../../api/meta'
-import { EtichetaBanca, Pill } from '../../components/comune'
+import { Pill } from '../../components/comune'
 import { useLang } from '../../i18n'
 import { formatZi, num } from '../../util/format'
+import { Stele } from './Piese'
 
 /** Primele 15 la vedere, restul la cerere: serverul trimite până la 120 (LIMIT în /api/sentiment). */
 const VIZIBILE = 15
@@ -76,22 +77,54 @@ export function ListaRecenzii({ s, f, m }: { s: Sentiment; f: FiltruRecenzii; m:
   )
 }
 
-/** O recenzie: textul și răspunsul băncii rămân cum le-a scris omul, netraduse. */
+/** O recenzie din App Store, în cardul comun cu Google Play. */
 function Recenzie({ r, m }: { r: Sentiment['recente'][number]; m: Meta }) {
-  const { t, locale } = useLang()
-  const n = Math.max(0, Math.min(5, r.rating ?? 0))
+  return (
+    <CardRecenzie banca={r.banca} m={m} nota={r.rating} data={r.postat_la} versiune={r.versiune} magazin={r.storefront}
+      text={r.text} raspuns={r.raspuns_banca} />
+  )
+}
+
+/**
+ * Antetul: sigla (fără nume: „Banca Transilvania” se suprapunea cu eticheta vitrinei) și
+ * stelele sub ea; în dreapta vitrina, versiunea și data. Textul și răspunsul băncii rămân
+ * cum le-a scris omul, netraduse.
+ */
+export function CardRecenzie({ banca, m, nota, data, versiune, magazin, text, raspuns, raspunsData, utile }: {
+  banca: string
+  m: Meta
+  nota: number | null
+  data: string | null
+  versiune?: string | null
+  magazin?: string | null
+  text: string | null
+  raspuns?: string | null
+  raspunsData?: string | null
+  utile?: number | null
+}) {
+  const { t, tn, locale } = useLang()
+  const nume = m.nume[banca] ?? banca
+  const logo = m.logo[banca]
   return (
     <div className="rec">
       <div className="rec-cap">
-        <span className={`rec-stele${n >= 4 ? ' bun' : n <= 2 ? ' rau' : ''}`}>{'★'.repeat(n)}{'☆'.repeat(5 - n)}</span>
-        <EtichetaBanca slug={r.banca} m={m} />
-        <Pill>{r.storefront}</Pill>
-        {r.versiune && <Pill>v{r.versiune}</Pill>}
-        <span className="mono gri rec-data">{r.postat_la ? formatZi(r.postat_la, locale) : ''}</span>
+        <div className="rec-banca">
+          {logo ? <img className="rec-sigla" src={logo} alt={nume} title={nume} /> : <b className="nm">{nume}</b>}
+          <Stele nota={nota} marime={16} />
+        </div>
+        <div className="rec-meta">
+          {magazin && <Pill>{magazin}</Pill>}
+          {versiune && <Pill>v{versiune}</Pill>}
+          {!!utile && <span className="gri rec-utile">{tn('mobil.n_utile', utile)}</span>}
+          <span className="mono gri rec-data">{data ? formatZi(data, locale) : ''}</span>
+        </div>
       </div>
-      <div className="rec-txt">{r.text || t('mobil.fara_text')}</div>
-      {r.raspuns_banca && (
-        <div className="rec-txt rec-raspuns"><b>{t('mobil.raspunsul_bancii')}</b> {r.raspuns_banca}</div>
+      <div className="rec-txt">{text || t('mobil.fara_text')}</div>
+      {raspuns && (
+        <div className="rec-txt rec-raspuns">
+          <b>{t('mobil.raspunsul_bancii')}</b> {raspuns}
+          {raspunsData && <span className="mono gri"> · {formatZi(raspunsData, locale)}</span>}
+        </div>
       )}
     </div>
   )

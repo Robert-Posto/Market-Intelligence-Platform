@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/investitii/programul-fidelis",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Programul FIDELIS - Titluri de stat",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un produs de plasament în titluri de stat emise de Ministerul Finanțelor, cu dobândă fixă, dar la BCR este dedicat exclusiv persoanelor fizice (nu și persoanelor juridice, cum pare să acopere produsul Libra).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține valorile exacte ale dobânzilor și termenelor pentru emisiunea curentă de titluri de stat Fidelis.",
+      "citat": "Emisiune în Lei: Maturitate 2 ani, dobândă fixă de 6,30%/an Maturitate 2 ani, dobândă fixă de 7,30%/an – pentru tranșa donatorilor de sânge Maturitate 4 ani, dobândă fixă de 6,90%/an Maturitate 10 ani, dobândă fixă de 7,50%/an Emisiuni în Euro: Maturitate 3 ani, dobândă fixă de 4,00%/an",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/investitii/programul-fidelis#:~:text=Emisiune%20%C3%AEn%20Lei%3A%20Maturitate%202,ani%2C%20dob%C3%A2nd%C4%83%20fix%C4%83%20de%204%2C00%25%2Fan"
+    },
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/investitii/obligatiuni/titluri-de-stat-din-romania",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Titluri de stat (Obligațiuni guvernamentale din România)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Produs de plasament în titluri de stat/obligațiuni guvernamentale, însă pagina este construită pentru persoane fizice (BCR Persoane fizice) și nu menționează explicit segmentul persoane juridice ca la Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată descrie caracteristicile produsului (termen, dobândă fixă, fiscalitate) dar nu conține un grilaj de dobânzi curent, acestea fiind pe pagina Fidelis.",
+      "citat": "Poți alege perioada de timp pentru care investești, de la 1 an până la 10 ani Nu sunt impozitate (în cazul persoanelor fizice, rezidente (cu domiciliul în România)",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/investitii/obligatiuni/titluri-de-stat-din-romania#:~:text=Po%C8%9Bi%20alege%20perioada%20de%20timp,rezidente%20%28cu%20domiciliul%20%C3%AEn%20Rom%C3%A2nia%29"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/investitii/programul-fidelis",
+    "https://www.bcr.ro/ro/organizatii-publice-si-non-profit/investitii/obligatiuni-de-stat-si-corporative",
+    "https://www.bcr.ro/ro/organizatii-publice-si-non-profit/investitii/obligatiuni-de-stat-si-corporative/certificate-de-trezorerie",
+    "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/investitii/obligatiuni/titluri-de-stat-din-romania",
+    "https://www.bcr.ro/ro/organizatii-publice-si-non-profit/investitii/obligatiuni-de-stat-si-corporative/obligatiuni-corporative",
+    "https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/investitii/obligatiuni",
+    "https://www.bcr.ro/ro/business/general/economisire-si-investitii",
+    "https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/depozitul-la-termen"
+  ],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 68469,
+    "iesire": 5807,
+    "citire_cache": 292529,
+    "scriere_cache": 78744,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4503738
+  }
+}

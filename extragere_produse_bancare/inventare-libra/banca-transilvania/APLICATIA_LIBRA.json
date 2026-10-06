@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-05",
+  "banca": "banca-transilvania",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/en/wallet-bt-pay/ghid-android",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BT Pay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "BT Pay este aplicația unică de mobile banking a Băncii Transilvania, disponibilă atât pentru persoane fizice cât și pentru persoane juridice (carduri BT pentru 'natural persons' și 'legal entities'), și include exact funcționalitățile RoPay/RoPay Alias și Click to Pay menționate în descrierea produsului Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina oficială ghid a aplicației BT Pay, care descrie explicit funcționalitățile RoPay Alias și Click to Pay, segmentate pe persoane fizice și juridice, deși valorile monetare explicite (comisioane) apar doar ca 'gratuit'.",
+      "citat": "At the first payment, regardless of the chosen method and the payment amount, you will be required to authenticate. Payments made through BT Pay are not charged any fee.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "BT Pay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de termeni și condiții al aplicației BT Pay confirmă că produsul este destinat atât persoanelor fizice cât și persoanelor juridice, la fel ca aplicația Libra Bank, și reglementează funcționalitățile Click to Pay și RoPay.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de condiții pentru BT Pay care precizează explicit eligibilitatea pentru persoane fizice și juridice și include praguri de vârstă (8-18 ani) pentru utilizatorii minori, fiind documentul juridic al produsului echivalent.",
+      "citat": "If you are between 8 completed years and 18 incomplete years old, you will be able to use BT Pay with a card issued in your name, but which is attached to your parent's account.",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro#:~:text=If%20you%20are%20between%208,attached%20to%20your%20parent%27s%20account."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bancatransilvania.ro/bt-pay",
+    "https://www.bancatransilvania.ro/en/wallet-bt-pay/ghid-android",
+    "https://www.bancatransilvania.ro/en/wallet-bt-pay/termeni-si-conditii-ro"
+  ],
+  "durata_s": 80,
+  "consum": {
+    "intrare": 33028,
+    "iesire": 6623,
+    "citire_cache": 51351,
+    "scriere_cache": 73130,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.32538120000000004
+  }
+}

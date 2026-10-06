@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-ron",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit BCR Mastercard Business în RON",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit, pentru persoane juridice, destinat gestionării cheltuielilor companiei - același tip de produs și segment ca CARD_DEBIT_BUSINESS.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: comision 0%, perioadă de valabilitate 5 ani și condiții de emitere gratuită în pachet.",
+      "citat": "Este un card destinat persoanelor juridice, care permite gestionarea eficientă a cheltuielilor profesionale ale companiei tale. Acesta oferă posibilitatea de a efectua plăți la comercianți și online, inclusiv achiziția biletelor de avion, rezervări la hotel și închiriere automobile. De asemenea, permite plata facturilor la utilități prin ATM-urile BCR și retragerea de numerar de la automatele bancare (ATM-uri) și de la ghișeele băncilor. Cardul are o perioadă de valabilitate de 5 ani.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/business-visa-usd",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit BCR Visa Business în USD",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (card de debit business, persoane juridice), dar emis în USD, deci moneda diferă față de produsul generic Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului listează explicit costurile: zero comision de asigurare anuală și 0% comision la plățile la comercianți/online.",
+      "citat": "La un singur cont curent al companiei se pot atașa unul sau mai multe carduri în aceeași monedă cu a contului curent; 0% comision pentru plăţile la comercianţi și pe internet; plătești contactless, rapid și ușor la terminalele acceptante;",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-corporate-eur",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit BCR Mastercard Business Corporate în EUR",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit pentru persoane juridice, dar varianta Corporate/EUR, cu comision de emitere de 50 EUR/card, diferit de produsul generic Libra care nu specifică un tier anume.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre clare privind costul de emitere/reînnoire și comisionul pentru plăți.",
+      "citat": "50 EUR / card pentru emiterea inițială sau reînnoire. 0% COMISION pentru plățile la comerciați și pe internet.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (18 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 69,
+  "consum": {
+    "intrare": 4,
+    "iesire": 6526,
+    "citire_cache": 6365,
+    "scriere_cache": 33965,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1514535
+  }
+}

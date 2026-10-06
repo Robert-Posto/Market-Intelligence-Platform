@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-05",
+  "banca": "brci",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/depozitul-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat de depozit la termen pentru persoane fizice, cu monede, termene și sume minime, exact același tip de produs ca Depozit la termen Libra pentru segmentul persoane fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: termene, sume minime și monede ale depozitului.",
+      "citat": "Moneda depozitului: RON, EUR sau USD; Termenul de constituire: 1, 3, 6, 9 sau 12 luni; Oferă posibilitatea de prelungire automată, cu sau fără capitalizarea dobânzii; Suma minimă pentru constituire: 500 RON, 100 EUR sau 100 USD",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/files/public/fisiere/DOBANZI%20DEPOZITE%20LA%20TERMEN%20PJ%2003.02.2025_cs.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen - Dobânzi standard persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi pentru depozitele la termen ale persoanelor juridice, corespunzând segmentului firme al produsului Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document PDF dedicat exclusiv dobânzilor la depozitele la termen pentru persoane juridice, cu grilă completă de dobânzi pe monede și maturități.",
+      "citat": "DEPOZIT LA TERMEN RON EUR USD MATURITATE 1 LUNA 4,25% 1,25% 1.85% 3 LUNI 5,00% 1,85% 2,25% 6 LUNI 2,00% 5,25% 2,75%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/depozite/documente.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului de depozit la termen pentru persoane juridice, corespunzător segmentului firme din descrierea Libra (persoane fizice și juridice).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina dedicată produsului pentru persoane juridice, dar textul extras nu conține cifre (dobânzi/sume), doar modalitatea de constituire.",
+      "citat": "Cum vă puteți constitui un depozit: Online, prin intermediul serviciului BRCI iBanking; Apelând serviciul Asistență Clienți; În orice unitate BRCI vă stăm la dispoziție cu informații detaliate privind contractarea și funcționarea",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/depozitul-la-termen.html",
+    "https://www.brci.ro/files/public/fisiere/DOBANZI%20DEPOZITE%20LA%20TERMEN%20PJ%2003.02.2025_cs.pdf",
+    "https://www.brci.ro/robots.txt"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 21021,
+    "iesire": 2533,
+    "citire_cache": 12704,
+    "scriere_cache": 17088,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11263279999999999
+  }
+}

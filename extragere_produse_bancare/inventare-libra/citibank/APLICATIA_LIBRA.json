@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-05",
+  "banca": "citibank",
+  "cod": "APLICATIA_LIBRA",
+  "denumire": "Aplicația Libra Bank (Mobile Banking)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "CitiDirect BE® Mobile",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot o aplicație de mobile banking, dar Citi Romania servește exclusiv clienți instituționali/corporate (nu are retail banking pentru persoane fizice), deci acoperă doar segmentul de firme din produsul Libra (care e pentru persoane fizice ȘI juridice) și nu include funcții de tip Voice/RoPay/Click to Pay pentru consumatori.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina este dedicată explicit aplicației mobile CitiDirect BE Mobile a Citi Romania și descrie funcționalitățile ei, dar nu conține cifre de tip dobândă/comision/sumă/termen, fiind un produs de tip aplicație B2B fără tarife publicate explicit pe această pagină.",
+      "citat": "CitiDirect BE® Mobile is a user-friendly and secure mobile application that enables companies to perform a variety of standard banking operations, using an internet-enabled mobile device, regardless of operating system (iPhone, Android, Blackberry, Symbian, Windows Phone).",
+      "citat_verificat": true,
+      "link_live": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html#:~:text=CitiDirect%20BE%C2%AE%20Mobile%20is%20a,Android%2C%20Blackberry%2C%20Symbian%2C%20Windows%20Phone%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3553,
+    "citire_cache": 31942,
+    "scriere_cache": 23233,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1000169
+  }
+}

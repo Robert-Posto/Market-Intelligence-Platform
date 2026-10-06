@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credite-finantare-imm-cu-garantie-bid",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanție BID pentru IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact produsului CREDIT_BID_IMM de la Libra Bank: finanțare în lei pentru persoane juridice/PFA cu garanție BID 70-80%, investiții până la 10 mil. lei, activitate curentă până la 5 mil. lei.",
+      "incredere": 0.97,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: plafoane, procente de garanție, maturități și condiții de eligibilitate.",
+      "citat": "Finanțare pentru activitatea curentă sau pentru investiții - Garanție BID inclusă în structura creditului - Până la 10 milioane lei pentru investiții - Până la 5 milioane lei pentru activitatea curentă - Rambursare de până la 10 ani pentru creditul de investiții",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite-finantare-imm-cu-garantie-bid#:~:text=Finan%C8%9Bare%20pentru%20activitatea%20curent%C4%83%20sau,ani%20pentru%20creditul%20de%20investi%C8%9Bii"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credite-finantare-imm-cu-garantie-bid"
+  ],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1037,
+    "citire_cache": 33435,
+    "scriere_cache": 40022,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.117124
+  }
+}

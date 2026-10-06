@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/imm-1m-euro/finantare/credite-de-investitii/credite-de-investitii-imobiliare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de investiții imobiliare PJ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit destinat persoanelor juridice (companii) pentru achiziția, construcția sau modernizarea de imobile pentru activitatea firmei, exact ca produsul Libra Credit imobiliar persoane juridice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu denumire explicită PJ și cifre complete despre sumă minimă/maximă, perioadă de creditare și procent de finanțare.",
+      "citat": "Suma minimă este 200.000 RON sau 40.000 EUR, Suma maximă este 5.000.000 RON sau 1.000.000 EUR. Perioada de creditare este de maximum 120 luni, cu excepția profesiilor liberale și a domeniului IT organizate ca societăți comerciale, unde perioada de creditare este de maximum 240 luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/calea-brd/finantare-pentru-dezvoltare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "simulator",
+      "denumire_la_banca": "Credite investiții imobiliare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub de finanțare pentru companii listează sintetic același produs de credit imobiliar pentru firme, cu sumă maximă și perioadă maximă de creditare.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină generală de finanțare companii în care produsul apare explicit cu valori numerice, dar fără detalii complete precum pe pagina dedicată.",
+      "citat": "Credite investiții imobiliare Achiziție, construcție sau modernizare imobile, refinanțare credite similare SUMA MAXIMĂ: 5.000.000 RON / 1.000.000 EURO PERIOADA MAXIMĂ DE CREDITARE: 240 luni",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1076,
+    "citire_cache": 6335,
+    "scriere_cache": 30181,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.08748750000000001
+  }
+}

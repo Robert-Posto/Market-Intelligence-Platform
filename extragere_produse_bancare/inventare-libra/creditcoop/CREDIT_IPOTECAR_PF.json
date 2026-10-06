@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-06",
+  "banca": "creditcoop",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/credite-pentru-investitii-imobiliare/",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru investiții imobiliare (Credit imobiliar-ipotecar)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat persoanelor fizice pentru achiziție, realizare, reabilitare, consolidare, modernizare sau extindere a unei locuințe, inclusiv Prima Casă, cu opțiune de dobândă fixă sau variabilă și rambursare flexibilă - corespunde direct creditului ipotecar/investiții imobiliare Libra pentru PF.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Este pagina dedicată exactă a produsului echivalent (credit ipotecar pentru persoane fizice), însă valorile numerice (dobândă, DAE, rată) apar doar în simulatorul interactiv care se încarcă dinamic (câmpurile 'Selectează' nu afișează cifre în conținutul static).",
+      "citat": "Consideri că a sosit timpul pentru achiziționarea unei locuințe, realizarea, reabilitarea, consolidarea, modernizarea, extinderea unei construcții etc. Vrei să achiziționezi o casă printr-un credit ipotecar sau vrei să aplici pentru programul Prima casă?",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/credite-pentru-investitii-imobiliare/",
+    "https://noul.creditcoop.ro/en/produse-credite-pentru-investitii",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 27073,
+    "iesire": 1837,
+    "citire_cache": 78910,
+    "scriere_cache": 56328,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.229118
+  }
+}

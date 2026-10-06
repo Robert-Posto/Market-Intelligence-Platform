@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/ingro/doc/ing-business/GhidUtilizator.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Business – meniul Facturi (integrare Oblio)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Secțiunea dedicată meniului Facturi descrie o integrare directă a platformei de internet banking pentru firme cu un program extern de facturare/contabilitate (Oblio), destinată persoanelor juridice, similar ca scop cu un API pentru programe de contabilitate, dar implementată prin redirecționare SSO către partener, nu ca API deschis.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Ghidul de utilizator descrie explicit funcția de emitere/vizualizare facturi prin integrarea cu Oblio, inclusiv mecanismul de autentificare, dar fără cifre tarifare proprii ING pentru acest serviciu.",
+      "citat": "Meniul Facturi din aplicația de internet banking INGBusiness este dedicat emiterii de facturi de către compania dvoastră cât și gestionării facturilor emise și primite de la terți furnizori de produse și servicii.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/imm/Internet-banking/Business-Deals",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Business Deals – integrare facturare Oblio",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot o integrare între platforma de business banking și un program de facturare/contabilitate (Oblio) pentru persoane juridice, dar funcționează ca un parteneriat cu redirecționare către platforma partenerului, nu ca un API generic de integrare cu orice program de contabilitate, cum sugerează denumirea produsului Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina dedicată Business Deals descrie explicit funcționalitatea de acces la facturare Oblio direct din ING Business, cu detalii despre ofertă.",
+      "citat": "12 luni abonament gratuit și 20% reducere începând cu următorul an. În plus, ca să fie și mai simplu pentru tine, poți accesa emiterea de facturi Oblio direct din ING Business, cu mai puține clickuri.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://business.ing.ro/ing2/ingdocuments/import-plati.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "ING Business – Import fișiere plăți (legătură cu sistemul de contabilitate)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul descrie o legătură directă între ING Business și sistemul de contabilitate al clientului persoană juridică, pentru automatizarea plăților, dar este un mecanism de import de fișiere predefinite, nu un API propriu-zis de integrare bidirecțională cu programele de contabilitate.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Documentul tehnic descrie explicit scopul de legătură cu sistemul de contabilitate al clientului și formatele de fișiere folosite, dar nu conține tarife sau condiții comerciale specifice.",
+      "citat": "Din considerente de eficienta si automatizare, ING Business pune la dispozitia clientilor o legatura directa cu sistemul lor de contabilitate, pentru a permite importul platilor create din sistemul de contabilitate, direct in aplicatie.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/dam/ingro/doc/ing-business/GhidUtilizator.pdf",
+    "https://business.ing.ro/ing2/ingdocuments/import-plati.pdf",
+    "https://ing.ro/dam/ingro/doc/ing-business/UserGuide.pdf",
+    "https://ing.ro/informatii-utile/ING-lanseaza-Business-Deals",
+    "https://ing.ro/lp/ing-business-deals"
+  ],
+  "durata_s": 59,
+  "consum": {
+    "intrare": 79074,
+    "iesire": 4538,
+    "citire_cache": 94006,
+    "scriere_cache": 77208,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4153492
+  }
+}

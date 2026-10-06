@@ -1,0 +1,36 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/credit-pentru-campanie-agricola",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru campanie agricolă",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele produse finanțează inputurile agricole (semințe, îngrășăminte, motorină, lucrări de sol) pentru persoane juridice din agricultură, cu rambursare corelată cu sezonalitatea culturilor. Diferă însă termenul (BRD: max 12-18 luni față de 24-48 luni la Libra), eligibilitatea (BRD cere cifră de afaceri peste 1 MEUR și minim 100 ha cultivate, mai restrictiv decât la Libra) și lipsește componenta de garantare InvestEU prezentă la produsul Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit lista cheltuielilor finanțate (inputuri agricole) și cifre privind durata creditului, dar nu menționează programul InvestEU.",
+      "citat": "durata maximă a creditului poate fi de 18 luni în cazul culturilor de toamna - durata maximă a creditului poate fi de 12 luni în cazul culturilor de primăvara. Producători agricoli (fermieri) care sunt societăți comerciale cu cifra de afaceri peste 1 MEUR și care cultivă cel puțin 100ha.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3129,
+    "citire_cache": 42220,
+    "scriere_cache": 54016,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.174786
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent Nelimitat (Nelimitat în Rețeaua BT / BT&10 / BT&25 / Nelimitat All Inclusive)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Abonament operațional lunar pentru persoane juridice, cu plăți/încasări în rețeaua BT nelimitate, carduri de debit business, internet/mobile banking și comisioane preferențiale la POS — același tip de produs și segment ca Abonament RISE, dar structurat pe 4 variante de preț (29-129 lei) în loc de un singur abonament fix de 50 lei.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina de comparare afișează direct prețurile lunare ale celor 4 variante și beneficiile incluse (operațiuni nelimitate, carduri, IB/MB, POS).",
+      "citat": "Nelimitat în Rețeaua BT 29 Lei/lună BT&10 46 Lei/lună BT&25 76 Lei/lună Nelimitat All Inclusive 129 Lei/lună Operațiuni interbancare în lei și valută online sau cu cec și bilet la ordin",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent#:~:text=Nelimitat%20%C3%AEn%20Re%C8%9Beaua%20BT%2029,cec%20%C8%99i%20bilet%20la%20ordin"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/nelimitat.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent Nelimitat (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Broșura de prezentare a pachetului Nelimitat pentru companii descrie exact beneficiile comparabile cu Abonament RISE: carduri business gratuite, retrageri gratuite, IB/MB inclus, comision redus la BT POS App, dar cu 4 variante de preț (29-129 lei) în loc de un abonament unic de 50 lei.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de prezentare a produsului, cu cifre exacte pentru abonament, retrageri gratuite, comision POS App și limitele operațiunilor interbancare pe variantă.",
+      "citat": "Ai 4 variante cu operațiuni interbancare mai multe sau mai puține, de la 29 la 129 de lei. Comision de administrare: 15 lei 5 lei Comision de încasare - 0.9% 0.7% pentru cardurile persoanelor fizice",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent Nelimitat (secțiunea II din Comisioane persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice conține secțiunea dedicată 'Pachete de cont curent' cu cele 4 variante Nelimitat (29-129 lei/lună), incluzând card Visa Business Silver, IB/MB și comisioane POS reduse — echivalent funcțional cu Abonament RISE, deși structurat pe mai multe trepte de preț.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este documentul oficial de comisioane al băncii, cu tabel complet al pachetelor Nelimitat, prețurile lunare și toate beneficiile incluse (carduri, POS, IB/MB).",
+      "citat": "Nelimitat în rețeaua BT 29 lei / lună Nelimitat & 10 46 lei / lună Nelimitat & 25 76 lei / lună Nelimitat All Inclusive 129 lei / lună. Comision de încasare BT POS APP pentru cardurile persoanelor fizice 0,9% 0,7% + 0,1 lei",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat",
+    "https://www.bancatransilvania.ro/nelimitat.pdf",
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/pachet-de-cont-curent-nelimitat/compara-pachetele-de-cont-curent",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/pachet-de-cont-curent-nelimitat"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3721,
+    "citire_cache": 195625,
+    "scriere_cache": 125516,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.39014499999999996
+  }
+}

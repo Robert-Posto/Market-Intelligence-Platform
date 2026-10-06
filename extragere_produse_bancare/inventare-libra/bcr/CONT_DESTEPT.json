@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/oferta-startup-gratuit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Oferta George pentru start-up (Contul Online George pentru StartUp)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet gratuit dedicat firmelor nou înființate (sub 12 luni de activitate), pentru persoane juridice (microîntreprinderi, SRL, ONG, PFA), incluzând cont curent, card de debit, online/mobile banking, cu 12 luni fără comisioane de administrare - exact segmentul și structura produsului Libra Cont Deștept.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu cifre explicite despre perioada de 12 luni gratuită și componentele pachetului (cont, card, online banking).",
+      "citat": "Chiar dacă ai început afacerea de 1 lună, 2 sau 11 luni, cu George pentru start-upul tău primești încă un an de beneficii gratuite. Ai 12 luni fără comisioane de administrare, indiferent în ce moment al primului an de activitate se află afacerea ta.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/oferta-startup-gratuit#:~:text=Chiar%20dac%C4%83%20ai%20%C3%AEnceput%20afacerea,activitate%20se%20afl%C4%83%20afacerea%20ta."
+    },
+    {
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont George pentru afacerea ta",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife confirmă explicit condițiile pachetului echivalent Cont Deștept: gratuitate 12 luni pentru firme nou-înființate, card de debit gratuit, plăți electronice nelimitate prin internet banking George.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care detaliază cu cifre exacte comisioanele și gratuitățile pachetului George pentru afacerea ta, aplicabil firmelor nou înființate.",
+      "citat": "În cazul entităților înființate cu cel mult 11 luni anterior solicitării deschiderii contului, comisionul de administrare Pachet este gratuit pentru o perioada de 12 luni de la data deschiderii Contului George pentru afacerea ta.",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/Conturi/oferta-startup-gratuit",
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/12iul2023_BCR_Tarife-comisioane-PJ-RO_valabil-14aug2023.pdf"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2007,
+    "citire_cache": 37532,
+    "scriere_cache": 70272,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20326840000000002
+  }
+}

@@ -1,0 +1,4025 @@
+{
+ "banca": "patria",
+ "urluri": [
+  {
+   "cheie": "https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen||depozite la termen pentru firme mici și mijlocii",
+   "url": "https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen pentru firme mici și mijlocii",
+   "focus": "Produsul băncii: „Depozite la termen pentru firme mici și mijlocii”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1416,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "8ed8c2075a8b8ec8720b478eef837605d722745869c1230c4b7be0dc3360f326",
+   "observatii": [
+    {
+     "id": "8192a832e816e9243c2850259df75510",
+     "id_url": 1416,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar condițiile generale ale depozitelor la termen pentru firme (valute, maturități, sume minime, comisioane), dar nu conține nicio valoare numerică de dobândă; pagina trimite către o altă pagină (\"aici\") pentru dobânzile standard, care nu este inclusă în acest text.",
+     "content_hash": "8ed8c2075a8b8ec8720b478eef837605d722745869c1230c4b7be0dc3360f326",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c9fd1697225685f153c7ad30ea951f571a4ca31d99e929eafd97af2b85402640"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 11,
+   "tokeni": {
+    "intrare": 5569,
+    "iesire": 188
+   }
+  },
+  {
+   "cheie": "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare||depozite bancare (depozitul patria clasic / senior plus) - persoane fizice",
+   "url": "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite bancare (Depozitul Patria Clasic / Senior Plus) - persoane fizice",
+   "focus": "Produsul băncii: „Depozite bancare (Depozitul Patria Clasic / Senior Plus) - persoane fizice”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1417,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "ae4810ad373d58c0e80caea637aa1816bf668c8f48ee20393b85b3364929e969",
+   "observatii": [
+    {
+     "id": "806a51654d09313b73af2910f8c58a6f",
+     "id_url": 1417,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie caracteristicile generale ale depozitelor Patria Bank (perioade, monede, comisioane, modalități de constituire) dar nu conține nicio grilă de dobânzi sau valori numerice ale dobânzii nominale pentru depozitul la termen, deci nu pot extrage valori concrete.",
+     "content_hash": "ae4810ad373d58c0e80caea637aa1816bf668c8f48ee20393b85b3364929e969",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "da8195b1082ec60d137cece5afd8c77291db3a3ebabc5d306a3f81ade107e507"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 11,
+   "tokeni": {
+    "intrare": 6213,
+    "iesire": 187
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/d/2142||lista de tarife și comisioane - persoane juridice (constituire depozite la termen)",
+   "url": "https://www.patriabank.ro/d/2142",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Lista de tarife și comisioane - Persoane juridice (Constituire depozite la termen)",
+   "focus": "Produsul băncii: „Lista de tarife și comisioane - Persoane juridice (Constituire depozite la termen)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1418,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "79a43bee0057652859e2b8c73f1695f24b40c4f7c646b9618d2444fa2c36c8d1",
+   "observatii": [
+    {
+     "id": "3605fae2f63ae1d6132e77001aae3dc3",
+     "id_url": 1418,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul este o listă de tarife și comisioane pentru persoane juridice; singura mențiune despre depozite la termen este „Constituire depozite la termen - gratuit” (comision), fără nicio grilă de dobânzi (dobândă nominală, scadență, plată lunară etc.). Nu există date despre dobânzile depozitului la termen, deci nu pot raporta valori pentru acest produs conform cerinței.",
+     "content_hash": "79a43bee0057652859e2b8c73f1695f24b40c4f7c646b9618d2444fa2c36c8d1",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "790abe896a25218b2ff68fc396cc9695676ae6107989b77669473ab9dbc70abf"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 9,
+   "tokeni": {
+    "intrare": 15346,
+    "iesire": 222
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/d/20||ratele de dobandă la produsele de economisire adresate persoanelor fizice (depozitul patria clasic)",
+   "url": "https://www.patriabank.ro/d/20",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Ratele de dobandă la produsele de economisire adresate persoanelor fizice (Depozitul Patria Clasic)",
+   "focus": "Produsul băncii: „Ratele de dobandă la produsele de economisire adresate persoanelor fizice (Depozitul Patria Clasic)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1415,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+   "observatii": [
+    {
+     "id": "43bb0afa417695c7552efbde4003c13b",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 3.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 3.75% 4.25% 4.75% 5.25% 5.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "83fc5656a9627bf92541b927fd218953",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 3.75% 4.25% 4.75% 5.25% 5.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "a4459933074e1e36db3797ed9b08537a",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 4.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 3.75% 4.25% 4.75% 5.25% 5.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "68981813db5c657d55d8fc72ab8e5de4",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 3.75% 4.25% 4.75% 5.25% 5.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "9e19254c8563eda275a71a7f7c9cf7fc",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 3.75% 4.25% 4.75% 5.25% 5.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "dc9e4cd1cdcc5b1a33aa6a39ed57b944",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 4.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 4.15% 4.65% 5.15% 5.40%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "71d8db3ee612aa7a6aca39e9b9b9100a",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 4.65,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 4.15% 4.65% 5.15% 5.40%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "79e533b7186e8e37f59fd08b23429db2",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 5.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 4.15% 4.65% 5.15% 5.40%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "abb88c71ebe00430087901a7566d2669",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 5.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 4.15% 4.65% 5.15% 5.40%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "bfa3e57703c60c2b061ac4ec93bddef4",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.15% 0.30% 0.50% 0.85% 0.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "4c74560e4850ae7c09af0c32e9594623",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.15% 0.30% 0.50% 0.85% 0.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "620e0d9b681751bffc08b7b3d64edf74",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.15% 0.30% 0.50% 0.85% 0.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "ce8780823ec460f240215dc017ff6533",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.85,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.15% 0.30% 0.50% 0.85% 0.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "833ecbb91c750bd9ab8a319a318d1830",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.85,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.15% 0.30% 0.50% 0.85% 0.85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "8c663eccc98cfd1f298d605730779a03",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.30% 0.45% 0.80% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "f9b8a374026de40f5659214e78b5c0fb",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.45,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.30% 0.45% 0.80% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "c38dbd02874a70c06f15abb59cf1b60d",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.30% 0.45% 0.80% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "81d7ffd17db6e995ee1d3b081d60fc40",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.30% 0.45% 0.80% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "63b871c7c8d036df82c001c407180bf5",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.10% 0.20% 0.35% 0.55% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "4328472880fffb385001b109358a83e3",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.10% 0.20% 0.35% 0.55% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "38176424b1e1fef0488571440e4ef3e6",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.35,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.10% 0.20% 0.35% 0.55% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "baf7e3418cfad67bddbf76568b125812",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.55,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.10% 0.20% 0.35% 0.55% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "159cc32ad2f8cd6e58d944d352a96925",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_la_scadenta",
+     "cod_scenariu": null,
+     "valoare_num": 0.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "La scadenta 0.10% 0.20% 0.35% 0.55% 0.80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_la_scadenta” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "c8e837a130091d9ab8e8a72c4f8725c8",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.15% 0.30% 0.50% 0.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "ba3cac57c11d616f94f4bc3375832b0c",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.15% 0.30% 0.50% 0.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "4f8d48f7c36658b01cf08083fbf460f7",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.15% 0.30% 0.50% 0.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "72aa9e91e5772852c44ee7dfca301317",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_lunara",
+     "cod_scenariu": null,
+     "valoare_num": 0.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Lunar - 0.15% 0.30% 0.50% 0.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_lunara” apare de 12 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "lunar"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "68d7de8284388523072fbf37420e778b",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "NP_RON_1L_ONLINE",
+     "valoare_num": 2.0,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "constituire prin Patria Online Internet & Mobile Banking sau Platforma Online \"Patria de Oriunde\""
+     ],
+     "eticheta_libera": "bonus dobanda constituire online RON",
+     "citat": "beneficiaza de bonus de dobanda de 2.00pp pentru termenul de 1 luna",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "9d54f3d503ca5f5d113c410f2cbb39c1",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "NP_RON_3L_ONLINE",
+     "valoare_num": 2.25,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "constituire prin Patria Online Internet & Mobile Banking sau Platforma Online \"Patria de Oriunde\""
+     ],
+     "eticheta_libera": "bonus dobanda constituire online RON",
+     "citat": "de 2.25pp pentru termenul de 3 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "a40c6f80ce4efd6fcda1e1063045767c",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "NP_RON_6L_ONLINE",
+     "valoare_num": 2.75,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "constituire prin Patria Online Internet & Mobile Banking sau Platforma Online \"Patria de Oriunde\""
+     ],
+     "eticheta_libera": "bonus dobanda constituire online RON",
+     "citat": "2.75pp pentru termenele de 6 si 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "beea79c9c2d6b2680c4bcfc091327cba",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "NP_RON_12L_ONLINE",
+     "valoare_num": 2.75,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "constituire prin Patria Online Internet & Mobile Banking sau Platforma Online \"Patria de Oriunde\""
+     ],
+     "eticheta_libera": "bonus dobanda constituire online RON",
+     "citat": "2.75pp pentru termenele de 6 si 12 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "9a6f099d202366b09a7716335974fecc",
+     "id_url": 1415,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "NP_RON_24L_ONLINE",
+     "valoare_num": 2.5,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "constituire prin Patria Online Internet & Mobile Banking sau Platforma Online \"Patria de Oriunde\""
+     ],
+     "eticheta_libera": "bonus dobanda constituire online RON",
+     "citat": "2.50pp pentru termenul de 24 de luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 100,
+     "unitate": "lei",
+     "incredere": 0.9,
+     "citat": "Suma minima de constituire pentru depozitele \"Clasic\" in RON este de 100 LEI.",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "eur",
+     "incredere": 0.9,
+     "citat": "Suma minima de constituire pentru depozitele \"Clasic\" in EUR este de 20 EUR.",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "usd",
+     "incredere": 0.9,
+     "citat": "Suma minima de constituire pentru depozitele \"Clasic\" este de 20 USD.",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    }
+   ],
+   "scrise": 32,
+   "durata_s": 44,
+   "tokeni": {
+    "intrare": 13032,
+    "iesire": 6050
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/persoane-fizice/digital-banking/noua-patria-online-pentru-persoane-fizice||patria mobile banking (internet & mobile banking patria online)",
+   "url": "https://www.patriabank.ro/persoane-fizice/digital-banking/noua-patria-online-pentru-persoane-fizice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Patria Mobile Banking (Internet & Mobile Banking Patria Online)",
+   "focus": "Produsul băncii: „Patria Mobile Banking (Internet & Mobile Banking Patria Online)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1484,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "b4e3b243dd977295a9491b4387cba480f972348152def91e19d481d5e687404e",
+   "observatii": [
+    {
+     "id": "b4efe576b496c738ddc9d475f4729c3c",
+     "id_url": 1484,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie funcționalitățile, înregistrarea și măsurile de securitate pentru Internet & Mobile Banking Patria Online, dar nu conține nicio cifră privind cost abonament, comision pe tranzacție online față de ghișeu sau costul dispozitivului de autentificare (token-ul este descris ca funcționalitate inclusă în aplicație, fără preț menționat).",
+     "content_hash": "b4e3b243dd977295a9491b4387cba480f972348152def91e19d481d5e687404e",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "95fb03df2ab07fd644cbb69e58bfe65a6af7eef13a519a8808ca86f06bcecb4d"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 6428,
+    "iesire": 213
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/afaceri-mici/digital-banking/internet-banking||patria mobile banking (pentru clienți persoane juridice)",
+   "url": "https://www.patriabank.ro/afaceri-mici/digital-banking/internet-banking",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Patria Mobile Banking (pentru clienți persoane juridice)",
+   "focus": "Produsul băncii: „Patria Mobile Banking (pentru clienți persoane juridice)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1486,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "9f4f62d879bd0ba1e52cd1bec9d8e709ee9ecbb6e62a111b6cc491e6ae7b6ab1",
+   "observatii": [
+    {
+     "id": "802f015a0cc8477078145d4a1adeb948",
+     "id_url": 1486,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie funcționalitățile, înregistrarea și măsurile de securitate pentru Internet/Mobile Banking persoane juridice, dar nu conține nicio valoare numerică (cost abonament, comision tranzacție online vs. ghișeu, cost token). Pentru comisioane, pagina trimite către „lista de tarife și comisioane destinată persoanelor juridice”, document separat, neinclus în text.",
+     "content_hash": "9f4f62d879bd0ba1e52cd1bec9d8e709ee9ecbb6e62a111b6cc491e6ae7b6ab1",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "35038e0340cb16e3d64556e629ecc75db0be435c1f45ab2d02d73a069ee6b3fe"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 17,
+   "tokeni": {
+    "intrare": 8458,
+    "iesire": 223
+   }
+  },
+  {
+   "cheie": "https://corporate.patriabank.ro/Corporate/Home/Documents/ghid-de-utilizare-al-serviciului-de-Internet-Banking-Persoane-Juridice.pdf||patria mobile banking (token mobil pentru persoane juridice)",
+   "url": "https://corporate.patriabank.ro/Corporate/Home/Documents/ghid-de-utilizare-al-serviciului-de-Internet-Banking-Persoane-Juridice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Patria Mobile Banking (token mobil pentru Persoane Juridice)",
+   "focus": "Produsul băncii: „Patria Mobile Banking (token mobil pentru Persoane Juridice)”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1485,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "9f6e1abce0f81078f3c1c8fa1418e24c6809c56e87d40bc903e64c29ebafbe86",
+   "observatii": [
+    {
+     "id": "af5df0e80c4cefe6bddedf3e2e5116da",
+     "id_url": 1485,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul este un ghid de utilizare funcțional pentru Patria Online Banking / Patria Mobile Banking (token mobil) pentru persoane juridice, dar nu conține nicio informație de preț: nu există cost de abonament, comision pe tranzacție online vs. ghișeu, sau cost al dispozitivului token/mobil. Se menționează doar caracteristici tehnice și de utilizare ale tokenului fizic/mobil, fără valori monetare asociate produsului.",
+     "content_hash": "9f6e1abce0f81078f3c1c8fa1418e24c6809c56e87d40bc903e64c29ebafbe86",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8ab06f36d8d7d36bf18b77444cf84aba579cddc4fa44f1d3a4b0c646ca3c3dec"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 17,
+   "tokeni": {
+    "intrare": 33388,
+    "iesire": 245
+   }
+  },
+  {
+   "cheie": "https://en.patriabank.ro/persoane-fizice/credite/creditul-ipotecar-patria-acasa||creditul ipotecar patria acasă",
+   "url": "https://en.patriabank.ro/persoane-fizice/credite/creditul-ipotecar-patria-acasa",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul ipotecar Patria Acasă",
+   "focus": "Produsul băncii: „Creditul ipotecar Patria Acasă”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1511,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+   "observatii": [
+    {
+     "id": "024ab2761302b0f327676df13a86a881",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "perioada_dobanda_fixa",
+     "cod_scenariu": null,
+     "valoare_num": 5,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "începând de la 4,99% în primii 5 ani, iar apoi dobânda devine variabilă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "3caded200194016796556830099e1e55",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 1000000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Până la 1.000.000 euro, echivalent în lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "ae64980710abccaec274ca4f51bff8eb",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Fără comision de analiză",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "c69b03946724cd905bcfb829f8599e7d",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 30,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Maximum 30 de ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „perioada_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "a6d859bb382de2612b2db7906e66b611",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "achiziționezi un imobil de minim 60.000 euro situat într-o zonă urbană mare și aduci ca și garanție suplimentară încă un imobil"
+     ],
+     "eticheta_libera": null,
+     "citat": "Acum poți accesa un credit ipotecar fără avans ușor și rapid.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 7 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "c69b03946724cd905bcfb829f8599e7d",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "refinanțare exclusivă a creditelor de investiții imobiliare pentru renovare/modernizare/consolidare/extindere/reabilitare"
+     ],
+     "eticheta_libera": null,
+     "citat": "unde perioada maximă este de 20 de ani și minim 5 ani",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „perioada_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "3caded200194016796556830099e1e55",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 350000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "maxim 350.000 euro (sau echivalent în lei)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_maxima” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "e97050def9b8493760d54fca4d11d5bb",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "suma_credit",
+     "cod_scenariu": null,
+     "valoare_num": 5000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Poți obține o sumă de minim 5.000 de euro (sau echivalent în lei)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "a83cfd21822c086e6cd274d42749309d",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Rambursarea anticipată a creditului ipotecar Patria Acasă - parțială sau totală - se face fără costuri suplimentare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "94e18b74e2d9c31347bb4d47f6aab515",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Credit ipotecar în lei: minim 15% din valoarea achiziției",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 7 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare_text": "LEI"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "a6d859bb382de2612b2db7906e66b611",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "credit în euro",
+      "venituri în euro"
+     ],
+     "eticheta_libera": null,
+     "citat": "Credit ipotecar în euro: minim 20% (dacă ai venituri în euro) sau minim 25% (dacă ai venituri în altă monedă decât euro)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 7 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "a6d859bb382de2612b2db7906e66b611",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "credit în euro",
+      "venituri în altă monedă decât euro"
+     ],
+     "eticheta_libera": null,
+     "citat": "minim 25% (dacă ai venituri în altă monedă decât euro)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „avans_minim” apare de 7 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "561cdf25db8739da1150831a5bf88e2f",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": null,
+     "valoare_num": 3.35,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "credit în lei, dobândă variabilă"
+     ],
+     "eticheta_libera": null,
+     "citat": "3,35% marjă fixă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „marja_banca” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "be8cfd0fa081585af20baae1da33a60d",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": null,
+     "valoare_num": 20,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "credit cu dobândă variabilă în lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "20 lei / 30 lei (sau 6 euro) comision lunar de administrare credit",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_administrare_credit_lunar_lei” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "be8cfd0fa081585af20baae1da33a60d",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": null,
+     "valoare_num": 30,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "credit cu dobândă fixă 5 ani apoi variabilă, în lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "20 lei / 30 lei (sau 6 euro) comision lunar de administrare credit",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_administrare_credit_lunar_lei” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "bbb74060c82c1ce954714a819dfa9054",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 6,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "credit euro"
+     ],
+     "eticheta_libera": "comision lunar administrare credit euro",
+     "citat": "20 lei / 30 lei (sau 6 euro) comision lunar de administrare credit",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "bbb74060c82c1ce954714a819dfa9054",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [],
+     "eticheta_libera": "comision administrare cont curent",
+     "citat": "ZERO lei comision de administrare a contului curent",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "58f19829293ef6d85054daa617eff1b9",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_300K_360L_VARIABIL",
+     "valoare_num": 8.84,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani (360 luni), dobândă variabilă"
+     ],
+     "eticheta_libera": null,
+     "citat": "Rata dobânzii[>3] 8,84%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "1b73bc88cbeea67991594a64d6a8384a",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "NP_300K_360L_VARIABIL",
+     "valoare_num": 9.31,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani (360 luni), dobândă variabilă, rate egale"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE[>4] 9,31%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "d1fc55174514843252a5baeb5b6c31d3",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_300K_360L_VARIABIL",
+     "valoare_num": 2399.41,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani, dobândă variabilă, rate egale"
+     ],
+     "eticheta_libera": null,
+     "citat": "Rată lunară( rate egale) 2.399,41 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "f80b4f11c45de47cb7fa4be7630699a9",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_300K_360L_VARIABIL",
+     "valoare_num": 863788.03,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani, dobândă variabilă, rate egale"
+     ],
+     "eticheta_libera": null,
+     "citat": "Valoarea totală de rambursat( rate egale) 863.788,03 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "089e163c08a10b9aaa2edcf4ad75a4d6",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_300K_360L_FIX5ANI",
+     "valoare_num": 8.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani, dobândă fixă primii 5 ani"
+     ],
+     "eticheta_libera": null,
+     "citat": "8,60% fixă / 9,04% variabilă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "4dd305bdec711aa2cc749cad88e04ada",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila_ulterioara",
+     "cod_scenariu": "NP_300K_360L_FIX5ANI",
+     "valoare_num": 9.04,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani, dobândă variabilă după primii 5 ani"
+     ],
+     "eticheta_libera": null,
+     "citat": "8,60% fixă / 9,04% variabilă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "905626ccc7c78bec015929184a2b42ba",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_300K_360L_FIX5ANI",
+     "valoare_num": 2358,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani, dobândă fixă primii 5 ani, rate egale"
+     ],
+     "eticheta_libera": null,
+     "citat": "2.358 lei (în primii 5 ani)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    },
+    {
+     "id": "566d866fd3ae8c65b00ed3412825eeb7",
+     "id_url": 1511,
+     "id_produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_300K_360L_FIX5ANI",
+     "valoare_num": 874662.37,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "4ba6b87e4f85989d81fc429c99c61aaf016c770d7c0e07e6700493d01f40a6e9",
+     "conditii": [
+      "suma 300.000 lei, perioadă 30 ani, dobândă fixă 5 ani apoi variabilă, rate egale"
+     ],
+     "eticheta_libera": null,
+     "citat": "874.662,37 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 300000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 360
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "dd85780d2beb42129bfcc9574772e1b539d324cd2a2a69798ee72cca12df5f44"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_fixa_introductiva",
+     "cod_scenariu": "IPO_EUR_FIX5ANI_PROMO",
+     "valoare_num": 4.99,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "Beneficiază de o dobândă fixă în euro, începând de la 4,99% în primii 5 ani",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_LEI_FIX5ANI_DAE",
+     "valoare_num": 8.05,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "DAE de la 8,05% la creditele ipotecare în lei, cu dobândă fixă în primii 5 ani",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_EUR_PROMO_MARJA",
+     "valoare_num": 2.85,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "marjă fixă promoțională de 2,85%, fie ca alegi să îți virezi sau nu salariul la noi, valabilă până la 31.08.2023.",
+     "motive": [
+      "citatul nu apare în textul sursă",
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "IPO_EUR_PROMO_DOB",
+     "valoare_num": 6.75,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "Poți beneficia de o rată anuală a dobânzii de 6,75% și DAE de la 7,11%, indiferent de suma acordată",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_EUR_PROMO_DAE",
+     "valoare_num": 7.11,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "DAE de la 7,11%, indiferent de suma acordată",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 80,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "80% pentru creditele în euro, dacă veniturile sunt exclusiv în euro",
+     "motive": [
+      "valoare în afara intervalului plauzibil [0, 40] pentru unitatea „procent”",
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 75,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "75% pentru creditele în euro, dacă veniturile nu sunt exclusiv în euro",
+     "motive": [
+      "valoare în afara intervalului plauzibil [0, 40] pentru unitatea „procent”",
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 85,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "85% pentru creditele în lei, din valoarea imobilului/imobilelor aduse în garanție",
+     "motive": [
+      "valoare în afara intervalului plauzibil [0, 40] pentru unitatea „procent”",
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "varsta_minima",
+     "cod_scenariu": null,
+     "valoare_num": 21,
+     "unitate": "ani",
+     "incredere": 0.9,
+     "citat": "Minimă: 21 de ani",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 65,
+     "unitate": "ani",
+     "incredere": 0.7,
+     "citat": "Maximă, la finalul perioadei de creditare: 65 de ani sau 70 de ani, dacă se iau în calcul doar veniturile din pensii",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_LEI_VARIABIL_IRCC594",
+     "valoare_num": 5.94,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "Indice de referință IRCC (calculat exclusiv pe baza tranzacțiilor interbancare publicat de BNR) (5,94%) + 3,35% marjă fixă.",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "puncte_procentuale",
+     "incredere": 0.8,
+     "citat": "reducere la dobândă de 0,30 puncte procentuale, dacă alegi să virezi venitul într-un cont deschis la Patria Bank",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.15,
+     "unitate": "puncte_procentuale",
+     "incredere": 0.8,
+     "citat": "reducere suplimentară de 0,15 puncte procentuale, dacă suma creditului este mai mare sau egală cu 300.000 lei",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "IPO_LEI_FIX5ANI_PROMO_VIRARE",
+     "valoare_num": 8.75,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "Fixă, în primii 5 ani ( 8,75%) pe perioada campaniei (22.05-31.08.2023) - pentru clienții care își virează venitul într-un cont deschis la Patria Bank",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila_ulterioara",
+     "cod_scenariu": "IPO_LEI_VARIABIL_ULT_IRCC594",
+     "valoare_num": 5.94,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "Variabilă, adică indicele de referință IRCC (calculat exclusiv pe baza tranzacțiilor interbancare publicat de BNR) (5,94%) + 3,25% marjă fixă",
+     "motive": [
+      "citatul nu apare în textul sursă",
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": null,
+     "valoare_num": 3.25,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "3,25% marjă fixă, cu reducere suplimentară de 0,15 puncte procentuale, dacă suma creditului este mai mare sau egală cu 300.000 lei",
+     "motive": [
+      "citatul nu apare în textul sursă",
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_EUR_VARIABIL_PROMO",
+     "valoare_num": 3.9,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "EURIBOR 6 luni (3,900%) + 2,85% marjă fixă - ofertă promoțională până pe 31.08.2023.",
+     "motive": [
+      "citatul nu apare în textul sursă",
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "NP_300K_360L_FIX5ANI",
+     "valoare_num": 9.36,
+     "unitate": "procent",
+     "incredere": 0.6,
+     "citat": "DAE[>4] 9,36%",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "NP_65KEUR_360L_VARIABIL",
+     "valoare_num": 7.95,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "8,60% fixă / 9,04% variabilă 7,95% 6,75%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "NP_65KEUR_360L_PROMO",
+     "valoare_num": 6.75,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "8,60% fixă / 9,04% variabilă 7,95% 6,75%",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "NP_65KEUR_360L_VARIABIL",
+     "valoare_num": 8.36,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "9,36% 8,36% 7,11%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "NP_65KEUR_360L_PROMO",
+     "valoare_num": 7.11,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "9,36% 8,36% 7,11%",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_65KEUR_360L_VARIABIL",
+     "valoare_num": 479.88,
+     "unitate": "eur",
+     "incredere": 0.5,
+     "citat": "479,88 euro 427,59 euro",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_65KEUR_360L_PROMO",
+     "valoare_num": 427.59,
+     "unitate": "eur",
+     "incredere": 0.4,
+     "citat": "479,88 euro 427,59 euro",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_65KEUR_360L_VARIABIL",
+     "valoare_num": 172685.98,
+     "unitate": "eur",
+     "incredere": 0.5,
+     "citat": "172.685,98 euro 153.931,95 euro",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_65KEUR_360L_PROMO",
+     "valoare_num": 153931.95,
+     "unitate": "eur",
+     "incredere": 0.4,
+     "citat": "172.685,98 euro 153.931,95 euro",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 23,
+   "durata_s": 70,
+   "tokeni": {
+    "intrare": 12967,
+    "iesire": 8590
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/persoane-fizice/credite/credit-de-nevoi-personale-patria-plus||credit de nevoi personale patria plus",
+   "url": "https://www.patriabank.ro/persoane-fizice/credite/credit-de-nevoi-personale-patria-plus",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale Patria Plus",
+   "focus": "Produsul băncii: „Credit de nevoi personale Patria Plus”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”; „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1559,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1586,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+   "observatii": [
+    {
+     "id": "b6642dccf1e652a619e7f2d108f73b05",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 250000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "cu valoare între 3.000 și 250.000 de lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "a2f28beaa46e2e3118d4c85abeee5274",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 60,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "rambursare în cel puțin 12 luni și cel mult 60 de luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "7d1da82580f8e5e2d07aab360e18254a",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_FARA_ASIG_FIXA_MIN",
+     "valoare_num": 9.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [
+      "fără asigurare de viață"
+     ],
+     "eticheta_libera": null,
+     "citat": "de la 9,25% la 19,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "dc4121b7ce5200f57903477ee7df4d0b",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_max",
+     "cod_scenariu": "NP_FARA_ASIG_FIXA_MAX",
+     "valoare_num": 19.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [
+      "fără asigurare de viață"
+     ],
+     "eticheta_libera": null,
+     "citat": "de la 9,25% la 19,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "4eb82e595110c646864173992bce2c79",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_CU_ASIG_FIXA_MIN",
+     "valoare_num": 6.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [
+      "cu asigurare de viață Allianz-Țiriac inclusă"
+     ],
+     "eticheta_libera": null,
+     "citat": "de la 6,75% la 17,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "17c9b7806cdce991397713be6ae17e43",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_max",
+     "cod_scenariu": "NP_CU_ASIG_FIXA_MAX",
+     "valoare_num": 17.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [
+      "cu asigurare de viață Allianz-Țiriac inclusă"
+     ],
+     "eticheta_libera": null,
+     "citat": "de la 6,75% la 17,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "6088b7588a805f5b7aa2929ede508a25",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 250,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiză dosar (se reține fie din valoarea creditului acordat, fie din surse proprii, la data disbursării creditului de nevoi personale): 250 de lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "9770affe0b4a8acdf04c78dc77b86754",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": "NP_80K_60L_ADMIN",
+     "valoare_num": 35,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [
+      "exemplu de calcul pentru 80.000 lei pe 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "Comision lunar de administrare credit: 35 de lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "e758b4dadc1af3b67e9125e553c1635b",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 88.4,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [],
+     "eticheta_libera": "costuri înregistrare RNPM",
+     "citat": "88,40 lei costuri pentru înregistrarea la RNPM",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "ec06dba98c14a24757c900cf2d4ac23f",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [
+      "doar pentru creditul cu dobândă fixă"
+     ],
+     "eticheta_libera": null,
+     "citat": "1% dacă perioada de rambursare rămasă este mai mare de un an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "de_la": 12
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    },
+    {
+     "id": "f7b33fd8d5849ca615240cbd57cdda83",
+     "id_url": 1559,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "dd47f91987715ba40c4a71122d2ef7aff8c3ba3ef0a11bfc51e61ea71c9fc4f3",
+     "conditii": [
+      "doar pentru creditul cu dobândă fixă"
+     ],
+     "eticheta_libera": null,
+     "citat": "0,5% dacă perioada de rambursare rămasă nu este mai mare de un an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "pana_la": 12
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c2307fbf553d30c56c8a929691f2fd4c8800c3b21b1c1474e3168b00f6ef13e9"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_80K_60L_ASIG_DA",
+     "valoare_num": 6.75,
+     "unitate": "procent",
+     "incredere": 0.7,
+     "citat": "Rata anuală a dobânzii ... 6,75% ... 19,50%",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_80K_60L_ASIG_NU",
+     "valoare_num": 19.5,
+     "unitate": "procent",
+     "incredere": 0.7,
+     "citat": "Rata anuală a dobânzii ... 6,75% ... 19,50%",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_80K_60L_ASIG_DA",
+     "valoare_num": 10.15,
+     "unitate": "procent",
+     "incredere": 0.7,
+     "citat": "DAE[>9] ... 10,15%",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_80K_60L_ASIG_NU",
+     "valoare_num": 22.53,
+     "unitate": "procent",
+     "incredere": 0.7,
+     "citat": "DAE[>9] ... 22,53%",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_80K_60L_ASIG_DA",
+     "valoare_num": 1609.68,
+     "unitate": "lei",
+     "incredere": 0.7,
+     "citat": "Rata lunară egală (lei) ... 1.609,68",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_80K_60L_ASIG_NU",
+     "valoare_num": 2132.32,
+     "unitate": "lei",
+     "incredere": 0.7,
+     "citat": "Rata lunară egală (lei) ... 2.132,32",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_80K_60L_ASIG_DA",
+     "valoare_num": 96919.01,
+     "unitate": "lei",
+     "incredere": 0.7,
+     "citat": "Valoarea totală plătibilă (lei) ... 96.919,01",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_80K_60L_ASIG_NU",
+     "valoare_num": 128277.34,
+     "unitate": "lei",
+     "incredere": 0.7,
+     "citat": "Valoarea totală plătibilă (lei) ... 128.277,34",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "NP_VARIABILA_MIN",
+     "valoare_num": 8.73,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "dobânda variabilă este cuprinsă între 8,73% - 22,80%",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "NP_VARIABILA_MAX",
+     "valoare_num": 22.8,
+     "unitate": "procent",
+     "incredere": 0.4,
+     "citat": "dobânda variabilă este cuprinsă între 8,73% - 22,80%",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 20,
+   "durata_s": 36,
+   "tokeni": {
+    "intrare": 10448,
+    "iesire": 4385
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/d/1782||conturi de economii (tarife și comisioane)",
+   "url": "https://www.patriabank.ro/d/1782",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Conturi de economii (tarife și comisioane)",
+   "focus": "Produsul băncii: „Conturi de economii (tarife și comisioane)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1648,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "710f75329555c2ffe40ce6e77feacbcb88eeffd4b0e485e95cf8c24c31f0a87d",
+   "observatii": [
+    {
+     "id": "2ce2e0bdfdc741328997ff0739010225",
+     "id_url": 1648,
+     "id_produs": "economii",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "710f75329555c2ffe40ce6e77feacbcb88eeffd4b0e485e95cf8c24c31f0a87d",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Administrarea contului de economii 0 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c4d6d208b92f207474fb7888dcae33d060453f13ec1a96eeea655d0168333d44"
+    },
+    {
+     "id": "abf08eca38c3bbabc572a9c86e1824ab",
+     "id_url": 1648,
+     "id_produs": "economii",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "710f75329555c2ffe40ce6e77feacbcb88eeffd4b0e485e95cf8c24c31f0a87d",
+     "conditii": [],
+     "eticheta_libera": "comision deschidere cont de economii",
+     "citat": "Deschidere cont curent/cont de economii 0 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c4d6d208b92f207474fb7888dcae33d060453f13ec1a96eeea655d0168333d44"
+    },
+    {
+     "id": "abf08eca38c3bbabc572a9c86e1824ab",
+     "id_url": 1648,
+     "id_produs": "economii",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "710f75329555c2ffe40ce6e77feacbcb88eeffd4b0e485e95cf8c24c31f0a87d",
+     "conditii": [],
+     "eticheta_libera": "comision inchidere cont de economii",
+     "citat": "Inchidere cont curent/cont de economii 0 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "c4d6d208b92f207474fb7888dcae33d060453f13ec1a96eeea655d0168333d44"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 11,
+   "tokeni": {
+    "intrare": 13732,
+    "iesire": 449
+   }
+  },
+  {
+   "cheie": "https://en.patriabank.ro/afaceri-mici/depozite/cont-de-economii||cont de economii (persoane juridice)",
+   "url": "https://en.patriabank.ro/afaceri-mici/depozite/cont-de-economii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de economii (persoane juridice)",
+   "focus": "Produsul băncii: „Cont de economii (persoane juridice)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1647,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "755f9c6236244f9b834dcf2f6e78f7cb9f0dc3cdd17e9318b3a98b1462540ff6",
+   "observatii": [
+    {
+     "id": "584d950a40af59fe32998327d17b01a3",
+     "id_url": 1647,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 5000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "755f9c6236244f9b834dcf2f6e78f7cb9f0dc3cdd17e9318b3a98b1462540ff6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă pentru constituire: 5.000 lei / 1.000 EUR/USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "856217bc24110e636ea2b4e046792cba2112fc2c780b6a920a0866a1a9761e0a"
+    },
+    {
+     "id": "8546d6f7fe49062e6c0a02ec31cd4ccc",
+     "id_url": 1647,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "755f9c6236244f9b834dcf2f6e78f7cb9f0dc3cdd17e9318b3a98b1462540ff6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă pentru constituire: 5.000 lei / 1.000 EUR/USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "856217bc24110e636ea2b4e046792cba2112fc2c780b6a920a0866a1a9761e0a"
+    },
+    {
+     "id": "a80af48afb492181d17aaf4fa0304c42",
+     "id_url": 1647,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1000,
+     "unitate": "usd",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "755f9c6236244f9b834dcf2f6e78f7cb9f0dc3cdd17e9318b3a98b1462540ff6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă pentru constituire: 5.000 lei / 1.000 EUR/USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "856217bc24110e636ea2b4e046792cba2112fc2c780b6a920a0866a1a9761e0a"
+    },
+    {
+     "id": "97d8d401fac766f3de0b04dbb859577e",
+     "id_url": 1647,
+     "id_produs": "economii",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "755f9c6236244f9b834dcf2f6e78f7cb9f0dc3cdd17e9318b3a98b1462540ff6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Constituirea și administrarea contului de economii sunt GRATUITE.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "856217bc24110e636ea2b4e046792cba2112fc2c780b6a920a0866a1a9761e0a"
+    },
+    {
+     "id": "65e27ca6a3254cfc33c6bd8a8d008378",
+     "id_url": 1647,
+     "id_produs": "economii",
+     "camp": "comision_deschidere",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "755f9c6236244f9b834dcf2f6e78f7cb9f0dc3cdd17e9318b3a98b1462540ff6",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Constituirea și administrarea contului de economii sunt GRATUITE.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "856217bc24110e636ea2b4e046792cba2112fc2c780b6a920a0866a1a9761e0a"
+    }
+   ],
+   "respinse": [],
+   "scrise": 4,
+   "durata_s": 13,
+   "tokeni": {
+    "intrare": 4521,
+    "iesire": 671
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/d/20||contul de economii (lista dobânzi persoane fizice)",
+   "url": "https://www.patriabank.ro/d/20",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Contul de economii (lista dobânzi persoane fizice)",
+   "focus": "Produsul băncii: „Contul de economii (lista dobânzi persoane fizice)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1646,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+   "observatii": [
+    {
+     "id": "aeee6131890bf94938d506825ed34027",
+     "id_url": 1646,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_LT5K_RON",
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": "2022-11-11",
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "sold mai mic de 5.000 RON"
+     ],
+     "eticheta_libera": null,
+     "citat": "< 5,000 RON 0.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 5000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "510dcfa8051aff20ff6efc706aeb169f",
+     "id_url": 1646,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_5K_10K_RON",
+     "valoare_num": 0.75,
+     "unitate": "procent",
+     "valid_from": "2022-11-11",
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "sold între 5.000 și 10.000 RON"
+     ],
+     "eticheta_libera": null,
+     "citat": "≥ 5,000 RON si ≤ 10,000 RON 0.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 5000,
+       "pana_la": 10000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    },
+    {
+     "id": "7351cffb7ba18d5645c0bdddd1bde53c",
+     "id_url": 1646,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_GT10K_RON",
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": "2022-11-11",
+     "valid_to": null,
+     "content_hash": "52dfe351c86896173df6c7189fdb20d728cf816f2ddf6959d4e9bc2761acb8c5",
+     "conditii": [
+      "sold mai mare de 10.000 RON"
+     ],
+     "eticheta_libera": null,
+     "citat": "> 10,000 RON 0.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 10000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa2c64d6ae61e34bc061249afce59428327c6faebe6db77a35b2bd7811bdfb9a"
+    }
+   ],
+   "respinse": [],
+   "scrise": 3,
+   "durata_s": 13,
+   "tokeni": {
+    "intrare": 12351,
+    "iesire": 733
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/persoane-fizice/economii/cont-de-economii||cont de economii (persoane fizice)",
+   "url": "https://www.patriabank.ro/persoane-fizice/economii/cont-de-economii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de economii (persoane fizice)",
+   "focus": "Produsul băncii: „Cont de economii (persoane fizice)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1645,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "203c128ef56f7b73581ee0b5e2d55251d58903f1fe607ca2ba8bcfaf03d1f225",
+   "observatii": [
+    {
+     "id": "8776f6ebee2ab8060e0304a6a831ffbd",
+     "id_url": 1645,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_SUB5K_RON",
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "203c128ef56f7b73581ee0b5e2d55251d58903f1fe607ca2ba8bcfaf03d1f225",
+     "conditii": [
+      "sold disponibil în contul de economii mai mic de 5.000 lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "pentru sume mai mici de 5.000 lei, dobânda este 0,50% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 5000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5a5327098862820186c00d88f08d2b56803c9a00ac32bcd5f5e4245f9c05fcb0"
+    },
+    {
+     "id": "b2c14694ce015fefee704e1556beae43",
+     "id_url": 1645,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_5K_10K_RON",
+     "valoare_num": 0.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "203c128ef56f7b73581ee0b5e2d55251d58903f1fe607ca2ba8bcfaf03d1f225",
+     "conditii": [
+      "sold disponibil în contul de economii între 5.000 și 10.000 lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "pentru sume intre 5.000 - 10.000 lei, dobânda este 0,75% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 5000,
+       "pana_la": 10000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5a5327098862820186c00d88f08d2b56803c9a00ac32bcd5f5e4245f9c05fcb0"
+    },
+    {
+     "id": "59c750e92c4d121d6bb11e2d9281c8e6",
+     "id_url": 1645,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_PESTE10K_RON",
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "203c128ef56f7b73581ee0b5e2d55251d58903f1fe607ca2ba8bcfaf03d1f225",
+     "conditii": [
+      "sold disponibil în contul de economii mai mare de 10.000 lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "pentru sume mai mari de 10.000 lei, dobânda este 0,00% pe an și se aplică pentru toată suma disponibilă în cont",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 10000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5a5327098862820186c00d88f08d2b56803c9a00ac32bcd5f5e4245f9c05fcb0"
+    },
+    {
+     "id": "08d54a01f3ea0cd5f644422382a0f5cb",
+     "id_url": 1645,
+     "id_produs": "economii",
+     "camp": "comision_deschidere",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "203c128ef56f7b73581ee0b5e2d55251d58903f1fe607ca2ba8bcfaf03d1f225",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "îl poți deschide în lei fara niciun cost, în orice sucursală Patria",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5a5327098862820186c00d88f08d2b56803c9a00ac32bcd5f5e4245f9c05fcb0"
+    },
+    {
+     "id": "4f92ff8ccb8c824bf9bb295888ce9ad4",
+     "id_url": 1645,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "203c128ef56f7b73581ee0b5e2d55251d58903f1fe607ca2ba8bcfaf03d1f225",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "nu există o valoarea minimă pentru deschiderea acestui cont și nici un sold minim care ar trebui menținut",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5a5327098862820186c00d88f08d2b56803c9a00ac32bcd5f5e4245f9c05fcb0"
+    }
+   ],
+   "respinse": [],
+   "scrise": 3,
+   "durata_s": 15,
+   "tokeni": {
+    "intrare": 4657,
+    "iesire": 919
+   }
+  }
+ ]
+}

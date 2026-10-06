@@ -1,0 +1,54 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/cont-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont online (deschis prin BT Pay)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este contul curent pentru persoane fizice deschis 100% online, direct din aplicația BT Pay, fără deplasare la sucursală - același tip de produs (cont curent PF digital) și același segment de clienți ca CONT_ONLINE_PERSONAL de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată produsului, cu descrierea deschiderii 100% digitale și cu grila de abonamente de cont (Salut 0 lei/lună, 365 7 lei/lună, Gold 17 lei/lună) afișate explicit în text.",
+      "citat": "Deschide‑ți un cont online la Banca Transilvania și intră în cea mai mare comunitate de banking din România. Ai zero comision și poți folosi cardul instant din app. 100% digital, în câteva minute, direct din BT Pay.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/conturi-si-operatiuni/conturi/abonament-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Abonamente de cont curent (Salut, Student, 365, Gold, Gold+)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina detaliază structura de tarife a abonamentelor de cont curent asociate contului deschis online, aplicabile aceleiași persoane fizice care își deschide cont 100% online prin BT Pay.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul general de tarife pentru abonamentele de cont curent conține cifre explicite (0 lei pentru diverse operațiuni) aplicabile contului deschis online, deși nu este pagina strict dedicată produsului online.",
+      "citat": "Faci banking gratuit prin aplicația BT Pay. 0 lei pentru încasările în lei de la alte bănci. 0 lei pentru deschiderea contului și emiterea cardului de debit.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/conturi-si-operatiuni/conturi/abonament-cont-curent#:~:text=Faci%20banking%20gratuit%20prin%20aplica%C8%9Bia,%C8%99i%20emiterea%20cardului%20de%20debit."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/cont-online",
+    "https://www.bancatransilvania.ro/conturi-si-operatiuni/conturi/abonament-cont-curent",
+    "https://www.bancatransilvania.ro/conturi-si-operatiuni/conturi/abonament-cont-curent"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 44317,
+    "iesire": 4386,
+    "citire_cache": 48710,
+    "scriere_cache": 64647,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3038535
+  }
+}

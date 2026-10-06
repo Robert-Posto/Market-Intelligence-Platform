@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-06",
+  "banca": "revolut",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/personal-loans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale Revolut",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum negarantat pentru persoane fizice, fara justificarea utilizarii, in RON, cu perioada maxima de 60 luni si rambursare in rate egale sau descrescatoare, la fel ca Libra Way; plaja de sume (2.000-200.000 RON) este mai larga dar se suprapune cu cea Libra (10.000-150.000 RON).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicata a produsului contine explicit plaja de sume, DAE, dobanda si un exemplu reprezentativ cu cifre complete.",
+      "citat": "Poți obține între 2.000 lei și 200.000 lei, îți poți prelungi perioada de rambursare cu până la 5 ani și poți afla când e scadentă următoarea rată, totul cu câteva apăsări.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/personal-loans/100000-ron-loan/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "simulator",
+      "denumire_la_banca": "Personal Loan (100.000 RON example)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de simulare pentru o suma specifica din acelasi produs de credit nevoi personale, aratand dobanda fixa, DAE, termen maxim 60 luni si rambursare in rate egale sau descrescatoare.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Exemplu numeric concret pentru produsul de credit, cu dobanda, DAE si termenul de 60 luni explicit mentionate.",
+      "citat": "The maximum loan period for a Revolut loan in Romania is 60 months, but you can choose a shorter term and make early repayments.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://help.revolut.com/en-RO/help/credit-products/loans/applying-for-a-personal-loan/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Revolut Personal Loans",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de conditii/eligibilitate pentru creditul de nevoi personale Revolut, acelasi produs si segment (persoane fizice) ca Libra Way, confirmand plaja de sume si natura negarantata a creditului.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina oficiala de ajutor descrie conditiile de eligibilitate si plaja de sume a creditului de nevoi personale, dar nu contine dobanzi detaliate pe termene.",
+      "citat": "Revolut offers unsecured personal loans between the values of RON2,000–RON200,000.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (10 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1559,
+    "citire_cache": 6398,
+    "scriere_cache": 29107,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0896451
+  }
+}

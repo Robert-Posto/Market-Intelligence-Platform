@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/linia-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linie de credit (Util / Standard)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs revolving pentru capital de lucru/decalaj plăți-încasări, destinat firmelor (SRL/SA/SCS/SNC), exact ca linia Libra: dobândă doar pe suma utilizată, fără revizuire anuală pentru varianta Util.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată conține descrierea produsului și un tabel comparativ cu cifre exacte (plafoane, cifra de afaceri minimă, vechime).",
+      "citat": "Linia de credit | Util | Standard | Cui i se potrivește | Firme cu cifra de afaceri de pănă în 9.000.000 de lei (SRL, SRL-D) | Firme cu cifra de afaceri de peste 2.000.000 de lei (SRL, SA, SCS sau SNC) | Limita maximă acordată | 500.000 de lei | 4.900.000 de lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Linie de Credit Util",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi al ING care listează explicit produsul 'Linie de Credit Util' pentru persoane juridice, cu marjă și rată anuală a dobânzii calculate pe bază de ROBOR 1M.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de dobânzi valabil, cu linie dedicată produsului și cifre exacte (ROBOR, marjă, rată anuală).",
+      "citat": "Rata anuala a dobanzii se calculeaza in functie de cotatia ROBOR 1M din penultima zi bancara a ultimei luni calendaristice incheiate, cotatie stabilita si publicata de Banca Nationala a Romaniei Linie de Credit Util 5.74% 7.50% 13.24%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2771,
+    "citire_cache": 6370,
+    "scriere_cache": 35771,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1184195
+  }
+}

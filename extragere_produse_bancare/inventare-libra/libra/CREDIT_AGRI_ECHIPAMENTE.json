@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credite-fonduri-europene",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite fonduri europene – InvestEU Competitivitate/Sustenabilitate (achiziționare echipamente agricole)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina enumeră explicit, în cadrul programului InvestEU, sub-produsul de credit pentru achiziționarea de echipamente agricole destinat fermierilor/firmelor agricole (persoane juridice), cu plafon exprimat în lei.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina este dedicată programelor InvestEU/fonduri europene și menționează explicit sub-produsul 'achiziționarea de echipamente agricole' cu o cifră concretă (1 milion lei), dar nu detaliază separat dobânda sau termenul 12-84 luni.",
+      "citat": "Fermieri și firme active în agricultură sau asociații/cooperative agricole: inputuri (până la 0,7 milioane de lei), achiziționarea de echipamente agricole (până la 1 milion de lei), irigații (până la 1 milion de lei).",
+      "rol_secundar": null,
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite-fonduri-europene#:~:text=Fermieri%20%C8%99i%20firme%20active%20%C3%AEn,la%201%20milion%20de%20lei%29."
+    },
+    {
+      "url": "https://www.librabank.ro/blog/Ce-este-InvestEU-si-cum-poti-beneficia-de-acest-program-la-Libra-Internet-Bank/2260",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Ce este InvestEU și cum poți beneficia de acest program la Libra Internet Bank (secțiunea Achiziționarea de echipamente agricole)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Articolul explică punctual componenta de credit pentru 'Achiziționarea de echipamente agricole' din programul InvestEU, cu plafonul de finanțare și garanția maximă, exact produsul Libra pentru persoane juridice din agricultură.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Este un articol de blog (nu o pagină de produs oficială), dar conține cifre specifice și numește direct sub-produsul echipamente agricole, inclusiv plafonul de garanție de până la 80%.",
+      "citat": "Achiziționarea de echipamente agricole: Creditele destinate achiziționării de echipamente agricole pot ajunge până la 1 milion de lei. La Libra Internet Bank, valoarea maximă a creditului disponibil prin programul InvestEU este de 20.000.000 lei, iar garanția creditului poate acoperi până la 80% din suma solicitată.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/credit-investeu-intrebari",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit InvestEU Competitivitate și Sustenabilitate – Întrebări frecvente (perioadă agricultori)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Fișa de întrebări frecvente a creditului InvestEU precizează explicit perioada maximă de rambursare pentru categoria 'agricultori', care se suprapune parțial cu intervalul 12-84 luni al produsului Libra pentru echipamente agricole InvestEU.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Documentul conține cifre concrete despre durata creditului pentru agricultori în cadrul InvestEU, dar nu separă explicit sub-produsul 'echipamente agricole' de celelalte destinații (inputuri, irigații).",
+      "citat": "Perioada maximă de rambursare a creditelor prin programul InvestEU este între 24 şi 120 de luni pentru clienţii din categoria Profesii Liberale, între 60 şi 84 de luni pentru agricultori și între 36 şi 72 de luni pentru restul companiilor.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/credite-fonduri-europene",
+    "https://librabank.ro/Fonduri_Europene/Credit_Activitate_Curenta_Fermieri/388"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3485,
+    "citire_cache": 31466,
+    "scriere_cache": 49026,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1637202
+  }
+}

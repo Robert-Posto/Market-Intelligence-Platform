@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-06",
+  "banca": "patria",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/persoane-fizice/credite/credit-de-nevoi-personale-patria-plus",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale Patria Plus",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără justificarea destinației, fără adeverință de venit, sumă între 3.000 și 250.000 lei, perioadă 12-60 luni - corespunde direct cu Credit nevoi personale Libra (fără justificare, până la 60 luni, fără garanții până la 70.000-200.000 lei).",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu tabele complete de dobânzi, costuri, exemple de calcul și condiții de acordare.",
+      "citat": "Poți obține un credit de nevoi personale rapid - fără documente de venit - cu valoare între 3.000 și 250.000 de lei, cu rambursare în cel puțin 12 luni și cel mult 60 de luni.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1897,
+    "citire_cache": 6337,
+    "scriere_cache": 34532,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10657540000000001
+  }
+}

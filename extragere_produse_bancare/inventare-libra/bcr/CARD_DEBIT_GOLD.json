@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/mastercard-gold",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul George Gold (card de debit Mastercard Gold)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit premium pentru persoane fizice, cu asigurare de călătorie, acces lounge și cashback, la fel ca Libra Gold, dar structura de comisioane diferă: la BCR comisionul este lunar (30 lei/lună dacă nu încasezi minimum 5.000 lei/lună), nu anual de 48 lei ca la Libra, nu se menționează dobândă la soldul contului, iar retragerile sunt gratuite nelimitat (nu 3/lună) și accesul lounge are prag de tranzacții diferit (3 vizite/an la minimum 4.500 lei cumpărături, nu condiționat de retrageri).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele comisioanelor, condițiile de acces lounge și asigurarea de călătorie.",
+      "citat": "3 vizite gratuite / an, pentru tine, dacă ai efectuat, în luna calendaristică anterioară solicitarii accesului, cumpărături cu cardul tau la comercianti (POS și/sau online), în valoare de minimum 4.500 Lei ; este necesar să ajungi la suma minimă, cu cel puțin 4 zile înaintea accesului în lounge.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/mastercard-gold#:~:text=3%20vizite%20gratuite%20%2F%20an%2C,zile%20%C3%AEnaintea%20accesului%20%C3%AEn%20lounge."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-gold-ron",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de debit BCR Mastercard Business Gold în RON",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit premium pentru persoane juridice/companii, cu asigurare de călătorie, acces lounge și reduceri la parteneri, ca segment de firme echivalent cu Libra Gold pentru persoane juridice; diferă pragurile de acces lounge (5 vizite/an la minimum 7.000 lei tranzacții, față de 3 retrageri gratuite/lună la Libra), comisionul este 'zero' în cadrul unui pachet de cont (nu 48 lei/an) și nu se menționează dobândă la sold.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului pentru business conține cifrele privind lounge-ul, asigurarea și comisioanele, dar costurile exacte complete sunt trimise către tariful general de comisioane PJ.",
+      "citat": "5 vizite gratuite / an, pentru tine, dacă ai efectuat, în luna calendaristică anterioară solicitării accesului, cumpărături cu cardul tău la comercianți (POS și/sau online), în valoare de minimum 7.000 Lei; este necesar să ajungi la suma minimă, cu cel puțin 4 zile înaintea accesului în lounge.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-gold-ron#:~:text=5%20vizite%20gratuite%20%2F%20an%2C,zile%20%C3%AEnaintea%20accesului%20%C3%AEn%20lounge."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/mastercard-gold",
+    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-gold-ron"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4431,
+    "citire_cache": 37661,
+    "scriere_cache": 41056,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.15449420000000003
+  }
+}

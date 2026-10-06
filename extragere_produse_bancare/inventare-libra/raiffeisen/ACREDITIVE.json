@@ -1,0 +1,82 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/garantii-si-acreditive/acreditivul-documentar.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditivul documentar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată produsului Acreditivul documentar pentru clienți persoane juridice (IMM), identic ca tip și segment cu Acreditive documentare Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv acreditivului documentar pentru persoane juridice, cu descriere detaliată și criteriul de eligibilitate (cifra de afaceri).",
+      "citat": "Clienți persoane juridice Raiffeisen Bank cu cifra de afaceri între 1 și 5 milioane Euro. Acreditivul documentar reprezintă un angajament irevocabil de plată, emis de Raiffeisen Bank în calitate de banca emitenta, în baza instrucțiunilor primite de la clientul persoană juridică în calitate de ordonator, de a plăti o sumă de bani în favoarea furnizorului denumit beneficiarul acreditivului.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/solutii-de-finantare/finantarea-schimburilor-comerciale/acreditivul-documentar/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditivul documentar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată acreditivului documentar pentru segmentul Corporații, aceeași categorie de produs ca cel Libra (destinat persoanelor juridice).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului, cu definiție completă, dar fără cifre/tarife concrete, doar descriere a mecanismului.",
+      "citat": "Angajament irevocabil emis de banca Cumpărătorului în baza instrucțiunilor primite de la acesta, de a plăti o suma de bani în favoarea Vânzătorului, denumit beneficiarul acreditivului, cu condiția îndeplinirii întocmai și la timp a condițiilor și termenilor din acreditiv.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive documentare (secțiunea 6.2)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane standard pentru Corporații, conține secțiunea dedicată acreditivelor documentare de import și export cu toate comisioanele aferente.",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF oficial de tarife cu secțiune explicită 6.2 Acreditive documentare, listând comisioane procentuale și minime în euro pentru emitere, plată, anulare, scontare etc.",
+      "pagina_pdf": 1,
+      "citat": "Emitere/majorare/prelungirea valabilității Plată/negociere/manipulare documente 0,20% pe trimestru sau fracțiune de trimestru,min. 100 euro/trimestru sau fracțiune de trimestru Anulare/returnare documente neplătite 50 euro",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://banking.raiffeisen.ro/info-desk/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive documentare (secțiunea 7.3, IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina Info Desk conține extrasul brosurii de tarife IMM cu secțiunea 7.3 Acreditive documentare, cu comisioane detaliate pentru import/export, aplicabile persoanelor juridice cu cifra de afaceri sub 5 milioane euro.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține textul integral al secțiunii de tarife pentru acreditive documentare IMM, cu procente și sume minime explicite, extras din broșura oficială de tarife.",
+      "citat": "7\\.3 Acreditive documentare - Acreditive de import - Emitere/ majorare/ prelungirea valabilitatii · 0,20% pe trimestru sau fractiune de trimestru, min. 100 euro/ trimestru sau fractiune de trimestru",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2039,
+    "citire_cache": 6312,
+    "scriere_cache": 26061,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0868129
+  }
+}

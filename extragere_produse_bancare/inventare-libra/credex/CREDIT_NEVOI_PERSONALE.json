@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-06",
+  "banca": "credex",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://credex.ro/credit-de-nevoi-personale/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum fără justificare, fără garanții, pentru persoane fizice, cu rate fixe și termen de rambursare similar (6-59 luni), exact ca produsul Libra Credit nevoi personale.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre exacte despre dobândă, sumă, termen și exemplu reprezentativ de calcul (DAE, comisioane, rată lunară).",
+      "citat": "Pentru un credit de nevoi personale in valoare de 10,000 lei, rambursat in 24 luni, rata anuala a dobanzii este 11.99% (fixa pe toata durata contractului), comisionul de analiza a dosarului (finantat de creditor) este de 290 lei, comisionul lunar de administrare este de 10 lei, rata lunara este de 494.34 lei, valoarea totala platibila este de 11,864.16 lei si dobanda anuala efectiva (DAE) este de 18.37%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://credex.ro/intrebari-si-raspunsuri/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit de nevoi personale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de întrebări frecvente detaliază condițiile, sumele minime/maxime și costurile aceluiași produs de credit de nevoi personale pentru persoane fizice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document general (FAQ) dar conține cifre explicite despre sume, perioade și un exemplu reprezentativ de cost pentru produs.",
+      "citat": "Exemplu reprezentativ Pentru un credit de nevoi personale in valoare de 10,000 lei, rambursat in 24 luni, rata anuala a dobanzii este 18% (fixa pe toata durata contractului), comisionul de analiza a dosarului (finantat de creditor) este de 290 lei, comisionul lunar de administrare este de 10 lei, rata lunara este de 523.72 lei, valoarea totala platibila este",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://credex.ro/"
+  ],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1443,
+    "citire_cache": 6331,
+    "scriere_cache": 24447,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07682169999999999
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Internet Banking și/sau Mobile Banking (BT Go / BT Ultra Web)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife pentru persoane juridice, capitolul IV este dedicat exclusiv serviciului de Internet & Mobile Banking pentru companii, exact ca produsul Libra pentru firme/PFA.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document PDF oficial de tarife BT, cu secțiune dedicată 'IV. Internet Banking' care conține exact abonamentul lunar al serviciului pentru persoane juridice.",
+      "pagina_pdf": 8,
+      "citat": "Internet Banking și/sau Mobile Banking 25 LEI/ lună Abonament internet și mobile banking BT Ultra Web 20 EUR BT Sign – token software pentru autentificare BT Ultra Web 5 EUR/ lună (începând cu al doilea utilizator)",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/pentru-companii/start-up/start-up-solutii-digitale/bt24-internet-banking-companii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BT24 Internet Banking pentru Companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată produsului de Internet Banking pentru persoane juridice și PFA de la Banca Transilvania, cu descriere a funcționalităților și a costului abonamentului, echivalent produsului Libra Internet & Mobile Banking business.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit produsul de Internet/Mobile Banking pentru firme și conține valoarea abonamentului lunar, deși cifra poate fi ușor diferită de cea din lista de tarife curentă (posibil conținut mai vechi păstrat live).",
+      "citat": "Suplimentar, ai acces la conturile start-up-ului tau si de pe telefonul mobil daca activezi BT24 Mobile Banking. Abonamentul este de 20 lei/luna pentru Persoane Juridice si 1 leu/luna pentru PFA.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/pentru-companii/start-up/start-up-solutii-digitale/bt24-internet-banking-companii/",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Persoane-juridice.pdf",
+    "https://go.bancatransilvania.ro/termeni-si-conditii"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3158,
+    "citire_cache": 152097,
+    "scriere_cache": 125490,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3757404
+  }
+}

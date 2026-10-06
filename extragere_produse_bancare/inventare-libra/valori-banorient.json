@@ -1,0 +1,1053 @@
+{
+ "banca": "banorient",
+ "urluri": [
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||depozit la termen (dobânda standard la depozite)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (Dobânda standard la depozite)",
+   "focus": "Produsul băncii: „Depozit la termen (Dobânda standard la depozite)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1284,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+   "observatii": [
+    {
+     "id": "e96558cf8e324a8104f6a03df844b85e",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 200000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă pentru depozitele purtătoare de dobândă este de 200.000 RON/50.000 EUR/50.000 USD.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "04450e7b1d0aafb2824ef4cd2675d55f",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_50KEUR_7Z",
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3-7 zile 0.50 % 1.25 % 1.00 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "de_la": 3,
+       "pana_la": 7
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "f63e458d9c3b5b287eeba9ecef151bb6",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_50KUSD_7Z",
+     "valoare_num": 1.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3-7 zile 0.50 % 1.25 % 1.00 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "de_la": 3,
+       "pana_la": 7
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "9492a8bbc19b5b768ef384fa01fc72b5",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_200KRON_7Z",
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3-7 zile 0.50 % 1.25 % 1.00 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "de_la": 3,
+       "pana_la": 7
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "02d45d2321634b78c214192a7e99fe10",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 0.75 % 1.50 % 1.50 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "25ed9c72ec963029617504d66d97522a",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 0.75 % 1.50 % 1.50 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "91c8c0ad300cbec60c7798b531a2a695",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 0.75 % 1.50 % 1.50 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "bee95f4696f081c3f5e7d7ead987eb1f",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "2 luni 0.75 % 1.50 % 1.75 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 2
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "eefb2227f70900e37faac106b679dbeb",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "2 luni 0.75 % 1.50 % 1.75 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 2
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "a9fd659ac5284f377956215fc204f4e1",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "2 luni 0.75 % 1.50 % 1.75 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 2
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "b62866566f71d12a1aacccfccc55effb",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 0.90 % 1.75 % 2.00 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "4d7d9fa2754dceef891c9b54b347e80e",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 0.90 % 1.75 % 2.00 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "ddc7013536227e990606c5ebac37dbc7",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 0.90 % 1.75 % 2.00 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "0b7a24b3cf00f6dba8253d62bf47aa29",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 1.00 % 2.25 % 2.25 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "f67b9c89914bec9f547773c4065d1971",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 1.00 % 2.25 % 2.25 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "db1317568fb6bf8049f7fb93f48fa00a",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 1.00 % 2.25 % 2.25 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "58ce7ee7f7813ea88ab1d890d2da4f89",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 1.00 % 2.25 % 2.50 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "c0ac5bb912640e258311feba2710e96a",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 1.00 % 2.25 % 2.50 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "bd110146d6908070980c87981776faea",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 1.00 % 2.25 % 2.50 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "114679408e7f54fee2c8902d9ba30576",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 1.00 % 2.50 % 2.75 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "9d28633a6dba21cd47c2bd6a18cd4fdc",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 1.00 % 2.50 % 2.75 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "f38f6072741025cc0f2cd7da754980fe",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 1.00 % 2.50 % 2.75 %",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 21 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "c5f14c68d2a0c8d83a4afb137c5ff4d3",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "comision_deschidere",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Deschidere de cont depozit la termen Zero",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    },
+    {
+     "id": "fe77a35f1437d1a8b7df60736a6766c7",
+     "id_url": 1284,
+     "id_produs": "depozit-termen",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Administrare cont depozit la termen Zero RON / luna Zero EUR / luna Zero USD / luna Zero GBP / luna Zero CHF / luna",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "488bd8213f14380870ebf43216df3b7fa10a894c0cd4e880df672e8d11e90dde"
+    }
+   ],
+   "respinse": [],
+   "scrise": 24,
+   "durata_s": 23,
+   "tokeni": {
+    "intrare": 18025,
+    "iesire": 3210
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||\"banorient premium\" sight account (contul banorient premium)",
+   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "\"BANORIENT Premium\" Sight account (Contul BANORIENT Premium)",
+   "focus": "Produsul băncii: „\"BANORIENT Premium\" Sight account (Contul BANORIENT Premium)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1662,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "88616fa6913aadb183758514752e15fef9c0da2a42da02b731f43c905daf13c8",
+   "observatii": [
+    {
+     "id": "720f01539224b7817dcd58a3ffd3cfba",
+     "id_url": 1662,
+     "id_produs": "economii",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul menționează contul BANORIENT Premium și faptul că se acordă o dobândă lunară preferențială în funcție de soldul zilnic, condiționată de un nivel minim de sold, dar nu furnizează nicio cifră concretă (procent de dobândă, prag de sold, comision) - doar descriere generală fără valori numerice.",
+     "content_hash": "88616fa6913aadb183758514752e15fef9c0da2a42da02b731f43c905daf13c8",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "88326519b1de0bda4f5d522cc922ab70497787da31f2a8f882aa97f601819c66"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4872,
+    "iesire": 195
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||cont premium (min. 250.000)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont Premium (min. 250.000)",
+   "focus": "Produsul băncii: „Cont Premium (min. 250.000)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1661,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+   "observatii": [
+    {
+     "id": "8b08759f78a8fa8fa1ef5b2c6ca1b54e",
+     "id_url": 1661,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "CP_250K_RON",
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "18e2545a056bbec5a3cbac457d352d30a3a166432d1d55977a58d83be38ba052",
+     "conditii": [
+      "sold minim 250.000 (echivalent)"
+     ],
+     "eticheta_libera": null,
+     "citat": "0.01 % 0.10 %",
+     "citat_original": "0.10 %",
+     "citat_aparitii": 2,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 250000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "banorient",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5388a4068c3ca5fa7ad9c742e0d37d5e9fb83a43f3a6c7a03a920574747c978e"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "CP_250K_EUR",
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "incredere": 0.8,
+     "citat": "0.01 %",
+     "motive": [
+      "citat prea scurt (6 caractere, minim 12)"
+     ]
+    },
+    {
+     "produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "CP_250K_USD",
+     "valoare_num": 0.01,
+     "unitate": "procent",
+     "incredere": 0.8,
+     "citat": "0.01 %",
+     "motive": [
+      "citat prea scurt (6 caractere, minim 12)"
+     ]
+    }
+   ],
+   "scrise": 1,
+   "durata_s": 10,
+   "tokeni": {
+    "intrare": 17359,
+    "iesire": 723
+   }
+  }
+ ]
+}

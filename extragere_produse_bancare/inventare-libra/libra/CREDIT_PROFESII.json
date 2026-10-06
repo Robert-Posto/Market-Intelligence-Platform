@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CREDIT_PROFESII",
+  "denumire": "Credite alte profesii liberale (Freud/Vitruvius/Paccioli/Libra IT)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/credit-profesii-liberale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit profesii liberale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată de credite pentru persoane juridice (PFA/SRL/PFI) acoperă explicit exact aceleași categorii ca produsul Libra CREDIT_PROFESII: psihologi, arhitecți/geodezi, contabili și specialiști IT, în același pachet de credit pentru profesii liberale.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina oficială și curentă a produsului, cu dobândă fixă explicită și listă completă a profesiilor acoperite (inclusiv psihologi, arhitecți, contabili, IT).",
+      "citat": "Îți putem finanța 100% din investiție, printr-un credit profesii liberale Perioadă: până la 25 ani, pentru creditele cu ipotecă imobiliară",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credit-profesii-liberale#:~:text=%C3%8E%C8%9Bi%20putem%20finan%C8%9Ba%20100%25%20din,pentru%20creditele%20cu%20ipotec%C4%83%20imobiliar%C4%83"
+    },
+    {
+      "url": "https://www.librabank.ro/credite-it-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit IT",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată exclusiv companiilor și PFA-urilor din domeniul IT, corespunzând sub-produsului Libra IT din CREDIT_PROFESII (CAEN 62/63).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagină de produs dedicată, cu sume maxime explicite pentru PFA și SRL din IT și termen de rambursare precizat.",
+      "citat": "Lucrezi în IT și ai nevoie de un impuls financiar? Fie că ești PFA sau administrezi o societate comercială în domeniul tehnologiei informației, avem soluția perfectă pentru tine! Credit IT – obține până la 100.000 lei, online, fără garanții sau justificări!",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/credite-it-online#:~:text=Lucrezi%20%C3%AEn%20IT%20%C8%99i%20ai,online%2C%20f%C4%83r%C4%83%20garan%C8%9Bii%20sau%20justific%C4%83ri%21"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://librabank.ro/Profesii_liberale/contabili/Creditul_PACCIOLI_pentru_societati_de_contabilitate___/82",
+    "https://www.librabank.ro/credit-profesii-liberale",
+    "https://www.librabank.ro/credite-it-online",
+    "https://www.librabank.ro/harta",
+    "https://librabank.ro/Profesii_liberale/Arhitecti",
+    "https://librabank.ro/Profesii_liberale/contabili",
+    "https://librabank.ro/Profesii_liberale/contabili/Creditul_PACCIOLI_pentru_societati_de_contabilitate___/82"
+  ],
+  "durata_s": 100,
+  "consum": {
+    "intrare": 165510,
+    "iesire": 9018,
+    "citire_cache": 109633,
+    "scriere_cache": 106176,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.7085665999999999
+  }
+}

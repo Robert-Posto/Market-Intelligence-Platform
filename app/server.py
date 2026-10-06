@@ -19,6 +19,7 @@ import json
 import os
 import socket
 import socketserver
+import statistics
 import urllib.parse
 
 import sys
@@ -27,6 +28,8 @@ import psycopg2
 import psycopg2.extras
 
 AICI = os.path.dirname(os.path.abspath(__file__))
+# build-ul interfeței React, servit pe /app/ (vezi Handler.translate_path)
+DIST_WEB = os.path.normpath(os.path.join(os.path.dirname(AICI), "web", "dist"))
 sys.path.insert(0, os.path.dirname(AICI))
 sys.path.insert(0, os.path.join(os.path.dirname(AICI), "ingest"))
 import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului)
@@ -1117,6 +1120,210 @@ def catalog_libra():
     )
 
 
+def products_discovery(q):
+    """Produsele concurenței fără echivalent în catalogul Libra (tabela `products_discovery`).
+
+    Vine din `extragere_produse_bancare/descopera_produse.py` (proiect-it): pagini de
+    produs găsite pe site-ul băncii, clasificate de model, cu citatul verificat în
+    pagină. Un rând cu banca Libra înseamnă „Libra îl are pe site, dar nu e în
+    catalog”. `nou` = apărut în ultimele 35 de zile (o rulare lunară), `retras` = nevăzut
+    la ultima rulare a băncii. Fără tabelă: `disponibil: false`, nu 500.
+    """
+    if not interoghează("SELECT to_regclass('public.products_discovery') IS NOT NULL AS e")[0]["e"]:
+        return {"disponibil": False}
+    produse = interoghează(
+        """SELECT p.id, b.slug AS banca, b.nume AS nume_banca, p.denumire_produs, p.descriere_produs,
+                  p.link, p.segment, p.categorie,
+                  to_char(p.created_at, 'YYYY-MM-DD') AS created_at,
+                  to_char(p.vazut_la, 'YYYY-MM-DD') AS vazut_la,
+                  p.created_at > now() - interval '35 days' AS nou,
+                  p.vazut_la < max(p.vazut_la) OVER (PARTITION BY p.id_banca) - interval '1 day' AS retras
+             FROM products_discovery p JOIN banci b ON b.id = p.id_banca
+            ORDER BY p.categorie, p.denumire_produs""")
+    return {"disponibil": True, "produse": produse}
+
+
+JOBS_PERIOADE = (1, 7, 30, 90)
+JOBS_LIMITA = 300
+_FUS = "Europe/Bucharest"
+# momentele pleacă în ISO cu Z: `default=str` ar trimite „2026-10-05 11:40:08.511+00:00”,
+# pe care Date din browser nu îl citește la fel peste tot
+_ISO = "to_char({} AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS\"Z\"')"
+# începutul perioadei: miezul nopții în România, acum (zile - 1) zile. Un job pornit la
+# 01:30 ține de colectarea nocturnă a zilei lui; în UTC ar cădea pe ziua de dinainte.
+_DE_LA = f"(((now() AT TIME ZONE '{_FUS}')::date - (%s::int - 1)) AT TIME ZONE '{_FUS}')"
+
+
+def jobs(q):
+    """Jurnalul joburilor: ce a rulat, cât a durat, cât a costat, ce erori a avut.
+
+    Tabelele vin din `db/migration_037_jobs.sql` și le scrie
+    `extragere_produse_bancare/jurnal_joburi.py` (discovery, extragere, produse noi).
+    Costul e estimarea din `preturi.py` (prețuri de listă × tokenii raportați de API),
+    nu factura. Fără tabele: `disponibil: false`, nu 500.
+
+    Parametri: `zile` (1, 7, 30, 90; implicit 30), `tip` (un cod din `job_types`),
+    `job` (id: erorile doar ale jobului, oricât de vechi). Ce nu se recunoaște se ignoră.
+    """
+    if not interoghează("SELECT to_regclass('public.jobs') IS NOT NULL AS e")[0]["e"]:
+        return {"disponibil": False}
+    tipuri = interoghează("SELECT cod, denumire, descriere, script FROM job_types ORDER BY ordine, cod")
+    try:
+        zile = int((q.get("zile") or ["30"])[0])
+    except ValueError:
+        zile = 30
+    zile = zile if zile in JOBS_PERIOADE else 30
+    tip = (q.get("tip") or [None])[0]
+    tip = tip if tip in {x["cod"] for x in tipuri} else None
+    try:
+        job = int((q.get("job") or [""])[0])
+    except ValueError:
+        job = None
+
+    joburi = interoghează(
+        f"""SELECT j.id, j.type, j.tip, j.banca, b.nume AS nume_banca,
+                   {_ISO.format("j.started_at")} AS started_at, {_ISO.format("j.ended_at")} AS ended_at,
+                   j.durata_s::float8 AS durata_s, j.stare, j.errors::int AS errors, j.model,
+                   j.apeluri::float8 AS apeluri, j.tokeni_intrare::float8 AS tokeni_intrare,
+                   j.tokeni_iesire::float8 AS tokeni_iesire, j.tokeni_cache_citire::float8 AS tokeni_cache_citire,
+                   j.tokeni_cache_scriere::float8 AS tokeni_cache_scriere,
+                   j.cost_usd::float8 AS cost_usd, j.cost_complet, j.parametri, j.rezumat,
+                   j.runed_manually
+              FROM v_jobs j LEFT JOIN banci b ON b.slug = j.banca
+             WHERE j.started_at >= {_DE_LA} AND (%s::text IS NULL OR j.type = %s)
+             ORDER BY j.started_at DESC LIMIT {JOBS_LIMITA}""", (zile, tip, tip))
+
+    erori_sql = f"""SELECT e.id, e.id_job, e.eroare, e.context, {_ISO.format("e.created_at")} AS created_at,
+                           j.type, t.denumire AS tip, j.banca, b.nume AS nume_banca
+                      FROM jobs_error e
+                      JOIN jobs j ON j.id = e.id_job
+                      JOIN job_types t ON t.cod = j.type
+                      LEFT JOIN banci b ON b.slug = j.banca"""
+    if job is not None:
+        erori = interoghează(erori_sql + f" WHERE e.id_job = %s ORDER BY e.created_at DESC LIMIT {JOBS_LIMITA}", (job,))
+    else:
+        erori = interoghează(
+            erori_sql + f""" WHERE j.started_at >= {_DE_LA} AND (%s::text IS NULL OR j.type = %s)
+                             ORDER BY e.created_at DESC LIMIT {JOBS_LIMITA}""", (zile, tip, tip))
+
+    # o linie pe zi și tip; zilele fără joburi vin cu tipul NULL, ca axa graficului să fie continuă
+    pe_zi = interoghează(
+        f"""WITH zile AS (
+              SELECT generate_series((now() AT TIME ZONE '{_FUS}')::date - (%s::int - 1),
+                                     (now() AT TIME ZONE '{_FUS}')::date, INTERVAL '1 day')::date AS zi)
+            SELECT to_char(z.zi, 'YYYY-MM-DD') AS zi, j.type,
+                   COALESCE(SUM(j.cost_usd), 0)::float8 AS cost_usd, COUNT(j.id)::int AS joburi
+              FROM zile z
+              LEFT JOIN jobs j ON (j.started_at AT TIME ZONE '{_FUS}')::date = z.zi
+                              AND (%s::text IS NULL OR j.type = %s)
+             GROUP BY z.zi, j.type ORDER BY z.zi""", (zile, tip, tip))
+    cost_pe_zi = {}
+    for r in pe_zi:
+        z = cost_pe_zi.setdefault(r["zi"], {"zi": r["zi"], "total": 0.0, "joburi": 0, "costuri": {}})
+        if r["type"]:
+            z["costuri"][r["type"]] = r["cost_usd"]
+            z["total"] += r["cost_usd"]
+            z["joburi"] += r["joburi"]
+
+    totaluri = interoghează(
+        f"""SELECT COUNT(*)::int AS joburi,
+                   COUNT(*) FILTER (WHERE stare = 'in_curs')::int AS in_curs,
+                   COUNT(*) FILTER (WHERE errors > 0 OR stare IN ('esuat', 'abandonat'))::int AS cu_probleme,
+                   COALESCE(SUM(errors), 0)::int AS errors,
+                   COALESCE(SUM(cost_usd), 0)::float8 AS cost_usd,
+                   COALESCE(SUM(tokeni_intrare), 0)::float8 AS tokeni_intrare,
+                   COALESCE(SUM(tokeni_iesire), 0)::float8 AS tokeni_iesire,
+                   -- discovery-ul trimite aproape tot prin cache: la ING, 6 tokeni fără cache față de 92.841 din cache
+                   COALESCE(SUM(tokeni_cache_citire), 0)::float8 AS tokeni_cache_citire,
+                   COALESCE(SUM(tokeni_cache_scriere), 0)::float8 AS tokeni_cache_scriere,
+                   COALESCE(SUM(apeluri), 0)::float8 AS apeluri,
+                   -- media doar pe joburile terminate: unul în curs ar trage media în jos
+                   (AVG(durata_s) FILTER (WHERE ended_at IS NOT NULL))::float8 AS durata_s,
+                   COALESCE(BOOL_AND(cost_complet), TRUE) AS cost_complet
+              FROM v_jobs
+             WHERE started_at >= {_DE_LA} AND (%s::text IS NULL OR type = %s)""", (zile, tip, tip))[0]
+
+    return {"disponibil": True, "tipuri": tipuri, "filtre": {"zile": zile, "tip": tip, "job": job},
+            "totaluri": totaluri, "cost_pe_zi": list(cost_pe_zi.values()),
+            "joburi": joburi, "erori": erori, "limita": JOBS_LIMITA}
+
+
+def comparatie_libra(q):
+    """Produsele Libra față de echivalentele lor la concurență (tabela `comparatie_libra`).
+
+    Vine din fluxul `extragere_produse_bancare` (proiect-it): pentru fiecare produs
+    din `produse_libra`, discovery-ul găsește produsul echivalent la bancă
+    (`surse_libra`), iar extracția scoate DOAR valorile acelui produs, cu citat,
+    link spre paragraf și scenariul descompus (sumă, perioadă, valută).
+
+    Fără `produs`: lista produselor, cu acoperirea pe bănci (câte valori, câte
+    câmpuri comparabile cu Libra, unde produsul nu există). Cu `produs=COD`: și
+    valorile acelui produs. Pe o bază fără tabelele fluxului (migrările lui sunt
+    separate), întoarce `disponibil: false` în loc de 500.
+    """
+    if not interoghează("SELECT to_regclass('public.comparatie_libra') IS NOT NULL AS e")[0]["e"]:
+        return {"disponibil": False}
+    produse = interoghează(
+        """SELECT cod, denumire, segment, categorie_cod, prioritar
+             FROM produse_libra WHERE activ
+            ORDER BY prioritar DESC, denumire""")
+    acoperire = interoghează(
+        """SELECT p.cod, b.slug AS banca, count(*)::int AS n,
+                  count(DISTINCT c.camp)::int AS campuri
+             FROM comparatie_libra c
+             JOIN banci b ON b.id = c.id_banca
+             JOIN produse_libra p ON p.id = c.id_produs_libra
+            GROUP BY 1, 2""")
+    # câmp comparabil = are valoare și la Libra, și la cel puțin o altă bancă
+    comparabile = interoghează(
+        """SELECT cod, count(*)::int AS n FROM (
+             SELECT p.cod, c.camp
+               FROM comparatie_libra c
+               JOIN banci b ON b.id = c.id_banca
+               JOIN produse_libra p ON p.id = c.id_produs_libra
+              GROUP BY 1, 2
+             HAVING bool_or(b.slug = 'libra') AND count(DISTINCT b.slug) > 1) x
+           GROUP BY 1""")
+    negasite = interoghează(
+        """SELECT p.cod, b.slug AS banca,
+                  split_part(trim(leading '[' from coalesce(s.explicatie_incredere, '')), ']', 1) AS motiv,
+                  s.explicatie_incredere AS nota
+             FROM surse_libra s
+             JOIN banci b ON b.id = s.id_banca
+             JOIN produse_libra p ON p.id = s.id_produs_libra
+            WHERE s.not_found""")
+    banci = interoghează(
+        """SELECT b.slug, b.nume, b.acces_restricted, count(c.id)::int AS n
+             FROM banci b JOIN comparatie_libra c ON c.id_banca = b.id
+            GROUP BY 1, 2, 3
+            ORDER BY (b.slug <> 'libra'), count(c.id) DESC""")
+    rez = {"disponibil": True, "produse": produse, "acoperire": acoperire,
+           "comparabile": comparabile, "negasite": negasite, "banci": banci}
+    cod = (q.get("produs") or [""])[0]
+    if cod:
+        rez["valori"] = interoghează(
+            """SELECT b.slug AS banca, c.camp, c.valoare_num::float8 AS valoare, c.valoare_text,
+                      c.unitate, c.moneda, c.conditie, c.citat,
+                      coalesce(c.link_live, s.url) AS link, s.url, s.tip,
+                      c.incredere::float8 AS incredere, c.ambiguu, c.motiv_ambiguu,
+                      coalesce(c.denumire_la_banca, s.denumire_la_banca) AS denumire_banca,
+                      c.scenariu, c.stare, c.data_colectare::text AS data_colectare
+                 FROM comparatie_libra c
+                 JOIN banci b ON b.id = c.id_banca
+                 JOIN produse_libra p ON p.id = c.id_produs_libra
+                 JOIN surse_libra s ON s.id = c.id_sursa
+                WHERE p.cod = %s
+                ORDER BY c.camp, (b.slug <> 'libra'), b.slug, c.valoare_num""", (cod,))
+        rez["echivalente"] = interoghează(
+            """SELECT DISTINCT ON (b.slug) b.slug AS banca, s.denumire_la_banca, s.url, s.incredere::float8
+                 FROM surse_libra s
+                 JOIN banci b ON b.id = s.id_banca
+                 JOIN produse_libra p ON p.id = s.id_produs_libra
+                WHERE p.cod = %s AND NOT s.not_found
+                ORDER BY b.slug, s.incredere DESC NULLS LAST""", (cod,))
+    return rez
+
+
 def retele():
     """Conturile oficiale de social media ale bancilor, din date/retele_sociale.csv.
 
@@ -1654,7 +1861,80 @@ def _slugs_rulari():
     return [r["slug"] for r in interoghează("SELECT slug, nume FROM banci") if r["nume"] in nume]
 
 
-RULARI = rulari.Rulari(slugs=_slugs_rulari)
+def _produse_rulari():
+    """Produsele pe care se poate porni un job de discovery / extragere: codurile active."""
+    return [r["cod"] for r in interoghează("SELECT cod FROM produse_libra WHERE activ")]
+
+
+RULARI = rulari.Rulari(slugs=_slugs_rulari, produse=_produse_rulari)
+
+
+def rulare_manuala_catalog(q):
+    """Ce se poate alege în modalul „Începe job”: tipurile de job (din `job_types`, doar cele din
+    lista fixă `rulari.JOBURI`), băncile fluxului de extragere și produsele Libra active."""
+    ids = [c["id"] for c in rulari.JOBURI]
+    tipuri = {r["cod"]: r for r in interoghează(
+        "SELECT cod, denumire, descriere FROM job_types WHERE cod = ANY(%s)", (ids,))}
+    return {
+        "tipuri": [{"id": c["id"], "denumire": (tipuri.get(c["id"]) or {}).get("denumire") or c["nume"],
+                    "descriere": (tipuri.get(c["id"]) or {}).get("descriere") or c["ce"],
+                    "ce": c["ce"], "produs": c.get("produs")} for c in rulari.JOBURI],
+        "banci": RULARI.slugs_extragere(),
+        "produse": interoghează("""SELECT cod, denumire, segment, categorie_cod, prioritar
+                                    FROM produse_libra WHERE activ ORDER BY prioritar DESC, denumire"""),
+    }
+
+
+def rulare_manuala_estimare(q):
+    """Costul și durata unui job înainte de pornire, din joburile încheiate (`v_jobs`).
+
+    Pe produs, costul unui job cu mai multe produse se împarte la numărul lor. Se ia cel mai
+    apropiat grup cu date: aceeași bancă și același produs, apoi același produs la orice bancă,
+    apoi aceeași bancă, apoi orice job de același tip. Pe 06.10.2026, discovery-ul pe un produs
+    costa între $0,04 (instituții fără retail, „produs inexistent” din prima pagină) și $0,53, deci
+    banca contează cât produsul. La extragere se spune și câte surse are perechea: fără ele,
+    jobul nu are ce descărca.
+    """
+    tip = (q.get("tip") or [""])[0]
+    banca = (q.get("banca") or [""])[0] or None
+    produs = (q.get("produs") or [""])[0] or None
+    if tip not in {c["id"] for c in rulari.JOBURI}:
+        return {"eroare": "tip necunoscut"}
+    joburi = interoghează(
+        """SELECT banca, parametri->>'produse' AS produse, cost_usd::float8 AS cost, durata_s::float8 AS durata
+             FROM v_jobs
+            WHERE type = %s AND ended_at IS NOT NULL AND stare IN ('reusit', 'cu_erori')""", (tip,))
+    for j in joburi:
+        coduri = [c for c in (j["produse"] or "").split(",") if c]
+        j["coduri"] = coduri
+        j["cost_unitar"] = j["cost"] / len(coduri) if coduri else j["cost"]
+    are_produs = next(c.get("produs") for c in rulari.JOBURI if c["id"] == tip) is not None
+    grupe = ([("banca_produs", lambda j: j["banca"] == banca and j["coduri"] == [produs]),
+              ("produs", lambda j: j["coduri"] == [produs]),
+              ("banca", lambda j: j["banca"] == banca and j["coduri"]),
+              ("tip", lambda j: j["coduri"])] if are_produs else
+             [("banca", lambda j: j["banca"] == banca), ("tip", lambda j: True)])
+    est = None
+    for nivel, cond in grupe:
+        g = [j for j in joburi if cond(j)]
+        if g:
+            costuri = [j["cost_unitar"] for j in g]
+            durate = [j["durata"] for j in g if j["durata"] is not None]
+            est = {"nivel": nivel, "n": len(g), "cost_med": statistics.median(costuri),
+                   "cost_min": min(costuri), "cost_max": max(costuri),
+                   "durata_med": statistics.median(durate) if durate else None,
+                   "durata_max": max(durate) if durate else None}
+            break
+    surse = None
+    if are_produs and banca and produs:
+        surse = interoghează(
+            """SELECT COUNT(*) FILTER (WHERE NOT s.not_found)::int AS gasite,
+                      COUNT(*) FILTER (WHERE s.not_found)::int AS negasite,
+                      to_char(MAX(s.created_at), 'YYYY-MM-DD') AS ultima
+                 FROM surse_libra s JOIN banci b ON b.id = s.id_banca
+                 JOIN produse_libra p ON p.id = s.id_produs_libra
+                WHERE b.slug = %s AND p.cod = %s""", (banca, produs))[0]
+    return {"tip": tip, "banca": banca, "produs": produs, "estimare": est, "surse": surse}
 
 
 RUTE = {
@@ -1676,6 +1956,11 @@ RUTE = {
     "/api/campanii": campanii,
     "/api/comunicate": comunicate,
     "/api/catalog_libra": lambda q: catalog_libra(),
+    "/api/comparatie_libra": comparatie_libra,
+    "/api/products_discovery": products_discovery,
+    "/api/jobs": jobs,
+    "/api/rulare_manuala": rulare_manuala_catalog,
+    "/api/rulare_manuala/estimare": rulare_manuala_estimare,
     "/api/matrice": matrice,
     "/api/celula": celula,
     "/api/rate": rate,
@@ -1846,7 +2131,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         try:
             if cale.endswith("/porneste"):
-                self._json(200, RULARI.porneste(corp.get("id"), corp.get("banca")))
+                self._json(200, RULARI.porneste(corp.get("id"), corp.get("banca"), corp.get("produs")))
             else:
                 self._json(200, RULARI.opreste())
         except rulari.Respins as exc:
@@ -1918,6 +2203,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def translate_path(self, path):
         rel = urllib.parse.urlparse(path).path.lstrip("/")
+        if rel == "app" or rel.startswith("app/"):
+            # Interfața React construită (`npm run build` -> web/dist), pe aceeași origine ca API-ul:
+            # din Vite (:5173) pornirea rulărilor e refuzată intenționat (Origin), iar pagina
+            # „Rulare manuală” există doar în React. Ce iese din web/dist (`..`) dă 404.
+            cale = os.path.normpath(os.path.join(DIST_WEB, urllib.parse.unquote(rel[4:])))
+            return cale if cale == DIST_WEB or cale.startswith(DIST_WEB + os.sep) else os.path.join(DIST_WEB, "__in_afara__")
         return os.path.join(AICI, rel or "index.html")
 
     def log_message(self, fmt, *args):

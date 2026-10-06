@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-06",
+  "banca": "creditcoop",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/acces-cont-economii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acces cont economii (Personal)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de economii flexibil, fără scadență, cu depuneri și retrageri oricând, dobândă variabilă calculată la zi/sold - același tip de produs și segment (persoane fizice) ca CONT_ECONOMII Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată produsului descrie corect tipul (cont de economii flexibil, dobândă variabilă, sumă minimă), dar nu publică procentul exact de dobândă.",
+      "citat": "Depozit flexibil care îți oferă posibilitatea să depui și să retragi din economiile tale oricând dorești Termen nelimitat de constituire Fără comision la constituirea depozitului Dobândă atractivă Suma minimă de constituire este de 100 lei Dobândă variabilă",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/acces-cont-economii/#:~:text=Depozit%20flexibil%20care%20%C3%AE%C8%9Bi%20ofer%C4%83,de%20100%20lei%20Dob%C3%A2nd%C4%83%20variabil%C4%83"
+    },
+    {
+      "url": "https://www.creditcoop.ro/depozit-firme-acces-cont-economii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acces cont economii (Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta pentru persoane juridice a aceluiași cont de economii flexibil, cu dobândă variabilă și retrageri oricând, acoperind segmentul firme din produsul Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată produsului pentru firme descrie corect tipul de produs (cont de economii flexibil, dobândă variabilă), dar nu afișează procentul exact de dobândă.",
+      "citat": "Depozit flexibil care îți oferă posibilitatea să depui și să retragi din economiile tale oricând dorești Termen nelimitat de constituire Fără comision la constituirea depozitului Dobândă atractivă Suma minimă de constituire este de 500 lei Dobândă variabilă",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/depozit-firme-acces-cont-economii/#:~:text=Depozit%20flexibil%20care%20%C3%AE%C8%9Bi%20ofer%C4%83,de%20500%20lei%20Dob%C3%A2nd%C4%83%20variabil%C4%83"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/acces-cont-economii/",
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/depozit-firme-acces-cont-economii/",
+    "https://www.creditcoop.ro/fisiere/Lista-de-dobanzi.pdf"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 58641,
+    "iesire": 2561,
+    "citire_cache": 79031,
+    "scriere_cache": 64684,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.32040820000000003
+  }
+}

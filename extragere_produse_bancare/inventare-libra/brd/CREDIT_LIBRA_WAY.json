@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/sites/default/files/_files/pdf/Ghid_dobanzi_si_comisioane_credite.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Creditul EXPRESSO",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobanzi si comisioane descrie explicit Creditul EXPRESSO ca produs de nevoi personale nenominalizate fara ipoteca, in Lei, cu perioada de creditare 6-60 luni si suma 2.000-250.000 lei, acelasi tip si segment ca Libra Way.",
+      "incredere": 0.93,
+      "explicatie_incredere": "Document oficial, actualizat (valabil de la 01.10.2026), care contine explicit denumirea produsului, suma minima/maxima, perioada de creditare si dobanzile/comisioanele aplicabile.",
+      "citat": "CREDITUL EXPRESSO Credit de nevoi personale nenominalizate fara ipoteca imobiliara, acordat cu rata dobanzii fixa, inclusiv pentru refinanțarea altor credite de la BRD/BRD și alte instituții financiare (refinanțare mixta) Perioada de creditare: intre 6 si 60 de luni Suma creditului: 2.000 lei – 250.000 lei",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/persoane-fizice/credite/credite-de-nevoi-personale/creditul-expresso",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul Expresso (Credit de Nevoi Personale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fara ipoteca, fara destinatie justificata, in RON, cu dobanda fixa si perioada maxima de creditare de 60 luni (5 ani) - corespunde direct profilului Libra Way (nevoi personale, fara justificare, max 60 luni).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicata a produsului de credit de nevoi personale fara ipoteca al BRD, cu cifre (suma maxima, dobanda) prezente in continutul paginii (meta/descriere si text).",
+      "citat": "Creditul Expresso de la BRD poate fi obținut 100% online, fără niciun drum la bancă. Profită acum de dobândă fixă pe întreaga perioadă și obține până la 130.000 de lei.",
+      "citat_verificat": true,
+      "link_live": "https://www.brd.ro/persoane-fizice/credite/credite-de-nevoi-personale/creditul-expresso#:~:text=Creditul%20Expresso%20de%20la%20BRD,p%C3%A2n%C4%83%20la%20130.000%20de%20lei."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/persoane-fizice/credite/credite-de-nevoi-personale/creditul-expresso",
+    "https://www.brd.ro/_files/pdf/Ghid%20tarife%20comisioane%20nevoi%20personale.pdf",
+    "https://brd.ro/persoane-fizice/credite/credite-de-consum/credite-de-nevoi-personale",
+    "https://www.brd.ro/sites/default/files/_files/pdf/Ghid_dobanzi_si_comisioane_credite.pdf"
+  ],
+  "durata_s": 96,
+  "consum": {
+    "intrare": 10,
+    "iesire": 7749,
+    "citire_cache": 152982,
+    "scriere_cache": 92334,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.33894140000000006
+  }
+}

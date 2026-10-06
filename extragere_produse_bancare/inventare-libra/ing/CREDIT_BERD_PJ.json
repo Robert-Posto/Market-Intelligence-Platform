@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/Credit-cu-garantie-BID-pentru-IMM",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanție BID pentru IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru IMM-uri garantat de o instituție financiară internațională (BID în loc de BERD), dar diferă instituția garantă, procentul de garantare (70% față de 80%), plafonul maxim (14 mil. lei față de 10 mil. lei) și perioada (1-10 ani, grație max. 24 luni la utilizare, față de 12-120 luni cu grație până la 12 luni la Libra).",
+      "incredere": 0.7,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifrele esențiale (procent garantare, plafon, perioadă), dar garantul este BID, nu BERD, ca la produsul Libra.",
+      "citat": "Creditul cu garanția acordată de Banca de Investiții și Dezvoltare (BID) este un instrument de finanțare pentru IMM-uri, prin garanția care acoperă 70% din valoarea finanțată, reducând cerințele de garanții pentru IMM-uri.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4975,
+    "citire_cache": 6361,
+    "scriere_cache": 32774,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1329652
+  }
+}

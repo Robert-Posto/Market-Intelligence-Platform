@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-06",
+  "banca": "patria",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://en.patriabank.ro/persoane-fizice/credite/creditul-ipotecar-patria-acasa",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul ipotecar Patria Acasă",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit ipotecar pentru persoane fizice, destinat achiziției/refinanțării de locuință, cu opțiune fără avans; aceeași funcție ca produsul Libra (achiziție/construcție/refinanțare locuință pentru PF).",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: plafon maxim, DAE, dobânzi, perioadă, comisioane.",
+      "citat": "Maximum 30 de ani DAE de la 8,05% la creditele ipotecare în lei, cu dobândă fixă în primii 5 ani Până la 1.000.000 euro, echivalent în lei Fără comision de analiză",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/persoane-fizice/credite/creditul-ipotecar-patria-acasa",
+    "https://en.patriabank.ro/persoane-fizice/credite/creditul-ipotecar-patria-acasa"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 67122,
+    "iesire": 2110,
+    "citire_cache": 12704,
+    "scriere_cache": 36246,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.24849980000000002
+  }
+}

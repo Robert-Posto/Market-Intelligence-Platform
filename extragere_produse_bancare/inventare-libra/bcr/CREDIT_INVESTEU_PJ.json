@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/presa/informatii-de-presa/2023/10/25/BCR-sustine-IMM-urile-din-Romania-si-este-partener-FEI-pentru-garantii-de-portofoliu-PNRR",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Garanția FEI - SME Competitivitate / SME Sustenabilitate",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Aceleași două denumiri gemene (Competitivitate/Sustenabilitate) pentru IMM-uri, dar mecanismul e o garanție de portofoliu FEI legată de PNRR, nu explicit programul InvestEU, iar textul nu dă plafoane de sumă sau termene (12-120 luni) ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Comunicatul de presă descrie explicit cele două tipuri de garanții FEI, SME Sustenabilitate și SME Competitivitate, cu destinațiile lor, dar fără cifre de plafon sau dobândă.",
+      "citat": "Cele două noi tipuri de garanții adăugate în portofoliul BCR vor facilita accesul la finanțare pentru sustenabilitatea și competitivitatea IMM-urilor. SME Sustenabilitate – finanțările verzi pentru IMM-uri și întreprinderi mici cu capitalizare medie, care este, în primul rând, despre diminuarea schimbărilor climatice.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/presa/informatii-de-presa/2023/10/25/BCR-sustine-IMM-urile-din-Romania-si-este-partener-FEI-pentru-garantii-de-portofoliu-PNRR#:~:text=Cele%20dou%C4%83%20noi%20tipuri%20de,r%C3%A2nd%2C%20despre%20diminuarea%20schimb%C4%83rilor%20climatice."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/fonduri-nerambursabile/credite-cu-garantii-fei",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garanții FEI",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pagina dedicată actuală a garanției FEI pentru IMM (inclusiv tipul SME Sustenabilitate), cu structură de credit pentru investiții/capital de lucru similară InvestEU Competitivitate/Sustenabilitate, dar fără cifre de plafon total al creditului (doar procentul de garantare 50-80%) și fără mențiune explicită InvestEU.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina este dedicată produsului de credit cu garanție FEI pentru IMM, cu cifre despre procentul de garantare, dar nu despre plafoanele de sumă ale creditului.",
+      "citat": "FEI preia o parte din risc (ex. 50–80% din valoarea creditului). Garanția FEI este un instrument de sprijin pentru IMM-uri, prin care Fondul European de Investiții (FEI) garantează o parte din creditele acordate de bănci.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/fonduri-nerambursabile/credite-cu-garantii-fei#:~:text=FEI%20preia%20o%20parte%20din,din%20creditele%20acordate%20de%20b%C4%83nci."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/fonduri-nerambursabile",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanția FEI (tipuri: Formare și Educație, Sectoare Creative și Culturale, SME Sustenabilitate)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina hub confirmă existența tipului de garanție FEI 'SME Sustenabilitate' în portofoliul curent BCR, parte din programul InvestEU/FEI pentru IMM, dar nu mai listează explicit 'SME Competitivitate' ca tip activ și nu oferă cifre de plafon ale creditului.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina generală menționează tipurile curente de garanții FEI disponibile, inclusiv SME Sustenabilitate, dar fără cifre specifice de sumă sau termen pentru credit.",
+      "citat": "În prezent avem disponibil în portofoliul nostru trei tipuri de garanții FEI, adaptate nevoilor afacerii tale: Formare și Educație, Sectoare Creative și Culturale și SME Sustenabilitate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/creditare/programe-speciale-de-finantare/imm-invest",
+    "https://www.bcr.ro/ro/business/general/finantare/fonduri-europene-eu-office",
+    "https://www.bcr.ro/ro/business/fonduri-nerambursabile/credite-cu-garantii-fei",
+    "https://www.bcr.ro/ro/presa/informatii-de-presa/2023/10/25/BCR-sustine-IMM-urile-din-Romania-si-este-partener-FEI-pentru-garantii-de-portofoliu-PNRR"
+  ],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 12,
+    "iesire": 4487,
+    "citire_cache": 180158,
+    "scriere_cache": 53121,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21372809999999998
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Comisioane-PJ-Visa-Business-Gold-Debit.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Visa Business Gold (Debit) - card de debit persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru cardul de debit business Visa Business Gold, destinat persoanelor juridice, cu toate valorile relevante.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF dedicat, cu titlu explicit al produsului și tabel complet de comisioane, sume și limite.",
+      "pagina_pdf": 1,
+      "citat": "Taxe și comisioane Visa Business Gold (Debit) card de debit persoane juridice Cont în Lei Emitere card 100 Lei/card Comision utilizare ATM/POS BT pt. numerar 0,4% ATM/POS al altor bănci în România sau In străinătate pentru numerar 1%+2,5 Lei Administrare anuală cont de card 100 Lei/card",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/visa-business-silver-visa-business-gold-debit/comisioane_visa_business_silver_lei.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Visa Business Silver - card de debit business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru varianta Silver a cardului de debit business pentru persoane juridice/PFA.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF dedicat produsului, cu tabel numerotat complet de comisioane și limite pentru cardul de debit business Visa Business Silver.",
+      "pagina_pdf": 1,
+      "citat": "Emitere card Visa Business Silver 10 lei / card 3. Administrare anuala a contului de card 50 lei / card 6. Comision utilizare ATM-uri BT pentru numerar 0,4% 29. Limita maxima de retragere numerar /cont /zi (ATM + POS) 10.000 lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Comisioane-PJ-Mastercard-Business-Euro-Debit.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Mastercard Business Euro - card de debit persoane juridice (cont în EUR)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Variantă în valută (EUR) a cardului de debit business pentru firme; segment identic, dar cont/monedă diferite față de varianta standard în lei.",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF dedicat cu titlu explicit 'card de debit persoane juridice' și tabel complet de comisioane în EUR.",
+      "pagina_pdf": 1,
+      "citat": "Taxe și comisioane Mastercard Business Euro card de debit persoane juridice Cont în EUR Emitere card 5 Eur/card Comision utilizare ATM/POS BT pt. numerar 0,5%, min. 3 Eur",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/conturi-carduri/carduri-business/carduri-de-debit",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Carduri business de debit (BT Visa Business Silver / BT Visa Business Gold)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată cardurilor de debit pentru firme (persoane juridice/PFA), exact segmentul și tipul de produs ca CARD_DEBIT_BUSINESS.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit cardurile de debit business (lei și valută) destinate cheltuielilor curente ale firmei, dar valorile numerice complete sunt redate mai degrabă în PDF-urile de tarife.",
+      "citat": "You have two types of debit cards in lei: BT Visa Business Silver and BT Visa Business Gold and currency cards: euros and dollars. All are designed for the current expenses of the business.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/conturi-carduri/carduri-business/carduri-de-debit",
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Comisioane-PJ-Visa-Business-Gold-Debit.pdf",
+    "https://www.bancatransilvania.ro/en/companii/conturi-carduri/carduri-business/carduri-de-debit",
+    "https://www.bancatransilvania.ro/files/visa-business-silver-visa-business-gold-debit/comisioane_visa_business_silver_lei.pdf"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2670,
+    "citire_cache": 76958,
+    "scriere_cache": 57050,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1847326
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/Economii/depozitul-business-bonus",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul Business Bonus",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Depozitul Business Bonus este depozitul promoțional pentru sume noi destinat companiilor (persoane juridice), echivalent segmentului business al Depozitului Blitz Libra, dar cu termen de 3 luni în loc de 7 luni.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu cifre clare: dobândă 5,1% p.a. și termen de 3 luni, pentru persoane juridice.",
+      "citat": "Este un depozit pentru companii, pe 3 luni, dedicat sumelor noi aduse la ING (cum ar fi încasări recente sau sume transferate de la alte bănci).",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/Economii/depozitul-business-bonus#:~:text=Este%20un%20depozit%20pentru%20companii%2C,transferate%20de%20la%20alte%20b%C4%83nci%29."
+    },
+    {
+      "url": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit Bonus (ING Economii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Depozit Bonus ING este tot un depozit promoțional, pentru sume noi, cu dobândă majorată, destinat persoanelor fizice; diferă termenul (4 luni, nu 7 luni) față de Depozit Blitz Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține explicit dobânda (6%/5%) și termenul (4 luni) pentru Depozitul Bonus, echivalentul persoane fizice al depozitului promoțional Libra.",
+      "citat": "Primești o dobândă de până la 6%* pe an pe o perioadă de 4 luni, dacă îți deschizi Depozit Bonus cu sumele noi economisite, până la 5 milioane lei.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen#:~:text=Prime%C8%99ti%20o%20dob%C3%A2nd%C4%83%20de%20p%C3%A2n%C4%83,p%C3%A2n%C4%83%20la%205%20milioane%20lei."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-dobanzi-ING-Profesional_ING-Fix.pdf",
+    "https://ing.ro/persoane-fizice/economii-si-investitii/ing-economii-si-depozite-la-termen",
+    "https://ing.ro/imm/Economii/depozitul-business-bonus"
+  ],
+  "durata_s": 49,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4834,
+    "citire_cache": 82789,
+    "scriere_cache": 57993,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2098963
+  }
+}

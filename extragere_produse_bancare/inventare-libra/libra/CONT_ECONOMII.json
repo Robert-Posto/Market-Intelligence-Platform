@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/dobanda-cont-de-economii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de economii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului Libra 'Cont de economii' conține exact cele trei niveluri de dobândă descrise în produsul Libra: 3,00% la 6-12 luni, 2,50% la 3-6 luni și 2,00% nelimitat cu retrageri oricând, calculate la sold zilnic.",
+      "incredere": 0.97,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina oficială dedicată produsului conține toate cifrele exacte cerute (dobânzi, termene, condiții de retragere), identice cu descrierea produsului Libra; pagina precizează însă explicit că produsul este disponibil doar pentru persoane fizice.",
+      "citat": "Economii în lei cu dobânzi competitive 3,00% pe an Scadență între 6 și 12 luni, iar dobânda acumulată se plătește la termen 2,50% pe an Scadență între 3 și 6 luni, iar dobânda acumulată se plătește la termen 2,00% pe an Nelimitat: Sumele pot fi retrase oricând, iar dobânda acumulată se plătește lunar",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/dobanda-cont-de-economii#:~:text=Economii%20%C3%AEn%20lei%20cu%20dob%C3%A2nzi,dob%C3%A2nda%20acumulat%C4%83%20se%20pl%C4%83te%C8%99te%20lunar"
+    },
+    {
+      "url": "https://www.librabank.ro/documente/contract_persoane_fizice_v50.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Cont de Economii (Produs 1 - Eveniment / Produs 2 - Nelimitat)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul contractual general pentru persoane fizice conține secțiunea dedicată 'TERMENI SI CONDITII CONTRACTUALE CONT DE ECONOMII', detaliind formula de calcul a dobânzii zilnice, plafonul de 1 milion lei pentru dobânda contului nelimitat și plata lunară/la termen a dobânzii.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul de condiții contractuale conține secțiune explicită și detaliată despre Cont de Economii, cu formula de calcul a dobânzii și regulile de plată, corespunzând exact structurii produsului Libra.",
+      "citat": "Pentru un prag maxim de 1 milion de lei este aplicata dobanda corespunzatoare pentru Produs 2 (Cont de economii Nelimitat); peste acest nivel, sumele vor fi remunerate cu dobanda de cont curent. Pentru soldul economisit, dobanda este variabila si se calculeaza zilnic, dar se plateste integral lunar, in ultima zi a lunii.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/dobanda-cont-de-economii"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2851,
+    "citire_cache": 43156,
+    "scriere_cache": 64916,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1994432
+  }
+}

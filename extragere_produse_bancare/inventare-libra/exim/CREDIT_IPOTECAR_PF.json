@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-06",
+  "banca": "exim",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/11/09/creditul-ipotecar/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul Ipotecar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit ipotecar pentru persoane fizice destinat achiziției/refinanțării de locuințe, cu opțiune dedicată pentru locuințe verzi (echivalent Credit Verde), termen extins și sumă maximă similară ca ordin de mărime.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului cu toate cifrele: avans, dobânzi fixe/variabile, DAE, comisioane, sume minime/maxime, inclusiv secțiune separată pentru case verzi.",
+      "citat": "Alege acum creditul ipotecar cu avans de minimum 15% din pretul de achizitie al imobilului si perioada extinsa de creditare de pana la 35 de ani.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/09/creditul-ipotecar/#:~:text=Alege%20acum%20creditul%20ipotecar%20cu,pana%20la%2035%20de%20ani."
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/11/09/creditul-ipotecar-pentru-refinantare/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul ipotecar pentru refinanțare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs complementar de refinanțare a creditelor ipotecare/investiții imobiliare contractate la alte bănci, pentru persoane fizice, parte a aceleiași familii de produse ca și Credit ipotecar Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagină cu link activ în meniul Credite, dar conținutul detaliat (cifre) nu a fost extras direct în această sesiune; apare menționat cu cifre similare în comunicate conexe.",
+      "citat": "Creditul ipotecar pentru refinantare este solutia ideala pentru ca tu sa-ti reduci eforturile financiare.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (14 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/category/persoane-fizice/page/2/",
+    "https://www.eximbank.ro/en/2022/11/09/house-loan/",
+    "https://www.eximbank.ro/2022/11/09/creditul-ipotecar/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2135,
+    "citire_cache": 93461,
+    "scriere_cache": 61800,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19455820000000001
+  }
+}

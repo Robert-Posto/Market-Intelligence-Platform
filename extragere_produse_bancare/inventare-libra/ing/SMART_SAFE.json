@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "SMART_SAFE",
+  "denumire": "Smart Safe",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/arhiva-pj/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--15-Ianuarie-2025-.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depunere numerar la terminale de tip Cash 360",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt echipamente de depunere numerar dedicate firmelor, cu creditare in cont, insa documentul ING nu confirma explicit ca terminalul este instalat la sediul clientului (ca Smart Safe/Force One) si serviciul este restrictionat doar clientilor cu cifra de afaceri peste 2.000.000 lei, spre deosebire de Smart Safe Libra care vizeaza orice firma/PFA partenera cu Force One.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Documentul de tarife pentru persoane juridice mentioneaza explicit terminalul Cash 360 cu comisionul aferent, dar nu exista o pagina dedicata cu descrierea completa a serviciului (ex. instalare la sediu, partener de transport valori).",
+      "citat": "Depunere numerar la terminale de tip Cash 360 Indiferent de sumă 0,15% 0,15% - - ... Echipamentul CASH 360 este disponibil doar pentru Clienților cu cifră de afaceri/rulaj bancar prin ING Bank România mai mare de 2.000.000 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/imm/operatiuni-curente/solutii-complexe-pentru-operatiuni-curente",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/arhiva-pj/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--15-Ianuarie-2025-.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-taxe-si-comisioane-pentru-persoane-juridice--PFA-si-alte-entitati--06-Februarie-2023-.pdf",
+    "https://ing.ro/robots.txt",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/arhiva-pj/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--15-Ianuarie-2025-.pdf"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 218612,
+    "iesire": 6114,
+    "citire_cache": 37251,
+    "scriere_cache": 33526,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5896292
+  }
+}

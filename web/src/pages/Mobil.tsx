@@ -1,20 +1,19 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { Button, Collapse, Segmented, Tooltip } from 'antd'
+import { Button, Segmented, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
-import type { Mobil as MobilT, Sentiment } from '@mcc/shared'
-import { useMeta } from '../api/meta'
+import { useMeta, type Meta } from '../api/meta'
 import { useMobil, useSentiment } from '../api/rate_mobil'
 import { BareStele } from '../components/BareStele'
-import { Despre, EtichetaBanca, Eroare, SeIncarca } from '../components/comune'
-import { Tabel, type Coloana } from '../components/Tabel'
+import { Despre, Eroare, SeIncarca } from '../components/comune'
 import { T, useLang } from '../i18n'
 import { num } from '../util/format'
 import Android from './rate_mobil/android/Android'
-import Capturi from './rate_mobil/Capturi'
+import { CeENou, Galerie, RezumatAi, Stele } from './rate_mobil/Piese'
+import ComparaLibra, { type RandAplicatie } from './rate_mobil/ComparaLibra'
 import { BaraRecenzii, ListaRecenzii, type FiltruRecenzii } from './rate_mobil/Recenzii'
 import '../styles/rate_mobil.css'
 
-type Rand = MobilT['versiuni'][number] & { rec: Sentiment['sumar'][number] | null }
+type Rand = RandAplicatie
 
 /** Parametrii goi nu intră în adresă: `#/mobil?platforma=ios`, nu `…&banca=&nota=`. */
 const curat = (o: Record<string, string>) => Object.fromEntries(Object.entries(o).filter(([, v]) => v))
@@ -60,13 +59,14 @@ function useLa(la: string | null, gata: boolean, adresa: string) {
 }
 
 function Ios() {
-  const { t, tn, locale } = useLang()
+  const { t } = useLang()
   const [sp, setSp] = useSearchParams()
   const f: FiltruRecenzii = { banca: sp.get('banca') || '', nota: sp.get('nota') || '', storefront: sp.get('storefront') || '' }
   const meta = useMeta()
   const mob = useMobil()
   const s = useSentiment(f.banca, f.nota, f.storefront)
-  const [capturi, setCapturi] = useState<string | null>(null)
+  // banca aleasă stă în adresă (`?vs=ing`), ca o comparație să se poată trimite: cu `vs` în adresă, modalul e deschis
+  const [compara, setCompara] = useState(false)
   useLa(sp.get('la'), !!(meta.data && mob.data && s.data), sp.toString())
 
   const err = meta.error ?? mob.error ?? s.error
@@ -76,59 +76,34 @@ function Ios() {
   const d = mob.data
   const sent = s.data
 
-  const mergi = (o: Partial<FiltruRecenzii> & { la?: string }) => setSp(curat({ platforma: 'ios', ...f, ...o }))
+  const ordine: Ordine = ORDINI.includes(sp.get('ordine') as Ordine) ? (sp.get('ordine') as Ordine) : 'volum'
+  // ordinea implicită nu intră în adresă, ca filtrele goale
+  const vs = sp.get('vs') || ''
+  const baza = { platforma: 'ios', ...f, ordine: ordine === 'volum' ? '' : ordine, vs }
+  const mergi = (o: Partial<FiltruRecenzii> & { la?: string; ordine?: string; vs?: string }) => setSp(curat({ ...baza, ...o }))
   const capturiPe: Record<string, string[]> = {}
   for (const x of d.screenshoturi) (capturiPe[x.banca] ??= []).push(x.url)
   const rec = Object.fromEntries(sent.sumar.map((x) => [x.banca, x]))
-  const v: Rand[] = d.versiuni.map((r) => ({ ...r, rec: rec[r.banca] ?? null }))
-  const nota = (r: Rand) => (r.rating_agregat === null ? null : Number(r.rating_agregat))
-  const dif = (r: Rand) => (r.rec && r.rec.medie_text && r.rating_agregat ? r.rec.medie_text - Number(r.rating_agregat) : null)
-
-  // tot rândul duce la recenziile băncii (încă un clic: toate); numele, „ce e nou” și capturile își opresc clicul
-  const rand = (r: Rand) => (r.rec ? { onClick: () => mergi({ banca: r.banca === f.banca ? '' : r.banca, la: 'recenzii' }) } : undefined)
-  const coloane: Coloana<Rand>[] = [
-    { cheie: 'banca', cap: t('rate.banca'), s: (r) => m.nume[r.banca] ?? r.banca, td: (r) => ({ className: 'mb-nowrap', ...rand(r) }),
-      val: (r) => <EtichetaBanca slug={r.banca} m={m} tag /> },
-    { cheie: 'nota', cap: t('mobil.nota_app_store'), num: true, s: nota, td: rand,
-      val: (r) => (r.rating_agregat ? <><b>{num(Number(r.rating_agregat), locale)}</b> ★</> : '—') },
-    { cheie: 'volum', cap: <Cap titlu={t('mobil.nr_note_title')}>{t('mobil.nr_note')}</Cap>, num: true, s: (r) => r.volum_rating, td: rand,
-      val: (r) => num(r.volum_rating, locale, 0) },
-    { cheie: 'distributie', cap: <Cap titlu={t('mobil.distributia_title')}>{t('mobil.distributia_notelor')}</Cap>, td: rand,
-      val: (r) => <BareStele dist={r.distributie_stele} latime={120} /> },
-    { cheie: 'scrise', cap: t('mobil.nota_recenziilor_scrise'), num: true, s: (r) => r.rec?.medie_text ?? null, td: rand,
-      val: (r) => (r.rec
-        ? <>{num(r.rec.medie_text, locale)} ★<span className="sub">{t('mobil.din_citite', { n: num(r.rec.review_uri, locale, 0) })}</span></>
-        : '—') },
-    { cheie: 'negative', cap: t('mobil.negative_cap'), num: true, s: (r) => (r.rec ? r.rec.negative / r.rec.review_uri : null), td: rand,
-      val: (r) => (r.rec
-        ? <>{t('mobil.negative_din', { negative: num(r.rec.negative, locale, 0), total: num(r.rec.review_uri, locale, 0) })}
-            <span className="sub">{Math.round((100 * r.rec.negative) / r.rec.review_uri)}%</span></>
-        : '—') },
-    { cheie: 'diferenta', cap: <Cap titlu={t('mobil.diferenta_title')}>{t('mobil.diferenta_cap')}</Cap>, num: true, s: dif, td: rand,
-      val: (r) => {
-        const x = dif(r)
-        if (x === null) return '—'
-        if (Math.abs(x) < 0.005) return '0'
-        return <b style={{ color: x < 0 ? 'var(--warn)' : 'var(--ok)' }}>{x > 0 ? '+' : '−'}{num(Math.abs(x), locale)}</b>
-      } },
-    { cheie: 'versiune', cap: t('mobil.versiune'), s: (r) => r.versiune, td: (r) => ({ className: 'mono', ...rand(r) }), val: (r) => r.versiune ?? '—' },
-    { cheie: 'nou', cap: t('mobil.ce_e_nou'), td: rand, val: (r) => <CeENou text={r.note_lansare} /> },
-    { cheie: 'capturi', cap: t('mobil.capturi'), s: (r) => (capturiPe[r.banca] ?? []).length, td: rand,
-      val: (r) => {
-        const n = (capturiPe[r.banca] ?? []).length
-        return n ? <Button size="small" className="mb-nowrap" onClick={(e) => { e.stopPropagation(); setCapturi(r.banca) }}>{tn('mobil.n_capturi', n)}</Button> : '—'
-      } },
-  ]
+  const v = ordoneaza(d.versiuni.map((r) => ({ ...r, rec: rec[r.banca] ?? null })), ordine, m)
 
   return (
     <div style={{ opacity: s.isPlaceholderData ? 0.45 : 1 }}>
       <section className="apl-tabel">
-        <h2>{t('mobil.aplicatiile')}</h2>
-        <p className="note" style={{ margin: '0 0 10px' }}>
+        <div className="mb-lista-cap">
+          <h2>{t('mobil.aplicatiile')}</h2>
+          <Segmented size="small" value={ordine} onChange={(o) => mergi({ ordine: o === 'volum' ? '' : String(o) })}
+            options={ORDINI.map((o) => ({ value: o, label: t(`mobil.ordine_${o}`) }))} />
+          <Button type="primary" className="mb-btn-compara" onClick={() => setCompara(true)}>{t('mobil.compara_buton')}</Button>
+        </div>
+        <p className="note" style={{ margin: '0 0 12px' }}>
           <T k="mobil.nota_identificate" params={{ n: d.versiuni.length }} />{' '}<T k="mobil.nota_clic" />
         </p>
-        <Tabel randuri={v} coloane={coloane} cheieRand={(r) => `${r.banca}|${r.platforma}`} libra={(r) => r.banca} implicit={['volum', 'descend']}
-          clasaRand={(r) => [r.rec ? 'clic' : '', r.banca === f.banca ? 'ales' : ''].join(' ').trim()} />
+        <div className="mb-carduri">
+          {v.map((r) => (
+            <CardAplicatie key={`${r.banca}|${r.platforma}`} r={r} m={m} urls={capturiPe[r.banca] ?? []} ales={r.banca === f.banca}
+              onRecenzii={() => mergi({ banca: r.banca === f.banca ? '' : r.banca, la: 'recenzii' })} />
+          ))}
+        </div>
         <Despre>
           <div className="callout warn" style={{ marginBottom: 14 }}><T k="comun.doua_note" /></div>
           <T k="mobil.despre_reale" />
@@ -137,25 +112,99 @@ function Ios() {
       </section>
       <BaraRecenzii s={sent} f={f} schimba={(o) => mergi(o)} sterge={() => setSp({ platforma: 'ios', la: 'recenzii' })} />
       <ListaRecenzii key={`${f.banca}|${f.nota}|${f.storefront}`} s={sent} f={f} m={m} />
-      <Capturi banca={capturi} urls={capturi ? capturiPe[capturi] ?? [] : []} m={m} onClose={() => setCapturi(null)} />
+      <ComparaLibra deschis={compara || !!vs} vs={vs} aplicatii={v} capturiPe={capturiPe} m={m}
+        alege={(b) => mergi({ vs: b })} onClose={() => { setCompara(false); mergi({ vs: '' }) }} />
     </div>
   )
 }
 
-/** Antetul cu explicație la hover (în aplicația veche, `title` pe <th>). */
+const ORDINI = ['volum', 'nota', 'nume'] as const
+type Ordine = (typeof ORDINI)[number]
+
+/** Ca `Tabel`: Libra prima, golurile (aplicație fără note) jos, apoi ordinea aleasă. */
+function ordoneaza(v: Rand[], ordine: Ordine, m: Meta): Rand[] {
+  const nume = (r: Rand) => m.nume[r.banca] ?? r.banca
+  const cheie = (r: Rand) => (ordine === 'nota' ? (r.rating_agregat === null ? null : Number(r.rating_agregat)) : r.volum_rating)
+  return [...v].sort((a, b) => {
+    if ((a.banca === 'libra') !== (b.banca === 'libra')) return a.banca === 'libra' ? -1 : 1
+    if (ordine === 'nume') return nume(a).localeCompare(nume(b))
+    const ka = cheie(a)
+    const kb = cheie(b)
+    if (ka === null || kb === null) return ka === kb ? nume(a).localeCompare(nume(b)) : ka === null ? 1 : -1
+    return kb - ka || nume(a).localeCompare(nume(b))
+  })
+}
+
+/**
+ * O aplicație pe un card: sus nota, numărul de note și capturile mereu la vedere; jos rezumatul
+ * AI al recenziilor și raportul App Store vs. Google Play. În tabel, capturile stăteau după un
+ * buton în ultima coloană (a zecea), deci nimeni nu le compara între bănci.
+ */
+function CardAplicatie({ r, m, urls, ales, onRecenzii }: {
+  r: Rand
+  m: Meta
+  urls: string[]
+  ales: boolean
+  onRecenzii: () => void
+}) {
+  const { t, tn, locale } = useLang()
+  return (
+    <article className={['mb-card', ales ? 'ales' : ''].join(' ').trim()}>
+      <div className="mb-card-sus">
+        <div className="mb-card-info">
+          <Sigla slug={r.banca} m={m} />
+          <div className="mb-rating">
+            <div className="mb-nota">
+              <Stele nota={r.rating_agregat === null ? null : Number(r.rating_agregat)} marime={26} />
+              {r.rating_agregat && <span className="mb-nota-cifra">{num(Number(r.rating_agregat), locale)}</span>}
+            </div>
+            <Cap titlu={t('mobil.nr_note_title')}>
+              <div className="mb-volum">
+                <b>{num(r.volum_rating, locale, 0)}</b>
+                <span>{t('mobil.note_app_store')}</span>
+              </div>
+            </Cap>
+          </div>
+          <Cap titlu={t('mobil.distributia_title')}><span className="mb-stele"><BareStele dist={r.distributie_stele} latime={230} /></span></Cap>
+          <div className="mb-versiune">
+            <span className="gri">{t('mobil.versiune')}</span> <b className="mono">{r.versiune ?? '—'}</b>
+          </div>
+          <CeENou text={r.note_lansare} />
+          {r.rec && (
+            <Button size="small" type={ales ? 'primary' : 'default'} className="mb-btn-rec" onClick={onRecenzii}>
+              {ales ? t('mobil.recenzii_toate_bancile') : t('mobil.recenziile_bancii')}
+            </Button>
+          )}
+        </div>
+        <div className="mb-card-capturi">
+          {urls.length
+            ? <>
+                <Galerie urls={urls} inaltime={270} clasa="mb-banda" titlu={t('mobil.capturi_titlu', { banca: m.nume[r.banca] ?? r.banca })} />
+                <span className="sub mb-banda-nota">{tn('mobil.n_capturi', urls.length)} · {t('mobil.clic_marire')}</span>
+              </>
+            : <div className="mb-fara-capturi gri">{t('mobil.fara_capturi')}</div>}
+        </div>
+      </div>
+      <div className="mb-card-jos">
+        <RezumatAi banca={r.banca} />
+      </div>
+    </article>
+  )
+}
+
+/**
+ * Doar sigla, fără nume: „ING Bank (Sucursala București)” se rupea pe două rânduri în coloana de
+ * 270px și împingea cifrele în jos. Numele rămâne în `alt` și la hover; fără siglă, apare numele.
+ */
+function Sigla({ slug, m }: { slug: string; m: Meta }) {
+  const nume = m.nume[slug] ?? slug
+  const logo = m.logo[slug]
+  return logo
+    ? <Tooltip title={nume}><img className="mb-sigla" src={logo} alt={nume} /></Tooltip>
+    : <span className="mb-sigla-txt">{nume}</span>
+}
+
+/** Eticheta cu explicație la hover (în aplicația veche, `title` pe <th>). */
 function Cap({ titlu, children }: { titlu: string; children: ReactNode }) {
   return <Tooltip title={titlu}><span>{children}</span></Tooltip>
-}
-
-/** „Ce e nou” pliat: notele de lansare ajung la 401 caractere (BCR, 05.10.2026); deschise, ar lungi fiecare rând al tabelului. */
-function CeENou({ text }: { text: string | null }) {
-  if (!text) return <span className="gri">—</span>
-  return (
-    // clicul pe „ce e nou” deschide textul, nu filtrul pe bancă
-    <div onClick={(e) => e.stopPropagation()}>
-      <Collapse ghost className="despre mb-nou"
-        items={[{ key: 'n', label: <span className="despre-cap">ⓘ {text.slice(0, 70).replace(/\s+\S*$/, '')}…</span>,
-          children: <div className="note mb-nou-txt">{text}</div> }]} />
-    </div>
-  )
 }

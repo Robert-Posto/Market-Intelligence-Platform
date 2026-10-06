@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "nu_am_gasit",
+    "nota": "Am verificat pagina principală, secțiunile Conturi/Persoane juridice, Cont bancar persoană juridică, Cont curent IMM, Servicii bancare și documentul Tarife și Comisioane PJ (comisioane_cont_curent, Tarife_si_Comisioane_PJ.pdf). Nu există nicio pagină sau mențiune pe librabank.ro a unui echipament de depunere bancnote RON în sucursală (gen CDM/recycler) dedicat PJ cu creditare same-day până la 16:00. Există produse/servicii adiacente dar diferite: 'Comision colectare numerar' (50 euro/transport) și 'Comision procesare numerar colectat' (0,15% din suma colectată) din Tarife_si_Comisioane_PJ.pdf, care descriu un serviciu de colectare/transport de numerar de la sediul clientului, nu un echipament de auto-depunere în sucursală; de asemenea depunerile gratuite de numerar la ATM-urile Euronet pentru companii, care sunt tot un canal diferit (rețea ATM externă, nu echipament în sucursula băncii). Niciuna dintre acestea nu menționează explicit creditare same-day până la ora 16:00 sau numărare/validare rapidă ca produs distinct."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
+    "https://www.librabank.ro/cont-bancar-persoana-juridica",
+    "https://www.librabank.ro/servicii-bancare"
+  ],
+  "durata_s": 50,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4062,
+    "citire_cache": 137060,
+    "scriere_cache": 92259,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2986995
+  }
+}

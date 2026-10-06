@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/librapay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "eCommerce prin LibraPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată exact produsului LibraPay eCommerce, destinată comercianților cu magazin online, descrie decontarea T+1 și protecția antifraudă.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina oficială dedicată produsului, cu cifre concrete (decontare T+1) și descrierea funcționalităților.",
+      "citat": "Sistem bancar de protecție împotriva fraudelor În timp real. Decontare T+1 În ziua următoare efectuării tranzacției. Implementare rapidă Modul compatibil cu numeroase platforme eCommerce:",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/librapay#:~:text=Sistem%20bancar%20de%20protec%C8%9Bie%20%C3%AEmpotriva,compatibil%20cu%20numeroase%20platforme%20eCommerce%3A"
+    },
+    {
+      "url": "https://www.librabank.ro/plati-librapay",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "LibraPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină de tip landing dedicată produsului LibraPay pentru plăți online/eCommerce, cu beneficii și termen de decontare.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină de prezentare/landing a aceluiași produs, cu o cifră concretă (decontare în 24 de ore) dar fără tabel de comisioane.",
+      "citat": "Decontăm ultrarapid, în 24 de ore Instalăm și testăm împreună pentru magazinul tău online Totul într-o singură interfață: urmărești tranzacțiile direct în aplicația bancară Libra",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/plati-librapay#:~:text=Decont%C4%83m%20ultrarapid%2C%20%C3%AEn%2024%20de,direct%20%C3%AEn%20aplica%C8%9Bia%20bancar%C4%83%20Libra"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/librapay",
+    "https://www.librabank.ro/plati-librapay",
+    "https://www.librabank.ro/comisioane",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2568,
+    "citire_cache": 109181,
+    "scriere_cache": 81575,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2514737
+  }
+}

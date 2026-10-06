@@ -4,6 +4,7 @@
 - **Regulile proiectului NU stau aici:** sunt în `CLAUDE.md` din rădăcina repo-ului (conformitate, „datele nu se aruncă”, migrări, interfață, verificări). Citește-l pe el; memoriile de aici doar completează.
 - Harta codului (ce modul face ce, punctele de intrare, unde adaugi ceva nou): `mem:cod/harta`.
 - Drumul datelor și vederile care filtrează (de ce o valoare nu apare pe ecran): `mem:date/fluxul_si_vederile`.
+- Fluxul separat al comparației produselor Libra cu concurența (tabele proprii, jurnalul joburilor, costul pe model): `mem:date/comparatie_libra`.
 - Cum se construiește o pagină sau o secțiune nouă în `web/`, cap-coadă (migrare → loader → rută → schemă → pagină): `mem:web/sectiune_noua`.
 - Capcanele mediului Windows al lui Robert (Git Bash, PowerShell 5.1, Docker, căi lungi, hook-urile de securitate): `mem:mediu/capcane_windows`.
 - Ultima actualizare a memoriilor (commit-ul de referință) și cum se actualizează: `mem:stare/ultima_actualizare`.

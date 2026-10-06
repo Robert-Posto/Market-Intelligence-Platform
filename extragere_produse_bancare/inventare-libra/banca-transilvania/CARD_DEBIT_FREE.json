@@ -1,0 +1,56 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Lista-de-taxe-si-comisioane-aferente-cardurilor-de-debit-destinate-persoanelor-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Visa Classic / Mastercard Mondo (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este cardul de debit standard pentru persoane fizice, fără taxă de emitere și fără comision de administrare anuală, exact ca produsul Libra descris (fără costuri de emitere sau administrare).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife al băncii listează explicit valorile 0 lei pentru emitere și administrare la Visa Classic și MC Mondo, deci cifrele produsului corespunzător apar direct în text.",
+      "citat": "Emitere card detinator/utilizator 0 Lei/card 0 lei/card ... Administrare anuala a cardului - administrare anuala card detinator 0 lei 0 lei ... - administrare anuala card utilizator (posesor desemnat) 0 lei 0 lei",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://en.bancatransilvania.ro/companies/card-accounts/business-cards/debit-cards",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BT Visa Business Silver / Visa Business Gold (card de debit pentru firme)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit destinat persoanelor juridice (companii), deci acoperă segmentul business din produsul Libra, dar spre deosebire de acesta implică o taxă de administrare anuală (nu este gratuit ca produsul Libra) și nu evidențiază un program de cashback la parteneri.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată cardurilor de debit business menționează explicit comisionul de administrare de 50 Lei pe an, deci conține o cifră relevantă pentru comparație chiar dacă produsul nu este gratuit ca Libra.",
+      "citat": "The administration fee for this type of card is 50 Lei per year. You can consult the list of fees associated with the card.",
+      "citat_verificat": true,
+      "link_live": "https://en.bancatransilvania.ro/companies/card-accounts/business-cards/debit-cards#:~:text=The%20administration%20fee%20for%20this,fees%20associated%20with%20the%20card."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/files/app/media/Taxe-si-comisioane/Lista-de-taxe-si-comisioane-aferente-cardurilor-de-debit-destinate-persoanelor-fizice.pdf",
+    "https://en.bancatransilvania.ro/companies/card-accounts/business-cards/debit-cards",
+    "https://www.bancatransilvania.ro/carduri/carduri-de-debit",
+    "https://en.bancatransilvania.ro/cards/debit-cards"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 38705,
+    "iesire": 3753,
+    "citire_cache": 90915,
+    "scriere_cache": 48458,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.25426800000000005
+  }
+}

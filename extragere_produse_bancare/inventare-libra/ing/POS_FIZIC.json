@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/acceptare-carduri/pos",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "POS ING IMM (Serviciul ING POS)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Terminal POS fizic pentru acceptarea plăților cu cardul la locația comerciantului, destinat persoanelor juridice/PFA (IMM), identic ca tip de produs și segment cu POS_FIZIC de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului POS, cu cifre complete despre comisioane, taxe de instalare și administrare.",
+      "citat": "Serviciul ING POS are următoarele costuri: 0,7% comision de tranzacție pentru Pachetul ING Fix Online, 1% comision de tranzacție pentru ING Profesional, 0 lei instalarea POS-ului, 0 lei instruirea personalului, 0 lei costuri de achiziție și de transport.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Terminal POS/SoftPOS ING (persoane juridice, PFA și alte entități)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru persoane juridice/PFA care include explicit taxele pentru terminalul POS fizic (mentenanță, instalare, comision pe tranzacție).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document de tarife actual (versiunea mai 2026) cu rândul dedicat taxelor pentru terminalul POS/SoftPOS, inclusiv mentenanță lunară și comision pe tranzacție.",
+      "citat": "Mententantă lunară pentru fiecare terminal POS 50 lei Instalare POS / SoftPOS 0 lei Consumabile POS / SoftPOS 0 lei Pentru oferta standard și pachetele ING Profesional, taxa se va percepe doar în cazul în care valoarea tranzacțiilor efectuate în intervalul comisionat, la terminalul POS atașat contului, a fost mai mica decât 10.000 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/jcr:5b29c1ae-7034-46f0-9126-be17bea5e980/Condi%C8%9Biile%20Generale%20de%20Acceptare%20la%20Plata%20a%20Cardurilor.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Terminal fizic POS / mPOS (Condițiile Generale de Acceptare la Plata a Cardurilor)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document contractual care definește și reglementează Terminalul fizic POS pentru comercianți persoane juridice, inclusiv taxa fixă lunară de administrare.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document de condiții generale care definește explicit Terminalul fizic și menționează existența unei taxe fixe lunare de administrare (Taxa de mentenanță), dar fără valorile complete în fragmentul extras.",
+      "citat": "Terminal - un dispozitiv electronic fizic de tip POS asistat, POS neasistat, mPOS etc. (Terminal fizic) și/sau o aplicatie de tip e-commerce, SoftPOS etc. Banca poate percepe o Taxa fixa lunara de administrare Terminal (Taxa de mentenanta) aplicata fiecărui",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 406,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1688,
+    "citire_cache": 6332,
+    "scriere_cache": 39992,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1181344
+  }
+}

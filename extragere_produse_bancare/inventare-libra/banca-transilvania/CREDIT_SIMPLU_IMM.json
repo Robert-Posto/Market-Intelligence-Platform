@@ -1,0 +1,54 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/bt-mic",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BT Mic (credit pentru afaceri mici, via BT Microfinanțare IFN)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite fără garanție imobiliară obligatorie, pe scoring, pentru firme mici/PFA, cu sume comparabile (Libra: 20.000-200.000 lei; BT Mic: până la 120.000 lei fără garanții, până la 200.000 lei cu garanție imobiliară). Diferă însă entitatea care acordă creditul (BT Mic este o companie separată de microfinanțare din grupul BT, nu banca însăși) și plafonul de eligibilitate (cifră de afaceri anuală de până la 1 milion lei la BT Mic, față de plafonul relativ la CA medie lunară la Libra).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit sumele maxime (120.000 lei fără garanții, 200.000 lei cu garanție imobiliară), dar nu detaliază dobânda sau termenul maxim de rambursare în text.",
+      "citat": "Poti imprumuta pana la 120.000 de lei fara garantii materiale, insa o garantie imobiliara poate urca suma pana la 200.000 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "BT Mic (credit pentru afaceri mici)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina de condiții de eligibilitate pentru creditul BT Mic, destinat SRL/PFA/II/IF/profesii liberale cu activitate de minimum 3 luni și cifră de afaceri anuală de până la 1 milion lei — segment similar cu cel al Credit Simplu IMM de la Libra, dar cu plafon de venituri mai restrictiv.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul de condiții precontractuale menționează explicit criteriile de eligibilitate și plafonul de cifră de afaceri (1 milion lei), relevante pentru compararea segmentului de clienți eligibili.",
+      "citat": "o companie cu minimum 3 luni de activitate economică, indiferent ca e SRL, PFA, II (întreprindere individuală); profesie liberală (notar, avocat etc.); sau IF (întreprindere / asociație familială). Pentru a fi eligibil însă, cifra de afaceri anuală, conform ultimului bilanț anual depus, trebuie să fie de până la 1 milion de RON.",
+      "citat_verificat": true,
+      "link_live": "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/#:~:text=o%20companie%20cu%20minimum%203,la%201%20milion%20de%20RON."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii/finantare/credite/bt-mic",
+    "https://intreb.bancatransilvania.ro/credite-afaceri-mici/",
+    "https://intreb.bancatransilvania.ro/poti-luat-credit-prin-bt-mic/",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/bt-mic",
+    "https://intreb.bancatransilvania.ro/credite-afaceri-mici"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 30612,
+    "iesire": 3653,
+    "citire_cache": 101457,
+    "scriere_cache": 61594,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2720304
+  }
+}

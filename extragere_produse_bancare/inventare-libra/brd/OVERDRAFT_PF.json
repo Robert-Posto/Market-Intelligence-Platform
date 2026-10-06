@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/en/descoperit-autorizat-de-cont-en-authorized-overdraft",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperit Autorizat de Cont (Authorized Overdraft)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Overdraft autorizat pentru persoane fizice, dobândă doar pe suma utilizată, fără justificarea destinației fondurilor, condiționat de încasarea veniturilor în contul BRD - exact același tip de produs și segment ca OVERDRAFT_PF de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține exemplu reprezentativ cu sumă, dobândă, comisioane și DAE pentru overdraftul persoane fizice.",
+      "citat": "Representative example valid on 01.01.2025, calculated on the basis of the standard costs charged by the bank: for an overdraft in the amount of 5,367 lei, granted for a period of 60 months, with variable interest 10.6% + IRCC*, commission of file analysis 20 lei and current account administration fee zero lei",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/sites/default/files/_files/pdf/Ghid_dobanzi_si_comisioane_credite.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Descoperit Autorizat de Cont – DAC (OVERDRAFT)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi și comisioane standard pentru credite persoane fizice conține secțiunea dedicată liniilor de credit tip Descoperit Autorizat de Cont (DAC), echivalentul overdraftului Libra pentru persoane fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife, valabil din 01.10.2026, cu dobânzi și comisioane explicite pentru DAC acordat atât în LEI cât și în EUR.",
+      "citat": "Descoperit Autorizat de Cont – DAC (OVERDRAFT) Descoperit Autorizat de Cont, acordat inclusiv pentru refinanțarea altor credite de același tip Credit acordat în LEI, in agenția BRD Rata dobanzii variabila, oferta cu încasare venit în cont BRD IRCC + 10,60 pp",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/descoperit-autorizat-de-cont",
+    "https://www.brd.ro/en/descoperit-autorizat-de-cont-en-authorized-overdraft",
+    "https://www.brd.ro/persoane-fizice/credite/alte-credite-si-servicii/descoperit-autorizat-de-cont",
+    "https://www.brd.ro/sites/default/files/_files/pdf/Ghid_dobanzi_si_comisioane_credite.pdf"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2850,
+    "citire_cache": 105573,
+    "scriere_cache": 69963,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2245421
+  }
+}

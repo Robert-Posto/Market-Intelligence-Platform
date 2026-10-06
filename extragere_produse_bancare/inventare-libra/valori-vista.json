@@ -1,0 +1,4659 @@
+{
+ "banca": "vista",
+ "urluri": [
+  {
+   "cheie": "https://www.vistabank.ro/agri/depozite-la-termen||depozit la termen (vista 12+1 / depozit standard)",
+   "url": "https://www.vistabank.ro/agri/depozite-la-termen",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen (VISTA 12+1 / Depozit standard)",
+   "focus": "Produsul băncii: „Depozit la termen (VISTA 12+1 / Depozit standard)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1312,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+   "observatii": [
+    {
+     "id": "b05989da34e955a433ef084a5ab91bd7",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_12L_RON",
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI 5,00% p.a. 1,50% p.a. 2,50% p.a.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    },
+    {
+     "id": "a020d5a8f80cf44d667e08bb852b59f4",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_12L_EUR",
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI 5,00% p.a. 1,50% p.a. 2,50% p.a.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    },
+    {
+     "id": "c26d977c23101c32995cd10e6ff2bdb1",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_12L_USD",
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI 5,00% p.a. 1,50% p.a. 2,50% p.a.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    },
+    {
+     "id": "66ecb8945fc4d7294e155f03ed040b29",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "NP_12L_ONLINE",
+     "valoare_num": 0.2,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [
+      "constituirea depozitului prin Vista Internet și Mobile Banking"
+     ],
+     "eticheta_libera": "bonus de dobândă pentru constituire prin Vista Internet și Mobile Banking",
+     "citat": "Te bucuri de bonus de dobândă de 0,2 puncte procentuale la depozitele constituite prin Vista Internet și Mobile Banking.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    },
+    {
+     "id": "7f8068568d9e958d49e9bee9075b1de7",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 4500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă a depozitului este 4.500 Lei / 1.000 Euro sau 1.000 USD;",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    },
+    {
+     "id": "5bd8adf0d77581369d1d2e2beb32b2c9",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă a depozitului este 4.500 Lei / 1.000 Euro sau 1.000 USD;",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    },
+    {
+     "id": "87fe1e0ec90b0368cfe0c8ee6b634906",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 1000,
+     "unitate": "usd",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma minimă a depozitului este 4.500 Lei / 1.000 Euro sau 1.000 USD;",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    },
+    {
+     "id": "5d13c1472eec5af010015893e3de9aed",
+     "id_url": 1312,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "efacb2f3e99d5c1f7c54aaf43ec04271f6a025cae9240317a80516c7737d2798",
+     "conditii": [],
+     "eticheta_libera": "comision zero pentru constituire, administrare și închidere depozit",
+     "citat": "Comision ZERO pentru constituirea, administrarea şi închiderea depozitului la termen",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "958aa21154baf1e0f66f2c4e805b03a24dfdf59d47b3dafd9e8361d2743390e8"
+    }
+   ],
+   "respinse": [],
+   "scrise": 5,
+   "durata_s": 374,
+   "tokeni": {
+    "intrare": 10303,
+    "iesire": 1637
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/en/legal-entities/term-deposits||term deposits (persoane juridice)",
+   "url": "https://www.vistabank.ro/en/legal-entities/term-deposits",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Term Deposits (persoane juridice)",
+   "focus": "Produsul băncii: „Term Deposits (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1313,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+   "observatii": [
+    {
+     "id": "c1327a146fe02eeff794d7250663ae37",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 month\n4.25%\n0.50%\n1.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "01c508e93df81dfd6a9f54b11912350f",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 month\n4.25%\n0.50%\n1.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "307ac650ca266c346974bfa9beee7830",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 month\n4.25%\n0.50%\n1.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "c430f22d608c541e296e69dba9a0fb3e",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 months\n5.10%\n0.80%\n1.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "f435823301dbf52faa86fbce6cdfec78",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 months\n5.10%\n0.80%\n1.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "f9370921937f77a83dcbd325858cfef5",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 months\n5.10%\n0.80%\n1.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "d1c44b91e2958d9b7e76a3f95e01c6c5",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 months\n5.25%\n1.20%\n2.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "f9f6d7d560a11d54f67b4d09e2cfcce4",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 months\n5.25%\n1.20%\n2.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "62f29a192467e55fca9500b7e1d3cae9",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 months\n5.25%\n1.20%\n2.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "4bbc1570878f7effe817fe812cd08cdd",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 months\n5.30%\n1.50%\n2.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "14c1fe6cf79d72e69f921c68aee51600",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 months\n5.30%\n1.50%\n2.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "234fd007893b4dc3437f7e83a0299653",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 months\n5.30%\n1.50%\n2.75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "83815cf13c8b9c51c1b2d05d0d64cfd6",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 months\n5.50%\n2.00%\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "67a61b28bce81bc38e15644326fbac49",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 months\n5.50%\n2.00%\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "27d904d009bcc0469305e3ac6fd48d67",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 months\n5.50%\n2.00%\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "plata_dobanzii",
+       "valoare_text": "la_scadenta"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "9113b1d41c3b06ad4051090a6d095e59",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "BONUS_ONLINE",
+     "valoare_num": 0.2,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [
+      "depozit constituit prin Vista Internet și Mobile Banking"
+     ],
+     "eticheta_libera": "bonus dobândă pentru depozite constituite online",
+     "citat": "You enjoy an interest bonus of 0.2 percentage points on deposits made through Vista Internet and Mobile Banking.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    },
+    {
+     "id": "cbd86f64d1619a2d7f5c5c657bbec284",
+     "id_url": 1313,
+     "id_produs": "depozit-termen",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "c3764abc858e7dbb84de1bcf87fe9c7dc0eb6d9af8440c04b221bb6aeb9493c8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "No minimum and maximum deposit amount",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b56e6fbdf50025713c2af651f58c75b58a75be7283595b3aa7c61bd5176726b1"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.35,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "1 month\n1.35\n0.00\n0.40",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.0,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "1 month\n1.35\n0.00\n0.40",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.4,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "1 month\n1.35\n0.00\n0.40",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.4,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "3 months\n1.40\n0.10\n0.60",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "3 months\n1.40\n0.10\n0.60",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.6,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "3 months\n1.40\n0.10\n0.60",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.7,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "6 months\n1.70\n0.25\n0.90",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.25,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "6 months\n1.70\n0.25\n0.90",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.9,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "6 months\n1.70\n0.25\n0.90",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "9 months\n2.00\n0.30\n1.00",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "9 months\n2.00\n0.30\n1.00",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "9 months\n2.00\n0.30\n1.00",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "1 year\n2,75\n0,60\n1,20",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.6,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "1 year\n2,75\n0,60\n1,20",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.2,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "1 year\n2,75\n0,60\n1,20",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 13,
+   "durata_s": 34,
+   "tokeni": {
+    "intrare": 9485,
+    "iesire": 5048
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/trezorerie||depozite la termen (trezorerie - piață monetară)",
+   "url": "https://www.vistabank.ro/trezorerie",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen (Trezorerie - piață monetară)",
+   "focus": "Produsul băncii: „Depozite la termen (Trezorerie - piață monetară)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1405,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "2d938b178c786f0f4704ee111df941e07e95d8fc6b007c4ee51b3289dce130e4",
+   "observatii": [
+    {
+     "id": "e16cd67967d04c29a418cd2367c2d04d",
+     "id_url": 1405,
+     "id_produs": "depozit-termen",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "nepublicat",
+     "nota": "Textul descrie doar general depozitele la termen (scadențe standard, valute acceptate, prag de negociere peste 50.000 EUR), dar nu publică nicio valoare numerică de dobândă (nominală, la scadență sau lunară) - menționează „Rate Dobânzi Standard” ca trimitere, fără a include grila efectivă de procente.",
+     "content_hash": "2d938b178c786f0f4704ee111df941e07e95d8fc6b007c4ee51b3289dce130e4",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "0542136f1eec941e2ea181a132cf20f9ee5691411e1158cf3e4466ce8a7406dd"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 6997,
+    "iesire": 200
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/persoane-juridice/depozite-la-termen||depozite la termen (persoane juridice)",
+   "url": "https://www.vistabank.ro/persoane-juridice/depozite-la-termen",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la Termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozite la Termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1404,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+   "observatii": [
+    {
+     "id": "3e20502048b023a9ed84ff73bfb3b178",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 4,25% 0,50% 1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "e40879e51d247c2ece3ec885bc09f261",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 4,25% 0,50% 1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "0c29fc005d40492d96127c5a888550ca",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună 4,25% 0,50% 1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "fe3aa7caf505a5230a8b9155e2f13d50",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 5,10% 0,80% 1,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "cb4a5f92e35a0f22c82411e6a2cba328",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 5,10% 0,80% 1,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "d2cbccddc09c50817b495f0f6d1e1943",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni 5,10% 0,80% 1,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "d7cbed0228215ec3dce7521f7c54683f",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 5,25% 1,20% 2,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "05a6b977d688d81c30f59a19bc00bb6f",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 5,25% 1,20% 2,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "cd59244f92b8559e9be8ed76da1b2cab",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni 5,25% 1,20% 2,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "5c1fbb1603e613ce9b466b7f0e36dad4",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 5,30% 1,50% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "295674ba92c63d6d1551b20e3f2a7043",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 5,30% 1,50% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "73b791550807eaed7215b2fc5ec2f88d",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni 5,30% 1,50% 2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "403369e3388c8aca2c8a67cad6a461d9",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 5,50% 2,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "69d99bae15a31d08bded696acdc8cd00",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 5,50% 2,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "c6ff9b6cf820d56d58653143e796eefb",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni 5,50% 2,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 15 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "cc37ce29138e76ec602aefc170289308",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": "BONUS_ONLINE",
+     "valoare_num": 0.2,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [
+      "constituire prin Vista Internet și Mobile Banking"
+     ],
+     "eticheta_libera": "bonus dobândă pentru constituire prin Internet/Mobile Banking",
+     "citat": "Te bucuri de bonus de dobândă de 0,2 puncte procentuale la depozitele constituite prin Vista Internet și Mobile Banking.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    },
+    {
+     "id": "2ed422788fb23b074b3a2f41ae702257",
+     "id_url": 1404,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "altele",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "54b74a8722b77fee66318b09d46c5d45d28f3b427fb4e65aea8dfd6dfe933eed",
+     "conditii": [],
+     "eticheta_libera": "limită minimă/maximă sumă",
+     "citat": "Fără limită minimă sau maximă de sumă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "4684bed998bc65abe9703e5ddfd20832024ce2c411a40805b141c7f405faa7b6"
+    }
+   ],
+   "respinse": [],
+   "scrise": 13,
+   "durata_s": 17,
+   "tokeni": {
+    "intrare": 10315,
+    "iesire": 2332
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/persoane-fizice/depozite||depozite la termen (persoane fizice)",
+   "url": "https://www.vistabank.ro/persoane-fizice/depozite",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la Termen (persoane fizice)",
+   "focus": "Produsul băncii: „Depozite la Termen (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1403,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+   "observatii": [
+    {
+     "id": "198e43fa6cc52ee9641aada6b1a8dd7c",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 4.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună\n\n4,25%\n\n0,50%\n\n1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "194b4a3b02f1034be093bc7224bd6ba7",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună\n\n4,25%\n\n0,50%\n\n1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "5afa4df8a649ce5bc2b14e3cfd7e1312",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 lună\n\n4,25%\n\n0,50%\n\n1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "64bcde00d1e4b5f7679ce54c2c2db164",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni\n\n5,10%\n\n0,80%\n\n1,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "d8f74cf64258983f8cfa875756f08fd9",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni\n\n5,10%\n\n0,80%\n\n1,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "713282a4784f4f9fd8bf03b31209fa6d",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 luni\n\n5,10%\n\n0,80%\n\n1,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "e5a8083595bb2705efb1c093ad14f12c",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni\n\n5,25%\n\n1,20%\n\n2,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "9bd5877a2331cf51aec6b4dc5be55e6b",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni\n\n5,25%\n\n1,20%\n\n2,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "5f685ece7e12272869618d3900e41ee3",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 luni\n\n5,25%\n\n1,20%\n\n2,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "e41cdd904a2653eedc20a2a05b4d8a26",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni\n\n5,30%\n\n1,50%\n\n2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "1eaaceb2423fbf7eb803b7a009cdd2e1",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni\n\n5,30%\n\n1,50%\n\n2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "815ccfeb72720bd5e18fa2faad02f45f",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 luni\n\n5,30%\n\n1,50%\n\n2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "9ba99f3503b575c9c989aa976927de6c",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni\n\n5,50%\n\n2,00%\n\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "a977e59dc6716832ad6f38bf2e341402",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni\n\n5,50%\n\n2,00%\n\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "adc89434b0d878650e2fd0407277969a",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 luni\n\n5,50%\n\n2,00%\n\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 16 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "fc660c05ff05585475943bb9f6a5373e",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "DT_TOATE_TOATE_ONLINE",
+     "valoare_num": 0.2,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [
+      "depozit constituit prin Vista Internet și Mobile Banking"
+     ],
+     "eticheta_libera": null,
+     "citat": "Te bucuri de bonus de dobândă de 0,2 puncte procentuale la depozitele constituite prin Vista Internet și Mobile Banking.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    },
+    {
+     "id": "388d551c385ff12052ba8b47ed6fe6f0",
+     "id_url": 1403,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504ee8d81ac119e6dec559fbd2843a500f0569e0c6a64715b5aec0006559cd81",
+     "conditii": [],
+     "eticheta_libera": "comision retragere numerar la scadență",
+     "citat": "ZERO comision pentru retragere de numerar în ziua scadenței pentru persoane fizice",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2ea399ffe9609f6ff1d39960d613216c1e310bc206dd1f3de8a511912ba59792"
+    }
+   ],
+   "respinse": [],
+   "scrise": 4,
+   "durata_s": 379,
+   "tokeni": {
+    "intrare": 16954,
+    "iesire": 2503
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/vista-internet-si-mobile-banking?tab=ropay||vista internet și mobile banking",
+   "url": "https://www.vistabank.ro/vista-internet-si-mobile-banking?tab=ropay",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Vista Internet și Mobile Banking",
+   "focus": "Produsul băncii: „Vista Internet și Mobile Banking”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1445,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "4d384cac74c071166a05277f91d8e8a7a45938f2197b2c9bd3a3f9ba5fee2af2",
+   "observatii": [
+    {
+     "id": "7794547052d610ff1aced8cddca2d5ac",
+     "id_url": 1445,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie funcționalitățile Vista Internet & Mobile Banking și serviciul RoPay (menționând doar că tranzacțiile RoPay P2P sunt gratuite), dar nu conține cifre concrete despre costul abonamentului de internet/mobile banking, comisioane pe tranzacții online față de ghișeu (doar afirmația generală „comisioane semnificativ mai reduse” fără valori) sau costul unui dispozitiv de autentificare (token fizic menționat, dar fără preț). Nu există date numerice extractibile pentru câmpurile cerute.",
+     "content_hash": "4d384cac74c071166a05277f91d8e8a7a45938f2197b2c9bd3a3f9ba5fee2af2",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "f37dc7792d89f5eb61c10a852cda707c55749afd7f89d14deaa63695533bba51"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 6,
+   "tokeni": {
+    "intrare": 14355,
+    "iesire": 280
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/despre-noi/noutati/vista-bank-lanseaza-platile-instant-ropay-intre-persoane-fizice-prin-cod-qr-direct-din-aplicatiile-de-mobile-banking||ropay în vista mobile banking",
+   "url": "https://www.vistabank.ro/despre-noi/noutati/vista-bank-lanseaza-platile-instant-ropay-intre-persoane-fizice-prin-cod-qr-direct-din-aplicatiile-de-mobile-banking",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "RoPay în Vista Mobile Banking",
+   "focus": "Produsul băncii: „RoPay în Vista Mobile Banking”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1446,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "447a63f66b16935a8a8f3976c8dd31c755ce09a1b230247b9487c80a5cc1b339",
+   "observatii": [
+    {
+     "id": "57f5b19a0582aacb0c4d271a6e1b10bc",
+     "id_url": 1446,
+     "id_produs": "banking-digital",
+     "camp": "comision_tranzactie_online",
+     "cod_scenariu": "RP_49999L_TRANZACTIE_P2P_QR",
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "447a63f66b16935a8a8f3976c8dd31c755ce09a1b230247b9487c80a5cc1b339",
+     "conditii": [
+      "plată instant P2P prin cod QR RoPay, limită 49.999 lei per plată"
+     ],
+     "eticheta_libera": null,
+     "citat": "sunt gratuite atât pentru Plătitor, cât și pentru Beneficiar",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "003ea8c449e4c64492c89a4c376048825a1e6c0555b8afd3c56a93ce3815fca0"
+    }
+   ],
+   "respinse": [],
+   "scrise": 1,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 6087,
+    "iesire": 356
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/public/docs/User%20Manual_Vista%20MB_IB_EN_jul24.pdf||vista mobile banking - user manual",
+   "url": "https://www.vistabank.ro/public/docs/User%20Manual_Vista%20MB_IB_EN_jul24.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Vista Mobile Banking - User Manual",
+   "focus": "Produsul băncii: „Vista Mobile Banking - User Manual”.\nCorespunde produsului Libra: „Aplicația Libra Bank (Mobile Banking)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1447,
+     "id_produs_libra": 10,
+     "cod": "APLICATIA_LIBRA",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "654403811fa12b4d3ba51883f2cc1bf4932757d09884add605904a90aead8c0d",
+   "observatii": [
+    {
+     "id": "51d3b643bb8c3efaaf13019963bf1294",
+     "id_url": 1447,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul este un manual de utilizare (ghid funcțional) pentru Vista Internet/Mobile Banking și descrie doar funcționalitățile și pașii de utilizare ai aplicației, fără a menționa costuri: nu apare niciun cost de abonament, niciun comision pentru tranzacții online față de ghișeu (doar o mențiune generică „lower commissions compared to transactions made at the counter”, fără valoare numerică) și niciun cost pentru dispozitivul/token-ul de autentificare (tokenul e descris ca fiind integrat gratuit în aplicație, fără preț menționat explicit).",
+     "content_hash": "654403811fa12b4d3ba51883f2cc1bf4932757d09884add605904a90aead8c0d",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b0f6e39be35c420d2bf3852950026fc23649a605ace986e51dc6741fb096b66f"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 10,
+   "tokeni": {
+    "intrare": 22792,
+    "iesire": 291
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/persoane-fizice/carduri||vista home (credite pentru investiţii imobiliare în lei)",
+   "url": "https://www.vistabank.ro/persoane-fizice/carduri",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Vista Home (Credite pentru investiţii imobiliare în Lei)",
+   "focus": "Produsul băncii: „Vista Home (Credite pentru investiţii imobiliare în Lei)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1549,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "75315c016c91377de3c0073c00ae2875a0c84967a00d6b9ff03cfd9501fe3174",
+   "observatii": [
+    {
+     "id": "2acc431a12a5ad0693d4721837fbdd72",
+     "id_url": 1549,
+     "id_produs": "ipotecar",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "75315c016c91377de3c0073c00ae2875a0c84967a00d6b9ff03cfd9501fe3174",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "500 RON comision de analiză dosar (plătibil o singura data, când se acordă creditul)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "12569d328c5ae1f3267dd5a29c50f90e96fedcf17621073ad2835c96044b564e"
+    },
+    {
+     "id": "c3199d9c93ec92d5bc249a1e31fd8b68",
+     "id_url": 1549,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "IPO_200K_360L_BAZA",
+     "valoare_num": 2.85,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "75315c016c91377de3c0073c00ae2875a0c84967a00d6b9ff03cfd9501fe3174",
+     "conditii": [
+      "exemplu pentru 200.000 Lei pe 30 ani"
+     ],
+     "eticheta_libera": null,
+     "citat": "dobândă variabilă după formula IRCC + marjă fixă 2,85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "12569d328c5ae1f3267dd5a29c50f90e96fedcf17621073ad2835c96044b564e"
+    },
+    {
+     "id": "9f0c3c81dffcab27339288b8c84b9d00",
+     "id_url": 1549,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": null,
+     "valoare_num": 2.85,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "75315c016c91377de3c0073c00ae2875a0c84967a00d6b9ff03cfd9501fe3174",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "dobândă variabilă după formula IRCC + marjă fixă 2,85%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "12569d328c5ae1f3267dd5a29c50f90e96fedcf17621073ad2835c96044b564e"
+    },
+    {
+     "id": "5947514d27373ae942c1a61b47571ba4",
+     "id_url": 1549,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": null,
+     "valoare_num": 200,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "75315c016c91377de3c0073c00ae2875a0c84967a00d6b9ff03cfd9501fe3174",
+     "conditii": [
+      "comision anual, nu lunar"
+     ],
+     "eticheta_libera": null,
+     "citat": "comision anual de administrare a creditului de 200 Lei, plătibil anual",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "12569d328c5ae1f3267dd5a29c50f90e96fedcf17621073ad2835c96044b564e"
+    },
+    {
+     "id": "740d547f0600a1ea7f122d46e5cde015",
+     "id_url": 1549,
+     "id_produs": "ipotecar",
+     "camp": "cost_evaluare",
+     "cod_scenariu": null,
+     "valoare_num": 80,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "75315c016c91377de3c0073c00ae2875a0c84967a00d6b9ff03cfd9501fe3174",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "taxă de evaluare a imobilului de minim 80 EUR + TVA (în echivalent RON)",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "12569d328c5ae1f3267dd5a29c50f90e96fedcf17621073ad2835c96044b564e"
+    },
+    {
+     "id": "023eefcd79be337c85d25c098b219eb8",
+     "id_url": 1549,
+     "id_produs": "ipotecar",
+     "camp": "cost_asigurare",
+     "cod_scenariu": "IPO_200K_360L_BAZA",
+     "valoare_num": 400,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "75315c016c91377de3c0073c00ae2875a0c84967a00d6b9ff03cfd9501fe3174",
+     "conditii": [
+      "exemplu pentru credit de 200.000 Lei, asigurare imobil de 200.000 Lei, începând din anul al doilea"
+     ],
+     "eticheta_libera": null,
+     "citat": "primele anuale de asigurare a imobilului de 400 Lei/an începând din anul al doilea de creditare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "12569d328c5ae1f3267dd5a29c50f90e96fedcf17621073ad2835c96044b564e"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "ipotecar",
+     "camp": "dae",
+     "cod_scenariu": "IPO_200K_360L_BAZA",
+     "valoare_num": 6.08,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "dobândă anuală efectivă (DAE): 6,08%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "rata_lunara",
+     "cod_scenariu": "IPO_200K_360L_BAZA",
+     "valoare_num": 1133.07,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "rata lunară va fi de 1.133,07 Lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "total_platibil",
+     "cod_scenariu": "IPO_200K_360L_BAZA",
+     "valoare_num": 426654.82,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "Valoarea totală plătibilă va fi de 426.654,82 Lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "ircc",
+     "cod_scenariu": null,
+     "valoare_num": 2.63,
+     "unitate": "procent",
+     "incredere": 0.3,
+     "citat": "Valoarea indicelui de referință IRCC folosit este de 2,63% valabil la data de 1 Iulie 2019",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 100,
+     "unitate": "procent",
+     "incredere": 0.7,
+     "citat": "condiţionată de încheierea unei poliţe de asigurare pentru garanţii (cu excepţia terenurilor) cu o valoare de minim 100% din valoarea evaluată a imobilului",
+     "motive": [
+      "valoare în afara intervalului plauzibil [0, 40] pentru unitatea „procent”"
+     ]
+    }
+   ],
+   "scrise": 6,
+   "durata_s": 20,
+   "tokeni": {
+    "intrare": 30508,
+    "iesire": 1942
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/persoane-fizice/credite||vista home / vista green home / programul noua casă (credite pentru investiţii imobiliare)",
+   "url": "https://www.vistabank.ro/persoane-fizice/credite",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Vista Home / Vista Green Home / Programul Noua Casă (Credite pentru investiţii imobiliare)",
+   "focus": "Produsul băncii: „Vista Home / Vista Green Home / Programul Noua Casă (Credite pentru investiţii imobiliare)”.\nCorespunde produsului Libra: „Credit ipotecar / investiții imobiliare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1548,
+     "id_produs_libra": 35,
+     "cod": "CREDIT_IPOTECAR_PF",
+     "v2": "ipotecar"
+    }
+   ],
+   "produse_v2": [
+    "ipotecar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+   "observatii": [
+    {
+     "id": "43b7e5989af71c46b18cd73d912eb10e",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "suma_credit",
+     "cod_scenariu": null,
+     "valoare_num": 33000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Minimum 33.000 Lei sau 7.500 Euro",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "add1555202938c13e7a67f765b9fc27d",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 420,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Durata creditului: maximum până la 420 luni (35 ani).",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "6b44a5ac56d407d46fadca0de3941ec2",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_350K_300L_BAZA_LEI_VARIABIL",
+     "valoare_num": 3.25,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "fără încasare venit la bancă, fără promoție - marja standard necondiționată"
+     ],
+     "eticheta_libera": null,
+     "citat": "Variabilă pe toată durata creditului, după formula IRCC + Marjă Fixă*3,25 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "exact",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "4eef921d886fb38414f122c158ec5ef8",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa_introductiva",
+     "cod_scenariu": "IPO_350K_300L_BAZA_LEI_FIX1AN",
+     "valoare_num": 7.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "fără încasare venit la bancă, fără promoție"
+     ],
+     "eticheta_libera": null,
+     "citat": "FIXĂ 1 an 7,5% pe an, apoi Variabilă pe toată durata creditului, după formula: IRCC + Marjă Fixă*3,25 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "exact",
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "33ff93ef8e06aab1cb7855ba70f5512b",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "perioada_dobanda_fixa",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "FIXĂ 1 an 7,5% pe an, apoi Variabilă pe toată durata creditului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "exact",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "79684cb1391809c836426fe37ee84ce3",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_variabila_ulterioara",
+     "cod_scenariu": "IPO_350K_300L_BAZA_LEI_POST_FIX",
+     "valoare_num": 3.25,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "apoi Variabilă pe toată durata creditului, după formula: IRCC + Marjă Fixă*3,25 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "exact",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "7e625d53e3f3fefdbfc6fdd687eb00b6",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_LEI_VENIT_LA_BANCA_LTV70",
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "încasarea venitului lunar la Vista Bank",
+      "valoarea creditului maximum 70% din valoarea garanției"
+     ],
+     "eticheta_libera": null,
+     "citat": "reducere a marjei fixe cu 0,75 puncte procentuale (marja fixă devine 2,5%/an) dacă valoarea creditului reprezinta maximum 70% din valoarea garanției",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "ac9fc1760691d0c78f4d7ca1505b922e",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_LEI_VENIT_LA_BANCA_LTV85",
+     "valoare_num": 2.85,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "încasarea venitului lunar la Vista Bank",
+      "valoarea creditului peste 70% (maxim 85%) din valoarea garanției"
+     ],
+     "eticheta_libera": null,
+     "citat": "cu 0,40 puncte procentuale (marja fixă devine 2,85%/an) dacă valoarea creditului este peste 70%(maxim 85%) din valoarea garanției",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "f01f8cced6a205a6db48c52ce24b6c1f",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "marja_banca",
+     "cod_scenariu": "IPO_EUR_BAZA",
+     "valoare_num": 5.2,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în Euro"
+     ],
+     "eticheta_libera": null,
+     "citat": "Variabilă pe toată durata creditului, după formula: EURIBOR 6 Luni + Marjă Fixă**5,2 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "dec59eab8f30552e2e76fcdd55cbdf54",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "dobanda_fixa_introductiva",
+     "cod_scenariu": "IPO_EUR_FIX3ANI",
+     "valoare_num": 6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în Euro"
+     ],
+     "eticheta_libera": null,
+     "citat": "FIXĂ 3 ani 6% pe an, apoi Variabilă pe toată durata creditului, după formula: EURIBOR 6 Luni + Marjă Fixă**5,2 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "20f6a338be510852ab72e184feeeab5d",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "avans_minim",
+     "cod_scenariu": null,
+     "valoare_num": 15,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Suma finanţată poate fi de până la 85% din valoarea garanţiei pentru creditele în Lei şi de până la 80% pentru creditele în Euro.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "863093cef0e89786f7d9910a540884ff",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comisionul de rambursare anticipată: 0% comision, indiferent de tipul dobânzii, fixă sau variabilă",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.95,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "6dcec2a9b946ead878b6a148ceca7b1b",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiză dosar: 500 LEI pentru creditele în Lei sau 150 Euro pentru creditele în Euro, sumă fixă, se plăteşte o singură dată, la semnarea contractului de credit, din surse proprii;",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "1058cf2dd6e1bbbc96af794d351d4775",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_lunar_lei",
+     "cod_scenariu": null,
+     "valoare_num": 200,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": "comision anual de administrare (nu lunar) - 200 lei/an",
+     "citat": "Comisionul anual de administrare a creditului: Credite în lei: 200 LEI pe an, Credite în Euro: 0.2% p.a. aplicabil la soldul creditului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "a734e5e367493c60cb57665400385649",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "comision_administrare_credit_procent_sold",
+     "cod_scenariu": null,
+     "valoare_num": 0.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în Euro"
+     ],
+     "eticheta_libera": null,
+     "citat": "Credite în Euro: 0.2% p.a. aplicabil la soldul creditului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "8473a66c0c16743960d761509d18af3c",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "cost_evaluare",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "costul cu evaluarea ar putea fi începând de la 500 LEI la care se adaugă TVA, plătibil către evaluatorul autorizat;",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "19d1ff1b8eb6ae7144678e8a7f4b5a43",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "varsta_minima",
+     "cod_scenariu": null,
+     "valoare_num": 21,
+     "unitate": "ani",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "minim 21 ani (la data depunerii cererii de credit);",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "e41e2af0b56c5cdd03cde07869cd5f86",
+     "id_url": 1548,
+     "id_produs": "ipotecar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 25,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": "comision unic pentru servicii solicitate expres (acorduri închiriere/alipire/dezmembrare etc.)",
+     "citat": "Comision Unic în valoare de 25 Euro în echivalent LEI, pentru servicii solicitate în mod expres de client pe durata creditului",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    }
+   ],
+   "respinse": [],
+   "scrise": 17,
+   "durata_s": 32,
+   "tokeni": {
+    "intrare": 42668,
+    "iesire": 3341
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/persoane-fizice/credite||vista superflex",
+   "url": "https://www.vistabank.ro/persoane-fizice/credite",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Vista Superflex",
+   "focus": "Produsul băncii: „Vista Superflex”.\nCorespunde produsului Libra: „Credit nevoi personale”; „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1585,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1605,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+   "observatii": [
+    {
+     "id": "d2ced27b59b8d1713b367c4f33099b84",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "suma_credit",
+     "cod_scenariu": null,
+     "valoare_num": 4200,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Minimum 4.200 lei sau 1.000 Euro",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "c2c02f408b9f1750a69201e844893cba",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 60,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Durată maximă: până la 60 luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "7570ed6b96566f4fec99458f3ef5b91c",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "NP_LEI_IRCC_MARJA8",
+     "valoare_num": 8,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în lei",
+      "marjă fixă standard, fără încasare venit la Vista Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobândă variabilă, pe toată durata creditului: IRCC + Marjă fixă 8 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "10cefb34f8207b558668b9474f5d5711",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "marja_banca",
+     "cod_scenariu": null,
+     "valoare_num": 8,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în lei",
+      "fără încasare venit lunar la Vista Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobândă variabilă, pe toată durata creditului: IRCC + Marjă fixă 8 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „marja_banca” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "e46c2d1dfc0f1408687c39efbdc5179d",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "marja_banca",
+     "cod_scenariu": "NP_LEI_INCASARE_VENIT",
+     "valoare_num": 7.5,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "încasarea venitului lunar la Vista Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "Clienții care își încasează venitul lunar la Vista Bank beneficiază de o reducere a marjei fixe cu 0,5 puncte procentuale (marja fixă devine 7,5% pe an).",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "b49e48437a89aa0457928d4b4eec08e1",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_LEI_FIXA",
+     "valoare_num": 12.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în lei",
+      "dobândă fixă pe toată durata"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobândă fixă, pe toată durata creditului: 12,5% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "8bd9d8799687ec395ad288b4a2f698fa",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_variabila",
+     "cod_scenariu": "NP_EUR_MARJA11",
+     "valoare_num": 11,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în euro",
+      "fără încasare venit lunar la Vista Bank"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobândă variabilă, pe toată durata creditului: EURIBOR 3 luni + Marjă fixă 11 p.p.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "9d5c74b06b8122ed567f672b209e9a48",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_EUR_FIXA",
+     "valoare_num": 13.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [
+      "credit în euro",
+      "dobândă fixă pe toată durata"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobândă fixă, pe toată durata creditului: 13,5% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "95cad6f3e0b366f76b352760002e89f0",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 210,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiză dosar: 210 LEI pentru creditele în Lei sau 50 Euro pentru creditele în Euro, sumă fixă, se plăteşte o singură dată, la semnarea contractului de credit, din surse proprii",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "cefa4e19b52d6388e0bef7c78461c6b5",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_administrare_credit_procent_sold",
+     "cod_scenariu": null,
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comisionul anual de administrare a creditului: 0,3% pe an aplicabil la soldul creditului.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    },
+    {
+     "id": "0caae2ffa42b9cbda823d481746f8e95",
+     "id_url": 1585,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8add8853fa0209f2f8125c44442c83237cb458e06d8ad578a136456fafb2eb2e",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comisionul de rambursare anticipată: 0%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ceb70081c005722e357fbd4ea7b001c594a03cf9c7f4c1ad2eb0f6e36112c3f2"
+    }
+   ],
+   "respinse": [],
+   "scrise": 22,
+   "durata_s": 18,
+   "tokeni": {
+    "intrare": 42413,
+    "iesire": 1821
+   }
+  },
+  {
+   "cheie": "https://www.vistabank.ro/en/individuals/deposits||vista smart savings account (contul de economii vista smart)",
+   "url": "https://www.vistabank.ro/en/individuals/deposits",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Vista Smart Savings Account (Contul de Economii Vista Smart)",
+   "focus": "Produsul băncii: „Vista Smart Savings Account (Contul de Economii Vista Smart)”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1656,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+   "observatii": [
+    {
+     "id": "a7a7ca3f8802240e9620e23b0a9fd67f",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_0_2000RON",
+     "valoare_num": 0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold ≤ 2.000 RON"
+     ],
+     "eticheta_libera": null,
+     "citat": "≤ 2,000 RON\n\n0",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 0,
+       "pana_la": 2000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "5afb2df2c16c1ff3d4c37b3f4e64e6a8",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_2001_50000RON",
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold între 2.001 și 50.000 RON"
+     ],
+     "eticheta_libera": null,
+     "citat": "2,001 - 50,000 RON\n\n3.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 2001,
+       "pana_la": 50000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "87e0b9842c0e3bd446fc8f1541bcd1fd",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_50001_100000RON",
+     "valoare_num": 3.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold între 50.001 și 100.000 RON"
+     ],
+     "eticheta_libera": null,
+     "citat": "50,001 - 100,000 RON\n\n3.30%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 50001,
+       "pana_la": 100000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "d9b79278d7c6c2d3435539b47996af8a",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_PESTE100000RON",
+     "valoare_num": 3.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold peste 100.000 RON"
+     ],
+     "eticheta_libera": null,
+     "citat": ">100,000 RON\n\n3.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 100000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "2474fcd52a87a7ad5f64b53d8d35a3d2",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_0_500EUR",
+     "valoare_num": 0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold ≤ 500 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "0 ≤500 EUR 0",
+     "citat_original": "≤500 EUR\n\n0",
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 0,
+       "pana_la": 500
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "edee66834490c3d0a4edf66cdbb6fb1e",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_501_10000EUR",
+     "valoare_num": 0.1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold între 501 și 10.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "501 - 10,000 EUR\n\n0.10%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 501,
+       "pana_la": 10000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "dc8920079f713a48aed58b25c9b027fa",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_10001_20000EUR",
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold între 10.001 și 20.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": "10,001 - 20,000 EUR\n\n0.30%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 10001,
+       "pana_la": 20000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "1da74150c10dcbcb910227caac306b2a",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_PESTE20000EUR",
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold peste 20.000 EUR"
+     ],
+     "eticheta_libera": null,
+     "citat": ">20,000 EUR\n\n0.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 20000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "db77af4061bd90d4e7aaac64f3614b44",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_0_500USD",
+     "valoare_num": 0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold ≤ 500 USD"
+     ],
+     "eticheta_libera": null,
+     "citat": "0 ≤500 USD 0",
+     "citat_original": "≤500 USD\n\n0",
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 0,
+       "pana_la": 500
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "fa41a647ad23510b96339e255404e35e",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_501_10000USD",
+     "valoare_num": 0.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold între 501 și 10.000 USD"
+     ],
+     "eticheta_libera": null,
+     "citat": "501 - 10,000 USD\n\n0.30%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 501,
+       "pana_la": 10000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "be81fdb83b09c8907c1d8e9cdf7256eb",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_10001_20000USD",
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold între 10.001 și 20.000 USD"
+     ],
+     "eticheta_libera": null,
+     "citat": "10,001 - 20,000 USD\n\n0.50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 10001,
+       "pana_la": 20000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "34df46966dfd22b1327c48369a360e49",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "NP_PESTE20000USD",
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "sold peste 20.000 USD"
+     ],
+     "eticheta_libera": null,
+     "citat": ">20,000 USD\n\n1.00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 20000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "12725f9d641db94e5ab1d58eab41b491",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "ZERO commissions for opening/managing/closing the savings account, cash deposits, intra and interbank incomings, transfers to your current accounts opened at Vista Bank.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "eeb9f18ee19ce938e638dfc833ce4505",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "altele",
+     "cod_scenariu": "RETRAGERE_LEI_500000",
+     "valoare_num": 1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "retrageri de numerar pentru sume ≤ 500.000 LEI"
+     ],
+     "eticheta_libera": "comision retragere numerar",
+     "citat": "1% minimum EUR 3 for amounts ≤ LEI 500.000;",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "ff127fd6b720264cb28d968c704d6e30",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "altele",
+     "cod_scenariu": "RETRAGERE_PESTE_LEI_500000",
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [
+      "retrageri de numerar pentru sume > 500.000 LEI"
+     ],
+     "eticheta_libera": "comision retragere numerar",
+     "citat": "1,5% for amounts > LEI 500.000.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 500000
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "0a1b7b621e393862e9356f1940c5faac",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 2000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "starting from a minimum amount of over 2000 LEI/500 EUR/500 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "a7bb330c83bd3ca4e88710d0cb8aa326",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "starting from a minimum amount of over 2000 LEI/500 EUR/500 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    },
+    {
+     "id": "1e991f6abcca1697018ad00b185140d7",
+     "id_url": 1656,
+     "id_produs": "economii",
+     "camp": "suma_minima",
+     "cod_scenariu": null,
+     "valoare_num": 500,
+     "unitate": "usd",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "2041d992f88ec0ce2580cf058d4eb4bc6f6c846dcea26bdf869d04b3cbf03e6c",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "starting from a minimum amount of over 2000 LEI/500 EUR/500 USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „suma_minima” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "vista",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "aa6a5671ad01a5ffa781843b2b86f6df37e66ea0d3538b2825c2d870f31c6782"
+    }
+   ],
+   "respinse": [],
+   "scrise": 18,
+   "durata_s": 23,
+   "tokeni": {
+    "intrare": 13529,
+    "iesire": 2910
+   }
+  }
+ ]
+}

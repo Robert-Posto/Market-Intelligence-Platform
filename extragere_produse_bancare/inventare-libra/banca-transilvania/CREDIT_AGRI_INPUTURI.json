@@ -1,0 +1,55 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantari-agricole/compara",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit Capital de lucru agricol (comparator credite agri)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina de comparație oferă cifrele concrete (termen, monedă, valoare, condiții minime) pentru categoria 'Capital de lucru', care e cel mai apropiat echivalent al liniei de credit pentru inputuri agricole de la Libra, dar e o categorie mai largă (nu exclusiv inputuri) și nu menționează InvestEU.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul conține un tabel comparativ cu cifre exacte pentru categoria 'Capital de lucru' (perioadă 12-60 luni, monedă Lei sau Euro, fără valoare maximă, destinație explicit capital de lucru pentru activitatea curentă), aplicabil creditului agricol pentru inputuri.",
+      "citat": "Capital de lucru - Lei sau Euro - Perioada de creditare 12 - 60 luni - Destinație: Capital de lucru necesar sustinerii activitatii curente - Valoarea creditului: Fără valoare maximă",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/finantari-agricole/compara#:~:text=Capital%20de%20lucru%20%2D%20Lei,Valoarea%20creditului%3A%20F%C4%83r%C4%83%20valoare%20maxim%C4%83"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantari-agricole",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit Capital de lucru agricol (Finanțări agricole BT)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BT nu are o linie de credit dedicată exclusiv inputurilor agricole cu garanție InvestEU; cel mai apropiat produs este creditul de capital de lucru agricol, care acoperă explicit inputurile agricole alături de arendă, salarii și furnizori, pentru persoane juridice/PFA cu activitate agricolă, cu rambursare adaptată sezonalității, dar fără mențiunea InvestEU și cu o plajă de termen ceva mai largă (12-60 luni față de 24-48 luni la Libra).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată descrie explicit produsul 'Capital de lucru' ca acoperind inputurile agricole și rambursare adaptată ciclului agricol, dar nu conține cifre de dobândă/comision, doar caracteristici calitative.",
+      "citat": "Capitalul necesar pentru cheltuielile curente ale fermei, inclusiv pentru înființarea culturilor agricole: inputuri, arendă, salarii, furnizori - Rambursare flexibilă, adaptată ciclului agricol",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/companii/finantari-agricole#:~:text=Capitalul%20necesar%20pentru%20cheltuielile%20curente,Rambursare%20flexibil%C4%83%2C%20adaptat%C4%83%20ciclului%20agricol"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/pentru-companii/finantari-agricole/credite-bancare-agri/",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole/credit-pentru-culturi-agricole",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole/compara",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole",
+    "https://www.bancatransilvania.ro/companii/finantari-agricole/aplica?prd=credit_capital_de_lucru_agricol"
+  ],
+  "durata_s": 55,
+  "consum": {
+    "intrare": 41780,
+    "iesire": 4022,
+    "citire_cache": 188056,
+    "scriere_cache": 83552,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3702712
+  }
+}

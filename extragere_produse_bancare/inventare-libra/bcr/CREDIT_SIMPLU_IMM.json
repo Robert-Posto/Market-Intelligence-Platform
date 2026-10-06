@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "bcr",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bcr.ro/ro/business/digital-banking/credit-george-smart-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit George Smart Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit pentru microîntreprinderi și PFA, acordat pe scoring/analiză automată a datelor financiare, fără garanție imobiliară (identic cu Credit Simplu IMM), dar diferă termenul maxim (36 luni față de 48 luni la Libra) și plafonul maxim (490.000 lei față de 200.000 lei la Libra); suma exactă nu e fixată ca interval, ci calculată individual în funcție de încasări.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele cheie (plafon, durată) și condițiile de eligibilitate, dar nu detaliază dobânda exactă sau formula sumei (ex. multiplu din CA medie lunară) ca la Libra.",
+      "citat": "La BCR cu un credit George Smart Business pentru afaceri inteligente, obtii finantare 100% online de pana la 490.000 lei, pe o perioada de pana la 36 luni.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/digital-banking/credit-george-smart-business#:~:text=La%20BCR%20cu%20un%20credit,de%20pana%20la%2036%20luni."
+    },
+    {
+      "url": "https://www.bcr.ro/ro/business/micro/finantare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit George Smart Business (în pachetul de finanțare pentru microîntreprinderi)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina hub de finanțare pentru microîntreprinderi confirmă plafonul total de 490.000 lei pentru produsele de finanțare digitală, inclusiv Credit George Smart Business, pentru același segment (microîntreprinderi/PFA) ca produsul Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina este un hub cu linkuri către produsul dedicat, dar conține o cifră relevantă (plafonul de 490.000 lei) confirmată și pe pagina dedicată.",
+      "citat": "Produse de finanțare de până la 490.000 de lei Card de credit cu limită de până la 80.000 de lei Aplici online în câteva minute și primești răspuns fãrã drumuri la bancă.",
+      "citat_verificat": true,
+      "link_live": "https://www.bcr.ro/ro/business/micro/finantare#:~:text=Produse%20de%20finan%C8%9Bare%20de%20p%C3%A2n%C4%83,r%C4%83spuns%20f%C3%A3r%C3%A3%20drumuri%20la%20banc%C4%83."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bcr.ro/ro/business/micro/finantare",
+    "https://www.bcr.ro/ro/business/digital-banking/credit-george-smart-business"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2203,
+    "citire_cache": 76637,
+    "scriere_cache": 40257,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1380159
+  }
+}

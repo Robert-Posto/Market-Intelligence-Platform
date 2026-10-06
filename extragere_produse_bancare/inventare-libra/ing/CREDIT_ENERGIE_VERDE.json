@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Finanțare proiecte sustenabile - Tranziția energetică (încredere 0.55) — Este pagina dedicată IMM/firme care descrie finanțarea pentru tranziția energetică (inclusiv capacități fotovoltaice și eoliene), în același segment (persoane juridice), dar e integrată într-un produs umbrelă de finanțare sustenabilă cu mai multe arii (nu un credit dedicat exclusiv energiei verzi) și nu publică cifre (dobândă, sumă, termen) specifice acestei componente."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://ing.ro/imm/solutii-de-finantare/finantare-proiecte-sustenabile",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare proiecte sustenabile - Tranziția energetică",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pagina dedicată IMM/firme care descrie finanțarea pentru tranziția energetică (inclusiv capacități fotovoltaice și eoliene), în același segment (persoane juridice), dar e integrată într-un produs umbrelă de finanțare sustenabilă cu mai multe arii (nu un credit dedicat exclusiv energiei verzi) și nu publică cifre (dobândă, sumă, termen) specifice acestei componente.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina menționează explicit tehnologiile fotovoltaice și eoliene finanțate pentru firme, dar nu conține cifre (dobânzi, sume, termene) pentru acest produs, fiind descriptivă/calitativă.",
+      "citat": "Atunci când, pentru afacerea ta, investești în noi tehnologii care să îi permită să utilizeze eficient energia electrică obținând aceleași beneficii (iluminat, încălzire, funcționarea instalațiilor etc.) și economisind în același timp consumul. Tipologii de tehnologii finanțate: panouri termice sau fotovoltaice (PV), panouri solare, energie eoliană on și offshore, energie geotermală, energie hidroelectrică (hidroenergie), biomasă (generarea de energie din biomasă achiziționată în mod sustenabil) și altele similare.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/imm/solutii-de-finantare/finantare-proiecte-sustenabile#:~:text=Atunci%20c%C3%A2nd%2C%20pentru%20afacerea%20ta%2C,mod%20sustenabil%29%20%C8%99i%20altele%20similare."
+    }
+  ],
+  "deschise": [
+    "https://ing.ro/imm/solutii-de-finantare/finantare-proiecte-sustenabile"
+  ],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3655,
+    "citire_cache": 32737,
+    "scriere_cache": 39403,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1416169
+  }
+}

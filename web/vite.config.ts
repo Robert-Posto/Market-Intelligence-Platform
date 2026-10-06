@@ -25,4 +25,7 @@ export default defineConfig({
     outDir: 'dist',
     chunkSizeWarningLimit: 1500,
   },
+  // căi relative în build: app/server.py servește web/dist pe /app/ (aceeași origine cu API-ul,
+  // ca pornirea rulărilor să treacă de verificarea Origin); cu rutele în hash, merge și la rădăcină
+  base: './',
 })

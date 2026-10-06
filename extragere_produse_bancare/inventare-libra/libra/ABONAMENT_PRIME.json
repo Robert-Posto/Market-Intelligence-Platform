@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/cont-curent-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonament Prime",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată conturilor și abonamentelor operaționale pentru companii (persoane juridice) de la Libra Bank, care prezintă explicit abonamentul Prime cu cost 95 lei/lună, conturi lei/euro/USD, 25 plăți instant lei, 25 încasări lei și până la 2 carduri Business Standard — exact caracteristicile produsului ABONAMENT_PRIME.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina este dedicată explicit abonamentelor operaționale pentru companii și conține tabelul complet cu toate cifrele pentru pachetul Prime (cost, plăți, încasări, carduri).",
+      "citat": "Prime · Elite · Prestige Administrare inclusă / lunar · Abonament corporate · Abonament corporate · Abonament corporate Retrageri numerar de la ATM Euronet · 2 · 3 · 5 Plăți lei din aplicație, inclusiv plăți instant / lunar · 25 · 50 · Nelimitat Încasări lei · 25 · 50 · Nelimitat Card Business Standard · pana la 2 carduri · pana la 3 carduri · pana la 5 carduri Cost lunar · 95 lei · 225 lei · 295 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-curent-companii#:~:text=Prime%20%C2%B7%20Elite%20%C2%B7%20Prestige,225%20lei%20%C2%B7%20295%20lei"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/facem",
+    "https://www.librabank.ro/cont-curent-companii",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 77,
+  "consum": {
+    "intrare": 8,
+    "iesire": 7176,
+    "citire_cache": 80425,
+    "scriere_cache": 85659,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3020085
+  }
+}

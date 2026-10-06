@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/credite/ing-personal",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Personal (Credit de nevoi personale ING)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără justificare (în condiții ANAF), în RON, cu rambursare în rate egale sau descrescătoare, exact ca Libra Way; diferă ușor plafoanele (2.000-200.000 lei și 1-5 ani la ING vs 10.000-150.000 RON și max 60 luni la Libra) dar tipul de produs și segmentul sunt identice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit toate cifrele relevante: dobânzi, plafoane, perioadă, comisioane, exemple de calcul pentru ambele tipuri de rambursare.",
+      "citat": "Pe scurt, ce e de știut: până la 200000 lei dobândă fixă 5,99% până la 15,99% pe an perioada de creditare 1 - 5 ani",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/persoane-fizice/credite/ing-personal#:~:text=Pe%20scurt%2C%20ce%20e%20de,creditare%201%20%2D%205%20ani"
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Lista-de-taxe-si-comisioane.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING Personal (Credit de nevoi personale ING)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de taxe și comisioane referențiat direct din pagina ING Personal ca sursă pentru comisioanele aplicabile acestui credit.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul nu a fost încă verificat direct, dar este linkul oficial 'Vezi detalii aici' din pagina produsului pentru comisioane.",
+      "citat": "0 lei pentru analiza dosarului, dacă angajatorul tău are încheiată o convenție salarială cu ING, altfel 200 de lei doar dacă se acordă creditul",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/persoane-fizice/credite/ing-personal"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1727,
+    "citire_cache": 36554,
+    "scriere_cache": 43681,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1337953
+  }
+}

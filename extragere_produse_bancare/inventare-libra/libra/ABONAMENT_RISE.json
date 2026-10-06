@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/cont-curent-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Rise IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată conturilor curente pentru IMM la Libra Bank prezintă explicit abonamentul operațional Rise IMM, cu preț lunar, carduri incluse și comision mPOS, identic ca structură cu produsul descris (ABONAMENT_RISE).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Este pagina oficială dedicată, cu tabel explicit pentru Rise IMM conținând toate cifrele cerute (preț, carduri, mPOS).",
+      "citat": "Card Business Standard 1 până la 2 - Card Business Gold - - până la 2 mPOS – comision carduri persoane fizice 0,59% 0,59% 0,59% Firme nou înființate: Gratuit 12 luni 50 lei 100 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-curent-imm#:~:text=Card%20Business%20Standard%201%20p%C3%A2n%C4%83,luni%2050%20lei%20100%20lei"
+    },
+    {
+      "url": "https://www.librabank.ro/cont-bancar-online-2in1",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Rise IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina Cont Online 2 în 1 include aceeași grilă de abonamente operaționale pentru companii, cu Rise IMM detaliat: 50 lei/lună, până la 2 carduri Business Standard, mPOS 0,59%, plăți și încasări nelimitate în lei.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Tabel explicit cu coloana dedicată Rise IMM și toate cifrele relevante (preț abonament, carduri, comision mPOS).",
+      "citat": "Card Business Standard 1 până la 2 - Card Business Gold - - până la 2 mPOS – comision carduri persoane fizice 0,59% 0,59% 0,59% Gratuit 12 luni 50 lei/lună 100 lei/lună",
+      "citat_verificat": true,
+      "link_live": "https://www.librabank.ro/cont-bancar-online-2in1#:~:text=Card%20Business%20Standard%201%20p%C3%A2n%C4%83,luni%2050%20lei%2Flun%C4%83%20100%20lei%2Flun%C4%83"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.librabank.ro/cont-curent-imm",
+    "https://www.librabank.ro/cont-bancar-online-2in1",
+    "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4326,
+    "citire_cache": 85961,
+    "scriere_cache": 88329,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2812907
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/credite/overdraft.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Overdraft (Descoperit de cont)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Facilitate de descoperit de cont pentru persoane fizice, acordată până la 6 salarii/pensii nete, cu dobândă aplicată doar pe suma utilizată - identic ca tip de produs și segment cu OVERDRAFT_PF de la Libra.",
+      "incredere": 0.97,
+      "explicatie_incredere": "Pagină dedicată produsului, cu condiții de eligibilitate, dobândă, marjă, DAE și exemple de calcul explicite.",
+      "citat": "Tip credit: Facilitate de descoperit de cont Valută: Lei Valoare: echivalentul a până la 6 salarii/pensii nete - ai la dispoziție o suma suplimentară de bani față de salariul sau pensia încasată în contul curent - dobânda se aplică numai pentru sumele utilizate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://banking.raiffeisen.ro/info-desk/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Overdraft",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document/pagină Info Desk cu lista oficială de dobânzi practicate pentru produsul Overdraft persoane fizice, inclusiv valori istorice pentru creditele deja retrase.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină oficială de tarife/dobânzi a băncii ce listează explicit produsul Overdraft cu valoarea, moneda, rata dobânzii, marja și DAE.",
+      "citat": "OVERDRAFT 01.07.2024 Tip credit: Facilitate de descoperit de cont Valuta: Lei Valoare: echivalentul a pana la 6 salarii/pensii nete Rata dobanzii · 15.85% Marja Bancii · 9.99% DAE (2) · 23.19%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1468,
+    "citire_cache": 6343,
+    "scriere_cache": 32524,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0972666
+  }
+}

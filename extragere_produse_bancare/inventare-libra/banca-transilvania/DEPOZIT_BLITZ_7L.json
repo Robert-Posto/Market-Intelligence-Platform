@@ -1,0 +1,54 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este grila standard de dobânzi pentru depozite la termen la persoane fizice; BT nu are un depozit promoțional distinct pe 7 luni de tip 'Blitz', tabelul sare direct de la 6 la 12 luni, iar dobânzile standard (4,70%-5,25%) sunt sub cei 6,25% p.a. promoționali ai Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul conține explicit cifrele dobânzilor pentru toate termenele standard de depozit la persoane fizice, dar nu există un produs promoțional distinct pe 7 luni cu care să se potrivească exact.",
+      "citat": "Period Interest collected at maturity / year Interest collected monthly / year 3 months 4,50% 4,25% 6 months 4,70% 4,50% 12 months 5,25% 5,00%",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi#:~:text=Period%20Interest%20collected%20at%20maturity,4%2C50%25%2012%20months%205%2C25%25%205%2C00%25"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/en/companii/economii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este grila standard de dobânzi pentru depozite la termen la persoane juridice; nu există un echivalent promoțional pe 7 luni, iar dobânzile standard (4,70% la 6 luni, 5,25% la 12 luni) sunt sub cei 6,25% p.a. ai depozitului Blitz Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina afișează explicit dobânzile pentru toate termenele standard de depozit corporate, dar produsul Blitz pe 7 luni nu are corespondent direct în grila BT.",
+      "citat": "Period Interest collected at maturity / year Interest collected monthly / year 3 months 4,50% 4,25% 6 months 4,70% 4,50% 12 months 5,25% 5,00%",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/en/companii/economii/dobanzi#:~:text=Period%20Interest%20collected%20at%20maturity,4%2C50%25%2012%20months%205%2C25%25%205%2C00%25"
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/companii/economii/dobanzi",
+    "https://www.bancatransilvania.ro/en/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/en/companii/economii/dobanzi",
+    "https://campanie.bancatransilvania.ro/bank-friday/depozit-termen-lei-6-si-12-luni"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 82624,
+    "iesire": 5057,
+    "citire_cache": 90127,
+    "scriere_cache": 62289,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3895659
+  }
+}

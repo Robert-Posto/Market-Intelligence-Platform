@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-06",
+  "banca": "procredit",
+  "cod": "CREDIT_IPOTECAR_PF",
+  "denumire": "Credit ipotecar / investiții imobiliare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/persoane-fizice/credit-imobiliar-ipotecar/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit imobiliar-ipotecar (ProHome / ProGreen imobiliar)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit ipotecar pentru persoane fizice destinat achiziției de locuință sau refinanțării creditului ipotecar, cu variantă verde (ProGreen), similar structurii Credit Verde de la Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: dobânzi, sume maxime, avans minim, perioadă de creditare și comisioane.",
+      "citat": "Poți împrumuta până la 1.250.000 LEI - Avansul minim este de 15% - Perioadă de creditare extinsă până la 30 de ani - Dobândă anuală: 5,19%* fixă în primii 3 ani, apoi dobândă variabilă de IRCC + 2,5% pentru restul perioadei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/landing/creditul-prohome-cu-dobanda-mixta/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul imobiliar ProHome cu dobândă mixtă",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină de landing dedicată variantei principale a creditului ipotecar pentru persoane fizice (achiziție/refinanțare locuință), cu cifre detaliate și exemplu de calcul DAE.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Conține exemplu complet de calcul cu sumă, dobândă, comisioane, DAE și valoare totală plătibilă.",
+      "citat": "Perioadă de creditare: până la 30 ani - Valoarea creditului: între 250.000 – 1.250.000 LEI - Dobândă fixă 5,19% în primii 3 ani - Dobandă variabilă IRCC + 2,5% pentru restul perioadei de creditare - Avans: minim 15% din valoarea imobilului - Comision de analiză dosar: 500 LEI",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/files/Lista_Preturi_PF_RO_24_04_2024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Credit imobiliar (listă prețuri persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane pentru persoane fizice care include rândul dedicat creditului imobiliar cu dobândă variabilă.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Documentul de tarife conține date despre creditul imobiliar, dar structura de tabel extrasă este parțial fragmentată.",
+      "citat": "LISTĂ PREȚURI PERSOANE FIZICE Pachetul ProActive Servicii incluse Tip Creditul ProGreen Auto 10%** IRCC+ 3.28%** Până la 60 IRCC + 2.20%** LEI EURIBOR 6 luni + 3.00%** 12%** Tip LEI Până la 360 Creditul pentru investiții 13%** IRCC+ 7.00%**",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/"
+  ],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1619,
+    "citire_cache": 6357,
+    "scriere_cache": 33456,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10110939999999999
+  }
+}

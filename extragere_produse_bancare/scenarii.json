@@ -1,0 +1,130 @@
+{
+ "meta": {
+  "versiune": 1,
+  "generat": "2026-09-24",
+  "descriere": "Scenarii de referinta per produs: cazul FIX pe care toate bancile il raporteaza, ca valorile sa stea pe aceeasi axa.",
+  "de_ce": "Masurat pe `nevoi-personale`: 321 de observatii numerice la 15 banci, din care pagina de produs afisa 58. Restul cadeau fiindca aveau `conditii`, iar filtrul trata orice conditie ca pe un defect. Dar conditiile erau chiar informatia: DAE exista la 8 banci si nu se putea afisa, fiindca fiecare banca isi alegea singura exemplul — 12,18% la BT pe 5.000 lei/5 ani si 8,95% la Libra pe 75.000 lei/60 luni nu sunt un clasament, sunt doua ilustratii. Scenariul fix inverseaza regula: conditia devine cheia de join, nu motiv de excludere.",
+  "ce_nu_face": "Nu inlocuieste extractia libera. Un document se citeste tot, cu toate valorile lui; scenariul spune doar CARE dintre ele intra in tabelul comparativ. Valorile pe alte scenarii raman in `observations-*.json` si se vad in pagina de produs ca variante.",
+  "campuri_dependente": "Trei liste, nu doua. `dependente` — campuri care NU au sens fara scenariu: rata lunara si totalul platibil se schimba cu suma. `independente` — se compara direct intre banci: un comision de analiza dosar de 900 lei e 900 lei la orice suma. `context` — campuri care REPETA scenariul (suma si perioada creditului din exemplu); nu se clasamenteaza, fiindca `suma_credit = 30.000` la o banca si `= 5.000` la alta nu e un avantaj comercial, e descrierea exemplului. Un camp care nu e in niciuna dintre cele trei se trateaza ca DEPENDENT — implicitul prudent, fiindca greseala in cealalta directie pune pe axa comuna o valoare care nu-i apartine.",
+  "atentie_la_dae": "DAE depinde de suma si de perioada chiar si fara alte conditii, fiindca include comisioane fixe amortizate pe durata creditului. De aceea sta la `dependente`, desi pare o rata pura.",
+  "scenariu_si_trepte": "Un scenariu fixeaza doua lucruri diferite. PUNCTUL DIN GRILA (suma, perioada, valuta) se potriveste prin comparatie de numere, fiindca observatia isi poarta `trepte`. PROFILUL CLIENTULUI (fara asigurare, fara incasare venit, fara codebitor, fara promotie) nu e numeric si se judeca din `conditii`, deci acolo raspunde `potrivire_scenariu`. Confuzia dintre ele a fost costisitoare: pana la trepte, „30.000 lei pe 5 ani\" se cauta cu o expresie regulata care trebuia sa prinda „30.000\", „30000\" si „30K\", iar „5 ani\" si „60 luni\" erau doua tipare pentru acelasi lucru."
+ },
+ "scenarii": [
+  {
+   "id": "NP_30K_60L_BAZA",
+   "produs": "nevoi-personale",
+   "nume": "30.000 lei pe 60 de luni, fara beneficii",
+   "implicit": true,
+   "de_ce_acesta": "E scenariul cel mai frecvent publicat ca atare in datele deja colectate: apare literal la BCR (12 valori, „credit 30.000 lei pe 5 ani\") si la TBI (11 valori, „credit de 30.000 lei pe 60 luni\"). Un scenariu pe care bancile il publica singure se citeste; unul inventat de noi trebuie calculat, iar regula 1 din promptul de extractie interzice calculul.",
+   "parametri": {
+    "suma": 30000,
+    "valuta": "RON",
+    "perioada_luni": 60,
+    "tip_dobanda": "orice",
+    "asigurare": false,
+    "incasare_venit_la_banca": false,
+    "codebitor": false,
+    "promotie": false,
+    "canal": "orice"
+   },
+   "descriere_pentru_model": "Un credit de nevoi personale de 30.000 lei, pe 60 de luni (5 ani), in lei. Clientul NU incheie asigurare de viata prin banca, NU isi incaseaza venitul in cont la banca respectiva, NU aduce codebitor si NU beneficiaza de nicio promotie pe perioada limitata. Adica pretul de lista, pentru un client fara nicio relatie anterioara cu banca.",
+   "dependente": [
+    "dae",
+    "rata_lunara",
+    "total_platibil",
+    "dobanda_nominala",
+    "dobanda_fixa",
+    "dobanda_variabila",
+    "comision_administrare_credit_lunar_lei"
+   ],
+   "independente": [
+    "comision_analiza_dosar",
+    "comision_rambursare_anticipata",
+    "comision_administrare_credit_procent_sold",
+    "suma_maxima",
+    "perioada_maxima",
+    "marja_banca"
+   ],
+   "unitate_canonica": {
+    "perioada_maxima": "luni",
+    "perioada_credit": "luni"
+   },
+   "context": [
+    "suma_credit",
+    "perioada_credit"
+   ],
+   "trepte": [
+    {
+     "dimensiune": "suma",
+     "valoare": 30000
+    },
+    {
+     "dimensiune": "perioada",
+     "valoare": 60
+    }
+   ],
+   "de_ce_trepte": "Scenariul e un PUNCT in grila declarata de `trepte` in produse_bancare_v2.json. Legatura nu e decorativa: cand o observatie isi poarta treapta, potrivirea cu scenariul se CALCULEAZA (30000 == 30000), nu se mai citeste din textul conditiilor cu expresii regulate. Textul ramane pentru partea calitativa — asigurare, incasare venit, codebitor — care nu e numerica si nu are treapta."
+  },
+  {
+   "id": "IPO_350K_300L_BAZA",
+   "produs": "ipotecar",
+   "nume": "350.000 lei pe 300 de luni, pretul de lista",
+   "implicit": true,
+   "de_ce_acesta": "Masurat pe comparatie_libra la 02.10: BCR publica 6 DAE pe 350.000 lei / 300 luni, Raiffeisen 7 pe 350.500 / 300; BRD da 330.000 / 360, Libra 250.000 / 180, ING niciun exemplu cu suma. Niciun punct nu e publicat de toti; acesta e cel mai des, iar cerut explicit, modelul cauta si linia lui in grilele si simulatoarele care au mai multe sume.",
+   "parametri": {
+    "suma": 350000,
+    "valuta": "RON",
+    "perioada_luni": 300,
+    "tip_dobanda": "orice",
+    "asigurare": false,
+    "incasare_venit_la_banca": false,
+    "codebitor": false,
+    "promotie": false,
+    "canal": "orice"
+   },
+   "descriere_pentru_model": "Un credit ipotecar pentru locuinta de 350.000 lei, pe 300 de luni (25 de ani), in lei. Clientul NU isi incaseaza venitul in cont la banca respectiva, NU aduce codebitor si NU beneficiaza de nicio promotie pe perioada limitata. Asigurarea obligatorie a locuintei e parte din credit; asigurarea de viata facultativa NU. Adica pretul de lista, pentru un client fara nicio relatie anterioara cu banca.",
+   "dependente": [
+    "dae",
+    "rata_lunara",
+    "total_platibil",
+    "dobanda_nominala",
+    "dobanda_fixa",
+    "dobanda_variabila",
+    "dobanda_fixa_introductiva",
+    "dobanda_variabila_ulterioara",
+    "marja_banca"
+   ],
+   "independente": [
+    "comision_analiza_dosar",
+    "comision_rambursare_anticipata",
+    "comision_administrare_credit_lunar_lei",
+    "comision_administrare_credit_procent_sold",
+    "cost_evaluare",
+    "avans_minim",
+    "suma_maxima",
+    "perioada_maxima",
+    "varsta_minima",
+    "dobanda_min",
+    "dobanda_max"
+   ],
+   "unitate_canonica": {
+    "perioada_maxima": "luni",
+    "perioada_credit": "luni"
+   },
+   "context": [
+    "suma_credit",
+    "perioada_credit"
+   ],
+   "trepte": [
+    {
+     "dimensiune": "suma",
+     "valoare": 350000
+    },
+    {
+     "dimensiune": "perioada",
+     "valoare": 300
+    }
+   ]
+  }
+ ]
+}

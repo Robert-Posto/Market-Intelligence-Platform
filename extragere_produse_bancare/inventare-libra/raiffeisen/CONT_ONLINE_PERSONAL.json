@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent/pachetul-de-cont-curent-zero-simplu.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de cont curent ZERO Simplu",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane fizice, deschidere 100% online din aplicația Smart Mobile, acces digital complet (mobile banking, internet banking), fără drumuri la bancă - corespunde exact profilului Cont Online Personal.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete despre costuri, condiții de activare și beneficii, fiind pagina oficială de prezentare a contului curent online pentru persoane fizice.",
+      "citat": "deschizi ușor și rapid cont 100% online, de oriunde, direct din aplicația ta Smart Mobile, cu doar 1.000 de lei încasări lunare în cont și o plată cu cardul pe lună, indiferent de valoare, iar dacă într-o lună nu reușești să faci nicio plată cu cardul, plătești 15 lei.",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent/pachetul-de-cont-curent-zero-simplu.html#:~:text=deschizi%20u%C8%99or%20%C8%99i%20rapid%20cont,cu%20cardul%2C%20pl%C4%83te%C8%99ti%2015%20lei."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/marketing/ro/documents/ro/smart-mobile/termeni-SM.pdf.coredownload.inline.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Taxe și comisioane aferente conturilor în lei și valută (Pachet ZERO Simplu)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document contractual conținând tabelul complet de taxe pentru contul curent deschis online prin Smart Mobile, inclusiv taxa de administrare pentru Pachetul ZERO Simplu (echivalentul Cont Online Personal) și comisionul de deschidere.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "PDF oficial cu tabel de taxe și comisioane explicit pentru conturile curente deschise prin aplicația online, inclusiv valorile exacte pentru Pachet ZERO Simplu.",
+      "citat": "Deschidere de cont curent persoane fizice 0 Lei; Taxa inchidere cont curent persoane fizice 0 Lei; Taxa Administrare Cont Curent Pachet ZERO Simplu 0/10 lei/luna",
+      "pagina_pdf": 33,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://bank.raiffeisen.ro/ro/deschide-cont-online/home.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Deschide cont online / Cont curent 100% online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina principală de achiziție a contului curent 100% online pentru persoane fizice noi clienți, cu detalii despre bonus și beneficiile pachetului Zero Simplu.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina de aplicare conține cifre despre bonus (600 lei) și condițiile pachetului ZERO Simplu (1.000 lei încasări, 15 lei penalizare), fiind canalul principal de deschidere a contului online.",
+      "citat": "Deschide cont curent 100% online și primești garantat până la 600 de lei BONUS, O mulțime de beneficii, cu zero taxe și comisioane când încasezi lunar minimum 1.000 LEI cumulat în cont și faci o plată cu cardul pe lună.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent/pachetul-de-cont-curent-zero-simplu.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/marketing/ro/documents/ro/smart-mobile/termeni-SM.pdf.coredownload.inline.pdf"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2182,
+    "citire_cache": 38322,
+    "scriere_cache": 221565,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5834089
+  }
+}

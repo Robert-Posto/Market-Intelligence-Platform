@@ -1,0 +1,5310 @@
+{
+ "banca": "tbi",
+ "urluri": [
+  {
+   "cheie": "https://tbibank.ro/product/depozitul-simplu/||depozitul simplu",
+   "url": "https://tbibank.ro/product/depozitul-simplu/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozitul Simplu",
+   "focus": "Produsul băncii: „Depozitul Simplu”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1319,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+   "observatii": [
+    {
+     "id": "5b4f1dcb479e3b20397533edf58086b6",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 LUNA\n6,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1,
+       "valoare_text": "luni"
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "9aed3e95b80dce8f0d0ac1706935f99d",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 LUNI\n6,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "b768997f0e8f9346ef196682fe8b6a8d",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "5 LUNI\n6,90%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 5
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "60e74dc94f719dd801822e76edfce310",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 LUNI\n7,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "6148cc2667f0b3de5e0fd3fdeef1f17a",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 LUNI\n7,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "9f72a49f25f8f20f0daf302855568109",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI\n7,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "fb257b0ef4cc130e604a2597a38d1f43",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.2,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "15 LUNI\n7,20%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 15
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "26eff1d8bc8770913b7914d74a376f12",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 LUNI\n7,30%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "dc2ecff06b2da5f391667795e146af5a",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 LUNI\n7,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "65a718858b8775620288f8bae0022408",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 LUNI\n7,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "c66481b9c422e0757c64216058fc4348",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.35,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 LUNA\n0,35%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "4fa346bc21f831d44603b18912efbb87",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 LUNI\n2,60%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "e9265c38af10f2f9065b4128b2669ef3",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "5 LUNI\n0,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 5
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "4b973075f9dd30cbe30857d839999c44",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 LUNI\n2,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "29da1e501d39222530147448b481d60a",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 LUNI\n1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "5729441a3322f9058ec0057b89a95536",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "bf9252fa0b0063fb360678fa4fae76cd",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "15 LUNI\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 15
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "265d2e53592fba4dc12e376d6cebba3c",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 LUNI\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "be5a78f5d3c57ecd7f06bdb3cdef9cc3",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 LUNI\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "189a5ba6adae8b81d351a89712a1943c",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 LUNI\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "563d180643808c85b35aace3cac56692",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "1 LUNA\n0,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "6ed9f2f1549e8701ab2677ff2619caf1",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "3 LUNI\n1,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "6e41a03a0b401a760500358d57bebe64",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "5 LUNI\n1,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 5
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "db182a6a65fc93a3b06aaa7c5c1e9213",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "6 LUNI\n1,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "0ca975cd70e3dce1a3c48742d528507b",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "9 LUNI\n1,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "afa770493bb0bfaed9eb271a40ef7795",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "12 LUNI\n2,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "bd86c24f55dd8ad639767183000911fc",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "15 LUNI\n2,25%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 15
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "a9d15c894c8b61a301fb5f451203e3c5",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "18 LUNI\n2,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "4295c3b495ccad96c1e667478a45f1c7",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "24 LUNI\n2,75%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    },
+    {
+     "id": "5d1858353bbe9aff822f6630ae4f94f9",
+     "id_url": 1319,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "504465e3c65dac615dd7ad8d24dbd5eebe02ced8eeeb87de4a7636ccfc516126",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "36 LUNI\n3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 30 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a7f9f0e6712695e6909b8934ed69c517bd90dee852ab0c05b646ebd8e427555c"
+    }
+   ],
+   "respinse": [],
+   "scrise": 30,
+   "durata_s": 23,
+   "tokeni": {
+    "intrare": 7652,
+    "iesire": 3538
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/companii/depozite/depozit-persoane-juridice/||depozit pentru companii (depozit persoane juridice)",
+   "url": "https://tbibank.ro/companii/depozite/depozit-persoane-juridice/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit pentru companii (Depozit persoane juridice)",
+   "focus": "Produsul băncii: „Depozit pentru companii (Depozit persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1428,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "e630a13f40a7e2bd77ca145c1fe5f3df55b5938f7b90e7bcbd81faa346be53f0",
+   "observatii": [
+    {
+     "id": "c9de924327e05303365390f48a9d9bd5",
+     "id_url": 1428,
+     "id_produs": "depozit-termen",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e630a13f40a7e2bd77ca145c1fe5f3df55b5938f7b90e7bcbd81faa346be53f0",
+     "conditii": [],
+     "eticheta_libera": "comision reinnoire depozit",
+     "citat": "comision reinnoire depozit: 0 LEI/EUR/USD",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "728d40ac4680aec338947d52e04fa43ba2ec548533aff7b307d0fda1e6b3d918"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "depozit-termen",
+     "camp": "comision_deschidere",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "comisioane depunere numerar: 0 LEI/EUR/USD",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 1,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 5363,
+    "iesire": 388
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/wp-content/uploads/2025/09/Dobanzi-depozite_TBI_26septembrie2025.pdf||depozitul simplu / depozitul online / depozit persoane juridice",
+   "url": "https://tbibank.ro/wp-content/uploads/2025/09/Dobanzi-depozite_TBI_26septembrie2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozitul Simplu / Depozitul Online / Depozit persoane juridice",
+   "focus": "Produsul băncii: „Depozitul Simplu / Depozitul Online / Depozit persoane juridice”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1320,
+     "id_produs_libra": 43,
+     "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+   "observatii": [
+    {
+     "id": "f4668ba581a35c7ac153f795171ce729",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "72d3f34d00a7a3c9837270411f5f57db",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "5f2de6cf764e62c75b7a84249c2e6305",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 5
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "a7807fcae23a915c6be66102c484c6ba",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "da88ed00e5ac6000441c95105af8e563",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "bce4694796a73615cd90ca00c1531623",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.25,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "ff66f23a4cb5aa410d97b902dae1e4f0",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 15
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "be22d53c2f6a90d3e3d71f105d799377",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "debea6a818731a664393fcabca5bf5e2",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "b78cb70a28bd462276127b2cc4117d31",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,75% 6,25% 5,50% 5,50% 5,50% 5,50%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "1eb03197a67e10eb4d0b477a39c786f6",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.35,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "5e611be7d62267e9097f6193503881d6",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "a2b254dd2fbf1423a51f3ceab34e9b39",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 5
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "892cb7d1383b84ee603cace00fc8dbad",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 0.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "c37b8123e47b8ab92029e5d58e153c64",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "00c472b127619abd4b2e461ff201820b",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.3,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "0dd131981db2bd54c68ca5df01c04e93",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 15
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "5bcf872d8e8698984aebca908dea0faa",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "caff9e09f5f15a0226b7d101df7c1f04",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "f52fcb68958478a94c8f10bbb5014d12",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.8,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "EUR 0,35% 0,50% 0,70% 0,90% 1,00% 1,30% 1,40% 1,50% 1,60% 1,80%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "EUR"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "a3bc29ec478ab79d0bdccee7227795e9",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "66746bf5386a7834ede176512abe20ec",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 1.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "89c83ad0610d8f5eb3be88dea76fb281",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 5
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "49d7d575d4238c979087498096c0de30",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "bcc4e35f429bf0cd0195c987d4f8d915",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 2.75,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "0e3453765ba7f24e9c4541a74d556c15",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "266db700c76b41e5e370605f6976ea80",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 15
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "56d0ee9549c4efe346e8f852646e38fa",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "f491f3fe1d72046e34b599d8902411ba",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "013a1b60239172379111eab044acd5f9",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 3.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "USD 1,00% 1,50% 2,00% 2,50% 2,75% 3,00% 3,00% 3,00% 3,00% 3,00%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "USD"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "ghiseu"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "cc49cf1ad00f1afc65a980d5dd001b56",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.4,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 1
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "6c53fd50a206e59b0a6e44abac2f87ba",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 3
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "68bdd1234af4c55d8eca0aca840da53f",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.6,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 5
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "85ccc5f4b365abfef16fbf1894e3857a",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 7.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 6
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "21b1b10941c0f70552d08cb66f707220",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.95,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 9
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "275d23dd0de482826f4c079bd35325b8",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.45,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 12
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "9dd619dde8645fae7fad969620449181",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 15
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "26fe60db580ccf955d86ffca8294f2ad",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 18
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "a78c9a8fb2904c859cb41b01a7ed8c98",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 24
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    },
+    {
+     "id": "6700e08bd599b6eee859f5f5964b45b5",
+     "id_url": 1320,
+     "id_produs": "depozit-termen",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5.7,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "RON 7,40% 7,50% 6,60% 7,50% 5,95% 6,45% 5,70% 5,70% 5,70% 5,70%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „dobanda_nominala” apare de 40 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "perioada",
+       "valoare": 36
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      },
+      {
+       "dimensiune": "canal",
+       "valoare_text": "online"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    }
+   ],
+   "respinse": [],
+   "scrise": 40,
+   "durata_s": 47,
+   "tokeni": {
+    "intrare": 5269,
+    "iesire": 7406
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/wp-content/uploads/2024/02/Lista_de_dobanzi_taxe_si_comisioane_CASH_-Februarie_2024.pdf||credit de nevoi personale standard / credit de nevoi personale standard online",
+   "url": "https://tbibank.ro/wp-content/uploads/2024/02/Lista_de_dobanzi_taxe_si_comisioane_CASH_-Februarie_2024.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale standard / Credit de nevoi personale standard Online",
+   "focus": "Produsul băncii: „Credit de nevoi personale standard / Credit de nevoi personale standard Online”.\nCorespunde produsului Libra: „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1619,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+   "observatii": [
+    {
+     "id": "bed1b9a689db7e4921b919731ce08c99",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 340,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Comision de analiza ✓ 340 Lei*",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_analiza_dosar” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "eb4091d59257424c71a4362950cda85d",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "perioada ramasa pana la incetarea contractului mai mare de 1 an"
+     ],
+     "eticheta_libera": null,
+     "citat": "1% din valoarea Creditului rambursata anticipat, daca perioada de timp dintre rambursarea anticipata si\ndata convenita pentru incetarea Contractului este mai mare de 1 an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "de_la": 12
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "661e3fe4e0ddadc337bc52f87bee0074",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "perioada ramasa pana la incetarea contractului nu mai mare de 1 an"
+     ],
+     "eticheta_libera": null,
+     "citat": "0,5% din valoarea Creditului rambursata anticipat, daca perioada de timp dintre rambursarea anticipata\nsi data convenita pentru incetarea Contractului nu este mai mare de 1 an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "pana_la": 12
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "bed1b9a689db7e4921b919731ce08c99",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 299,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "produs Credit de nevoi personale standard Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "Comision de analiza ✓ 299 Lei*",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_analiza_dosar” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "eb4091d59257424c71a4362950cda85d",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "produs Online",
+      "perioada ramasa pana la incetarea contractului mai mare de 1 an"
+     ],
+     "eticheta_libera": null,
+     "citat": "1% din valoarea Creditului rambursata anticipat, daca perioada de timp dintre rambursarea anticipata si\ndata convenita pentru incetarea Contractului este mai mare de 1 an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "de_la": 12
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "661e3fe4e0ddadc337bc52f87bee0074",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "produs Online",
+      "perioada ramasa pana la incetarea contractului nu mai mare de 1 an"
+     ],
+     "eticheta_libera": null,
+     "citat": "0,5% din valoarea Creditului rambursata anticipat, daca perioada de timp dintre rambursarea anticipata\nsi data convenita pentru incetarea Contractului nu este mai mare de 1 an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 4 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "pana_la": 12
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "6d059a74d05526aadbfb5da71018a097",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 3,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "pentru fiecare zi de intarziere la plata"
+     ],
+     "eticheta_libera": "dobanda penalizatoare",
+     "citat": "se calculeaza pentru fiecare zi de intarziere si este egala cu dobanda standard + 3% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "6d059a74d05526aadbfb5da71018a097",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 2,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "in cazul declararii scadentei anticipate"
+     ],
+     "eticheta_libera": "dobanda penalizatoare in caz de scadenta anticipata declarata",
+     "citat": "In cazul declararii scadentei anticipate, dobanda penalizatoare este egala cu dobanda standard + 2% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "356fbba717c9b7b658c034cf2e74fcc5",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "cu asigurare de viata inclusa, pachet Completa",
+      "valoare credit intre 0 si 75.000 lei"
+     ],
+     "eticheta_libera": "asigurare de viata optionala - pachet Completa",
+     "citat": "0.50%/luna din valoarea creditului pentru valori ale creditelor cuprinse intre 0 – 75,000 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 0,
+       "pana_la": 75000
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "9754a38f38f62c5243c7854c5d4e87d9",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.37,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "cu asigurare de viata inclusa, pachet Standard",
+      "valoare credit sub 22.500 lei"
+     ],
+     "eticheta_libera": "asigurare de viata optionala - pachet Standard, credite sub 22.500 lei",
+     "citat": "0.370%/luna din valoarea creditului, pentru valori ale creditelor < 22,500 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 22500
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "b253cb206011aaa83a66095d7521ed0e",
+     "id_url": 1619,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.175,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "cu asigurare de viata inclusa, pachet Standard",
+      "valoare credit >= 22.500 lei"
+     ],
+     "eticheta_libera": "asigurare de viata optionala - pachet Standard, credite peste sau egal 22.500 lei",
+     "citat": "0.175%/luna din valoarea creditului pentru valori ale creditelor > sau = cu 22,500 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 22500
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_30K_60L_BAZA_MIN",
+     "valoare_num": 20.4,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "incepand de la 20.40% si pana la 49.9%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_30K_60L_BAZA_MAX",
+     "valoare_num": 49.9,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "incepand de la 20.40% si pana la 49.9%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_30K_60L_BAZA_ONLINE_MIN",
+     "valoare_num": 20.4,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "incepand de la 20.40% si pana la 49.9%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_30K_60L_BAZA_ONLINE_MAX",
+     "valoare_num": 49.9,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "incepand de la 20.40% si pana la 49.9%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 11,
+   "durata_s": 25,
+   "tokeni": {
+    "intrare": 9453,
+    "iesire": 2925
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/product/creditul-tau-personal/||creditul tau personal",
+   "url": "https://tbibank.ro/product/creditul-tau-personal/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul tau personal",
+   "focus": "Produsul băncii: „Creditul tau personal”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1598,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+   "observatii": [
+    {
+     "id": "3b8f6378c732b9bc335ddf347cd404f5",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 150000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Pana la 150.000 lei, in doar cateva minute",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "0ef894404b654caaad91abbdaf1ec027",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 12,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [],
+     "eticheta_libera": "perioada minima",
+     "citat": "Perioada de rambursare (intre 12-60 luni) poate fi ajustata in functie de ritmul bugetului tau",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "cf3cb3343ea2f5fbf4cd043955a7450e",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 60,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Perioada de rambursare (intre 12-60 luni) poate fi ajustata in functie de ritmul bugetului tau",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "5c6ed977c6d9474ecdaa8a8cefd6fa56",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_ONLINE",
+     "valoare_num": 20.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "exemplu pentru 25.000 lei, 60 luni, fara asigurare, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii fixe: 20,90%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "8d5ca397a3efbadd18bdeba4f3ac2085",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_ONLINE",
+     "valoare_num": 23.95,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "exemplu pentru 25.000 lei, 60 luni, fara asigurare, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE: 23,95%.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "54c03ec0a5ea8d08859b73b23ac77309",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_ONLINE",
+     "valoare_num": 685.7,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "exemplu pentru 25.000 lei, 60 luni, fara asigurare, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunară: 685,70 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "26b853c77e9c444c73dfde9996a1bbb9",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_ONLINE",
+     "valoare_num": 41142.02,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "exemplu pentru 25.000 lei, 60 luni, fara asigurare, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "suma totala de plata: 41.142,02 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "4df286c7e5ed9b878e6e9cec09d5b0aa",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_ONLINE",
+     "valoare_num": 17.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "cu asigurare de viata inclusa",
+      "exemplu pentru 25.000 lei, 60 luni, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii fixe: 17,90%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "d34ed33cf9a47040dd101e1e598a4630",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_ONLINE",
+     "valoare_num": 26.14,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "cu asigurare de viata inclusa",
+      "exemplu pentru 25.000 lei, 60 luni, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE: 26,14%.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "d2f9fdddecb46fb80d774fa6ee02d3c9",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_ONLINE",
+     "valoare_num": 711.16,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "cu asigurare de viata inclusa",
+      "exemplu pentru 25.000 lei, 60 luni, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunara: 711,16 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    },
+    {
+     "id": "43307df372d133de5d6d0f8ad3838edf",
+     "id_url": 1598,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_ONLINE",
+     "valoare_num": 42669.8,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "cu asigurare de viata inclusa",
+      "exemplu pentru 25.000 lei, 60 luni, Online"
+     ],
+     "eticheta_libera": null,
+     "citat": "suma totala de plata: 42.669,80 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "b1566b3ed572a41374f726089e7a74d53ae75f413d2289a19c295aa4660de491"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_ONLINE",
+     "valoare_num": 399,
+     "unitate": "lei",
+     "incredere": 0.55,
+     "citat": "comision de analiza (finantat de creditor): 399 lei",
+     "motive": [
+      "încredere 0.55 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_ONLINE",
+     "valoare_num": 399,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "comision de analiza (finantat de creditor): 399 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_STANDARD",
+     "valoare_num": 20.9,
+     "unitate": "procent",
+     "incredere": 0.55,
+     "citat": "rata anuala a dobanzii fixe: 20,90%",
+     "motive": [
+      "încredere 0.55 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_STANDARD",
+     "valoare_num": 25.11,
+     "unitate": "procent",
+     "incredere": 0.55,
+     "citat": "DAE: 25,11%.",
+     "motive": [
+      "încredere 0.55 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_STANDARD",
+     "valoare_num": 699.2,
+     "unitate": "lei",
+     "incredere": 0.55,
+     "citat": "rata lunara: 699,20 lei",
+     "motive": [
+      "încredere 0.55 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_STANDARD",
+     "valoare_num": 41951.93,
+     "unitate": "lei",
+     "incredere": 0.55,
+     "citat": "suma totala de plata: 41.951,93 lei",
+     "motive": [
+      "încredere 0.55 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_FARA_ASIG_STANDARD",
+     "valoare_num": 899,
+     "unitate": "lei",
+     "incredere": 0.55,
+     "citat": "comision de analiza (finanțat de creditor): 899 lei",
+     "motive": [
+      "încredere 0.55 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_STANDARD",
+     "valoare_num": 17.9,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "rata anuala a dobanzii fixe: 17,90%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_STANDARD",
+     "valoare_num": 27.34,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "DAE: 27,34%.",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_STANDARD",
+     "valoare_num": 725.16,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "rata lunara: 725,16 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_STANDARD",
+     "valoare_num": 43509.79,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "suma totala de plata: 43.509,79 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_CU_ASIG_STANDARD",
+     "valoare_num": 899,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "comision de analiza (finanțat de creditor): 899 lei",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 11,
+   "durata_s": 36,
+   "tokeni": {
+    "intrare": 9692,
+    "iesire": 4612
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/product/creditul-tau-personal/||creditul tau personal (credit de nevoi personale)",
+   "url": "https://tbibank.ro/product/creditul-tau-personal/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul tau personal (Credit de Nevoi Personale)",
+   "focus": "Produsul băncii: „Creditul tau personal (Credit de Nevoi Personale)”.\nCorespunde produsului Libra: „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1618,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+   "observatii": [
+    {
+     "id": "11694ee3343ae91af2c48b2175b3b769",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "suma_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 150000,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Pana la 150.000 lei, in doar cateva minute",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "ed14b784c4072e3ec3b3cea8fe6b8b12",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "perioada_maxima",
+     "cod_scenariu": null,
+     "valoare_num": 60,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Perioada de rambursare (intre 12-60 luni) poate fi ajustata in functie de ritmul bugetului tau",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "cc644eb56c7ab8fc3ea03b7872e33593",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_ONLINE_FARA_ASIG",
+     "valoare_num": 20.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii fixe: 20,90%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "d30a1d9dd183240683c6de5c0e7a2a42",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_ONLINE_FARA_ASIG",
+     "valoare_num": 23.95,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE: 23,95%.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "c2d65226c12e4fbd28af521b1d0cdfa0",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_ONLINE_FARA_ASIG",
+     "valoare_num": 685.7,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunară: 685,70 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "11960eef6a523c45f72fff25d4fcc504",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_ONLINE_FARA_ASIG",
+     "valoare_num": 41142.02,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "suma totala de plata: 41.142,02 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "872ba8341119bf1d5f02f0e3dc88aa9d",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_ONLINE_FARA_ASIG",
+     "valoare_num": 399,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "comision de analiza (finantat de creditor): 399 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "adfa65f7f1c5ea50c2f12e53539ef3f0",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_ONLINE_CU_ASIG",
+     "valoare_num": 17.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii fixe: 17,90%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "3c1bf43645aa4facf781f4ea155d1246",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_ONLINE_CU_ASIG",
+     "valoare_num": 26.14,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE: 26,14%.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "08d7e1bf2427704b0085eb7c610eedde",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_ONLINE_CU_ASIG",
+     "valoare_num": 711.16,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunara: 711,16 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "b8dc0e44d6a90b3f0c0c888000a4bfb0",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_ONLINE_CU_ASIG",
+     "valoare_num": 42669.8,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "suma totala de plata: 42.669,80 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "faaf201f33746e838b3f4f02abc13ee2",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_ONLINE_CU_ASIG",
+     "valoare_num": 399,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit online, cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "comision de analiza (finantat de creditor): 399 lei, prima de asigurare finantata: 2.666,90 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "5d69ea5bea1191b8fde62a153c768755",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_STANDARD_FARA_ASIG",
+     "valoare_num": 20.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii fixe: 20,90%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "a2ab9be3d79877fe86f0f5c3d3c3bbd6",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_STANDARD_FARA_ASIG",
+     "valoare_num": 25.11,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE: 25,11%.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "0218e84271cd3d23397bb7f89b4d1d0d",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_STANDARD_FARA_ASIG",
+     "valoare_num": 699.2,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunara: 699,20 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "27cb774e1e51c1aacb7884b2dbea755b",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_STANDARD_FARA_ASIG",
+     "valoare_num": 41951.93,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "suma totala de plata: 41.951,93 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "aproximativ",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "ebfea2c2ec9afe115776a498ded406e3",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_STANDARD_FARA_ASIG",
+     "valoare_num": 899,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), fara asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "comision de analiza (finanțat de creditor): 899 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.75,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "adee1104093acb1cb231f909f1da9f45",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_25K_60L_STANDARD_CU_ASIG",
+     "valoare_num": 17.9,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata anuala a dobanzii fixe: 17,90%",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "012bd3edc3279d19617e586375cb89df",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "dae",
+     "cod_scenariu": "NP_25K_60L_STANDARD_CU_ASIG",
+     "valoare_num": 27.34,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "DAE: 27,34%.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "5f2d650d4bf6f2fa899ae770cfd7def0",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "rata_lunara",
+     "cod_scenariu": "NP_25K_60L_STANDARD_CU_ASIG",
+     "valoare_num": 725.16,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "rata lunara: 725,16 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "94fdc4a2ef8dadb62e7ffdd48ecdf8e5",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "total_platibil",
+     "cod_scenariu": "NP_25K_60L_STANDARD_CU_ASIG",
+     "valoare_num": 43509.79,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "suma totala de plata: 43.509,79 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "valoare": 25000
+      },
+      {
+       "dimensiune": "perioada",
+       "valoare": 60
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    },
+    {
+     "id": "7c831f4bca03f9c01927d8f6631ee42d",
+     "id_url": 1618,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": "NP_25K_60L_STANDARD_CU_ASIG",
+     "valoare_num": 899,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "6ec2fbd770926d3f33936d6e25bd93b9fb76b04838331777d84fbd3839281cdc",
+     "conditii": [
+      "credit standard (non-online), cu asigurare, suma 25.000 lei, perioada 60 luni"
+     ],
+     "eticheta_libera": null,
+     "citat": "comision de analiza (finanțat de creditor): 899 lei, prima de asigurare finanţată: 2.719,40 lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6787261078d57fe31bc6b68aed1c91adbdeb394e26344bab8a1c83d380c07ce4"
+    }
+   ],
+   "respinse": [],
+   "scrise": 22,
+   "durata_s": 37,
+   "tokeni": {
+    "intrare": 9701,
+    "iesire": 5051
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/wp-content/uploads/2024/02/Lista_de_dobanzi_taxe_si_comisioane_CASH_-Februarie_2024.pdf||credit de nevoi personale standard online",
+   "url": "https://tbibank.ro/wp-content/uploads/2024/02/Lista_de_dobanzi_taxe_si_comisioane_CASH_-Februarie_2024.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de nevoi personale standard Online",
+   "focus": "Produsul băncii: „Credit de nevoi personale standard Online”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1599,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+   "observatii": [
+    {
+     "id": "9679ff5dcd6c7a29a142eed5b4039a92",
+     "id_url": 1599,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_analiza_dosar",
+     "cod_scenariu": null,
+     "valoare_num": 299,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "sumă fixă, la solicitarea clientului poate fi finanțată de creditor"
+     ],
+     "eticheta_libera": null,
+     "citat": "Comision de analiza ✓ 299 Lei*",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "f020306c1e007bb6b5164e388f476e82",
+     "id_url": 1599,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "perioada rămasă până la încetarea contractului mai mare de 1 an"
+     ],
+     "eticheta_libera": null,
+     "citat": "1% din valoarea Creditului rambursata anticipat, daca perioada de timp dintre rambursarea anticipata si data convenita pentru incetarea Contractului este mai mare de 1 an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "de_la": 12
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "4f7fb4f862a2ce9594577dd066151648",
+     "id_url": 1599,
+     "id_produs": "nevoi-personale",
+     "camp": "comision_rambursare_anticipata",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "perioada rămasă până la încetarea contractului nu este mai mare de 1 an"
+     ],
+     "eticheta_libera": null,
+     "citat": "0,5% din valoarea Creditului rambursata anticipat, daca perioada de timp dintre rambursarea anticipata si data convenita pentru incetarea Contractului nu este mai mare de 1 an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „comision_rambursare_anticipata” apare de 2 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [
+      {
+       "dimensiune": "perioada_ramasa",
+       "pana_la": 12
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "65e2f736612032323ec3befc19acc157",
+     "id_url": 1599,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 3,
+     "unitate": "puncte_procentuale",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "aplicabilă în caz de întârziere la plată"
+     ],
+     "eticheta_libera": "dobândă penalizatoare",
+     "citat": "se calculeaza pentru fiecare zi de intarziere si este egala cu dobanda standard + 3% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "neconditionat",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "65e2f736612032323ec3befc19acc157",
+     "id_url": 1599,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.37,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "client care optează pentru asigurare de viață, pachet Standard, valoare credit sub 22.500 lei"
+     ],
+     "eticheta_libera": "asigurare de viață opțională - pachet Standard",
+     "citat": "0.370%/luna din valoarea creditului, pentru valori ale creditelor < 22,500 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    },
+    {
+     "id": "65e2f736612032323ec3befc19acc157",
+     "id_url": 1599,
+     "id_produs": "nevoi-personale",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.175,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cf273ba30f94b657ae9dde85e2a9fe62f07d149fd86bfc61728bb8ce6debf65b",
+     "conditii": [
+      "client care optează pentru asigurare de viață, pachet Standard, valoare credit >= 22.500 lei (include scenariul 30.000 lei)"
+     ],
+     "eticheta_libera": "asigurare de viață opțională - pachet Standard",
+     "citat": "0.175%/luna din valoarea creditului pentru valori ale creditelor > sau = cu 22,500 Lei",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": "alt_scenariu",
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6ac78c35edee153e49a61fc71229191708cd4bcc4d71362e46ca95215117e831"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_DOBANDA_MIN",
+     "valoare_num": 20.4,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "incepand de la 20.40% si pana la 49.9%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "nevoi-personale",
+     "camp": "dobanda_fixa",
+     "cod_scenariu": "NP_30K_60L_BAZA",
+     "valoare_num": 49.9,
+     "unitate": "procent",
+     "incredere": 0.5,
+     "citat": "incepand de la 20.40% si pana la 49.9%",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 6,
+   "durata_s": 738,
+   "tokeni": {
+    "intrare": 9445,
+    "iesire": 1615
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/product/contul-de-economii/||contul de economii",
+   "url": "https://tbibank.ro/product/contul-de-economii/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Contul de Economii",
+   "focus": "Produsul băncii: „Contul de Economii”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1628,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "e35fd92cd3a6db371a430f644cdd675c98f1ab97604ee8af616cf27ce99a48c1",
+   "observatii": [
+    {
+     "id": "f4e8e419a26f04b095bdff001797b398",
+     "id_url": 1628,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 5,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e35fd92cd3a6db371a430f644cdd675c98f1ab97604ee8af616cf27ce99a48c1",
+     "conditii": [
+      "dobanda se aplica doar pana la suma de 500.000 lei"
+     ],
+     "eticheta_libera": null,
+     "citat": "Dobanda de 5% pe an",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "de_la": 0,
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6036d4156493d6b9c8500b9cff224604d71f62e0976e351f236f4070dfcb2e82"
+    },
+    {
+     "id": "931105e8c5067f2833ecb172174be4f2",
+     "id_url": 1628,
+     "id_produs": "economii",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "e35fd92cd3a6db371a430f644cdd675c98f1ab97604ee8af616cf27ce99a48c1",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Ai 0 comision de administrare pentru conturile standard",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6036d4156493d6b9c8500b9cff224604d71f62e0976e351f236f4070dfcb2e82"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 5745,
+    "iesire": 380
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/wp-content/uploads/2025/09/Dobanzi-depozite_TBI_26septembrie2025.pdf||cont de economii",
+   "url": "https://tbibank.ro/wp-content/uploads/2025/09/Dobanzi-depozite_TBI_26septembrie2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de Economii",
+   "focus": "Produsul băncii: „Cont de Economii”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1630,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+   "observatii": [
+    {
+     "id": "6acd37e4276c7920819e39bc7c1b1052",
+     "id_url": 1630,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": null,
+     "valoare_num": 6.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "cdcdd4ecf66ff1ab1b044558dacdeee766afd3c8c9b27b5872dc075be5bf75e8",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Sold pana la 500.000 RON (inclusiv) 6,00% p.a., dobanda calculata zilnic si postata lunar",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "2cbab477b56b94c433cdcdd88fa4981ddccbcb8794da5171f56ef99934232a31"
+    }
+   ],
+   "respinse": [],
+   "scrise": 1,
+   "durata_s": 7,
+   "tokeni": {
+    "intrare": 4588,
+    "iesire": 330
+   }
+  },
+  {
+   "cheie": "https://tbibank.ro/wp-content/uploads/2025/03/Informare-actualizare-dobanzi-Depozite_20-feb2026.pdf||cont de economii",
+   "url": "https://tbibank.ro/wp-content/uploads/2025/03/Informare-actualizare-dobanzi-Depozite_20-feb2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de Economii",
+   "focus": "Produsul băncii: „Cont de Economii”.\nCorespunde produsului Libra: „Cont de economii”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1629,
+     "id_produs_libra": 19,
+     "cod": "CONT_ECONOMII",
+     "v2": "economii"
+    }
+   ],
+   "produse_v2": [
+    "economii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "4cc0de189f8de7a78febee48110ba8c5c3328415636390830ac4e0d1b669ce76",
+   "observatii": [
+    {
+     "id": "2b87c9697257c66af5e13cd4724738c9",
+     "id_url": 1629,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "CE_500K_LEI_PANA_30032026",
+     "valoare_num": 6.0,
+     "unitate": "procent",
+     "valid_from": null,
+     "valid_to": "2026-03-30",
+     "content_hash": "4cc0de189f8de7a78febee48110ba8c5c3328415636390830ac4e0d1b669ce76",
+     "conditii": [
+      "sold până la 500.000 LEI inclusiv",
+      "valabil până la 30.03.2026"
+     ],
+     "eticheta_libera": null,
+     "citat": "Sold pana la 500.000 LEI (inclusiv) (*) 6,00% p.a., dobanda calculata zilnic si postata lunar",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "95645eb0c38b56355cb795329e93b7a3323d6d857e2ffc0a2a5270d60e08a41c"
+    },
+    {
+     "id": "c2ac80f00413b1276c0a7863ed75c1f6",
+     "id_url": 1629,
+     "id_produs": "economii",
+     "camp": "dobanda_nominala",
+     "cod_scenariu": "CE_500K_LEI_DUPA_30032026",
+     "valoare_num": 5.0,
+     "unitate": "procent",
+     "valid_from": "2026-03-30",
+     "valid_to": null,
+     "content_hash": "4cc0de189f8de7a78febee48110ba8c5c3328415636390830ac4e0d1b669ce76",
+     "conditii": [
+      "sold până la 500.000 LEI inclusiv",
+      "valabil începând cu 30.03.2026"
+     ],
+     "eticheta_libera": null,
+     "citat": "incepand cu data de 30.03.2026, dobanda aplicabila va fi 5,00% p.a.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "suma",
+       "pana_la": 500000
+      },
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "tbi",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "95645eb0c38b56355cb795329e93b7a3323d6d857e2ffc0a2a5270d60e08a41c"
+    }
+   ],
+   "respinse": [],
+   "scrise": 2,
+   "durata_s": 9,
+   "tokeni": {
+    "intrare": 5571,
+    "iesire": 675
+   }
+  }
+ ]
+}

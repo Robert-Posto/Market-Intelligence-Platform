@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-05",
+  "banca": "banorient",
+  "cod": "DEPOZIT_TERMEN",
+  "denumire": "Depozit la termen",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (Dobânda standard la depozite)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași categorie de produs - depozit la termen, pentru persoane fizice și juridice, cu grilă de dobânzi pe valute și termene, plus comisioane de deschidere/administrare cont depozit la termen listate explicit în același document de tarife.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul conține un tabel dedicat 'Dobânda standard la depozite' cu procente exacte pe perioade și valute, plus rândurile de comisioane pentru deschiderea și administrarea contului de depozit la termen, atât la secțiunea Persoane Juridice cât și Persoane Fizice.",
+      "citat": "Suma minimă pentru depozitele purtătoare de dobândă este de 200.000 RON/50.000 EUR/50.000 USD. Perioada EUR USD RON 3-7 zile 0.50 % 1.25 % 1.00 % 1 lună 0.75 % 1.50 % 1.50 % 12 luni 1.00 % 2.50 % 2.75 %",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Suma%20minim%C4%83%20pentru%20depozitele%20purt%C4%83toare,%25%202.50%20%25%202.75%20%25"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges"
+  ],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 6,
+    "iesire": 836,
+    "citire_cache": 17192,
+    "scriere_cache": 27179,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07975789999999999
+  }
+}

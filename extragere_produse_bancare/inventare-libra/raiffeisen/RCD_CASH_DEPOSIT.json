@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard.sv.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Smart Cashbox Raiffeisen Bank",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este echipamentul de depunere numerar (bancnote) dedicat exclusiv persoanelor juridice, listat separat de depunerile la multifuncționalele clasice (MFM), exact ca RCD Cash Deposit de la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul oficial de tarife pentru clienți Corporații conține o linie dedicată cu denumirea comercială a produsului și comisionul exact per depunere.",
+      "pagina_pdf": 3,
+      "citat": "OPERAȚIUNI CU NUMERAR Depuneri la Smart Cashbox Raiffeisen Bank 4 lei/depunere Depuneri la Multifuncționalele Raiffeisen Bank Negociabil - aplicat contului beneficiar",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/rapoarte/anuale/2025-Raport-anual-Raiffeisen-Bank.pdf.coredownload.inline.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Smart Cashbox",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Descrie explicit soluția de tip cash-box dedicată persoanelor juridice pentru depunerea de sume mari de numerar, prin echipamente instalate la nivel național, același concept ca RCD Cash Deposit.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Raportul anual descrie produsul și segmentul de clienți (persoane juridice) și numărul de echipamente instalate, dar nu conține comisioane sau termene detaliate precum documentul de tarife.",
+      "citat": "soluții alternative specifice persoanelor juridice pentru depunerea de sume mari de numerar (tip „cash box”). Soluțiile Smart Cashbox pentru depuneri multivalută, cu 61 de echipamente instalate la nivel național, răspund nevoilor companiilor cu volume ridicate de numerar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard/20240628-Tarife-si-comisioane-standard-corporatii.pdf.coredownload.pdf",
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/administrare-numerar.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
+    "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/managementul-lichiditatilor.html",
+    "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii.html",
+    "https://www.raiffeisen.ro/ro/corporatii/produse-si-servicii/managementul-lichiditatilor/depozit-la-termen.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/corporatii/tarife-si-comisioane-standard.sv.pdf"
+  ],
+  "durata_s": 60,
+  "consum": {
+    "intrare": 150040,
+    "iesire": 4487,
+    "citire_cache": 282079,
+    "scriere_cache": 105345,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6647282999999999
+  }
+}

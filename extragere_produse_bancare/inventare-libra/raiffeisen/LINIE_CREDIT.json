@@ -1,0 +1,53 @@
+{
+ "generat": "2026-10-01",
+ "banca": "raiffeisen",
+ "cod": "LINIE_CREDIT",
+ "denumire": "Linie de credit / capital de lucru",
+ "model": "claude-sonnet-5",
+ "surse": [
+  {
+   "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/finantare/linie-de-credit.html",
+   "tip": "html",
+   "metoda": "http",
+   "rol": "pagina-produs",
+   "denumire_la_banca": "Linie de credit - Overdraft IMM",
+   "tip_potrivire": "echivalent",
+   "motiv_potrivire": "Linie de credit pentru capitalul de lucru al firmelor (motivul complet scos: repeta descrierea internă din catalogul Libra).",
+   "incredere": 0.92,
+   "incredere_metoda": 0.9,
+   "explicatie_incredere": "Pagina dedicată produsului conține descrierea, suma minimă/maximă, perioada de rambursare, valuta și criteriile de eligibilitate.",
+   "citat": "Suma minimă/maximă: 7.000 Euro/Lei, maximum 35% din cifra de afaceri a solicitanutului, aferentă ultimului exercițiu financiar închis. Perioadă de rambursare: 12 luni, cu posibilitate de prelungire pe perioade succesive de 12 luni. Valută: Lei, Euro.",
+   "citat_verificat": null,
+   "avertisment": "adresă neregăsită printre deschiderile efective",
+   "link_live": null
+  },
+  {
+   "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/finantare/finantarea-activitatii-curente/linie-de-credit/",
+   "tip": "html",
+   "metoda": "http",
+   "rol": "pagina-produs",
+   "denumire_la_banca": "Linie de credit - Overdraft IMM",
+   "tip_potrivire": "echivalent",
+   "motiv_potrivire": "Variantă alternativă a aceleiași pagini de produs, cu cifre ușor diferite (plafon 30% din cifra de afaceri) și criteriu de eligibilitate pe cifră de afaceri până la 5 milioane Euro.",
+   "incredere": 0.9,
+   "incredere_metoda": 0.9,
+   "explicatie_incredere": "Pagină dedicată produsului cu descriere completă, sumă minimă/maximă, perioadă de rambursare, valută și criterii de eligibilitate explicite.",
+   "citat": "Suma minima/maxima: 7.000 Euro/Lei, maximum 30% din cifra de afaceri a solicitanutului, aferenta ultimului exercitiu financiar inchis. Perioada de rambursare: 12 luni, cu posibilitate de prelungire pe perioade succesive de 12 luni. Valuta: Lei, Euro.",
+   "citat_verificat": null,
+   "avertisment": "adresă neregăsită printre deschiderile efective",
+   "link_live": null
+  }
+ ],
+ "gol": null,
+ "candidati_respinsi": [],
+ "deschise": [],
+ "durata_s": 15,
+ "consum": {
+  "intrare": 4,
+  "iesire": 1235,
+  "citire_cache": 6379,
+  "scriere_cache": 29037,
+  "apeluri": 1,
+  "cost_estimat_usd": 0.0862263
+ }
+}

@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/go",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ING Go (pachet de cont curent pentru persoane fizice, deschis 100% online)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pachetul standard de cont curent pentru persoane fizice la ING, care se poate deschide integral online din aplicația Home'Bank, cu acces digital complet la operațiuni bancare - exact segmentul și tipul de produs ca 'Cont Online Personal' de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată produsului ING Go, cu beneficii și cifre explicite (0 RON/lună, prag de 700 lei, plafon curs valutar 10.000 lei/lună) și descrierea pașilor de deschidere 100% online.",
+      "citat": "Pachetul ING GO include cel puțin un cont curent în lei și un card principal, cu taxe de administrare 0 dacă încasezi cel puțin 700 lei și faci cel puțin o plată pe lună.",
+      "citat_verificat": true,
+      "link_live": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/go#:~:text=Pachetul%20ING%20GO%20include%20cel,pu%C8%9Bin%20o%20plat%C4%83%20pe%20lun%C4%83."
+    },
+    {
+      "url": "https://ing.ro/lp/cont-bancar-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont bancar online ING (deschidere 100% online pentru persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată deschiderii contului curent pentru persoane fizice 100% online, cu tabel de costuri (administrare, transferuri, retrageri) pentru varianta Standard vs. cu salariu la ING, exact corespondentul 'Cont Online Personal'.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină de produs/landing dedicată deschiderii online a contului, cu tabel explicit de tarife (15 lei administrare, 5 lei transferuri către alte bănci, 1% min 5 lei retrageri ATM) pentru varianta fără salariu la ING.",
+      "citat": "Deschiderea contului la ING durează aproximativ 8 minute și se realizează 100% online, fără nicio vizită la bancă și fără documente fizice.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/go",
+    "https://ing.ro/lp/cont-bancar-online"
+  ],
+  "durata_s": 31,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2707,
+    "citire_cache": 40016,
+    "scriere_cache": 57874,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17977020000000002
+  }
+}

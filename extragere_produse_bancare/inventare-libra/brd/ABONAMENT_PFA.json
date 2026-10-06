@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-01",
+  "banca": "brd",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/pachete-cont-curent/Antreprenor-Curajos-PFA-PL",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de Cont Curent ANTREPRENOR CURAJOS PFA și Profesii Liberale",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Abonament lunar dedicat PFA/profesii liberale ce include cont curent, card de debit business și online banking, la fel ca Abonamentul PFA de la Libra; diferă doar modelul de includere a operațiunilor (încasări/plăți nelimitate BRD-BRD vs. 50 operațiuni/lună la Libra).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit prețul abonamentului și lista de servicii incluse (cont, card, online banking, operațiuni).",
+      "citat": "Pachetul include o gamă largă de produse, servicii și operațiuni bancare la un preț avantajos de doar 20 lei / lună CONT CURENT ÎN LEI cu administrare lunară inclusă în prețul pachetului CARD DEBIT Mastercard / Visa cu o gama variata de beneficii ONLINE BANKING cu administrare lunară inclusă în prețul pachetului ÎNCASĂRI NELIMITATE între conturile BRD-BRD/ BRD-alte bănci, prin contul curent inclus în pachet PLĂȚI NELIMITATE BRD-BRD realizate prin serviciile de online banking incluse în pachet",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_PFA_si_Profesii_Liberale_21.06.2024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet Antreprenor Curajos PFA / PL",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru PFA/profesii liberale confirmă comisionul de gestiune lunară al pachetului Antreprenor Curajos PFA/PL, echivalentul tarifar al Abonamentului PFA Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisionul lunar al pachetului, în secțiunea dedicată Pachetelor de produse și servicii pentru PFA.",
+      "pagina_pdf": 22,
+      "citat": "Comision de gestiune lunara Antreprenor Curajos PFA / PL 20 LEI/ luna* Gestionarea pachetelor de produse Antreprenor Curajos PFA / PL Start Up gratuit** Comision de gestiune pachet Profit Agro 10 LEI/ luna",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brd.ro/companii/pfa-si-profesii-liberale/pachete-cont-curent/Antreprenor-Curajos-PFA-PL",
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_PFA_si_Profesii_Liberale_21.06.2024.pdf"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2404,
+    "citire_cache": 28927,
+    "scriere_cache": 114833,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.31691990000000003
+  }
+}

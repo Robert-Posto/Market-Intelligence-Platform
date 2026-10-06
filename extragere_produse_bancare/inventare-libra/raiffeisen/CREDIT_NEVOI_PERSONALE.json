@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "CREDIT_NEVOI_PERSONALE",
+  "denumire": "Credit nevoi personale",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/credite/credit-de-nevoi-personale-fara-ipoteca.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Flexicredit – Credit de nevoi personale fără ipotecă",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără justificarea destinației, fără garanții, cu termen și plafon comparabile cu produsul Libra (Flexicredit: 500–50.000 EUR echivalent lei, 18–60 luni, fără garanții, vs Libra: până la 60 luni, fără garanții, 70.000–200.000 lei).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele cheie: dobândă, plafon valoric, termen de rambursare și absența garanțiilor.",
+      "citat": "Ai credit de nevoi personale cu dobândă fixă de la 5,95%. Poți obține sume de până la 50.000 euro, echivalentul în lei - asigurare facultativă și 3 luni pauză la plata ratelor, la cerere.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/costuri/2025/credite/credite-nevoi-personale/costuri-complete-flexicredit-standard/20251203-Costuri-complete-Flexicredit-standard.pdf.coredownload.inline.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Flexicredit Standard (costuri complete)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de costuri pentru același produs Flexicredit (credit de nevoi personale fără ipotecă, fără garanții), cu dobânzi, DAE și comisioane detaliate.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife/costuri complete care prezintă explicit dobânda, DAE și exemplul de calcul pentru produsul Flexicredit Standard.",
+      "citat": "Rata de dobânda fixa este cuprinsă între 5.95% si 12% /an(dobanda valabila la incasarea venitului in cont Raiffeisen), calculata conform reglementarilor implementate de banca in functie de mai multe componente ca: profilul clientului, suma, perioada creditului, etc.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2463,
+    "citire_cache": 6349,
+    "scriere_cache": 37455,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11954530000000002
+  }
+}

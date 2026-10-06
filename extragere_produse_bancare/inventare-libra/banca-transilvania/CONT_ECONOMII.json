@@ -1,0 +1,70 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de dobânzi BT are un tab dedicat 'Cont de economii' pentru persoane fizice, cu dobândă pe tranșe de sold în lei/euro, la fel ca produsul Libra (cont de economii cu dobândă la sold, disponibil oricând).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina afișează direct, în text, tabelul cu tranșele de sold și procentele de dobândă pentru contul de economii în lei și euro.",
+      "citat": "Dobânda pentru depozitele în lei Suma în lei Dobânda/an 100,00 – 9.999,99 2,75% 10.000 - 99.999,99 2,85% 100.000,00 – 499.999,99 3,00% > 500.000,00 3,10%",
+      "citat_verificat": true,
+      "link_live": "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi#:~:text=Dob%C3%A2nda%20pentru%20depozitele%20%C3%AEn%20lei,499.999%2C99%203%2C00%25%20%3E%20500.000%2C00%203%2C10%25"
+    },
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/Asset/App/BT-Pay/Termeni-si-conditii-conturi-de-economii-BT-Pay-RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Cont de economii (BT Pay)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de termeni și condiții descrie exact contul de economii în lei/euro pentru persoane fizice, cu dobândă variabilă pe tranșe de sold și retragere/depunere liberă, echivalent produsului Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este documentul oficial de condiții al produsului, cu articole numerotate ce descriu soldul minim, dobânda pe tranșe și garantarea FGDB, deși nu conține procentele exacte curente.",
+      "citat": "Soldul contului de economii este variabil, fără însă a putea coborî sub soldul minim de 100 lei/euro, în funcție de valuta depozitului.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://intreb.bancatransilvania.ro/care-este-dobanda-pentru-contul-de-economii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Cont de economii (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Răspunde explicit despre dobânda contului de economii pentru companii (prag minim 100.000 lei, specific segmentului persoane juridice), acoperind componenta 'persoane juridice' a produsului Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina din baza de întrebări oficială BT conține cifrele exacte ale dobânzii progresive pe tranșe de sold pentru contul de economii, actualizate la 2024-06-17.",
+      "citat": "Depinde de tine, pentru că dobânda crește progresiv, în funcție de suma de bani pe care o ai în contul de economii. Pentru sume între 100.000,00 lei și 499.999,99 lei dobânda este 3,50%, iar pentru sume mai mari de 500.000,00 lei dobânda este 3,65%.",
+      "citat_verificat": true,
+      "link_live": "https://intreb.bancatransilvania.ro/care-este-dobanda-pentru-contul-de-economii/#:~:text=Depinde%20de%20tine%2C%20pentru%20c%C4%83,500.000%2C00%20lei%20dob%C3%A2nda%20este%203%2C65%25."
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+    "https://intreb.bancatransilvania.ro/care-este-dobanda-pentru-contul-de-economii/",
+    "https://intreb.bancatransilvania.ro/care-este-dobanda-pentru-contul-de-economii/",
+    "https://www.bancatransilvania.ro/economii-si-investitii/economii?ver=1",
+    "https://www.bancatransilvania.ro/economii-si-investitii/dobanzi",
+    "https://www.bancatransilvania.ro/files/app/media/Asset/App/BT-Pay/Termeni-si-conditii-conturi-de-economii-BT-Pay-RO.pdf"
+  ],
+  "durata_s": 86,
+  "consum": {
+    "intrare": 10,
+    "iesire": 7192,
+    "citire_cache": 144496,
+    "scriere_cache": 79171,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2987667
+  }
+}

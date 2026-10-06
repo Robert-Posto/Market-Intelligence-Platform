@@ -81,6 +81,16 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 026 | aplicații iOS: `app_release.descriere` (textul din magazin) și `vazut_ultima` pe `app_release`/`app_screenshot`; `load_mobil.py` face upsert în loc de `DELETE`, deci versiunile și capturile vechi rămân; starea de acum în vederile `app_release_curente` și `app_screenshot_curente` |
 | 027 | aplicațiile Android ale băncilor (analiza statică a APK-urilor, pachetul lui Nicolae din 05.10.2026): tabelele `android_*` (aplicații, versiuni, permisiuni, trackere, biblioteci, funcționalități, portofele, profil tehnic, schimbări între versiuni, texte de ecran, note), cu `provenienta` pe fiecare rând; se încarcă cu `python ingest/load_android.py <folderul pachetului>` (verifică sha256 din MANIFEST.csv); capturile și reconstrucțiile din pachet nu se încarcă |
 | 028 | `robid` permis în `indici_referinta.indice`: `load_bnr.py` scrie ROBID, dar CHECK-ul din `schema.sql` îl refuza (pe baza de colectare fusese lărgit de mână) |
+| 029 | fluxul `extragere_produse_bancare` (comparația cu Libra): `produse_libra` (cele 57 de produse, axa comparației, separată de `catalog_libra`), `discovery_libra`, `comparatie_libra` |
+| 030 | `banci.acces_restricted`: banca refuză accesul automat (403 / WAF), deci fluxul nu o accesează |
+| 031 | discovery o dată, colectare zilnică: starea jobului pe `discovery_libra` (ultima verificare, status, cod HTTP) și `inventar_libra` pentru valori (scoasă de 032) |
+| 032 | structura finală a comparației: `discovery_libra` → `surse_libra`, `comparatie_libra` refăcută (interval, scenariu, citat, link la paragraf), `descopera_concurenta` |
+| 033 | `surse_libra.not_found`: produsul Libra nu există la bancă / nu e publicat |
+| 034 | `hashes_libra`: amprenta fiecărei surse la ultima extracție (document neschimbat = fără apel la model) |
+| 035 | `comparatie_libra.scenariu` (jsonb): codul de scenariu descompus (sumă, perioadă, valută, referință) |
+| 036 | `products_discovery`: produsele concurenței fără echivalent în catalogul Libra; înlocuiește `descopera_concurenta` |
+| 037 | jurnalul joburilor: `job_types` (tipurile; unul nou e un `INSERT`), `jobs` (durată, tokeni, cost estimat, `errors` ținut de trigger), `jobs_error` (eroarea în `TEXT`, legată prin `id_job`), vederea `v_jobs`; scrise de `extragere_produse_bancare/jurnal_joburi.py`, citite de pagina Logging (`/api/jobs`) |
+| 038 | `jobs.runed_manually` (bool, implicit `FALSE`): jobul pornit din pagina „Rulare manuală”; `jurnal_joburi.py` îl scrie `TRUE` când procesul are `MIP_RULARE_MANUALA=1` (pusă de `app/rulari.py`); `v_jobs` primește coloana la coadă; pagina „Joburi și erori” o arată ca AUTOMAT / MANUAL |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
@@ -100,8 +110,8 @@ curentă e doar popularea inițială — cât de multe date reale se pot aduna.
 Automatizarea peste o acoperire proastă ar ascunde golurile.
 
 **Excepția, intenționată (01.10.2026, decizia lui Robert):** butoanele
-„Rulează” din Overview, până acum mockup înghețat, sunt deblocate ca **rulări
-manuale** — „doar ca să ai opțiunea să actualizezi manual” scripturile care
+„Rulează” din Overview (din 06.10.2026 în pagina „Rulare manuală”, grupul Jobs),
+până acum mockup înghețat, sunt deblocate ca **rulări manuale** — „doar ca să ai opțiunea să actualizezi manual” scripturile care
 altfel ar rula automat. Nu e scheduler: nu pornește nimic singur. Funcționează
 **doar pe laptopul lui Robert**, cu `MIP_PERMITE_RULARI=1` în `.env`; fără
 variabila asta (pe serverul comun), secțiunea arată „Rulările manuale sunt
@@ -170,12 +180,35 @@ python ingest/microsoft_ad_library.py [--banca <slug>]   # ~10 cereri/min, oprir
 Fiecare pas e **idempotent**: șterge doar ce a scris aceeași proveniență, apoi
 rescrie. Rularea repetată nu dublează. `--banca <slug>` restrânge la o bancă.
 
-### Rulări manuale (Overview)
+### Rulări manuale (pagina „Rulare manuală”)
 
-Secțiunea pliată „Rulări manuale” din Overview pornește, la cerere, un script
-dintr-o **listă fixă** (`app/rulari.py`, `COMENZI`). Activă doar cu
-`MIP_PERMITE_RULARI=1` în `.env` (în `.env.example` e `0`); serverul trebuie
-repornit după ce schimbi variabila.
+Pagina „Rulare manuală” (grupul Jobs, `#/rulare`; până pe 06.10.2026 secțiunea
+pliată din Overview) pornește, la cerere, un script dintr-o **listă fixă**
+(`app/rulari.py`, `COMENZI`). Activă doar cu `MIP_PERMITE_RULARI=1` în `.env`
+(în `.env.example` e `0`); serverul trebuie repornit după ce schimbi variabila.
+
+Se pornește **doar de pe aceeași origine cu serverul**: `npm run build`, apoi
+`http://localhost:8765/app/#/rulare` (serverul servește `web/dist` pe `/app/`). Din Vite
+(`localhost:5173`) pornirea e refuzată intenționat cu „Origin nepermis”; acolo pagina doar
+arată estimarea și starea.
+
+**„Începe job”** deschide un modal pentru cele trei joburi ale fluxului de
+comparație cu Libra (`JOBURI`, id-ul = codul din `job_types`): tipul, banca (din
+`extragere_produse_bancare/banci.json`, 30) și, la discovery și extragere, produsul
+(un cod activ din `produse_libra`). Cu toate alese, `GET /api/rulare_manuala/estimare`
+dă costul și durata din joburile încheiate (`v_jobs`): aceeași bancă și produs, apoi
+același produs, apoi aceeași bancă, apoi orice job de același tip. **Aceste joburi cheamă
+modelul, deci costă** (06.10.2026: discovery $0,04–0,53 pe produs, extragere $0–0,37);
+pornirea e clicul explicit de după estimare. Fiecare proces pornit din pagină primește
+`MIP_RULARE_MANUALA=1`, deci jobul apare în „Joburi și erori” ca MANUAL (migrarea 038).
+
+| job | ce rulează | bancă | produs |
+|---|---|---|---|
+| Discovery surse | `extragere_produse_bancare/descopera_surse_libra.py --forteaza --banca X --produse P` | obligatoriu | obligatoriu |
+| Extragere date | `extragere_produse_bancare/extrage_comparatie_libra.py --banca X --produse P` | obligatoriu | obligatoriu |
+| Produse pe care Libra nu le are | `extragere_produse_bancare/descopera_produse.py --banca X` | obligatoriu | — |
+
+Scripturile de colectare, sub buton:
 
 | comandă | ce rulează | bancă | rețea | estimare inițială |
 |---|---|---|---|---|
@@ -206,8 +239,10 @@ repornit după ce schimbi variabila.
   portul nostru, `Origin` (dacă e trimis) aceeași pagină, `Content-Type:
   application/json` și antetul `X-MIP-Token` (aleator, generat la pornirea
   serverului, primit de pagină prin `GET /api/rulari`). Din cerere ajung în
-  linia de comandă doar id-ul comenzii (căutat în listă) și slug-ul băncii
-  (căutat în `ingest/banks.py` + tabela `banci`). Teste: `python app/test_rulari.py`.
+  linia de comandă doar id-ul comenzii (căutat în listă), slug-ul băncii
+  (căutat în `ingest/banks.py` + tabela `banci`, la joburi în `banci.json` al
+  fluxului) și, la joburi, codul produsului (căutat în `produse_libra`, un singur
+  cod). Teste: `python app/test_rulari.py`.
 
 ### Pachetul Playwright (`crawler/`)
 
@@ -422,6 +457,19 @@ e tratat ca **„fără restricții"**, în ambele implementări
 cere invers: totul interzis până se poate citi. Păstrat deliberat pe durata
 testării. În datele existente n-a apărut niciun astfel de caz, doar 404 și
 403, tratate corect.
+
+### Conformitate — fluxul de comparație cu Libra, de reparat
+
+`extragere_produse_bancare/` a intrat în `main` pe 06.10.2026 cu problemele de mai jos (decis:
+merge acum, reparat după), măsurate pe inventarele din repo.
+
+- `flow-html.py` trimite antetele unui browser (`Sec-Fetch-*`, `Upgrade-Insecure-Requests`) ca să
+  treacă de WAF-uri și se prezintă cu un contact `example.org`, nu cu ecusonul din `crawler/__init__.py`.
+- Cererile nu trec prin `ingest/flux.py`: fluxul a cerut adrese de la băncile din `BLOCATE` (BT 89,
+  CEC 20, Intesa 18, UniCredit 14; regula e 0 cereri), iar extracția nu verifică `robots.txt`.
+- În inventare: 128 de valori ING din 20 de PDF-uri interzise de `robots.txt` (`Disallow: *.pdf`) și
+  25 de valori Banorient de pe `banorientfrance.com` (altă piață; `banorient.ro` interzice tot).
+- Descoperirea surselor folosește `web_search` / `web_fetch` de la Anthropic (păstrat deliberat).
 
 ---
 

@@ -18,7 +18,10 @@ import { extra_versus } from './extra_versus'
 import { extra_banca } from './extra_banca'
 import { extra_surse_coada } from './extra_surse_coada'
 import { extra_document } from './extra_document'
+import { comparatie_concurenta } from './comparatie_concurenta'
 import { android } from './android'
+import { logging } from './logging'
+import { rulare_manuala } from './rulare_manuala'
 
 export const DICT = {
   ...comun,
@@ -40,5 +43,8 @@ export const DICT = {
   ...extra_banca,
   ...extra_surse_coada,
   ...extra_document,
+  ...comparatie_concurenta,
   ...android,
+  ...logging,
+  ...rulare_manuala,
 } as const

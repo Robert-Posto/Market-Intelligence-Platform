@@ -1,0 +1,43 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "SMART_SAFE",
+  "denumire": "Smart Safe",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/files/app/media/BT%20-%20Brosura%20Comisioane%20PJ.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Colectare și transport (numerar)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul serviciu găsit la BT legat de manipularea fizică a numerarului al clientului (colectare/transport), dar nu este un seif inteligent instalat la sediul clientului cu creditare imediată în cont ca Smart Safe; pare mai degrabă un serviciu de tip cash-in-transit cu preț negociat individual, fără automatizare on-site.",
+      "incredere": 0.4,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul este oficial (broșura de comisioane PJ) și menționează explicit linia 'Colectare și transport' la secțiunea Operațiuni cu numerar, dar fără nicio descriere a unui echipament tip seif sau a creditării imediate, iar prețul este doar 'negociabil', fără cifră concretă.",
+      "pagina_pdf": 9,
+      "citat": "Tip Operațiune Valoare comision Ridicare de la ghișeele BT în valută 1% min 3 EUR Ridicare de la ATM-urile BT în valută 0,8% min 3 EUR Colectare și transport negociabil",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://www.bancatransilvania.ro/companii",
+    "https://www.bancatransilvania.ro/companii/servicii-de-incasari-si-plati",
+    "https://www.bancatransilvania.ro/en/companii",
+    "https://intreb.bancatransilvania.ro/solutii-pentru-companii/",
+    "https://www.bancatransilvania.ro/en/companii/corporate",
+    "https://www.bancatransilvania.ro/files/app/media/BT%20-%20Brosura%20Comisioane%20PJ.pdf"
+  ],
+  "durata_s": 71,
+  "consum": {
+    "intrare": 40893,
+    "iesire": 5057,
+    "citire_cache": 224553,
+    "scriere_cache": 134813,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5142990999999999
+  }
+}

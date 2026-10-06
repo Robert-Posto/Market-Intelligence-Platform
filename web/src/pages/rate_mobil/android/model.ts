@@ -15,7 +15,7 @@ import { faraDiacritice } from '../../../util/format'
 
 export type Tr = (k: DictKey, p?: Params) => string
 
-export type Sectiune = 'aplicatii' | 'functionalitati' | 'trackere' | 'portofele' | 'schimbari'
+export type Sectiune = 'magazin' | 'aplicatii' | 'functionalitati' | 'trackere' | 'portofele' | 'schimbari'
 
 /** Ce primește fiecare secțiune de la pagina Android: aplicațiile rămase după filtre și deschiderea detaliului. */
 export interface PropsSectiune {

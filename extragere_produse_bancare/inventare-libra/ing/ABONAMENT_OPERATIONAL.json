@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-01",
+  "banca": "ing",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele ING Fix cont curent",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet de cont curent lunar pentru firme (SRL, SA, PFA etc.), cu cost fix lunar și operațiuni incluse, exact ca abonamentul operațional Libra pentru persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată prezintă direct denumirile și prețurile lunare ale pachetelor (Fix Util 40 RON, Fix Online 70 RON, Fix RON 150 RON, Fix Valută 165 RON, Fix Complet 250 RON).",
+      "citat": "Soft Pos in pachetele Fix are 0 lei cost de administrare. Pentru tranzacționare 0,6% per tranzacție. *Pachetul ING FIX Util este destinat entităților cu CA mai mică de 9.000.000 RON.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete ING Fix / ING Profesional (persoane juridice, PFA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de taxe și comisioane pentru persoane juridice/PFA listează explicit administrarea lunară a fiecărui pachet de cont curent (0, 30, 40, 70, 150, 165, 250 lei), corespunzător abonamentului operațional Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife, valabil din 6 mai 2026, cu valorile exacte ale taxei lunare de administrare pentru fiecare variantă de pachet.",
+      "citat": "Disponibile pentru C lienții cu cifră de afaceri/rulaj bancar prin ING Bank România mai mici de 2,500.000.000 lei cu exceptia pachetelor : ING FIX Util şi ING FIX Online care se adresează companiilor care au cifra de afaceri mai mică de 9.000.000 lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3310,
+    "citire_cache": 6331,
+    "scriere_cache": 39615,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1334117
+  }
+}

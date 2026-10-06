@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-01",
+  "banca": "libra",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.librabank.ro/cont-bancar-profesii-liberale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonament PFA (Abonament operațional profesii liberale)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este chiar pagina dedicată Libra pentru produsul Abonament PFA, cu aceeași descriere: cont, card business, IB/MB gratuite și 50 de operațiuni incluse.",
+      "incredere": 0.97,
+      "explicatie_incredere": "Pagina conține explicit prețul de 29 lei/lună și toate caracteristicile menționate în descrierea produsului Libra.",
+      "citat": "Abonamentul PFA costă 29 lei/lună și include administrare cont, card business, aplicația Libra pentru mobile și desktop, plus 50 de operațiuni gratuite lunar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PFA.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Abonament PFA / Alte Forme de Organizare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane dedicat entităților de tip PFA (Alte Forme de Organizare), care detaliază comisioanele asociate contului și operațiunilor incluse în abonament.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este documentul PDF de tarife specific pentru PFA, cu comisioanele de administrare cont și operațiuni, dar nu conține explicit prețul abonamentului de 29 lei (acesta apare pe pagina produsului).",
+      "citat": "Administrare cont Persoane Juridice* 10 lei / cont/ luna Administrare cont Alte Forme de Organizare 5 lei / cont/ luna",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.librabank.ro/cont-bancar-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Abonament bancar (PFA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina generală de conturi curente include o secțiune dedicată abonamentului bancar pentru PFA, cu aceleași caracteristici ca produsul Libra descris.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Secțiunea despre 'Abonament bancar' confirmă aceleași beneficii (cont, IB/MB, card business, 50 operațiuni) dar fără a repeta explicit prețul de 29 lei pe această pagină.",
+      "citat": "Fiind destinat entităților de tip PFA, acest tip de abonament bancar include costuri zero de administrare (conturi, internet și mobile banking, card business) și costuri 0 pentru 50 operațiuni lunar dintre: plăți <50.000 de lei din aplicație, plăți și încasări lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2255,
+    "citire_cache": 6259,
+    "scriere_cache": 25477,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0875023
+  }
+}

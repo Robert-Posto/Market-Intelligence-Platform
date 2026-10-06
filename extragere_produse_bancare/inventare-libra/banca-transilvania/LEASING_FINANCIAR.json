@@ -1,0 +1,74 @@
+{
+  "generat": "2026-09-30",
+  "banca": "banca-transilvania",
+  "cod": "LEASING_FINANCIAR",
+  "denumire": "Leasing financiar (Libra Development IFN)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bancatransilvania.ro/companii/finantare/credite/leasing",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Leasing auto pentru companii (BT Leasing)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echivalentul pentru componenta auto a leasingului financiar Libra (persoane juridice), dar pagina BT nu acoperă explicit componenta de echipamente/utilaje, iar termenii (avans, durată) diferă ca plajă.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată leasingului auto pentru companii conține cifre explicite despre avans, valoare reziduală și perioadă de finanțare.",
+      "citat": "Poți să alegi orice model de autoturism, nou sau rulat, de la dealeri autorizați din România sau furnizori colaboratori BT Leasing · Ai flexibilitate să alegi parametrii finanțării, cu avans între 10-80% și valoare reziduală între 1-25% Perioada de finanțare este de minim 1 an si maxim 5 ani",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.btleasing.ro/storage/app/media/Investitori/Rezultate%20financiare/Raport-anual-2024_BT%20Leasing.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Leasing financiar (BT Leasing Transilvania IFN SA) - autovehicule și echipamente",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Descrie explicit produsul de leasing financiar oferit de IFN-ul grupului BT pentru autovehicule și echipamente către persoane juridice, cu avans, valoare reziduală și perioade de finanțare - structură foarte apropiată de produsul Libra (leasing auto + echipamente prin IFN).",
+      "incredere": 0.75,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Raportul anual al BT Leasing Transilvania IFN descrie condițiile generale ale leasingului financiar (avans, valoare reziduală, durată) pentru autovehicule și echipamente, aplicabile persoanelor juridice.",
+      "citat": "achiziției de mijloace fixe noi sau second-hand, pe o perioadă între 1 și 5 ani, cu avans din partea utilizatorului între 0% și 50% și o valoare reziduală între 1% și 30% din valoarea bunului achiziționat.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://btleasing.ro/leasing-echipamente-pentru-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Leasing echipamente agricole, medicale, industriale (BT Leasing)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă componenta de echipamente/utilaje a leasingului financiar pentru companii, similar segmentului de firme al produsului Libra, dar pagina conține și oferte specifice auto (ex. Suzuki), astfel încât cifrele pentru echipamente nu sunt clar separate de cele auto.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "Titlul și adresa arată pagina dedicată leasingului de echipamente pentru companii, dar textul extras conține cifre (dobândă, comision) care par asociate unei oferte auto afișate pe aceeași pagină, nu clar atribuite echipamentelor.",
+      "citat": "Avantaj client de până la 3.000 euro discount la achiziție · 2,41%/an dobândă variabilă + EURIBOR 6M · sau 4,5%/an dobândă fixă · 0,03%/lună + TVA comision de gestiune lunară · Înmatriculare în județul tău",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "deschise": [
+    "https://btleasing.ro/leasing-echipamente-pentru-companii",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/leasing",
+    "https://www.btleasing.ro/leasing-echipamente-pentru-companii",
+    "https://www.bancatransilvania.ro/companii/finantare/credite/leasing"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 41780,
+    "iesire": 3929,
+    "citire_cache": 43460,
+    "scriere_cache": 47348,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.249912
+  }
+}

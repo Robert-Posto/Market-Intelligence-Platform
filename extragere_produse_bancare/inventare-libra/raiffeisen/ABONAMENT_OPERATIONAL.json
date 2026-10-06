@@ -1,0 +1,82 @@
+{
+  "generat": "2026-10-01",
+  "banca": "raiffeisen",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent IMM (Start, Plus, Optim, Extra, Ultra)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet lunar de cont curent cu servicii incluse (card, internet/mobile banking, plăți, retrageri) dedicat persoanelor juridice/PFA, exact tipul de 'abonament operațional' al Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată conține toate cele 5 variante de pachet cu prețurile lunare și beneficiile incluse, cu cifre exacte pentru fiecare.",
+      "citat": "Pachetul Optim 0 lei/lună* (primele 24 de luni, dacă devii client) *Comisionul standard este 89 Lei /lună 10 plăti către alte bănci în lei, online (inclusiv plăți Instant) 10 plăti către alte bănci în EUR/USD, online",
+      "citat_verificat": true,
+      "link_live": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm.html#:~:text=Pachetul%20Optim%200%20lei%2Flun%C4%83%2A%20%28primele,alte%20b%C4%83nci%20%C3%AEn%20EUR%2FUSD%2C%20online"
+    },
+    {
+      "url": "https://www.raiffeisen.ro/imm/produse-si-servicii/operatiuni-curente/pachete-de-cont-curent-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent IMM - tabel comparativ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Tabel comparativ cu toate cele 5 pachete de cont curent IMM, prețuri lunare și limite incluse per pachet.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Tabel structurat cu toate variabilele numerice (prețuri, număr de plăți/retrageri) pentru fiecare pachet IMM.",
+      "citat": "Pret (pe luna) | 29 Lei Aplica acum | 49 Lei Aplica acum | 79 Lei Aplica acum | 119 Lei Aplica acum | 199 Lei Aplica acum",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm/pachet-imm-cont-curent-optim.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul de cont curent IMM Optim",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată uneia dintre variantele de pachet cont curent IMM, cu preț lunar și beneficii specifice, pentru persoane juridice cu cifră de afaceri până la 5 mil EUR.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului cu preț exact și criterii de eligibilitate pentru segmentul de persoane juridice.",
+      "citat": "Pachetul OPTIM Raiffeisen pentru IMM-uri: 79 lei/luna, 10 plati interbancare online, cont curent EUR/USD, card Visa Business.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (17 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane IMM și profesii liberale - pachete de cont curent",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Broșura oficială de tarife și comisioane pentru persoane juridice/PFA, legată din footer-ul paginii de pachete IMM, conține comisioanele standard de administrare pachet.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document PDF oficial de tarife legat direct din pagina produsului, menționat explicit ca sursă pentru costurile complete ale pachetelor.",
+      "citat": "accesați brosura Tarife si comisioane IMM pentru informatii complete referitoare la costurile tranzactiilor neincluse in pachet",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (16 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm.html"
+  ],
+  "durata_s": 26,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2176,
+    "citire_cache": 34991,
+    "scriere_cache": 35350,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1171452
+  }
+}

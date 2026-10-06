@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-06",
+  "banca": "cec",
+  "cod": "CREDIT_LIBRA_WAY",
+  "denumire": "Credit nevoie personale Libra Way",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/persoane-fizice/credite/credite-nevoi-personale/credit-online-de-nevoi-personale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul de nevoi personale online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum pentru persoane fizice, fara justificarea destinatiei, fara garantii, in RON, cu durata maxima de 5 ani si sume comparabile cu cele de la Libra Way, aplicabil atat online cat si in sucursala.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicata a produsului contine toate cifrele cheie: dobanda, DAE, suma maxima, durata, comisioane si conditii de eligibilitate.",
+      "citat": "Suma maximă: 220.000 lei pentru creditele contractate în sucursale, 120.000 pentru creditele online Durata maximă: 5 ani, durată minimă 1 an DAE maximă: 9,76% Avans: fără garanții și avans",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/dobanzi-credite-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Nevoi personale dobanda fixa",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobanzi al bancii listeaza explicit creditul de nevoi personale cu dobanda fixa, fara ipoteca, echivalent cu Libra Way, cu valorile curente ale dobanzii in functie de incasarea veniturilor.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tip grila de dobanzi, publicat de banca, in care produsul apare explicit cu valori numerice actuale.",
+      "citat": "Nevoi personale dobanda fixa 7,99%/an – dobândă fixă cu încasarea veniturilor prin CEC Bank 9,49%/an – dobândă fixă fără încasarea veniturilor prin CEC Bank",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-credite-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Campanie nevoi personale cu dobanda fixa",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul contine exemplul reprezentativ de calcul (DAE, rata lunara, suma totala de plata) pentru creditul de nevoi personale fara ipoteca, echivalentul Libra Way, cu suma maxima de 220.000 lei.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial cu exemple de calcul care contine cifre exacte (suma, rata, DAE) pentru produsul de nevoi personale fara garantii.",
+      "citat": "Campanie nevoi personale cu dobândă fixă Caracteristici credit: Suma maximă: 220.000 lei Rata dobânzii: 6,99%/an cu încasare venituri prin CEC Bank DAE (%/an) 8,72% 10,32%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1885,
+    "citire_cache": 6381,
+    "scriere_cache": 30839,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0972317
+  }
+}
