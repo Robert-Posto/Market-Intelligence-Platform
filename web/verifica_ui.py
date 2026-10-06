@@ -108,11 +108,11 @@ def v_comutator(b: Browser, url: str) -> None:
     pg = deschide(b, url, sistem='light')
     asteapta(pg, "!!document.querySelector('nav .picior .tema')", 15000)
     opt = pg.locator('nav .picior .tema .ant-segmented-item')
-    verifica(opt.count() == 3, f'comutatorul are 3 opțiuni (am {opt.count()})')
-    if opt.count() != 3:
+    verifica(opt.count() == 2, f'comutatorul are 2 opțiuni, luminos și întunecat (am {opt.count()})')
+    if opt.count() != 2:
         inchide(pg)
         return
-    verifica(pg.evaluate("document.documentElement.dataset.theme") == 'light', 'implicit: ca sistemul (aici luminos)')
+    verifica(pg.evaluate("document.documentElement.dataset.theme") == 'light', 'fără alegere: urmează sistemul (aici luminos)')
     pg.evaluate("window.__fara_reincarcare = 1")
     opt.nth(1).click()
     verifica(asteapta(pg, "document.documentElement.dataset.theme === 'dark'"), 'clic pe Întunecat: tema se schimbă')
@@ -124,8 +124,8 @@ def v_comutator(b: Browser, url: str) -> None:
     pg.set_viewport_size({'width': 1440, 'height': 720})
     nav = pg.evaluate("(() => { const n = document.querySelector('nav'); return [n.scrollHeight, n.clientHeight] })()")
     verifica(nav[0] <= nav[1], f'meniul încape fără derulare la 720 px (conținut {nav[0]}, loc {nav[1]})')
-    opt.nth(2).click()
-    verifica(asteapta(pg, "document.documentElement.dataset.theme === 'light'"), 'Ca sistemul: revine la tema sistemului')
+    opt.nth(0).click()
+    verifica(asteapta(pg, "document.documentElement.dataset.theme === 'light'"), 'clic pe Luminos: revine la luminos')
     inchide(pg)
 
 

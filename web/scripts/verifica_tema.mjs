@@ -10,7 +10,7 @@ const css = citeste('../src/styles/global.css')
 // cheia din theme.ts → variabila din global.css
 const VARIABILE = {
   bg: '--bg', surface: '--surface', ink: '--ink', muted: '--muted', line: '--line', line2: '--line-2',
-  warn: '--warn', ok: '--ok', accent: '--accent', accentTint: '--accent-tint', onAccent: '--on-accent',
+  warn: '--warn', ok: '--ok', accent: '--accent', accentTint: '--accent-tint', onAccent: '--on-accent', capTabel: '--cap-tabel',
 }
 
 function paletaTs(nume) {

@@ -4,6 +4,7 @@
 :root {
   color-scheme: light;
   --stele-4: #7fb893; --stele-2: #d9a441;
+  --cap-tabel: #efe6db;
   --bg: #f5f1ec; --surface: #fffdfa; --ink: #2a1f22; --muted: #6e615d; --line: #e3dad0;
   --line-2: #d6cabd;
   --warn: #98550b; --warn-tint: #f8ead6; --ok: #2b7044; --ok-tint: #e5efe1; --aur: #b58a2c;
@@ -20,6 +21,7 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --stele-4: #4e9466; --stele-2: #c08a3e;
+  --cap-tabel: #3f3135;
   --bg: #1b1517; --surface: #251d1f; --ink: #efe6e2; --muted: #b4a5a0; --line: #3a2e30;
   --line-2: #4a3b3d;
   --warn: #e3a95a; --warn-tint: #3a2a16; --ok: #7fcb97; --ok-tint: #1d3024; --aur: #dcb567;
@@ -116,6 +118,11 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
 /* tabel: antetul mono, mic, majuscule; rândul Libra evidențiat și fixat */
 .ant-table-wrapper.t .ant-table-thead > tr > th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
   letter-spacing: .03em; font-weight: 500; vertical-align: top }
+/* capul se vede ca bandă separată, nu ca încă un rând: fundal propriu (--cap-tabel), linie groasă dedesubt
+   și, când stă lipit sub filtre, o umbră care îl desparte de rândurile care trec pe sub el */
+.ant-table-wrapper.t .ant-table-thead > tr > th { border-bottom: 2px solid var(--accent) }
+.ant-table-wrapper.t .ant-table-thead > tr > th .cap-d { color: var(--muted) }
+.ant-table-wrapper.t .ant-table-sticky-holder { box-shadow: 0 6px 10px -4px rgba(0, 0, 0, .45) }
 .ant-table-wrapper.t td.num, .ant-table-wrapper.t th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono) }
 .ant-table-wrapper.t tr.libra > td { background: var(--accent-tint) }
 .ant-table-wrapper.t tr.libra > td:first-child { box-shadow: inset 4px 0 var(--accent) }

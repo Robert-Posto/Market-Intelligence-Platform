@@ -9,10 +9,12 @@ import { theme, type ThemeConfig } from 'antd'
 const LUMINOS = {
   bg: '#f5f1ec', surface: '#fffdfa', ink: '#2a1f22', muted: '#6e615d', line: '#e3dad0', line2: '#d6cabd',
   warn: '#98550b', ok: '#2b7044', accent: '#7a1e2c', accentTint: '#f5e8e6', onAccent: '#fffdfa',
+  capTabel: '#efe6db',
 }
 const INTUNECAT = {
   bg: '#1b1517', surface: '#251d1f', ink: '#efe6e2', muted: '#b4a5a0', line: '#3a2e30', line2: '#4a3b3d',
   warn: '#e3a95a', ok: '#7fcb97', accent: '#e7a3ab', accentTint: '#3b2428', onAccent: '#2a1216',
+  capTabel: '#3f3135',
 }
 
 /** Cât alunecă evidențierea unui comutator; `Comutator` așteaptă atât pe paginile grele, iar culoarea din global.css la fel. */
@@ -44,11 +46,12 @@ export function temaMip(intunecat: boolean): ThemeConfig {
     },
     components: {
       Table: {
-        headerBg: c.surface,
-        headerColor: c.muted,
+        // capul tabelului se deosebește de rânduri: lipit la derulare, altfel se pierdea printre ele
+        headerBg: c.capTabel,
+        headerColor: c.ink,
         headerSplitColor: 'transparent',
-        headerSortActiveBg: c.surface,
-        headerSortHoverBg: c.surface,
+        headerSortActiveBg: c.capTabel,
+        headerSortHoverBg: c.capTabel,
         bodySortBg: 'transparent',
         rowHoverBg: c.accentTint,
         cellPaddingBlock: 7,

@@ -1,4 +1,4 @@
-import { DesktopOutlined, MoonOutlined, SunOutlined } from '@ant-design/icons'
+import { MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Sumar } from '@mcc/shared'
@@ -12,7 +12,7 @@ import { Comutator } from '../components/Comutator'
 /** Bara laterală, titlul paginii, comutatoarele de limbă și de temă. */
 export default function AppShell() {
   const { t, lang, setLang, locale } = useLang()
-  const { tema, setTema } = useTema()
+  const { intunecat, setTema } = useTema()
   const { pathname } = useLocation()
   const id = pathname.replace(/^\//, '').split('/')[0] || 'overview'
   const pagina = TOATE.find((p) => p.id === id) ?? TOATE[0]!
@@ -64,15 +64,15 @@ export default function AppShell() {
               />
             </div>
             <div className="tema">
+              {/* doar două alegeri; până la prima alegere tema urmează sistemul (src/tema), iar comutatorul arată tema efectivă */}
               <Comutator<Tema>
                 size="small"
-                value={tema}
+                value={intunecat ? 'intunecat' : 'luminos'}
                 onChange={setTema}
                 aria-label={t('comun.tema.eticheta')}
                 options={[
                   { value: 'luminos', title: t('comun.tema.luminos'), label: <SunOutlined aria-label={t('comun.tema.luminos')} /> },
                   { value: 'intunecat', title: t('comun.tema.intunecat'), label: <MoonOutlined aria-label={t('comun.tema.intunecat')} /> },
-                  { value: 'sistem', title: t('comun.tema.sistem'), label: <DesktopOutlined aria-label={t('comun.tema.sistem')} /> },
                 ]}
               />
             </div>

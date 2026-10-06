@@ -271,5 +271,4 @@ export const comun = {
   "comun.tema.eticheta": ["Tema", "Theme"],
   "comun.tema.luminos": ["Luminos", "Light"],
   "comun.tema.intunecat": ["Întunecat", "Dark"],
-  "comun.tema.sistem": ["Ca sistemul", "System"],
 } as const
