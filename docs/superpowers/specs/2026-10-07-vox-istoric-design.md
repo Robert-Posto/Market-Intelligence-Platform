@@ -19,6 +19,8 @@ Criterii de reușită:
 
 `loguri/vox/conversatii/<id>.jsonl`, un rând pe întrebare:
 `{"data": "<ISO cu fus>", "intrebare": "...", "raspuns": {interpretare, ignorate, raspunsuri, model, tokeni, cost_usd}}`.
+O redenumire e tot un rând adăugat, `{"data": "...", "titlu": "..."}` (ultimul câștigă; `null` =
+înapoi la prima întrebare): fișierul doar crește, nu se rescrie niciodată.
 
 - `id`: 16 caractere hex (`secrets.token_hex(8)`), generat de server la prima întrebare a unei
   conversații. Orice `id` venit din afară se verifică cu `^[0-9a-f]{16}$` înainte să atingă discul,
@@ -40,8 +42,10 @@ Istoricul începe gol: jurnalul de până acum are interpretarea și numărul de
 ## Server
 
 `app/vox.py` primește o clasă `Istoric(dir)` (fără HTTP și fără SQL, ca restul modulului):
-`lista()`, `citeste(id)`, `adauga(id, tura)`, `sterge(id)`, `id_nou()`. `Vox` o ține ca
-`self.istoric` (dosarul se dă în constructor, ca testele să lucreze într-un director temporar).
+`lista()`, `citeste(id)`, `adauga(id, tura)`, `redenumeste(id, titlu)`, `sterge(id)`, `id_nou()`.
+`Vox` o ține ca `self.istoric` (dosarul se dă în constructor, ca testele să lucreze într-un director
+temporar). `lista()` ține minte rezumatul fiecărui fișier după `mtime` și mărime: un răspuns are până
+la ~60 KB, iar lista se cere după fiecare întrebare.
 
 `Vox.intreaba(intrebare, anterior=None, conversatie=None)`:
 - `conversatie` dată: format valid și fișier existent, altfel `Respins("Conversația nu mai
@@ -53,23 +57,33 @@ Rute (în `Handler`, ca `/api/vox`, nu în `RUTE`):
 
 | rută | protecție | răspuns |
 |---|---|---|
-| `GET /api/vox/conversatii` | Host/Origin, ca `GET /api/vox` | `[{id, titlu, intrebari, inceputa, ultima, cost_usd}]`, cea mai recentă prima |
-| `GET /api/vox/conversatii/<id>` | Host/Origin | `{id, ture: [{data, intrebare, raspuns}]}`; 404 dacă nu există sau `id` invalid |
+| `GET /api/vox/conversatii` | Host/Origin, ca `GET /api/vox` | `[{id, titlu, redenumita, intrebari, texte, inceputa, ultima, cost_usd}]`, cea mai recentă prima |
+| `GET /api/vox/conversatii/<id>` | Host/Origin | `{id, titlu, redenumita, ture: [{data, intrebare, raspuns}]}`; 404 dacă nu există sau `id` invalid |
 | `POST /api/vox` | ca acum (token, Origin, JSON) | corpul primește `conversatie` opțional; răspunsul, `conversatie` |
+| `POST /api/vox/conversatii/<id>/redenumeste` | ca `POST /api/vox` | corp `{titlu}` (text, cel mult 120 de caractere; gol = prima întrebare) → `{titlu, redenumita}`; 400 / 404 |
 | `POST /api/vox/conversatii/<id>/sterge` | ca `POST /api/vox` | `{sters: true}`; 404 dacă nu există |
 
-`titlu` = prima întrebare (fără model, fără cost). Lista nu depinde de `MIP_PERMITE_VOX`: doar
-citește fișiere locale. Ștergerea trece prin aceleași verificări ca întrebarea (token, Origin,
-`application/json`).
+`titlu` = numele dat la redenumire, altfel prima întrebare (fără model, fără cost). `texte` = toate
+întrebările conversației, pentru căutare. `ultima` = ora ultimei întrebări (redenumirea nu mută
+conversația în listă). Lista și citirea nu depind de `MIP_PERMITE_VOX`: doar citesc fișiere locale.
+Redenumirea și ștergerea trec prin aceleași verificări ca întrebarea (token, Origin,
+`application/json`); fără Vox activ nu există token, deci istoricul rămâne doar de citit.
 
 ## Pagina
 
 - **Coloana „Conversații”** în stânga chatului (~268 px), în pagina Vox, nu în bara laterală
   vișinie (care la 800 px înălțime depășește deja ecranul): „+ Conversație nouă” sus; grupe
-  „Azi”, „Ieri”, „Mai vechi” după `ultima`; fiecare rând = prima întrebare (cel mult 2 rânduri),
-  dedesubt „N întrebări · ora”; cea deschisă marcată; ștergerea cu confirmare (`Popconfirm`), pe
-  rândul deschis și la hover. Jos: „Salvate pe acest laptop. Redeschiderea nu cheamă modelul, deci
-  nu costă nimic.”
+  „Azi”, „Ieri”, „Mai vechi” după `ultima`; fiecare rând = titlul (cel mult 2 rânduri), dedesubt
+  „N întrebări · ora”; cea deschisă marcată. Coloana rămâne pe ecran la derulare (sticky). Jos:
+  „Salvate pe acest laptop. Redeschiderea nu cheamă modelul, deci nu costă nimic.”
+- **Acțiunile unui rând** (vizibile la hover, la focus și pe rândul deschis): creion = redenumire pe
+  loc (câmp în rând; Enter salvează, Esc renunță, gol = înapoi la prima întrebare); coș = ștergere cu
+  confirmare (`Popconfirm`). Cât timp o întrebare așteaptă răspunsul, coloana nu schimbă conversația.
+- **Căutarea**: câmpul „Caută în conversații” sub „+ Conversație nouă”. Caută în titlu și în toate
+  întrebările, fără diacritice și fără majuscule; fiecare cuvânt trebuie să apară. Când potrivirea nu
+  e în titlu, rândul arată dedesubt prima întrebare care se potrivește („↳ și la BRD?”). Fără
+  rezultate: „Nicio conversație cu „…”.” Termenul stă în adresă (`cauta`), ca filtrele celorlalte
+  pagini. Se caută în browser, în lista primită: nicio cerere în plus.
 - **Sub ~1100 px lățime** coloana dispare și apare butonul „Istoric (N)” lângă chat, care o
   deschide într-un `Drawer`.
 - **Deasupra chatului**, când e deschisă o conversație: titlul, „N întrebări · $cost · începută
@@ -87,24 +101,28 @@ citește fișiere locale. Ștergerea trece prin aceleași verificări ca întreb
 
 Fișiere: `shared/src/vox.ts` (scheme noi: `ConversatieRezumat`, `Tura`, `Conversatie`; răspunsul
 la POST capătă `conversatie`), `web/src/api/vox.ts` (`useConversatii`, `citesteConversatia`,
-`stergeConversatia`), `web/src/pages/vox/Istoric.tsx` (coloana și sertarul), `web/src/pages/Vox.tsx`,
+`redenumesteConversatia`, `stergeConversatia`), `web/src/pages/vox/Conversatii.tsx` (coloana și
+sertarul; „Istoric” e deja numele paginii „Istoric & schimbări”), `web/src/pages/Vox.tsx`,
 `web/src/styles/vox.css`, `web/src/i18n/dict/vox.ts` (RO și EN; mesajele românești ale serverului,
 identice în `server.vox.*`).
 
 ## Teste
 
 Fără rețea, în `app/test_vox.py`:
-- `Istoric`: adaugă și citește, lista ordonată după `ultima` cu titlu, număr și cost; ștergere;
-  `id` invalid (`../x`, majuscule, lungime greșită) respins fără să atingă discul;
+- `Istoric`: adaugă și citește, lista ordonată după `ultima` cu titlu, număr, texte și cost;
+  redenumire (ultima câștigă, gol = prima întrebare, peste 120 de caractere respins, nu mută
+  conversația în listă); ștergere; `id` invalid (`../x`, majuscule, lungime greșită) respins fără să
+  atingă discul; un rând stricat (scriere întreruptă) sărit, nu tot fișierul;
 - `Vox.intreaba`: id nou întors și salvat; continuarea adaugă la același fișier; id inexistent →
   `Respins` fără niciun apel la clientul fals; o eroare a modelului nu intră în conversație;
-- HTTP: lista, o conversație, 404, ștergerea cu și fără token, Origin străin refuzat.
+- HTTP: lista, o conversație, 404, redenumirea și ștergerea cu și fără token, Origin străin refuzat,
+  `id` cu `..` în adresă.
 
 Interfața: typecheck, apoi capturi pe :5173 cu răspunsuri servite prin `page.route` (fără apeluri
-plătite): coloana cu grupe, o conversație redeschisă și continuată, conversație nouă, ștergere,
-ecran îngust cu sertarul, RO, EN și modul întunecat.
+plătite): coloana cu grupe, căutare cu și fără rezultate, redenumire, o conversație redeschisă și
+continuată, conversație nouă, ștergere, ecran îngust cu sertarul, RO, EN și modul întunecat.
 
 ## În afara acestei lucrări
 
-Redenumirea conversațiilor, căutarea în istoric, reîmprospătarea valorilor cu datele de azi,
-istoricul pe mai mulți utilizatori (când Vox va merge pe `mcc-test` cu autentificare).
+Reîmprospătarea valorilor cu datele de azi, istoricul pe mai mulți utilizatori (când Vox va merge pe
+`mcc-test` cu autentificare). Redenumirea și căutarea au intrat la cererea utilizatorului (07.10.2026).
