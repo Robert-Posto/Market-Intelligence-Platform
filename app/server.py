@@ -479,7 +479,7 @@ def celule_matrice(campuri, unitate, segment):
     # ar explica alt pret decat cel de pe ecran.
     return interoghează(
         f"""WITH randuri AS (
-              SELECT b.slug AS banca, o.camp, o.valoare_num, o.unitate, o.serviciu,
+              SELECT b.slug AS banca, o.camp, o.valoare_num, o.unitate, o.serviciu, o.id AS id_obs,
                      o.frecventa, o.conditie, o.pagina, s.url_public, s.sursa, s.tip_sursa,
                      NOT (coalesce(o.cod_scenariu, '') ~ '(^|\\|)(pf|pj|pfa|imm)(\\||$)')
                        AS seg_nemarcat
@@ -497,7 +497,7 @@ def celule_matrice(campuri, unitate, segment):
               FROM randuri GROUP BY 1, 2
             ), numerotat AS (
               SELECT *, row_number() OVER (PARTITION BY banca, camp
-                                           ORDER BY valoare_num, serviciu) AS rn,
+                                           ORDER BY valoare_num, serviciu, id_obs) AS rn,
                         count(*)     OVER (PARTITION BY banca, camp) AS tot
               FROM randuri
             ), reprezentativ AS (
@@ -793,7 +793,7 @@ def celule_rate(campuri, categorie, termen, produs):
     baza_cat = _baza_rate(GRUPURI_RATE[categorie]["prag"])
     return interoghează(
         f"""WITH randuri AS (
-                  SELECT b.slug AS banca, o.camp, o.valoare_num, o.serviciu,
+                  SELECT b.slug AS banca, o.camp, o.valoare_num, o.serviciu, o.id AS id_obs,
                          o.frecventa, o.conditie, {TERMEN_LUNI} AS luni
                   {baza_cat}{filtru}
                 ), agregat AS (
@@ -804,7 +804,7 @@ def celule_rate(campuri, categorie, termen, produs):
                   FROM randuri GROUP BY 1, 2
                 ), numerotat AS (
                   SELECT *, row_number() OVER (PARTITION BY banca, camp
-                                               ORDER BY valoare_num, serviciu) AS rn,
+                                               ORDER BY valoare_num, serviciu, id_obs) AS rn,
                             count(*)     OVER (PARTITION BY banca, camp) AS tot
                   FROM randuri
                 ), reprezentativ AS (
@@ -1976,6 +1976,13 @@ def _context_vox():
         "concepte_categorie": {k: v["campuri"] for k, v in GRUPURI_RATE.items()},
         "termene": {**{k: v[0] for k, v in TERMENE.items()}, "necunoscut": "termen nespecificat"},
         "produse": dict(PRODUSE_CREDIT),
+        # ce se poate clasa: conceptele matricelor din 2.1 (comisioane, în lei) și din 2.2 (dobânzi, pe
+        # categorie), deci clasamentul folosește exact celulele paginilor
+        "clasabile": {
+            "comisioane": sorted({c for g in GRUPURI.values() for c in g["campuri"]}),
+            "dobanzi": {c: sorted(k for k, v in GRUPURI_RATE.items() if c in v["campuri"])
+                        for c in sorted({c for v in GRUPURI_RATE.values() for c in v["campuri"]})},
+        },
     }
 
 
@@ -1988,24 +1995,56 @@ def _cauta_vox(banca, concept, categorie, termen, produs, text):
 
 
 def _stare_banca_vox(banca):
-    """De ce n-are banca valori, din `surse`: nicio sursă, toate blocate (WAF, robots.txt), sau câte
-    sunt blocate și de ce. ING avea 48 de PDF-uri interzise de robots.txt din 158 de surse, printre
-    ele lista de taxe și comisioane, iar fișa spunea doar „nu avem valori” (mip_merge, 07.10.2026): se
-    citea „ING nu percepe comisionul”. Nota `ROBOTS: …` o scrie `ingest/populare_initiala.py`."""
-    r = interoghează(
-        """SELECT count(s.id)::int AS surse,
+    return _stare_banci_vox(banca).get(banca)
+
+
+_SQL_STARE_BANCI = """SELECT b.slug, count(s.id)::int AS surse,
                   count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate,
                   count(s.id) FILTER (WHERE s.status = 'blocat'
                                         AND s.nota_extractie LIKE 'ROBOTS%%')::int AS robots,
                   count(s.id) FILTER (WHERE s.status = 'blocat' AND s.format = 'pdf')::int AS pdf
            FROM banci b LEFT JOIN surse s ON s.id_banca = b.id
-           WHERE b.slug = %s""", (banca,))
-    if not r:
+           {unde}
+           GROUP BY b.slug"""
+
+
+def _stare_banci_vox(banca=None):
+    """De ce n-are o bancă valori, din `surse`: nicio sursă, toate blocate (WAF, robots.txt), sau câte
+    sunt blocate și de ce. ING avea 48 de PDF-uri interzise de robots.txt din 158 de surse, printre
+    ele lista de taxe și comisioane, iar fișa spunea doar „nu avem valori” (mip_merge, 07.10.2026). O
+    interogare pentru toate băncile: clasamentele arată motivul fiecărei bănci fără date. Nota
+    `ROBOTS: …` o scrie `ingest/populare_initiala.py`."""
+    rows = interoghează(_SQL_STARE_BANCI.format(unde="WHERE b.slug = %s" if banca else ""),
+                        (banca,) if banca else ())
+    return {x["slug"]: {"stare": "fara_surse" if x["surse"] == 0 else "blocata" if x["blocate"] == x["surse"] else None,
+                        "surse": x["surse"], "robots": x["robots"], "refuzate": x["blocate"] - x["robots"],
+                        "pdf": x["pdf"]}
+            for x in rows}
+
+
+def _clasament_vox(concept, categorie, termen, produs, segment):
+    """Celulele unui clasament, din aceleași interogări ca 2.1 și 2.2: un comision în lei pe un segment
+    (PF dacă întrebarea nu-l spune, ca Versus), sau o dobândă pe o categorie. Cu termen sau tip de
+    credit, al doilea bloc are valorile la care sursa nu le spune: pe 7–12 luni doar 2 bănci au termenul
+    scris, 9 au dobânzi fără termen (mip_merge, 07.10.2026). None = conceptul nu se poate clasa."""
+    grup = next((g for g, v in GRUPURI.items() if concept in v["campuri"]), None)
+    if grup:
+        seg = segment if segment in vox.ORDINE_SEGMENT else "pf"
+        return {"sursa": "matrice", "grup": grup, "unitate": "lei", "sens": GRUPURI[grup]["sens"],
+                "segment": seg,
+                "blocuri": [{"tip": "exact", "termen": "", "produs": "",
+                             "celule": celule_matrice([concept], "lei", seg)}]}
+    if categorie not in GRUPURI_RATE or concept not in GRUPURI_RATE[categorie]["campuri"]:
         return None
-    x = r[0]
-    stare = "fara_surse" if x["surse"] == 0 else "blocata" if x["blocate"] == x["surse"] else None
-    return {"stare": stare, "surse": x["surse"], "robots": x["robots"],
-            "refuzate": x["blocate"] - x["robots"], "pdf": x["pdf"]}
+    termen, produs = termen or "", produs or ""
+    blocuri = [{"tip": "exact", "termen": termen, "produs": produs,
+                "celule": celule_rate([concept], categorie, termen, produs)}]
+    if (termen and termen != "necunoscut") or (produs and produs != "altele"):
+        t2, p2 = ("necunoscut" if termen else ""), ("altele" if produs else "")
+        blocuri.append({"tip": "nespecificat", "termen": t2, "produs": p2,
+                        "celule": celule_rate([concept], categorie, t2, p2)})
+    return {"sursa": "rate", "grup": categorie, "unitate": "procent",
+            "sens": GRUPURI_RATE[categorie]["sens"], "segment": None, "blocuri": blocuri}
 
 
 VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox,

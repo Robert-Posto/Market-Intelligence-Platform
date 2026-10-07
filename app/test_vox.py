@@ -640,7 +640,7 @@ class StareBanca(unittest.TestCase):
         self.server.interoghează = self.vechi
 
     def stare(self, numere):
-        self.server.interoghează = lambda sql, params=None: self.cereri.append((sql, params)) or [numere]
+        self.server.interoghează = lambda sql, params=None: self.cereri.append((sql, params)) or [{"slug": "ing", **numere}]
         return self.server._stare_banca_vox("ing")
 
     def test_blocaje_partiale_pe_motiv(self):
@@ -654,6 +654,73 @@ class StareBanca(unittest.TestCase):
         s = self.stare({"surse": 1, "blocate": 1, "robots": 0, "pdf": 0})
         self.assertEqual((s["stare"], s["refuzate"]), ("blocata", 1))
         self.assertEqual(self.stare({"surse": 0, "blocate": 0, "robots": 0, "pdf": 0})["stare"], "fara_surse")
+
+
+class CititoriClasament(unittest.TestCase):
+    """Cititorii din server pentru clasamente: sursa celulelor, blocurile, motivul pe toate băncile."""
+
+    def setUp(self):
+        import server
+        self.s, self.apeluri = server, []
+        self.vechi = (server.celule_matrice, server.celule_rate, server.interoghează)
+        server.celule_matrice = lambda *a: self.apeluri.append(("m",) + a) or [{"banca": "bcr"}]
+        server.celule_rate = lambda *a: self.apeluri.append(("r",) + a) or [{"banca": "ing"}]
+
+    def tearDown(self):
+        self.s.celule_matrice, self.s.celule_rate, self.s.interoghează = self.vechi
+
+    def test_comision_pe_pf_implicit(self):
+        c = self.s._clasament_vox("administrare_cont", None, None, None, None)
+        self.assertEqual((c["sursa"], c["grup"], c["unitate"], c["sens"], c["segment"]),
+                         ("matrice", "cont_curent", "lei", "mic_bun", "pf"))
+        self.assertEqual(c["blocuri"], [{"tip": "exact", "termen": "", "produs": "", "celule": [{"banca": "bcr"}]}])
+        self.assertEqual(self.apeluri, [("m", ["administrare_cont"], "lei", "pf")])
+
+    def test_comision_segment_cerut_sau_necunoscut(self):
+        self.s._clasament_vox("emitere_card", None, None, None, "pj")
+        self.s._clasament_vox("emitere_card", None, None, None, "PF")
+        self.assertEqual([a[3] for a in self.apeluri], ["pj", "pf"])
+
+    def test_dobanda_cu_termen_doua_blocuri(self):
+        """Pe 7–12 luni doar 2 bănci au termenul scris în sursă, 9 au dobânzi fără termen (07.10.2026):
+        al doilea bloc le arată separat, fără să amestece termenele."""
+        c = self.s._clasament_vox("nominala", "depozite", "12", None, None)
+        self.assertEqual((c["sursa"], c["grup"], c["unitate"], c["sens"]), ("rate", "depozite", "procent", "mare_bun"))
+        self.assertEqual([(b["tip"], b["termen"], b["produs"]) for b in c["blocuri"]],
+                         [("exact", "12", ""), ("nespecificat", "necunoscut", "")])
+        self.assertEqual(self.apeluri, [("r", ["nominala"], "depozite", "12", ""),
+                                        ("r", ["nominala"], "depozite", "necunoscut", "")])
+
+    def test_credit_cu_produs(self):
+        c = self.s._clasament_vox("dae", "credite", None, "ipotecar", None)
+        self.assertEqual([(b["tip"], b["termen"], b["produs"]) for b in c["blocuri"]],
+                         [("exact", "", "ipotecar"), ("nespecificat", "", "altele")])
+
+    def test_dobanda_fara_filtre_un_bloc(self):
+        c = self.s._clasament_vox("dae", "credite", None, None, None)
+        self.assertEqual(len(c["blocuri"]), 1)
+
+    def test_neclasabil(self):
+        for args in (("schimbare_pin", None, None, None, None), ("nominala", None, None, None, None),
+                     ("dae", "depozite", None, None, None), (None, None, None, None, None)):
+            self.assertIsNone(self.s._clasament_vox(*args), args)
+        self.assertEqual(self.apeluri, [])
+
+    def test_stare_pe_toate_bancile(self):
+        self.s.interoghează = lambda sql, params=None: [
+            {"slug": "ing", "surse": 158, "blocate": 48, "robots": 48, "pdf": 48},
+            {"slug": "cec", "surse": 1, "blocate": 1, "robots": 0, "pdf": 0}]
+        s = self.s._stare_banci_vox()
+        self.assertEqual(s["ing"], {"stare": None, "surse": 158, "robots": 48, "refuzate": 0, "pdf": 48})
+        self.assertEqual(s["cec"]["stare"], "blocata")
+
+    def test_context_clasabile_din_grupuri(self):
+        self.s.interoghează = lambda sql, params=None: []
+        cl = self.s._context_vox()["clasabile"]
+        self.assertEqual(len(cl["comisioane"]), 14)
+        self.assertIn("administrare_cont", cl["comisioane"])
+        self.assertEqual(cl["dobanzi"]["dae"], ["credite"])
+        self.assertEqual(cl["dobanzi"]["nominala"], ["conturi_carduri", "credite", "depozite"])
 
 
 class CuvinteCautare(unittest.TestCase):

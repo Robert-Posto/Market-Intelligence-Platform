@@ -153,6 +153,16 @@ class CeluleSQL(unittest.TestCase):
         self.assertEqual(apeluri, [("m", server.GRUPURI["carduri"]["campuri"], "eur", "pj"),
                                    ("r", server.GRUPURI_RATE["credite"]["campuri"], "credite", "lung", "ipotecar")])
 
+    def test_mediana_aleasa_determinist(self):
+        """La valori egale, rândul de la mediană era ales după planul interogării: clasamentul unui
+        concept și matricea grupului lui arătau aceeași cifră cu alt serviciu, altă sursă sau altă pagină
+        (29 din 46 de comparații, mip_merge, 07.10.2026). Cheia observației decide la egalitate."""
+        server.celule_matrice(["administrare_cont"], "lei", "pf")
+        server.celule_rate(["nominala"], "depozite", "", "")
+        for sql, _ in self.cereri:
+            self.assertIn("o.id AS id_obs", sql)
+            self.assertIn("ORDER BY valoare_num, serviciu, id_obs) AS rn", sql)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
