@@ -101,5 +101,58 @@ class Matrice(unittest.TestCase):
         self.assertEqual(cereri[0][1][-1], "pf")
 
 
+class CeluleSQL(unittest.TestCase):
+    """Celulele din 2.1 și 2.2, scoase din `matrice` și `rate` ca să le folosească și clasamentele Vox."""
+
+    def setUp(self):
+        self.cereri, self.vechi = [], server.interoghează
+        server.interoghează = lambda sql, params=None: self.cereri.append((sql, tuple(params or ()))) or []
+
+    def tearDown(self):
+        server.interoghează = self.vechi
+
+    def test_matrice_segment_si_prag(self):
+        server.celule_matrice(["administrare_cont"], "lei", "pf")
+        sql, params = self.cereri[-1]
+        self.assertIn(f"AND ({server.COND_SEG})", sql)
+        self.assertIn(f"<= {server.PRAGURI['suma']}", sql)
+        self.assertEqual(params, (["administrare_cont"], "lei", "pf"))
+
+    def test_matrice_toate_fara_segment(self):
+        server.celule_matrice(["administrare_cont"], "lei", "toate")
+        sql, params = self.cereri[-1]
+        self.assertNotIn(server.COND_SEG, sql)
+        self.assertEqual(params, (["administrare_cont"], "lei"))
+
+    def test_rate_termen_si_produs(self):
+        server.celule_rate(["dae"], "credite", "lung", "ipotecar")
+        sql, params = self.cereri[-1]
+        self.assertIn(f"{server.TERMEN_LUNI} > 12", sql)
+        self.assertIn(f"{server.PRODUS_CREDIT} = %s", sql)
+        self.assertIn(f"<= {server.GRUPURI_RATE['credite']['prag']}", sql)
+        self.assertEqual(params, (["dae"], "credite", "ipotecar"))
+
+    def test_rate_fara_filtre(self):
+        server.celule_rate(["nominala"], "depozite", "", "")
+        sql, params = self.cereri[-1]
+        self.assertNotIn(server.TERMEN_LUNI, sql.split("WITH randuri AS")[1].split("), agregat")[0].split("AS luni")[1])
+        self.assertEqual(params, (["nominala"], "depozite"))
+
+    def test_paginile_folosesc_celulele(self):
+        apeluri = []
+        server.celule_matrice, vechi_m = (lambda *a: apeluri.append(("m",) + a) or ["M"]), server.celule_matrice
+        server.celule_rate, vechi_r = (lambda *a: apeluri.append(("r",) + a) or ["R"]), server.celule_rate
+        # `rate` citește și meniul de filtre (luni, produs) din aceeași interogare falsă
+        server.interoghează = lambda sql, params=None: [{"n": 0, "luni": None, "produs": "altele"}]
+        try:
+            m = server.matrice({"grup": ["carduri"], "segment": ["pj"], "unitate": ["eur"]})
+            r = server.rate({"categorie": ["credite"], "termen": ["lung"], "produs": ["ipotecar"]})
+        finally:
+            server.celule_matrice, server.celule_rate = vechi_m, vechi_r
+        self.assertEqual((m["celule"], r["celule"]), (["M"], ["R"]))
+        self.assertEqual(apeluri, [("m", server.GRUPURI["carduri"]["campuri"], "eur", "pj"),
+                                   ("r", server.GRUPURI_RATE["credite"]["campuri"], "credite", "lung", "ipotecar")])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

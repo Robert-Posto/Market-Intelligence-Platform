@@ -458,35 +458,13 @@ COND_SEG = ("%s = ANY(string_to_array(coalesce(o.cod_scenariu, ''), '|')) "
 SEGMENT_RAND = r"substring(coalesce(o.cod_scenariu, '') from '(?:^|\|)(pf|pj|pfa|imm)(?:\||$)')"
 
 
-def matrice(q):
-    """Matrice banca x serviciu, cu interval min-max si numar de valori.
-
-    Exclude valorile `ambiguu` (real, dar neatribuibile) si raporteaza cate a
-    exclus - altfel un interval ar parea mai larg decat e, din valori despre
-    care stim ca nu se pot atribui.
-
-    O singura moneda per matrice: amestecarea lei cu euro in aceeasi celula ar
-    produce intervale fara sens.
-    """
-    grup = (q.get("grup") or ["cont_curent"])[0]
-    if grup not in GRUPURI:
-        return {"eroare": f"grup necunoscut: {grup}"}
-    unitate = (q.get("unitate") or ["lei"])[0]
-    # Segmentul conteaza: pretul pentru persoana fizica si cel pentru firma
-    # sunt in acelasi tabel. Comparate intre ele, dau o concluzie falsa.
-    segment = (q.get("segment") or ["pf"])[0]
-    campuri = GRUPURI[grup]["campuri"]
-
+def celule_matrice(campuri, unitate, segment):
+    """Celulele matricei din 2.1 (bancă × concept): câte valori, intervalul, câte gratuite și rândul de
+    la mediană. Le folosesc 2.1, Versus, fișa de bancă și clasamentele din Vox: o singură interogare,
+    deci aceleași cifre peste tot."""
     filtru_seg = "" if segment == "toate" else f" AND ({COND_SEG})"
     p_seg = () if segment == "toate" else (segment,)
-
-    # Prag de plauzibilitate, acelasi ca in coada de verificare: un comision de
-    # retail peste 10.000 lei nu exista. Valorile mari sunt limite de retragere
-    # sau praguri de eligibilitate extrase gresit ca pret (caz real: Libra,
-    # retragere_numerar 0-20.000). Fara pragul asta, intervalul celulei devine
-    # inutilizabil, iar comparatia induce in eroare.
     PLAUZIBIL = PRAGURI["suma"]
-
     # Valoarea reprezentativa + CE reprezinta. Intervalul singur („0-25") nu
     # spunea nici la ce se refera, nici care cifra conteaza.
     #
@@ -499,7 +477,7 @@ def matrice(q):
     # Se ia RANDUL de la mediana, nu valoarea calculata separat, ca `serviciu`
     # si `frecventa` afisate sa fie chiar ale cifrei afisate - altfel eticheta
     # ar explica alt pret decat cel de pe ecran.
-    celule = interoghează(
+    return interoghează(
         f"""WITH randuri AS (
               SELECT b.slug AS banca, o.camp, o.valoare_num, o.unitate, o.serviciu,
                      o.frecventa, o.conditie, o.pagina, s.url_public, s.sursa, s.tip_sursa,
@@ -536,6 +514,38 @@ def matrice(q):
             FROM agregat a JOIN reprezentativ r USING (banca, camp)""",
         (campuri, unitate) + p_seg,
     )
+
+
+def matrice(q):
+    """Matrice banca x serviciu, cu interval min-max si numar de valori.
+
+    Exclude valorile `ambiguu` (real, dar neatribuibile) si raporteaza cate a
+    exclus - altfel un interval ar parea mai larg decat e, din valori despre
+    care stim ca nu se pot atribui.
+
+    O singura moneda per matrice: amestecarea lei cu euro in aceeasi celula ar
+    produce intervale fara sens.
+    """
+    grup = (q.get("grup") or ["cont_curent"])[0]
+    if grup not in GRUPURI:
+        return {"eroare": f"grup necunoscut: {grup}"}
+    unitate = (q.get("unitate") or ["lei"])[0]
+    # Segmentul conteaza: pretul pentru persoana fizica si cel pentru firma
+    # sunt in acelasi tabel. Comparate intre ele, dau o concluzie falsa.
+    segment = (q.get("segment") or ["pf"])[0]
+    campuri = GRUPURI[grup]["campuri"]
+
+    filtru_seg = "" if segment == "toate" else f" AND ({COND_SEG})"
+    p_seg = () if segment == "toate" else (segment,)
+
+    # Prag de plauzibilitate, acelasi ca in coada de verificare: un comision de
+    # retail peste 10.000 lei nu exista. Valorile mari sunt limite de retragere
+    # sau praguri de eligibilitate extrase gresit ca pret (caz real: Libra,
+    # retragere_numerar 0-20.000). Fara pragul asta, intervalul celulei devine
+    # inutilizabil, iar comparatia induce in eroare.
+    PLAUZIBIL = PRAGURI["suma"]
+
+    celule = celule_matrice(campuri, unitate, segment)
     excluse = interoghează(
         f"""SELECT count(*)::int AS n FROM observatii_curente o
             WHERE o.camp = ANY(%s) AND o.unitate = %s AND o.ambiguu{filtru_seg}""",
@@ -753,23 +763,8 @@ PRODUSE_CREDIT = {
 }
 
 
-def rate(q):
-    """Dobanzi pe categorie (depozite / credite / conturi), din cod_scenariu.
-
-    Categoria e primul segment din cod_scenariu, pus la incarcare. Asa se
-    separa dobanda de depozit de cea de credit - altfel ar ajunge in aceeasi
-    coloana, iar comparatia ar fi falsa.
-
-    Filtre: `termen` (depozite) si `produs` (credite). Fara ele, mediana pe
-    banca amesteca termene si produse diferite.
-    """
-    categorie = (q.get("categorie") or ["depozite"])[0]
-    if categorie not in GRUPURI_RATE:
-        return {"eroare": f"categorie necunoscută: {categorie}"}
-    campuri = GRUPURI_RATE[categorie]["campuri"]
-    prag = GRUPURI_RATE[categorie]["prag"]
-    termen = (q.get("termen") or [""])[0]
-    produs = (q.get("produs") or [""])[0]
+def _filtre_rate(termen, produs):
+    """Filtrele de termen și tip de credit din 2.2, ca text SQL și parametri."""
     filtru = ""
     if termen in TERMENE:
         filtru += f" AND {TERMEN_LUNI} {TERMENE[termen][1]}"
@@ -778,41 +773,26 @@ def rate(q):
     if produs in PRODUSE_CREDIT:
         filtru += f" AND {PRODUS_CREDIT} = %s"
     p_extra = (produs,) if produs in PRODUSE_CREDIT else ()
-    baza_cat = f"""FROM observatii_curente o
+    return filtru, p_extra
+
+
+def _baza_rate(prag):
+    return f"""FROM observatii_curente o
                   JOIN surse s ON s.id = o.id_sursa
                   JOIN banci b ON b.id = s.id_banca
                   WHERE o.unitate = 'procent' AND o.camp = ANY(%s)
                     AND split_part(o.cod_scenariu, '|', 1) = %s
                     AND NOT o.ambiguu AND o.valoare_num IS NOT NULL
                     AND o.valoare_num <= {prag}"""
-    # cate valori are fiecare optiune de filtru, ca meniul sa spuna ce gasesti
-    optiuni = interoghează(
-        f"""SELECT {TERMEN_LUNI} AS luni, {PRODUS_CREDIT} AS produs, count(*)::int AS n
-            {baza_cat} GROUP BY 1, 2""",
-        (campuri, categorie),
-    )
-    pe_termen, pe_produs = {}, {}
-    for x in optiuni:
-        l = x["luni"]
-        k = ("necunoscut" if l is None else "scurt" if l <= 3 else "6" if l <= 6
-             else "12" if l <= 12 else "lung")
-        pe_termen[k] = pe_termen.get(k, 0) + x["n"]
-        pe_produs[x["produs"]] = pe_produs.get(x["produs"], 0) + x["n"]
-    return {
-        "categorie": categorie,
-        "titlu": GRUPURI_RATE[categorie]["titlu"],
-        "sens": GRUPURI_RATE[categorie]["sens"],
-        "campuri": campuri,
-        "prag": prag,
-        "termen": termen, "produs": produs,
-        "termene": [{"cheie": k, "eticheta": v[0], "n": pe_termen.get(k, 0)}
-                    for k, v in TERMENE.items()]
-                   + [{"cheie": "necunoscut", "eticheta": "termen nespecificat",
-                       "n": pe_termen.get("necunoscut", 0)}],
-        "produse": [{"cheie": k, "eticheta": v, "n": pe_produs.get(k, 0)}
-                    for k, v in PRODUSE_CREDIT.items()],
-        "celule": interoghează(
-            f"""WITH randuri AS (
+
+
+def celule_rate(campuri, categorie, termen, produs):
+    """Celulele din 2.2 (bancă × concept, pe o categorie), cu termenul și tipul de credit: câte valori,
+    intervalul și rândul de la mediană. Le folosesc 2.2, Versus și clasamentele din Vox."""
+    filtru, p_extra = _filtre_rate(termen, produs)
+    baza_cat = _baza_rate(GRUPURI_RATE[categorie]["prag"])
+    return interoghează(
+        f"""WITH randuri AS (
                   SELECT b.slug AS banca, o.camp, o.valoare_num, o.serviciu,
                          o.frecventa, o.conditie, {TERMEN_LUNI} AS luni
                   {baza_cat}{filtru}
@@ -839,8 +819,55 @@ def rate(q):
                        r.valoare, r.serviciu, r.frecventa, r.conditie, r.luni
                 FROM agregat a JOIN reprezentativ r USING (banca, camp)
                 ORDER BY 1""",
-            (campuri, categorie) + p_extra,
-        ),
+        (campuri, categorie) + p_extra,
+    )
+
+
+def rate(q):
+    """Dobanzi pe categorie (depozite / credite / conturi), din cod_scenariu.
+
+    Categoria e primul segment din cod_scenariu, pus la incarcare. Asa se
+    separa dobanda de depozit de cea de credit - altfel ar ajunge in aceeasi
+    coloana, iar comparatia ar fi falsa.
+
+    Filtre: `termen` (depozite) si `produs` (credite). Fara ele, mediana pe
+    banca amesteca termene si produse diferite.
+    """
+    categorie = (q.get("categorie") or ["depozite"])[0]
+    if categorie not in GRUPURI_RATE:
+        return {"eroare": f"categorie necunoscută: {categorie}"}
+    campuri = GRUPURI_RATE[categorie]["campuri"]
+    prag = GRUPURI_RATE[categorie]["prag"]
+    termen = (q.get("termen") or [""])[0]
+    produs = (q.get("produs") or [""])[0]
+    baza_cat = _baza_rate(prag)
+    # cate valori are fiecare optiune de filtru, ca meniul sa spuna ce gasesti
+    optiuni = interoghează(
+        f"""SELECT {TERMEN_LUNI} AS luni, {PRODUS_CREDIT} AS produs, count(*)::int AS n
+            {baza_cat} GROUP BY 1, 2""",
+        (campuri, categorie),
+    )
+    pe_termen, pe_produs = {}, {}
+    for x in optiuni:
+        l = x["luni"]
+        k = ("necunoscut" if l is None else "scurt" if l <= 3 else "6" if l <= 6
+             else "12" if l <= 12 else "lung")
+        pe_termen[k] = pe_termen.get(k, 0) + x["n"]
+        pe_produs[x["produs"]] = pe_produs.get(x["produs"], 0) + x["n"]
+    return {
+        "categorie": categorie,
+        "titlu": GRUPURI_RATE[categorie]["titlu"],
+        "sens": GRUPURI_RATE[categorie]["sens"],
+        "campuri": campuri,
+        "prag": prag,
+        "termen": termen, "produs": produs,
+        "termene": [{"cheie": k, "eticheta": v[0], "n": pe_termen.get(k, 0)}
+                    for k, v in TERMENE.items()]
+                   + [{"cheie": "necunoscut", "eticheta": "termen nespecificat",
+                       "n": pe_termen.get("necunoscut", 0)}],
+        "produse": [{"cheie": k, "eticheta": v, "n": pe_produs.get(k, 0)}
+                    for k, v in PRODUSE_CREDIT.items()],
+        "celule": celule_rate(campuri, categorie, termen, produs),
         # peste prag nu e dobanda de retail in categoria asta; sunt procente de
         # alt fel (reduceri, praguri de venit, cote de garantare, taxe) extrase
         # gresit ca dobanda. Vezi coada de verificare.
