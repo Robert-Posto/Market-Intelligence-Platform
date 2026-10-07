@@ -18,6 +18,8 @@ adresa se curăță de parametrii de urmărire (`flux.curata_url`), apoi:
     EXCLUS          câștigători, onboarding, previzualizare, recomandare
                     (`flux.motiv_excludere`) → nu se cere, motivul în notă
     BLOCAT          originea e BLOCAT (în rularea asta sau din jurnal) → nu se cere
+    EXCLUS          gazda duce la o adresă care nu e publică (`destinatie`) → nu
+                    se cere; dacă numele nu se rezolvă acum → REINCEARCA
     ROBOTS          robots.txt interzice → nu se cere
     REDIRECTURI     peste MAX_PASI_REDIRECT redirecturi → STOP
 
@@ -35,6 +37,7 @@ from urllib.parse import urljoin, urlparse
 
 from crawler import UA
 
+import destinatie
 import flux
 
 Rezultat = collections.namedtuple("Rezultat", "verdict octeti url_final transport nota")
@@ -129,9 +132,9 @@ def _pauza(url, banca_id):
 def _refuz(url, banca_id, pas_redirect=False):
     """Ce oprește o adresă ÎNAINTE de cerere; None dacă se poate cere.
 
-    Aceleași trei verificări la adresa de plecare și la fiecare pas al unui
+    Aceleași verificări la adresa de plecare și la fiecare pas al unui
     redirect: excluderile (câștigători, onboarding, previzualizare,
-    recomandări), originea BLOCAT, robots.txt.
+    recomandări), originea BLOCAT, garda de rețea internă, robots.txt.
     """
     motiv = flux.motiv_excludere(url)
     if motiv:
@@ -139,9 +142,43 @@ def _refuz(url, banca_id, pas_redirect=False):
     motiv = flux.blocat(url)
     if motiv:
         return Rezultat("BLOCAT", None, url, None, f"origine BLOCAT (jurnal): {motiv}")
+    # Garda ÎNAINTE de robots.txt: `flux.permite` cere el însuși
+    # <gazdă>/robots.txt, deci și acea cerere ar pleca spre o adresă internă.
+    try:
+        destinatie.verifica(url)
+    except destinatie.DestinatieNerezolvata as exc:
+        return Rezultat("REINCEARCA", None, url, None, str(exc)[:300])
+    except destinatie.DestinatieInterzisa as exc:
+        return Rezultat("EXCLUS", None, url, None, f"exclus: {exc}"[:300])
     if not flux.permite(url, banca_id):
         nota = f"redirect spre adresă interzisă: {url}" if pas_redirect else "interzis de robots.txt"
         return Rezultat("ROBOTS", None, url, None, nota[:300])
+    return None
+
+
+def refuz_pas(url, banca_id):
+    """Motivul pentru care un pas NU se cere, sau None. Pentru cine cere și
+    urmează redirecturile singur, în afara lui `adu`: ruta /pdf a serverului
+    (fără coada pe origine și fără să marcheze BLOCAT dintr-o cerere a unui
+    utilizator) și extractorul zilnic (httpx, async).
+
+    Garda de rețea internă, originea BLOCAT și robots.txt, ca în `_refuz`, dar
+    fără excluderile lui `flux.motiv_excludere`: prefixul de onboarding
+    „banking.” ar scoate https://banking.raiffeisen.ro/info-desk/, sursă de
+    tarife Raiffeisen cu 10 apariții în extragere_produse_bancare/inventare-libra
+    (numărate pe 07.10.2026).
+    `DestinatieNerezolvata` trece mai departe: e o eroare de rețea, nu un refuz.
+    """
+    try:
+        destinatie.verifica(url)
+    except destinatie.DestinatieInterzisa as exc:
+        return str(exc)
+    motiv = flux.blocat(url)
+    if motiv:
+        return f"origine BLOCAT: {motiv}"
+    # robots.txt se cere mereu (RFC 9309), deci nu se verifică față de el însuși
+    if urlparse(url).path != "/robots.txt" and not flux.permite(url, banca_id):
+        return "interzis de robots.txt"
     return None
 
 
