@@ -11,6 +11,10 @@ Singura exceptie, ceruta de Robert si doar pe laptopul lui: cu
 colectare dintr-o lista fixa (`app/rulari.py`, rutele `/api/rulari*`).
 Serverul tot nu scrie in baza; scriu scripturile pornite. Fara variabila,
 rutele de pornire raspund 403.
+
+Accesul: orice cerere spre date cere o sesiune (logare cu contul AD,
+`app/autentificare.py`, poarta din `Handler._poarta`); rularile si joburile cer
+rolul admin. Pe laptop, `MCC_AUTH_LOCAL=admin` in `.env` sare peste logare.
 """
 
 import csv
@@ -39,6 +43,7 @@ import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului
 # trebuia facuta in toate trei. Un singur loc, o singura valoare.
 from normalizeaza import PRAGURI  # noqa: E402
 import rulari  # noqa: E402  (app/, langa server)
+import autentificare  # noqa: E402  (app/, langa server)
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
 # Vederea tine regula o singura data (`stare_data NOT IN (ISTORIC, DUBLURA)`) -
@@ -1971,6 +1976,23 @@ RUTE = {
     "/api/acoperire": lambda q: acoperire(),
 }
 
+# Autentificarea AD (app/autentificare.py). Configurația se citește o dată, la pornire; fără
+# ea logarea răspunde 503, iar serverul spune la pornire de ce (vezi __main__).
+CONFIG_AUTH = autentificare.Config.din_mediu()
+AUTENTIFICARE = autentificare.Autentificator(CONFIG_AUTH)
+SESIUNI = autentificare.Sesiuni(CONFIG_AUTH.sesiune_ore or autentificare.ORE_IMPLICITE)
+COOKIE = "mcc_sesiune"
+# Rulările pornesc procese, iar joburile costă: doar adminul (403 pentru analist, verificat
+# aici, nu doar ascuns în interfață)
+RUTE_ADMIN = {"/api/jobs", "/api/rulare_manuala", "/api/rulare_manuala/estimare",
+              "/api/rulari", "/api/rulari/porneste", "/api/rulari/opreste"}
+# Fără sesiune se ajunge doar la logare, la întrebarea „sunt logat?”, la ieșire și la interfața
+# construită de pe /app/ (pagina de logare trebuie să se încarce; e aceeași pe care nginx o
+# servește oricum fără sesiune). Tot restul cere sesiune, inclusiv fișierele din app/.
+RUTE_FARA_SESIUNE = {"/api/autentificare", "/api/sesiune", "/api/delogare"}
+CODURI_LOGARE = {"invalid": (401, "date_invalide"), "fara_rol": (403, "fara_rol"),
+                 "limitat": (429, "prea_multe_incercari"), "indisponibil": (503, "ad_indisponibil")}
+
 
 _PERMISE = {}
 
@@ -2084,12 +2106,14 @@ def _adu_din_retea(url):
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
-    def _json(self, cod, date):
+    def _json(self, cod, date, antete=()):
         corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
         self.send_response(cod)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(corp)))
         self.send_header("Cache-Control", "no-store")
+        for nume, valoare in antete:
+            self.send_header(nume, valoare)
         self.end_headers()
         self.wfile.write(corp)
 
@@ -2098,8 +2122,132 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
                                       RULARI.token if cu_token else None)
 
+    # ---------------- autentificarea ----------------
+
+    def _ip(self):
+        # serverul ascultă doar pe loopback, deci X-Real-IP vine de la nginx (care îl suprascrie
+        # pe cel trimis de client); fără nginx, adresa socket-ului
+        return (self.headers.get("X-Real-IP") or "").strip()[:64] or self.client_address[0]
+
+    def _sesiune(self):
+        """Sesiunea din cookie, utilizatorul local de pe laptop (autentificare.mod_local) sau None."""
+        for antet in self.headers.get_all("Cookie") or ():
+            for bucata in antet.split(";"):
+                nume, _, valoare = bucata.strip().partition("=")
+                # toate cookie-urile cu numele nostru, nu doar primul: unul pus de alt subdomeniu
+                # (.libra.bank) nu trebuie să blocheze sesiunea bună
+                if nume == COOKIE:
+                    s = SESIUNI.citeste(valoare)
+                    if s:
+                        return dict(s, local=False, id=valoare)
+        rol = autentificare.mod_local(os.environ, self.headers)
+        if rol:
+            return {"utilizator": "local", "nume": "local", "rol": rol, "local": True}
+        return None
+
+    def _goleste_corpul(self):
+        """Citește corpul (cel mult 2 KB) înainte de un refuz timpuriu al unui POST.
+
+        Închis cu date necitite, socket-ul trimite RST în loc de FIN, iar clientul (browserul
+        sau nginx) poate pierde răspunsul: în loc de 401 la o sesiune expirată, interfața ar
+        vedea o eroare de rețea (măsurat pe Windows, în test_server_autentificare.py).
+        """
+        if self.command != "POST":
+            return
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return
+        if 0 < n <= 2048:
+            self.rfile.read(n)
+
+    def _poarta(self, cale):
+        """True dacă cererea merge mai departe; altfel a trimis deja 401 / 403."""
+        self.sesiune = None
+        if cale in RUTE_FARA_SESIUNE or cale == "/app" or cale.startswith("/app/"):
+            return True
+        s = self._sesiune()
+        if s is None:
+            self._goleste_corpul()
+            self._json(401, {"eroare": "neautentificat"})
+            return False
+        if cale in RUTE_ADMIN and s["rol"] != "admin":
+            autentificare.jurnal({"eveniment": "refuz_admin", "utilizator": s["utilizator"],
+                                  "ip": self._ip(), "cale": cale})
+            self._goleste_corpul()
+            self._json(403, {"eroare": "interzis"})
+            return False
+        self.sesiune = s
+        return True
+
+    def _cookie(self, valoare, max_age):
+        c = f"{COOKIE}={valoare}; HttpOnly; SameSite=Strict; Path=/; Max-Age={max_age}"
+        # Secure doar pe HTTPS (nginx pune X-Forwarded-Proto); pe laptop, http://localhost,
+        # browserul n-ar mai trimite cookie-ul
+        if (self.headers.get("X-Forwarded-Proto") or "").strip().lower() == "https":
+            c += "; Secure"
+        return c
+
+    def _post_autentificare(self, cale):
+        """POST /api/autentificare și /api/delogare (cerința 9 pentru forma cererii)."""
+        site = self.headers.get("Sec-Fetch-Site")
+        if site is not None and site not in ("same-origin", "none"):
+            self._goleste_corpul()
+            self._json(403, {"eroare": "interzis"})
+            return
+        # JSON obligatoriu: un formular de pe alt site nu poate trimite application/json fără
+        # preflight CORS, pe care nu-l acceptăm
+        if (self.headers.get("Content-Type") or "").split(";")[0].strip().lower() != "application/json":
+            self._goleste_corpul()
+            self._json(415, {"eroare": "date_invalide"})
+            return
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            n = -1
+        if not 0 <= n <= 2048:
+            self._json(413, {"eroare": "date_invalide"})
+            return
+        try:
+            corp = json.loads(self.rfile.read(n) or b"{}")
+            if not isinstance(corp, dict):
+                raise ValueError
+        except ValueError:
+            self._json(400, {"eroare": "date_invalide"})
+            return
+        if cale == "/api/delogare":
+            s = self._sesiune()
+            if s and not s["local"]:
+                SESIUNI.sterge(s["id"])
+                autentificare.jurnal({"eveniment": "delogare", "utilizator": s["utilizator"], "ip": self._ip()})
+            self._json(200, {}, [("Set-Cookie", self._cookie("", 0))])
+            return
+        # corpul nu se scrie nicăieri: din el pleacă doar utilizatorul și parola spre verificare
+        r = AUTENTIFICARE.autentifica(corp.get("utilizator"), corp.get("parola"), self._ip())
+        if not r.ok:
+            cod, eroare = CODURI_LOGARE[r.motiv]
+            self._json(cod, {"eroare": eroare})
+            return
+        # identificator nou la fiecare logare; sesiunea adusă de cerere (dacă era) se închide
+        vechi = self._sesiune()
+        if vechi and not vechi["local"]:
+            SESIUNI.sterge(vechi["id"])
+        id_sesiune = SESIUNI.creeaza(r.utilizator, r.nume, r.rol)
+        self._json(200, {"utilizator": r.utilizator, "nume": r.nume, "rol": r.rol},
+                   [("Set-Cookie", self._cookie(id_sesiune, autentificare.MAXIM_ABSOLUT_S))])
+
+    def do_HEAD(self):
+        # HEAD servește fișiere ca GET (fără corp); fără poartă ar spune ce există și cât de mare e
+        if self._poarta(urllib.parse.urlparse(self.path).path):
+            super().do_HEAD()
+
     def do_POST(self):
         cale = urllib.parse.urlparse(self.path).path
+        if cale in ("/api/autentificare", "/api/delogare"):
+            self._post_autentificare(cale)
+            return
+        if not self._poarta(cale):
+            return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
             return
@@ -2130,10 +2278,18 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self._json(400, {"eroare": "JSON invalid"})
             return
         try:
+            # în jurnal, cine a pornit/oprit și ce (valorile validate de RULARI, nu corpul cererii)
             if cale.endswith("/porneste"):
-                self._json(200, RULARI.porneste(corp.get("id"), corp.get("banca"), corp.get("produs")))
+                cur = RULARI.porneste(corp.get("id"), corp.get("banca"), corp.get("produs"))
+                autentificare.jurnal({"eveniment": "rulare_pornita", "utilizator": self.sesiune["utilizator"],
+                                      "ip": self._ip(), "id": cur["id"], "banca": cur["banca"],
+                                      "produs": cur["produs"]})
+                self._json(200, cur)
             else:
-                self._json(200, RULARI.opreste())
+                rezultat = RULARI.opreste()
+                autentificare.jurnal({"eveniment": "rulare_oprita", "utilizator": self.sesiune["utilizator"],
+                                      "ip": self._ip(), "id": rezultat["oprit"]})
+                self._json(200, rezultat)
         except rulari.Respins as exc:
             self._json(400, {"eroare": str(exc)})
         except rulari.Ocupat as exc:
@@ -2143,6 +2299,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/sesiune":
+            s = self._sesiune()
+            if s is None:
+                self._json(401, {"eroare": "neautentificat"})
+            else:
+                self._json(200, {k: s[k] for k in ("utilizator", "nume", "rol", "local")})
+            return
+        if not self._poarta(parsed.path):
+            return
         if parsed.path == "/api/rulari":
             # tot cu Host/Origin: răspunsul poartă tokenul de scriere, deci
             # nu trebuie să-l poată citi o pagină cu DNS rebinding
@@ -2177,7 +2342,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/pdf")
             self.send_header("Content-Length", str(len(corp)))
-            self.send_header("Cache-Control", "public, max-age=86400")
+            # private: în spatele logării, un proxy comun nu are voie să-l păstreze pentru alții
+            self.send_header("Cache-Control", "private, max-age=86400")
             self.end_headers()
             self.wfile.write(corp)
             return
@@ -2194,6 +2360,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_response(cod)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(corp)))
+            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(corp)
             return
@@ -2229,8 +2396,9 @@ class Server(socketserver.ThreadingTCPServer):
     Soluția: un singur socket IPv6 cu `IPV6_V6ONLY` dezactivat acceptă și
     conexiuni IPv4 mapate, deci ambele nume merg instant. Se leagă la `::` ca
     dual-stack-ul să funcționeze (legarea la `::1` ar accepta doar IPv6), dar
-    accesul din afara mașinii e refuzat în `verify_request` — aplicația citește
-    dintr-o bază locală și nu are autentificare, deci nu are ce căuta în rețea.
+    accesul din afara mașinii e refuzat în `verify_request` — din rețea se intră
+    doar prin nginx, iar autentificarea se bazează pe antetele puse de el
+    (`X-Real-IP`, `X-Forwarded-Proto`), care altfel ar putea fi trimise de oricine.
     """
     allow_reuse_address = True
     daemon_threads = True
@@ -2249,6 +2417,17 @@ class Server(socketserver.ThreadingTCPServer):
 
 
 if __name__ == "__main__":
+    # Pe server (MCC_AUTH_OBLIGATORIE=1, din mcc.service) un MCC_AUTH_LOCAL uitat în .env nu
+    # deschide aplicația: serverul nu pornește deloc, cu motivul în jurnalul serviciului.
+    motiv = autentificare.verifica_pornire(os.environ)
+    if motiv:
+        print(f"Serverul nu pornește: {motiv}", file=sys.stderr)
+        sys.exit(2)
+    problema = CONFIG_AUTH.problema()
+    if problema:
+        local = autentificare.mod_local(os.environ, {})
+        print(f"Autentificarea AD nu e configurată: {problema}. Logarea răspunde 503 (ad_indisponibil)"
+              + (f"; aici intri ca utilizator local ({local}, MCC_AUTH_LOCAL)." if local else "."))
     try:
         srv = Server(("::", PORT), Handler)
     except OSError:
