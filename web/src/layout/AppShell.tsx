@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import { CommentOutlined } from '@ant-design/icons'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Sumar } from '@mcc/shared'
 import { api } from '../api/client'
@@ -7,6 +6,7 @@ import { T, useLang, type Lang } from '../i18n'
 import { PAGINI, TOATE, VOX, cheie } from '../pagini'
 import { num } from '../util/format'
 import { Comutator } from '../components/Comutator'
+import { VoxBula, VoxInsigna } from '../components/LogoVox'
 
 /** Bara laterală, titlul paginii și comutatorul de limbă. */
 export default function AppShell() {
@@ -43,9 +43,8 @@ export default function AppShell() {
         </div>
         <div className="jos">
           <NavLink to={`/${VOX.id}`} className={({ isActive }) => (isActive ? 'vox-nav activ' : 'vox-nav')}>
-            <CommentOutlined className="icon" />
-            {t(cheie(VOX.id, 'nume_meniu'))}
-            <span className="indemn">{t('vox.nav.indemn')}</span>
+            <VoxBula className="icon" size={18} />
+            {t('vox.nav.buton')}
           </NavLink>
           <div className="picior">
             {sumar.data && (
@@ -70,7 +69,10 @@ export default function AppShell() {
       </nav>
       <main id="principal">
         <div className="cap">
-          <h1>{t(cheie(pagina.id, 'titlu'))}</h1>
+          <h1>
+            {pagina.id === VOX.id && <VoxInsigna className="titlu-logo" size={30} />}
+            {t(cheie(pagina.id, 'titlu'))}
+          </h1>
           <p className="lede">{t(cheie(pagina.id, 'descriere'))}</p>
         </div>
         <Outlet />

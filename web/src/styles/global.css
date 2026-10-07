@@ -59,8 +59,7 @@ nav a.vox-nav { margin: 0 14px clamp(8px, 1.2vh, 11px); padding: clamp(5px, 0.7v
 nav a.vox-nav:hover { background: rgba(246, 236, 230, .14) }
 nav a.vox-nav.activ, nav a.vox-nav.activ:hover { clip-path: none; background: var(--nav-activ-bg); color: var(--nav-activ-ink);
   border-color: var(--nav-activ-bg) }
-nav a.vox-nav .icon { font-size: 15px; opacity: .9 }
-nav a.vox-nav .indemn { margin-left: auto; font-family: var(--mono); font-size: 10px; font-weight: 400; opacity: .72 }
+nav a.vox-nav .icon { flex: none }
 nav .picior { padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
   border-top: 1px solid var(--nav-line); font-family: var(--mono); font-size: 9.5px; line-height: 1.6; color: var(--nav-footer-ink) }
 nav .picior .limba { margin-top: 8px }
@@ -69,6 +68,7 @@ nav .picior .limba { margin-top: 8px }
 main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 60px }
 .cap { margin-bottom: 20px }
 h1 { font-family: var(--serif); font-size: 26px; margin: 0 0 5px; font-weight: 700 }
+h1 .titlu-logo { color: var(--marca); vertical-align: -6px; margin-right: 10px }
 .lede { color: var(--muted); font-size: 13.5px; max-width: 78ch; margin: 0 }
 section { background: var(--surface); border: 1px solid var(--line); border-radius: 13px; padding: 18px 20px; margin-bottom: 18px;
   box-shadow: var(--umbra) }
