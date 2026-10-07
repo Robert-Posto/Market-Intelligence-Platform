@@ -273,7 +273,7 @@ categoria și termenul căutat, cu schemă strictă; valorile, citatele și docu
 scrie nicio cifră; singurul lui text pe ecran e o întrebare înapoi, etichetată ca atare. Ce n-are
 concept (găleata `comision`) se caută după text în denumirile și citatele băncii, cu cuvintele
 tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
-text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
+text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
 
 - Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
   apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar
@@ -290,7 +290,20 @@ text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde 
   de `incasare` în 2 rulări din 4, iar „APR” la Libra ieșea dobânda nominală (7,71–7,84%) în loc de
   DAE (8,09–8,37%); promptul spune acum ce înseamnă termenii englezești. Întrebările despre servicii
   fără concept („datoria vamală”, „TrezoNet” la BCR) cer `concept: null` și text de căutat; înainte
-  de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”).
+  de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”). Cu 10
+  întrebări de clasament (40 în total): 40 din 40 pe 07.10.2026, $0,0794, la `temperature: 0` (trimis
+  prin `extra_body`, doar la Haiku 4.5: SDK-ul 1.x l-a scos din semnătură, iar Opus 4.7+ îl refuză). La
+  temperatura implicită, patru rulări cu aceleași întrebări dăduseră 36, 36, 39 și 37, cu alte greșeli
+  de fiecare dată.
+- **Clasamente.** „Care bancă are cel mai mic comision de administrare?”, „Unde stă Libra la DAE pentru
+  ipotecar?”: Vox ordonează băncile cu celulele din 2.1 (comisioane, în lei, PF dacă întrebarea nu spune
+  altfel) și 2.2 (dobânzi, pe categorie), deci aceleași cifre ca paginile (`celule_matrice`,
+  `celule_rate`). Implicit pe mediană; „cea mai ieftină variantă” ordonează pe cea mai bună valoare a
+  fiecărei bănci. Egalitățile au loc comun (la administrarea contului PF, 7 din 14 bănci au mediana
+  0 lei, `mip_merge`, 07.10.2026); Libra și băncile numite sunt evidențiate; cu termen sau tip de credit,
+  un al doilea bloc arată valorile la care sursa nu le spune (pe 7–12 luni: 2 bănci cu termen, 9 fără);
+  băncile fără date apar cu motivul. La valori egale, rândul de la mediană (serviciul afișat sub cifră)
+  se alege după cheia observației, deci paginile și Vox arată același rând.
 - **Segmentul.** Rezumatul și tabelul se împart pe persoane fizice, PFA, IMM, firme și „fără segment
   în sursă”, PF primul: BCR · administrare cont avea 302 valori PJ, 234 PFA și 33 PF într-un singur
   interval, 0–1.200 lei (`mip_merge`, 07.10.2026). Segmentul vine din `cod_scenariu`; la dobânzi
