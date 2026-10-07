@@ -436,6 +436,28 @@ GRUPURI_RATE = {
 # rman in coada de verificare.
 
 
+# Rndurile FARA segment marcat in sursa se includ, nu se arunca.
+#
+# Motivul e masurat: BRD are 13 valori pentru `administrare_cont`, dintre
+# care 0 marcate `pf` si 12 fara nicio marcare. Exim, la fel: 7 valori, 0
+# marcate. Filtrul strict le arunca in silenta, iar in Versus coloana BRD
+# aparea goala - ceea ce se citea ca „nu s-a putut extrage", cand de fapt
+# extractia reusise si filtrul le ascundea.
+#
+# Nu se pretinde ca sunt PF: interfata le marcheaza „segment nemarcat in
+# sursa", iar `segment_necunoscut` spune per celula daca reprezentativa
+# vine dintr-un rnd nemarcat.
+#
+# Un singur loc pentru regulă: o folosesc `matrice` (2.1, Versus, fișa de bancă) și `celula`, ca
+# sertarul deschis dintr-o celulă să arate exact rândurile cifrei pe care s-a dat clic.
+COND_SEG = ("%s = ANY(string_to_array(coalesce(o.cod_scenariu, ''), '|')) "
+            "OR NOT (coalesce(o.cod_scenariu, '') ~ '(^|\\|)(pf|pj|pfa|imm)(\\||$)')")
+# Segmentul unui rând (NULL când sursa nu-l spune), pentru câmpul `segment` din `celula` și pentru
+# `strict`. Pe mip_merge (07.10.2026) dă aceleași rânduri ca `COND_SEG` pe toate cele 4 segmente
+# (pf 10.975, pj 15.281, pfa 9.729, imm 7.633), iar niciun rând nu are două segmente.
+SEGMENT_RAND = r"substring(coalesce(o.cod_scenariu, '') from '(?:^|\|)(pf|pj|pfa|imm)(?:\||$)')"
+
+
 def matrice(q):
     """Matrice banca x serviciu, cu interval min-max si numar de valori.
 
@@ -455,19 +477,6 @@ def matrice(q):
     segment = (q.get("segment") or ["pf"])[0]
     campuri = GRUPURI[grup]["campuri"]
 
-    # Rndurile FARA segment marcat in sursa se includ, nu se arunca.
-    #
-    # Motivul e masurat: BRD are 13 valori pentru `administrare_cont`, dintre
-    # care 0 marcate `pf` si 12 fara nicio marcare. Exim, la fel: 7 valori, 0
-    # marcate. Filtrul strict le arunca in silenta, iar in Versus coloana BRD
-    # aparea goala - ceea ce se citea ca „nu s-a putut extrage", cand de fapt
-    # extractia reusise si filtrul le ascundea.
-    #
-    # Nu se pretinde ca sunt PF: interfata le marcheaza „segment nemarcat in
-    # sursa", iar `segment_necunoscut` spune per celula daca reprezentativa
-    # vine dintr-un rnd nemarcat.
-    COND_SEG = ("%s = ANY(string_to_array(coalesce(o.cod_scenariu, ''), '|')) "
-                "OR NOT (coalesce(o.cod_scenariu, '') ~ '(^|\\|)(pf|pj|pfa|imm)(\\||$)')")
     filtru_seg = "" if segment == "toate" else f" AND ({COND_SEG})"
     p_seg = () if segment == "toate" else (segment,)
 
@@ -602,6 +611,8 @@ def celula(q):
     # valorile din spatele cifrei pe care s-a dat clic
     termen = (q.get("termen") or [""])[0]
     produs = (q.get("produs") or [""])[0]
+    segment = (q.get("segment") or [""])[0]
+    strict = (q.get("strict") or [""])[0] == "1"
     extra, p_extra = "", ()
     if termen in TERMENE:
         extra += f" AND {TERMEN_LUNI} {TERMENE[termen][1]}"
@@ -613,8 +624,19 @@ def celula(q):
     for c in cuvinte:
         extra += f" AND {_TEXT_CAUTARE} LIKE %s"
         p_extra += ("%" + c + "%",)
+    # segmentul: `pf` / `pfa` / `imm` / `pj` cu regula din 2.1 (`COND_SEG`: plus rândurile nemarcate),
+    # ca sertarul din 2.1 și Versus să arate rândurile celulei; `nemarcat` = doar rândurile fără
+    # segment; `strict=1` (grupele din Vox) = doar segmentul cerut: 251 din 752 de perechi bancă·concept
+    # au și rânduri marcate, și nemarcate (mip_merge, 07.10.2026), iar grupa „33 PF” ar fi deschis un
+    # sertar mai lung decât ea. Altă valoare se ignoră, ca la `termen` și `produs`.
+    if segment == "nemarcat":
+        extra += f" AND {SEGMENT_RAND} IS NULL"
+    elif segment in vox.ORDINE_SEGMENT:
+        extra += f" AND {SEGMENT_RAND} = %s" if strict else f" AND ({COND_SEG})"
+        p_extra += (segment,)
     rows = interoghează(
-        """SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
+        f"""SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
+                  {SEGMENT_RAND} AS segment,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
                   o.ambiguu, o.motiv_ambiguu, o.metoda_extractie,
                   o.serviciu, o.sectiune, o.conditie, o.frecventa, o.detaliu,

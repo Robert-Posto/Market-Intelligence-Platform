@@ -51,6 +51,10 @@ MAX_BANCI = 3
 # BCR are 1.253 de valori `transfer_credit` (baza mip, 06.10.2026): rezumatul le numără pe toate,
 # dar răspunsul trimite cel mult atâtea rânduri; restul sunt în Sertar
 MAX_RANDURI = 50
+# PF primul: la BCR · administrare cont, 302 valori PJ, 234 PFA și 33 PF stăteau într-un singur interval,
+# 0–1.200 lei (mip_merge, 07.10.2026); rândurile fără segment în sursă vin la final. `celula` din server
+# acceptă la `segment` doar aceste valori, plus `nemarcat`.
+ORDINE_SEGMENT = ("pf", "pfa", "imm", "pj")
 TIPURI = ("cautare", "neclar", "in_afara")
 CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text_cautat", "clarificare")
 # Istoricul conversațiilor (coloana „Conversații” din pagina Vox): fișiere pe laptop, nu în bază
