@@ -6,6 +6,7 @@ jurnalul BLOCAT, cozile) se scriu într-un folder temporar.
 """
 import json
 import os
+import socket
 import sys
 import tempfile
 import threading
@@ -19,9 +20,23 @@ sys.path[:0] = [os.path.dirname(AICI), AICI]
 import requests  # noqa: E402
 from requests.structures import CaseInsensitiveDict  # noqa: E402
 
+import destinatie  # noqa: E402
 import flux  # noqa: E402
 import transport as T  # noqa: E402
 from crawler.robots import RegulliRobots  # noqa: E402
+
+IP_PUBLIC = "93.184.216.34"
+
+
+def rezolvitor(adrese, implicit=IP_PUBLIC):
+    """getaddrinfo fals: gazdă -> IP-uri; gazdele nenumite dau `implicit`, None = nu se rezolvă."""
+    def rezolva(gazda, port, *a, **kw):
+        ipuri = adrese.get(gazda, [implicit])
+        if ipuri is None:
+            raise socket.gaierror(11001, "getaddrinfo failed")
+        return [(socket.AF_INET6 if ":" in ip else socket.AF_INET, socket.SOCK_STREAM, 6, "", (ip, port))
+                for ip in ipuri]
+    return rezolva
 
 
 def raspuns(status=200, corp=b"", url="https://x.ro/", antete=None, istoric=()):
@@ -63,6 +78,8 @@ class Izolat(unittest.TestCase):
             mock.patch.object(flux, "_BLOCATE", None),
             mock.patch.object(flux, "_RESETARI", flux.collections.Counter()),
             mock.patch.object(time, "sleep"),      # fără pauzele reale
+            # garda de rețea internă rezolvă numele: aici, fără DNS real, orice gazdă e publică
+            mock.patch.object(destinatie, "rezolva", rezolvitor({})),
             mock.patch("sys.stderr", new_callable=lambda: open(os.devnull, "w", encoding="utf-8")),
         ]
         for p in self.patchuri:
@@ -368,6 +385,84 @@ class TestCoada(Izolat):
         with flux.coada_origine("https://x.ro/a"):
             with flux.coada_origine("https://x.ro/robots.txt"):
                 pass
+
+
+# ==========================================================================
+# 6. Garda de rețea internă (SSRF), pe fiecare pas, înainte de robots.txt
+# ==========================================================================
+
+class TestGarda(Izolat):
+    def setUp(self):
+        super().setUp()
+        flux._CACHE_ROBOTS["https://a.ro"] = reguli("https://a.ro")
+        self.cereri = []
+
+    def get(self, raspunsuri):
+        def get(url, **kw):
+            self.cereri.append(url)
+            return raspunsuri[url]
+        return get
+
+    def test_adresa_interna_nu_se_cere_nici_robots(self):
+        with mock.patch.object(destinatie, "rezolva", rezolvitor({"intern.a.ro": ["10.0.0.5"]})), \
+             mock.patch("requests.get") as get:
+            rez = T.adu("https://intern.a.ro/doc.pdf", "a", {})
+            for u in ("http://127.0.0.1/", "http://169.254.169.254/latest/meta-data/", "http://[::1]/"):
+                self.assertEqual(T.adu(u, "a", {}).verdict, "EXCLUS", u)
+        self.assertEqual(rez.verdict, "EXCLUS")
+        self.assertIn("10.0.0.5", rez.nota)
+        get.assert_not_called()                     # nici pagina, nici robots.txt
+
+    def test_redirect_spre_adresa_interna(self):
+        lant = {"https://a.ro/p": raspuns(302, b"", "https://a.ro/p", {"Location": "https://b.ro/q"}),
+                "https://b.ro/q": raspuns(302, b"", "https://b.ro/q",
+                                          {"Location": "http://169.254.169.254/latest/meta-data/"})}
+        flux._CACHE_ROBOTS["https://b.ro"] = reguli("https://b.ro")
+        with mock.patch("requests.get", side_effect=self.get(lant)):
+            rez = T.adu("https://a.ro/p", "a", {})
+        self.assertEqual(rez.verdict, "EXCLUS")
+        self.assertEqual(self.cereri, ["https://a.ro/p", "https://b.ro/q"])
+
+    def test_nume_care_duce_intern_la_un_pas(self):
+        lant = {"https://a.ro/p": raspuns(301, b"", "https://a.ro/p", {"Location": "https://rebind.b.ro/"})}
+        with mock.patch.object(destinatie, "rezolva", rezolvitor({"rebind.b.ro": [IP_PUBLIC, "192.168.1.1"]})), \
+             mock.patch("requests.get", side_effect=self.get(lant)):
+            rez = T.adu("https://a.ro/p", "a", {})
+        self.assertEqual((rez.verdict, self.cereri), ("EXCLUS", ["https://a.ro/p"]))
+
+    def test_dns_cazut_e_reincercare_nu_excludere(self):
+        # o sursă de bancă cu DNS-ul căzut o clipă nu devine `retras`
+        with mock.patch.object(destinatie, "rezolva", rezolvitor({"a.ro": None})), \
+             mock.patch("requests.get") as get:
+            rez = T.adu("https://a.ro/p", "a", {})
+        self.assertEqual(rez.verdict, "REINCEARCA")
+        get.assert_not_called()
+
+    def test_robots_txt_redirectat_spre_adresa_interna(self):
+        # requests urmează singur redirecturile lui robots.txt; hook-ul oprește pasul intern
+        trimise = []
+
+        def send(adaptor, cerere, **kw):
+            trimise.append(cerere.url)
+            r = raspuns(301, b"", cerere.url, {"Location": "http://169.254.169.254/latest/meta-data/"})
+            r.request, r._content_consumed = cerere, True
+            return r
+        with mock.patch("requests.adapters.HTTPAdapter.send", send):
+            self.assertTrue(flux.permite("https://c.ro/pagina", "c"))   # inaccesibil = permis, ca la timeout
+        self.assertEqual(trimise, ["https://c.ro/robots.txt"])
+        (js,) = [f for f in os.listdir(flux.DIR_ROBOTS) if f.endswith(".json")]
+        with open(os.path.join(flux.DIR_ROBOTS, js), encoding="utf-8") as f:
+            self.assertIn("DestinatieInterzisa", json.load(f)["eroare"])
+
+    def test_refuz_pas(self):
+        flux._CACHE_ROBOTS["https://b.ro"] = reguli("https://b.ro", "User-agent: *\nDisallow: /\n")
+        with mock.patch.object(destinatie, "rezolva", rezolvitor({"intern.a.ro": ["172.16.4.4"]})):
+            self.assertIsNone(T.refuz_pas("https://a.ro/castigatori.pdf", "a"))   # fără excluderi
+            self.assertIn("172.16.4.4", T.refuz_pas("https://intern.a.ro/x", "a"))
+            self.assertEqual(T.refuz_pas("https://b.ro/x", "b"), "interzis de robots.txt")
+            self.assertIsNone(T.refuz_pas("https://b.ro/robots.txt", "b"))
+            flux.marcheaza_blocat("https://a.ro/", "403 WAF", "a")
+            self.assertIn("BLOCAT", T.refuz_pas("https://a.ro/y", "a"))
 
 
 if __name__ == "__main__":

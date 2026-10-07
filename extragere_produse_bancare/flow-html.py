@@ -1500,16 +1500,92 @@ async def adu_http(url: str, **kw):
     A doua incercare cere `identity`. Costa banda, dar numai pe serverele
     stricate: prima incercare ramane comprimata pentru toate celelalte, iar
     reincercarea porneste doar pe `RemoteProtocolError`, nu pe orice eroare.
+
+    REDIRECTURI, GARDA, PLAFON
+
+    httpx urma orb orice `Location`, iar adresele vin si de la model
+    (descopera_surse_libra), deci un 302 spre 169.254.169.254 sau spre o pagina
+    interzisa de robots.txt se cerea fara nicio verificare (auditul de
+    securitate, B4). Acum `follow_redirects` din apel se ignora: redirecturile
+    se urmeaza aici, cel mult `MAX_PASI_REDIRECT` din ingest/transport.py, si
+    fiecare pas, inclusiv primul, trece intai prin `refuz_mip`. Un pas refuzat
+    ridica `AccesRefuzat`, ca un 403: documentul ramane blocat, fara alt canal.
+    Corpul se citeste pana la `MAX_OCTETI`; peste, `RaspunsPreaMare`.
     """
     import httpx
+    kw.pop("follow_redirects", None)
     antete = {**ANTETE, **(kw.pop("headers", None) or {})}
     try:
-        async with httpx.AsyncClient(headers=antete, **kw) as c:
-            return await c.get(url)
+        async with httpx.AsyncClient(headers=antete, follow_redirects=False, **kw) as c:
+            return await _get_pazit(c, url)
     except httpx.RemoteProtocolError:
         async with httpx.AsyncClient(
-                headers={**antete, "Accept-Encoding": "identity"}, **kw) as c:
-            return await c.get(url)
+                headers={**antete, "Accept-Encoding": "identity"}, follow_redirects=False, **kw) as c:
+            return await _get_pazit(c, url)
+
+
+# Plafonul unui document adus de extractor. Bronze-ul MIP avea 107 MB in 298 de
+# fisiere la prima rulare (.gitignore din radacina), sub 0,4 MB in medie; un
+# raspuns fara sfarsit nu mai umple memoria (se citea intreg, `r.content`).
+MAX_OCTETI = 30 * 1024 * 1024
+
+
+class RaspunsPreaMare(Exception):
+    """Corpul raspunsului trece de `MAX_OCTETI`; citirea s-a oprit."""
+
+
+def _transport_mip():
+    """
+    `ingest/transport.py` din MIP: garda de retea interna, originea BLOCAT si
+    robots.txt, aceleasi reguli ca la colectoare (un singur loc pentru ele).
+    Importat la prima cerere, ca `--fisier` sa mearga si fara ele. Adaugat la
+    coada lui sys.path: modulele de aici (parser_rate, ambiguitate) raman ale noastre.
+    """
+    radacina = Path(__file__).resolve().parent.parent
+    for p in (radacina, radacina / "ingest"):
+        if str(p) not in sys.path:
+            sys.path.append(str(p))
+    import transport
+    return transport
+
+
+async def refuz_mip(url: str) -> str | None:
+    """
+    De ce MIP nu cere adresa (retea interna, origine BLOCAT, robots.txt), sau
+    None. In fir separat: robots.txt se citeste o data pe origine, sincron.
+    Un nume care nu se rezolva acum ridica `DestinatieNerezolvata` (eroare de
+    retea, ca un ConnectError), nu refuz.
+    """
+    return await asyncio.to_thread(_transport_mip().refuz_pas, url, "extragere")
+
+
+async def _get_pazit(c, url: str):
+    """GET cu redirecturile urmate de mana si plafon pe corp (vezi `adu_http`)."""
+    import httpx
+    from urllib.parse import urljoin
+    for _ in range(_transport_mip().MAX_PASI_REDIRECT + 1):
+        motiv = await refuz_mip(url)
+        if motiv:
+            raise AccesRefuzat(url, motiv)
+        async with c.stream("GET", url) as r:
+            if r.is_redirect:
+                url = urljoin(str(r.url), r.headers["location"])
+                continue
+            declarat = r.headers.get("content-length", "")
+            if declarat.isdigit() and int(declarat) > MAX_OCTETI:
+                raise RaspunsPreaMare(f"peste {MAX_OCTETI // 2**20} MB: {url}")
+            corp = bytearray()
+            async for bucata in r.aiter_bytes():     # decomprimat: plafonul tine si la gzip
+                corp += bucata
+                if len(corp) > MAX_OCTETI:
+                    raise RaspunsPreaMare(f"peste {MAX_OCTETI // 2**20} MB: {url}")
+        # Acelasi raspuns, cu corpul deja decomprimat: fara Content-Encoding, altfel
+        # httpx l-ar decomprima a doua oara
+        antete = [(k, v) for k, v in r.headers.multi_items()
+                  if k.lower() not in ("content-encoding", "content-length", "transfer-encoding")]
+        return httpx.Response(r.status_code, headers=antete, content=bytes(corp), request=r.request)
+    raise httpx.TooManyRedirects(f"peste {_transport_mip().MAX_PASI_REDIRECT} redirecturi: {url}",
+                                 request=r.request)
 
 
 async def _robots_accesibil(url: str) -> bool | None:
@@ -1518,13 +1594,12 @@ async def _robots_accesibil(url: str) -> bool | None:
     nivel de IP si nici playwright nu ajuta — pleaca de la aceeasi adresa.
     Intoarce None daca verificarea insasi esueaza.
     """
-    import httpx
     from urllib.parse import urlsplit
     u = urlsplit(url)
     try:
-        async with httpx.AsyncClient(headers=ANTETE, timeout=TIMEOUT,
-                                     follow_redirects=True) as c:
-            return (await c.get(f"{u.scheme}://{u.netloc}/robots.txt")).status_code == 200
+        # prin `adu_http`: redirecturile lui robots.txt trec si ele prin garda
+        r = await adu_http(f"{u.scheme}://{u.netloc}/robots.txt", timeout=TIMEOUT)
+        return r.status_code == 200
     except Exception:
         return None
 
@@ -1532,6 +1607,24 @@ async def _robots_accesibil(url: str) -> bool | None:
 async def _descarca_pentru_test(url: str, metoda: str) -> str:
     if metoda == "playwright":
         from playwright.async_api import async_playwright
+        oprite: list[Exception] = []
+
+        async def garda(route):
+            # Chromium urmeaza singur redirecturile: fiecare navigare a cadrului
+            # principal, inclusiv prima, trece prin aceeasi verificare ca pasul
+            # http (ca `_garda_navigare` din ingest/transport.py)
+            req = route.request
+            if req.is_navigation_request() and req.frame.parent_frame is None:
+                try:
+                    motiv = await refuz_mip(req.url)
+                except Exception as exc:        # DNS cazut: nu se poate verifica, deci nu se cere
+                    oprite.append(exc)
+                    return await route.abort("blockedbyclient")
+                if motiv:
+                    oprite.append(AccesRefuzat(req.url, motiv))
+                    return await route.abort("blockedbyclient")
+            await route.continue_()
+
         async with async_playwright() as pw:
             br = await pw.chromium.launch(headless=True)
             pg = await br.new_page(user_agent=UA, locale="ro-RO",
@@ -1539,16 +1632,24 @@ async def _descarca_pentru_test(url: str, metoda: str) -> str:
                                        k: v for k, v in ANTETE.items()
                                        if k not in ("User-Agent", "Accept-Encoding", "Connection")
                                    })
-            resp = await pg.goto(url, wait_until="networkidle",
-                                 timeout=TIMEOUT * 1000)
+            await pg.route("**/*", garda)
+            try:
+                resp = await pg.goto(url, wait_until="networkidle",
+                                     timeout=TIMEOUT * 1000)
+            except Exception:
+                if oprite:
+                    raise oprite[0] from None
+                raise
             await pg.wait_for_timeout(1200)
             html = await pg.content()
             await br.close()
+            if oprite:                          # redirect din JavaScript, oprit dupa goto
+                raise oprite[0]
             stare = resp.status if resp is not None else 200
             if stare in STATUS_REFUZ or _pare_pagina_de_blocaj(html):
                 raise AccesRefuzat(url, stare, html)
             return html
-    r = await adu_http(url, timeout=TIMEOUT, follow_redirects=True, http2=True)
+    r = await adu_http(url, timeout=TIMEOUT, http2=True)
     if r.status_code in STATUS_REFUZ:
         raise AccesRefuzat(url, r.status_code, r.text)
     r.raise_for_status()

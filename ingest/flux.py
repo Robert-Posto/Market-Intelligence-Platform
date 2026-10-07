@@ -47,7 +47,7 @@ import sys
 import threading
 import time
 import unicodedata
-from urllib.parse import unquote, urlparse
+from urllib.parse import unquote, urljoin, urlparse
 
 import psycopg2
 
@@ -83,6 +83,18 @@ def origine_din(url):
 _CACHE_ROBOTS = {}
 
 
+def _garda_redirect(r, *args, **kwargs):
+    """Hook `requests` pe fiecare răspuns al cererii robots.txt: requests urmează
+    singur redirecturile lui robots.txt (RFC 9309 le cere), iar originea a trecut
+    de garda de rețea internă doar la primul pas. Un `Location` spre o adresă
+    care nu e publică ridică aici, ÎNAINTE de cererea următoare; robots.txt devine
+    „inaccesibil”, adică abaterea asumată (permis), cu eroarea în copia .json."""
+    if r.is_redirect:
+        import destinatie
+        destinatie.verifica(urljoin(r.url, r.headers["Location"]))
+    return r
+
+
 def reguli_pentru(url, banca_id):
     """Regulile robots.txt ale originii, citite o dată, cu dovada păstrată.
 
@@ -111,7 +123,8 @@ def reguli_pentru(url, banca_id):
         r = eroare = None
         try:
             with coada_origine(origine):
-                r = requests.get(origine + "/robots.txt", headers={"User-Agent": UA}, timeout=15)
+                r = requests.get(origine + "/robots.txt", headers={"User-Agent": UA}, timeout=15,
+                                 hooks={"response": _garda_redirect})
             reguli.status = f"HTTP {r.status_code}"
             reguli.text_brut = r.text if r.ok else ""
             # RFC 9309: 4xx = fără restricții; 5xx/timeout = abatere asumată a

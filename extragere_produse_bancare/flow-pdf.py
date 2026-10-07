@@ -325,10 +325,12 @@ async def main() -> None:
     if a.fisier:
         octeti, url = Path(a.fisier).read_bytes(), None
     else:
-        import httpx
-        async with httpx.AsyncClient(headers=fh.ANTETE, timeout=fh.TIMEOUT,
-                                     follow_redirects=True) as c:
-            r = await c.get(a.url)
+        # prin `adu_http`, ca în conductă: garda de rețea internă, BLOCAT și robots.txt
+        # pe fiecare redirect, plus plafonul de mărime
+        try:
+            r = await fh.adu_http(a.url, timeout=fh.TIMEOUT)
+        except fh.AccesRefuzat as e:
+            raise SystemExit(f"Refuzat (robots.txt, BLOCAT sau adresă internă): {e}")
         if r.status_code in fh.STATUS_REFUZ:
             raise SystemExit(f"Serverul a refuzat: {r.status_code}")
         r.raise_for_status()

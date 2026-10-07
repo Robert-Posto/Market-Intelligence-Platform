@@ -2077,9 +2077,11 @@ RUTE_ADMIN = {"/api/jobs", "/api/rulare_manuala", "/api/rulare_manuala/estimare"
 RUTE_FARA_SESIUNE = {"/api/autentificare", "/api/sesiune", "/api/delogare"}
 CODURI_LOGARE = {"invalid": (401, "date_invalide"), "fara_rol": (403, "fara_rol"),
                  "limitat": (429, "prea_multe_incercari"), "indisponibil": (503, "ad_indisponibil")}
+# Singurele fișiere din app/ servite pe nume (plus siglele din logos/, vezi Handler.translate_path)
+FISIERE_APP = {"index.html", "pdf.html", "harta.html", "favicon.ico"}
 
 
-_PERMISE = {}
+_PERMISE = set()
 
 
 def pdf_permis(url):
@@ -2089,23 +2091,31 @@ def pdf_permis(url):
     acces la aplicație ar putea cere orice adresă din internet prin serverul
     nostru, inclusiv adrese din rețeaua internă. Lista albă e baza de date:
     se servesc doar documentele pe care pipeline-ul le-a înregistrat ca surse.
+    Lista nu ajunge singură: `surse` ține și adrese propuse de model sau de pe
+    alte domenii, deci la descărcare fiecare pas trece și prin garda de rețea
+    internă (`_adu_din_retea`).
 
     Rezultatul se ține în memorie: o conexiune nouă la Postgres costă ~2s pe
     Windows, iar fără cache fiecare deschidere de document plătea de două ori
     (o dată verificarea, o dată servirea) chiar și când fișierul era deja local.
+    Se țin doar răspunsurile pozitive: setul e mărginit de tabela `surse`, pe
+    când un refuz ținut minte creștea memoria cu orice `u` inventat (și rămânea
+    refuz și după ce pipeline-ul înregistra documentul).
     """
     # http:// trece doar dacă documentul e deja în Bronze (se servește local,
     # fără nicio cerere în rețea); descărcarea din rețea rămâne doar pe https
     if not url or not (url.startswith("https://") or (url.startswith("http://") and _din_bronze(url))):
         return False
-    if url not in _PERMISE:
-        _PERMISE[url] = bool(interoghează(
+    if url in _PERMISE:
+        return True
+    if interoghează(
             """SELECT 1 FROM surse
                WHERE url_public = %s OR (tip_sursa IN ('url', 'document') AND sursa = %s)
                LIMIT 1""",
-            (url, url),
-        ))
-    return _PERMISE[url]
+            (url, url)):
+        _PERMISE.add(url)
+        return True
+    return False
 
 
 CACHE_PDF = os.path.join(AICI, ".cache_pdf")
@@ -2147,7 +2157,27 @@ def adu_pdf(url):
     return _adu_din_retea(url)
 
 
-def _adu_din_retea(url):
+# Plafonul unui PDF adus prin /pdf. Bronze avea 107 MB în 298 de fișiere la prima
+# rulare (.gitignore), sub 0,4 MB în medie: 30 MB lasă loc listelor mari de tarife,
+# iar un răspuns fără sfârșit nu mai umple memoria serverului (`r.content` îl citea întreg).
+MAX_PDF_OCTETI = 30 * 1024 * 1024
+
+
+def _citeste_cu_plafon(r, plafon):
+    """Corpul răspunsului (`stream=True`), citit pe bucăți; ValueError peste `plafon` octeți."""
+    declarat = r.headers.get("Content-Length") or ""
+    if declarat.isdigit() and int(declarat) > plafon:
+        raise ValueError(f"document peste {plafon // 2**20} MB")
+    corp = bytearray()
+    # iter_content dă octeții decomprimați: plafonul ține și la o arhivă gzip care se umflă
+    for bucata in r.iter_content(64 * 1024):
+        corp += bucata
+        if len(corp) > plafon:
+            raise ValueError(f"document peste {plafon // 2**20} MB")
+    return bytes(corp)
+
+
+def _adu_din_retea(url, sesiune=None):
     """Aduce PDF-ul o singură dată și îl păstrează local.
 
     De ce prin serverul nostru: vizualizatorul propriu (PDF.js) are nevoie de
@@ -2156,17 +2186,29 @@ def _adu_din_retea(url):
 
     Cache-ul nu e optimizare, e politețe: altfel fiecare deschidere a
     sertarului ar re-descărca de la bancă același document.
+
+    Redirecturile se urmează aici, nu în `requests`: cel mult
+    `transport.MAX_PASI_REDIRECT`, și fiecare pas trece întâi prin
+    `transport.refuz_pas` (adresă internă, origine BLOCAT, robots.txt). Înainte,
+    `requests` urma orb un 302 de la o adresă din `surse` spre 127.0.0.1 sau
+    169.254.169.254, iar robots.txt se verifica doar la adresa de plecare.
+    `transport._http` nu se folosește direct: stă la coada originii (lacătul
+    dintre procese, cu așteptare de până la 600 s), poate marca originea BLOCAT
+    dintr-o cerere a unui utilizator și citește corpul fără plafon.
+    `sesiune` (orice obiect cu `.get`) e pentru teste.
     """
     import hashlib
-    # robots.txt și aici, nu doar la colectare: ING are `Disallow: *.pdf`, iar
-    # allowlist-ul din bază lăsa să treacă un PDF înregistrat înainte de verificare.
+    from urllib.parse import urljoin
     radacina = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     for p in (radacina, os.path.join(radacina, "ingest")):
         if p not in sys.path:
             sys.path.insert(0, p)
-    import flux
-    if not flux.permite(url, "proxy"):
-        raise PermissionError("interzis de robots.txt al băncii")
+    import transport
+    # robots.txt și aici, nu doar la colectare: ING are `Disallow: *.pdf`, iar
+    # allowlist-ul din bază lăsa să treacă un PDF înregistrat înainte de verificare.
+    motiv = transport.refuz_pas(url, "proxy")
+    if motiv:
+        raise PermissionError(motiv)
     os.makedirs(CACHE_PDF, exist_ok=True)
     cale = os.path.join(CACHE_PDF, hashlib.sha256(url.encode()).hexdigest() + ".pdf")
     if os.path.exists(cale) and os.path.getsize(cale) > 1000:
@@ -2175,19 +2217,30 @@ def _adu_din_retea(url):
     # sistemului pică pe unele domenii (ing.ro dă CERTIFICATE_VERIFY_FAILED
     # fiindcă lipsește intermediarul). `requests` folosește `certifi`.
     import requests
-    r = requests.get(url, timeout=40, headers={
-        # UA-ul unic al echipei (crawler/__init__.py): se identifică, nu se dă
-        # drept browser.
-        "User-Agent": __import__("crawler").UA,
-        "Accept": "application/pdf,*/*",
-    })
-    if not r.ok:
-        raise ValueError(f"HTTP {r.status_code}")
-    if not r.content.startswith(b"%PDF"):
-        raise ValueError("răspunsul nu e un PDF")
-    with open(cale, "wb") as f:
-        f.write(r.content)
-    return cale
+    adresa = url
+    for _pas in range(transport.MAX_PASI_REDIRECT + 1):
+        r = (sesiune or requests).get(adresa, timeout=40, allow_redirects=False, stream=True, headers={
+            # UA-ul unic al echipei (crawler/__init__.py): se identifică, nu se dă
+            # drept browser.
+            "User-Agent": __import__("crawler").UA,
+            "Accept": "application/pdf,*/*",
+        })
+        with r:
+            if r.is_redirect:
+                adresa = urljoin(adresa, r.headers["Location"])
+                motiv = transport.refuz_pas(adresa, "proxy")
+                if motiv:
+                    raise PermissionError(f"redirect refuzat: {motiv}")
+                continue
+            if not r.ok:
+                raise ValueError(f"HTTP {r.status_code}")
+            corp = _citeste_cu_plafon(r, MAX_PDF_OCTETI)
+        if not corp.startswith(b"%PDF"):
+            raise ValueError("răspunsul nu e un PDF")
+        with open(cale, "wb") as f:
+            f.write(corp)
+        return cale
+    raise ValueError(f"peste {transport.MAX_PASI_REDIRECT} redirecturi")
 
 
 # Cu Postgres oprit, paginile arătau textul psycopg2 („OperationalError: connection to server at
@@ -2355,7 +2408,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     s = SESIUNI.citeste(valoare)
                     if s:
                         return dict(s, local=False, id=valoare)
-        rol = autentificare.mod_local(os.environ, self.headers)
+        rol = autentificare.mod_local(os.environ, self.headers,
+                                      ad_configurat=AUTENTIFICARE.config.problema() is None)
         if rol:
             return {"utilizator": "local", "nume": "local", "rol": rol, "local": True}
         return None
@@ -2552,13 +2606,21 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if not pdf_permis(url):
                 self.send_error(403, "URL neinregistrat ca sursa")
                 return
+            # Clientul primește doar un mesaj generic, în ASCII: `send_error` pune mesajul
+            # în linia de stare, codată latin-1, iar „ă” din „băncii” rupea răspunsul;
+            # textul și codul de la bancă (sau de la o gazdă internă) nu ies din server.
+            # Motivul rămâne în jurnalul serverului, prin ascii(): un \r\n din `u` nu
+            # scrie rânduri false, iar diacriticele nu cad pe consola cp1252.
             try:
                 cale = adu_pdf(url)
             except PermissionError as exc:
-                self.send_error(403, str(exc))
+                print(f"/pdf refuzat: {ascii(str(exc)[:300])} {ascii(url[:300])}", file=sys.stderr)
+                self.send_error(403, "Refuzat")
                 return
             except Exception as exc:
-                self.send_error(502, f"nu s-a putut aduce PDF-ul: {exc}")
+                print(f"/pdf esuat: {type(exc).__name__}: {ascii(str(exc)[:300])} {ascii(url[:300])}",
+                      file=sys.stderr)
+                self.send_error(502, "PDF indisponibil")
                 return
             with open(cale, "rb") as f:
                 corp = f.read()
@@ -2597,7 +2659,28 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             # „Rulare manuală” există doar în React. Ce iese din web/dist (`..`) dă 404.
             cale = os.path.normpath(os.path.join(DIST_WEB, urllib.parse.unquote(rel[4:])))
             return cale if cale == DIST_WEB or cale.startswith(DIST_WEB + os.sep) else os.path.join(DIST_WEB, "__in_afara__")
-        return os.path.join(AICI, rel or "index.html")
+        # Din app/ se servesc doar interfața veche și siglele; restul folderului e cod.
+        # Înainte orice cale se lipea de app/ fără verificare: pe laptop, /C:/Windows/win.ini,
+        # /../config.py și /server.py răspundeau 200 (auditul de securitate, B5).
+        nume = urllib.parse.unquote(rel) or "index.html"
+        if nume in FISIERE_APP:
+            return os.path.join(AICI, nume)
+        if nume.startswith("logos/"):
+            # Doar un nume care chiar există în logos/: fără subfoldere, `..`, `\`, litere de
+            # unitate sau NUL, și fără numele rezervate de Windows (CON.svg), care nu apar în listare.
+            sigla = nume[len("logos/"):]
+            dosar = os.path.join(AICI, "logos")
+            try:
+                if sigla in os.listdir(dosar) and os.path.isfile(os.path.join(dosar, sigla)):
+                    return os.path.join(dosar, sigla)
+            except OSError:
+                pass
+        return os.path.join(DIST_WEB, "__in_afara__")
+
+    def list_directory(self, path):
+        # Nicio listare de folder (web/dist/assets/ și altele): ce nu e un fișier cerut pe nume dă 404.
+        self.send_error(404)
+        return None
 
     def log_message(self, fmt, *args):
         pass  # fara zgomot in consola
@@ -2646,9 +2729,9 @@ if __name__ == "__main__":
         sys.exit(2)
     problema = CONFIG_AUTH.problema()
     if problema:
-        local = autentificare.mod_local(os.environ, {})
+        local = autentificare.mod_local(os.environ, {"Host": "localhost"}, ad_configurat=False)
         print(f"Autentificarea AD nu e configurată: {problema}. Logarea răspunde 503 (ad_indisponibil)"
-              + (f"; aici intri ca utilizator local ({local}, MCC_AUTH_LOCAL)." if local else "."))
+              + (f"; pe laptop intri automat ca utilizator local ({local})." if local else "."))
     try:
         srv = Server(("::", PORT), Handler)
     except OSError:

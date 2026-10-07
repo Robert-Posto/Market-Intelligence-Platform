@@ -52,7 +52,12 @@ def normalizeaza_url(u: str) -> str:
 
 
 async def adu(url: str):
-    r = await fh.adu_http(url, timeout=30, follow_redirects=True)
+    try:
+        r = await fh.adu_http(url, timeout=30)
+    except fh.AccesRefuzat as e:
+        # un pas al cererii (de obicei un redirect) e spre o adresă internă, pe o origine
+        # BLOCAT sau interzis de robots.txt după regulile MIP: ca la un 403, banca se oprește
+        raise Blocat(str(e)) from None
     if r.status_code in COD_BLOCAJ:
         raise Blocat(f"{r.status_code} la {url}")
     await asyncio.sleep(PAUZA_S)
@@ -80,7 +85,12 @@ class Robots:
             rp.parse(linii)
             self._rp[origine] = rp
             self.sitemapuri += [l.split(":", 1)[1].strip() for l in linii if l.lower().startswith("sitemap:")]
-        return self._rp[origine].can_fetch(fh.UA, url)
+        if not self._rp[origine].can_fetch(fh.UA, url):
+            return False
+        # și regulile MIP, cu care `fh.adu_http` verifică oricum cererea: crawler/robots.py
+        # vede wildcard-urile (`Disallow: *.xml`), pe care urllib le ratează. Aici adresa se
+        # sare; refuzată abia la cerere, ar opri toată banca (Blocat, în `adu`).
+        return await fh.refuz_mip(url) is None
 
 
 async def din_sitemap(url: str, vazute: set[str], rb: Robots) -> list[tuple[str, str]]:

@@ -277,6 +277,9 @@ def un_produs(banca: dict, idb: int, p: dict, timeout_s: float = 0) -> dict:
 
     surse = T.deduplica(rez.get("surse") or [])
     T.verifica(surse, rez["_deschise"], rez["_texte"])
+    # înainte de prag și de scriere: o adresă nedeschisă din afara domeniilor băncii
+    # (sau altceva decât http(s)) nu ajunge în surse_libra, de unde o cere extractorul zilnic
+    surse = T.filtreaza_surse(surse, rez["_deschise"], rez["_texte"], banca)
     for s in surse:
         s["link_live"] = (link_live(s["url"], s["citat"])
                           if s.get("citat_verificat") and s["tip"] == "html" else None)
@@ -411,9 +414,11 @@ def ruleaza(arg, job: Job) -> None:
             if not f.exists():
                 continue
             d = json.loads(f.read_text(encoding="utf-8"))
-            scrie_db(idb, p["id"], d["surse"], d.get("gol"))
-            gasite += bool(d["surse"])
-            negasite += bool(not d["surse"] and (d.get("gol") or {}).get("motiv"))
+            # și JSON-urile scrise înainte de filtru trec prin el
+            surse = T.filtreaza_surse(d["surse"], d.get("deschise") or [], {}, banca)
+            scrie_db(idb, p["id"], surse, d.get("gol"))
+            gasite += bool(surse)
+            negasite += bool(not surse and (d.get("gol") or {}).get("motiv"))
         spune(f"{banca['id']}: din JSON — {gasite} produse găsite, {negasite} not_found")
         return
     de_rulat = [p for p in produse if arg.forteaza or not (dosar / f"{p['cod']}.json").exists()]
