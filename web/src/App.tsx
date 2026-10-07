@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { DoarAdmin } from './auth/AccesInterzis'
 import AppShell from './layout/AppShell'
 import Overview from './pages/Overview'
 import Produse from './pages/Produse'
@@ -42,8 +43,8 @@ export default function App() {
         <Route path="/concurenta" element={<Concurenta />} />
         <Route path="/surse" element={<SursePagina />} />
         <Route path="/coada" element={<Coada />} />
-        <Route path="/logging" element={<Logging />} />
-        <Route path="/rulare" element={<RulareManuala />} />
+        <Route path="/logging" element={<DoarAdmin><Logging /></DoarAdmin>} />
+        <Route path="/rulare" element={<DoarAdmin><RulareManuala /></DoarAdmin>} />
         {/* pagina 2.7 s-a mutat în 2.3 (ca în aplicația veche) */}
         <Route path="/sentiment" element={<Navigate to="/mobil?la=recenzii" replace />} />
         <Route path="*" element={<Navigate to="/overview" replace />} />

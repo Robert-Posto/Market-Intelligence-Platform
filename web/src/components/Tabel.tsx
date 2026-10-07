@@ -3,12 +3,14 @@ import { Table, Tooltip } from 'antd'
 import type { ColumnType } from 'antd/es/table'
 import { useLang } from '../i18n'
 import { compara } from '../util/format'
+import { propsLipit, RandFantoma, useSusCap } from './lipire'
 
 /**
  * Tabelul comun al aplicației vechi, pe Table din AntD, cu aceleași reguli:
  *  - primul clic pe un antet sortează descrescător (cifrele mari sus), al doilea crescător;
  *  - golurile rămân jos în ambele sensuri;
- *  - rândul Libra rămâne primul, oricum s-ar sorta.
+ *  - rândul Libra rămâne primul, oricum s-ar sorta;
+ *  - capul rămâne lipit sub bara de filtre la derulare, iar prima coloană la derularea pe orizontală (`lipit`).
  * AntD singur nu le are pe ultimele două, deci sortarea se face aici, iar
  * tabelul primește lista deja ordonată.
  */
@@ -34,6 +36,7 @@ export function Tabel<R>({
   gol,
   clasaRand,
   onRand,
+  lipit = true,
 }: {
   randuri: R[]
   coloane: Coloana<R>[]
@@ -44,9 +47,13 @@ export function Tabel<R>({
   clasaRand?: (r: R) => string
   /** clic pe tot rândul (deschide sertarul, filtrează); un clic pe un link din rând nu ajunge aici */
   onRand?: (r: R) => void
+  /** capul lipit la derularea paginii (implicit); `false` în chenarele cu derulare proprie și în sertare */
+  lipit?: boolean
 }) {
   const { t, locale } = useLang()
   const [sort, setSort] = useState<[string, 'ascend' | 'descend'] | null>(implicit ?? null)
+  const [el, setEl] = useState<HTMLDivElement | null>(null)
+  const sus = useSusCap(lipit ? el : null)
 
   const lista = useMemo(() => {
     const l = randuri.slice()
@@ -65,8 +72,9 @@ export function Tabel<R>({
     return l
   }, [randuri, coloane, sort, libra, locale])
 
-  const cols: ColumnType<R>[] = coloane.map((c) => ({
+  const cols: ColumnType<R>[] = coloane.map((c, i) => ({
     key: c.cheie,
+    fixed: lipit && i === 0 ? ('left' as const) : undefined,
     title: c.titlu ? <Tooltip title={c.titlu}>{c.cap}</Tooltip> : c.cap,
     // fără `align` pe celelalte: AntD îl pune inline și ar bate alinierea din CSS (celulele matricei, la dreapta)
     align: c.num ? 'right' : undefined,
@@ -81,19 +89,23 @@ export function Tabel<R>({
 
   if (!randuri.length) return <p className="note">{gol ?? t('comun.nimic_de_afisat')}</p>
   return (
-    <Table<R>
-      className="t"
-      size="small"
-      columns={cols}
-      dataSource={lista}
-      rowKey={cheieRand}
-      pagination={false}
-      rowClassName={(r) => [libra && libra(r) === 'libra' ? 'libra' : '', onRand ? 'clic' : '', clasaRand?.(r) ?? ''].join(' ').trim()}
-      onRow={onRand ? (r) => ({ onClick: (e) => { if (!(e.target as HTMLElement).closest('a, button')) onRand(r) } }) : undefined}
-      onChange={(_p, _f, s) => {
-        const x = Array.isArray(s) ? s[0] : s
-        setSort(x?.order ? [String(x.columnKey), x.order] : null)
-      }}
-    />
+    <div ref={setEl}>
+      <Table<R>
+        className="t"
+        size="small"
+        columns={cols}
+        dataSource={lista}
+        rowKey={cheieRand}
+        pagination={false}
+        {...(lipit ? propsLipit<R>(sus) : {})}
+        summary={lipit ? () => <RandFantoma capuri={coloane.map((c) => ({ cheie: c.cheie, cap: c.cap, sortabil: !!c.s }))} /> : undefined}
+        rowClassName={(r) => [libra && libra(r) === 'libra' ? 'libra' : '', onRand ? 'clic' : '', clasaRand?.(r) ?? ''].join(' ').trim()}
+        onRow={onRand ? (r) => ({ onClick: (e) => { if (!(e.target as HTMLElement).closest('a, button')) onRand(r) } }) : undefined}
+        onChange={(_p, _f, s) => {
+          const x = Array.isArray(s) ? s[0] : s
+          setSort(x?.order ? [String(x.columnKey), x.order] : null)
+        }}
+      />
+    </div>
   )
 }

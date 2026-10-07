@@ -2,8 +2,8 @@ import { Tooltip } from 'antd'
 import { useLang } from '../i18n'
 import { num } from '../util/format'
 
-/** Distribuția pe stele [5★, 4★, 3★, 2★, 1★] ca bară stivuită, cu cifrele la hover. Folosită în 2.3 și în fișa băncii. */
-const CULORI = ['var(--ok)', '#7fb893', 'var(--muted)', '#d9a441', 'var(--warn)']
+/** Distribuția pe stele [5★, 4★, 3★, 2★, 1★] ca bară stivuită, cu cifrele la hover. Folosită în 2.3 și în fișa băncii. Culorile vin din temă (global.css). */
+const CULORI = ['var(--ok)', 'var(--stele-4)', 'var(--muted)', 'var(--stele-2)', 'var(--warn)']
 
 export function BareStele({ dist, latime = 140 }: { dist: number[] | null | undefined; latime?: number }) {
   const { locale } = useLang()

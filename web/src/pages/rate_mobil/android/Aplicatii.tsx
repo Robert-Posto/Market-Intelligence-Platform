@@ -64,7 +64,7 @@ export default function Aplicatii({ ix, apps, m, deschide }: PropsSectiune) {
         }} />
       </p>
       <div className="an-tabel">
-        <Tabel randuri={apps} coloane={coloane} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
+        <Tabel lipit={false} randuri={apps} coloane={coloane} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
           gol={t('mobil.android_gol_filtru')} />
       </div>
       <Note ix={ix} m={m}>

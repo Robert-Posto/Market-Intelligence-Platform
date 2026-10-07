@@ -1,0 +1,24 @@
+/* ---- pagina de logare și subsolul meniului cu utilizatorul; doar culori din variabilele temei ---- */
+.logare-asteapta { min-height: 100vh; background: var(--bg) }
+.logare { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; background: var(--bg);
+  position: relative }
+.logare-comutatoare { position: absolute; top: 16px; right: 20px; display: flex; gap: 8px; align-items: center }
+.logare-card { width: 100%; max-width: 400px; background: var(--surface); border: 1px solid var(--line); border-radius: 13px;
+  box-shadow: var(--umbra); padding: 28px 30px 26px; overflow: hidden }
+.logare-marca { margin: -28px -30px 22px; padding: 18px 30px 15px; background: linear-gradient(180deg, var(--nav) 0%, var(--nav-2) 100%);
+  color: var(--nav-ink) }
+.logare-marca .t { display: block; font-family: var(--serif); font-size: 24px; line-height: 1.1; font-weight: 700; letter-spacing: -.01em }
+.logare-marca .t i { color: var(--nav-slab); font-style: italic; font-weight: 600 }
+.logare-marca .s { display: block; margin-top: 8px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--nav-slab); opacity: .8 }
+.logare-card h1 { font-size: 21px; margin: 0 0 4px }
+.logare-card .note { margin: 0 0 16px }
+.logare-alerta { margin-bottom: 14px }
+
+nav .picior .utilizator { margin-top: 6px; overflow-wrap: anywhere }
+nav .picior .utilizator b { color: var(--nav-ink); font-weight: 500 }
+nav .picior .iesire { padding: 0; border: 0; background: none; font: inherit; color: var(--nav-ink); text-decoration: underline; cursor: pointer }
+nav .picior .iesire:hover { color: var(--nav-slab) }
+nav .picior .iesire:focus-visible { outline: 2px solid var(--nav-ink); outline-offset: 2px }
+nav .picior .local { opacity: .85 }
+.acces-interzis { max-width: 560px }

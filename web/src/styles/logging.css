@@ -2,9 +2,8 @@
    validată pe suprafețele MIP (validate_palette.js, 05.10.2026), cu pași proprii pe întunecat,
    nu o inversare automată. Ordinea e cea din job_types: discovery, extragere, produse noi. */
 :root { --lg-1: #2a78d6; --lg-2: #eb6834; --lg-3: #1baf7a }
-@media (prefers-color-scheme: dark) {
-  :root { --lg-1: #3987e5; --lg-2: #d95926; --lg-3: #199e70 }
-}
+/* tema întunecată vine din comutatorul din meniu (data-theme pe <html>, src/tema), nu direct din sistem */
+:root[data-theme="dark"] { --lg-1: #3987e5; --lg-2: #d95926; --lg-3: #199e70 }
 
 .lg { transition: opacity .12s ease }
 .lg-filtre { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-bottom: 14px }

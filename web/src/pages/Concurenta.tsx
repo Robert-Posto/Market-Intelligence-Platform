@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import type { ProdusConcurenta } from '@mcc/shared'
 import { useProduseConcurenta } from '../api/comparatie_libra'
 import { useMeta } from '../api/meta'
-import { Despre, Eroare, Pill, SeIncarca } from '../components/comune'
+import { Despre, Eroare, Pill, SeIncarca, SiglaBanca } from '../components/comune'
 import { T, useLang, type DictKey } from '../i18n'
 import { faraDiacritice, formatZi } from '../util/format'
 import { SCURT } from './produse/logica'
@@ -111,7 +111,7 @@ export default function Concurenta() {
           <div className="pc-lista">
             {peCat[k]!.map((p) => (
               <a key={p.id} className="pc-produs" href={p.link} target="_blank" rel="noopener noreferrer">
-                <span className="pc-banca">{m.logo[p.banca] && <img src={m.logo[p.banca]} alt="" />}{nume(p.banca)}</span>
+                <span className="pc-banca">{m.logo[p.banca] && <SiglaBanca src={m.logo[p.banca]!} />}{nume(p.banca)}</span>
                 {/* denumirea și descrierea vin de pe site-ul băncii: nu se traduc */}
                 <span className="pc-nume">
                   {p.denumire_produs}

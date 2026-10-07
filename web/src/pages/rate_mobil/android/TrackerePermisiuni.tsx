@@ -76,7 +76,7 @@ export default function TrackerePermisiuni({ ix, apps, m, deschide }: PropsSecti
         <h2>{t('mobil.android_titlu_trackere')}</h2>
         <p className="note" style={{ margin: '0 0 10px' }}><T k="mobil.android_nota_trackere" /></p>
         <div className="an-tabel">
-          <Tabel randuri={apps} coloane={colTrackere} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
+          <Tabel lipit={false} randuri={apps} coloane={colTrackere} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
             gol={t('mobil.android_gol_filtru')} />
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function TrackerePermisiuni({ ix, apps, m, deschide }: PropsSecti
         <h2>{t('mobil.android_titlu_permisiuni')}</h2>
         <p className="note" style={{ margin: '0 0 10px' }}><T k="mobil.android_nota_permisiuni" /></p>
         <div className="an-tabel an-mx">
-          <Tabel randuri={apps} coloane={colPermisiuni} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
+          <Tabel lipit={false} randuri={apps} coloane={colPermisiuni} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
             gol={t('mobil.android_gol_filtru')} />
         </div>
         <Note ix={ix} m={m}>

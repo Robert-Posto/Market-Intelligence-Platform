@@ -9,6 +9,7 @@ import { useGoogle } from '../../api/reclame'
 import { Banda, BaraSectiune, Chip } from '../../components/Banda'
 import { Despre, EtichetaBanca, Eroare, Pill, SeIncarca } from '../../components/comune'
 import { Paginare } from '../../components/Paginare'
+import { propsLipit, RandFantoma, useSusCap } from '../../components/lipire'
 import { Tabel, type Coloana } from '../../components/Tabel'
 import { T, useLang, type DictKey } from '../../i18n'
 import { formatZi, num } from '../../util/format'
@@ -325,6 +326,8 @@ function Rezultat({ d, m, f, onSorteaza, onPagina }: {
 }) {
   const { t, tn, locale } = useLang()
   const et = useEtichete()
+  const [elTabel, setElTabel] = useState<HTMLDivElement | null>(null)
+  const sus = useSusCap(elTabel)
   const x = d.filtrat
   const n = x.n
 
@@ -372,7 +375,7 @@ function Rezultat({ d, m, f, onSorteaza, onPagina }: {
   const cuTitlu = (cap: string, titlu: string) => <Tooltip title={titlu}><span>{cap}</span></Tooltip>
   const coloane: ColumnType<ReclamaGoogle>[] = [
     {
-      key: 'banca', title: t('campanii.comun.banca'), className: 'nw', ...sortabil('banca'),
+      key: 'banca', title: t('campanii.comun.banca'), ...sortabil('banca'),
       render: (_, r) => (
         <>
           <EtichetaBanca slug={r.banca} m={m} fisa />
@@ -446,21 +449,27 @@ function Rezultat({ d, m, f, onSorteaza, onPagina }: {
     <>
       {rezumat}
       {/* Table direct, nu Tabel: Tabel sortează în browser, iar aici sortează serverul pe toate cele 16.765 */}
-      <Table<ReclamaGoogle>
-        className="t"
-        size="small"
-        columns={coloane}
-        dataSource={d.randuri}
-        rowKey={(r) => `${r.advertiser_id}/${r.creative_id}`}
-        pagination={false}
-        rowClassName={(r) => (r.banca === 'libra' ? 'libra' : '')}
-        onChange={(_p, _f, s, extra) => {
-          if (extra.action !== 'sort') return
-          const c = Array.isArray(s) ? s[0] : s
-          const col = String(c?.columnKey ?? '')
-          if (COLOANE.includes(col)) onSorteaza(col)
-        }}
-      />
+      <div ref={setElTabel}>
+        <Table<ReclamaGoogle>
+          className="t"
+          size="small"
+          columns={coloane.map((c, i) => (i === 0 ? { ...c, fixed: 'left' as const } : c))}
+          dataSource={d.randuri}
+          rowKey={(r) => `${r.advertiser_id}/${r.creative_id}`}
+          pagination={false}
+          {...propsLipit<ReclamaGoogle>(sus)}
+          summary={() => (
+            <RandFantoma capuri={coloane.map((c, i) => ({ cheie: String(c.key ?? i), cap: typeof c.title === 'function' ? null : c.title, sortabil: !!c.sorter }))} />
+          )}
+          rowClassName={(r) => (r.banca === 'libra' ? 'libra' : '')}
+          onChange={(_p, _f, s, extra) => {
+            if (extra.action !== 'sort') return
+            const c = Array.isArray(s) ? s[0] : s
+            const col = String(c?.columnKey ?? '')
+            if (COLOANE.includes(col)) onSorteaza(col)
+          }}
+        />
+      </div>
       <Paginare total={n} offset={d.offset} limit={d.limit} onChange={onPagina} />
     </>
   )

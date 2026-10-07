@@ -68,7 +68,7 @@ export default function Functionalitati({ ix, apps, m, deschide }: PropsSectiune
         })}
       </div>
       <div className="an-tabel an-mx">
-        <Tabel randuri={apps} coloane={coloane} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
+        <Tabel lipit={false} randuri={apps} coloane={coloane} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
           gol={t('mobil.android_gol_filtru')} />
       </div>
       <Note ix={ix} m={m}>

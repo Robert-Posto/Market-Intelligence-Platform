@@ -8,6 +8,7 @@ import { T, useLang } from '../../../i18n'
 import { num } from '../../../util/format'
 import { googlePlay, playDupaPachet, recenziiPlay } from '../dateLocale'
 import { CeENou, Galerie, RezumatAi, Stele } from '../Piese'
+import { SiglaBanca } from '../../../components/comune'
 import { Captura } from './comune'
 import ComparaPlay from './ComparaPlay'
 import { eticheta, type PropsSectiune } from './model'
@@ -81,7 +82,7 @@ function CardPlay({ a, m, deschide, onRecenzii }: {
     <article className="mb-card">
       <div className="mb-card-sus">
         <div className="mb-card-info">
-          {logo ? <Tooltip title={nume}><img className="mb-sigla" src={logo} alt={nume} /></Tooltip> : <span className="mb-sigla-txt">{nume}</span>}
+          {logo ? <Tooltip title={nume}><span className="mb-sigla"><SiglaBanca src={logo} nume={nume} marime="card" /></span></Tooltip> : <span className="mb-sigla-txt">{nume}</span>}
           {p ? (
             <>
               {/* nota și evaluările un singur bloc: 4,59 fără „din 3.081” nu spune cât cântărește */}

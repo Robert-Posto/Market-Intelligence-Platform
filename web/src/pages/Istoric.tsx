@@ -245,7 +245,7 @@ function TabelBanca({ rs }: { rs: Rand[] }) {
   ]
   return (
     <div className="ci-tabel">
-      <Tabel randuri={rs} coloane={coloane} cheieRand={(r) => String(r.id)} />
+      <Tabel lipit={false} randuri={rs} coloane={coloane} cheieRand={(r) => String(r.id)} />
     </div>
   )
 }
