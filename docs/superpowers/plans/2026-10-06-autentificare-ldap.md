@@ -29,7 +29,7 @@
 3. Valoarea din filtrul LDAP escapată (`ldap3.utils.conv.escape_filter_chars`).
 4. Doar `ldaps://` (TLS, `ssl.CERT_REQUIRED`, `MCC_LDAP_CA` dacă e dat, altfel depozitul sistemului); `MCC_LDAP_URL` cu alt protocol → configurație invalidă (logarea răspunde `ad_indisponibil`, iar serverul scrie motivul la pornire).
 5. Timeout: conectare 5 s, răspuns 10 s; maximum 4 verificări LDAP simultane (semafor); peste → `ad_indisponibil`.
-6. Limitare: 5 eșecuri / utilizator și 20 / IP în 15 minute → `prea_multe_incercari` fără a întreba AD-ul; o logare reușită șterge contorul utilizatorului.
+6. Limitare (după audit, configurabilă: `MCC_AUTH_MAX_INCERCARI`, `MCC_AUTH_MAX_PE_IP`, `MCC_AUTH_FEREASTRA_MIN`): implicit 3 eșecuri / utilizator și 20 / IP în 30 de minute → `prea_multe_incercari` fără a întreba AD-ul; o logare reușită șterge contorul utilizatorului.
 7. Mesaje către client doar codurile de mai sus; excepțiile LDAP detaliate merg doar în jurnalul serverului.
 8. Sesiune: `secrets.token_urlsafe(32)`, ținută ca SHA-256; identificator nou la fiecare logare; expirare la `MCC_SESIUNE_ORE` de inactivitate și maximum 12 h absolut; maximum 10 sesiuni pe utilizator (cea mai veche iese); curățare periodică a celor expirate.
 9. POST-urile de autentificare: doar `application/json`, corp ≤ 2048 B, `Sec-Fetch-Site` (dacă e trimis) doar `same-origin`/`none`.
