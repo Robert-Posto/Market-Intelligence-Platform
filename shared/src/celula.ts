@@ -11,6 +11,9 @@ export const ValoareDovada = z
     valoare_text: z.string().nullable(),
     unitate: z.string().nullable(),
     cod_scenariu: z.string().nullable(),
+    /** pf / pfa / imm / pj din `cod_scenariu`; null = sursa nu-l spune; lipsește în răspunsurile Vox
+     * salvate înainte de 07.10.2026 */
+    segment: z.string().nullable().optional(),
     citat: z.string().nullable(),
     confidence: z.number().nullable(),
     ambiguu: z.boolean(),

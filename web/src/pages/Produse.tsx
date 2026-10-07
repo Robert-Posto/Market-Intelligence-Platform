@@ -92,7 +92,7 @@ export default function Produse() {
               s: (b: string) => pe[b]![cp]?.n,
               td: (b: string) => pe[b]![cp]
                 ? { className: 'mc', title: t('produse.tooltip_celula', { banca: m.nume[b] ?? b, serviciu: etNume(cp, t) }),
-                    onClick: () => setSertar({ banca: b, camp: cp, unitate: 'lei', scenariu: '' }) }
+                    onClick: () => setSertar({ banca: b, camp: cp, unitate: 'lei', scenariu: '', segment: seg === 'toate' ? undefined : seg }) }
                 : { className: 'gol' },
               val: (b: string) => {
                 const x = pe[b]![cp]

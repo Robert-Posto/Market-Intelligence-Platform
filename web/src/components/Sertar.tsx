@@ -9,7 +9,7 @@ import { deLaServer } from '../i18n/server'
 import { compara, num } from '../util/format'
 import { Pill } from './comune'
 import { CitatEvidentiat, citatUtil, LinkSursa, MOTIV_CHEIE } from './Dovezi'
-import { etDesc, etNume, unitTxt } from './valori'
+import { etDesc, etNume, etSegment, unitTxt } from './valori'
 
 /**
  * Sertarul cu dovezile din spatele unei celule (refăcut pe 25.09 în aplicația
@@ -30,6 +30,10 @@ export interface CerereSertar {
   scenariu: string
   termen?: string
   produs?: string
+  /** pf / pfa / imm / pj cu regula din 2.1 (plus rândurile fără segment) sau `nemarcat`; lipsă = toate */
+  segment?: string
+  /** doar segmentul cerut, fără rândurile nemarcate: grupele din Vox, care nu le numără */
+  strict?: boolean
 }
 
 /** Textul românesc al datelor: „retrasă din ofertă” e scris de bancă, nu de noi. */
@@ -42,7 +46,7 @@ export default function Sertar({ cerere, onClose }: { cerere: CerereSertar | nul
     queryKey: ['celula', cerere],
     enabled: !!cerere,
     queryFn: () =>
-      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '' }),
+      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '', segment: cerere!.segment, strict: cerere!.strict ? 1 : undefined }),
   })
   const titlu = cerere ? `${meta.data?.nume[cerere.banca] ?? cerere.banca} · ${etNume(cerere.camp, t)}` : ''
   return (
@@ -178,6 +182,7 @@ function Rand({ r }: { r: ValoareDovada }) {
       </div>
       <div className="rc">
         {ctx.length ? ctx.flatMap((x, i) => (i ? [' · ', x] : [x])) : <span className="gri">{t('sertar.rand.fara_conditii')}</span>}
+        {r.segment && <> <Pill>{etSegment(r.segment, t)}</Pill></>}
         {r.ambiguu && <> <Pill tip="amb" title={motiv ? t(`coada.motiv_explicatie.${motiv}` as DictKey) : undefined}>{t('sertar.rand.de_verificat')}</Pill></>}
         <span className="ind">{cit ? t('sertar.rand.citat') : t('sertar.rand.detalii')} ▾</span>
       </div>
