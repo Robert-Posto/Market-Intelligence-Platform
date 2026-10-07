@@ -291,8 +291,20 @@ text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde 
   DAE (8,09–8,37%); promptul spune acum ce înseamnă termenii englezești. Întrebările despre servicii
   fără concept („datoria vamală”, „TrezoNet” la BCR) cer `concept: null` și text de căutat; înainte
   de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”).
-- Când termenul sau tipul de credit golesc răspunsul, fișa spune câte valori sunt fără filtru: ING
-  are 2 dobânzi la depozite, niciuna cu termen citit din textul băncii.
+- **Segmentul.** Rezumatul și tabelul se împart pe persoane fizice, PFA, IMM, firme și „fără segment
+  în sursă”, PF primul: BCR · administrare cont avea 302 valori PJ, 234 PFA și 33 PF într-un singur
+  interval, 0–1.200 lei (`mip_merge`, 07.10.2026). Segmentul vine din `cod_scenariu`; la dobânzi
+  sursele nu-l spun, deci acolo nu apare. „Vezi dovezile” deschide sertarul exact pe grupă
+  (`/api/celula?segment=pf&strict=1`); sertarul din 2.1 și Versus folosește regula lui 2.1 (segmentul
+  plus rândurile nemarcate).
+- **Termenul și tipul de credit** se citesc din textul băncii, deci pot goli un răspuns: la „depozit
+  pe 12 luni” 28 din 30 de bănci n-aveau nicio valoare. Când răspunsul exact iese gol, Vox cade pe
+  „termen nespecificat”, apoi și pe „credit nespecificat”, și spune ce filtru a căzut (Libra: 11
+  dobânzi fără termen în sursă; băncile fără valori scad la 20). Dacă nici așa nu iese nimic, fișa
+  spune câte valori sunt fără niciun filtru.
+- **De ce lipsește o bancă.** Fișa goală spune câte surse ale băncii sunt interzise de `robots.txt`
+  sau refuzate de site și câte sunt PDF-uri (ING: 48 de PDF-uri interzise din 158 de surse), ori că
+  valoarea n-a apărut în sursele colectate; și că lipsa din bază nu înseamnă că banca n-are produsul.
 - Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
   nouă, repornește serverul.
 - Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând
@@ -300,7 +312,7 @@ text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde 
   redeschide fără model (gratuit), le caută în titlu și în întrebări (fără diacritice, cu cuvintele
   tăiate la rădăcină ca la căutarea după text), le redenumește și le șterge; cea deschisă stă în
   adresă (`#/vox?c=<id>`). Jurnalul de costuri rămâne separat, în `loguri/vox/AAAA-LL.jsonl`.
-- Teste fără rețea: `python app/test_vox.py`.
+- Teste fără rețea: `python app/test_vox.py` și `python app/test_celula.py` (segmentul din `/api/celula`).
 
 ### Pachetul Playwright (`crawler/`)
 
