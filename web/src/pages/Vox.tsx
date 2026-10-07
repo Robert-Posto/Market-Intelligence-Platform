@@ -417,6 +417,7 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
       i.termen && eticheta(`vox.termen.${i.termen}`, i.termen, t),
       i.produs_credit && eticheta(`vox.produs.${i.produs_credit}`, i.produs_credit, t),
     ].filter(Boolean).join(' · ')
+    const motiv = !rb.stare_banca && rb.blocaje ? textBlocaje(rb.blocaje, tn, !!rb.fara_filtre) : ''
     return (
       <div className="vox-fisa">
         {cap}
@@ -424,7 +425,7 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
           <p>
             <b>{t('vox.zero', { concept: filtre ? `${concept} · ${filtre}` : concept, banca: m.nume[rb.banca] ?? rb.banca })}</b>
             {rb.stare_banca && <> {t(rb.stare_banca === 'blocata' ? 'vox.stare.blocata' : 'vox.stare.fara_surse')}</>}
-            {!rb.stare_banca && rb.blocaje && <> {textBlocaje(rb.blocaje, tn)}</>}
+            {motiv && <> {motiv}</>}
             {!!rb.fara_filtre && <> {tn('vox.fara_filtre', rb.fara_filtre)}</>}
             {' '}{t('vox.lipsa_nu_inseamna')}
           </p>
@@ -529,13 +530,16 @@ function notaRelaxata(relaxate: string[], n: number, i: Interpretare, t: Tr, tn:
 }
 
 /** De ce n-are banca valori, cu cifrele din `surse` (app/server.py, `_stare_banca_vox`). */
-function textBlocaje(b: NonNullable<RaspunsBanca['blocaje']>, tn: Tn): string {
+function textBlocaje(b: NonNullable<RaspunsBanca['blocaje']>, tn: Tn, cuValoriFaraFiltre: boolean): string {
   const parti = [
     b.robots > 0 ? tn('vox.blocaje.robots', b.robots, { surse: b.surse }) : '',
     b.refuzate > 0 ? tn('vox.blocaje.refuzate', b.refuzate, { surse: b.surse }) : '',
     b.pdf > 0 ? tn('vox.blocaje.pdf', b.pdf) : '',
   ].filter(Boolean)
-  return parti.length ? parti.join(' ') : tn('vox.blocaje.niciuna', b.surse)
+  if (parti.length) return parti.join(' ')
+  // cu valori fără filtru, „valoarea n-a apărut în sursele colectate” contrazicea propoziția următoare,
+  // care le numără: Raiffeisen · depozit 1–3 luni, 3 valori pe alte termene (mip_merge, 07.10.2026)
+  return cuValoriFaraFiltre ? '' : tn('vox.blocaje.niciuna', b.surse)
 }
 
 function PlacaRezumat({ g, multeCategorii, onDovezi }: { g: GrupaRezumat; multeCategorii: boolean; onDovezi?: () => void }) {
