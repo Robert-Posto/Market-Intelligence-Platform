@@ -263,6 +263,15 @@ class Http(unittest.TestCase):
         cls.port = cls.srv.server_address[1]
         threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
         cls.env_vechi = os.environ.get("MIP_PERMITE_RULARI")
+        # rulările se pornesc de pe laptop, unde autentificarea e scurtătura locală (admin);
+        # poarta și rolurile au testele lor, în test_server_autentificare.py
+        import autentificare
+        cls.autentificare = autentificare
+        cls.auth_vechi = {k: os.environ.get(k) for k in ("MCC_AUTH_LOCAL", "MCC_AUTH_OBLIGATORIE")}
+        os.environ["MCC_AUTH_LOCAL"] = "admin"
+        os.environ.pop("MCC_AUTH_OBLIGATORIE", None)
+        cls.jurnal_vechi = autentificare.CALE_JURNAL
+        autentificare.CALE_JURNAL = os.path.join(cls.dir, "autentificare.log")
 
     @classmethod
     def tearDownClass(cls):
@@ -277,6 +286,12 @@ class Http(unittest.TestCase):
             os.environ.pop("MIP_PERMITE_RULARI", None)
         else:
             os.environ["MIP_PERMITE_RULARI"] = cls.env_vechi
+        for k, v in cls.auth_vechi.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+        cls.autentificare.CALE_JURNAL = cls.jurnal_vechi
 
     def setUp(self):
         os.environ["MIP_PERMITE_RULARI"] = "1"

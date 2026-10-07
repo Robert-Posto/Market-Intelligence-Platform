@@ -141,6 +141,25 @@ refuză să ruleze fără el) și `ANTHROPIC_API_KEY` pentru discovery.
 > definită cu `SELECT *`, iar Postgres îngheață lista de coloane la creare: o
 > coloană adăugată ulterior nu apare, și API-ul cade cu 500 deși tabela o are.
 
+### Autentificare (Active Directory)
+
+Orice dată (`/api/*`, `/pdf`, `/logos`, paginile din `app/`) cere sesiune: logare cu contul de Windows, verificat la
+AD prin LDAPS (`app/autentificare.py`). Rolul vine din grupurile AD, inclusiv imbricate: `MCC_LDAP_GRUP_ADMIN` →
+admin, `MCC_LDAP_GRUP_ANALIST` → analist (în ambele → admin, în niciunul → 403). Doar adminul are „Rulare manuală”
+și „Joburi și erori” (`/api/rulari*`, `/api/rulare_manuala*`, `/api/jobs`): 403 pentru analist, verificat pe server.
+
+- **Pe laptop**: `MCC_AUTH_LOCAL=admin` în `.env` te consideră admin fără logare (`GET /api/sesiune` dă
+  `local: true`). Fără ea, aplicația cere logare. Nu are efect pe cererile venite prin nginx (`X-Real-IP`) și nici
+  cu `MCC_AUTH_OBLIGATORIE=1`.
+- **Pe server**: `MCC_LDAP_*` în `.env` (model în `.env.example`; ce se cere de la IT în `deploy/INSTALARE.md`),
+  iar `mcc.service` pune `MCC_AUTH_OBLIGATORIE=1`.
+- Rute: `POST /api/autentificare` `{utilizator, parola}`, `GET /api/sesiune`, `POST /api/delogare`. Cookie
+  `mcc_sesiune` (`HttpOnly`, `SameSite=Strict`, `Secure` pe HTTPS); expiră după `MCC_SESIUNE_ORE` (8) fără
+  activitate și oricum după 12 h. 5 parole greșite pe utilizator (20 pe adresă) în 15 minute → 429, fără să mai
+  întrebe AD-ul. Sesiunile stau în memorie; jurnalul în `loguri/autentificare.log`, fără parole.
+- Teste: `python app/test_autentificare.py` (inclusiv cu un DC fals pe loopback, prin LDAPS) și
+  `python app/test_server_autentificare.py`.
+
 ### Colectare
 
 ```bash
