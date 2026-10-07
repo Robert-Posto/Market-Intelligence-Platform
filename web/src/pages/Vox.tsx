@@ -23,6 +23,7 @@ import { etNume, etSegment, unitTxt } from '../components/valori'
 import { areCheie, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { num } from '../util/format'
+import Clasament from './vox/Clasament'
 import Conversatii, { cand } from './vox/Conversatii'
 import '../styles/vox.css'
 
@@ -157,7 +158,8 @@ export default function Vox() {
     const q = intrebare.trim()
     if (!q || seTrimite || seIncarca || !st.activ) return
     // „și la BRD?” continuă ultima căutare reușită, nu o clarificare sau o eroare
-    const anterior = [...mesaje].reverse().find((x) => x.raspuns?.interpretare.tip === 'cautare')?.raspuns?.interpretare ?? null
+    // și din clasamente: „și pentru firme?” continuă clasamentul de dinainte
+    const anterior = [...mesaje].reverse().find((x) => ['cautare', 'clasament'].includes(x.raspuns?.interpretare.tip ?? ''))?.raspuns?.interpretare ?? null
     const id = Date.now()
     setLipsa(false)
     setMesaje((x) => [...x, { id, intrebare: q, data: new Date().toISOString() }])
@@ -378,15 +380,30 @@ function Raspuns({ r, m, poate, onDovezi, onExemplu }: {
     i.categorie && eticheta(`vox.categorie.${i.categorie}`, i.categorie, t),
     i.termen && eticheta(`vox.termen.${i.termen}`, i.termen, t),
     i.produs_credit && eticheta(`vox.produs.${i.produs_credit}`, i.produs_credit, t),
+    i.segment && etSegment(i.segment, t),
+    i.metrica === 'cea_mai_buna' && t('vox.clasament.metrica.cea_mai_buna'),
   ].filter((x): x is string => !!x)
+  const inteles = (
+    <div className="vox-inteles">
+      <span className="vox-et">{t('vox.am_inteles')}</span>
+      {i.tip === 'clasament' && <span className="vox-chip">{t('vox.clasament.chip')}</span>}
+      {i.banci.map((b) => <span key={b} className="vox-chip banca">{m.nume[b] ?? b}</span>)}
+      <span className="vox-chip">{i.concept ? etNume(i.concept, t) : t('vox.text_chip', { text: i.text_cautat ?? '' })}</span>
+      {filtre.map((f) => <span key={f} className="vox-chip">{f}</span>)}
+    </div>
+  )
+  if (i.tip === 'clasament') {
+    return (
+      <article className="vox-card">
+        {inteles}
+        {r.clasament && <Clasament c={r.clasament} m={m} onDovezi={onDovezi} />}
+        <div className="vox-card-jos">{subsol}</div>
+      </article>
+    )
+  }
   return (
     <article className="vox-card">
-      <div className="vox-inteles">
-        <span className="vox-et">{t('vox.am_inteles')}</span>
-        {i.banci.map((b) => <span key={b} className="vox-chip banca">{m.nume[b] ?? b}</span>)}
-        <span className="vox-chip">{i.concept ? etNume(i.concept, t) : t('vox.text_chip', { text: i.text_cautat ?? '' })}</span>
-        {filtre.map((f) => <span key={f} className="vox-chip">{f}</span>)}
-      </div>
+      {inteles}
       {r.ignorate.length > 0 && (
         <p className="vox-nota"><span className="vox-punct" />{t('vox.ignorate', { banci: r.ignorate.map((b) => m.nume[b] ?? b).join(', ') })}</p>
       )}

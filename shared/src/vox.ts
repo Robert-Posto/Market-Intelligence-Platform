@@ -12,7 +12,7 @@ export const VoxStare = z
 export type VoxStare = z.infer<typeof VoxStare>
 
 export const Interpretare = z.object({
-  tip: z.enum(['cautare', 'neclar', 'in_afara']),
+  tip: z.enum(['cautare', 'clasament', 'neclar', 'in_afara']),
   banci: z.array(z.string()),
   concept: z.string().nullable(),
   categorie: z.string().nullable(),
@@ -20,6 +20,9 @@ export const Interpretare = z.object({
   produs_credit: z.string().nullable(),
   text_cautat: z.string().nullable(),
   clarificare: z.string().nullable(),
+  /** lipsesc în conversațiile salvate înainte de clasamente (07.10.2026) */
+  segment: z.string().nullable().optional(),
+  metrica: z.enum(['mediana', 'cea_mai_buna']).nullable().optional(),
 })
 export type Interpretare = z.infer<typeof Interpretare>
 
@@ -58,11 +61,56 @@ export const RaspunsBanca = z
   .passthrough()
 export type RaspunsBanca = z.infer<typeof RaspunsBanca>
 
+/** Un rând de clasament (app/vox.py, `clasa`). */
+export const RandClasament = z
+  .object({
+    loc: z.number(), loc_pana: z.number(), banca: z.string(), valoare: z.number(),
+    minim: z.number(), maxim: z.number(), n: z.number(),
+    serviciu: z.string().nullable(), frecventa: z.string().nullable(), conditie: z.string().nullable(),
+    segment_necunoscut: z.boolean().nullable().optional(), evidentiata: z.boolean(),
+  })
+  .passthrough()
+export type RandClasament = z.infer<typeof RandClasament>
+
+export const BlocClasament = z
+  .object({ tip: z.enum(['exact', 'nespecificat']), termen: z.string(), produs: z.string(), randuri: z.array(RandClasament) })
+  .passthrough()
+export type BlocClasament = z.infer<typeof BlocClasament>
+
+/** Clasamentul unei întrebări; `neclasabil` = conceptul nu are o cifră comparabilă între bănci. */
+export const Clasament = z
+  .object({
+    concept: z.string().nullable(),
+    text: z.string().nullable().optional(),
+    neclasabil: z.boolean().optional(),
+    sursa: z.enum(['matrice', 'rate']).optional(),
+    grup: z.string().optional(),
+    unitate: z.string().optional(),
+    sens: z.enum(['mic_bun', 'mare_bun']).optional(),
+    metrica: z.enum(['mediana', 'cea_mai_buna']).optional(),
+    segment: z.string().nullable().optional(),
+    categorie: z.string().nullable().optional(),
+    termen: z.string().nullable().optional(),
+    produs: z.string().nullable().optional(),
+    blocuri: z.array(BlocClasament).optional(),
+    libra: z.object({ loc: z.number(), loc_pana: z.number(), din: z.number() }).nullable().optional(),
+    fara_date: z
+      .array(z.object({
+        banca: z.string(), stare: z.string().nullable().optional(), surse: z.number().optional(),
+        robots: z.number().optional(), refuzate: z.number().optional(), pdf: z.number().optional(),
+      }).passthrough())
+      .optional(),
+  })
+  .passthrough()
+export type Clasament = z.infer<typeof Clasament>
+
 export const RaspunsIntrebare = z
   .object({
     interpretare: Interpretare,
     ignorate: z.array(z.string()),
     raspunsuri: z.array(RaspunsBanca),
+    /** lipsește în conversațiile salvate înainte de clasamente (07.10.2026) */
+    clasament: Clasament.nullable().optional(),
     model: z.string(),
     tokeni: z.object({ intrare: z.number(), iesire: z.number(), citire_cache: z.number(), scriere_cache: z.number() }),
     cost_usd: z.number().nullable(),

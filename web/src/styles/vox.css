@@ -80,6 +80,17 @@ section.vox-bun-venit { flex: 1 0 auto; display: flex; flex-direction: column; a
 .vox-segment-cap { font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: .08em;
   text-transform: uppercase; color: var(--muted) }
 .vox-tabel .vox-seg { display: block; margin-top: 4px }
+/* clasamentele: rândul Libra și băncile numite, ca rândul Libra din tabelele aplicației (global.css) */
+.vox-clas-antet { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px }
+.vox-clas-bloc { display: flex; flex-direction: column; gap: 6px }
+.vox-clas td.loc { font-family: var(--mono); white-space: nowrap; color: var(--muted) }
+/* serviciul de la mediană poate fi lung („Pret pachet /luna cu indeplinirea conditie de pachet”): se rupe
+   pe rânduri, cifra nu; altfel coloana valorii avea 471 px, tabelul 876 px într-o fișă de 738 (07.10.2026) */
+.vox-tabel.vox-clas td.val { white-space: normal; min-width: 10em }
+.vox-tabel.vox-clas td.val .nr { white-space: nowrap }
+.vox-tabel.vox-clas th:nth-child(2) { min-width: 180px }
+.vox-clas tr.evidentiata td { background: var(--accent-tint) }
+.vox-clas tr.evidentiata td:first-child { box-shadow: inset 4px 0 var(--accent) }
 .vox-link.avertizare { color: var(--warn); font-weight: 600 }
 .vox-gol { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 14px; background: var(--warn-tint);
   border: 1px solid var(--line-2); border-radius: 10px }
