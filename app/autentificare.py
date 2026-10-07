@@ -9,7 +9,8 @@ Modulul nu știe nimic de server (testabil separat, `app/test_autentificare.py`)
   - `Autentificator`: validare, limitarea încercărilor, verificarea la AD (`ldap3`, sau un
     verificator injectat în teste) și jurnalul fiecărei încercări;
   - `Sesiuni`: în memorie (serverul nu scrie în bază), identificatorul ținut doar ca SHA-256;
-  - `jurnal`: o linie JSON pe eveniment în `loguri/autentificare.log`, niciodată parola;
+  - `jurnal`: o linie JSON pe eveniment în `loguri/autentificare.log`, niciodată parola (iar la o
+    logare eșuată nici numele scris, doar amprenta lui: `hash_utilizator`);
   - `mod_local` / `verifica_pornire`: scurtătura de pe laptop (`MCC_AUTH_LOCAL`), care pe
     server (`MCC_AUTH_OBLIGATORIE=1`) nu poate avea efect.
 
@@ -19,6 +20,7 @@ Cerințele de securitate (numerotate ca în planul din docs/superpowers/plans/
 
 import datetime
 import hashlib
+import hmac
 import json
 import os
 import re
@@ -41,9 +43,10 @@ TIMEOUT_CONECTARE = 5
 TIMEOUT_RASPUNS = 10
 LDAP_SIMULTANE = 4
 # cerința 6: sub pragul de blocare al AD-ului (de obicei 5–10), ca aplicația să nu poată fi
-# folosită la blocarea conturilor prin parole greșite trimise în serie
-FEREASTRA_S = 15 * 60
-ESECURI_UTILIZATOR = 5
+# folosită la blocarea conturilor prin parole greșite trimise în serie. Valorile implicite; pe
+# server se pot coborî din .env (MCC_AUTH_*) după politica AD, cu regula din deploy/INSTALARE.md
+FEREASTRA_MIN = 30
+ESECURI_UTILIZATOR = 3
 ESECURI_IP = 20
 # cerința 8
 MAXIM_ABSOLUT_S = 12 * 3600
@@ -62,7 +65,8 @@ class Config:
     """Setările AD. Lipsa lor nu oprește serverul: logarea răspunde `ad_indisponibil`."""
 
     def __init__(self, url="", domeniu="", baza="", grup_admin="", grup_analist="", ca=None,
-                 sesiune_ore=ORE_IMPLICITE):
+                 sesiune_ore=ORE_IMPLICITE, max_incercari=ESECURI_UTILIZATOR, fereastra_min=FEREASTRA_MIN,
+                 max_pe_ip=ESECURI_IP):
         self.url = url
         self.domeniu = domeniu
         self.baza = baza
@@ -70,11 +74,22 @@ class Config:
         self.grup_analist = grup_analist
         self.ca = ca
         self.sesiune_ore = sesiune_ore      # None = valoare invalidă în mediu (vezi problema())
+        # la fel: None = valoare invalidă
+        self.max_incercari = max_incercari
+        self.fereastra_min = fereastra_min
+        self.max_pe_ip = max_pe_ip
 
     @classmethod
     def din_mediu(cls, env=os.environ):
         def v(cheie):
             return (env.get(cheie) or "").strip()
+
+        def intreg(cheie, implicit):
+            try:
+                n = int(v(cheie) or implicit)
+            except ValueError:
+                return None
+            return n if n > 0 else None
         text_ore = v("MCC_SESIUNE_ORE") or str(ORE_IMPLICITE)
         try:
             ore = float(text_ore)
@@ -84,7 +99,10 @@ class Config:
             ore = None
         return cls(url=v("MCC_LDAP_URL"), domeniu=v("MCC_LDAP_DOMENIU"), baza=v("MCC_LDAP_BAZA"),
                    grup_admin=v("MCC_LDAP_GRUP_ADMIN"), grup_analist=v("MCC_LDAP_GRUP_ANALIST"),
-                   ca=v("MCC_LDAP_CA") or None, sesiune_ore=ore)
+                   ca=v("MCC_LDAP_CA") or None, sesiune_ore=ore,
+                   max_incercari=intreg("MCC_AUTH_MAX_INCERCARI", ESECURI_UTILIZATOR),
+                   fereastra_min=intreg("MCC_AUTH_FEREASTRA_MIN", FEREASTRA_MIN),
+                   max_pe_ip=intreg("MCC_AUTH_MAX_PE_IP", ESECURI_IP))
 
     def problema(self):
         """De ce nu se poate verifica o logare cu setările astea, sau None."""
@@ -114,6 +132,12 @@ class Config:
             return f"MCC_LDAP_CA: fișierul {self.ca} nu există"
         if self.sesiune_ore is None:
             return "MCC_SESIUNE_ORE invalid (un număr de ore mai mare ca 0)"
+        # o limită greșit scrisă oprește logarea (503 + motivul la pornire), nu limitarea
+        for cheie, valoare in (("MCC_AUTH_MAX_INCERCARI", self.max_incercari),
+                               ("MCC_AUTH_FEREASTRA_MIN", self.fereastra_min),
+                               ("MCC_AUTH_MAX_PE_IP", self.max_pe_ip)):
+            if valoare is None:
+                return f"{cheie} invalid (un număr întreg mai mare ca 0)"
         return None
 
 
@@ -130,7 +154,7 @@ def normalizeaza_utilizator(text):
 
     `DOMENIU\\x` și `x@domeniu` devin `x`: bind-ul se face oricum în domeniul nostru. Literele
     mici fac ca „Ana”, „ANA” și „LIBRA\\ana” să fie același cont și la limitare; altfel fiecare
-    variantă de scriere ar avea propriile 5 încercări.
+    variantă de scriere ar avea propriile încercări.
     """
     if not isinstance(text, str):
         return None
@@ -176,6 +200,11 @@ class Autentificator:
         # o excepție înseamnă AD indisponibil
         self._verificator = verificator or self._verifica_ldap
         self._ceas = ceas
+        # cerința 6, din configurație; o valoare invalidă (None) e motivul din problema(), iar
+        # limitarea rămâne oricum activă, cu valorile implicite
+        self._max_utilizator = config.max_incercari or ESECURI_UTILIZATOR
+        self._max_ip = config.max_pe_ip or ESECURI_IP
+        self._fereastra_s = (config.fereastra_min or FEREASTRA_MIN) * 60
         self._lacat = threading.Lock()
         self._esecuri = {}              # ("u", nume) / ("ip", adresa) -> momentele eșecurilor
         self._ultima_curatare = ceas()
@@ -191,28 +220,39 @@ class Autentificator:
         with self._lacat:
             acum = self._ceas()
             self._curata_esecuri(acum)
-            limitat = (len(self._recente(chei[0], acum)) >= ESECURI_UTILIZATOR
-                       or len(self._recente(chei[1], acum)) >= ESECURI_IP)
+            limitat = (len(self._recente(chei[0], acum)) >= self._max_utilizator
+                       or len(self._recente(chei[1], acum)) >= self._max_ip)
             if not limitat:
                 # Încercarea se socotește eșec de la început și se iartă doar dacă nu e o parolă
-                # greșită. Altfel 10 cereri simultane ar trece toate de „sub 5” și ar ajunge la AD.
+                # greșită. Altfel 10 cereri simultane ar trece toate de „sub limită” și ar ajunge la AD.
                 for cheie in chei:
                     self._esecuri.setdefault(cheie, []).append(acum)
         if limitat:
             return self._incheie(Rezultat(False, nume_scurt, "", None, "limitat"), ip, nume_scurt)
         rezultat, detaliu = self._intreaba_ad(nume_scurt, parola)
         with self._lacat:
-            if rezultat.motiv != "invalid":
-                for cheie in chei:
-                    lista = self._esecuri.get(cheie)
-                    if lista and acum in lista:
-                        lista.remove(acum)
+            if rezultat.motiv == "invalid":
+                iertate = ()
+            elif rezultat.motiv == "fara_rol":
+                # parola era bună: contul nu strânge eșecuri (AD-ul nu l-a socotit greșit), dar
+                # adresa da, altfel „fără rol” ar confirma nelimitat parolele ghicite pe multe
+                # conturi (password spraying)
+                iertate = chei[:1]
+            else:
+                iertate = chei
+            for cheie in iertate:
+                lista = self._esecuri.get(cheie)
+                if lista and acum in lista:
+                    lista.remove(acum)
             if rezultat.ok:
                 self._esecuri.pop(chei[0], None)     # cerința 6: succesul șterge contorul utilizatorului
         if detaliu:
             # cerința 7: detaliul (excepția LDAP) doar în jurnal, iar dacă biblioteca ar fi pus
-            # parola în mesaj, nici acolo
+            # parola în mesaj, nici acolo; la fel numele scris, care la un eșec poate fi o parolă
+            # (vezi _incheie). Doar ca nume întreg, ca un nume scurt să nu macine restul mesajului.
             detaliu = detaliu.replace(parola, "***")
+            detaliu = re.sub(rf"(?<![A-Za-z0-9._-]){re.escape(nume_scurt)}(?![A-Za-z0-9._-])", "<utilizator>",
+                             detaliu, flags=re.IGNORECASE)
         return self._incheie(rezultat, ip, nume_scurt, detaliu)
 
     def _intreaba_ad(self, nume_scurt, parola):
@@ -237,7 +277,7 @@ class Autentificator:
             self._semafor.release()
 
     def _recente(self, cheie, acum):
-        lista = [t for t in self._esecuri.get(cheie, ()) if acum - t < FEREASTRA_S]
+        lista = [t for t in self._esecuri.get(cheie, ()) if acum - t < self._fereastra_s]
         if lista:
             self._esecuri[cheie] = lista
         else:
@@ -246,16 +286,20 @@ class Autentificator:
 
     def _curata_esecuri(self, acum):
         # contoarele vechi s-ar aduna altfel la nesfârșit (câte unul pe nume încercat)
-        if acum - self._ultima_curatare >= FEREASTRA_S:
+        if acum - self._ultima_curatare >= self._fereastra_s:
             for cheie in list(self._esecuri):
                 self._recente(cheie, acum)
             self._ultima_curatare = acum
 
     def _incheie(self, rezultat, ip, nume_scurt, detaliu=None):
-        eveniment = {"eveniment": "logare",
-                     # un nume care nu trece validarea poate fi chiar parola, scrisă în câmpul greșit
-                     "utilizator": nume_scurt, "ip": ip,
-                     "rezultat": "reusit" if rezultat.ok else "esuat", "motiv": rezultat.motiv}
+        eveniment = {"eveniment": "logare"}
+        if rezultat.ok:
+            eveniment["utilizator"] = nume_scurt
+        else:
+            # la un eșec numele scris poate fi chiar parola, în câmpul greșit, și trece și de
+            # validare („Parola123”): în jurnal ajunge doar amprenta, bună la corelarea încercărilor
+            eveniment["utilizator_hash"] = hash_utilizator(nume_scurt) if nume_scurt else None
+        eveniment.update(ip=ip, rezultat="reusit" if rezultat.ok else "esuat", motiv=rezultat.motiv)
         if rezultat.ok:
             eveniment["rol"] = rezultat.rol
         if detaliu:
@@ -288,14 +332,23 @@ class Autentificator:
                 if conn.result.get("result") == 49:      # invalidCredentials: parolă greșită, cont blocat/expirat
                     return None
                 raise RuntimeError(f"bind refuzat: {conn.result.get('description')} {conn.result.get('message')}")
+            # contul legat, după AD (WhoAmI, RFC 4532: `u:DOMENIU\sam`). Rolul se dă doar dacă
+            # e chiar contul găsit la căutare: căutarea pleacă de la numele scris, iar un alt cont
+            # care se potrivește filtrului nu trebuie să-și împrumute grupurile celui legat
+            legat = sam_din_whoami(conn.extend.standard.who_am_i())
             gasite = self._cauta(conn, filtru_utilizator(utilizator, c.domeniu), ["displayName", "sAMAccountName"])
             if not gasite:
                 return utilizator, None       # legat, dar în afara MCC_LDAP_BAZA: fără acces
             if len(gasite) > 1:
-                raise RuntimeError(f"cont ambiguu: {len(gasite)} conturi pentru „{utilizator}” "
+                # fără numele scris: detaliul e al unei logări eșuate (vezi _incheie)
+                raise RuntimeError(f"cont ambiguu: {len(gasite)} conturi pentru numele scris "
                                    "(sAMAccountName și UPN explicit diferite)")
             atribute = gasite[0].get("attributes") or {}
-            nume, sam = _prima(atribute.get("displayName")), _prima(atribute.get("sAMAccountName")) or utilizator
+            nume, sam = _prima(atribute.get("displayName")), _prima(atribute.get("sAMAccountName"))
+            if legat is None or not sam or legat != sam.lower():
+                raise RuntimeError("identitate ambiguă: " + (
+                    "AD-ul n-a răspuns la WhoAmI cu u:DOMENIU\\sam" if legat is None
+                    else "contul legat (WhoAmI) nu e contul găsit la căutare"))
             # admin întâi: cine e în ambele grupuri e admin
             for dn_grup, rol in ((c.grup_admin, "admin"), (c.grup_analist, "analist")):
                 if self._cauta(conn, filtru_grup(sam, dn_grup), ["sAMAccountName"]):
@@ -326,6 +379,24 @@ def _prima(valoare):
     if isinstance(valoare, (list, tuple)):
         valoare = valoare[0] if valoare else ""
     return valoare if isinstance(valoare, str) else ""
+
+
+def sam_din_whoami(raspuns):
+    """`u:DOMENIU\\sam` (cum răspunde AD-ul la WhoAmI) → `sam` cu litere mici; altfel None."""
+    if not isinstance(raspuns, str) or not raspuns.startswith("u:"):
+        return None
+    return raspuns[2:].rsplit("\\", 1)[-1].lower() or None
+
+
+# cheia amprentelor din jurnal: aleatoare, nouă la fiecare pornire și doar în memorie. Fără cheie,
+# amprenta unui nume scurt (sau a unei parole scrise în câmpul utilizatorului) s-ar ghici prin
+# dicționar; cu ea, încercările se corelează între ele doar cât trăiește procesul
+_CHEIE_AMPRENTA = secrets.token_bytes(32)
+
+
+def hash_utilizator(nume):
+    """Amprenta numelui pentru jurnal: HMAC-SHA256 cu cheia procesului, primele 12 caractere hex."""
+    return hmac.new(_CHEIE_AMPRENTA, nume.encode("utf-8"), hashlib.sha256).hexdigest()[:12]
 
 
 class Sesiuni:

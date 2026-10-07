@@ -154,9 +154,10 @@ admin, `MCC_LDAP_GRUP_ANALIST` → analist (în ambele → admin, în niciunul �
 - **Pe server**: `MCC_LDAP_*` în `.env` (model în `.env.example`; ce se cere de la IT în `deploy/INSTALARE.md`),
   iar `mcc.service` pune `MCC_AUTH_OBLIGATORIE=1`.
 - Rute: `POST /api/autentificare` `{utilizator, parola}`, `GET /api/sesiune`, `POST /api/delogare`. Cookie
-  `mcc_sesiune` (`HttpOnly`, `SameSite=Strict`, `Secure` pe HTTPS); expiră după `MCC_SESIUNE_ORE` (8) fără
-  activitate și oricum după 12 h. 5 parole greșite pe utilizator (20 pe adresă) în 15 minute → 429, fără să mai
-  întrebe AD-ul. Sesiunile stau în memorie; jurnalul în `loguri/autentificare.log`, fără parole.
+  `mcc_sesiune` (`HttpOnly`, `SameSite=Strict`; pe HTTPS `__Host-mcc_sesiune`, cu `Secure`); expiră după
+  `MCC_SESIUNE_ORE` (8) fără activitate și oricum după 12 h. 3 parole greșite pe utilizator (20 pe adresă) în
+  30 de minute → 429, fără să mai întrebe AD-ul (configurabile: `MCC_AUTH_*` în `.env.example`). Sesiunile stau în
+  memorie; jurnalul în `loguri/autentificare.log`, fără parole.
 - Teste: `python app/test_autentificare.py` (inclusiv cu un DC fals pe loopback, prin LDAPS) și
   `python app/test_server_autentificare.py`.
 

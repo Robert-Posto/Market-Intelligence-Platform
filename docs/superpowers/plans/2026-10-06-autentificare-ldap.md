@@ -15,7 +15,7 @@
 - Serverul rămâne fără scrieri în baza de date: sesiunile în memorie, jurnalul în `loguri/autentificare.log` (o linie JSON pe eveniment).
 - Variabile de mediu, exact: `MCC_LDAP_URL`, `MCC_LDAP_DOMENIU`, `MCC_LDAP_BAZA`, `MCC_LDAP_GRUP_ADMIN`, `MCC_LDAP_GRUP_ANALIST`, `MCC_LDAP_CA` (opțional), `MCC_SESIUNE_ORE` (implicit 8), `MCC_AUTH_LOCAL` (`admin` | `analist`, doar dezvoltare), `MCC_AUTH_OBLIGATORIE` (`1` pe server).
 - Rute, exact: `POST /api/autentificare` `{utilizator, parola}` → 200 `{utilizator, nume, rol}`; `GET /api/sesiune` → 200 `{utilizator, nume, rol, local}` sau 401; `POST /api/delogare` → 200 `{}`. Rolurile: `"admin"` | `"analist"`. Erorile: `{eroare: "<cod>"}` cu codurile `neautentificat` (401), `date_invalide` (401), `fara_rol` (403), `interzis` (403, rol insuficient), `prea_multe_incercari` (429), `ad_indisponibil` (503).
-- Cookie: numele `mcc_sesiune`; `HttpOnly; SameSite=Strict; Path=/; Max-Age=<sec>`; `Secure` când `X-Forwarded-Proto: https`.
+- Cookie: numele `mcc_sesiune` pe HTTP și `__Host-mcc_sesiune` pe HTTPS (după audit, 07.10); `HttpOnly; SameSite=Strict; Path=/; Max-Age=<sec>`; `Secure` când `X-Forwarded-Proto: https`.
 - Rute admin (403 pentru analist): `/api/jobs`, `/api/rulare_manuala`, `/api/rulare_manuala/estimare`, `/api/rulari` (GET), `/api/rulari/porneste`, `/api/rulari/opreste` (POST).
 - Fără sesiune → 401 pe: orice `/api/*` (în afară de `/api/autentificare`, `/api/sesiune`, `/api/delogare`), `/pdf`, `/logos/*`, `/pdf.html`, `/harta.html`, `/` și `/index.html` (interfața veche).
 - Cod: Python în stilul din `app/server.py` și `app/rulari.py` (comentarii în română care spun DE CE); TypeScript fără punct și virgulă, ghilimele simple; texte noi în dicționar RO + EN.
