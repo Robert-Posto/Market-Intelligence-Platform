@@ -42,14 +42,15 @@ Criterii de reușită (verificate cu scriptul de acoperire, fără model):
 
 ### O singură regulă, pe server
 
-În `app/server.py`, lângă `TERMEN_LUNI`:
+În `app/server.py`, înaintea lui `matrice`:
 - `SEGMENT_RAND`: expresia SQL care scoate segmentul rândului din `cod_scenariu`:
   `substring(coalesce(o.cod_scenariu, '') from '(?:^|\|)(pf|pj|pfa|imm)(?:\||$)')`, `NULL` când sursa
   nu-l marchează. Verificat: `SEGMENT_RAND = 'pf' OR SEGMENT_RAND IS NULL` dă exact rândurile lui
   `COND_SEG` din `matrice` (10.975 = 10.975 pe toată baza).
 - `COND_SEG` iese din `matrice` în modul (aceeași regulă, aceeași valoare); `matrice` o folosește ca
   înainte, deci 2.1, Versus și fișa de bancă nu se schimbă.
-- `ORDINE_SEGMENT = ("pf", "pfa", "imm", "pj")`, apoi rândurile fără segment.
+- `ORDINE_SEGMENT = ("pf", "pfa", "imm", "pj")`, apoi rândurile fără segment. Stă în `app/vox.py`:
+  serverul importă `vox`, nu invers, iar `celula` acceptă la `segment` doar valorile de aici.
 
 ### `celula` (`/api/celula`)
 
@@ -145,12 +146,14 @@ README (secțiunea „Vox”), memoria Serena `cod/harta` (`celula` cu `segment`
 
 ## Fișiere
 
-- `app/server.py`: `SEGMENT_RAND`, `COND_SEG`, `ORDINE_SEGMENT`; `matrice` (constanta mutată);
+- `app/server.py`: `SEGMENT_RAND`, `COND_SEG`; `matrice` (constanta mutată);
   `celula` (`segment`, `strict`, câmpul `segment`); `_stare_banca_vox`. `_cauta_vox` rămâne fără
   segment: Vox ia toate rândurile și le grupează el.
-- `app/vox.py`: `rezuma`, `Vox._raspuns`.
-- `app/test_vox.py`.
+- `app/vox.py`: `ORDINE_SEGMENT`, `rezuma`, `Vox._raspuns`.
+- `app/test_vox.py`; `app/test_celula.py` (nou: ce intră în SQL-ul lui `celula`, fără bază).
 - `shared/src/celula.ts`, `shared/src/vox.ts`.
-- `web/src/components/Sertar.tsx`, `web/src/pages/Produse.tsx`, `web/src/pages/versus/Sectiune.tsx`,
-  `web/src/pages/Vox.tsx`, `web/src/styles/vox.css`, `web/src/i18n/dict/vox.ts` (și dicționarul
-  sertarului, pentru pastilă).
+- `web/src/components/Sertar.tsx`, `web/src/components/valori.ts` (`etSegment`),
+  `web/src/pages/Produse.tsx`, `web/src/api/versus.ts` (`SEGMENT_VERSUS`),
+  `web/src/pages/versus/Sectiune.tsx`, `web/src/pages/Vox.tsx`, `web/src/styles/vox.css`,
+  `web/src/i18n/dict/vox.ts`, `web/src/i18n/dict/comun.ts` (etichetele segmentelor, comune
+  sertarului și lui Vox).
