@@ -273,8 +273,11 @@ text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde 
   are 2 dobânzi la depozite, niciuna cu termen citit din textul băncii.
 - Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
   nouă, repornește serverul.
-- Conversația nu se salvează și nu intră în adresă: un link deschis ar porni un apel plătit.
-  Jurnalul întrebărilor e local, în `loguri/vox/AAAA-LL.jsonl`.
+- Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând
+  pe întrebare, cu răspunsul ei; o redenumire e tot un rând). Coloana „Conversații” din pagină le
+  redeschide fără model (gratuit), le caută în titlu și în întrebări (fără diacritice, cu cuvintele
+  tăiate la rădăcină ca la căutarea după text), le redenumește și le șterge; cea deschisă stă în
+  adresă (`#/vox?c=<id>`). Jurnalul de costuri rămâne separat, în `loguri/vox/AAAA-LL.jsonl`.
 - Teste fără rețea: `python app/test_vox.py`.
 
 ### Pachetul Playwright (`crawler/`)
