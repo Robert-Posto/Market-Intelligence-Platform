@@ -2238,6 +2238,50 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         except Exception as exc:
             self._json(*_eroare_server(exc))
 
+    def _get_conversatii(self, cale):
+        """Lista și o conversație: doar citesc fișiere locale, deci merg și cu Vox oprit; tot cu
+        Host/Origin, ca GET /api/vox (întrebările sunt ale utilizatorului)."""
+        motiv = self._refuz_vox(cu_token=False)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        parti = cale.split("/")      # ["", "api", "vox", "conversatii", <id>]
+        if len(parti) == 4:
+            self._json(200, VOX.istoric.lista())
+            return
+        c = VOX.istoric.citeste(parti[4]) if len(parti) == 5 else None
+        if c is None:
+            self._json(404, {"eroare": vox.CONVERSATIE_LIPSA})
+            return
+        self._json(200, c)
+
+    def _post_conversatie(self, cale):
+        """Redenumirea și ștergerea: aceleași verificări ca întrebarea (token, Host/Origin, JSON)."""
+        motiv = self._refuz_vox(cu_token=True)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        parti = cale.split("/")      # ["", "api", "vox", "conversatii", <id>, <acțiune>]
+        if len(parti) != 6 or parti[5] not in ("redenumeste", "sterge"):
+            self.send_error(404)
+            return
+        corp = self._corp_json(1024)
+        if corp is None:
+            return
+        try:
+            if parti[5] == "sterge":
+                if not VOX.istoric.sterge(parti[4]):
+                    raise vox.ConversatieLipsa(vox.CONVERSATIE_LIPSA)
+                self._json(200, {"sters": True})
+            else:
+                self._json(200, VOX.istoric.redenumeste(parti[4], corp.get("titlu")))
+        except vox.ConversatieLipsa as exc:
+            self._json(404, {"eroare": str(exc)})
+        except vox.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(*_eroare_server(exc))
+
     def _citeste_corpul(self, limita=4096):
         """Octeții corpului, citiți înaintea oricărui refuz, sau None dacă lipsesc ori depășesc limita.
 
@@ -2255,6 +2299,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self._brut = self._citeste_corpul()
         if cale == "/api/vox":
             self._post_vox()
+            return
+        if cale.startswith("/api/vox/conversatii/"):
+            self._post_conversatie(cale)
             return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
@@ -2283,6 +2330,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/vox/conversatii" or parsed.path.startswith("/api/vox/conversatii/"):
+            self._get_conversatii(parsed.path)
+            return
         if parsed.path == "/api/vox":
             # tot cu Host/Origin, ca /api/rulari: răspunsul poartă tokenul de scriere
             motiv = self._refuz_vox(cu_token=False)

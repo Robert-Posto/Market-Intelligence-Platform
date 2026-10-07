@@ -707,6 +707,52 @@ class Http(unittest.TestCase):
         cod, d3 = self.cere("POST", "/api/vox", {"intrebare": "BCR?", "conversatie": "0" * 16}, ok)
         self.assertEqual((cod, d3["eroare"], len(self.client.cereri)), (400, "Conversația nu mai există.", n))
 
+    def test_conversatii_lista_citire_redenumire_stergere(self):
+        ok = {"X-MIP-Token": self.token()}
+        c = self.cere("POST", "/api/vox", {"intrebare": "Cât costă administrarea contului la BCR?"}, ok)[1]["conversatie"]
+        cod, lista = self.cere("GET", "/api/vox/conversatii")
+        self.assertEqual(cod, 200)
+        self.assertIn(c, [x["id"] for x in lista])
+        cod, conv = self.cere("GET", f"/api/vox/conversatii/{c}")
+        self.assertEqual((cod, conv["titlu"], len(conv["ture"])), (200, "Cât costă administrarea contului la BCR?", 1))
+        cod, d = self.cere("POST", f"/api/vox/conversatii/{c}/redenumeste", {"titlu": "BCR, cont"}, ok)
+        self.assertEqual((cod, d), (200, {"titlu": "BCR, cont", "redenumita": True}))
+        cod, d = self.cere("POST", f"/api/vox/conversatii/{c}/redenumeste", {"titlu": "x" * 121}, ok)
+        self.assertEqual((cod, d["eroare"]), (400, "Titlul are peste 120 de caractere."))
+        cod, d = self.cere("POST", f"/api/vox/conversatii/{c}/sterge", {}, ok)
+        self.assertEqual((cod, d), (200, {"sters": True}))
+        self.assertEqual(self.cere("GET", f"/api/vox/conversatii/{c}")[0], 404)
+        self.assertEqual(self.cere("POST", f"/api/vox/conversatii/{c}/sterge", {}, ok)[0], 404)
+        self.assertEqual(self.cere("POST", f"/api/vox/conversatii/{c}/redenumeste", {"titlu": "y"}, ok)[0], 404)
+
+    def test_conversatii_protejate(self):
+        ok = {"X-MIP-Token": self.token()}
+        c = self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, ok)[1]["conversatie"]
+        for antete, host in (({}, None), ({"X-MIP-Token": "gresit"}, None),
+                             ({"X-MIP-Token": self.server_mod.RULARI.token}, None),
+                             (dict(ok, Origin="http://evil.com"), None), (ok, f"evil.com:{self.port}")):
+            for actiune, corp in (("sterge", {}), ("redenumeste", {"titlu": "x"})):
+                cod, _ = self.cere("POST", f"/api/vox/conversatii/{c}/{actiune}", corp, antete, host)
+                self.assertEqual(cod, 403, (antete, host, actiune))
+        cod, _ = self.cere("POST", f"/api/vox/conversatii/{c}/sterge", None, dict(ok, **{"Content-Type": "text/plain"}))
+        self.assertEqual(cod, 415)
+        self.assertEqual(self.cere("GET", "/api/vox/conversatii", host=f"evil.com:{self.port}")[0], 403)
+        self.assertEqual(self.cere("GET", f"/api/vox/conversatii/{c}", antete={"Origin": "http://evil.com"})[0], 403)
+        self.assertEqual(self.cere("GET", f"/api/vox/conversatii/{c}")[0], 200)     # nimic șters
+
+    def test_conversatii_id_invalid(self):
+        ok = {"X-MIP-Token": self.token()}
+        for cale in ("/api/vox/conversatii/..%2F..%2Fserver", "/api/vox/conversatii/../../app/server.py",
+                     "/api/vox/conversatii/ABCDEF0123456789", "/api/vox/conversatii/"):
+            self.assertEqual(self.cere("GET", cale)[0], 404, cale)
+        self.assertEqual(self.cere("POST", "/api/vox/conversatii/../x/sterge", {}, ok)[0], 404)
+        self.assertEqual(self.cere("POST", f"/api/vox/conversatii/{'0' * 16}/altceva", {}, ok)[0], 404)
+
+    def test_conversatii_si_cu_vox_oprit(self):
+        """Lista doar citește fișiere locale: merge și fără cheie (istoricul rămâne de citit)."""
+        os.environ["MIP_PERMITE_VOX"] = "0"
+        self.assertEqual(self.cere("GET", "/api/vox/conversatii")[0], 200)
+
     def test_baza_oprita_503_cu_mesaj(self):
         """Cu Postgres oprit, pagina arăta textul brut psycopg2 („OperationalError: connection to server
         at …”), netradus; acum un mesaj fix, cu traducere, și la întrebare, și la încărcarea paginii."""
