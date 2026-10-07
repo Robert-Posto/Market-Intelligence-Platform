@@ -330,6 +330,17 @@ class IstoricConversatii(unittest.TestCase):
         self.assertEqual([t["intrebare"] for t in self.ist.citeste(a)["ture"]], ["A?"])
         self.assertEqual(self.ist.lista()[0]["intrebari"], 1)
 
+    def test_scriere_taiata_in_mijlocul_unei_litere(self):
+        """O scriere întreruptă poate tăia o literă de 2 octeți („â”): rândul stricat se sare, restul
+        conversației și lista rămân de citit (revizia istoricului, 07.10.2026: toată lista cădea)."""
+        a = self.ist.id_nou()
+        self.ist.adauga(a, "Cât costă administrarea contului la BCR?", self.raspuns())
+        with open(os.path.join(self.ist.dir, a + ".jsonl"), "ab") as f:
+            f.write('{"data": "2026-10-07T12:00:00+03:00", "intrebare": "Câ'.encode("utf-8")[:-1])
+        self.assertEqual([t["intrebare"] for t in self.ist.citeste(a)["ture"]],
+                         ["Cât costă administrarea contului la BCR?"])
+        self.assertEqual(self.ist.lista()[0]["intrebari"], 1)
+
     def test_lista_tine_minte_rezumatul(self):
         """Lista se cere după fiecare întrebare: un fișier neschimbat nu se recitește."""
         a = self.ist.id_nou()
@@ -747,6 +758,26 @@ class Http(unittest.TestCase):
             self.assertEqual(self.cere("GET", cale)[0], 404, cale)
         self.assertEqual(self.cere("POST", "/api/vox/conversatii/../x/sterge", {}, ok)[0], 404)
         self.assertEqual(self.cere("POST", f"/api/vox/conversatii/{'0' * 16}/altceva", {}, ok)[0], 404)
+
+    def test_conversatie_cu_litera_taiata_tot_se_listeaza(self):
+        """Prin server: înainte, o literă tăiată închidea conexiunea, iar pagina arăta „serverul nu răspunde”."""
+        ok = {"X-MIP-Token": self.token()}
+        c = self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, ok)[1]["conversatie"]
+        with open(os.path.join(self.server_mod.VOX.istoric.dir, c + ".jsonl"), "ab") as f:
+            f.write('{"intrebare": "Câ'.encode("utf-8")[:-1])
+        cod, lista = self.cere("GET", "/api/vox/conversatii")
+        self.assertEqual(cod, 200)
+        self.assertIn(c, [x["id"] for x in lista])
+        self.assertEqual(self.cere("GET", f"/api/vox/conversatii/{c}")[0], 200)
+
+    def test_conversatii_eroare_neasteptata_raspunde_json(self):
+        vechi = self.server_mod.VOX.istoric.lista
+        self.server_mod.VOX.istoric.lista = lambda: 1 / 0
+        try:
+            cod, d = self.cere("GET", "/api/vox/conversatii")
+        finally:
+            self.server_mod.VOX.istoric.lista = vechi
+        self.assertEqual((cod, d["eroare"]), (500, "ZeroDivisionError: division by zero"))
 
     def test_conversatii_si_cu_vox_oprit(self):
         """Lista doar citește fișiere locale: merge și fără cheie (istoricul rămâne de citit)."""

@@ -86,6 +86,10 @@ export default function Vox() {
   const [cerere, setCerere] = useState<CerereSertar | null>(null)
   // conversația creată chiar acum de prima întrebare: e deja în `mesaje`, nu se recitește
   const creata = useRef<string | null>(null)
+  // conversația afișată acum, pentru un răspuns care sosește după un „Înapoi”: fără ea, răspunsul unei
+  // conversații noi muta adresa pe ea, cu turele altei conversații pe ecran (revizia, 07.10.2026)
+  const afisata = useRef(c)
+  afisata.current = c
   const capat = useRef<HTMLDivElement>(null)
 
   const mergi = (k: Record<string, string | null>, inIstoric = false) =>
@@ -159,6 +163,8 @@ export default function Vox() {
     setSeTrimite(true)
     try {
       const r = await trimiteIntrebarea(q, anterior, c, st.token ?? '')
+      // între timp s-a deschis altă conversație: răspunsul e în fișierul lui, lista îl arată
+      if (afisata.current !== c) return
       setMesaje((x) => x.map((y) => (y.id === id ? { ...y, raspuns: r } : y)))
       setText('')
       if (r.conversatie && r.conversatie !== c) {
@@ -166,6 +172,7 @@ export default function Vox() {
         mergi({ c: r.conversatie })
       }
     } catch (e) {
+      if (afisata.current !== c) return
       const mesaj = (e as Error).message
       const afisat = mesaj === SERVER_OPRIT ? t('comun.server_oprit') : deLaServer(mesaj, lang)
       setMesaje((x) => x.map((y) => (y.id === id ? { ...y, eroare: afisat } : y)))

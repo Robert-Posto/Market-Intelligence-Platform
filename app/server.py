@@ -2246,10 +2246,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self._json(403, {"eroare": motiv})
             return
         parti = cale.split("/")      # ["", "api", "vox", "conversatii", <id>]
-        if len(parti) == 4:
-            self._json(200, VOX.istoric.lista())
+        try:
+            if len(parti) == 4:
+                self._json(200, VOX.istoric.lista())
+                return
+            c = VOX.istoric.citeste(parti[4]) if len(parti) == 5 else None
+        except Exception as exc:
+            # fără asta, o eroare neprevăzută închidea conexiunea, iar pagina arăta „serverul nu răspunde”
+            self._json(*_eroare_server(exc))
             return
-        c = VOX.istoric.citeste(parti[4]) if len(parti) == 5 else None
         if c is None:
             self._json(404, {"eroare": vox.CONVERSATIE_LIPSA})
             return

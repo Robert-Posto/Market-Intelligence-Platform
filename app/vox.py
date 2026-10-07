@@ -364,7 +364,9 @@ class Istoric:
         if not self.valid(id):
             return None
         try:
-            with open(self._cale(id), encoding="utf-8") as f:
+            # errors="replace": o scriere tăiată în mijlocul unei litere de 2 octeți („ă”) arunca
+            # UnicodeDecodeError și lua cu ea toată lista; așa doar rândul acela nu mai e JSON și se sare
+            with open(self._cale(id), encoding="utf-8", errors="replace") as f:
                 linii = f.readlines()
         except OSError:
             return None
