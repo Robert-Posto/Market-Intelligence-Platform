@@ -33,10 +33,14 @@ interface Mesaj {
 
 type Tr = (k: DictKey, p?: Record<string, string | number>) => string
 
+// șase pe pagina goală (pe un ecran de 1033px, trei lăsau cardul pe jumătate gol); primele trei și sub refuz
 const EXEMPLE: { tip: DictKey; text: DictKey }[] = [
   { tip: 'vox.exemplu_tip.1', text: 'vox.exemplu.1' },
   { tip: 'vox.exemplu_tip.2', text: 'vox.exemplu.2' },
   { tip: 'vox.exemplu_tip.3', text: 'vox.exemplu.3' },
+  { tip: 'vox.exemplu_tip.4', text: 'vox.exemplu.4' },
+  { tip: 'vox.exemplu_tip.5', text: 'vox.exemplu.5' },
+  { tip: 'vox.exemplu_tip.6', text: 'vox.exemplu.6' },
 ]
 // plăcile de rezumat spun deja intervalul; tabelul arată doar câteva rânduri ca exemplu (macheta)
 const PRIMELE = 3
@@ -206,7 +210,7 @@ function Raspuns({ r, m, poate, onDovezi, onExemplu }: {
       <div className="vox-bula">
         <p>{t('vox.in_afara')}</p>
         <div className="vox-sugestii">
-          {EXEMPLE.map((e) => (
+          {EXEMPLE.slice(0, 3).map((e) => (
             <button key={e.text} type="button" className="vox-sugestie" disabled={!poate} onClick={() => onExemplu(t(e.text))}>
               {t(e.text)}
             </button>

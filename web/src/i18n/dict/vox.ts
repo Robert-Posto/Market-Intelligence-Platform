@@ -14,14 +14,21 @@ export const vox = {
   "vox.bun_venit.titlu": ["Ce valoare cauți?", "Which value are you looking for?"],
   "vox.bun_venit.text": ["Spune banca și comisionul sau dobânda. Vox caută în tarifele colectate de la {n} bănci și îți arată fiecare valoare cu documentul din care vine.", "Name the bank and the fee or the interest rate. Vox searches the tariffs collected from {n} banks and shows each value with the document it comes from."],
   "vox.bun_venit.limite": ["Nu compară bănci între ele (vezi 2.1 și 2.2) și nu scrie texte: doar caută valori.", "It does not compare banks (see 2.1 and 2.2) and does not write texts: it only looks up values."],
-  // exemplele găsesc valori pe mip_merge (07.10.2026): BCR 570, Raiffeisen 2, datoria vamală 13;
-  // „ING, depozit pe 12 luni” nu găsea nimic cu termen citit, deci nu mai e exemplu
+  // exemplele găsesc valori pe mip_merge (07.10.2026): BCR 570, Raiffeisen depozit 2, datoria vamală 13,
+  // Libra DAE ipotecar 2, BRD emitere card 6, Raiffeisen extras 11; „ING, depozit pe 12 luni” nu găsea
+  // nimic cu termen citit, deci nu mai e exemplu
   "vox.exemplu_tip.1": ["Comision", "Fee"],
-  "vox.exemplu_tip.2": ["Dobândă", "Interest rate"],
+  "vox.exemplu_tip.2": ["Dobândă la depozit", "Deposit rate"],
   "vox.exemplu_tip.3": ["Căutare după text", "Text search"],
+  "vox.exemplu_tip.4": ["Credit", "Loan"],
+  "vox.exemplu_tip.5": ["Card", "Card"],
+  "vox.exemplu_tip.6": ["Cont", "Account"],
   "vox.exemplu.1": ["Cât costă administrarea contului la BCR?", "How much is the account maintenance fee at BCR?"],
   "vox.exemplu.2": ["Ce dobândă dă Raiffeisen la depozitul pe 12 luni?", "What rate does Raiffeisen pay on a 12-month deposit?"],
   "vox.exemplu.3": ["Cât costă decontarea electronică a datoriei vamale la BCR?", "How much does BCR charge for the electronic settlement of customs debt?"],
+  "vox.exemplu.4": ["Ce DAE are Libra la creditul ipotecar?", "What is the APR on a Libra mortgage?"],
+  "vox.exemplu.5": ["Cât costă emiterea unui card de debit la BRD?", "How much does BRD charge to issue a debit card?"],
+  "vox.exemplu.6": ["Cât costă extrasul de cont la Raiffeisen?", "How much is an account statement at Raiffeisen?"],
   "vox.intreaba_sageata": ["Întreabă →", "Ask →"],
 
   "vox.eticheta_camp": ["Întrebarea ta", "Your question"],
