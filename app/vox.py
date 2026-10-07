@@ -260,7 +260,7 @@ def valideaza(brut, ctx):
     categorii = next((c["categorii"] for c in ctx["concepte"] if c["camp"] == curat["concept"]), [])
     if curat["categorie"] not in categorii:
         curat["categorie"] = None
-    cu_ce =bool(curat["banci"] and (curat["concept"] or curat["text_cautat"]))
+    cu_ce = bool(curat["banci"] and (curat["concept"] or curat["text_cautat"]))
     if curat["tip"] == "cautare" and not cu_ce:
         curat["tip"] = "neclar"
     elif curat["tip"] == "neclar" and cu_ce:
