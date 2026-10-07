@@ -1982,6 +1982,10 @@ CONFIG_AUTH = autentificare.Config.din_mediu()
 AUTENTIFICARE = autentificare.Autentificator(CONFIG_AUTH)
 SESIUNI = autentificare.Sesiuni(CONFIG_AUTH.sesiune_ore or autentificare.ORE_IMPLICITE)
 COOKIE = "mcc_sesiune"
+# Pe HTTPS cookie-ul are prefixul __Host- (deci Secure, Path=/, fără Domain): browserul nu primește
+# un cookie cu numele ăsta de la alt site *.libra.bank, deci nimeni nu poate strecura o sesiune a
+# lui. Pe laptop (http://localhost) prefixul n-ar fi acceptat, de aceea rămâne numele simplu.
+COOKIE_HTTPS = "__Host-mcc_sesiune"
 # Rulările pornesc procese, iar joburile costă: doar adminul (403 pentru analist, verificat
 # aici, nu doar ascuns în interfață)
 RUTE_ADMIN = {"/api/jobs", "/api/rulare_manuala", "/api/rulare_manuala/estimare",
@@ -2129,14 +2133,24 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         # pe cel trimis de client); fără nginx, adresa socket-ului
         return (self.headers.get("X-Real-IP") or "").strip()[:64] or self.client_address[0]
 
+    def _https(self):
+        # X-Forwarded-Proto vine de la nginx (serverul ascultă doar pe loopback)
+        return (self.headers.get("X-Forwarded-Proto") or "").strip().lower() == "https"
+
+    def _nume_cookie(self):
+        # doar numele schemei curente: pe HTTPS un `mcc_sesiune`, pe care l-ar putea pune și alt
+        # subdomeniu, nici nu se citește
+        return COOKIE_HTTPS if self._https() else COOKIE
+
     def _sesiune(self):
         """Sesiunea din cookie, utilizatorul local de pe laptop (autentificare.mod_local) sau None."""
+        nume_cookie = self._nume_cookie()
         for antet in self.headers.get_all("Cookie") or ():
             for bucata in antet.split(";"):
                 nume, _, valoare = bucata.strip().partition("=")
-                # toate cookie-urile cu numele nostru, nu doar primul: unul pus de alt subdomeniu
-                # (.libra.bank) nu trebuie să blocheze sesiunea bună
-                if nume == COOKIE:
+                # toate cookie-urile cu numele nostru, nu doar primul: pe HTTP unul pus de alt
+                # subdomeniu (.libra.bank) nu trebuie să blocheze sesiunea bună
+                if nume == nume_cookie:
                     s = SESIUNI.citeste(valoare)
                     if s:
                         return dict(s, local=False, id=valoare)
@@ -2181,10 +2195,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return True
 
     def _cookie(self, valoare, max_age):
-        c = f"{COOKIE}={valoare}; HttpOnly; SameSite=Strict; Path=/; Max-Age={max_age}"
+        # același nume la setare și la ștergere (ieșirea): pe HTTPS cel cu __Host-
+        c = f"{self._nume_cookie()}={valoare}; HttpOnly; SameSite=Strict; Path=/; Max-Age={max_age}"
         # Secure doar pe HTTPS (nginx pune X-Forwarded-Proto); pe laptop, http://localhost,
         # browserul n-ar mai trimite cookie-ul
-        if (self.headers.get("X-Forwarded-Proto") or "").strip().lower() == "https":
+        if self._https():
             c += "; Secure"
         return c
 

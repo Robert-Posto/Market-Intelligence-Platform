@@ -17,7 +17,7 @@ Intrarea e cu parola AD, nu cu cheie. În `~/.ssh/config`, blocul `Host mcc-test
 | Python 3.13 | `/opt/marketing/venv`. Proiectul cere 3.12, dar pe Debian 13 vine 3.13, iar `requirements.txt` se instalează fără erori |
 | Chromium (Playwright) | `/opt/marketing/.cache/ms-playwright` |
 | PostgreSQL 17 (apt, nu Docker) | baza și rolul `mip`, doar pe `localhost`; parola e în `.env` |
-| `.env` | `/opt/marketing/mcc/.env` (600): `MIP_DSN`, `MIP_SALT` generate la instalare, `MIP_PERMITE_RULARI=0`, `MCC_LDAP_*` (autentificarea); fără `MCC_AUTH_LOCAL` |
+| `.env` | `/opt/marketing/mcc/.env` (600): `MIP_DSN`, `MIP_SALT` generate la instalare, `MIP_PERMITE_RULARI=0`, `MCC_LDAP_*` (autentificarea), `MCC_AUTH_OBLIGATORIE=1`; fără `MCC_AUTH_LOCAL` |
 | aplicația | `systemd`: `mcc.service` (`deploy/mcc.service`), `app/server.py` pe `127.0.0.1:8765` |
 | nginx | `deploy/nginx-mcc.conf`: HTTPS pe 443 (HTTP pe 80 redirecționează), servește `web/dist`; `/api`, `/logos`, `/pdf`, `/harta.html` merg la `:8765` |
 | certificatul | `/etc/nginx/ssl/`: wildcard-ul `*.libra.bank` de la Libra Enterprise Root CA (ca la rcc-test, command-center, st-test), valabil până la 10.02.2028; copie din `/srv/linux-sysprep/certs`, cheia 600 root |
@@ -58,29 +58,54 @@ căutările se fac cu contul celui care se loghează.
    pentru analist.
 4. **Sufixul UPN** (`MCC_LDAP_DOMENIU`: utilizatorul scrie numele scurt, bind-ul e `nume@sufix`) și **baza de căutare**
    (`MCC_LDAP_BAZA`, DN-ul domeniului).
-5. **Pragul de blocare a conturilor** din AD: aplicația oprește încercările după 5 parole greșite pe utilizator (și 20
-   pe adresă) în 15 minute; pragul AD trebuie să fie peste 5, ca aplicația să nu poată bloca un cont.
+5. **Politica de blocare a conturilor** din AD: pragul (*Account lockout threshold*) și fereastra de observație
+   (*Reset account lockout counter after*). Aplicația oprește încercările după `MCC_AUTH_MAX_INCERCARI` (implicit 3)
+   parole greșite pe utilizator și `MCC_AUTH_MAX_PE_IP` (implicit 20) pe adresă, în `MCC_AUTH_FEREASTRA_MIN`
+   (implicit 30) minute. Limita pe utilizator trebuie să rămână sub pragul AD, altfel oricine poate bloca un cont
+   prin aplicație. Regula:
+
+   **prag AD > `MCC_AUTH_MAX_INCERCARI` × alias-uri × ⌈fereastra AD / `MCC_AUTH_FEREASTRA_MIN`⌉**
+
+   *Alias-uri* = câte nume diferite duc la același cont. `ana`, `ANA`, `LIBRA\ana` și `ana@<domeniu>` se numără
+   împreună (1), dar un cont cu UPN explicit diferit de sAMAccountName (`dan` și `daniel.pop`) are 2. Exemplu: AD cu
+   prag 5 și fereastră 30 de minute, valorile implicite: 3 × 1 × 1 = 3 < 5; dacă există conturi cu 2 alias-uri,
+   3 × 2 × 1 = 6 nu mai trece, deci `MCC_AUTH_MAX_INCERCARI=2` (2 × 2 × 1 = 4). Outlook, VPN-ul etc. adună la același
+   contor AD: lăsați loc.
+
+   Regula oprește rafalele. AD-ul își golește contorul abia după o fereastră întreagă *fără* nicio parolă greșită, deci
+   cineva care trimite rar câte una, sub limita aplicației, tot poate duce contorul la prag, doar mai încet (cu
+   valorile implicite și AD 5 / 30 de minute: în circa 40 de minute). Garanția completă cere în plus
+   `MCC_AUTH_FEREASTRA_MIN` ≥ `MCC_AUTH_MAX_INCERCARI` × alias-uri × fereastra AD (aici 90), cu prețul că cine greșește
+   parola de 3 ori așteaptă tot atât. Valorile se aleg cu IT-ul, după politica AD.
 
 ### Instalare (o singură dată, la prima livrare cu autentificare)
 
 `deploy/deploy.sh` instalează `ldap3` (din `requirements.txt`), dar **nu** copiază serviciul și configurația nginx.
-Fără ele: fără `X-Real-IP` toți utilizatorii par aceeași adresă (20 de parole greșite ale oricui blochează logarea
-tuturor 15 minute), iar cookie-ul nu primește `Secure`. Se copiază imediat după livrare; în cele câteva minute
-dintre pași aplicația cere deja logare (`.env` nu are `MCC_AUTH_LOCAL`).
+Le verifică însă înainte de repornire și se oprește, cu mesaj, dacă serviciul nu are `MCC_AUTH_OBLIGATORIE=1`
+(`systemctl show -p Environment mcc`) sau nginx nu trimite `X-Real-IP` (`nginx -T`). Fără `X-Real-IP` toți utilizatorii
+par aceeași adresă (20 de parole greșite ale oricui blochează logarea tuturor), iar fără `X-Forwarded-Proto` cookie-ul
+nu primește `Secure` (nici prefixul `__Host-`). La prima livrare cu autentificare scriptul se oprește deci la pasul 3:
+codul nou e copiat, dar rulează tot cel vechi până la pasul 5.
+
+`MCC_AUTH_OBLIGATORIE=1` se pune și în `.env`, nu doar în serviciu: `.env` e păstrat la livrare, deci rămâne valabil și
+dacă serviciul ar fi reinstalat dintr-o copie veche.
 
 ```bash
-# 1. pe server: .env cu variabilele MCC_LDAP_* (model în .env.example), fără MCC_AUTH_LOCAL
+# 1. pe server: .env cu variabilele MCC_LDAP_* (model în .env.example) și MCC_AUTH_OBLIGATORIE=1, fără MCC_AUTH_LOCAL;
+#    eventual MCC_AUTH_MAX_INCERCARI / MCC_AUTH_FEREASTRA_MIN după politica AD (punctul 5 de mai sus)
 sudo nano /opt/marketing/mcc/.env
 # 2. pe server: TLS-ul DC-ului, „Verify return code: 0 (ok)”
 openssl s_client -connect dc01.<domeniu>:636 -CAfile /etc/ssl/mcc/ca-ad.pem -verify_hostname dc01.<domeniu> </dev/null \
   | grep 'Verify return code'
-# 3. de pe laptop: livrarea (codul, ldap3, repornirea)
+# 3. de pe laptop: livrarea (codul, ldap3); prima dată se oprește la verificări, înainte de repornire
 deploy/deploy.sh
 # 4. pe server: serviciul (MCC_AUTH_OBLIGATORIE=1) și nginx (X-Real-IP, X-Forwarded-Proto, antetele anti-încadrare)
 cd /opt/marketing/mcc
-sudo cp deploy/mcc.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl restart mcc
+sudo cp deploy/mcc.service /etc/systemd/system/ && sudo systemctl daemon-reload
 sudo nginx -T | grep -m1 '# configuration file'      # unde e instalată configurația; se înlocuiește cu deploy/nginx-mcc.conf
 sudo nginx -t && sudo systemctl reload nginx
+# 5. de pe laptop: din nou livrarea; verificările trec și serviciul repornește
+deploy/deploy.sh
 ```
 
 ### Verificare
@@ -92,8 +117,10 @@ ssh mcc-test 'sudo tail -n 20 /opt/marketing/mcc/loguri/autentificare.log'
 ```
 
 `loguri/autentificare.log` (păstrat la livrare): o linie JSON pe eveniment (logare reușită sau nu, cu motivul;
-delogare; refuz 403 pe o rută de admin; pornire/oprire de rulare), fără parole. Erorile AD detaliate (certificat,
-timeout, configurație) apar doar aici, în câmpul `detaliu`; clientul vede doar codul (`ad_indisponibil`).
+delogare; refuz 403 pe o rută de admin; pornire/oprire de rulare), fără parole. La o logare eșuată numele scris nu
+apare (poate fi o parolă scrisă în câmpul greșit), ci doar `utilizator_hash`: o amprentă cu o cheie nouă la fiecare
+pornire, bună la corelarea încercărilor până la următoarea repornire. Erorile AD detaliate (certificat, timeout,
+configurație) apar doar aici, în câmpul `detaliu`; clientul vede doar codul (`ad_indisponibil`).
 
 Sesiunile stau în memorie: `systemctl restart mcc` îi deloghează pe toți. Dacă `.env` are `MCC_AUTH_LOCAL`, serverul
 refuză să pornească (motivul în `journalctl -u mcc`).

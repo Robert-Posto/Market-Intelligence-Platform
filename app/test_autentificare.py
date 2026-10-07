@@ -174,36 +174,60 @@ class Roluri(Baza):
 # ---------------------------------------------------------------- cerința 6: limitarea
 
 class Limitare(Baza):
-    def test_al_saselea_pe_utilizator_nu_mai_intreaba_ad(self):
-        for _ in range(5):
+    def test_valorile_implicite(self):
+        self.assertEqual((autentificare.ESECURI_UTILIZATOR, autentificare.FEREASTRA_MIN, autentificare.ESECURI_IP),
+                         (3, 30, 20))
+        c = autentificare.Config()
+        self.assertEqual((c.max_incercari, c.fereastra_min, c.max_pe_ip), (3, 30, 20))
+
+    def test_al_patrulea_pe_utilizator_nu_mai_intreaba_ad(self):
+        for _ in range(3):
             self.assertEqual(self.a.autentifica("ana", "gresit", "10.0.0.1").motiv, "invalid")
-        self.assertEqual(len(self.ver.apeluri), 5)
+        self.assertEqual(len(self.ver.apeluri), 3)
         r = self.a.autentifica("ana", PAROLA, "10.0.0.2")       # chiar cu parola bună, de pe alt IP
         self.assertEqual((r.ok, r.motiv), (False, "limitat"))
-        self.assertEqual(len(self.ver.apeluri), 5)
+        self.assertEqual(len(self.ver.apeluri), 3)
         # alt utilizator nu e afectat
         self.assertTrue(self.a.autentifica("adi", PAROLA, "10.0.0.1").ok)
 
     def test_variantele_de_scriere_se_numara_impreuna(self):
-        for u in ("ana", "ANA", "LIBRA\\ana", "ana@banca.example", "Ana"):
+        for u in ("ANA", "LIBRA\\ana", "ana@banca.example"):
             self.assertEqual(self.a.autentifica(u, "gresit", "10.0.0.1").motiv, "invalid")
         self.assertEqual(self.a.autentifica("aNa", PAROLA, "10.0.0.1").motiv, "limitat")
 
     def test_succesul_sterge_contorul_utilizatorului(self):
-        for _ in range(4):
+        for _ in range(2):
             self.a.autentifica("ana", "gresit", "10.0.0.1")
         self.assertTrue(self.a.autentifica("ana", PAROLA, "10.0.0.1").ok)
-        for _ in range(5):
+        for _ in range(3):
             self.assertEqual(self.a.autentifica("ana", "gresit", "10.0.0.1").motiv, "invalid")
         self.assertEqual(self.a.autentifica("ana", PAROLA, "10.0.0.1").motiv, "limitat")
 
-    def test_fereastra_de_15_minute(self):
-        for _ in range(5):
+    def test_fereastra_de_30_de_minute(self):
+        for _ in range(3):
             self.a.autentifica("ana", "gresit", "10.0.0.1")
-        self.ceas.avans(14 * 60)
+        self.ceas.avans(29 * 60)
         self.assertEqual(self.a.autentifica("ana", PAROLA, "10.0.0.1").motiv, "limitat")
         self.ceas.avans(60 + 1)
         self.assertTrue(self.a.autentifica("ana", PAROLA, "10.0.0.1").ok)
+
+    def test_limite_configurabile(self):
+        c = autentificare.Config.din_mediu(dict(ENV_BUN, MCC_AUTH_MAX_INCERCARI="2", MCC_AUTH_FEREASTRA_MIN="5",
+                                                MCC_AUTH_MAX_PE_IP="4"))
+        self.assertEqual((c.max_incercari, c.fereastra_min, c.max_pe_ip), (2, 5, 4))
+        self.assertIsNone(c.problema())
+        a = autentificare.Autentificator(c, verificator=self.ver, ceas=self.ceas)
+        for _ in range(2):
+            self.assertEqual(a.autentifica("ana", "gresit", "10.0.0.1").motiv, "invalid")
+        self.assertEqual(a.autentifica("ana", PAROLA, "10.0.0.2").motiv, "limitat")
+        self.ceas.avans(4 * 60)
+        self.assertEqual(a.autentifica("ana", PAROLA, "10.0.0.2").motiv, "limitat")
+        self.ceas.avans(60 + 1)
+        self.assertTrue(a.autentifica("ana", PAROLA, "10.0.0.2").ok)
+        # pe adresă: 4, apoi limitat chiar și pentru un cont neatins
+        for i in range(4):
+            self.assertEqual(a.autentifica(f"u{i}", "gresit", "10.0.0.9").motiv, "invalid")
+        self.assertEqual(a.autentifica("adi", PAROLA, "10.0.0.9").motiv, "limitat")
 
     def test_douazeci_pe_ip(self):
         for i in range(20):
@@ -220,10 +244,20 @@ class Limitare(Baza):
         self.a.autentifica("u99", "gresit", "10.0.0.9")
         self.assertEqual(self.a.autentifica("adi", PAROLA, "10.0.0.9").motiv, "limitat")
 
-    def test_fara_rol_si_indisponibil_nu_se_numara(self):
-        for _ in range(8):
-            self.assertEqual(self.a.autentifica("fara", PAROLA, "10.0.0.1").motiv, "fara_rol")
+    def test_fara_rol_se_numara_doar_pe_adresa(self):
+        """Parola bună fără grup: nu blochează contul, dar nici nu e un oracol nelimitat pe adresă."""
+        for _ in range(8):           # peste limita pe utilizator (3): contul nu se blochează singur
+            self.assertEqual(self.a.autentifica("fara", PAROLA, "10.0.0.7").motiv, "fara_rol")
+        for _ in range(12):          # 20 pe adresă: password spraying confirmat prin „fără rol”
+            self.assertEqual(self.a.autentifica("fara", PAROLA, "10.0.0.7").motiv, "fara_rol")
+        n = len(self.ver.apeluri)
+        self.assertEqual(self.a.autentifica("fara", PAROLA, "10.0.0.7").motiv, "limitat")
+        self.assertEqual(self.a.autentifica("ana", PAROLA, "10.0.0.7").motiv, "limitat")
+        self.assertEqual(len(self.ver.apeluri), n)
+        # de pe altă adresă, același cont: utilizatorul n-a strâns nimic
+        self.assertEqual(self.a.autentifica("fara", PAROLA, "10.0.0.8").motiv, "fara_rol")
 
+    def test_indisponibil_nu_se_numara(self):
         def cade(u, p):
             raise TimeoutError("timed out")
         a = autentificare.Autentificator(config(), verificator=cade, ceas=self.ceas)
@@ -238,7 +272,7 @@ class Limitare(Baza):
         self.assertTrue(self.a.autentifica("ana", PAROLA, "10.0.0.1").ok)
 
     def test_incercarile_simultane_nu_depasesc_limita(self):
-        """10 încercări greșite deodată pe același cont: AD-ul primește cel mult 5."""
+        """10 încercări greșite deodată pe același cont: AD-ul primește cel mult 3."""
         ver = Simulat(intarziere=0.3)
         a = autentificare.Autentificator(config(), verificator=ver)
         rezultate = []
@@ -248,7 +282,7 @@ class Limitare(Baza):
             f.start()
         for f in fire:
             f.join()
-        self.assertLessEqual(len(ver.apeluri), 5)
+        self.assertLessEqual(len(ver.apeluri), 3)
         self.assertEqual(len(rezultate), 10)
         self.assertTrue(all(not r.ok for r in rezultate))
 
@@ -331,6 +365,15 @@ class Configurare(Baza):
                           GRUP_ANALIST, None, 8))
         self.assertIsNone(c.problema())
         self.assertEqual(autentificare.Config.din_mediu(dict(ENV_BUN, MCC_SESIUNE_ORE="4")).sesiune_ore, 4)
+        self.assertEqual((c.max_incercari, c.fereastra_min, c.max_pe_ip), (3, 30, 20))
+
+    def test_limite_invalide(self):
+        for cheie in ("MCC_AUTH_MAX_INCERCARI", "MCC_AUTH_FEREASTRA_MIN", "MCC_AUTH_MAX_PE_IP"):
+            for valoare in ("abc", "0", "-3", "2.5", "nan"):
+                self.assertIn(cheie, autentificare.Config.din_mediu(
+                    dict(ENV_BUN, **{cheie: valoare})).problema() or "", (cheie, valoare))
+            # gol = valoarea implicită
+            self.assertIsNone(autentificare.Config.din_mediu(dict(ENV_BUN, **{cheie: " "})).problema())
 
     def test_doar_ldaps(self):
         for url in ("ldap://dc01.banca.example:389", "http://dc01.banca.example", "dc01.banca.example:636",
@@ -514,7 +557,7 @@ class Jurnal(Baza):
         self.a.autentifica("fara", PAROLA, "10.0.0.1")                # fără rol
         self.a.autentifica(PAROLA, PAROLA, "10.0.0.1")                # parola scrisă în câmpul utilizatorului
         self.a.autentifica("ana", "", "10.0.0.1")
-        for _ in range(5):
+        for _ in range(3):
             self.a.autentifica("ion", PAROLA, "10.0.0.1")
         self.a.autentifica("ion", PAROLA, "10.0.0.1")                 # limitat
 
@@ -524,16 +567,45 @@ class Jurnal(Baza):
         a.autentifica("adi", PAROLA, "10.0.0.1")
         self.assertNotIn(PAROLA, self.text_jurnal())
         randuri = self.jurnal()
-        self.assertEqual(len(randuri), 12)
+        self.assertEqual(len(randuri), 10)
         self.assertEqual({r["eveniment"] for r in randuri}, {"logare"})
         reusita = randuri[0]
         self.assertEqual((reusita["utilizator"], reusita["ip"], reusita["rezultat"], reusita["rol"]),
                          ("adi", "10.0.0.1", "reusit", "admin"))
+        self.assertNotIn("utilizator_hash", reusita)
         self.assertEqual([r["motiv"] for r in randuri[1:3]], ["invalid", "fara_rol"])
-        self.assertIsNone(randuri[3]["utilizator"])
-        self.assertEqual(randuri[10]["motiv"], "limitat")
-        self.assertEqual(randuri[11]["motiv"], "indisponibil")
+        # la eșec, doar amprenta numelui (cea a numelui normalizat), niciodată numele
+        self.assertEqual([r["utilizator_hash"] for r in randuri[1:3]],
+                         [autentificare.hash_utilizator("ana"), autentificare.hash_utilizator("fara")])
+        self.assertIsNone(randuri[3]["utilizator_hash"])              # n-a trecut de validare
+        self.assertEqual(randuri[8]["motiv"], "limitat")
+        self.assertEqual(randuri[9]["motiv"], "indisponibil")
         self.assertTrue(all(r["rezultat"] == "esuat" for r in randuri[1:]))
+        self.assertTrue(all("utilizator" not in r for r in randuri[1:]))
+
+    def test_numele_din_incercarile_esuate_nu_apare_in_clar(self):
+        """O parolă scrisă în câmpul utilizatorului trece de validare, dar nu ajunge în jurnal."""
+        self.ver.conturi = {"parola123": (PAROLA, "X", None)}
+        self.a.autentifica("Parola123", PAROLA, "10.0.0.2")                # fara_rol
+        self.a.autentifica("Parola123", "gresit", "10.0.0.1")              # invalid (AD: 49)
+        self.a.autentifica("LIBRA\\Parola123", "gresit", "10.0.0.1")
+        self.a.autentifica("parola123@banca.example", "gresit", "10.0.0.1")
+        self.a.autentifica("PAROLA123", "gresit", "10.0.0.1")              # limitat
+
+        def vorbaret(u, p):
+            raise RuntimeError(f"bind eșuat pentru {u}@banca.example (LIBRA\\{u.upper()}) la dc01:636")
+        a = autentificare.Autentificator(config(), verificator=vorbaret, ceas=self.ceas)
+        a.autentifica("Parola123", PAROLA, "10.0.0.1")                     # indisponibil, cu detaliu
+        text = self.text_jurnal()
+        self.assertNotIn("parola123", text.lower())
+        randuri = self.jurnal()
+        self.assertEqual([r["motiv"] for r in randuri], ["fara_rol"] + ["invalid"] * 3 + ["limitat", "indisponibil"])
+        amprenta = autentificare.hash_utilizator("parola123")
+        self.assertRegex(amprenta, r"^[0-9a-f]{12}$")
+        self.assertEqual({r["utilizator_hash"] for r in randuri}, {amprenta})
+        # cu cheie: amprenta nu e un SHA-256 simplu, pe care un dicționar l-ar inversa
+        self.assertNotEqual(amprenta, hashlib.sha256(b"parola123").hexdigest()[:12])
+        self.assertIn("dc01:636", randuri[-1]["detaliu"])
 
 
 # ---------------------------------------------------------------- cerința 11: scurtătura locală
@@ -676,19 +748,25 @@ def _potriveste(f, cont):
     return False
 
 
+WHOAMI = "1.3.6.1.4.1.4203.1.11.3"
+
+
 class DCFals:
     """Un DC minimal pe loopback: LDAPS cu certificatul dat, bind simplu, căutări pe conturile date.
 
     Ca un AD: bind cu UPN-ul explicit sau cel implicit (sAMAccountName@domeniu), 49 la parolă
     greșită, apartenența imbricată doar prin regula 1.2.840.113556.1.4.1941, iar fiecare căutare
     pe subarbore întoarce și o referință (DomainDnsZones), pe care clientul nu trebuie s-o urmeze.
+    WhoAmI (RFC 4532) răspunde cu contul legat pe conexiune, `u:BANCA\\sam` (sau `whoami` din cont).
     """
 
-    def __init__(self, cert, cheie, conturi, domeniu="banca.example", tace=False, cod_bind=None):
+    def __init__(self, cert, cheie, conturi, domeniu="banca.example", tace=False, cod_bind=None,
+                 cod_whoami=None):
         self.conturi, self.domeniu, self.tace, self.cod_bind = conturi, domeniu, tace, cod_bind
+        self.cod_whoami = cod_whoami         # alt cod decât 0: DC-ul refuză WhoAmI
         self.ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         self.ctx.load_cert_chain(cert, cheie)
-        self.legari, self.cautari, self.conexiuni = [], [], 0
+        self.legari, self.cautari, self.whoami, self.conexiuni = [], [], [], 0
         try:
             self.sock = socket.socket(socket.AF_INET6)
             self.sock.bind(("::1", 0))
@@ -718,6 +796,7 @@ class DCFals:
         return None
 
     def _conexiune(self, c):
+        legat = None             # contul legat pe conexiunea asta (pentru WhoAmI)
         try:
             with self.ctx.wrap_socket(c, server_side=True) as s:
                 while True:
@@ -733,12 +812,23 @@ class DCFals:
                         parti = _ber(op)
                         nume, parola = parti[1][1].decode("utf-8"), parti[2][1].decode("utf-8")
                         self.legari.append(nume)
+                        legat = self._cont_legat(nume, parola)
                         if self.cod_bind is not None:
                             cod = self.cod_bind
                         else:
-                            cod = 0 if self._cont_legat(nume, parola) else 49
+                            cod = 0 if legat else 49
                         mesaj = "80090308: LdapErr: DSID-0C09044E, data 52e, v4563" if cod == 49 else ""
                         s.sendall(_mesaj(mid, _rezultat_ldap(0x61, cod, mesaj)))
+                    elif tip == 0x77:                        # extendedRequest: [0] numele operației
+                        nume_op = dict(_ber(op)).get(0x80, b"").decode("utf-8")
+                        self.whoami.append(nume_op)
+                        if nume_op != WHOAMI or self.cod_whoami:
+                            s.sendall(_mesaj(mid, _rezultat_ldap(0x78, self.cod_whoami or 2)))
+                        else:
+                            # răspunsul: rezultatul plus [11] authzId (gol pentru o conexiune anonimă)
+                            authz = (legat.get("whoami") or f"u:BANCA\\{legat['sam']}") if legat else ""
+                            s.sendall(_mesaj(mid, _tlv(0x78, _tlv(0x0A, b"\x00") + _sir("") + _sir("")
+                                                     + _tlv(0x8B, authz.encode("utf-8")))))
                     elif tip == 0x63:                        # searchRequest
                         parti = _ber(op)
                         f = _filtru(*parti[6])
@@ -760,11 +850,11 @@ class DCFals:
             return
 
 
-def _cont(sam, direct=(), imbricate=(), upn=None, nume=None, parola=PAROLA):
+def _cont(sam, direct=(), imbricate=(), upn=None, nume=None, parola=PAROLA, whoami=None):
     return {"sam": sam, "upn": upn or f"{sam}@banca.example", "parola": parola,
             "displayName": f"{sam.capitalize()} Test" if nume is None else nume,
             "dn": f"CN={sam},OU=Utilizatori,DC=banca,DC=example",
-            "direct": list(direct), "imbricate": list(imbricate)}
+            "direct": list(direct), "imbricate": list(imbricate), "whoami": whoami}
 
 
 def _certificat(dir_, nume_fisier, dns):
@@ -886,6 +976,24 @@ class LdapCuDCFals(Baza):
         filtre_grup = [f for _, f, _ in self.dc.cautari[1:]]
         self.assertEqual(filtre_grup, [f"(&(sAMAccountName=ana)(memberOf:{REGULA_IMBRICATA}:={GRUP_ADMIN}))",
                                        f"(&(sAMAccountName=ana)(memberOf:{REGULA_IMBRICATA}:={GRUP_ANALIST}))"])
+        self.assertEqual(self.dc.whoami, [WHOAMI])          # contul legat, întrebat o dată
+
+    def test_whoami_diferit_de_contul_gasit_refuzat(self):
+        """AD-ul spune că e legat alt cont decât cel găsit la căutare: rolul nu se ia de la cel găsit."""
+        conturi = [_cont("ana", direct=[GRUP_ADMIN], whoami="u:BANCA\\altcineva"),
+                   _cont("ion", direct=[GRUP_ANALIST], whoami="u:BANCA\\ION")]   # litere mari: același cont
+        a = self.porneste(conturi=conturi)
+        r = a.autentifica("ana", PAROLA, "10.0.0.1")
+        self.assertEqual(r, autentificare.Rezultat(False, "ana", "", None, "indisponibil"))
+        self.assertIn("identitate ambiguă", self.jurnal()[-1]["detaliu"])
+        self.assertEqual(len(self.dc.cautari), 1)          # niciun grup căutat pentru contul greșit
+        self.assertEqual(a.autentifica("ion", PAROLA, "10.0.0.1").rol, "analist")
+
+    def test_fara_raspuns_la_whoami_refuzat(self):
+        a = self.porneste(cod_whoami=53)       # unwillingToPerform
+        r = a.autentifica("ana", PAROLA, "10.0.0.1")
+        self.assertEqual((r.ok, r.motiv), (False, "indisponibil"))
+        self.assertIn("identitate ambiguă", self.jurnal()[-1]["detaliu"])
 
     def test_in_ambele_grupuri_e_admin(self):
         a = self.porneste()

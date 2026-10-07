@@ -101,14 +101,14 @@ class Http(unittest.TestCase):
         os.environ["MIP_PERMITE_RULARI"] = "1"
         self.server_mod.AUTENTIFICARE = autentificare.Autentificator(autentificare.Config(), verificator=verificator)
 
-    def cere(self, metoda, cale, corp=None, antete=None, cookie=None, brut=None):
+    def cere(self, metoda, cale, corp=None, antete=None, cookie=None, brut=None, nume_cookie="mcc_sesiune"):
         c = http.client.HTTPConnection("127.0.0.1", self.port, timeout=10)
         h = {"Host": f"localhost:{self.port}"}
         if corp is not None:
             h["Content-Type"] = "application/json"
             brut = json.dumps(corp)
         if cookie:
-            h["Cookie"] = f"mcc_sesiune={cookie}"
+            h["Cookie"] = f"{nume_cookie}={cookie}"
         h.update(antete or {})
         c.request(metoda, cale, body=brut, headers=h)
         r = c.getresponse()
@@ -176,9 +176,32 @@ class Http(unittest.TestCase):
         self.assertTrue(parti[0].startswith("mcc_sesiune=") and len(cookie) >= 43)
         self.assertEqual(set(parti[1:]), {"HttpOnly", "SameSite=Strict", "Path=/", "Max-Age=43200"})
         self.assertNotIn(PAROLA, json.dumps(self.jurnal()))
-        # Secure doar când nginx spune că cererea a venit pe HTTPS
+        # pe HTTPS (nginx pune X-Forwarded-Proto): __Host-, deci Secure, Path=/ și fără Domain
         _, h, _, _ = self.logare("ana", antete={"X-Forwarded-Proto": "https", "X-Real-IP": "10.0.0.5"})
-        self.assertIn("Secure", [p.strip() for p in h["set-cookie"].split(";")])
+        parti = [p.strip() for p in h["set-cookie"].split(";")]
+        self.assertTrue(parti[0].startswith("__Host-mcc_sesiune="))
+        self.assertEqual(set(parti[1:]), {"HttpOnly", "SameSite=Strict", "Path=/", "Max-Age=43200", "Secure"})
+
+    def test_cookie_host_pe_https(self):
+        """Pe HTTPS contează doar __Host-mcc_sesiune: un mcc_sesiune pus de alt *.libra.bank nu se citește."""
+        https = {"X-Forwarded-Proto": "https", "X-Real-IP": "10.0.0.5"}
+        _, _, _, sid = self.logare("ana", antete=https)
+        cod, _, d = self.cere("GET", "/api/sesiune", antete=https, cookie=sid, nume_cookie="__Host-mcc_sesiune")
+        self.assertEqual((cod, d["utilizator"]), (200, "ana"))
+        # același identificator sub celălalt nume: refuzat, pe fiecare schemă
+        self.assertEqual(self.cere("GET", "/api/sumar", antete=https, cookie=sid)[0], 401)
+        self.assertEqual(self.cere("GET", "/api/sumar", cookie=sid, nume_cookie="__Host-mcc_sesiune")[0], 401)
+        _, _, _, sid_http = self.logare("adi")
+        self.assertEqual(self.cere("GET", "/api/sumar", antete=https, cookie=sid_http)[0], 401)
+        self.assertEqual(self.cere("GET", "/api/sumar", cookie=sid_http)[0], 200)
+        # ieșirea pe HTTPS golește cookie-ul __Host- (cu aceleași atribute, altfel browserul îl ignoră)
+        cod, h, _ = self.cere("POST", "/api/delogare", {}, antete=https, cookie=sid, nume_cookie="__Host-mcc_sesiune")
+        parti = [p.strip() for p in h["set-cookie"].split(";")]
+        self.assertEqual(parti[0], "__Host-mcc_sesiune=")
+        self.assertTrue({"Max-Age=0", "Secure", "Path=/"} <= set(parti))
+        self.assertEqual(self.cere("GET", "/api/sesiune", antete=https, cookie=sid,
+                                   nume_cookie="__Host-mcc_sesiune")[0], 401)
+        self.assertEqual(self.jurnal()[-1]["eveniment"], "delogare")
 
     def test_sesiune_cu_cookie(self):
         _, _, _, cookie = self.logare("ana")
@@ -248,7 +271,9 @@ class Http(unittest.TestCase):
         self.assertEqual((cod, brut), (503, {"eroare": "ad_indisponibil"}))
         self.assertNotIn("set-cookie", h)
         rand = self.jurnal()[-1]
-        self.assertEqual((rand["motiv"], rand["utilizator"]), ("indisponibil", "ana"))
+        # încercare eșuată: doar amprenta numelui (numele scris poate fi o parolă)
+        self.assertEqual((rand["motiv"], rand["utilizator_hash"]), ("indisponibil", autentificare.hash_utilizator("ana")))
+        self.assertNotIn("utilizator", rand)
         self.assertIn("LDAPSocketOpenError", rand["detaliu"])
         self.assertNotIn(PAROLA, json.dumps(self.jurnal(), ensure_ascii=False))
 

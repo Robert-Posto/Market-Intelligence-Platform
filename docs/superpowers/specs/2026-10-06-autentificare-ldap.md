@@ -55,7 +55,9 @@ Criterii de reușită:
   (`memberOf:1.2.840.113556.1.4.1941:=<DN grup>`). Biblioteca: `ldap3` (Python pur), adăugată în `requirements.txt`.
 - **Rezultat**: `Rezultat(ok, utilizator, nume, rol, motiv)`; motivele: `invalid` (parolă/utilizator greșit, mesaj
   generic), `fara_rol`, `indisponibil` (AD nu răspunde / neconfigurat), `limitat`.
-- **Limitarea**: în memorie, cu lacăt; maximum 5 eșecuri pe utilizator și 20 pe adresă IP în 15 minute → `limitat`
+- **Limitarea**: în memorie, cu lacăt; maximum 3 eșecuri pe utilizator și 20 pe adresă IP în 30 de minute (după audit,
+  07.10: configurabile prin `MCC_AUTH_MAX_INCERCARI`, `MCC_AUTH_MAX_PE_IP`, `MCC_AUTH_FEREASTRA_MIN`; „fără rol” se
+  numără pe adresă) → `limitat`
   (429) fără să mai întrebe AD-ul.
 - **Sesiuni**: în memorie, cu lacăt; identificatorul `secrets.token_urlsafe(32)`, ținut doar ca SHA-256; expirare după
   `MCC_SESIUNE_ORE` de inactivitate și maximum 12 ore de la logare; la delogare se șterge.
@@ -70,6 +72,9 @@ Criterii de reușită:
 - POST-urile noi cer `Content-Type: application/json`, corp ≤ 2 KB și resping `Sec-Fetch-Site` străin (ca la rulări).
 - Cookie: `mcc_sesiune=<id>; HttpOnly; SameSite=Strict; Path=/; Max-Age=…`, plus `Secure` când cererea vine prin
   HTTPS (`X-Forwarded-Proto: https`, pus de nginx).
+  - *Notă (07.10, după audit):* pe HTTPS numele e `__Host-mcc_sesiune` (`Secure`, `Path=/`, fără `Domain`), ca un alt
+    site `*.libra.bank` să nu poată pune un cookie de sesiune; serverul citește și golește doar numele schemei curente
+    (`mcc_sesiune` rămâne pe HTTP, pe laptop).
 - Adresa clientului: `X-Real-IP` pus de nginx (`proxy_set_header X-Real-IP $remote_addr; X-Forwarded-Proto $scheme`);
   fără el, adresa socketului.
 
