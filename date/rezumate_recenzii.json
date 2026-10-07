@@ -1,0 +1,159 @@
+{
+  "generat_la": "2026-10-06",
+  "generat_de": "Claude Opus 5.5 (claude-opus-5-5), în sesiunea Claude Code a lui George Dinu",
+  "sursa": "app_review, vitrina ro: 65 de recenzii App Store pentru 9 bănci, colectate de ingest/load_mobil.py",
+  "limita": "Rezumatul acoperă doar recenziile colectate (circa 8 pe aplicație, alese de Apple pe pagina publică), nu toate recenziile din store. Celelalte bănci nu au recenzii: apps.apple.com e BLOCAT în jurnal după un HTTP 429 la 06.10.2026.",
+  "aplicatii": {
+    "banca-transilvania": {
+      "n_recenzii": 8,
+      "nota_medie": 3.5,
+      "rezumat": {
+        "ro": "Aplicația își face treaba la tranzacțiile de zi cu zi, dar recenziile se plâng de validarea plăților online care eșuează, de lipsa notificărilor push și de funcții de bază absente (rambursarea anticipată, actualizarea datelor după buletinul electronic). Suportul e descris ca lent.",
+        "en": "The app handles everyday transactions, but reviews complain about failing online payment validation, missing push notifications and absent basic features (early loan repayment, updating personal data after the new electronic ID). Support is described as slow."
+      },
+      "pro": [
+        { "ro": "Tranzacțiile curente merg fără probleme", "en": "Everyday transactions work without issues" },
+        { "ro": "Deschiderea contului din aplicație a mers ușor", "en": "Opening an account in the app went smoothly" },
+        { "ro": "Are secțiune de fonduri de investiții", "en": "Has an investment funds section" }
+      ],
+      "contra": [
+        { "ro": "Validarea plăților online și datele cardului eșuează des", "en": "Online payment validation and card details often fail" },
+        { "ro": "Lipsesc rambursarea anticipată și actualizarea datelor personale", "en": "No early repayment or personal data update" },
+        { "ro": "Aplicații separate pentru persoană fizică și firmă; comisioane la transferuri", "en": "Separate apps for personal and business; fees on transfers" }
+      ]
+    },
+    "bcr": {
+      "n_recenzii": 8,
+      "nota_medie": 4.25,
+      "rezumat": {
+        "ro": "Majoritatea recenziilor laudă o aplicație curată, intuitivă și îmbunătățită constant, în care multe operațiuni se fac fără drum la bancă. Criticile țin de lentoare și notificări de semnare întârziate pe unele iPhone-uri și de opțiuni lipsă: limba aplicației separată de a telefonului, analize pe intervale alese.",
+        "en": "Most reviews praise a clean, intuitive and constantly improved app where many operations need no branch visit. Criticism covers slowness and late signing notifications on some iPhones, plus missing options: an app language separate from the phone's, analysis over custom date ranges."
+      },
+      "pro": [
+        { "ro": "Interfață curată și intuitivă", "en": "Clean, intuitive interface" },
+        { "ro": "Actualizări frecvente de funcții și securitate", "en": "Frequent feature and security updates" },
+        { "ro": "Multe produse și operațiuni direct din aplicație", "en": "Many products and operations right in the app" }
+      ],
+      "contra": [
+        { "ro": "Lentă, cu notificări de semnare întârziate pe unele iPhone-uri", "en": "Slow, with late signing notifications on some iPhones" },
+        { "ro": "Plățile cu cardul apar cu întârziere", "en": "Card payments show up late" },
+        { "ro": "Fără alegerea limbii în aplicație; extrasele nu au adresa", "en": "No in-app language choice; statements lack the address" }
+      ]
+    },
+    "brd": {
+      "n_recenzii": 8,
+      "nota_medie": 2.63,
+      "rezumat": {
+        "ro": "Recenziile sunt aproape toate negative: YOU BRD se blochează, intră în bucle de actualizare și cere reactivare la sucursală, iar suportul nu rezolvă. Utilizatorii mai reclamă soldul afișat pe fiecare ecran și tranzacțiile care rămân blocate o zi.",
+        "en": "Reviews are almost all negative: YOU BRD crashes, gets stuck in update loops and requires reactivation at a branch, and support does not solve it. Users also complain about the balance shown on every screen and transactions held for a day."
+      },
+      "pro": [
+        { "ro": "Design mai modern decât aplicația veche", "en": "More modern design than the old app" }
+      ],
+      "contra": [
+        { "ro": "Blocări și bucle de actualizare care taie accesul la cont", "en": "Crashes and update loops that cut account access" },
+        { "ro": "Reactivarea și înrolarea cer drum la sucursală", "en": "Reactivation and enrolment require a branch visit" },
+        { "ro": "Soldul apare pe fiecare ecran; tranzacțiile se văd după o zi", "en": "Balance on every screen; transactions visible a day later" },
+        { "ro": "Suport care nu rezolvă problemele", "en": "Support that does not solve problems" }
+      ]
+    },
+    "citibank": {
+      "n_recenzii": 2,
+      "nota_medie": 1.0,
+      "rezumat": {
+        "ro": "Doar două recenzii, ambele negative: aplicația nu pornește sau rămâne pe ecran alb la configurarea întrebărilor de securitate. Eșantionul e prea mic pentru o concluzie.",
+        "en": "Only two reviews, both negative: the app does not launch or freezes on a white screen while setting up security questions. The sample is too small for a conclusion."
+      },
+      "pro": [],
+      "contra": [
+        { "ro": "Nu pornește pe unele versiuni de iOS", "en": "Does not launch on some iOS versions" },
+        { "ro": "Ecran alb la configurarea securității", "en": "White screen during security setup" }
+      ]
+    },
+    "credex": {
+      "n_recenzii": 7,
+      "nota_medie": 2.0,
+      "rezumat": {
+        "ro": "Recenzii scurte și majoritar negative: aplicația nu funcționează, nu arată cât mai e de plată, iar cardul nu se poate adăuga în Apple Wallet. O parte din critici vizează dobânzile IFN-ului, nu aplicația.",
+        "en": "Short, mostly negative reviews: the app does not work, does not show the amount left to pay, and the card cannot be added to Apple Wallet. Part of the criticism targets the lender's interest rates, not the app."
+      },
+      "pro": [
+        { "ro": "Își face treaba când funcționează", "en": "Does the job when it works" }
+      ],
+      "contra": [
+        { "ro": "Aplicația nu merge și nu arată suma de plată", "en": "The app does not work or show the amount due" },
+        { "ro": "Cardul nu se poate adăuga în Apple Wallet", "en": "The card cannot be added to Apple Wallet" },
+        { "ro": "Dobânzi și comisioane percepute ca mari", "en": "Interest and fees seen as high" }
+      ]
+    },
+    "exim": {
+      "n_recenzii": 8,
+      "nota_medie": 2.88,
+      "rezumat": {
+        "ro": "Păreri împărțite: unii o găsesc prietenoasă și ușor de folosit, alții raportează blocări la pornire după actualizări și reinstalări periodice. Plățile cu cardul apar abia după una-două zile, iar PIN-ul de acces trebuie schimbat periodic.",
+        "en": "Mixed opinions: some find it friendly and easy to use, others report crashes on start-up after updates and periodic reinstalls. Card payments appear only after one or two days, and the access PIN must be changed periodically."
+      },
+      "pro": [
+        { "ro": "Prietenoasă și ușor de folosit", "en": "Friendly and easy to use" },
+        { "ro": "Funcționează bine pentru o parte din utilizatori", "en": "Works well for part of the users" }
+      ],
+      "contra": [
+        { "ro": "Se blochează la pornire după unele actualizări", "en": "Crashes on start-up after some updates" },
+        { "ro": "Plățile cu cardul apar cu 1–2 zile întârziere", "en": "Card payments appear 1–2 days late" },
+        { "ro": "PIN de acces cu schimbare obligatorie", "en": "Access PIN with mandatory changes" }
+      ]
+    },
+    "garanti": {
+      "n_recenzii": 8,
+      "nota_medie": 1.5,
+      "rezumat": {
+        "ro": "Cea mai criticată aplicație din eșantion: e descrisă ca învechită, fără autentificare biometrică, fără Apple Pay sau Google Pay și cu activare doar la ATM sau sucursală. Mai multe recenzii descriu o cerere de actualizare fără update disponibil, care blochează accesul.",
+        "en": "The most criticised app in the sample: described as outdated, with no biometric login, no Apple Pay or Google Pay, and activation only at an ATM or branch. Several reviews describe an update prompt with no update available, which blocks access."
+      },
+      "pro": [
+        { "ro": "Operațiunile de bază funcționează", "en": "Basic operations work" }
+      ],
+      "contra": [
+        { "ro": "Fără Face ID sau amprentă, fără Apple Pay și Google Pay", "en": "No Face ID or fingerprint, no Apple Pay or Google Pay" },
+        { "ro": "Interfață și funcții învechite", "en": "Outdated interface and features" },
+        { "ro": "Activarea și actualizarea datelor doar la ATM sau sucursală", "en": "Activation and data updates only at an ATM or branch" },
+        { "ro": "Cerere de actualizare fără update disponibil", "en": "Update prompt with no update available" }
+      ]
+    },
+    "ing": {
+      "n_recenzii": 8,
+      "nota_medie": 3.63,
+      "rezumat": {
+        "ro": "Văzută de mulți drept cea mai bună aplicație bancară din România: intuitivă, cu plăți instant, credit în câteva minute și extrase descărcabile. Criticile: telefonul obligatoriu ca a doua autentificare, suport doar prin asistent AI, ecranul de plăți schimbat în rău și sumele vizibile în notificări.",
+        "en": "Seen by many as the best banking app in Romania: intuitive, with instant payments, a loan in minutes and downloadable statements. Criticism: the phone mandatory as second factor, support only through an AI assistant, a worse payments screen and amounts visible in notifications."
+      },
+      "pro": [
+        { "ro": "Intuitivă și ușor de folosit", "en": "Intuitive and easy to use" },
+        { "ro": "Plăți instant, și către un număr de telefon; credit în minute", "en": "Instant payments, also to a phone number; loans in minutes" },
+        { "ro": "Extrase descărcabile în PDF, Excel și CSV", "en": "Statements downloadable as PDF, Excel and CSV" }
+      ],
+      "contra": [
+        { "ro": "Telefonul e obligatoriu ca 2FA, fără alternative", "en": "Phone mandatory for 2FA, no alternatives" },
+        { "ro": "Suport prin asistent AI, fără operator uman", "en": "Support through an AI assistant, no human operator" },
+        { "ro": "Ecranul de plăți schimbat în rău; soldul apare în notificări", "en": "Payments screen made worse; balance shown in notifications" }
+      ]
+    },
+    "intesa": {
+      "n_recenzii": 8,
+      "nota_medie": 3.88,
+      "rezumat": {
+        "ro": "Aplicație apreciată ca simplă, stabilă și intuitivă pentru operațiunile zilnice. Lipsa Apple Pay e critica cea mai repetată, urmată de partajarea detaliilor de cont care nu funcționează și de lipsa rambursării creditului din aplicație.",
+        "en": "An app appreciated as simple, stable and intuitive for daily operations. The lack of Apple Pay is the most repeated criticism, followed by account detail sharing that does not work and no loan repayment in the app."
+      },
+      "pro": [
+        { "ro": "Simplă, intuitivă și stabilă", "en": "Simple, intuitive and stable" },
+        { "ro": "Bună pentru plăți mici între prieteni", "en": "Good for small payments between friends" }
+      ],
+      "contra": [
+        { "ro": "Cardurile nu merg cu Apple Pay", "en": "Cards do not work with Apple Pay" },
+        { "ro": "Partajarea IBAN-ului și a dovezilor de plată nu merge", "en": "Sharing the IBAN and payment proofs does not work" },
+        { "ro": "Creditul nu se poate rambursa din aplicație", "en": "Loans cannot be repaid in the app" }
+      ]
+    }
+  }
+}

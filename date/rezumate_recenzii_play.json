@@ -1,0 +1,358 @@
+{
+  "generat_la": "2026-10-06",
+  "generat_de": "Claude Opus 5.5 (claude-opus-5-5), în sesiunea Claude Code a lui George Dinu",
+  "sursa": "date/google_play_recenzii.json: 394 de recenzii Google Play pentru 22 de aplicații, colectate de ingest/google_play_app.mjs la 06.10.2026",
+  "limita": "Rezumatul acoperă doar recenziile afișate de Google pe pagina aplicației (până la 20, cele mai relevante, nu cele mai noi), nu toate recenziile din store.",
+  "aplicatii": {
+    "libra": {
+      "n_recenzii": 20, "nota_medie": 4.55,
+      "rezumat": {
+        "ro": "Recenzii aproape toate foarte pozitive: aplicația e descrisă ca simplă, intuitivă și rapidă, iar noua versiune ca mai ușor de navigat. Cele două recenzii negative reclamă că aplicația se deschide greu sau se închide singură.",
+        "en": "Almost all very positive reviews: the app is described as simple, intuitive and fast, and the new version as easier to navigate. The two negative reviews complain that the app is slow to open or closes on its own."
+      },
+      "pro": [
+        { "ro": "Ușor de instalat și de folosit, interfață intuitivă", "en": "Easy to install and use, intuitive interface" },
+        { "ro": "Noua aplicație e mai rapidă și mai ușor de navigat", "en": "The new app is faster and easier to navigate" },
+        { "ro": "Totul se face online, fără drum la bancă", "en": "Everything is done online, no branch visit" }
+      ],
+      "contra": [
+        { "ro": "Se deschide greu sau se închide după o operațiune", "en": "Slow to open or closes after one operation" },
+        { "ro": "Unii utilizatori se descurcă greu la început", "en": "Some users struggle at first" }
+      ]
+    },
+    "banca-transilvania": {
+      "n_recenzii": 20, "nota_medie": 1.55,
+      "rezumat": {
+        "ro": "BT Pay are cea mai gravă problemă de stabilitate din eșantion: după actualizarea din septembrie 2026 aplicația se încarcă la nesfârșit sau afișează „lipsă conexiune internet”, iar mulți nu au putut-o folosi zile întregi. Se mai reclamă datele biometrice uitate și comisionul de 5 lei la plata instant.",
+        "en": "BT Pay has the most serious stability problem in the sample: since the September 2026 update the app loads forever or shows “no internet connection”, and many could not use it for days. Users also complain about forgotten biometric data and the 5 lei fee on instant payments."
+      },
+      "pro": [
+        { "ro": "Funcționează bine când se deschide", "en": "Works well when it opens" }
+      ],
+      "contra": [
+        { "ro": "Se încarcă la nesfârșit sau dă „lipsă conexiune internet” după update", "en": "Loads forever or shows “no internet connection” after the update" },
+        { "ro": "Uită datele biometrice; reinstalarea cere drum la bancă", "en": "Forgets biometric data; reinstalling needs a branch visit" },
+        { "ro": "Comision de 5 lei la plata instant; transferuri în așteptare în weekend", "en": "5 lei fee on instant payments; transfers pending over the weekend" },
+        { "ro": "Text foarte mic în secțiunea de credit", "en": "Very small text in the loan section" }
+      ]
+    },
+    "bcr": {
+      "n_recenzii": 20, "nota_medie": 3.55,
+      "rezumat": {
+        "ro": "George e lăudat ca una dintre cele mai bune aplicații bancare: ușor de folosit, cu UX bun, dark mode și căutare flexibilă în tranzacții. Criticile vizează dispariția procentului de dobândă la depozite și economii, comisioanele și blocări care cer reinstalare.",
+        "en": "George is praised as one of the best banking apps: easy to use, with good UX, dark mode and flexible transaction search. Criticism targets the removal of the interest rate shown on deposits and savings, the fees, and freezes that require reinstalling."
+      },
+      "pro": [
+        { "ro": "Ușor de folosit, UX bun, dark mode", "en": "Easy to use, good UX, dark mode" },
+        { "ro": "Deschidere de cont simplă și rapidă", "en": "Simple, fast account opening" },
+        { "ro": "Plăți sigure și rapide", "en": "Safe, fast payments" }
+      ],
+      "contra": [
+        { "ro": "Procentul dobânzii nu mai apare la depozite și economii", "en": "The interest rate no longer shows on deposits and savings" },
+        { "ro": "Comisioane la retragere și transfer", "en": "Withdrawal and transfer fees" },
+        { "ro": "Blocări care cer reinstalare; șabloanele nu se mai pot crea", "en": "Freezes that require reinstalling; templates can no longer be created" }
+      ]
+    },
+    "brci": {
+      "n_recenzii": 8, "nota_medie": 3.13,
+      "rezumat": {
+        "ro": "Doar 8 recenzii, împărțite: unii o găsesc rapidă și sigură, alții reclamă funcții de bază lipsă (notificări, limite de card, extrase, Google Pay) și soldul afișat greșit. Autentificarea biometrică a fost adăugată recent.",
+        "en": "Only 8 reviews, split: some find it fast and safe, others complain about missing basic features (notifications, card limits, statements, Google Pay) and a wrong balance. Biometric login was added recently."
+      },
+      "pro": [
+        { "ro": "Rapidă și sigură", "en": "Fast and safe" },
+        { "ro": "Autentificare biometrică adăugată", "en": "Biometric login added" }
+      ],
+      "contra": [
+        { "ro": "Fără notificări, limite de card sau extrase", "en": "No notifications, card limits or statements" },
+        { "ro": "Fără Google Pay", "en": "No Google Pay" },
+        { "ro": "Sold afișat greșit", "en": "Wrong balance shown" }
+      ]
+    },
+    "brd": {
+      "n_recenzii": 20, "nota_medie": 2.55,
+      "rezumat": {
+        "ro": "YOU BRD primește mai ales critici: blocări și logout forțat, token expirat care cere drum la sucursală, lipsa notificărilor de tranzacții și lipsa plăților pe numărul de telefon. Se adaugă nemulțumiri legate de comisioane și de condiția a două tranzacții pentru contul fără taxe.",
+        "en": "YOU BRD gets mostly criticism: crashes and forced logout, an expired token that needs a branch visit, no transaction notifications and no payments by phone number. Users also complain about fees and the two-transaction condition for the fee-free account."
+      },
+      "pro": [
+        { "ro": "Ușor de folosit pentru o parte din utilizatori", "en": "Easy to use for part of the users" }
+      ],
+      "contra": [
+        { "ro": "Blocări, crash-uri și logout forțat", "en": "Crashes and forced logout" },
+        { "ro": "Tokenul expiră și trebuie reactivat la sucursală", "en": "The token expires and must be reactivated at a branch" },
+        { "ro": "Fără notificări de tranzacții și fără plăți pe nr. de telefon", "en": "No transaction notifications and no phone-number payments" },
+        { "ro": "Comisioane și condiții percepute ca ascunse", "en": "Fees and conditions seen as hidden" }
+      ]
+    },
+    "cec": {
+      "n_recenzii": 20, "nota_medie": 1.75,
+      "rezumat": {
+        "ro": "După actualizarea din 14.09.2026, aplicația CEC nu mai trece de ecranul de PIN: se închide sau revine la ecranul verde, iar reinstalarea nu ajută. Mai sunt reclamate reactivarea anevoioasă, notificările push care nu funcționează (după desființarea Info SMS) și așteptarea lungă la operator.",
+        "en": "Since the 14.09.2026 update, the CEC app does not get past the PIN screen: it closes or returns to the green screen, and reinstalling does not help. Users also complain about a cumbersome reactivation, push notifications that do not work (after Info SMS was dropped) and long waits for an operator."
+      },
+      "pro": [
+        { "ro": "Apreciată când funcționează", "en": "Appreciated when it works" }
+      ],
+      "contra": [
+        { "ro": "Nu trece de ecranul de PIN după update-ul din 14.09", "en": "Does not get past the PIN screen after the 14.09 update" },
+        { "ro": "Reactivare anevoioasă după fiecare actualizare", "en": "Cumbersome reactivation after each update" },
+        { "ro": "Notificările push nu funcționează", "en": "Push notifications do not work" },
+        { "ro": "Așteptare lungă la operator și la coduri", "en": "Long waits for an operator and for codes" }
+      ]
+    },
+    "citibank": {
+      "n_recenzii": 7, "nota_medie": 1.14,
+      "rezumat": {
+        "ro": "Toate cele 7 recenzii sunt negative: CitiManager afișează alte sume disponibile decât versiunea web, cu întârziere de ore, nu permite activarea cardului și deconectează utilizatorul. Aplicația e pentru carduri corporate, cu public restrâns.",
+        "en": "All 7 reviews are negative: CitiManager shows different available amounts than the web version, hours late, does not allow card activation and logs the user out. The app is for corporate cards, with a narrow audience."
+      },
+      "pro": [],
+      "contra": [
+        { "ro": "Sume disponibile greșite sau întârziate față de web", "en": "Available amounts wrong or late compared with the web" },
+        { "ro": "Activarea cardului nu funcționează", "en": "Card activation does not work" },
+        { "ro": "Deconectări și incompatibilitate cu unele telefoane", "en": "Logouts and incompatibility with some phones" }
+      ]
+    },
+    "credex": {
+      "n_recenzii": 20, "nota_medie": 3.95,
+      "rezumat": {
+        "ro": "Majoritatea recenziilor sunt scurte și pozitive („foarte bună”, „recomand”). Cele negative reclamă logarea care eșuează, aplicația care se blochează și imposibilitatea de a plăti online ratele.",
+        "en": "Most reviews are short and positive (“very good”, “recommend”). The negative ones complain about failed logins, the app freezing and not being able to pay instalments online."
+      },
+      "pro": [
+        { "ro": "Ușor de folosit pentru plăți", "en": "Easy to use for payments" },
+        { "ro": "Recomandată de mulți utilizatori", "en": "Recommended by many users" }
+      ],
+      "contra": [
+        { "ro": "Logarea eșuează chiar după resetarea PIN-ului", "en": "Login fails even after resetting the PIN" },
+        { "ro": "Se blochează; plățile online nu merg mereu", "en": "Freezes; online payments do not always work" }
+      ]
+    },
+    "exim": {
+      "n_recenzii": 20, "nota_medie": 3.05,
+      "rezumat": {
+        "ro": "Păreri polarizate: o parte laudă aplicația și profesionalismul băncii, alta reclamă soldurile afișate cu întârziere sau greșit, lipsa plăților instant și erorile de rețea. Suportul prin call center și chat e descris ca ineficient.",
+        "en": "Polarised opinions: some praise the app and the bank's professionalism, others complain about late or wrong balances, no instant payments and network errors. Call-centre and chat support are described as ineffective."
+      },
+      "pro": [
+        { "ro": "Funcționează bine pentru o parte din utilizatori", "en": "Works well for part of the users" },
+        { "ro": "Profesionalism apreciat", "en": "Appreciated professionalism" }
+      ],
+      "contra": [
+        { "ro": "Fără plăți instant; procesare cu întârziere de 24 de ore", "en": "No instant payments; 24-hour processing delay" },
+        { "ro": "Solduri greșite sau întârziate", "en": "Wrong or late balances" },
+        { "ro": "Erori de rețea și de actualizare a datelor", "en": "Network and data-update errors" },
+        { "ro": "Suport ineficient", "en": "Ineffective support" }
+      ]
+    },
+    "garanti": {
+      "n_recenzii": 20, "nota_medie": 2.35,
+      "rezumat": {
+        "ro": "Aplicația e criticată pentru lipsa autentificării biometrice, interfața neprietenoasă și blocarea contului la date „neactualizate”, care cere drum la agenție. Deschiderea de cont și creditul „100% online” se termină des cu trimiterea la sucursală; laudele vizează mai ales personalul agențiilor.",
+        "en": "The app is criticised for no biometric login, an unfriendly interface and the account being blocked over “outdated” data, which requires a branch visit. The “100% online” account opening and loan often end with a referral to a branch; the praise is mostly for branch staff."
+      },
+      "pro": [
+        { "ro": "Personal de agenție apreciat", "en": "Appreciated branch staff" },
+        { "ro": "Bună și ușor de folosit pentru o parte din utilizatori", "en": "Good and easy to use for part of the users" }
+      ],
+      "contra": [
+        { "ro": "Fără autentificare biometrică; interfață neprietenoasă", "en": "No biometric login; unfriendly interface" },
+        { "ro": "Cont blocat lunar pentru date neactualizate", "en": "Account blocked monthly over outdated data" },
+        { "ro": "Fluxurile „online” trimit la sucursală", "en": "“Online” flows send you to a branch" },
+        { "ro": "Fără buton de logout și fără notificări push", "en": "No logout button and no push notifications" }
+      ]
+    },
+    "intesa": {
+      "n_recenzii": 20, "nota_medie": 3.45,
+      "rezumat": {
+        "ro": "Jumătate din recenzii sunt pozitive și scurte (prietenoasă, ușor de folosit). Cele negative reclamă restartul după PIN, notificările push oprite de două luni, plata instant care ajunge abia luni și un suport greu de contactat.",
+        "en": "Half of the reviews are short and positive (friendly, easy to use). The negative ones complain about restarts after the PIN, push notifications off for two months, instant payments arriving only on Monday and support that is hard to reach."
+      },
+      "pro": [
+        { "ro": "Prietenoasă și intuitivă", "en": "Friendly and intuitive" },
+        { "ro": "Funcționează prompt pentru mulți", "en": "Works promptly for many" }
+      ],
+      "contra": [
+        { "ro": "Se restartează după PIN; erori", "en": "Restarts after the PIN; errors" },
+        { "ro": "Notificări push nefuncționale", "en": "Push notifications not working" },
+        { "ro": "Plata instant nu ajunge în weekend", "en": "Instant payment does not arrive at the weekend" },
+        { "ro": "Fără rambursare anticipată din aplicație", "en": "No early repayment in the app" }
+      ]
+    },
+    "nexent": {
+      "n_recenzii": 20, "nota_medie": 1.65,
+      "rezumat": {
+        "ro": "Aplicația monet e aproape nefuncțională pentru mulți: la pornire apare eroarea B0007 („configurație care compromite siguranța”) chiar pe telefoane noi, fără root. Se mai reclamă SMS-urile de activare care nu vin, mesajul „this channel is not active” și lipsa dobânzii afișate la economii.",
+        "en": "The monet app is nearly unusable for many: at launch it shows error B0007 (“configuration that compromises security”) even on new, unrooted phones. Users also complain about activation SMS that never arrive, the message “this channel is not active” and the savings interest rate not being shown."
+      },
+      "pro": [
+        { "ro": "Funcționează după rezolvarea erorilor, pentru unii", "en": "Works once errors are solved, for some" }
+      ],
+      "contra": [
+        { "ro": "Eroarea B0007 blochează aplicația pe telefoane noi", "en": "Error B0007 blocks the app on new phones" },
+        { "ro": "SMS de activare care nu vine; „channel not active”", "en": "Activation SMS never arrives; “channel not active”" },
+        { "ro": "Dobânda la economii nu e afișată", "en": "Savings interest rate not shown" },
+        { "ro": "Cere permisiuni excesive (lista aplicațiilor)", "en": "Asks for excessive permissions (app list)" }
+      ]
+    },
+    "patria": {
+      "n_recenzii": 20, "nota_medie": 2.65,
+      "rezumat": {
+        "ro": "Recenziile pozitive sunt scurte („ok”, „super”); cele negative sunt detaliate: lipsa notificărilor (e nevoie de serviciul plătit SMS Alert), plăți în euro imposibile și dobânzi la depozite mai mici în aplicație decât pe site. Mai apar erori de logare după actualizare.",
+        "en": "The positive reviews are short (“ok”, “super”); the negative ones are detailed: no notifications (the paid SMS Alert service is needed), no euro payments and deposit rates lower in the app than on the website. There are also login errors after updates."
+      },
+      "pro": [
+        { "ro": "Mulțumire generală la o parte din utilizatori", "en": "General satisfaction for part of the users" }
+      ],
+      "contra": [
+        { "ro": "Fără notificări fără SMS Alert plătit", "en": "No notifications without the paid SMS Alert" },
+        { "ro": "Nu se pot face plăți în euro", "en": "Euro payments are not possible" },
+        { "ro": "Dobânzi la depozite mai mici în aplicație decât pe site", "en": "Deposit rates lower in the app than on the website" },
+        { "ro": "Erori de logare după update", "en": "Login errors after updates" }
+      ]
+    },
+    "procredit": {
+      "n_recenzii": 10, "nota_medie": 1.8,
+      "rezumat": {
+        "ro": "Din 10 recenzii, 8 spun că aplicația nu funcționează: nu pornește pe unele telefoane (OnePlus cu Android 16) și cere dezactivarea opțiunilor de dezvoltator. Cele două pozitive o găsesc bine realizată.",
+        "en": "Of 10 reviews, 8 say the app does not work: it does not start on some phones (OnePlus on Android 16) and requires turning off developer options. The two positive ones find it well made."
+      },
+      "pro": [
+        { "ro": "Bine realizată, pentru cei la care merge", "en": "Well made, for those it works for" }
+      ],
+      "contra": [
+        { "ro": "Nu funcționează pe multe telefoane", "en": "Does not work on many phones" },
+        { "ro": "Cere dezactivarea opțiunilor de dezvoltator", "en": "Requires turning off developer options" },
+        { "ro": "Lentă și cu bug-uri", "en": "Slow and buggy" }
+      ]
+    },
+    "raiffeisen": {
+      "n_recenzii": 20, "nota_medie": 3.7,
+      "rezumat": {
+        "ro": "Multe recenzii sunt scurte și pozitive („super”, „foarte utilă”). Problemele raportate: eroarea „Sesiune invalidă” care a blocat accesul două zile, notificările despre tranzacții care nu mai vin și un comision de administrare contestat.",
+        "en": "Many reviews are short and positive (“super”, “very useful”). Reported problems: the “Invalid session” error that blocked access for two days, transaction notifications that no longer arrive and a disputed administration fee."
+      },
+      "pro": [
+        { "ro": "Utilă și apreciată de mulți utilizatori", "en": "Useful and appreciated by many users" },
+        { "ro": "Încredere în bancă", "en": "Trust in the bank" }
+      ],
+      "contra": [
+        { "ro": "„Sesiune invalidă” a blocat accesul", "en": "“Invalid session” blocked access" },
+        { "ro": "Notificările de tranzacții nu mai vin", "en": "Transaction notifications no longer arrive" },
+        { "ro": "Comisioane contestate; contact greu", "en": "Disputed fees; hard to get in touch" }
+      ]
+    },
+    "revolut": {
+      "n_recenzii": 20, "nota_medie": 3.4,
+      "rezumat": {
+        "ro": "Laudele vizează viteza, transferurile ușoare și investițiile. Criticile se concentrează pe suport: chat preluat de AI, agent uman greu de găsit, bani blocați zile întregi la verificări și vânzarea de crypto indisponibilă.",
+        "en": "Praise covers speed, easy transfers and investments. Criticism focuses on support: chat handled by AI, a human agent hard to reach, money blocked for days during checks and crypto sales unavailable."
+      },
+      "pro": [
+        { "ro": "Rapidă, fără lag", "en": "Fast, no lag" },
+        { "ro": "Transferuri ușoare, acțiuni, încărcare la stații de plată", "en": "Easy transfers, stocks, top-up at payment kiosks" }
+      ],
+      "contra": [
+        { "ro": "Suport prin AI, agent uman greu de găsit", "en": "AI support, human agent hard to reach" },
+        { "ro": "Bani blocați zile întregi la verificări", "en": "Money blocked for days during checks" },
+        { "ro": "Vânzarea crypto indisponibilă; abonament impus la reîncărcări", "en": "Crypto sales unavailable; subscription forced for top-ups" }
+      ]
+    },
+    "salt": {
+      "n_recenzii": 20, "nota_medie": 2.05,
+      "rezumat": {
+        "ro": "Cea mai repetată plângere e mesajul „eroare tehnică: ceva nu a funcționat”, care blochează aplicația și pagina Home. Mai sunt reclamate conturi închise sau carduri blocate, comisioane și limita de transfer de 100 de lei; o parte din recenziile de 5★ sunt de fapt reclame cu coduri de recomandare.",
+        "en": "The most repeated complaint is the “technical error: something went wrong” message that blocks the app and the Home tab. Users also complain about closed accounts or blocked cards, fees and the 100 lei transfer limit; some of the 5★ reviews are in fact referral-code ads."
+      },
+      "pro": [
+        { "ro": "Plăți și schimb valutar rapide, pentru unii", "en": "Fast payments and currency exchange, for some" }
+      ],
+      "contra": [
+        { "ro": "„Eroare tehnică” blochează aplicația", "en": "“Technical error” blocks the app" },
+        { "ro": "Conturi închise, carduri blocate, redeschidere imposibilă", "en": "Closed accounts, blocked cards, reopening impossible" },
+        { "ro": "Comisioane și limită de transfer de 100 de lei", "en": "Fees and a 100 lei transfer limit" },
+        { "ro": "Recenzii de 5★ cu coduri de recomandare, nu păreri reale", "en": "5★ reviews with referral codes, not real opinions" }
+      ]
+    },
+    "tbi": {
+      "n_recenzii": 20, "nota_medie": 3.9,
+      "rezumat": {
+        "ro": "Majoritatea laudă seriozitatea, suportul telefonic și operatorii. Problemele țin de logare (codul SMS care nu vine, CNP „deja folosit”), aplicația care merge intermitent și rambursările care nu apar în sold.",
+        "en": "Most praise the reliability, phone support and operators. Problems concern login (SMS code not arriving, CNP “already used”), the app working intermittently and refunds not showing in the balance."
+      },
+      "pro": [
+        { "ro": "Seriozitate și operatori apreciați", "en": "Reliability and appreciated operators" },
+        { "ro": "Suport telefonic bun", "en": "Good phone support" }
+      ],
+      "contra": [
+        { "ro": "Logare eșuată: cod SMS lipsă, CNP „deja folosit”", "en": "Failed login: missing SMS code, CNP “already used”" },
+        { "ro": "Funcționează intermitent", "en": "Works intermittently" },
+        { "ro": "Rambursările nu apar în sold", "en": "Refunds not shown in the balance" }
+      ]
+    },
+    "techventures": {
+      "n_recenzii": 9, "nota_medie": 4.11,
+      "rezumat": {
+        "ro": "Doar 9 recenzii, majoritar pozitive: rapidă, intuitivă, cu multe informații despre conturi și depozite. O recenzie reclamă eroarea de rețea la intrare.",
+        "en": "Only 9 reviews, mostly positive: fast, intuitive, with plenty of information about accounts and deposits. One review complains about a network error at login."
+      },
+      "pro": [
+        { "ro": "Rapidă și intuitivă", "en": "Fast and intuitive" },
+        { "ro": "Informații complete despre conturi și depozite", "en": "Full information on accounts and deposits" }
+      ],
+      "contra": [
+        { "ro": "„Eroare de rețea” la intrare", "en": "“Network error” at login" }
+      ]
+    },
+    "unicredit": {
+      "n_recenzii": 20, "nota_medie": 2.15,
+      "rezumat": {
+        "ro": "Laudele vizează mai ales personalul din agenții. Aplicația e criticată pentru notificările de tranzacții întârziate cu minute sau ore, tranzacțiile procesate lent, șabloanele care nu se salvează, activarea cardului care eșuează și incompatibilitatea cu unele telefoane.",
+        "en": "Praise is mostly for branch staff. The app is criticised for transaction notifications delayed by minutes or hours, slow processing, templates that do not save, failed card activation and incompatibility with some phones."
+      },
+      "pro": [
+        { "ro": "Personal amabil și profesionist", "en": "Friendly, professional staff" },
+        { "ro": "Intuitivă pentru o parte din utilizatori", "en": "Intuitive for part of the users" }
+      ],
+      "contra": [
+        { "ro": "Notificări întârziate cu minute sau ore", "en": "Notifications delayed by minutes or hours" },
+        { "ro": "Tranzacții procesate lent; șabloanele nu se salvează", "en": "Slow transaction processing; templates do not save" },
+        { "ro": "Activarea cardului eșuează; incompatibilă cu unele telefoane", "en": "Card activation fails; incompatible with some phones" }
+      ]
+    },
+    "vista": {
+      "n_recenzii": 20, "nota_medie": 2.4,
+      "rezumat": {
+        "ro": "Majoritatea recenziilor sunt negative: autentificarea cere de fiecare dată user și parolă, aplicația nu recunoaște parola sau nu se conectează săptămâni la rând. Câteva recenzii laudă noua versiune cu eToken integrat și logare cu amprentă.",
+        "en": "Most reviews are negative: login asks for username and password every time, and the app does not recognise the password or fails to connect for weeks. A few reviews praise the new version with built-in eToken and fingerprint login."
+      },
+      "pro": [
+        { "ro": "Noua versiune: eToken integrat și logare cu amprentă", "en": "New version: built-in eToken and fingerprint login" },
+        { "ro": "Utilă și simplă pentru o parte din utilizatori", "en": "Useful and simple for part of the users" }
+      ],
+      "contra": [
+        { "ro": "User și parolă la fiecare intrare", "en": "Username and password at every login" },
+        { "ro": "Nu se conectează sau nu recunoaște parola", "en": "Does not connect or recognise the password" },
+        { "ro": "Funcții indisponibile (extrase)", "en": "Features unavailable (statements)" }
+      ]
+    },
+    "ing": {
+      "n_recenzii": 20, "nota_medie": 3.9,
+      "rezumat": {
+        "ro": "Majoritatea recenziilor o numesc rapidă, ușor de folosit și „cea mai bună aplicație”, iar investițiile (ETF-uri, acțiuni) au fost primite bine. Criticile: erori la deschiderea contului, SMS de confirmare întârziat, suport doar prin robot și obligativitatea aplicației din octombrie.",
+        "en": "Most reviews call it fast, easy to use and “the best app”, and the investments (ETFs, stocks) were well received. Criticism: errors during account opening, late confirmation SMS, support only through a bot and the app being mandatory from October."
+      },
+      "pro": [
+        { "ro": "Rapidă și ușor de folosit, inclusiv pentru copii", "en": "Fast and easy to use, also for children" },
+        { "ro": "Investiții noi: ETF-uri, acțiuni, obligațiuni", "en": "New investments: ETFs, stocks, bonds" },
+        { "ro": "Considerată un reper pentru alte bănci", "en": "Seen as a benchmark for other banks" }
+      ],
+      "contra": [
+        { "ro": "Erori la deschiderea contului din aplicație", "en": "Errors when opening an account in the app" },
+        { "ro": "Suport prin robot; solicitări de peste 30 de zile", "en": "Bot support; requests taking over 30 days" },
+        { "ro": "SMS întârziat, permisiuni cerute (localizare, apeluri)", "en": "Late SMS, requested permissions (location, calls)" }
+      ]
+    }
+  }
+}
