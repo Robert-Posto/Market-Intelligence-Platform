@@ -232,7 +232,7 @@ class Validare(unittest.TestCase):
 class Rezumat(unittest.TestCase):
     def test_pe_unitate_fara_ambigue(self):
         r = vox.rezuma([rand(0), rand(5), rand(15), rand(999, ambiguu=True), rand(2, "eur"), rand(None)])
-        self.assertEqual(r[0], {"unitate": "lei", "categorie": "comision", "n": 3,
+        self.assertEqual(r[0], {"segment": None, "unitate": "lei", "categorie": "comision", "n": 3,
                                 "minim": 0, "maxim": 15, "gratuite": 1})
         self.assertEqual(r[1]["unitate"], "eur")
         self.assertEqual(len(r), 2)
@@ -247,6 +247,21 @@ class Rezumat(unittest.TestCase):
         """`nominala` fără categorie: dobânzile de depozit și de credit nu ajung în același interval."""
         r = vox.rezuma([rand(6.5, "procent", "depozite|12"), rand(9.9, "procent", "credite|ipotecar")])
         self.assertEqual({(x["categorie"], x["maxim"]) for x in r}, {("depozite", 6.5), ("credite", 9.9)})
+
+    def test_pe_segment_pf_primul_fara_dublari(self):
+        """BCR · administrare cont: 302 PJ, 234 PFA și 33 PF într-un singur interval (mip_merge, 07.10.2026).
+        Un rând fără segment are grupa lui, nu intră și la PF."""
+        r = vox.rezuma([dict(rand(30), segment="pj"), dict(rand(5), segment="pf"), rand(7),
+                        dict(rand(10), segment="pfa"), dict(rand(0), segment="pf")])
+        self.assertEqual([(g["segment"], g["n"]) for g in r], [("pf", 2), ("pfa", 1), ("pj", 1), (None, 1)])
+        self.assertEqual((r[0]["minim"], r[0]["maxim"], r[0]["gratuite"]), (0, 5, 1))
+
+    def test_fara_segment_un_singur_bloc(self):
+        """La dobânzi sursele nu spun segmentul: grupele rămân ca înainte, pe număr de valori."""
+        r = vox.rezuma([rand(6.5, "procent", "depozite|12"), rand(7, "procent", "depozite|12"),
+                        rand(9.9, "procent", "credite|ipotecar")])
+        self.assertEqual([(g["segment"], g["categorie"], g["n"]) for g in r],
+                         [(None, "depozite", 2), (None, "credite", 1)])
 
 
 class IstoricConversatii(unittest.TestCase):
@@ -404,20 +419,23 @@ class Intrebari(unittest.TestCase):
         self.assertIn("și la BRD?", continut)
 
     def test_zero_valori_spune_de_ce(self):
-        d = self.fa(ClientFals(interp(banci=["brd"])), stare_banca=lambda b: "blocata").intreaba("BRD?")
-        self.assertEqual((d["raspunsuri"][0]["total"], d["raspunsuri"][0]["stare_banca"]), (0, "blocata"))
+        lipsa = {"stare": "blocata", "surse": 1, "robots": 0, "refuzate": 1, "pdf": 0}
+        r = self.fa(ClientFals(interp(banci=["brd"])), stare_banca=lambda b: lipsa).intreaba("BRD?")["raspunsuri"][0]
+        self.assertEqual((r["total"], r["stare_banca"], r["blocaje"]),
+                         (0, "blocata", {"surse": 1, "robots": 0, "refuzate": 1, "pdf": 0}))
 
     def test_zero_cu_termen_spune_cate_sunt_fara(self):
-        """ING are 2 dobânzi la depozite, dar niciuna cu termen citit din text (mip_merge, 06.10.2026):
-        „nu avem valori” fără asta s-ar citi „ING nu are depozite”."""
+        """Nici pe „termen nespecificat” nu iese nimic: fișa spune câte sunt fără niciun filtru, ca
+        „nu avem valori” să nu se citească „banca n-are depozite”."""
         def cauta(banca, concept, categorie, termen, produs, text):
             self.cautari.append(termen)
             return [] if termen else [rand(3.5, "procent", "depozite"), rand(3.6, "procent", "depozite")]
         c = ClientFals(interp(banci=["ing"], concept="nominala", categorie="depozite", termen="12"))
         q = vox.Vox(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
-                               client=c, dir_jurnal=self.dir)
+                    client=c, dir_jurnal=self.dir)
         r = q.intreaba("ING, depozit pe 12 luni?")["raspunsuri"][0]
-        self.assertEqual((r["total"], r["fara_filtre"], self.cautari), (0, 2, ["12", None]))
+        self.assertEqual((r["total"], r["fara_filtre"], r["filtre_relaxate"], self.cautari),
+                         (0, 2, [], ["12", "necunoscut", None]))
 
     def test_fara_filtre_doar_cand_filtrul_a_golit(self):
         r = self.fa(ClientFals(interp())).intreaba("BCR?")["raspunsuri"][0]
@@ -548,6 +566,94 @@ class Intrebari(unittest.TestCase):
         (jurnal,) = [f for f in os.listdir(self.dir) if f.endswith(".jsonl")]
         with open(os.path.join(self.dir, jurnal), encoding="utf-8") as f:
             self.assertEqual(json.loads(f.readline())["conversatie"], d["conversatie"])
+
+    def test_pf_primele_inainte_de_taiere(self):
+        """La BCR · administrare cont primele 50 de rânduri erau 18 PF, 19 PFA și 13 PJ amestecate
+        (mip_merge, 07.10.2026): PF vin acum primele, apoi PFA, IMM, PJ și cele fără segment."""
+        self.randuri["bcr"] = ([dict(rand(i), segment="pj") for i in range(30)] + [rand(7)]
+                               + [dict(rand(i), segment="pfa") for i in range(30)]
+                               + [dict(rand(1), segment="pf")] * 3)
+        r = self.fa(ClientFals(interp())).intreaba("BCR?")["raspunsuri"][0]
+        segmente = [x.get("segment") for x in r["randuri"]]
+        self.assertEqual((r["total"], len(segmente)), (64, 50))
+        self.assertEqual(segmente[:4], ["pf", "pf", "pf", "pfa"])
+        self.assertEqual(segmente[-1], "pj")       # cel fără segment vine după PJ, dincolo de 50
+        self.assertEqual([g["segment"] for g in r["rezumat"]], ["pf", "pfa", "pj", None])
+
+    def test_termen_cade_pe_necunoscut(self):
+        """Libra avea 11 dobânzi la depozite fără termen în sursă și niciuna pe 7–12 luni, iar fișa spunea
+        „nu avem valori” (mip_merge, 07.10.2026). Interpretarea rămâne a omului, ca „și pe 6 luni?” să
+        continue de la ce a cerut el."""
+        def cauta(banca, concept, categorie, termen, produs, text):
+            self.cautari.append((termen, produs))
+            return [rand(4.75, "procent", "depozite")] * 11 if termen == "necunoscut" else []
+        c = ClientFals(interp(banci=["libra"], concept="nominala", categorie="depozite", termen="12"))
+        d = vox.Vox(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: self.fail("banca are valori"),
+                    client=c, dir_jurnal=self.dir).intreaba("Libra, depozit pe 12 luni?")
+        r = d["raspunsuri"][0]
+        self.assertEqual(self.cautari, [("12", None), ("necunoscut", None)])
+        self.assertEqual((r["total"], r["filtre_relaxate"], r["fara_filtre"], r["blocaje"]),
+                         (11, ["termen"], None, None))
+        self.assertEqual(d["interpretare"]["termen"], "12")
+
+    def test_produs_cade_pe_altele(self):
+        def cauta(banca, concept, categorie, termen, produs, text):
+            self.cautari.append((termen, produs))
+            return [rand(8.1, "procent", "credite")] if produs == "altele" else []
+        c = ClientFals(interp(banci=["bcr"], concept="nominala", categorie="credite", produs_credit="ipotecar"))
+        r = vox.Vox(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
+                    client=c, dir_jurnal=self.dir).intreaba("BCR, ipotecar?")["raspunsuri"][0]
+        self.assertEqual(self.cautari, [(None, "ipotecar"), (None, "altele")])
+        self.assertEqual((r["total"], r["filtre_relaxate"]), (1, ["produs"]))
+
+    def test_termen_si_produs_cad_pe_rand(self):
+        def cauta(banca, concept, categorie, termen, produs, text):
+            self.cautari.append((termen, produs))
+            return [rand(9.2, "procent", "credite")] if (termen, produs) == ("necunoscut", "altele") else []
+        c = ClientFals(interp(banci=["bcr"], concept="nominala", categorie="credite", termen="lung",
+                              produs_credit="ipotecar"))
+        r = vox.Vox(context=lambda: CTX, cauta=cauta, stare_banca=lambda b: None,
+                    client=c, dir_jurnal=self.dir).intreaba("BCR, ipotecar pe 30 de ani?")["raspunsuri"][0]
+        self.assertEqual(self.cautari,
+                         [("lung", "ipotecar"), ("necunoscut", "ipotecar"), ("necunoscut", "altele")])
+        self.assertEqual((r["total"], r["filtre_relaxate"]), (1, ["termen", "produs"]))
+
+    def test_blocaje_doar_cand_banca_n_are_valori(self):
+        """ING: 48 de PDF-uri interzise de robots.txt din 158 de surse, deci nu „toate blocate”: fișa
+        spunea doar „nu avem valori” (mip_merge, 07.10.2026)."""
+        lipsa = {"stare": None, "surse": 158, "robots": 48, "refuzate": 0, "pdf": 48}
+        r = self.fa(ClientFals(interp(banci=["ing"])), stare_banca=lambda b: lipsa).intreaba("ING?")["raspunsuri"][0]
+        self.assertEqual((r["stare_banca"], r["blocaje"]),
+                         (None, {"surse": 158, "robots": 48, "refuzate": 0, "pdf": 48}))
+        r = self.fa(ClientFals(interp()), stare_banca=lambda b: self.fail("BCR are valori")).intreaba("BCR?")["raspunsuri"][0]
+        self.assertIsNone(r["blocaje"])
+
+
+class StareBanca(unittest.TestCase):
+    """`_stare_banca_vox` din server: ce spune fișa când banca n-are valori."""
+
+    def setUp(self):
+        import server
+        self.server, self.vechi, self.cereri = server, server.interoghează, []
+
+    def tearDown(self):
+        self.server.interoghează = self.vechi
+
+    def stare(self, numere):
+        self.server.interoghează = lambda sql, params=None: self.cereri.append((sql, params)) or [numere]
+        return self.server._stare_banca_vox("ing")
+
+    def test_blocaje_partiale_pe_motiv(self):
+        s = self.stare({"surse": 158, "blocate": 48, "robots": 48, "pdf": 48})
+        self.assertEqual(s, {"stare": None, "surse": 158, "robots": 48, "refuzate": 0, "pdf": 48})
+        sql, params = self.cereri[0]
+        self.assertEqual(params, ("ing",))
+        self.assertIn("LIKE 'ROBOTS%%'", sql)   # un singur % strică o interogare cu parametri (psycopg2)
+
+    def test_toate_blocate_si_fara_surse(self):
+        s = self.stare({"surse": 1, "blocate": 1, "robots": 0, "pdf": 0})
+        self.assertEqual((s["stare"], s["refuzate"]), ("blocata", 1))
+        self.assertEqual(self.stare({"surse": 0, "blocate": 0, "robots": 0, "pdf": 0})["stare"], "fara_surse")
 
 
 class CuvinteCautare(unittest.TestCase):

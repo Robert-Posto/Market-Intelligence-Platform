@@ -295,25 +295,31 @@ def _categorie(r):
 CATEGORII_COMISION = ("comision", "comisioane")
 
 
+def _ordine_segment(segment):
+    return ORDINE_SEGMENT.index(segment) if segment in ORDINE_SEGMENT else len(ORDINE_SEGMENT)
+
+
 def rezuma(randuri):
-    """Pe unitate și categorie: câte valori, intervalul, câte gratuite; fără cele ambigue, ca în Sertar.
+    """Pe segment, unitate și categorie: câte valori, intervalul, câte gratuite; fără cele ambigue, ca în Sertar.
 
     Pe categorie, nu doar pe unitate: `nominala` e și dobânda de depozit, și cea de credit, iar fără
     categorie în întrebare un singur interval le-ar amesteca (6,5% la depozit cu 9,9% la ipotecar).
+    Pe segment, cu PF primul (`ORDINE_SEGMENT`); un rând fără segment în sursă are grupa lui, la final.
     """
     grupe = {}
     for r in randuri:
         v = r.get("valoare")
         if r.get("ambiguu") or v is None:
             continue
-        cheie = (r.get("unitate") or "", _categorie(r))
-        g = grupe.setdefault(cheie, {"unitate": cheie[0], "categorie": cheie[1], "n": 0,
-                                     "minim": v, "maxim": v, "gratuite": 0})
+        cheie = (r.get("segment"), r.get("unitate") or "", _categorie(r))
+        g = grupe.setdefault(cheie, {"segment": cheie[0], "unitate": cheie[1], "categorie": cheie[2],
+                                     "n": 0, "minim": v, "maxim": v, "gratuite": 0})
         g["n"] += 1
         g["minim"] = min(g["minim"], v)
         g["maxim"] = max(g["maxim"], v)
-        g["gratuite"] += int(v == 0 and cheie[1] in CATEGORII_COMISION)
-    return sorted(grupe.values(), key=lambda g: (-g["n"], g["categorie"], g["unitate"]))
+        g["gratuite"] += int(v == 0 and cheie[2] in CATEGORII_COMISION)
+    return sorted(grupe.values(),
+                  key=lambda g: (_ordine_segment(g["segment"]), -g["n"], g["categorie"], g["unitate"]))
 
 
 def _moment(data):
@@ -515,14 +521,33 @@ class Vox:
 
     def _raspuns(self, banca, interp):
         text = None if interp["concept"] else interp["text_cautat"]
-        randuri = self._cauta(banca, interp["concept"], interp["categorie"], interp["termen"],
-                              interp["produs_credit"], text)
-        # termenul și tipul de credit se citesc din textul băncii, deci pot goli un răspuns: ING avea
-        # 2 dobânzi la depozite, niciuna cu termen recunoscut (mip_merge, 06.10.2026); fișa spune atunci
-        # câte sunt fără filtru, ca „nu avem valori” să nu se citească „banca n-are depozite”
+
+        def cauta(termen, produs):
+            return self._cauta(banca, interp["concept"], interp["categorie"], termen, produs, text)
+
+        termen, produs = interp["termen"], interp["produs_credit"]
+        randuri, relaxate = cauta(termen, produs), []
+        # termenul și tipul de credit se citesc din textul băncii, deci pot goli un răspuns: la „depozit
+        # pe 12 luni” 28 din 30 de bănci n-aveau nicio valoare, deși Libra avea 11 dobânzi fără termen în
+        # sursă (mip_merge, 07.10.2026). Se cade pe „termen nespecificat”, apoi și pe „credit
+        # nespecificat”, nu pe niciun filtru: BCR are 6% pe 5 luni, răspuns greșit la „12 luni”
+        if not randuri and termen and termen != "necunoscut":
+            termen, relaxate = "necunoscut", ["termen"]
+            randuri = cauta(termen, produs)
+        if not randuri and produs and produs != "altele":
+            produs, relaxate = "altele", relaxate + ["produs"]
+            randuri = cauta(termen, produs)
         fara_filtre = None
-        if not randuri and (interp["termen"] or interp["produs_credit"]):
-            fara_filtre = len(self._cauta(banca, interp["concept"], interp["categorie"], None, None, text))
+        if not randuri:
+            relaxate = []
+            # nici așa: câte sunt fără niciun filtru (alt termen, alt tip de credit), ca „nu avem
+            # valori” să nu se citească „banca n-are produsul”
+            if interp["termen"] or interp["produs_credit"]:
+                fara_filtre = len(cauta(None, None))
+        # PF primele, înainte de tăierea la MAX_RANDURI: la BCR · administrare cont primele 50 de rânduri
+        # (ordinea pe serviciu) erau 18 PF, 19 PFA și 13 PJ amestecate (mip_merge, 07.10.2026)
+        randuri = sorted(randuri, key=lambda r: _ordine_segment(r.get("segment")))
+        lipsa = None if randuri else self._stare_banca(banca)
         return {
             "banca": banca,
             "mod": "text" if text else "concept",
@@ -535,7 +560,10 @@ class Vox:
             "fara_cifra": sum(1 for r in randuri if r.get("valoare") is None and not r.get("ambiguu")),
             "rezumat": rezuma(randuri),
             "randuri": randuri[:MAX_RANDURI],
-            "stare_banca": None if randuri else self._stare_banca(banca),
+            "filtre_relaxate": relaxate,
+            "stare_banca": lipsa["stare"] if lipsa else None,
+            # câte surse ale băncii sunt blocate și de ce; doar când banca n-are nicio valoare
+            "blocaje": {k: lipsa[k] for k in ("surse", "robots", "refuzate", "pdf")} if lipsa else None,
             "fara_filtre": fara_filtre,
         }
 

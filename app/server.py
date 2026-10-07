@@ -1961,16 +1961,24 @@ def _cauta_vox(banca, concept, categorie, termen, produs, text):
 
 
 def _stare_banca_vox(banca):
-    """De ce n-are banca valori: toate sursele blocate (WAF, robots.txt) sau nicio sursă. Altfel
-    „nu avem valori” s-ar citi ca „banca nu are comisionul”."""
+    """De ce n-are banca valori, din `surse`: nicio sursă, toate blocate (WAF, robots.txt), sau câte
+    sunt blocate și de ce. ING avea 48 de PDF-uri interzise de robots.txt din 158 de surse, printre
+    ele lista de taxe și comisioane, iar fișa spunea doar „nu avem valori” (mip_merge, 07.10.2026): se
+    citea „ING nu percepe comisionul”. Nota `ROBOTS: …` o scrie `ingest/populare_initiala.py`."""
     r = interoghează(
-        """SELECT count(s.id)::int AS n, count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate
+        """SELECT count(s.id)::int AS surse,
+                  count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate,
+                  count(s.id) FILTER (WHERE s.status = 'blocat'
+                                        AND s.nota_extractie LIKE 'ROBOTS%%')::int AS robots,
+                  count(s.id) FILTER (WHERE s.status = 'blocat' AND s.format = 'pdf')::int AS pdf
            FROM banci b LEFT JOIN surse s ON s.id_banca = b.id
            WHERE b.slug = %s""", (banca,))
     if not r:
         return None
-    n, blocate = r[0]["n"], r[0]["blocate"]
-    return "fara_surse" if n == 0 else "blocata" if blocate == n else None
+    x = r[0]
+    stare = "fara_surse" if x["surse"] == 0 else "blocata" if x["blocate"] == x["surse"] else None
+    return {"stare": stare, "surse": x["surse"], "robots": x["robots"],
+            "refuzate": x["blocate"] - x["robots"], "pdf": x["pdf"]}
 
 
 VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox,
