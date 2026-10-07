@@ -246,6 +246,7 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
         ))}
       </ul>
       {rb.ambigue > 0 && <p className="note">{tn('vox.ambigue', rb.ambigue)}</p>}
+      {rb.fara_cifra > 0 && <p className="note">{tn('vox.fara_cifra', rb.fara_cifra)}</p>}
       <table className="vox-valori">
         <tbody>{vizibile.map((v, k) => <Rand key={k} v={v} />)}</tbody>
       </table>

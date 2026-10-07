@@ -43,6 +43,8 @@ export const vox = {
   "vox.gratuite_n": ["{n} gratuite", "{n} free"],
   "vox.ambigue_1": ["1 valoare ambiguă, lăsată în afara intervalului (vezi coada de verificare).", "1 ambiguous value, left out of the range (see the review queue)."],
   "vox.ambigue_n": ["{n} valori ambigue, lăsate în afara intervalului (vezi coada de verificare).", "{n} ambiguous values, left out of the range (see the review queue)."],
+  "vox.fara_cifra_1": ["1 valoare e doar text, fără cifră, deci nu intră în interval.", "1 value is text only, with no figure, so it is not in the range."],
+  "vox.fara_cifra_n": ["{n} valori sunt doar text, fără cifră, deci nu intră în interval.", "{n} values are text only, with no figure, so they are not in the range."],
   "vox.ambiguu": ["ambiguă", "ambiguous"],
   "vox.vezi_dovezi": ["Vezi toate dovezile", "See all evidence"],
   "vox.arata_toate_1": ["Arată toate ({n})", "Show all ({n})"],

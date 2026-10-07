@@ -103,6 +103,16 @@ class Configurare(unittest.TestCase):
         os.environ["MIP_PERMITE_VOX"] = "0"
         self.assertFalse(vox.activ())
 
+    def test_timeout_spune_toata_asteptarea(self):
+        """SDK-ul reîncearcă singur după timeout: cu 30 s și max_retries=2, „n-a răspuns în 30 s”
+        venea după până la 90 s de „Se interpretează…” (a doua revizie, 07.10.2026)."""
+        import anthropic
+        os.environ["ANTHROPIC_API_KEY"] = "sk-ant-" + "x" * 90
+        c = vox.Vox(context=lambda: CTX, cauta=lambda *a: [], stare_banca=lambda b: None)._clientul()
+        asteptare = c.timeout * (c.max_retries + 1)
+        self.assertIn(f"în {asteptare:g} s", vox.mesaj_eroare(fara_init(anthropic.APITimeoutError)))
+        self.assertLessEqual(asteptare, 45)
+
     def test_model_implicit_haiku(self):
         os.environ.pop("MIP_VOX_MODEL", None)
         self.assertEqual(vox.model(), "claude-haiku-4-5")
@@ -201,6 +211,14 @@ class Validare(unittest.TestCase):
         curat, _ = vox.valideaza(interp(concept="nominala", categorie="depozite"), CTX)
         self.assertEqual(curat["categorie"], "depozite")
 
+    def test_text_fara_cuvinte_de_cautat_e_neclar(self):
+        """Cuvintele sub 3 litere nu se caută: cu text_cautat „PO”, căutarea nici nu rula, iar fișa
+        spunea „Nu avem valori pentru căutare după text «PO» la BCR” (a doua revizie, 07.10.2026)."""
+        curat, _ = vox.valideaza(interp(concept=None, text_cautat="PO"), CTX)
+        self.assertEqual((curat["tip"], curat["text_cautat"]), ("neclar", None))
+        curat, _ = vox.valideaza(interp(concept=None, text_cautat="PO la ATM"), CTX)
+        self.assertEqual((curat["tip"], curat["text_cautat"]), ("cautare", "PO la ATM"))
+
     def test_clarificare_pastrata(self):
         curat, _ = vox.valideaza(
             interp(tip="neclar", banci=[], concept=None, clarificare="La ce bancă?"), CTX)
@@ -297,6 +315,14 @@ class Intrebari(unittest.TestCase):
         r = self.fa(ClientFals(interp(banci=["brd"]))).intreaba("BRD?")["raspunsuri"][0]
         self.assertIsNone(r["fara_filtre"])                    # zero, dar fără filtre de golit
 
+    def test_valorile_doar_text_numarate_separat(self):
+        """Rezumatul are doar valorile cu cifră: fără numărul celorlalte, „1 valoare” stătea deasupra
+        unui tabel cu mai multe rânduri (589 de valori doar text, neambigue, în mip_merge, 07.10.2026)."""
+        self.randuri["bcr"] = [rand(5), rand(None), dict(rand(None), valoare_text="negociabil"),
+                               rand(None, ambiguu=True)]
+        r = self.fa(ClientFals(interp())).intreaba("BCR?")["raspunsuri"][0]
+        self.assertEqual((r["total"], r["rezumat"][0]["n"], r["ambigue"], r["fara_cifra"]), (4, 1, 1, 2))
+
     def test_multe_randuri_taiate_la_50(self):
         self.randuri["bcr"] = [rand(i) for i in range(120)]
         r = self.fa(ClientFals(interp())).intreaba("BCR?")["raspunsuri"][0]
@@ -324,7 +350,7 @@ class Intrebari(unittest.TestCase):
         cazuri = [
             (fara_init(anthropic.AuthenticationError, status_code=401), "401"),
             (fara_init(anthropic.RateLimitError, status_code=429), "429"),
-            (fara_init(anthropic.APITimeoutError), "30 s"),
+            (fara_init(anthropic.APITimeoutError), "40 s"),
             (fara_init(anthropic.APIConnectionError), "api.anthropic.com"),
             (fara_init(anthropic.InternalServerError, status_code=529), "529"),
         ]
@@ -369,29 +395,26 @@ class Intrebari(unittest.TestCase):
 
 class CuvinteCautare(unittest.TestCase):
     def test_cuvinte_cautare(self):
-        import server
-        self.assertEqual(server._cuvinte_cautare("Plată facturi"), ["plat", "factu"])
-        self.assertEqual(server._cuvinte_cautare("ȘTERGERE Ţară"), ["sterge", "tara"])
+        self.assertEqual(vox.cuvinte_cautare("Plată facturi"), ["plat", "factu"])
+        self.assertEqual(vox.cuvinte_cautare("ȘTERGERE Ţară"), ["sterge", "tara"])
         # niciun wildcard LIKE (%, _) și niciun semn ajung în parametru
-        self.assertEqual(server._cuvinte_cautare("100% gratuit_x'; drop--"), ["100", "gratu", "drop"])
-        self.assertEqual(server._cuvinte_cautare("a de la card card"), ["card"])
-        self.assertEqual(server._cuvinte_cautare("unu doi trei patru cinci sase sapte"),
+        self.assertEqual(vox.cuvinte_cautare("100% gratuit_x'; drop--"), ["100", "gratu", "drop"])
+        self.assertEqual(vox.cuvinte_cautare("a de la card card"), ["card"])
+        self.assertEqual(vox.cuvinte_cautare("unu doi trei patru cinci sase sapte"),
                          ["unu", "doi", "trei", "patr", "cinc"])
 
     def test_cifrele_nu_se_taie(self):
         """„100000” tăiat la „1000” ar potrivi orice sumă care conține 1000 (review, 06.10.2026)."""
-        import server
-        self.assertEqual(server._cuvinte_cautare("plafon 100000 lei 2024"), ["plaf", "100000", "lei", "2024"])
+        self.assertEqual(vox.cuvinte_cautare("plafon 100000 lei 2024"), ["plaf", "100000", "lei", "2024"])
 
     def test_flexiunea_romaneasca(self):
         """„datoria vamală” trebuie să găsească „datoriei vamale” (BCR, 13 valori): pe subșirul exact
         căutarea dădea 0 rânduri (măsurat pe mip, 06.10.2026)."""
-        import server
-        cuvinte = server._cuvinte_cautare("datoria vamală")
+        cuvinte = vox.cuvinte_cautare("datoria vamală")
         self.assertEqual(cuvinte, ["dator", "vama"])
         self.assertTrue(all(c in "decontarea electronica a datoriei vamale" for c in cuvinte))
-        self.assertEqual(server._cuvinte_cautare(None), [])
-        self.assertEqual(server._cuvinte_cautare(""), [])
+        self.assertEqual(vox.cuvinte_cautare(None), [])
+        self.assertEqual(vox.cuvinte_cautare(""), [])
 
 
 class Http(unittest.TestCase):
@@ -523,6 +546,24 @@ class Http(unittest.TestCase):
             self.server_mod.VOX._client = vechi
         self.assertEqual(cod, 502)
         self.assertIn("api.anthropic.com", d["eroare"])
+
+    def test_baza_oprita_503_cu_mesaj(self):
+        """Cu Postgres oprit, pagina arăta textul brut psycopg2 („OperationalError: connection to server
+        at …”), netradus; acum un mesaj fix, cu traducere, și la întrebare, și la încărcarea paginii."""
+        import psycopg2
+
+        def cade(*a, **k):
+            raise psycopg2.OperationalError('connection to server at "localhost" (::1), port 5432 failed')
+        ok = {"X-MIP-Token": self.token()}
+        vechi_cauta, vechi_interogare = self.server_mod.VOX._cauta, self.server_mod.interoghează
+        self.server_mod.VOX._cauta = cade
+        self.server_mod.interoghează = cade
+        try:
+            raspunsuri = [self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, ok), self.cere("GET", "/api/sumar")]
+        finally:
+            self.server_mod.VOX._cauta, self.server_mod.interoghează = vechi_cauta, vechi_interogare
+        for cod, d in raspunsuri:
+            self.assertEqual((cod, d["eroare"]), (503, "Baza de date nu răspunde (Postgres oprit sau MIP_DSN greșit)."))
 
 
 class Preturi(unittest.TestCase):

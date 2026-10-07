@@ -17,7 +17,6 @@ import csv
 import http.server
 import json
 import os
-import re
 import socket
 import socketserver
 import statistics
@@ -562,28 +561,9 @@ def matrice(q):
 
 # Căutarea după text (Vox): ce nu are concept stă în găleata `comision` (3.859 de
 # valori în observatii_curente, baza mip, 06.10.2026) și n-ar fi găsit de nicio căutare pe `camp`.
-# Fără diacritice pe ambele părți: întrebarea vine adesea scrisă fără ele, tarifele cu ele.
-_DIACRITICE = str.maketrans("ăâîșşțţ", "aaisstt")
+# Cuvintele vin din vox.cuvinte_cautare, fără diacritice; aici textul băncii pierde aceleași litere.
 _TEXT_CAUTARE = ("translate(lower(coalesce(o.serviciu, '') || ' ' || coalesce(o.citat, '')), "
                  "'ăâîșşțţ', 'aaisstt')")
-
-
-def _cuvinte_cautare(text):
-    """Cuvintele unei căutări după text: litere și cifre (fără `%` sau `_`, care în LIKE ar fi
-    wildcard-uri), de cel puțin 3 caractere, fără dubluri, cel mult 5.
-
-    Fiecare cuvânt e tăiat la rădăcină (6+ litere pierd ultimele 2, 5 litere ultima): pe subșirul
-    exact, „datoria vamală” nu găsea „Decontarea electronică a datoriei vamale” la BCR (0 rânduri
-    din 13, mip, 06.10.2026); flexiunea românească schimbă tocmai finalul cuvântului."""
-    cuvinte = []
-    for c in re.findall(r"[^\W_]+", (text or "").lower().translate(_DIACRITICE)):
-        if len(c) < 3:
-            continue
-        if not c.isdigit():     # „100000” tăiat la „1000” ar potrivi orice sumă care îl conține
-            c = c[:-2] if len(c) >= 6 else c[:-1] if len(c) == 5 else c
-        if c not in cuvinte:
-            cuvinte.append(c)
-    return cuvinte[:5]
 
 
 def celula(q):
@@ -605,7 +585,7 @@ def celula(q):
     # cu `text` și fără `camp` (Vox): toate conceptele băncii, filtrate după cuvinte,
     # cel mult vox.MAX_RANDURI rânduri; fără `text` totul rămâne ca înainte
     camp = (q.get("camp") or [""])[0]
-    cuvinte = _cuvinte_cautare((q.get("text") or [""])[0])
+    cuvinte = vox.cuvinte_cautare((q.get("text") or [""])[0])
     if not (q.get("banca") and (camp or cuvinte)):
         return {"eroare": "lipsește banca sau camp"}
     # `camp` singur nu e destul la dobanzi: `nominala` inseamna si dobanda de
@@ -2184,6 +2164,19 @@ def _adu_din_retea(url):
     return cale
 
 
+# Cu Postgres oprit, paginile arătau textul psycopg2 („OperationalError: connection to server at
+# …”), netradus; detaliul rămâne în terminalul serverului
+BAZA_OPRITA = "Baza de date nu răspunde (Postgres oprit sau MIP_DSN greșit)."
+
+
+def _eroare_server(exc):
+    """Codul și corpul unui răspuns de eroare: baza oprită are mesajul ei, restul clasa și textul."""
+    if isinstance(exc, psycopg2.OperationalError):
+        sys.stderr.write(f"baza de date: {exc}\n")
+        return 503, {"eroare": BAZA_OPRITA}
+    return 500, {"eroare": f"{exc.__class__.__name__}: {exc}"}
+
+
 class Handler(http.server.SimpleHTTPRequestHandler):
     def _json(self, cod, date):
         corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
@@ -2243,7 +2236,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         except vox.EroareModel as exc:
             self._json(502, {"eroare": str(exc)})
         except Exception as exc:
-            self._json(500, {"eroare": f"{exc.__class__.__name__}: {exc}"})
+            self._json(*_eroare_server(exc))
 
     def _citeste_corpul(self, limita=4096):
         """Octeții corpului, citiți înaintea oricărui refuz, sau None dacă lipsesc ori depășesc limita.
@@ -2345,10 +2338,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
                 cod = 200
             except Exception as exc:
-                corp = json.dumps(
-                    {"eroare": f"{exc.__class__.__name__}: {exc}"}, ensure_ascii=False
-                ).encode("utf-8")
-                cod = 500
+                cod, eroare = _eroare_server(exc)
+                corp = json.dumps(eroare, ensure_ascii=False).encode("utf-8")
             self.send_response(cod)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(corp)))

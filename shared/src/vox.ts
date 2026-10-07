@@ -41,6 +41,8 @@ export const RaspunsBanca = z
     total: z.number(),
     limitat: z.boolean(),
     ambigue: z.number(),
+    /** neambigue, fără cifră (doar `valoare_text`): nu intră în rezumat, dar sunt în `total` */
+    fara_cifra: z.number(),
     rezumat: z.array(GrupaRezumat),
     randuri: z.array(ValoareDovada),
     stare_banca: z.enum(['blocata', 'fara_surse']).nullable(),

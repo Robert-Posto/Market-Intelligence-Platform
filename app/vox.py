@@ -16,13 +16,17 @@ import datetime
 import importlib.util
 import json
 import os
+import re
 import secrets
 import threading
 
 RADACINA = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR_JURNAL = os.path.join(RADACINA, "loguri", "vox")
 MAX_TOKENS = 400        # interpretarea are sub 200 de tokeni; marja e pentru `clarificare`
-TIMEOUT_S = 30.0
+# SDK-ul reîncearcă singur după timeout: cu 30 s și max_retries=2, „n-a răspuns în 30 s” venea
+# după până la 90 s; acum cel mult 2 × 20 s, iar mesajul spune toată așteptarea
+TIMEOUT_S = 20.0
+REINCERCARI = 1
 
 
 def _incarca_preturi():
@@ -66,7 +70,7 @@ def mesaj_eroare(exc):
     if isinstance(exc, anthropic.RateLimitError):
         return "Prea multe cereri la Anthropic (429). Încearcă din nou peste un minut."
     if isinstance(exc, anthropic.APITimeoutError):
-        return f"Modelul n-a răspuns în {int(TIMEOUT_S)} s. Încearcă din nou."
+        return f"Modelul n-a răspuns în {int(TIMEOUT_S * (REINCERCARI + 1))} s. Încearcă din nou."
     if isinstance(exc, anthropic.APIConnectionError):
         return "Nu s-a putut ajunge la api.anthropic.com (rețea sau proxy)."
     if isinstance(exc, anthropic.APIStatusError):
@@ -195,6 +199,30 @@ def prompt(ctx):
     return "\n".join(linii)
 
 
+# Fără diacritice pe ambele părți: întrebarea vine adesea scrisă fără ele, tarifele cu ele.
+# Aceleași litere ca `_TEXT_CAUTARE` din server, care face același lucru în SQL.
+DIACRITICE = str.maketrans("ăâîșşțţ", "aaisstt")
+
+
+def cuvinte_cautare(text):
+    """Cuvintele unei căutări după text: litere și cifre (fără `%` sau `_`, care în LIKE ar fi
+    wildcard-uri), de cel puțin 3 caractere, fără dubluri, cel mult 5. Aici, nu în server: și
+    validarea, și `celula` trebuie să știe dacă rămâne ceva de căutat.
+
+    Fiecare cuvânt e tăiat la rădăcină (6+ litere pierd ultimele 2, 5 litere ultima): pe subșirul
+    exact, „datoria vamală” nu găsea „Decontarea electronică a datoriei vamale” la BCR (0 rânduri
+    din 13, mip, 06.10.2026); flexiunea românească schimbă tocmai finalul cuvântului."""
+    cuvinte = []
+    for c in re.findall(r"[^\W_]+", (text or "").lower().translate(DIACRITICE)):
+        if len(c) < 3:
+            continue
+        if not c.isdigit():     # „100000” tăiat la „1000” ar potrivi orice sumă care îl conține
+            c = c[:-2] if len(c) >= 6 else c[:-1] if len(c) == 5 else c
+        if c not in cuvinte:
+            cuvinte.append(c)
+    return cuvinte[:5]
+
+
 def _text(v, maxim):
     if not isinstance(v, str):
         return None
@@ -223,6 +251,9 @@ def valideaza(brut, ctx):
     curat.update({k: brut.get(k) for k in permise})
     curat["banci"] = banci[:MAX_BANCI]
     curat["text_cautat"] = _text(brut.get("text_cautat"), 80)
+    if not cuvinte_cautare(curat["text_cautat"]):
+        # „PO” nu are niciun cuvânt de căutat: fișa ar fi spus „nu avem valori” fără să caute
+        curat["text_cautat"] = None
     curat["clarificare"] = _text(brut.get("clarificare"), 300)
     # categoria doar unde conceptul are valori: `administrare_cont` e numai sub `comision`, iar o
     # categorie din 2.2 lângă el golea fișa („BCR n-are comisionul”, deși avea 570 de valori)
@@ -301,7 +332,7 @@ class Vox:
     def _clientul(self):
         if self._client is None:
             import anthropic
-            self._client = anthropic.Anthropic(timeout=TIMEOUT_S, max_retries=2)
+            self._client = anthropic.Anthropic(timeout=TIMEOUT_S, max_retries=REINCERCARI)
         return self._client
 
     def _cheama(self, m, sistem, sch, intrebare, anterior):
@@ -345,6 +376,9 @@ class Vox:
             # căutarea după text e tăiată la MAX_RANDURI în SQL, deci totalul real poate fi mai mare
             "limitat": bool(text) and len(randuri) >= MAX_RANDURI,
             "ambigue": sum(1 for r in randuri if r.get("ambiguu")),
+            # rezumatul are doar valorile cu cifră; fără acest număr, „1 valoare” stătea deasupra unui
+            # tabel mai lung (589 de valori doar text, neambigue, în mip_merge, 07.10.2026)
+            "fara_cifra": sum(1 for r in randuri if r.get("valoare") is None and not r.get("ambiguu")),
             "rezumat": rezuma(randuri),
             "randuri": randuri[:MAX_RANDURI],
             "stare_banca": None if randuri else self._stare_banca(banca),
