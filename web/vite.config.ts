@@ -13,6 +13,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    // app/server.py primește POST /api/vox doar cu Origin :5173 (vox.PORT_VITE); fără strictPort, un al
+    // doilea `npm run dev` trecea tăcut pe 5174 și fiecare întrebare primea 403 „Origin nepermis”
+    strictPort: true,
     proxy: {
       '/api': PYTHON,
       '/logos': PYTHON,

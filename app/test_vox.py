@@ -189,6 +189,18 @@ class Validare(unittest.TestCase):
         curat, _ = vox.valideaza(interp(tip="neclar", clarificare="Debit sau credit?"), CTX)
         self.assertEqual((curat["tip"], curat["clarificare"]), ("cautare", None))
 
+    def test_categoria_ramane_doar_unde_conceptul_are_valori(self):
+        """Categoriile vin din GRUPURI_RATE, iar `administrare_cont` are valori doar sub `comision`:
+        cu „conturi_carduri” lângă el, fișa spunea că BCR n-are comisionul, deși avea 570 de valori
+        (a doua revizie, 07.10.2026). Fără concept (căutare după text), o categorie ar tăia la fel."""
+        curat, _ = vox.valideaza(interp(categorie="conturi_carduri"), CTX)
+        self.assertEqual((curat["tip"], curat["concept"], curat["categorie"]),
+                         ("cautare", "administrare_cont", None))
+        curat, _ = vox.valideaza(interp(concept=None, text_cautat="datoria vamală", categorie="credite"), CTX)
+        self.assertEqual((curat["tip"], curat["categorie"]), ("cautare", None))
+        curat, _ = vox.valideaza(interp(concept="nominala", categorie="depozite"), CTX)
+        self.assertEqual(curat["categorie"], "depozite")
+
     def test_clarificare_pastrata(self):
         curat, _ = vox.valideaza(
             interp(tip="neclar", banci=[], concept=None, clarificare="La ce bancă?"), CTX)

@@ -224,7 +224,12 @@ def valideaza(brut, ctx):
     curat["banci"] = banci[:MAX_BANCI]
     curat["text_cautat"] = _text(brut.get("text_cautat"), 80)
     curat["clarificare"] = _text(brut.get("clarificare"), 300)
-    cu_ce = bool(curat["banci"] and (curat["concept"] or curat["text_cautat"]))
+    # categoria doar unde conceptul are valori: `administrare_cont` e numai sub `comision`, iar o
+    # categorie din 2.2 lângă el golea fișa („BCR n-are comisionul”, deși avea 570 de valori)
+    categorii = next((c["categorii"] for c in ctx["concepte"] if c["camp"] == curat["concept"]), [])
+    if curat["categorie"] not in categorii:
+        curat["categorie"] = None
+    cu_ce =bool(curat["banci"] and (curat["concept"] or curat["text_cautat"]))
     if curat["tip"] == "cautare" and not cu_ce:
         curat["tip"] = "neclar"
     elif curat["tip"] == "neclar" and cu_ce:
