@@ -17,7 +17,9 @@ GlobalWorkerOptions.workerSrc = urlWorker
  * deschis) și ia fișierul din Bronze când există.
  */
 export function incarcaDocument(url: string): PDFDocumentLoadingTask {
-  return getDocument(`/pdf?u=${encodeURIComponent(url)}`)
+  // isEvalSupported:false: atenuarea CVE-2024-4367 (JS prin font manipulat); 4.10 e deja
+  // reparat, opțiunea e doar apărare în adâncime
+  return getDocument({ url: `/pdf?u=${encodeURIComponent(url)}`, isEvalSupported: false })
 }
 
 /* Normalizare pentru potrivire: PDF-urile despart des cuvintele în glife
