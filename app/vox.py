@@ -55,8 +55,12 @@ MAX_RANDURI = 50
 # 0–1.200 lei (mip_merge, 07.10.2026); rândurile fără segment în sursă vin la final. `celula` din server
 # acceptă la `segment` doar aceste valori, plus `nemarcat`.
 ORDINE_SEGMENT = ("pf", "pfa", "imm", "pj")
-TIPURI = ("cautare", "neclar", "in_afara")
-CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text_cautat", "clarificare")
+TIPURI = ("cautare", "clasament", "neclar", "in_afara")
+CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text_cautat", "clarificare",
+        "segment", "metrica")
+# „cea mai ieftină variantă” cere cea mai bună valoare a fiecărei bănci, nu mediana (decizia lui
+# Nicolae, 07.10.2026); mediana rămâne implicită, ca în 2.1 și Versus
+METRICI = ("mediana", "cea_mai_buna")
 # Istoricul conversațiilor (coloana „Conversații” din pagina Vox): fișiere pe laptop, nu în bază
 ID_CONVERSATIE = re.compile(r"[0-9a-f]{16}")
 TITLU_MAX = 120
@@ -97,7 +101,7 @@ def _acum():
 
 def _gol(tip="neclar"):
     return {"tip": tip, "banci": [], "concept": None, "categorie": None, "termen": None,
-            "produs_credit": None, "text_cautat": None, "clarificare": None}
+            "produs_credit": None, "text_cautat": None, "clarificare": None, "segment": None, "metrica": None}
 
 
 def cheie_reala():
@@ -157,6 +161,8 @@ def schema(ctx):
             "produs_credit": optional(ctx["produse"]),
             "text_cautat": text_optional,
             "clarificare": text_optional,
+            "segment": optional(ORDINE_SEGMENT),
+            "metrica": optional(METRICI),
         },
         "required": list(CHEI),
         "additionalProperties": False,
@@ -169,17 +175,23 @@ def prompt(ctx):
     linii = [
         "Ești interpretul paginii Vox din Marketing Command Center (Libra Bank).",
         "Utilizatorul întreabă, în română sau în engleză, despre o valoare publicată de o bancă din "
-        "România: un comision, o dobândă, o limită.",
+        "România (un comision, o dobândă, o limită) sau compară băncile între ele pe o astfel de valoare.",
         "Sarcina ta: traduci întrebarea în parametrii unei căutări în baza noastră. NU răspunzi la "
         "întrebare, nu scrii nicio cifră și nu folosești ce știi despre bănci: valorile le arată "
         "aplicația, din bază.",
         "",
         "Reguli:",
         "- tip = cautare: întrebarea cere o valoare a uneia sau mai multor bănci (cel mult 3).",
+        "- tip = clasament: întrebarea compară băncile între ele pe o valoare („care bancă are cel mai "
+        "mic…”, „cine dă cea mai mare dobândă…”, „clasamentul la…”, „unde stă Libra la…”). concept e "
+        "obligatoriu; banci = doar băncile numite în întrebare (aplicația le evidențiază), altfel []. Se "
+        "pot clasa doar conceptele din lista „Clasabile” de la final; pentru altele pune tot clasament, "
+        "iar aplicația spune că nu are clasament.",
         "- tip = neclar: lipsește banca sau nu se înțelege ce valoare; scrie atunci în clarificare "
-        "o întrebare scurtă, în limba utilizatorului.",
-        "- tip = in_afara: orice altceva (clasamente de tipul „cine are cel mai mic…”, aplicații, "
-        "recenzii, campanii, sfaturi, texte de scris, întrebări generale).",
+        "o întrebare scurtă, în limba utilizatorului. O întrebare fără bancă și fără comparație "
+        "(„Cât costă administrarea contului?”) e neclar.",
+        "- tip = in_afara: orice altceva (aplicații, recenzii, campanii, sfaturi, texte de scris, "
+        "întrebări generale).",
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
         "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept.",
@@ -188,14 +200,22 @@ def prompt(ctx):
         "tarifele, deci nu pune neclar pentru că nu ești sigur că serviciul există.",
         "- categorie: doar la dobânzi (depozite, credite, conturi și carduri); la comisioane, null. "
         "La o dobândă, conceptul e unul din cele ale categoriei (lista „Categorii” de la final); "
-        "„dobânda” fără alt detaliu e `nominala`.",
+        "„dobânda” fără alt detaliu e `nominala`. La un clasament de dobânzi categoria e obligatorie; "
+        "dacă întrebarea n-o spune, tip = neclar, cu o clarificare scurtă (depozit, credit sau cont?).",
         "- Termenii englezești au conceptul lor, nu pe cel mai apropiat: APR / annual percentage rate "
         "= `dae` (nu `nominala`; „interest rate” e `nominala`); incoming payment / incoming transfer "
         "= `incasare` (bani primiți), outgoing transfer / payment sent = `transfer_credit` (bani trimiși).",
         "- termen și produs_credit: doar dacă întrebarea le spune.",
+        "- segment: pf (persoane fizice), pfa, imm, pj (firme, companii, persoane juridice); doar dacă "
+        "întrebarea îl spune, altfel null.",
+        "- metrica: cea_mai_buna dacă întrebarea cere cea mai ieftină sau cea mai avantajoasă variantă "
+        "oferită („cea mai ieftină variantă”, „cel mai mic comision posibil”, „cea mai mare dobândă "
+        "oferită”); altfel null.",
         "- Dacă primești interpretarea întrebării anterioare, întrebarea curentă o poate continua "
         "(„și la BRD?”, „dar pe 6 luni?”): păstrezi ce nu se schimbă. O bancă numită în continuare "
         "(„și la BRD?”) înlocuiește băncile anterioare, nu se adaugă la ele.",
+        "- După un clasament, „și pentru firme?” rămâne clasament, cu alt segment; o bancă numită "
+        "(„dar la BCR?”) face o căutare la acea bancă, pentru același concept.",
         "",
         "Băncile (slug: nume):",
     ]
@@ -204,6 +224,7 @@ def prompt(ctx):
     for c in ctx["concepte"]:
         exemple = " | ".join(e[:80] for e in c["exemple"])
         linii.append(f"{c['camp']} · {', '.join(c['unitati'])} · {', '.join(c['categorii'])} · {c['n']} · {exemple}")
+    cl = ctx["clasabile"]
     linii += [
         "",
         "Categorii: " + "; ".join(
@@ -211,6 +232,8 @@ def prompt(ctx):
             for k, v in ctx["categorii"].items()),
         "Termene: " + "; ".join(f"{k} ({v})" for k, v in ctx["termene"].items()),
         "Tipuri de credit: " + "; ".join(f"{k} ({v})" for k, v in ctx["produse"].items()),
+        "Clasabile: comisioane (în lei): " + ", ".join(cl["comisioane"]) + "; dobânzi (cu categoria): "
+        + "; ".join(f"{k} ({', '.join(v)})" for k, v in cl["dobanzi"].items()),
     ]
     return "\n".join(linii)
 
@@ -258,7 +281,8 @@ def valideaza(brut, ctx):
     if not isinstance(banci, list) or any(b not in {x["slug"] for x in ctx["banci"]} for b in banci):
         return _gol(), []
     permise = {"concept": {c["camp"] for c in ctx["concepte"]}, "categorie": set(ctx["categorii"]),
-               "termen": set(ctx["termene"]), "produs_credit": set(ctx["produse"])}
+               "termen": set(ctx["termene"]), "produs_credit": set(ctx["produse"]),
+               "segment": set(ORDINE_SEGMENT), "metrica": set(METRICI)}
     for cheie, valori in permise.items():
         if brut.get(cheie) is not None and brut.get(cheie) not in valori:
             return _gol(), []
@@ -276,6 +300,18 @@ def valideaza(brut, ctx):
     categorii = next((c["categorii"] for c in ctx["concepte"] if c["camp"] == curat["concept"]), [])
     if curat["categorie"] not in categorii:
         curat["categorie"] = None
+    if curat["tip"] == "clasament":
+        curat["clarificare"] = None
+        dobanzi = ctx["clasabile"]["dobanzi"]
+        if curat["concept"] in dobanzi and not curat["categorie"]:
+            categorii = dobanzi[curat["concept"]]
+            if len(categorii) == 1:
+                curat["categorie"] = categorii[0]          # `dae` e doar la credite
+            else:
+                curat["tip"] = "neclar"                    # `nominala`: depozit, credit sau cont?
+        elif not (curat["concept"] or curat["text_cautat"]):
+            curat["tip"] = "neclar"
+        return curat, banci[MAX_BANCI:]
     cu_ce = bool(curat["banci"] and (curat["concept"] or curat["text_cautat"]))
     if curat["tip"] == "cautare" and not cu_ce:
         curat["tip"] = "neclar"
@@ -295,11 +331,14 @@ def _categorie(r):
 CATEGORII_COMISION = ("comision", "comisioane")
 
 
-def _ordine_segment(segment):
+def _ordine_segment(segment, primul=None):
+    # segmentul cerut în întrebare („pentru firme”) vine primul; restul, în ordinea obișnuită
+    if primul and segment == primul:
+        return -1
     return ORDINE_SEGMENT.index(segment) if segment in ORDINE_SEGMENT else len(ORDINE_SEGMENT)
 
 
-def rezuma(randuri):
+def rezuma(randuri, primul=None):
     """Pe segment, unitate și categorie: câte valori, intervalul, câte gratuite; fără cele ambigue, ca în Sertar.
 
     Pe categorie, nu doar pe unitate: `nominala` e și dobânda de depozit, și cea de credit, iar fără
@@ -319,7 +358,38 @@ def rezuma(randuri):
         g["maxim"] = max(g["maxim"], v)
         g["gratuite"] += int(v == 0 and cheie[2] in CATEGORII_COMISION)
     return sorted(grupe.values(),
-                  key=lambda g: (_ordine_segment(g["segment"]), -g["n"], g["categorie"], g["unitate"]))
+                  key=lambda g: (_ordine_segment(g["segment"], primul), -g["n"], g["categorie"], g["unitate"]))
+
+
+def clasa(celule, sens, metrica, evidentiate, nume):
+    """Băncile unui bloc, de la cel mai avantajos pentru client: crescător la comisioane și credite,
+    descrescător la depozite; la egalitate, după nume. Locurile egale se împart: la administrarea
+    contului PF, 7 din 14 bănci au mediana 0 lei (mip_merge, 07.10.2026), iar „Libra pe locul 4” ar fi
+    fost un loc arbitrar. Serviciul e al rândului de la mediană, deci la „cea mai bună variantă” lipsește."""
+    def cifra(c):
+        if metrica == "cea_mai_buna":
+            return c["minim"] if sens == "mic_bun" else c["maxim"]
+        return c["valoare"]
+
+    la_mediana = metrica != "cea_mai_buna"
+    randuri = [{"banca": c["banca"], "valoare": cifra(c), "minim": c["minim"], "maxim": c["maxim"], "n": c["n"],
+                "serviciu": c.get("serviciu") if la_mediana else None,
+                "frecventa": c.get("frecventa") if la_mediana else None,
+                "conditie": c.get("conditie") if la_mediana else None,
+                "segment_necunoscut": c.get("segment_necunoscut") if la_mediana else None,
+                "evidentiata": c["banca"] in evidentiate}
+               for c in celule if cifra(c) is not None]
+    semn = -1 if sens == "mare_bun" else 1
+    randuri.sort(key=lambda r: (semn * r["valoare"], (nume.get(r["banca"]) or r["banca"]).lower()))
+    i = 0
+    while i < len(randuri):
+        j = i
+        while j + 1 < len(randuri) and randuri[j + 1]["valoare"] == randuri[i]["valoare"]:
+            j += 1
+        for r in randuri[i:j + 1]:
+            r["loc"], r["loc_pana"] = i + 1, j + 1
+        i = j + 1
+    return randuri
 
 
 def _moment(data):
@@ -462,10 +532,15 @@ class Vox:
     """O întrebare → interpretarea modelului → valorile din bază. Fără HTTP și fără SQL: serverul
     dă funcțiile de citire (`context`, `cauta`, `stare_banca`), ca la `rulari.Rulari`."""
 
-    def __init__(self, context, cauta, stare_banca, client=None, dir_jurnal=DIR_JURNAL, dir_conversatii=None):
+    def __init__(self, context, cauta, stare_banca, client=None, dir_jurnal=DIR_JURNAL, dir_conversatii=None,
+                 clasament=None, stare_banci=None):
         self._sursa_context = context
         self._cauta = cauta
         self._stare_banca = stare_banca
+        # clasamentele: celulele din 2.1 / 2.2 și motivul pe toate băncile (app/server.py); fără ele,
+        # orice clasament iese `neclasabil` (evaluarea interpretării nu le folosește)
+        self._clasament = clasament
+        self._stare_banci = stare_banci
         self._client = client
         self.dir = dir_jurnal
         # lângă jurnal: în teste și la evaluare jurnalul e într-un dosar temporar, deci și conversațiile
@@ -546,7 +621,7 @@ class Vox:
                 fara_filtre = len(cauta(None, None))
         # PF primele, înainte de tăierea la MAX_RANDURI: la BCR · administrare cont primele 50 de rânduri
         # (ordinea pe serviciu) erau 18 PF, 19 PFA și 13 PJ amestecate (mip_merge, 07.10.2026)
-        randuri = sorted(randuri, key=lambda r: _ordine_segment(r.get("segment")))
+        randuri = sorted(randuri, key=lambda r: _ordine_segment(r.get("segment"), interp["segment"]))
         lipsa = None if randuri else self._stare_banca(banca)
         return {
             "banca": banca,
@@ -558,7 +633,7 @@ class Vox:
             # rezumatul are doar valorile cu cifră; fără acest număr, „1 valoare” stătea deasupra unui
             # tabel mai lung (589 de valori doar text, neambigue, în mip_merge, 07.10.2026)
             "fara_cifra": sum(1 for r in randuri if r.get("valoare") is None and not r.get("ambiguu")),
-            "rezumat": rezuma(randuri),
+            "rezumat": rezuma(randuri, interp["segment"]),
             "randuri": randuri[:MAX_RANDURI],
             "filtre_relaxate": relaxate,
             "stare_banca": lipsa["stare"] if lipsa else None,
@@ -566,6 +641,30 @@ class Vox:
             "blocaje": {k: lipsa[k] for k in ("surse", "robots", "refuzate", "pdf")} if lipsa else None,
             "fara_filtre": fara_filtre,
         }
+
+    def _clasament_raspuns(self, interp, ctx):
+        cel = (self._clasament(interp["concept"], interp["categorie"], interp["termen"],
+                               interp["produs_credit"], interp["segment"])
+               if self._clasament and interp["concept"] else None)
+        if not cel:
+            return {"concept": interp["concept"], "text": interp["text_cautat"], "neclasabil": True}
+        metrica = interp["metrica"] or "mediana"
+        nume = {b["slug"]: b["nume"] for b in ctx["banci"]}
+        evidentiate = {"libra", *interp["banci"]}
+        blocuri = [{"tip": b["tip"], "termen": b["termen"], "produs": b["produs"],
+                    "randuri": clasa(b["celule"], cel["sens"], metrica, evidentiate, nume)}
+                   for b in cel["blocuri"]]
+        primul = blocuri[0]["randuri"]
+        libra = next(({"loc": r["loc"], "loc_pana": r["loc_pana"], "din": len(primul)}
+                      for r in primul if r["banca"] == "libra"), None)
+        cu_date = {r["banca"] for b in blocuri for r in b["randuri"]}
+        stari = self._stare_banci() if self._stare_banci else {}
+        fara_date = [{"banca": b["slug"], **(stari.get(b["slug"]) or {})}
+                     for b in ctx["banci"] if b["slug"] not in cu_date]
+        return {"concept": interp["concept"], "sursa": cel["sursa"], "grup": cel["grup"],
+                "unitate": cel["unitate"], "sens": cel["sens"], "metrica": metrica, "segment": cel["segment"],
+                "categorie": interp["categorie"], "termen": interp["termen"], "produs": interp["produs_credit"],
+                "blocuri": blocuri, "libra": libra, "fara_date": fara_date}
 
     def intreaba(self, intrebare, anterior=None, conversatie=None):
         intrebare = verifica_intrebarea(intrebare)
@@ -590,14 +689,17 @@ class Vox:
         rand.update(interpretare=interp, stop=stop, tokeni=tokeni, cost_usd=cost)
         try:
             raspunsuri = [self._raspuns(b, interp) for b in interp["banci"]] if interp["tip"] == "cautare" else []
+            clasament = self._clasament_raspuns(interp, ctx) if interp["tip"] == "clasament" else None
         except Exception as exc:
             # apelul la model s-a plătit deja: întrebarea intră în jurnal și când cade baza
             rand["eroare"] = f"{exc.__class__.__name__}: {exc}"
             self._jurnal(rand)
             raise
         rand["randuri"] = {r["banca"]: r["total"] for r in raspunsuri}
+        if clasament and clasament.get("blocuri"):
+            rand["clasate"] = len(clasament["blocuri"][0]["randuri"])
         rezultat = {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
-                    "model": m, "tokeni": tokeni, "cost_usd": cost}
+                    "clasament": clasament, "model": m, "tokeni": tokeni, "cost_usd": cost}
         id = conversatie or self.istoric.id_nou()
         try:
             self.istoric.adauga(id, intrebare, rezultat)

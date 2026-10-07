@@ -2047,8 +2047,8 @@ def _clasament_vox(concept, categorie, termen, produs, segment):
             "sens": GRUPURI_RATE[categorie]["sens"], "segment": None, "blocuri": blocuri}
 
 
-VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox,
-                               stare_banca=_stare_banca_vox)
+VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox, stare_banca=_stare_banca_vox,
+              clasament=_clasament_vox, stare_banci=_stare_banci_vox)
 
 
 def rulare_manuala_catalog(q):
