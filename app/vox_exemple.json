@@ -63,7 +63,7 @@
   {"intrebare": "How much does ING charge for an incoming transfer?",
    "asteptat": {"tip": "cautare", "banci": ["ing"], "concept": "incasare"}},
   {"intrebare": "Cine dă cea mai mare dobândă la depozitul pe 12 luni?",
-   "asteptat": {"tip": "clasament", "concept": "nominala", "categorie": "depozite", "termen": "12"}},
+   "asteptat": {"tip": "clasament", "concept": "nominala", "categorie": "depozite", "termen": "12", "metrica": null}},
   {"intrebare": "Unde stă Libra la DAE pentru creditul ipotecar?",
    "asteptat": {"tip": "clasament", "banci": ["libra"], "concept": "dae", "categorie": "credite", "produs_credit": "ipotecar"}},
   {"intrebare": "Care e cea mai ieftină variantă de administrare a contului?",
@@ -83,5 +83,7 @@
   {"intrebare": "Cât costă administrarea contului pentru firme la BCR?",
    "asteptat": {"tip": "cautare", "banci": ["bcr"], "concept": "administrare_cont", "segment": "pj"}},
   {"intrebare": "Care bancă are cel mai mic comision la decontarea datoriei vamale?",
-   "asteptat": {"tip": "clasament", "concept": null, "text_cautat_nenul": true}}
+   "asteptat": {"tip": "clasament", "concept": null, "text_cautat_nenul": true}},
+  {"intrebare": "Care bancă are cea mai bună aplicație?",
+   "asteptat": {"tip": "in_afara"}}
 ]

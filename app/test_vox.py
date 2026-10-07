@@ -191,6 +191,11 @@ class Schema(unittest.TestCase):
         # numea BCR — cu banca păstrată, serverul o face căutare; „Care bancă… datoria vamală” tot `neclar`
         self.assertIn("La neclar completezi totuși ce ai înțeles", text)
         self.assertIn("sunt întotdeauna clasament", text)
+        # revizia finală: „cine dă cea mai mare dobândă” ieșea `cea_mai_buna` (Vista 6,25% înaintea lui
+        # Raiffeisen, contra medianei din spec), iar „care bancă… = clasament” putea trimite aplicațiile
+        # pe „nu avem clasament” în loc de „în afara”
+        self.assertIn("„cine dă cea mai mare dobândă…” compară prețul obișnuit", text)
+        self.assertIn("(„care bancă are cea mai bună aplicație?”) rămân in_afara", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
         self.assertEqual(text, vox.prompt(CTX))
 
@@ -745,11 +750,26 @@ class Intrebari(unittest.TestCase):
                     stare_banci=lambda: stari).intreaba("Care bancă are cel mai mic comision de administrare?")
         c = d["clasament"]
         self.assertEqual((d["raspunsuri"], c["metrica"], c["segment"], c["libra"]),
-                         ([], "mediana", "pf", {"loc": 1, "loc_pana": 1, "din": 2}))
+                         ([], "mediana", "pf", {"loc": 1, "loc_pana": 1, "din": 2, "bloc": "exact"}))
         self.assertEqual([(r["banca"], r["loc"]) for r in c["blocuri"][0]["randuri"]], [("libra", 1), ("bcr", 2)])
         self.assertEqual([f["banca"] for f in c["fara_date"]], ["brd", "ing"])
         self.assertEqual(c["fara_date"][0]["stare"], "blocata")
         self.assertEqual(self.cautari, [("administrare_cont", None, None, None, None)])
+
+    def test_clasament_libra_in_blocul_nespecificat(self):
+        """Pe depozitul de 12 luni Libra n-are termenul scris în sursă: e pe locul 7 din 9 în blocul
+        „nespecificat”, iar fișa spunea „Libra n-are valori aici” (revizia finală, mip_merge, 07.10.2026)."""
+        cel = lambda b, v: {"banca": b, "camp": "nominala", "n": 2, "valoare": v, "minim": v, "maxim": v,
+                            "serviciu": None, "frecventa": None, "conditie": None}
+
+        def clasament(*a):
+            return {"sursa": "rate", "grup": "depozite", "unitate": "procent", "sens": "mare_bun", "segment": None,
+                    "blocuri": [{"tip": "exact", "termen": "12", "produs": "", "celule": [cel("bcr", 2.8)]},
+                                {"tip": "nespecificat", "termen": "necunoscut", "produs": "",
+                                 "celule": [cel("brd", 3), cel("libra", 2.25)]}]}
+        d = self.fa(ClientFals(interp(tip="clasament", banci=[], concept="nominala", categorie="depozite", termen="12")),
+                    clasament=clasament).intreaba("Cine dă cea mai mare dobândă la depozitul pe 12 luni?")
+        self.assertEqual(d["clasament"]["libra"], {"loc": 2, "loc_pana": 2, "din": 2, "bloc": "nespecificat"})
 
     def test_clasament_neclasabil(self):
         d = self.fa(ClientFals(interp(tip="clasament", banci=[], concept=None, text_cautat="datoria vamală")),

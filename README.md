@@ -291,7 +291,8 @@ text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în af
   DAE (8,09–8,37%); promptul spune acum ce înseamnă termenii englezești. Întrebările despre servicii
   fără concept („datoria vamală”, „TrezoNet” la BCR) cer `concept: null` și text de căutat; înainte
   de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”). Cu 10
-  întrebări de clasament (40 în total): 40 din 40 pe 07.10.2026, $0,0794, la `temperature: 0` (trimis
+  întrebări de clasament și una despre aplicații (41 în total): 41 din 41 pe 07.10.2026, $0,0811, la
+  `temperature: 0` (trimis
   prin `extra_body`, doar la Haiku 4.5: SDK-ul 1.x l-a scos din semnătură, iar Opus 4.7+ îl refuză). La
   temperatura implicită, patru rulări cu aceleași întrebări dăduseră 36, 36, 39 și 37, cu alte greșeli
   de fiecare dată.

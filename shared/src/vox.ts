@@ -93,7 +93,8 @@ export const Clasament = z
     termen: z.string().nullable().optional(),
     produs: z.string().nullable().optional(),
     blocuri: z.array(BlocClasament).optional(),
-    libra: z.object({ loc: z.number(), loc_pana: z.number(), din: z.number() }).nullable().optional(),
+    /** `bloc`: în ce bloc stă Libra (pe depozitul de 12 luni, doar în cel „nespecificat”) */
+    libra: z.object({ loc: z.number(), loc_pana: z.number(), din: z.number(), bloc: z.enum(['exact', 'nespecificat']).optional() }).nullable().optional(),
     fara_date: z
       .array(z.object({
         banca: z.string(), stare: z.string().nullable().optional(), surse: z.number().optional(),

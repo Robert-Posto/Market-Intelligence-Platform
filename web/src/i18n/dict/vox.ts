@@ -81,6 +81,8 @@ export const vox = {
   "vox.clasament.libra": ["Libra: locul {loc} din {din}.", "Libra: rank {loc} of {din}."],
   "vox.clasament.libra_egal": ["Libra: locurile {loc}–{pana} din {din}, la egalitate.", "Libra: ranks {loc}–{pana} of {din}, tied."],
   "vox.clasament.libra_lipsa": ["Libra n-are valori aici.", "Libra has no values here."],
+  "vox.clasament.libra_nespecificat": ["Libra: locul {loc} din {din} în blocul „{bloc}”.", "Libra: rank {loc} of {din} in “{bloc}”."],
+  "vox.clasament.libra_nespecificat_egal": ["Libra: locurile {loc}–{pana} din {din} în blocul „{bloc}”, la egalitate.", "Libra: ranks {loc}–{pana} of {din} in “{bloc}”, tied."],
   "vox.clasament.col.loc": ["Loc", "Rank"],
   "vox.clasament.col.banca": ["Bancă", "Bank"],
   "vox.clasament.col.valoare": ["Valoare", "Value"],

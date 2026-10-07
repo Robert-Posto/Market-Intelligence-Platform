@@ -19,6 +19,11 @@ function eticheta(k: string, rezerva: string, t: (k: DictKey) => string): string
   return areCheie(k) ? t(k) : rezerva
 }
 
+/** Titlul blocului cu valorile la care sursa nu spune termenul sau tipul de credit. */
+function titluNespecificat(b: BlocClasament, t: (k: DictKey) => string): string {
+  return t(b.termen && b.produs ? 'vox.clasament.bloc.ambele' : b.termen ? 'vox.clasament.bloc.termen' : 'vox.clasament.bloc.produs')
+}
+
 export default function Clasament({ c, m, onDovezi }: { c: ClasamentT; m: Meta; onDovezi: (q: CerereSertar) => void }) {
   const { t, tn } = useLang()
   if (c.neclasabil || !c.blocuri) {
@@ -33,11 +38,19 @@ export default function Clasament({ c, m, onDovezi }: { c: ClasamentT; m: Meta; 
     c.produs ? eticheta(`vox.produs.${c.produs}`, c.produs, t) : '',
     t(`vox.clasament.metrica.${c.metrica ?? 'mediana'}` as DictKey),
   ].filter(Boolean)
-  const libra = c.libra
-    ? c.libra.loc === c.libra.loc_pana
-      ? t('vox.clasament.libra', { loc: c.libra.loc, din: c.libra.din })
-      : t('vox.clasament.libra_egal', { loc: c.libra.loc, pana: c.libra.loc_pana, din: c.libra.din })
-    : t('vox.clasament.libra_lipsa')
+  // Libra poate sta doar în blocul „nespecificat” (depozitul de 12 luni: locul 7 din 9): locul ei se spune
+  // acolo, nu „n-are valori”
+  const blocLibra = c.libra?.bloc === 'nespecificat' ? c.blocuri.find((b) => b.tip === 'nespecificat') : undefined
+  const libra = !c.libra
+    ? t('vox.clasament.libra_lipsa')
+    : blocLibra
+      ? t(c.libra.loc === c.libra.loc_pana ? 'vox.clasament.libra_nespecificat' : 'vox.clasament.libra_nespecificat_egal',
+          { loc: c.libra.loc, pana: c.libra.loc_pana, din: c.libra.din, bloc: titluNespecificat(blocLibra, t) })
+      : c.libra.loc === c.libra.loc_pana
+        ? t('vox.clasament.libra', { loc: c.libra.loc, din: c.libra.din })
+        : t('vox.clasament.libra_egal', { loc: c.libra.loc, pana: c.libra.loc_pana, din: c.libra.din })
+  // băncile cu date din toate blocurile, ca împreună cu „Fără date” să dea toate băncile
+  const cuDate = new Set(c.blocuri.flatMap((b) => b.randuri.map((r) => r.banca))).size
   const pagina = c.sursa === 'matrice'
     ? `/produse?grup=${c.grup}&segment=${c.segment ?? 'pf'}`
     : `/rate?categorie=${c.grup}${primul.termen ? `&termen=${primul.termen}` : ''}${primul.produs ? `&produs=${primul.produs}` : ''}`
@@ -45,7 +58,7 @@ export default function Clasament({ c, m, onDovezi }: { c: ClasamentT; m: Meta; 
     <div className="vox-fisa">
       <div className="vox-clas-antet">
         <b>{cap.join(' · ')}</b>
-        <span className="vox-meta">{t('vox.clasament.sens')} · {tn('vox.clasament.n_banci', primul.randuri.length)}</span>
+        <span className="vox-meta">{t('vox.clasament.sens')} · {tn('vox.clasament.n_banci', cuDate)}</span>
       </div>
       <p className="vox-nota"><span className="vox-punct gri" />{libra}</p>
       {c.blocuri.map((b, k) => <Bloc key={k} b={b} c={c} m={m} onDovezi={onDovezi} />)}
@@ -59,9 +72,7 @@ function Bloc({ b, c, m, onDovezi }: { b: BlocClasament; c: ClasamentT; m: Meta;
   const { t, locale } = useLang()
   const [toate, setToate] = useState(false)
   const u = unitTxt(c.unitate, t)
-  const titlu = b.tip === 'nespecificat'
-    ? t(b.termen && b.produs ? 'vox.clasament.bloc.ambele' : b.termen ? 'vox.clasament.bloc.termen' : 'vox.clasament.bloc.produs')
-    : null
+  const titlu = b.tip === 'nespecificat' ? titluNespecificat(b, t) : null
   const vizibile = toate ? b.randuri : b.randuri.filter((r, i) => i < PRIMELE || r.evidentiata)
   // sertarul cere exact celula: la comisioane regula din 2.1 (segmentul plus rândurile nemarcate, fără
   // `strict`), la dobânzi categoria, termenul și tipul de credit ale blocului

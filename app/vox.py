@@ -187,7 +187,9 @@ def prompt(ctx):
         "obligatoriu; banci = doar băncile numite în întrebare (aplicația le evidențiază), altfel []. Se "
         "pot clasa doar conceptele din lista „Clasabile” de la final; pentru altele pune tot clasament, "
         "iar aplicația spune că nu are clasament.",
-        "- Întrebările care încep cu „care bancă…”, „ce bancă…”, „which bank…” sunt întotdeauna clasament. "
+        "- Întrebările care încep cu „care bancă…”, „ce bancă…”, „which bank…” și cer o valoare (un comision, "
+        "o dobândă) sunt întotdeauna clasament; cele despre aplicații, recenzii sau campanii („care bancă are "
+        "cea mai bună aplicație?”) rămân in_afara. "
         "O întrebare cu „cine are cel mai…”, „cea mai ieftină variantă…” compară și ea băncile: e "
         "clasament chiar fără bancă numită, chiar dacă serviciul nu are "
         "concept sau nu-l recunoști; nu pune neclar pentru asta. Exemple: „Care bancă are cel mai mic "
@@ -219,9 +221,10 @@ def prompt(ctx):
         "întrebarea îl spune, altfel null. „Firme” e pj; nu cere clarificări despre segment. „Pentru "
         "firme”, „pentru persoane fizice” nu fac întrebarea neclară: pui doar segmentul („… pentru firme "
         "la BCR?” → cautare, banci = [bcr], segment = pj).",
-        "- metrica: cea_mai_buna doar dacă întrebarea cere explicit cea mai bună variantă oferită de "
-        "fiecare bancă („cea mai ieftină variantă”, „cel mai mic comision posibil”, „cea mai mare dobândă "
-        "oferită”); „care bancă are cel mai mic comision…” compară prețul obișnuit, deci metrica = null.",
+        "- metrica: cea_mai_buna doar dacă întrebarea cere explicit cea mai bună variantă a fiecărei bănci "
+        "(„cea mai ieftină variantă”, „cel mai mic comision posibil”, „dobânda maximă”, „cea mai bună "
+        "variantă”); „care bancă are cel mai mic comision…” și „cine dă cea mai mare dobândă…” compară "
+        "prețul obișnuit, deci metrica = null.",
         "- Dacă primești interpretarea întrebării anterioare, întrebarea curentă o poate continua "
         "(„și la BRD?”, „dar pe 6 luni?”): păstrezi ce nu se schimbă. O bancă numită în continuare "
         "(„și la BRD?”) înlocuiește băncile anterioare, nu se adaugă la ele.",
@@ -674,9 +677,10 @@ class Vox:
         blocuri = [{"tip": b["tip"], "termen": b["termen"], "produs": b["produs"],
                     "randuri": clasa(b["celule"], cel["sens"], metrica, evidentiate, nume)}
                    for b in cel["blocuri"]]
-        primul = blocuri[0]["randuri"]
-        libra = next(({"loc": r["loc"], "loc_pana": r["loc_pana"], "din": len(primul)}
-                      for r in primul if r["banca"] == "libra"), None)
+        # Libra poate lipsi din primul bloc și sta în cel „nespecificat”: pe depozitul de 12 luni e pe locul
+        # 7 din 9 acolo, iar fișa spunea „Libra n-are valori aici” (mip_merge, 07.10.2026)
+        libra = next(({"loc": r["loc"], "loc_pana": r["loc_pana"], "din": len(b["randuri"]), "bloc": b["tip"]}
+                      for b in blocuri for r in b["randuri"] if r["banca"] == "libra"), None)
         cu_date = {r["banca"] for b in blocuri for r in b["randuri"]}
         stari = self._stare_banci() if self._stare_banci else {}
         fara_date = [{"banca": b["slug"], **(stari.get(b["slug"]) or {})}
