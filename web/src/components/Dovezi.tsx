@@ -59,6 +59,18 @@ export function CitatEvidentiat({ r }: { r: ValoareDovada }) {
 }
 
 /**
+ * Numele de fișier vin uneori din adresă, codate: la BRD apărea „Document%20de%20informare%20cu…”
+ * (07.10.2026). Un `%` care nu e cod (un nume cu „100%”) face decodarea să arunce: rămâne cum e.
+ */
+function decodat(s: string): string {
+  try {
+    return decodeURIComponent(s)
+  } catch {
+    return s
+  }
+}
+
+/**
  * Trei nivele de dovadă, arătate diferit fiindcă nu sunt același lucru:
  *   ↗ document   linkul duce la cifra însăși (PDF-ul exact sau pagina web)
  *   ⌂ pagină     pagina de pe care banca publică documentul — NU e documentul
@@ -73,7 +85,7 @@ export function LinkSursa({ r }: { r: ValoareDovada }) {
   }
   const pg = r.pagina ? t('sertar.sursa.pagina_abrev', { pagina: r.pagina }) : ''
   const scurta = (s: string | null) => {
-    const x = String(s || '').replace(/^https?:\/\/(www\.)?/, '')
+    const x = decodat(String(s || '')).replace(/^https?:\/\/(www\.)?/, '')
     return x.length > 44 ? x.slice(0, 43) + '…' : x
   }
   if (r.link) {

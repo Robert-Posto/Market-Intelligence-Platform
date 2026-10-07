@@ -43,6 +43,7 @@ import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului
 # trebuia facuta in toate trei. Un singur loc, o singura valoare.
 from normalizeaza import PRAGURI  # noqa: E402
 import rulari  # noqa: E402  (app/, langa server)
+import vox  # noqa: E402  (app/, langa server)
 import autentificare  # noqa: E402  (app/, langa server)
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
@@ -563,6 +564,13 @@ def matrice(q):
     }
 
 
+# Căutarea după text (Vox): ce nu are concept stă în găleata `comision` (3.859 de
+# valori în observatii_curente, baza mip, 06.10.2026) și n-ar fi găsit de nicio căutare pe `camp`.
+# Cuvintele vin din vox.cuvinte_cautare, fără diacritice; aici textul băncii pierde aceleași litere.
+_TEXT_CAUTARE = ("translate(lower(coalesce(o.serviciu, '') || ' ' || coalesce(o.citat, '')), "
+                 "'ăâîșşțţ', 'aaisstt')")
+
+
 def celula(q):
     """Toate valorile din spatele unei celule, cu ce reprezinta si de unde vin.
 
@@ -579,7 +587,11 @@ def celula(q):
     Unde lipseste, `sursa` + `pagina` rman verificabile manual - un link greșit
     ar fi mai rau decat niciun link.
     """
-    if not (q.get("banca") and q.get("camp")):
+    # cu `text` și fără `camp` (Vox): toate conceptele băncii, filtrate după cuvinte,
+    # cel mult vox.MAX_RANDURI rânduri; fără `text` totul rămâne ca înainte
+    camp = (q.get("camp") or [""])[0]
+    cuvinte = vox.cuvinte_cautare((q.get("text") or [""])[0])
+    if not (q.get("banca") and (camp or cuvinte)):
         return {"eroare": "lipsește banca sau camp"}
     # `camp` singur nu e destul la dobanzi: `nominala` inseamna si dobanda de
     # depozit si dobanda de credit. Fara filtrul pe categorie, sertarul deschis
@@ -598,6 +610,9 @@ def celula(q):
     if produs in PRODUSE_CREDIT:
         extra += f" AND {PRODUS_CREDIT} = %s"
         p_extra = (produs,)
+    for c in cuvinte:
+        extra += f" AND {_TEXT_CAUTARE} LIKE %s"
+        p_extra += ("%" + c + "%",)
     rows = interoghează(
         """SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
@@ -608,12 +623,13 @@ def celula(q):
            FROM observatii_curente o
            JOIN surse s ON s.id = o.id_sursa
            JOIN banci b ON b.id = s.id_banca
-           WHERE b.slug = %s AND o.camp = %s
+           WHERE b.slug = %s AND (%s = '' OR o.camp = %s)
              AND (%s = '' OR o.unitate = %s)
              AND (%s = '' OR split_part(coalesce(o.cod_scenariu, ''), '|', 1) = %s)"""
         + extra + """
-           ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num""",
-        (q["banca"][0], q["camp"][0],
+           ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num"""
+        + (f" LIMIT {vox.MAX_RANDURI}" if cuvinte else ""),
+        (q["banca"][0], camp, camp,
          (q.get("unitate") or [""])[0], (q.get("unitate") or [""])[0],
          categorie, categorie) + p_extra,
     )
@@ -1874,6 +1890,71 @@ def _produse_rulari():
 RULARI = rulari.Rulari(slugs=_slugs_rulari, produse=_produse_rulari)
 
 
+def _context_vox():
+    """Băncile și conceptele pe care le vede modelul din Vox. Doar concepte cu valori
+    numerice (127 în baza mip, 06.10.2026), fără găleata `comision`; fiecare cu 2–3 denumiri reale
+    din tarife, ca modelul să lege „retragere de la bancomat” de `retragere_numerar` fără să
+    dublăm etichetele din interfață sau vocabularul."""
+    banci = interoghează("SELECT slug, nume FROM banci ORDER BY slug")
+    concepte = interoghează(
+        """SELECT o.camp, count(*)::int AS n,
+                  array_agg(DISTINCT coalesce(o.unitate, '')) AS unitati,
+                  array_agg(DISTINCT split_part(coalesce(o.cod_scenariu, ''), '|', 1)) AS categorii
+           FROM observatii_curente o
+           WHERE o.valoare_num IS NOT NULL AND o.camp IS NOT NULL AND o.camp <> 'comision'
+           GROUP BY 1 ORDER BY 1""")
+    exemple = interoghează(
+        """SELECT camp, serviciu FROM (
+             SELECT o.camp, o.serviciu,
+                    row_number() OVER (PARTITION BY o.camp ORDER BY count(*) DESC, o.serviciu) AS rn
+             FROM observatii_curente o
+             WHERE o.valoare_num IS NOT NULL AND o.camp <> 'comision'
+               AND coalesce(o.serviciu, '') <> ''
+             GROUP BY 1, 2) x
+           WHERE rn <= 3 ORDER BY camp, rn""")
+    pe_camp = {}
+    for e in exemple:
+        pe_camp.setdefault(e["camp"], []).append(e["serviciu"])
+    for c in concepte:
+        c["unitati"] = sorted(u for u in c["unitati"] if u)
+        c["categorii"] = sorted(x for x in c["categorii"] if x)
+        c["exemple"] = pe_camp.get(c["camp"], [])
+    return {
+        "banci": banci,
+        "concepte": concepte,
+        "categorii": {k: v["titlu"] for k, v in GRUPURI_RATE.items()},
+        # aceleași concepte ca pagina 2.2; fără ele „dobânda la depozit” ieșea fără concept (live)
+        "concepte_categorie": {k: v["campuri"] for k, v in GRUPURI_RATE.items()},
+        "termene": {**{k: v[0] for k, v in TERMENE.items()}, "necunoscut": "termen nespecificat"},
+        "produse": dict(PRODUSE_CREDIT),
+    }
+
+
+def _cauta_vox(banca, concept, categorie, termen, produs, text):
+    """Valorile unei bănci pentru Vox, prin `celula`: aceleași rânduri, linkuri și
+    nivele de dovadă ca Sertar-ul din 2.1, o singură interogare de întreținut."""
+    r = celula({"banca": [banca], "camp": [concept or ""], "scenariu": [categorie or ""],
+                "termen": [termen or ""], "produs": [produs or ""], "text": [text or ""]})
+    return r if isinstance(r, list) else []
+
+
+def _stare_banca_vox(banca):
+    """De ce n-are banca valori: toate sursele blocate (WAF, robots.txt) sau nicio sursă. Altfel
+    „nu avem valori” s-ar citi ca „banca nu are comisionul”."""
+    r = interoghează(
+        """SELECT count(s.id)::int AS n, count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate
+           FROM banci b LEFT JOIN surse s ON s.id_banca = b.id
+           WHERE b.slug = %s""", (banca,))
+    if not r:
+        return None
+    n, blocate = r[0]["n"], r[0]["blocate"]
+    return "fara_surse" if n == 0 else "blocata" if blocate == n else None
+
+
+VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox,
+                               stare_banca=_stare_banca_vox)
+
+
 def rulare_manuala_catalog(q):
     """Ce se poate alege în modalul „Începe job”: tipurile de job (din `job_types`, doar cele din
     lista fixă `rulari.JOBURI`), băncile fluxului de extragere și produsele Libra active."""
@@ -2109,6 +2190,19 @@ def _adu_din_retea(url):
     return cale
 
 
+# Cu Postgres oprit, paginile arătau textul psycopg2 („OperationalError: connection to server at
+# …”), netradus; detaliul rămâne în terminalul serverului
+BAZA_OPRITA = "Baza de date nu răspunde (Postgres oprit sau MIP_DSN greșit)."
+
+
+def _eroare_server(exc):
+    """Codul și corpul unui răspuns de eroare: baza oprită are mesajul ei, restul clasa și textul."""
+    if isinstance(exc, psycopg2.OperationalError):
+        sys.stderr.write(f"baza de date: {exc}\n")
+        return 503, {"eroare": BAZA_OPRITA}
+    return 500, {"eroare": f"{exc.__class__.__name__}: {exc}"}
+
+
 class Handler(http.server.SimpleHTTPRequestHandler):
     def _json(self, cod, date, antete=()):
         corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
@@ -2125,6 +2219,113 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         """Motivul refuzului pentru rutele de rulări, sau None (vezi rulari.verifica_cerere)."""
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
                                       RULARI.token if cu_token else None)
+
+    def _refuz_vox(self, cu_token):
+        """Ca la rulări, dar permite și pagina din `npm run dev` (Origin localhost:5173)."""
+        return rulari.verifica_cerere(self.headers, self.server.server_address[1],
+                                      VOX.token if cu_token else None,
+                                      porturi_extra=(vox.PORT_VITE,))
+
+    def _corp_json(self, limita):
+        """Corpul JSON al unui POST, sau None după ce eroarea a fost deja trimisă.
+
+        JSON obligatoriu: un formular de pe alt site nu poate trimite application/json fără
+        preflight CORS, pe care nu-l acceptăm."""
+        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
+            self._json(415, {"eroare": "se acceptă doar application/json"})
+            return None
+        if self._brut is None or len(self._brut) > limita:
+            self._json(400, {"eroare": "corp prea mare"})
+            return None
+        try:
+            corp = json.loads(self._brut or b"{}")
+            if not isinstance(corp, dict):
+                raise ValueError
+        except ValueError:
+            self._json(400, {"eroare": "JSON invalid"})
+            return None
+        return corp
+
+    def _post_vox(self):
+        if not vox.activ():
+            self._json(403, {"eroare": "Vox e oprit pe acest server (MIP_PERMITE_VOX sau cheia Anthropic)"})
+            return
+        motiv = self._refuz_vox(cu_token=True)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        corp = self._corp_json(4096)    # întrebarea (500) + interpretarea anterioară (1000), cu marjă
+        if corp is None:
+            return
+        try:
+            self._json(200, VOX.intreaba(corp.get("intrebare"), corp.get("anterior"), corp.get("conversatie")))
+        except vox.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except vox.EroareModel as exc:
+            self._json(502, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(*_eroare_server(exc))
+
+    def _get_conversatii(self, cale):
+        """Lista și o conversație: doar citesc fișiere locale, deci merg și cu Vox oprit; tot cu
+        Host/Origin, ca GET /api/vox (întrebările sunt ale utilizatorului)."""
+        motiv = self._refuz_vox(cu_token=False)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        parti = cale.split("/")      # ["", "api", "vox", "conversatii", <id>]
+        try:
+            if len(parti) == 4:
+                self._json(200, VOX.istoric.lista())
+                return
+            c = VOX.istoric.citeste(parti[4]) if len(parti) == 5 else None
+        except Exception as exc:
+            # fără asta, o eroare neprevăzută închidea conexiunea, iar pagina arăta „serverul nu răspunde”
+            self._json(*_eroare_server(exc))
+            return
+        if c is None:
+            self._json(404, {"eroare": vox.CONVERSATIE_LIPSA})
+            return
+        self._json(200, c)
+
+    def _post_conversatie(self, cale):
+        """Redenumirea și ștergerea: aceleași verificări ca întrebarea (token, Host/Origin, JSON)."""
+        motiv = self._refuz_vox(cu_token=True)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        parti = cale.split("/")      # ["", "api", "vox", "conversatii", <id>, <acțiune>]
+        if len(parti) != 6 or parti[5] not in ("redenumeste", "sterge"):
+            self.send_error(404)
+            return
+        corp = self._corp_json(1024)
+        if corp is None:
+            return
+        try:
+            if parti[5] == "sterge":
+                if not VOX.istoric.sterge(parti[4]):
+                    raise vox.ConversatieLipsa(vox.CONVERSATIE_LIPSA)
+                self._json(200, {"sters": True})
+            else:
+                self._json(200, VOX.istoric.redenumeste(parti[4], corp.get("titlu")))
+        except vox.ConversatieLipsa as exc:
+            self._json(404, {"eroare": str(exc)})
+        except vox.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(*_eroare_server(exc))
+
+    def _citeste_corpul(self, limita=4096):
+        """Octeții corpului, citiți înaintea oricărui refuz, sau None dacă lipsesc ori depășesc limita.
+
+        Un 403 trimis cu corpul necitit închidea socket-ul cu date în buffer, iar Windows răspundea
+        cu RST: clientul vedea ConnectionAbortedError în loc de 403 (măsurat pe 06.10.2026: 3 rulări
+        din 25 ale testelor, la fiecare din 1.000 de cereri refuzate cu un corp de 3 KB)."""
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return None
+        return self.rfile.read(n) if 0 <= n <= limita else None
 
     # ---------------- autentificarea ----------------
 
@@ -2261,7 +2462,16 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if cale in ("/api/autentificare", "/api/delogare"):
             self._post_autentificare(cale)
             return
+        # Poarta înaintea corpului: când refuză, golește ea corpul. Citit deja de noi,
+        # _goleste_corpul ar aștepta octeți care nu mai vin, iar cererea ar rămâne agățată.
         if not self._poarta(cale):
+            return
+        self._brut = self._citeste_corpul()
+        if cale == "/api/vox":
+            self._post_vox()
+            return
+        if cale.startswith("/api/vox/conversatii/"):
+            self._post_conversatie(cale)
             return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
@@ -2273,24 +2483,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if motiv:
             self._json(403, {"eroare": motiv})
             return
-        # JSON obligatoriu: un formular de pe alt site nu poate trimite
-        # application/json fără preflight CORS, pe care nu-l acceptăm
-        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
-            self._json(415, {"eroare": "se acceptă doar application/json"})
-            return
-        try:
-            n = int(self.headers.get("Content-Length") or 0)
-        except ValueError:
-            n = -1
-        if not 0 <= n <= 2048:
-            self._json(400, {"eroare": "corp prea mare"})
-            return
-        try:
-            corp = json.loads(self.rfile.read(n) or b"{}")
-            if not isinstance(corp, dict):
-                raise ValueError
-        except ValueError:
-            self._json(400, {"eroare": "JSON invalid"})
+        corp = self._corp_json(2048)
+        if corp is None:
             return
         try:
             # în jurnal, cine a pornit/oprit și ce (valorile validate de RULARI, nu corpul cererii)
@@ -2322,6 +2516,20 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 self._json(200, {k: s[k] for k in ("utilizator", "nume", "rol", "local")})
             return
         if not self._poarta(parsed.path):
+            return
+        if parsed.path == "/api/vox/conversatii" or parsed.path.startswith("/api/vox/conversatii/"):
+            self._get_conversatii(parsed.path)
+            return
+        if parsed.path == "/api/vox":
+            # tot cu Host/Origin, ca /api/rulari: răspunsul poartă tokenul de scriere
+            motiv = self._refuz_vox(cu_token=False)
+            if motiv:
+                self._json(403, {"eroare": motiv})
+                return
+            date = VOX.stare()
+            if date["activ"]:
+                date["token"] = VOX.token
+            self._json(200, date)
             return
         if parsed.path == "/api/rulari":
             # tot cu Host/Origin: răspunsul poartă tokenul de scriere, deci
@@ -2368,10 +2576,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
                 cod = 200
             except Exception as exc:
-                corp = json.dumps(
-                    {"eroare": f"{exc.__class__.__name__}: {exc}"}, ensure_ascii=False
-                ).encode("utf-8")
-                cod = 500
+                cod, eroare = _eroare_server(exc)
+                corp = json.dumps(eroare, ensure_ascii=False).encode("utf-8")
             self.send_response(cod)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(corp)))

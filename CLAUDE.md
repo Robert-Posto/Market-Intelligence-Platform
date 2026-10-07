@@ -30,7 +30,7 @@ Verificări, după zona atinsă:
 | ai modificat | rulează | trebuie să vezi |
 |---|---|---|
 | `web/`, `shared/` | `npm run typecheck && npm run build`; pagina deschisă în RO și EN | 0 erori, consola curată |
-| `app/` | `python app/verifica_pagini.py` (cu serverul pornit); `python app/test_rulari.py` la rulări | toate paginile randate; OK |
+| `app/` | `python app/verifica_pagini.py` (cu serverul pornit); `python app/test_rulari.py` la rulări; `python app/test_vox.py` la Vox | toate paginile randate; OK |
 | `crawler/` | `python scripts/test_validare.py` și `python scripts/test_robots_matcher.py` | 0 eșuate |
 | `ingest/` | numără ce produce extractorul, înainte să scrii în bază | cifrele din README |
 | `ingest/scraper.py`, `robots_matcher.py` | `python ingest/test_robots_matcher.py`, `test_known_block.py`, `test_crawl_bfs.py` | OK |
@@ -72,6 +72,10 @@ vedere îngheață lista de coloane, iar API-ul dă 500 deși tabela are coloana
 interpolat. `/pdf` servește doar URL-uri înregistrate în `surse`, altfel devine proxy deschis.
 Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
 `app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
+Tot cu o variabilă, `MIP_PERMITE_VOX=1` (și o cheie reală), `POST /api/vox` cheamă
+modelul doar ca să interpreteze întrebarea (`app/vox.py`): nu scrie în bază, iar cifrele vin
+din bază, niciodată de la model. Conversațiile lui Vox sunt fișiere pe laptop, în
+`loguri/vox/conversatii/`, nu în bază.
 
 **Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice: prioritatea e popularea inițială.
 Rulările manuale (pagina „Rulare manuală”, README) sunt deblocate deliberat; joburile de comparație cu

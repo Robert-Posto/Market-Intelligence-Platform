@@ -56,5 +56,9 @@ export const PAGINI: Grup[] = [
   },
 ]
 
-export const TOATE = PAGINI.flatMap((g) => g.chei)
+// Vox nu stă într-un grup: e buton jos în bară, deasupra piciorului (AppShell), cerut așa pe 07.10.2026.
+// E în TOATE ca pagina lui să-și găsească titlul.
+export const VOX: Pagina = { id: 'vox', pdf: '', mutata: true }
+
+export const TOATE = [...PAGINI.flatMap((g) => g.chei), VOX]
 export const cheie = (id: string, parte: 'nume_meniu' | 'titlu' | 'descriere') => `pagini.${id}.${parte}` as DictKey

@@ -23,6 +23,7 @@ import { android } from './android'
 import { logging } from './logging'
 import { rulare_manuala } from './rulare_manuala'
 import { auth } from './auth'
+import { vox } from './vox'
 
 export const DICT = {
   ...comun,
@@ -49,4 +50,5 @@ export const DICT = {
   ...logging,
   ...rulare_manuala,
   ...auth,
+  ...vox,
 } as const

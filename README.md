@@ -264,6 +264,44 @@ Scripturile de colectare, sub buton:
   fluxului) și, la joburi, codul produsului (căutat în `produse_libra`, un singur
   cod). Teste: `python app/test_rulari.py`.
 
+### Vox (pagina `#/vox`)
+
+O întrebare despre **o valoare** a unei bănci („Cât costă administrarea contului la BCR?”), în
+română sau engleză. Modelul (`app/vox.py`) doar traduce întrebarea în banca, conceptul,
+categoria și termenul căutat, cu schemă strictă; valorile, citatele și documentele vin din
+`observatii_curente` prin `celula()`, ca Sertar-ul din 2.1. Modelul nu vede nicio valoare și nu
+scrie nicio cifră; singurul lui text pe ecran e o întrebare înapoi, etichetată ca atare. Ce n-are
+concept (găleata `comision`) se caută după text în denumirile și citatele băncii, cu cuvintele
+tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
+text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
+
+- Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
+  apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar
+  istoricul conversațiilor e comun tuturor utilizatorilor, nu al fiecăruia, iar fiecare întrebare costă.
+  Pe laptop, cu `MCC_AUTH_LOCAL=admin`, Vox merge fără logare, ca restul aplicației.
+- Merge și din `npm run dev`: proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne
+  `localhost:5173`, deci ruta acceptă și acest Origin (rulările nu).
+- Modelul: `claude-haiku-4-5` (`MIP_VOX_MODEL`). Măsurat pe 06.10.2026 (`mip_merge`):
+  11.568 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0015
+  pe întrebare cu promptul în cache. Prima întrebare îl scrie: $0,0147 (11.555 de tokeni de
+  intrare); cache-ul ține 5 minute de la ultima întrebare.
+- Evaluarea interpretării (`python app/eval_vox.py --da`, 30 de întrebări reale): 30 din 30
+  corecte pe 07.10.2026, $0,0576. Pe 06.10, „incoming payment” la BRD ieșea `transfer_credit` în loc
+  de `incasare` în 2 rulări din 4, iar „APR” la Libra ieșea dobânda nominală (7,71–7,84%) în loc de
+  DAE (8,09–8,37%); promptul spune acum ce înseamnă termenii englezești. Întrebările despre servicii
+  fără concept („datoria vamală”, „TrezoNet” la BCR) cer `concept: null` și text de căutat; înainte
+  de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”).
+- Când termenul sau tipul de credit golesc răspunsul, fișa spune câte valori sunt fără filtru: ING
+  are 2 dobânzi la depozite, niciuna cu termen citit din textul băncii.
+- Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
+  nouă, repornește serverul.
+- Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând
+  pe întrebare, cu răspunsul ei; o redenumire e tot un rând). Coloana „Conversații” din pagină le
+  redeschide fără model (gratuit), le caută în titlu și în întrebări (fără diacritice, cu cuvintele
+  tăiate la rădăcină ca la căutarea după text), le redenumește și le șterge; cea deschisă stă în
+  adresă (`#/vox?c=<id>`). Jurnalul de costuri rămâne separat, în `loguri/vox/AAAA-LL.jsonl`.
+- Teste fără rețea: `python app/test_vox.py`.
+
 ### Pachetul Playwright (`crawler/`)
 
 `--pas playwright` și `load_bnr.py` citesc din `date/pachet/`, un instantaneu
@@ -538,7 +576,7 @@ comparații și apare în coadă, cu citatul din document.
 ## Structură
 
 ```
-app/          server.py (API read-only) · rulari.py (rulările manuale) · index.html (SPA, 12 pagini)
+app/          server.py (API read-only) · rulari.py (rulările manuale) · vox.py (Vox) · index.html (SPA, 12 pagini)
               harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
 ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
               scraper.py = stiva HTTP (robots.txt, User-Agent, pauze), folosită

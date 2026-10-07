@@ -62,7 +62,16 @@ nav a.activ:focus-visible { outline-color: var(--nav-activ-ink) }
 nav a .pdf { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 10px;
   color: var(--nav-slab); opacity: .75 }
 nav a.activ .pdf { color: var(--marca); opacity: 1 }
-nav .picior { margin-top: auto; padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
+/* Vox e buton, nu pagină de citit: jos, deasupra piciorului, cu ramă și fără colțul tăiat al paginii active.
+   Pe un rând: la 800px bara depășea deja cu 14px (grupul „Jobs”); pe două rânduri butonul mai adăuga 33px */
+nav .jos { margin-top: auto }
+nav a.vox-nav { margin: 0 14px clamp(8px, 1.2vh, 11px); padding: clamp(5px, 0.7vh, 6px) 12px; gap: 9px;
+  border: 1px solid var(--nav-line); border-radius: 9px; background: var(--nav-hover); font-weight: 600 }
+nav a.vox-nav:hover { background: rgba(246, 236, 230, .14) }
+nav a.vox-nav.activ, nav a.vox-nav.activ:hover { clip-path: none; background: var(--nav-activ-bg); color: var(--nav-activ-ink);
+  border-color: var(--nav-activ-bg) }
+nav a.vox-nav .icon { flex: none }
+nav .picior { padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
   border-top: 1px solid var(--nav-line); font-family: var(--mono); font-size: 9.5px; line-height: 1.6; color: var(--nav-footer-ink) }
 nav .picior .comutatoare { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px }
 
@@ -70,6 +79,7 @@ nav .picior .comutatoare { display: flex; flex-wrap: wrap; gap: 8px; align-items
 main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 60px }
 .cap { margin-bottom: 20px }
 h1 { font-family: var(--serif); font-size: 26px; margin: 0 0 5px; font-weight: 700 }
+h1 .titlu-logo { color: var(--marca); vertical-align: -6px; margin-right: 10px }
 .lede { color: var(--muted); font-size: 13.5px; max-width: 78ch; margin: 0 }
 section { background: var(--surface); border: 1px solid var(--line); border-radius: 13px; padding: 18px 20px; margin-bottom: 18px;
   box-shadow: var(--umbra) }

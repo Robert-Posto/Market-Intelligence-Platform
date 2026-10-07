@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { SERVER_OPRIT } from '../api/client'
 import type { Meta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
+import { deLaServer } from '../i18n/server'
 import { zileDeLa } from '../util/format'
 
 /**
@@ -94,7 +95,7 @@ export function Pliat({ titlu, children, deschis }: { titlu: ReactNode; children
 }
 
 export function Eroare({ e }: { e: unknown }) {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const mesaj = e instanceof Error ? e.message : String(e)
   if (mesaj === SERVER_OPRIT) {
     return (
@@ -109,7 +110,8 @@ export function Eroare({ e }: { e: unknown }) {
   return (
     <section>
       <p className="note" style={{ color: 'var(--warn)' }}>
-        <T k="comun.eroare" params={{ mesaj }} />
+        {/* mesajele cunoscute ale serverului (baza oprită) au traducere; restul rămân cum vin */}
+        <T k="comun.eroare" params={{ mesaj: deLaServer(mesaj, lang) }} />
       </p>
     </section>
   )

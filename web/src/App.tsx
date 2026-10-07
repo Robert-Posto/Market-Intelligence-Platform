@@ -17,6 +17,7 @@ import SursePagina from './pages/SursePagina'
 import Coada from './pages/Coada'
 import Logging from './pages/Logging'
 import RulareManuala from './pages/RulareManuala'
+import Vox from './pages/Vox'
 
 /* maplibre-gl și pdfjs-dist sunt aproape jumătate din pachet (2,6 MB într-un singur fișier la 05.10.2026):
    se încarcă doar când se deschide harta sau un document, nu pe fiecare pagină */
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/retea" element={<Retea />} />
         <Route path="/context" element={<Context />} />
         <Route path="/istoric" element={<Istoric />} />
+        <Route path="/vox" element={<Vox />} />
         <Route path="/versus" element={<Versus />} />
         <Route path="/banca" element={<Banca />} />
         <Route path="/concurenta" element={<Concurenta />} />
