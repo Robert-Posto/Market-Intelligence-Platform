@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-
+import { CommentOutlined } from '@ant-design/icons'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Sumar } from '@mcc/shared'
 import { api } from '../api/client'
 import { T, useLang, type Lang } from '../i18n'
-import { PAGINI, TOATE, cheie } from '../pagini'
+import { PAGINI, TOATE, VOX, cheie } from '../pagini'
 import { num } from '../util/format'
 import { Comutator } from '../components/Comutator'
 
@@ -41,23 +41,30 @@ export default function AppShell() {
             </div>
           ))}
         </div>
-        <div className="picior">
-          {sumar.data && (
-            <T
-              k="comun.picior.sumar"
-              params={{ banci: num(g('bănci'), locale, 0), surse: num(g('surse'), locale, 0), valori: num(g('observații'), locale, 0) }}
-            />
-          )}
-          <div className="limba">
-            <Comutator<Lang>
-              size="small"
-              value={lang}
-              onChange={setLang}
-              options={[
-                { label: 'RO', value: 'ro' },
-                { label: 'EN', value: 'en' },
-              ]}
-            />
+        <div className="jos">
+          <NavLink to={`/${VOX.id}`} className={({ isActive }) => (isActive ? 'vox-nav activ' : 'vox-nav')}>
+            <CommentOutlined className="icon" />
+            {t(cheie(VOX.id, 'nume_meniu'))}
+            <span className="indemn">{t('vox.nav.indemn')}</span>
+          </NavLink>
+          <div className="picior">
+            {sumar.data && (
+              <T
+                k="comun.picior.sumar"
+                params={{ banci: num(g('bănci'), locale, 0), surse: num(g('surse'), locale, 0), valori: num(g('observații'), locale, 0) }}
+              />
+            )}
+            <div className="limba">
+              <Comutator<Lang>
+                size="small"
+                value={lang}
+                onChange={setLang}
+                options={[
+                  { label: 'RO', value: 'ro' },
+                  { label: 'EN', value: 'en' },
+                ]}
+              />
+            </div>
           </div>
         </div>
       </nav>

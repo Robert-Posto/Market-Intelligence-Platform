@@ -8,6 +8,7 @@ export const vox = {
   "pagini.vox.titlu": ["Vox", "Vox"],
   "pagini.vox.descriere": ["Îl întrebi pe Vox despre o valoare a unei bănci, un comision sau o dobândă, și primești valorile din baza noastră, fiecare cu citatul și documentul ei. Vox doar înțelege întrebarea; nicio cifră nu e scrisă de model.", "Ask Vox about one bank's value, a fee or an interest rate, and get the values from our database, each with its quote and document. Vox only understands the question; none of the figures is written by the model."],
 
+  "vox.nav.indemn": ["întreabă datele", "ask the data"],
   "vox.oprit": ["Vox e oprit pe acest server: cere MIP_PERMITE_VOX=1 și cheia Anthropic reală în .env, doar pe laptop.", "Vox is turned off on this server: it needs MIP_PERMITE_VOX=1 and the real Anthropic key in .env, on the laptop only."],
   "vox.placeholder": ["De exemplu: Cât costă administrarea contului la BCR?", "For example: How much is the account maintenance fee at BCR?"],
   "vox.trimite": ["Întreabă", "Ask"],
