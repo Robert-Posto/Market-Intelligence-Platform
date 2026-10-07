@@ -34,6 +34,9 @@ RUTE_ADMIN_GET = ["/api/jobs", "/api/rulare_manuala", "/api/rulare_manuala/estim
 RUTE_ADMIN_POST = ["/api/rulari/porneste", "/api/rulari/opreste"]
 TEST_RULARI = [{"id": "nimic", "nume": "Nimic", "ce": "test", "argumente": ["-c", "import time; time.sleep(30)"],
                 "banca": None, "internet": False, "estimare_min": 1}]
+CONFIG_AD = autentificare.Config(url="ldaps://dc01.banca.example:636", domeniu="banca.example",
+                                 baza="DC=banca,DC=example", grup_admin="CN=MCC-Admin,DC=banca,DC=example",
+                                 grup_analist="CN=MCC-Analist,DC=banca,DC=example")
 VARIABILE = ("MCC_AUTH_LOCAL", "MCC_AUTH_OBLIGATORIE", "MIP_PERMITE_RULARI")
 
 
@@ -99,7 +102,8 @@ class Http(unittest.TestCase):
         for k in VARIABILE:
             os.environ.pop(k, None)
         os.environ["MIP_PERMITE_RULARI"] = "1"
-        self.server_mod.AUTENTIFICARE = autentificare.Autentificator(autentificare.Config(), verificator=verificator)
+        # AD configurat (fictiv, verificatorul e simulat): fără el, laptopul ar intra automat ca admin local
+        self.server_mod.AUTENTIFICARE = autentificare.Autentificator(CONFIG_AD, verificator=verificator)
 
     def cere(self, metoda, cale, corp=None, antete=None, cookie=None, brut=None, nume_cookie="mcc_sesiune"):
         c = http.client.HTTPConnection("127.0.0.1", self.port, timeout=10)
@@ -256,6 +260,18 @@ class Http(unittest.TestCase):
         self.assertEqual((cod, d, cookie), (503, {"eroare": "ad_indisponibil"}, None))
         self.assertIn("dc01.banca.example", self.jurnal()[-1]["detaliu"])
         self.assertNotIn(PAROLA, json.dumps(self.jurnal(), ensure_ascii=False))
+
+    def test_fara_ad_configurat_laptopul_intra_automat(self):
+        # până vin datele de la IT: fără MCC_AUTH_LOCAL în .env, laptopul intră ca admin local
+        self.server_mod.AUTENTIFICARE = autentificare.Autentificator(autentificare.Config())
+        cod, _, d = self.cere("GET", "/api/sesiune")
+        self.assertEqual((cod, d), (200, {"utilizator": "local", "nume": "local", "rol": "admin", "local": True}))
+        self.assertEqual(self.cere("GET", "/api/jobs")[0], 200)
+        # DNS rebinding (alt Host), nginx (X-Real-IP) sau serverul (MCC_AUTH_OBLIGATORIE): logare cerută
+        self.assertEqual(self.cere("GET", "/api/sumar", antete={"Host": "evil.example:8765"})[0], 401)
+        self.assertEqual(self.cere("GET", "/api/sumar", antete={"X-Real-IP": "10.0.0.5"})[0], 401)
+        os.environ["MCC_AUTH_OBLIGATORIE"] = "1"
+        self.assertEqual(self.cere("GET", "/api/sumar")[0], 401)
 
     def test_ad_neconfigurat_503(self):
         self.server_mod.AUTENTIFICARE = autentificare.Autentificator(autentificare.Config())

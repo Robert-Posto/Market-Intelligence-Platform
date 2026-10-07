@@ -2154,7 +2154,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     s = SESIUNI.citeste(valoare)
                     if s:
                         return dict(s, local=False, id=valoare)
-        rol = autentificare.mod_local(os.environ, self.headers)
+        rol = autentificare.mod_local(os.environ, self.headers,
+                                      ad_configurat=AUTENTIFICARE.config.problema() is None)
         if rol:
             return {"utilizator": "local", "nume": "local", "rol": rol, "local": True}
         return None
@@ -2440,9 +2441,9 @@ if __name__ == "__main__":
         sys.exit(2)
     problema = CONFIG_AUTH.problema()
     if problema:
-        local = autentificare.mod_local(os.environ, {})
+        local = autentificare.mod_local(os.environ, {"Host": "localhost"}, ad_configurat=False)
         print(f"Autentificarea AD nu e configurată: {problema}. Logarea răspunde 503 (ad_indisponibil)"
-              + (f"; aici intri ca utilizator local ({local}, MCC_AUTH_LOCAL)." if local else "."))
+              + (f"; pe laptop intri automat ca utilizator local ({local})." if local else "."))
     try:
         srv = Server(("::", PORT), Handler)
     except OSError:

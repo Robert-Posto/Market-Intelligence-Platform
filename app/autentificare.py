@@ -487,18 +487,35 @@ def jurnal(eveniment):
         print(f"jurnal autentificare indisponibil ({exc}): {linie}", file=sys.stderr)
 
 
-def mod_local(env, antete):
+GAZDE_LOCALE = ("localhost", "127.0.0.1", "[::1]")
+
+
+def _gazda_locala(antete):
+    """Cererea e adresată laptopului pe nume de loopback (orice port)? Altfel e DNS rebinding:
+    un site străin care și-a îndreptat domeniul spre 127.0.0.1 ajunge la noi cu numele lui în Host."""
+    gazda = (antete.get("Host") or "").strip().lower()
+    nume = gazda.split("]")[0] + "]" if gazda.startswith("[") else gazda.rsplit(":", 1)[0]
+    return nume in GAZDE_LOCALE
+
+
+def mod_local(env, antete, ad_configurat=True):
     """Rolul utilizatorului local (laptopul de dezvoltare) sau None (cerința 11).
 
-    Activ doar cu `MCC_AUTH_LOCAL`, fără `MCC_AUTH_OBLIGATORIE=1` și fără antetul `X-Real-IP`:
-    nginx îl pune pe fiecare cerere, deci nimic din ce vine prin nginx nu e „local”.
+    Rolul vine din `MCC_AUTH_LOCAL`; fără ea, cât timp AD-ul nu e configurat (până vin datele de la
+    IT), pe laptop se intră automat ca admin, fără nicio linie în .env. Niciodată cu
+    `MCC_AUTH_OBLIGATORIE=1` (serverul), cu antetul `X-Real-IP` (nginx îl pune pe fiecare cerere)
+    sau cu alt Host decât loopback.
     """
     rol = (env.get("MCC_AUTH_LOCAL") or "").strip().lower()
+    if not rol and not ad_configurat:
+        rol = "admin"
     if rol not in ROLURI:
         return None
     if (env.get("MCC_AUTH_OBLIGATORIE") or "").strip() == "1":
         return None
     if antete.get("X-Real-IP") is not None:
+        return None
+    if not _gazda_locala(antete):
         return None
     return rol
 
