@@ -2230,7 +2230,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if corp is None:
             return
         try:
-            self._json(200, VOX.intreaba(corp.get("intrebare"), corp.get("anterior")))
+            self._json(200, VOX.intreaba(corp.get("intrebare"), corp.get("anterior"), corp.get("conversatie")))
         except vox.Respins as exc:
             self._json(400, {"eroare": str(exc)})
         except vox.EroareModel as exc:

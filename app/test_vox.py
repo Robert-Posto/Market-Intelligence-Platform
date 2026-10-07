@@ -463,7 +463,7 @@ class Intrebari(unittest.TestCase):
         self.fa(ClientFals(interp())).intreaba("BCR?")
         with self.assertRaises(vox.EroareModel):
             self.fa(ClientFals(exceptie=fara_init(anthropic.APIConnectionError))).intreaba("BRD?")
-        fisiere = os.listdir(self.dir)
+        fisiere = [f for f in os.listdir(self.dir) if f.endswith(".jsonl")]
         self.assertEqual(len(fisiere), 1)
         self.assertRegex(fisiere[0], r"^\d{4}-\d{2}\.jsonl$")
         with open(os.path.join(self.dir, fisiere[0]), encoding="utf-8") as f:
@@ -490,6 +490,53 @@ class Intrebari(unittest.TestCase):
         self.assertEqual(set(q.stare()), {"activ", "model"})
         self.assertGreaterEqual(len(q.token), 32)
         self.assertNotEqual(q.token, self.fa(ClientFals(interp())).token)
+
+    def test_conversatie_noua_si_continuata(self):
+        q = self.fa(ClientFals(interp()))
+        d = q.intreaba("Cât costă administrarea contului la BCR?")
+        c = d["conversatie"]
+        self.assertTrue(vox.Istoric.valid(c))
+        q._client = ClientFals(interp(banci=["brd"]))
+        d2 = q.intreaba("și la BRD?", d["interpretare"], c)
+        self.assertEqual(d2["conversatie"], c)
+        conv = q.istoric.citeste(c)
+        self.assertEqual([t["intrebare"] for t in conv["ture"]],
+                         ["Cât costă administrarea contului la BCR?", "și la BRD?"])
+        self.assertEqual(conv["ture"][1]["raspuns"]["raspunsuri"][0]["banca"], "brd")
+        self.assertNotIn("conversatie", conv["ture"][1]["raspuns"])
+        self.assertEqual(len(q.istoric.lista()), 1)
+
+    def test_conversatie_stearsa_nu_se_plateste(self):
+        """Ștearsă în alt tab sau id greșit: refuzul vine înainte de model, deci nimic plătit."""
+        c = ClientFals(interp())
+        q = self.fa(c)
+        for rau in (q.istoric.id_nou(), "../x", 42, ""):
+            with self.assertRaises(vox.Respins) as e:
+                q.intreaba("și la BRD?", None, rau)
+            self.assertEqual(str(e.exception), "Conversația nu mai există.")
+        self.assertEqual(c.cereri, [])
+
+    def test_eroarea_modelului_nu_intra_in_conversatie(self):
+        import anthropic
+        q = self.fa(ClientFals(exceptie=fara_init(anthropic.APIConnectionError)))
+        with self.assertRaises(vox.EroareModel):
+            q.intreaba("BCR?")
+        self.assertEqual(q.istoric.lista(), [])
+
+    def test_fara_disc_raspunsul_vine_oricum(self):
+        q = self.fa(ClientFals(interp()))
+
+        def cade(*a, **k):
+            raise OSError("disc plin")
+        q.istoric.adauga = cade
+        d = q.intreaba("BCR?")
+        self.assertEqual((d["conversatie"], d["raspunsuri"][0]["banca"]), (None, "bcr"))
+
+    def test_jurnalul_leaga_intrebarea_de_conversatie(self):
+        d = self.fa(ClientFals(interp())).intreaba("BCR?")
+        (jurnal,) = [f for f in os.listdir(self.dir) if f.endswith(".jsonl")]
+        with open(os.path.join(self.dir, jurnal), encoding="utf-8") as f:
+            self.assertEqual(json.loads(f.readline())["conversatie"], d["conversatie"])
 
 
 class CuvinteCautare(unittest.TestCase):
@@ -645,6 +692,20 @@ class Http(unittest.TestCase):
             self.server_mod.VOX._client = vechi
         self.assertEqual(cod, 502)
         self.assertIn("api.anthropic.com", d["eroare"])
+
+    def test_post_salveaza_si_continua(self):
+        ok = {"X-MIP-Token": self.token()}
+        cod, d = self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, ok)
+        self.assertEqual(cod, 200)
+        c = d["conversatie"]
+        cod, d2 = self.cere("POST", "/api/vox",
+                            {"intrebare": "și la BRD?", "anterior": d["interpretare"], "conversatie": c}, ok)
+        self.assertEqual((cod, d2["conversatie"]), (200, c))
+        self.assertEqual([t["intrebare"] for t in self.server_mod.VOX.istoric.citeste(c)["ture"]],
+                         ["BCR?", "și la BRD?"])
+        n = len(self.client.cereri)
+        cod, d3 = self.cere("POST", "/api/vox", {"intrebare": "BCR?", "conversatie": "0" * 16}, ok)
+        self.assertEqual((cod, d3["eroare"], len(self.client.cereri)), (400, "Conversația nu mai există.", n))
 
     def test_baza_oprita_503_cu_mesaj(self):
         """Cu Postgres oprit, pagina arăta textul brut psycopg2 („OperationalError: connection to server

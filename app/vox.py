@@ -449,12 +449,14 @@ class Vox:
     """O întrebare → interpretarea modelului → valorile din bază. Fără HTTP și fără SQL: serverul
     dă funcțiile de citire (`context`, `cauta`, `stare_banca`), ca la `rulari.Rulari`."""
 
-    def __init__(self, context, cauta, stare_banca, client=None, dir_jurnal=DIR_JURNAL):
+    def __init__(self, context, cauta, stare_banca, client=None, dir_jurnal=DIR_JURNAL, dir_conversatii=None):
         self._sursa_context = context
         self._cauta = cauta
         self._stare_banca = stare_banca
         self._client = client
         self.dir = dir_jurnal
+        # lângă jurnal: în teste și la evaluare jurnalul e într-un dosar temporar, deci și conversațiile
+        self.istoric = Istoric(dir_conversatii or os.path.join(dir_jurnal, "conversatii"))
         # separat de tokenul rulărilor: pagina asta are voie și de pe Vite (:5173), rulările nu
         self.token = secrets.token_urlsafe(32)
         self._lacat = threading.Lock()
@@ -530,12 +532,15 @@ class Vox:
             "fara_filtre": fara_filtre,
         }
 
-    def intreaba(self, intrebare, anterior=None):
+    def intreaba(self, intrebare, anterior=None, conversatie=None):
         intrebare = verifica_intrebarea(intrebare)
         anterior = verifica_anterior(anterior)
+        if conversatie is not None and not self.istoric.exista(conversatie):
+            # înainte de model: o conversație ștearsă în alt tab nu se mai plătește
+            raise Respins(CONVERSATIE_LIPSA)
         ctx, sistem, sch = self._context()
         m = model()
-        rand = {"data": _acum(), "intrebare": intrebare, "model": m}
+        rand = {"data": _acum(), "intrebare": intrebare, "model": m, "conversatie": conversatie}
         try:
             brut, tokeni, stop = self._cheama(m, sistem, sch, intrebare, anterior)
         except EroareModel as exc:
@@ -556,9 +561,17 @@ class Vox:
             self._jurnal(rand)
             raise
         rand["randuri"] = {r["banca"]: r["total"] for r in raspunsuri}
+        rezultat = {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
+                    "model": m, "tokeni": tokeni, "cost_usd": cost}
+        id = conversatie or self.istoric.id_nou()
+        try:
+            self.istoric.adauga(id, intrebare, rezultat)
+        except OSError:
+            # disc plin sau fără drept de scriere: răspunsul se arată oricum, doar nu se păstrează
+            id = None
+        rand["conversatie"] = id
         self._jurnal(rand)
-        return {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
-                "model": m, "tokeni": tokeni, "cost_usd": cost}
+        return {**rezultat, "conversatie": id}
 
     def _jurnal(self, rand):
         """Un rând pe întrebare, ca să se vadă unde greșește interpretarea. Nu oprește răspunsul."""
