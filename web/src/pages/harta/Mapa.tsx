@@ -1,15 +1,23 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import workerMapLibre from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import {
-  LngLatBounds, Map as HartaGL, Marker, NavigationControl, Popup, ScaleControl,
+  LngLatBounds, Map as HartaGL, Marker, NavigationControl, Popup, ScaleControl, setWorkerUrl,
   type ExpressionSpecification, type GeoJSONSource, type StyleSpecification,
 } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
+// MapLibre 6 nu mai expune global spațiul de nume GeoJSON; tipurile vin din @types/geojson
+import type { FeatureCollection, Point } from 'geojson'
 import type { ReteaBanca, ReteaPunct } from '@mcc/shared'
 import { T, useLang, type DictKey } from '../../i18n'
 import { useTema } from '../../tema'
 import { num } from '../../util/format'
 import { badgeChip, badgePunct, codBanca, type Sigle, type TipLocatie } from './desen'
+
+// MapLibre 6 caută worker-ul lângă modulul lui (import.meta.url); după împachetarea Vite
+// fișierul nu mai e acolo ("Worker failed to load"). ?worker&url îl împachetează cu tot cu
+// dependențe și îi dă un URL propriu
+setWorkerUrl(workerMapLibre)
 
 const stilCarto = (intunecat: boolean) => intunecat
   ? 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
@@ -34,7 +42,7 @@ const iconDupaZoom: ExpressionSpecification = ['step', ['zoom'], ['get', 'icon_p
 // ATM-urile partenere estompate: rețea comună, nu a băncii
 const opacitate: ExpressionSpecification = ['case', ['==', ['get', 'retea'], 'partener'], 0.45, 1]
 
-function geojson(lista: ReteaPunct[]): GeoJSON.FeatureCollection<GeoJSON.Point> {
+function geojson(lista: ReteaPunct[]): FeatureCollection<Point> {
   return {
     type: 'FeatureCollection',
     features: lista.map((p) => ({
@@ -112,7 +120,7 @@ export default function Mapa({ banci, vizibile, toate, sigle, logo, culoareGrup,
       vazute[id] = true
       if (grupe.current[id]) continue
       const n = Number(x.properties.point_count)
-      const coord = (x.geometry as GeoJSON.Point).coordinates as [number, number]
+      const coord = (x.geometry as Point).coordinates as [number, number]
       const el = document.createElement('div')
       const d = n < 10 ? 28 : n < 50 ? 34 : n < 200 ? 42 : 50
       el.className = 'ht-grup'
