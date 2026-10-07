@@ -113,4 +113,7 @@ export const vox = {
   "server.vox.retea": ["Nu s-a putut ajunge la api.anthropic.com (rețea sau proxy).", "Could not reach api.anthropic.com (network or proxy)."],
   "server.vox.status": ["API-ul Anthropic a răspuns cu eroarea {cod}.", "The Anthropic API answered with error {cod}."],
   "server.vox.alta": ["Eroare la apelul modelului ({clasa}).", "Error calling the model ({clasa})."],
+  "server.vox.conversatie_lipsa": ["Conversația nu mai există.", "The conversation no longer exists."],
+  "server.vox.titlu_lung": ["Titlul are peste {n} de caractere.", "The title is over {n} characters long."],
+  "server.vox.titlu_invalid": ["Titlul nu e valid.", "The title is not valid."],
 } as const

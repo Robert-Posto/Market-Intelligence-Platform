@@ -84,7 +84,7 @@ export default function Vox() {
     setMesaje((x) => [...x, { id, intrebare: q }])
     setSeTrimite(true)
     try {
-      const r = await trimiteIntrebarea(q, anterior, st.token ?? '')
+      const r = await trimiteIntrebarea(q, anterior, null, st.token ?? '')
       setMesaje((x) => x.map((y) => (y.id === id ? { ...y, raspuns: r } : y)))
       setText('')
     } catch (e) {

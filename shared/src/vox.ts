@@ -63,3 +63,34 @@ export const RaspunsIntrebare = z
   })
   .passthrough()
 export type RaspunsIntrebare = z.infer<typeof RaspunsIntrebare>
+
+/** Răspunsul la POST /api/vox: ca cel salvat, plus conversația (null dacă n-a putut fi salvată). */
+export const RaspunsVox = RaspunsIntrebare.extend({ conversatie: z.string().nullable() })
+export type RaspunsVox = z.infer<typeof RaspunsVox>
+
+/** O întrebare dintr-o conversație salvată (loguri/vox/conversatii/<id>.jsonl). */
+export const Tura = z.object({ data: z.string(), intrebare: z.string(), raspuns: RaspunsIntrebare })
+export type Tura = z.infer<typeof Tura>
+
+export const Conversatie = z
+  .object({ id: z.string(), titlu: z.string(), redenumita: z.boolean(), ture: z.array(Tura) })
+  .passthrough()
+export type Conversatie = z.infer<typeof Conversatie>
+
+/** Un rând din coloana „Conversații”; `texte` = toate întrebările, pentru căutare. */
+export const ConversatieRezumat = z
+  .object({
+    id: z.string(),
+    titlu: z.string(),
+    redenumita: z.boolean(),
+    intrebari: z.number(),
+    texte: z.array(z.string()),
+    inceputa: z.string(),
+    ultima: z.string(),
+    cost_usd: z.number(),
+  })
+  .passthrough()
+export type ConversatieRezumat = z.infer<typeof ConversatieRezumat>
+
+export const Redenumire = z.object({ titlu: z.string(), redenumita: z.boolean() })
+export const Stergere = z.object({ sters: z.literal(true) })
