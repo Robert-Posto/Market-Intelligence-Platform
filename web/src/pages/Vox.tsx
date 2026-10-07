@@ -1,9 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import { Button, Input, Tooltip } from 'antd'
-import { ArrowRightOutlined } from '@ant-design/icons'
+import { useQueryClient } from '@tanstack/react-query'
+import { useSearchParams } from 'react-router-dom'
+import { Button, Drawer, Input, Tooltip } from 'antd'
+import { ArrowRightOutlined, HistoryOutlined } from '@ant-design/icons'
 import type { Interpretare, RaspunsBanca, RaspunsIntrebare, ValoareDovada } from '@mcc/shared'
-import { SERVER_OPRIT } from '../api/client'
-import { trimiteIntrebarea, useStareVox } from '../api/vox'
+import { ApiError, SERVER_OPRIT } from '../api/client'
+import {
+  CHEIE_CONVERSATII,
+  citesteConversatia,
+  redenumesteConversatia,
+  stergeConversatia,
+  trimiteIntrebarea,
+  useConversatii,
+  useStareVox,
+} from '../api/vox'
 import { useMeta, type Meta } from '../api/meta'
 import { EtichetaBanca, Eroare, Pill, SeIncarca } from '../components/comune'
 import { LinkSursa } from '../components/Dovezi'
@@ -13,20 +23,24 @@ import { etNume, unitTxt } from '../components/valori'
 import { areCheie, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { num } from '../util/format'
+import Conversatii, { cand } from './vox/Conversatii'
 import '../styles/vox.css'
 
 /**
  * Vox: o întrebare despre o valoare a unei bănci. Modelul (app/vox.py) doar
  * traduce textul în banca și conceptul căutat; cifrele, citatele și documentele vin din bază, prin
  * aceeași funcție ca Sertar-ul din 2.1, deci fișa nu conține niciun număr scris de model.
- * Conversația stă doar în memoria paginii, nu în adresă: un link deschis ar porni un apel plătit
- * (abatere asumată de la „filtrele stau în adresă”, specificația din 06.10.2026).
+ * Conversațiile se păstrează pe laptop (loguri/vox/conversatii/, prin server) și se redeschid din
+ * coloana „Conversații”; cea deschisă stă în adresă (`?c=`), fiindcă redeschiderea citește fișierul
+ * și nu cheamă modelul.
  * Așezarea de chat (întrebarea jos, cea mai nouă tură deasupra ei) e macheta aprobată pe 07.10.2026.
  */
 
 interface Mesaj {
   id: number
   intrebare: string
+  /** ora întrebării (ISO): din fișier la o conversație redeschisă, a laptopului la una nouă */
+  data: string
   raspuns?: RaspunsIntrebare
   eroare?: string
 }
@@ -54,39 +68,103 @@ function eticheta(k: string, rezerva: string, t: Tr): string {
 }
 
 export default function Vox() {
-  const { t, lang, locale } = useLang()
+  const { t, tn, lang, locale } = useLang()
+  const qc = useQueryClient()
+  const [sp, setSp] = useSearchParams()
+  const c = sp.get('c')
+  const cauta = sp.get('cauta') ?? ''
   const meta = useMeta()
   const stare = useStareVox()
+  const conversatii = useConversatii()
   const [text, setText] = useState('')
   const [mesaje, setMesaje] = useState<Mesaj[]>([])
   const [seTrimite, setSeTrimite] = useState(false)
+  const [seIncarca, setSeIncarca] = useState(false)
+  const [lipsa, setLipsa] = useState(false)
+  const [eroareConv, setEroareConv] = useState<string | null>(null)
+  const [sertarConv, setSertarConv] = useState(false)
   const [cerere, setCerere] = useState<CerereSertar | null>(null)
-  // tura nouă apare jos, deasupra câmpului fix: pagina coboară după ea
+  // conversația creată chiar acum de prima întrebare: e deja în `mesaje`, nu se recitește
+  const creata = useRef<string | null>(null)
   const capat = useRef<HTMLDivElement>(null)
+
+  const mergi = (k: Record<string, string | null>, inIstoric = false) =>
+    setSp((p) => {
+      const n = new URLSearchParams(p)
+      for (const [cheie, v] of Object.entries(k)) {
+        if (v) n.set(cheie, v)
+        else n.delete(cheie)
+      }
+      return n
+    }, { replace: !inIstoric })
+
+  // tura nouă apare jos, deasupra câmpului fix: pagina coboară după ea
   useEffect(() => {
     if (mesaje.length) capat.current?.scrollIntoView({ block: 'end', behavior: 'smooth' })
   }, [mesaje])
+
+  // conversația din adresă (clic în coloană, link, înapoi/înainte): se citește din fișier, fără model
+  useEffect(() => {
+    if (c && c === creata.current) {
+      creata.current = null
+      return
+    }
+    setMesaje([])
+    setEroareConv(null)
+    setSeIncarca(false)
+    if (!c) return
+    let anulat = false
+    setLipsa(false)
+    setSeIncarca(true)
+    citesteConversatia(c)
+      .then((conv) => {
+        if (!anulat) setMesaje(conv.ture.map((x, i) => ({ id: i + 1, intrebare: x.intrebare, data: x.data, raspuns: x.raspuns })))
+      })
+      .catch((e: unknown) => {
+        if (anulat) return
+        if (e instanceof ApiError && e.status === 404) {
+          setLipsa(true)
+          mergi({ c: null })
+          return
+        }
+        const mesaj = (e as Error).message
+        setEroareConv(mesaj === SERVER_OPRIT ? t('comun.server_oprit') : deLaServer(mesaj, lang))
+      })
+      .finally(() => {
+        if (!anulat) setSeIncarca(false)
+      })
+    return () => {
+      anulat = true
+    }
+  }, [c])
 
   const err = meta.error ?? stare.error
   if (err) return <Eroare e={err} />
   if (!meta.data || !stare.data) return <SeIncarca />
   const m = meta.data
   const st = stare.data
-  const poate = st.activ && !seTrimite
+  const poate = st.activ && !seTrimite && !seIncarca
   const cost = mesaje.reduce((s, x) => s + (x.raspuns?.cost_usd ?? 0), 0)
+  const raspunse = mesaje.filter((x) => x.raspuns).length
+  const titlu = conversatii.data?.find((x) => x.id === c)?.titlu ?? mesaje[0]?.intrebare ?? ''
 
   async function trimite(intrebare: string) {
     const q = intrebare.trim()
-    if (!q || seTrimite || !st.activ) return
+    if (!q || seTrimite || seIncarca || !st.activ) return
     // „și la BRD?” continuă ultima căutare reușită, nu o clarificare sau o eroare
     const anterior = [...mesaje].reverse().find((x) => x.raspuns?.interpretare.tip === 'cautare')?.raspuns?.interpretare ?? null
     const id = Date.now()
-    setMesaje((x) => [...x, { id, intrebare: q }])
+    setLipsa(false)
+    setMesaje((x) => [...x, { id, intrebare: q, data: new Date().toISOString() }])
     setSeTrimite(true)
     try {
-      const r = await trimiteIntrebarea(q, anterior, null, st.token ?? '')
+      const r = await trimiteIntrebarea(q, anterior, c, st.token ?? '')
       setMesaje((x) => x.map((y) => (y.id === id ? { ...y, raspuns: r } : y)))
       setText('')
+      if (r.conversatie && r.conversatie !== c) {
+        creata.current = r.conversatie
+        mergi({ c: r.conversatie })
+      }
     } catch (e) {
       const mesaj = (e as Error).message
       const afisat = mesaj === SERVER_OPRIT ? t('comun.server_oprit') : deLaServer(mesaj, lang)
@@ -95,6 +173,7 @@ export default function Vox() {
       if (mesaj.includes('token')) void stare.refetch()
     } finally {
       setSeTrimite(false)
+      void qc.invalidateQueries({ queryKey: CHEIE_CONVERSATII })
     }
   }
 
@@ -102,73 +181,130 @@ export default function Vox() {
     setText(q)
     void trimite(q)
   }
+  const deschide = (id: string) => {
+    setSertarConv(false)
+    if (id !== c) mergi({ c: id }, true)
+  }
+  const noua = () => {
+    setSertarConv(false)
+    setText('')
+    setMesaje([])
+    setLipsa(false)
+    if (c) mergi({ c: null }, true)
+  }
+  const redenumeste = async (id: string, titluNou: string) => {
+    await redenumesteConversatia(id, titluNou, st.token ?? '')
+    await qc.invalidateQueries({ queryKey: CHEIE_CONVERSATII })
+  }
+  const sterge = async (id: string) => {
+    await stergeConversatia(id, st.token ?? '')
+    if (id === c) noua()
+    await qc.invalidateQueries({ queryKey: CHEIE_CONVERSATII })
+  }
+  const coloana = (inSertar: boolean) => (
+    <Conversatii
+      lista={conversatii.data}
+      eroare={!!conversatii.error}
+      deschisa={c}
+      cauta={cauta}
+      blocat={seTrimite}
+      poateModifica={!!st.token}
+      inSertar={inSertar}
+      onCauta={(q) => mergi({ cauta: q || null })}
+      onDeschide={deschide}
+      onNoua={noua}
+      onRedenumeste={redenumeste}
+      onSterge={sterge}
+    />
+  )
 
   return (
     <div className="vox">
-      {!st.activ && <div className="callout warn">{t('vox.oprit')}</div>}
-      {mesaje.length === 0 && <BunVenit banci={Object.keys(m.nume).length} poate={poate} onExemplu={intreaba} />}
-      {mesaje.map((x) => (
-        <div key={x.id} className="vox-tura">
-          <p className="vox-q">{x.intrebare}</p>
-          <div className="vox-r">
-            <span className="vox-avatar"><VoxBula size={20} /></span>
-            {!x.raspuns && !x.eroare && (
-              <div className="vox-bula vox-gandeste">
-                <span className="vox-puncte" aria-hidden="true"><i /><i /><i /></span>
-                {t('vox.se_gandeste')}
-              </div>
-            )}
-            {x.eroare && <div className="vox-bula vox-eroare">{x.eroare}</div>}
-            {x.raspuns && <Raspuns r={x.raspuns} m={m} poate={poate} onDovezi={setCerere} onExemplu={intreaba} />}
+      {coloana(false)}
+      <div className="vox-chat">
+        {!st.activ && <div className="callout warn">{t('vox.oprit')}</div>}
+        <Button className="vox-istoric-btn" icon={<HistoryOutlined />} onClick={() => setSertarConv(true)}>
+          {t('vox.conv.istoric_btn', { n: conversatii.data?.length ?? 0 })}
+        </Button>
+        {lipsa && <div className="callout warn">{t('vox.conv.lipsa')}</div>}
+        {eroareConv && <div className="callout warn">{eroareConv}</div>}
+        {c && mesaje.length > 0 && (
+          <div className="vox-conv-cap">
+            <b>{titlu}</b>
+            <span>
+              {tn('vox.conv.n_intrebari', raspunse)} · {dolari(cost, locale)} · {cand(mesaje[0]!.data, 'vox.conv.inceputa', t, locale)}
+            </span>
+          </div>
+        )}
+        {seIncarca && <div className="vox-bula vox-gandeste">{t('vox.conv.se_incarca')}</div>}
+        {!seIncarca && mesaje.length === 0 && <BunVenit banci={Object.keys(m.nume).length} poate={poate} onExemplu={intreaba} />}
+        {mesaje.map((x) => (
+          <div key={x.id} className="vox-tura">
+            <span className="vox-ora">{cand(x.data, 'vox.conv.ora', t, locale)}</span>
+            <p className="vox-q">{x.intrebare}</p>
+            <div className="vox-r">
+              <span className="vox-avatar"><VoxBula size={20} /></span>
+              {!x.raspuns && !x.eroare && (
+                <div className="vox-bula vox-gandeste">
+                  <span className="vox-puncte" aria-hidden="true"><i /><i /><i /></span>
+                  {t('vox.se_gandeste')}
+                </div>
+              )}
+              {x.eroare && <div className="vox-bula vox-eroare">{x.eroare}</div>}
+              {x.raspuns && <Raspuns r={x.raspuns} m={m} poate={poate} onDovezi={setCerere} onExemplu={intreaba} />}
+            </div>
+          </div>
+        ))}
+        <div ref={capat} className="vox-capat" />
+        <div className="vox-compune">
+          <div className="vox-cutie">
+            <Input.TextArea
+              variant="borderless"
+              aria-label={t('vox.eticheta_camp')}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              maxLength={500}
+              autoSize={{ minRows: 1, maxRows: 5 }}
+              placeholder={t(mesaje.length ? 'vox.placeholder_continua' : 'vox.placeholder')}
+              disabled={!st.activ}
+              onPressEnter={(e) => {
+                if (!e.shiftKey) {
+                  e.preventDefault()
+                  void trimite(text)
+                }
+              }}
+            />
+            <Button
+              type="primary"
+              className="vox-trimite"
+              icon={<ArrowRightOutlined />}
+              iconPosition="end"
+              onClick={() => void trimite(text)}
+              loading={seTrimite}
+              disabled={!st.activ || !text.trim()}
+            >
+              {t('vox.trimite')}
+            </Button>
+          </div>
+          <div className="vox-cutie-jos">
+            <span>{t('vox.tastatura')}</span>
+            <span>
+              {mesaje.length > 0
+                ? t('vox.subsol_conversatie', { model: st.model, cost: dolari(cost, locale) })
+                : t('vox.subsol_gol', { model: st.model })}
+            </span>
           </div>
         </div>
-      ))}
-      <div ref={capat} className="vox-capat" />
-      <div className="vox-compune">
-        <div className="vox-cutie">
-          <Input.TextArea
-            variant="borderless"
-            aria-label={t('vox.eticheta_camp')}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            maxLength={500}
-            autoSize={{ minRows: 1, maxRows: 5 }}
-            placeholder={t('vox.placeholder')}
-            disabled={!st.activ}
-            onPressEnter={(e) => {
-              if (!e.shiftKey) {
-                e.preventDefault()
-                void trimite(text)
-              }
-            }}
-          />
-          <Button
-            type="primary"
-            className="vox-trimite"
-            icon={<ArrowRightOutlined />}
-            iconPosition="end"
-            onClick={() => void trimite(text)}
-            loading={seTrimite}
-            disabled={!st.activ || !text.trim()}
-          >
-            {t('vox.trimite')}
-          </Button>
-        </div>
-        <div className="vox-cutie-jos">
-          <span>{t('vox.tastatura')}</span>
-          <span>
-            {mesaje.length > 0
-              ? t('vox.subsol_sesiune', { model: st.model, cost: dolari(cost, locale) })
-              : t('vox.subsol_gol', { model: st.model })}
-          </span>
-        </div>
       </div>
+      <Drawer open={sertarConv} onClose={() => setSertarConv(false)} placement="left" width={320} title={t('vox.conv.titlu_coloana')}>
+        {coloana(true)}
+      </Drawer>
       <Sertar cerere={cerere} onClose={() => setCerere(null)} />
     </div>
   )
 }
 
-/** Ce vede cine deschide pagina: ce face Vox și trei întrebări care chiar găsesc valori. */
+/** Ce vede cine deschide pagina: ce face Vox și câteva întrebări care chiar găsesc valori. */
 function BunVenit({ banci, poate, onExemplu }: { banci: number; poate: boolean; onExemplu: (q: string) => void }) {
   const { t } = useLang()
   return (

@@ -3,8 +3,9 @@
 /* Toată lățimea și înălțimea lui main, ca restul paginilor: pe un ecran de 1911×1033 coloana de 920px
    lăsa goală jumătatea dreaptă, iar câmpul de întrebare stătea la jumătatea înălțimii (07.10.2026) */
 main:has(> .vox) { display: flex; flex-direction: column; padding-bottom: 0 }
-.vox { flex: 1 0 auto; display: flex; flex-direction: column; gap: 16px }
-.vox > .callout { margin: 0 }
+.vox { flex: 1 0 auto; display: flex; align-items: flex-start; gap: 22px }
+.vox-chat { flex: 1 1 auto; align-self: stretch; min-width: 0; display: flex; flex-direction: column; gap: 16px }
+.vox-chat > .callout { margin: 0 }
 
 /* pagina goală: ce face Vox și trei întrebări care găsesc valori; cardul umple spațiul până la câmp */
 section.vox-bun-venit { flex: 1 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
@@ -101,6 +102,52 @@ section.vox-bun-venit { flex: 1 0 auto; display: flex; flex-direction: column; a
 .vox-trimite.ant-btn { height: 44px; padding: 0 18px; border-radius: 11px; font-weight: 600 }
 .vox-cutie-jos { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 8px; padding: 0 4px;
   font-family: var(--mono); font-size: 10.5px; color: var(--muted) }
+
+/* coloana „Conversații”: în pagina Vox, nu în bara vișinie (care la 800px depășește deja ecranul);
+   rămâne pe ecran la derulare */
+.vox-conv { flex: 0 0 268px; position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; box-sizing: border-box;
+  display: flex; flex-direction: column; gap: 8px; padding: 12px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; box-shadow: var(--umbra) }
+.vox-conv.in-sertar { position: static; max-height: none; padding: 0; border: 0; box-shadow: none; background: none }
+.vox-conv-noua { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; border: 1px dashed var(--line-2);
+  border-radius: 10px; background: none; color: var(--accent); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer }
+.vox-conv-noua:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-tint) }
+.vox-conv-noua:disabled, .vox-conv-deschide:disabled { cursor: not-allowed; opacity: .7 }
+.vox-conv h3 { margin: 8px 6px 2px; font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted) }
+.vox-conv ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px }
+.vox-conv li { display: flex; align-items: flex-start; gap: 2px; border-radius: 9px }
+.vox-conv li:hover, .vox-conv li:focus-within { background: var(--bg) }
+.vox-conv li.activ { background: var(--accent-tint) }
+.vox-conv li > .ant-input { margin: 6px }
+.vox-conv-deschide { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border: 0; background: none;
+  color: var(--ink); font: inherit; text-align: left; cursor: pointer }
+.vox-conv-deschide .t { font-size: 13px; line-height: 1.35; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow-wrap: anywhere }
+.vox-conv li.activ .t { color: var(--nav-activ-ink); font-weight: 600 }
+.vox-conv-deschide .potrivire { font-size: 11.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.vox-conv-deschide .m { font-family: var(--mono); font-size: 10px; color: var(--muted) }
+.vox-conv-actiuni { display: flex; gap: 2px; padding: 6px 6px 0 0; opacity: 0 }
+.vox-conv li:hover .vox-conv-actiuni, .vox-conv li:focus-within .vox-conv-actiuni, .vox-conv li.activ .vox-conv-actiuni { opacity: 1 }
+.vox-conv-actiuni button { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border: 0;
+  border-radius: 7px; background: none; color: var(--muted); cursor: pointer }
+.vox-conv-actiuni button:hover:not(:disabled) { background: var(--accent-tint); color: var(--accent) }
+.vox-conv-noua:focus-visible, .vox-conv-deschide:focus-visible, .vox-conv-actiuni button:focus-visible { outline: 2px solid var(--accent);
+  outline-offset: 1px }
+.vox-conv-nota { margin: 4px 6px; font-size: 12px; color: var(--muted) }
+.vox-conv-unde { margin: auto 6px 2px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted) }
+/* capul conversației deschise și ora fiecărei ture */
+.vox-conv-cap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--line) }
+.vox-conv-cap b { font-family: var(--serif); font-size: 17px; font-weight: 600; overflow-wrap: anywhere }
+.vox-conv-cap span { font-family: var(--mono); font-size: 10.5px; color: var(--muted) }
+.vox-ora { align-self: center; font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted) }
+/* sub 1100px coloana lasă loc chatului și se deschide dintr-un buton, într-un sertar */
+.vox-istoric-btn.ant-btn { display: none }
+@media (max-width: 1100px) {
+  .vox > .vox-conv { display: none }
+  .vox-istoric-btn.ant-btn { display: inline-flex; align-self: flex-start }
+}
 
 @media (max-width: 760px) {
   .vox-exemple, .vox-kpis { grid-template-columns: minmax(0, 1fr) }
