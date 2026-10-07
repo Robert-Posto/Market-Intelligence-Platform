@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
 import { Button, Drawer, Input, Tooltip } from 'antd'
 import { ArrowRightOutlined, HistoryOutlined } from '@ant-design/icons'
-import type { Interpretare, RaspunsBanca, RaspunsIntrebare, ValoareDovada } from '@mcc/shared'
+import type { GrupaRezumat, Interpretare, RaspunsBanca, RaspunsIntrebare, ValoareDovada } from '@mcc/shared'
 import { ApiError, SERVER_OPRIT } from '../api/client'
 import {
   CHEIE_CONVERSATII,
@@ -19,7 +19,7 @@ import { EtichetaBanca, Eroare, Pill, SeIncarca } from '../components/comune'
 import { LinkSursa } from '../components/Dovezi'
 import { VoxBula, VoxInsigna } from '../components/LogoVox'
 import Sertar, { type CerereSertar } from '../components/Sertar'
-import { etNume, unitTxt } from '../components/valori'
+import { etNume, etSegment, unitTxt } from '../components/valori'
 import { areCheie, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { num } from '../util/format'
@@ -46,6 +46,7 @@ interface Mesaj {
 }
 
 type Tr = (k: DictKey, p?: Record<string, string | number>) => string
+type Tn = ReturnType<typeof useLang>['tn']
 
 // șase pe pagina goală (pe un ecran de 1033px, trei lăsau cardul pe jumătate gol); primele trei și sub refuz
 const EXEMPLE: { tip: DictKey; text: DictKey }[] = [
@@ -396,7 +397,7 @@ function Raspuns({ r, m, poate, onDovezi, onExemplu }: {
 }
 
 function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; m: Meta; onDovezi: (c: CerereSertar) => void }) {
-  const { t, tn, locale } = useLang()
+  const { t, tn } = useLang()
   const [toate, setToate] = useState(false)
   const cap = (
     <div className="vox-banca">
@@ -423,7 +424,9 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
           <p>
             <b>{t('vox.zero', { concept: filtre ? `${concept} · ${filtre}` : concept, banca: m.nume[rb.banca] ?? rb.banca })}</b>
             {rb.stare_banca && <> {t(rb.stare_banca === 'blocata' ? 'vox.stare.blocata' : 'vox.stare.fara_surse')}</>}
+            {!rb.stare_banca && rb.blocaje && <> {textBlocaje(rb.blocaje, tn)}</>}
             {!!rb.fara_filtre && <> {tn('vox.fara_filtre', rb.fara_filtre)}</>}
+            {' '}{t('vox.lipsa_nu_inseamna')}
           </p>
           {!!rb.fara_filtre && i.concept && (
             <button type="button" className="vox-link avertizare" onClick={() => onDovezi({
@@ -436,41 +439,36 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
       </div>
     )
   }
-  const vizibile = toate ? rb.randuri : rb.randuri.slice(0, PRIMELE)
+  const relaxate = rb.filtre_relaxate ?? []
+  // sertarul cere filtrele pe care s-au găsit rândurile: cu termenul cerut de om, după o cădere pe
+  // „termen nespecificat”, s-ar deschide gol
+  const termen = relaxate.includes('termen') ? 'necunoscut' : (i.termen ?? '')
+  const produs = relaxate.includes('produs') ? 'altele' : (i.produs_credit ?? '')
+  const nota = notaRelaxata(relaxate, rb.total, i, t, tn)
+  // segmentul se arată doar când sursele îl spun: la dobânzi niciun rând nu-l are, iar „fără segment
+  // în sursă” pe fiecare răspuns ar fi zgomot
+  const cuSegmente = rb.rezumat.some((g) => g.segment) || rb.randuri.some((v) => v.segment)
   // categoria spune ceva doar când grupele diferă (dobândă de depozit vs. de credit)
   const multeCategorii = new Set(rb.rezumat.map((g) => g.categorie)).size > 1
+  const vizibile = toate ? rb.randuri : rb.randuri.slice(0, PRIMELE)
   return (
     <div className="vox-fisa">
       {cap}
-      {rb.rezumat.length > 0 && (
-        <div className="vox-kpis">
-          {rb.rezumat.map((g) => {
-            const unitate = unitTxt(g.unitate, t).trim()
-            const egal = g.minim === g.maxim
-            return (
-              <div key={`${g.unitate}|${g.categorie}`} className="vox-kpi">
-                <span className="v">
-                  {egal ? num(g.minim, locale) : `${num(g.minim, locale)} – ${num(g.maxim, locale)}`}
-                  {unitate && <small> {unitate}</small>}
-                </span>
-                <span className="l">
-                  {egal && g.n > 1 ? tn('vox.kpi_egal', g.n) : tn('vox.kpi', g.n)}
-                  {g.gratuite > 0 && <> · {tn('vox.gratuite', g.gratuite)}</>}
-                  {multeCategorii && <> · {eticheta(`vox.categorie.${g.categorie}`, g.categorie, t)}</>}
-                </span>
-                {rb.mod === 'concept' && i.concept && (
-                  <button type="button" className="vox-link" onClick={() => onDovezi({
-                    banca: rb.banca, camp: i.concept!, unitate: g.unitate, scenariu: g.categorie,
-                    termen: i.termen ?? '', produs: i.produs_credit ?? '',
-                  })}>
-                    {t('vox.vezi_dovezi')}
-                  </button>
-                )}
-              </div>
-            )
-          })}
+      {nota && <p className="vox-nota"><span className="vox-punct" />{nota}</p>}
+      {peSegmente(rb.rezumat).map(([s, grupe]) => (
+        <div key={s ?? '-'} className="vox-segment">
+          {cuSegmente && <span className="vox-segment-cap">{etSegment(s, t)}</span>}
+          <div className="vox-kpis">
+            {grupe.map((g) => (
+              <PlacaRezumat key={`${g.unitate}|${g.categorie}`} g={g} multeCategorii={multeCategorii}
+                onDovezi={rb.mod === 'concept' && i.concept ? () => onDovezi({
+                  banca: rb.banca, camp: i.concept!, unitate: g.unitate, scenariu: g.categorie, termen, produs,
+                  ...(cuSegmente ? { segment: g.segment ?? 'nemarcat', strict: true } : {}),
+                }) : undefined} />
+            ))}
+          </div>
         </div>
-      )}
+      ))}
       {/* la căutarea după text SQL-ul se oprește la 50: rezumatul e pe ele, nu pe toate */}
       {rb.limitat && <p className="vox-nota"><span className="vox-punct" />{t('vox.din_primele', { n: rb.randuri.length })}</p>}
       {rb.ambigue > 0 && <p className="vox-nota"><span className="vox-punct" />{tn('vox.ambigue', rb.ambigue)}</p>}
@@ -484,7 +482,7 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
               <th>{t('vox.col.document')}</th>
             </tr>
           </thead>
-          <tbody>{vizibile.map((v, k) => <Rand key={k} v={v} />)}</tbody>
+          <tbody>{vizibile.map((v, k) => <Rand key={k} v={v} cuSegmente={cuSegmente} />)}</tbody>
         </table>
       </div>
       {(rb.randuri.length > PRIMELE || rb.limitat) && (
@@ -506,13 +504,70 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
   )
 }
 
+
+/** Grupele rezumatului, pe segmente consecutive: serverul le trimite deja în ordinea PF, PFA, IMM, PJ,
+ * fără segment. În conversațiile vechi grupele n-au `segment`, deci ies toate într-un singur bloc. */
+function peSegmente(rezumat: GrupaRezumat[]): [string | null, GrupaRezumat[]][] {
+  const blocuri: [string | null, GrupaRezumat[]][] = []
+  for (const g of rezumat) {
+    const s = g.segment ?? null
+    const ultim = blocuri[blocuri.length - 1]
+    if (ultim && ultim[0] === s) ultim[1].push(g)
+    else blocuri.push([s, [g]])
+  }
+  return blocuri
+}
+
+/** Ce filtru a căzut pe „nespecificat în sursă” și câte valori au rămas (app/vox.py, `_raspuns`). */
+function notaRelaxata(relaxate: string[], n: number, i: Interpretare, t: Tr, tn: Tn): string | null {
+  const termen = i.termen ? eticheta(`vox.termen.${i.termen}`, i.termen, t) : ''
+  const produs = i.produs_credit ? eticheta(`vox.produs.${i.produs_credit}`, i.produs_credit, t) : ''
+  if (relaxate.length === 2) return tn('vox.relaxat.ambele', n, { termen, produs })
+  if (relaxate[0] === 'termen') return tn('vox.relaxat.termen', n, { termen })
+  if (relaxate[0] === 'produs') return tn('vox.relaxat.produs', n, { produs })
+  return null
+}
+
+/** De ce n-are banca valori, cu cifrele din `surse` (app/server.py, `_stare_banca_vox`). */
+function textBlocaje(b: NonNullable<RaspunsBanca['blocaje']>, tn: Tn): string {
+  const parti = [
+    b.robots > 0 ? tn('vox.blocaje.robots', b.robots, { surse: b.surse }) : '',
+    b.refuzate > 0 ? tn('vox.blocaje.refuzate', b.refuzate, { surse: b.surse }) : '',
+    b.pdf > 0 ? tn('vox.blocaje.pdf', b.pdf) : '',
+  ].filter(Boolean)
+  return parti.length ? parti.join(' ') : tn('vox.blocaje.niciuna', b.surse)
+}
+
+function PlacaRezumat({ g, multeCategorii, onDovezi }: { g: GrupaRezumat; multeCategorii: boolean; onDovezi?: () => void }) {
+  const { t, tn, locale } = useLang()
+  const unitate = unitTxt(g.unitate, t).trim()
+  const egal = g.minim === g.maxim
+  return (
+    <div className="vox-kpi">
+      <span className="v">
+        {egal ? num(g.minim, locale) : `${num(g.minim, locale)} – ${num(g.maxim, locale)}`}
+        {unitate && <small> {unitate}</small>}
+      </span>
+      <span className="l">
+        {egal && g.n > 1 ? tn('vox.kpi_egal', g.n) : tn('vox.kpi', g.n)}
+        {g.gratuite > 0 && <> · {tn('vox.gratuite', g.gratuite)}</>}
+        {multeCategorii && <> · {eticheta(`vox.categorie.${g.categorie}`, g.categorie, t)}</>}
+      </span>
+      {onDovezi && <button type="button" className="vox-link" onClick={onDovezi}>{t('vox.vezi_dovezi')}</button>}
+    </div>
+  )
+}
+
 /** Un rând: serviciul și condiția băncii (date, netraduse), valoarea, dovada. */
-function Rand({ v }: { v: ValoareDovada }) {
+function Rand({ v, cuSegmente }: { v: ValoareDovada; cuSegmente: boolean }) {
   const { t, locale } = useLang()
   const valoare = v.valoare !== null ? num(v.valoare, locale) + unitTxt(v.unitate, t) : (v.valoare_text ?? '—')
   return (
     <tr className={v.ambiguu ? 'ambiguu' : undefined}>
-      <td>{v.serviciu ?? '—'}{v.conditie && <span className="sub">{v.conditie}</span>}</td>
+      <td>
+        {v.serviciu ?? '—'}{v.conditie && <span className="sub">{v.conditie}</span>}
+        {cuSegmente && <span className="vox-seg"><Pill>{etSegment(v.segment, t)}</Pill></span>}
+      </td>
       <td className="dr val">{valoare}{v.frecventa && <span className="sub">{v.frecventa}</span>}</td>
       <td>
         {v.ambiguu && <><Pill tip="amb" title={v.motiv_ambiguu ?? undefined}>{t('vox.ambiguu')}</Pill>{' '}</>}

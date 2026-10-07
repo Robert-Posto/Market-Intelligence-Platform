@@ -23,8 +23,10 @@ export const Interpretare = z.object({
 })
 export type Interpretare = z.infer<typeof Interpretare>
 
-/** Pe unitate și categorie (primul segment din cod_scenariu), fără valorile ambigue. */
+/** Pe segment (pf / pfa / imm / pj), unitate și categorie (primul segment din cod_scenariu), fără valorile ambigue. */
 export const GrupaRezumat = z.object({
+  /** null = fără segment în sursă; lipsește în conversațiile salvate înainte de 07.10.2026 */
+  segment: z.string().nullable().optional(),
   unitate: z.string(),
   categorie: z.string(),
   n: z.number(),
@@ -46,6 +48,10 @@ export const RaspunsBanca = z
     rezumat: z.array(GrupaRezumat),
     randuri: z.array(ValoareDovada),
     stare_banca: z.enum(['blocata', 'fara_surse']).nullable(),
+    /** câte surse ale băncii sunt blocate și de ce, doar la 0 valori; lipsește în conversațiile vechi */
+    blocaje: z.object({ surse: z.number(), robots: z.number(), refuzate: z.number(), pdf: z.number() }).nullable().optional(),
+    /** filtrele căzute pe „nespecificat în sursă” ca răspunsul să nu iasă gol; lipsește în conversațiile vechi */
+    filtre_relaxate: z.array(z.enum(['termen', 'produs'])).optional(),
     /** zero valori din cauza termenului / tipului de credit: câte sunt fără ele */
     fara_filtre: z.number().nullable(),
   })

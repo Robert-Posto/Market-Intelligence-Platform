@@ -75,6 +75,11 @@ section.vox-bun-venit { flex: 1 0 auto; display: flex; flex-direction: column; a
   font-weight: 500; cursor: pointer }
 .vox-link:hover { text-decoration: underline }
 .vox-kpi .vox-link { margin-top: 4px; font-size: 12px }
+/* grupele rezumatului pe segmente (PF, PFA, IMM, PJ, fără segment), doar când sursele le spun */
+.vox-segment { display: flex; flex-direction: column; gap: 6px }
+.vox-segment-cap { font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted) }
+.vox-tabel .vox-seg { display: block; margin-top: 4px }
 .vox-link.avertizare { color: var(--warn); font-weight: 600 }
 .vox-gol { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 14px; background: var(--warn-tint);
   border: 1px solid var(--line-2); border-radius: 10px }
