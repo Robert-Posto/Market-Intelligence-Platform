@@ -159,6 +159,10 @@ class Schema(unittest.TestCase):
         # „datoria vamală la BCR” ieșea `neclar` cu text_cautat completat (evaluarea din 06.10.2026):
         # modelul nu vede tarifele, deci nu el decide dacă serviciul există
         self.assertIn("nu știi ce conțin tarifele", text)
+        # „What is the APR on a Libra mortgage?” ieșea `nominala` (7,71–7,84% în loc de DAE 8,09–8,37%),
+        # „incoming payment” la BRD ieșea `transfer_credit` în 2 evaluări din 4 (07.10.2026, live)
+        self.assertIn("APR", text)
+        self.assertIn("incoming", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
         self.assertEqual(text, vox.prompt(CTX))
 

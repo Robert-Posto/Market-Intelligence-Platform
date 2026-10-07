@@ -176,6 +176,9 @@ def prompt(ctx):
         "- categorie: doar la dobânzi (depozite, credite, conturi și carduri); la comisioane, null. "
         "La o dobândă, conceptul e unul din cele ale categoriei (lista „Categorii” de la final); "
         "„dobânda” fără alt detaliu e `nominala`.",
+        "- Termenii englezești au conceptul lor, nu pe cel mai apropiat: APR / annual percentage rate "
+        "= `dae` (nu `nominala`; „interest rate” e `nominala`); incoming payment / incoming transfer "
+        "= `incasare` (bani primiți), outgoing transfer / payment sent = `transfer_credit` (bani trimiși).",
         "- termen și produs_credit: doar dacă întrebarea le spune.",
         "- Dacă primești interpretarea întrebării anterioare, întrebarea curentă o poate continua "
         "(„și la BRD?”, „dar pe 6 luni?”): păstrezi ce nu se schimbă. O bancă numită în continuare "

@@ -263,9 +263,10 @@ text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde 
   11.568 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0015
   pe întrebare cu promptul în cache. Prima întrebare îl scrie: $0,0147 (11.555 de tokeni de
   intrare); cache-ul ține 5 minute de la ultima întrebare.
-- Evaluarea interpretării (`python app/eval_vox.py --da`, 26 de întrebări reale): 25 din 26
-  corecte pe 06.10.2026, $0,0514. Singura greșeală, „incoming payment” la BRD → `transfer_credit`
-  în loc de `incasare`, variază între rulări (corectă în 2 din 4). Întrebările despre servicii
+- Evaluarea interpretării (`python app/eval_vox.py --da`, 30 de întrebări reale): 30 din 30
+  corecte pe 07.10.2026, $0,0576. Pe 06.10, „incoming payment” la BRD ieșea `transfer_credit` în loc
+  de `incasare` în 2 rulări din 4, iar „APR” la Libra ieșea dobânda nominală (7,71–7,84%) în loc de
+  DAE (8,09–8,37%); promptul spune acum ce înseamnă termenii englezești. Întrebările despre servicii
   fără concept („datoria vamală”, „TrezoNet” la BCR) cer `concept: null` și text de căutat; înainte
   de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”).
 - Când termenul sau tipul de credit golesc răspunsul, fișa spune câte valori sunt fără filtru: ING
