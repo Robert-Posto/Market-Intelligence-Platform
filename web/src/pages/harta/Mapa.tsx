@@ -7,14 +7,14 @@ import {
 import 'maplibre-gl/dist/maplibre-gl.css'
 import type { ReteaBanca, ReteaPunct } from '@mcc/shared'
 import { T, useLang, type DictKey } from '../../i18n'
+import { useTema } from '../../tema'
 import { num } from '../../util/format'
 import { badgeChip, badgePunct, codBanca, type Sigle, type TipLocatie } from './desen'
 
-const intunecat = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
-const STIL_CARTO = intunecat
+const stilCarto = (intunecat: boolean) => intunecat
   ? 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
   : 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
-const STIL_REZERVA: StyleSpecification = {
+const stilRezerva = (intunecat: boolean): StyleSpecification => ({
   version: 8,
   sources: {
     osm: {
@@ -26,7 +26,7 @@ const STIL_REZERVA: StyleSpecification = {
     { id: 'fundal', type: 'background', paint: { 'background-color': intunecat ? '#161113' : '#f3efea' } },
     { id: 'osm', type: 'raster', source: 'osm', paint: { 'raster-saturation': -0.6 } },
   ],
-}
+})
 
 // sub zoom 13: puncte curate. peste: chip-uri cu logo.
 const PRAG_CHIP = 13
@@ -65,6 +65,11 @@ export default function Mapa({ banci, vizibile, toate, sigle, logo, culoareGrup,
   onZona: (n: number) => void
 }) {
   const { t, locale } = useLang()
+  const { intunecat } = useTema()
+  /* tema cu care e desenată harta acum și dacă a căzut pe fondul de rezervă:
+     la comutarea temei se cere același fel de fond, în varianta cealaltă */
+  const temaHarta = useRef(intunecat)
+  const peRezerva = useRef(false)
   const container = useRef<HTMLDivElement>(null)
   const harta = useRef<HartaGL | null>(null)
   const [diag, setDiag] = useState<Diag | null>(null)
@@ -134,29 +139,29 @@ export default function Mapa({ banci, vizibile, toate, sigle, logo, culoareGrup,
     f(v.filter((p) => z.contains([p.lon, p.lat])).length)
   }
 
-  // harta se creează o singură dată; fundalul se alege după tema sistemului, ca în pagina veche
+  // harta se creează o singură dată, cu tema de acum; schimbarea temei o tratează efectul de mai jos
   useEffect(() => {
     const map = new HartaGL({
-      container: container.current!, style: STIL_CARTO,
+      container: container.current!, style: stilCarto(temaHarta.current),
       center: [25.0, 45.9], zoom: 6.4, attributionControl: { compact: true },
     })
     harta.current = map
+    if (import.meta.env.DEV) (window as unknown as { __harta?: HartaGL }).__harta = map  // doar pentru web/verifica_ui.py
     map.addControl(new NavigationControl({ showCompass: false }), 'top-right')
     map.addControl(new ScaleControl({ maxWidth: 110, unit: 'metric' }))
 
-    let cazutPeRezerva = false
     map.on('error', (e) => {
       const err = e?.error as (Error & { status?: number; url?: string }) | undefined
       const m = err?.message || (err?.status ? String(err.status) : '')
       const url = err?.url ? ` · ${err.url}` : ''
-      if (/style|403|401|key|forbidden|Failed to fetch|NetworkError/i.test(m) && !cazutPeRezerva) {
-        cazutPeRezerva = true
+      if (/style|403|401|key|forbidden|Failed to fetch|NetworkError/i.test(m) && !peRezerva.current) {
+        peRezerva.current = true
         stilIncarcat.current = false
         setDiag({ titlu: 'harta.diag.carto_inaccesibil', mesaj: m, url })
         /* `diff: false`: stilul se reconstruiește și vine „style.load”, deci punctele se pun din nou.
            Cu diff (implicit), o dală CARTO căzută DUPĂ încărcare scotea sursa și straturile punctelor,
            iar pagina veche dădea apoi „Cannot read properties of undefined (reading 'setData')”. */
-        map.setStyle(STIL_REZERVA, { diff: false })
+        map.setStyle(stilRezerva(temaHarta.current), { diff: false })
       } else {
         setDiag({ titlu: 'harta.diag.eroare_harta', mesaj: m, url })
       }
@@ -187,10 +192,23 @@ export default function Mapa({ banci, vizibile, toate, sigle, logo, culoareGrup,
       popup.remove()
       map.remove()
       harta.current = null
+      if (import.meta.env.DEV) delete (window as unknown as { __harta?: HartaGL }).__harta
       stilIncarcat.current = false
       setGata(false)
     }
   }, [])
+
+  // tema schimbată din meniu: alt fond, fără reîncărcare. `diff: false` reconstruiește stilul,
+  // deci vine „style.load”, iar efectul de mai jos pune la loc texturile, sursa și straturile
+  useEffect(() => {
+    const map = harta.current
+    if (!map || temaHarta.current === intunecat) return
+    temaHarta.current = intunecat
+    stilIncarcat.current = false
+    setGata(false)
+    curataGrupe()
+    map.setStyle(peRezerva.current ? stilRezerva(intunecat) : stilCarto(intunecat), { diff: false })
+  }, [intunecat])
 
   // texturile, sursa și straturile: după stil și după sigle (culoarea vine din logo)
   useEffect(() => {

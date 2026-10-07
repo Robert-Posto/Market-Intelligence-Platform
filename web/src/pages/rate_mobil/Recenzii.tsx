@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button, Select } from 'antd'
 import type { Sentiment } from '@mcc/shared'
 import type { Meta } from '../../api/meta'
-import { Pill } from '../../components/comune'
+import { Pill, SiglaBanca } from '../../components/comune'
 import { useLang } from '../../i18n'
 import { formatZi, num } from '../../util/format'
 import { Stele } from './Piese'
@@ -109,7 +109,7 @@ export function CardRecenzie({ banca, m, nota, data, versiune, magazin, text, ra
     <div className="rec">
       <div className="rec-cap">
         <div className="rec-banca">
-          {logo ? <img className="rec-sigla" src={logo} alt={nume} title={nume} /> : <b className="nm">{nume}</b>}
+          {logo ? <SiglaBanca src={logo} nume={nume} marime="mare" titlu /> : <b className="nm">{nume}</b>}
           <Stele nota={nota} marime={16} />
         </div>
         <div className="rec-meta">

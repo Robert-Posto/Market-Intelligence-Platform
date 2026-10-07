@@ -7,8 +7,9 @@ server, aceeași funcție ca Sertar-ul din 2.1. Modelul nu vede nicio valoare ș
 cifră; spre Anthropic pleacă doar întrebarea, lista băncilor și lista conceptelor (date publice),
 nimic din catalogul intern Libra. Singurul text al modelului care ajunge pe ecran e `clarificare`.
 
-Activ NUMAI local, cu `MIP_PERMITE_VOX=1` și o cheie reală în `.env`: `mcc-test` n-are
-autentificare (06.10.2026), iar cheia ar fi folosibilă de oricine din rețeaua internă.
+Activ NUMAI local, cu `MIP_PERMITE_VOX=1` și o cheie reală în `.env`. Rutele stau în spatele
+logării AD (07.10.2026), dar istoricul conversațiilor e comun tuturor utilizatorilor, iar fiecare
+întrebare costă: pe `mcc-test` rămâne oprit.
 Modulul nu știe de HTTP și nici de SQL: serverul îi dă funcțiile de citire, ca la `rulari.py`.
 """
 

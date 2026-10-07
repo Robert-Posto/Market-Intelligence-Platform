@@ -8,6 +8,20 @@ import { deLaServer } from '../i18n/server'
 import { zileDeLa } from '../util/format'
 
 /**
+ * Cutia standard a siglei: aceeași mărime pentru toate băncile, sigla centrată în ea (object-fit: contain).
+ * Mărimile sunt în global.css (`.sg-rand`, `.sg-mare`, `.sg-card`); fără siglă, apelantul pune numele.
+ */
+export function SiglaBanca({ src, nume, marime = 'rand', titlu }: {
+  src: string; nume?: string; marime?: 'rand' | 'mare' | 'card'; titlu?: boolean
+}) {
+  return (
+    <span className={`sg sg-${marime}`}>
+      <img src={src} alt={nume ?? ''} title={titlu ? nume : undefined} />
+    </span>
+  )
+}
+
+/**
  * Numele și sigla băncii; `fisa` duce la fișa băncii, `tag` marchează Libra cu „noi”.
  * `doarLogo`: sigla mai mare, fără nume (numele rămâne în alt / title); fără siglă, numele.
  */
@@ -20,7 +34,7 @@ export function EtichetaBanca({ slug, m, fisa, tag, doarLogo }: {
   const faraNume = doarLogo && !!logo
   const corp = (
     <span className={faraNume ? 'cl-banca doar-logo' : 'cl-banca'}>
-      {logo && <img src={logo} alt={faraNume ? nume : ''} title={faraNume ? nume : undefined} />}
+      {logo && <SiglaBanca src={logo} nume={faraNume ? nume : undefined} marime={faraNume ? 'mare' : 'rand'} titlu={faraNume} />}
       {!faraNume && <span className="nm">{nume}</span>}
       {tag && slug === 'libra' && <span className="tag-libra">{t('comun.tag_libra_noi')}</span>}
     </span>

@@ -589,7 +589,9 @@ class Http(unittest.TestCase):
         cls.srv = server.Server(("::", 0), server.Handler)
         cls.port = cls.srv.server_address[1]
         threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
-        cls.env_vechi = {k: os.environ.get(k) for k in ("MIP_PERMITE_VOX", "ANTHROPIC_API_KEY")}
+        cls.env_vechi = {k: os.environ.get(k) for k in ("MIP_PERMITE_VOX", "ANTHROPIC_API_KEY",
+                                                         "MCC_AUTH_LOCAL", "MCC_AUTH_OBLIGATORIE")}
+        os.environ.pop("MCC_AUTH_OBLIGATORIE", None)
 
     @classmethod
     def tearDownClass(cls):
@@ -605,6 +607,28 @@ class Http(unittest.TestCase):
     def setUp(self):
         os.environ["MIP_PERMITE_VOX"] = "1"
         os.environ["ANTHROPIC_API_KEY"] = "sk-ant-" + "x" * 90
+        # Vox merge pe laptop, unde autentificarea e scurtătura locală; poarta și rolurile au
+        # testele lor în test_server_autentificare.py, aici doar că Vox stă în spatele ei
+        os.environ["MCC_AUTH_LOCAL"] = "admin"
+
+    def test_fara_sesiune_401_pe_toate_rutele(self):
+        """Rutele Vox nu sunt în RUTE, deci la unirea cu autentificarea (07.10.2026) puteau rămâne
+        înaintea porții: întrebarea plătită și istoricul, deschise oricui din rețea. Cu corp, un POST
+        mai verifică și ordinea: citit înaintea porții, _goleste_corpul aștepta octeți care nu mai
+        vin, iar cererea rămânea fără răspuns."""
+        t = self.token()
+        id_ = vox.Istoric.id_nou()
+        os.environ["MCC_AUTH_LOCAL"] = ""
+        n = len(self.client.cereri)
+        cazuri = [("GET", "/api/vox", None), ("GET", "/api/vox/conversatii", None),
+                  ("GET", f"/api/vox/conversatii/{id_}", None),
+                  ("POST", "/api/vox", {"intrebare": "BCR?"}),
+                  ("POST", f"/api/vox/conversatii/{id_}/redenumeste", {"titlu": "x"}),
+                  ("POST", f"/api/vox/conversatii/{id_}/sterge", {})]
+        for metoda, cale, corp in cazuri:
+            self.assertEqual(self.cere(metoda, cale, corp, {"X-MIP-Token": t}),
+                             (401, {"eroare": "neautentificat"}), (metoda, cale))
+        self.assertEqual(len(self.client.cereri), n)   # niciun apel plătit
 
     def cere(self, metoda, cale, corp=None, antete=None, host=None):
         c = http.client.HTTPConnection("127.0.0.1", self.port, timeout=10)

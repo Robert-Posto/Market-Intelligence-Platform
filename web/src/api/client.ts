@@ -11,6 +11,13 @@ import type { z } from 'zod'
 /** Mesajul-semnal pentru „serverul de date nu răspunde”; îl traduce componenta Eroare. */
 export const SERVER_OPRIT = 'SERVER_OPRIT'
 
+/**
+ * Eveniment pe `window` la orice 401 de la o rută de date: sesiunea a expirat. Îl ascultă
+ * providerul de sesiune (src/auth), care arată pagina de logare; clientul nu știe de React.
+ */
+export const EVENIMENT_SESIUNE_EXPIRATA = 'mcc:sesiune-expirata'
+const sesiuneExpirata = () => window.dispatchEvent(new Event(EVENIMENT_SESIUNE_EXPIRATA))
+
 export class ApiError extends Error {
   constructor(
     public status: number,
@@ -22,6 +29,7 @@ export class ApiError extends Error {
 
 /** Răspunsul, validat cu schema; aceleași reguli de eroare pentru GET și POST. */
 async function dinRaspuns<S extends z.ZodTypeAny>(res: Response, cale: string, schema: S): Promise<z.infer<S>> {
+  if (res.status === 401) sesiuneExpirata()
   const corp = (await res.json().catch(() => null)) as unknown
   if (corp && typeof corp === 'object' && 'eroare' in corp && (corp as { eroare: unknown }).eroare) {
     throw new ApiError(res.status, String((corp as { eroare: unknown }).eroare))
@@ -59,6 +67,7 @@ export async function apiPost(cale: string, corp: unknown, token: string): Promi
     body: JSON.stringify(corp),
     headers: { 'Content-Type': 'application/json', 'X-MIP-Token': token },
   })
+  if (r.status === 401) sesiuneExpirata()
   let d: { eroare?: string } = {}
   try {
     d = (await r.json()) as { eroare?: string }

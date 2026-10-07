@@ -31,13 +31,14 @@
 .ht-lg { display: flex; align-items: center; gap: 9px }
 .ht-lg b { color: var(--ink) }
 .ht-lg-nota { color: var(--muted); font-size: 11.5px; line-height: 1.45; margin: 2px 0 0 }
+/* textul insignelor: --on-accent, lizibil pe accent în ambele teme; chenarul alb rămâne, ca pe hartă */
 .ht-lg-suc, .ht-lg-atm { flex: none; background: var(--accent); box-shadow: 0 1px 3px rgba(58, 22, 28, .3);
-  display: grid; place-items: center; color: #fff; font-weight: 700; font-family: "IBM Plex Sans", sans-serif }
+  display: grid; place-items: center; color: var(--on-accent); font-weight: 700; font-family: "IBM Plex Sans", sans-serif }
 .ht-lg-suc { width: 30px; height: 30px; border-radius: 8px; border: 2.5px solid #fff; font-size: 11px }
 .ht-lg-atm { width: 23px; height: 23px; border-radius: 50%; border: 2px solid #fff; font-size: 8.5px }
 
 /* grupul de locații: pe hartă (marker DOM) și în legendă */
-.ht-grup { flex: none; background: var(--accent); color: #fff; border: 2.5px solid #fff; border-radius: 50%;
+.ht-grup { flex: none; background: var(--accent); color: var(--on-accent); border: 2.5px solid #fff; border-radius: 50%;
   display: grid; place-items: center; font: 700 12px var(--mono); cursor: pointer; box-shadow: 0 1px 4px rgba(58, 22, 28, .35) }
 
 .ht-butoane { display: flex; gap: 6px; margin: 0 0 10px }
@@ -46,7 +47,6 @@
 .ht-lista .ht-rand.ant-checkbox-wrapper { display: flex; align-items: center; padding: 5px 0; margin: 0; font-size: 13px }
 .ht-rand > span:last-child { display: flex; align-items: center; gap: 9px; flex: 1; min-width: 0; padding-inline-end: 0 }
 .ht-bara { width: 4px; height: 26px; border-radius: 2px; flex: none }
-.ht-logo { width: 54px; height: 20px; object-fit: contain; flex: none; background: #fff; border-radius: 3px; padding: 1px }
 .ht-nume { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12.5px }
 .ht-n { font-family: var(--mono); font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; flex: none }
 .ht-nota { color: var(--muted); font-size: 11.5px; line-height: 1.5; margin-top: 14px }

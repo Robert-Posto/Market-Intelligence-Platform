@@ -31,7 +31,7 @@ td.mc .sub.ctx { white-space: normal; max-width: 24ch; margin-left: auto }
   border-top: 1px solid var(--line) }
 .mb-card-info { display: flex; flex-direction: column; gap: 8px; min-width: 0 }
 .mb-btn-compara { margin-left: auto }
-.mb-sigla { display: block; height: 34px; max-width: 160px; object-fit: contain; object-position: left center; align-self: flex-start }
+.mb-sigla { display: block; align-self: flex-start }
 .mb-sigla-txt { font-size: 14px; font-weight: 600 }
 .mb-nota { display: flex; align-items: center; gap: 10px; margin-top: 4px }
 /* stelele, nota și evaluările un bloc, despărțit de restul cardului */
@@ -93,7 +93,6 @@ td.mc .sub.ctx { white-space: normal; max-width: 24ch; margin-left: auto }
 /* sigla mare, stelele sub ea; restul antetului în dreapta */
 .rec-cap { align-items: flex-start }
 .rec-banca { display: flex; flex-direction: column; gap: 6px }
-.rec-sigla { display: block; height: 26px; max-width: 150px; object-fit: contain; object-position: left center }
 .rec-meta { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin-left: auto }
 .rec-cap .rec-data { font-size: 10.5px }
 .rec-utile { font-size: 11px }
@@ -123,9 +122,9 @@ td.mc .sub.ctx { white-space: normal; max-width: 24ch; margin-left: auto }
 .as-pagina .ap-stele { margin-top: 10px }
 .as-antet-txt { min-width: 0 }
 .as-antet-txt h3 { margin: 2px 0 2px; font-size: 19px; font-weight: 700; line-height: 1.25 }
-.as-buton { display: inline-block; margin-top: 10px; padding: 4px 16px; border-radius: 999px; background: #0a84ff; color: #fff;
+.as-buton { display: inline-block; margin-top: 10px; padding: 4px 16px; border-radius: 999px; background: #0071e3; color: #fff;
   font-weight: 600; font-size: 12.5px; text-decoration: none }
-.as-buton:hover { background: #0071e3; color: #fff }
+.as-buton:hover { background: #005bb8; color: #fff }
 .as-sectiune { padding-top: 14px }
 .as-sectiune + .as-sectiune { margin-top: 14px; border-top: 1px solid var(--line) }
 .as-sectiune h4 { margin: 0 0 10px; font-size: 15px; font-weight: 700 }

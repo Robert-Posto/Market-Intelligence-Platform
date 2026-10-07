@@ -22,6 +22,7 @@ import { comparatie_concurenta } from './comparatie_concurenta'
 import { android } from './android'
 import { logging } from './logging'
 import { rulare_manuala } from './rulare_manuala'
+import { auth } from './auth'
 import { vox } from './vox'
 
 export const DICT = {
@@ -48,5 +49,6 @@ export const DICT = {
   ...android,
   ...logging,
   ...rulare_manuala,
+  ...auth,
   ...vox,
 } as const
