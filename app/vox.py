@@ -52,6 +52,10 @@ MAX_BANCI = 3
 MAX_RANDURI = 50
 TIPURI = ("cautare", "neclar", "in_afara")
 CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text_cautat", "clarificare")
+# Istoricul conversațiilor (coloana „Conversații” din pagina Vox): fișiere pe laptop, nu în bază
+ID_CONVERSATIE = re.compile(r"[0-9a-f]{16}")
+TITLU_MAX = 120
+CONVERSATIE_LIPSA = "Conversația nu mai există."
 
 
 class Respins(Exception):
@@ -60,6 +64,10 @@ class Respins(Exception):
 
 class EroareModel(Exception):
     """Apelul la model n-a reușit (502); mesajul e pentru utilizator."""
+
+
+class ConversatieLipsa(Exception):
+    """Conversația cerută nu există (404): ștearsă sau un id greșit în adresă."""
 
 
 def mesaj_eroare(exc):
@@ -301,6 +309,140 @@ def rezuma(randuri):
         g["maxim"] = max(g["maxim"], v)
         g["gratuite"] += int(v == 0 and cheie[1] in CATEGORII_COMISION)
     return sorted(grupe.values(), key=lambda g: (-g["n"], g["categorie"], g["unitate"]))
+
+
+def _moment(data):
+    """Ora unei ture, pentru ordonare: după ora reală, nu după text (la ora de iarnă „03:10+02:00” e
+    după „03:30+03:00”); o dată stricată ajunge la coadă."""
+    try:
+        return datetime.datetime.fromisoformat(data).timestamp()
+    except (TypeError, ValueError):
+        return float("-inf")
+
+
+class Istoric:
+    """Conversațiile din Vox: câte un fișier JSONL pe conversație, în `dir` (pe laptop, nu în bază).
+
+    Un rând pe întrebare (`{data, intrebare, raspuns}`) sau pe redenumire (`{data, titlu}`): fișierul
+    doar crește, deci o scriere întreruptă strică cel mult ultimul rând, care se sare la citire. Orice
+    id venit din afară trece prin `valid` înainte să devină cale, deci nu poate ieși din `dir`."""
+
+    def __init__(self, dir):
+        self.dir = dir
+        self._lacat = threading.Lock()
+        # id -> ((mtime_ns, mărime), rezumat): un răspuns are până la ~60 KB, iar lista se cere după
+        # fiecare întrebare; un fișier neschimbat nu se recitește
+        self._rezumate = {}
+
+    @staticmethod
+    def valid(id):
+        return isinstance(id, str) and ID_CONVERSATIE.fullmatch(id) is not None
+
+    @staticmethod
+    def id_nou():
+        return secrets.token_hex(8)
+
+    def _cale(self, id):
+        return os.path.join(self.dir, id + ".jsonl")
+
+    def exista(self, id):
+        return self.valid(id) and os.path.isfile(self._cale(id))
+
+    def _scrie(self, id, rand):
+        os.makedirs(self.dir, exist_ok=True)
+        with self._lacat:
+            with open(self._cale(id), "a", encoding="utf-8") as f:
+                f.write(json.dumps(rand, ensure_ascii=False, default=str) + "\n")
+
+    def adauga(self, id, intrebare, raspuns, data=None):
+        if not self.valid(id):
+            raise ConversatieLipsa(CONVERSATIE_LIPSA)
+        self._scrie(id, {"data": data or _acum(), "intrebare": intrebare, "raspuns": raspuns})
+
+    def citeste(self, id):
+        """Conversația întreagă (`id`, `titlu`, `redenumita`, `ture`), sau None."""
+        if not self.valid(id):
+            return None
+        try:
+            with open(self._cale(id), encoding="utf-8") as f:
+                linii = f.readlines()
+        except OSError:
+            return None
+        ture, titlu = [], None
+        for linie in linii:
+            try:
+                r = json.loads(linie)
+            except ValueError:
+                continue
+            if not isinstance(r, dict):
+                continue
+            if isinstance(r.get("intrebare"), str):
+                ture.append({"data": r.get("data"), "intrebare": r["intrebare"], "raspuns": r.get("raspuns")})
+            elif "titlu" in r:
+                titlu = r["titlu"] if isinstance(r["titlu"], str) and r["titlu"] else None
+        if not ture:
+            return None
+        return {"id": id, "titlu": titlu or ture[0]["intrebare"], "redenumita": titlu is not None, "ture": ture}
+
+    def _rezumat(self, id):
+        st = os.stat(self._cale(id))
+        cheie = (st.st_mtime_ns, st.st_size)
+        vechi = self._rezumate.get(id)
+        if vechi and vechi[0] == cheie:
+            return vechi[1]
+        c = self.citeste(id)
+        rez = None if c is None else {
+            "id": id, "titlu": c["titlu"], "redenumita": c["redenumita"], "intrebari": len(c["ture"]),
+            "texte": [t["intrebare"] for t in c["ture"]],
+            "inceputa": c["ture"][0]["data"], "ultima": c["ture"][-1]["data"],
+            "cost_usd": sum((t["raspuns"].get("cost_usd") or 0) if isinstance(t["raspuns"], dict) else 0
+                            for t in c["ture"]),
+        }
+        self._rezumate[id] = (cheie, rez)
+        return rez
+
+    def lista(self):
+        """Rezumatele, cea cu ultima întrebare cea mai recentă prima."""
+        try:
+            nume = os.listdir(self.dir)
+        except OSError:
+            return []
+        rez = []
+        for n in nume:
+            id = n[:-6] if n.endswith(".jsonl") else None
+            if not self.valid(id):
+                continue
+            try:
+                r = self._rezumat(id)
+            except OSError:
+                continue
+            if r:
+                rez.append(r)
+        return sorted(rez, key=lambda r: _moment(r["ultima"]), reverse=True)
+
+    def redenumeste(self, id, titlu):
+        """Un rând `{data, titlu}` în plus; gol = înapoi la prima întrebare. Întoarce titlul afișat."""
+        if titlu is not None and not isinstance(titlu, str):
+            raise Respins("Titlul nu e valid.")
+        titlu = (titlu or "").strip()
+        if len(titlu) > TITLU_MAX:
+            raise Respins(f"Titlul are peste {TITLU_MAX} de caractere.")
+        if not self.exista(id):
+            raise ConversatieLipsa(CONVERSATIE_LIPSA)
+        self._scrie(id, {"data": _acum(), "titlu": titlu or None})
+        c = self.citeste(id)
+        return {"titlu": c["titlu"], "redenumita": c["redenumita"]}
+
+    def sterge(self, id):
+        if not self.exista(id):
+            return False
+        try:
+            with self._lacat:
+                os.remove(self._cale(id))
+        except FileNotFoundError:
+            return False
+        self._rezumate.pop(id, None)
+        return True
 
 
 class Vox:

@@ -249,6 +249,101 @@ class Rezumat(unittest.TestCase):
         self.assertEqual({(x["categorie"], x["maxim"]) for x in r}, {("depozite", 6.5), ("credite", 9.9)})
 
 
+class IstoricConversatii(unittest.TestCase):
+    def setUp(self):
+        self.rad = tempfile.mkdtemp(prefix="vox_ist_")
+        self.ist = vox.Istoric(os.path.join(self.rad, "conversatii"))
+
+    def raspuns(self, cost=0.0015):
+        return {"interpretare": interp(), "ignorate": [], "raspunsuri": [], "model": "claude-haiku-4-5",
+                "tokeni": {"intrare": 1, "iesire": 1, "citire_cache": 0, "scriere_cache": 0}, "cost_usd": cost}
+
+    def test_lista_goala_fara_dosar(self):
+        self.assertEqual(self.ist.lista(), [])
+
+    def test_adauga_citeste_lista(self):
+        a = self.ist.id_nou()
+        self.assertTrue(vox.Istoric.valid(a))
+        self.ist.adauga(a, "Cât costă administrarea contului la BCR?", self.raspuns(0.0147))
+        self.ist.adauga(a, "și la BRD?", self.raspuns(0.0015))
+        c = self.ist.citeste(a)
+        self.assertEqual((c["titlu"], c["redenumita"], [t["intrebare"] for t in c["ture"]]),
+                         ("Cât costă administrarea contului la BCR?", False,
+                          ["Cât costă administrarea contului la BCR?", "și la BRD?"]))
+        self.assertEqual(c["ture"][1]["raspuns"]["cost_usd"], 0.0015)
+        (rez,) = self.ist.lista()
+        self.assertEqual((rez["id"], rez["intrebari"], rez["texte"]), (a, 2, [t["intrebare"] for t in c["ture"]]))
+        self.assertAlmostEqual(rez["cost_usd"], 0.0162)
+        self.assertEqual((rez["inceputa"], rez["ultima"]), (c["ture"][0]["data"], c["ture"][1]["data"]))
+
+    def test_lista_dupa_ultima_intrebare_si_ora_de_iarna(self):
+        """Ordinea e după ora reală, nu după text: la ora de iarnă (25.10.2026) „03:10+02:00” vine
+        după „03:30+03:00”, deși ca text e înainte."""
+        a, b = self.ist.id_nou(), self.ist.id_nou()
+        self.ist.adauga(a, "A?", self.raspuns(), data="2026-10-25T03:30:00+03:00")
+        self.ist.adauga(b, "B?", self.raspuns(), data="2026-10-25T03:10:00+02:00")
+        self.assertEqual([r["id"] for r in self.ist.lista()], [b, a])
+
+    def test_redenumire(self):
+        a, b = self.ist.id_nou(), self.ist.id_nou()
+        self.ist.adauga(a, "Cât costă administrarea contului la BCR?", self.raspuns(), data="2026-10-07T12:37:00+03:00")
+        self.ist.adauga(b, "Altă întrebare?", self.raspuns(), data="2026-10-07T12:40:00+03:00")
+        self.assertEqual(self.ist.redenumeste(a, "  Administrare cont BCR "),
+                         {"titlu": "Administrare cont BCR", "redenumita": True})
+        self.ist.redenumeste(a, "Comisioane BCR")
+        lista = self.ist.lista()
+        self.assertEqual([r["id"] for r in lista], [b, a])        # redenumirea nu mută conversația
+        self.assertEqual((lista[1]["titlu"], lista[1]["redenumita"]), ("Comisioane BCR", True))
+        self.assertEqual(self.ist.redenumeste(a, "   "),
+                         {"titlu": "Cât costă administrarea contului la BCR?", "redenumita": False})
+        for rau in ("x" * 121, 42):
+            with self.assertRaises(vox.Respins):
+                self.ist.redenumeste(a, rau)
+        with self.assertRaises(vox.ConversatieLipsa):
+            self.ist.redenumeste(self.ist.id_nou(), "titlu")
+
+    def test_sterge(self):
+        a = self.ist.id_nou()
+        self.ist.adauga(a, "A?", self.raspuns())
+        self.ist.lista()
+        self.assertTrue(self.ist.sterge(a))
+        self.assertEqual((self.ist.citeste(a), self.ist.lista(), self.ist.sterge(a)), (None, [], False))
+
+    def test_id_invalid_nu_atinge_discul(self):
+        afara = os.path.join(self.rad, "secret.jsonl")
+        with open(afara, "w", encoding="utf-8") as f:
+            f.write(json.dumps({"data": "2026-10-07T12:00:00+03:00", "intrebare": "secret", "raspuns": None}) + "\n")
+        for rau in ("../secret", "..\\secret", "ABCDEF0123456789", "abc", "0123456789abcdef0", "", None, 7):
+            self.assertIsNone(self.ist.citeste(rau), rau)
+            self.assertFalse(self.ist.sterge(rau), rau)
+            self.assertFalse(self.ist.exista(rau), rau)
+            with self.assertRaises(vox.ConversatieLipsa):
+                self.ist.adauga(rau, "x", self.raspuns())
+        self.assertTrue(os.path.exists(afara))
+
+    def test_rand_stricat_sarit(self):
+        """O scriere întreruptă lasă un rând neterminat: se sare el, nu toată conversația."""
+        a = self.ist.id_nou()
+        self.ist.adauga(a, "A?", self.raspuns())
+        with open(os.path.join(self.ist.dir, a + ".jsonl"), "a", encoding="utf-8") as f:
+            f.write('{"data": "2026-10-07T12:00:00+03:00", "intreb')
+        self.assertEqual([t["intrebare"] for t in self.ist.citeste(a)["ture"]], ["A?"])
+        self.assertEqual(self.ist.lista()[0]["intrebari"], 1)
+
+    def test_lista_tine_minte_rezumatul(self):
+        """Lista se cere după fiecare întrebare: un fișier neschimbat nu se recitește."""
+        a = self.ist.id_nou()
+        self.ist.adauga(a, "A?", self.raspuns())
+        self.ist.lista()
+        citiri, citeste = [], self.ist.citeste
+        self.ist.citeste = lambda id: citiri.append(id) or citeste(id)
+        self.ist.lista()
+        self.assertEqual(citiri, [])
+        self.ist.adauga(a, "B?", self.raspuns())
+        self.assertEqual(self.ist.lista()[0]["intrebari"], 2)
+        self.assertEqual(citiri, [a])
+
+
 class Intrebari(unittest.TestCase):
     def setUp(self):
         self.dir = tempfile.mkdtemp(prefix="vox_test_")
