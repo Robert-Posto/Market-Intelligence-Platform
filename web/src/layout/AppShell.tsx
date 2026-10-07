@@ -2,6 +2,7 @@ import { MoonOutlined, SunOutlined } from '@ant-design/icons'
 import { useQuery } from '@tanstack/react-query'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Sumar } from '@mcc/shared'
+import { useSesiune } from '../auth'
 import { api } from '../api/client'
 import { T, useLang, type Lang } from '../i18n'
 import { PAGINI, TOATE, cheie } from '../pagini'
@@ -13,9 +14,13 @@ import { Comutator } from '../components/Comutator'
 export default function AppShell() {
   const { t, lang, setLang, locale } = useLang()
   const { intunecat, setTema } = useTema()
+  const { utilizator, delogare } = useSesiune()
   const { pathname } = useLocation()
   const id = pathname.replace(/^\//, '').split('/')[0] || 'overview'
   const pagina = TOATE.find((p) => p.id === id) ?? TOATE[0]!
+
+  // Paginile de admin nu apar în meniul analistului (serverul le refuză oricum cu 403); un grup rămas gol dispare
+  const meniu = PAGINI.map((gr) => ({ ...gr, chei: gr.chei.filter((p) => !p.admin || utilizator?.rol === 'admin') })).filter((gr) => gr.chei.length)
 
   // Piciorul barei spune cât e în bază, nu un slogan. Se cere o dată pe sesiune.
   const sumar = useQuery({ queryKey: ['sumar'], staleTime: Infinity, queryFn: () => api('/api/sumar', Sumar) })
@@ -31,7 +36,7 @@ export default function AppShell() {
           <span className="s">{t('comun.nav.subtitlu')}</span>
         </div>
         <div className="meniu">
-          {PAGINI.map((gr) => (
+          {meniu.map((gr) => (
             <div key={gr.grup}>
               <h3>{t(gr.grup)}</h3>
               {gr.chei.map((p) => (
@@ -49,6 +54,12 @@ export default function AppShell() {
               k="comun.picior.sumar"
               params={{ banci: num(g('bănci'), locale, 0), surse: num(g('surse'), locale, 0), valori: num(g('observații'), locale, 0) }}
             />
+          )}
+          {/* o singură linie pentru utilizator, iar „Ieșire” / „local” pe rândul comutatoarelor: meniul trebuie să încapă fără derulare la 720 px */}
+          {utilizator && !utilizator.local && (
+            <div className="utilizator">
+              <b>{utilizator.nume}</b> · {t(`auth.rol.${utilizator.rol}`)}
+            </div>
           )}
           {/* limba și tema pe același rând: meniul trebuie să încapă fără derulare la 720 px */}
           <div className="comutatoare">
@@ -76,6 +87,10 @@ export default function AppShell() {
                 ]}
               />
             </div>
+            {utilizator?.local && <span className="local" title={t('auth.local_titlu')}>{t('auth.local')}</span>}
+            {utilizator && !utilizator.local && (
+              <button type="button" className="iesire" onClick={() => void delogare()}>{t('auth.iesire')}</button>
+            )}
           </div>
         </div>
       </nav>
