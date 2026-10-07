@@ -447,6 +447,41 @@ def verifica(surse: list[dict], deschise: list[str], texte: dict[str, str]) -> N
             s["avertisment"] = "; ".join(avert)
 
 
+def filtreaza_surse(surse: list[dict], deschise: list[str], texte: dict[str, str],
+                    banca: dict) -> list[dict]:
+    """
+    Scoate sursele care nu se păstrează: altă schemă decât http(s), sau o adresă
+    pe care modelul n-a deschis-o ȘI care nu e pe domeniile băncii.
+
+    `verifica` doar avertiza, iar adresa intra oricum în `surse_libra`, de unde o
+    cere extractorul zilnic (auditul de securitate, B4). Modelul poate întoarce
+    orice șir: un `javascript:` ajungea link în interfață, o gazdă internă devenea
+    o cerere din rețeaua băncii. Ce se scoate se scrie pe stderr, cu motivul.
+    """
+    deschise_n = {u.rstrip("/") for u in deschise} | {u.rstrip("/") for u in texte}
+    domenii = domenii_permise(banca)
+    pastrate = []
+    for s in surse:
+        url = s.get("url")
+        try:
+            p = urlparse(url) if isinstance(url, str) else None
+            gazda = (p.hostname or "") if p else ""
+        except ValueError:          # „http://[::1/” : IPv6 stricat
+            p, gazda = None, ""
+        # `@` sau `\` în autoritate: browserul și urllib citesc gazde diferite
+        # (https://evil.ro\@bcr.ro/ e bcr.ro pentru urllib, evil.ro pentru browser)
+        if p is None or p.scheme not in ("http", "https") or not gazda or "@" in p.netloc or "\\" in p.netloc:
+            motiv = "nu e o adresă http(s) validă"
+        elif url.rstrip("/") not in deschise_n and not any(gazda == d or gazda.endswith("." + d)
+                                                           for d in domenii):
+            motiv = "nedeschisă și în afara domeniilor băncii"
+        else:
+            pastrate.append(s)
+            continue
+        print(f"  ! sursă scoasă ({motiv}): {str(url)[:200]!r}", file=sys.stderr)
+    return pastrate
+
+
 def deduplica(surse: list[dict]) -> list[dict]:
     """Aceeași adresă raportată de două ori: o păstrăm pe cea cu încredere mai mare."""
     per_url: dict[str, dict] = {}
@@ -465,6 +500,7 @@ def un_produs(banca: dict, produs: dict) -> None:
     rez = ruleaza(banca, produs)
     surse = deduplica(rez.get("surse") or [])
     verifica(surse, rez["_deschise"], rez["_texte"])
+    surse = filtreaza_surse(surse, rez["_deschise"], rez["_texte"], banca)
     surse.sort(key=lambda s: -s.get("incredere", 0))
 
     u = rez.get("_usage") or {}
@@ -525,7 +561,8 @@ def combina(banca: dict) -> None:
     total: dict = {}
     for f in fisiere:
         d = json.loads(f.read_text(encoding="utf-8"))
-        for s in d["surse"]:
+        # și fișierele scrise înainte de filtru: inventarul combinat ajunge la extracție
+        for s in filtreaza_surse(d["surse"], d.get("deschise") or [], {}, banca):
             documente.append({"produs": d["produs"], "produse": [d["produs"]],
                               "dovada": s.get("citat", ""), **s})
         if d.get("gol"):

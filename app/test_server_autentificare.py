@@ -8,6 +8,7 @@ Rulare:  python app/test_server_autentificare.py
 """
 
 import http.client
+import io
 import json
 import os
 import socket
@@ -408,6 +409,45 @@ class Http(unittest.TestCase):
         os.environ["MCC_AUTH_LOCAL"] = "analist"
         self.assertEqual(self.cere("GET", "/api/jobs")[:3:2], (403, {"eroare": "interzis"}))
         self.assertEqual(self.cere("GET", "/api/sumar")[0], 200)
+
+    # ---------------- fișierele statice (auditul de securitate, B5)
+
+    def test_fisiere_statice_doar_din_lista(self):
+        # cu sesiune (modul local): poarta trece, deci 404-ul vine din lista albă
+        os.environ["MCC_AUTH_LOCAL"] = "admin"
+        for cale in ("/C:/Windows/win.ini", "/../config.py", "/server.py", "/rulari.py", "/logos/../server.py",
+                     "/logos/..%5cserver.py", "/logos/", "/__pycache__/", "/autentificare.py", "/logos",
+                     "/logos/%2e%2e/server.py", "/C:%5cWindows%5cwin.ini", "/logos/CON.svg",
+                     "/logos/..%2f..%2fconfig.py", "/app/assets/", "/%2e%2e/config.py"):
+            cod, _, d = self.cere("GET", cale)
+            self.assertEqual(cod, 404, cale)
+            self.assertNotIn("import", str(d), cale)
+            self.assertEqual(self.cere("HEAD", cale)[0], 404, cale)
+        sigla = sorted(os.listdir(os.path.join(AICI, "logos")))[0]
+        for cale in ("/", "/index.html", "/pdf.html", "/harta.html", "/favicon.ico",
+                     f"/logos/{sigla}", f"/logos/{sigla}?v=1"):
+            self.assertEqual(self.cere("GET", cale)[0], 200, cale)
+
+    def test_pdf_erori_fara_detalii(self):
+        # motivul (robots, adresă internă, textul băncii) rămâne în jurnalul serverului, nu la client;
+        # mesajul cu diacritice rupea linia de stare (latin-1)
+        os.environ["MCC_AUTH_LOCAL"] = "admin"
+        vechi = self.server_mod.adu_pdf
+        try:
+            for exc, cod in ((PermissionError("interzis de robots.txt al băncii"), 403),
+                             (PermissionError("x.ro duce la o adresă care nu e publică (10.0.0.5)"), 403),
+                             (ValueError("HTTP 500: țâșnește de la 10.0.0.5"), 502)):
+                def arunca(url, exc=exc):
+                    raise exc
+                self.server_mod.adu_pdf = arunca
+                with unittest.mock.patch("sys.stderr", new_callable=io.StringIO) as jurnal:
+                    c, _, d = self.cere("GET", "/pdf?u=https://banca.example/a.pdf")
+                self.assertEqual(c, cod, exc)
+                for detaliu in ("robots", "10.0.0.5", "500"):
+                    self.assertNotIn(detaliu, str(d), exc)
+                self.assertIn("/pdf", jurnal.getvalue())
+        finally:
+            self.server_mod.adu_pdf = vechi
 
 
 class Pornire(unittest.TestCase):
