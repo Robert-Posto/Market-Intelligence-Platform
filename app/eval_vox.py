@@ -56,8 +56,9 @@ def main():
     if not vox.cheie_reala():
         print("ANTHROPIC_API_KEY din .env nu e o cheie reală.")
         return 2
-    q = vox.Vox(context=server._context_vox, cauta=lambda *x: [],
-                           stare_banca=lambda b: None, dir_jurnal=tempfile.mkdtemp(prefix="eval_vox_"))
+    q = vox.Vox(context=server._context_vox, cauta=lambda *x: [], stare_banca=lambda b: None,
+                clasament=lambda *x: None, stare_banci=lambda: {},
+                dir_jurnal=tempfile.mkdtemp(prefix="eval_vox_"))
     corecte, cost, intrare = 0, 0.0, 0
     for i, e in enumerate(exemple, 1):
         d = q.intreaba(e["intrebare"], e.get("anterior"))

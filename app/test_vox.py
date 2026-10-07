@@ -174,6 +174,23 @@ class Schema(unittest.TestCase):
         self.assertIn("tip = clasament", text)
         self.assertIn("Clasabile: comisioane (în lei): administrare_cont; dobânzi (cu categoria): dae (credite)", text)
         self.assertNotIn("clasamente de tipul", text)
+        # evaluarea din 07.10.2026 (36/40): comparațiile fără bancă numită ieșeau `neclar` („La care
+        # bancă…?”), „comision de administrare” cerea „cont sau card?”, iar „pentru firme la BCR” cerea
+        # „ce tip de cont pentru firme?”
+        self.assertIn("e clasament chiar fără bancă numită", text)
+        self.assertIn("„Comisionul de administrare” fără alt detaliu e `administrare_cont`", text)
+        self.assertIn("nu fac întrebarea neclară", text)
+        # a doua evaluare (36/40): „cel mai mic comision” ieșea `cea_mai_buna`, „unde stă Libra” fără
+        # Libra, „pentru firme” cerea „PFA, IMM sau PJ?”, „datoria vamală” tot `neclar`: exemple explicite
+        self.assertIn("concept = null, text_cautat = X", text)
+        # a treia evaluare (39/40): „Unde stă Libra la DAE…?” ieșea căutare la Libra, nu clasament
+        self.assertIn("„Unde stă Libra la …?”, „pe ce loc e Libra la …?” → clasament (nu căutare), banci = [libra]", text)
+        self.assertIn("compară prețul obișnuit, deci metrica = null", text)
+        self.assertIn("„Firme” e pj; nu cere clarificări despre segment", text)
+        # la temperatura 0 (07.10.2026): „TrezoNet la BCR” ieșea `neclar` cu banci = [], deși clarificarea
+        # numea BCR — cu banca păstrată, serverul o face căutare; „Care bancă… datoria vamală” tot `neclar`
+        self.assertIn("La neclar completezi totuși ce ai înțeles", text)
+        self.assertIn("sunt întotdeauna clasament", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
         self.assertEqual(text, vox.prompt(CTX))
 
@@ -476,8 +493,23 @@ class Intrebari(unittest.TestCase):
         self.assertEqual(set(cerere["output_config"]), {"format"})  # și fără `effort`, care dă eroare
         self.assertEqual(cerere["output_config"]["format"]["type"], "json_schema")
         self.assertEqual(cerere["system"][0]["cache_control"], {"type": "ephemeral"})
+        # patru evaluări cu aceleași 40 de întrebări au dat 36, 36, 39 și 37, cu alte greșeli de fiecare
+        # dată (07.10.2026): la temperatura implicită aceeași întrebare putea fi înțeleasă altfel
+        # SDK-ul 1.x a scos `temperature` din semnătură (TypeError), dar Haiku 4.5 îl acceptă
+        self.assertEqual(cerere["extra_body"], {"temperature": 0})
         self.assertEqual(cerere["messages"],
                          [{"role": "user", "content": "Cât costă administrarea contului la BCR?"}])
+
+    def test_temperatura_doar_la_haiku(self):
+        """Opus 4.7 și modelele mai noi întorc 400 la orice `temperature`: un model schimbat din
+        MIP_VOX_MODEL nu-l primește."""
+        os.environ["MIP_VOX_MODEL"] = "claude-sonnet-5-5"
+        try:
+            c = ClientFals(interp())
+            self.fa(c).intreaba("BCR?")
+        finally:
+            os.environ.pop("MIP_VOX_MODEL", None)
+        self.assertNotIn("extra_body", c.cereri[0])
 
     def test_cautare_dupa_text(self):
         self.fa(ClientFals(interp(concept=None, text_cautat="datoria vamală"))).intreaba("vama la BCR?")

@@ -187,14 +187,23 @@ def prompt(ctx):
         "obligatoriu; banci = doar băncile numite în întrebare (aplicația le evidențiază), altfel []. Se "
         "pot clasa doar conceptele din lista „Clasabile” de la final; pentru altele pune tot clasament, "
         "iar aplicația spune că nu are clasament.",
-        "- tip = neclar: lipsește banca sau nu se înțelege ce valoare; scrie atunci în clarificare "
+        "- Întrebările care încep cu „care bancă…”, „ce bancă…”, „which bank…” sunt întotdeauna clasament. "
+        "O întrebare cu „cine are cel mai…”, „cea mai ieftină variantă…” compară și ea băncile: e "
+        "clasament chiar fără bancă numită, chiar dacă serviciul nu are "
+        "concept sau nu-l recunoști; nu pune neclar pentru asta. Exemple: „Care bancă are cel mai mic "
+        "comision la X?”, cu X fără concept → clasament, concept = null, text_cautat = X; „Unde stă Libra "
+        "la …?”, „pe ce loc e Libra la …?” → clasament (nu căutare), banci = [libra].",
+        "- tip = neclar: lipsește banca (iar întrebarea nu compară băncile) sau nu se înțelege ce valoare; "
+        "scrie atunci în clarificare "
         "o întrebare scurtă, în limba utilizatorului. O întrebare fără bancă și fără comparație "
-        "(„Cât costă administrarea contului?”) e neclar.",
+        "(„Cât costă administrarea contului?”) e neclar. La neclar completezi totuși ce ai înțeles "
+        "(banci, concept sau text_cautat): aplicația decide ce face cu ele.",
         "- tip = in_afara: orice altceva (aplicații, recenzii, campanii, sfaturi, texte de scris, "
         "întrebări generale).",
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
-        "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept.",
+        "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept. „Comisionul de "
+        "administrare” fără alt detaliu e `administrare_cont`.",
         "- Când banca și serviciul sunt clare, tip = cautare, chiar dacă serviciul nu are concept și "
         "nu-l recunoști: aplicația caută text_cautat în tarifele băncii, iar tu nu știi ce conțin "
         "tarifele, deci nu pune neclar pentru că nu ești sigur că serviciul există.",
@@ -207,10 +216,12 @@ def prompt(ctx):
         "= `incasare` (bani primiți), outgoing transfer / payment sent = `transfer_credit` (bani trimiși).",
         "- termen și produs_credit: doar dacă întrebarea le spune.",
         "- segment: pf (persoane fizice), pfa, imm, pj (firme, companii, persoane juridice); doar dacă "
-        "întrebarea îl spune, altfel null.",
-        "- metrica: cea_mai_buna dacă întrebarea cere cea mai ieftină sau cea mai avantajoasă variantă "
-        "oferită („cea mai ieftină variantă”, „cel mai mic comision posibil”, „cea mai mare dobândă "
-        "oferită”); altfel null.",
+        "întrebarea îl spune, altfel null. „Firme” e pj; nu cere clarificări despre segment. „Pentru "
+        "firme”, „pentru persoane fizice” nu fac întrebarea neclară: pui doar segmentul („… pentru firme "
+        "la BCR?” → cautare, banci = [bcr], segment = pj).",
+        "- metrica: cea_mai_buna doar dacă întrebarea cere explicit cea mai bună variantă oferită de "
+        "fiecare bancă („cea mai ieftină variantă”, „cel mai mic comision posibil”, „cea mai mare dobândă "
+        "oferită”); „care bancă are cel mai mic comision…” compară prețul obișnuit, deci metrica = null.",
         "- Dacă primești interpretarea întrebării anterioare, întrebarea curentă o poate continua "
         "(„și la BRD?”, „dar pe 6 luni?”): păstrezi ce nu se schimbă. O bancă numită în continuare "
         "(„și la BRD?”) înlocuiește băncile anterioare, nu se adaugă la ele.",
@@ -528,6 +539,14 @@ class Istoric:
         return True
 
 
+def _temperatura(m):
+    """Aceeași interpretare la aceeași întrebare: la temperatura implicită, patru evaluări cu aceleași
+    40 de întrebări au dat 36, 36, 39 și 37, cu alte greșeli de fiecare dată (07.10.2026). SDK-ul 1.x a
+    scos `temperature` din `messages.create` (TypeError), deci trece prin `extra_body`; doar la Haiku 4.5,
+    fiindcă Opus 4.7 și modelele mai noi întorc 400 pentru orice valoare."""
+    return {"extra_body": {"temperature": 0}} if m.startswith("claude-haiku-4-5") else {}
+
+
 class Vox:
     """O întrebare → interpretarea modelului → valorile din bază. Fără HTTP și fără SQL: serverul
     dă funcțiile de citire (`context`, `cauta`, `stare_banca`), ca la `rulari.Rulari`."""
@@ -582,6 +601,7 @@ class Vox:
                 system=[{"type": "text", "text": sistem, "cache_control": {"type": "ephemeral"}}],
                 messages=[{"role": "user", "content": continut}],
                 output_config={"format": {"type": "json_schema", "schema": sch}},
+                **_temperatura(m),
             )
         except anthropic.APIError as exc:
             raise EroareModel(mesaj_eroare(exc)) from None
