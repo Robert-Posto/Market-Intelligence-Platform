@@ -127,7 +127,8 @@ export const RaspunsIntrebare = z
     raspunsuri: z.array(RaspunsBanca),
     /** lipsește în conversațiile salvate înainte de clasamente (07.10.2026) */
     clasament: Clasament.nullable().optional(),
-    model: z.string(),
+    /** null = tură dată de un buton, fără model */
+    model: z.string().nullable(),
     tokeni: z.object({ intrare: z.number(), iesire: z.number(), citire_cache: z.number(), scriere_cache: z.number() }),
     cost_usd: z.number().nullable(),
     /** butoanele de sub răspuns; lipsesc în conversațiile salvate înainte de 08.10.2026 */

@@ -3,13 +3,14 @@ import { useQueryClient } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
 import { Button, Drawer, Input, Tooltip } from 'antd'
 import { ArrowRightOutlined, HistoryOutlined } from '@ant-design/icons'
-import type { GrupaRezumat, Interpretare, RaspunsBanca, RaspunsIntrebare, ValoareDovada } from '@mcc/shared'
+import type { Buton, GrupaRezumat, Interpretare, RaspunsBanca, RaspunsIntrebare, RaspunsVox, ValoareDovada } from '@mcc/shared'
 import { ApiError, SERVER_OPRIT } from '../api/client'
 import {
   CHEIE_CONVERSATII,
   citesteConversatia,
   redenumesteConversatia,
   stergeConversatia,
+  trimiteButonul,
   trimiteIntrebarea,
   useConversatii,
   useStareVox,
@@ -44,6 +45,7 @@ interface Mesaj {
   data: string
   raspuns?: RaspunsIntrebare
   eroare?: string
+  buton?: Buton
 }
 
 type Tr = (k: DictKey, p?: Record<string, string | number>) => string
@@ -124,7 +126,7 @@ export default function Vox() {
     setSeIncarca(true)
     citesteConversatia(c)
       .then((conv) => {
-        if (!anulat) setMesaje(conv.ture.map((x, i) => ({ id: i + 1, intrebare: x.intrebare, data: x.data, raspuns: x.raspuns })))
+        if (!anulat) setMesaje(conv.ture.map((x, i) => ({ id: i + 1, intrebare: x.intrebare, data: x.data, raspuns: x.raspuns, buton: x.raspuns.buton })))
       })
       .catch((e: unknown) => {
         if (anulat) return
@@ -154,22 +156,20 @@ export default function Vox() {
   const raspunse = mesaje.filter((x) => x.raspuns).length
   const titlu = conversatii.data?.find((x) => x.id === c)?.titlu ?? mesaje[0]?.intrebare ?? ''
 
-  async function trimite(intrebare: string) {
-    const q = intrebare.trim()
-    if (!q || seTrimite || seIncarca || !st.activ) return
-    // „și la BRD?” continuă ultima căutare reușită, nu o clarificare sau o eroare
-    // și din clasamente: „și pentru firme?” continuă clasamentul de dinainte
-    const anterior = [...mesaje].reverse().find((x) => ['cautare', 'clasament'].includes(x.raspuns?.interpretare.tip ?? ''))?.raspuns?.interpretare ?? null
+  // o întrebare și un buton trec prin același drum: tura apare imediat, răspunsul vine la ea, iar un token
+  // vechi (server repornit) se ia din nou
+  async function ruleaza(tura: { intrebare: string; buton?: Buton }, cere: () => Promise<RaspunsVox>) {
+    if (seTrimite || seIncarca || !st.activ) return
     const id = Date.now()
     setLipsa(false)
-    setMesaje((x) => [...x, { id, intrebare: q, data: new Date().toISOString() }])
+    setMesaje((x) => [...x, { id, intrebare: tura.intrebare, data: new Date().toISOString(), buton: tura.buton }])
     setSeTrimite(true)
     try {
-      const r = await trimiteIntrebarea(q, anterior, c, st.token ?? '')
+      const r = await cere()
       // între timp s-a deschis altă conversație: răspunsul e în fișierul lui, lista îl arată
       if (afisata.current !== c) return
       setMesaje((x) => x.map((y) => (y.id === id ? { ...y, raspuns: r } : y)))
-      setText('')
+      if (!tura.buton) setText('')
       if (r.conversatie && r.conversatie !== c) {
         creata.current = r.conversatie
         mergi({ c: r.conversatie })
@@ -186,6 +186,19 @@ export default function Vox() {
       void qc.invalidateQueries({ queryKey: CHEIE_CONVERSATII })
     }
   }
+
+  async function trimite(intrebare: string) {
+    const q = intrebare.trim()
+    if (!q) return
+    // „și la BRD?” continuă ultimul răspuns reușit (căutare sau clasament, inclusiv unul dat de un buton),
+    // nu o clarificare sau o eroare
+    const anterior = [...mesaje].reverse().find((x) => ['cautare', 'clasament'].includes(x.raspuns?.interpretare.tip ?? ''))?.raspuns?.interpretare ?? null
+    await ruleaza({ intrebare: q }, () => trimiteIntrebarea(q, anterior, c, st.token ?? ''))
+  }
+
+  // butonul pornește de la interpretarea răspunsului sub care stă, nu de la ultimul răspuns
+  const apasa = (buton: Buton, interp: Interpretare) =>
+    void ruleaza({ intrebare: t(`vox.buton.${buton}`), buton }, () => trimiteButonul(buton, interp, c, st.token ?? ''))
 
   const intreaba = (q: string) => {
     setText(q)
@@ -251,7 +264,7 @@ export default function Vox() {
         {mesaje.map((x) => (
           <div key={x.id} className="vox-tura">
             <span className="vox-ora">{cand(x.data, 'vox.conv.ora', t, locale)}</span>
-            <p className="vox-q">{x.intrebare}</p>
+            <p className="vox-q">{x.buton ? t(`vox.buton.${x.buton}`) : x.intrebare}{x.buton && <span className="vox-fara-model">{t('vox.fara_model')}</span>}</p>
             <div className="vox-r">
               <span className="vox-avatar"><VoxBula size={20} /></span>
               {!x.raspuns && !x.eroare && (
@@ -261,7 +274,7 @@ export default function Vox() {
                 </div>
               )}
               {x.eroare && <div className="vox-bula vox-eroare">{x.eroare}</div>}
-              {x.raspuns && <Raspuns r={x.raspuns} m={m} poate={poate} onDovezi={setCerere} onExemplu={intreaba} />}
+              {x.raspuns && <Raspuns r={x.raspuns} m={m} poate={poate} onDovezi={setCerere} onExemplu={intreaba} onButon={apasa} />}
             </div>
           </div>
         ))}
@@ -336,21 +349,33 @@ function BunVenit({ banci, poate, onExemplu }: { banci: number; poate: boolean; 
   )
 }
 
-function Raspuns({ r, m, poate, onDovezi, onExemplu }: {
+function Raspuns({ r, m, poate, onDovezi, onExemplu, onButon }: {
   r: RaspunsIntrebare; m: Meta; poate: boolean; onDovezi: (c: CerereSertar) => void; onExemplu: (q: string) => void
+  onButon: (b: Buton, i: Interpretare) => void
 }) {
   const { t, locale } = useLang()
   const i = r.interpretare
   const tk = r.tokeni
   const subsol = (
     <span className="vox-meta">
-      {t('vox.subsol', {
-        model: r.model,
-        tokeni: num(tk.intrare + tk.citire_cache + tk.scriere_cache + tk.iesire, locale, 0),
-        cost: r.cost_usd === null ? t('vox.cost_necunoscut') : dolari(r.cost_usd, locale),
-      })}
+      {r.model === null
+        ? t('vox.subsol_fara_model')
+        : t('vox.subsol', {
+          model: r.model,
+          tokeni: num(tk.intrare + tk.citire_cache + tk.scriere_cache + tk.iesire, locale, 0),
+          cost: r.cost_usd === null ? t('vox.cost_necunoscut') : dolari(r.cost_usd, locale),
+        })}
     </span>
   )
+  const butoane = r.butoane?.length
+    ? (
+      <div className="vox-butoane">
+        {r.butoane.map((b) => (
+          <button key={b} type="button" className="vox-link" disabled={!poate} onClick={() => onButon(b, i)}>{t(`vox.buton.${b}`)}</button>
+        ))}
+      </div>
+    )
+    : null
   if (i.tip === 'in_afara') {
     return (
       <div className="vox-bula">
@@ -397,6 +422,7 @@ function Raspuns({ r, m, poate, onDovezi, onExemplu }: {
       <article className="vox-card">
         {inteles}
         {r.clasament && <Clasament c={r.clasament} m={m} onDovezi={onDovezi} />}
+        {butoane}
         <div className="vox-card-jos">{subsol}</div>
       </article>
     )
@@ -408,6 +434,7 @@ function Raspuns({ r, m, poate, onDovezi, onExemplu }: {
         <p className="vox-nota"><span className="vox-punct" />{t('vox.ignorate', { banci: r.ignorate.map((b) => m.nume[b] ?? b).join(', ') })}</p>
       )}
       {r.raspunsuri.map((rb) => <FisaBanca key={rb.banca} rb={rb} i={i} m={m} onDovezi={onDovezi} />)}
+      {butoane}
       <div className="vox-card-jos">{subsol}</div>
     </article>
   )

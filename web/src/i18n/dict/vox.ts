@@ -188,6 +188,11 @@ export const vox = {
   "vox.limitat": ["Sunt afișate primele {n}; restrânge căutarea cu încă un cuvânt.", "Showing the first {n}; narrow the search with one more word."],
   "vox.subsol": ["{model} · {tokeni} tokeni · {cost}", "{model} · {tokeni} tokens · {cost}"],
   "vox.cost_necunoscut": ["cost necunoscut (modelul nu e în preturi.py)", "unknown cost (model not in preturi.py)"],
+  "vox.buton.firme": ["Pentru firme", "For businesses"],
+  "vox.buton.pf": ["Pentru persoane fizice", "For individuals"],
+  "vox.buton.libra": ["Compară cu Libra", "Compare with Libra"],
+  "vox.fara_model": ["fără model", "no model call"],
+  "vox.subsol_fara_model": ["fără model · gratuit", "no model call · free"],
 
   "vox.categorie.comision": ["comision", "fee"],
   "vox.categorie.comisioane": ["comisioane", "fees"],
