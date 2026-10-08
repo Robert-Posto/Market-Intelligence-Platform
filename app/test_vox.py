@@ -670,6 +670,10 @@ class Intrebari(unittest.TestCase):
             v.continua(interp(), "firme", "0" * 16)                 # conversație ștearsă
         with self.assertRaises(vox.Respins):
             v.continua(interp(banci=["libra"]), "libra")            # Libra e deja acolo
+        with self.assertRaises(vox.Respins):
+            v.continua(dict(interp(), concept=[]), "firme")         # corpul JSON poate aduce o listă: 400, nu 500
+        with self.assertRaises(vox.Respins):
+            v.continua(dict(interp(), banci=[["bcr"]]), "firme")    # la fel într-o listă de bănci
 
     def test_anterior_ajunge_la_model(self):
         c = ClientFals(interp(banci=["brd"]))

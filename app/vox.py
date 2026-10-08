@@ -130,8 +130,9 @@ def verifica_intrebarea(intrebare):
 
 
 def verifica_anterior(anterior):
-    """Interpretarea întrebării precedente, trimisă de pagină pentru „și la BRD?”. Ajunge la model
-    doar ca text de context, deci se verifică forma și mărimea, nu și listele."""
+    """Interpretarea întrebării precedente, trimisă de pagină pentru „și la BRD?” sau de un buton. Forma și
+    mărimea ajung: valorile fie merg la model ca text de context (`intreaba`), fie trec prin `valideaza`
+    (`continua`, butoanele), care refuză tot ce nu e în liste."""
     if anterior is None:
         return None
     if not isinstance(anterior, dict) or not set(anterior) <= set(CHEI):
@@ -294,14 +295,18 @@ def valideaza(brut, ctx):
     """
     if not isinstance(brut, dict) or brut.get("tip") not in TIPURI:
         return _gol(), []
+    # `isinstance` înaintea lui `in set`: fără el, o listă sau un obiect într-un câmp ridică TypeError (500).
+    # Butoanele trimit înapoi interpretarea din pagină, deci și ce a pus acolo un client; așa devine `neclar`
     banci = brut.get("banci")
-    if not isinstance(banci, list) or any(b not in {x["slug"] for x in ctx["banci"]} for b in banci):
+    if not isinstance(banci, list) or any(
+            not isinstance(b, str) or b not in {x["slug"] for x in ctx["banci"]} for b in banci):
         return _gol(), []
     permise = {"concept": {c["camp"] for c in ctx["concepte"]}, "categorie": set(ctx["categorii"]),
                "termen": set(ctx["termene"]), "produs_credit": set(ctx["produse"]),
                "segment": set(ORDINE_SEGMENT), "metrica": set(METRICI)}
     for cheie, valori in permise.items():
-        if brut.get(cheie) is not None and brut.get(cheie) not in valori:
+        v = brut.get(cheie)
+        if v is not None and (not isinstance(v, str) or v not in valori):
             return _gol(), []
     banci = list(dict.fromkeys(banci))
     curat = _gol(brut["tip"])
