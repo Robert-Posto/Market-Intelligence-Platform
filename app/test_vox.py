@@ -60,9 +60,10 @@ def rand(valoare, unitate="lei", scenariu="comision|x", ambiguu=False):
 class ClientFals:
     """Un client Anthropic fals: întoarce JSON-ul dat și ține minte cererile."""
 
-    def __init__(self, raspuns=None, stop="end_turn", exceptie=None):
+    def __init__(self, raspuns=None, stop="end_turn", exceptie=None, scriere=0):
         self.cereri = []
         self._raspuns, self._stop, self._exceptie = raspuns, stop, exceptie
+        self._scriere = scriere
         self.messages = self
 
     def create(self, **kw):
@@ -73,7 +74,7 @@ class ClientFals:
             content=[types.SimpleNamespace(type="text", text=json.dumps(self._raspuns))],
             stop_reason=self._stop,
             usage=types.SimpleNamespace(input_tokens=1200, output_tokens=60,
-                                        cache_read_input_tokens=7000, cache_creation_input_tokens=0))
+                                        cache_read_input_tokens=7000, cache_creation_input_tokens=self._scriere))
 
 
 def fara_init(clasa, **atribute):
@@ -604,13 +605,20 @@ class Intrebari(unittest.TestCase):
         self.assertNotIn("thinking", cerere)                       # Haiku 4.5: fără gândire extinsă
         self.assertEqual(set(cerere["output_config"]), {"format"})  # și fără `effort`, care dă eroare
         self.assertEqual(cerere["output_config"]["format"]["type"], "json_schema")
-        self.assertEqual(cerere["system"][0]["cache_control"], {"type": "ephemeral"})
+        # cache de o oră: în conversația din 08.10.2026, 3 din 18 întrebări au rescris promptul după pauze de
+        # 5–9 minute și au costat 4,9 din cei 7,5 cenți
+        self.assertEqual(cerere["system"][0]["cache_control"], {"type": "ephemeral", "ttl": "1h"})
         # patru evaluări cu aceleași 40 de întrebări au dat 36, 36, 39 și 37, cu alte greșeli de fiecare
         # dată (07.10.2026): la temperatura implicită aceeași întrebare putea fi înțeleasă altfel
         # SDK-ul 1.x a scos `temperature` din semnătură (TypeError), dar Haiku 4.5 îl acceptă
         self.assertEqual(cerere["extra_body"], {"temperature": 0})
         self.assertEqual(cerere["messages"],
                          [{"role": "user", "content": "Cât costă administrarea contului la BCR?"}])
+
+    def test_scrierea_in_cache_de_o_ora(self):
+        """Scrierea de o oră costă de 2 ori prețul de intrare, nu de 1,25 ori (documentația Anthropic)."""
+        d = self.fa(ClientFals(interp(), scriere=12000)).intreaba("BCR?")
+        self.assertAlmostEqual(d["cost_usd"], (1200 * 1 + 60 * 5 + 7000 * 0.1 + 12000 * 2) / 1e6)
 
     def test_temperatura_doar_la_haiku(self):
         """Opus 4.7 și modelele mai noi întorc 400 la orice `temperature`: un model schimbat din
@@ -1361,6 +1369,10 @@ class Preturi(unittest.TestCase):
         for m in ("claude-haiku-4-5", "claude-sonnet-5-5", "claude-opus-5-5"):
             self.assertIsNotNone(vox.preturi.cost(m, 1000, 100), m)
         self.assertAlmostEqual(vox.preturi.cost("claude-opus-5-5", 1_000_000, 0), 4.0)
+
+    def test_scrierea_de_o_ora(self):
+        self.assertAlmostEqual(vox.preturi.cost("claude-haiku-4-5", scriere_cache_1h=1_000_000), 2.0)
+        self.assertAlmostEqual(vox.preturi.cost("claude-haiku-4-5", scriere_cache=1_000_000), 1.25)
 
 
 if __name__ == "__main__":

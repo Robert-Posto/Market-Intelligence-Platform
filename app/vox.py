@@ -714,7 +714,10 @@ class Vox:
             r = self._clientul().messages.create(
                 model=m,
                 max_tokens=MAX_TOKENS,
-                system=[{"type": "text", "text": sistem, "cache_control": {"type": "ephemeral"}}],
+                # o oră, nu 5 minute: în conversația din 08.10.2026, 3 din 18 întrebări au rescris promptul după
+                # pauze de 5–9 minute și au costat 4,9 din cei 7,5 cenți; documentația recomandă ora pentru
+                # întrebări la 5–60 de minute una de alta
+                system=[{"type": "text", "text": sistem, "cache_control": {"type": "ephemeral", "ttl": "1h"}}],
                 messages=[{"role": "user", "content": continut}],
                 output_config={"format": {"type": "json_schema", "schema": sch}},
                 **_temperatura(m),
@@ -826,7 +829,9 @@ class Vox:
             interp, ignorate = _gol(), []
         else:
             interp, ignorate = valideaza(brut, ctx)
-        cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"], tokeni["scriere_cache"])
+        # singurul marcaj de cache din cerere e cel de o oră, deci orice scriere e de o oră
+        cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"],
+                            scriere_cache_1h=tokeni["scriere_cache"])
         rand.update(interpretare=interp, stop=stop, tokeni=tokeni, cost_usd=cost)
         return self._raspunde(rand, intrebare, interp, ignorate, ctx)
 
