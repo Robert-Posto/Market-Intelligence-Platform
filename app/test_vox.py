@@ -43,12 +43,24 @@ CTX = {
                 "altele": "Nespecificat în sursă"},
     "clasabile": {"comisioane": ["administrare_cont"],
                   "dobanzi": {"dae": ["credite"], "nominala": ["conturi_carduri", "credite", "depozite"]}},
+    "functii": [{"functie": "hce_contactless", "titlu": "Plată contactless direct din aplicație"},
+                {"functie": "in_app_chat", "titlu": "Chat cu banca în aplicație"},
+                {"functie": "ropay", "titlu": "RoPay (plăți instant din cont)"}],
+    "aplicatii": [{"banca": "bcr", "aplicatie": "George Romania"}, {"banca": "brd", "aplicatie": "YOU BRD"},
+                  {"banca": "brd", "aplicatie": "MyBRD Mobile"}, {"banca": "libra", "aplicatie": "Libra Bank"}],
 }
 
 
 def interp(**k):
     baza = {"tip": "cautare", "banci": ["bcr"], "concept": "administrare_cont", "categorie": None,
             "termen": None, "produs_credit": None, "text_cautat": None, "clarificare": None}
+    baza.update(k)
+    return baza
+
+
+def apl(**k):
+    """O interpretare de tip `aplicatii`, cu toate cheile din CHEI."""
+    baza = dict(vox._gol("aplicatii"), banci=["bcr"], aspect="functii")
     baza.update(k)
     return baza
 
@@ -291,6 +303,71 @@ class Validare(unittest.TestCase):
         """O conversație salvată înainte de 07.10.2026 are interpretări fără `segment` și `metrica`."""
         vechi = {k: v for k, v in interp().items() if k not in ("segment", "metrica")}
         self.assertEqual(vox.verifica_anterior(vechi)["segment"], None)
+
+
+class ValidareAplicatii(unittest.TestCase):
+    """Tipul `aplicatii` (decizia lui Nicolae, 08.10.2026): funcțiile din analiza Android sau notele din magazine."""
+
+    def test_schema_are_campurile_noi(self):
+        s = vox.schema(CTX)
+        p = s["properties"]
+        self.assertIn("aplicatii", p["tip"]["enum"])
+        self.assertEqual(p["functie"]["anyOf"][0]["enum"], ["hce_contactless", "in_app_chat", "ropay"])
+        self.assertEqual(p["aspect"]["anyOf"][0]["enum"], ["functii", "note"])
+        self.assertEqual(p["prag_note"], {"anyOf": [{"type": "integer"}, {"type": "null"}]})
+        self.assertEqual(sorted(s["required"]), sorted(vox.CHEI))
+
+    def test_functie_fara_banci(self):
+        i, _ = vox.valideaza(apl(banci=[], functie="ropay", aspect=None), CTX)
+        self.assertEqual((i["tip"], i["functie"], i["aspect"], i["banci"]), ("aplicatii", "ropay", "functii", []))
+
+    def test_functia_inseamna_functii(self):
+        i, _ = vox.valideaza(apl(functie="ropay", aspect="note", prag_note=100), CTX)
+        self.assertEqual((i["aspect"], i["prag_note"]), ("functii", None))
+
+    def test_aspect_implicit(self):
+        self.assertEqual(vox.valideaza(apl(aspect=None), CTX)[0]["aspect"], "functii")
+        i, _ = vox.valideaza(apl(banci=[], aspect=None, text_cautat="Apple Pay"), CTX)
+        self.assertEqual((i["tip"], i["aspect"], i["text_cautat"]), ("aplicatii", "functii", "Apple Pay"))
+
+    def test_fara_nimic_e_neclar(self):
+        i, _ = vox.valideaza(apl(banci=[], aspect=None), CTX)
+        self.assertEqual((i["tip"], i["clarificare"]), ("neclar", None))
+
+    def test_note_cu_si_fara_banci(self):
+        self.assertEqual(vox.valideaza(apl(banci=[], aspect="note"), CTX)[0]["tip"], "aplicatii")
+        self.assertEqual(vox.valideaza(apl(banci=["libra"], aspect="note"), CTX)[0]["banci"], ["libra"])
+
+    def test_prag_note(self):
+        """Un prag scris de model sau adus de un client modificat: doar întreg între 1 și 100.000.000, altfel se
+        ignoră; pragul rafinează întrebarea, nu-i schimbă sensul."""
+        self.assertEqual(vox.valideaza(apl(aspect="note", prag_note=1000), CTX)[0]["prag_note"], 1000)
+        for rau in (True, "1000", 99.5, 0, -5, 10 ** 12, [100]):
+            i, _ = vox.valideaza(apl(aspect="note", prag_note=rau), CTX)
+            self.assertEqual((i["tip"], i["prag_note"]), ("aplicatii", None), rau)
+
+    def test_campurile_comisioanelor_se_golesc(self):
+        i, _ = vox.valideaza(apl(concept="administrare_cont", segment="pj", metrica="cea_mai_buna",
+                                 clarificare="?"), CTX)
+        self.assertEqual((i["concept"], i["segment"], i["metrica"], i["clarificare"]), (None, None, None, None))
+
+    def test_alte_tipuri_golesc_campurile_noi(self):
+        i, _ = vox.valideaza(dict(interp(), functie="ropay", aspect="note", prag_note=100), CTX)
+        self.assertEqual((i["tip"], i["functie"], i["aspect"], i["prag_note"]), ("cautare", None, None, None))
+
+    def test_functie_necunoscuta_e_neclar(self):
+        self.assertEqual(vox.valideaza(apl(functie="apple_pay"), CTX)[0]["tip"], "neclar")
+
+    def test_trei_banci(self):
+        i, ignorate = vox.valideaza(apl(banci=["bcr", "brd", "ing", "libra"]), CTX)
+        self.assertEqual((i["banci"], ignorate), (["bcr", "brd", "ing"], ["libra"]))
+
+    def test_interpretare_veche_fara_campurile_noi(self):
+        """Conversațiile salvate înainte de 08.10.2026 n-au `functie`, `aspect`, `prag_note`."""
+        vechi = interp(segment=None, metrica=None)
+        curat = vox.verifica_anterior(vechi)
+        self.assertEqual((curat["functie"], curat["aspect"], curat["prag_note"]), (None, None, None))
+        self.assertEqual(vox.valideaza(curat, CTX)[0]["tip"], "cautare")
 
 
 class Rezumat(unittest.TestCase):

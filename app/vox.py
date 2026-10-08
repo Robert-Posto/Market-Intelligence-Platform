@@ -56,12 +56,20 @@ MAX_RANDURI = 50
 # 0–1.200 lei (mip_merge, 07.10.2026); rândurile fără segment în sursă vin la final. `celula` din server
 # acceptă la `segment` doar aceste valori, plus `nemarcat`.
 ORDINE_SEGMENT = ("pf", "pfa", "imm", "pj")
-TIPURI = ("cautare", "clasament", "neclar", "in_afara")
+TIPURI = ("cautare", "clasament", "aplicatii", "neclar", "in_afara")
 CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text_cautat", "clarificare",
-        "segment", "metrica")
+        "segment", "metrica", "functie", "aspect", "prag_note")
 # „cea mai ieftină variantă” cere cea mai bună valoare a fiecărei bănci, nu mediana (decizia lui
 # Nicolae, 07.10.2026); mediana rămâne implicită, ca în 2.1 și Versus
 METRICI = ("mediana", "cea_mai_buna")
+# Aplicațiile (decizia lui Nicolae, 08.10.2026): funcțiile din analiza aplicațiilor Android sau notele din magazine
+ASPECTE = ("functii", "note")
+# Pragurile oferite ca butoane sub clasamentul notelor. Fără prag (decizia lui Nicolae, 08.10.2026), ProCredit iese
+# primul în App Store cu 5,0 din 6 note (24.09.2026): sub cel mai mic prag, Vox spune asta și întreabă ce prag vrea
+PRAGURI_NOTE = (100, 1000)
+PRAG_AVERTIZARE = min(PRAGURI_NOTE)
+# Revolut are 4.147.313 note în Google Play (06.10.2026); un prag peste atât nu mai lasă nimic de clasat
+PRAG_NOTE_MAX = 100_000_000
 # Istoricul conversațiilor (coloana „Conversații” din pagina Vox): fișiere pe laptop, nu în bază
 ID_CONVERSATIE = re.compile(r"[0-9a-f]{16}")
 TITLU_MAX = 120
@@ -102,7 +110,8 @@ def _acum():
 
 def _gol(tip="neclar"):
     return {"tip": tip, "banci": [], "concept": None, "categorie": None, "termen": None,
-            "produs_credit": None, "text_cautat": None, "clarificare": None, "segment": None, "metrica": None}
+            "produs_credit": None, "text_cautat": None, "clarificare": None, "segment": None, "metrica": None,
+            "functie": None, "aspect": None, "prag_note": None}
 
 
 def cheie_reala():
@@ -165,6 +174,9 @@ def schema(ctx):
             "clarificare": text_optional,
             "segment": optional(ORDINE_SEGMENT),
             "metrica": optional(METRICI),
+            "functie": optional(f["functie"] for f in ctx["functii"]),
+            "aspect": optional(ASPECTE),
+            "prag_note": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
         },
         "required": list(CHEI),
         "additionalProperties": False,
@@ -304,7 +316,8 @@ def valideaza(brut, ctx):
         return _gol(), []
     permise = {"concept": {c["camp"] for c in ctx["concepte"]}, "categorie": set(ctx["categorii"]),
                "termen": set(ctx["termene"]), "produs_credit": set(ctx["produse"]),
-               "segment": set(ORDINE_SEGMENT), "metrica": set(METRICI)}
+               "segment": set(ORDINE_SEGMENT), "metrica": set(METRICI),
+               "functie": {f["functie"] for f in ctx["functii"]}, "aspect": set(ASPECTE)}
     for cheie, valori in permise.items():
         v = brut.get(cheie)
         if v is not None and (not isinstance(v, str) or v not in valori):
@@ -323,6 +336,9 @@ def valideaza(brut, ctx):
     categorii = next((c["categorii"] for c in ctx["concepte"] if c["camp"] == curat["concept"]), [])
     if curat["categorie"] not in categorii:
         curat["categorie"] = None
+    if curat["tip"] == "aplicatii":
+        return _aplicatii_curat(curat, brut.get("prag_note")), banci[MAX_BANCI:]
+    curat["functie"] = curat["aspect"] = None
     if curat["tip"] == "clasament":
         curat["clarificare"] = None
         dobanzi = ctx["clasabile"]["dobanzi"]
@@ -343,6 +359,22 @@ def valideaza(brut, ctx):
         # clarificare care afirma că serviciul „nu se găsește în tarife”, fals (evaluarea, 06.10.2026)
         curat["tip"], curat["clarificare"] = "cautare", None
     return curat, banci[MAX_BANCI:]
+
+
+def _aplicatii_curat(curat, prag):
+    """`aplicatii` (decizia lui Nicolae, 08.10.2026): banca, funcția, aspectul și pragul; câmpurile comisioanelor
+    n-au sens aici. Un prag invalid se ignoră: rafinează întrebarea, nu-i schimbă sensul."""
+    for k in ("concept", "categorie", "termen", "produs_credit", "segment", "metrica", "clarificare"):
+        curat[k] = None
+    if curat["functie"]:
+        curat["aspect"] = "functii"          # o funcție e mereu despre funcții, nu despre note
+    elif curat["aspect"] is None and (curat["banci"] or curat["text_cautat"]):
+        curat["aspect"] = "functii"
+    valid = isinstance(prag, int) and not isinstance(prag, bool) and 1 <= prag <= PRAG_NOTE_MAX
+    curat["prag_note"] = prag if valid and curat["aspect"] == "note" else None
+    if curat["aspect"] is None:
+        curat["tip"] = "neclar"              # fără funcție, aplicație sau note: pagina arată mesajul ei fix
+    return curat
 
 
 def _categorie(r):
