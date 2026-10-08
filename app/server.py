@@ -644,12 +644,23 @@ def celula(q):
     elif segment in vox.ORDINE_SEGMENT:
         extra += f" AND {SEGMENT_RAND} = %s" if strict else f" AND ({COND_SEG})"
         p_extra += (segment,)
+    # moneda unei dobânzi, cerută doar de cardurile pe monedă din Vox: fără ea, „Vezi dovezile” de pe cardul
+    # „în euro” al Libra · depozit (1 valoare) deschidea toate cele 11 dobânzi (mip_merge, 08.10.2026).
+    # `lei` = LEI sau RON, `nespusa` = coloana goală; altă valoare se ignoră, ca `termen` și `produs`.
+    valuta = (q.get("valuta") or [""])[0]
+    if valuta == "lei":
+        extra += " AND upper(coalesce(o.valuta, '')) IN ('LEI', 'RON')"
+    elif valuta == "nespusa":
+        extra += " AND coalesce(o.valuta, '') = ''"
+    elif valuta in vox.MONEDE.values():
+        extra += " AND upper(o.valuta) = %s"
+        p_extra += (valuta.upper(),)
     rows = interoghează(
         f"""SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
                   {SEGMENT_RAND} AS segment,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
                   o.ambiguu, o.motiv_ambiguu, o.metoda_extractie,
-                  o.serviciu, o.sectiune, o.conditie, o.frecventa, o.detaliu,
+                  o.serviciu, o.sectiune, o.conditie, o.frecventa, o.detaliu, o.data_vigoare,
                   o.pagina, o.nr_aparitii, s.sursa, s.tip_sursa, s.url_public,
                   s.format, b.pagina_documente, b.pagina_documente_motiv
            FROM observatii_curente o

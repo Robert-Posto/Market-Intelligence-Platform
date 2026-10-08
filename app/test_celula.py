@@ -88,6 +88,35 @@ class Celula(unittest.TestCase):
         self.assertEqual(params[-1], "pf")
         self.assertTrue(params[8:-1] and all(p.startswith("%") for p in params[8:-1]))
 
+    def test_data_vigoare_in_select(self):
+        """Vox arată data intrării în vigoare lângă fiecare rând (69% din rândurile curente o au, 08.10.2026)."""
+        sql, _ = self.cere()
+        self.assertIn("o.data_vigoare", sql)
+
+    def filtru(self, sql):
+        return sql.split("WHERE", 1)[1]
+
+    def test_valuta_lei_include_ron(self):
+        sql, params = self.cere(valuta="lei")
+        self.assertIn("upper(coalesce(o.valuta, '')) IN ('LEI', 'RON')", self.filtru(sql))
+        self.assertEqual(params, BAZA)
+
+    def test_valuta_eur(self):
+        """„Vezi dovezile” de pe cardul „în euro” al Libra · depozit (1 valoare) deschidea toate cele 11 dobânzi."""
+        sql, params = self.cere(valuta="eur")
+        self.assertIn("AND upper(o.valuta) = %s", self.filtru(sql))
+        self.assertEqual(params, BAZA + ("EUR",))
+
+    def test_valuta_nespusa(self):
+        sql, params = self.cere(valuta="nespusa")
+        self.assertIn("coalesce(o.valuta, '') = ''", self.filtru(sql))
+        self.assertEqual(params, BAZA)
+
+    def test_valuta_necunoscuta_ignorata(self):
+        sql, params = self.cere(valuta="xyz")
+        self.assertNotIn("o.valuta", self.filtru(sql))
+        self.assertEqual(params, BAZA)
+
 
 class Matrice(unittest.TestCase):
     def test_matricea_foloseste_aceeasi_regula(self):
