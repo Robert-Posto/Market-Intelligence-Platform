@@ -1252,6 +1252,65 @@ class CititoriClasament(unittest.TestCase):
         self.assertEqual(cl["dobanzi"]["nominala"], ["conturi_carduri", "credite", "depozite"])
 
 
+class CititoriAplicatii(unittest.TestCase):
+    """Cititorii din server pentru aplicații: contextul promptului, analiza APK, App Store, Google Play."""
+
+    def setUp(self):
+        import server
+        self.s = server
+        self.vechi = (server.interoghează, server.FISIER_GOOGLE_PLAY)
+        self.dir = tempfile.mkdtemp(prefix="vox_play_")
+
+    def tearDown(self):
+        self.s.interoghează, self.s.FISIER_GOOGLE_PLAY = self.vechi
+
+    def baza(self, sql, params=None):
+        if "SELECT functie, min(titlu)" in sql:
+            return [{"functie": "ropay", "titlu": "RoPay (plăți instant din cont)"}]
+        if "SELECT b.slug AS banca, a.aplicatie FROM" in sql:
+            return [{"banca": "bcr", "aplicatie": "George Romania"}]
+        if "FROM android_aplicatii" in sql:
+            return [{"banca": "bcr", "package": "ro.bcr.georgego", "aplicatie": "George Romania", "rol": "principal",
+                     "versiune_analizata": "1.0", "framework": "nativ", "data_analizei": "2026-10-01"}]
+        if "FROM android_functionalitati" in sql:
+            return [{"package": "ro.bcr.georgego", "functie": "ropay", "verdict": "sigur", "surse": "cod|text",
+                     "dovada_text": "RoPay"}]
+        if "FROM app_release_curente" in sql:
+            return [{"banca": "bcr", "app_id": "123", "nota": 4.84, "evaluari": 188573,
+                     "distributie_stele": [1, 0, 0, 0, 0], "versiune": "26.30", "observat_la": "2026-09-24"}]
+        return []
+
+    def play(self, continut):
+        cale = os.path.join(self.dir, "google_play.json")
+        with open(cale, "w", encoding="utf-8") as f:
+            f.write(continut)
+        self.s.FISIER_GOOGLE_PLAY = cale
+
+    def test_context_functii_si_aplicatii(self):
+        self.s.interoghează = self.baza
+        ctx = self.s._context_vox()
+        self.assertEqual(ctx["functii"], [{"functie": "ropay", "titlu": "RoPay (plăți instant din cont)"}])
+        self.assertEqual(ctx["aplicatii"], [{"banca": "bcr", "aplicatie": "George Romania"}])
+
+    def test_aplicatii_din_baza_si_fisier(self):
+        self.s.interoghează = self.baza
+        self.play(json.dumps({"colectat_la": "2026-10-06T09:39:43Z",
+                              "aplicatii": {"bcr": {"nota": 4.81, "evaluari": 155826}}}))
+        d = self.s._aplicatii_vox()
+        self.assertEqual(d["aplicatii"][0]["package"], "ro.bcr.georgego")
+        self.assertEqual(d["functii"][0]["verdict"], "sigur")
+        self.assertEqual(d["app_store"][0]["nota"], 4.84)
+        self.assertEqual(d["play"], {"colectat_la": "2026-10-06", "aplicatii": {"bcr": {"nota": 4.81, "evaluari": 155826}}})
+
+    def test_google_play_lipsa_sau_stricat(self):
+        """`date/google_play.json` e în afara git: lipsește pe alt laptop și pe mcc-test; Vox merge fără el."""
+        self.s.FISIER_GOOGLE_PLAY = os.path.join(self.dir, "nu_exista.json")
+        self.assertIsNone(self.s._google_play())
+        for stricat in ("{", "[]", json.dumps({"colectat_la": "2026-10-06"}), json.dumps({"aplicatii": []})):
+            self.play(stricat)
+            self.assertIsNone(self.s._google_play(), stricat)
+
+
 class CuvinteCautare(unittest.TestCase):
     def test_cuvinte_cautare(self):
         self.assertEqual(vox.cuvinte_cautare("Plată facturi"), ["plat", "factu"])

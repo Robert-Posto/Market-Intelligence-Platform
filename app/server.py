@@ -1951,7 +1951,7 @@ RULARI = rulari.Rulari(slugs=_slugs_rulari, produse=_produse_rulari)
 
 
 def _context_vox():
-    """Băncile și conceptele pe care le vede modelul din Vox. Doar concepte cu valori
+    """Băncile, conceptele și aplicațiile pe care le vede modelul din Vox. Doar concepte cu valori
     numerice (127 în baza mip, 06.10.2026), fără găleata `comision`; fiecare cu 2–3 denumiri reale
     din tarife, ca modelul să lege „retragere de la bancomat” de `retragere_numerar` fără să
     dublăm etichetele din interfață sau vocabularul."""
@@ -1979,6 +1979,13 @@ def _context_vox():
         c["unitati"] = sorted(u for u in c["unitati"] if u)
         c["categorii"] = sorted(x for x in c["categorii"] if x)
         c["exemple"] = pe_camp.get(c["camp"], [])
+    # aplicațiile (decizia lui Nicolae, 08.10.2026): titlurile funcțiilor și numele aplicațiilor vin din bază, ca
+    # modelul să lege „George” de BCR și „plata cu telefonul” de `hce_contactless` fără să dublăm etichetele paginii
+    functii = interoghează(
+        "SELECT functie, min(titlu) AS titlu FROM android_functionalitati GROUP BY functie ORDER BY functie")
+    aplicatii = interoghează(
+        """SELECT b.slug AS banca, a.aplicatie FROM android_aplicatii a JOIN banci b ON b.id = a.id_banca
+           ORDER BY b.slug, (a.rol = 'secundar'), a.aplicatie""")
     return {
         "banci": banci,
         "concepte": concepte,
@@ -1994,6 +2001,8 @@ def _context_vox():
             "dobanzi": {c: sorted(k for k, v in GRUPURI_RATE.items() if c in v["campuri"])
                         for c in sorted({c for v in GRUPURI_RATE.values() for c in v["campuri"]})},
         },
+        "functii": functii,
+        "aplicatii": aplicatii,
     }
 
 
@@ -2031,6 +2040,47 @@ def _stare_banci_vox(banca=None):
                         "surse": x["surse"], "robots": x["robots"], "refuzate": x["blocate"] - x["robots"],
                         "pdf": x["pdf"]}
             for x in rows}
+
+
+# Notele din Google Play (ingest/google_play_app.mjs), același fișier pe care 2.3 îl citește la build. Nu e în bază
+# și e în afara git (`date/*.json`): pe alt laptop sau pe mcc-test lipsește, iar Vox merge fără el
+FISIER_GOOGLE_PLAY = os.path.join(os.path.dirname(AICI), "date", "google_play.json")
+
+
+def _google_play():
+    """{colectat_la, aplicatii: {slug: {...}}} sau None dacă fișierul lipsește ori nu are forma așteptată."""
+    try:
+        with open(FISIER_GOOGLE_PLAY, encoding="utf-8") as f:
+            d = json.load(f)
+    except (OSError, ValueError):
+        return None
+    if not isinstance(d, dict) or not isinstance(d.get("aplicatii"), dict):
+        return None
+    return {"colectat_la": str(d.get("colectat_la") or "")[:10] or None, "aplicatii": d["aplicatii"]}
+
+
+def _aplicatii_vox():
+    """Aplicațiile băncilor pentru Vox (decizia lui Nicolae, 08.10.2026): analiza APK (funcțiile, cu verdict), App
+    Store din bază și Google Play din fișier. Toate odată, fiindcă sunt puține: 24 de aplicații × 13 funcții, 19 note
+    App Store și 22 Google Play (mip_merge, 08.10.2026); filtrarea pe bănci o face `vox`."""
+    return {
+        "aplicatii": interoghează(
+            """SELECT b.slug AS banca, a.package, a.aplicatie, a.rol, a.versiune_analizata, a.framework,
+                      v.data_extragere::text AS data_analizei
+               FROM android_aplicatii a
+               JOIN banci b ON b.id = a.id_banca
+               LEFT JOIN android_versiuni v ON v.package = a.package AND v.version_name = a.versiune_analizata
+               ORDER BY b.slug, (a.rol = 'secundar'), a.aplicatie"""),
+        "functii": interoghează(
+            """SELECT package, functie, verdict, coalesce(surse, '') AS surse, coalesce(dovada_text, '') AS dovada_text
+               FROM android_functionalitati ORDER BY package, functie"""),
+        "app_store": interoghează(
+            """SELECT b.slug AS banca, ar.app_id, ar.rating_agregat::float8 AS nota, ar.volum_rating AS evaluari,
+                      ar.distributie_stele, ar.versiune, ar.observat_la::date::text AS observat_la
+               FROM app_release_curente ar JOIN banci b ON b.id = ar.id_banca
+               WHERE ar.platforma = 'ios' ORDER BY b.slug"""),
+        "play": _google_play(),
+    }
 
 
 def _alte_monede_rate(campuri, categorie, termen, produs):
