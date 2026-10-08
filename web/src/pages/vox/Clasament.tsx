@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { BlocClasament, Clasament as ClasamentT, RandClasament } from '@mcc/shared'
 import type { Meta } from '../../api/meta'
-import { EtichetaBanca } from '../../components/comune'
+import { EtichetaBanca, Pill } from '../../components/comune'
 import type { CerereSertar } from '../../components/Sertar'
 import { etNume, etSegment, unitTxt } from '../../components/valori'
 import { areCheie, useLang, type DictKey } from '../../i18n'
@@ -49,6 +49,11 @@ export default function Clasament({ c, m, onDovezi }: { c: ClasamentT; m: Meta; 
       : c.libra.loc === c.libra.loc_pana
         ? t('vox.clasament.libra', { loc: c.libra.loc, din: c.libra.din })
         : t('vox.clasament.libra_egal', { loc: c.libra.loc, pana: c.libra.loc_pana, din: c.libra.din })
+  // cifra rămâne a celulei din 2.2, dar unele celule au și dobânzi în altă monedă decât lei: la depozitul pe
+  // 12 luni, ambele valori Raiffeisen (mip_merge, 08.10.2026); nota numește băncile
+  const monede = [...new Set(c.blocuri.flatMap((b) => b.randuri.flatMap((r) => (r.alte_monede
+    ? [`${m.nume[r.banca] ?? r.banca} (${t('vox.clasament.din', { n: r.alte_monede.n, din: r.alte_monede.din })})`]
+    : []))))]
   // băncile cu date din toate blocurile, ca împreună cu „Fără date” să dea toate băncile
   const cuDate = new Set(c.blocuri.flatMap((b) => b.randuri.map((r) => r.banca))).size
   const pagina = c.sursa === 'matrice'
@@ -61,6 +66,9 @@ export default function Clasament({ c, m, onDovezi }: { c: ClasamentT; m: Meta; 
         <span className="vox-meta">{t('vox.clasament.sens')} · {tn('vox.clasament.n_banci', cuDate)}</span>
       </div>
       <p className="vox-nota"><span className="vox-punct gri" />{libra}</p>
+      {monede.length > 0 && (
+        <p className="vox-nota vox-clas-monede"><span className="vox-punct" />{tn('vox.clasament.monede', monede.length, { banci: monede.join(', ') })}</p>
+      )}
       {c.blocuri.map((b, k) => <Bloc key={k} b={b} c={c} m={m} onDovezi={onDovezi} />)}
       <FaraDate c={c} m={m} />
       <Link className="vox-link vox-clas-pagina" to={pagina}>{t(c.sursa === 'matrice' ? 'vox.clasament.deschide_21' : 'vox.clasament.deschide_22')}</Link>
@@ -99,7 +107,16 @@ function Bloc({ b, c, m, onDovezi }: { b: BlocClasament; c: ClasamentT; m: Meta;
             {vizibile.map((r) => (
               <tr key={r.banca} className={r.evidentiata ? 'evidentiata' : undefined}>
                 <td className="loc">{r.loc === r.loc_pana ? r.loc : `${r.loc}–${r.loc_pana}`}</td>
-                <td><EtichetaBanca slug={r.banca} m={m} fisa tag /></td>
+                <td>
+                  <EtichetaBanca slug={r.banca} m={m} fisa tag />
+                  {r.alte_monede && (
+                    <span className="vox-clas-moneda">
+                      <Pill tip="amb" title={t('vox.clasament.monede_tooltip', { n: r.alte_monede.n, din: r.alte_monede.din })}>
+                        {t('vox.clasament.monede_pill')}
+                      </Pill>
+                    </span>
+                  )}
+                </td>
                 <td className="dr val">
                   <span className="nr">{num(r.valoare, locale)}{u}</span>
                   {r.serviciu && <span className="sub">{r.serviciu}{r.frecventa ? ` · ${r.frecventa}` : ''}</span>}
