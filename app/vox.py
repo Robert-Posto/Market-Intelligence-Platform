@@ -500,7 +500,7 @@ def butoane(interp, raspunsuri, clasament):
 
 def din_buton(anterior, buton):
     """Interpretarea nouă după un buton, fără model. Un buton care nu se potrivește ridică `Respins`."""
-    if buton not in BUTOANE or anterior["tip"] not in ("cautare", "clasament"):
+    if not isinstance(buton, str) or buton not in BUTOANE or anterior["tip"] not in ("cautare", "clasament"):
         raise Respins(NEPOTRIVIT)
     nou = dict(anterior, clarificare=None)
     if buton in ("firme", "pf"):

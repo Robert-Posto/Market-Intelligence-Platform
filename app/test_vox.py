@@ -456,9 +456,11 @@ class Butoane(unittest.TestCase):
         self.assertEqual(vox.din_buton(interp(tip="clasament", banci=[]), "firme")["tip"], "clasament")
 
     def test_din_buton_refuza(self):
+        # corpul JSON poate aduce în `buton` o listă, un obiect, null sau un număr: Respins (400), nu TypeError (500)
         for i, b in ((interp(), "toate"), (interp(concept="nominala", categorie="depozite"), "firme"),
                      (interp(tip="clasament", banci=[]), "libra"), (interp(banci=["libra"]), "libra"),
-                     (interp(banci=["bcr", "brd", "ing"]), "libra"), (interp(tip="neclar"), "firme")):
+                     (interp(banci=["bcr", "brd", "ing"]), "libra"), (interp(tip="neclar"), "firme"),
+                     (interp(), ["libra"]), (interp(), {"x": 1}), (interp(), None), (interp(), 5)):
             with self.assertRaises(vox.Respins, msg=(i, b)):
                 vox.din_buton(i, b)
 
