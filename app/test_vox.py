@@ -208,12 +208,25 @@ class Schema(unittest.TestCase):
         # Raiffeisen, contra medianei din spec), iar „care bancă… = clasament” putea trimite aplicațiile
         # pe „nu avem clasament” în loc de „în afara”
         self.assertIn("„cine dă cea mai mare dobândă…” compară prețul obișnuit", text)
-        self.assertIn("(„care bancă are cea mai bună aplicație?”) rămân in_afara", text)
+        self.assertIn("cele despre aplicații („care bancă are cea mai bună aplicație?”) sunt aplicatii", text)
         # conversația din 08.10.2026: „Cât costă administrarea contului la BCR și la BRD?”, pusă după
         # „… pentru firme la BCR?”, păstra segmentul pj, deși nu-l spunea
         self.assertIn("e o întrebare nouă, nu o continuare: nu păstrezi nimic din cea anterioară", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
         self.assertEqual(text, vox.prompt(CTX))
+
+
+    def test_prompt_aplicatii(self):
+        text = vox.prompt(CTX)
+        self.assertIn("tip = aplicatii", text)
+        self.assertIn("Funcțiile aplicațiilor (slug: titlu): hce_contactless: Plată contactless direct din aplicație; "
+                      "in_app_chat: Chat cu banca în aplicație; ropay: RoPay (plăți instant din cont)", text)
+        self.assertIn("Aplicațiile (bancă: nume): bcr: George Romania; brd: YOU BRD; brd: MyBRD Mobile; "
+                      "libra: Libra Bank", text)
+        self.assertIn("(„Apple Pay”) → functie = null și numele ei în text_cautat", text)
+        self.assertIn("(„cu cel puțin 1.000 de note” → 1000)", text)
+        self.assertIn("recenziile aplicațiilor, trackere, permisiuni, campanii", text)
+        self.assertNotIn("(aplicații, recenzii, campanii", text)
 
 
 class Validare(unittest.TestCase):

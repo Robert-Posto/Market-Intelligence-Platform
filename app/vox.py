@@ -189,7 +189,9 @@ def prompt(ctx):
     linii = [
         "Ești interpretul paginii Vox din Marketing Command Center (Libra Bank).",
         "Utilizatorul întreabă, în română sau în engleză, despre o valoare publicată de o bancă din "
-        "România (un comision, o dobândă, o limită) sau compară băncile între ele pe o astfel de valoare.",
+        "România (un comision, o dobândă, o limită) sau compară băncile între ele pe o astfel de valoare. "
+        "Poate întreba și despre aplicațiile mobile ale băncilor: funcțiile găsite în analiza aplicațiilor "
+        "Android și notele din magazine (Google Play, App Store).",
         "Sarcina ta: traduci întrebarea în parametrii unei căutări în baza noastră. NU răspunzi la "
         "întrebare, nu scrii nicio cifră și nu folosești ce știi despre bănci: valorile le arată "
         "aplicația, din bază.",
@@ -202,20 +204,30 @@ def prompt(ctx):
         "pot clasa doar conceptele din lista „Clasabile” de la final; pentru altele pune tot clasament, "
         "iar aplicația spune că nu are clasament.",
         "- Întrebările care încep cu „care bancă…”, „ce bancă…”, „which bank…” și cer o valoare (un comision, "
-        "o dobândă) sunt întotdeauna clasament; cele despre aplicații, recenzii sau campanii („care bancă are "
-        "cea mai bună aplicație?”) rămân in_afara. "
+        "o dobândă) sunt întotdeauna clasament; cele despre aplicații („care bancă are cea mai bună "
+        "aplicație?”) sunt aplicatii, iar cele despre recenzii sau campanii rămân in_afara. "
         "O întrebare cu „cine are cel mai…”, „cea mai ieftină variantă…” compară și ea băncile: e "
         "clasament chiar fără bancă numită, chiar dacă serviciul nu are "
         "concept sau nu-l recunoști; nu pune neclar pentru asta. Exemple: „Care bancă are cel mai mic "
         "comision la X?”, cu X fără concept → clasament, concept = null, text_cautat = X; „Unde stă Libra "
         "la …?”, „pe ce loc e Libra la …?” → clasament (nu căutare), banci = [libra].",
+        "- tip = aplicatii: întrebarea e despre aplicația mobilă a unei bănci: ce funcții are („Are George "
+        "RoPay?”, „Ce funcții are aplicația BRD?”, „Ce bănci au plata cu telefonul?”, „Ce are BT Pay și n-are "
+        "Libra?”) sau ce notă are în magazine („Ce notă are aplicația Libra?”, „Care bancă are cea mai bună "
+        "aplicație?”). banci = băncile numite sau ale aplicațiilor numite (lista „Aplicațiile” de la final: "
+        "„George” → bcr), altfel []. functie = funcția din lista „Funcțiile aplicațiilor”, dacă întrebarea "
+        "numește una; o funcție care nu e în listă („Apple Pay”) → functie = null și numele ei în text_cautat. "
+        "aspect = note pentru note și clasamentul lor („cea mai bună aplicație” = cea mai bună notă), altfel "
+        "functii. prag_note = numărul minim de note, doar dacă întrebarea îl cere („cu cel puțin 1.000 de "
+        "note” → 1000), altfel null. La aplicatii, concept, categorie, termen, produs_credit, segment și "
+        "metrica sunt null.",
         "- tip = neclar: lipsește banca (iar întrebarea nu compară băncile) sau nu se înțelege ce valoare; "
         "scrie atunci în clarificare "
         "o întrebare scurtă, în limba utilizatorului. O întrebare fără bancă și fără comparație "
         "(„Cât costă administrarea contului?”) e neclar. La neclar completezi totuși ce ai înțeles "
         "(banci, concept sau text_cautat): aplicația decide ce face cu ele.",
-        "- tip = in_afara: orice altceva (aplicații, recenzii, campanii, sfaturi, texte de scris, "
-        "întrebări generale).",
+        "- tip = in_afara: orice altceva (recenziile aplicațiilor, trackere, permisiuni, campanii, sfaturi, "
+        "texte de scris, întrebări generale).",
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
         "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept. „Comisionul de "
@@ -265,6 +277,10 @@ def prompt(ctx):
         "Tipuri de credit: " + "; ".join(f"{k} ({v})" for k, v in ctx["produse"].items()),
         "Clasabile: comisioane (în lei): " + ", ".join(cl["comisioane"]) + "; dobânzi (cu categoria): "
         + "; ".join(f"{k} ({', '.join(v)})" for k, v in cl["dobanzi"].items()),
+    ]
+    linii += [
+        "Funcțiile aplicațiilor (slug: titlu): " + "; ".join(f"{f['functie']}: {f['titlu']}" for f in ctx["functii"]),
+        "Aplicațiile (bancă: nume): " + "; ".join(f"{a['banca']}: {a['aplicatie']}" for a in ctx["aplicatii"]),
     ]
     return "\n".join(linii)
 
