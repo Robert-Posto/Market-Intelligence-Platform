@@ -415,6 +415,54 @@ class Clasa(unittest.TestCase):
         self.assertNotIn("alte_monede", r["brd"])
 
 
+class Butoane(unittest.TestCase):
+    """Butoanele de sub un răspuns (decizia lui Nicolae, 08.10.2026): fără model, deci gratuite."""
+
+    def rasp(self, *segmente):
+        return [{"rezumat": [{"segment": s} for s in segmente]}]
+
+    def test_cautare_comision_cu_segmente(self):
+        self.assertEqual(vox.butoane(interp(), self.rasp("pf", None), None), ["firme", "libra"])
+        self.assertEqual(vox.butoane(interp(segment="pj"), self.rasp("pj"), None), ["pf", "libra"])
+        self.assertEqual(vox.butoane(interp(segment="pfa"), self.rasp("pfa"), None), ["firme", "pf", "libra"])
+
+    def test_fara_segment_in_rezumat_doar_libra(self):
+        self.assertEqual(vox.butoane(interp(), self.rasp(None), None), ["libra"])
+
+    def test_dobanzi_fara_segment(self):
+        """Rândurile de dobânzi n-au segment în sursă: „Pentru firme” n-ar schimba nimic."""
+        self.assertEqual(vox.butoane(interp(concept="nominala", categorie="depozite"), self.rasp("pf"), None),
+                         ["libra"])
+
+    def test_libra_deja_sau_trei_banci(self):
+        self.assertEqual(vox.butoane(interp(banci=["libra"]), self.rasp(None), None), [])
+        self.assertEqual(vox.butoane(interp(banci=["bcr", "brd", "ing"]), self.rasp(None), None), [])
+
+    def test_clasament(self):
+        i = interp(tip="clasament", banci=[])
+        self.assertEqual(vox.butoane(i, [], {"sursa": "matrice"}), ["firme"])
+        self.assertEqual(vox.butoane(dict(i, segment="pj"), [], {"sursa": "matrice"}), ["pf"])
+        self.assertEqual(vox.butoane(dict(i, concept="nominala", categorie="depozite"), [], {"sursa": "rate"}), [])
+        self.assertEqual(vox.butoane(i, [], {"concept": None, "neclasabil": True}), [])
+
+    def test_neclar_in_afara(self):
+        for tip in ("neclar", "in_afara"):
+            self.assertEqual(vox.butoane(interp(tip=tip), [], None), [])
+
+    def test_din_buton(self):
+        self.assertEqual(vox.din_buton(interp(), "firme")["segment"], "pj")
+        self.assertEqual(vox.din_buton(interp(segment="pj"), "pf")["segment"], "pf")
+        self.assertEqual(vox.din_buton(interp(), "libra")["banci"], ["bcr", "libra"])
+        self.assertEqual(vox.din_buton(interp(tip="clasament", banci=[]), "firme")["tip"], "clasament")
+
+    def test_din_buton_refuza(self):
+        for i, b in ((interp(), "toate"), (interp(concept="nominala", categorie="depozite"), "firme"),
+                     (interp(tip="clasament", banci=[]), "libra"), (interp(banci=["libra"]), "libra"),
+                     (interp(banci=["bcr", "brd", "ing"]), "libra"), (interp(tip="neclar"), "firme")):
+            with self.assertRaises(vox.Respins, msg=(i, b)):
+                vox.din_buton(i, b)
+
+
 class IstoricConversatii(unittest.TestCase):
     def setUp(self):
         self.rad = tempfile.mkdtemp(prefix="vox_ist_")
@@ -593,6 +641,33 @@ class Intrebari(unittest.TestCase):
         rb = r["raspunsuri"][0]
         self.assertEqual([g["moneda"] for g in rb["rezumat"]], ["lei", "eur"])
         self.assertEqual(rb["alte"], [])
+
+    def test_intrebarea_are_butoane(self):
+        self.randuri["bcr"] = [dict(rand(5), segment="pf")]
+        self.assertEqual(self.fa(ClientFals(interp())).intreaba("BCR?")["butoane"], ["firme", "libra"])
+
+    def test_continua_fara_model(self):
+        """„Pentru firme” sub „Cât costă administrarea contului la BCR?”: același drum ca o întrebare, fără model."""
+        self.randuri["bcr"] = [dict(rand(5), segment="pf"), dict(rand(20), segment="pj")]
+        c = ClientFals(interp())
+        v = self.fa(c)
+        d = v.continua(interp(), "firme")
+        self.assertEqual(c.cereri, [])
+        self.assertEqual((d["model"], d["cost_usd"], d["buton"]), (None, 0.0, "firme"))
+        self.assertEqual(d["interpretare"]["segment"], "pj")
+        self.assertEqual([g["segment"] for g in d["raspunsuri"][0]["rezumat"]], ["pj", "pf"])
+        self.assertEqual(d["butoane"], ["pf", "libra"])
+        tura = v.istoric.citeste(d["conversatie"])["ture"][0]
+        self.assertEqual((tura["intrebare"], tura["raspuns"]["buton"]), ("Pentru firme", "firme"))
+
+    def test_continua_refuza(self):
+        v = self.fa(ClientFals(interp()))
+        with self.assertRaises(vox.Respins):
+            v.continua(None, "firme")                               # fără răspunsul de sub buton
+        with self.assertRaises(vox.Respins):
+            v.continua(interp(), "firme", "0" * 16)                 # conversație ștearsă
+        with self.assertRaises(vox.Respins):
+            v.continua(interp(banci=["libra"]), "libra")            # Libra e deja acolo
 
     def test_anterior_ajunge_la_model(self):
         c = ClientFals(interp(banci=["brd"]))

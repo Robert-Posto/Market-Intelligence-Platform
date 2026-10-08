@@ -470,6 +470,50 @@ def clasa(celule, sens, metrica, evidentiate, nume):
     return randuri
 
 
+# Butoanele de sub un răspuns (decizia lui Nicolae, 08.10.2026): continuă fără model, deci gratuit și fără
+# riscul unei interpretări greșite. Eticheta română e textul turei în conversație.
+BUTOANE = {"firme": "Pentru firme", "pf": "Pentru persoane fizice", "libra": "Compară cu Libra"}
+NEPOTRIVIT = "Butonul nu se potrivește răspunsului."
+
+
+def butoane(interp, raspunsuri, clasament):
+    """Ce butoane are un răspuns. Segmentul doar la comisioane: rândurile de dobânzi n-au segment în sursă,
+    deci „Pentru firme” n-ar schimba nimic."""
+    tip = interp["tip"]
+    if tip == "cautare" and not interp["categorie"]:
+        cu_segment = any(g.get("segment") for r in raspunsuri for g in r.get("rezumat") or [])
+    elif tip == "clasament":
+        cu_segment = bool(clasament and clasament.get("sursa") == "matrice")
+    elif tip == "cautare":
+        cu_segment = False
+    else:
+        return []
+    rez = []
+    if cu_segment and interp.get("segment") != "pj":
+        rez.append("firme")
+    if cu_segment and interp.get("segment") in ("pj", "pfa", "imm"):
+        rez.append("pf")
+    if tip == "cautare" and "libra" not in interp["banci"] and len(interp["banci"]) < MAX_BANCI:
+        rez.append("libra")
+    return rez
+
+
+def din_buton(anterior, buton):
+    """Interpretarea nouă după un buton, fără model. Un buton care nu se potrivește ridică `Respins`."""
+    if buton not in BUTOANE or anterior["tip"] not in ("cautare", "clasament"):
+        raise Respins(NEPOTRIVIT)
+    nou = dict(anterior, clarificare=None)
+    if buton in ("firme", "pf"):
+        if anterior["categorie"]:
+            raise Respins(NEPOTRIVIT)
+        nou["segment"] = "pj" if buton == "firme" else "pf"
+    elif anterior["tip"] != "cautare" or "libra" in anterior["banci"] or len(anterior["banci"]) >= MAX_BANCI:
+        raise Respins(NEPOTRIVIT)
+    else:
+        nou["banci"] = anterior["banci"] + ["libra"]
+    return nou
+
+
 def _moment(data):
     """Ora unei ture, pentru ordonare: după ora reală, nu după text (la ora de iarnă „03:10+02:00” e
     după „03:30+03:00”); o dată stricată ajunge la coadă."""
@@ -779,6 +823,11 @@ class Vox:
             interp, ignorate = valideaza(brut, ctx)
         cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"], tokeni["scriere_cache"])
         rand.update(interpretare=interp, stop=stop, tokeni=tokeni, cost_usd=cost)
+        return self._raspunde(rand, intrebare, interp, ignorate, ctx)
+
+    def _raspunde(self, rand, intrebare, interp, ignorate, ctx, buton=None):
+        """Valorile din bază pentru o interpretare, tura salvată în conversație și rândul din jurnal: același
+        drum pentru o întrebare și pentru un buton."""
         try:
             raspunsuri = [self._raspuns(b, interp, ctx) for b in interp["banci"]] if interp["tip"] == "cautare" else []
             clasament = self._clasament_raspuns(interp, ctx) if interp["tip"] == "clasament" else None
@@ -791,8 +840,11 @@ class Vox:
         if clasament and clasament.get("blocuri"):
             rand["clasate"] = len(clasament["blocuri"][0]["randuri"])
         rezultat = {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
-                    "clasament": clasament, "model": m, "tokeni": tokeni, "cost_usd": cost}
-        id = conversatie or self.istoric.id_nou()
+                    "clasament": clasament, "model": rand["model"], "tokeni": rand["tokeni"],
+                    "cost_usd": rand["cost_usd"], "butoane": butoane(interp, raspunsuri, clasament)}
+        if buton:
+            rezultat["buton"] = buton
+        id = rand["conversatie"] or self.istoric.id_nou()
         try:
             self.istoric.adauga(id, intrebare, rezultat)
         except OSError:
@@ -801,6 +853,21 @@ class Vox:
         rand["conversatie"] = id
         self._jurnal(rand)
         return {**rezultat, "conversatie": id}
+
+    def continua(self, anterior, buton, conversatie=None):
+        """Un buton de sub un răspuns („Pentru firme”, „Compară cu Libra”): interpretarea răspunsului cu
+        butonul aplicat, pe același drum ca o întrebare, fără model (cost 0, nicio interpretare greșită)."""
+        anterior = verifica_anterior(anterior)
+        if anterior is None:
+            raise Respins("Lipsește răspunsul la care se aplică butonul.")
+        if conversatie is not None and not self.istoric.exista(conversatie):
+            raise Respins(CONVERSATIE_LIPSA)
+        ctx, _, _ = self._context()
+        interp = din_buton(valideaza(anterior, ctx)[0], buton)
+        tokeni = {"intrare": 0, "iesire": 0, "citire_cache": 0, "scriere_cache": 0}
+        rand = {"data": _acum(), "intrebare": BUTOANE[buton], "buton": buton, "model": None,
+                "conversatie": conversatie, "interpretare": interp, "tokeni": tokeni, "cost_usd": 0.0}
+        return self._raspunde(rand, BUTOANE[buton], interp, [], ctx, buton)
 
     def _jurnal(self, rand):
         """Un rând pe întrebare, ca să se vadă unde greșește interpretarea. Nu oprește răspunsul."""
