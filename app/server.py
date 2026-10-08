@@ -2129,7 +2129,7 @@ def _clasament_vox(concept, categorie, termen, produs, segment):
 
 
 VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox, stare_banca=_stare_banca_vox,
-              clasament=_clasament_vox, stare_banci=_stare_banci_vox)
+              clasament=_clasament_vox, stare_banci=_stare_banci_vox, aplicatii=_aplicatii_vox)
 
 
 def rulare_manuala_catalog(q):

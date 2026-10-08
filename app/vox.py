@@ -617,15 +617,47 @@ def diferente(coloane):
     return rez
 
 
+def _magazin_play(play, banca):
+    p = ((play or {}).get("aplicatii") or {}).get(banca)
+    if not isinstance(p, dict):
+        return None
+    return {"nota": p.get("nota"), "evaluari": p.get("evaluari") or 0,
+            "distributie_stele": p.get("distributie_stele"), "versiune": p.get("versiune"), "url": p.get("url")}
+
+
+def _magazin_app_store(r):
+    if not r:
+        return None
+    return {"nota": r["nota"], "evaluari": r["evaluari"] or 0, "distributie_stele": r["distributie_stele"],
+            "versiune": r["versiune"], "url": f"https://apps.apple.com/ro/app/id{r['app_id']}"}
+
+
+def _cate_aplicatii(a):
+    """Câte aplicații arată răspunsul, pentru jurnal."""
+    if a["vedere"] == "functie":
+        return sum(len(g["aplicatii"]) for g in a["grupuri"])
+    if a["vedere"] == "aplicatii":
+        return sum(not c["fara_aplicatie"] for c in a["coloane"])
+    if a["vedere"] == "note":
+        return len({r["banca"] for c in a["clasamente"].values() if c
+                    for r in c["randuri"] + c["sub_prag"] + c["fara_nota"]})
+    return 0
+
+
 # Butoanele de sub un răspuns (decizia lui Nicolae, 08.10.2026): continuă fără model, deci gratuit și fără
 # riscul unei interpretări greșite. Eticheta română e textul turei în conversație.
-BUTOANE = {"firme": "Pentru firme", "pf": "Pentru persoane fizice", "libra": "Compară cu Libra"}
+BUTOANE = {"firme": "Pentru firme", "pf": "Pentru persoane fizice", "libra": "Compară cu Libra",
+           "toate": "La toate băncile", "prag_100": "Cel puțin 100 de note",
+           "prag_1000": "Cel puțin 1.000 de note", "fara_prag": "Fără prag"}
+PRAG_BUTON = {f"prag_{p}": p for p in PRAGURI_NOTE}
 NEPOTRIVIT = "Butonul nu se potrivește răspunsului."
 
 
-def butoane(interp, raspunsuri, clasament):
+def butoane(interp, raspunsuri, clasament, aplicatii=None):
     """Ce butoane are un răspuns. Segmentul doar la comisioane: rândurile de dobânzi n-au segment în sursă,
     deci „Pentru firme” n-ar schimba nimic."""
+    if interp["tip"] == "aplicatii":
+        return _butoane_aplicatii(interp, aplicatii)
     tip = interp["tip"]
     if tip == "cautare" and not interp["categorie"]:
         cu_segment = any(g.get("segment") for r in raspunsuri for g in r.get("rezumat") or [])
@@ -645,19 +677,56 @@ def butoane(interp, raspunsuri, clasament):
     return rez
 
 
+def _butoane_aplicatii(interp, aplicatii):
+    """La aplicații: Libra lângă băncile numite, aceeași întrebare la toate băncile și pragul de note. Fără prag,
+    pragurile apar doar când clasamentul are aplicații cu puține note (`putine_note`)."""
+    if not aplicatii:
+        return []
+    banci, rez = interp["banci"], []
+    if banci and "libra" not in banci and len(banci) < MAX_BANCI:
+        rez.append("libra")
+    if banci and (interp["functie"] or interp["aspect"] == "note"):
+        rez.append("toate")
+    if interp["aspect"] == "note":
+        prag = interp.get("prag_note")
+        if prag is None:
+            rez += list(PRAG_BUTON) if aplicatii.get("putine_note") else []
+        else:
+            rez += [b for b, p in PRAG_BUTON.items() if p != prag] + ["fara_prag"]
+    return rez
+
+
 def din_buton(anterior, buton):
-    """Interpretarea nouă după un buton, fără model. Un buton care nu se potrivește ridică `Respins`."""
-    if not isinstance(buton, str) or buton not in BUTOANE or anterior["tip"] not in ("cautare", "clasament"):
+    """Interpretarea nouă după un buton, fără model. Un buton care nu se potrivește ridică `Respins`. Fiecare buton
+    are ramura lui: cu `toate` și pragurile în BUTOANE, o ramură „orice altceva = Libra” ar fi adăugat Libra la un
+    `toate` trimis pe o căutare."""
+    if not isinstance(buton, str) or buton not in BUTOANE or anterior["tip"] not in ("cautare", "clasament", "aplicatii"):
         raise Respins(NEPOTRIVIT)
     nou = dict(anterior, clarificare=None)
+    if anterior["tip"] == "aplicatii":
+        return _din_buton_aplicatii(nou, buton)
     if buton in ("firme", "pf"):
         if anterior["categorie"]:
             raise Respins(NEPOTRIVIT)
         nou["segment"] = "pj" if buton == "firme" else "pf"
-    elif anterior["tip"] != "cautare" or "libra" in anterior["banci"] or len(anterior["banci"]) >= MAX_BANCI:
-        raise Respins(NEPOTRIVIT)
-    else:
+    elif (buton == "libra" and anterior["tip"] == "cautare" and "libra" not in anterior["banci"]
+          and len(anterior["banci"]) < MAX_BANCI):
         nou["banci"] = anterior["banci"] + ["libra"]
+    else:
+        raise Respins(NEPOTRIVIT)
+    return nou
+
+
+def _din_buton_aplicatii(nou, buton):
+    banci = nou["banci"]
+    if buton == "libra" and banci and "libra" not in banci and len(banci) < MAX_BANCI:
+        nou["banci"] = banci + ["libra"]
+    elif buton == "toate" and banci and (nou["functie"] or nou["aspect"] == "note"):
+        nou["banci"] = []
+    elif (buton in PRAG_BUTON or buton == "fara_prag") and nou["aspect"] == "note":
+        nou["prag_note"] = PRAG_BUTON.get(buton)
+    else:
+        raise Respins(NEPOTRIVIT)
     return nou
 
 
@@ -810,7 +879,7 @@ class Vox:
     dă funcțiile de citire (`context`, `cauta`, `stare_banca`), ca la `rulari.Rulari`."""
 
     def __init__(self, context, cauta, stare_banca, client=None, dir_jurnal=DIR_JURNAL, dir_conversatii=None,
-                 clasament=None, stare_banci=None):
+                 clasament=None, stare_banci=None, aplicatii=None):
         self._sursa_context = context
         self._cauta = cauta
         self._stare_banca = stare_banca
@@ -818,6 +887,8 @@ class Vox:
         # orice clasament iese `neclasabil` (evaluarea interpretării nu le folosește)
         self._clasament = clasament
         self._stare_banci = stare_banci
+        # aplicațiile (app/server.py, `_aplicatii_vox`); fără cititor, răspunsul are `aplicatii: null` (evaluarea)
+        self._aplicatii = aplicatii
         self._client = client
         self.dir = dir_jurnal
         # lângă jurnal: în teste și la evaluare jurnalul e într-un dosar temporar, deci și conversațiile
@@ -953,6 +1024,82 @@ class Vox:
                 "categorie": interp["categorie"], "termen": interp["termen"], "produs": interp["produs_credit"],
                 "blocuri": blocuri, "libra": libra, "fara_date": fara_date}
 
+
+    def _aplicatii_raspuns(self, interp, ctx):
+        """Una din cele patru vederi (spec 2026-10-08-vox-aplicatii): o funcție la toate băncile, aplicațiile
+        băncilor numite, notele din magazine sau o funcție care nu e analizată."""
+        if not self._aplicatii:
+            return None
+        date = self._aplicatii()
+        nume = {b["slug"]: b["nume"] for b in ctx["banci"]}
+        evidentiate = {"libra", *interp["banci"]}
+        principale, secundare = {}, {}
+        for a in date["aplicatii"]:
+            if a["rol"] == "secundar":
+                secundare.setdefault(a["banca"], []).append(a["aplicatie"])
+            else:
+                principale.setdefault(a["banca"], a)
+        functii = {}
+        for f in date["functii"]:
+            functii.setdefault(f["package"], {})[f["functie"]] = {
+                "verdict": f["verdict"], "surse": [s for s in (f["surse"] or "").split("|") if s],
+                "dovada_text": f["dovada_text"] or None}
+        play = date["play"]
+        ios = {r["banca"]: r for r in date["app_store"]}
+        cu_aplicatie = set(principale) | set(ios) | set((play or {}).get("aplicatii") or {})
+        rez = {"functie": interp["functie"], "text_cautat": interp["text_cautat"],
+               "analiza_la": max((a["data_analizei"] for a in principale.values() if a["data_analizei"]), default=None),
+               "app_store_la": max((r["observat_la"] for r in ios.values() if r["observat_la"]), default=None),
+               "play_la": play["colectat_la"] if play else None,
+               "banci_fara_aplicatie": [b["slug"] for b in ctx["banci"] if b["slug"] not in cu_aplicatie]}
+
+        def aplicatia(b):
+            return (principale.get(b) or {}).get("aplicatie")
+
+        if interp["aspect"] == "note":
+            surse = {"play": (lambda b: _magazin_play(play, b)) if play else None,
+                     "app_store": lambda b: _magazin_app_store(ios.get(b))}
+            clasamente = {}
+            for magazin, din in surse.items():
+                clasamente[magazin] = None if din is None else clasa_note(
+                    [{"banca": b, "aplicatie": aplicatia(b), **m} for b in sorted(cu_aplicatie) if (m := din(b))],
+                    evidentiate, nume, interp["prag_note"])
+            carduri = []
+            for b in interp["banci"]:
+                card = {"banca": b, "aplicatie": aplicatia(b), "fara_aplicatie": b not in cu_aplicatie}
+                for magazin, din in surse.items():
+                    m, c = (din(b) if din else None), clasamente[magazin]
+                    if m and c:
+                        r = next((x for x in c["randuri"] if x["banca"] == b), None)
+                        m.update(loc=r["loc"] if r else None, loc_pana=r["loc_pana"] if r else None,
+                                 din=len(c["randuri"]), sub_prag=any(x["banca"] == b for x in c["sub_prag"]))
+                    card[magazin] = m
+                carduri.append(card)
+            return {**rez, "vedere": "note", "prag": interp["prag_note"], "clasamente": clasamente,
+                    "putine_note": None if interp["prag_note"] else putine_note(clasamente), "carduri": carduri}
+        if interp["functie"] and not interp["banci"]:
+            grupuri = {v: [] for v in VERDICTE}
+            for b, a in principale.items():
+                f = functii.get(a["package"], {}).get(interp["functie"])
+                if f and f["verdict"] in grupuri:
+                    grupuri[f["verdict"]].append({"banca": b, "aplicatie": a["aplicatie"], **f,
+                                                  "evidentiata": b in evidentiate})
+            return {**rez, "vedere": "functie", "grupuri": [
+                {"verdict": v, "aplicatii": sorted(x, key=lambda r: (nume.get(r["banca"]) or r["banca"]).lower())}
+                for v, x in grupuri.items()]}
+        if not interp["banci"]:
+            return {**rez, "vedere": "neanalizata", "functii": [f["functie"] for f in ctx["functii"]]}
+        coloane = []
+        for b in interp["banci"]:
+            a = principale.get(b)
+            coloane.append({"banca": b, "fara_aplicatie": a is None, "aplicatie": a["aplicatie"] if a else None,
+                            "versiune_analizata": a["versiune_analizata"] if a else None,
+                            "data_analizei": a["data_analizei"] if a else None,
+                            "framework": a["framework"] if a else None, "secundare": secundare.get(b, []),
+                            "functii": functii.get(a["package"], {}) if a else {},
+                            "play": _magazin_play(play, b), "app_store": _magazin_app_store(ios.get(b))})
+        return {**rez, "vedere": "aplicatii", "coloane": coloane, "diferente": diferente(coloane)}
+
     def intreaba(self, intrebare, anterior=None, conversatie=None):
         intrebare = verifica_intrebarea(intrebare)
         anterior = verifica_anterior(anterior)
@@ -984,6 +1131,7 @@ class Vox:
         try:
             raspunsuri = [self._raspuns(b, interp, ctx) for b in interp["banci"]] if interp["tip"] == "cautare" else []
             clasament = self._clasament_raspuns(interp, ctx) if interp["tip"] == "clasament" else None
+            aplicatii = self._aplicatii_raspuns(interp, ctx) if interp["tip"] == "aplicatii" else None
         except Exception as exc:
             # întrebarea sau butonul intră în jurnal și când cade baza (la o întrebare, apelul la model s-a plătit deja)
             rand["eroare"] = f"{exc.__class__.__name__}: {exc}"
@@ -992,9 +1140,11 @@ class Vox:
         rand["randuri"] = {r["banca"]: r["total"] for r in raspunsuri}
         if clasament and clasament.get("blocuri"):
             rand["clasate"] = len(clasament["blocuri"][0]["randuri"])
+        if aplicatii:
+            rand["aplicatii"] = _cate_aplicatii(aplicatii)
         rezultat = {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
-                    "clasament": clasament, "model": rand["model"], "tokeni": rand["tokeni"],
-                    "cost_usd": rand["cost_usd"], "butoane": butoane(interp, raspunsuri, clasament)}
+                    "clasament": clasament, "aplicatii": aplicatii, "model": rand["model"], "tokeni": rand["tokeni"],
+                    "cost_usd": rand["cost_usd"], "butoane": butoane(interp, raspunsuri, clasament, aplicatii)}
         if buton:
             rezultat["buton"] = buton
         id = rand["conversatie"] or self.istoric.id_nou()

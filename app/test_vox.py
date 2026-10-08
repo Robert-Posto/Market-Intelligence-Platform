@@ -658,6 +658,50 @@ class Butoane(unittest.TestCase):
                 vox.din_buton(i, b)
 
 
+class ButoaneAplicatii(unittest.TestCase):
+    """Butoanele la `aplicatii` (decizia lui Nicolae, 08.10.2026): fără model, deci gratuite."""
+
+    def test_butoane(self):
+        cu_putine = {"vedere": "note", "putine_note": {"app_store": 1}}
+        fara_putine = {"vedere": "note", "putine_note": None}
+        functii = {"vedere": "aplicatii"}
+        self.assertEqual(vox.butoane(apl(banci=["bcr"]), [], None, functii), ["libra"])
+        self.assertEqual(vox.butoane(apl(banci=["bcr"], functie="ropay"), [], None, functii), ["libra", "toate"])
+        self.assertEqual(vox.butoane(apl(banci=[], functie="ropay"), [], None, {"vedere": "functie"}), [])
+        self.assertEqual(vox.butoane(apl(banci=[], aspect="note"), [], None, cu_putine), ["prag_100", "prag_1000"])
+        self.assertEqual(vox.butoane(apl(banci=[], aspect="note"), [], None, fara_putine), [])
+        self.assertEqual(vox.butoane(apl(banci=[], aspect="note", prag_note=100), [], None, fara_putine),
+                         ["prag_1000", "fara_prag"])
+        self.assertEqual(vox.butoane(apl(banci=[], aspect="note", prag_note=500), [], None, fara_putine),
+                         ["prag_100", "prag_1000", "fara_prag"])
+        self.assertEqual(vox.butoane(apl(banci=["bcr"], aspect="note"), [], None, cu_putine),
+                         ["libra", "toate", "prag_100", "prag_1000"])
+        self.assertEqual(vox.butoane(apl(banci=["bcr"]), [], None, None), [])        # fără cititor
+
+    def test_din_buton(self):
+        self.assertEqual(vox.din_buton(apl(banci=["bcr"]), "libra")["banci"], ["bcr", "libra"])
+        n = vox.din_buton(apl(banci=["bcr"], functie="ropay"), "toate")
+        self.assertEqual((n["banci"], n["functie"], n["tip"]), ([], "ropay", "aplicatii"))
+        n = vox.din_buton(apl(banci=["bcr"], aspect="note", prag_note=100), "toate")
+        self.assertEqual((n["banci"], n["prag_note"]), ([], 100))
+        self.assertEqual(vox.din_buton(apl(banci=[], aspect="note"), "prag_100")["prag_note"], 100)
+        self.assertEqual(vox.din_buton(apl(banci=[], aspect="note"), "prag_1000")["prag_note"], 1000)
+        self.assertIsNone(vox.din_buton(apl(banci=[], aspect="note", prag_note=100), "fara_prag")["prag_note"])
+
+    def test_din_buton_aplicatii_refuza(self):
+        for i, b in ((apl(banci=["bcr"]), "prag_100"), (apl(banci=["bcr"]), "fara_prag"),
+                     (apl(banci=[], functie="ropay"), "toate"), (apl(banci=["bcr"]), "toate"),
+                     (apl(banci=["libra"]), "libra"), (apl(banci=["bcr", "brd", "ing"]), "libra"),
+                     (apl(banci=["bcr"]), "firme"), (apl(banci=["bcr"]), "pf"),
+                     (interp(), "toate"), (interp(), "prag_100"), (interp(tip="clasament", banci=[]), "fara_prag")):
+            with self.assertRaises(vox.Respins, msg=(i, b)):
+                vox.din_buton(i, b)
+
+    def test_etichete_pentru_toate_pragurile(self):
+        self.assertEqual(set(vox.PRAG_BUTON), {f"prag_{p}" for p in vox.PRAGURI_NOTE})
+        self.assertTrue(set(vox.PRAG_BUTON) | {"toate", "fara_prag"} <= set(vox.BUTOANE))
+
+
 class IstoricConversatii(unittest.TestCase):
     def setUp(self):
         self.rad = tempfile.mkdtemp(prefix="vox_ist_")
@@ -1141,6 +1185,164 @@ class Intrebari(unittest.TestCase):
         self.assertEqual([g["segment"] for g in r["rezumat"]], ["pj", "pf"])
 
 
+APLICATII = {
+    "aplicatii": [
+        {"banca": "bcr", "package": "ro.bcr.georgego", "aplicatie": "George Romania", "rol": "principal",
+         "versiune_analizata": "26.30", "framework": "nativ", "data_analizei": "2026-10-01"},
+        {"banca": "brd", "package": "ro.brd.udp.prd", "aplicatie": "YOU BRD", "rol": "principal",
+         "versiune_analizata": "16.3", "framework": "nativ", "data_analizei": "2026-10-01"},
+        {"banca": "brd", "package": "ro.brd.mybrd", "aplicatie": "MyBRD Mobile", "rol": "secundar",
+         "versiune_analizata": "5.0", "framework": "nativ", "data_analizei": "2026-10-01"},
+        {"banca": "libra", "package": "libra.mobile.banking", "aplicatie": "Libra Bank", "rol": "reper",
+         "versiune_analizata": "4.23.0", "framework": "React Native", "data_analizei": "2026-10-01"},
+    ],
+    "functii": [
+        {"package": "ro.bcr.georgego", "functie": "ropay", "verdict": "sigur", "surse": "cod|text", "dovada_text": "RoPay"},
+        {"package": "ro.bcr.georgego", "functie": "in_app_chat", "verdict": "probabil", "surse": "text", "dovada_text": "chat"},
+        {"package": "ro.brd.udp.prd", "functie": "ropay", "verdict": "neconcludent", "surse": "", "dovada_text": ""},
+        {"package": "ro.brd.udp.prd", "functie": "in_app_chat", "verdict": "absent", "surse": "", "dovada_text": ""},
+        {"package": "libra.mobile.banking", "functie": "ropay", "verdict": "absent", "surse": "", "dovada_text": ""},
+        {"package": "libra.mobile.banking", "functie": "in_app_chat", "verdict": "absent", "surse": "", "dovada_text": ""},
+    ],
+    "app_store": [
+        {"banca": "bcr", "app_id": "1", "nota": 4.84, "evaluari": 188573, "distributie_stele": [5, 0, 0, 0, 0],
+         "versiune": "26.30", "observat_la": "2026-09-24"},
+        {"banca": "brd", "app_id": "2", "nota": 5.0, "evaluari": 6, "distributie_stele": [6, 0, 0, 0, 0],
+         "versiune": "16.3", "observat_la": "2026-09-24"},
+        {"banca": "libra", "app_id": "691914413", "nota": 4.47, "evaluari": 971,
+         "distributie_stele": [790, 46, 26, 18, 91], "versiune": "4.23", "observat_la": "2026-09-24"},
+    ],
+    "play": {"colectat_la": "2026-10-06", "aplicatii": {
+        "bcr": {"nota": 4.81, "evaluari": 155826, "distributie_stele": [1, 0, 0, 0, 0], "versiune": "26.30",
+                "url": "https://play.google.com/store/apps/details?id=ro.bcr.georgego"},
+        "brd": {"nota": 4.83, "evaluari": 234221, "distributie_stele": None, "versiune": "16.3", "url": "u-brd"},
+        "libra": {"nota": 4.59, "evaluari": 3083, "distributie_stele": None, "versiune": "4.23.0", "url": "u-libra"}}},
+}
+
+
+class RaspunsAplicatii(unittest.TestCase):
+    """Răspunsul la `aplicatii`, pe un cititor fals: cele patru vederi și butoanele lor. ING n-are nicio aplicație."""
+
+    def setUp(self):
+        self.dir = tempfile.mkdtemp(prefix="vox_apl_")
+        self.date = json.loads(json.dumps(APLICATII))          # o copie: unele teste o schimbă
+
+    def fa(self, i, aplicatii=True):
+        v = vox.Vox(context=lambda: CTX, cauta=lambda *a: [], stare_banca=lambda b: None, client=ClientFals(i),
+                    dir_jurnal=self.dir, aplicatii=(lambda: self.date) if aplicatii else None)
+        return v.intreaba("aplicații?"), v
+
+    def test_functie_la_toate_bancile(self):
+        d, _ = self.fa(apl(banci=[], functie="ropay"))
+        a = d["aplicatii"]
+        self.assertEqual(a["vedere"], "functie")
+        self.assertEqual([(g["verdict"], [x["banca"] for x in g["aplicatii"]]) for g in a["grupuri"]],
+                         [("sigur", ["bcr"]), ("probabil", []), ("absent", ["libra"]), ("neconcludent", ["brd"])])
+        bcr = a["grupuri"][0]["aplicatii"][0]
+        self.assertEqual((bcr["aplicatie"], bcr["surse"], bcr["dovada_text"], bcr["evidentiata"]),
+                         ("George Romania", ["cod", "text"], "RoPay", False))
+        self.assertTrue(a["grupuri"][2]["aplicatii"][0]["evidentiata"])            # Libra
+        self.assertEqual((a["analiza_la"], a["app_store_la"], a["play_la"], a["banci_fara_aplicatie"]),
+                         ("2026-10-01", "2026-09-24", "2026-10-06", ["ing"]))
+        self.assertEqual((d["clasament"], d["raspunsuri"], d["butoane"]), (None, [], []))
+
+    def test_aplicatii_cu_libra(self):
+        d, _ = self.fa(apl(banci=["bcr", "libra"]))
+        a = d["aplicatii"]
+        self.assertEqual(a["vedere"], "aplicatii")
+        bcr = a["coloane"][0]
+        self.assertEqual((bcr["aplicatie"], bcr["framework"], bcr["secundare"], bcr["fara_aplicatie"]),
+                         ("George Romania", "nativ", [], False))
+        self.assertEqual(bcr["functii"]["ropay"], {"verdict": "sigur", "surse": ["cod", "text"], "dovada_text": "RoPay"})
+        self.assertEqual((bcr["play"]["nota"], bcr["app_store"]["url"]), (4.81, "https://apps.apple.com/ro/app/id1"))
+        self.assertEqual([(x["functie"], x["nivel"]) for x in a["diferente"]], [("in_app_chat", "probabil"), ("ropay", "sigur")])
+        self.assertEqual(d["butoane"], [])                 # Libra e deja numită; fără funcție, fără „La toate băncile”
+
+    def test_secundare_si_banca_fara_aplicatie(self):
+        d, _ = self.fa(apl(banci=["brd", "ing"]))
+        brd, ing = d["aplicatii"]["coloane"]
+        self.assertEqual((brd["aplicatie"], brd["secundare"]), ("YOU BRD", ["MyBRD Mobile"]))
+        self.assertEqual((ing["fara_aplicatie"], ing["functii"], ing["play"], ing["app_store"]), (True, {}, None, None))
+        self.assertEqual(d["butoane"], ["libra"])
+
+    def test_functie_numita_la_o_banca(self):
+        d, _ = self.fa(apl(banci=["bcr"], functie="ropay"))
+        self.assertEqual((d["aplicatii"]["vedere"], d["aplicatii"]["functie"]), ("aplicatii", "ropay"))
+        self.assertEqual(d["butoane"], ["libra", "toate"])
+
+    def test_functie_neanalizata(self):
+        d, _ = self.fa(apl(banci=[], aspect=None, text_cautat="Apple Pay"))
+        a = d["aplicatii"]
+        self.assertEqual((a["vedere"], a["text_cautat"], a["functii"]),
+                         ("neanalizata", "Apple Pay", ["hce_contactless", "in_app_chat", "ropay"]))
+        d, _ = self.fa(apl(banci=["bcr"], text_cautat="Apple Pay"))
+        self.assertEqual((d["aplicatii"]["vedere"], d["aplicatii"]["text_cautat"]), ("aplicatii", "Apple Pay"))
+
+    def test_note_fara_banci_intreaba_pragul(self):
+        d, _ = self.fa(apl(banci=[], aspect="note"))
+        a = d["aplicatii"]
+        self.assertEqual((a["vedere"], a["prag"], a["carduri"]), ("note", None, []))
+        self.assertEqual([(r["banca"], r["loc"]) for r in a["clasamente"]["app_store"]["randuri"]],
+                         [("brd", 1), ("bcr", 2), ("libra", 3)])
+        self.assertEqual([(r["banca"], r["loc"], r["loc_pana"]) for r in a["clasamente"]["play"]["randuri"]],
+                         [("bcr", 1, 2), ("brd", 1, 2), ("libra", 3, 3)])
+        self.assertEqual(a["putine_note"], {"app_store": 1, "play": 0, "prag": 100,
+                                            "primul": {"magazin": "app_store", "banca": "brd", "loc": 1,
+                                                       "loc_pana": 1, "evaluari": 6}})
+        self.assertEqual(d["butoane"], ["prag_100", "prag_1000"])
+
+    def test_note_cu_prag(self):
+        d, _ = self.fa(apl(banci=[], aspect="note", prag_note=1000))
+        a = d["aplicatii"]
+        self.assertEqual([r["banca"] for r in a["clasamente"]["app_store"]["randuri"]], ["bcr"])
+        self.assertEqual([r["banca"] for r in a["clasamente"]["app_store"]["sub_prag"]], ["brd", "libra"])
+        self.assertIsNone(a["putine_note"])
+        self.assertEqual(d["butoane"], ["prag_100", "fara_prag"])
+
+    def test_note_cu_banca_card_si_loc(self):
+        d, _ = self.fa(apl(banci=["libra"], aspect="note"))
+        card = d["aplicatii"]["carduri"][0]
+        self.assertEqual((card["banca"], card["aplicatie"], card["fara_aplicatie"]), ("libra", "Libra Bank", False))
+        self.assertEqual((card["play"]["loc"], card["play"]["loc_pana"], card["play"]["din"]), (3, 3, 3))
+        self.assertEqual((card["app_store"]["loc"], card["app_store"]["din"], card["app_store"]["sub_prag"]), (3, 3, False))
+        self.assertEqual(d["butoane"], ["toate", "prag_100", "prag_1000"])
+
+    def test_note_cu_banca_sub_prag(self):
+        d, _ = self.fa(apl(banci=["libra"], aspect="note", prag_note=1000))
+        card = d["aplicatii"]["carduri"][0]
+        self.assertEqual((card["app_store"]["loc"], card["app_store"]["sub_prag"]), (None, True))
+        self.assertEqual(card["play"]["loc"], 3)
+
+    def test_note_fara_google_play(self):
+        self.date["play"] = None
+        d, _ = self.fa(apl(banci=["bcr"], aspect="note"))
+        a = d["aplicatii"]
+        self.assertEqual((a["clasamente"]["play"], a["play_la"], a["carduri"][0]["play"]), (None, None, None))
+        self.assertEqual(a["carduri"][0]["app_store"]["loc"], 2)
+
+    def test_banca_fara_aplicatie(self):
+        d, _ = self.fa(apl(banci=["ing"], aspect="note"))
+        card = d["aplicatii"]["carduri"][0]
+        self.assertEqual((card["fara_aplicatie"], card["play"], card["app_store"]), (True, None, None))
+
+    def test_fara_cititor(self):
+        """Evaluarea construiește Vox fără cititorul de aplicații: contează interpretarea, nu datele."""
+        d, _ = self.fa(apl(banci=[], functie="ropay"), aplicatii=False)
+        self.assertEqual((d["aplicatii"], d["butoane"]), (None, []))
+
+    def test_jurnal_si_conversatie(self):
+        d, v = self.fa(apl(banci=[], functie="ropay"))
+        with open(os.path.join(self.dir, vox._acum()[:7] + ".jsonl"), encoding="utf-8") as f:
+            rand = json.loads(f.readlines()[-1])
+        self.assertEqual(rand["aplicatii"], 3)
+        tura = v.istoric.citeste(d["conversatie"])["ture"][0]
+        self.assertEqual(tura["raspuns"]["aplicatii"]["vedere"], "functie")
+
+    def test_alte_tipuri_au_aplicatii_null(self):
+        d, _ = self.fa(interp())
+        self.assertIsNone(d["aplicatii"])
+
+
 class StareBanca(unittest.TestCase):
     """`_stare_banca_vox` din server: ce spune fișa când banca n-are valori."""
 
@@ -1526,6 +1728,21 @@ class Http(unittest.TestCase):
             self.assertEqual(self.cere("POST", "/api/vox", corp, ok)[0], 400, corp)
         self.assertEqual(self.cere("POST", "/api/vox", {"buton": "libra", "anterior": interp()})[0], 403)
         self.assertEqual(len(self.client.cereri), n)               # niciun apel plătit
+
+
+    def test_post_buton_aplicatii(self):
+        """„Cel puțin 100 de note” sub clasamentul notelor: fără model; un prag sub o întrebare de funcții, 400."""
+        ok = {"X-MIP-Token": self.token()}
+        n = len(self.client.cereri)
+        anterior = dict(vox._gol("aplicatii"), aspect="note")
+        cod, d = self.cere("POST", "/api/vox", {"buton": "prag_100", "anterior": anterior}, ok)
+        self.assertEqual(cod, 200, d)
+        self.assertEqual((d["model"], d["cost_usd"], d["buton"], d["interpretare"]["prag_note"]),
+                         (None, 0, "prag_100", 100))
+        self.assertIsNone(d["aplicatii"])                     # serverul de test n-are cititor de aplicații
+        rau = dict(anterior, aspect="functii", banci=["bcr"])
+        self.assertEqual(self.cere("POST", "/api/vox", {"buton": "prag_100", "anterior": rau}, ok)[0], 400)
+        self.assertEqual(len(self.client.cereri), n)
 
     def test_conversatii_lista_citire_redenumire_stergere(self):
         ok = {"X-MIP-Token": self.token()}
