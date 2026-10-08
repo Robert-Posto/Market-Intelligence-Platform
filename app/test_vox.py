@@ -1247,6 +1247,27 @@ class Http(unittest.TestCase):
         cod, d3 = self.cere("POST", "/api/vox", {"intrebare": "BCR?", "conversatie": "0" * 16}, ok)
         self.assertEqual((cod, d3["eroare"], len(self.client.cereri)), (400, "Conversația nu mai există.", n))
 
+    def test_post_buton_fara_model(self):
+        """„Compară cu Libra” sub un răspuns: același drum ca întrebarea, fără apel la model (08.10.2026)."""
+        ok = {"X-MIP-Token": self.token()}
+        n = len(self.client.cereri)
+        cod, d = self.cere("POST", "/api/vox", {"buton": "libra", "anterior": interp()}, ok)
+        self.assertEqual(cod, 200, d)
+        self.assertEqual((d["model"], d["cost_usd"], d["buton"]), (None, 0, "libra"))
+        self.assertEqual([r["banca"] for r in d["raspunsuri"]], ["bcr", "libra"])
+        self.assertEqual(len(self.client.cereri), n)
+
+    def test_post_buton_refuzat(self):
+        ok = {"X-MIP-Token": self.token()}
+        n = len(self.client.cereri)
+        for corp in ({"buton": "toate", "anterior": interp()},
+                     {"buton": "firme", "anterior": interp(concept="nominala", categorie="depozite")},
+                     {"buton": "libra", "anterior": interp(), "intrebare": "BCR?"},
+                     {"buton": "libra"}):
+            self.assertEqual(self.cere("POST", "/api/vox", corp, ok)[0], 400, corp)
+        self.assertEqual(self.cere("POST", "/api/vox", {"buton": "libra", "anterior": interp()})[0], 403)
+        self.assertEqual(len(self.client.cereri), n)               # niciun apel plătit
+
     def test_conversatii_lista_citire_redenumire_stergere(self):
         ok = {"X-MIP-Token": self.token()}
         c = self.cere("POST", "/api/vox", {"intrebare": "Cât costă administrarea contului la BCR?"}, ok)[1]["conversatie"]

@@ -2438,7 +2438,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if corp is None:
             return
         try:
-            self._json(200, VOX.intreaba(corp.get("intrebare"), corp.get("anterior"), corp.get("conversatie")))
+            if "buton" in corp:
+                if corp.get("intrebare") is not None:
+                    raise vox.Respins("Trimite o întrebare sau un buton, nu amândouă.")
+                rezultat = VOX.continua(corp.get("anterior"), corp.get("buton"), corp.get("conversatie"))
+            else:
+                rezultat = VOX.intreaba(corp.get("intrebare"), corp.get("anterior"), corp.get("conversatie"))
+            self._json(200, rezultat)
         except vox.Respins as exc:
             self._json(400, {"eroare": str(exc)})
         except vox.EroareModel as exc:
