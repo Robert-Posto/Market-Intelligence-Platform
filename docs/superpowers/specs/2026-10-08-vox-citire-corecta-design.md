@@ -116,8 +116,13 @@ Toate regulile stau în `vox.rezuma`, o funcție pură peste rândurile pe care 
   `scriere_cache_1h`, cu factorul 2,0 (scrierea de 5 minute rămâne 1,25). Completarea e compatibilă:
   apelurile fluxului de comparație nu se schimbă.
 - `eval_vox.py`: estimarea primei întrebări trece pe prețul scrierii de o oră.
-- Cost estimat: conversația din 08.10.2026, cu 18 întrebări și 3 scrieri în cache, ar trece de la 7,5
-  la ~5,3 cenți. O întrebare izolată, după o pauză de peste o oră, ar trece de la ~1,6 la ~2,6 cenți.
+- Cost (măsurat după implementare, 08.10.2026): o întrebare cu promptul în cache costă $0,0016
+  (rularea cap-coadă); prima întrebare, care scrie cache-ul de o oră, ≈ $0,027 (dedus din evaluarea de
+  44 de întrebări, $0,0963 în total: $0,0963 − 43 × ~$0,0016). Conversația din 08.10.2026 (18 întrebări,
+  7,5 cenți) scrisese promptul în cache de 3 ori, la prima întrebare și după două pauze, de 9 și de 5
+  minute: 4,9 cenți din cele 7,5. Cu cache-ul de o oră, aceeași conversație ar fi costat 5,5 cenți
+  (calculat din jurnalul ei). O întrebare izolată, după o pauză de peste o oră, trece de la ~1,6 la
+  ≈ 2,7 cenți.
 
 ## Interfața
 

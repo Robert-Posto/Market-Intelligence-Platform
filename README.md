@@ -282,10 +282,14 @@ text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în af
   Pe laptop, cu `MCC_AUTH_LOCAL=admin`, Vox merge fără logare, ca restul aplicației.
 - Merge și din `npm run dev`: proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne
   `localhost:5173`, deci ruta acceptă și acest Origin (rulările nu).
-- Modelul: `claude-haiku-4-5` (`MIP_VOX_MODEL`). Măsurat pe 06.10.2026 (`mip_merge`):
-  11.568 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0015
-  pe întrebare cu promptul în cache. Prima întrebare îl scrie: $0,0147 (11.555 de tokeni de
-  intrare); cache-ul ține 5 minute de la ultima întrebare.
+- Modelul: `claude-haiku-4-5` (`MIP_VOX_MODEL`). Măsurat pe 08.10.2026 (`mip_merge`):
+  12.842 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0016
+  pe întrebare cu promptul în cache. Promptul stă în cache o oră de la ultima întrebare (`ttl: "1h"`,
+  din 08.10.2026; înainte, 5 minute). Prima întrebare îl scrie (scrierea de o oră costă de 2 ori prețul
+  de intrare): ≈ $0,027, dedus din evaluarea de mai jos ($0,0963 − 43 × ~$0,0016); apoi $0,0016 pe
+  întrebare. În conversația de test din 08.10.2026 (18 întrebări, 7,5 cenți), cu cache-ul de 5 minute,
+  promptul s-a scris de 3 ori, la prima întrebare și după două pauze, de 9 și de 5 minute: 4,9 cenți din
+  cele 7,5. Cu cache-ul de o oră, aceeași conversație ar fi costat 5,5 cenți (calculat din jurnalul ei).
 - Evaluarea interpretării (`python app/eval_vox.py --da`, 30 de întrebări reale): 30 din 30
   corecte pe 07.10.2026, $0,0576. Pe 06.10, „incoming payment” la BRD ieșea `transfer_credit` în loc
   de `incasare` în 2 rulări din 4, iar „APR” la Libra ieșea dobânda nominală (7,71–7,84%) în loc de
@@ -299,7 +303,10 @@ text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în af
   de fiecare dată. Pe 08.10.2026, „Cât costă administrarea contului la BCR și la BRD?”, pusă după o
   întrebare „pentru firme”, păstra segmentul PJ deși nu-l spunea: o întrebare care se înțelege singură
   e acum nouă, nu o continuare. Cu cazul ăsta, cu termenul la depozite și cu „și la BRD?” (care trebuie
-  să păstreze PJ), 44 din 44, $0,0867.
+  să păstreze PJ), 44 din 44, $0,0867 (cache de 5 minute). Cu cache-ul de o oră, tot 44 din 44 pe
+  08.10.2026, $0,0963 în total ($0,0022 pe întrebare în medie, 12.842 de tokeni de intrare pe întrebare):
+  cu $0,0096 mai mult, cât costă scrierea de o oră (de 2 ori prețul de intrare, nu de 1,25) pe cei
+  ~12.800 de tokeni ai promptului. Fără `--da`, scriptul arată doar estimarea, ~$0,10.
 - **Clasamente.** „Care bancă are cel mai mic comision de administrare?”, „Unde stă Libra la DAE pentru
   ipotecar?”: Vox ordonează băncile cu celulele din 2.1 (comisioane, în lei, PF dacă întrebarea nu spune
   altfel) și 2.2 (dobânzi, pe categorie), deci aceleași cifre ca paginile (`celule_matrice`,
@@ -309,6 +316,19 @@ text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în af
   un al doilea bloc arată valorile la care sursa nu le spune (pe 7–12 luni: 2 bănci cu termen, 9 fără);
   băncile fără date apar cu motivul. La valori egale, rândul de la mediană (serviciul afișat sub cifră)
   se alege după cheia observației, deci paginile și Vox arată același rând.
+- **Fișa citește ce e în date** (08.10.2026). La dobânzi, câte un card pe monedă, din coloana `valuta`
+  (fără ghicit din text; gol = „monedă nespusă”): Libra · depozit, fără termen (11 valori), are 4,75% în
+  lei, 1,95% în euro și 9 valori fără monedă; „Vezi dovezile” de pe un card pe monedă deschide sertarul
+  doar pe moneda lui (`/api/celula?valuta=eur`: 1 valoare, nu cele 11). La comisioanele cu mai multe
+  frecvențe, intervalul se arată pe frecvență (BCR · administrare cont PF: pe lună 0–100 lei, pe an
+  0–1.200, fără frecvență 0–100). Notele, limitele și cursurile stau separat, la „Alte valori găsite”
+  (Garanti · schimbarea PIN-ului: doar limite contactless). Fiecare rând arată data intrării în vigoare,
+  când sursa o are (69% din valori; la BCR · administrare cont, 467 din 570). Clasamentele de dobânzi
+  păstrează cifrele din 2.2 și spun la ce bănci valorile includ și alte monede (depozit pe 12 luni:
+  Raiffeisen, 2 din 2 valori în altă monedă decât lei).
+- **Butoane fără model.** Sub răspuns: „Pentru firme” / „Pentru persoane fizice” (la comisioane) și
+  „Compară cu Libra” (la căutare). Serverul aplică butonul pe interpretarea răspunsului (`vox.din_buton`),
+  deci tura costă 0 și nu poate fi înțeleasă greșit; `POST /api/vox` cu `buton` + `anterior`.
 - **Segmentul.** Rezumatul și tabelul se împart pe persoane fizice, PFA, IMM, firme și „fără segment
   în sursă”, PF primul: BCR · administrare cont avea 302 valori PJ, 234 PFA și 33 PF într-un singur
   interval, 0–1.200 lei (`mip_merge`, 07.10.2026). Segmentul vine din `cod_scenariu`; la dobânzi
@@ -330,7 +350,8 @@ text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în af
   redeschide fără model (gratuit), le caută în titlu și în întrebări (fără diacritice, cu cuvintele
   tăiate la rădăcină ca la căutarea după text), le redenumește și le șterge; cea deschisă stă în
   adresă (`#/vox?c=<id>`). Jurnalul de costuri rămâne separat, în `loguri/vox/AAAA-LL.jsonl`.
-- Teste fără rețea: `python app/test_vox.py` și `python app/test_celula.py` (segmentul din `/api/celula`).
+- Teste fără rețea: `python app/test_vox.py` și `python app/test_celula.py` (segmentul, moneda și data din
+  `/api/celula`; nota de monedă din clasamente).
 
 ### Pachetul Playwright (`crawler/`)
 
