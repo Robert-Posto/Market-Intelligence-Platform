@@ -21,6 +21,9 @@ const Rezumate = z.object({
     rezumat: Text,
     pro: z.array(Text),
     contra: z.array(Text),
+    // pe aplicație (ingest/actualizeaza_aplicatii.py, din 07.10.2026): fiecare bancă își reface brief-ul separat
+    generat_la: z.string().optional(),
+    generat_de: z.string().optional(),
   })),
 })
 export type Rezumat = z.infer<typeof Rezumate>['aplicatii'][string]
@@ -41,6 +44,8 @@ const GooglePlay = z.object({
     distributie_stele: z.array(z.number()).nullable().optional(),
     versiune: z.string().nullable().optional(),
     actualizat_la: z.string().nullable().optional(),
+    // când am citit noi pagina aplicației (din 07.10.2026; înainte, doar `colectat_la` pe tot fișierul)
+    colectat_la: z.string().optional(),
     ce_e_nou: z.string().nullable().optional(),
     android_minim: z.string().nullable().optional(),
     capturi: z.array(z.string()).optional(),

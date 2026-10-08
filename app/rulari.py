@@ -13,7 +13,10 @@ strânse, toate aici:
     cerere vin doar id-ul (căutat în listă) și, unde scriptul îl suportă,
     slug-ul unei bănci (căutat în lista de slug-uri); nimic altceva din cerere
     nu ajunge în linia de comandă;
-  - un singur proces odată (al doilea primește „rulează deja …”);
+  - o singură rulare odată (a doua primește „rulează deja …”); mai multe bănci
+    alese odată (sau „toate”) stau la coadă, fiecare cu propriul proces, jurnal
+    și rând în istoric. Pornesc una după alta, cu excepția comenzilor cu
+    `paralel_banci`, unde rulează atâtea bănci simultan (vezi JOBURI);
   - cererile de scriere trec prin `verifica_cerere` (Host, Origin, token).
 
 Fără TikTok (neaprobat), Google (exportul manual al colegului), fără
@@ -104,28 +107,47 @@ COMENZI = [
 # rădăcină (config.py), unde ANTHROPIC_API_KEY e un placeholder: jobul #172 (06.10.2026) a
 # moștenit-o și a primit 401 „API key is invalid”. Fără ea în mediu, ca din terminal.
 FARA_CHEIA_SERVERULUI = ["ANTHROPIC_API_KEY"]
+# `paralel_banci`: la mai multe bănci, câte rulează simultan (07.10.2026). Fiecare bancă își
+# scrie fișierele ei (inventare-libra/<banca>/, valori-<banca>.json, produse-<banca>.json) și
+# rândurile ei în bază, deci procesele nu se calcă. Fiecare are deja 3–4 cereri la model în
+# paralel: 3 bănci înseamnă ~9–12, cât încape fără 429 de la API. Aplicațiile mobile rămân pe
+# rând: `scrie_brief` rescrie un fișier comun tuturor băncilor, iar App Store dă 429 (06.10.2026).
+PARALEL_BANCI = 3
 JOBURI = [
     {"id": "discovery", "nume": "Discovery surse",
      "ce": "Caută pe site-ul băncii echivalentul produsului Libra și îi salvează sursele (surse_libra); refăcut chiar dacă există deja, cu limita de 3 minute.",
      "argumente": ["extragere_produse_bancare/descopera_surse_libra.py", "--forteaza"],
      "banca": "obligatoriu", "produs": "obligatoriu", "banci": "extragere", "grup": "joburi", "platit": True,
-     "internet": True, "estimare_banca_min": 1, "fara_mediu": FARA_CHEIA_SERVERULUI},
+     "internet": True, "estimare_banca_min": 1, "fara_mediu": FARA_CHEIA_SERVERULUI,
+     "paralel_banci": PARALEL_BANCI},
     {"id": "extragere", "nume": "Extragere date",
      "ce": "Descarcă sursele găsite la discovery și extrage valorile produsului (comparatie_libra); documentele neschimbate nu se plătesc din nou.",
      "argumente": ["extragere_produse_bancare/extrage_comparatie_libra.py"],
      "banca": "obligatoriu", "produs": "obligatoriu", "banci": "extragere", "grup": "joburi", "platit": True,
-     "internet": True, "estimare_banca_min": 1, "fara_mediu": FARA_CHEIA_SERVERULUI},
+     "internet": True, "estimare_banca_min": 1, "fara_mediu": FARA_CHEIA_SERVERULUI,
+     "paralel_banci": PARALEL_BANCI},
     {"id": "produse_noi", "nume": "Produse pe care Libra nu le are",
      "ce": "Parcurge site-ul băncii (sitemap, meniuri) și clasifică paginile de produs fără echivalent în catalogul Libra (products_discovery).",
      "argumente": ["extragere_produse_bancare/descopera_produse.py"],
      "banca": "obligatoriu", "produs": None, "banci": "extragere", "grup": "joburi", "platit": True,
-     "internet": True, "estimare_banca_min": 15, "fara_mediu": FARA_CHEIA_SERVERULUI},
+     "internet": True, "estimare_banca_min": 15, "fara_mediu": FARA_CHEIA_SERVERULUI,
+     "paralel_banci": PARALEL_BANCI},
+    # 07.10.2026, ING: 27 s, din care ~16 s brief-ul (iOS și Android în paralel), $0,074
+    {"id": "aplicatii_mobile", "nume": "Aplicații mobile",
+     "ce": "Nota, numărul de note și de descărcări, capturile și recenziile din App Store și Google Play, apoi brief-ul AI al recenziilor; brief-ul se sare dacă recenziile n-au schimbat.",
+     "argumente": ["ingest/actualizeaza_aplicatii.py"],
+     "banca": "obligatoriu", "produs": None, "banci": "aplicatii", "grup": "joburi", "platit": True,
+     "internet": True, "estimare_banca_min": 1, "fara_mediu": FARA_CHEIA_SERVERULUI},
 ]
 COMENZI = COMENZI + JOBURI
 CALE_BANCI_EXTRAGERE = os.path.join(RADACINA, "extragere_produse_bancare", "banci.json")
+# băncile cu aplicație: iOS confirmat de cauta_app_id.py sau colectat din Google Play
+CALE_IOS = os.path.join(RADACINA, "date", "app_id_gasite.json")
+CALE_PLAY = os.path.join(RADACINA, "date", "google_play.json")
 
 GAZDE = ("localhost", "127.0.0.1", "[::1]")
 RANDURI_JURNAL = 30
+RANDURI_JURNAL_PARALEL = 8   # cu mai multe bănci în lucru, câte rânduri din jurnalul fiecăreia
 RANDURI_ISTORIC = 10
 ORICE_BANCA = "*"     # estimarea „pe o bancă oarecare”; niciun slug nu e „*”
 
@@ -228,6 +250,19 @@ def _slugs_extragere():
         return [b["id"] for b in json.load(f)["banci"]]
 
 
+def _slugs_aplicatii():
+    """Băncile cu aplicație pe cel puțin o platformă; citite la fiecare cerere, fișierele se schimbă la colectare."""
+    slugs = set()
+    for cale, cheie in ((CALE_IOS, None), (CALE_PLAY, "aplicatii")):
+        try:
+            with open(cale, encoding="utf-8") as f:
+                d = json.load(f)
+        except (OSError, ValueError):
+            continue
+        slugs |= set(d.get(cheie, {}) if cheie else d)
+    return sorted(slugs)
+
+
 class Rulari:
     def __init__(self, comenzi=COMENZI, dir_rulari=DIR_RULARI, slugs=lambda: [],
                  interpretor=sys.executable, radacina=RADACINA, produse=lambda: [],
@@ -277,11 +312,19 @@ class Rulari:
                 return []
         return self._produse
 
+    def banci_comanda(self, c):
+        """Băncile pe care se poate rula comanda: lista ei, nu neapărat cea a colectării generale."""
+        if c.get("banci") == "extragere":
+            return self.slugs_extragere()
+        if c.get("banci") == "aplicatii":
+            return _slugs_aplicatii()
+        return self.slugs()
+
     def valideaza(self, id_comanda, banca, produs=None):
         c = self.comenzi.get(id_comanda) if isinstance(id_comanda, str) else None
         if c is None:
             raise Respins("comandă necunoscută")
-        banci = self.slugs_extragere() if c.get("banci") == "extragere" else self.slugs()
+        banci = self.banci_comanda(c)
         if banca in (None, ""):
             banca = None
         elif not isinstance(banca, str) or banca not in banci:
@@ -344,39 +387,116 @@ class Rulari:
 
     # ---------------- pornire / oprire ----------------
 
-    def porneste(self, id_comanda, banca=None, produs=None):
+    def porneste(self, id_comanda, banca=None, produs=None, banci=None, toate=False):
+        """O bancă (`banca`), mai multe (`banci`, la coadă) sau toate (`toate`).
+
+        „Toate” la o comandă cu banca opțională e o singură rulare fără --banca (scriptul
+        își parcurge singur băncile); la una cu banca obligatorie, coada tuturor băncilor ei.
+        Coada pornește pe rând sau, la o comandă cu `paralel_banci`, câte atâtea bănci odată.
+        """
+        if banci is not None and (not isinstance(banci, list) or not all(isinstance(b, str) for b in banci)):
+            raise Respins("lista de bănci nu e validă")
+        if toate or banci:
+            c = self.comenzi.get(id_comanda) if isinstance(id_comanda, str) else None
+            if c is None:
+                raise Respins("comandă necunoscută")
+            if c["banca"] is None:
+                raise Respins(f"„{c['nume']}” nu se rulează pe o bancă")
+            if toate and c["banca"] == "optional":
+                banci = []
+            elif toate:
+                banci = self.banci_comanda(c)
+            # aceeași bancă de două ori ar plăti de două ori același job
+            banci = list(dict.fromkeys(banci))
+            for b in banci:
+                self.valideaza(id_comanda, b, produs)
+            if len(banci) > 1:
+                c, _, produs = self.valideaza(id_comanda, banci[0], produs)
+                with self.lacat:
+                    self._liber()
+                    return self._lanseaza(c, banci[0], produs,
+                                          {"total": len(banci), "ramase": banci[1:], "facute": [], "pornite": 0})
+            banca = banci[0] if banci else None
         c, banca, produs = self.valideaza(id_comanda, banca, produs)
         with self.lacat:
-            if self.curenta:
-                raise Ocupat(f"rulează deja: {self.comenzi.get(self.curenta['id'], {}).get('nume', self.curenta['id'])}")
-            os.makedirs(self.dir, exist_ok=True)
-            inceput = _acum()
-            cale_log = self._cale(f"{c['id']}_{inceput:%Y%m%d_%H%M%S}.log")
-            argv = self.argv(c, banca, produs)
-            # MIP_RULARE_MANUALA: jurnal_joburi.py scrie jobul cu runed_manually = TRUE (migrarea 037)
-            mediu = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", MIP_RULARE_MANUALA="1",
-                         **c.get("mediu", {}))
-            for k in c.get("fara_mediu", ()):
-                mediu.pop(k, None)
-            with open(cale_log, "w", encoding="utf-8") as log:
-                log.write(f"# {c['nume']}{' · ' + banca if banca else ''}{' · ' + produs if produs else ''} · pornit manual la "
-                          f"{inceput:%Y-%m-%d %H:%M:%S}\n# {' '.join(argv[1:])}\n")
-                log.flush()
-                p = subprocess.Popen(argv, cwd=self.radacina, stdout=log, stderr=subprocess.STDOUT,
-                                     stdin=subprocess.DEVNULL, env=mediu,
-                                     start_new_session=(os.name != "nt"))
-            estimare_s, _, _ = self.estimare(c["id"], banca)
-            self.curenta = {"id": c["id"], "banca": banca, "produs": produs, "inceput": inceput.isoformat(timespec="seconds"),
-                            "t0": time.time(), "pid": p.pid, "log": os.path.basename(cale_log),
-                            "estimare_s": estimare_s, "oprit": False}
-            self._scrie_curenta()
-            threading.Thread(target=self._asteapta, args=(p, self.curenta), daemon=True).start()
-            return dict(self.curenta)
+            self._liber()
+            return self._lanseaza(c, banca, produs)
 
-    def _asteapta(self, p, cur):
+    def _liber(self):
+        if self.curenta:
+            raise Ocupat(f"rulează deja: {self.comenzi.get(self.curenta['id'], {}).get('nume', self.curenta['id'])}")
+
+    @staticmethod
+    def locuri(c):
+        """Câte bănci ale cozii rulează simultan: 1, în afară de comenzile cu `paralel_banci`."""
+        return max(1, int(c.get("paralel_banci") or 1))
+
+    def _lanseaza(self, c, banca, produs, coada=None):
+        """Pornește rularea: prima bancă și, la o comandă cu `paralel_banci`, încă atâtea
+        din coadă cât încap. Apelat cu lacătul luat."""
+        cur = {"id": c["id"], "produs": produs, "inceput": _acum().isoformat(timespec="seconds"),
+               "t0": time.time(), "oprit": False, "coada": coada, "procese": []}
+        prim = self._porneste_proces(cur, c, banca)
+        self.curenta = cur
+        self._umple(cur)
+        self._scrie_curenta()
+        return {"id": cur["id"], "produs": produs, "inceput": cur["inceput"], "banca": banca,
+                "pid": prim["pid"], "log": prim["log"], "coada": coada,
+                "procese": [{k: p[k] for k in ("banca", "pid", "log")} for p in cur["procese"]]}
+
+    def _porneste_proces(self, cur, c, banca):
+        """Procesul unei bănci din rularea `cur`; apelat cu lacătul luat."""
+        os.makedirs(self.dir, exist_ok=True)
+        inceput = _acum()
+        coada = cur.get("coada")
+        produs = cur["produs"]
+        # la coadă, mai multe bănci pot porni în aceeași secundă: banca intră în numele jurnalului
+        cale_log = self._cale(f"{c['id']}_{inceput:%Y%m%d_%H%M%S}{'_' + banca if banca and coada else ''}.log")
+        argv = self.argv(c, banca, produs)
+        # MIP_RULARE_MANUALA: jurnal_joburi.py scrie jobul cu runed_manually = TRUE (migrarea 037)
+        mediu = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", MIP_RULARE_MANUALA="1",
+                     **c.get("mediu", {}))
+        for k in c.get("fara_mediu", ()):
+            mediu.pop(k, None)
+        pozitie = coada["pornite"] + 1 if coada else None
+        text_pozitie = f" · {pozitie}/{coada['total']}" if coada else ""
+        with open(cale_log, "w", encoding="utf-8") as log:
+            log.write(f"# {c['nume']}{' · ' + banca if banca else ''}{' · ' + produs if produs else ''}{text_pozitie} · pornit manual la "
+                      f"{inceput:%Y-%m-%d %H:%M:%S}\n# {' '.join(argv[1:])}\n")
+            log.flush()
+            p = subprocess.Popen(argv, cwd=self.radacina, stdout=log, stderr=subprocess.STDOUT,
+                                 stdin=subprocess.DEVNULL, env=mediu,
+                                 start_new_session=(os.name != "nt"))
+        if coada:
+            coada["pornite"] = pozitie
+        estimare_s, _, _ = self.estimare(c["id"], banca)
+        proc = {"banca": banca, "pid": p.pid, "log": os.path.basename(cale_log),
+                "inceput": inceput.isoformat(timespec="seconds"), "t0": time.time(),
+                "estimare_s": estimare_s, "pozitie": pozitie}
+        cur["procese"].append(proc)
+        threading.Thread(target=self._asteapta, args=(p, cur, proc), daemon=True).start()
+        return proc
+
+    def _umple(self, cur):
+        """Pornește din coadă bănci până la `paralel_banci` în lucru; apelat cu lacătul luat.
+        După „Oprește” sau după o repornire a serverului nu mai pornește nimic."""
+        coada = cur.get("coada")
+        c = self.comenzi.get(cur["id"])
+        if not coada or not c or cur["oprit"] or cur.get("orfan"):
+            return
+        while coada["ramase"] and len(cur["procese"]) < self.locuri(c):
+            urmatoarea = coada["ramase"].pop(0)
+            try:
+                self._porneste_proces(cur, c, urmatoarea)
+            except OSError as exc:
+                self._in_istoric({"id": cur["id"], "banca": urmatoarea, "sfarsit": _acum().isoformat(timespec="seconds"),
+                                  "cod": None, "nota": f"coada oprită: nu s-a putut porni ({exc})"})
+                coada["ramase"].clear()
+
+    def _asteapta(self, p, cur, proc):
         cod = p.wait()
         with self.lacat:
-            self._incheie(cur, cod)
+            self._incheie(cur, proc, cod)
 
     def opreste(self):
         with self.lacat:
@@ -384,30 +504,48 @@ class Rulari:
             if not cur:
                 raise Respins("nu rulează nimic")
             cur["oprit"] = True
-            _opreste_arbore(cur["pid"])
-            if cur.get("orfan") and not _proces_viu(cur["pid"]):
-                self._incheie(cur, None)
-        return {"oprit": cur["id"]}
+            # „Oprește” oprește tot: băncile în lucru și cele rămase la coadă
+            anulate = len((cur.get("coada") or {}).get("ramase") or [])
+            for proc in list(cur["procese"]):
+                _opreste_arbore(proc["pid"])
+                if cur.get("orfan") and not _proces_viu(proc["pid"]):
+                    self._incheie(cur, proc, None)
+        return {"oprit": cur["id"], "anulate": anulate}
 
-    def _incheie(self, cur, cod):
-        """Rândul din istoric; apelat cu lacătul luat."""
-        if self.curenta is not cur:
+    def _incheie(self, cur, proc, cod):
+        """Rândul din istoric al unei bănci, apoi următoarea din coadă; apelat cu lacătul luat."""
+        if self.curenta is not cur or proc not in cur["procese"]:
             return
-        sfarsit = _acum()
-        rand = {"id": cur["id"], "banca": cur["banca"], "produs": cur.get("produs"), "inceput": cur["inceput"],
-                "sfarsit": sfarsit.isoformat(timespec="seconds"),
-                "durata_s": round(time.time() - cur["t0"]), "cod": cod, "oprit": bool(cur["oprit"]),
-                "log": cur["log"], "ultimele": coada_fisier(self._cale(cur["log"]), RANDURI_ISTORIC)}
+        cur["procese"].remove(proc)
+        rand = {"id": cur["id"], "banca": proc["banca"], "produs": cur.get("produs"), "inceput": proc["inceput"],
+                "sfarsit": _acum().isoformat(timespec="seconds"),
+                "durata_s": round(time.time() - proc["t0"]), "cod": cod, "oprit": bool(cur["oprit"]),
+                "log": proc["log"], "ultimele": coada_fisier(self._cale(proc["log"]), RANDURI_ISTORIC)}
+        coada = cur.get("coada")
+        if coada:
+            rand["coada"] = f"{proc['pozitie']}/{coada['total']}"
+            coada["facute"].append({"banca": proc["banca"], "cod": cod})
         if cur.get("orfan"):
             rand["nota"] = "încheiată după o repornire a serverului: codul de ieșire nu se mai știe"
+            if coada and coada["ramase"] and not cur["procese"]:
+                # nu se reia singură la pornirea serverului: acum n-a cerut-o nimeni
+                rand["nota"] += f"; coada rămasă ({', '.join(coada['ramase'])}) nu s-a mai pornit"
         os.makedirs(self.dir, exist_ok=True)
-        with open(self._cale("istoric.jsonl"), "a", encoding="utf-8") as f:
-            f.write(json.dumps(rand, ensure_ascii=False) + "\n")
+        self._in_istoric(rand)
+        # o bancă eșuată nu oprește coada (o bancă blocată nu e motiv să nu rulezi restul); „Oprește” da
+        self._umple(cur)
+        if cur["procese"]:
+            self._scrie_curenta()
+            return
         self.curenta = None
         try:
             os.remove(self._cale("curenta.json"))
         except OSError:
             pass
+
+    def _in_istoric(self, rand):
+        with open(self._cale("istoric.jsonl"), "a", encoding="utf-8") as f:
+            f.write(json.dumps(rand, ensure_ascii=False) + "\n")
 
     # Rularea curentă stă și pe disc: dacă serverul e repornit cât rulează un
     # script de o oră, scriptul merge mai departe, iar fără fișierul ăsta
@@ -422,18 +560,30 @@ class Rulari:
                 cur = json.load(f)
         except (OSError, ValueError):
             return
+        if "procese" not in cur:
+            # scris înainte de 07.10.2026: un singur proces, cu datele lui pe rulare
+            coada = cur.get("coada")
+            cur["procese"] = [{"banca": cur.get("banca"), "pid": cur.get("pid", 0), "log": cur.get("log", ""),
+                               "inceput": cur.get("inceput"), "t0": cur.get("t0", 0), "estimare_s": cur.get("estimare_s"),
+                               "pozitie": len(coada["facute"]) + 1 if coada else None}]
         cur["orfan"] = True
         self.curenta = cur
         # peste o zi, PID-ul poate fi deja al altui proces
-        if not (time.time() - cur.get("t0", 0) < 86400 and _proces_viu(cur.get("pid", 0))):
-            with self.lacat:
-                self._incheie(cur, None)
+        vechi = time.time() - cur.get("t0", 0) >= 86400
+        with self.lacat:
+            for proc in list(cur["procese"]):
+                if vechi or not _proces_viu(proc.get("pid", 0)):
+                    self._incheie(cur, proc, None)
+            if self.curenta is cur and not cur["procese"]:
+                self.curenta = None
 
     def _verifica_orfan(self):
         cur = self.curenta
-        if cur and cur.get("orfan") and not _proces_viu(cur["pid"]):
+        if cur and cur.get("orfan"):
             with self.lacat:
-                self._incheie(cur, None)
+                for proc in list(cur["procese"]):
+                    if not _proces_viu(proc["pid"]):
+                        self._incheie(cur, proc, None)
 
     # ---------------- starea, pentru GET /api/rulari ----------------
 
@@ -446,25 +596,43 @@ class Rulari:
             c = self.comenzi[id_c]
             e = {"id": id_c, "nume": c["nume"], "ce": c["ce"], "internet": c["internet"],
                  "banca": c["banca"], "produs": c.get("produs"), "grup": c.get("grup"),
-                 "platit": bool(c.get("platit"))}
+                 "platit": bool(c.get("platit")), "paralel_banci": self.locuri(c)}
             if c["banca"] != "obligatoriu":
                 e["estimare_s"], e["estimare_sursa"], e["masurate"] = self.estimare(id_c, None, ist)
             if c["banca"]:
                 e["estimare_banca_s"], e["estimare_banca_sursa"], _ = self.estimare(id_c, ORICE_BANCA, ist)
-                lista = self.slugs_extragere() if c.get("banci") == "extragere" else banci
+                lista = self.banci_comanda(c)
                 e["estimari_banca"] = {b: self.estimare(id_c, b, ist)[0] for b in lista
                                        if any(r.get("id") == id_c and r.get("banca") == b for r in ist)}
             ale = [r for r in ist if r.get("id") == id_c]
             e["ultima"] = ale[-1] if ale else None
             comenzi.append(e)
-        cur = self.curenta
-        curenta = None
-        if cur:
-            curenta = {k: cur[k] for k in ("id", "banca", "inceput", "estimare_s", "oprit", "log")}
-            curenta["produs"] = cur.get("produs")
-            curenta["nume"] = self.comenzi.get(cur["id"], {}).get("nume", cur["id"])
-            curenta["scurs_s"] = round(time.time() - cur["t0"])
-            curenta["jurnal"] = coada_fisier(self._cale(cur["log"]), RANDURI_JURNAL)
-            curenta["dupa_repornire"] = bool(cur.get("orfan"))
         return {"activ": activ(), "comenzi": comenzi, "banci": banci, "banci_joburi": self.slugs_extragere(),
-                "curenta": curenta}
+                "curenta": self._vedere(self.curenta)}
+
+    def _vedere(self, cur):
+        """Rularea curentă pentru pagină. Cu o singură bancă în lucru, câmpurile de sus sunt
+        ale ei (ca înainte); cu mai multe, fiecare are bara și jurnalul ei în `procese`."""
+        if not cur:
+            return None
+        acum = time.time()
+        procese = list(cur["procese"])
+        unul = procese[0] if len(procese) == 1 else None
+        v = {"id": cur["id"], "nume": self.comenzi.get(cur["id"], {}).get("nume", cur["id"]),
+             "produs": cur.get("produs"), "oprit": cur["oprit"], "dupa_repornire": bool(cur.get("orfan"))}
+        if unul:
+            v.update(banca=unul["banca"], inceput=unul["inceput"], scurs_s=round(acum - unul["t0"]),
+                     estimare_s=unul["estimare_s"], log=unul["log"],
+                     jurnal=coada_fisier(self._cale(unul["log"]), RANDURI_JURNAL))
+        else:
+            v.update(banca=None, inceput=cur["inceput"], scurs_s=round(acum - cur["t0"]), estimare_s=None,
+                     log=procese[0]["log"] if procese else "", jurnal=[])
+        v["procese"] = [{"banca": p["banca"], "inceput": p["inceput"], "scurs_s": round(acum - p["t0"]),
+                         "estimare_s": p["estimare_s"], "log": p["log"],
+                         "jurnal": coada_fisier(self._cale(p["log"]), RANDURI_JURNAL_PARALEL)}
+                        for p in procese] if len(procese) > 1 else []
+        coada = cur.get("coada")
+        v["coada"] = ({"total": coada["total"], "pozitie": coada.get("pornite") or len(coada["facute"]) + 1,
+                       "in_lucru": len(procese), "ramase": list(coada["ramase"]), "facute": list(coada["facute"])}
+                      if coada else None)
+        return v

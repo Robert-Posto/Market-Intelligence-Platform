@@ -11,7 +11,7 @@ export const comun = {
   "pagini.overview.descriere": ["Ce date avem pe fiecare categorie, cât de proaspete sunt și ce lipsește la fiecare bancă.", "What data we have in each category, how fresh it is and what is missing for each bank."],
   "pagini.produse.nume_meniu": ["Produse & prețuri", "Products & prices"],
   "pagini.produse.titlu": ["Produse & prețuri", "Products & prices"],
-  "pagini.produse.descriere": ["Fiecare produs Libra față de produsul echivalent de la concurență: valorile, scenariul la care se aplică și citatul din document. Tabul „Comisioane pe bănci” păstrează matricea pe servicii.", "Each Libra product against the equivalent product at competitors: the values, the scenario they apply to and the quote from the document. The “Fees by bank” tab keeps the matrix by service."],
+  "pagini.produse.descriere": ["Fiecare produs Libra față de produsul echivalent de la concurență: valorile, scenariul la care se aplică și citatul din document.", "Each Libra product against the equivalent product at competitors: the values, the scenario they apply to and the quote from the document."],
   "pagini.rate.nume_meniu": ["Rate & indicatori", "Rates & indicators"],
   "pagini.rate.titlu": ["Rate & indicatori", "Rates & indicators"],
   "pagini.rate.descriere": ["Dobânda tipică a fiecărei bănci, pe termen (depozite) și pe produs (credite). Clic pe o celulă pentru dovezi.", "Each bank's typical interest rate, by term (deposits) and by product (loans). Click a cell for the evidence."],

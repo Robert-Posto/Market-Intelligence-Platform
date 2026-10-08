@@ -1,0 +1,20 @@
+/* Inventar produse: bara de filtre cu butonul „Adaugă produs”, tabelul și formularul */
+.ip-bara { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; margin-bottom: 14px }
+.ip-dreapta { display: flex; align-items: center; gap: 14px; font-size: 12px }
+.ip-callout { margin-bottom: 12px }
+.ip-callout code, .ip-fisier code { font-size: 11.5px }
+.ip-fisier { margin: 12px 0 0 }
+.ip-stea { color: var(--warn); margin-right: 6px }
+/* butoanele de pe rând nu se rup pe două linii când coloana denumirii e lungă */
+.ip-actiuni { display: inline-flex; white-space: nowrap }
+.ip-actiuni .ant-btn-link { padding: 0 6px; height: auto }
+.ip-confirma { max-width: 340px; margin: 0; font-size: 12px }
+.ip-form .ant-form-item { margin-bottom: 14px }
+.ip-form .ant-form-item-extra { font-size: 11.5px }
+/* descrierea sub denumire, pe un rând: întreagă e în tooltip */
+.ip-descriere { max-width: 46ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px }
+.ip-lipsa { color: var(--warn); font-size: 12px }
+.ip-tip { display: flex; justify-content: space-between; gap: 12px; min-width: 0 }
+.ip-tip .mono { font-size: 11px; flex: none }
+/* cont-curent-pj s-ar rupe la cratimă pe două rânduri */
+.ip-nowrap { white-space: nowrap }

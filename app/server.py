@@ -11,6 +11,11 @@ Singura exceptie, ceruta de Robert si doar pe laptopul lui: cu
 colectare dintr-o lista fixa (`app/rulari.py`, rutele `/api/rulari*`).
 Serverul tot nu scrie in baza; scriu scripturile pornite. Fara variabila,
 rutele de pornire raspund 403.
+
+A doua exceptie: pagina „Inventar produse" modifica fisierul
+`extragere_produse_bancare/produse_libra.json` (`app/inventar_produse.py`,
+rutele POST `/api/inventar_produse/*`), cu aceleasi verificari Host/Origin/token.
+Nici ea nu scrie in baza: tabela se actualizeaza la `incarca_baza.py`.
 """
 
 import csv
@@ -39,6 +44,7 @@ import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului
 # trebuia facuta in toate trei. Un singur loc, o singura valoare.
 from normalizeaza import PRAGURI  # noqa: E402
 import rulari  # noqa: E402  (app/, langa server)
+import inventar_produse  # noqa: E402
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
 # Vederea tine regula o singura data (`stare_data NOT IN (ISTORIC, DUBLURA)`) -
@@ -269,7 +275,7 @@ def mobil():
         "versiuni": interoghează(
             """SELECT b.slug AS banca, ar.platforma, ar.app_id, ar.versiune,
                       ar.note_lansare, ar.rating_agregat, ar.volum_rating,
-                      ar.distributie_stele
+                      ar.distributie_stele, ar.vazut_ultima
                FROM app_release_curente ar JOIN banci b ON b.id = ar.id_banca
                ORDER BY ar.volum_rating DESC NULLS LAST"""
         ),
@@ -1120,6 +1126,35 @@ def catalog_libra():
     )
 
 
+# tip_v2 nu e în tabelă: extragerea îl citește direct din fișier
+CAMPURI_INVENTAR = ("denumire", "descriere", "segment", "categorie_cod", "prioritar")
+
+
+def inventar_produse_libra():
+    """Produsele din `produse_libra.json`, fiecare cu starea lui în tabela `produse_libra`.
+
+    Pagina modifică fișierul, iar baza se schimbă abia la `incarca_baza.py`: fără
+    starea din bază, o denumire corectată în pagină ar părea ajunsă și în comparație.
+    `doar_in_baza`: produsele active în bază care nu mai sunt în fișier (șterse din
+    pagină); `incarca_baza.py` nu le dezactivează, deci rămân în joburi.
+    """
+    date = inventar_produse.citeste()
+    try:
+        din_baza = {r["cod"]: r for r in interoghează(
+            "SELECT cod, denumire, descriere, segment, categorie_cod, prioritar, activ FROM produse_libra")}
+    except psycopg2.Error:
+        din_baza = None
+    for p in date["produse"]:
+        r = (din_baza or {}).get(p["cod"])
+        p["diferente"] = [c for c in CAMPURI_INVENTAR if r and r[c] != p.get(c)]
+        p["baza"] = (None if din_baza is None else "lipsa" if not r else "inactiv" if not r["activ"]
+                     else "diferit" if p["diferente"] else "identic")
+    coduri = {p["cod"] for p in date["produse"]}
+    date["baza_disponibila"] = din_baza is not None
+    date["doar_in_baza"] = sorted(c for c, r in (din_baza or {}).items() if r["activ"] and c not in coduri)
+    return date
+
+
 def products_discovery(q):
     """Produsele concurenței fără echivalent în catalogul Libra (tabela `products_discovery`).
 
@@ -1878,11 +1913,41 @@ def rulare_manuala_catalog(q):
     return {
         "tipuri": [{"id": c["id"], "denumire": (tipuri.get(c["id"]) or {}).get("denumire") or c["nume"],
                     "descriere": (tipuri.get(c["id"]) or {}).get("descriere") or c["ce"],
-                    "ce": c["ce"], "produs": c.get("produs")} for c in rulari.JOBURI],
+                    "ce": c["ce"], "produs": c.get("produs"), "banci": RULARI.banci_comanda(c)}
+                   for c in rulari.JOBURI],
         "banci": RULARI.slugs_extragere(),
         "produse": interoghează("""SELECT cod, denumire, segment, categorie_cod, prioritar
                                     FROM produse_libra WHERE activ ORDER BY prioritar DESC, denumire"""),
     }
+
+
+def _estimare_job(joburi, tip, banca, produs, are_produs):
+    """Costul și durata unui job pe o bancă, din cel mai apropiat grup de joburi încheiate."""
+    grupe = ([("banca_produs", lambda j: j["banca"] == banca and j["coduri"] == [produs]),
+              ("produs", lambda j: j["coduri"] == [produs]),
+              ("banca", lambda j: j["banca"] == banca and j["coduri"]),
+              ("tip", lambda j: j["coduri"])] if are_produs else
+             [("banca", lambda j: j["banca"] == banca), ("tip", lambda j: True)])
+    for nivel, cond in grupe:
+        g = [j for j in joburi if cond(j)]
+        if g:
+            costuri = [j["cost_unitar"] for j in g]
+            durate = [j["durata"] for j in g if j["durata"] is not None]
+            return {"nivel": nivel, "n": len(g), "cost_med": statistics.median(costuri),
+                    "cost_min": min(costuri), "cost_max": max(costuri),
+                    "durata_med": statistics.median(durate) if durate else None,
+                    "durata_max": max(durate) if durate else None}
+    return None
+
+
+def _durata_coada(durate, locuri):
+    """Cât ține o coadă cu `locuri` bănci odată: fiecare bancă, în ordinea aleasă, ia primul loc
+    liber (ca în `rulari._umple`). Cu un loc, suma duratelor."""
+    ocupat = [0.0] * max(1, locuri)
+    for d in durate:
+        i = ocupat.index(min(ocupat))
+        ocupat[i] += d
+    return max(ocupat)
 
 
 def rulare_manuala_estimare(q):
@@ -1894,9 +1959,14 @@ def rulare_manuala_estimare(q):
     costa între $0,04 (instituții fără retail, „produs inexistent” din prima pagină) și $0,53, deci
     banca contează cât produsul. La extragere se spune și câte surse are perechea: fără ele,
     jobul nu are ce descărca.
+
+    Cu `banci=a,b,c` (mai multe bănci, la coadă): estimarea fiecărei bănci, iar în `total`
+    costul e suma lor. Durata e cât ține coada cu `paralel_banci` bănci odată (`_durata_coada`):
+    suma, la o comandă care le rulează pe rând.
     """
     tip = (q.get("tip") or [""])[0]
     banca = (q.get("banca") or [""])[0] or None
+    banci = [b for b in (q.get("banci") or [""])[0].split(",") if b]
     produs = (q.get("produs") or [""])[0] or None
     if tip not in {c["id"] for c in rulari.JOBURI}:
         return {"eroare": "tip necunoscut"}
@@ -1909,31 +1979,42 @@ def rulare_manuala_estimare(q):
         j["coduri"] = coduri
         j["cost_unitar"] = j["cost"] / len(coduri) if coduri else j["cost"]
     are_produs = next(c.get("produs") for c in rulari.JOBURI if c["id"] == tip) is not None
-    grupe = ([("banca_produs", lambda j: j["banca"] == banca and j["coduri"] == [produs]),
-              ("produs", lambda j: j["coduri"] == [produs]),
-              ("banca", lambda j: j["banca"] == banca and j["coduri"]),
-              ("tip", lambda j: j["coduri"])] if are_produs else
-             [("banca", lambda j: j["banca"] == banca), ("tip", lambda j: True)])
-    est = None
-    for nivel, cond in grupe:
-        g = [j for j in joburi if cond(j)]
-        if g:
-            costuri = [j["cost_unitar"] for j in g]
-            durate = [j["durata"] for j in g if j["durata"] is not None]
-            est = {"nivel": nivel, "n": len(g), "cost_med": statistics.median(costuri),
-                   "cost_min": min(costuri), "cost_max": max(costuri),
-                   "durata_med": statistics.median(durate) if durate else None,
-                   "durata_max": max(durate) if durate else None}
-            break
-    surse = None
-    if are_produs and banca and produs:
-        surse = interoghează(
-            """SELECT COUNT(*) FILTER (WHERE NOT s.not_found)::int AS gasite,
+
+    def surse_pereche(lista):
+        """Sursele găsite la discovery, pe bancă, pentru produsul ales (extragerea fără ele n-are ce descărca)."""
+        r = interoghează(
+            """SELECT b.slug AS banca,
+                      COUNT(*) FILTER (WHERE NOT s.not_found)::int AS gasite,
                       COUNT(*) FILTER (WHERE s.not_found)::int AS negasite,
                       to_char(MAX(s.created_at), 'YYYY-MM-DD') AS ultima
                  FROM surse_libra s JOIN banci b ON b.id = s.id_banca
                  JOIN produse_libra p ON p.id = s.id_produs_libra
-                WHERE b.slug = %s AND p.cod = %s""", (banca, produs))[0]
+                WHERE b.slug = ANY(%s) AND p.cod = %s
+                GROUP BY b.slug""", (lista, produs))
+        gol = {"gasite": 0, "negasite": 0, "ultima": None}
+        pe = {x["banca"]: {k: x[k] for k in gol} for x in r}
+        return {b: pe.get(b, gol) for b in lista}
+
+    if len(banci) > 1:
+        surse = surse_pereche(banci) if are_produs and produs else {}
+        pe_banca = [{"banca": b, "estimare": _estimare_job(joburi, tip, b, produs, are_produs),
+                     "surse": surse.get(b)} for b in banci]
+        cu = [x["estimare"] for x in pe_banca if x["estimare"]]
+        suma = (lambda k: sum(e[k] for e in cu if e[k] is not None) if any(e[k] is not None for e in cu) else None)
+        locuri = rulari.Rulari.locuri(next(c for c in rulari.JOBURI if c["id"] == tip))
+        coada = (lambda k: _durata_coada([e[k] for e in cu if e[k] is not None], locuri)
+                 if any(e[k] is not None for e in cu) else None)
+        total = {"n_banci": len(banci), "cost_med": suma("cost_med"), "cost_min": suma("cost_min"),
+                 "cost_max": suma("cost_max"), "durata_med": coada("durata_med"), "durata_max": coada("durata_max"),
+                 "paralel_banci": locuri,
+                 "fara_estimare": [x["banca"] for x in pe_banca if not x["estimare"]],
+                 "fara_surse": [b for b, x in surse.items() if x["gasite"] == 0]} if cu else None
+        return {"tip": tip, "banca": None, "produs": produs, "estimare": None, "surse": None,
+                "total": total, "pe_banca": pe_banca}
+
+    banca = banca or (banci[0] if banci else None)
+    est = _estimare_job(joburi, tip, banca, produs, are_produs)
+    surse = surse_pereche([banca])[banca] if are_produs and banca and produs else None
     return {"tip": tip, "banca": banca, "produs": produs, "estimare": est, "surse": surse}
 
 
@@ -1956,6 +2037,7 @@ RUTE = {
     "/api/campanii": campanii,
     "/api/comunicate": comunicate,
     "/api/catalog_libra": lambda q: catalog_libra(),
+    "/api/inventar_produse": lambda q: inventar_produse_libra(),
     "/api/comparatie_libra": comparatie_libra,
     "/api/products_discovery": products_discovery,
     "/api/jobs": jobs,
@@ -2098,8 +2180,52 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
                                       RULARI.token if cu_token else None)
 
+    def _corp_json(self, maxim=2048):
+        """Corpul unui POST ca dict, sau None după ce s-a trimis deja refuzul."""
+        # JSON obligatoriu: un formular de pe alt site nu poate trimite
+        # application/json fără preflight CORS, pe care nu-l acceptăm
+        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
+            self._json(415, {"eroare": "se acceptă doar application/json"})
+            return None
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            n = -1
+        if not 0 <= n <= maxim:
+            self._json(400, {"eroare": "corp prea mare"})
+            return None
+        try:
+            corp = json.loads(self.rfile.read(n) or b"{}")
+            if not isinstance(corp, dict):
+                raise ValueError
+        except ValueError:
+            self._json(400, {"eroare": "JSON invalid"})
+            return None
+        return corp
+
+    def _post_inventar(self, actiune):
+        motiv = rulari.verifica_cerere(self.headers, self.server.server_address[1], inventar_produse.TOKEN)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        # descrierea: 1.000 de caractere, până la 2 octeți fiecare cu diacriticele
+        corp = self._corp_json(maxim=8192)
+        if corp is None:
+            return
+        try:
+            self._json(200, inventar_produse.salveaza(actiune, corp))
+        except inventar_produse.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except inventar_produse.Conflict as exc:
+            self._json(409, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(500, {"eroare": f"{exc.__class__.__name__}: {exc}"})
+
     def do_POST(self):
         cale = urllib.parse.urlparse(self.path).path
+        if cale.startswith("/api/inventar_produse/"):
+            self._post_inventar(cale.rsplit("/", 1)[1])
+            return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
             return
@@ -2110,28 +2236,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if motiv:
             self._json(403, {"eroare": motiv})
             return
-        # JSON obligatoriu: un formular de pe alt site nu poate trimite
-        # application/json fără preflight CORS, pe care nu-l acceptăm
-        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
-            self._json(415, {"eroare": "se acceptă doar application/json"})
-            return
-        try:
-            n = int(self.headers.get("Content-Length") or 0)
-        except ValueError:
-            n = -1
-        if not 0 <= n <= 2048:
-            self._json(400, {"eroare": "corp prea mare"})
-            return
-        try:
-            corp = json.loads(self.rfile.read(n) or b"{}")
-            if not isinstance(corp, dict):
-                raise ValueError
-        except ValueError:
-            self._json(400, {"eroare": "JSON invalid"})
+        corp = self._corp_json()
+        if corp is None:
             return
         try:
             if cale.endswith("/porneste"):
-                self._json(200, RULARI.porneste(corp.get("id"), corp.get("banca"), corp.get("produs")))
+                self._json(200, RULARI.porneste(corp.get("id"), corp.get("banca"), corp.get("produs"),
+                                                corp.get("banci"), corp.get("toate") is True))
             else:
                 self._json(200, RULARI.opreste())
         except rulari.Respins as exc:
@@ -2143,6 +2254,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/inventar_produse/token":
+            # tokenul de scriere se dă doar paginii servite de noi (din Vite, alt port, se refuză):
+            # fără el, editarea din pagină rămâne oprită, dar lista se vede
+            motiv = rulari.verifica_cerere(self.headers, self.server.server_address[1])
+            self._json(403, {"eroare": motiv}) if motiv else self._json(200, {"token": inventar_produse.TOKEN})
+            return
         if parsed.path == "/api/rulari":
             # tot cu Host/Origin: răspunsul poartă tokenul de scriere, deci
             # nu trebuie să-l poată citi o pagină cu DNS rebinding

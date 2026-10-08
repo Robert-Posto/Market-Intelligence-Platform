@@ -7,7 +7,7 @@ incarca_baza.py — pune în baza MIP datele fluxului, din fișierele din repo.
 Pentru cine clonează repo-ul: după ce baza MIP există (`banci` populată, vezi
 README, „Migrări”), comanda asta face tot restul, fără descărcări și fără model:
   1. migrările fluxului (db/migration_027 … 034), doar dacă tabelele lipsesc;
-  2. cele 57 de produse Libra (produse_libra.json, fără descrierile interne);
+  2. produsele Libra, din produse_libra.json (sursa de adevăr); cele scoase din fișier se dezactivează;
   3. sursele, din inventare-libra/<banca>/*.json      (descopera_surse_libra --din-json)
   4. valorile, din inventare-libra/valori-<banca>.json (extrage_comparatie_libra --din-json)
   5. produsele concurenței, din inventare-produse/     (descopera_produse --din-json)
@@ -69,13 +69,19 @@ def produse_libra(conn) -> None:
     with conn.cursor() as cur:
         for p in lista:
             cur.execute("""
-                INSERT INTO produse_libra (cod, denumire, segment, categorie_cod, prioritar)
-                VALUES (%(cod)s, %(denumire)s, %(segment)s, %(categorie_cod)s, %(prioritar)s)
-                ON CONFLICT (cod) DO UPDATE SET denumire = EXCLUDED.denumire, segment = EXCLUDED.segment,
-                    categorie_cod = EXCLUDED.categorie_cod, prioritar = EXCLUDED.prioritar,
-                    activ = TRUE, updated_at = now()""", p)
+                INSERT INTO produse_libra (cod, denumire, descriere, segment, categorie_cod, prioritar)
+                VALUES (%(cod)s, %(denumire)s, %(descriere)s, %(segment)s, %(categorie_cod)s, %(prioritar)s)
+                ON CONFLICT (cod) DO UPDATE SET denumire = EXCLUDED.denumire, descriere = EXCLUDED.descriere,
+                    segment = EXCLUDED.segment, categorie_cod = EXCLUDED.categorie_cod,
+                    prioritar = EXCLUDED.prioritar, activ = TRUE, updated_at = now()""",
+                        {"descriere": None, **p})
+        # dezactivare, nu DELETE: sursele, valorile și istoricul produsului șters rămân legate
+        # (cascada de pe id_produs_libra le-ar șterge pe toate, la toate băncile)
+        cur.execute("""UPDATE produse_libra SET activ = FALSE, updated_at = now()
+                        WHERE activ AND NOT (cod = ANY(%s)) RETURNING cod""", ([p["cod"] for p in lista],))
+        scoase = [r[0] for r in cur.fetchall()]
     conn.commit()
-    spune(f"  {len(lista)} produse Libra")
+    spune(f"  {len(lista)} produse Libra" + (f"; dezactivate (nu mai sunt în fișier): {', '.join(scoase)}" if scoase else ""))
 
 
 def banci_cu_date(conn, dosar: Path, tipar: str) -> list[str]:

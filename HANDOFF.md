@@ -50,7 +50,7 @@ python extragere_produse_bancare/incarca_baza.py
 
 Face tot, **fără descărcări și fără apeluri la model**:
 1. aplică migrările 027–034, doar dacă tabelele lipsesc;
-2. încarcă cele 57 de produse Libra (`produse_libra.json`);
+2. încarcă cele 57 de produse Libra (`produse_libra.json`, sursa de adevăr) și le dezactivează pe cele scoase din fișier;
 3. sursele găsite la fiecare bancă (`inventare-libra/<banca>/*.json`);
 4. valorile extrase (`inventare-libra/valori-<banca>.json`), cu regulile deterministe;
 5. produsele concurenței (`inventare-produse/produse-<banca>.json`).
@@ -121,7 +121,9 @@ Extracția compară amprenta documentului (`hashes_libra`): un document neschimb
 se mai trimite la model, deci o re-rulare costă doar ce s-a schimbat.
 
 Fișiere de configurare:
-- `produse_bancare_v2.json`, `mapare_libra_v2.json` — câmpurile căutate pe tip de produs;
+- `produse_libra.json` — produsele Libra, cu `tip_v2` (până pe 07.10.2026 în `mapare_libra_v2.json`),
+  editabile din pagina „Inventar produse”;
+- `produse_bancare_v2.json` — câmpurile căutate pe tip de produs;
 - `reguli_valori.py` — reguli fără model aplicate fiecărei valori: un 0 doar cu
   dovadă în citat, „negociabil” / „nelimitat” ca text, dobânda minimă / maximă în
   câmpul ei, dobânda penalizatoare respinsă, perioadele în luni. Ce se respinge
@@ -140,9 +142,10 @@ Fișiere de configurare:
   ING 264, BT 9. Toate sunt **propuneri** (`stare = 'propus'`), niciuna validată de un om.
 - **Produsele concurenței**: 21 (Raiffeisen 13, BCR 4, ING 4). Pilot: la BCR s-au
   clasificat 60 din 186 de candidați; BRD și Libra încă nerulate.
-- **Fără date interne Libra.** Descrierile din catalogul intern (prețuri și condiții
-  interne) au fost scoase din inventare, iar extracția nu le mai scrie în JSON;
-  `produse_libra.json` are doar coduri, denumiri, segment și categorie.
+- **Date interne Libra doar în `produse_libra.json`.** De pe 07.10.2026 descrierile din
+  catalogul intern (pot conține prețuri și condiții interne) stau în `produse_libra.json`,
+  sursa de adevăr a produselor. Inventarele de surse și valori tot nu le scriu
+  (`fara_descriere` în extracție).
 
 ---
 

@@ -1,405 +1,519 @@
 {
- "nota": "Lista celor 57 de produse Libra, axa comparației (tabela produse_libra). Fără descrieri: descrierile vin din catalogul intern Libra (prețuri și condiții interne) și nu stau în repo; tabela le are goale.",
- "generat": "2026-10-05",
+ "nota": "Sursa de adevăr pentru produsele Libra, axa comparației: din el incarca_baza.py umple tabela produse_libra, iar extragerea ia tip_v2 (tipul din produse_bancare_v2.json după care se caută câmpurile). Se editează din pagina „Inventar produse”. Descrierile vin din catalogul intern Libra.",
+ "generat": "2026-10-07",
  "produse": [
   {
    "cod": "ABONAMENT_ELITE",
    "denumire": "Abonament ELITE (corporate)",
+   "descriere": "Abonament corporate 225 lei/lună: 50 plăți/încasări lei/euro, 50 SEPA, 50 instrumente de debit, 3 carduri, include Live FX.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "ABONAMENT_OPERATIONAL",
    "denumire": "Abonament operațional (pachet cont)",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "CARDURI_ACQUIRING",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "ABONAMENT_PFA",
    "denumire": "Abonament PFA",
+   "descriere": "Abonament 29 lei/lună pentru PFA/profesii: cont, card business, IB/MB gratuite, 50 de operațiuni/lună incluse.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "ABONAMENT_PRESTIGE",
    "denumire": "Abonament PRESTIGE (corporate)",
+   "descriere": "Abonament corporate 295 lei/lună: tranzacții nelimitate lei/euro/SEPA, 5 carduri standard + 2 Gold, include Live FX.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "ABONAMENT_PRIME",
    "denumire": "Abonament PRIME (corporate)",
+   "descriere": "Abonament corporate 95 lei/lună: conturi lei/euro/USD, 25 plăți instant + 25 încasări lei, 2 carduri business, include Live FX.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "ABONAMENT_RISE",
    "denumire": "Abonament RISE",
+   "descriere": "Abonament operațional 50 lei/lună: plăți/încasări nelimitate în lei prin IB/MB, până la 2 carduri business, retrageri gratuite, mPOS 0,59%.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "ABONAMENT_SHINE",
    "denumire": "Abonament SHINE",
+   "descriere": "Abonament operațional 100 lei/lună: lei + euro, plăți instant, carduri business Gold, mPOS 0,59%.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "ACREDITIVE",
    "denumire": "Acreditive documentare",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "TRADE_FINANCE",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "garantii-acreditive"
   },
   {
    "cod": "API_CONTABILI",
    "denumire": "API Contabili (integrare cu programele de contabilitate)",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "CONT_OPERATIUNI",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "banking-digital"
   },
   {
    "cod": "APLICATIA_LIBRA",
    "denumire": "Aplicația Libra Bank (Mobile Banking)",
+   "descriere": "Aplicația de mobile banking Libra (v4): Libra Voice, RoPay, Click to Pay.",
    "segment": "PF+PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "banking-digital"
   },
   {
    "cod": "CARD_CREDIT_BUSINESS",
    "denumire": "Card de credit business",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "CARDURI_ACQUIRING",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "card-credit"
   },
   {
    "cod": "CARD_CREDIT_PF",
    "denumire": "Card de credit (PF)",
+   "descriere": "Linie revolving RON cu grație până la 56 zile, 3 rate fără dobândă la comercianți eligibili; max. 6 venituri nete / 100.000 RON.",
    "segment": "PF",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "card-credit"
   },
   {
    "cod": "CARD_CREDIT_PJ",
    "denumire": "Card de credit business (PJ/PFA)",
+   "descriere": "Linie de credit revolving pe card business, cu perioadă de grație; 10.000–500.000 lei, max. 5% din CA.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "card-credit"
   },
   {
    "cod": "CARD_DEBIT_BUSINESS",
    "denumire": "Card de debit business",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "CARDURI_ACQUIRING",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "card-debit"
   },
   {
    "cod": "CARD_DEBIT_FREE",
    "denumire": "Card de debit Free",
+   "descriere": "Card debit fără costuri de emitere sau administrare, cu cashback la parteneri.",
    "segment": "PF+PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "card-debit"
   },
   {
    "cod": "CARD_DEBIT_GOLD",
    "denumire": "Card de debit Gold",
+   "descriere": "Card debit cu asigurare de călătorie, cashback, lounge, 3 retrageri gratuite/lună, 1% dobândă la sold peste 500 lei; 48 lei/an.",
    "segment": "PF+PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "card-debit"
   },
   {
    "cod": "CONT_DESTEPT",
    "denumire": "Cont Deștept (start-up)",
+   "descriere": "Pachet gratuit 12 luni pentru start-up-uri: cont, card, online banking, plăți nelimitate în lei, mPOS 0,59%.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "CONT_DEZVOLTATOR",
    "denumire": "Contul Dezvoltatorului",
+   "descriere": "Cont dedicat proiectelor imobiliare (Legea 207/2025): încasează avansurile clienților și plătește costurile proiectului. RON/EUR, doar în sucursală.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "CONT_ECONOMII",
    "denumire": "Cont de economii",
+   "descriere": "Cont de economii în lei cu dobândă la sold zilnic: ~3,00% p.a. la 6-12 luni, 2,50% la 3-6 luni, 2,00% nelimitat cu retrageri oricând.",
    "segment": "PF+PJ",
    "categorie_cod": "DEPOZITE",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "economii"
   },
   {
    "cod": "CONT_ONLINE_BUSINESS",
    "denumire": "Cont Online Business",
+   "descriere": "Cont curent PJ deschis și gestionat exclusiv online; permite abonamente operaționale și card business.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "cont-curent-pj"
   },
   {
    "cod": "CONT_ONLINE_PERSONAL",
    "denumire": "Cont Online Personal",
+   "descriere": "Cont curent PF deschis 100% online, cu acces digital complet.",
    "segment": "PF",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cont-curent"
   },
   {
    "cod": "CREDIT_AGRI_ECHIPAMENTE",
    "denumire": "Credit echipamente agricole (InvestEU)",
+   "descriere": "Credit de investiții în rate pentru utilaje agricole, 12–84 luni.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "agro"
   },
   {
    "cod": "CREDIT_AGRI_INPUTURI",
    "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+   "descriere": "Linie de credit pentru inputuri agricole, 24–48 luni, rambursare corelată cu sezonalitatea.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "agro"
   },
   {
    "cod": "CREDIT_AGRI_IRIGATII",
    "denumire": "Credit soluții pentru irigații (InvestEU)",
+   "descriere": "Credit de investiții pentru sisteme de irigații, 12–60 luni.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "agro"
   },
   {
    "cod": "CREDIT_APIA",
    "denumire": "Credit APIA (convenție APIA)",
+   "descriere": "Credit de activitate curentă pe adeverința APIA: până la 90% din subvenția anului, cu grație până la încasarea APIA.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "agro"
   },
   {
    "cod": "CREDIT_BERD_PJ",
    "denumire": "Credit de investiții InvestEU BERD",
+   "descriere": "Credit de investiții cu garanție BERD 80%: până la 10 mil. lei, 12–120 luni, max. 85% din investiție, grație până la 12 luni.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "credit-investitii"
   },
   {
    "cod": "CREDIT_BID_IMM",
    "denumire": "Credit cu garanție BID",
+   "descriere": "Finanțare în lei cu garanție BID 70-80%: investiții până la 10 mil., activitate curentă până la 5 mil.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "imm-invest"
   },
   {
    "cod": "CREDIT_DEZVOLTATORI",
    "denumire": "Credit pentru dezvoltatori imobiliari",
+   "descriere": "Finanțare pe faze pentru proiecte rezidențiale, cu analiză de proiect și consultanță specializată.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "credit-investitii"
   },
   {
    "cod": "CREDIT_ENERGIE_VERDE",
    "denumire": "Credit pentru energie verde",
+   "descriere": "Finanțare pentru capacități de producție fotovoltaică/eoliană, de la zero sau refinanțare.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "credit-investitii"
   },
   {
    "cod": "CREDIT_HIPOCRATE",
    "denumire": "Credit Hipocrate (medici)",
+   "descriere": "Credit pentru activitate curentă/investiții/ipotecar dedicat cabinetelor și clinicilor medicale, stomatologice, veterinare, tehnicii medicale.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "linie-credit"
   },
   {
    "cod": "CREDIT_IMM_IPOTECA",
    "denumire": "Credit IMM garantat cu ipotecă",
+   "descriere": "Credit/linie garantată imobiliar: 50.000–1 mil. RON (linie max. 600k), activitate curentă până la 84 luni, investiții până la 180.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "credit-investitii"
   },
   {
    "cod": "CREDIT_IMOBILIAR_PJ",
    "denumire": "Credit imobiliar persoane juridice",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "credit-investitii"
   },
   {
    "cod": "CREDIT_INVESTEU_PJ",
    "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+   "descriere": "Linii/credite activitate curentă (250k–10 mil.) și investiții (până la 15-20 mil. RON), 12–120 luni, criterii InvestEU.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "imm-invest"
   },
   {
    "cod": "CREDIT_INVESTITII",
    "denumire": "Credit de investiții",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "credit-investitii"
   },
   {
    "cod": "CREDIT_IPOTECAR_PF",
    "denumire": "Credit ipotecar / investiții imobiliare",
+   "descriere": "Achiziție/construcție/refinanțare locuință, inclusiv Credit Verde; până la 420 luni, max. 15 mil. lei.",
    "segment": "PF",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "ipotecar"
   },
   {
    "cod": "CREDIT_LIBRA_WAY",
    "denumire": "Credit nevoie personale Libra Way",
+   "descriere": "Credit de consum pentru nevoi personale, fara justificare; moneda RON; perioada maxima 60 luni; rambursare in rate egale sau descrescatoare; fara perioada de gratie; valoare min. 10.000 RON, max. 150.000 RON.",
    "segment": "PF",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "nevoi-personale"
   },
   {
    "cod": "CREDIT_NEVOI_PERSONALE",
    "denumire": "Credit nevoi personale",
+   "descriere": "Credit de consum fără justificare, până la 60 luni; fără garanții până la 70.000–200.000 lei în funcție de profesie.",
    "segment": "PF",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "nevoi-personale"
   },
   {
    "cod": "CREDIT_PROFESII",
    "denumire": "Credite alte profesii liberale (Freud/Vitruvius/Paccioli/Libra IT)",
+   "descriere": "Credite dedicate psihologilor, arhitecților/geodezilor, contabililor/auditorilor și firmelor IT (CAEN 62/63).",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "linie-credit"
   },
   {
    "cod": "CREDIT_SIMPLU_IMM",
    "denumire": "Credit Simplu IMM",
+   "descriere": "Credit 20.000–200.000 lei (max. 1,5× CA medie lunară), până la 48 luni, pe scoring, fără garanție imobiliară.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "linie-credit"
   },
   {
    "cod": "CREDIT_SOLON",
    "denumire": "Credit Solon (juriști)",
+   "descriere": "Credit dedicat notarilor, avocaților, executorilor judecătorești și practicienilor în insolvență.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "linie-credit"
   },
   {
    "cod": "DEPOZIT_1AN_1LUNA",
    "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+   "descriere": "Depozit promoțional 13 luni, dobândă totală ~6,60%/6,10% p.a.",
    "segment": "PF+PJ",
    "categorie_cod": "DEPOZITE",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "depozit-termen"
   },
   {
    "cod": "DEPOZIT_BLITZ_7L",
    "denumire": "Depozit promoțional Blitz (7 luni)",
+   "descriere": "Depozit promoțional pe 7 luni, dobândă ~6,25% p.a.",
    "segment": "PF+PJ",
    "categorie_cod": "DEPOZITE",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "depozit-termen"
   },
   {
    "cod": "DEPOZIT_TERMEN",
    "denumire": "Depozit la termen",
+   "descriere": "Depozit la termen pentru lichiditățile care stau nefolosite în cont. Se recomandă DOAR pe baza soldurilor din conturi curente, nu a creditelor.",
    "segment": "PF+PJ",
    "categorie_cod": "DEPOZITE",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "depozit-termen"
   },
   {
    "cod": "FX_SPOT",
    "denumire": "Schimb valutar spot",
+   "descriere": null,
    "segment": "PF+PJ",
    "categorie_cod": "FX_HEDGING",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "schimb-valutar"
   },
   {
    "cod": "INTERNET_BANKING",
    "denumire": "Internet & Mobile Banking business",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": null,
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "banking-digital"
   },
   {
    "cod": "LEASING_FINANCIAR",
    "denumire": "Leasing financiar (Libra Development IFN)",
+   "descriere": "Leasing auto (până la 7 ani, avans de la 15%) și echipamente/utilaje (până la 5 ani, avans de la 20%), prin IFN-ul grupului.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_INVESTITII",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "leasing"
   },
   {
    "cod": "LIBRAPAY_ECOM",
    "denumire": "LibraPay eCommerce (plăți online)",
+   "descriere": "Acceptare de plăți online cu cardul (gateway LibraPay). Pentru clienți cu magazin online sau facturare online.",
    "segment": "PJ",
    "categorie_cod": "CARDURI_ACQUIRING",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "acceptare-carduri"
   },
   {
    "cod": "LINIE_CREDIT",
    "denumire": "Linie de credit / capital de lucru",
+   "descriere": "Linie de credit reînnoibilă pentru capitalul de lucru: acoperă decalajul dintre plăți și încasări. Potrivită la creșteri de stocuri, sezonalitate, termene lungi de încasare.",
    "segment": "PJ",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "linie-credit"
   },
   {
    "cod": "LIVE_FX",
    "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+   "descriere": "Platformă online de schimb valutar cu cursuri în timp real, direct din Internet Banking — produs diferit de FX-ul clasic prin dealer. Pentru clienți cu schimburi valutare frecvente.",
    "segment": "PF+PJ",
    "categorie_cod": "FX_HEDGING",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "schimb-valutar"
   },
   {
    "cod": "OVERDRAFT_PF",
    "denumire": "Overdraft (descoperit de cont)",
+   "descriere": "Descoperit autorizat până la 6 salarii nete (max. 70.000 lei), dobândă doar pe suma utilizată.",
    "segment": "PF",
    "categorie_cod": "CREDIT_CAPITAL_LUCRU",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "overdraft-pf"
   },
   {
    "cod": "PLASAMENTE",
    "denumire": "Plasamente / titluri de stat",
+   "descriere": null,
    "segment": "PF+PJ",
    "categorie_cod": "DEPOZITE",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "investitii-retail"
   },
   {
    "cod": "POS_FIZIC",
    "denumire": "Terminal POS fizic",
+   "descriere": "Terminal de plată cu cardul la locație. Pentru orice client cu vânzare fizică (retail, HoReCa, servicii, cabinete).",
    "segment": "PJ",
    "categorie_cod": "CARDURI_ACQUIRING",
-   "prioritar": true
+   "prioritar": true,
+   "tip_v2": "acceptare-carduri"
   },
   {
    "cod": "RCD_CASH_DEPOSIT",
    "denumire": "RCD Cash Deposit",
+   "descriere": "Echipament de depunere bancnote RON în sucursală, doar PJ: numărare și validare rapidă, creditare în aceeași zi (până la 16:00).",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cash-management"
   },
   {
    "cod": "ROPAY",
    "denumire": "RoPay (plăți instant prin telefon)",
+   "descriere": null,
    "segment": "PF+PJ",
    "categorie_cod": "CONT_OPERATIUNI",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "plati-transferuri"
   },
   {
    "cod": "ROPAY_BUSINESS",
    "denumire": "RoPay for Business",
+   "descriere": "Încasări instant prin cod QR (schema națională RoPay), inclusiv weekend — integrare în infrastructura digitală a afacerii.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "acceptare-carduri"
   },
   {
    "cod": "SCRISORI_GARANTIE",
    "denumire": "Scrisori de garanție bancară",
+   "descriere": null,
    "segment": "PJ",
    "categorie_cod": "TRADE_FINANCE",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "garantii-acreditive"
   },
   {
    "cod": "SMART_SAFE",
    "denumire": "Smart Safe",
+   "descriere": "Seif inteligent la locația clientului (partener Force One): depunere numerar cu înregistrare imediată în cont.",
    "segment": "PJ",
    "categorie_cod": "CONT_CURENT",
-   "prioritar": false
+   "prioritar": false,
+   "tip_v2": "cash-management"
   }
  ]
 }

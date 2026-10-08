@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from 'react'
-import { Checkbox, Input, Segmented, Tooltip } from 'antd'
+import { Button, Checkbox, Input, Popover, Segmented, Select, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import type { ComparatieLibraDisponibila, ProdusLibra, ValoareLibra } from '@mcc/shared'
 import { useComparatieLibra, useComparatieProdus } from '../../api/comparatie_libra'
 import { useMeta, type Meta } from '../../api/meta'
-import { Despre, Eroare, SeIncarca } from '../../components/comune'
+import { Despre, Eroare, Pill, SeIncarca } from '../../components/comune'
 import { etNume } from '../../components/valori'
 import { T, useLang, type DictKey } from '../../i18n'
 import { faraDiacritice, num } from '../../util/format'
@@ -17,13 +17,14 @@ import { CATEGORII, SCURT, motiv, numeCategorie, vizibila, type Stare } from './
 import '../../styles/produse_libra.css'
 
 const SEGMENTE: [string, DictKey][] = [['toate', 'pl.segment_toate'], ['PF', 'pl.segment_pf'], ['PJ', 'pl.segment_pj']]
+const SEGMENT_TEXT: Record<string, DictKey> = { PF: 'pl.segment_pf', PJ: 'pl.segment_pj' }
 
 type Lista = ComparatieLibraDisponibila
 type Negasit = Lista['negasite'][number]
 
-/* Tabelul se derulează în interiorul lui, nu pagina: capul cu băncile rămâne mereu
-   vizibil. Înălțimea = spațiul rămas pe ecran sub carduri, plus 20% (restul se vede
-   derulând puțin pagina). */
+/* Tabelul pe câmpuri se derulează în interiorul lui, nu pagina: capul cu băncile rămâne
+   mereu vizibil. Înălțimea = spațiul rămas pe ecran sub capul produsului, plus 20%
+   (restul se vede derulând puțin pagina). */
 function potriveste(w: HTMLDivElement | null) {
   const main = document.getElementById('principal')
   if (!w || !main) return
@@ -32,30 +33,31 @@ function potriveste(w: HTMLDivElement | null) {
   w.style.maxHeight = Math.round(1.2 * (ingust ? window.innerHeight - 70 : Math.max(380, main.clientHeight - sus - 24))) + 'px'
 }
 
+/** o categorie din dropdown, cu câte produse are în segmentul ales */
+interface OptiuneCategorie { value: string; label: string; n: number }
+
 /**
  * 2.1, vederea „Comparație cu Libra”: fiecare produs Libra față de produsul
  * echivalent de la concurență, din comparatie_libra. Portată din aplicația
  * Next.js (components/produse/ProduseLibra.jsx), cu aceleași reguli.
  */
-export default function ComparatieLibra({ comutator }: { comutator: ReactNode }) {
+export default function ComparatieLibra() {
   const { t } = useLang()
   const lista = useComparatieLibra()
   const meta = useMeta()
   if (lista.error) return <Eroare e={lista.error} />
   if (meta.error) return <Eroare e={meta.error} />
   if (!lista.data || !meta.data) return <SeIncarca />
-  if (!lista.data.disponibil) {
-    return (
-      <>
-        <div className="pl-filtre">{comutator}</div>
-        <section><p className="note"><T k="pl.nedisponibil" /></p></section>
-      </>
-    )
-  }
-  return <Vedere lista={lista.data} m={meta.data} comutator={comutator} t={t} />
+  if (!lista.data.disponibil) return <section><p className="note"><T k="pl.nedisponibil" /></p></section>
+  return <Vedere lista={lista.data} m={meta.data} t={t} />
 }
 
-function Vedere({ lista, m, comutator, t }: { lista: Lista; m: Meta; comutator: ReactNode; t: ReturnType<typeof useLang>['t'] }) {
+/**
+ * Sus, navigarea: segment, căutare, categorii și sliderul cu cardurile produselor Libra.
+ * Dedesubt, produsul ales. (Pe 07.10.2026 s-a încercat o listă verticală în stânga, în
+ * locul sliderului; s-a revenit la slider, cu restul vederii păstrat.)
+ */
+function Vedere({ lista, m, t }: { lista: Lista; m: Meta; t: ReturnType<typeof useLang>['t'] }) {
   const { tn, locale } = useLang()
   const [sp, setSp] = useSearchParams()
   const stare: Stare = useMemo(() => Object.fromEntries(sp.entries()), [sp])
@@ -145,49 +147,44 @@ function Vedere({ lista, m, comutator, t }: { lista: Lista; m: Meta; comutator: 
       <div className="pl-filtre">
         <Segmented value={seg} onChange={(s) => mergi({ segment: s === 'toate' ? '' : s, produs: '' })}
           options={SEGMENTE.map(([s, k]) => ({ value: s, label: t(k) }))} />
+        {/* categoria: dropdown în loc de rândul de chips (08.10.2026), cu numărul de produse pe fiecare */}
+        <Select<string, OptiuneCategorie> className="pl-cat" value={cat || ''} popupMatchSelectWidth={false}
+          classNames={{ popup: { root: 'pl-cat-meniu' } }}
+          onChange={(k) => mergi({ cat: k, produs: '' })}
+          options={[
+            { value: '', label: t('pl.categorie_toate'), n: peSeg.length },
+            ...CATEGORII.filter((k) => nrCat[k]).map((k) => ({ value: k, label: numeCategorie(k, t), n: nrCat[k]! })),
+          ]}
+          labelRender={(o) => (
+            <span className="pl-cat-val"><span className="et">{t('pl.categorie_eticheta')}</span>{o.label}</span>
+          )}
+          optionRender={(o) => (
+            <span className="pl-cat-opt"><span>{o.data.label}</span><span className="n">{o.data.n}</span></span>
+          )} />
         <Input className="cauta" allowClear placeholder={t('pl.cauta_placeholder')} value={cauta} onChange={(e) => setCauta(e.target.value)} />
-        <span className="pl-vedere">{comutator}</span>
-      </div>
-
-      <div className="pl-chipuri">
-        <button type="button" className={`pl-chip ${!cat ? 'activ' : ''}`} onClick={() => mergi({ cat: '', produs: '' })}>
-          {t('pl.categorie_toate')}<span>{peSeg.length}</span>
-        </button>
-        {CATEGORII.filter((k) => nrCat[k]).map((k) => (
-          <button type="button" key={k} className={`pl-chip ${k === cat ? 'activ' : ''}`} onClick={() => mergi({ cat: k, produs: '' })}>
-            {numeCategorie(k, t)}<span>{nrCat[k]}</span>
-          </button>
-        ))}
       </div>
 
       <div className="pl-slider">
         <button type="button" className="pl-sag" aria-label={t('pl.sag_inapoi')} onClick={() => derula(-1)}>‹</button>
         <div className="pl-track" ref={track}>
-          {produse.length ? produse.map((p) => (
-            <button type="button" key={p.cod} className={`pl-card ${p.cod === ales?.cod ? 'activ' : ''}`}
-              hidden={!!c && !faraDiacritice(`${p.denumire} ${p.cod}`).includes(c)}
-              onClick={() => mergi({ produs: p.cod, termen: '', ind: '', moneda: '', canal: '', plata: '', oferta: '', variante: '' })}>
-              <span className="cat">{p.segment ?? ''} · {numeCategorie(p.categorie_cod, t)}</span>
-              <span className="n">{p.denumire}</span>
-              <span className="lg">
-                {banci.map((b) => {
-                  const a = acop[p.cod]?.[b]
-                  const n = nf[p.cod]?.[b]
-                  const titlu = a ? tn('pl.card_valori', a.n, { banca: nume(b) })
-                    : n ? t('pl.card_motiv', { banca: nume(b), motiv: motiv(n.motiv, t) })
-                    : t('pl.card_fara_date', { banca: nume(b) })
-                  return (
-                    <Tooltip key={b} title={titlu}>
-                      <span className={`pl-lg ${a ? 'da' : n ? 'nu' : ''}`}>{logo(b) ?? nume(b).slice(0, 3)}</span>
-                    </Tooltip>
-                  )
-                })}
-                {cmp[p.cod]
-                  ? <Tooltip title={t('pl.comparabile_tooltip')}><span className="cmp">{t('pl.comparabile', { n: cmp[p.cod]! })}</span></Tooltip>
-                  : <Tooltip title={t('pl.necomparabil_tooltip')}><span className="gri">—</span></Tooltip>}
-              </span>
-            </button>
-          )) : <p className="note">{t('pl.niciun_produs')}</p>}
+          {produse.length ? produse.map((p) => {
+            // cardul: doar titlul și câte bănci au valori pentru produs; care și câte, în tooltip
+            const cuValori = banci.filter((b) => acop[p.cod]?.[b])
+            return (
+              <button type="button" key={p.cod} className={`pl-card ${p.cod === ales?.cod ? 'activ' : ''}`}
+                hidden={!!c && !faraDiacritice(`${p.denumire} ${p.cod}`).includes(c)}
+                onClick={() => mergi({ produs: p.cod, termen: '', ind: '', moneda: '', canal: '', plata: '', oferta: '', variante: '' })}>
+                <span className="n">{p.denumire}</span>
+                <Tooltip title={cuValori.length
+                  ? cuValori.map((b) => tn('pl.card_valori', acop[p.cod]![b]!.n, { banca: nume(b) })).join(' · ')
+                  : undefined}>
+                  <span className={`nb ${cuValori.length ? '' : 'gol'}`}>
+                    {cuValori.length ? tn('pl.card_banci', cuValori.length) : t('pl.card_nicio_banca')}
+                  </span>
+                </Tooltip>
+              </button>
+            )
+          }) : <p className="note">{t('pl.niciun_produs')}</p>}
         </div>
         <button type="button" className="pl-sag" aria-label={t('pl.sag_inainte')} onClick={() => derula(1)}>›</button>
       </div>
@@ -228,30 +225,47 @@ function CapProdus({ ales, valori, stare, mergi, areTermene, mod }: {
 }) {
   const { t } = useLang()
   const ref = (valori ?? []).map((x) => x.scenariu?.referinta).find(Boolean)
-  const bifa = (k: string, eticheta: DictKey) => (
-    <Checkbox checked={stare[k] === '1'} onChange={() => mergi({ [k]: stare[k] === '1' ? '' : '1' })}>{t(eticheta)}</Checkbox>
-  )
+  // bifele care schimbă ce valori se văd stau într-un singur buton, cu numărul celor active
+  const bife: [string, DictKey][] = [
+    ...(mod === 'campuri' && ref ? [['ref', 'pl.bifa_ref'] as [string, DictKey]] : []),
+    ...(mod === 'campuri' ? [['toate', 'pl.bifa_toate'] as [string, DictKey]] : []),
+    ['low', 'pl.bifa_low'],
+    ['amb', 'pl.bifa_amb'],
+  ]
+  const active = bife.filter(([k]) => stare[k] === '1').length
+  const seg = ales.segment && SEGMENT_TEXT[ales.segment] ? t(SEGMENT_TEXT[ales.segment]!) : ales.segment
   return (
     <div className="pl-cap">
-      <h2>{ales.denumire}</h2>
-      <span className="gri mono" style={{ fontSize: 11 }}>
-        {ales.cod} · {ales.segment ?? ''}{ales.prioritar ? ` · ${t('pl.prioritar')}` : ''}
-      </span>
-      {ref && (
-        <Tooltip title={t('pl.ref_tooltip')}>
-          <span className="pl-ref"><Iconita n="tinta" /><T k="pl.ref_scenariu" params={{ nume: ref.nume }} /></span>
-        </Tooltip>
-      )}
-      <span className="pl-bife">
+      <div className="pl-cap-st">
+        <h2>{ales.denumire}</h2>
+        <div className="pl-cap-meta">
+          {seg && <span>{seg}</span>}
+          <span>{numeCategorie(ales.categorie_cod, t)}</span>
+          {ales.prioritar && <Pill tip="ok">{t('pl.prioritar')}</Pill>}
+          <span className="mono">{ales.cod}</span>
+        </div>
+        {ref && (
+          <Tooltip title={t('pl.ref_tooltip')}>
+            <span className="pl-ref"><Iconita n="tinta" /><T k="pl.ref_scenariu" params={{ nume: ref.nume }} /></span>
+          </Tooltip>
+        )}
+      </div>
+      <div className="pl-cap-dr">
         {areTermene && (
-          <Segmented size="small" value={mod} onChange={(x) => mergi({ mod: x === 'campuri' ? 'campuri' : '' })}
+          <Segmented value={mod} onChange={(x) => mergi({ mod: x === 'campuri' ? 'campuri' : '' })}
             options={[{ value: 'termene', label: t('pt.mod_termene') }, { value: 'campuri', label: t('pt.mod_campuri') }]} />
         )}
-        {mod === 'campuri' && ref && bifa('ref', 'pl.bifa_ref')}
-        {mod === 'campuri' && bifa('toate', 'pl.bifa_toate')}
-        {bifa('low', 'pl.bifa_low')}
-        {bifa('amb', 'pl.bifa_amb')}
-      </span>
+        <Popover trigger="click" placement="bottomRight" title={t('pl.filtre_titlu')}
+          content={(
+            <div className="pl-bife">
+              {bife.map(([k, e]) => (
+                <Checkbox key={k} checked={stare[k] === '1'} onChange={() => mergi({ [k]: stare[k] === '1' ? '' : '1' })}>{t(e)}</Checkbox>
+              ))}
+            </div>
+          )}>
+          <Button type={active ? 'primary' : 'default'} ghost={!!active}>{active ? t('pl.filtre_n', { n: active }) : t('pl.filtre')}</Button>
+        </Popover>
+      </div>
     </div>
   )
 }
@@ -308,7 +322,8 @@ function TabelProdus({ d, ales, banci, nf, stare, nume, logo, deschide, tw }: {
         <tbody>
           {campuri.map((c) => (
             <tr key={c}>
-              <th className="camp" scope="row">{etNume(c, t)}<small>{c}</small></th>
+              {/* codul câmpului rămâne la hover: e pentru cine verifică datele, nu pentru citit */}
+              <th className="camp" scope="row" title={c}>{etNume(c, t)}</th>
               {banci.map((b) => (
                 <td key={b} className={b === 'libra' ? 'libra' : ''}>
                   <Celula key={`${ales.cod}-${c}-${b}`} lista={pc[c]![b]} stare={stare} deschide={deschide} />

@@ -41,6 +41,8 @@ export const PAGINI: Grup[] = [
     chei: [
       { id: 'surse', pdf: '', mutata: true },
       { id: 'coada', pdf: '', mutata: true },
+      // lista produselor Libra (produse_libra.json), editabilă din pagină
+      { id: 'inventar', pdf: '', mutata: true },
     ],
   },
   {

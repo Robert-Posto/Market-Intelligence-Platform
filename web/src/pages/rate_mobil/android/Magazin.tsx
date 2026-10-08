@@ -7,9 +7,10 @@ import { BareStele } from '../../../components/BareStele'
 import { T, useLang } from '../../../i18n'
 import { num } from '../../../util/format'
 import { googlePlay, playDupaPachet, recenziiPlay } from '../dateLocale'
-import { CeENou, Galerie, RezumatAi, Stele } from '../Piese'
+import { ActualizatLa, CeENou, Galerie, RezumatAi, Stele } from '../Piese'
 import { Captura } from './comune'
 import ComparaPlay from './ComparaPlay'
+import GraficDescarcari from './GraficDescarcari'
 import { eticheta, type PropsSectiune } from './model'
 import RecenziiPlay from './RecenziiPlay'
 
@@ -44,7 +45,10 @@ export default function Magazin({ apps, m, deschide }: PropsSectiune) {
       <div className="mb-lista-cap">
         <h2>{t('mobil.android_titlu_magazin')}</h2>
         {googlePlay && (
-          <Button type="primary" className="mb-btn-compara" onClick={() => setCompara(true)}>{t('mobil.compara_buton')}</Button>
+          <span className="mb-btn-compara mb-butoane-cap">
+            <GraficDescarcari m={m} />
+            <Button type="primary" onClick={() => setCompara(true)}>{t('mobil.compara_buton')}</Button>
+          </span>
         )}
       </div>
       <p className="note" style={{ margin: '0 0 12px' }}>
@@ -106,6 +110,8 @@ function CardPlay({ a, m, deschide, onRecenzii }: {
                 <span className="gri">{t('mobil.versiune')}</span> <b className="mono">{p.versiune ?? a.versiune_cea_mai_noua ?? '—'}</b>
                 {p.actualizat_la && <span className="gri"> · {t('mobil.actualizata', { data: p.actualizat_la })}</span>}
               </div>
+              {/* fără dată pe aplicație (colectare dinainte de 07.10.2026): data fișierului, aceeași pentru toate */}
+              <ActualizatLa la={p.colectat_la ?? googlePlay?.colectat_la} sursa="play" />
               <CeENou text={p.ce_e_nou ?? null} />
             </>
           ) : (

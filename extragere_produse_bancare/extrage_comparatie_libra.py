@@ -14,7 +14,7 @@ comparatie_libra.
 TREI LUCRURI NOI FAȚĂ DE ruleaza-extractie.py
 
   Maparea produselor. Flow-urile caută după catalogul v2 (câmpuri, trepte),
-  iar produsele Libra au alte coduri. mip/mapare_libra_v2.json le leagă.
+  iar produsele Libra au alte coduri. `tip_v2` din produse_libra.json le leagă.
 
   Un apel per URL, nu per produs. Același PDF de tarife acoperă de obicei mai
   multe produse Libra; i se cer toate odată, iar valorile se întorc la fiecare
@@ -64,7 +64,10 @@ from descopera_surse_libra import link_live   # noqa: E402
 from jurnal_joburi import FaraJurnal, Job      # noqa: E402
 
 DSN = os.environ.get("MIP_DSN", "host=localhost port=5432 dbname=mip user=mip password=mip")
-MAPARE = json.loads((AICI / "mapare_libra_v2.json").read_text(encoding="utf-8"))["mapare"]
+# produsul Libra -> tipul din produse_bancare_v2.json, care dă câmpurile de căutat; produse_libra.json
+# e sursa de adevăr a produselor (până la 07.10.2026 maparea stătea separat, în mapare_libra_v2.json)
+MAPARE = {p["cod"]: p["tip_v2"] for p in json.loads(
+    (AICI / "produse_libra.json").read_text(encoding="utf-8"))["produse"] if p.get("tip_v2")}
 IESIRE = AICI / "inventare-libra"
 
 # Ce au respins regulile deterministe (reguli_valori) și axa Libra, cu motivul.
@@ -101,7 +104,7 @@ def surse_de_extras(conn, slug: str) -> tuple[int, list[dict]]:
         grupuri: dict[tuple, dict] = {}
         for id_s, url, tip, metoda, id_p, cod, den, desc, la_banca in cur.fetchall():
             if cod not in MAPARE:
-                spune(f"  ! {cod} nu e în mapare_libra_v2.json — sărit")
+                spune(f"  ! {cod} n-are tip_v2 în produse_libra.json — sărit")
                 continue
             la_banca = (la_banca or "").strip()
             cheie = f"{url}||{la_banca.lower()}"

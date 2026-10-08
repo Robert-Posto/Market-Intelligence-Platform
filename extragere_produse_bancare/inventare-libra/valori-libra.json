@@ -12955,56 +12955,6 @@
    }
   },
   {
-   "cheie": "https://www.librabank.ro/pos||pos & mpos (terminal pos fizic / libra pos clasic)",
-   "url": "https://www.librabank.ro/pos",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "POS & mPOS (Terminal POS fizic / Libra POS clasic)",
-   "focus": "Produsul băncii: „POS & mPOS (Terminal POS fizic / Libra POS clasic)”.\nAcesta e produsul Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 739,
-     "id_produs_libra": 52,
-     "cod": "POS_FIZIC",
-     "v2": "acceptare-carduri"
-    }
-   ],
-   "produse_v2": [
-    "acceptare-carduri"
-   ],
-   "stare": "extras",
-   "motiv": null,
-   "flow": "flow-html",
-   "format_efectiv": "html",
-   "blocaj_http_local": null,
-   "metoda_sanitizare": "selectolax",
-   "content_hash": "012ec272e9b456e1c680235ac970004ee81111f0206db650bb5219309721565a",
-   "observatii": [
-    {
-     "id": "634ee64bc4f297867d59905d5c3e9cd8",
-     "id_url": 739,
-     "id_produs": "acceptare-carduri",
-     "camp": null,
-     "not_found": true,
-     "not_found_motiv": "negasit_in_pagina",
-     "nota": "Textul descrie Terminalul POS fizic (Libra POS clasic) doar la nivel de caracteristici generale (instalare gratuită, decontare T+1, training gratuit) și menționează că „taxa POS este adaptată volumului tranzacționat” fără a oferi cifre concrete pentru comision pe tranzacție, chirie lunară sau comision online; nu există valori numerice extrase din document pentru acest produs.",
-     "content_hash": "012ec272e9b456e1c680235ac970004ee81111f0206db650bb5219309721565a",
-     "conditii": [],
-     "necesita_verificare": false,
-     "id_banca": "libra",
-     "sursa_continut": "descarcare_proprie",
-     "bronze_sha256": "00b60ee236b4aa21e761945da224a7149f7ad62608fa07f44988e91a5c04c1eb"
-    }
-   ],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 4,
-   "tokeni": {
-    "intrare": 4658,
-    "iesire": 224
-   }
-  },
-  {
    "cheie": "https://www.librabank.ro/credit-investeu||credit investeu competitivitate/sustenabilitate",
    "url": "https://www.librabank.ro/credit-investeu",
    "tip": "html",
@@ -22709,6 +22659,56 @@
    "tokeni": {
     "intrare": 3667,
     "iesire": 310
+   }
+  },
+  {
+   "cheie": "https://www.librabank.ro/pos||pos & mpos (libra pos 2 in 1 / terminal pos fizic)",
+   "url": "https://www.librabank.ro/pos",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "POS & mPOS (Libra POS 2 in 1 / Terminal POS fizic)",
+   "focus": "Produsul băncii: „POS & mPOS (Libra POS 2 in 1 / Terminal POS fizic)”.\nAcesta e produsul Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1671,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "012ec272e9b456e1c680235ac970004ee81111f0206db650bb5219309721565a",
+   "observatii": [
+    {
+     "id": "4e8d7e441a1382587aafb7941cecd4dd",
+     "id_url": 1671,
+     "id_produs": "acceptare-carduri",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie serviciile POS/mPOS/Libra POS 2 in 1 doar la nivel general (instalare gratuită, decontare T+1, \"comisioane mici\" fără cifre), fără a preciza vreun procent de comision pe tranzacție, chirie lunară POS sau comision pentru plăți online pentru \"Terminal POS fizic\". Nu există valori numerice atribuibile acestui produs.",
+     "content_hash": "012ec272e9b456e1c680235ac970004ee81111f0206db650bb5219309721565a",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "libra",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "00b60ee236b4aa21e761945da224a7149f7ad62608fa07f44988e91a5c04c1eb"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4662,
+    "iesire": 220
    }
   }
  ]

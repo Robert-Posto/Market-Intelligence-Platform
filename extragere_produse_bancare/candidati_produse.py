@@ -25,6 +25,8 @@ from urllib.parse import urljoin, urldefrag, urlparse
 from urllib.robotparser import RobotFileParser
 from xml.etree import ElementTree
 
+import httpx
+
 AICI = Path(__file__).parent
 sys.path.insert(0, str(AICI))
 
@@ -69,13 +71,26 @@ class Robots:
     def __init__(self):
         self._rp: dict[str, RobotFileParser] = {}
         self.sitemapuri: list[str] = []
+        self.baza: str | None = None             # prima origine citită: domeniul băncii
+        self.inaccesibile: set[str] = set()
 
     async def permis(self, url: str) -> bool:
         u = urlparse(url)
         origine = f"{u.scheme}://{u.netloc}"
+        if origine in self.inaccesibile:
+            return False
         if origine not in self._rp:
             rp = RobotFileParser()
-            r = await adu(f"{origine}/robots.txt")
+            try:
+                r = await adu(f"{origine}/robots.txt")
+            except httpx.RequestError:
+                # un subdomeniu din meniu care nu răspunde (online.brd.ro, client.cetelem.ro)
+                # nu oprește banca: paginile lui se sar. Domeniul de bază inaccesibil oprește tot.
+                if self.baza is None or origine == self.baza:
+                    raise
+                self.inaccesibile.add(origine)
+                return False
+            self.baza = self.baza or origine
             linii = r.text.splitlines() if r.status_code == 200 else []
             rp.parse(linii)
             self._rp[origine] = rp
@@ -182,7 +197,7 @@ async def candidati(slug: str) -> dict:
 
 async def _filtreaza(brute, domenii, conf, libra, rb, n_sitemapuri) -> dict:
     sectiuni = conf.get("sectiuni") or []
-    motive = {"domeniu": 0, "fisier": 0, "exclus": 0, "sectiune": 0, "robots": 0, "deja_libra": 0}
+    motive = {"domeniu": 0, "fisier": 0, "exclus": 0, "sectiune": 0, "robots": 0, "inaccesibil": 0, "deja_libra": 0}
     out = []
     for u, (titlu, din) in brute.items():
         p = urlparse(u)
@@ -196,7 +211,7 @@ async def _filtreaza(brute, domenii, conf, libra, rb, n_sitemapuri) -> dict:
         elif sectiuni and not any(p.path.startswith(s) or (p.path + "/").startswith(s) for s in sectiuni):
             motive["sectiune"] += 1
         elif not await rb.permis(u):
-            motive["robots"] += 1
+            motive["inaccesibil" if f"{p.scheme}://{p.netloc}" in rb.inaccesibile else "robots"] += 1
         elif u in libra:
             motive["deja_libra"] += 1
         elif p.path.strip("/").count("/") < 1:

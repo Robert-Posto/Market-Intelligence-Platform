@@ -176,11 +176,15 @@ function pentruFisier(a) {
 }
 
 function salveaza(rezultate) {
-  const vechi = fs.existsSync(FISIER_PLAY) ? JSON.parse(fs.readFileSync(FISIER_PLAY, 'utf8')).aplicatii ?? {} : {}
-  const aplicatii = { ...vechi }
-  for (const r of rezultate) if (r.banca) aplicatii[r.banca] = pentruFisier(r)
-  fs.mkdirSync(path.dirname(FISIER_PLAY), { recursive: true })
+  const fisierVechi = fs.existsSync(FISIER_PLAY) ? JSON.parse(fs.readFileSync(FISIER_PLAY, 'utf8')) : {}
+  // o aplicație colectată înainte de data pe aplicație își păstrează data rulării de atunci;
+  // altfel `colectat_la` al fișierului (de acum) ar face-o să pară colectată azi
+  const aplicatii = Object.fromEntries(Object.entries(fisierVechi.aplicatii ?? {}).map(([b, x]) =>
+    [b, x.colectat_la || !fisierVechi.colectat_la ? x : { ...x, colectat_la: fisierVechi.colectat_la }]))
   const acum = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
+  // pe aplicație, nu doar pe fișier: o rulare pe o bancă nu face „proaspete” celelalte 21
+  for (const r of rezultate) if (r.banca) aplicatii[r.banca] = { ...pentruFisier(r), colectat_la: acum }
+  fs.mkdirSync(path.dirname(FISIER_PLAY), { recursive: true })
   fs.writeFileSync(FISIER_PLAY, JSON.stringify({
     colectat_la: acum,
     sursa: 'play.google.com/store/apps/details',

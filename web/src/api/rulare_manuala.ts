@@ -8,11 +8,16 @@ export function useCatalogRulare() {
     queryFn: () => api('/api/rulare_manuala', RulareManualaCatalog) })
 }
 
-/** Estimarea de cost și durată, doar când tipul, banca și (unde trebuie) produsul sunt alese. */
-export function useEstimareRulare(tip: string, banca: string, produs: string, gata: boolean) {
+/**
+ * Estimarea de cost și durată, doar când tipul, băncile și (unde trebuie) produsul sunt alese.
+ * O bancă: estimarea ei; mai multe: suma lor (`total`), pentru că rulează pe rând.
+ */
+export function useEstimareRulare(tip: string, banci: string[], produs: string, gata: boolean) {
+  const params = banci.length === 1 ? { tip, banca: banci[0], produs } : { tip, banci: banci.join(','), produs }
   return useQuery({
-    queryKey: ['rulare_manuala_estimare', tip, banca, produs],
+    queryKey: ['rulare_manuala_estimare', tip, banci.join(','), produs],
     enabled: gata,
-    queryFn: () => api('/api/rulare_manuala/estimare', RulareManualaEstimare, { tip, banca, produs }),
+    placeholderData: (vechi) => vechi,
+    queryFn: () => api('/api/rulare_manuala/estimare', RulareManualaEstimare, params),
   })
 }

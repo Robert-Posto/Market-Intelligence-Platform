@@ -372,5 +372,156 @@ class Http(unittest.TestCase):
         self.assertTrue(ultima["oprit"])
 
 
+TEST_COADA = TEST + [
+    {"id": "lungbanca", "nume": "Lung pe bancă", "ce": "test", "argumente": ["-c", NUMARA],
+     "banca": "obligatoriu", "internet": False, "estimare_banca_min": 1},
+    {"id": "esuabanca", "nume": "Eșuează pe bancă", "ce": "test",
+     "argumente": ["-c", "raise SystemExit(3)"], "banca": "obligatoriu", "internet": False, "estimare_banca_min": 1},
+]
+
+
+class Coada(unittest.TestCase):
+    """Mai multe bănci odată: pe rând, una după alta; „Oprește” golește coada."""
+
+    def setUp(self):
+        self.dir = tempfile.mkdtemp(prefix="rulari_coada_")
+        self.r = rulari.Rulari(comenzi=TEST_COADA, dir_rulari=self.dir, slugs=lambda: SLUGS,
+                               produse=lambda: PRODUSE, slugs_extragere=lambda: SLUGS_EXTRAGERE)
+
+    def tearDown(self):
+        if self.r.curenta:
+            self.r.opreste()
+            asteapta(lambda: self.r.curenta is None)
+
+    def test_pe_rand_fara_dubluri(self):
+        self.r.porneste("pebanca", banci=["bcr", "vista", "bcr"])
+        self.assertTrue(asteapta(lambda: self.r.curenta is None and len(self.r.istoric()) == 2))
+        self.assertEqual([(x["banca"], x["coada"]) for x in self.r.istoric()], [("bcr", "1/2"), ("vista", "2/2")])
+
+    def test_toate_obligatoriu_ia_lista_comenzii(self):
+        self.r.porneste("peprodus", produs="CONT_ECONOMII", toate=True)
+        self.assertTrue(asteapta(lambda: self.r.curenta is None and len(self.r.istoric()) == 2))
+        self.assertEqual([x["banca"] for x in self.r.istoric()], SLUGS_EXTRAGERE)
+        self.assertTrue(all(x["produs"] == "CONT_ECONOMII" for x in self.r.istoric()))
+
+    def test_toate_optional_e_o_singura_rulare(self):
+        self.r.porneste("iese3", toate=True)
+        self.assertTrue(asteapta(lambda: self.r.curenta is None))
+        ist = self.r.istoric()
+        self.assertEqual(len(ist), 1)
+        self.assertIsNone(ist[0]["banca"])
+
+    def test_o_banca_esuata_nu_opreste_coada(self):
+        self.r.porneste("esuabanca", banci=["bcr", "libra"])
+        self.assertTrue(asteapta(lambda: self.r.curenta is None and len(self.r.istoric()) == 2))
+        self.assertEqual([(x["banca"], x["cod"]) for x in self.r.istoric()], [("bcr", 3), ("libra", 3)])
+
+    def test_opreste_anuleaza_restul(self):
+        self.r.porneste("lungbanca", banci=["bcr", "libra", "vista"])
+        coada = self.r.stare()["curenta"]["coada"]
+        self.assertEqual((coada["pozitie"], coada["ramase"]), (1, ["libra", "vista"]))
+        self.assertEqual(self.r.opreste()["anulate"], 2)
+        self.assertTrue(asteapta(lambda: self.r.curenta is None))
+        time.sleep(0.5)   # nicio bancă nu pornește după oprire
+        self.assertIsNone(self.r.curenta)
+        self.assertEqual([(x["banca"], x["oprit"]) for x in self.r.istoric()], [("bcr", True)])
+
+    def test_comenzile_reale_paralel(self):
+        """Doar joburile fluxului rulează mai multe bănci odată; aplicațiile mobile și colectarea, pe rând."""
+        paralel = {c["id"] for c in rulari.COMENZI if rulari.Rulari.locuri(c) > 1}
+        self.assertEqual(paralel, {"discovery", "extragere", "produse_noi"})
+
+    def test_lista_validata_inainte_de_pornire(self):
+        for banci in ("bcr", ["bcr", 3], ["bcr", "nu-exista"]):
+            with self.assertRaises(rulari.Respins):
+                self.r.porneste("pebanca", banci=banci)
+        with self.assertRaises(rulari.Respins):
+            self.r.porneste("peprodus", banci=["bcr", "cec"])      # fără produs
+        with self.assertRaises(rulari.Respins):
+            self.r.porneste("numara", banci=["bcr", "libra"])       # comandă fără bancă
+        self.assertIsNone(self.r.curenta)
+        self.assertEqual(self.r.istoric(), [])
+
+
+# ține 1,5 s și scrie în jurnal momentul în care a pornit și pe cel în care s-a terminat
+SCURT = "import time\nprint('start', time.time(), flush=True)\ntime.sleep(1.5)\nprint('stop', time.time(), flush=True)"
+TEST_PARALEL = TEST + [
+    {"id": "paralel", "nume": "În paralel", "ce": "test", "argumente": ["-c", SCURT],
+     "banca": "obligatoriu", "internet": False, "estimare_banca_min": 1, "paralel_banci": 2},
+    {"id": "paralel_lung", "nume": "În paralel, lung", "ce": "test", "argumente": ["-c", NUMARA],
+     "banca": "obligatoriu", "internet": False, "estimare_banca_min": 1, "paralel_banci": 2},
+]
+
+
+class Paralel(unittest.TestCase):
+    """Comenzile cu `paralel_banci`: atâtea bănci odată, restul la coadă."""
+
+    def setUp(self):
+        self.dir = tempfile.mkdtemp(prefix="rulari_paralel_")
+        self.r = rulari.Rulari(comenzi=TEST_PARALEL, dir_rulari=self.dir, slugs=lambda: SLUGS,
+                               produse=lambda: PRODUSE, slugs_extragere=lambda: SLUGS_EXTRAGERE)
+
+    def tearDown(self):
+        if self.r.curenta:
+            self.r.opreste()
+            asteapta(lambda: self.r.curenta is None)
+
+    def momente(self, rand):
+        m = {}
+        with open(os.path.join(self.dir, rand["log"]), encoding="utf-8") as f:
+            for linie in f:
+                p = linie.split()
+                if len(p) == 2 and p[0] in ("start", "stop"):
+                    m[p[0]] = float(p[1])
+        return m["start"], m["stop"]
+
+    def test_cel_mult_doua_odata(self):
+        cur = self.r.porneste("paralel", banci=["bcr", "libra", "vista"])
+        self.assertEqual([p["banca"] for p in cur["procese"]], ["bcr", "libra"])
+        st = self.r.stare()["curenta"]
+        self.assertEqual(len(st["procese"]), 2)
+        self.assertEqual((st["coada"]["in_lucru"], st["coada"]["ramase"]), (2, ["vista"]))
+        self.assertIsNone(st["banca"])
+        self.assertTrue(asteapta(lambda: self.r.curenta is None and len(self.r.istoric()) == 3))
+        ist = {x["banca"]: x for x in self.r.istoric()}
+        self.assertEqual({b: x["coada"] for b, x in ist.items()}, {"bcr": "1/3", "libra": "2/3", "vista": "3/3"})
+        self.assertTrue(all(x["cod"] == 0 for x in ist.values()))
+        (a0, a1), (b0, b1), (c0, _) = (self.momente(ist[b]) for b in ("bcr", "libra", "vista"))
+        self.assertLess(max(a0, b0), min(a1, b1))           # primele două s-au suprapus
+        self.assertGreaterEqual(c0, min(a1, b1))            # a treia a așteptat un loc liber
+        self.assertFalse(os.path.exists(os.path.join(self.dir, "curenta.json")))
+
+    def test_ocupat_cat_ruleaza(self):
+        self.r.porneste("paralel_lung", banci=["bcr", "libra"])
+        with self.assertRaises(rulari.Ocupat):
+            self.r.porneste("iese3")
+
+    def test_opreste_toate_procesele(self):
+        cur = self.r.porneste("paralel_lung", banci=["bcr", "libra", "vista"])
+        pids = [p["pid"] for p in cur["procese"]]
+        self.assertEqual(len(pids), 2)
+        self.assertEqual(self.r.opreste()["anulate"], 1)
+        self.assertTrue(asteapta(lambda: self.r.curenta is None))
+        self.assertTrue(asteapta(lambda: not any(rulari._proces_viu(p) for p in pids)))
+        time.sleep(0.5)   # vista nu pornește după oprire
+        self.assertIsNone(self.r.curenta)
+        self.assertEqual(sorted((x["banca"], x["oprit"]) for x in self.r.istoric()), [("bcr", True), ("libra", True)])
+
+    def test_repornire_server_nu_porneste_coada(self):
+        cur = self.r.porneste("paralel_lung", banci=["bcr", "libra", "vista"])
+        with self.r.lacat:
+            self.r.curenta = None      # serverul vechi „a murit”: firele lui nu mai pornesc nimic
+        r2 = rulari.Rulari(comenzi=TEST_PARALEL, dir_rulari=self.dir, slugs=lambda: SLUGS)
+        self.assertEqual(len(r2.curenta["procese"]), 2)
+        with self.assertRaises(rulari.Ocupat):
+            r2.porneste("iese3")
+        self.assertEqual(r2.opreste()["anulate"], 1)
+        self.assertTrue(asteapta(lambda: not any(rulari._proces_viu(p["pid"]) for p in cur["procese"])))
+        self.assertTrue(asteapta(lambda: r2.stare()["curenta"] is None))
+        ist = self.r.istoric()
+        self.assertEqual(sorted(x["banca"] for x in ist), ["bcr", "libra"])
+        self.assertIn("vista", ist[-1]["nota"])    # coada rămasă e spusă, nu pornită
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { Collapse, Tag, Tooltip } from 'antd'
 import { Link } from 'react-router-dom'
 import { SERVER_OPRIT } from '../api/client'
@@ -69,11 +69,18 @@ export function Despre({ children, titlu, eticheta }: { children: ReactNode; tit
 
 /** Secțiune pliabilă cu titlu h2 (Ce avem pe fiecare bancă, Detalii tehnice, Rulări). */
 export function Pliat({ titlu, children, deschis }: { titlu: ReactNode; children: ReactNode; deschis?: boolean }) {
+  const [activ, setActiv] = useState<string[]>(deschis ? ['p'] : [])
+  // se deschide și când `deschis` devine adevărat după încărcare (o rulare pornită din modalul
+  // „Începe job” rula într-o secțiune închisă); nu se închide singură, ca rezultatul să rămână la vedere
+  useEffect(() => {
+    if (deschis) setActiv(['p'])
+  }, [deschis])
   return (
     <Collapse
       ghost
       className="pliat"
-      defaultActiveKey={deschis ? ['p'] : []}
+      activeKey={activ}
+      onChange={(k) => setActiv(Array.isArray(k) ? k : [k])}
       items={[{ key: 'p', label: <h2>{titlu}</h2>, children }]}
     />
   )

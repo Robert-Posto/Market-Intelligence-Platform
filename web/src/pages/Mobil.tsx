@@ -8,7 +8,7 @@ import { Despre, Eroare, SeIncarca } from '../components/comune'
 import { T, useLang } from '../i18n'
 import { num } from '../util/format'
 import Android from './rate_mobil/android/Android'
-import { CeENou, Galerie, RezumatAi, Stele } from './rate_mobil/Piese'
+import { ActualizatLa, CeENou, Galerie, RezumatAi, Stele } from './rate_mobil/Piese'
 import ComparaLibra, { type RandAplicatie } from './rate_mobil/ComparaLibra'
 import { BaraRecenzii, ListaRecenzii, type FiltruRecenzii } from './rate_mobil/Recenzii'
 import '../styles/rate_mobil.css'
@@ -169,6 +169,7 @@ function CardAplicatie({ r, m, urls, ales, onRecenzii }: {
           <div className="mb-versiune">
             <span className="gri">{t('mobil.versiune')}</span> <b className="mono">{r.versiune ?? '—'}</b>
           </div>
+          <ActualizatLa la={r.vazut_ultima} sursa="ios" />
           <CeENou text={r.note_lansare} />
           {r.rec && (
             <Button size="small" type={ales ? 'primary' : 'default'} className="mb-btn-rec" onClick={onRecenzii}>

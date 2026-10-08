@@ -22,6 +22,7 @@ import { comparatie_concurenta } from './comparatie_concurenta'
 import { android } from './android'
 import { logging } from './logging'
 import { rulare_manuala } from './rulare_manuala'
+import { inventar_produse } from './inventar_produse'
 
 export const DICT = {
   ...comun,
@@ -47,4 +48,5 @@ export const DICT = {
   ...android,
   ...logging,
   ...rulare_manuala,
+  ...inventar_produse,
 } as const

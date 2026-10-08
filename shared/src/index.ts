@@ -88,6 +88,8 @@ export const ComandaRulare = z
     estimare_banca_s: z.number().optional(),
     estimare_banca_sursa: z.string().optional(),
     estimari_banca: z.record(z.string(), z.number()).optional(),
+    // la mai multe bănci, câte rulează simultan (1 = pe rând)
+    paralel_banci: z.number().optional(),
     ultima: z
       .object({
         sfarsit: data,
@@ -115,6 +117,25 @@ export const RulareCurenta = z
     dupa_repornire: z.boolean().optional(),
     log: z.string(),
     jurnal: z.array(z.string()).optional(),
+    // cu mai multe bănci în lucru simultan, fiecare cu bara și jurnalul ei; altfel gol, iar
+    // câmpurile de sus sunt ale singurei bănci în lucru
+    procese: z.array(z.object({
+      banca: z.string().nullable(),
+      inceput: data,
+      scurs_s: z.number(),
+      estimare_s: z.number().nullable().optional(),
+      log: z.string(),
+      jurnal: z.array(z.string()),
+    })).optional(),
+    // mai multe bănci alese odată, la coadă: `pozitie` e ultima bancă pornită (de la 1),
+    // `in_lucru` câte rulează acum
+    coada: z.object({
+      total: z.number(),
+      pozitie: z.number(),
+      in_lucru: z.number().optional(),
+      ramase: z.array(z.string()),
+      facute: z.array(z.object({ banca: z.string().nullable(), cod: z.number().nullable() })),
+    }).nullable().optional(),
   })
   .passthrough()
 export type RulareCurenta = z.infer<typeof RulareCurenta>
@@ -140,6 +161,8 @@ export const RulareManualaCatalog = z
       descriere: z.string(),
       ce: z.string(),
       produs: z.string().nullable(),
+      // băncile jobului: extragerea are 30, aplicațiile mobile doar băncile cu aplicație
+      banci: z.array(z.string()).optional(),
     }).passthrough()),
     banci: z.array(z.string()),
     produse: z.array(z.object({
@@ -167,6 +190,19 @@ export const RulareManualaEstimare = z
       durata_max: z.number().nullable(),
     }).nullable(),
     surse: z.object({ gasite: z.number(), negasite: z.number(), ultima: z.string().nullable() }).nullable(),
+    // mai multe bănci (`banci=a,b`): costul e suma estimărilor; durata, cât ține coada cu
+    // `paralel_banci` bănci odată
+    total: z.object({
+      n_banci: z.number(),
+      paralel_banci: z.number().optional(),
+      cost_med: z.number().nullable(),
+      cost_min: z.number().nullable(),
+      cost_max: z.number().nullable(),
+      durata_med: z.number().nullable(),
+      durata_max: z.number().nullable(),
+      fara_estimare: z.array(z.string()),
+      fara_surse: z.array(z.string()),
+    }).nullable().optional(),
   })
   .passthrough()
 export type RulareManualaEstimare = z.infer<typeof RulareManualaEstimare>
@@ -238,3 +274,4 @@ export * from './surse_coada'
 export * from './comparatie_libra'
 export * from './jobs'
 export * from './android'
+export * from './inventar_produse'

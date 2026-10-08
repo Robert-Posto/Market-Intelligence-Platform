@@ -53,6 +53,8 @@ export const Mobil = z
           rating_agregat: z.string().nullable(),
           volum_rating: z.number().nullable(),
           distributie_stele: z.array(z.number()).nullable(),
+          // ultima colectare a băncii (load_mobil.py); „Actualizat la” pe card
+          vazut_ultima: z.string().nullable().optional(),
         })
         .passthrough(),
     ),

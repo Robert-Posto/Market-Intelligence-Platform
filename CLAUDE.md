@@ -70,7 +70,10 @@ vedere îngheață lista de coloane, iar API-ul dă 500 deși tabela are coloana
 **Serverul e read-only.** Nicio rută nu scrie în bază. Interogările folosesc parametri (`%s`), nu text
 interpolat. `/pdf` servește doar URL-uri înregistrate în `surse`, altfel devine proxy deschis.
 Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
-`app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
+`app/rulari.py` (Host/Origin/token, o rulare odată; joburile fluxului pe mai multe bănci rulează câte
+`PARALEL_BANCI` bănci simultan, restul pe rând); nu slăbi verificările. A doua excepție: pagina
+„Inventar produse” scrie `extragere_produse_bancare/produse_libra.json` prin `app/inventar_produse.py`
+(aceleași verificări, alt token); în bază ajunge doar la `incarca_baza.py`.
 
 **Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice. Prioritatea e popularea inițială,
 nu automatizarea. Rulările manuale sunt deblocate deliberat (01.10.2026), acum în pagina „Rulare

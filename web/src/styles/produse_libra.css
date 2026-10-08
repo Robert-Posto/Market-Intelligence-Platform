@@ -1,20 +1,46 @@
 /* 2.1 „Comparație cu Libra” (pl-*) și Descoperă concurența (pc-*), mutate din aplicația
    Next.js (app/globals.css), care le copiase din app/index.html. Fereastra cu dovada e acum
    Modal AntD, iar segmentul și bifele sunt Segmented / Checkbox: regulile lor nu mai sunt aici. */
-.pl-filtre{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:10px}
+/* trei rânduri — filtrele, sliderul cu produse, produsul ales — la 40px unul de altul */
+.pl-filtre{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:40px}
 .pl-filtre .cauta{min-width:0;width:260px}
 .pl-vedere{margin-left:auto}
+/* dropdown-ul de categorii: „Categorie” mic în față, apoi valoarea; în listă, numărul de produse aliniat la dreapta */
+.pl-filtre .ant-select.pl-cat{min-width:250px}
+.pl-cat-val{display:inline-flex;align-items:baseline;gap:8px}
+.pl-cat-val .et{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.pl-cat-opt{display:flex;align-items:baseline;justify-content:space-between;gap:24px}
+.pl-cat-opt .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);
+               background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:0 7px}
+.pl-cat-meniu .ant-select-item-option-selected:not(.ant-select-item-option-disabled){background:var(--accent-tint);color:var(--accent)}
+.pl-cat-meniu .ant-select-item-option-selected .pl-cat-opt .n{border-color:var(--accent);color:var(--accent)}
+/* chips-urile de categorie: doar pe Descoperă concurența (Concurenta.tsx); la Comparație cu Libra e dropdown */
 .pl-chipuri{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 button.pl-chip{flex:none;padding:3px 10px;font-size:12px;border-radius:999px;border:1px solid var(--line-2);
                background:var(--surface);color:var(--ink);white-space:nowrap}
 button.pl-chip span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-left:6px}
 button.pl-chip.activ{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 button.pl-chip.activ span{color:var(--on-accent);opacity:.8}
-.pl-slider{display:flex;align-items:stretch;gap:6px;margin-bottom:14px}
+table.pl th{text-transform:none;letter-spacing:0;font-family:inherit;font-size:13px;color:var(--ink)}
+.pl-slider{display:flex;align-items:stretch;gap:6px;margin-bottom:40px}
 button.pl-sag{flex:none;width:32px;padding:0;font-size:22px;line-height:1;border:1px solid var(--line-2);
-              border-radius:9px;background:var(--surface);color:var(--ink)}
+              border-radius:9px;background:var(--surface);color:var(--ink);
+              /* cât cardurile: aceleași margini ca padding-ul pistei (2px sus, 10px jos pentru scrollbar) */
+              margin:2px 0 10px}
 .pl-track{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;flex:1;min-width:0;
-          padding:2px 2px 8px;scrollbar-width:thin}
+          padding:2px 2px 10px}
+/* scrollbar fin, în culorile site-ului: fără săgeți, cu bara în tonul liniilor, accent la hover.
+   Chrome/Edge citesc ::-webkit-scrollbar doar dacă scrollbar-width/scrollbar-color lipsesc, deci
+   regulile standard stau doar pentru browserele fără ::-webkit-scrollbar (Firefox). */
+.pl-track::-webkit-scrollbar, .pl-tw::-webkit-scrollbar{width:6px;height:6px}
+.pl-track::-webkit-scrollbar-track, .pl-tw::-webkit-scrollbar-track{background:transparent}
+.pl-track::-webkit-scrollbar-thumb, .pl-tw::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:999px}
+.pl-track::-webkit-scrollbar-thumb:hover, .pl-tw::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+.pl-track::-webkit-scrollbar-button, .pl-tw::-webkit-scrollbar-button{display:none;width:0;height:0}
+.pl-tw::-webkit-scrollbar-corner{background:transparent}
+@supports not selector(::-webkit-scrollbar){
+  .pl-track, .pl-tw{scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+}
 button.pl-card{flex:none;width:218px;display:flex;flex-direction:column;gap:6px;
                text-align:left;padding:9px 11px;border:1px solid var(--line);border-radius:11px;
                background:var(--surface);color:var(--ink);cursor:pointer}
@@ -24,6 +50,8 @@ button.pl-card.activ{border-color:var(--accent);box-shadow:0 0 0 2px var(--accen
               white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pl-card .n{font-size:13.5px;font-weight:600;line-height:1.3;min-height:2.6em;
             display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pl-card .nb{font-size:11px;color:var(--muted);align-self:flex-start}
+.pl-card .nb.gol{opacity:.7}
 .pl-card .lg{display:flex;gap:4px;align-items:center}
 .pl-card .lg .cmp, .pl-card .lg .gri{margin-left:auto;font-size:11px;white-space:nowrap}
 .pl-lg{display:inline-flex;align-items:center;justify-content:center;width:28px;height:22px;border-radius:5px;
@@ -34,11 +62,15 @@ button.pl-card.activ{border-color:var(--accent);box-shadow:0 0 0 2px var(--accen
 .pl-lg.nu{opacity:.55}
 .pl-lg.nu::after{content:"";position:absolute;left:-2px;right:-2px;top:50%;border-top:1.5px solid var(--warn);transform:rotate(-30deg)}
 .pl-card .cmp{color:var(--accent);font-weight:600}
-.pl-sec{padding-top:12px}
-table.pl th{text-transform:none;letter-spacing:0;font-family:inherit;font-size:13px;color:var(--ink)}
-.pl-cap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-bottom:10px}
-.pl-bife{display:flex;flex-wrap:wrap;gap:4px 14px;margin-left:auto}
-.pl-cap h2{margin:0;font-size:19px}
+/* containerul produsului ales: 32px de jur împrejur (20px pe ecrane înguste, mai jos) */
+section.pl-sec{padding:32px}
+.pl-cap{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:10px 16px;margin-bottom:16px}
+.pl-cap-st{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0}
+.pl-cap h2{margin:0;font-size:22px}
+.pl-cap-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:12.5px;color:var(--muted)}
+.pl-cap-meta .mono{font-size:10.5px}
+.pl-cap-dr{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pl-bife{display:flex;flex-direction:column;gap:8px}
 .pl-tw{overflow:auto;overscroll-behavior:contain;max-height:calc(120vh - 48px);border:1px solid var(--line);border-radius:10px;background:var(--surface)}
 table.pl{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;table-layout:fixed}
 table.pl thead th{position:sticky;top:0;z-index:2;background:var(--surface);text-align:left;vertical-align:top;
@@ -94,7 +126,7 @@ button.pl-mai{border:0;background:none;color:var(--accent);font-size:11.5px;padd
 button.pl-rest{display:block;text-align:left;line-height:1.35}
 button.pl-rest small{display:block;color:var(--muted);font-size:10.5px}
 .pl-gol + .pl-v{margin-top:2px}
-.pl-filtre .ant-checkbox-wrapper, .pl-bife .ant-checkbox-wrapper{font-size:12px}
+.pl-filtre .ant-checkbox-wrapper{font-size:12px}
 /* `display:flex` de pe card bate atributul `hidden`: fără regula asta, căutarea nu ascundea nimic */
 button.pl-card[hidden]{display:none}
 
@@ -108,10 +140,10 @@ button.pl-card[hidden]{display:none}
   .pl-filtre .cauta{width:100%}
   .pl-vedere{margin-left:0}
   .pl-chipuri{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+  section.pl-sec{padding:20px}
   button.pl-sag{display:none}
   button.pl-card{width:190px}
   table.pl th.camp{width:130px}
-  .pl-bife{margin-left:0}
 }
 
 /* Produsele concurenței: carduri pe categorie, fiecare duce la pagina băncii */
@@ -129,16 +161,38 @@ a.pc-produs:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) 
          display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .pc-jos{margin-top:auto;font-size:11px;color:var(--muted)}
 
-/* vederea „pe termene”: filtrele cu eticheta deasupra, ca în clasamentele publicate */
-.pt-filtre{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-end;margin:4px 0 10px;padding:12px 14px;
+
+/* vederea „pe termene”: filtrele pe un rând, apoi răspunsul în patru cifre, apoi clasamentul */
+.pt-filtre{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;margin:0 0 14px;padding:10px 14px;
            border:1px solid var(--line);border-radius:10px;background:var(--bg)}
 label.pt-f{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted)}
-.pt-variante{margin-left:auto;font-size:12px}
-.pt-sumar{margin:0 0 8px}
+label.pt-variante{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-size:12px;padding-bottom:6px;cursor:pointer}
+.pt-kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.pt-kpi-c{display:flex;flex-direction:column;gap:3px;min-width:0;padding:11px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.pt-kpi-c.libra{border-color:var(--accent);background:var(--accent-tint)}
+.pt-kpi-c .et{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.pt-kpi-c b{font-family:var(--mono);font-size:24px;font-weight:600;line-height:1.15}
+.pt-kpi-c b small{font-size:14px;font-weight:400;color:var(--muted)}
+.pt-kpi-c .sub{font-size:12px}
+.pt-kpi-c .sub.rau{color:var(--warn)}
+.pt-kpi-c .sub.bun{color:var(--ok)}
+.pt-kpi-banca{display:flex !important;align-items:center;gap:6px}
+.pt-kpi-banca img{height:16px;max-width:64px;object-fit:contain;background:#fff;border-radius:3px;padding:1px}
+.pt-sumar{margin:-6px 0 10px}
+.pt-poz{font-weight:600}
 .pt-val{display:inline-flex;align-items:baseline;gap:6px;justify-content:flex-end;flex-wrap:wrap}
-.pt-val b{font-family:var(--mono);font-size:13.5px}
+.pt-val b{font-family:var(--mono);font-size:14px}
 .pt-dif{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.pt-cond{display:inline-block;max-width:28ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+.pt-cond-l{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.pt-tag{font-size:11px;line-height:1.6;padding:0 6px;border:1px solid var(--line);border-radius:5px;background:var(--bg);white-space:nowrap}
+.pt-cond{display:inline-block;max-width:30ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom;
+         font-size:12px;color:var(--muted)}
+.pt-sursa{display:flex;flex-wrap:wrap;gap:2px 4px;align-items:center}
+.pt-sursa .sub{display:inline;font-size:11px}
 .pt .ant-table-wrapper.t tr.clic{cursor:pointer}
-@media (max-width:860px){ .pt-variante{margin-left:0} }
 .pt .ant-table-wrapper.t td.num{white-space:nowrap}
+.pt-lipsa{margin-top:10px;font-size:12.5px;color:var(--muted)}
+.pt-lipsa summary{cursor:pointer;width:max-content}
+.pt-lipsa p{margin:6px 0 0;line-height:1.5}
+@media (max-width:1100px){ .pt-kpi{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:860px){ label.pt-variante{margin-left:0} }

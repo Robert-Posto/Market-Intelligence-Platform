@@ -1,0 +1,156 @@
+{
+ "banca": "vista",
+ "generat": "2026-10-07",
+ "model": "claude-haiku-4-5",
+ "statistica": {
+  "adrese_brute": 38,
+  "candidati": 6,
+  "scoase": {
+   "domeniu": 7,
+   "fisier": 6,
+   "exclus": 4,
+   "sectiune": 11,
+   "robots": 0,
+   "inaccesibil": 0,
+   "deja_libra": 4
+  },
+  "sitemapuri_citite": 0
+ },
+ "limita": null,
+ "blocat": null,
+ "cost_estimat_usd": 0.0358,
+ "tokeni": {
+  "intrare": 29486,
+  "iesire": 1256,
+  "citire_cache": 0,
+  "scriere_cache": 0
+ },
+ "nou": [],
+ "echivalent": [
+  {
+   "url": "https://www.vistabank.ro/persoane-fizice/conturi-si-pachete-de-cont-curent",
+   "titlu": "#closer CU DRAG, DE LA NOILE PACHETE DE CONTCURENT VISTA BANK Pentru orice pachet de cont curent, ai: • Internet & mobile banking • Card de debit • Alertă SMS În plus, fiecare pachet vine cu beneficii unice, adaptate nevoilor tale. Împreună suntem mai puternici",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 5225,
+    "iesire": 269,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Pachetul Vista Standard",
+   "descriere_produs": "Pachet de cont curent pentru persoane fizice care include cont curent în LEI, conturi în valută, card de debit, Internet & Mobile Banking, plăți instant și asigurare de viață cadou",
+   "categorie": "conturi",
+   "segment": "PF",
+   "citat": "Pachetul Vista Standard include produse și servicii esențiale pentru administrarea veniturilor și cheltuielilor dumneavoastră",
+   "echivalent_libra": "CONT_ONLINE_PERSONAL",
+   "incredere": 0.7,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CONT_ONLINE_PERSONAL"
+  },
+  {
+   "url": "https://www.vistabank.ro/persoane-juridice/credite",
+   "titlu": "Afacerea mea are nevoie de finanțare. MAI MULTE",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 5074,
+    "iesire": 206,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Credite",
+   "descriere_produs": null,
+   "categorie": "credite",
+   "segment": "PJ",
+   "citat": "banca noastră finanțează proiecte mici de investiții, cum ar fi achizițiile de echipamente, sau extinderea și modernizarea celor deja existente",
+   "echivalent_libra": "CREDIT_INVESTITII",
+   "incredere": 0.75,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu CREDIT_INVESTITII"
+  }
+ ],
+ "de_verificat": [],
+ "respins": [
+  {
+   "url": "https://www.vistabank.ro/en/home",
+   "titlu": "",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4820,
+    "iesire": 163,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Vista Bank - Home",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PF+PJ",
+   "citat": "Together we are stronger",
+   "echivalent_libra": null,
+   "incredere": 0.95,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://www.vistabank.ro/utile/clienti-eurobank",
+   "titlu": "Clienți Eurobank",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3977,
+    "iesire": 213,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Pagină de suport - Clienți Eurobank",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PF+PJ",
+   "citat": "Începând cu data de 31.03.2025, Vista Bank este reprezentantul Eurobank S.A. în România în ceea ce privește administrarea creditelor acordate de Bancpost",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://www.vistabank.ro/utile/garantare-depozite",
+   "titlu": "Află Mai multe",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 4377,
+    "iesire": 205,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Garantarea depozitelor",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PF+PJ",
+   "citat": "conturile și depozitele dumneavoastră constituite la Bancă sunt garantate, prin plata de compensaţii, în limita plafonului de 100.000 EUR",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  },
+  {
+   "url": "https://www.vistabank.ro/utile/retea-sucursale",
+   "titlu": "Sucursale",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 6013,
+    "iesire": 200,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Rețea de sucursale Vista Bank",
+   "descriere_produs": null,
+   "categorie": "altele",
+   "segment": "PF+PJ",
+   "citat": "Str. Emanoil Porumbaru nr. 90-92 Bucuresti, Sector 1 Tel: 021.206.42.79",
+   "echivalent_libra": null,
+   "incredere": 1,
+   "rezultat": "respins",
+   "motiv": "nu e o pagină de produs"
+  }
+ ],
+ "nerulat": [],
+ "dublura": []
+}

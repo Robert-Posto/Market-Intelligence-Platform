@@ -142,13 +142,9 @@ export default function YouTube({ m, taburi, subsol }: PropsSectiune) {
       && (!doarNoi || !!v.nou)
   })
 
+  // banca se alege din chips-urile de sub bară (un singur loc), nu și dintr-un select
   const filtre = (
     <>
-      <label className="f">
-        {t('campanii.comun.banca')}
-        <Select value={banca} onChange={(v) => schimba('b', v)} style={{ minWidth: 220 }} popupMatchSelectWidth={false}
-          options={ordine.map((x) => ({ value: x, label: m.nume[x] ?? x }))} />
-      </label>
       <label className="f">
         {t('campanii.comun.cauta')}
         <Input className="cauta" allowClear placeholder={t('campanii.comun.cauta_in_titlu')} value={cauta}
@@ -205,32 +201,39 @@ export default function YouTube({ m, taburi, subsol }: PropsSectiune) {
       titlu: t('campanii.youtube.cifre.noi_tooltip', { explicatie: nouTitlu }),
     })
   }
-  const banda = (
-    <div className="cm-banda yt-banda">
-      <div className="yt-canal">
-        <Tooltip title={t('campanii.youtube.canal_link_tooltip')}>
-          <a href={c.link ?? undefined} target="_blank" rel="noopener noreferrer"><b>{c.titlu || banca}</b> ↗</a>
+  // alegerea băncii: un rând întreg deasupra fișei, nu o coloană strânsă lângă cifre
+  const alege = (
+    <div className="yt-alege" role="group" aria-label={t('campanii.youtube.eticheta_chipuri')}>
+      <span className="cm-et">{t('campanii.youtube.eticheta_chipuri')}</span>
+      {ordine.map((x) => (
+        <Tooltip key={x} title={t('campanii.youtube.chip_tooltip', { banca: m.nume[x] ?? x })}>
+          <button type="button" onClick={() => schimba('b', x)} aria-pressed={x === banca}
+            className={['cm-chip', x === 'libra' ? 'ref' : '', x === banca ? 'activ' : ''].join(' ').trim()}>
+            {scurt(x)}
+          </button>
         </Tooltip>
-        <span className="gri mono yt-id">{c.custom_url || c.id || ''}</span>
+      ))}
+    </div>
+  )
+  // fișa canalului: antetul (siglă, canal, handle), apoi cifrele într-un grid care se rupe singur pe ecrane înguste
+  const banda = (
+    <div className="yt-fisa">
+      <div className="yt-fisa-cap">
+        {m.logo[banca] && <EtichetaBanca slug={banca} m={m} doarLogo />}
+        <div className="yt-canal">
+          <Tooltip title={t('campanii.youtube.canal_link_tooltip')}>
+            <a href={c.link ?? undefined} target="_blank" rel="noopener noreferrer"><b>{c.titlu || banca}</b> ↗</a>
+          </Tooltip>
+          <span className="gri mono yt-id">{c.custom_url || c.id || ''}</span>
+        </div>
         {eticheta}
+        {!d.nou_fata_de && <div className="yt-nou">{t('campanii.youtube.prima_extragere')}</div>}
       </div>
-      <div className="cm-cifre">
+      <div className="yt-cifre">
         {cifre.map((x, i) => {
           const corp = <div key={i}><b>{x.n}</b><span>{x.et}</span></div>
           return x.titlu ? <Tooltip key={i} title={x.titlu}>{corp}</Tooltip> : corp
         })}
-      </div>
-      {!d.nou_fata_de && <div className="yt-nou">{t('campanii.youtube.prima_extragere')}</div>}
-      <div className="cm-chipuri">
-        <span className="cm-et">{t('campanii.youtube.eticheta_chipuri')}</span>
-        {ordine.map((x) => (
-          <Tooltip key={x} title={t('campanii.youtube.chip_tooltip', { banca: m.nume[x] ?? x })}>
-            <button type="button" onClick={() => schimba('b', x)}
-              className={['cm-chip', x === 'libra' ? 'ref' : '', x === banca ? 'activ' : ''].join(' ').trim()}>
-              {scurt(x)}
-            </button>
-          </Tooltip>
-        ))}
       </div>
     </div>
   )
@@ -243,6 +246,7 @@ export default function YouTube({ m, taburi, subsol }: PropsSectiune) {
   return (
     <>
       <BaraSectiune taburi={taburi} info={info} filtre={filtre} />
+      {alege}
       {banda}
       <section className="cm-sec">
         <div className="yt-tabel">
@@ -269,6 +273,7 @@ export default function YouTube({ m, taburi, subsol }: PropsSectiune) {
                 { cheie: 'data', cap: t('campanii.comun.col_data'), s: (v) => v.publicat_la ?? '',
                   td: () => ({ className: 'mono yt-zi' }), val: (v) => zi(v.publicat_la) },
                 { cheie: 'titlu', cap: t('campanii.comun.col_titlu'), s: (v) => v.titlu ?? '',
+                  td: () => ({ className: 'yt-titlu' }),
                   val: (v) => (
                     <>
                       <Tooltip title={t('campanii.youtube.video_link_tooltip')}>

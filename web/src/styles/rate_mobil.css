@@ -175,3 +175,19 @@ td.mc .sub.ctx { white-space: normal; max-width: 24ch; margin-left: auto }
 @media (max-width: 900px) {
   .an-apk-cifre, .mb-card-apk .an-apk-cifre { grid-template-columns: repeat(2, minmax(0, 1fr)) }
 }
+/* „Actualizat la”: când am colectat noi datele băncii, sub versiune */
+.mb-actualizat { display: inline-block; font-size: 11.5px; color: var(--muted); font-family: var(--mono); margin-top: 2px }
+
+/* Descărcări pe bancă (Android): Libra în accent, restul în gri de context. Validat cu
+   validate_palette.js (07.10.2026): ΔE CVD 25,1 pe luminos și 20,6 pe întunecat, ambele >= 3:1
+   față de suprafață; banda de luminozitate și croma nu se aplică griului de context. */
+:root { --dl-libra: #7a1e2c; --dl-rest: #998b83 }
+@media (prefers-color-scheme: dark) { :root { --dl-libra: #e7a3ab; --dl-rest: #7d6d70 } }
+.mb-butoane-cap { display: inline-flex; gap: 8px; flex-wrap: wrap }
+/* în modal: fără chenar propriu, modalul e deja suprafața */
+.dl-cap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 24px; margin-bottom: 10px }
+.dl-comenzi { display: flex; gap: 8px; flex-wrap: wrap }
+.dl-grafic { width: 100%; min-width: 0 }
+.dl-grafic .recharts-surface { overflow: visible }
+.dl-tip { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 12px; line-height: 1.5; box-shadow: 0 4px 14px rgba(0, 0, 0, .12); color: var(--ink) }
+.dl-nota { margin: 6px 0 4px }

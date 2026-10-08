@@ -2,8 +2,23 @@ import { cloneElement, isValidElement, useId, useState, type ReactElement } from
 import { Collapse, Image, Modal, Tooltip } from 'antd'
 import { DislikeFilled, LikeFilled } from '@ant-design/icons'
 import { useLang } from '../../i18n'
-import { num } from '../../util/format'
+import { formatZi, num } from '../../util/format'
 import { rezumate, rezumatePlay, type TextRoEn } from './dateLocale'
+
+/**
+ * „Actualizat la”: când am colectat noi datele aplicației băncii (nota, evaluările, capturile,
+ * recenziile), nu când și-a actualizat banca aplicația în magazin. Cu `actualizeaza_aplicatii.py`
+ * băncile se reîmprospătează separat, deci data diferă de la un card la altul.
+ */
+export function ActualizatLa({ la, sursa }: { la: string | null | undefined; sursa: 'ios' | 'play' }) {
+  const { t, locale } = useLang()
+  if (!la) return null
+  return (
+    <Tooltip title={t(sursa === 'play' ? 'mobil.actualizat_la_title_play' : 'mobil.actualizat_la_title')}>
+      <span className="mb-actualizat">{t('mobil.actualizat_la', { data: formatZi(la, locale) })}</span>
+    </Tooltip>
+  )
+}
 
 /** Cinci stele SVG umplute proporțional cu nota (4,47 → a cincea umplută 47%), ca în store. */
 export function Stele({ nota, marime = 22 }: { nota: number | null; marime?: number }) {
@@ -87,7 +102,7 @@ export function RezumatAi({ banca, compact, sursa = 'ios' }: { banca: string; co
   }
   return (
     <div className={['ap-rezumat', compact ? 'compact' : ''].join(' ').trim()}>
-      <Tooltip title={t(sursa === 'play' ? 'mobil.rezumat_ai_title_play' : 'mobil.rezumat_ai_title', { de: fisier!.generat_de, la: fisier!.generat_la })}>
+      <Tooltip title={t(sursa === 'play' ? 'mobil.rezumat_ai_title_play' : 'mobil.rezumat_ai_title', { de: r.generat_de ?? fisier!.generat_de, la: r.generat_la ?? fisier!.generat_la })}>
         <div className="ap-eticheta">{t('mobil.rezumat_ai')} · {t('mobil.din_n_recenzii', { n: r.n_recenzii })}</div>
       </Tooltip>
       <p className="ap-rezumat-txt">{txt(r.rezumat)}</p>

@@ -20,11 +20,28 @@
 
 /* ---- 2.4 YouTube: un singur canal la vedere ---- */
 /* linkurile spre YouTube și spre pagina băncii rămân subliniate, ca în aplicația veche (AntD le scoate sublinierea) */
-.yt-banda .yt-canal a, .yt-tabel a { text-decoration: underline }
-.yt-banda .yt-canal { display: flex; flex-direction: column; gap: 2px; flex: none; max-width: 230px; font-size: 13px }
-.yt-banda .yt-canal .ant-tag.pill { align-self: flex-start }
-.yt-banda .yt-id { font-size: 11.5px }
-.yt-banda .yt-nou { font-size: 11px; color: var(--muted); max-width: 165px; line-height: 1.35; flex: none }
+.yt-fisa .yt-canal a, .yt-tabel a { text-decoration: underline }
+/* alegerea băncii: chips pe un rând întreg, deasupra fișei */
+.yt-alege { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 12px }
+/* fișa canalului: antet + grid de cifre */
+.yt-fisa { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--umbra); margin-bottom: 16px }
+.yt-fisa-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 14px 18px; border-bottom: 1px solid var(--line) }
+.yt-fisa-cap .cl-banca img { width: auto; max-width: 80px; height: 22px; object-fit: contain }
+.yt-fisa .yt-canal { display: flex; flex-direction: column; gap: 1px; min-width: 0; font-size: 15px }
+.yt-fisa .yt-id { font-size: 11.5px }
+.yt-fisa .yt-nou { margin-left: auto; font-size: 11.5px; color: var(--muted); max-width: 34ch; line-height: 1.35 }
+.yt-cifre { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 24px; padding: 14px 18px 16px }
+.yt-cifre > div { display: flex; flex-direction: column; gap: 2px; cursor: default; min-width: 0 }
+.yt-cifre b { font-family: var(--mono); font-size: 22px; font-weight: 500; line-height: 1.15; white-space: nowrap }
+.yt-cifre span { font-size: 11.5px; color: var(--muted); line-height: 1.3 }
+/* pe ecrane înguste tabelul derulează orizontal, în loc să rupă titlurile pe câte 6 rânduri */
+.yt-tabel .ant-table-content { overflow-x: auto }
+.ant-table-wrapper.t td.yt-titlu { min-width: 260px }
+@media (max-width: 600px) {
+  .yt-fisa .yt-nou { margin-left: 0; max-width: none; flex-basis: 100% }
+  .yt-cifre { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .yt-cifre b { font-size: 19px }
+}
 .cm-bara .yt-n { font-size: 12px; margin-left: auto; align-self: center }
 .cm-bara .yt-bifa { display: flex; align-items: center; align-self: center }
 .cm-bara .yt-bifa .ant-checkbox-wrapper { font-size: 12.5px }

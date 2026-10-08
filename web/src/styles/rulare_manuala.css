@@ -22,3 +22,8 @@
 .rm-cifre b { font-family: var(--mono); font-size: 24px; font-weight: 600; color: var(--ink) }
 .rm-baza { grid-column: 1 / -1; margin: 4px 0 0 }
 .rm-estimare .callout { margin-top: 8px }
+/* pasul 2: titlul cu „Toate băncile” / „Golește” pe același rând */
+.rm-pas-cap { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px }
+.rm-pas-cap h4 { margin: 0 }
+.rm-banci-butoane { display: flex; gap: 6px }
+.rm-nota-coada { margin: 6px 0 0 }

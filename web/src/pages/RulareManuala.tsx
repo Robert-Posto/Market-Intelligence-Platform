@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { App, Button, Modal, Radio, Select, Tooltip } from 'antd'
 import { Link } from 'react-router-dom'
-import { Rulari as RulariSchema, type RulareManualaCatalog } from '@mcc/shared'
+import { Rulari as RulariSchema, type ComandaRulare, type RulareManualaCatalog } from '@mcc/shared'
 import { api, apiPost } from '../api/client'
 import { useMeta, type Meta } from '../api/meta'
 import { useCatalogRulare, useEstimareRulare } from '../api/rulare_manuala'
@@ -18,7 +18,8 @@ import '../styles/rulare_manuala.css'
  * tipul jobului (discovery, extragere, produse noi), banca și, unde trebuie, produsul Libra;
  * cu toate alese apare estimarea de cost și durată din joburile încheiate. Pornirea trece
  * prin aceleași rute ca rulările din Overview (/api/rulari/porneste: listă fixă, token,
- * un proces odată), iar sub buton stau rularea curentă și scripturile de colectare.
+ * o rulare odată; pe mai multe bănci, câte `paralel_banci` simultan), iar sub buton stau
+ * rularea curentă și scripturile de colectare.
  */
 export default function RulareManuala() {
   const meta = useMeta()
@@ -50,43 +51,62 @@ export default function RulareManuala() {
       </section>
       <Rulari m={meta.data} />
       {deschis && d && (
-        <ModalJob cat={cat.data} m={meta.data} token={d.token ?? ''} onClose={() => setDeschis(false)} />
+        <ModalJob cat={cat.data} comenzi={d.comenzi} m={meta.data} token={d.token ?? ''} onClose={() => setDeschis(false)} />
       )}
     </>
   )
 }
 
-function ModalJob({ cat, m, token, onClose }: { cat: RulareManualaCatalog; m: Meta; token: string; onClose: () => void }) {
+function ModalJob({ cat, comenzi, m, token, onClose }: {
+  cat: RulareManualaCatalog; comenzi: ComandaRulare[]; m: Meta; token: string; onClose: () => void
+}) {
   const { t, tn, lang, locale } = useLang()
   const { message } = App.useApp()
   const qc = useQueryClient()
   const durata = useDurata()
   const [tip, setTip] = useState('')
-  const [banca, setBanca] = useState('')
+  // mai multe bănci odată: serverul le pune la coadă și rulează câte `paralel_banci` simultan (app/rulari.py)
+  const [banci, setBanci] = useState<string[]>([])
   const [produs, setProdus] = useState('')
   const [pornire, setPornire] = useState(false)
   const [eroare, setEroare] = useState<string | null>(null)
 
   const ales = cat.tipuri.find((x) => x.id === tip)
+  const lista = ales?.banci ?? cat.banci
   const cuProdus = ales?.produs === 'obligatoriu'
-  const gata = !!ales && !!banca && (!cuProdus || !!produs)
-  const est = useEstimareRulare(tip, banca, cuProdus ? produs : '', gata)
+  const gata = !!ales && banci.length > 0 && (!cuProdus || !!produs)
+  const est = useEstimareRulare(tip, banci, cuProdus ? produs : '', gata)
   const e = est.data
   const numeBanca = (b: string) => m.nume[b] ?? b
-  const fara_surse = tip === 'extragere' && e?.surse && e.surse.gasite === 0
+  const multi = banci.length > 1
+  const paralel = comenzi.find((c) => c.id === tip)?.paralel_banci ?? 1
+  const total = multi ? e?.total : null
+  const fara_surse = tip === 'extragere' && !multi && e?.surse && e.surse.gasite === 0
+  // la mai multe bănci, cele fără surse se pot scoate dintr-un clic; dacă nu rămâne niciuna, nu se pornește
+  const toate_fara_surse = tip === 'extragere' && multi && !!total && total.fara_surse.length === banci.length
+
+  const alegeTip = (x: string) => {
+    setTip(x)
+    setEroare(null)
+    // aplicațiile mobile au altă listă de bănci decât extragerea: ce nu e în lista nouă cade
+    const noua = cat.tipuri.find((y) => y.id === x)?.banci ?? cat.banci
+    setBanci((v) => v.filter((b) => noua.includes(b)))
+  }
 
   const porneste = async () => {
     setPornire(true)
     setEroare(null)
-    const r = await apiPost('/api/rulari/porneste', { id: tip, banca, produs: cuProdus ? produs : null }, token)
+    const corp = multi ? { id: tip, banci, produs: cuProdus ? produs : null } : { id: tip, banca: banci[0], produs: cuProdus ? produs : null }
+    const r = await apiPost('/api/rulari/porneste', corp, token)
     setPornire(false)
     if (r.eroare) {
       setEroare(t('rm.nu_a_pornit', { eroare: deLaServer(r.eroare, lang) }))
       return
     }
-    message.success(t('rm.pornit', {
-      nume: numeTip(t, tip, ales?.denumire ?? tip), banca: numeBanca(banca), produs: cuProdus ? ` · ${produs}` : '',
-    }), 6)
+    const nume = numeTip(t, tip, ales?.denumire ?? tip)
+    const prod = cuProdus ? ` · ${produs}` : ''
+    message.success(multi ? t('rm.pornit_multi', { nume, n: banci.length, produs: prod })
+      : t('rm.pornit', { nume, banca: numeBanca(banci[0]!), produs: prod }), 6)
     await qc.invalidateQueries({ queryKey: ['rulari'] })
     onClose()
   }
@@ -95,11 +115,13 @@ function ModalJob({ cat, m, token, onClose }: { cat: RulareManualaCatalog; m: Me
     <Modal open onCancel={onClose} title={t('rm.modal_titlu')} width={720} destroyOnHidden
       footer={[
         <Button key="a" onClick={onClose}>{t('rm.anuleaza')}</Button>,
-        <Button key="p" type="primary" loading={pornire} disabled={!gata || !e || !!fara_surse} onClick={porneste}>{t('rm.porneste')}</Button>,
+        <Button key="p" type="primary" loading={pornire} disabled={!gata || !e || est.isFetching || !!fara_surse || toate_fara_surse} onClick={porneste}>
+          {multi ? t('rm.porneste_multi', { n: banci.length }) : t('rm.porneste')}
+        </Button>,
       ]}>
       <div className="rm-pas">
         <h4>1 · {t('rm.pas_tip')}</h4>
-        <Radio.Group className="rm-tipuri" value={tip} onChange={(x) => { setTip(x.target.value as string); setEroare(null) }}>
+        <Radio.Group className="rm-tipuri" value={tip} onChange={(x) => alegeTip(x.target.value as string)}>
           {cat.tipuri.map((x) => (
             <Radio key={x.id} value={x.id} className="rm-tip">
               <b>{numeTip(t, x.id, x.denumire)}</b>
@@ -110,12 +132,21 @@ function ModalJob({ cat, m, token, onClose }: { cat: RulareManualaCatalog; m: Me
       </div>
 
       <div className="rm-pas">
-        <h4>2 · {t('rm.pas_banca')}</h4>
-        <Select showSearch value={banca || undefined} placeholder={t('rm.alege_banca')} style={{ width: '100%' }}
-          optionFilterProp="nume" onChange={(v: string) => setBanca(v)}
-          options={cat.banci
+        <div className="rm-pas-cap">
+          <h4>2 · {t('rm.pas_banci')}</h4>
+          <span className="rm-banci-butoane">
+            <Button size="small" disabled={!ales || banci.length === lista.length} onClick={() => setBanci([...lista])}>
+              {t('rm.toate_bancile', { n: lista.length })}
+            </Button>
+            <Button size="small" type="text" disabled={!banci.length} onClick={() => setBanci([])}>{t('rm.goleste')}</Button>
+          </span>
+        </div>
+        <Select mode="multiple" allowClear showSearch value={banci} placeholder={t('rm.alege_banci')} style={{ width: '100%' }}
+          maxTagCount="responsive" optionFilterProp="nume" onChange={(v: string[]) => setBanci(v)}
+          options={lista
             .map((b) => ({ value: b, nume: numeBanca(b), label: <EtichetaBanca slug={b} m={m} /> }))
             .sort((a, b) => a.nume.localeCompare(b.nume, locale))} />
+        {multi && <p className="note rm-nota-coada">{paralel > 1 && banci.length > 1 ? t('rm.in_paralel', { n: banci.length, p: paralel }) : t('rm.pe_rand', { n: banci.length })}</p>}
       </div>
 
       {cuProdus && (
@@ -138,11 +169,46 @@ function ModalJob({ cat, m, token, onClose }: { cat: RulareManualaCatalog; m: Me
       )}
 
       <div className="rm-estimare">
-        <h4>{t('rm.estimare_titlu')}</h4>
+        <h4>{multi ? t('rm.estimare_titlu_multi', { n: banci.length }) : t('rm.estimare_titlu')}</h4>
         {!gata ? <p className="note">{t('rm.completeaza')}</p>
           : est.isLoading ? <p className="note">{t('comun.se_incarca')}</p>
           : est.error ? <p className="note" style={{ color: 'var(--warn)' }}>{(est.error as Error).message}</p>
-          : e && (
+          : e && multi ? (
+            total ? (
+              <>
+                <div className="rm-cifre">
+                  <div>
+                    <span className="gri">{t('rm.cost_total')}</span>
+                    <b>~{usd(total.cost_med ?? 0, locale)}</b>
+                    {(total.cost_max ?? 0) > (total.cost_min ?? 0) && (
+                      <span className="sub">{t('rm.interval_cost', { min: usd(total.cost_min ?? 0, locale), max: usd(total.cost_max ?? 0, locale) })}</span>
+                    )}
+                  </div>
+                  <div>
+                    <span className="gri">{t('rm.durata_totala')}</span>
+                    <b>~{durata(total.durata_med)}</b>
+                    {total.durata_max != null && total.durata_max > (total.durata_med ?? 0) && (
+                      <span className="sub">{t('rm.durata_max', { max: durata(total.durata_max) })}</span>
+                    )}
+                  </div>
+                  <p className="sub rm-baza">{(total.paralel_banci ?? 1) > 1 ? t('rm.baza_multi_paralel', { n: total.n_banci, p: total.paralel_banci ?? 1 }) : t('rm.baza_multi', { n: total.n_banci })} {t('rm.nota_cost')}</p>
+                </div>
+                {total.fara_estimare.length > 0 && (
+                  <p className="note">{tn('rm.fara_estimare_multi', total.fara_estimare.length, { banci: total.fara_estimare.map(numeBanca).join(', ') })}</p>
+                )}
+                {total.fara_surse.length > 0 && (
+                  <div className="callout warn">
+                    {tn('rm.fara_surse_multi', total.fara_surse.length, { banci: total.fara_surse.map(numeBanca).join(', ') })}{' '}
+                    {!toate_fara_surse && (
+                      <Button size="small" onClick={() => setBanci((v) => v.filter((b) => !total.fara_surse.includes(b)))}>
+                        {t('rm.scoate_fara_surse')}
+                      </Button>
+                    )}
+                  </div>
+                )}
+              </>
+            ) : <p className="note">{t('rm.fara_istoric')}</p>
+          ) : e && (
             <>
               {e.estimare ? (
                 <div className="rm-cifre">

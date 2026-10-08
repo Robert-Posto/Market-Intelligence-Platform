@@ -15,5 +15,6 @@ openpyxl>=3.1     # doar ingest/load_catalog_libra.py (citește Excel-ul cu cata
 # fluxul extragere_produse_bancare (flow-html.py, scripturile de discovery)
 httpx>=0.28
 python-dotenv>=1.2
+pydantic>=2.0       # ingest/brief_recenzii.py: forma brief-ului AI (messages.parse)
 selectolax>=0.4
 trafilatura>=2.2

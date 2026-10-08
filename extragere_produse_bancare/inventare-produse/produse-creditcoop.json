@@ -1,0 +1,96 @@
+{
+ "banca": "creditcoop",
+ "generat": "2026-10-07",
+ "model": "claude-haiku-4-5",
+ "statistica": {
+  "adrese_brute": 84,
+  "candidati": 3,
+  "scoase": {
+   "domeniu": 18,
+   "fisier": 0,
+   "exclus": 6,
+   "sectiune": 48,
+   "robots": 0,
+   "inaccesibil": 0,
+   "deja_libra": 9
+  },
+  "sitemapuri_citite": 0
+ },
+ "limita": null,
+ "blocat": null,
+ "cost_estimat_usd": 0.0163,
+ "tokeni": {
+  "intrare": 12713,
+  "iesire": 723,
+  "citire_cache": 0,
+  "scriere_cache": 0
+ },
+ "nou": [],
+ "echivalent": [
+  {
+   "url": "https://www.creditcoop.ro/c/persoane-fizice/depozite",
+   "titlu": "Stai relaxat și urmărește cum se înmulțesc economiile tale! Constitue un depozit la termen!",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3687,
+    "iesire": 275,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Depozite (FlexiPlus, Standard, CREDITCOOP Plus, Star Plus)",
+   "descriere_produs": "Produse de depozite la termen cu perioade de păstrare diferite și condiții variate pentru persoane fizice",
+   "categorie": "depozite_economii",
+   "segment": "PF",
+   "citat": "FlexiPlus 7 Luni pentru fonduri noi, Standard 6 Luni Plus pentru fonduri noi, CREDITCOOP Plus pentru fonduri noi",
+   "echivalent_libra": "DEPOZIT_TERMEN",
+   "incredere": 0.95,
+   "rezultat": "echivalent",
+   "motiv": "echivalent cu DEPOZIT_TERMEN"
+  }
+ ],
+ "de_verificat": [
+  {
+   "url": "https://www.creditcoop.ro/c/persoane-fizice/credite-fizice",
+   "titlu": "",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 3688,
+    "iesire": 194,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Credit nevoi personale",
+   "descriere_produs": null,
+   "categorie": "credite",
+   "segment": "PF",
+   "citat": "Credit nevoi personale cu asigurare de viață. Creditul nevoi personale garantat cu ipotecă.",
+   "echivalent_libra": "CREDIT_NEVOI_PERSONALE",
+   "incredere": 0.9,
+   "rezultat": "de_verificat",
+   "motiv": "e produs, dar citatul nu se regăsește în pagină"
+  },
+  {
+   "url": "https://www.creditcoop.ro/c/persoane-juridice/credite-juridice",
+   "titlu": "Susținem afacerea ta! Vezi credite pentru afaceri!",
+   "din": "meniu",
+   "tokeni": {
+    "intrare": 5338,
+    "iesire": 254,
+    "citire_cache": 0,
+    "scriere_cache": 0
+   },
+   "denumire_produs": "Credite juridice",
+   "descriere_produs": "Portofoliu de credite pentru persoane juridice, incluzând credite standard, linii de credit, credite imobiliare, agricole și pentru echipamente",
+   "categorie": "credite",
+   "segment": "PJ",
+   "citat": "Creditul standard, Linia de credit, Creditul imobiliar, Creditul Agro, Creditul pentru echipamente",
+   "echivalent_libra": "LINIE_CREDIT",
+   "incredere": 0.6,
+   "rezultat": "de_verificat",
+   "motiv": "e produs, dar citatul nu se regăsește în pagină"
+  }
+ ],
+ "respins": [],
+ "nerulat": [],
+ "dublura": []
+}

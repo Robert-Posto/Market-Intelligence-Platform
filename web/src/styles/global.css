@@ -142,6 +142,8 @@ label.f { display: flex; flex-direction: column; gap: 4px; font-size: 11.5px; co
 .rl-bara.peste > i { background: var(--warn) }
 pre.rl-jurnal { font: 11.5px/1.5 var(--mono); max-height: 300px; overflow: auto; margin: 10px 0 0; background: var(--surface);
   border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; white-space: pre-wrap; overflow-wrap: anywhere }
+.rl-proces { padding: 10px 0 0; border-top: 1px solid var(--line); margin-top: 10px }
+pre.rl-jurnal.scurt { max-height: 140px; margin-top: 6px }
 table.t.rl { width: 100%; border-collapse: collapse; font-size: 13px }
 table.t.rl th, table.t.rl td { text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--line); vertical-align: middle }
 table.t.rl th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); font-weight: 500 }
@@ -231,3 +233,5 @@ button.cm-chip.activ b { color: inherit }
 
 /* caseta KPI fără date: chenar punctat, fără fundal (Versus „Fără date la Libra”) */
 .kpi > div.inactiv { border-style: dashed; border-color: var(--line-2); background: none; box-shadow: none }
+/* „banca 3 din 12”: rularea curentă face parte dintr-o coadă */
+.rl-coada { font-family: var(--mono); font-size: 11.5px; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 8px }

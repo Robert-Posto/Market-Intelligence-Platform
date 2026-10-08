@@ -13,7 +13,8 @@ import { deLaServer } from '../i18n/server'
  * de colectare care ar rula automat, pornite la cerere, și rularea curentă, oricare ar fi
  * (inclusiv un job pornit din modalul „Începe job”). Doar pe laptopul cu MIP_PERMITE_RULARI=1;
  * altfel butoanele rămân dezactivate. Lista e fixă, pe server (app/rulari.py): din pagină
- * pleacă doar id-ul comenzii și, unde se poate, banca. Un singur proces odată.
+ * pleacă doar id-ul comenzii și, unde se poate, banca. O singură rulare odată; la joburile
+ * fluxului pe mai multe bănci, câteva bănci în lucru simultan, fiecare cu bara și jurnalul ei.
  * Cât rulează ceva, starea se cere la 2 s, ca în aplicația veche.
  */
 export default function Rulari({ m }: { m: Meta }) {
@@ -108,7 +109,8 @@ function Corp({ d, m }: { d: RulariT; m: Meta }) {
 
   const opreste = (cur: RulareCurenta) => {
     modal.confirm({
-      content: t('rulari.confirma_oprire', { nume: deLaServer(cur.nume, lang) }),
+      content: t('rulari.confirma_oprire', { nume: deLaServer(cur.nume, lang) })
+        + (cur.coada?.ramase.length ? ' ' + t('rulari.confirma_oprire_coada', { n: cur.coada.ramase.length }) : ''),
       onOk: async () => {
         const r = await apiPost('/api/rulari/opreste', {}, d.token ?? '')
         if (r.eroare) modal.error({ content: t('rulari.nu_s_a_oprit', { eroare: deLaServer(r.eroare, lang) }) })
@@ -134,13 +136,47 @@ function Corp({ d, m }: { d: RulariT; m: Meta }) {
   return (
     <>
       {!d.activ && <div className="callout warn" style={{ marginBottom: 14 }}><T k="rulari.oprite_callout" /></div>}
-      {cur && (() => {
+      {cur && cur.procese && cur.procese.length > 1 && (
+        // mai multe bănci simultan (joburile fluxului, app/rulari.py `paralel_banci`): o bară și un jurnal pe bancă
+        <div className="rl-curenta">
+          <div className="rl-cap">
+            <b>{t('rulari.ruleaza_acum', { nume: deLaServer(cur.nume, lang) })}{cur.produs ? ' · ' + cur.produs : ''}</b>
+            <span className="rl-coada">{t('rulari.in_paralel', { n: cur.procese.length })}</span>
+            {cur.coada && <span className="rl-coada">{t('rulari.coada_gata', { gata: cur.coada.facute.length, total: cur.coada.total })}</span>}
+            <span className="note">{cur.dupa_repornire ? t('rulari.pornita_la_repornire', { ora: ora(cur.inceput) }) : t('rulari.pornita_la', { ora: ora(cur.inceput) })}</span>
+            <span style={{ marginLeft: 'auto' }}>
+              <Button onClick={() => opreste(cur)} disabled={cur.oprit}>{cur.oprit ? t('rulari.se_opreste') : t('rulari.opreste')}</Button>
+            </span>
+          </div>
+          {cur.procese.map((x) => {
+            const e = x.estimare_s || 0
+            const p = e ? x.scurs_s / e : 0
+            return (
+              <div key={x.log} className="rl-proces">
+                <b>{x.banca ? numeBanca(x.banca) : '—'}</b>
+                <div className={`rl-bara${p > 1 ? ' peste' : ''}`}><i style={{ width: `${Math.min(100, Math.round(p * 100))}%` }} /></div>
+                <div className="note">
+                  {t('rulari.progres', { scurs: durata(x.scurs_s), estimat: durata(e) })}
+                  {p > 1 && <> · <T k="rulari.peste_estimare" /></>}
+                  {' · '}<T k="rulari.jurnal" params={{ log: x.log }} />
+                </div>
+                <pre className="rl-jurnal scurt">{x.jurnal.join('\n') || t('rulari.se_porneste')}</pre>
+              </div>
+            )
+          })}
+          {cur.coada && cur.coada.ramase.length > 0 && (
+            <div className="note">{t('rulari.coada_asteapta', { banci: cur.coada.ramase.map(numeBanca).join(', ') })}</div>
+          )}
+        </div>
+      )}
+      {cur && !(cur.procese && cur.procese.length > 1) && (() => {
         const e = cur.estimare_s || 0
         const p = e ? cur.scurs_s / e : 0
         return (
           <div className="rl-curenta">
             <div className="rl-cap">
               <b>{t('rulari.ruleaza_acum', { nume: deLaServer(cur.nume, lang) })}{cur.banca ? ' · ' + numeBanca(cur.banca) : ''}{cur.produs ? ' · ' + cur.produs : ''}</b>
+              {cur.coada && <span className="rl-coada">{t('rulari.coada_pozitie', { pozitie: cur.coada.pozitie, total: cur.coada.total })}</span>}
               <span className="note">{cur.dupa_repornire ? t('rulari.pornita_la_repornire', { ora: ora(cur.inceput) }) : t('rulari.pornita_la', { ora: ora(cur.inceput) })}</span>
               <span style={{ marginLeft: 'auto' }}>
                 <Button onClick={() => opreste(cur)} disabled={cur.oprit}>{cur.oprit ? t('rulari.se_opreste') : t('rulari.opreste')}</Button>
@@ -152,6 +188,9 @@ function Corp({ d, m }: { d: RulariT; m: Meta }) {
               {p > 1 && <> · <T k="rulari.peste_estimare" /></>}
               {' · '}<T k="rulari.jurnal" params={{ log: cur.log }} />
             </div>
+            {cur.coada && cur.coada.ramase.length > 0 && (
+              <div className="note">{t('rulari.coada_urmeaza', { banci: cur.coada.ramase.map(numeBanca).join(', ') })}</div>
+            )}
             <pre className="rl-jurnal">{(cur.jurnal || []).join('\n') || t('rulari.se_porneste')}</pre>
           </div>
         )
