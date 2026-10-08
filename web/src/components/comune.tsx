@@ -6,6 +6,7 @@ import type { Meta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { zileDeLa } from '../util/format'
+import { etSegment } from './valori'
 
 /**
  * Cutia standard a siglei: aceeași mărime pentru toate băncile, sigla centrată în ea (object-fit: contain).
@@ -68,6 +69,16 @@ export function Pill({ tip, title, children }: { tip?: 'ok' | 'amb'; title?: str
     </Tag>
   )
   return title ? <Tooltip title={title}>{tag}</Tooltip> : tag
+}
+
+/**
+ * Segmentul unui rând (pf / pfa / imm / pj din `cod_scenariu`): pe pastilă doar codul, numele întreg în
+ * tooltip. Pastila stă pe fiecare rând, iar „Persoane fizice” sau „Fără segment în sursă” îl lățeau
+ * (cerut pe 08.10.2026). Un rând fără segment n-are pastilă.
+ */
+export function PillSegment({ segment }: { segment: string }) {
+  const { t } = useLang()
+  return <Pill title={etSegment(segment, t)}>{segment.toUpperCase()}</Pill>
 }
 
 /** Explicațiile lungi, pliate: pagina începe cu datele, nu cu textul. */

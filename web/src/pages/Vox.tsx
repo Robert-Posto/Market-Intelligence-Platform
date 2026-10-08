@@ -15,7 +15,7 @@ import {
   useStareVox,
 } from '../api/vox'
 import { useMeta, type Meta } from '../api/meta'
-import { EtichetaBanca, Eroare, Pill, SeIncarca } from '../components/comune'
+import { EtichetaBanca, Eroare, Pill, PillSegment, SeIncarca } from '../components/comune'
 import { LinkSursa } from '../components/Dovezi'
 import { VoxBula, VoxInsigna } from '../components/LogoVox'
 import Sertar, { type CerereSertar } from '../components/Sertar'
@@ -500,7 +500,7 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
               <th>{t('vox.col.document')}</th>
             </tr>
           </thead>
-          <tbody>{vizibile.map((v, k) => <Rand key={k} v={v} cuSegmente={cuSegmente} />)}</tbody>
+          <tbody>{vizibile.map((v, k) => <Rand key={k} v={v} />)}</tbody>
         </table>
       </div>
       {(rb.randuri.length > PRIMELE || rb.limitat) && (
@@ -580,14 +580,14 @@ function PlacaRezumat({ g, multeCategorii, onDovezi }: { g: GrupaRezumat; multeC
 }
 
 /** Un rând: serviciul și condiția băncii (date, netraduse), valoarea, dovada. */
-function Rand({ v, cuSegmente }: { v: ValoareDovada; cuSegmente: boolean }) {
+function Rand({ v }: { v: ValoareDovada }) {
   const { t, locale } = useLang()
   const valoare = v.valoare !== null ? num(v.valoare, locale) + unitTxt(v.unitate, t) : (v.valoare_text ?? '—')
   return (
     <tr className={v.ambiguu ? 'ambiguu' : undefined}>
       <td>
         {v.serviciu ?? '—'}{v.conditie && <span className="sub">{v.conditie}</span>}
-        {cuSegmente && <span className="vox-seg"><Pill>{etSegment(v.segment, t)}</Pill></span>}
+        {v.segment && <span className="vox-seg"><PillSegment segment={v.segment} /></span>}
       </td>
       <td className="dr val">{valoare}{v.frecventa && <span className="sub">{v.frecventa}</span>}</td>
       <td>

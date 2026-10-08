@@ -7,9 +7,9 @@ import { useMeta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { compara, num } from '../util/format'
-import { Pill } from './comune'
+import { Pill, PillSegment } from './comune'
 import { CitatEvidentiat, citatUtil, LinkSursa, MOTIV_CHEIE } from './Dovezi'
-import { etDesc, etNume, etSegment, unitTxt } from './valori'
+import { etDesc, etNume, unitTxt } from './valori'
 
 /**
  * Sertarul cu dovezile din spatele unei celule (refăcut pe 25.09 în aplicația
@@ -182,7 +182,7 @@ function Rand({ r }: { r: ValoareDovada }) {
       </div>
       <div className="rc">
         {ctx.length ? ctx.flatMap((x, i) => (i ? [' · ', x] : [x])) : <span className="gri">{t('sertar.rand.fara_conditii')}</span>}
-        {r.segment && <> <Pill>{etSegment(r.segment, t)}</Pill></>}
+        {r.segment && <> <PillSegment segment={r.segment} /></>}
         {r.ambiguu && <> <Pill tip="amb" title={motiv ? t(`coada.motiv_explicatie.${motiv}` as DictKey) : undefined}>{t('sertar.rand.de_verificat')}</Pill></>}
         <span className="ind">{cit ? t('sertar.rand.citat') : t('sertar.rand.detalii')} ▾</span>
       </div>
