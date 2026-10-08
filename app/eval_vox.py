@@ -23,9 +23,10 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import vox  # noqa: E402
 import server  # noqa: E402  (funcțiile de citire din bază)
 
-# măsurat pe 08.10.2026 (Haiku 4.5, mip_merge): 12.842 de tokeni de intrare pe întrebare, $0,0020 pe întrebare
-# cu promptul în cache; prima întrebare scrie cache-ul de o oră, de 2 ori prețul de intrare (~$0,026)
-COST_PRIMA, COST_ESTIMAT = 0.026, 0.0020
+# măsurat pe 08.10.2026 (Haiku 4.5, mip_merge, 12.842 de tokeni de intrare pe întrebare): o întrebare cu promptul
+# în cache a costat $0,0016 în rularea cap-coadă, iar evaluarea de 44 de întrebări, $0,0963 în total; prima
+# întrebare, care scrie cache-ul de o oră (de 2 ori prețul de intrare), iese ≈ $0,027 ($0,0963 − 43 × ~$0,0016)
+COST_PRIMA, COST_ESTIMAT = 0.027, 0.0016
 
 
 def potriveste(asteptat, primit):
