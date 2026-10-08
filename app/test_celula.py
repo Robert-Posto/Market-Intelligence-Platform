@@ -193,5 +193,29 @@ class CeluleSQL(unittest.TestCase):
             self.assertIn("ORDER BY valoare_num, serviciu, id_obs) AS rn", sql)
 
 
+class AlteMonede(unittest.TestCase):
+    def setUp(self):
+        self.cereri = []
+        self.vechi = server.interoghează
+        server.interoghează = lambda sql, params=None: self.cereri.append((sql, tuple(params or ()))) or []
+
+    def tearDown(self):
+        server.interoghează = self.vechi
+
+    def test_numara_doar_monedele_straine(self):
+        """Golul din `valuta` nu e altă monedă: 8.559 de rânduri curente n-o spun (08.10.2026)."""
+        self.assertEqual(server._alte_monede_rate(["nominala"], "depozite", "12", ""), {})
+        sql, params = self.cereri[-1]
+        self.assertEqual(sql.count("%s"), len(params))
+        self.assertIn("NOT IN ('', 'LEI', 'RON')", sql)
+        self.assertEqual(params, (["nominala"], "depozite"))
+
+    def test_cu_tip_de_credit(self):
+        server._alte_monede_rate(["dae"], "credite", "", "ipotecar")
+        sql, params = self.cereri[-1]
+        self.assertEqual(sql.count("%s"), len(params))
+        self.assertEqual(params, (["dae"], "credite", "ipotecar"))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

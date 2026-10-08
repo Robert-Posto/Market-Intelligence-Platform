@@ -408,6 +408,12 @@ class Clasa(unittest.TestCase):
         r = vox.clasa(c, "mare_bun", "cea_mai_buna", set(), self.NUME)
         self.assertEqual([(x["banca"], x["valoare"]) for x in r], [("bcr", 35), ("brd", 5)])
 
+    def test_alte_monede_trec_in_rand(self):
+        c = [dict(self.celula("raiffeisen", 2.25), alte_monede={"n": 2, "din": 2}), self.celula("brd", 3)]
+        r = {x["banca"]: x for x in vox.clasa(c, "mare_bun", "mediana", set(), self.NUME)}
+        self.assertEqual(r["raiffeisen"]["alte_monede"], {"n": 2, "din": 2})
+        self.assertNotIn("alte_monede", r["brd"])
+
 
 class IstoricConversatii(unittest.TestCase):
     def setUp(self):
@@ -890,9 +896,13 @@ class CititoriClasament(unittest.TestCase):
         self.vechi = (server.celule_matrice, server.celule_rate, server.interoghează)
         server.celule_matrice = lambda *a: self.apeluri.append(("m",) + a) or [{"banca": "bcr"}]
         server.celule_rate = lambda *a: self.apeluri.append(("r",) + a) or [{"banca": "ing"}]
+        self.monede = []
+        self.vechi_monede = server._alte_monede_rate
+        server._alte_monede_rate = lambda *a: self.monede.append(a) or {"ing": {"n": 1, "din": 4}}
 
     def tearDown(self):
         self.s.celule_matrice, self.s.celule_rate, self.s.interoghează = self.vechi
+        self.s._alte_monede_rate = self.vechi_monede
 
     def test_comision_pe_pf_implicit(self):
         c = self.s._clasament_vox("administrare_cont", None, None, None, None)
@@ -924,6 +934,19 @@ class CititoriClasament(unittest.TestCase):
     def test_dobanda_fara_filtre_un_bloc(self):
         c = self.s._clasament_vox("dae", "credite", None, None, None)
         self.assertEqual(len(c["blocuri"]), 1)
+
+    def test_dobanda_spune_alte_monede(self):
+        """La depozitul pe 12 luni, ambele valori Raiffeisen sunt în altă monedă (mip_merge, 08.10.2026):
+        clasamentul păstrează cifra din 2.2, dar o marchează, în fiecare bloc."""
+        c = self.s._clasament_vox("nominala", "depozite", "12", None, None)
+        self.assertEqual([b["celule"] for b in c["blocuri"]],
+                         [[{"banca": "ing", "alte_monede": {"n": 1, "din": 4}}]] * 2)
+        self.assertEqual(self.monede, [(["nominala"], "depozite", "12", ""),
+                                       (["nominala"], "depozite", "necunoscut", "")])
+
+    def test_comision_fara_alte_monede(self):
+        self.s._clasament_vox("administrare_cont", None, None, None, None)
+        self.assertEqual(self.monede, [])
 
     def test_neclasabil(self):
         for args in (("schimbare_pin", None, None, None, None), ("nominala", None, None, None, None),

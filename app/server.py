@@ -2033,6 +2033,20 @@ def _stare_banci_vox(banca=None):
             for x in rows}
 
 
+def _alte_monede_rate(campuri, categorie, termen, produs):
+    """Pe bancă, câte rânduri ale celulei din 2.2 au altă monedă decât lei (EUR, USD, GBP, CHF în `valuta`;
+    golul nu se numără) și din câte. Clasamentul păstrează cifrele paginii, dar spune când o celulă are și
+    alte monede: la depozitul pe 12 luni, ambele valori Raiffeisen sunt în altă monedă (mip_merge, 08.10.2026)."""
+    filtru, p_extra = _filtre_rate(termen, produs)
+    rows = interoghează(
+        f"""SELECT b.slug AS banca, count(*)::int AS din,
+                   count(*) FILTER (WHERE upper(coalesce(o.valuta, '')) NOT IN ('', 'LEI', 'RON'))::int AS n
+            {_baza_rate(GRUPURI_RATE[categorie]["prag"])}{filtru}
+            GROUP BY 1""",
+        (campuri, categorie) + p_extra)
+    return {x["banca"]: {"n": x["n"], "din": x["din"]} for x in rows if x["n"]}
+
+
 def _clasament_vox(concept, categorie, termen, produs, segment):
     """Celulele unui clasament, din aceleași interogări ca 2.1 și 2.2: un comision în lei pe un segment
     (PF dacă întrebarea nu-l spune, ca Versus), sau o dobândă pe o categorie. Cu termen sau tip de
@@ -2054,6 +2068,12 @@ def _clasament_vox(concept, categorie, termen, produs, segment):
         t2, p2 = ("necunoscut" if termen else ""), ("altele" if produs else "")
         blocuri.append({"tip": "nespecificat", "termen": t2, "produs": p2,
                         "celule": celule_rate([concept], categorie, t2, p2)})
+    # cifra rămâne a celulei din 2.2; rândul băncii spune doar câte valori sunt în altă monedă
+    for b in blocuri:
+        alte = _alte_monede_rate([concept], categorie, b["termen"], b["produs"])
+        for c in b["celule"]:
+            if c["banca"] in alte:
+                c["alte_monede"] = alte[c["banca"]]
     return {"sursa": "rate", "grup": categorie, "unitate": "procent",
             "sens": GRUPURI_RATE[categorie]["sens"], "segment": None, "blocuri": blocuri}
 

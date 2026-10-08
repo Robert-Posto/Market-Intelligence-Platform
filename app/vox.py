@@ -454,7 +454,8 @@ def clasa(celule, sens, metrica, evidentiate, nume):
                 "frecventa": c.get("frecventa") if la_mediana else None,
                 "conditie": c.get("conditie") if la_mediana else None,
                 "segment_necunoscut": c.get("segment_necunoscut") if la_mediana else None,
-                "evidentiata": c["banca"] in evidentiate}
+                "evidentiata": c["banca"] in evidentiate,
+                **({"alte_monede": c["alte_monede"]} if c.get("alte_monede") else {})}
                for c in celule if cifra(c) is not None]
     semn = -1 if sens == "mare_bun" else 1
     randuri.sort(key=lambda r: (semn * r["valoare"], (nume.get(r["banca"]) or r["banca"]).lower()))
