@@ -86,7 +86,13 @@
 </div>
 <div id="zona"><div class="stare">se încarcă documentul…</div></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<!-- PDF.js rămâne la 3.11.174 (4.x e doar modul ES, schimbare mai mare). 3.11.174 are
+     CVE-2024-4367 (JS prin font manipulat); atenuarea documentată e isEvalSupported:false,
+     pusă mai jos în getDocument. SRI + crossorigin: CDN-ul nu poate schimba fișierul pe ascuns.
+     Worker-ul se încarcă prin workerSrc, unde SRI nu se poate aplica. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+  integrity="sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e"
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 pdfjsLib.GlobalWorkerOptions.workerSrc =
   "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
@@ -98,7 +104,10 @@ const CITAT   = (p.get("q") || "").trim();
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c =>
   ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-document.getElementById("orig").href = URL_DOC;
+// Doar http(s): `u` vine din adresă, iar un `javascript:` pus acolo ar rula la clic.
+const URL_SIGUR = /^https?:\/\//i.test(URL_DOC) ? URL_DOC : "";
+if(URL_SIGUR) document.getElementById("orig").href = URL_SIGUR;
+else document.getElementById("orig").remove();
 document.getElementById("cit").innerHTML = CITAT
   ? `Se caută în document: <b>${esc(CITAT)}</b>`
   : "Fără citat de evidențiat — se deschide direct pagina.";
@@ -235,13 +244,13 @@ window.addEventListener("keydown", e => {
   try{
     // Prin serverul nostru, nu direct de la bancă: un `fetch` către CDN-ul
     // băncii cade pe CORS, iar PDF.js are nevoie de octeți.
-    doc = await pdfjsLib.getDocument("/pdf?u=" + encodeURIComponent(URL_DOC)).promise;
+    doc = await pdfjsLib.getDocument({url: "/pdf?u=" + encodeURIComponent(URL_DOC), isEvalSupported: false}).promise;
     total = doc.numPages;
     await arata(PAGINA);
   }catch(e){
     stare(`<b>Documentul nu s-a putut încărca</b>${esc(String(e && e.message || e))}<br><br>
-      Poți deschide <a href="${esc(URL_DOC)}" target="_blank" rel="noopener">originalul la bancă</a>
-      și căuta manual: <b>${esc(CITAT)}</b>${PAGINA ? `, pagina ${PAGINA}` : ""}.`);
+      ${URL_SIGUR ? `Poți deschide <a href="${esc(URL_SIGUR)}" target="_blank" rel="noopener">originalul la bancă</a>
+      și căuta manual:` : "Caută manual:"} <b>${esc(CITAT)}</b>${PAGINA ? `, pagina ${PAGINA}` : ""}.`);
   }
 })();
 </script>

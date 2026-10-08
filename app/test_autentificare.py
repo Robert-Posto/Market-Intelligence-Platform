@@ -612,14 +612,35 @@ class Jurnal(Baza):
 
 class ModLocal(unittest.TestCase):
     def test_mod_local(self):
-        self.assertEqual(autentificare.mod_local({"MCC_AUTH_LOCAL": "admin"}, {}), "admin")
-        self.assertEqual(autentificare.mod_local({"MCC_AUTH_LOCAL": " Analist "}, {}), "analist")
+        local = {"Host": "localhost:8765"}
+        self.assertEqual(autentificare.mod_local({"MCC_AUTH_LOCAL": "admin"}, local), "admin")
+        self.assertEqual(autentificare.mod_local({"MCC_AUTH_LOCAL": " Analist "}, local), "analist")
         for env in ({}, {"MCC_AUTH_LOCAL": ""}, {"MCC_AUTH_LOCAL": "root"}, {"MCC_AUTH_LOCAL": "1"},
                     {"MCC_AUTH_LOCAL": "admin", "MCC_AUTH_OBLIGATORIE": "1"},
                     {"MCC_AUTH_LOCAL": "admin", "MCC_AUTH_OBLIGATORIE": " 1 "}):
-            self.assertIsNone(autentificare.mod_local(env, {}), env)
-        for antete in ({"X-Real-IP": "10.0.0.1"}, {"X-Real-IP": ""}):
+            self.assertIsNone(autentificare.mod_local(env, local), env)
+        for antete in ({"X-Real-IP": "10.0.0.1", "Host": "localhost:8765"}, {"X-Real-IP": "", "Host": "localhost"}):
             self.assertIsNone(autentificare.mod_local({"MCC_AUTH_LOCAL": "admin"}, antete), antete)
+
+    def test_mod_local_doar_pe_nume_de_loopback(self):
+        # DNS rebinding: un domeniu străin îndreptat spre 127.0.0.1 vine cu numele lui în Host
+        for gazda in ("localhost:8765", "127.0.0.1:8765", "[::1]:8765", "localhost", "LOCALHOST:5173"):
+            self.assertEqual(autentificare.mod_local({"MCC_AUTH_LOCAL": "admin"}, {"Host": gazda}), "admin", gazda)
+        for antete in ({}, {"Host": ""}, {"Host": "evil.example:8765"}, {"Host": "localhost.evil.example"},
+                       {"Host": "127.0.0.1.nip.io:8765"}, {"Host": "[::2]:8765"}):
+            self.assertIsNone(autentificare.mod_local({"MCC_AUTH_LOCAL": "admin"}, antete), antete)
+
+    def test_fara_ad_configurat_laptopul_intra_automat_ca_admin(self):
+        local = {"Host": "127.0.0.1:8765"}
+        self.assertEqual(autentificare.mod_local({}, local, ad_configurat=False), "admin")
+        # MCC_AUTH_LOCAL alege tot rolul (de pildă pentru a vedea aplicația ca analist)
+        self.assertEqual(autentificare.mod_local({"MCC_AUTH_LOCAL": "analist"}, local, ad_configurat=False), "analist")
+        # cu AD configurat, fără MCC_AUTH_LOCAL: logare obligatorie, ca până acum
+        self.assertIsNone(autentificare.mod_local({}, local, ad_configurat=True))
+        # niciodată pe server, prin nginx sau pe alt Host
+        self.assertIsNone(autentificare.mod_local({"MCC_AUTH_OBLIGATORIE": "1"}, local, ad_configurat=False))
+        self.assertIsNone(autentificare.mod_local({}, {"Host": "localhost", "X-Real-IP": "10.0.0.1"}, ad_configurat=False))
+        self.assertIsNone(autentificare.mod_local({}, {"Host": "evil.example"}, ad_configurat=False))
 
     def test_verifica_pornire(self):
         for env in ({}, {"MCC_AUTH_LOCAL": "admin"}, {"MCC_AUTH_LOCAL": "analist"}, {"MCC_AUTH_OBLIGATORIE": "1"},

@@ -148,8 +148,9 @@ AD prin LDAPS (`app/autentificare.py`). Rolul vine din grupurile AD, inclusiv im
 admin, `MCC_LDAP_GRUP_ANALIST` → analist (în ambele → admin, în niciunul → 403). Doar adminul are „Rulare manuală”
 și „Joburi și erori” (`/api/rulari*`, `/api/rulare_manuala*`, `/api/jobs`): 403 pentru analist, verificat pe server.
 
-- **Pe laptop**: `MCC_AUTH_LOCAL=admin` în `.env` te consideră admin fără logare (`GET /api/sesiune` dă
-  `local: true`). Fără ea, aplicația cere logare. Nu are efect pe cererile venite prin nginx (`X-Real-IP`) și nici
+- **Pe laptop**: cât timp AD-ul nu e configurat (`MCC_LDAP_*` goale), intri automat ca admin, fără logare
+  (`GET /api/sesiune` dă `local: true`). `MCC_AUTH_LOCAL=admin|analist` în `.env` alege rolul; cu AD configurat
+  și fără ea, aplicația cere logare. Doar pentru cereri adresate lui `localhost` / `127.0.0.1` / `[::1]`. Nu are efect pe cererile venite prin nginx (`X-Real-IP`) și nici
   cu `MCC_AUTH_OBLIGATORIE=1`.
 - **Pe server**: `MCC_LDAP_*` în `.env` (model în `.env.example`; ce se cere de la IT în `deploy/INSTALARE.md`),
   iar `mcc.service` pune `MCC_AUTH_OBLIGATORIE=1`.

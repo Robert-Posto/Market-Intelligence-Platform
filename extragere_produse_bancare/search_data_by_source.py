@@ -173,10 +173,12 @@ def scrie_bronze(octeti: bytes, id_sursa: Any, url: str) -> dict | None:
             "cale": str(cale.relative_to(DATE))}
 
 
-async def descarca(url: str, metoda: str) -> tuple[bytes, int | None]:
+async def descarca(url: str, metoda: str) -> tuple[bytes, int | str | None]:
     """
     @returns (octeți, status_refuz). Status nenul = serverul a refuzat, iar
-             octeții sunt goi; apelantul decide dacă trece pe fallback.
+             octeții sunt goi; apelantul decide dacă trece pe fallback. Text în
+             loc de cod când refuzul e al nostru, înainte de cerere: robots.txt,
+             origine BLOCAT, adresă internă (`fh.adu_http`, pe fiecare redirect).
     """
     try:
         if metoda == "playwright":
@@ -184,8 +186,7 @@ async def descarca(url: str, metoda: str) -> tuple[bytes, int | None]:
             # pentru PDF, dar pentru asta nu e nici nevoie.
             html = await fh._descarca_pentru_test(url, "playwright")
             return html.encode("utf-8"), None
-        r = await fh.adu_http(url, timeout=fh.TIMEOUT,
-                              follow_redirects=True, http2=True)
+        r = await fh.adu_http(url, timeout=fh.TIMEOUT, http2=True)
         if r.status_code in fh.STATUS_REFUZ:
             return b"", r.status_code
         r.raise_for_status()

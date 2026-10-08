@@ -346,8 +346,9 @@ class Http(unittest.TestCase):
         self.assertNotIn("token", d)
 
     def test_get_host_strain(self):
-        for h in ("evil.com:%d" % self.port, "localhost:1"):
-            self.assertEqual(self.cere("GET", "/api/rulari", host=h)[0], 403)
+        # un Host străin e refuzat deja la poartă (401: nu e utilizator local); unul local cu alt port, la rulări (403)
+        self.assertIn(self.cere("GET", "/api/rulari", host="evil.com:%d" % self.port)[0], (401, 403))
+        self.assertEqual(self.cere("GET", "/api/rulari", host="localhost:1")[0], 403)
         self.assertEqual(self.cere("GET", "/api/rulari", antete={"Origin": "http://evil.com"})[0], 403)
 
     def test_post_refuzat(self):
@@ -362,7 +363,8 @@ class Http(unittest.TestCase):
         ]
         for antete, host in cazuri:
             cod, _ = self.cere("POST", "/api/rulari/porneste", {"id": "numara"}, antete, host)
-            self.assertEqual(cod, 403, (antete, host))
+            # Host străin: refuz la poartă (401); restul: refuz la verificarea rulărilor (403)
+            self.assertIn(cod, (401, 403) if host else (403,), (antete, host))
         self.assertIsNone(self.server_mod.RULARI.curenta)
 
     def test_post_inactiv(self):

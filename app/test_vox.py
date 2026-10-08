@@ -992,7 +992,9 @@ class Http(unittest.TestCase):
         self.assertNotIn("token", d)
 
     def test_get_host_strain(self):
-        self.assertEqual(self.cere("GET", "/api/vox", host=f"evil.com:{self.port}")[0], 403)
+        # un Host străin e refuzat deja la poartă (401: nu e utilizator local); unul local cu alt port, la Vox (403)
+        self.assertIn(self.cere("GET", "/api/vox", host=f"evil.com:{self.port}")[0], (401, 403))
+        self.assertEqual(self.cere("GET", "/api/vox", host="localhost:1")[0], 403)
 
     def test_post_merge_si_din_vite(self):
         """Din `npm run dev`, proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne :5173."""
@@ -1019,7 +1021,8 @@ class Http(unittest.TestCase):
         n = len(self.client.cereri)
         for antete, host in cazuri:
             cod, _ = self.cere("POST", "/api/vox", {"intrebare": "BCR?"}, antete, host)
-            self.assertEqual(cod, 403, (antete, host))
+            # Host străin: refuz la poartă (401); restul, inclusiv localhost:5173: refuz la verificarea lui Vox (403)
+            self.assertIn(cod, (401, 403) if host == f"evil.com:{self.port}" else (403,), (antete, host))
         self.assertEqual(len(self.client.cereri), n)   # niciun apel plătit
 
     def test_refuzul_ajunge_ca_403_nu_ca_conexiune_intrerupta(self):
@@ -1098,10 +1101,12 @@ class Http(unittest.TestCase):
                              (dict(ok, Origin="http://evil.com"), None), (ok, f"evil.com:{self.port}")):
             for actiune, corp in (("sterge", {}), ("redenumeste", {"titlu": "x"})):
                 cod, _ = self.cere("POST", f"/api/vox/conversatii/{c}/{actiune}", corp, antete, host)
-                self.assertEqual(cod, 403, (antete, host, actiune))
+                # Host străin: refuz la poartă (401); restul: refuz la verificarea lui Vox (403)
+                self.assertIn(cod, (401, 403) if host else (403,), (antete, host, actiune))
         cod, _ = self.cere("POST", f"/api/vox/conversatii/{c}/sterge", None, dict(ok, **{"Content-Type": "text/plain"}))
         self.assertEqual(cod, 415)
-        self.assertEqual(self.cere("GET", "/api/vox/conversatii", host=f"evil.com:{self.port}")[0], 403)
+        self.assertIn(self.cere("GET", "/api/vox/conversatii", host=f"evil.com:{self.port}")[0], (401, 403))
+        self.assertEqual(self.cere("GET", "/api/vox/conversatii", host="localhost:1")[0], 403)
         self.assertEqual(self.cere("GET", f"/api/vox/conversatii/{c}", antete={"Origin": "http://evil.com"})[0], 403)
         self.assertEqual(self.cere("GET", f"/api/vox/conversatii/{c}")[0], 200)     # nimic șters
 
