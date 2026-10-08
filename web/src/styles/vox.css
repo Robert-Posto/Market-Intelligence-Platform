@@ -113,6 +113,7 @@ section.vox-bun-venit { flex: 1 0 auto; display: flex; flex-direction: column; a
 .vox-meta { font-family: var(--mono); font-size: 10.5px; color: var(--muted) }
 .vox-butoane { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px }
 .vox-butoane .vox-link { font-size: 13px }
+.vox-butoane .vox-link:disabled { cursor: not-allowed; opacity: .6 }
 .vox-fara-model { display: block; margin-top: 3px; font-family: var(--mono); font-size: 10.5px; color: var(--muted) }
 
 /* câmpul de întrebare stă jos și rămâne pe ecran la derulare; tura nouă se oprește deasupra lui */

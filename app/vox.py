@@ -20,6 +20,7 @@ import os
 import re
 import secrets
 import threading
+import unicodedata
 
 RADACINA = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR_JURNAL = os.path.join(RADACINA, "loguri", "vox")
@@ -394,6 +395,15 @@ def _ordine_segment(segment, primul=None):
     return ORDINE_SEGMENT.index(segment) if segment in ORDINE_SEGMENT else len(ORDINE_SEGMENT)
 
 
+def _cheie_frecventa(frecventa):
+    # Aceeași frecvență se scrie cu și fără diacritice în surse: la comisioane, „pe tranzactie” are 90 de valori
+    # și „pe tranzacție” 86, „pe operatiune” 103 și „pe operațiune” 38 (mip_merge, 08.10.2026). Grupate după
+    # textul brut, cardul Garanti · retragere numerar arăta două rânduri `pe tranzacție · 4`. Aceeași regulă ca
+    # `faraDiacritice` din interfață.
+    plat = unicodedata.normalize("NFD", frecventa)
+    return "".join(c for c in plat if not "\u0300" <= c <= "\u036f").lower().strip()
+
+
 def rezuma(randuri, primul=None, categorii_rate=()):
     """Pe segment, unitate și categorie: câte valori, intervalul, câte gratuite; fără cele ambigue, ca în Sertar.
 
@@ -425,8 +435,10 @@ def rezuma(randuri, primul=None, categorii_rate=()):
         g["gratuite"] += int(v == 0 and categorie in CATEGORII_COMISION)
         if categorie in CATEGORII_COMISION:
             frecventa = r.get("frecventa") or None
+            # se afișează prima grafie văzută: `etFrecventa` din interfață o duce oricum la aceeași etichetă
             f = pe_frecventa.setdefault(cheie, {}).setdefault(
-                frecventa, {"frecventa": frecventa, "n": 0, "minim": v, "maxim": v})
+                _cheie_frecventa(frecventa) if frecventa else None,
+                {"frecventa": frecventa, "n": 0, "minim": v, "maxim": v})
             f["n"] += 1
             f["minim"] = min(f["minim"], v)
             f["maxim"] = max(f["maxim"], v)
@@ -843,7 +855,7 @@ class Vox:
             raspunsuri = [self._raspuns(b, interp, ctx) for b in interp["banci"]] if interp["tip"] == "cautare" else []
             clasament = self._clasament_raspuns(interp, ctx) if interp["tip"] == "clasament" else None
         except Exception as exc:
-            # apelul la model s-a plătit deja: întrebarea intră în jurnal și când cade baza
+            # întrebarea sau butonul intră în jurnal și când cade baza (la o întrebare, apelul la model s-a plătit deja)
             rand["eroare"] = f"{exc.__class__.__name__}: {exc}"
             self._jurnal(rand)
             raise

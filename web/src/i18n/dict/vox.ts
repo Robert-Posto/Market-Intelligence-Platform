@@ -157,6 +157,7 @@ export const vox = {
   "vox.frecventa.pe_card": ["pe card", "per card"],
   "vox.frecventa.pe_operatiune": ["pe operațiune", "per operation"],
   "vox.frecventa.pe_tranzactie": ["pe tranzacție", "per transaction"],
+  "vox.frecventa.pe_mesaj": ["pe mesaj", "per message"],
   "vox.frecventa.fara": ["fără frecvență în sursă", "no frequency in the source"],
   "vox.tip.limita": ["limită", "limit"],
   "vox.tip.nota": ["notă", "note"],

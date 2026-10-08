@@ -371,6 +371,19 @@ class Rezumat(unittest.TestCase):
         r = vox.rezuma([dict(rand(20), frecventa="lunar"), dict(rand(5), frecventa="lunar")])
         self.assertNotIn("frecvente", r[0])
 
+    def test_frecventa_cu_si_fara_diacritice(self):
+        """Garanti · retragere numerar (mip_merge, 08.10.2026): „pe tranzactie” (90 de valori) și „pe tranzacție”
+        (86) dădeau două rânduri cu aceeași etichetă, `pe tranzacție · 4` de două ori. Rămâne prima grafie văzută."""
+        def f(v, frecventa):
+            return dict(rand(v), frecventa=frecventa)
+        r = vox.rezuma([f(1, "pe tranzactie"), f(2, "pe tranzacție"), f(5, None)])
+        self.assertEqual(r[0]["frecvente"], [
+            {"frecventa": "pe tranzactie", "n": 2, "minim": 1, "maxim": 2},
+            {"frecventa": None, "n": 1, "minim": 5, "maxim": 5}])
+        # rândurile care diferă doar prin grafie sunt o singură frecvență, deci fără `frecvente`
+        r = vox.rezuma([f(1, "pe operatiune"), f(2, "pe operațiune")])
+        self.assertNotIn("frecvente", r[0])
+
     def test_separa_tipurile(self):
         """Garanti · schimbarea PIN-ului: toate cele 7 valori neambigue sunt limite contactless (08.10.2026)."""
         limita = rand(100, "lei", "limita|x")

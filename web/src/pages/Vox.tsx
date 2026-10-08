@@ -23,7 +23,7 @@ import Sertar, { type CerereSertar } from '../components/Sertar'
 import { etNume, etSegment, unitTxt } from '../components/valori'
 import { areCheie, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
-import { formatZi, num } from '../util/format'
+import { faraDiacritice, formatZi, num } from '../util/format'
 import Clasament from './vox/Clasament'
 import Conversatii, { cand } from './vox/Conversatii'
 import '../styles/vox.css'
@@ -614,7 +614,7 @@ function textDoarAlte(alte: GrupaRezumat[], i: Interpretare, t: Tr): string {
 /** Eticheta unei frecvențe din date („lunar”, „pe tranzacție”); una necunoscută rămâne cum e în date. */
 function etFrecventa(f: string | null, t: Tr): string {
   if (!f) return t('vox.frecventa.fara')
-  const k = f.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '_')
+  const k = faraDiacritice(f).trim().replace(/\s+/g, '_')
   return eticheta(`vox.frecventa.${k}`, f, t)
 }
 
