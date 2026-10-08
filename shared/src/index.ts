@@ -231,37 +231,7 @@ export const Matrice = z
   .passthrough()
 export type Matrice = z.infer<typeof Matrice>
 
-/** O valoare din sertarul cu dovezi (/api/celula). */
-export const ValoareDovada = z
-  .object({
-    valoare: z.number().nullable(),
-    valoare_text: z.string().nullable(),
-    unitate: z.string().nullable(),
-    cod_scenariu: z.string().nullable(),
-    citat: z.string().nullable(),
-    confidence: z.number().nullable(),
-    ambiguu: z.boolean(),
-    motiv_ambiguu: z.string().nullable(),
-    metoda_extractie: z.string().nullable(),
-    serviciu: z.string().nullable(),
-    sectiune: z.string().nullable(),
-    conditie: z.string().nullable(),
-    frecventa: z.string().nullable(),
-    detaliu: z.string().nullable(),
-    pagina: z.number().nullable(),
-    nr_aparitii: z.number().nullable(),
-    sursa: z.string().nullable(),
-    tip_sursa: z.string().nullable(),
-    link: z.string().nullable(),
-    link_pagina: z.string().nullable(),
-    pagina_documente_motiv: z.string().nullable(),
-    fisier: z.string().nullable(),
-    ancora: z.string().nullable(),
-  })
-  .passthrough()
-export type ValoareDovada = z.infer<typeof ValoareDovada>
-export const Celula = z.array(ValoareDovada)
-
+export * from './celula'
 export * from './rate_mobil'
 export * from './campanii'
 export * from './reclame'
@@ -275,3 +245,4 @@ export * from './comparatie_libra'
 export * from './jobs'
 export * from './android'
 export * from './inventar_produse'
+export * from './vox'

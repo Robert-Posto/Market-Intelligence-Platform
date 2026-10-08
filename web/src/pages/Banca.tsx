@@ -5,7 +5,7 @@ import type { AcoperireFisa, MatriceFisa, Rate as RateT, Sentiment } from '@mcc/
 import { GRUPURI_FISA, useAcoperireFisa, useCatalogLibra, useLocatiiFisa, useMatriceFisa } from '../api/banca'
 import { useMeta, type Meta } from '../api/meta'
 import { useRate, useSentiment } from '../api/rate_mobil'
-import { Eroare, Pill, SeIncarca } from '../components/comune'
+import { Eroare, Pill, SeIncarca, SiglaBanca } from '../components/comune'
 import Sertar, { type CerereSertar } from '../components/Sertar'
 import { Tabel } from '../components/Tabel'
 import { etDesc, etNume } from '../components/valori'
@@ -119,7 +119,7 @@ function Casete({ r, m, l }: { r: BancaAcoperire; m: Meta; l: { sucursale: numbe
   return (
     <div className="kpi bk-kpi">
       <div>
-        <div className="e">{logo && <img className="bk-logo" src={logo} alt="" />}{m.nume[r.slug] ?? r.slug}</div>
+        <div className="e">{logo && <span className="bk-logo"><SiglaBanca src={logo} marime="card" /></span>}{m.nume[r.slug] ?? r.slug}</div>
         <div className="l">
           {r.blocate
             ? <Pill tip="amb">{t('banca.kpi_site_blocat')}</Pill>

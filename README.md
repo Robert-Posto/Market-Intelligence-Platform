@@ -1,4 +1,4 @@
-# Market Intelligence Platform
+# Market Command Center
 
 Monitorizare a concurenței bancare din România: colectăm date publice de la 30
 de bănci și fintech-uri, le normalizăm într-un vocabular comun și le comparăm.
@@ -79,16 +79,18 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 024 | sursele cu nota `ROBOTS:` care figurau `activ` trec pe `blocat` (ING 48, Patria 16, BRD 1) |
 | 025 | completează `observatii_din_campanii`: se ascund și programul de loialitate eMAG Raiffeisen (`program-loialitate`, 76 de valori) și paginile TBI `landing-pages/lcp-*` (finanțări la comercianți parteneri, 29); doar vederea, `CREATE OR REPLACE` |
 | 026 | aplicații iOS: `app_release.descriere` (textul din magazin) și `vazut_ultima` pe `app_release`/`app_screenshot`; `load_mobil.py` face upsert în loc de `DELETE`, deci versiunile și capturile vechi rămân; starea de acum în vederile `app_release_curente` și `app_screenshot_curente` |
-| 027 | fluxul `extragere_produse_bancare` (comparația cu Libra): `produse_libra` (cele 57 de produse, axa comparației, separată de `catalog_libra`), `discovery_libra`, `comparatie_libra` |
-| 028 | `banci.acces_restricted`: banca refuză accesul automat (403 / WAF), deci fluxul nu o accesează |
-| 029 | discovery o dată, colectare zilnică: starea jobului pe `discovery_libra` (ultima verificare, status, cod HTTP) și `inventar_libra` pentru valori (scoasă de 030) |
-| 030 | structura finală a comparației: `discovery_libra` → `surse_libra`, `comparatie_libra` refăcută (interval, scenariu, citat, link la paragraf), `descopera_concurenta` |
-| 031 | `surse_libra.not_found`: produsul Libra nu există la bancă / nu e publicat |
-| 032 | `hashes_libra`: amprenta fiecărei surse la ultima extracție (document neschimbat = fără apel la model) |
-| 033 | `comparatie_libra.scenariu` (jsonb): codul de scenariu descompus (sumă, perioadă, valută, referință) |
-| 034 | `products_discovery`: produsele concurenței fără echivalent în catalogul Libra; înlocuiește `descopera_concurenta` |
-| 036 | jurnalul joburilor: `job_types` (tipurile; unul nou e un `INSERT`), `jobs` (durată, tokeni, cost estimat, `errors` ținut de trigger), `jobs_error` (eroarea în `TEXT`, legată prin `id_job`), vederea `v_jobs`; scrise de `extragere_produse_bancare/jurnal_joburi.py`, citite de pagina Logging (`/api/jobs`) |
-| 037 | `jobs.runed_manually` (bool, implicit `FALSE`): jobul pornit din pagina „Rulare manuală”; `jurnal_joburi.py` îl scrie `TRUE` când procesul are `MIP_RULARE_MANUALA=1` (pusă de `app/rulari.py`); `v_jobs` primește coloana la coadă; pagina „Joburi și erori” o arată ca AUTOMAT / MANUAL |
+| 027 | aplicațiile Android ale băncilor (analiza statică a APK-urilor, pachetul lui Nicolae din 05.10.2026): tabelele `android_*` (aplicații, versiuni, permisiuni, trackere, biblioteci, funcționalități, portofele, profil tehnic, schimbări între versiuni, texte de ecran, note), cu `provenienta` pe fiecare rând; se încarcă cu `python ingest/load_android.py <folderul pachetului>` (verifică sha256 din MANIFEST.csv); capturile și reconstrucțiile din pachet nu se încarcă |
+| 028 | `robid` permis în `indici_referinta.indice`: `load_bnr.py` scrie ROBID, dar CHECK-ul din `schema.sql` îl refuza (pe baza de colectare fusese lărgit de mână) |
+| 029 | fluxul `extragere_produse_bancare` (comparația cu Libra): `produse_libra` (cele 57 de produse, axa comparației, separată de `catalog_libra`), `discovery_libra`, `comparatie_libra` |
+| 030 | `banci.acces_restricted`: banca refuză accesul automat (403 / WAF), deci fluxul nu o accesează |
+| 031 | discovery o dată, colectare zilnică: starea jobului pe `discovery_libra` (ultima verificare, status, cod HTTP) și `inventar_libra` pentru valori (scoasă de 032) |
+| 032 | structura finală a comparației: `discovery_libra` → `surse_libra`, `comparatie_libra` refăcută (interval, scenariu, citat, link la paragraf), `descopera_concurenta` |
+| 033 | `surse_libra.not_found`: produsul Libra nu există la bancă / nu e publicat |
+| 034 | `hashes_libra`: amprenta fiecărei surse la ultima extracție (document neschimbat = fără apel la model) |
+| 035 | `comparatie_libra.scenariu` (jsonb): codul de scenariu descompus (sumă, perioadă, valută, referință) |
+| 036 | `products_discovery`: produsele concurenței fără echivalent în catalogul Libra; înlocuiește `descopera_concurenta` |
+| 037 | jurnalul joburilor: `job_types` (tipurile; unul nou e un `INSERT`), `jobs` (durată, tokeni, cost estimat, `errors` ținut de trigger), `jobs_error` (eroarea în `TEXT`, legată prin `id_job`), vederea `v_jobs`; scrise de `extragere_produse_bancare/jurnal_joburi.py`, citite de pagina Logging (`/api/jobs`) |
+| 038 | `jobs.runed_manually` (bool, implicit `FALSE`): jobul pornit din pagina „Rulare manuală”; `jurnal_joburi.py` îl scrie `TRUE` când procesul are `MIP_RULARE_MANUALA=1` (pusă de `app/rulari.py`); `v_jobs` primește coloana la coadă; pagina „Joburi și erori” o arată ca AUTOMAT / MANUAL |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
@@ -138,6 +140,27 @@ refuză să ruleze fără el) și `ANTHROPIC_API_KEY` pentru discovery.
 > `sincronizeaza_vederi.sql` nu e opțional. Vederea `observatii_curente` e
 > definită cu `SELECT *`, iar Postgres îngheață lista de coloane la creare: o
 > coloană adăugată ulterior nu apare, și API-ul cade cu 500 deși tabela o are.
+
+### Autentificare (Active Directory)
+
+Orice dată (`/api/*`, `/pdf`, `/logos`, paginile din `app/`) cere sesiune: logare cu contul de Windows, verificat la
+AD prin LDAPS (`app/autentificare.py`). Rolul vine din grupurile AD, inclusiv imbricate: `MCC_LDAP_GRUP_ADMIN` →
+admin, `MCC_LDAP_GRUP_ANALIST` → analist (în ambele → admin, în niciunul → 403). Doar adminul are „Rulare manuală”
+și „Joburi și erori” (`/api/rulari*`, `/api/rulare_manuala*`, `/api/jobs`): 403 pentru analist, verificat pe server.
+
+- **Pe laptop**: cât timp AD-ul nu e configurat (`MCC_LDAP_*` goale), intri automat ca admin, fără logare
+  (`GET /api/sesiune` dă `local: true`). `MCC_AUTH_LOCAL=admin|analist` în `.env` alege rolul; cu AD configurat
+  și fără ea, aplicația cere logare. Doar pentru cereri adresate lui `localhost` / `127.0.0.1` / `[::1]`. Nu are efect pe cererile venite prin nginx (`X-Real-IP`) și nici
+  cu `MCC_AUTH_OBLIGATORIE=1`.
+- **Pe server**: `MCC_LDAP_*` în `.env` (model în `.env.example`; ce se cere de la IT în `deploy/INSTALARE.md`),
+  iar `mcc.service` pune `MCC_AUTH_OBLIGATORIE=1`.
+- Rute: `POST /api/autentificare` `{utilizator, parola}`, `GET /api/sesiune`, `POST /api/delogare`. Cookie
+  `mcc_sesiune` (`HttpOnly`, `SameSite=Strict`; pe HTTPS `__Host-mcc_sesiune`, cu `Secure`); expiră după
+  `MCC_SESIUNE_ORE` (8) fără activitate și oricum după 12 h. 3 parole greșite pe utilizator (20 pe adresă) în
+  30 de minute → 429, fără să mai întrebe AD-ul (configurabile: `MCC_AUTH_*` în `.env.example`). Sesiunile stau în
+  memorie; jurnalul în `loguri/autentificare.log`, fără parole.
+- Teste: `python app/test_autentificare.py` (inclusiv cu un DC fals pe loopback, prin LDAPS) și
+  `python app/test_server_autentificare.py`.
 
 ### Colectare
 
@@ -198,7 +221,7 @@ dă costul și durata din joburile încheiate (`v_jobs`): aceeași bancă și pr
 același produs, apoi aceeași bancă, apoi orice job de același tip. **Aceste joburi cheamă
 modelul, deci costă** (06.10.2026: discovery $0,04–0,53 pe produs, extragere $0–0,37);
 pornirea e clicul explicit de după estimare. Fiecare proces pornit din pagină primește
-`MIP_RULARE_MANUALA=1`, deci jobul apare în „Joburi și erori” ca MANUAL (migrarea 037).
+`MIP_RULARE_MANUALA=1`, deci jobul apare în „Joburi și erori” ca MANUAL (migrarea 038).
 
 | job | ce rulează | bancă | produs |
 |---|---|---|---|
@@ -241,6 +264,44 @@ Scripturile de colectare, sub buton:
   (căutat în `ingest/banks.py` + tabela `banci`, la joburi în `banci.json` al
   fluxului) și, la joburi, codul produsului (căutat în `produse_libra`, un singur
   cod). Teste: `python app/test_rulari.py`.
+
+### Vox (pagina `#/vox`)
+
+O întrebare despre **o valoare** a unei bănci („Cât costă administrarea contului la BCR?”), în
+română sau engleză. Modelul (`app/vox.py`) doar traduce întrebarea în banca, conceptul,
+categoria și termenul căutat, cu schemă strictă; valorile, citatele și documentele vin din
+`observatii_curente` prin `celula()`, ca Sertar-ul din 2.1. Modelul nu vede nicio valoare și nu
+scrie nicio cifră; singurul lui text pe ecran e o întrebare înapoi, etichetată ca atare. Ce n-are
+concept (găleata `comision`) se caută după text în denumirile și citatele băncii, cu cuvintele
+tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
+text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
+
+- Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
+  apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar
+  istoricul conversațiilor e comun tuturor utilizatorilor, nu al fiecăruia, iar fiecare întrebare costă.
+  Pe laptop, cu `MCC_AUTH_LOCAL=admin`, Vox merge fără logare, ca restul aplicației.
+- Merge și din `npm run dev`: proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne
+  `localhost:5173`, deci ruta acceptă și acest Origin (rulările nu).
+- Modelul: `claude-haiku-4-5` (`MIP_VOX_MODEL`). Măsurat pe 06.10.2026 (`mip_merge`):
+  11.568 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0015
+  pe întrebare cu promptul în cache. Prima întrebare îl scrie: $0,0147 (11.555 de tokeni de
+  intrare); cache-ul ține 5 minute de la ultima întrebare.
+- Evaluarea interpretării (`python app/eval_vox.py --da`, 30 de întrebări reale): 30 din 30
+  corecte pe 07.10.2026, $0,0576. Pe 06.10, „incoming payment” la BRD ieșea `transfer_credit` în loc
+  de `incasare` în 2 rulări din 4, iar „APR” la Libra ieșea dobânda nominală (7,71–7,84%) în loc de
+  DAE (8,09–8,37%); promptul spune acum ce înseamnă termenii englezești. Întrebările despre servicii
+  fără concept („datoria vamală”, „TrezoNet” la BCR) cer `concept: null` și text de căutat; înainte
+  de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”).
+- Când termenul sau tipul de credit golesc răspunsul, fișa spune câte valori sunt fără filtru: ING
+  are 2 dobânzi la depozite, niciuna cu termen citit din textul băncii.
+- Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
+  nouă, repornește serverul.
+- Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând
+  pe întrebare, cu răspunsul ei; o redenumire e tot un rând). Coloana „Conversații” din pagină le
+  redeschide fără model (gratuit), le caută în titlu și în întrebări (fără diacritice, cu cuvintele
+  tăiate la rădăcină ca la căutarea după text), le redenumește și le șterge; cea deschisă stă în
+  adresă (`#/vox?c=<id>`). Jurnalul de costuri rămâne separat, în `loguri/vox/AAAA-LL.jsonl`.
+- Teste fără rețea: `python app/test_vox.py`.
 
 ### Pachetul Playwright (`crawler/`)
 
@@ -310,6 +371,24 @@ Textele sunt în `web/src/i18n/dict/*.ts`, câte o pereche `[română, engleză]
 pe cheie (1.137 la 02.10.2026, plus cele adăugate la mutarea paginilor). Datele băncilor (servicii, citate, recenzii)
 nu se traduc: sunt dovezi. Rulările manuale nu se pot porni din `npm run dev`:
 serverul refuză cererile de pe alt port, iar verificarea nu se slăbește.
+
+### Serena (opțional, pentru Claude Code)
+
+Serena îi dă lui Claude navigare pe simboluri prin cod și o hartă comună a proiectului
+(`.serena/memories/`). Configurarea e în repo (`.mcp.json`, `.claude/`), deci după `git pull` mai
+trebuie doar instalat programul, o singură dată pe mașină:
+
+```bash
+winget install astral-sh.uv
+uv tool install --python 3.11 git+https://github.com/oraios/serena@a8e30ff531a0092ece01c3a2bb9bb2833c7aa41a
+uv tool update-shell        # pune ~/.local/bin în PATH; repornește VS Code după
+```
+
+Python 3.11, nu 3.14: Serena fixează `pyyaml` 6.0.2, care n-are pachet gata compilat pentru 3.14.
+`uv` aduce singur 3.11, separat de Python-ul proiectului. La prima deschidere a proiectului,
+Claude Code întreabă dacă aprobă serverul `serena` din `.mcp.json`: răspunde da. De acolo pornește
+singur, iar după un commit care schimbă structura codului îți amintește să actualizezi memoriile
+(`/actualizeaza-memoria`). Fără Serena instalată, proiectul merge normal, doar fără aceste unelte.
 
 ---
 
@@ -438,6 +517,19 @@ cere invers: totul interzis până se poate citi. Păstrat deliberat pe durata
 testării. În datele existente n-a apărut niciun astfel de caz, doar 404 și
 403, tratate corect.
 
+### Conformitate — fluxul de comparație cu Libra, de reparat
+
+`extragere_produse_bancare/` a intrat în `main` pe 06.10.2026 cu problemele de mai jos (decis:
+merge acum, reparat după), măsurate pe inventarele din repo.
+
+- `flow-html.py` trimite antetele unui browser (`Sec-Fetch-*`, `Upgrade-Insecure-Requests`) ca să
+  treacă de WAF-uri și se prezintă cu un contact `example.org`, nu cu ecusonul din `crawler/__init__.py`.
+- Cererile nu trec prin `ingest/flux.py`: fluxul a cerut adrese de la băncile din `BLOCATE` (BT 89,
+  CEC 20, Intesa 18, UniCredit 14; regula e 0 cereri), iar extracția nu verifică `robots.txt`.
+- În inventare: 128 de valori ING din 20 de PDF-uri interzise de `robots.txt` (`Disallow: *.pdf`) și
+  25 de valori Banorient de pe `banorientfrance.com` (altă piață; `banorient.ro` interzice tot).
+- Descoperirea surselor folosește `web_search` / `web_fetch` de la Anthropic (păstrat deliberat).
+
 ---
 
 ## Cum e construit
@@ -485,7 +577,7 @@ comparații și apare în coadă, cu citatul din document.
 ## Structură
 
 ```
-app/          server.py (API read-only) · rulari.py (rulările manuale) · index.html (SPA, 12 pagini)
+app/          server.py (API read-only) · rulari.py (rulările manuale) · vox.py (Vox) · index.html (SPA, 12 pagini)
               harta.html · pdf.html (vizualizator propriu) · verifica_pagini.py
 ingest/       router.py · normalizeaza.py · extractoare.py + scripturi auxiliare
               scraper.py = stiva HTTP (robots.txt, User-Agent, pauze), folosită

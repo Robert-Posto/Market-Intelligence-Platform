@@ -19,7 +19,7 @@ export const logging = {
   "lg.tip.aplicatii_mobile": ["Aplicații mobile", "Mobile apps"],
   "lg.in_curs_1": ["{n} job în curs · pagina se reîmprospătează la 30 s", "{n} job running · the page refreshes every 30 s"],
   "lg.in_curs_n": ["{n} joburi în curs · pagina se reîmprospătează la 30 s", "{n} jobs running · the page refreshes every 30 s"],
-  "lg.nedisponibil": ["Baza nu are încă tabelele <code>jobs</code> și <code>jobs_error</code>. Se creează cu <code>db/migration_036_jobs.sql</code>.", "The database does not have the <code>jobs</code> and <code>jobs_error</code> tables yet. They are created by <code>db/migration_036_jobs.sql</code>."],
+  "lg.nedisponibil": ["Baza nu are încă tabelele <code>jobs</code> și <code>jobs_error</code>. Se creează cu <code>db/migration_037_jobs.sql</code>.", "The database does not have the <code>jobs</code> and <code>jobs_error</code> tables yet. They are created by <code>db/migration_037_jobs.sql</code>."],
 
   "lg.kpi.cost": ["Cost estimat", "Estimated cost"],
   "lg.kpi.cost_l": ["prețuri de listă, nu factura", "list prices, not the invoice"],

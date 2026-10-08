@@ -17,6 +17,7 @@ export const server_db = {
   "server.rate.grup.credite": ["Dobânzi la credite", "Loan interest rates"],
   "server.rate.grup.conturi_carduri": ["Conturi și carduri", "Accounts and cards"],
   "server.matrice.eroare_grup_necunoscut": ["grup necunoscut: {grup}", "unknown group: {grup}"],
+  "server.baza_oprita": ["Baza de date nu răspunde (Postgres oprit sau MIP_DSN greșit).", "The database is not responding (Postgres stopped or wrong MIP_DSN)."],
   "server.celula.eroare_lipsa_parametri": ["lipsește banca sau camp", "the banca or camp parameter is missing"],
   "server.rate.eroare_categorie_necunoscuta": ["categorie necunoscută: {categorie}", "unknown category: {categorie}"],
   "server.recenzii.eroare_lipsa_locatie": ["lipsește id_locatie", "id_locatie is missing"],

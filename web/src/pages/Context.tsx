@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Segmented } from 'antd'
+
 import { useSearchParams } from 'react-router-dom'
 import type { Indici } from '@mcc/shared'
 import { useIndici } from '../api/rate_mobil'
@@ -7,6 +7,7 @@ import { Despre, Eroare, Pill, SeIncarca } from '../components/comune'
 import { Tabel, type Coloana } from '../components/Tabel'
 import { T, useLang } from '../i18n'
 import { formatZi, num } from '../util/format'
+import { Comutator } from '../components/Comutator'
 import '../styles/context_istoric.css'
 
 type Indice = Indici[number]
@@ -137,7 +138,7 @@ export default function Context() {
       </div>
       <section>
         <div className="filtre ci-filtre">
-          <Segmented value={ind} onChange={(v) => setSp({ indice: v })} options={INDICI} />
+          <Comutator value={ind} onChange={(v) => setSp({ indice: v })} options={INDICI} />
           <span className="note" style={{ marginLeft: 'auto' }}>
             <T k="context.sursa" params={{
               sursa: sursa ? <a className="sursa" href={sursa} target="_blank" rel="noopener">{t('context.sursa_link')}</a> : 'BNR',

@@ -1,8 +1,7 @@
 # Market Intelligence Platform
 
-Monitorizarea concurenței bancare din România: date publice de la 30 de bănci (comisioane, dobânzi,
-aplicații, recenzii, indici BNR), normalizate într-un vocabular comun și comparate într-o aplicație
-read-only. Prototip în lucru.
+Monitorizarea concurenței bancare din România: date publice de la 30 de bănci (comisioane, dobânzi, aplicații,
+recenzii, indici BNR), normalizate într-un vocabular comun și comparate într-o aplicație read-only. Prototip.
 
 Python 3.12 (colectare, API) · PostgreSQL 16 (Docker, containerul `mip-db`) · interfața în React
 (`web/`, stack-ul SCC) · Playwright + pdfplumber · Windows.
@@ -13,6 +12,8 @@ Python 3.12 (colectare, API) · PostgreSQL 16 (Docker, containerul `mip-db`) · 
 - `PIPELINE.md`: drumul datelor de la sursă la `observations`
 - `docs/crawler/CITESTE_PENTRU_MERGE.md`: câmpurile din `date/pachet/*.json` (`stare_data`, `ambiguu`, `rol`)
 - Restul `docs/crawler/*.md` și `docs/bs4/*.md` sunt jurnale datate, nu instrucțiuni.
+- `.serena/memories/`: harta codului pentru Serena (pornește de la `mem:core`); după un commit care schimbă
+  structura, actualizează-le cu `/actualizeaza-memoria`. Instalarea: README, „Serena”.
 
 ## Comenzi
 
@@ -29,7 +30,7 @@ Verificări, după zona atinsă:
 | ai modificat | rulează | trebuie să vezi |
 |---|---|---|
 | `web/`, `shared/` | `npm run typecheck && npm run build`; pagina deschisă în RO și EN | 0 erori, consola curată |
-| `app/` | `python app/verifica_pagini.py` (cu serverul pornit); `python app/test_rulari.py` la rulări | toate paginile randate; OK |
+| `app/` | `python app/verifica_pagini.py` (cu serverul pornit); `python app/test_rulari.py` la rulări; `python app/test_vox.py` la Vox | toate paginile randate; OK |
 | `crawler/` | `python scripts/test_validare.py` și `python scripts/test_robots_matcher.py` | 0 eșuate |
 | `ingest/` | numără ce produce extractorul, înainte să scrii în bază | cifrele din README |
 | `ingest/scraper.py`, `robots_matcher.py` | `python ingest/test_robots_matcher.py`, `test_known_block.py`, `test_crawl_bfs.py` | OK |
@@ -74,11 +75,14 @@ Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din 
 `PARALEL_BANCI` bănci simultan, restul pe rând); nu slăbi verificările. A doua excepție: pagina
 „Inventar produse” scrie `extragere_produse_bancare/produse_libra.json` prin `app/inventar_produse.py`
 (aceleași verificări, alt token); în bază ajunge doar la `incarca_baza.py`.
+Tot cu o variabilă, `MIP_PERMITE_VOX=1` (și o cheie reală), `POST /api/vox` cheamă
+modelul doar ca să interpreteze întrebarea (`app/vox.py`): nu scrie în bază, iar cifrele vin
+din bază, niciodată de la model. Conversațiile lui Vox sunt fișiere pe laptop, în
+`loguri/vox/conversatii/`, nu în bază.
 
-**Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice. Prioritatea e popularea inițială,
-nu automatizarea. Rulările manuale sunt deblocate deliberat (01.10.2026), acum în pagina „Rulare
-manuală” (README, „Rulări manuale”); joburile fluxului de comparație de acolo costă, deci pornesc doar
-după estimarea de cost.
+**Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice: prioritatea e popularea inițială.
+Rulările manuale (pagina „Rulare manuală”, README) sunt deblocate deliberat; joburile de comparație cu
+Libra costă, deci pornesc doar după estimarea de cost.
 
 **Dependențe.** Orice pachet nou importat intră în `requirements.txt` (Python) sau `package.json`
 (`web/`) în același commit.
@@ -101,8 +105,8 @@ livrare. Cum s-a făcut trecerea: `docs/HANDOFF_REACT.md`.
   niciun text scris direct în componentă. Datele băncilor (servicii, citate, recenzii, titluri) nu se
   traduc. Textele românești trimise de server trec prin `deLaServer`. Un concept nou din vocabular
   cere `camp.<slug>.eticheta`.
-- **Refolosește, nu rescrie:** `Tabel` (Libra prima, golurile jos), `Sertar` și `Dovezi` (orice PDF
-  prin `linkDocument`), `Despre`, `Pill`, `Banda`, `Paginare`; numerele și datele prin `num` / `formatZi`.
+- **Refolosește, nu rescrie:** `Tabel` (Libra prima, golurile jos), `Sertar` și `Dovezi` (orice PDF prin
+  `linkDocument`), `Despre`, `Pill`, `Banda`, `Paginare`, `Comutator` (nu `Segmented`); `num` / `formatZi`.
 - **Filtrele stau în adresă** (`useSearchParams`), ca o vedere să se poată trimite.
 - Fără CDN; un pachet din afara stack-ului SCC se adaugă doar după ce întrebi.
 - În `app/`, textele românești din `<script>` folosesc „…” sau ”, niciodată `"` ASCII: o ghilimea

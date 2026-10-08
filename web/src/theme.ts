@@ -2,18 +2,23 @@ import { theme, type ThemeConfig } from 'antd'
 
 /**
  * Tema MIP peste Ant Design: aceeași paletă ca aplicația veche (fildeș cald +
- * vișiniu), cu varianta întunecată după setarea sistemului, cum făcea și
- * `prefers-color-scheme` din CSS-ul vechi. Culorile stau și ca variabile CSS
- * în global.css, pentru elementele care nu sunt componente AntD.
+ * vișiniu), luminoasă sau întunecată după alegerea din meniu (src/tema). Culorile
+ * stau și ca variabile CSS în global.css, pentru elementele care nu sunt
+ * componente AntD; scripts/verifica_tema.mjs verifică că sunt aceleași.
  */
 const LUMINOS = {
   bg: '#f5f1ec', surface: '#fffdfa', ink: '#2a1f22', muted: '#6e615d', line: '#e3dad0', line2: '#d6cabd',
   warn: '#98550b', ok: '#2b7044', accent: '#7a1e2c', accentTint: '#f5e8e6', onAccent: '#fffdfa',
+  capTabel: '#efe6db',
 }
 const INTUNECAT = {
   bg: '#1b1517', surface: '#251d1f', ink: '#efe6e2', muted: '#b4a5a0', line: '#3a2e30', line2: '#4a3b3d',
   warn: '#e3a95a', ok: '#7fcb97', accent: '#e7a3ab', accentTint: '#3b2428', onAccent: '#2a1216',
+  capTabel: '#3f3135',
 }
+
+/** Cât alunecă evidențierea unui comutator; `Comutator` așteaptă atât pe paginile grele, iar culoarea din global.css la fel. */
+export const ALUNECARE_COMUTATOR_MS = 150
 
 export function temaMip(intunecat: boolean): ThemeConfig {
   const c = intunecat ? INTUNECAT : LUMINOS
@@ -41,11 +46,12 @@ export function temaMip(intunecat: boolean): ThemeConfig {
     },
     components: {
       Table: {
-        headerBg: c.surface,
-        headerColor: c.muted,
+        // capul tabelului se deosebește de rânduri: lipit la derulare, altfel se pierdea printre ele
+        headerBg: c.capTabel,
+        headerColor: c.ink,
         headerSplitColor: 'transparent',
-        headerSortActiveBg: c.surface,
-        headerSortHoverBg: c.surface,
+        headerSortActiveBg: c.capTabel,
+        headerSortHoverBg: c.capTabel,
         bodySortBg: 'transparent',
         rowHoverBg: c.accentTint,
         cellPaddingBlock: 7,
@@ -55,8 +61,19 @@ export function temaMip(intunecat: boolean): ThemeConfig {
       },
       Drawer: { paddingLG: 22 },
       Collapse: { headerPadding: '0 0 10px 0', contentPadding: '0', headerBg: 'transparent' },
-      Segmented: { itemSelectedBg: c.accent, itemSelectedColor: c.onAccent, trackBg: c.surface },
+      // Butonul ales devine alb abia după alunecare: cu duratele implicite (0,3 s + 0,2 s), la ~380 ms după
+      // apăsare, deși pagina se schimba în 11–28 ms (măsurat 06.10.2026). Mai scurt doar aici; restul păstrează animațiile.
+      // Comutatorul mic (sortarea din 2.3) avea opțiunea aleasă cu colțuri de 2 px, aproape drepte lângă
+      // butoanele de 8 px; acum ca opțiunile comutatorului normal (6 px).
+      Segmented: {
+        itemSelectedBg: c.accent, itemSelectedColor: c.onAccent, trackBg: c.surface,
+        motionDurationSlow: `${ALUNECARE_COMUTATOR_MS / 1000}s`, motionDurationMid: '0.1s',
+        borderRadiusXS: 6,
+      },
       Tag: { defaultBg: 'transparent' },
+      // colorTextLightSolid e setat mai sus la cerneala de pe accent (închisă pe întunecat); tooltip-ul îl folosește
+      // ca text, deci ieșea #2a1216 pe gri (contrast ~1,4). Pe întunecat primește fundal și text din paletă.
+      Tooltip: intunecat ? { colorBgSpotlight: c.line2, colorTextLightSolid: c.ink } : {},
     },
   }
 }

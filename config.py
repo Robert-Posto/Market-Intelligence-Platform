@@ -9,6 +9,7 @@ exista si cat de lunga e, nu valoarea.
 
 import io
 import os
+import re
 
 RADACINA = os.path.dirname(os.path.abspath(__file__))
 CALE_ENV = os.path.join(RADACINA, ".env")
@@ -53,6 +54,9 @@ def raport():
             linii.append(f"{cheie}: LIPSA")
         elif "KEY" in cheie or "SALT" in cheie:
             linii.append(f"{cheie}: setat ({len(v)} caractere)")
+        elif cheie == "MIP_DSN":
+            # pe mcc-test parola e generată, nu `mip`; raportul a afișat-o întreagă
+            linii.append(f"{cheie}: {re.sub(r'password=\S+', 'password=***', v)}")
         else:
             linii.append(f"{cheie}: {v}")
     return "\n".join(linii)

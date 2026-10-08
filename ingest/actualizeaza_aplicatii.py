@@ -19,7 +19,7 @@ Doi pași, pentru o singură bancă:
    (~$0,04 pe platformă pentru 23 de recenzii ING, 07.10.2026), de aceea:
      - se sare dacă recenziile sunt aceleași ca la brief-ul existent (amprenta lor), afară de --forteaza;
      - toată rularea (colectare + brief) e un job în „Joburi și erori” (tipul aplicatii_mobile,
-       migrarea 038), cu durata, tokenii, costul și erorile pe platformă.
+       migrarea 039), cu durata, tokenii, costul și erorile pe platformă.
 
 Ce NU actualizează: analiza statică a APK-urilor (permisiuni, trackere, biblioteci, tabelele
 android_*). Vine din pachetul lui Nicolae, făcut pe un telefon de test, și se încarcă cu

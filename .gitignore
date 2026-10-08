@@ -20,7 +20,9 @@ loguri/*.log
 
 # spatiul de lucru al crawler-ului (PDF-uri descarcate, loguri); ce se incarca
 # in baza e copiat explicit in date/pachet/
-output/
+output/*
+!output/reclame/
+!output/youtube/
 
 # arhivele Bronze de la pornirile de la zero, jurnalele pe banci
 bronze_arhiva_*/
@@ -38,6 +40,8 @@ date/robots/*_20??-??-??T*
 loguri/origini/
 # rulările manuale din Overview (app/rulari.py): jurnale, istoric, rularea curentă
 loguri/rulari/
+# Vox (app/vox.py): jurnalul întrebărilor, pe laptopul care le-a pus
+loguri/vox/
 
 # interfața React (web/, shared/): dependențele, build-ul și cache-ul Vite nu se versionează
 node_modules/
@@ -47,3 +51,5 @@ web/.vite/
 # Claude Code: copiile de lucru ale agenților și permisiunile de pe fiecare laptop
 .claude/worktrees/
 .claude/settings.local.json
+
+web/.capturi/

@@ -26,7 +26,10 @@ ACTUALIZAT = "2026-06-24"
 PRETURI = {
     "claude-fable-5-1": (10.0, 50.0),
     "claude-fable-5": (10.0, 50.0),
-    "claude-opus-5-5": (4.0, 20.0),   # brief-ul recenziilor (ingest/brief_recenzii.py), 07.10.2026
+    # adăugate pe 06.10.2026 pentru MIP_VOX_MODEL (Vox), din tabelul de prețuri
+    # Anthropic din 25.09.2026; Opus 5.5 îl folosește și brief-ul recenziilor (ingest/brief_recenzii.py)
+    "claude-opus-5-5": (4.0, 20.0),
+    "claude-sonnet-5-5": (2.0, 10.0),
     "claude-opus-5": (5.0, 25.0),
     "claude-opus-4-8": (5.0, 25.0),
     "claude-opus-4-7": (5.0, 25.0),

@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { DoarAdmin } from './auth/AccesInterzis'
 import AppShell from './layout/AppShell'
 import Overview from './pages/Overview'
 import Produse from './pages/Produse'
@@ -17,6 +18,7 @@ import Coada from './pages/Coada'
 import Logging from './pages/Logging'
 import RulareManuala from './pages/RulareManuala'
 import InventarProduse from './pages/InventarProduse'
+import Vox from './pages/Vox'
 
 /* maplibre-gl și pdfjs-dist sunt aproape jumătate din pachet (2,6 MB într-un singur fișier la 05.10.2026):
    se încarcă doar când se deschide harta sau un document, nu pe fiecare pagină */
@@ -38,14 +40,16 @@ export default function App() {
         <Route path="/retea" element={<Retea />} />
         <Route path="/context" element={<Context />} />
         <Route path="/istoric" element={<Istoric />} />
+        <Route path="/vox" element={<Vox />} />
         <Route path="/versus" element={<Versus />} />
         <Route path="/banca" element={<Banca />} />
         <Route path="/concurenta" element={<Concurenta />} />
         <Route path="/surse" element={<SursePagina />} />
         <Route path="/coada" element={<Coada />} />
-        <Route path="/inventar" element={<InventarProduse />} />
-        <Route path="/logging" element={<Logging />} />
-        <Route path="/rulare" element={<RulareManuala />} />
+        {/* Inventar produse scrie în produse_libra.json: doar admin, ca rulările */}
+        <Route path="/inventar" element={<DoarAdmin><InventarProduse /></DoarAdmin>} />
+        <Route path="/logging" element={<DoarAdmin><Logging /></DoarAdmin>} />
+        <Route path="/rulare" element={<DoarAdmin><RulareManuala /></DoarAdmin>} />
         {/* pagina 2.7 s-a mutat în 2.3 (ca în aplicația veche) */}
         <Route path="/sentiment" element={<Navigate to="/mobil?la=recenzii" replace />} />
         <Route path="*" element={<Navigate to="/overview" replace />} />

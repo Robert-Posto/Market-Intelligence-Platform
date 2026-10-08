@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Button, Segmented, Select, Tag, Tooltip } from 'antd'
+import { Button, Select, Tag, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import type { CostZi, EroareJob, Job, JobsDisponibile, StareJob, TipJob } from '@mcc/shared'
 import { useEroriJob, useJobs } from '../api/jobs'
@@ -11,6 +11,7 @@ import { T, useLang, type DictKey } from '../i18n'
 import { num } from '../util/format'
 import { GraficCost, culoareTip } from './logging/GraficCost'
 import { intrare, moment, numeTip, partiDurata, tokeni, usd, ziLunga } from './logging/format'
+import { Comutator } from '../components/Comutator'
 import '../styles/logging.css'
 
 const PERIOADE = [1, 7, 30, 90] as const
@@ -49,7 +50,7 @@ function useDurata() {
 
 /**
  * Logging: joburile fluxului extragere_produse_bancare (discovery, extragere,
- * produse noi), din tabelele `jobs` / `jobs_error` (migrarea 036). Filtrele stau
+ * produse noi), din tabelele `jobs` / `jobs_error` (migrarea 037). Filtrele stau
  * în adresă: `zile`, `tip`, iar `job` deschide erorile unui singur job.
  */
 export default function Logging() {
@@ -92,7 +93,7 @@ export default function Logging() {
   return (
     <div className="lg" style={{ opacity: q.isPlaceholderData ? 0.6 : 1 }}>
       <div className="lg-filtre">
-        <Segmented<number>
+        <Comutator<number>
           value={zile}
           onChange={(v) => mergi({ zile: v === 30 ? '' : String(v) })}
           options={PERIOADE.map((p) => ({ value: p, label: t(`lg.perioada.${p}` as DictKey) }))}
@@ -119,7 +120,7 @@ export default function Logging() {
             <h2>{t('lg.cost.titlu')}</h2>
             <p className="note">{t('lg.cost.sub')}</p>
           </div>
-          <Segmented
+          <Comutator
             size="small"
             value={vedere}
             onChange={(v) => setVedere(v as 'grafic' | 'tabel')}

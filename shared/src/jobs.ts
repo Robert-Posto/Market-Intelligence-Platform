@@ -1,6 +1,6 @@
 /**
  * Jurnalul joburilor (/api/jobs): ce a rulat, cât a durat, câți tokeni și cât a
- * costat, ce erori a avut. Tabelele vin din db/migration_036_jobs.sql și le scrie
+ * costat, ce erori a avut. Tabelele vin din db/migration_037_jobs.sql și le scrie
  * extragere_produse_bancare/jurnal_joburi.py; pe o bază fără ele serverul trimite
  * `{disponibil: false}`, nu 500.
  */
@@ -39,7 +39,7 @@ export const Job = z
     cost_complet: z.boolean(),
     parametri: z.record(z.string(), z.unknown()).nullable(),
     rezumat: txt,
-    // pornit din pagina „Rulare manuală” (migrarea 037); lipsă pe o bază fără migrare = automat
+    // pornit din pagina „Rulare manuală” (migrarea 038); lipsă pe o bază fără migrare = automat
     runed_manually: z.boolean().optional().default(false),
   })
   .passthrough()

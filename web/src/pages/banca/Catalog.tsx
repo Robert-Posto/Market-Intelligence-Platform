@@ -59,6 +59,7 @@ export default function Catalog({ cat }: { cat: ProdusCatalogLibra[] }) {
       {/* derulare în tabel (70% din ecran): restul fișei rămâne la îndemână */}
       <div className="bk-catalog-wrap">
         <Tabel
+          lipit={false}
           randuri={vizibile}
           cheieRand={(x) => String(x._k)}
           coloane={[

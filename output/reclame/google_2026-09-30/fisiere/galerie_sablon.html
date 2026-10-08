@@ -1,0 +1,452 @@
+<title>Reclamele Google ale băncilor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Tokenurile aplicației MIP (app/index.html), ca prototipul să arate ca secțiunea ei. */
+  :root{
+    --bg:#eef1f4; --surface:#ffffff; --ink:#1b2430; --muted:#5b6b7a; --line:#c7d0d9;
+    --warn:#a8720f; --warn-tint:#faedd2; --ok:#2f7a4f; --ok-tint:#dcf0e3;
+    --accent:#1d6f6f; --accent-tint:#dcefee; --pe-accent:#ffffff;
+    --schita:#e3e8ed; --schita-bara:#c8d1da; --schita-ink:#6f7e8c;
+    --video:#1f2a37; --video-ink:#dde4ea;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4; --line:#2c3540;
+      --warn:#e0ac52; --warn-tint:#3a2e15; --ok:#6fcf97; --ok-tint:#1c3323;
+      --accent:#59c2c2; --accent-tint:#1c3535; --pe-accent:#0e1b1b;
+      --schita:#212934; --schita-bara:#334050; --schita-ink:#8593a1;
+      --video:#0c1016; --video-ink:#c7d1da;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#12161c; --surface:#1a2029; --ink:#e8ecf0; --muted:#9aa7b4; --line:#2c3540;
+    --warn:#e0ac52; --warn-tint:#3a2e15; --ok:#6fcf97; --ok-tint:#1c3323;
+    --accent:#59c2c2; --accent-tint:#1c3535; --pe-accent:#0e1b1b;
+    --schita:#212934; --schita-bara:#334050; --schita-ink:#8593a1;
+    --video:#0c1016; --video-ink:#c7d1da;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.5 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .mono,.spranceana,.eticheta,.fmt,.tag,.perioada,.n,.sumar strong,.insigna{
+       font-family:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace}
+  .pagina{max-width:1280px;margin:0 auto;padding-inline:16px;padding-block:22px 64px}
+  @media (min-width:760px){.pagina{padding-inline:30px}}
+
+  .spranceana{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  h1{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:clamp(24px,3.2vw,30px);line-height:1.15;margin:0 0 8px;text-wrap:balance}
+  .lede{color:var(--muted);max-width:74ch;margin:0}
+  .nota{margin:14px 0 0;background:var(--warn-tint);border-radius:10px;padding:10px 14px;
+        max-width:92ch;font-size:13px}
+  .nota b{color:var(--warn)}
+  .sumar{display:flex;flex-wrap:wrap;gap:6px 22px;margin:16px 0 0;font-size:13px;color:var(--muted)}
+  .sumar strong{font-size:15px;color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+
+  .comenzi{background:var(--surface);border:1px solid var(--line);border-radius:13px;
+           padding:14px 16px;margin:20px 0 14px;display:grid;gap:11px}
+  .grup{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .eticheta{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+            min-width:78px;margin-right:2px}
+  .chip{font:inherit;font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);
+        background:var(--bg);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:baseline}
+  .chip .n{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .chip:hover{border-color:var(--accent)}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--pe-accent)}
+  .chip[aria-pressed="true"] .n{color:var(--pe-accent);opacity:.8}
+  .chip:disabled{opacity:.45;cursor:default;border-color:var(--line)}
+  select{font:inherit;font-size:13px;padding:4px 8px;border:1px solid var(--line);border-radius:7px;
+         background:var(--bg);color:var(--ink);max-width:100%}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  details.mai{border-top:1px dashed var(--line);padding-top:10px}
+  details.mai > summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;
+                        font-size:12.5px;color:var(--accent);font-weight:500}
+  details.mai > summary::-webkit-details-marker{display:none}
+  details.mai > summary::before{content:"+";font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+                                width:14px;text-align:center}
+  details.mai[open] > summary::before{content:"−"}
+  .insigna{font-size:10.5px;background:var(--accent);color:var(--pe-accent);border-radius:999px;padding:0 7px}
+  .grupuri-mai{display:grid;gap:11px;margin-top:11px}
+
+  .rezultat{display:flex;justify-content:space-between;align-items:baseline;gap:6px 14px;flex-wrap:wrap;
+            margin:0 0 10px;font-size:13px;color:var(--muted)}
+  .grila{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:11px;overflow:hidden;
+        display:flex;flex-direction:column;min-width:0}
+
+  /* Schița formatului, nu reclama: setul Google n-are imaginea sau textul. */
+  .schita{aspect-ratio:16/9;max-width:100%;position:relative;background:var(--schita);
+          display:flex;align-items:center;justify-content:center}
+  .schita .fmt{position:absolute;left:10px;bottom:7px;font-size:10px;letter-spacing:.1em;
+               text-transform:uppercase;color:var(--schita-ink)}
+  .schita svg{width:40px;height:40px;color:var(--schita-ink)}
+  .schita.video{background:var(--video)}
+  .schita.video .fmt,.schita.video svg{color:var(--video-ink)}
+  .rand-text{width:76%;display:grid;gap:7px}
+  .rand-text .sp{font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-size:9px;
+                 letter-spacing:.08em;text-transform:uppercase;color:var(--schita-ink)}
+  .bara{height:7px;border-radius:4px;background:var(--schita-bara)}
+  .bara.titlu{height:9px;width:72%;background:var(--accent);opacity:.5}
+  .bara.l1{width:94%} .bara.l2{width:61%}
+  .schita .stari{position:absolute;top:8px;right:8px;display:flex;gap:4px}
+  .stare{font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;white-space:nowrap}
+  .stare.activa{background:var(--ok-tint);color:var(--ok)}
+  .stare.noua{background:var(--accent-tint);color:var(--accent)}
+  .stare.oprita{background:var(--bg);color:var(--muted);font-weight:500}
+
+  .corp{padding:11px 13px 12px;display:grid;gap:7px;flex:1;align-content:start}
+  .sus{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:22px}
+  .banca{font-weight:600;font-size:14px;line-height:1.3}
+  .tag{font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);
+       color:var(--muted);border-radius:999px;padding:0 6px;line-height:1.7;white-space:nowrap}
+  .perioada{font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .perioada span{color:var(--muted);white-space:nowrap}
+  dl.fapte{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:12.5px}
+  dl.fapte dt{color:var(--muted)}
+  dl.fapte dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+  dd.gol{color:var(--muted)}
+  p.tintire{margin:0;font-size:11.5px;line-height:1.45;color:var(--muted)}
+
+  .actiuni{display:flex;border-top:1px solid var(--line)}
+  .actiuni a{display:flex;align-items:center;gap:6px;padding:9px 13px;text-decoration:none;
+             font-size:13px;white-space:nowrap}
+  .actiuni a:hover{background:var(--accent-tint)}
+  .actiuni .mic{flex:1;color:var(--accent);font-weight:500}
+  .actiuni .nou{border-left:1px solid var(--line);color:var(--muted)}
+  .actiuni .nou.singur{border-left:0;flex:1;color:var(--accent);font-weight:500}
+  .actiuni svg{width:15px;height:15px;flex:none}
+  .card.deschis{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+  .card.deschis .mic{background:var(--accent-tint)}
+
+  .mai-multe{display:flex;justify-content:center;margin-top:18px}
+  .buton{font:inherit;font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;
+         border:1px solid var(--accent);background:var(--accent);color:var(--pe-accent);font-weight:500}
+  .gol-tot{background:var(--surface);border:1px dashed var(--line);border-radius:11px;padding:28px;
+           text-align:center;color:var(--muted)}
+  footer{margin-top:30px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);
+         font-size:12px;display:grid;gap:5px;max-width:100ch}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="pagina">
+  <header>
+    <p class="spranceana">Prototip · secțiunea 2.4 · reclame Google</p>
+    <h1>Reclamele Google ale băncilor</h1>
+    <p class="lede">Reclame livrate în România, din setul public Google Ads Transparency. Un card înseamnă o reclamă, adică o variantă de creație, nu o campanie întreagă.</p>
+    <p class="nota"><b>Imaginea din card arată doar formatul.</b> Setul Google nu conține textul sau imaginea reclamei, iar Google nu lasă pagina reclamei să fie încadrată în alt site (răspunde 403, testat pe 29.09). <span data-mod="local">„Previzualizare” o deschide într-o fereastră mică, în dreapta ecranului; ca să le vezi alături, lipește browserul în stânga cu Win + ←.</span><span data-mod="cadru" hidden>Aici reclama se deschide într-o filă nouă: fereastra mică merge doar când galeria e deschisă local, din fișier.</span> Afișările sunt intervale și sunt numărate până la <span id="pana-la"></span>; la reclamele mai noi, cardul arată data la care le publică Google, la 90 de zile de la prima afișare. Prototip în afara aplicației: nimic de aici nu e în bază.</p>
+    <div class="sumar" id="sumar"></div>
+  </header>
+
+  <section class="comenzi" aria-label="Filtre">
+    <div class="grup" id="f-banca" role="group" aria-label="Banca"><span class="eticheta">Banca</span></div>
+    <div class="grup" id="f-format" role="group" aria-label="Formatul"><span class="eticheta">Format</span></div>
+    <div class="grup" id="f-perioada" role="group" aria-label="Perioada"><span class="eticheta">Afișate</span></div>
+    <div class="grup" id="f-sezon" role="group" aria-label="Sezonul"><span class="eticheta">Sezon</span></div>
+    <details class="mai" id="mai">
+      <summary>Mai multe filtre <span class="insigna" id="nr-mai" hidden></span></summary>
+      <div class="grupuri-mai">
+        <div class="grup" id="f-platforma" role="group" aria-label="Platforma"><span class="eticheta">Platforma</span></div>
+        <div class="grup" id="f-unde" role="group" aria-label="Unde a rulat"><span class="eticheta">Unde</span></div>
+        <div class="grup" id="f-clienti" role="group" aria-label="Liste de clienți"><span class="eticheta">Clienți</span></div>
+        <div class="grup">
+          <label class="eticheta" for="tema">Tema</label>
+          <select id="tema"><option value="">toate temele</option></select>
+        </div>
+      </div>
+    </details>
+    <div class="grup">
+      <label class="eticheta" for="ordine">Ordine</label>
+      <select id="ordine">
+        <option value="afisari" selected>cele mai multe afișări</option>
+        <option value="recente">ultima afișare, cele mai recente</option>
+        <option value="noi">prima afișare, cele mai noi</option>
+        <option value="vechi">prima afișare, cele mai vechi</option>
+      </select>
+    </div>
+  </section>
+
+  <div class="rezultat"><span id="numar" aria-live="polite"></span><span id="interval" class="mono"></span></div>
+  <div class="grila" id="grila"></div>
+  <div class="gol-tot" id="gol" hidden>Nicio reclamă pentru filtrele alese.</div>
+  <div class="mai-multe"><button class="buton" id="mai-multe" type="button" hidden>Arată încă 48</button></div>
+
+  <footer>
+    <span>Sursa: bigquery-public-data.google_ads_transparency_center.creative_stats; ultima zi din date: <span id="sursa-zi"></span>. Google păstrează reclamele un an după ultima afișare, deci galeria cuprinde ultimul an.</span>
+    <span>Intesa Sanpaolo publică prin agenția WPP Media Romania; îi recunoaștem reclamele după „plătit de”. BRD publică prin agenția Sense8, dar acolo „plătit de” e gol, deci reclamele ei nu se pot separa de ale altor clienți și nu apar aici. Nu sunt incluse nici Raiffeisen Bank International (reclame în germană), grupurile bancare din alte țări și filialele.</span>
+    <span>„Platforma” e platforma cu cele mai multe afișări: Google dă afișările pe fiecare dintre Search, YouTube, Maps, Play și Shopping. „Doar în România”: reclama are o singură țară pe lângă o intrare care pare un total, fiindcă nicio reclamă n-are mai puțin de două.</span>
+    <span>„Liste de clienți” arată dacă reclama a folosit o listă încărcată de bancă, cel mai probabil propriii clienți: „exclude o listă” înseamnă că nu le-a fost arătată lor, deci banca a căutat clienți noi. Tema e cea din setul Google și poate diferi de pagina reclamei.</span>
+    <span>„Site blocat”: banca ne blochează site-ul, deci reclamele sunt singura noastră sursă automată pentru ea. „Limbă mixtă”: la Revolut, ~20% din reclame erau în română la o verificare manuală; filtrul „doar în România” le apropie.</span>
+  </footer>
+</div>
+
+<script type="application/json" id="date-reclame">__DATE__</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('date-reclame').textContent);
+  const FORMATE = ['Text', 'Imagine', 'Video'];
+  const CLASA = ['text', 'imagine', 'video'];
+  const PLATFORME = [[1, 'YouTube'], [2, 'Search'], [4, 'Maps'], [8, 'Play'], [16, 'Shopping']];
+  const CRITERII = ['vârstă și gen', 'locație', 'context', null, 'interese'];
+  const LISTE = { e: 'exclude o listă', i: 'țintește o listă', b: 'include și exclude', u: 'nefolosite' };
+  const SEZOANE = { craciun25: { de: '2025-11-15', pana: '2025-12-31' } };
+  const PAS = 48;
+  // Pe claude.ai pagina rulează într-un cadru, iar fereastra deschisă de acolo e
+  // blocată de Google (ERR_BLOCKED_BY_RESPONSE, 29.09); acolo rămâne doar linkul.
+  const IN_CADRU = window.self !== window.top;
+  const FEREASTRA = 'previzualizare-reclama';
+  const LATIME = 560;
+
+  const nr = (x) => x.toLocaleString('ro-RO');
+  const zi = (s) => s.slice(8, 10) + '.' + s.slice(5, 7);
+  const ziAn = (s) => zi(s) + '.' + s.slice(0, 4);
+  const utc = (s) => Date.UTC(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10));
+  const zile = (a, b) => Math.round((utc(b) - utc(a)) / 864e5) + 1;
+  const de = (n) => (n % 100 === 0 || n % 100 >= 20 ? ' de ' : ' ');
+  const deZile = (n) => n === 1 ? 'o zi' : n + de(n) + 'zile';
+  const iso = (ms) => new Date(ms).toISOString().slice(0, 10);
+
+  // r = [banca, advertiser, creative, format, tema, prima, ultima, afisari_jos, afisari_sus,
+  //      platforme_principale (mască), cod_platformă, țintire, agenție, doar_RO, publicarea_afișărilor]
+  const R = D.r.map((x) => ({ b: x[0], a: x[1], c: x[2], f: x[3], t: x[4], fs: x[5], ls: x[6], lo: x[7], hi: x[8],
+    pm: x[9], pu: x[10], tn: x[11], ag: x[12], ro: x[13], av: x[14], cl: x[11] ? x[11][3] : null }));
+  const TOTAL_BANCA = new Map();
+  R.forEach((r) => TOTAL_BANCA.set(r.b, (TOTAL_BANCA.get(r.b) || 0) + 1));
+  const BANCI = [...TOTAL_BANCA.keys()].sort((x, y) => TOTAL_BANCA.get(y) - TOTAL_BANCA.get(x));
+
+  const stare = { banca: null, format: null, perioada: '7', sezon: null, platforma: null, unde: null,
+    clienti: null, tema: null, ordine: 'afisari', n: PAS };
+  const TESTE = {
+    banca: (r, v) => r.b === v,
+    format: (r, v) => r.f === v,
+    perioada: (r, v) => (v === '7' ? r.ls >= D.prag7 : v === '30' ? r.ls >= D.prag30 : true),
+    sezon: (r, v) => r.fs >= SEZOANE[v].de && r.fs <= SEZOANE[v].pana,
+    platforma: (r, v) => (v === 0 ? r.pm === 0 : (r.pm & v) !== 0),
+    unde: (r, v) => r.ro === v,
+    clienti: (r, v) => r.cl === v,
+    tema: (r, v) => r.t === v,
+  };
+  const SECUNDARE = ['platforma', 'unde', 'clienti', 'tema'];
+  function trece(r, ignora) {
+    for (const g in TESTE) {
+      if (g !== ignora && stare[g] !== null && !TESTE[g](r, stare[g])) return false;
+    }
+    return true;
+  }
+  const ORDINI = {
+    recente: (x, y) => (y.ls > x.ls) - (y.ls < x.ls) || (y.fs > x.fs) - (y.fs < x.fs),
+    noi: (x, y) => (y.fs > x.fs) - (y.fs < x.fs) || (y.ls > x.ls) - (y.ls < x.ls),
+    vechi: (x, y) => (x.fs > y.fs) - (x.fs < y.fs) || (y.ls > x.ls) - (y.ls < x.ls),
+    afisari: (x, y) => (y.lo ?? -1) - (x.lo ?? -1) || (y.ls > x.ls) - (y.ls < x.ls),
+  };
+
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  function chip(text, n, apasat, laClic) {
+    const b = el('button', 'chip');
+    b.type = 'button';
+    b.setAttribute('aria-pressed', apasat ? 'true' : 'false');
+    b.append(el('span', '', text));
+    if (n !== null) b.append(el('span', 'n', nr(n)));
+    b.disabled = n === 0 && !apasat;
+    b.addEventListener('click', laClic);
+    return b;
+  }
+  function alege(cheie, v) {
+    stare[cheie] = v;
+    // Sezonul trecut n-are reclame active azi: la alegerea lui, perioada devine „oricând”.
+    if (cheie === 'sezon' && v !== null) stare.perioada = 'an';
+    stare.n = PAS;
+    deseneaza();
+  }
+  function grup(id, cheie, optiuni, cuToate) {
+    const cont = document.getElementById(id);
+    cont.replaceChildren(cont.firstElementChild);
+    const baza = R.filter((r) => trece(r, cheie));
+    if (cuToate) cont.append(chip('Toate', baza.length, stare[cheie] === null, () => alege(cheie, null)));
+    optiuni.forEach(([v, text]) => {
+      const n = baza.filter((r) => TESTE[cheie](r, v)).length;
+      cont.append(chip(text, n, stare[cheie] === v, () => alege(cheie, cuToate && stare[cheie] === v ? null : v)));
+    });
+  }
+
+  const SVG = {
+    imagine: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="6" y="9" width="36" height="30" rx="3"/><circle cx="17" cy="19" r="3.5"/><path d="M8 35l11-11 8 8 5-5 9 9"/></svg>',
+    video: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M20 16.5v15l12-7.5z" fill="currentColor" stroke="none"/></svg>',
+    fereastra: '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5"/><path d="M9.5 2.5v11"/></svg>',
+  };
+  function schita(f) {
+    const s = el('div', 'schita ' + CLASA[f]);
+    s.setAttribute('aria-hidden', 'true');
+    if (f === 0) {
+      const t = el('div', 'rand-text');
+      t.append(el('span', 'sp', 'Sponsorizat'), el('div', 'bara titlu'), el('div', 'bara l1'), el('div', 'bara l2'));
+      s.append(t);
+    } else {
+      s.insertAdjacentHTML('beforeend', SVG[CLASA[f]]);
+    }
+    s.append(el('span', 'fmt', FORMATE[f]));
+    return s;
+  }
+  function afisari(r) {
+    if (r.lo === null) return null;
+    if (r.hi === -1) return 'peste ' + nr(r.lo / 1e6) + ' mil.';
+    return nr(r.lo) + '–' + nr(r.hi);
+  }
+  function platforma(r) {
+    if (r.pm) return PLATFORME.filter(([m]) => r.pm & m).map(([, n]) => n).join(' și ');
+    return r.pu === 1 ? 'sub 1.000 pe fiecare' : 'fără date';
+  }
+
+  let deschisa = null;
+  function marcheaza(c) {
+    c.classList.add('deschis');
+    c.querySelector('.mic span').textContent = 'Deschisă alături';
+  }
+  // Google refuză să-și servească paginile într-un iframe (403, testat pe 29.09),
+  // deci reclama se deschide într-o fereastră separată, îngustă, lipită de marginea
+  // din dreapta; același nume de fereastră o refolosește la următorul card.
+  function deschideAlaturi(e) {
+    const s = window.screen;
+    const stanga = Math.max(0, Math.round((s.availLeft || 0) + s.availWidth - LATIME));
+    const w = window.open(this.href, FEREASTRA, 'popup=yes,width=' + LATIME + ',height=' + s.availHeight
+      + ',left=' + stanga + ',top=' + Math.round(s.availTop || 0));
+    // Unde ferestrele mici nu sunt permise, window.open întoarce null, iar linkul
+    // se deschide normal, într-o filă.
+    if (!w) return;
+    e.preventDefault();
+    try { w.opener = null; } catch (err) { /* fereastra a trecut deja pe domeniul Google */ }
+    w.focus();
+    deschisa = this.dataset.c;
+    document.querySelectorAll('.card.deschis').forEach((x) => {
+      x.classList.remove('deschis');
+      x.querySelector('.mic span').textContent = 'Previzualizare';
+    });
+    marcheaza(this.closest('.card'));
+  }
+
+  function card(r) {
+    const banca = D.banci[r.b];
+    const c = el('article', 'card');
+    const s = schita(r.f);
+    const stari = el('span', 'stari');
+    if (r.fs >= D.prag30) stari.append(el('span', 'stare noua', 'nouă'));
+    stari.append(r.ls >= D.prag7 ? el('span', 'stare activa', 'activă') : el('span', 'stare oprita', 'oprită'));
+    s.append(stari);
+    c.append(s);
+
+    const corp = el('div', 'corp');
+    const sus = el('div', 'sus');
+    sus.append(el('span', 'banca', banca.nume));
+    if (banca.tag) sus.append(el('span', 'tag', banca.tag));
+    const per = el('div', 'perioada');
+    const acelasiAn = r.fs.slice(0, 4) === r.ls.slice(0, 4);
+    per.append(document.createTextNode((acelasiAn ? zi(r.fs) + ' → ' + zi(r.ls) : ziAn(r.fs) + ' → ' + ziAn(r.ls)) + ' '),
+      el('span', '', '· ' + deZile(zile(r.fs, r.ls))));
+    const dl = el('dl', 'fapte');
+    const rand = (eticheta, valoare, gol) => dl.append(el('dt', '', eticheta), el('dd', gol ? 'gol' : '', valoare));
+    const a = afisari(r);
+    rand('Afișări', a || (r.av ? 'apar pe ' + ziAn(r.av) : 'încă nepublicate'), !a);
+    rand('Platforma', platforma(r), r.pm === 0);
+    if (r.ro !== null) rand('Unde', r.ro ? 'doar în România' : 'și în alte țări');
+    if (r.cl) rand('Liste de clienți', LISTE[r.cl], r.cl === 'u');
+    rand('Tema', D.teme[r.t]);
+    if (r.ag !== null) rand('Agenție', D.agentii[r.ag]);
+    corp.append(sus, per, dl);
+    if (r.tn) {
+      const folosite = [0, 1, 2, 4].filter((i) => r.tn[i] !== 'u').map((i) => CRITERII[i]);
+      corp.append(el('p', 'tintire', 'Țintire: ' + (folosite.length ? folosite.join(', ') : 'fără criterii')));
+    }
+
+    const url = 'https://adstransparency.google.com/advertiser/' + D.advertiseri[r.a] + '/creative/' + r.c + '?region=RO';
+    const act = el('div', 'actiuni');
+    if (!IN_CADRU) {
+      const mic = el('a', 'mic');
+      mic.href = url;
+      mic.target = FEREASTRA;
+      mic.dataset.c = r.c;
+      mic.insertAdjacentHTML('beforeend', SVG.fereastra);
+      mic.append(el('span', '', 'Previzualizare'));
+      mic.setAttribute('aria-label', 'Previzualizare reclamă ' + banca.nume + ', într-o fereastră mică în dreapta ecranului');
+      mic.addEventListener('click', deschideAlaturi);
+      act.append(mic);
+    }
+    const nou = el('a', IN_CADRU ? 'nou singur' : 'nou', IN_CADRU ? 'Vezi reclama ↗' : 'Filă nouă ↗');
+    nou.href = url;
+    nou.target = '_blank';
+    nou.rel = 'noopener';
+    nou.setAttribute('aria-label', 'Deschide reclama ' + banca.nume + ' într-o filă nouă');
+    act.append(nou);
+    c.append(corp, act);
+    if (r.c === deschisa) marcheaza(c);
+    return c;
+  }
+
+  function deseneazaFiltre() {
+    grup('f-banca', 'banca', BANCI.map((i) => [i, D.banci[i].nume]), true);
+    grup('f-format', 'format', FORMATE.map((n, i) => [i, n]), true);
+    grup('f-perioada', 'perioada', [['7', 'în ultimele 7 zile'], ['30', 'în ultimele 30 de zile'], ['an', 'oricând în ultimul an']], false);
+    grup('f-sezon', 'sezon', [['craciun25', 'Crăciun 2025 · pornite 15.11–31.12']], true);
+    grup('f-platforma', 'platforma', PLATFORME.filter(([m]) => R.some((r) => r.pm & m)).concat([[0, 'fără platformă clară']]), true);
+    grup('f-unde', 'unde', [[1, 'doar în România'], [0, 'și în alte țări']], true);
+    grup('f-clienti', 'clienti', [['e', 'exclud o listă'], ['i', 'țintesc o listă'], ['b', 'includ și exclud'], ['u', 'fără liste']], true);
+    const active = SECUNDARE.filter((g) => stare[g] !== null).length;
+    const insigna = document.getElementById('nr-mai');
+    insigna.hidden = active === 0;
+    insigna.textContent = active + (active === 1 ? ' activ' : ' active');
+  }
+
+  function deseneaza() {
+    deseneazaFiltre();
+    const lista = R.filter((r) => trece(r, null)).sort(ORDINI[stare.ordine]);
+    document.getElementById('grila').replaceChildren(...lista.slice(0, stare.n).map(card));
+    document.getElementById('gol').hidden = lista.length > 0;
+    const arata = Math.min(stare.n, lista.length);
+    document.getElementById('numar').textContent = lista.length
+      ? 'Se văd ' + nr(arata) + ' din ' + nr(lista.length) + (lista.length === 1 ? ' reclamă' : de(lista.length) + 'reclame')
+      : '';
+    const perioada = stare.perioada === '7' ? 'afișate între ' + zi(D.prag7) + ' și ' + zi(D.ultima)
+      : stare.perioada === '30' ? 'afișate între ' + zi(D.prag30) + ' și ' + zi(D.ultima) : 'afișate oricând în ultimul an';
+    document.getElementById('interval').textContent = perioada
+      + (stare.sezon ? ' · pornite între ' + zi(SEZOANE[stare.sezon].de) + ' și ' + ziAn(SEZOANE[stare.sezon].pana) : '');
+    const mai = document.getElementById('mai-multe');
+    mai.hidden = lista.length <= stare.n;
+    mai.textContent = 'Arată încă ' + nr(Math.min(PAS, lista.length - stare.n));
+  }
+
+  function sumar() {
+    const active = R.filter((r) => r.ls >= D.prag7);
+    const noi = R.filter((r) => r.fs >= D.prag30);
+    const banci = new Set(R.map((r) => r.b)).size;
+    const s = document.getElementById('sumar');
+    [[active.length, 'reclame active în ultimele 7 zile'], [noi.length, 'reclame noi, apărute în ultimele 30 de zile'],
+     [R.length, 'reclame în setul Google, ultimul an'], [banci, 'bănci']]
+      .forEach(([n, text]) => { const d = el('span'); d.append(el('strong', '', nr(n)), document.createTextNode(de(n) + text)); s.append(d); });
+  }
+
+  const tema = document.getElementById('tema');
+  const peTema = new Map();
+  R.forEach((r) => peTema.set(r.t, (peTema.get(r.t) || 0) + 1));
+  [...peTema.entries()].sort((x, y) => y[1] - x[1]).forEach(([t, n]) => {
+    const o = el('option', '', D.teme[t] + ' (' + nr(n) + ')');
+    o.value = String(t);
+    tema.append(o);
+  });
+  tema.addEventListener('change', (e) => alege('tema', e.target.value === '' ? null : +e.target.value));
+  document.getElementById('ordine').addEventListener('change', (e) => { stare.ordine = e.target.value; stare.n = PAS; deseneaza(); });
+  document.getElementById('mai-multe').addEventListener('click', () => { stare.n += PAS; deseneaza(); });
+  document.querySelectorAll('[data-mod]').forEach((s) => { s.hidden = (s.dataset.mod === 'cadru') !== IN_CADRU; });
+  document.getElementById('pana-la').textContent = ziAn(iso(utc(D.ultima) - 90 * 864e5));
+  document.getElementById('sursa-zi').textContent = ziAn(D.ultima);
+  sumar();
+  deseneaza();
+})();
+</script>

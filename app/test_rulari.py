@@ -141,6 +141,20 @@ class Securitate(unittest.TestCase):
         self.assertIsNotNone(rulari.verifica_cerere(dict(ok, **{"X-MIP-Token": "abd"}), 8765, "abc"))
         self.assertIsNone(rulari.verifica_cerere(dict(ok, **{"X-MIP-Token": "abc"}), 8765, "abc"))
 
+    def test_port_vite_doar_cand_e_cerut(self):
+        """`porturi_extra` e doar pentru Vox; rulările rămân pe portul serverului.
+
+        Proxy-ul Vite (forma scurtă din vite.config.ts) rescrie Host-ul la ținta lui, dar lasă
+        Origin pe pagină: măsurat pe 06.10.2026, Host 127.0.0.1:<țintă>, Origin http://localhost:5174."""
+        vite = {"Host": "localhost:8765", "Origin": "http://localhost:5173"}
+        self.assertIsNotNone(rulari.verifica_cerere(vite, 8765))
+        self.assertIsNone(rulari.verifica_cerere(vite, 8765, porturi_extra=(5173,)))
+        self.assertIsNone(rulari.verifica_cerere(dict(vite, Host="127.0.0.1:8765"), 8765, porturi_extra=(5173,)))
+        # Host-ul rămâne strict pe portul serverului; Origin doar pagina noastră sau cea din Vite
+        self.assertIsNotNone(rulari.verifica_cerere(dict(vite, Host="localhost:5173"), 8765, porturi_extra=(5173,)))
+        for o in ("http://localhost:5174", "http://evil.com:5173", "https://localhost:5173"):
+            self.assertIsNotNone(rulari.verifica_cerere(dict(vite, Origin=o), 8765, porturi_extra=(5173,)), o)
+
 
 class Pornire(Baza):
     def test_un_singur_proces_si_oprire(self):
@@ -263,6 +277,15 @@ class Http(unittest.TestCase):
         cls.port = cls.srv.server_address[1]
         threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
         cls.env_vechi = os.environ.get("MIP_PERMITE_RULARI")
+        # rulările se pornesc de pe laptop, unde autentificarea e scurtătura locală (admin);
+        # poarta și rolurile au testele lor, în test_server_autentificare.py
+        import autentificare
+        cls.autentificare = autentificare
+        cls.auth_vechi = {k: os.environ.get(k) for k in ("MCC_AUTH_LOCAL", "MCC_AUTH_OBLIGATORIE")}
+        os.environ["MCC_AUTH_LOCAL"] = "admin"
+        os.environ.pop("MCC_AUTH_OBLIGATORIE", None)
+        cls.jurnal_vechi = autentificare.CALE_JURNAL
+        autentificare.CALE_JURNAL = os.path.join(cls.dir, "autentificare.log")
 
     @classmethod
     def tearDownClass(cls):
@@ -277,6 +300,12 @@ class Http(unittest.TestCase):
             os.environ.pop("MIP_PERMITE_RULARI", None)
         else:
             os.environ["MIP_PERMITE_RULARI"] = cls.env_vechi
+        for k, v in cls.auth_vechi.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+        cls.autentificare.CALE_JURNAL = cls.jurnal_vechi
 
     def setUp(self):
         os.environ["MIP_PERMITE_RULARI"] = "1"
@@ -317,8 +346,9 @@ class Http(unittest.TestCase):
         self.assertNotIn("token", d)
 
     def test_get_host_strain(self):
-        for h in ("evil.com:%d" % self.port, "localhost:1"):
-            self.assertEqual(self.cere("GET", "/api/rulari", host=h)[0], 403)
+        # un Host străin e refuzat deja la poartă (401: nu e utilizator local); unul local cu alt port, la rulări (403)
+        self.assertIn(self.cere("GET", "/api/rulari", host="evil.com:%d" % self.port)[0], (401, 403))
+        self.assertEqual(self.cere("GET", "/api/rulari", host="localhost:1")[0], 403)
         self.assertEqual(self.cere("GET", "/api/rulari", antete={"Origin": "http://evil.com"})[0], 403)
 
     def test_post_refuzat(self):
@@ -333,7 +363,8 @@ class Http(unittest.TestCase):
         ]
         for antete, host in cazuri:
             cod, _ = self.cere("POST", "/api/rulari/porneste", {"id": "numara"}, antete, host)
-            self.assertEqual(cod, 403, (antete, host))
+            # Host străin: refuz la poartă (401); restul: refuz la verificarea rulărilor (403)
+            self.assertIn(cod, (401, 403) if host else (403,), (antete, host))
         self.assertIsNone(self.server_mod.RULARI.curenta)
 
     def test_post_inactiv(self):

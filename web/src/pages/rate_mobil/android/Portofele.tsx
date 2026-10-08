@@ -43,7 +43,7 @@ export default function Portofele({ ix, apps, m, deschide }: PropsSectiune) {
       <h2>{t('mobil.android_titlu_portofele')}</h2>
       <div className="callout warn an-avert"><T k="mobil.android_portofele_avertisment" /></div>
       <div className="an-tabel an-mx">
-        <Tabel randuri={apps} coloane={coloane} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
+        <Tabel lipit={false} randuri={apps} coloane={coloane} cheieRand={(a) => a.package} libra={(a) => a.banca} onRand={(a) => deschide(a.package)}
           gol={t('mobil.android_gol_filtru')} />
       </div>
       <Note ix={ix} m={m}>

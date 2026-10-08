@@ -6,7 +6,7 @@ incarca_baza.py — pune în baza MIP datele fluxului, din fișierele din repo.
 
 Pentru cine clonează repo-ul: după ce baza MIP există (`banci` populată, vezi
 README, „Migrări”), comanda asta face tot restul, fără descărcări și fără model:
-  1. migrările fluxului (db/migration_027 … 034), doar dacă tabelele lipsesc;
+  1. migrările fluxului (db/migration_029 … 036), doar dacă tabelele lipsesc;
   2. produsele Libra, din produse_libra.json (sursa de adevăr); cele scoase din fișier se dezactivează;
   3. sursele, din inventare-libra/<banca>/*.json      (descopera_surse_libra --din-json)
   4. valorile, din inventare-libra/valori-<banca>.json (extrage_comparatie_libra --din-json)
@@ -28,9 +28,9 @@ AICI = Path(__file__).resolve().parent
 RADACINA = AICI.parent
 DSN = os.environ.get("MIP_DSN", "host=localhost port=5432 dbname=mip user=mip password=mip")
 MIGRARI = [f"migration_0{n}_{s}.sql" for n, s in [
-    (27, "produse_libra"), (28, "banci_acces_restricted"), (29, "inventar_libra"),
-    (30, "surse_comparatie_concurenta"), (31, "surse_libra_not_found"), (32, "hashes_libra"),
-    (33, "comparatie_scenariu"), (34, "products_discovery")]]
+    (29, "produse_libra"), (30, "banci_acces_restricted"), (31, "inventar_libra"),
+    (32, "surse_comparatie_concurenta"), (33, "surse_libra_not_found"), (34, "hashes_libra"),
+    (35, "comparatie_scenariu"), (36, "products_discovery")]]
 
 
 def spune(m: str) -> None:
@@ -47,7 +47,7 @@ def migrari(conn) -> None:
         if not exista(cur, "banci"):
             sys.exit("Baza n-are tabela `banci`: creează întâi baza MIP (db/schema.sql, seed-urile și "
                      "migrările 002–026, vezi README) sau importă copia bazei (deploy/importa_baza_docker.ps1).")
-        # 030 refăcea comparatie_libra de la zero: pe o bază care are deja fluxul,
+        # 032 refăcea comparatie_libra de la zero: pe o bază care are deja fluxul,
         # migrările vechi nu se mai rulează, altfel s-ar pierde valorile
         if exista(cur, "comparatie_libra"):
             de_rulat = [] if exista(cur, "products_discovery") else MIGRARI[-1:]

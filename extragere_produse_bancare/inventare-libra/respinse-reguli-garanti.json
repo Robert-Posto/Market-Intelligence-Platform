@@ -1,6 +1,46 @@
 {
  "banca": "garanti",
- "total": 0,
- "pe_motiv": {},
- "valori": []
+ "total": 3,
+ "pe_motiv": {
+  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 2,
+  "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 1
+ },
+ "valori": [
+  {
+   "url": "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar-locuinte-cu-eficienta-energetica/",
+   "produse": [
+    "CREDIT_IPOTECAR_PF"
+   ],
+   "camp": "suma_maxima",
+   "valoare_num": 0,
+   "unitate": "altele",
+   "citat": "Nu există plafon maxim de creditare.",
+   "incredere": 0.7,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.garantibbva.ro/persoane-fizice/credit-imobiliar/",
+   "produse": [
+    "CREDIT_IPOTECAR_PF"
+   ],
+   "camp": "suma_maxima",
+   "valoare_num": 0,
+   "unitate": "altele",
+   "citat": "Nu există plafon maxim de creditare",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.garantibbva.ro/en/individuals/personal-loan-and-refinancing/",
+   "produse": [
+    "CREDIT_LIBRA_WAY"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Obtaining the loan is conditional on the creation and registration with the RNPM of a mortgage on current accounts and, where applicable, on receivables (dividends, rents)",
+   "incredere": 0.7,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  }
+ ]
 }

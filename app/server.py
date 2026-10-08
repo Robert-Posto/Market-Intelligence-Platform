@@ -16,6 +16,9 @@ A doua exceptie: pagina „Inventar produse" modifica fisierul
 `extragere_produse_bancare/produse_libra.json` (`app/inventar_produse.py`,
 rutele POST `/api/inventar_produse/*`), cu aceleasi verificari Host/Origin/token.
 Nici ea nu scrie in baza: tabela se actualizeaza la `incarca_baza.py`.
+Accesul: orice cerere spre date cere o sesiune (logare cu contul AD,
+`app/autentificare.py`, poarta din `Handler._poarta`); rularile si joburile cer
+rolul admin. Pe laptop, `MCC_AUTH_LOCAL=admin` in `.env` sare peste logare.
 """
 
 import csv
@@ -45,6 +48,8 @@ import config  # noqa: E402  (dupa sys.path, ca sa gaseasca radacina proiectului
 from normalizeaza import PRAGURI  # noqa: E402
 import rulari  # noqa: E402  (app/, langa server)
 import inventar_produse  # noqa: E402
+import vox  # noqa: E402  (app/, langa server)
+import autentificare  # noqa: E402  (app/, langa server)
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
 # Vederea tine regula o singura data (`stare_data NOT IN (ISTORIC, DUBLURA)`) -
@@ -564,6 +569,13 @@ def matrice(q):
     }
 
 
+# Căutarea după text (Vox): ce nu are concept stă în găleata `comision` (3.859 de
+# valori în observatii_curente, baza mip, 06.10.2026) și n-ar fi găsit de nicio căutare pe `camp`.
+# Cuvintele vin din vox.cuvinte_cautare, fără diacritice; aici textul băncii pierde aceleași litere.
+_TEXT_CAUTARE = ("translate(lower(coalesce(o.serviciu, '') || ' ' || coalesce(o.citat, '')), "
+                 "'ăâîșşțţ', 'aaisstt')")
+
+
 def celula(q):
     """Toate valorile din spatele unei celule, cu ce reprezinta si de unde vin.
 
@@ -580,7 +592,11 @@ def celula(q):
     Unde lipseste, `sursa` + `pagina` rman verificabile manual - un link greșit
     ar fi mai rau decat niciun link.
     """
-    if not (q.get("banca") and q.get("camp")):
+    # cu `text` și fără `camp` (Vox): toate conceptele băncii, filtrate după cuvinte,
+    # cel mult vox.MAX_RANDURI rânduri; fără `text` totul rămâne ca înainte
+    camp = (q.get("camp") or [""])[0]
+    cuvinte = vox.cuvinte_cautare((q.get("text") or [""])[0])
+    if not (q.get("banca") and (camp or cuvinte)):
         return {"eroare": "lipsește banca sau camp"}
     # `camp` singur nu e destul la dobanzi: `nominala` inseamna si dobanda de
     # depozit si dobanda de credit. Fara filtrul pe categorie, sertarul deschis
@@ -599,6 +615,9 @@ def celula(q):
     if produs in PRODUSE_CREDIT:
         extra += f" AND {PRODUS_CREDIT} = %s"
         p_extra = (produs,)
+    for c in cuvinte:
+        extra += f" AND {_TEXT_CAUTARE} LIKE %s"
+        p_extra += ("%" + c + "%",)
     rows = interoghează(
         """SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
@@ -609,12 +628,13 @@ def celula(q):
            FROM observatii_curente o
            JOIN surse s ON s.id = o.id_sursa
            JOIN banci b ON b.id = s.id_banca
-           WHERE b.slug = %s AND o.camp = %s
+           WHERE b.slug = %s AND (%s = '' OR o.camp = %s)
              AND (%s = '' OR o.unitate = %s)
              AND (%s = '' OR split_part(coalesce(o.cod_scenariu, ''), '|', 1) = %s)"""
         + extra + """
-           ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num""",
-        (q["banca"][0], q["camp"][0],
+           ORDER BY o.ambiguu, coalesce(o.serviciu, ''), o.valoare_num"""
+        + (f" LIMIT {vox.MAX_RANDURI}" if cuvinte else ""),
+        (q["banca"][0], camp, camp,
          (q.get("unitate") or [""])[0], (q.get("unitate") or [""])[0],
          categorie, categorie) + p_extra,
     )
@@ -1192,7 +1212,7 @@ _DE_LA = f"(((now() AT TIME ZONE '{_FUS}')::date - (%s::int - 1)) AT TIME ZONE '
 def jobs(q):
     """Jurnalul joburilor: ce a rulat, cât a durat, cât a costat, ce erori a avut.
 
-    Tabelele vin din `db/migration_036_jobs.sql` și le scrie
+    Tabelele vin din `db/migration_037_jobs.sql` și le scrie
     `extragere_produse_bancare/jurnal_joburi.py` (discovery, extragere, produse noi).
     Costul e estimarea din `preturi.py` (prețuri de listă × tokenii raportați de API),
     nu factura. Fără tabele: `disponibil: false`, nu 500.
@@ -1904,6 +1924,71 @@ def _produse_rulari():
 RULARI = rulari.Rulari(slugs=_slugs_rulari, produse=_produse_rulari)
 
 
+def _context_vox():
+    """Băncile și conceptele pe care le vede modelul din Vox. Doar concepte cu valori
+    numerice (127 în baza mip, 06.10.2026), fără găleata `comision`; fiecare cu 2–3 denumiri reale
+    din tarife, ca modelul să lege „retragere de la bancomat” de `retragere_numerar` fără să
+    dublăm etichetele din interfață sau vocabularul."""
+    banci = interoghează("SELECT slug, nume FROM banci ORDER BY slug")
+    concepte = interoghează(
+        """SELECT o.camp, count(*)::int AS n,
+                  array_agg(DISTINCT coalesce(o.unitate, '')) AS unitati,
+                  array_agg(DISTINCT split_part(coalesce(o.cod_scenariu, ''), '|', 1)) AS categorii
+           FROM observatii_curente o
+           WHERE o.valoare_num IS NOT NULL AND o.camp IS NOT NULL AND o.camp <> 'comision'
+           GROUP BY 1 ORDER BY 1""")
+    exemple = interoghează(
+        """SELECT camp, serviciu FROM (
+             SELECT o.camp, o.serviciu,
+                    row_number() OVER (PARTITION BY o.camp ORDER BY count(*) DESC, o.serviciu) AS rn
+             FROM observatii_curente o
+             WHERE o.valoare_num IS NOT NULL AND o.camp <> 'comision'
+               AND coalesce(o.serviciu, '') <> ''
+             GROUP BY 1, 2) x
+           WHERE rn <= 3 ORDER BY camp, rn""")
+    pe_camp = {}
+    for e in exemple:
+        pe_camp.setdefault(e["camp"], []).append(e["serviciu"])
+    for c in concepte:
+        c["unitati"] = sorted(u for u in c["unitati"] if u)
+        c["categorii"] = sorted(x for x in c["categorii"] if x)
+        c["exemple"] = pe_camp.get(c["camp"], [])
+    return {
+        "banci": banci,
+        "concepte": concepte,
+        "categorii": {k: v["titlu"] for k, v in GRUPURI_RATE.items()},
+        # aceleași concepte ca pagina 2.2; fără ele „dobânda la depozit” ieșea fără concept (live)
+        "concepte_categorie": {k: v["campuri"] for k, v in GRUPURI_RATE.items()},
+        "termene": {**{k: v[0] for k, v in TERMENE.items()}, "necunoscut": "termen nespecificat"},
+        "produse": dict(PRODUSE_CREDIT),
+    }
+
+
+def _cauta_vox(banca, concept, categorie, termen, produs, text):
+    """Valorile unei bănci pentru Vox, prin `celula`: aceleași rânduri, linkuri și
+    nivele de dovadă ca Sertar-ul din 2.1, o singură interogare de întreținut."""
+    r = celula({"banca": [banca], "camp": [concept or ""], "scenariu": [categorie or ""],
+                "termen": [termen or ""], "produs": [produs or ""], "text": [text or ""]})
+    return r if isinstance(r, list) else []
+
+
+def _stare_banca_vox(banca):
+    """De ce n-are banca valori: toate sursele blocate (WAF, robots.txt) sau nicio sursă. Altfel
+    „nu avem valori” s-ar citi ca „banca nu are comisionul”."""
+    r = interoghează(
+        """SELECT count(s.id)::int AS n, count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate
+           FROM banci b LEFT JOIN surse s ON s.id_banca = b.id
+           WHERE b.slug = %s""", (banca,))
+    if not r:
+        return None
+    n, blocate = r[0]["n"], r[0]["blocate"]
+    return "fara_surse" if n == 0 else "blocata" if blocate == n else None
+
+
+VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox,
+                               stare_banca=_stare_banca_vox)
+
+
 def rulare_manuala_catalog(q):
     """Ce se poate alege în modalul „Începe job”: tipurile de job (din `job_types`, doar cele din
     lista fixă `rulari.JOBURI`), băncile fluxului de extragere și produsele Libra active."""
@@ -2053,8 +2138,33 @@ RUTE = {
     "/api/acoperire": lambda q: acoperire(),
 }
 
+# Autentificarea AD (app/autentificare.py). Configurația se citește o dată, la pornire; fără
+# ea logarea răspunde 503, iar serverul spune la pornire de ce (vezi __main__).
+CONFIG_AUTH = autentificare.Config.din_mediu()
+AUTENTIFICARE = autentificare.Autentificator(CONFIG_AUTH)
+SESIUNI = autentificare.Sesiuni(CONFIG_AUTH.sesiune_ore or autentificare.ORE_IMPLICITE)
+COOKIE = "mcc_sesiune"
+# Pe HTTPS cookie-ul are prefixul __Host- (deci Secure, Path=/, fără Domain): browserul nu primește
+# un cookie cu numele ăsta de la alt site *.libra.bank, deci nimeni nu poate strecura o sesiune a
+# lui. Pe laptop (http://localhost) prefixul n-ar fi acceptat, de aceea rămâne numele simplu.
+COOKIE_HTTPS = "__Host-mcc_sesiune"
+# Rulările pornesc procese, iar joburile costă: doar adminul (403 pentru analist, verificat
+# aici, nu doar ascuns în interfață)
+RUTE_ADMIN = {"/api/jobs", "/api/rulare_manuala", "/api/rulare_manuala/estimare",
+              "/api/rulari", "/api/rulari/porneste", "/api/rulari/opreste"}
+# Fără sesiune se ajunge doar la logare, la întrebarea „sunt logat?”, la ieșire și la interfața
+# construită de pe /app/ (pagina de logare trebuie să se încarce; e aceeași pe care nginx o
+# servește oricum fără sesiune). Tot restul cere sesiune, inclusiv fișierele din app/.
+# corpul unui POST din „Inventar produse” (descrierea are până la 1.000 de caractere)
+LIMITA_INVENTAR = 8192
+RUTE_FARA_SESIUNE = {"/api/autentificare", "/api/sesiune", "/api/delogare"}
+CODURI_LOGARE = {"invalid": (401, "date_invalide"), "fara_rol": (403, "fara_rol"),
+                 "limitat": (429, "prea_multe_incercari"), "indisponibil": (503, "ad_indisponibil")}
+# Singurele fișiere din app/ servite pe nume (plus siglele din logos/, vezi Handler.translate_path)
+FISIERE_APP = {"index.html", "pdf.html", "harta.html", "favicon.ico"}
 
-_PERMISE = {}
+
+_PERMISE = set()
 
 
 def pdf_permis(url):
@@ -2064,23 +2174,31 @@ def pdf_permis(url):
     acces la aplicație ar putea cere orice adresă din internet prin serverul
     nostru, inclusiv adrese din rețeaua internă. Lista albă e baza de date:
     se servesc doar documentele pe care pipeline-ul le-a înregistrat ca surse.
+    Lista nu ajunge singură: `surse` ține și adrese propuse de model sau de pe
+    alte domenii, deci la descărcare fiecare pas trece și prin garda de rețea
+    internă (`_adu_din_retea`).
 
     Rezultatul se ține în memorie: o conexiune nouă la Postgres costă ~2s pe
     Windows, iar fără cache fiecare deschidere de document plătea de două ori
     (o dată verificarea, o dată servirea) chiar și când fișierul era deja local.
+    Se țin doar răspunsurile pozitive: setul e mărginit de tabela `surse`, pe
+    când un refuz ținut minte creștea memoria cu orice `u` inventat (și rămânea
+    refuz și după ce pipeline-ul înregistra documentul).
     """
     # http:// trece doar dacă documentul e deja în Bronze (se servește local,
     # fără nicio cerere în rețea); descărcarea din rețea rămâne doar pe https
     if not url or not (url.startswith("https://") or (url.startswith("http://") and _din_bronze(url))):
         return False
-    if url not in _PERMISE:
-        _PERMISE[url] = bool(interoghează(
+    if url in _PERMISE:
+        return True
+    if interoghează(
             """SELECT 1 FROM surse
                WHERE url_public = %s OR (tip_sursa IN ('url', 'document') AND sursa = %s)
                LIMIT 1""",
-            (url, url),
-        ))
-    return _PERMISE[url]
+            (url, url)):
+        _PERMISE.add(url)
+        return True
+    return False
 
 
 CACHE_PDF = os.path.join(AICI, ".cache_pdf")
@@ -2122,7 +2240,27 @@ def adu_pdf(url):
     return _adu_din_retea(url)
 
 
-def _adu_din_retea(url):
+# Plafonul unui PDF adus prin /pdf. Bronze avea 107 MB în 298 de fișiere la prima
+# rulare (.gitignore), sub 0,4 MB în medie: 30 MB lasă loc listelor mari de tarife,
+# iar un răspuns fără sfârșit nu mai umple memoria serverului (`r.content` îl citea întreg).
+MAX_PDF_OCTETI = 30 * 1024 * 1024
+
+
+def _citeste_cu_plafon(r, plafon):
+    """Corpul răspunsului (`stream=True`), citit pe bucăți; ValueError peste `plafon` octeți."""
+    declarat = r.headers.get("Content-Length") or ""
+    if declarat.isdigit() and int(declarat) > plafon:
+        raise ValueError(f"document peste {plafon // 2**20} MB")
+    corp = bytearray()
+    # iter_content dă octeții decomprimați: plafonul ține și la o arhivă gzip care se umflă
+    for bucata in r.iter_content(64 * 1024):
+        corp += bucata
+        if len(corp) > plafon:
+            raise ValueError(f"document peste {plafon // 2**20} MB")
+    return bytes(corp)
+
+
+def _adu_din_retea(url, sesiune=None):
     """Aduce PDF-ul o singură dată și îl păstrează local.
 
     De ce prin serverul nostru: vizualizatorul propriu (PDF.js) are nevoie de
@@ -2131,17 +2269,29 @@ def _adu_din_retea(url):
 
     Cache-ul nu e optimizare, e politețe: altfel fiecare deschidere a
     sertarului ar re-descărca de la bancă același document.
+
+    Redirecturile se urmează aici, nu în `requests`: cel mult
+    `transport.MAX_PASI_REDIRECT`, și fiecare pas trece întâi prin
+    `transport.refuz_pas` (adresă internă, origine BLOCAT, robots.txt). Înainte,
+    `requests` urma orb un 302 de la o adresă din `surse` spre 127.0.0.1 sau
+    169.254.169.254, iar robots.txt se verifica doar la adresa de plecare.
+    `transport._http` nu se folosește direct: stă la coada originii (lacătul
+    dintre procese, cu așteptare de până la 600 s), poate marca originea BLOCAT
+    dintr-o cerere a unui utilizator și citește corpul fără plafon.
+    `sesiune` (orice obiect cu `.get`) e pentru teste.
     """
     import hashlib
-    # robots.txt și aici, nu doar la colectare: ING are `Disallow: *.pdf`, iar
-    # allowlist-ul din bază lăsa să treacă un PDF înregistrat înainte de verificare.
+    from urllib.parse import urljoin
     radacina = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     for p in (radacina, os.path.join(radacina, "ingest")):
         if p not in sys.path:
             sys.path.insert(0, p)
-    import flux
-    if not flux.permite(url, "proxy"):
-        raise PermissionError("interzis de robots.txt al băncii")
+    import transport
+    # robots.txt și aici, nu doar la colectare: ING are `Disallow: *.pdf`, iar
+    # allowlist-ul din bază lăsa să treacă un PDF înregistrat înainte de verificare.
+    motiv = transport.refuz_pas(url, "proxy")
+    if motiv:
+        raise PermissionError(motiv)
     os.makedirs(CACHE_PDF, exist_ok=True)
     cale = os.path.join(CACHE_PDF, hashlib.sha256(url.encode()).hexdigest() + ".pdf")
     if os.path.exists(cale) and os.path.getsize(cale) > 1000:
@@ -2150,28 +2300,54 @@ def _adu_din_retea(url):
     # sistemului pică pe unele domenii (ing.ro dă CERTIFICATE_VERIFY_FAILED
     # fiindcă lipsește intermediarul). `requests` folosește `certifi`.
     import requests
-    r = requests.get(url, timeout=40, headers={
-        # UA-ul unic al echipei (crawler/__init__.py): se identifică, nu se dă
-        # drept browser.
-        "User-Agent": __import__("crawler").UA,
-        "Accept": "application/pdf,*/*",
-    })
-    if not r.ok:
-        raise ValueError(f"HTTP {r.status_code}")
-    if not r.content.startswith(b"%PDF"):
-        raise ValueError("răspunsul nu e un PDF")
-    with open(cale, "wb") as f:
-        f.write(r.content)
-    return cale
+    adresa = url
+    for _pas in range(transport.MAX_PASI_REDIRECT + 1):
+        r = (sesiune or requests).get(adresa, timeout=40, allow_redirects=False, stream=True, headers={
+            # UA-ul unic al echipei (crawler/__init__.py): se identifică, nu se dă
+            # drept browser.
+            "User-Agent": __import__("crawler").UA,
+            "Accept": "application/pdf,*/*",
+        })
+        with r:
+            if r.is_redirect:
+                adresa = urljoin(adresa, r.headers["Location"])
+                motiv = transport.refuz_pas(adresa, "proxy")
+                if motiv:
+                    raise PermissionError(f"redirect refuzat: {motiv}")
+                continue
+            if not r.ok:
+                raise ValueError(f"HTTP {r.status_code}")
+            corp = _citeste_cu_plafon(r, MAX_PDF_OCTETI)
+        if not corp.startswith(b"%PDF"):
+            raise ValueError("răspunsul nu e un PDF")
+        with open(cale, "wb") as f:
+            f.write(corp)
+        return cale
+    raise ValueError(f"peste {transport.MAX_PASI_REDIRECT} redirecturi")
+
+
+# Cu Postgres oprit, paginile arătau textul psycopg2 („OperationalError: connection to server at
+# …”), netradus; detaliul rămâne în terminalul serverului
+BAZA_OPRITA = "Baza de date nu răspunde (Postgres oprit sau MIP_DSN greșit)."
+
+
+def _eroare_server(exc):
+    """Codul și corpul unui răspuns de eroare: baza oprită are mesajul ei, restul clasa și textul."""
+    if isinstance(exc, psycopg2.OperationalError):
+        sys.stderr.write(f"baza de date: {exc}\n")
+        return 503, {"eroare": BAZA_OPRITA}
+    return 500, {"eroare": f"{exc.__class__.__name__}: {exc}"}
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
-    def _json(self, cod, date):
+    def _json(self, cod, date, antete=()):
         corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
         self.send_response(cod)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(corp)))
         self.send_header("Cache-Control", "no-store")
+        for nume, valoare in antete:
+            self.send_header(nume, valoare)
         self.end_headers()
         self.wfile.write(corp)
 
@@ -2180,22 +2356,25 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return rulari.verifica_cerere(self.headers, self.server.server_address[1],
                                       RULARI.token if cu_token else None)
 
-    def _corp_json(self, maxim=2048):
-        """Corpul unui POST ca dict, sau None după ce s-a trimis deja refuzul."""
-        # JSON obligatoriu: un formular de pe alt site nu poate trimite
-        # application/json fără preflight CORS, pe care nu-l acceptăm
+    def _refuz_vox(self, cu_token):
+        """Ca la rulări, dar permite și pagina din `npm run dev` (Origin localhost:5173)."""
+        return rulari.verifica_cerere(self.headers, self.server.server_address[1],
+                                      VOX.token if cu_token else None,
+                                      porturi_extra=(vox.PORT_VITE,))
+
+    def _corp_json(self, limita):
+        """Corpul JSON al unui POST, sau None după ce eroarea a fost deja trimisă.
+
+        JSON obligatoriu: un formular de pe alt site nu poate trimite application/json fără
+        preflight CORS, pe care nu-l acceptăm."""
         if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
             self._json(415, {"eroare": "se acceptă doar application/json"})
             return None
-        try:
-            n = int(self.headers.get("Content-Length") or 0)
-        except ValueError:
-            n = -1
-        if not 0 <= n <= maxim:
+        if self._brut is None or len(self._brut) > limita:
             self._json(400, {"eroare": "corp prea mare"})
             return None
         try:
-            corp = json.loads(self.rfile.read(n) or b"{}")
+            corp = json.loads(self._brut or b"{}")
             if not isinstance(corp, dict):
                 raise ValueError
         except ValueError:
@@ -2204,27 +2383,263 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return corp
 
     def _post_inventar(self, actiune):
+        # scrie în produse_libra.json: doar admin (poarta a cerut deja sesiunea)
+        if self.sesiune["rol"] != "admin":
+            autentificare.jurnal({"eveniment": "refuz_admin", "utilizator": self.sesiune["utilizator"],
+                                  "ip": self._ip(), "cale": self.path})
+            self._json(403, {"eroare": "interzis"})
+            return
         motiv = rulari.verifica_cerere(self.headers, self.server.server_address[1], inventar_produse.TOKEN)
         if motiv:
             self._json(403, {"eroare": motiv})
             return
         # descrierea: 1.000 de caractere, până la 2 octeți fiecare cu diacriticele
-        corp = self._corp_json(maxim=8192)
+        corp = self._corp_json(LIMITA_INVENTAR)
         if corp is None:
             return
         try:
-            self._json(200, inventar_produse.salveaza(actiune, corp))
+            rezultat = inventar_produse.salveaza(actiune, corp)
+            autentificare.jurnal({"eveniment": "inventar_" + actiune, "utilizator": self.sesiune["utilizator"],
+                                  "ip": self._ip(), "cod": corp.get("cod")})
+            self._json(200, rezultat)
         except inventar_produse.Respins as exc:
             self._json(400, {"eroare": str(exc)})
         except inventar_produse.Conflict as exc:
             self._json(409, {"eroare": str(exc)})
         except Exception as exc:
-            self._json(500, {"eroare": f"{exc.__class__.__name__}: {exc}"})
+            self._json(*_eroare_server(exc))
+
+    def _post_vox(self):
+        if not vox.activ():
+            self._json(403, {"eroare": "Vox e oprit pe acest server (MIP_PERMITE_VOX sau cheia Anthropic)"})
+            return
+        motiv = self._refuz_vox(cu_token=True)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        corp = self._corp_json(4096)    # întrebarea (500) + interpretarea anterioară (1000), cu marjă
+        if corp is None:
+            return
+        try:
+            self._json(200, VOX.intreaba(corp.get("intrebare"), corp.get("anterior"), corp.get("conversatie")))
+        except vox.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except vox.EroareModel as exc:
+            self._json(502, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(*_eroare_server(exc))
+
+    def _get_conversatii(self, cale):
+        """Lista și o conversație: doar citesc fișiere locale, deci merg și cu Vox oprit; tot cu
+        Host/Origin, ca GET /api/vox (întrebările sunt ale utilizatorului)."""
+        motiv = self._refuz_vox(cu_token=False)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        parti = cale.split("/")      # ["", "api", "vox", "conversatii", <id>]
+        try:
+            if len(parti) == 4:
+                self._json(200, VOX.istoric.lista())
+                return
+            c = VOX.istoric.citeste(parti[4]) if len(parti) == 5 else None
+        except Exception as exc:
+            # fără asta, o eroare neprevăzută închidea conexiunea, iar pagina arăta „serverul nu răspunde”
+            self._json(*_eroare_server(exc))
+            return
+        if c is None:
+            self._json(404, {"eroare": vox.CONVERSATIE_LIPSA})
+            return
+        self._json(200, c)
+
+    def _post_conversatie(self, cale):
+        """Redenumirea și ștergerea: aceleași verificări ca întrebarea (token, Host/Origin, JSON)."""
+        motiv = self._refuz_vox(cu_token=True)
+        if motiv:
+            self._json(403, {"eroare": motiv})
+            return
+        parti = cale.split("/")      # ["", "api", "vox", "conversatii", <id>, <acțiune>]
+        if len(parti) != 6 or parti[5] not in ("redenumeste", "sterge"):
+            self.send_error(404)
+            return
+        corp = self._corp_json(1024)
+        if corp is None:
+            return
+        try:
+            if parti[5] == "sterge":
+                if not VOX.istoric.sterge(parti[4]):
+                    raise vox.ConversatieLipsa(vox.CONVERSATIE_LIPSA)
+                self._json(200, {"sters": True})
+            else:
+                self._json(200, VOX.istoric.redenumeste(parti[4], corp.get("titlu")))
+        except vox.ConversatieLipsa as exc:
+            self._json(404, {"eroare": str(exc)})
+        except vox.Respins as exc:
+            self._json(400, {"eroare": str(exc)})
+        except Exception as exc:
+            self._json(*_eroare_server(exc))
+
+    def _citeste_corpul(self, limita=4096):
+        """Octeții corpului, citiți înaintea oricărui refuz, sau None dacă lipsesc ori depășesc limita.
+
+        Un 403 trimis cu corpul necitit închidea socket-ul cu date în buffer, iar Windows răspundea
+        cu RST: clientul vedea ConnectionAbortedError în loc de 403 (măsurat pe 06.10.2026: 3 rulări
+        din 25 ale testelor, la fiecare din 1.000 de cereri refuzate cu un corp de 3 KB)."""
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return None
+        return self.rfile.read(n) if 0 <= n <= limita else None
+
+    # ---------------- autentificarea ----------------
+
+    def _ip(self):
+        # serverul ascultă doar pe loopback, deci X-Real-IP vine de la nginx (care îl suprascrie
+        # pe cel trimis de client); fără nginx, adresa socket-ului
+        return (self.headers.get("X-Real-IP") or "").strip()[:64] or self.client_address[0]
+
+    def _https(self):
+        # X-Forwarded-Proto vine de la nginx (serverul ascultă doar pe loopback)
+        return (self.headers.get("X-Forwarded-Proto") or "").strip().lower() == "https"
+
+    def _nume_cookie(self):
+        # doar numele schemei curente: pe HTTPS un `mcc_sesiune`, pe care l-ar putea pune și alt
+        # subdomeniu, nici nu se citește
+        return COOKIE_HTTPS if self._https() else COOKIE
+
+    def _sesiune(self):
+        """Sesiunea din cookie, utilizatorul local de pe laptop (autentificare.mod_local) sau None."""
+        nume_cookie = self._nume_cookie()
+        for antet in self.headers.get_all("Cookie") or ():
+            for bucata in antet.split(";"):
+                nume, _, valoare = bucata.strip().partition("=")
+                # toate cookie-urile cu numele nostru, nu doar primul: pe HTTP unul pus de alt
+                # subdomeniu (.libra.bank) nu trebuie să blocheze sesiunea bună
+                if nume == nume_cookie:
+                    s = SESIUNI.citeste(valoare)
+                    if s:
+                        return dict(s, local=False, id=valoare)
+        rol = autentificare.mod_local(os.environ, self.headers,
+                                      ad_configurat=AUTENTIFICARE.config.problema() is None)
+        if rol:
+            return {"utilizator": "local", "nume": "local", "rol": rol, "local": True}
+        return None
+
+    def _goleste_corpul(self):
+        """Citește corpul (cel mult 2 KB) înainte de un refuz timpuriu al unui POST.
+
+        Închis cu date necitite, socket-ul trimite RST în loc de FIN, iar clientul (browserul
+        sau nginx) poate pierde răspunsul: în loc de 401 la o sesiune expirată, interfața ar
+        vedea o eroare de rețea (măsurat pe Windows, în test_server_autentificare.py).
+        """
+        if self.command != "POST":
+            return
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return
+        if 0 < n <= 2048:
+            self.rfile.read(n)
+
+    def _poarta(self, cale):
+        """True dacă cererea merge mai departe; altfel a trimis deja 401 / 403."""
+        self.sesiune = None
+        if cale in RUTE_FARA_SESIUNE or cale == "/app" or cale.startswith("/app/"):
+            return True
+        s = self._sesiune()
+        if s is None:
+            self._goleste_corpul()
+            self._json(401, {"eroare": "neautentificat"})
+            return False
+        if cale in RUTE_ADMIN and s["rol"] != "admin":
+            autentificare.jurnal({"eveniment": "refuz_admin", "utilizator": s["utilizator"],
+                                  "ip": self._ip(), "cale": cale})
+            self._goleste_corpul()
+            self._json(403, {"eroare": "interzis"})
+            return False
+        self.sesiune = s
+        return True
+
+    def _cookie(self, valoare, max_age):
+        # același nume la setare și la ștergere (ieșirea): pe HTTPS cel cu __Host-
+        c = f"{self._nume_cookie()}={valoare}; HttpOnly; SameSite=Strict; Path=/; Max-Age={max_age}"
+        # Secure doar pe HTTPS (nginx pune X-Forwarded-Proto); pe laptop, http://localhost,
+        # browserul n-ar mai trimite cookie-ul
+        if self._https():
+            c += "; Secure"
+        return c
+
+    def _post_autentificare(self, cale):
+        """POST /api/autentificare și /api/delogare (cerința 9 pentru forma cererii)."""
+        site = self.headers.get("Sec-Fetch-Site")
+        if site is not None and site not in ("same-origin", "none"):
+            self._goleste_corpul()
+            self._json(403, {"eroare": "interzis"})
+            return
+        # JSON obligatoriu: un formular de pe alt site nu poate trimite application/json fără
+        # preflight CORS, pe care nu-l acceptăm
+        if (self.headers.get("Content-Type") or "").split(";")[0].strip().lower() != "application/json":
+            self._goleste_corpul()
+            self._json(415, {"eroare": "date_invalide"})
+            return
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            n = -1
+        if not 0 <= n <= 2048:
+            self._json(413, {"eroare": "date_invalide"})
+            return
+        try:
+            corp = json.loads(self.rfile.read(n) or b"{}")
+            if not isinstance(corp, dict):
+                raise ValueError
+        except ValueError:
+            self._json(400, {"eroare": "date_invalide"})
+            return
+        if cale == "/api/delogare":
+            s = self._sesiune()
+            if s and not s["local"]:
+                SESIUNI.sterge(s["id"])
+                autentificare.jurnal({"eveniment": "delogare", "utilizator": s["utilizator"], "ip": self._ip()})
+            self._json(200, {}, [("Set-Cookie", self._cookie("", 0))])
+            return
+        # corpul nu se scrie nicăieri: din el pleacă doar utilizatorul și parola spre verificare
+        r = AUTENTIFICARE.autentifica(corp.get("utilizator"), corp.get("parola"), self._ip())
+        if not r.ok:
+            cod, eroare = CODURI_LOGARE[r.motiv]
+            self._json(cod, {"eroare": eroare})
+            return
+        # identificator nou la fiecare logare; sesiunea adusă de cerere (dacă era) se închide
+        vechi = self._sesiune()
+        if vechi and not vechi["local"]:
+            SESIUNI.sterge(vechi["id"])
+        id_sesiune = SESIUNI.creeaza(r.utilizator, r.nume, r.rol)
+        self._json(200, {"utilizator": r.utilizator, "nume": r.nume, "rol": r.rol},
+                   [("Set-Cookie", self._cookie(id_sesiune, autentificare.MAXIM_ABSOLUT_S))])
+
+    def do_HEAD(self):
+        # HEAD servește fișiere ca GET (fără corp); fără poartă ar spune ce există și cât de mare e
+        if self._poarta(urllib.parse.urlparse(self.path).path):
+            super().do_HEAD()
 
     def do_POST(self):
         cale = urllib.parse.urlparse(self.path).path
+        if cale in ("/api/autentificare", "/api/delogare"):
+            self._post_autentificare(cale)
+            return
+        # Poarta înaintea corpului: când refuză, golește ea corpul. Citit deja de noi,
+        # _goleste_corpul ar aștepta octeți care nu mai vin, iar cererea ar rămâne agățată.
+        if not self._poarta(cale):
+            return
+        # Inventar produse trimite descrieri lungi (până la 8 KB); restul, cel mult 4 KB
+        self._brut = self._citeste_corpul(LIMITA_INVENTAR if cale.startswith("/api/inventar_produse/") else 4096)
         if cale.startswith("/api/inventar_produse/"):
             self._post_inventar(cale.rsplit("/", 1)[1])
+            return
+        if cale == "/api/vox":
+            self._post_vox()
+            return
+        if cale.startswith("/api/vox/conversatii/"):
+            self._post_conversatie(cale)
             return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
@@ -2236,15 +2651,24 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if motiv:
             self._json(403, {"eroare": motiv})
             return
-        corp = self._corp_json()
+        corp = self._corp_json(2048)
         if corp is None:
             return
         try:
+            # în jurnal, cine a pornit/oprit și ce (valorile validate de RULARI, nu corpul cererii)
             if cale.endswith("/porneste"):
-                self._json(200, RULARI.porneste(corp.get("id"), corp.get("banca"), corp.get("produs"),
-                                                corp.get("banci"), corp.get("toate") is True))
+                cur = RULARI.porneste(corp.get("id"), corp.get("banca"), corp.get("produs"),
+                                      corp.get("banci"), corp.get("toate") is True)
+                autentificare.jurnal({"eveniment": "rulare_pornita", "utilizator": self.sesiune["utilizator"],
+                                      "ip": self._ip(), "id": cur.get("id"), "banca": cur.get("banca"),
+                                      "produs": cur.get("produs"), "banci": corp.get("banci"),
+                                      "toate": corp.get("toate") is True})
+                self._json(200, cur)
             else:
-                self._json(200, RULARI.opreste())
+                rezultat = RULARI.opreste()
+                autentificare.jurnal({"eveniment": "rulare_oprita", "utilizator": self.sesiune["utilizator"],
+                                      "ip": self._ip(), "id": rezultat["oprit"]})
+                self._json(200, rezultat)
         except rulari.Respins as exc:
             self._json(400, {"eroare": str(exc)})
         except rulari.Ocupat as exc:
@@ -2254,11 +2678,36 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
+        if parsed.path == "/api/sesiune":
+            s = self._sesiune()
+            if s is None:
+                self._json(401, {"eroare": "neautentificat"})
+            else:
+                self._json(200, {k: s[k] for k in ("utilizator", "nume", "rol", "local")})
+            return
+        if not self._poarta(parsed.path):
+            return
         if parsed.path == "/api/inventar_produse/token":
-            # tokenul de scriere se dă doar paginii servite de noi (din Vite, alt port, se refuză):
-            # fără el, editarea din pagină rămâne oprită, dar lista se vede
+            # tokenul de scriere: doar adminului și doar paginii servite de noi (Host/Origin)
+            if self.sesiune["rol"] != "admin":
+                self._json(403, {"eroare": "interzis"})
+                return
             motiv = rulari.verifica_cerere(self.headers, self.server.server_address[1])
             self._json(403, {"eroare": motiv}) if motiv else self._json(200, {"token": inventar_produse.TOKEN})
+            return
+        if parsed.path == "/api/vox/conversatii" or parsed.path.startswith("/api/vox/conversatii/"):
+            self._get_conversatii(parsed.path)
+            return
+        if parsed.path == "/api/vox":
+            # tot cu Host/Origin, ca /api/rulari: răspunsul poartă tokenul de scriere
+            motiv = self._refuz_vox(cu_token=False)
+            if motiv:
+                self._json(403, {"eroare": motiv})
+                return
+            date = VOX.stare()
+            if date["activ"]:
+                date["token"] = VOX.token
+            self._json(200, date)
             return
         if parsed.path == "/api/rulari":
             # tot cu Host/Origin: răspunsul poartă tokenul de scriere, deci
@@ -2281,20 +2730,29 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if not pdf_permis(url):
                 self.send_error(403, "URL neinregistrat ca sursa")
                 return
+            # Clientul primește doar un mesaj generic, în ASCII: `send_error` pune mesajul
+            # în linia de stare, codată latin-1, iar „ă” din „băncii” rupea răspunsul;
+            # textul și codul de la bancă (sau de la o gazdă internă) nu ies din server.
+            # Motivul rămâne în jurnalul serverului, prin ascii(): un \r\n din `u` nu
+            # scrie rânduri false, iar diacriticele nu cad pe consola cp1252.
             try:
                 cale = adu_pdf(url)
             except PermissionError as exc:
-                self.send_error(403, str(exc))
+                print(f"/pdf refuzat: {ascii(str(exc)[:300])} {ascii(url[:300])}", file=sys.stderr)
+                self.send_error(403, "Refuzat")
                 return
             except Exception as exc:
-                self.send_error(502, f"nu s-a putut aduce PDF-ul: {exc}")
+                print(f"/pdf esuat: {type(exc).__name__}: {ascii(str(exc)[:300])} {ascii(url[:300])}",
+                      file=sys.stderr)
+                self.send_error(502, "PDF indisponibil")
                 return
             with open(cale, "rb") as f:
                 corp = f.read()
             self.send_response(200)
             self.send_header("Content-Type", "application/pdf")
             self.send_header("Content-Length", str(len(corp)))
-            self.send_header("Cache-Control", "public, max-age=86400")
+            # private: în spatele logării, un proxy comun nu are voie să-l păstreze pentru alții
+            self.send_header("Cache-Control", "private, max-age=86400")
             self.end_headers()
             self.wfile.write(corp)
             return
@@ -2304,13 +2762,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 corp = json.dumps(date, ensure_ascii=False, default=str).encode("utf-8")
                 cod = 200
             except Exception as exc:
-                corp = json.dumps(
-                    {"eroare": f"{exc.__class__.__name__}: {exc}"}, ensure_ascii=False
-                ).encode("utf-8")
-                cod = 500
+                cod, eroare = _eroare_server(exc)
+                corp = json.dumps(eroare, ensure_ascii=False).encode("utf-8")
             self.send_response(cod)
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_header("Content-Length", str(len(corp)))
+            self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(corp)
             return
@@ -2326,7 +2783,28 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             # „Rulare manuală” există doar în React. Ce iese din web/dist (`..`) dă 404.
             cale = os.path.normpath(os.path.join(DIST_WEB, urllib.parse.unquote(rel[4:])))
             return cale if cale == DIST_WEB or cale.startswith(DIST_WEB + os.sep) else os.path.join(DIST_WEB, "__in_afara__")
-        return os.path.join(AICI, rel or "index.html")
+        # Din app/ se servesc doar interfața veche și siglele; restul folderului e cod.
+        # Înainte orice cale se lipea de app/ fără verificare: pe laptop, /C:/Windows/win.ini,
+        # /../config.py și /server.py răspundeau 200 (auditul de securitate, B5).
+        nume = urllib.parse.unquote(rel) or "index.html"
+        if nume in FISIERE_APP:
+            return os.path.join(AICI, nume)
+        if nume.startswith("logos/"):
+            # Doar un nume care chiar există în logos/: fără subfoldere, `..`, `\`, litere de
+            # unitate sau NUL, și fără numele rezervate de Windows (CON.svg), care nu apar în listare.
+            sigla = nume[len("logos/"):]
+            dosar = os.path.join(AICI, "logos")
+            try:
+                if sigla in os.listdir(dosar) and os.path.isfile(os.path.join(dosar, sigla)):
+                    return os.path.join(dosar, sigla)
+            except OSError:
+                pass
+        return os.path.join(DIST_WEB, "__in_afara__")
+
+    def list_directory(self, path):
+        # Nicio listare de folder (web/dist/assets/ și altele): ce nu e un fișier cerut pe nume dă 404.
+        self.send_error(404)
+        return None
 
     def log_message(self, fmt, *args):
         pass  # fara zgomot in consola
@@ -2346,8 +2824,9 @@ class Server(socketserver.ThreadingTCPServer):
     Soluția: un singur socket IPv6 cu `IPV6_V6ONLY` dezactivat acceptă și
     conexiuni IPv4 mapate, deci ambele nume merg instant. Se leagă la `::` ca
     dual-stack-ul să funcționeze (legarea la `::1` ar accepta doar IPv6), dar
-    accesul din afara mașinii e refuzat în `verify_request` — aplicația citește
-    dintr-o bază locală și nu are autentificare, deci nu are ce căuta în rețea.
+    accesul din afara mașinii e refuzat în `verify_request` — din rețea se intră
+    doar prin nginx, iar autentificarea se bazează pe antetele puse de el
+    (`X-Real-IP`, `X-Forwarded-Proto`), care altfel ar putea fi trimise de oricine.
     """
     allow_reuse_address = True
     daemon_threads = True
@@ -2366,6 +2845,17 @@ class Server(socketserver.ThreadingTCPServer):
 
 
 if __name__ == "__main__":
+    # Pe server (MCC_AUTH_OBLIGATORIE=1, din mcc.service) un MCC_AUTH_LOCAL uitat în .env nu
+    # deschide aplicația: serverul nu pornește deloc, cu motivul în jurnalul serviciului.
+    motiv = autentificare.verifica_pornire(os.environ)
+    if motiv:
+        print(f"Serverul nu pornește: {motiv}", file=sys.stderr)
+        sys.exit(2)
+    problema = CONFIG_AUTH.problema()
+    if problema:
+        local = autentificare.mod_local(os.environ, {"Host": "localhost"}, ad_configurat=False)
+        print(f"Autentificarea AD nu e configurată: {problema}. Logarea răspunde 503 (ad_indisponibil)"
+              + (f"; pe laptop intri automat ca utilizator local ({local})." if local else "."))
     try:
         srv = Server(("::", PORT), Handler)
     except OSError:

@@ -1,9 +1,14 @@
 /* Paleta aplicației vechi (fildeș cald + vișiniu); aceleași valori stau în
-   theme.ts pentru componentele AntD. */
+   theme.ts pentru componentele AntD (verificat de scripts/verifica_tema.mjs).
+   Tema întunecată vine din data-theme pe <html> (src/tema), nu direct din sistem. */
 :root {
+  color-scheme: light;
+  --stele-4: #7fb893; --stele-2: #d9a441;
+  --cap-tabel: #efe6db;
   --bg: #f5f1ec; --surface: #fffdfa; --ink: #2a1f22; --muted: #6e615d; --line: #e3dad0;
   --line-2: #d6cabd;
   --warn: #98550b; --warn-tint: #f8ead6; --ok: #2b7044; --ok-tint: #e5efe1; --aur: #b58a2c;
+  --err: #a3262a; --err-tint: #fbe9e7;
   --accent: #7a1e2c; --accent-tint: #f5e8e6; --on-accent: #fffdfa;
   --umbra: 0 1px 2px rgba(74, 32, 36, .05);
   --nav: #6e1a28; --nav-2: #561420; --nav-ink: #f6ece6; --nav-slab: #e6c9b5;
@@ -13,15 +18,17 @@
   --serif: "Source Serif 4", Georgia, serif;
   --mono: "IBM Plex Mono", monospace;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1b1517; --surface: #251d1f; --ink: #efe6e2; --muted: #b4a5a0; --line: #3a2e30;
-    --line-2: #4a3b3d;
-    --warn: #e3a95a; --warn-tint: #3a2a16; --ok: #7fcb97; --ok-tint: #1d3024; --aur: #dcb567;
-    --accent: #e7a3ab; --accent-tint: #3b2428; --on-accent: #2a1216;
-    --umbra: none;
-    --nav: #4e1520; --nav-2: #3a0f18; --marca: #e7a3ab; --nav-activ-ink: #f2d7d3;
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --stele-4: #4e9466; --stele-2: #c08a3e;
+  --cap-tabel: #3f3135;
+  --bg: #1b1517; --surface: #251d1f; --ink: #efe6e2; --muted: #b4a5a0; --line: #3a2e30;
+  --line-2: #4a3b3d;
+  --warn: #e3a95a; --warn-tint: #3a2a16; --ok: #7fcb97; --ok-tint: #1d3024; --aur: #dcb567;
+  --err: #f19590; --err-tint: #3a1c1d;
+  --accent: #e7a3ab; --accent-tint: #3b2428; --on-accent: #2a1216;
+  --umbra: none;
+  --nav: #4e1520; --nav-2: #3a0f18; --marca: #e7a3ab; --nav-activ-ink: #f2d7d3;
 }
 * { box-sizing: border-box }
 html, body, #root { height: 100% }
@@ -48,17 +55,31 @@ nav a { display: flex; align-items: center; padding: clamp(5px, 0.7vh, 6px) 42px
 nav a:hover { background: var(--nav-hover); color: var(--nav-ink) }
 nav a.activ, nav a.activ:hover { background: var(--nav-activ-bg); color: var(--nav-activ-ink); font-weight: 600;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%) }
+/* tastatura: resetul AntD scoate conturul linkurilor, iar meniul rămânea fără stare de focus; conturul stă în interior
+   (clip-path-ul de pe linkul activ ar tăia unul exterior), iar pe activ ia culoarea textului ca să se vadă pe fondul lui */
+nav a:focus-visible { outline: 2px solid var(--nav-ink); outline-offset: -2px }
+nav a.activ:focus-visible { outline-color: var(--nav-activ-ink) }
 nav a .pdf { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-family: var(--mono); font-size: 10px;
   color: var(--nav-slab); opacity: .75 }
 nav a.activ .pdf { color: var(--marca); opacity: 1 }
-nav .picior { margin-top: auto; padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
+/* Vox e buton, nu pagină de citit: jos, deasupra piciorului, cu ramă și fără colțul tăiat al paginii active.
+   Pe un rând: la 800px bara depășea deja cu 14px (grupul „Jobs”); pe două rânduri butonul mai adăuga 33px */
+nav .jos { margin-top: auto }
+nav a.vox-nav { margin: 0 14px clamp(8px, 1.2vh, 11px); padding: clamp(5px, 0.7vh, 6px) 12px; gap: 9px;
+  border: 1px solid var(--nav-line); border-radius: 9px; background: var(--nav-hover); font-weight: 600 }
+nav a.vox-nav:hover { background: rgba(246, 236, 230, .14) }
+nav a.vox-nav.activ, nav a.vox-nav.activ:hover { clip-path: none; background: var(--nav-activ-bg); color: var(--nav-activ-ink);
+  border-color: var(--nav-activ-bg) }
+nav a.vox-nav .icon { flex: none }
+nav .picior { padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
   border-top: 1px solid var(--nav-line); font-family: var(--mono); font-size: 9.5px; line-height: 1.6; color: var(--nav-footer-ink) }
-nav .picior .limba { margin-top: 8px }
+nav .picior .comutatoare { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px }
 
 /* ---- conținut ---- */
 main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 60px }
 .cap { margin-bottom: 20px }
 h1 { font-family: var(--serif); font-size: 26px; margin: 0 0 5px; font-weight: 700 }
+h1 .titlu-logo { color: var(--marca); vertical-align: -6px; margin-right: 10px }
 .lede { color: var(--muted); font-size: 13.5px; max-width: 78ch; margin: 0 }
 section { background: var(--surface); border: 1px solid var(--line); border-radius: 13px; padding: 18px 20px; margin-bottom: 18px;
   box-shadow: var(--umbra) }
@@ -73,6 +94,16 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
 
 /* pastila: Tag AntD cu forma veche (rotunjită, mono, mică) */
 .ant-tag.pill { border-radius: 999px; font-family: var(--mono); font-size: 10.5px; line-height: 1.5; padding: 0 7px; margin-inline-end: 4px }
+/* pastilele verzi și portocalii din culorile temei: fundalul calculat de AntD din --ok / --warn ieșea prea închis
+   în tema luminoasă (2,7:1 și 3,8:1 la verificarea axe din 06.10.2026); așa trec de 4,5:1 în ambele teme */
+.ant-tag.pill.ant-tag-success { color: var(--ok); background: var(--ok-tint); border-color: var(--ok) }
+.ant-tag.pill.ant-tag-warning { color: var(--warn); background: var(--warn-tint); border-color: var(--warn) }
+/* la fel pentru roșu (eșuat, abandonat) și auriu (pornit manual) din Joburi și erori: culorile prestabilite ale AntD dădeau
+   3,0:1 / 2,8:1 pe luminos și 4,0:1 pe întunecat (axe, 06.10.2026) */
+.ant-tag.pill.ant-tag-error { color: var(--err); background: var(--err-tint); border-color: var(--err) }
+.ant-tag.pill.ant-tag-gold { color: var(--warn); background: var(--warn-tint); border-color: var(--warn) }
+/* selectul deschis estompează valoarea aleasă la culoarea de placeholder (1,8:1 pe luminos, 2,3:1 pe întunecat); !important, fiindcă selectorul AntD are specificitate mai mare */
+.ant-select.ant-select-open .ant-select-selection-item { color: var(--muted) !important }
 
 /* cifre-cheie sus */
 .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-bottom: 18px }
@@ -97,6 +128,11 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
 /* tabel: antetul mono, mic, majuscule; rândul Libra evidențiat și fixat */
 .ant-table-wrapper.t .ant-table-thead > tr > th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
   letter-spacing: .03em; font-weight: 500; vertical-align: top }
+/* capul se vede ca bandă separată, nu ca încă un rând: fundal propriu (--cap-tabel), linie groasă dedesubt
+   și, când stă lipit sub filtre, o umbră care îl desparte de rândurile care trec pe sub el */
+.ant-table-wrapper.t .ant-table-thead > tr > th { border-bottom: 2px solid var(--accent) }
+.ant-table-wrapper.t .ant-table-thead > tr > th .cap-d { color: var(--muted) }
+.ant-table-wrapper.t .ant-table-sticky-holder { box-shadow: 0 6px 10px -4px rgba(0, 0, 0, .45) }
 .ant-table-wrapper.t td.num, .ant-table-wrapper.t th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono) }
 .ant-table-wrapper.t tr.libra > td { background: var(--accent-tint) }
 .ant-table-wrapper.t tr.libra > td:first-child { box-shadow: inset 4px 0 var(--accent) }
@@ -105,9 +141,19 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
    în chenarul lor; în aplicația veche ieșeau din el cu 48 px */
 .ant-table-wrapper.t .ant-table-content { overflow-x: auto }
 .cl-banca { display: flex; align-items: center; gap: 8px; min-width: 0 }
-.cl-banca img { max-height: 18px; max-width: 54px; object-fit: contain; flex: none }
-/* mărime fixă: siglele SVG n-au mărime proprie și în tabel ar ieși de 0 px */
-.cl-banca.doar-logo img { width: 96px; height: 30px; max-width: none; object-fit: contain; object-position: left center }
+/* cutia standard a siglei (SiglaBanca): mărime fixă pe context, sigla centrată cu object-fit: contain, deci
+   toate băncile ocupă exact același loc, iar siglele SVG fără mărime proprie nu mai ies de 0 px.
+   Aceeași geometrie în ambele teme: doar fundalul se schimbă, nimic nu sare la comutare. */
+.sg { display: inline-flex; align-items: center; justify-content: center; flex: none; box-sizing: border-box;
+  border-radius: 5px; background: transparent; vertical-align: middle }
+.sg img { display: block; width: 100%; height: 100%; object-fit: contain }
+.sg-rand { width: 60px; height: 26px; padding: 3px 5px }
+.sg-mare { width: 100px; height: 34px; padding: 4px 7px }
+.sg-card { width: 124px; height: 42px; padding: 5px 8px }
+/* multe sigle sunt negre sau bleumarin, fără fundal propriu (BRD, CEC, UniCredit, Libra, Raiffeisen, ING…):
+   în tema întunecată stau pe alb. Albul e „hârtie” fixă, intenționat, nu o culoare de temă; culorile băncii
+   nu se ating. */
+:root[data-theme="dark"] .sg { background: #fff }
 .cl-banca .nm { font-size: 12.5px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; hyphens: auto }
 .tag-libra { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .05em; color: var(--accent);
   border: 1px solid var(--accent); border-radius: 999px; padding: 0 5px; margin-left: 6px; vertical-align: middle }
@@ -125,7 +171,15 @@ td.mc b { font-family: var(--mono); font-size: 13.5px; font-weight: 500 }
 td.mc .g { display: block; color: var(--ok); font-size: 10.5px }
 .ant-table-wrapper.t td.gol { color: var(--muted); text-align: center }
 .cap-d { display: block; text-transform: none; letter-spacing: 0; font-family: "IBM Plex Sans", sans-serif; font-size: 10px;
-  line-height: 1.3; margin-top: 2px; opacity: .85; font-weight: 400; max-width: 22ch }
+  line-height: 1.3; margin-top: 2px; font-weight: 400; max-width: 22ch }
+
+/* capul lipit (components/lipire.tsx): tabelul capului ia exact lățimile măsurate în corp, iar rândul
+   fantomă (textul capului, invizibil, de înălțime zero) face coloanele din corp cel puțin cât capul */
+.ant-table-wrapper.t .ant-table-header > table { table-layout: fixed !important; width: 1px !important }
+.ant-table-wrapper.t tr.cap-fantoma > td { padding-top: 0 !important; padding-bottom: 0 !important; border: 0 !important; height: 0;
+  font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .03em; font-weight: 500 }
+.fantoma { display: flex; height: 0; overflow: hidden; visibility: hidden }
+.fantoma-sort { flex: none; width: 22px }
 
 /* bara de filtre rămâne sus la derulare (derulează <main>, nu documentul) */
 .bara-fixa { position: sticky; top: -26px; z-index: 8; background: var(--bg); margin: -6px -30px 14px; padding: 12px 30px 10px;
@@ -211,8 +265,6 @@ button.cm-chip.activ { background: var(--accent); border-color: var(--accent); c
 button.cm-chip.activ b { color: inherit }
 /* numele băncii nu se rupe în mijlocul cuvântului în tabelele 2.4 */
 .cm-sec td .cl-banca .nm { overflow-wrap: normal; hyphens: manual }
-/* siglele SVG n-au mărime proprie: tabelul le socotea 0 px și numele băncii pornea din alt loc pe fiecare rând */
-.cm-sec td .cl-banca img { width: 54px; height: 18px; max-width: none; object-fit: contain; object-position: left center }
 
 /* paginare */
 .pagini { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 12px; font-size: 12px; color: var(--muted) }
@@ -235,3 +287,11 @@ button.cm-chip.activ b { color: inherit }
 .kpi > div.inactiv { border-style: dashed; border-color: var(--line-2); background: none; box-shadow: none }
 /* „banca 3 din 12”: rularea curentă face parte dintr-o coadă */
 .rl-coada { font-family: var(--mono); font-size: 11.5px; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 8px }
+
+/* Comutatoare (Segmented): AntD face textul alb abia după alunecare, prin -item-selected. Inputul e însă
+   bifat din clipa apăsării, deci culoarea pornește atunci și ajunge odată cu evidențierea (0,15 s, theme.ts).
+   Dublura .ant-segmented bate regula de hover a AntD, care altfel ținea textul închis sub cursor. */
+.ant-segmented.ant-segmented .ant-segmented-item:has(> .ant-segmented-item-input:checked):not(.ant-segmented-item-disabled) {
+  color: var(--on-accent);
+  transition: color .15s ease-in;
+}

@@ -6,7 +6,7 @@ Branch-ul conține două lucruri, ambele gata de rulat după clonare:
 1. **Comparația produselor Libra cu concurența**, cap-coadă: fluxul care găsește
    produsul echivalent la fiecare bancă și îi extrage valorile
    (`extragere_produse_bancare/`), datele colectate (inventarele JSON) și
-   migrările bazei (`db/migration_027 … 034`).
+   migrările bazei (`db/migration_029 … 036`).
 2. **O interfață Next.js** (`web/`) cu două pagini: „Produse & prețuri”
    (comparația cu Libra) și „Descoperă concurența” (produsele concurenței pe care
    Libra nu le are în catalog).
@@ -49,7 +49,7 @@ python extragere_produse_bancare/incarca_baza.py
 ```
 
 Face tot, **fără descărcări și fără apeluri la model**:
-1. aplică migrările 027–034, doar dacă tabelele lipsesc;
+1. aplică migrările 029–036, doar dacă tabelele lipsesc;
 2. încarcă cele 57 de produse Libra (`produse_libra.json`, sursa de adevăr) și le dezactivează pe cele scoase din fișier;
 3. sursele găsite la fiecare bancă (`inventare-libra/<banca>/*.json`);
 4. valorile extrase (`inventare-libra/valori-<banca>.json`), cu regulile deterministe;

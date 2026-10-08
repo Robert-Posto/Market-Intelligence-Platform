@@ -58,6 +58,8 @@ class TestRetea(unittest.TestCase):
     def test_robots_interzice_nicio_cerere(self):
         with mock.patch.object(flux, "permite", return_value=False), \
              mock.patch.object(flux, "blocat", return_value=None), \
+             mock.patch.object(T.destinatie, "rezolva",                  # garda SSRF: fără DNS real
+                               return_value=[(2, 1, 6, "", ("17.253.144.10", 443))]), \
              mock.patch("requests.get", side_effect=AssertionError("cerere trimisă")):
             with self.assertRaises(L.Refuzat) as ctx:
                 L.lookup_grupat([111], {})

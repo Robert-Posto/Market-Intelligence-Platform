@@ -165,7 +165,7 @@ class Ocupat(Exception):
     """Rulează deja ceva (HTTP 409)."""
 
 
-def verifica_cerere(antete, port, token=None):
+def verifica_cerere(antete, port, token=None, porturi_extra=()):
     """None dacă cererea vine de pe pagina noastră; altfel motivul refuzului.
 
     `verify_request` din server oprește deja tot ce nu e de pe loopback, dar
@@ -175,12 +175,19 @@ def verifica_cerere(antete, port, token=None):
     rebinding). De aceea: Host doar numele de loopback cu portul nostru,
     Origin (când e trimis) exact pagina noastră, iar la scriere un token
     aleator, pe care îl primește doar pagina noastră, prin GET.
+
+    `porturi_extra`: doar pentru Vox, care merge și din `npm run dev`. Proxy-ul
+    Vite (forma scurtă din vite.config.ts) rescrie Host-ul la server, dar lasă Origin pe pagina
+    Vite: măsurat pe 06.10.2026, Host 127.0.0.1:<țintă>, Origin http://localhost:5174. Deci
+    Host-ul rămâne strict, iar porturile în plus se acceptă doar la Origin, tot pe nume de
+    loopback. Rulările nu-l primesc, deci pentru ele nu se schimbă nimic.
     """
     gazda = antete.get("Host") or ""
     if gazda not in {f"{g}:{port}" for g in GAZDE}:
         return "Host nepermis"
     origine = antete.get("Origin")
-    if origine is not None and origine != f"http://{gazda}":
+    permise = {f"http://{gazda}"} | {f"http://{g}:{p}" for g in GAZDE for p in porturi_extra}
+    if origine is not None and origine not in permise:
         return "Origin nepermis"
     site = antete.get("Sec-Fetch-Site")
     if site is not None and site not in ("same-origin", "none"):
@@ -453,7 +460,7 @@ class Rulari:
         # la coadă, mai multe bănci pot porni în aceeași secundă: banca intră în numele jurnalului
         cale_log = self._cale(f"{c['id']}_{inceput:%Y%m%d_%H%M%S}{'_' + banca if banca and coada else ''}.log")
         argv = self.argv(c, banca, produs)
-        # MIP_RULARE_MANUALA: jurnal_joburi.py scrie jobul cu runed_manually = TRUE (migrarea 037)
+        # MIP_RULARE_MANUALA: jurnal_joburi.py scrie jobul cu runed_manually = TRUE (migrarea 038)
         mediu = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUNBUFFERED="1", MIP_RULARE_MANUALA="1",
                      **c.get("mediu", {}))
         for k in c.get("fara_mediu", ()):

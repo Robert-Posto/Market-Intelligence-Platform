@@ -4,7 +4,22 @@ import { Link } from 'react-router-dom'
 import { SERVER_OPRIT } from '../api/client'
 import type { Meta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
+import { deLaServer } from '../i18n/server'
 import { zileDeLa } from '../util/format'
+
+/**
+ * Cutia standard a siglei: aceeași mărime pentru toate băncile, sigla centrată în ea (object-fit: contain).
+ * Mărimile sunt în global.css (`.sg-rand`, `.sg-mare`, `.sg-card`); fără siglă, apelantul pune numele.
+ */
+export function SiglaBanca({ src, nume, marime = 'rand', titlu }: {
+  src: string; nume?: string; marime?: 'rand' | 'mare' | 'card'; titlu?: boolean
+}) {
+  return (
+    <span className={`sg sg-${marime}`}>
+      <img src={src} alt={nume ?? ''} title={titlu ? nume : undefined} />
+    </span>
+  )
+}
 
 /**
  * Numele și sigla băncii; `fisa` duce la fișa băncii, `tag` marchează Libra cu „noi”.
@@ -19,7 +34,7 @@ export function EtichetaBanca({ slug, m, fisa, tag, doarLogo }: {
   const faraNume = doarLogo && !!logo
   const corp = (
     <span className={faraNume ? 'cl-banca doar-logo' : 'cl-banca'}>
-      {logo && <img src={logo} alt={faraNume ? nume : ''} title={faraNume ? nume : undefined} />}
+      {logo && <SiglaBanca src={logo} nume={faraNume ? nume : undefined} marime={faraNume ? 'mare' : 'rand'} titlu={faraNume} />}
       {!faraNume && <span className="nm">{nume}</span>}
       {tag && slug === 'libra' && <span className="tag-libra">{t('comun.tag_libra_noi')}</span>}
     </span>
@@ -87,7 +102,7 @@ export function Pliat({ titlu, children, deschis }: { titlu: ReactNode; children
 }
 
 export function Eroare({ e }: { e: unknown }) {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const mesaj = e instanceof Error ? e.message : String(e)
   if (mesaj === SERVER_OPRIT) {
     return (
@@ -102,7 +117,8 @@ export function Eroare({ e }: { e: unknown }) {
   return (
     <section>
       <p className="note" style={{ color: 'var(--warn)' }}>
-        <T k="comun.eroare" params={{ mesaj }} />
+        {/* mesajele cunoscute ale serverului (baza oprită) au traducere; restul rămân cum vin */}
+        <T k="comun.eroare" params={{ mesaj: deLaServer(mesaj, lang) }} />
       </p>
     </section>
   )

@@ -1,0 +1,25 @@
+# systemd — Marketing Command Center (mcc-test.libra.bank)
+# Instalare: cp deploy/mcc.service /etc/systemd/system/ && systemctl enable --now mcc
+# Serverul ascultă doar pe loopback (verify_request din app/server.py); din rețea
+# se intră prin nginx (deploy/nginx-mcc.conf).
+[Unit]
+Description=Marketing Command Center (Libra Bank)
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=marketing
+Group=marketing
+WorkingDirectory=/opt/marketing/mcc
+Environment=PYTHONUNBUFFERED=1
+# Logarea AD e obligatorie aici: scurtătura de laptop (MCC_AUTH_LOCAL) nu are efect, iar
+# dacă e totuși setată în .env serverul refuză să pornească (motivul: journalctl -u mcc).
+# Mediul de aici bate .env-ul (config.py nu suprascrie o variabilă deja setată).
+Environment=MCC_AUTH_OBLIGATORIE=1
+ExecStart=/opt/marketing/venv/bin/python /opt/marketing/mcc/app/server.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

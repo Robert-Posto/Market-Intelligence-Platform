@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { Segmented, Tooltip } from 'antd'
+import { Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { useCampanii, useComunicate } from '../../api/campanii'
 import { useMeta } from '../../api/meta'
@@ -16,6 +16,7 @@ import Site from './Site'
 import Surse from './Surse'
 import type { PropsSectiune } from './tipuri'
 import YouTube from './YouTube'
+import { Comutator } from '../../components/Comutator'
 import '../../styles/campanii_site.css'
 
 type Cheie = 'site' | 'comunicate' | 'google' | 'bing' | 'youtube' | 'retele'
@@ -61,8 +62,10 @@ export default function Campanii() {
   }
 
   const taburi = (
-    <Segmented<Cheie>
+    <Comutator<Cheie>
       className="cm-taburi"
+      // secțiunile sunt grele: desenarea lor oprea alunecarea pe loc
+      dupaAlunecare
       value={sec.k}
       // ca mergi() din aplicația veche: adresa nouă are doar secțiunea, filtrele celei vechi se pierd
       onChange={(k) => setSp({ s: k })}

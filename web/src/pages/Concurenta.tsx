@@ -1,13 +1,14 @@
 import { useCallback, useMemo, useState } from 'react'
-import { Checkbox, Input, Segmented, Tooltip } from 'antd'
+import { Checkbox, Input, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import type { ProdusConcurenta } from '@mcc/shared'
 import { useProduseConcurenta } from '../api/comparatie_libra'
 import { useMeta } from '../api/meta'
-import { Despre, Eroare, Pill, SeIncarca } from '../components/comune'
+import { Despre, Eroare, Pill, SeIncarca, SiglaBanca } from '../components/comune'
 import { T, useLang, type DictKey } from '../i18n'
 import { faraDiacritice, formatZi } from '../util/format'
 import { SCURT } from './produse/logica'
+import { Comutator } from '../components/Comutator'
 import '../styles/produse_libra.css'
 
 const CATEGORII = ['conturi', 'carduri', 'credite', 'depozite_economii', 'investitii', 'asigurari', 'pensii', 'leasing',
@@ -70,7 +71,7 @@ export default function Concurenta() {
   return (
     <>
       <div className="pl-filtre">
-        <Segmented value={seg} onChange={(s) => mergi({ segment: s === 'toate' ? '' : s })}
+        <Comutator value={seg} onChange={(s) => mergi({ segment: s === 'toate' ? '' : s })}
           options={SEGMENTE.map(([s, k]) => ({ value: s, label: t(k) }))} />
         <Input className="cauta" allowClear placeholder={t('pc.cauta_placeholder')} value={cauta} onChange={(e) => setCauta(e.target.value)} />
         <Checkbox checked={stare.noi === '1'} onChange={() => mergi({ noi: stare.noi === '1' ? '' : '1' })}>{t('pc.bifa_noi')}</Checkbox>
@@ -110,7 +111,7 @@ export default function Concurenta() {
           <div className="pc-lista">
             {peCat[k]!.map((p) => (
               <a key={p.id} className="pc-produs" href={p.link} target="_blank" rel="noopener noreferrer">
-                <span className="pc-banca">{m.logo[p.banca] && <img src={m.logo[p.banca]} alt="" />}{nume(p.banca)}</span>
+                <span className="pc-banca">{m.logo[p.banca] && <SiglaBanca src={m.logo[p.banca]!} />}{nume(p.banca)}</span>
                 {/* denumirea și descrierea vin de pe site-ul băncii: nu se traduc */}
                 <span className="pc-nume">
                   {p.denumire_produs}

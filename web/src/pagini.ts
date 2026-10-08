@@ -8,6 +8,8 @@ export interface Pagina {
   id: string
   pdf: string
   mutata: boolean
+  /** doar pentru rolul admin: meniul o ascunde analistului, iar ruta arată „Acces interzis” */
+  admin?: true
 }
 export interface Grup {
   grup: DictKey
@@ -42,7 +44,7 @@ export const PAGINI: Grup[] = [
       { id: 'surse', pdf: '', mutata: true },
       { id: 'coada', pdf: '', mutata: true },
       // lista produselor Libra (produse_libra.json), editabilă din pagină
-      { id: 'inventar', pdf: '', mutata: true },
+      { id: 'inventar', pdf: '', mutata: true, admin: true },
     ],
   },
   {
@@ -50,11 +52,15 @@ export const PAGINI: Grup[] = [
     // „Rulare manuală” le pornește de mână (până pe 06.10.2026 rulările manuale stăteau în Overview)
     grup: 'pagini.grup.logging',
     chei: [
-      { id: 'logging', pdf: '', mutata: true },
-      { id: 'rulare', pdf: '', mutata: true },
+      { id: 'logging', pdf: '', mutata: true, admin: true },
+      { id: 'rulare', pdf: '', mutata: true, admin: true },
     ],
   },
 ]
 
-export const TOATE = PAGINI.flatMap((g) => g.chei)
+// Vox nu stă într-un grup: e buton jos în bară, deasupra piciorului (AppShell), cerut așa pe 07.10.2026.
+// E în TOATE ca pagina lui să-și găsească titlul.
+export const VOX: Pagina = { id: 'vox', pdf: '', mutata: true }
+
+export const TOATE = [...PAGINI.flatMap((g) => g.chei), VOX]
 export const cheie = (id: string, parte: 'nume_meniu' | 'titlu' | 'descriere') => `pagini.${id}.${parte}` as DictKey

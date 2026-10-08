@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 jurnal_joburi.py — fiecare rulare în `jobs`, fiecare eroare în `jobs_error`
-(migrarea 032). Pagina /logging citește de acolo.
+(migrarea 037). Pagina /logging citește de acolo.
 
     from jurnal_joburi import Job
 
@@ -22,7 +22,7 @@ rând din jobs_error, deci nu poate diverge de erorile salvate.
 
 JURNALUL NU OPREȘTE NICIODATĂ UN JOB
 
-  Dacă baza nu răspunde sau migrarea 032 nu e aplicată, se spune o dată pe
+  Dacă baza nu răspunde sau migrarea 037 nu e aplicată, se spune o dată pe
   stderr și restul apelurilor nu mai fac nimic. Un job de 4 dolari nu se
   pierde fiindcă nu i s-a putut scrie jurnalul.
 
@@ -49,7 +49,7 @@ import preturi
 
 DSN = os.environ.get("MIP_DSN", "host=localhost port=5432 dbname=mip user=mip password=mip")
 PAUZA_SCRIERE = 15
-# jobs.runed_manually (migrarea 037): app/rulari.py pune variabila doar procesului pornit din
+# jobs.runed_manually (migrarea 038): app/rulari.py pune variabila doar procesului pornit din
 # pagina „Rulare manuală”; din terminal lipsește, deci jobul rămâne „automat”
 MANUAL = os.environ.get("MIP_RULARE_MANUALA", "").strip() == "1"
 # un traceback întreg e util; un HTML de 2 MB lipit într-o excepție, nu
@@ -168,7 +168,7 @@ class Job:
 
     def __enter__(self) -> "Job":
         params = json.dumps(self.parametri, ensure_ascii=False, default=str) if self.parametri else None
-        # coloana doar când e TRUE: pe o bază fără migrarea 037, jurnalul din terminal merge mai departe
+        # coloana doar când e TRUE: pe o bază fără migrarea 038, jurnalul din terminal merge mai departe
         rand = (self._scrie("""
             INSERT INTO jobs (type, banca, model, parametri, runed_manually) VALUES (%s, %s, %s, %s, TRUE)
             RETURNING id""", (self.tip, self.banca, self.model, params)) if MANUAL else
