@@ -497,8 +497,10 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
         <div className="vox-segment vox-alte">
           <span className="vox-segment-cap">{t('vox.alte.titlu')}</span>
           <div className="vox-kpis">
+            {/* Garanti · schimbarea PIN-ului: cele două carduri „limită” (6 PF, 1 IMM) nu se deosebeau (mip_merge, 08.10.2026) */}
             {alte.map((g) => (
-              <PlacaRezumat key={`${g.segment ?? ''}|${g.unitate}|${g.categorie}`} g={g} multeCategorii tip onDovezi={dovezi(g)} />
+              <PlacaRezumat key={`${g.segment ?? ''}|${g.unitate}|${g.categorie}`} g={g} multeCategorii tip
+                segment={cuSegmente ? g.segment : undefined} onDovezi={dovezi(g)} />
             ))}
           </div>
         </div>
@@ -589,8 +591,8 @@ function etFrecventa(f: string | null, t: Tr): string {
   return eticheta(`vox.frecventa.${k}`, f, t)
 }
 
-function PlacaRezumat({ g, multeCategorii, tip, onDovezi }: {
-  g: GrupaRezumat; multeCategorii: boolean; tip?: boolean; onDovezi?: () => void
+function PlacaRezumat({ g, multeCategorii, tip, segment, onDovezi }: {
+  g: GrupaRezumat; multeCategorii: boolean; tip?: boolean; segment?: string | null; onDovezi?: () => void
 }) {
   const { t, tn, locale } = useLang()
   const unitate = unitTxt(g.unitate, t).trim()
@@ -621,6 +623,7 @@ function PlacaRezumat({ g, multeCategorii, tip, onDovezi }: {
         {g.gratuite > 0 && <> · {tn('vox.gratuite', g.gratuite)}</>}
         {g.moneda !== undefined && <> · {eticheta(`vox.moneda.${g.moneda ?? 'nespusa'}`, g.moneda ?? '', t)}</>}
         {(multeCategorii || tip) && <> · {eticheta(tip ? `vox.tip.${g.categorie}` : `vox.categorie.${g.categorie}`, g.categorie, t)}</>}
+        {segment && <> · {segment.toUpperCase()}</>}
       </span>
       {onDovezi && <button type="button" className="vox-link" onClick={onDovezi}>{t('vox.vezi_dovezi')}</button>}
     </div>
