@@ -179,3 +179,25 @@ section.vox-bun-venit { flex: 1 0 auto; display: flex; flex-direction: column; a
   .vox-bula { max-width: 100% }
   .vox-tabel td.val { white-space: normal }
 }
+
+/* Aplicațiile (08.10.2026): verdictele refolosesc .an-v din android.css, clasamentele de note .vox-clas */
+.vox-apl-grupe { display: grid; gap: 12px }
+.vox-apl-grupa-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: 6px }
+.vox-apl-banci { display: flex; flex-wrap: wrap; gap: 6px }
+.vox-apl-banca { display: inline-flex; padding: 2px 10px 2px 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg) }
+.vox-apl-banca.evidentiata { border-color: var(--accent); background: var(--accent-tint) }
+.vox-apl-dovada { display: flex; flex-direction: column; gap: 2px }
+.vox-apl-propozitie { margin: 0; font-size: 13.5px; line-height: 1.55 }
+.vox-apl-tabel th.vox-apl-col { min-width: 170px; font-family: inherit; font-size: 12px; letter-spacing: 0; text-transform: none; vertical-align: top }
+.vox-apl-tabel th .sub, .vox-apl-tabel td .sub { display: block; margin-top: 2px; font-weight: 400; color: var(--muted) }
+.vox-apl-tabel td.vox-apl-v { text-align: center }
+.vox-apl-tabel tr.dif-sigur td { background: var(--accent-tint) }
+.vox-apl-tabel tr.dif-sigur td:first-child { box-shadow: inset 4px 0 var(--accent) }
+.vox-apl-tabel tr.dif-probabil td:first-child { box-shadow: inset 4px 0 var(--line-2) }
+.vox-apl-tabel tr.evidentiata td:first-child { font-weight: 600 }
+.vox-apl-tabel tr.necomparabil td { color: var(--muted) }
+.vox-apl-carduri { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px }
+.vox-apl-card { display: flex; flex-direction: column; gap: 8px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg) }
+.vox-apl-magazin { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px }
+.vox-apl-magazin .nr { font-family: var(--mono); font-size: 18px }
+.vox-apl-lista { margin: 0; padding-left: 20px; columns: 2 220px; font-size: 13px }

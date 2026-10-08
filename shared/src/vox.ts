@@ -12,7 +12,7 @@ export const VoxStare = z
 export type VoxStare = z.infer<typeof VoxStare>
 
 export const Interpretare = z.object({
-  tip: z.enum(['cautare', 'clasament', 'neclar', 'in_afara']),
+  tip: z.enum(['cautare', 'clasament', 'aplicatii', 'neclar', 'in_afara']),
   banci: z.array(z.string()),
   concept: z.string().nullable(),
   categorie: z.string().nullable(),
@@ -23,6 +23,10 @@ export const Interpretare = z.object({
   /** lipsesc în conversațiile salvate înainte de clasamente (07.10.2026) */
   segment: z.string().nullable().optional(),
   metrica: z.enum(['mediana', 'cea_mai_buna']).nullable().optional(),
+  /** lipsesc în conversațiile salvate înainte de aplicații (08.10.2026) */
+  functie: z.string().nullable().optional(),
+  aspect: z.enum(['functii', 'note']).nullable().optional(),
+  prag_note: z.number().nullable().optional(),
 })
 export type Interpretare = z.infer<typeof Interpretare>
 
@@ -31,7 +35,7 @@ export const FrecventaGrupa = z.object({ frecventa: z.string().nullable(), n: z.
 export type FrecventaGrupa = z.infer<typeof FrecventaGrupa>
 
 /** Butoanele de sub un răspuns, care continuă fără model (app/vox.py, `BUTOANE`). */
-export const Buton = z.enum(['firme', 'pf', 'libra'])
+export const Buton = z.enum(['firme', 'pf', 'libra', 'toate', 'prag_100', 'prag_1000', 'fara_prag'])
 export type Buton = z.infer<typeof Buton>
 
 /** Pe segment (pf / pfa / imm / pj), unitate și categorie (primul segment din cod_scenariu), fără valorile ambigue. */
@@ -120,6 +124,94 @@ export const Clasament = z
   .passthrough()
 export type Clasament = z.infer<typeof Clasament>
 
+/** Aplicațiile băncilor (app/vox.py, `Vox._aplicatii_raspuns`): analiza APK, App Store, Google Play. */
+const Verdict = z.enum(['sigur', 'probabil', 'absent', 'neconcludent'])
+
+export const FunctieAplicatie = z.object({ verdict: Verdict, surse: z.array(z.string()), dovada_text: z.string().nullable() })
+export type FunctieAplicatie = z.infer<typeof FunctieAplicatie>
+
+/** Nota dintr-un magazin; `loc`…`sub_prag` doar în cardurile vederii `note`. */
+export const NotaMagazin = z
+  .object({
+    nota: z.number().nullable(), evaluari: z.number(), distributie_stele: z.array(z.number()).nullable(),
+    versiune: z.string().nullable(), url: z.string().nullable(),
+    loc: z.number().nullable().optional(), loc_pana: z.number().nullable().optional(),
+    din: z.number().nullable().optional(), sub_prag: z.boolean().optional(),
+  })
+  .passthrough()
+export type NotaMagazin = z.infer<typeof NotaMagazin>
+
+export const ColoanaAplicatie = z
+  .object({
+    banca: z.string(), fara_aplicatie: z.boolean(), aplicatie: z.string().nullable(),
+    versiune_analizata: z.string().nullable(), data_analizei: z.string().nullable(), framework: z.string().nullable(),
+    secundare: z.array(z.string()), functii: z.record(FunctieAplicatie),
+    play: NotaMagazin.nullable(), app_store: NotaMagazin.nullable(),
+  })
+  .passthrough()
+export type ColoanaAplicatie = z.infer<typeof ColoanaAplicatie>
+
+export const Diferenta = z.object({
+  functie: z.string(), nivel: z.enum(['sigur', 'probabil']), au: z.array(z.string()), n_au: z.array(z.string()),
+})
+export type Diferenta = z.infer<typeof Diferenta>
+
+/** Un rând din clasamentul notelor (app/vox.py, `clasa_note`); fără `loc` sub prag sau fără notă. */
+export const RandNota = z
+  .object({
+    banca: z.string(), aplicatie: z.string().nullable(), nota: z.number().nullable(),
+    nota_afisata: z.number().nullable(), evaluari: z.number(), url: z.string().nullable(), evidentiata: z.boolean(),
+    loc: z.number().optional(), loc_pana: z.number().optional(),
+  })
+  .passthrough()
+export type RandNota = z.infer<typeof RandNota>
+
+export const ClasamentNote = z.object({ randuri: z.array(RandNota), sub_prag: z.array(RandNota), fara_nota: z.array(RandNota) })
+export type ClasamentNote = z.infer<typeof ClasamentNote>
+
+export const CardNote = z
+  .object({
+    banca: z.string(), aplicatie: z.string().nullable(), fara_aplicatie: z.boolean(),
+    play: NotaMagazin.nullable(), app_store: NotaMagazin.nullable(),
+  })
+  .passthrough()
+export type CardNote = z.infer<typeof CardNote>
+
+const SchemaAplicatii = z
+  .object({
+    vedere: z.enum(['functie', 'aplicatii', 'note', 'neanalizata']),
+    functie: z.string().nullable(),
+    text_cautat: z.string().nullable(),
+    analiza_la: z.string().nullable(),
+    app_store_la: z.string().nullable(),
+    play_la: z.string().nullable(),
+    banci_fara_aplicatie: z.array(z.string()),
+    grupuri: z.array(z.object({
+      verdict: Verdict,
+      aplicatii: z.array(z.object({
+        banca: z.string(), aplicatie: z.string().nullable(), verdict: Verdict, surse: z.array(z.string()),
+        dovada_text: z.string().nullable(), evidentiata: z.boolean(),
+      }).passthrough()),
+    })).optional(),
+    coloane: z.array(ColoanaAplicatie).optional(),
+    diferente: z.array(Diferenta).optional(),
+    prag: z.number().nullable().optional(),
+    clasamente: z.object({ play: ClasamentNote.nullable(), app_store: ClasamentNote.nullable() }).optional(),
+    putine_note: z.object({
+      app_store: z.number().optional(), play: z.number().optional(), prag: z.number(),
+      primul: z.object({
+        magazin: z.enum(['play', 'app_store']), banca: z.string(), loc: z.number(), loc_pana: z.number(), evaluari: z.number(),
+      }),
+    }).nullable().optional(),
+    carduri: z.array(CardNote).optional(),
+    functii: z.array(z.string()).optional(),
+  })
+  .passthrough()
+export type Aplicatii = z.infer<typeof SchemaAplicatii>
+/** Cu tipul inferat, structura se repeta în RaspunsIntrebare, RaspunsVox, Tura și Conversatie, iar tsc refuza
+ * Conversatie (TS7056: tipul depășește lungimea maximă, 08.10.2026); tipul numit oprește repetarea. */
+export const Aplicatii: z.ZodType<Aplicatii, z.ZodTypeDef, unknown> = SchemaAplicatii
+
 export const RaspunsIntrebare = z
   .object({
     interpretare: Interpretare,
@@ -127,6 +219,8 @@ export const RaspunsIntrebare = z
     raspunsuri: z.array(RaspunsBanca),
     /** lipsește în conversațiile salvate înainte de clasamente (07.10.2026) */
     clasament: Clasament.nullable().optional(),
+    /** lipsește în conversațiile salvate înainte de aplicații (08.10.2026) */
+    aplicatii: Aplicatii.nullable().optional(),
     /** null = tură dată de un buton, fără model */
     model: z.string().nullable(),
     tokeni: z.object({ intrare: z.number(), iesire: z.number(), citire_cache: z.number(), scriere_cache: z.number() }),
