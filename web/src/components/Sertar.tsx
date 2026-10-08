@@ -7,7 +7,7 @@ import { useMeta } from '../api/meta'
 import { T, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { compara, num } from '../util/format'
-import { Pill } from './comune'
+import { Pill, PillSegment } from './comune'
 import { CitatEvidentiat, citatUtil, LinkSursa, MOTIV_CHEIE } from './Dovezi'
 import { etDesc, etNume, unitTxt } from './valori'
 
@@ -30,6 +30,12 @@ export interface CerereSertar {
   scenariu: string
   termen?: string
   produs?: string
+  /** pf / pfa / imm / pj cu regula din 2.1 (plus rândurile fără segment) sau `nemarcat`; lipsă = toate */
+  segment?: string
+  /** doar segmentul cerut, fără rândurile nemarcate: grupele din Vox, care nu le numără */
+  strict?: boolean
+  /** moneda unei dobânzi (lei / eur / usd / gbp / chf / nespusa): o trimit doar cardurile pe monedă din Vox */
+  valuta?: string
 }
 
 /** Textul românesc al datelor: „retrasă din ofertă” e scris de bancă, nu de noi. */
@@ -42,7 +48,7 @@ export default function Sertar({ cerere, onClose }: { cerere: CerereSertar | nul
     queryKey: ['celula', cerere],
     enabled: !!cerere,
     queryFn: () =>
-      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '' }),
+      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '', segment: cerere!.segment, strict: cerere!.strict ? 1 : undefined, valuta: cerere!.valuta }),
   })
   const titlu = cerere ? `${meta.data?.nume[cerere.banca] ?? cerere.banca} · ${etNume(cerere.camp, t)}` : ''
   return (
@@ -178,6 +184,7 @@ function Rand({ r }: { r: ValoareDovada }) {
       </div>
       <div className="rc">
         {ctx.length ? ctx.flatMap((x, i) => (i ? [' · ', x] : [x])) : <span className="gri">{t('sertar.rand.fara_conditii')}</span>}
+        {r.segment && <> <PillSegment segment={r.segment} /></>}
         {r.ambiguu && <> <Pill tip="amb" title={motiv ? t(`coada.motiv_explicatie.${motiv}` as DictKey) : undefined}>{t('sertar.rand.de_verificat')}</Pill></>}
         <span className="ind">{cit ? t('sertar.rand.citat') : t('sertar.rand.detalii')} ▾</span>
       </div>

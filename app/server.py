@@ -436,6 +436,86 @@ GRUPURI_RATE = {
 # rman in coada de verificare.
 
 
+# Rndurile FARA segment marcat in sursa se includ, nu se arunca.
+#
+# Motivul e masurat: BRD are 13 valori pentru `administrare_cont`, dintre
+# care 0 marcate `pf` si 12 fara nicio marcare. Exim, la fel: 7 valori, 0
+# marcate. Filtrul strict le arunca in silenta, iar in Versus coloana BRD
+# aparea goala - ceea ce se citea ca „nu s-a putut extrage", cand de fapt
+# extractia reusise si filtrul le ascundea.
+#
+# Nu se pretinde ca sunt PF: interfata le marcheaza „segment nemarcat in
+# sursa", iar `segment_necunoscut` spune per celula daca reprezentativa
+# vine dintr-un rnd nemarcat.
+#
+# Un singur loc pentru regulă: o folosesc `matrice` (2.1, Versus, fișa de bancă) și `celula`, ca
+# sertarul deschis dintr-o celulă să arate exact rândurile cifrei pe care s-a dat clic.
+COND_SEG = ("%s = ANY(string_to_array(coalesce(o.cod_scenariu, ''), '|')) "
+            "OR NOT (coalesce(o.cod_scenariu, '') ~ '(^|\\|)(pf|pj|pfa|imm)(\\||$)')")
+# Segmentul unui rând (NULL când sursa nu-l spune), pentru câmpul `segment` din `celula` și pentru
+# `strict`. Pe mip_merge (07.10.2026) dă aceleași rânduri ca `COND_SEG` pe toate cele 4 segmente
+# (pf 10.975, pj 15.281, pfa 9.729, imm 7.633), iar niciun rând nu are două segmente.
+SEGMENT_RAND = r"substring(coalesce(o.cod_scenariu, '') from '(?:^|\|)(pf|pj|pfa|imm)(?:\||$)')"
+
+
+def celule_matrice(campuri, unitate, segment):
+    """Celulele matricei din 2.1 (bancă × concept): câte valori, intervalul, câte gratuite și rândul de
+    la mediană. Le folosesc 2.1, Versus, fișa de bancă și clasamentele din Vox: o singură interogare,
+    deci aceleași cifre peste tot."""
+    filtru_seg = "" if segment == "toate" else f" AND ({COND_SEG})"
+    p_seg = () if segment == "toate" else (segment,)
+    PLAUZIBIL = PRAGURI["suma"]
+    # Valoarea reprezentativa + CE reprezinta. Intervalul singur („0-25") nu
+    # spunea nici la ce se refera, nici care cifra conteaza.
+    #
+    # Reprezentativa e MEDIANA, nu minimul. Masurat: la minim, 80% din celulele
+    # de cont curent ar arata „0 lei", fiindca fiecare banca are cel putin o
+    # varianta gratuita (pachet promotional, cont pentru studenti, primul an).
+    # O matrice de zerouri nu compara nimic. Mediana e cat costa de obicei si
+    # nu se muta dupa o singura oferta promotionala.
+    #
+    # Se ia RANDUL de la mediana, nu valoarea calculata separat, ca `serviciu`
+    # si `frecventa` afisate sa fie chiar ale cifrei afisate - altfel eticheta
+    # ar explica alt pret decat cel de pe ecran.
+    return interoghează(
+        f"""WITH randuri AS (
+              SELECT b.slug AS banca, o.camp, o.valoare_num, o.unitate, o.serviciu, o.id AS id_obs,
+                     o.frecventa, o.conditie, o.pagina, s.url_public, s.sursa, s.tip_sursa,
+                     NOT (coalesce(o.cod_scenariu, '') ~ '(^|\\|)(pf|pj|pfa|imm)(\\||$)')
+                       AS seg_nemarcat
+              FROM observatii_curente o
+              JOIN surse s ON s.id = o.id_sursa
+              JOIN banci b ON b.id = s.id_banca
+              WHERE o.camp = ANY(%s) AND o.unitate = %s AND NOT o.ambiguu
+                AND o.valoare_num IS NOT NULL AND o.valoare_num <= {PLAUZIBIL}{filtru_seg}
+            ), agregat AS (
+              SELECT banca, camp, count(*)::int AS n,
+                     min(valoare_num)::float8 AS minim, max(valoare_num)::float8 AS maxim,
+                     count(DISTINCT serviciu)::int AS servicii,
+                     count(*) FILTER (WHERE valoare_num = 0)::int AS gratuite,
+                     count(*) FILTER (WHERE seg_nemarcat)::int AS nemarcate
+              FROM randuri GROUP BY 1, 2
+            ), numerotat AS (
+              SELECT *, row_number() OVER (PARTITION BY banca, camp
+                                           ORDER BY valoare_num, serviciu, id_obs) AS rn,
+                        count(*)     OVER (PARTITION BY banca, camp) AS tot
+              FROM randuri
+            ), reprezentativ AS (
+              SELECT DISTINCT ON (banca, camp) banca, camp,
+                     valoare_num::float8 AS valoare, unitate, serviciu, frecventa,
+                     conditie, pagina, url_public, sursa, tip_sursa, seg_nemarcat
+              FROM numerotat
+              ORDER BY banca, camp, abs(rn - (tot + 1) / 2.0), rn
+            )
+            SELECT a.banca, a.camp, a.n, a.minim, a.maxim, a.servicii, a.gratuite,
+                   a.nemarcate, r.valoare, r.unitate, r.serviciu, r.frecventa,
+                   r.conditie, r.pagina, r.url_public, r.sursa, r.tip_sursa,
+                   r.seg_nemarcat AS segment_necunoscut
+            FROM agregat a JOIN reprezentativ r USING (banca, camp)""",
+        (campuri, unitate) + p_seg,
+    )
+
+
 def matrice(q):
     """Matrice banca x serviciu, cu interval min-max si numar de valori.
 
@@ -455,19 +535,6 @@ def matrice(q):
     segment = (q.get("segment") or ["pf"])[0]
     campuri = GRUPURI[grup]["campuri"]
 
-    # Rndurile FARA segment marcat in sursa se includ, nu se arunca.
-    #
-    # Motivul e masurat: BRD are 13 valori pentru `administrare_cont`, dintre
-    # care 0 marcate `pf` si 12 fara nicio marcare. Exim, la fel: 7 valori, 0
-    # marcate. Filtrul strict le arunca in silenta, iar in Versus coloana BRD
-    # aparea goala - ceea ce se citea ca „nu s-a putut extrage", cand de fapt
-    # extractia reusise si filtrul le ascundea.
-    #
-    # Nu se pretinde ca sunt PF: interfata le marcheaza „segment nemarcat in
-    # sursa", iar `segment_necunoscut` spune per celula daca reprezentativa
-    # vine dintr-un rnd nemarcat.
-    COND_SEG = ("%s = ANY(string_to_array(coalesce(o.cod_scenariu, ''), '|')) "
-                "OR NOT (coalesce(o.cod_scenariu, '') ~ '(^|\\|)(pf|pj|pfa|imm)(\\||$)')")
     filtru_seg = "" if segment == "toate" else f" AND ({COND_SEG})"
     p_seg = () if segment == "toate" else (segment,)
 
@@ -478,55 +545,7 @@ def matrice(q):
     # inutilizabil, iar comparatia induce in eroare.
     PLAUZIBIL = PRAGURI["suma"]
 
-    # Valoarea reprezentativa + CE reprezinta. Intervalul singur („0-25") nu
-    # spunea nici la ce se refera, nici care cifra conteaza.
-    #
-    # Reprezentativa e MEDIANA, nu minimul. Masurat: la minim, 80% din celulele
-    # de cont curent ar arata „0 lei", fiindca fiecare banca are cel putin o
-    # varianta gratuita (pachet promotional, cont pentru studenti, primul an).
-    # O matrice de zerouri nu compara nimic. Mediana e cat costa de obicei si
-    # nu se muta dupa o singura oferta promotionala.
-    #
-    # Se ia RANDUL de la mediana, nu valoarea calculata separat, ca `serviciu`
-    # si `frecventa` afisate sa fie chiar ale cifrei afisate - altfel eticheta
-    # ar explica alt pret decat cel de pe ecran.
-    celule = interoghează(
-        f"""WITH randuri AS (
-              SELECT b.slug AS banca, o.camp, o.valoare_num, o.unitate, o.serviciu,
-                     o.frecventa, o.conditie, o.pagina, s.url_public, s.sursa, s.tip_sursa,
-                     NOT (coalesce(o.cod_scenariu, '') ~ '(^|\\|)(pf|pj|pfa|imm)(\\||$)')
-                       AS seg_nemarcat
-              FROM observatii_curente o
-              JOIN surse s ON s.id = o.id_sursa
-              JOIN banci b ON b.id = s.id_banca
-              WHERE o.camp = ANY(%s) AND o.unitate = %s AND NOT o.ambiguu
-                AND o.valoare_num IS NOT NULL AND o.valoare_num <= {PLAUZIBIL}{filtru_seg}
-            ), agregat AS (
-              SELECT banca, camp, count(*)::int AS n,
-                     min(valoare_num)::float8 AS minim, max(valoare_num)::float8 AS maxim,
-                     count(DISTINCT serviciu)::int AS servicii,
-                     count(*) FILTER (WHERE valoare_num = 0)::int AS gratuite,
-                     count(*) FILTER (WHERE seg_nemarcat)::int AS nemarcate
-              FROM randuri GROUP BY 1, 2
-            ), numerotat AS (
-              SELECT *, row_number() OVER (PARTITION BY banca, camp
-                                           ORDER BY valoare_num, serviciu) AS rn,
-                        count(*)     OVER (PARTITION BY banca, camp) AS tot
-              FROM randuri
-            ), reprezentativ AS (
-              SELECT DISTINCT ON (banca, camp) banca, camp,
-                     valoare_num::float8 AS valoare, unitate, serviciu, frecventa,
-                     conditie, pagina, url_public, sursa, tip_sursa, seg_nemarcat
-              FROM numerotat
-              ORDER BY banca, camp, abs(rn - (tot + 1) / 2.0), rn
-            )
-            SELECT a.banca, a.camp, a.n, a.minim, a.maxim, a.servicii, a.gratuite,
-                   a.nemarcate, r.valoare, r.unitate, r.serviciu, r.frecventa,
-                   r.conditie, r.pagina, r.url_public, r.sursa, r.tip_sursa,
-                   r.seg_nemarcat AS segment_necunoscut
-            FROM agregat a JOIN reprezentativ r USING (banca, camp)""",
-        (campuri, unitate) + p_seg,
-    )
+    celule = celule_matrice(campuri, unitate, segment)
     excluse = interoghează(
         f"""SELECT count(*)::int AS n FROM observatii_curente o
             WHERE o.camp = ANY(%s) AND o.unitate = %s AND o.ambiguu{filtru_seg}""",
@@ -602,6 +621,8 @@ def celula(q):
     # valorile din spatele cifrei pe care s-a dat clic
     termen = (q.get("termen") or [""])[0]
     produs = (q.get("produs") or [""])[0]
+    segment = (q.get("segment") or [""])[0]
+    strict = (q.get("strict") or [""])[0] == "1"
     extra, p_extra = "", ()
     if termen in TERMENE:
         extra += f" AND {TERMEN_LUNI} {TERMENE[termen][1]}"
@@ -613,11 +634,33 @@ def celula(q):
     for c in cuvinte:
         extra += f" AND {_TEXT_CAUTARE} LIKE %s"
         p_extra += ("%" + c + "%",)
+    # segmentul: `pf` / `pfa` / `imm` / `pj` cu regula din 2.1 (`COND_SEG`: plus rândurile nemarcate),
+    # ca sertarul din 2.1 și Versus să arate rândurile celulei; `nemarcat` = doar rândurile fără
+    # segment; `strict=1` (grupele din Vox) = doar segmentul cerut: 251 din 752 de perechi bancă·concept
+    # au și rânduri marcate, și nemarcate (mip_merge, 07.10.2026), iar grupa „33 PF” ar fi deschis un
+    # sertar mai lung decât ea. Altă valoare se ignoră, ca la `termen` și `produs`.
+    if segment == "nemarcat":
+        extra += f" AND {SEGMENT_RAND} IS NULL"
+    elif segment in vox.ORDINE_SEGMENT:
+        extra += f" AND {SEGMENT_RAND} = %s" if strict else f" AND ({COND_SEG})"
+        p_extra += (segment,)
+    # moneda unei dobânzi, cerută doar de cardurile pe monedă din Vox: fără ea, „Vezi dovezile” de pe cardul
+    # „în euro” al Libra · depozit (1 valoare) deschidea toate cele 11 dobânzi (mip_merge, 08.10.2026).
+    # `lei` = LEI sau RON, `nespusa` = coloana goală; altă valoare se ignoră, ca `termen` și `produs`.
+    valuta = (q.get("valuta") or [""])[0]
+    if valuta == "lei":
+        extra += " AND upper(coalesce(o.valuta, '')) IN ('LEI', 'RON')"
+    elif valuta == "nespusa":
+        extra += " AND coalesce(o.valuta, '') = ''"
+    elif valuta in vox.MONEDE.values():
+        extra += " AND upper(o.valuta) = %s"
+        p_extra += (valuta.upper(),)
     rows = interoghează(
-        """SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
+        f"""SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
+                  {SEGMENT_RAND} AS segment,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
                   o.ambiguu, o.motiv_ambiguu, o.metoda_extractie,
-                  o.serviciu, o.sectiune, o.conditie, o.frecventa, o.detaliu,
+                  o.serviciu, o.sectiune, o.conditie, o.frecventa, o.detaliu, o.data_vigoare,
                   o.pagina, o.nr_aparitii, s.sursa, s.tip_sursa, s.url_public,
                   s.format, b.pagina_documente, b.pagina_documente_motiv
            FROM observatii_curente o
@@ -731,6 +774,66 @@ PRODUSE_CREDIT = {
 }
 
 
+def _filtre_rate(termen, produs):
+    """Filtrele de termen și tip de credit din 2.2, ca text SQL și parametri."""
+    filtru = ""
+    if termen in TERMENE:
+        filtru += f" AND {TERMEN_LUNI} {TERMENE[termen][1]}"
+    elif termen == "necunoscut":
+        filtru += f" AND {TERMEN_LUNI} IS NULL"
+    if produs in PRODUSE_CREDIT:
+        filtru += f" AND {PRODUS_CREDIT} = %s"
+    p_extra = (produs,) if produs in PRODUSE_CREDIT else ()
+    return filtru, p_extra
+
+
+def _baza_rate(prag):
+    return f"""FROM observatii_curente o
+                  JOIN surse s ON s.id = o.id_sursa
+                  JOIN banci b ON b.id = s.id_banca
+                  WHERE o.unitate = 'procent' AND o.camp = ANY(%s)
+                    AND split_part(o.cod_scenariu, '|', 1) = %s
+                    AND NOT o.ambiguu AND o.valoare_num IS NOT NULL
+                    AND o.valoare_num <= {prag}"""
+
+
+def celule_rate(campuri, categorie, termen, produs):
+    """Celulele din 2.2 (bancă × concept, pe o categorie), cu termenul și tipul de credit: câte valori,
+    intervalul și rândul de la mediană. Le folosesc 2.2, Versus și clasamentele din Vox."""
+    filtru, p_extra = _filtre_rate(termen, produs)
+    baza_cat = _baza_rate(GRUPURI_RATE[categorie]["prag"])
+    return interoghează(
+        f"""WITH randuri AS (
+                  SELECT b.slug AS banca, o.camp, o.valoare_num, o.serviciu, o.id AS id_obs,
+                         o.frecventa, o.conditie, {TERMEN_LUNI} AS luni
+                  {baza_cat}{filtru}
+                ), agregat AS (
+                  SELECT banca, camp, count(*)::int AS n,
+                         min(valoare_num)::float8 AS minim,
+                         max(valoare_num)::float8 AS maxim,
+                         count(*) FILTER (WHERE valoare_num = 0)::int AS gratuite
+                  FROM randuri GROUP BY 1, 2
+                ), numerotat AS (
+                  SELECT *, row_number() OVER (PARTITION BY banca, camp
+                                               ORDER BY valoare_num, serviciu, id_obs) AS rn,
+                            count(*)     OVER (PARTITION BY banca, camp) AS tot
+                  FROM randuri
+                ), reprezentativ AS (
+                  -- mediana, ca la comisioane: o singura dobanda promotionala
+                  -- nu trebuie sa reprezinte toata oferta de depozite a bancii
+                  SELECT DISTINCT ON (banca, camp) banca, camp,
+                         valoare_num::float8 AS valoare, serviciu, frecventa, conditie, luni
+                  FROM numerotat
+                  ORDER BY banca, camp, abs(rn - (tot + 1) / 2.0), rn
+                )
+                SELECT a.banca, a.camp, a.n, a.minim, a.maxim, a.gratuite,
+                       r.valoare, r.serviciu, r.frecventa, r.conditie, r.luni
+                FROM agregat a JOIN reprezentativ r USING (banca, camp)
+                ORDER BY 1""",
+        (campuri, categorie) + p_extra,
+    )
+
+
 def rate(q):
     """Dobanzi pe categorie (depozite / credite / conturi), din cod_scenariu.
 
@@ -748,21 +851,7 @@ def rate(q):
     prag = GRUPURI_RATE[categorie]["prag"]
     termen = (q.get("termen") or [""])[0]
     produs = (q.get("produs") or [""])[0]
-    filtru = ""
-    if termen in TERMENE:
-        filtru += f" AND {TERMEN_LUNI} {TERMENE[termen][1]}"
-    elif termen == "necunoscut":
-        filtru += f" AND {TERMEN_LUNI} IS NULL"
-    if produs in PRODUSE_CREDIT:
-        filtru += f" AND {PRODUS_CREDIT} = %s"
-    p_extra = (produs,) if produs in PRODUSE_CREDIT else ()
-    baza_cat = f"""FROM observatii_curente o
-                  JOIN surse s ON s.id = o.id_sursa
-                  JOIN banci b ON b.id = s.id_banca
-                  WHERE o.unitate = 'procent' AND o.camp = ANY(%s)
-                    AND split_part(o.cod_scenariu, '|', 1) = %s
-                    AND NOT o.ambiguu AND o.valoare_num IS NOT NULL
-                    AND o.valoare_num <= {prag}"""
+    baza_cat = _baza_rate(prag)
     # cate valori are fiecare optiune de filtru, ca meniul sa spuna ce gasesti
     optiuni = interoghează(
         f"""SELECT {TERMEN_LUNI} AS luni, {PRODUS_CREDIT} AS produs, count(*)::int AS n
@@ -789,36 +878,7 @@ def rate(q):
                        "n": pe_termen.get("necunoscut", 0)}],
         "produse": [{"cheie": k, "eticheta": v, "n": pe_produs.get(k, 0)}
                     for k, v in PRODUSE_CREDIT.items()],
-        "celule": interoghează(
-            f"""WITH randuri AS (
-                  SELECT b.slug AS banca, o.camp, o.valoare_num, o.serviciu,
-                         o.frecventa, o.conditie, {TERMEN_LUNI} AS luni
-                  {baza_cat}{filtru}
-                ), agregat AS (
-                  SELECT banca, camp, count(*)::int AS n,
-                         min(valoare_num)::float8 AS minim,
-                         max(valoare_num)::float8 AS maxim,
-                         count(*) FILTER (WHERE valoare_num = 0)::int AS gratuite
-                  FROM randuri GROUP BY 1, 2
-                ), numerotat AS (
-                  SELECT *, row_number() OVER (PARTITION BY banca, camp
-                                               ORDER BY valoare_num, serviciu) AS rn,
-                            count(*)     OVER (PARTITION BY banca, camp) AS tot
-                  FROM randuri
-                ), reprezentativ AS (
-                  -- mediana, ca la comisioane: o singura dobanda promotionala
-                  -- nu trebuie sa reprezinte toata oferta de depozite a bancii
-                  SELECT DISTINCT ON (banca, camp) banca, camp,
-                         valoare_num::float8 AS valoare, serviciu, frecventa, conditie, luni
-                  FROM numerotat
-                  ORDER BY banca, camp, abs(rn - (tot + 1) / 2.0), rn
-                )
-                SELECT a.banca, a.camp, a.n, a.minim, a.maxim, a.gratuite,
-                       r.valoare, r.serviciu, r.frecventa, r.conditie, r.luni
-                FROM agregat a JOIN reprezentativ r USING (banca, camp)
-                ORDER BY 1""",
-            (campuri, categorie) + p_extra,
-        ),
+        "celule": celule_rate(campuri, categorie, termen, produs),
         # peste prag nu e dobanda de retail in categoria asta; sunt procente de
         # alt fel (reduceri, praguri de venit, cote de garantare, taxe) extrase
         # gresit ca dobanda. Vezi coada de verificare.
@@ -1927,6 +1987,13 @@ def _context_vox():
         "concepte_categorie": {k: v["campuri"] for k, v in GRUPURI_RATE.items()},
         "termene": {**{k: v[0] for k, v in TERMENE.items()}, "necunoscut": "termen nespecificat"},
         "produse": dict(PRODUSE_CREDIT),
+        # ce se poate clasa: conceptele matricelor din 2.1 (comisioane, în lei) și din 2.2 (dobânzi, pe
+        # categorie), deci clasamentul folosește exact celulele paginilor
+        "clasabile": {
+            "comisioane": sorted({c for g in GRUPURI.values() for c in g["campuri"]}),
+            "dobanzi": {c: sorted(k for k, v in GRUPURI_RATE.items() if c in v["campuri"])
+                        for c in sorted({c for v in GRUPURI_RATE.values() for c in v["campuri"]})},
+        },
     }
 
 
@@ -1939,20 +2006,80 @@ def _cauta_vox(banca, concept, categorie, termen, produs, text):
 
 
 def _stare_banca_vox(banca):
-    """De ce n-are banca valori: toate sursele blocate (WAF, robots.txt) sau nicio sursă. Altfel
-    „nu avem valori” s-ar citi ca „banca nu are comisionul”."""
-    r = interoghează(
-        """SELECT count(s.id)::int AS n, count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate
+    return _stare_banci_vox(banca).get(banca)
+
+
+_SQL_STARE_BANCI = """SELECT b.slug, count(s.id)::int AS surse,
+                  count(s.id) FILTER (WHERE s.status = 'blocat')::int AS blocate,
+                  count(s.id) FILTER (WHERE s.status = 'blocat'
+                                        AND s.nota_extractie LIKE 'ROBOTS%%')::int AS robots,
+                  count(s.id) FILTER (WHERE s.status = 'blocat' AND s.format = 'pdf')::int AS pdf
            FROM banci b LEFT JOIN surse s ON s.id_banca = b.id
-           WHERE b.slug = %s""", (banca,))
-    if not r:
+           {unde}
+           GROUP BY b.slug"""
+
+
+def _stare_banci_vox(banca=None):
+    """De ce n-are o bancă valori, din `surse`: nicio sursă, toate blocate (WAF, robots.txt), sau câte
+    sunt blocate și de ce. ING avea 48 de PDF-uri interzise de robots.txt din 158 de surse, printre
+    ele lista de taxe și comisioane, iar fișa spunea doar „nu avem valori” (mip_merge, 07.10.2026). O
+    interogare pentru toate băncile: clasamentele arată motivul fiecărei bănci fără date. Nota
+    `ROBOTS: …` o scrie `ingest/populare_initiala.py`."""
+    rows = interoghează(_SQL_STARE_BANCI.format(unde="WHERE b.slug = %s" if banca else ""),
+                        (banca,) if banca else ())
+    return {x["slug"]: {"stare": "fara_surse" if x["surse"] == 0 else "blocata" if x["blocate"] == x["surse"] else None,
+                        "surse": x["surse"], "robots": x["robots"], "refuzate": x["blocate"] - x["robots"],
+                        "pdf": x["pdf"]}
+            for x in rows}
+
+
+def _alte_monede_rate(campuri, categorie, termen, produs):
+    """Pe bancă, câte rânduri ale celulei din 2.2 au altă monedă decât lei (EUR, USD, GBP, CHF în `valuta`;
+    golul nu se numără) și din câte. Clasamentul păstrează cifrele paginii, dar spune când o celulă are și
+    alte monede: la depozitul pe 12 luni, ambele valori Raiffeisen sunt în altă monedă (mip_merge, 08.10.2026)."""
+    filtru, p_extra = _filtre_rate(termen, produs)
+    rows = interoghează(
+        f"""SELECT b.slug AS banca, count(*)::int AS din,
+                   count(*) FILTER (WHERE upper(coalesce(o.valuta, '')) NOT IN ('', 'LEI', 'RON'))::int AS n
+            {_baza_rate(GRUPURI_RATE[categorie]["prag"])}{filtru}
+            GROUP BY 1""",
+        (campuri, categorie) + p_extra)
+    return {x["banca"]: {"n": x["n"], "din": x["din"]} for x in rows if x["n"]}
+
+
+def _clasament_vox(concept, categorie, termen, produs, segment):
+    """Celulele unui clasament, din aceleași interogări ca 2.1 și 2.2: un comision în lei pe un segment
+    (PF dacă întrebarea nu-l spune, ca Versus), sau o dobândă pe o categorie. Cu termen sau tip de
+    credit, al doilea bloc are valorile la care sursa nu le spune: pe 7–12 luni doar 2 bănci au termenul
+    scris, 9 au dobânzi fără termen (mip_merge, 07.10.2026). None = conceptul nu se poate clasa."""
+    grup = next((g for g, v in GRUPURI.items() if concept in v["campuri"]), None)
+    if grup:
+        seg = segment if segment in vox.ORDINE_SEGMENT else "pf"
+        return {"sursa": "matrice", "grup": grup, "unitate": "lei", "sens": GRUPURI[grup]["sens"],
+                "segment": seg,
+                "blocuri": [{"tip": "exact", "termen": "", "produs": "",
+                             "celule": celule_matrice([concept], "lei", seg)}]}
+    if categorie not in GRUPURI_RATE or concept not in GRUPURI_RATE[categorie]["campuri"]:
         return None
-    n, blocate = r[0]["n"], r[0]["blocate"]
-    return "fara_surse" if n == 0 else "blocata" if blocate == n else None
+    termen, produs = termen or "", produs or ""
+    blocuri = [{"tip": "exact", "termen": termen, "produs": produs,
+                "celule": celule_rate([concept], categorie, termen, produs)}]
+    if (termen and termen != "necunoscut") or (produs and produs != "altele"):
+        t2, p2 = ("necunoscut" if termen else ""), ("altele" if produs else "")
+        blocuri.append({"tip": "nespecificat", "termen": t2, "produs": p2,
+                        "celule": celule_rate([concept], categorie, t2, p2)})
+    # cifra rămâne a celulei din 2.2; rândul băncii spune doar câte valori sunt în altă monedă
+    for b in blocuri:
+        alte = _alte_monede_rate([concept], categorie, b["termen"], b["produs"])
+        for c in b["celule"]:
+            if c["banca"] in alte:
+                c["alte_monede"] = alte[c["banca"]]
+    return {"sursa": "rate", "grup": categorie, "unitate": "procent",
+            "sens": GRUPURI_RATE[categorie]["sens"], "segment": None, "blocuri": blocuri}
 
 
-VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox,
-                               stare_banca=_stare_banca_vox)
+VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox, stare_banca=_stare_banca_vox,
+              clasament=_clasament_vox, stare_banci=_stare_banci_vox)
 
 
 def rulare_manuala_catalog(q):
@@ -2311,7 +2438,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if corp is None:
             return
         try:
-            self._json(200, VOX.intreaba(corp.get("intrebare"), corp.get("anterior"), corp.get("conversatie")))
+            if "buton" in corp:
+                if corp.get("intrebare") is not None:
+                    raise vox.Respins("Trimite o întrebare sau un buton, nu amândouă.")
+                rezultat = VOX.continua(corp.get("anterior"), corp.get("buton"), corp.get("conversatie"))
+            else:
+                rezultat = VOX.intreaba(corp.get("intrebare"), corp.get("anterior"), corp.get("conversatie"))
+            self._json(200, rezultat)
         except vox.Respins as exc:
             self._json(400, {"eroare": str(exc)})
         except vox.EroareModel as exc:

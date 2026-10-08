@@ -42,10 +42,13 @@ PRETURI = {
 # Multiplicatori față de prețul de intrare.
 FACTOR_CITIRE_CACHE = 0.1
 FACTOR_SCRIERE_CACHE = 1.25
+# Scrierea cu `ttl: "1h"` (promptul lui Vox, din 08.10.2026): de 2 ori prețul de intrare (documentația
+# Anthropic); citirea rămâne 0,1 indiferent de durată.
+FACTOR_SCRIERE_CACHE_1H = 2.0
 
 
 def cost(model: str, intrare: int = 0, iesire: int = 0,
-         citire_cache: int = 0, scriere_cache: int = 0) -> float | None:
+         citire_cache: int = 0, scriere_cache: int = 0, scriere_cache_1h: int = 0) -> float | None:
     """
     Costul în dolari. `None` dacă modelul nu e în tabel — mai bine nicio cifră
     decât una inventată.
@@ -59,6 +62,7 @@ def cost(model: str, intrare: int = 0, iesire: int = 0,
         + iesire / 1e6 * po
         + citire_cache / 1e6 * pi * FACTOR_CITIRE_CACHE
         + scriere_cache / 1e6 * pi * FACTOR_SCRIERE_CACHE
+        + scriere_cache_1h / 1e6 * pi * FACTOR_SCRIERE_CACHE_1H
     )
 
 

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Collapse, Tooltip } from 'antd'
+import { SEGMENT_VERSUS } from '../../api/versus'
 import type { CerereSertar } from '../../components/Sertar'
 import { etDesc, etNume, unitTxt } from '../../components/valori'
 import { useLang } from '../../i18n'
@@ -113,7 +114,7 @@ export function SectiunePretVs({ s, coloane, nume, deschide }: Comun & { s: Sect
             return (
               <div key={b} className={['vs-cel', bun && 'best', pierde && 'pierde'].filter(Boolean).join(' ')}>
                 <span className="celula"
-                  onClick={() => deschide({ banca: b, camp: r.camp, unitate: g.unitate, scenariu: g.api === 'rate' ? g.cheie : '' })}>
+                  onClick={() => deschide({ banca: b, camp: r.camp, unitate: g.unitate, scenariu: g.api === 'rate' ? g.cheie : '', segment: g.api === 'matrice' ? SEGMENT_VERSUS : undefined })}>
                   <ValoarePret c={c} sens={s.sens} unitate={g.unitate} />
                 </span>
                 <Marcaje bun={bun} pierde={pierde} />
