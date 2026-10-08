@@ -296,7 +296,10 @@ text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în af
   `temperature: 0` (trimis
   prin `extra_body`, doar la Haiku 4.5: SDK-ul 1.x l-a scos din semnătură, iar Opus 4.7+ îl refuză). La
   temperatura implicită, patru rulări cu aceleași întrebări dăduseră 36, 36, 39 și 37, cu alte greșeli
-  de fiecare dată.
+  de fiecare dată. Pe 08.10.2026, „Cât costă administrarea contului la BCR și la BRD?”, pusă după o
+  întrebare „pentru firme”, păstra segmentul PJ deși nu-l spunea: o întrebare care se înțelege singură
+  e acum nouă, nu o continuare. Cu cazul ăsta, cu termenul la depozite și cu „și la BRD?” (care trebuie
+  să păstreze PJ), 44 din 44, $0,0867.
 - **Clasamente.** „Care bancă are cel mai mic comision de administrare?”, „Unde stă Libra la DAE pentru
   ipotecar?”: Vox ordonează băncile cu celulele din 2.1 (comisioane, în lei, PF dacă întrebarea nu spune
   altfel) și 2.2 (dobânzi, pe categorie), deci aceleași cifre ca paginile (`celule_matrice`,

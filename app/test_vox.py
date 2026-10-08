@@ -196,6 +196,9 @@ class Schema(unittest.TestCase):
         # pe „nu avem clasament” în loc de „în afara”
         self.assertIn("„cine dă cea mai mare dobândă…” compară prețul obișnuit", text)
         self.assertIn("(„care bancă are cea mai bună aplicație?”) rămân in_afara", text)
+        # conversația din 08.10.2026: „Cât costă administrarea contului la BCR și la BRD?”, pusă după
+        # „… pentru firme la BCR?”, păstra segmentul pj, deși nu-l spunea
+        self.assertIn("e o întrebare nouă, nu o continuare: nu păstrezi nimic din cea anterioară", text)
         # identic la fiecare apel: cache-ul promptului cere un prefix stabil
         self.assertEqual(text, vox.prompt(CTX))
 

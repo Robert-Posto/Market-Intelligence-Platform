@@ -227,7 +227,10 @@ def prompt(ctx):
         "prețul obișnuit, deci metrica = null.",
         "- Dacă primești interpretarea întrebării anterioare, întrebarea curentă o poate continua "
         "(„și la BRD?”, „dar pe 6 luni?”): păstrezi ce nu se schimbă. O bancă numită în continuare "
-        "(„și la BRD?”) înlocuiește băncile anterioare, nu se adaugă la ele.",
+        "(„și la BRD?”) înlocuiește băncile anterioare, nu se adaugă la ele. O întrebare care se "
+        "înțelege singură, cu banca și valoarea spuse („Cât costă administrarea contului la BCR și la "
+        "BRD?”), e o întrebare nouă, nu o continuare: nu păstrezi nimic din cea anterioară, nici "
+        "segmentul, termenul sau tipul de credit.",
         "- După un clasament, „și pentru firme?” rămâne clasament, cu alt segment; o bancă numită "
         "(„dar la BCR?”) face o căutare la acea bancă, pentru același concept.",
         "",
