@@ -347,6 +347,23 @@ class ValidareAplicatii(unittest.TestCase):
         i, _ = vox.valideaza(apl(banci=[], aspect=None), CTX)
         self.assertEqual((i["tip"], i["clarificare"]), ("neclar", None))
 
+
+    def test_functii_fara_nimic_e_neclar(self):
+        """„Ce funcții au aplicațiile băncilor?”: promptul pune `aspect = functii` la orice nu e despre note, iar fără
+        funcție, bancă și text fișa arăta „„” nu e printre funcțiile analizate” (revizia finală, 08.10.2026)."""
+        i, _ = vox.valideaza(apl(banci=[], aspect="functii"), CTX)
+        self.assertEqual((i["tip"], i["aspect"]), ("neclar", None))
+        # un nume prea scurt ca să rămână în `text_cautat` („AI”) duce în același loc
+        i, _ = vox.valideaza(apl(banci=[], aspect="functii", text_cautat="AI"), CTX)
+        self.assertEqual(i["tip"], "neclar")
+
+    def test_schema_fara_functii(self):
+        """O bază fără analiza Android (`android_functionalitati` goală) ar fi dat `"enum": []`, pe care API-ul îl
+        poate refuza: s-ar fi stricat orice întrebare Vox, nu doar cele despre aplicații."""
+        p = vox.schema(dict(CTX, functii=[]))["properties"]
+        self.assertEqual(p["functie"], {"type": "null"})
+        self.assertIn("Funcțiile aplicațiilor (slug: titlu): (niciuna în bază)", vox.prompt(dict(CTX, functii=[])))
+
     def test_note_cu_si_fara_banci(self):
         self.assertEqual(vox.valideaza(apl(banci=[], aspect="note"), CTX)[0]["tip"], "aplicatii")
         self.assertEqual(vox.valideaza(apl(banci=["libra"], aspect="note"), CTX)[0]["banci"], ["libra"])

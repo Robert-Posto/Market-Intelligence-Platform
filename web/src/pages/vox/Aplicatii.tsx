@@ -229,6 +229,12 @@ function VedereNote({ a, m }: { a: AplicatiiT; m: Meta }) {
   const { t, locale } = useLang()
   const p = a.putine_note
   const magazin = (k: 'play' | 'app_store') => t(`vox.aplicatii.magazin.${k}` as DictKey)
+  // fără `date/google_play.json` nu știm nimic despre Google Play: nici „0 aplicații cu puține note”, nici „n-are
+  // aplicație acolo” (revizia finală, 08.10.2026)
+  const playLipsa = !a.clasamente?.play
+  const numarate = p
+    ? (['app_store', 'play'] as const).flatMap((k) => (p[k] === undefined ? [] : [t('vox.aplicatii.n_in_magazin', { n: p[k]!, magazin: magazin(k) })])).join(', ')
+    : ''
   return (
     <>
       <div className="vox-clas-antet">
@@ -241,7 +247,7 @@ function VedereNote({ a, m }: { a: AplicatiiT; m: Meta }) {
           {t(p.primul.loc === p.primul.loc_pana ? 'vox.aplicatii.intreaba_prag' : 'vox.aplicatii.intreaba_prag_egal', {
             magazin: magazin(p.primul.magazin), banca: m.nume[p.primul.banca] ?? p.primul.banca,
             loc: p.primul.loc, pana: p.primul.loc_pana, evaluari: num(p.primul.evaluari, locale, 0),
-            prag: num(p.prag, locale, 0), n_app_store: p.app_store ?? 0, n_play: p.play ?? 0,
+            prag: num(p.prag, locale, 0), numarate,
           })}
         </p>
       )}
@@ -250,7 +256,7 @@ function VedereNote({ a, m }: { a: AplicatiiT; m: Meta }) {
       )}
       {(a.carduri ?? []).length > 0 && (
         <div className="vox-apl-carduri">
-          {(a.carduri ?? []).map((c) => <CardNote key={c.banca} c={c} m={m} />)}
+          {(a.carduri ?? []).map((c) => <CardNote key={c.banca} c={c} m={m} playLipsa={playLipsa} />)}
         </div>
       )}
       {(['play', 'app_store'] as const).map((k) => (
@@ -260,7 +266,7 @@ function VedereNote({ a, m }: { a: AplicatiiT; m: Meta }) {
   )
 }
 
-function CardNote({ c, m }: { c: CardNoteT; m: Meta }) {
+function CardNote({ c, m, playLipsa }: { c: CardNoteT; m: Meta; playLipsa: boolean }) {
   const { t, locale } = useLang()
   return (
     <article className="vox-apl-card">
@@ -273,7 +279,14 @@ function CardNote({ c, m }: { c: CardNoteT; m: Meta }) {
             {(['play', 'app_store'] as const).map((k) => {
               const n = c[k]
               const numeMagazin = t(`vox.aplicatii.magazin.${k}` as DictKey)
-              if (!n) return <span key={k} className="vox-meta">{t('vox.aplicatii.fara_magazin', { magazin: numeMagazin })}</span>
+              if (!n) {
+                const lipsa = k === 'play' && playLipsa
+                return (
+                  <span key={k} className="vox-meta">
+                    {lipsa ? t('vox.aplicatii.play_lipsa') : t('vox.aplicatii.fara_magazin', { magazin: numeMagazin })}
+                  </span>
+                )
+              }
               const loc = n.sub_prag
                 ? t('vox.aplicatii.card_sub_prag')
                 : n.loc == null
@@ -300,7 +313,7 @@ function CardNote({ c, m }: { c: CardNoteT; m: Meta }) {
 function TabelNote({ titlu, c, m }: { titlu: string; c: ClasamentNote | null; m: Meta }) {
   const { t, locale } = useLang()
   const [toate, setToate] = useState(false)
-  if (!c) return <p className="vox-nota"><span className="vox-punct gri" />{titlu}: {t('vox.aplicatii.play_lipsa')}</p>
+  if (!c) return <p className="vox-nota"><span className="vox-punct gri" />{t('vox.aplicatii.magazin_necolectat', { magazin: titlu })}</p>
   const vizibile = toate ? c.randuri : c.randuri.filter((r, i) => i < PRIMELE || r.evidentiata)
   const lista = (rs: ClasamentNote['sub_prag']) => rs
     .map((r) => `${m.nume[r.banca] ?? r.banca} (${r.nota_afisata !== null ? num(r.nota_afisata, locale, 1) : '—'}; ${num(r.evaluari, locale, 0)})`)

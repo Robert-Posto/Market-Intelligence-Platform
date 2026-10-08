@@ -191,9 +191,10 @@ export default function Vox() {
   async function trimite(intrebare: string) {
     const q = intrebare.trim()
     if (!q) return
-    // „și la BRD?” continuă ultimul răspuns reușit (căutare sau clasament, inclusiv unul dat de un buton),
-    // nu o clarificare sau o eroare
-    const anterior = [...mesaje].reverse().find((x) => ['cautare', 'clasament'].includes(x.raspuns?.interpretare.tip ?? ''))?.raspuns?.interpretare ?? null
+    // „și la BRD?” continuă ultimul răspuns reușit (căutare, clasament sau aplicații, inclusiv unul dat de un
+    // buton), nu o clarificare sau o eroare; fără `aplicatii`, după „Are George plata contactless?” continua o
+    // căutare de comision mai veche (revizia finală, 08.10.2026)
+    const anterior = [...mesaje].reverse().find((x) => ['cautare', 'clasament', 'aplicatii'].includes(x.raspuns?.interpretare.tip ?? ''))?.raspuns?.interpretare ?? null
     await ruleaza({ intrebare: q }, () => trimiteIntrebarea(q, anterior, c, st.token ?? ''))
   }
 

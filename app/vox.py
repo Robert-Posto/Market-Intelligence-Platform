@@ -175,7 +175,9 @@ def schema(ctx):
             "clarificare": text_optional,
             "segment": optional(ORDINE_SEGMENT),
             "metrica": optional(METRICI),
-            "functie": optional(f["functie"] for f in ctx["functii"]),
+            # o bază fără analiza Android ar fi dat `"enum": []`, pe care API-ul îl poate refuza: ar fi căzut orice
+            # întrebare, nu doar cele despre aplicații
+            "functie": optional(f["functie"] for f in ctx["functii"]) if ctx["functii"] else {"type": "null"},
             "aspect": optional(ASPECTE),
             "prag_note": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
         },
@@ -280,8 +282,10 @@ def prompt(ctx):
         + "; ".join(f"{k} ({', '.join(v)})" for k, v in cl["dobanzi"].items()),
     ]
     linii += [
-        "Funcțiile aplicațiilor (slug: titlu): " + "; ".join(f"{f['functie']}: {f['titlu']}" for f in ctx["functii"]),
-        "Aplicațiile (bancă: nume): " + "; ".join(f"{a['banca']}: {a['aplicatie']}" for a in ctx["aplicatii"]),
+        "Funcțiile aplicațiilor (slug: titlu): "
+        + ("; ".join(f"{f['functie']}: {f['titlu']}" for f in ctx["functii"]) or "(niciuna în bază)"),
+        "Aplicațiile (bancă: nume): "
+        + ("; ".join(f"{a['banca']}: {a['aplicatie']}" for a in ctx["aplicatii"]) or "(niciuna în bază)"),
     ]
     return "\n".join(linii)
 
@@ -385,8 +389,10 @@ def _aplicatii_curat(curat, prag):
         curat[k] = None
     if curat["functie"]:
         curat["aspect"] = "functii"          # o funcție e mereu despre funcții, nu despre note
-    elif curat["aspect"] is None and (curat["banci"] or curat["text_cautat"]):
-        curat["aspect"] = "functii"
+    elif curat["aspect"] != "note":
+        # fără funcție, bancă sau text, „funcții” n-are la ce se referi: „Ce funcții au aplicațiile băncilor?” ajungea
+        # la „„” nu e printre funcțiile analizate” (revizia finală, 08.10.2026)
+        curat["aspect"] = "functii" if (curat["banci"] or curat["text_cautat"]) else None
     valid = isinstance(prag, int) and not isinstance(prag, bool) and 1 <= prag <= PRAG_NOTE_MAX
     curat["prag_note"] = prag if valid and curat["aspect"] == "note" else None
     if curat["aspect"] is None:
