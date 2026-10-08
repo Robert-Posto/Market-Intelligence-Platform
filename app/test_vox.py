@@ -331,6 +331,54 @@ class Rezumat(unittest.TestCase):
         r = vox.rezuma([dict(rand(5), segment="pf"), dict(rand(30), segment="pj"), rand(7)], primul="pj")
         self.assertEqual([g["segment"] for g in r], ["pj", "pf", None])
 
+    def test_moneda_la_dobanzi(self):
+        """Libra · depozit (mip_merge, 08.10.2026): 4,75% în lei, 1,95% în euro și 9 valori fără monedă
+        stăteau într-un singur interval; acum un card pe monedă, lei primul, nespusă la final."""
+        def d(v, valuta):
+            return dict(rand(v, "procent", "depozite|x"), valuta=valuta)
+        r = vox.rezuma([d(2.2, None), d(1.95, "EUR"), d(5.5, None), d(4.75, "LEI"), d(4.5, "RON")],
+                       categorii_rate=("depozite", "credite", "conturi_carduri"))
+        self.assertEqual([(g["moneda"], g["n"], g["minim"], g["maxim"]) for g in r],
+                         [("lei", 2, 4.5, 4.75), ("eur", 1, 1.95, 1.95), (None, 2, 2.2, 5.5)])
+
+    def test_moneda_toata_nespusa(self):
+        """8.559 de rânduri curente n-au moneda în `valuta` (08.10.2026): un singur card, „monedă nespusă”."""
+        r = vox.rezuma([rand(2.2, "procent", "depozite|x"), rand(5.5, "procent", "depozite|x")],
+                       categorii_rate=("depozite",))
+        self.assertEqual([(g["moneda"], g["n"]) for g in r], [(None, 2)])
+
+    def test_moneda_nu_la_comisioane(self):
+        """La comisioane unitatea e moneda prețului: „Administrarea contului (EURO): 20 Lei” are `valuta` EUR."""
+        r = vox.rezuma([dict(rand(20), valuta="EUR"), dict(rand(5), valuta="LEI")], categorii_rate=("depozite",))
+        self.assertEqual(len(r), 1)
+        self.assertNotIn("moneda", r[0])
+
+    def test_frecvente_cand_sunt_mai_multe(self):
+        """BCR · administrare cont PF (mip_merge, 08.10.2026): 16 valori lunare 0–100 lei, 6 anuale 0–1.200 și
+        11 fără frecvență dădeau un singur „0 – 1.200 lei”."""
+        def f(v, frecventa):
+            return dict(rand(v), frecventa=frecventa)
+        r = vox.rezuma([f(20, "lunar"), f(100, "lunar"), f(240, "anual"), f(0, None), f(1200, "anual"),
+                        f(5, "lunar")])
+        self.assertEqual(r[0]["frecvente"], [
+            {"frecventa": "lunar", "n": 3, "minim": 5, "maxim": 100},
+            {"frecventa": "anual", "n": 2, "minim": 240, "maxim": 1200},
+            {"frecventa": None, "n": 1, "minim": 0, "maxim": 0}])
+        self.assertEqual((r[0]["minim"], r[0]["maxim"]), (0, 1200))
+
+    def test_o_singura_frecventa_fara_camp(self):
+        r = vox.rezuma([dict(rand(20), frecventa="lunar"), dict(rand(5), frecventa="lunar")])
+        self.assertNotIn("frecvente", r[0])
+
+    def test_separa_tipurile(self):
+        """Garanti · schimbarea PIN-ului: toate cele 7 valori neambigue sunt limite contactless (08.10.2026)."""
+        limita = rand(100, "lei", "limita|x")
+        pret, alte = vox.separa([rand(5), limita, rand(6.5, "procent", "depozite|12"), rand(1, "lei", "nota|y")],
+                                ("depozite",))
+        self.assertEqual([vox._categorie(x) for x in pret], ["comision", "depozite"])
+        self.assertEqual([x["tip_alt"] for x in alte], ["limita", "nota"])
+        self.assertIs(alte[0], limita)              # același rând: tabelul fișei îl arată cu eticheta
+
 
 class Clasa(unittest.TestCase):
     NUME = {"bcr": "BCR", "brd": "BRD", "ing": "ING Bank", "libra": "Libra Internet Bank"}
@@ -522,6 +570,23 @@ class Intrebari(unittest.TestCase):
     def test_cautare_dupa_text(self):
         self.fa(ClientFals(interp(concept=None, text_cautat="datoria vamală"))).intreaba("vama la BCR?")
         self.assertEqual(self.cautari, [("bcr", None, None, None, None, "datoria vamală")])
+
+    def test_fisa_doar_limite(self):
+        """Garanti · schimbarea PIN-ului: niciun comision, doar limite; rezumatul gol, limitele în `alte`."""
+        self.randuri["bcr"] = [rand(100, "lei", "limita|x"), rand(700, "lei", "limita|x")]
+        r = self.fa(ClientFals(interp())).intreaba("PIN la BCR?")["raspunsuri"][0]
+        self.assertEqual(r["rezumat"], [])
+        self.assertEqual([(g["categorie"], g["n"], g["minim"], g["maxim"]) for g in r["alte"]],
+                         [("limita", 2, 100, 700)])
+        self.assertEqual([v.get("tip_alt") for v in r["randuri"]], ["limita", "limita"])
+
+    def test_fisa_dobanzi_pe_moneda(self):
+        self.randuri["bcr"] = [dict(rand(4.75, "procent", "depozite|12"), valuta="LEI"),
+                               dict(rand(1.95, "procent", "depozite|12"), valuta="EUR")]
+        r = self.fa(ClientFals(interp(concept="nominala", categorie="depozite"))).intreaba("depozit BCR?")
+        rb = r["raspunsuri"][0]
+        self.assertEqual([g["moneda"] for g in rb["rezumat"]], ["lei", "eur"])
+        self.assertEqual(rb["alte"], [])
 
     def test_anterior_ajunge_la_model(self):
         c = ClientFals(interp(banci=["brd"]))

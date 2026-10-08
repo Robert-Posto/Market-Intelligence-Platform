@@ -347,6 +347,40 @@ def _categorie(r):
 # iar „2 gratuite” lângă o dobândă la card s-ar citi ca un comision
 CATEGORII_COMISION = ("comision", "comisioane")
 
+# Moneda unei dobânzi, din coloana `valuta`: LEI 9.195, EUR 4.875, USD 458, RON 28, GBP 18, CHF 13, gol 8.559
+# (mip_merge, 08.10.2026). Doar la dobânzi: la comisioane unitatea (lei / eur) e moneda prețului, iar `valuta`
+# poate fi a contului („Administrarea contului (EURO): 20 Lei”). Nu se ghicește din text: gol = monedă nespusă.
+MONEDE = {"LEI": "lei", "RON": "lei", "EUR": "eur", "USD": "usd", "GBP": "gbp", "CHF": "chf"}
+ORDINE_MONEDA = ("lei", "eur", "usd")
+
+
+def _moneda(r):
+    v = (r.get("valuta") or "").strip().upper()
+    return MONEDE.get(v, v.lower() or None)
+
+
+def _ordine_moneda(moneda):
+    # lei, euro, dolari, celelalte; monedă nespusă la final, ca rândurile fără segment
+    if moneda is None:
+        return len(ORDINE_MONEDA) + 1
+    return ORDINE_MONEDA.index(moneda) if moneda in ORDINE_MONEDA else len(ORDINE_MONEDA)
+
+
+def separa(randuri, categorii_rate):
+    """Rândurile cu prețul serviciului (un comision sau o dobândă din categoriile 2.2) și celelalte: note,
+    limite, cursuri, „dobândă” trecută la un comision. La Garanti · schimbarea PIN-ului, toate cele 7 valori
+    neambigue erau limite la plățile contactless (100–700 lei), iar fișa le arăta drept comision (mip_merge,
+    08.10.2026). Rândurile de alt tip primesc `tip_alt`, ca tabelul fișei să le eticheteze."""
+    pret, alte = [], []
+    for r in randuri:
+        tip = _categorie(r)
+        if tip in CATEGORII_COMISION or tip in categorii_rate:
+            pret.append(r)
+        else:
+            r["tip_alt"] = tip
+            alte.append(r)
+    return pret, alte
+
 
 def _ordine_segment(segment, primul=None):
     # segmentul cerut în întrebare („pentru firme”) vine primul; restul, în ordinea obișnuită
@@ -355,27 +389,53 @@ def _ordine_segment(segment, primul=None):
     return ORDINE_SEGMENT.index(segment) if segment in ORDINE_SEGMENT else len(ORDINE_SEGMENT)
 
 
-def rezuma(randuri, primul=None):
+def rezuma(randuri, primul=None, categorii_rate=()):
     """Pe segment, unitate și categorie: câte valori, intervalul, câte gratuite; fără cele ambigue, ca în Sertar.
 
     Pe categorie, nu doar pe unitate: `nominala` e și dobânda de depozit, și cea de credit, iar fără
     categorie în întrebare un singur interval le-ar amesteca (6,5% la depozit cu 9,9% la ipotecar).
     Pe segment, cu PF primul (`ORDINE_SEGMENT`); un rând fără segment în sursă are grupa lui, la final.
+    La dobânzi (`categorii_rate`), și pe monedă: la Libra · depozit, 4,75% în lei, 1,95% în euro și 9 valori
+    fără monedă stăteau într-un singur interval, 1,95–5,5% (mip_merge, 08.10.2026). La comisioane, o grupă cu
+    mai multe frecvențe primește `frecvente`: la BCR · administrare cont PF, 16 valori lunare (0–100 lei),
+    6 anuale (0–1.200) și 11 fără frecvență dădeau un singur „0 – 1.200 lei”.
     """
-    grupe = {}
+    grupe, pe_frecventa = {}, {}
     for r in randuri:
         v = r.get("valoare")
         if r.get("ambiguu") or v is None:
             continue
-        cheie = (r.get("segment"), r.get("unitate") or "", _categorie(r))
-        g = grupe.setdefault(cheie, {"segment": cheie[0], "unitate": cheie[1], "categorie": cheie[2],
-                                     "n": 0, "minim": v, "maxim": v, "gratuite": 0})
+        categorie = _categorie(r)
+        dobanda = categorie in categorii_rate
+        cheie = (r.get("segment"), r.get("unitate") or "", categorie, _moneda(r) if dobanda else None)
+        g = grupe.get(cheie)
+        if g is None:
+            g = grupe[cheie] = {"segment": cheie[0], "unitate": cheie[1], "categorie": categorie,
+                                "n": 0, "minim": v, "maxim": v, "gratuite": 0}
+            if dobanda:
+                g["moneda"] = cheie[3]
         g["n"] += 1
         g["minim"] = min(g["minim"], v)
         g["maxim"] = max(g["maxim"], v)
-        g["gratuite"] += int(v == 0 and cheie[2] in CATEGORII_COMISION)
-    return sorted(grupe.values(),
-                  key=lambda g: (_ordine_segment(g["segment"], primul), -g["n"], g["categorie"], g["unitate"]))
+        g["gratuite"] += int(v == 0 and categorie in CATEGORII_COMISION)
+        if categorie in CATEGORII_COMISION:
+            frecventa = r.get("frecventa") or None
+            f = pe_frecventa.setdefault(cheie, {}).setdefault(
+                frecventa, {"frecventa": frecventa, "n": 0, "minim": v, "maxim": v})
+            f["n"] += 1
+            f["minim"] = min(f["minim"], v)
+            f["maxim"] = max(f["maxim"], v)
+    for cheie, frecvente in pe_frecventa.items():
+        if len(frecvente) > 1:
+            grupe[cheie]["frecvente"] = sorted(
+                frecvente.values(), key=lambda f: (-f["n"], f["frecventa"] is None, f["frecventa"] or ""))
+    # tipurile, după câte valori au în segment; în același tip, moneda înaintea mărimii grupei
+    pe_tip = {}
+    for g in grupe.values():
+        pe_tip[(g["segment"], g["categorie"])] = pe_tip.get((g["segment"], g["categorie"]), 0) + g["n"]
+    return sorted(grupe.values(), key=lambda g: (
+        _ordine_segment(g["segment"], primul), -pe_tip[(g["segment"], g["categorie"])], g["categorie"],
+        _ordine_moneda(g.get("moneda")), -g["n"], g["unitate"]))
 
 
 def clasa(celule, sens, metrica, evidentiate, nume):
@@ -620,7 +680,7 @@ class Vox:
             brut = None
         return brut, tokeni, r.stop_reason
 
-    def _raspuns(self, banca, interp):
+    def _raspuns(self, banca, interp, ctx):
         text = None if interp["concept"] else interp["text_cautat"]
 
         def cauta(termen, produs):
@@ -648,6 +708,8 @@ class Vox:
         # PF primele, înainte de tăierea la MAX_RANDURI: la BCR · administrare cont primele 50 de rânduri
         # (ordinea pe serviciu) erau 18 PF, 19 PFA și 13 PJ amestecate (mip_merge, 07.10.2026)
         randuri = sorted(randuri, key=lambda r: _ordine_segment(r.get("segment"), interp["segment"]))
+        categorii_rate = ctx["categorii"]
+        pret, alte = separa(randuri, categorii_rate)
         lipsa = None if randuri else self._stare_banca(banca)
         return {
             "banca": banca,
@@ -659,7 +721,9 @@ class Vox:
             # rezumatul are doar valorile cu cifră; fără acest număr, „1 valoare” stătea deasupra unui
             # tabel mai lung (589 de valori doar text, neambigue, în mip_merge, 07.10.2026)
             "fara_cifra": sum(1 for r in randuri if r.get("valoare") is None and not r.get("ambiguu")),
-            "rezumat": rezuma(randuri, interp["segment"]),
+            "rezumat": rezuma(pret, interp["segment"], categorii_rate),
+            # notele, limitele, cursurile: separat, ca să nu treacă drept prețul cerut
+            "alte": rezuma(alte, interp["segment"], categorii_rate),
             "randuri": randuri[:MAX_RANDURI],
             "filtre_relaxate": relaxate,
             "stare_banca": lipsa["stare"] if lipsa else None,
@@ -715,7 +779,7 @@ class Vox:
         cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"], tokeni["scriere_cache"])
         rand.update(interpretare=interp, stop=stop, tokeni=tokeni, cost_usd=cost)
         try:
-            raspunsuri = [self._raspuns(b, interp) for b in interp["banci"]] if interp["tip"] == "cautare" else []
+            raspunsuri = [self._raspuns(b, interp, ctx) for b in interp["banci"]] if interp["tip"] == "cautare" else []
             clasament = self._clasament_raspuns(interp, ctx) if interp["tip"] == "clasament" else None
         except Exception as exc:
             # apelul la model s-a plătit deja: întrebarea intră în jurnal și când cade baza
