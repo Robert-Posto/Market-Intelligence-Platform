@@ -274,7 +274,7 @@ categoria și termenul căutat, cu schemă strictă; valorile, citatele și docu
 scrie nicio cifră; singurul lui text pe ecran e o întrebare înapoi, etichetată ca atare. Ce n-are
 concept (găleata `comision`) se caută după text în denumirile și citatele băncii, cu cuvintele
 tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
-text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
+text”. Campaniile și recenziile nu intră: pagina răspunde că sunt în afara ei; aplicațiile au punctul lor, mai jos.
 
 - Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
   apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar
@@ -343,6 +343,19 @@ text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în af
 - **De ce lipsește o bancă.** Fișa goală spune câte surse ale băncii sunt interzise de `robots.txt`
   sau refuzate de site și câte sunt PDF-uri (ING: 48 de PDF-uri interzise din 158 de surse), ori că
   valoarea n-a apărut în sursele colectate; și că lipsa din bază nu înseamnă că banca n-are produsul.
+- **Aplicațiile** (08.10.2026). „Ce bănci au RoPay?”, „Ce are BT Pay și n-are Libra?”, „Ce notă are aplicația
+  Libra?”, „Care bancă are cea mai bună aplicație?”: tipul `aplicatii`. Funcțiile vin din analiza APK (24 de
+  aplicații, 13 funcții, cu verdictul paginii Android: „sigur”, „probabil”, „absent”, „neconcludent”), notele din App
+  Store (în bază, 19 aplicații, 24.09.2026) și din Google Play (`date/google_play.json`, 22 de aplicații, 06.10.2026;
+  fără fișier, fișa spune „Google Play necolectat”). Diferențele dintre două aplicații sunt pe două niveluri: „sigur”
+  față de „absent” e o diferență sigură, „probabil” față de „absent” una probabilă; „neconcludent” nu se compară
+  (BT Pay vs Libra: RoPay sigură; chatul, marketingul și asistentul vocal probabile). Clasamentul notelor n-are prag:
+  nota se compară rotunjită la o zecimală, cu loc comun (în Google Play, BCR, BRD, ING, Revolut și UniCredit au toate
+  4,8). ProCredit e pe locul 1 în App Store cu 5,0 din 6 note, deci fișa spune asta și întreabă ce prag vrei, cu
+  butoanele „Cel puțin 100 de note” (App Store: 12 aplicații clasate, 7 sub prag) și „Cel puțin 1.000 de note” (App
+  Store: 8; Libra, cu 971, iese sub prag). Pragul se poate scrie și în întrebare. Cu funcțiile și numele aplicațiilor,
+  promptul a crescut de la 29.932 la 32.315 caractere (8,0%, `mip_merge`, 08.10.2026); tokenii și costul se măsoară la
+  prima evaluare, care are acum 53 de întrebări (fără `--da`, estimarea scriptului e ~$0,11).
 - Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
   nouă, repornește serverul.
 - Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând

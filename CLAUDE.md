@@ -74,8 +74,8 @@ Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din 
 `app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.
 Tot cu o variabilă, `MIP_PERMITE_VOX=1` (și o cheie reală), `POST /api/vox` cheamă
 modelul doar ca să interpreteze întrebarea (`app/vox.py`): nu scrie în bază, iar cifrele vin
-din bază, niciodată de la model. Conversațiile lui Vox sunt fișiere pe laptop, în
-`loguri/vox/conversatii/`, nu în bază.
+din bază (notele Google Play din `date/google_play.json`, ca 2.3), niciodată de la model.
+Conversațiile lui Vox sunt fișiere pe laptop, în `loguri/vox/conversatii/`, nu în bază.
 
 **Zonă înghețată.** Nu se atinge scheduler-ul și rulările periodice: prioritatea e popularea inițială.
 Rulările manuale (pagina „Rulare manuală”, README) sunt deblocate deliberat; joburile de comparație cu
