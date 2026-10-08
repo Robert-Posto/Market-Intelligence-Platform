@@ -34,6 +34,8 @@ export interface CerereSertar {
   segment?: string
   /** doar segmentul cerut, fără rândurile nemarcate: grupele din Vox, care nu le numără */
   strict?: boolean
+  /** moneda unei dobânzi (lei / eur / usd / gbp / chf / nespusa): o trimit doar cardurile pe monedă din Vox */
+  valuta?: string
 }
 
 /** Textul românesc al datelor: „retrasă din ofertă” e scris de bancă, nu de noi. */
@@ -46,7 +48,7 @@ export default function Sertar({ cerere, onClose }: { cerere: CerereSertar | nul
     queryKey: ['celula', cerere],
     enabled: !!cerere,
     queryFn: () =>
-      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '', segment: cerere!.segment, strict: cerere!.strict ? 1 : undefined }),
+      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '', segment: cerere!.segment, strict: cerere!.strict ? 1 : undefined, valuta: cerere!.valuta }),
   })
   const titlu = cerere ? `${meta.data?.nume[cerere.banca] ?? cerere.banca} · ${etNume(cerere.camp, t)}` : ''
   return (

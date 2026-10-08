@@ -22,7 +22,7 @@ import Sertar, { type CerereSertar } from '../components/Sertar'
 import { etNume, etSegment, unitTxt } from '../components/valori'
 import { areCheie, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
-import { num } from '../util/format'
+import { formatZi, num } from '../util/format'
 import Clasament from './vox/Clasament'
 import Conversatii, { cand } from './vox/Conversatii'
 import '../styles/vox.css'
@@ -469,6 +469,13 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
   // categoria spune ceva doar când grupele diferă (dobândă de depozit vs. de credit)
   const multeCategorii = new Set(rb.rezumat.map((g) => g.categorie)).size > 1
   const vizibile = toate ? rb.randuri : rb.randuri.slice(0, PRIMELE)
+  const alte = rb.alte ?? []
+  // „Vezi dovezile” de pe o grupă: aceeași bancă, concept, unitate și tip; la dobânzi, și moneda grupei
+  const dovezi = (g: GrupaRezumat) => (rb.mod === 'concept' && i.concept ? () => onDovezi({
+    banca: rb.banca, camp: i.concept!, unitate: g.unitate, scenariu: g.categorie, termen, produs,
+    ...(cuSegmente ? { segment: g.segment ?? 'nemarcat', strict: true } : {}),
+    ...(g.moneda !== undefined ? { valuta: g.moneda ?? 'nespusa' } : {}),
+  }) : undefined)
   return (
     <div className="vox-fisa">
       {cap}
@@ -478,15 +485,24 @@ function FisaBanca({ rb, i, m, onDovezi }: { rb: RaspunsBanca; i: Interpretare; 
           {cuSegmente && <span className="vox-segment-cap">{etSegment(s, t)}</span>}
           <div className="vox-kpis">
             {grupe.map((g) => (
-              <PlacaRezumat key={`${g.unitate}|${g.categorie}`} g={g} multeCategorii={multeCategorii}
-                onDovezi={rb.mod === 'concept' && i.concept ? () => onDovezi({
-                  banca: rb.banca, camp: i.concept!, unitate: g.unitate, scenariu: g.categorie, termen, produs,
-                  ...(cuSegmente ? { segment: g.segment ?? 'nemarcat', strict: true } : {}),
-                }) : undefined} />
+              <PlacaRezumat key={`${g.unitate}|${g.categorie}|${g.moneda ?? ''}`} g={g} multeCategorii={multeCategorii} onDovezi={dovezi(g)} />
             ))}
           </div>
         </div>
       ))}
+      {!rb.rezumat.length && alte.length > 0 && (
+        <p className="vox-nota"><span className="vox-punct" />{textDoarAlte(alte, i, t)}</p>
+      )}
+      {alte.length > 0 && (
+        <div className="vox-segment vox-alte">
+          <span className="vox-segment-cap">{t('vox.alte.titlu')}</span>
+          <div className="vox-kpis">
+            {alte.map((g) => (
+              <PlacaRezumat key={`${g.segment ?? ''}|${g.unitate}|${g.categorie}`} g={g} multeCategorii tip onDovezi={dovezi(g)} />
+            ))}
+          </div>
+        </div>
+      )}
       {/* la căutarea după text SQL-ul se oprește la 50: rezumatul e pe ele, nu pe toate */}
       {rb.limitat && <p className="vox-nota"><span className="vox-punct" />{t('vox.din_primele', { n: rb.randuri.length })}</p>}
       {rb.ambigue > 0 && <p className="vox-nota"><span className="vox-punct" />{tn('vox.ambigue', rb.ambigue)}</p>}
@@ -559,20 +575,52 @@ function textBlocaje(b: NonNullable<RaspunsBanca['blocaje']>, tn: Tn, cuValoriFa
   return cuValoriFaraFiltre ? '' : tn('vox.blocaje.niciuna', b.surse)
 }
 
-function PlacaRezumat({ g, multeCategorii, onDovezi }: { g: GrupaRezumat; multeCategorii: boolean; onDovezi?: () => void }) {
+/** „Nicio valoare de comision; am găsit doar limite (7).”: Garanti · schimbarea PIN-ului (mip_merge, 08.10.2026). */
+function textDoarAlte(alte: GrupaRezumat[], i: Interpretare, t: Tr): string {
+  const n = alte.reduce((s, g) => s + g.n, 0)
+  const tipuri = [...new Set(alte.map((g) => g.categorie))].map((c) => eticheta(`vox.alte.tipuri.${c}`, c, t)).join(', ')
+  return t('vox.alte.doar', { ce: t(i.categorie ? 'vox.alte.ce_dobanda' : 'vox.alte.ce_comision'), tipuri, n })
+}
+
+/** Eticheta unei frecvențe din date („lunar”, „pe tranzacție”); una necunoscută rămâne cum e în date. */
+function etFrecventa(f: string | null, t: Tr): string {
+  if (!f) return t('vox.frecventa.fara')
+  const k = f.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '_')
+  return eticheta(`vox.frecventa.${k}`, f, t)
+}
+
+function PlacaRezumat({ g, multeCategorii, tip, onDovezi }: {
+  g: GrupaRezumat; multeCategorii: boolean; tip?: boolean; onDovezi?: () => void
+}) {
   const { t, tn, locale } = useLang()
   const unitate = unitTxt(g.unitate, t).trim()
   const egal = g.minim === g.maxim
+  const interval = (a: number, b: number) => (a === b ? num(a, locale) : `${num(a, locale)} – ${num(b, locale)}`)
   return (
     <div className="vox-kpi">
-      <span className="v">
-        {egal ? num(g.minim, locale) : `${num(g.minim, locale)} – ${num(g.maxim, locale)}`}
-        {unitate && <small> {unitate}</small>}
-      </span>
+      {g.frecvente?.length
+        ? (
+          // BCR · administrare cont PF: „0 – 1.200 lei” punea 6 sume anuale lângă 16 lunare (08.10.2026)
+          <span className="vox-frecvente">
+            {g.frecvente.map((f) => (
+              <span key={f.frecventa ?? '-'}>
+                <b>{interval(f.minim, f.maxim)}{unitate && <small> {unitate}</small>}</b>
+                {' '}{etFrecventa(f.frecventa, t)} · {tn('vox.kpi', f.n)}
+              </span>
+            ))}
+          </span>
+        )
+        : (
+          <span className="v">
+            {interval(g.minim, g.maxim)}
+            {unitate && <small> {unitate}</small>}
+          </span>
+        )}
       <span className="l">
         {egal && g.n > 1 ? tn('vox.kpi_egal', g.n) : tn('vox.kpi', g.n)}
         {g.gratuite > 0 && <> · {tn('vox.gratuite', g.gratuite)}</>}
-        {multeCategorii && <> · {eticheta(`vox.categorie.${g.categorie}`, g.categorie, t)}</>}
+        {g.moneda !== undefined && <> · {eticheta(`vox.moneda.${g.moneda ?? 'nespusa'}`, g.moneda ?? '', t)}</>}
+        {(multeCategorii || tip) && <> · {eticheta(tip ? `vox.tip.${g.categorie}` : `vox.categorie.${g.categorie}`, g.categorie, t)}</>}
       </span>
       {onDovezi && <button type="button" className="vox-link" onClick={onDovezi}>{t('vox.vezi_dovezi')}</button>}
     </div>
@@ -588,8 +636,12 @@ function Rand({ v }: { v: ValoareDovada }) {
       <td>
         {v.serviciu ?? '—'}{v.conditie && <span className="sub">{v.conditie}</span>}
         {v.segment && <span className="vox-seg"><PillSegment segment={v.segment} /></span>}
+        {v.tip_alt && <span className="vox-seg"><Pill>{eticheta(`vox.tip.${v.tip_alt}`, v.tip_alt, t)}</Pill></span>}
       </td>
-      <td className="dr val">{valoare}{v.frecventa && <span className="sub">{v.frecventa}</span>}</td>
+      <td className="dr val">
+        {valoare}{v.frecventa && <span className="sub">{v.frecventa}</span>}
+        {v.data_vigoare && <span className="sub">{t('vox.din_data', { data: formatZi(v.data_vigoare, locale) })}</span>}
+      </td>
       <td>
         {v.ambiguu && <><Pill tip="amb" title={v.motiv_ambiguu ?? undefined}>{t('vox.ambiguu')}</Pill>{' '}</>}
         <LinkSursa r={v} />

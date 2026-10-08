@@ -33,6 +33,10 @@ export const ValoareDovada = z
     pagina_documente_motiv: z.string().nullable(),
     fisier: z.string().nullable(),
     ancora: z.string().nullable(),
+    /** data intrării în vigoare (ISO), când sursa o are; o arată doar fișa din Vox */
+    data_vigoare: z.string().nullable().optional(),
+    /** tipul rândului când nu e prețul serviciului („limita”, „nota” …): îl pune Vox, nu /api/celula */
+    tip_alt: z.string().nullable().optional(),
   })
   .passthrough()
 export type ValoareDovada = z.infer<typeof ValoareDovada>

@@ -26,16 +26,28 @@ export const Interpretare = z.object({
 })
 export type Interpretare = z.infer<typeof Interpretare>
 
+/** O frecvență dintr-o grupă de comision (lunar, anual …; null = sursa n-o spune). */
+export const FrecventaGrupa = z.object({ frecventa: z.string().nullable(), n: z.number(), minim: z.number(), maxim: z.number() })
+export type FrecventaGrupa = z.infer<typeof FrecventaGrupa>
+
+/** Butoanele de sub un răspuns, care continuă fără model (app/vox.py, `BUTOANE`). */
+export const Buton = z.enum(['firme', 'pf', 'libra'])
+export type Buton = z.infer<typeof Buton>
+
 /** Pe segment (pf / pfa / imm / pj), unitate și categorie (primul segment din cod_scenariu), fără valorile ambigue. */
 export const GrupaRezumat = z.object({
   /** null = fără segment în sursă; lipsește în conversațiile salvate înainte de 07.10.2026 */
   segment: z.string().nullable().optional(),
   unitate: z.string(),
   categorie: z.string(),
+  /** doar la dobânzi: lei / eur / usd / gbp / chf, null = monedă nespusă; lipsește la comisioane și în conversațiile vechi */
+  moneda: z.string().nullable().optional(),
   n: z.number(),
   minim: z.number(),
   maxim: z.number(),
   gratuite: z.number(),
+  /** doar la comisioanele cu mai multe frecvențe (de pildă lunar și anual); lipsește altfel */
+  frecvente: z.array(FrecventaGrupa).optional(),
 })
 export type GrupaRezumat = z.infer<typeof GrupaRezumat>
 
@@ -49,6 +61,8 @@ export const RaspunsBanca = z
     /** neambigue, fără cifră (doar `valoare_text`): nu intră în rezumat, dar sunt în `total` */
     fara_cifra: z.number(),
     rezumat: z.array(GrupaRezumat),
+    /** notele, limitele, cursurile găsite la serviciu, separat de preț; lipsește în conversațiile vechi */
+    alte: z.array(GrupaRezumat).optional(),
     randuri: z.array(ValoareDovada),
     stare_banca: z.enum(['blocata', 'fara_surse']).nullable(),
     /** câte surse ale băncii sunt blocate și de ce, doar la 0 valori; lipsește în conversațiile vechi */
@@ -68,6 +82,7 @@ export const RandClasament = z
     minim: z.number(), maxim: z.number(), n: z.number(),
     serviciu: z.string().nullable(), frecventa: z.string().nullable(), conditie: z.string().nullable(),
     segment_necunoscut: z.boolean().nullable().optional(), evidentiata: z.boolean(),
+    alte_monede: z.object({ n: z.number(), din: z.number() }).optional(),
   })
   .passthrough()
 export type RandClasament = z.infer<typeof RandClasament>
@@ -115,6 +130,10 @@ export const RaspunsIntrebare = z
     model: z.string(),
     tokeni: z.object({ intrare: z.number(), iesire: z.number(), citire_cache: z.number(), scriere_cache: z.number() }),
     cost_usd: z.number().nullable(),
+    /** butoanele de sub răspuns; lipsesc în conversațiile salvate înainte de 08.10.2026 */
+    butoane: z.array(Buton).optional(),
+    /** butonul care a dat tura (fără model) */
+    buton: Buton.optional(),
   })
   .passthrough()
 export type RaspunsIntrebare = z.infer<typeof RaspunsIntrebare>
