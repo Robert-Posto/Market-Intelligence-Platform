@@ -605,8 +605,8 @@ class Intrebari(unittest.TestCase):
         self.assertNotIn("thinking", cerere)                       # Haiku 4.5: fără gândire extinsă
         self.assertEqual(set(cerere["output_config"]), {"format"})  # și fără `effort`, care dă eroare
         self.assertEqual(cerere["output_config"]["format"]["type"], "json_schema")
-        # cache de o oră: în conversația din 08.10.2026, 3 din 18 întrebări au rescris promptul după pauze de
-        # 5–9 minute și au costat 4,9 din cei 7,5 cenți
+        # cache de o oră: în conversația din 08.10.2026 (18 întrebări, 7,5 cenți), promptul s-a scris în cache
+        # de 3 ori, la prima întrebare și după două pauze, de 9 și de 5 minute: 4,9 cenți
         self.assertEqual(cerere["system"][0]["cache_control"], {"type": "ephemeral", "ttl": "1h"})
         # patru evaluări cu aceleași 40 de întrebări au dat 36, 36, 39 și 37, cu alte greșeli de fiecare
         # dată (07.10.2026): la temperatura implicită aceeași întrebare putea fi înțeleasă altfel

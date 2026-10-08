@@ -714,9 +714,10 @@ class Vox:
             r = self._clientul().messages.create(
                 model=m,
                 max_tokens=MAX_TOKENS,
-                # o oră, nu 5 minute: în conversația din 08.10.2026, 3 din 18 întrebări au rescris promptul după
-                # pauze de 5–9 minute și au costat 4,9 din cei 7,5 cenți; documentația recomandă ora pentru
-                # întrebări la 5–60 de minute una de alta
+                # o oră, nu 5 minute: în conversația din 08.10.2026 (18 întrebări, 7,5 cenți), promptul s-a scris în
+                # cache de 3 ori, la prima întrebare și după două pauze, de 9 și de 5 minute: 4,9 cenți. Cu ora,
+                # aceeași conversație ar fi costat 5,5 cenți; documentația recomandă ora pentru întrebări la
+                # 5–60 de minute una de alta
                 system=[{"type": "text", "text": sistem, "cache_control": {"type": "ephemeral", "ttl": "1h"}}],
                 messages=[{"role": "user", "content": continut}],
                 output_config={"format": {"type": "json_schema", "schema": sch}},
