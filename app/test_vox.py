@@ -519,6 +519,95 @@ class Clasa(unittest.TestCase):
         self.assertNotIn("alte_monede", r["brd"])
 
 
+def nota(banca, valoare, evaluari, **k):
+    return {"banca": banca, "nota": valoare, "evaluari": evaluari, **k}
+
+
+NUME = {"bcr": "BCR", "brd": "BRD — Groupe Société Générale", "ing": "ING Bank", "libra": "Libra Internet Bank",
+        "procredit": "ProCredit Bank", "revolut": "Revolut"}
+
+
+class Note(unittest.TestCase):
+    """Clasamentul notelor (decizia lui Nicolae, 08.10.2026): fără prag, loc comun la aceeași notă cu o zecimală."""
+
+    def test_loc_comun_in_ordinea_numelui(self):
+        """BRD 4,83, BCR 4,81 și ING 4,79 au toate 4,8 în Google Play (06.10.2026): locurile 1–3, după nume."""
+        c = vox.clasa_note([nota("ing", 4.79, 182106), nota("brd", 4.83, 234221), nota("bcr", 4.81, 155826),
+                            nota("libra", 4.59, 3083)], {"libra"}, NUME)
+        self.assertEqual([(r["banca"], r["loc"], r["loc_pana"], r["nota_afisata"]) for r in c["randuri"]],
+                         [("bcr", 1, 3, 4.8), ("brd", 1, 3, 4.8), ("ing", 1, 3, 4.8), ("libra", 4, 4, 4.6)])
+        self.assertEqual([r["evidentiata"] for r in c["randuri"]], [False, False, False, True])
+        self.assertEqual((c["sub_prag"], c["fara_nota"]), ([], []))
+
+    def test_rotunjire_in_sus_de_la_cinci(self):
+        """`round(4.25, 1)` dă 4,2 (rotunjire la par); magazinul arată 4,3. TBI are 4,65 în Google Play: 4,7."""
+        c = vox.clasa_note([nota("ing", 4.25, 10), nota("bcr", 4.65, 10)], set(), NUME)
+        self.assertEqual([(r["banca"], r["nota_afisata"]) for r in c["randuri"]], [("bcr", 4.7), ("ing", 4.3)])
+
+    def test_fara_prag_toate_clasate(self):
+        """În App Store, ProCredit e pe locul 1 cu 5,0 din 6 note (24.09.2026): fără prag, rămâne acolo."""
+        c = vox.clasa_note([nota("procredit", 5.0, 6), nota("revolut", 4.91, 332368)], set(), NUME)
+        self.assertEqual([(r["banca"], r["loc"]) for r in c["randuri"]], [("procredit", 1), ("revolut", 2)])
+
+    def test_cu_prag_sub_prag_separat(self):
+        c = vox.clasa_note([nota("procredit", 5.0, 6), nota("revolut", 4.91, 332368), nota("libra", 4.47, 971)],
+                           {"libra"}, NUME, prag=1000)
+        self.assertEqual([(r["banca"], r["loc"]) for r in c["randuri"]], [("revolut", 1)])
+        self.assertEqual([(r["banca"], r["evidentiata"]) for r in c["sub_prag"]],
+                         [("libra", True), ("procredit", False)])
+        self.assertNotIn("loc", c["sub_prag"][0])
+
+    def test_fara_nota_la_final(self):
+        c = vox.clasa_note([nota("bcr", None, 0), nota("ing", 4.0, 5)], set(), NUME)
+        self.assertEqual([r["banca"] for r in c["randuri"]], ["ing"])
+        self.assertEqual([(r["banca"], r["nota_afisata"]) for r in c["fara_nota"]], [("bcr", None)])
+
+    def test_putine_note(self):
+        play = vox.clasa_note([nota("bcr", 4.81, 155826), nota("procredit", 2.5, 16)], set(), NUME)
+        ios = vox.clasa_note([nota("procredit", 5.0, 6), nota("ing", 4.85, 125858), nota("brd", 4.0, 4)], set(), NUME)
+        self.assertEqual(vox.putine_note({"play": play, "app_store": ios}),
+                         {"app_store": 2, "play": 1, "prag": 100,
+                          "primul": {"magazin": "app_store", "banca": "procredit", "loc": 1, "loc_pana": 1, "evaluari": 6}})
+
+    def test_putine_note_nimic_sau_fara_magazin(self):
+        play = vox.clasa_note([nota("bcr", 4.81, 155826)], set(), NUME)
+        self.assertIsNone(vox.putine_note({"play": play, "app_store": None}))
+
+
+def coloana(banca, **verdicte):
+    return {"banca": banca, "fara_aplicatie": False,
+            "functii": {f: {"verdict": v, "surse": [], "dovada_text": None} for f, v in verdicte.items()}}
+
+
+class Diferente(unittest.TestCase):
+    """Diferențele pe două niveluri (decizia lui Nicolae, 08.10.2026)."""
+
+    def test_bt_pay_si_libra(self):
+        """BT Pay vs Libra (mip_merge, 08.10.2026): RoPay sigură; chatul, marketingul și asistentul vocal, probabile;
+        Huawei și Google Wallet le au amândouă („sigur” / „probabil”), deci nu sunt diferențe."""
+        bt = coloana("banca-transilvania", ropay="sigur", in_app_chat="probabil", marketing="probabil",
+                     voice="absent", huawei="probabil", wallet_provisioning="sigur")
+        libra = coloana("libra", ropay="absent", in_app_chat="absent", marketing="absent",
+                        voice="probabil", huawei="sigur", wallet_provisioning="probabil")
+        self.assertEqual([(x["functie"], x["nivel"], x["au"], x["n_au"]) for x in vox.diferente([bt, libra])],
+                         [("in_app_chat", "probabil", ["banca-transilvania"], ["libra"]),
+                          ("marketing", "probabil", ["banca-transilvania"], ["libra"]),
+                          ("ropay", "sigur", ["banca-transilvania"], ["libra"]),
+                          ("voice", "probabil", ["libra"], ["banca-transilvania"])])
+
+    def test_neconcludent_nu_intra(self):
+        self.assertEqual(vox.diferente([coloana("bcr", ropay="sigur"), coloana("brci", ropay="neconcludent")]), [])
+
+    def test_trei_aplicatii_nivel_dupa_cea_sigura(self):
+        d = vox.diferente([coloana("bcr", ropay="probabil"), coloana("brd", ropay="sigur"),
+                           coloana("libra", ropay="absent")])
+        self.assertEqual(d, [{"functie": "ropay", "nivel": "sigur", "au": ["bcr", "brd"], "n_au": ["libra"]}])
+
+    def test_banca_fara_aplicatie_nu_intra(self):
+        d = vox.diferente([coloana("bcr", ropay="sigur"), {"banca": "pko", "fara_aplicatie": True, "functii": {}}])
+        self.assertEqual(d, [])
+
+
 class Butoane(unittest.TestCase):
     """Butoanele de sub un răspuns (decizia lui Nicolae, 08.10.2026): fără model, deci gratuite."""
 

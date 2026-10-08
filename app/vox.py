@@ -21,6 +21,7 @@ import re
 import secrets
 import threading
 import unicodedata
+from decimal import ROUND_HALF_UP, Decimal
 
 RADACINA = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR_JURNAL = os.path.join(RADACINA, "loguri", "vox")
@@ -533,6 +534,87 @@ def clasa(celule, sens, metrica, evidentiate, nume):
             r["loc"], r["loc_pana"] = i + 1, j + 1
         i = j + 1
     return randuri
+
+
+VERDICTE = ("sigur", "probabil", "absent", "neconcludent")
+# „sigur” = găsit în cel puțin două surse (cod, texte, fișiere web), „probabil” = într-una; „neconcludent” = aplicație
+# web cu textul pe server, deci absența nu dovedește nimic (pagina Android, mobil.android_verdict_d.*)
+ARE = ("sigur", "probabil")
+
+
+def _nota_zecimala(nota):
+    """Nota cu o zecimală, ca în magazin. `round(4.25, 1)` dă 4,2 (rotunjire la par), magazinul arată 4,3."""
+    return Decimal(str(nota)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+
+
+def clasa_note(randuri, evidentiate, nume, prag=None):
+    """Clasamentul notelor dintr-un magazin, fără prag implicit (decizia lui Nicolae, 08.10.2026): ProCredit e pe
+    locul 1 în App Store cu 5,0 din 6 note (24.09.2026), iar fișa spune asta (`putine_note`). Nota se compară
+    rotunjită la o zecimală, ca în magazin: în Google Play, BRD 4,83, BCR 4,81, ING 4,79, Revolut 4,78 și UniCredit
+    4,77 au toate 4,8 (06.10.2026), deci loc comun, în ordinea numelui, ca la `clasa`. Cu prag, aplicațiile cu mai
+    puține note trec în `sub_prag`; cele fără notă, în `fara_nota`. Rândurile păstrează câmpurile primite."""
+    def dupa_nume(r):
+        return (nume.get(r["banca"]) or r["banca"]).lower()
+
+    def rand(r, **extra):
+        afisata = float(_nota_zecimala(r["nota"])) if r["nota"] is not None else None
+        return {**r, "nota_afisata": afisata, "evidentiata": r["banca"] in evidentiate, **extra}
+
+    clasate, sub, fara = [], [], []
+    for r in randuri:
+        if r["nota"] is None:
+            fara.append(r)
+        elif prag and (r["evaluari"] or 0) < prag:
+            sub.append(r)
+        else:
+            clasate.append(r)
+    clasate.sort(key=lambda r: (-_nota_zecimala(r["nota"]), dupa_nume(r)))
+    rez, i = [], 0
+    while i < len(clasate):
+        j = i
+        while j + 1 < len(clasate) and _nota_zecimala(clasate[j + 1]["nota"]) == _nota_zecimala(clasate[i]["nota"]):
+            j += 1
+        rez += [rand(r, loc=i + 1, loc_pana=j + 1) for r in clasate[i:j + 1]]
+        i = j + 1
+    return {"randuri": rez, "sub_prag": [rand(r) for r in sorted(sub, key=dupa_nume)],
+            "fara_nota": [rand(r) for r in sorted(fara, key=dupa_nume)]}
+
+
+def putine_note(clasamente):
+    """Fără prag: câte aplicații clasate au sub PRAG_AVERTIZARE note, pe magazin, și cea mai bine clasată dintre ele,
+    pe care fișa o numește când întreabă ce prag vrea utilizatorul (ProCredit, locul 1 în App Store cu 6 note,
+    24.09.2026). None când nu e niciuna."""
+    rez, candidati = {}, []
+    for magazin in ("app_store", "play"):
+        c = clasamente.get(magazin)
+        if not c:
+            continue
+        mici = [r for r in c["randuri"] if (r["evaluari"] or 0) < PRAG_AVERTIZARE]
+        rez[magazin] = len(mici)
+        candidati += [(r["loc"], magazin, r) for r in mici]
+    if not candidati:
+        return None
+    _, magazin, r = min(candidati, key=lambda x: x[0])
+    return {**rez, "prag": PRAG_AVERTIZARE,
+            "primul": {"magazin": magazin, "banca": r["banca"], "loc": r["loc"], "loc_pana": r["loc_pana"],
+                       "evaluari": r["evaluari"]}}
+
+
+def diferente(coloane):
+    """Funcțiile pe care o aplicație le are („sigur” sau „probabil”), iar alta nu („absent”), pe două niveluri
+    (decizia lui Nicolae, 08.10.2026): `sigur` dacă una dintre cele care o au e „sigur”, altfel `probabil`.
+    „Neconcludent” nu intră în comparație. BT Pay vs Libra (mip_merge, 08.10.2026): RoPay sigură; chatul,
+    marketingul și asistentul vocal, probabile."""
+    cu = [c for c in coloane if not c.get("fara_aplicatie")]
+    rez = []
+    for f in sorted({f for c in cu for f in c["functii"]}):
+        verdicte = [(c["banca"], (c["functii"].get(f) or {}).get("verdict")) for c in cu]
+        au = [b for b, v in verdicte if v in ARE]
+        n_au = [b for b, v in verdicte if v == "absent"]
+        if au and n_au:
+            nivel = "sigur" if any(v == "sigur" for _, v in verdicte) else "probabil"
+            rez.append({"functie": f, "nivel": nivel, "au": au, "n_au": n_au})
+    return rez
 
 
 # Butoanele de sub un răspuns (decizia lui Nicolae, 08.10.2026): continuă fără model, deci gratuit și fără
