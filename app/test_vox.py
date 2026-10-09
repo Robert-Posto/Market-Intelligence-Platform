@@ -1779,6 +1779,42 @@ class SegmentDinIntrebare(unittest.TestCase):
         self.assertIsNone(vox.segment_din_intrebare("immobil"))
 
 
+FUNCTII_CTX = [{"functie": f} for f in (
+    "anti_fraud", "hce_contactless", "huawei", "identity_verification", "in_app_chat", "marketing", "nfc_id_chip",
+    "ropay", "scan_pay", "strong_auth", "video_call", "voice", "wallet_provisioning")]
+
+
+class FunctieDinIntrebare(unittest.TestCase):
+    """Funcția numită în întrebare, completată de cod când modelul o lasă goală (09.10.2026)."""
+
+    def f(self, t, functii=FUNCTII_CTX):
+        return vox.functie_din_intrebare(t, functii)
+
+    def test_o_functie_numita(self):
+        self.assertEqual(self.f("Are BT Pay RoPay?"), "ropay")
+        self.assertEqual(self.f("Are George plata contactless?"), "hce_contactless")
+        self.assertEqual(self.f("Merge aplicația CEC pe Huawei?"), "huawei")
+        self.assertEqual(self.f("Are Libra autentificare biometrică?"), "strong_auth")
+
+    def test_nenumita_sau_ambigua(self):
+        self.assertIsNone(self.f("Ce funcții are aplicația BRD?"))
+        self.assertIsNone(self.f("Ce are BT Pay și n-are Libra?"))
+        self.assertIsNone(self.f("Are BCR Apple Pay?"))
+        self.assertIsNone(self.f("Are George chat și RoPay?"))
+
+    def test_slug_absent_din_functii(self):
+        self.assertIsNone(self.f("Are BT Pay RoPay?", [{"functie": "in_app_chat"}]))
+
+    def test_in_vox(self):
+        def fa(**k):
+            return vox.Vox(context=lambda: CTX, cauta=lambda *a: [], stare_banca=lambda b: None,
+                           client=ClientFals(apl(banci=["bcr"], **k)), dir_jurnal=tempfile.mkdtemp(prefix="vox_f_"))
+        d = fa(functie=None, text_cautat="RoPay").intreaba("Are BT Pay RoPay?")
+        self.assertEqual((d["interpretare"]["functie"], d["interpretare"]["text_cautat"]), ("ropay", None))
+        d = fa(functie="in_app_chat").intreaba("Are BT Pay RoPay?")
+        self.assertEqual(d["interpretare"]["functie"], "in_app_chat")
+
+
 class Http(unittest.TestCase):
     """Rutele din server, pe un port liber, cu un client fals în locul modelului."""
 

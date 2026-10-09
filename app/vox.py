@@ -355,6 +355,36 @@ def segment_din_intrebare(intrebare):
     return gasite[0] if len(gasite) == 1 else None
 
 
+# Cuvintele distinctive ale fiecărei funcții (rădăcini, fără diacritice). „Are BT Pay RoPay?” ieșea fără funcție (parafrazele,
+# 32/33, 09.10.2026), la fel #46 când promptul a primit o frază în plus: regula stă în cod. O funcție nouă din bază, fără
+# cuvinte aici, doar nu are plasă.
+_CUVINTE_FUNCTII = {
+    "anti_fraud": ("fraud",),
+    "hce_contactless": ("contactless",),
+    "huawei": ("huawei",),
+    "identity_verification": ("identit",),
+    "in_app_chat": ("chat",),
+    "marketing": ("marketing",),
+    "nfc_id_chip": ("cip", "pasaport", "buletin"),
+    "ropay": ("ropay",),
+    "scan_pay": ("scan", "poza", "fotografi", "factur", "qr"),
+    "strong_auth": ("biometric", "passkey", "amprent", "faceid", "facial"),
+    "video_call": ("video", "audio"),
+    "voice": ("vocal", "voce", "voice"),
+    "wallet_provisioning": ("wallet", "portofel", "gpay"),
+}
+
+
+def functie_din_intrebare(intrebare, functii):
+    """Slug-ul funcției numite în întrebare sau None (nenumită sau două funcții: nu alegem în locul utilizatorului).
+    `functii` e lista din context; un slug din tabel care nu e în ea se ignoră."""
+    norm = _fara_accente(intrebare)
+    cunoscute = {f["functie"] for f in functii}
+    gasite = [s for s, cuvinte in _CUVINTE_FUNCTII.items() if s in cunoscute
+              and any(re.search(r"(?<![^\W_])" + re.escape(c), norm) for c in cuvinte)]
+    return gasite[0] if len(gasite) == 1 else None
+
+
 def _text(v, maxim):
     if not isinstance(v, str):
         return None
@@ -1210,6 +1240,11 @@ class Vox:
             # plus în prompt a răsturnat #46 („Are George plata contactless?”): regula stă în cod, nu în prompt
             if interp["tip"] in ("cautare", "clasament") and interp["segment"] is None:
                 interp["segment"] = segment_din_intrebare(intrebare)
+            # „Are BT Pay RoPay?” ieșea cu `functie` goală (32/33 parafraze, 09.10.2026): utilizatorul primea toate funcțiile
+            if interp["tip"] == "aplicatii" and interp["aspect"] == "functii" and interp["functie"] is None:
+                f = functie_din_intrebare(intrebare, ctx["functii"])
+                if f:
+                    interp["functie"], interp["text_cautat"] = f, None        # căutarea era chiar funcția
         # singurul marcaj de cache din cerere e cel de o oră, deci orice scriere e de o oră
         cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"],
                             scriere_cache_1h=tokeni["scriere_cache"])
