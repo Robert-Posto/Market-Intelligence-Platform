@@ -318,13 +318,22 @@ def cuvinte_cautare(text):
     return cuvinte[:5]
 
 
+def _fara_accente(s):
+    """Ca `faraDiacritice` din pagină: NFD, fără semnele combinate U+0300–U+036F, litere mici. `DIACRITICE` pliază doar
+    ăâîșşțţ, iar „café” trebuie să se potrivească cu „cafe” ca în îngroșare."""
+    return "".join(c for c in unicodedata.normalize("NFD", s or "") if not "̀" <= c <= "ͯ").lower()
+
+
 def potriveste_recenzia(text, cuvinte):
     """Adevărat dacă fiecare cuvânt căutat (rădăcina din `cuvinte_cautare`) e începutul unui cuvânt din recenzie. Subșirul
-    nu ajunge: „lentă” (rădăcina „lent”) potrivea 13 recenzii, dintre care 12 erau „excelent” (09.10.2026)."""
+    nu ajunge: „lentă” (rădăcina „lent”) potrivea 13 recenzii, dintre care 12 erau „excelent” (09.10.2026).
+
+    Aceeași regulă ca îngroșarea din pagină (cuvinte = litere și cifre, `_` desparte, accentele pliate), ca o recenzie
+    arătată să aibă mereu cuvântul în bold: `\\b` ar fi tratat `_` drept literă."""
     if not cuvinte:
         return True
-    norm = (text or "").lower().translate(DIACRITICE)
-    return all(re.search(r"\b" + re.escape(c), norm) for c in cuvinte)
+    norm = _fara_accente(text)
+    return all(re.search(r"(?<![^\W_])" + re.escape(_fara_accente(c)), norm) for c in cuvinte)
 
 
 def _text(v, maxim):

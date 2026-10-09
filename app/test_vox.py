@@ -1595,6 +1595,14 @@ class PotrivireRecenzii(unittest.TestCase):
         self.assertTrue(vox.potriveste_recenzia("Logarea nu merge", vox.cuvinte_cautare("logare")))
         self.assertTrue(vox.potriveste_recenzia("Nu pot face plăți", vox.cuvinte_cautare("plati")))
 
+    def test_ca_ingrosarea_din_pagina(self):
+        """Pagina desparte la orice în afara [litere cifre] și pliază toate accentele (NFD), nu doar pe cele românești."""
+        lent = vox.cuvinte_cautare("lent")
+        self.assertTrue(vox.potriveste_recenzia("a_lent", lent))
+        self.assertTrue(vox.potriveste_recenzia("Café lent", vox.cuvinte_cautare("cafe")))
+        self.assertTrue(vox.potriveste_recenzia("Cafe", vox.cuvinte_cautare("café")))
+        self.assertFalse(vox.potriveste_recenzia("alent", lent))
+
     def test_toate_cuvintele(self):
         c = vox.cuvinte_cautare("card blocat")
         self.assertTrue(vox.potriveste_recenzia("Mi-a blocat cardul", c))
