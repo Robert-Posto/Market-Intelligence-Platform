@@ -27,6 +27,8 @@ sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 import autentificare  # noqa: E402
 
+# DC-ul fals înțelege încă regula apartenenței imbricate și grupurile (_cont), dar aplicația nu
+# le mai întreabă din 09.10.2026: rolul vine din tabela `utilizatori`, nu din AD
 REGULA_IMBRICATA = "1.2.840.113556.1.4.1941"
 GRUP_ADMIN = "CN=MCC-Admin,OU=Grupuri,DC=banca,DC=example"
 GRUP_ANALIST = "CN=MCC-Analist,OU=Grupuri,DC=banca,DC=example"
@@ -48,7 +50,7 @@ class Ceas:
 
 def config(**schimbari):
     c = dict(url="ldaps://dc01.banca.example:636", domeniu="banca.example", baza="DC=banca,DC=example",
-             grup_admin=GRUP_ADMIN, grup_analist=GRUP_ANALIST, ca=None, sesiune_ore=8)
+             ca=None, sesiune_ore=8)
     c.update(schimbari)
     return autentificare.Config(**c)
 
@@ -245,7 +247,7 @@ class Limitare(Baza):
         self.assertEqual(self.a.autentifica("adi", PAROLA, "10.0.0.9").motiv, "limitat")
 
     def test_fara_rol_se_numara_doar_pe_adresa(self):
-        """Parola bună fără grup: nu blochează contul, dar nici nu e un oracol nelimitat pe adresă."""
+        """Parola bună fără rol: nu blochează contul, dar nici nu e un oracol nelimitat pe adresă."""
         for _ in range(8):           # peste limita pe utilizator (3): contul nu se blochează singur
             self.assertEqual(self.a.autentifica("fara", PAROLA, "10.0.0.7").motiv, "fara_rol")
         for _ in range(12):          # 20 pe adresă: password spraying confirmat prin „fără rol”
@@ -352,17 +354,14 @@ ENV_BUN = {
     "MCC_LDAP_URL": "ldaps://dc01.banca.example:636",
     "MCC_LDAP_DOMENIU": "banca.example",
     "MCC_LDAP_BAZA": "DC=banca,DC=example",
-    "MCC_LDAP_GRUP_ADMIN": GRUP_ADMIN,
-    "MCC_LDAP_GRUP_ANALIST": GRUP_ANALIST,
 }
 
 
 class Configurare(Baza):
     def test_din_mediu(self):
         c = autentificare.Config.din_mediu(ENV_BUN)
-        self.assertEqual((c.url, c.domeniu, c.baza, c.grup_admin, c.grup_analist, c.ca, c.sesiune_ore),
-                         (ENV_BUN["MCC_LDAP_URL"], "banca.example", "DC=banca,DC=example", GRUP_ADMIN,
-                          GRUP_ANALIST, None, 8))
+        self.assertEqual((c.url, c.domeniu, c.baza, c.ca, c.sesiune_ore),
+                         (ENV_BUN["MCC_LDAP_URL"], "banca.example", "DC=banca,DC=example", None, 8))
         self.assertIsNone(c.problema())
         self.assertEqual(autentificare.Config.din_mediu(dict(ENV_BUN, MCC_SESIUNE_ORE="4")).sesiune_ore, 4)
         self.assertEqual((c.max_incercari, c.fereastra_min, c.max_pe_ip), (3, 30, 20))
@@ -435,13 +434,6 @@ class Filtre(unittest.TestCase):
                          "(&(objectClass=user)(|(sAMAccountName=a\\2a\\29\\28b\\5c)"
                          "(userPrincipalName=a\\2a\\29\\28b\\5c@banca.example)))")
 
-    def test_filtrul_grupului(self):
-        self.assertEqual(autentificare.filtru_grup("ana", GRUP_ADMIN),
-                         f"(&(sAMAccountName=ana)(memberOf:{REGULA_IMBRICATA}:={GRUP_ADMIN}))")
-        dn = "CN=MCC (Admin)*,OU=Grupuri\\, speciale,DC=banca,DC=example"
-        self.assertEqual(autentificare.filtru_grup("ana", dn),
-                         f"(&(sAMAccountName=ana)(memberOf:{REGULA_IMBRICATA}:="
-                         "CN=MCC \\28Admin\\29\\2a,OU=Grupuri\\5c, speciale,DC=banca,DC=example))")
 
 
 # ---------------------------------------------------------------- cerința 8: sesiunile
@@ -515,6 +507,21 @@ class SesiuniTest(unittest.TestCase):
         self.assertTrue(all(self.s.citeste(i) for i in ids[1:]))
         self.assertIsNotNone(self.s.citeste(alt))
         self.assertEqual(sum(1 for v in self.s._sesiuni.values() if v["utilizator"] == "ana"), 10)
+
+    def test_rolul_schimbat_se_aplica_sesiunilor_deschise(self):
+        a1, a2 = self.s.creeaza("ana", "Ana", "analist"), self.s.creeaza("ana", "Ana", "analist")
+        adi = self.s.creeaza("adi", "Adi", "admin")
+        self.assertEqual(self.s.aplica_rol("ana", "admin"), 2)
+        self.assertEqual([self.s.citeste(x)["rol"] for x in (a1, a2)], ["admin", "admin"])
+        self.assertEqual(self.s.citeste(adi)["rol"], "admin")
+        self.assertEqual(self.s.aplica_rol("ion", "analist"), 0)
+
+    def test_rolul_retras_inchide_sesiunile(self):
+        a = self.s.creeaza("ana", "Ana", "analist")
+        adi = self.s.creeaza("adi", "Adi", "admin")
+        self.assertEqual(self.s.aplica_rol("ana", None), 1)
+        self.assertIsNone(self.s.citeste(a))
+        self.assertIsNotNone(self.s.citeste(adi))
 
     def test_sterge(self):
         sid = self.s.creeaza("ana", "Ana", "analist")
@@ -965,11 +972,19 @@ class LdapCuDCFals(Baza):
             self.dc.inchide()
         super().tearDown()
 
-    def porneste(self, cert=None, cheie=None, ca="implicit", conturi=None, grup_admin=GRUP_ADMIN, **kw_dc):
+    # rolurile date în aplicație (tabela `utilizatori`); ion nu are, deci intră fără rol
+    ROLURI_APLICATIE = {"ana": "analist", "adi": "admin", "dan": "analist", "eva": "admin"}
+
+    def porneste(self, cert=None, cheie=None, ca="implicit", conturi=None, roluri="implicit", **kw_dc):
         self.dc = DCFals(cert or self.cert, cheie or self.cheie, conturi or self.conturi, **kw_dc)
-        c = config(url=f"ldaps://localhost:{self.dc.port}", ca=self.cert if ca == "implicit" else ca,
-                   grup_admin=grup_admin)
-        return autentificare.Autentificator(c, ceas=self.ceas)
+        c = config(url=f"ldaps://localhost:{self.dc.port}", ca=self.cert if ca == "implicit" else ca)
+        self.cerute = []
+
+        def din_aplicatie(sam, nume):
+            self.cerute.append((sam, nume))
+            return self.ROLURI_APLICATIE.get(sam)
+        return autentificare.Autentificator(c, ceas=self.ceas,
+                                            roluri=din_aplicatie if roluri == "implicit" else roluri)
 
     def test_certificat_necunoscut_refuzat_inainte_de_parola(self):
         a = self.porneste(ca=None)         # depozitul sistemului nu are certificatul de test
@@ -985,19 +1000,26 @@ class LdapCuDCFals(Baza):
         self.assertIn("doesn't match", self.jurnal()[-1]["detaliu"])
         self.assertEqual(self.dc.legari, [])
 
-    def test_analist_prin_grup_imbricat(self):
+    def test_rolul_vine_din_aplicatie_nu_din_grupuri(self):
         a = self.porneste()
         r = a.autentifica("LIBRA\\Ana", PAROLA, "10.0.0.1")
         self.assertEqual(r, autentificare.Rezultat(True, "ana", "Ana Analist", "analist", None))
         self.assertEqual(self.dc.legari, ["ana@banca.example"])        # bind cu UPN
+        # o singură căutare, a contului; niciuna după grupuri (ana e în CN=Echipa și imbricat în analist)
+        self.assertEqual(len(self.dc.cautari), 1)
         baza, filtru, atribute = self.dc.cautari[0]
         self.assertEqual(baza, "DC=banca,DC=example")
         self.assertEqual(filtru, "(&(objectClass=user)(|(sAMAccountName=ana)(userPrincipalName=ana@banca.example)))")
         self.assertIn("displayName", atribute)
-        filtre_grup = [f for _, f, _ in self.dc.cautari[1:]]
-        self.assertEqual(filtre_grup, [f"(&(sAMAccountName=ana)(memberOf:{REGULA_IMBRICATA}:={GRUP_ADMIN}))",
-                                       f"(&(sAMAccountName=ana)(memberOf:{REGULA_IMBRICATA}:={GRUP_ANALIST}))"])
         self.assertEqual(self.dc.whoami, [WHOAMI])          # contul legat, întrebat o dată
+        self.assertEqual(self.cerute, [("ana", "Ana Analist")])
+
+    def test_cheia_rolului_e_contul_legat(self):
+        """Oricum ar fi scris numele, aplicația e întrebată de contul legat, cu litere mici."""
+        a = self.porneste()
+        for scris in ("ANA", "ana@banca.example", "LIBRA\\ana"):
+            self.assertTrue(a.autentifica(scris, PAROLA, "10.0.0.1").ok, scris)
+        self.assertEqual({sam for sam, _ in self.cerute}, {"ana"})
 
     def test_whoami_diferit_de_contul_gasit_refuzat(self):
         """AD-ul spune că e legat alt cont decât cel găsit la căutare: rolul nu se ia de la cel găsit."""
@@ -1007,7 +1029,8 @@ class LdapCuDCFals(Baza):
         r = a.autentifica("ana", PAROLA, "10.0.0.1")
         self.assertEqual(r, autentificare.Rezultat(False, "ana", "", None, "indisponibil"))
         self.assertIn("identitate ambiguă", self.jurnal()[-1]["detaliu"])
-        self.assertEqual(len(self.dc.cautari), 1)          # niciun grup căutat pentru contul greșit
+        self.assertEqual(self.cerute, [])                   # aplicația nu e întrebată pentru contul greșit
+        self.ROLURI_APLICATIE = dict(self.ROLURI_APLICATIE, ion="analist")
         self.assertEqual(a.autentifica("ion", PAROLA, "10.0.0.1").rol, "analist")
 
     def test_fara_raspuns_la_whoami_refuzat(self):
@@ -1016,15 +1039,33 @@ class LdapCuDCFals(Baza):
         self.assertEqual((r.ok, r.motiv), (False, "indisponibil"))
         self.assertIn("identitate ambiguă", self.jurnal()[-1]["detaliu"])
 
-    def test_in_ambele_grupuri_e_admin(self):
+    def test_admin_din_aplicatie(self):
         a = self.porneste()
         r = a.autentifica("adi", PAROLA, "10.0.0.1")
         self.assertEqual((r.ok, r.rol, r.nume), (True, "admin", "Adi Admin"))
 
-    def test_fara_grup_fara_rol(self):
+    def test_fara_rol_in_aplicatie(self):
         a = self.porneste()
         r = a.autentifica("ion", PAROLA, "10.0.0.1")
         self.assertEqual((r.ok, r.motiv), (False, "fara_rol"))
+        self.assertEqual(self.cerute, [("ion", "Ion Test")])     # contul apare în pagină, fără rol
+
+    def test_fara_sursa_de_roluri_nimeni_nu_intra(self):
+        a = self.porneste(roluri=None)
+        self.assertEqual(a.autentifica("adi", PAROLA, "10.0.0.1").motiv, "fara_rol")
+
+    def test_baza_cazuta_la_rol_e_indisponibil(self):
+        def cade(sam, nume):
+            raise ConnectionError("baza de date oprită")
+        a = self.porneste(roluri=cade)
+        r = a.autentifica("ana", PAROLA, "10.0.0.1")
+        self.assertEqual((r.ok, r.motiv), (False, "indisponibil"))
+        self.assertIn("baza de date oprită", self.jurnal()[-1]["detaliu"])
+
+    def test_parola_gresita_aplicatia_nu_e_intrebata(self):
+        a = self.porneste()
+        a.autentifica("ana", PAROLA + "x", "10.0.0.1")
+        self.assertEqual(self.cerute, [])
 
     def test_parola_gresita_49(self):
         a = self.porneste()
@@ -1044,13 +1085,7 @@ class LdapCuDCFals(Baza):
         # bind cu UPN-ul implicit (dan@domeniu), contul are alt UPN explicit
         r = a.autentifica("dan", PAROLA, "10.0.0.1")
         self.assertEqual((r.ok, r.rol, r.nume), (True, "analist", "dan"))
-
-    def test_dn_de_grup_cu_paranteze_si_virgula_escapata(self):
-        dn = "CN=MCC (Admin),OU=Grupuri\\, speciale,DC=banca,DC=example"
-        a = self.porneste(grup_admin=dn)
-        r = a.autentifica("eva", PAROLA, "10.0.0.1")
-        self.assertEqual((r.ok, r.rol), (True, "admin"))
-        self.assertEqual(self.dc.cautari[1][1], f"(&(sAMAccountName=eva)(memberOf:{REGULA_IMBRICATA}:={dn}))")
+        self.assertEqual(self.cerute, [("dan", "")])       # displayName gol: numele îl pune utilizatori.py
 
     def test_doua_conturi_pentru_acelasi_nume_refuzat(self):
         """Contul X are UPN-ul explicit „ana@…”, iar contul ana alt UPN: identitatea e ambiguă."""

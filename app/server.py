@@ -2,9 +2,11 @@
 
 Pornire:  python app/server.py        (apoi http://localhost:8765)
 
-Doar citire: nu exista nicio ruta care scrie in baza. Interogarile folosesc
-parametri (%s), nu interpolare de text, ca filtrele din interfata sa nu poata
-deveni injectie SQL.
+Doar citire, cu o singura exceptie: utilizatorii aplicatiei (`app/utilizatori.py`,
+tabela `utilizatori`), scrisi la logare si din pagina „Utilizatori” (doar admin).
+Datele colectate nu se scriu niciodata de aici. Interogarile folosesc parametri
+(%s), nu interpolare de text, ca filtrele din interfata sa nu poata deveni
+injectie SQL.
 
 Singura exceptie, ceruta de Robert si doar pe laptopul lui: cu
 `MIP_PERMITE_RULARI=1` in `.env`, Overview poate porni manual scripturile de
@@ -14,7 +16,8 @@ rutele de pornire raspund 403.
 
 Accesul: orice cerere spre date cere o sesiune (logare cu contul AD,
 `app/autentificare.py`, poarta din `Handler._poarta`); rularile si joburile cer
-rolul admin. Pe laptop, `MCC_AUTH_LOCAL=admin` in `.env` sare peste logare.
+rolul admin. Rolul se da in aplicatie (pagina „Utilizatori”), nu in AD. Pe laptop,
+`MCC_AUTH_LOCAL=admin` in `.env` sare peste logare.
 """
 
 import csv
@@ -45,6 +48,7 @@ from normalizeaza import PRAGURI  # noqa: E402
 import rulari  # noqa: E402  (app/, langa server)
 import vox  # noqa: E402  (app/, langa server)
 import autentificare  # noqa: E402  (app/, langa server)
+import utilizatori  # noqa: E402  (app/, langa server)
 
 # Comparatiile citesc din vederea `observatii_curente`, nu din tabela bruta.
 # Vederea tine regula o singura data (`stare_data NOT IN (ISTORIC, DUBLURA)`) -
@@ -2172,6 +2176,7 @@ RUTE = {
     "/api/comparatie_libra": comparatie_libra,
     "/api/products_discovery": products_discovery,
     "/api/jobs": jobs,
+    "/api/utilizatori": lambda q: UTILIZATORI.lista(),
     "/api/rulare_manuala": rulare_manuala_catalog,
     "/api/rulare_manuala/estimare": rulare_manuala_estimare,
     "/api/matrice": matrice,
@@ -2187,7 +2192,10 @@ RUTE = {
 # Autentificarea AD (app/autentificare.py). Configurația se citește o dată, la pornire; fără
 # ea logarea răspunde 503, iar serverul spune la pornire de ce (vezi __main__).
 CONFIG_AUTH = autentificare.Config.din_mediu()
-AUTENTIFICARE = autentificare.Autentificator(CONFIG_AUTH)
+# Rolul se dă în aplicație (pagina „Utilizatori”), nu în AD; MCC_ADMIN_INITIAL primește admin la
+# prima logare, ca să existe cineva care să dea rolurile celorlalți.
+UTILIZATORI = utilizatori.Utilizatori(DSN, os.environ.get("MCC_ADMIN_INITIAL", ""))
+AUTENTIFICARE = autentificare.Autentificator(CONFIG_AUTH, roluri=UTILIZATORI.la_logare)
 SESIUNI = autentificare.Sesiuni(CONFIG_AUTH.sesiune_ore or autentificare.ORE_IMPLICITE)
 COOKIE = "mcc_sesiune"
 # Pe HTTPS cookie-ul are prefixul __Host- (deci Secure, Path=/, fără Domain): browserul nu primește
@@ -2197,7 +2205,8 @@ COOKIE_HTTPS = "__Host-mcc_sesiune"
 # Rulările pornesc procese, iar joburile costă: doar adminul (403 pentru analist, verificat
 # aici, nu doar ascuns în interfață)
 RUTE_ADMIN = {"/api/jobs", "/api/rulare_manuala", "/api/rulare_manuala/estimare",
-              "/api/rulari", "/api/rulari/porneste", "/api/rulari/opreste"}
+              "/api/rulari", "/api/rulari/porneste", "/api/rulari/opreste",
+              "/api/utilizatori", "/api/utilizatori/modifica"}
 # Fără sesiune se ajunge doar la logare, la întrebarea „sunt logat?”, la ieșire și la interfața
 # construită de pe /app/ (pagina de logare trebuie să se încarce; e aceeași pe care nginx o
 # servește oricum fără sesiune). Tot restul cere sesiune, inclusiv fișierele din app/.
@@ -2639,6 +2648,37 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self._json(200, {"utilizator": r.utilizator, "nume": r.nume, "rol": r.rol},
                    [("Set-Cookie", self._cookie(id_sesiune, autentificare.MAXIM_ABSOLUT_S))])
 
+    def _post_utilizatori(self):
+        """POST /api/utilizatori/modifica {utilizator, rol?, activ?} (doar admin, verificat de poartă).
+
+        Forma cererii ca la logare: aceeași origine (Sec-Fetch-Site) și JSON, care de pe alt site
+        cere preflight CORS; cookie-ul de sesiune e oricum SameSite=Strict. Fără tokenul rulărilor:
+        verifica_cerere cere Host de loopback, iar prin nginx Origin-ul e cel public."""
+        site = self.headers.get("Sec-Fetch-Site")
+        if site is not None and site not in ("same-origin", "none"):
+            self._json(403, {"eroare": "interzis"})
+            return
+        corp = self._corp_json(2048)
+        if corp is None:
+            return
+        de_catre = self.sesiune["utilizator"]
+        try:
+            nou, vechi = UTILIZATORI.modifica(corp.get("utilizator"), corp, de_catre)
+        except utilizatori.Respins as exc:
+            self._json(400, {"eroare": exc.cod})
+            return
+        except utilizatori.Lipsa:
+            self._json(404, {"eroare": "inexistent"})
+            return
+        except Exception as exc:
+            self._json(*_eroare_server(exc))
+            return
+        sesiuni = SESIUNI.aplica_rol(nou["utilizator"], utilizatori.rol_efectiv(nou))
+        autentificare.jurnal({"eveniment": "utilizator_modificat", "utilizator": de_catre, "ip": self._ip(),
+                              "cont": nou["utilizator"], "rol": [vechi["rol"], nou["rol"]],
+                              "activ": [vechi["activ"], nou["activ"]], "sesiuni_atinse": sesiuni})
+        self._json(200, nou)
+
     def do_HEAD(self):
         # HEAD servește fișiere ca GET (fără corp); fără poartă ar spune ce există și cât de mare e
         if self._poarta(urllib.parse.urlparse(self.path).path):
@@ -2659,6 +2699,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         if cale.startswith("/api/vox/conversatii/"):
             self._post_conversatie(cale)
+            return
+        if cale == "/api/utilizatori/modifica":
+            self._post_utilizatori()
             return
         if cale not in ("/api/rulari/porneste", "/api/rulari/opreste"):
             self.send_error(404)
