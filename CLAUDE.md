@@ -69,7 +69,7 @@ README. După orice coloană nouă în `observations` rulezi `db/sincronizeaza_v
 vedere îngheață lista de coloane, iar API-ul dă 500 deși tabela are coloana.
 
 **Serverul e read-only.** Nicio rută nu scrie date colectate în bază; singurul loc care scrie e
-`app/utilizatori.py` (tabela `utilizatori`: logarea și pagina „Utilizatori”, doar admin). Interogările folosesc parametri (`%s`), nu text
+`app/utilizatori.py` (tabela `utilizatori`: logarea și „Administrare → Utilizatori”, doar admin). Interogările folosesc parametri (`%s`), nu text
 interpolat. `/pdf` servește doar URL-uri înregistrate în `surse`, altfel devine proxy deschis.
 Excepție: cu `MIP_PERMITE_RULARI=1`, `/api/rulari/*` pornește scripturile din lista fixă
 `app/rulari.py` (Host/Origin/token, un proces odată); nu slăbi verificările.

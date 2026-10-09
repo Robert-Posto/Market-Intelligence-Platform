@@ -1,11 +1,11 @@
-/** Administrare → Utilizatori (ut.*): rolurile date în aplicație, nu în AD (09.10.2026). */
+/** Administrare (adm.*) și tab-ul Utilizatori (ut.*): rolurile date în aplicație, nu în AD (09.10.2026). */
 export const utilizatori = {
-  "pagini.grup.administrare": ["Administrare", "Administration"],
-  "pagini.utilizatori.nume_meniu": ["Utilizatori", "Users"],
-  "pagini.utilizatori.titlu": ["Utilizatori", "Users"],
-  "pagini.utilizatori.descriere": ["Cine are acces la aplicație și cu ce rol. Parola o verifică Active Directory; rolul îl dai aici.", "Who has access to the application and with which role. Active Directory checks the password; you give the role here."],
+  "pagini.administrare.nume_meniu": ["Administrare", "Administration"],
+  "pagini.administrare.titlu": ["Administrare", "Administration"],
+  "pagini.administrare.descriere": ["Setările aplicației, doar pentru administratori. Deocamdată: cine are acces și cu ce rol.", "The application settings, for administrators only. For now: who has access and with which role."],
+  "adm.tab.utilizatori": ["Utilizatori", "Users"],
 
-  "ut.intro": ["Un cont apare aici automat după prima logare reușită cu contul de rețea, fără rol: până îi dai unul, nu poate intra. <b>Analistul</b> vede toate datele; <b>administratorul</b> vede în plus joburile, rulările manuale și această pagină. Schimbarea se aplică imediat, fără ca utilizatorul să se delogheze.", "An account appears here automatically after its first successful sign-in with the network account, without a role: until you give it one, it cannot get in. The <b>analyst</b> sees all the data; the <b>administrator</b> also sees the jobs, the manual runs and this page. The change applies immediately, without the user signing out."],
+  "ut.intro": ["Parola o verifică Active Directory; rolul îl dai aici. Un cont apare aici automat după prima logare reușită cu contul de rețea, fără rol: până îi dai unul, nu poate intra. <b>Analistul</b> vede toate datele; <b>administratorul</b> vede în plus joburile, rulările manuale și această pagină. Schimbarea se aplică imediat, fără ca utilizatorul să se delogheze.", "Active Directory checks the password; you give the role here. An account appears here automatically after its first successful sign-in with the network account, without a role: until you give it one, it cannot get in. The <b>analyst</b> sees all the data; the <b>administrator</b> also sees the jobs, the manual runs and this page. The change applies immediately, without the user signing out."],
   "ut.filtru.toti": ["Toți ({n})", "All ({n})"],
   "ut.filtru.asteapta": ["Așteaptă un rol ({n})", "Waiting for a role ({n})"],
   "ut.gol_asteapta": ["Niciun cont nu așteaptă un rol.", "No account is waiting for a role."],

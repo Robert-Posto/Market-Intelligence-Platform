@@ -47,8 +47,8 @@ sudo -u marketing -H /opt/marketing/venv/bin/python ingest/<script>.py
 ## Autentificare AD
 
 Logarea e cu contul de Windows, verificat la Active Directory prin LDAPS (`app/autentificare.py`). AD-ul verifică doar
-parola; rolul se dă în aplicație, în pagina „Utilizatori” (ca în SCC): admin (în plus „Rulare manuală”, „Joburi și
-erori” și „Utilizatori”) sau analist. Un cont nou apare acolo la prima logare, fără rol (403 până îi dă un admin unul).
+parola; rolul se dă în aplicație, în „Administrare → Utilizatori” (ca în SCC): admin (în plus „Rulare manuală”, „Joburi și
+erori” și „Administrare”) sau analist. Un cont nou apare acolo la prima logare, fără rol (403 până îi dă un admin unul).
 `MCC_ADMIN_INITIAL` din `.env` primește admin la prima logare, ca să existe cine să dea rolurile celorlalți. Fără
 sesiune nu se citește nicio dată (401). Nu e nevoie de cont de serviciu: bind-ul și căutarea se fac cu contul celui
 care se loghează.
@@ -63,7 +63,7 @@ Root CA în `/etc/ssl/mcc/ca-ad.pem` („Verify return code: 0 (ok)” de pe ser
    DC-ului trebuie să conțină exact acest nume (SAN); se verifică, deci o adresă IP în loc de nume nu merge.
 2. **CA-ul** care a emis certificatul DC-ului, ca fișier PEM. Dacă e Libra Enterprise Root CA, e probabil deja în
    `/srv/linux-sysprep/certs`; se copiază în `/etc/ssl/mcc/ca-ad.pem` (citibil de `marketing`) și se pune în `MCC_LDAP_CA`.
-3. ~~Grupurile AD~~: nu mai trebuie. Rolurile se dau în aplicație (pagina „Utilizatori”, migrarea 040).
+3. ~~Grupurile AD~~: nu mai trebuie. Rolurile se dau în aplicație („Administrare → Utilizatori”, migrarea 040).
 4. **Sufixul UPN** (`MCC_LDAP_DOMENIU`: utilizatorul scrie numele scurt, bind-ul e `nume@sufix`) și **baza de căutare**
    (`MCC_LDAP_BAZA`, DN-ul domeniului).
 5. **Politica de blocare a conturilor** din AD: pragul (*Account lockout threshold*) și fereastra de observație

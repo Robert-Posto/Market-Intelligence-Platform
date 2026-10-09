@@ -3,7 +3,7 @@
 Pornire:  python app/server.py        (apoi http://localhost:8765)
 
 Doar citire, cu o singura exceptie: utilizatorii aplicatiei (`app/utilizatori.py`,
-tabela `utilizatori`), scrisi la logare si din pagina „Utilizatori” (doar admin).
+tabela `utilizatori`), scrisi la logare si din „Administrare → Utilizatori” (doar admin).
 Datele colectate nu se scriu niciodata de aici. Interogarile folosesc parametri
 (%s), nu interpolare de text, ca filtrele din interfata sa nu poata deveni
 injectie SQL.
@@ -16,7 +16,7 @@ rutele de pornire raspund 403.
 
 Accesul: orice cerere spre date cere o sesiune (logare cu contul AD,
 `app/autentificare.py`, poarta din `Handler._poarta`); rularile si joburile cer
-rolul admin. Rolul se da in aplicatie (pagina „Utilizatori”), nu in AD. Pe laptop,
+rolul admin. Rolul se da in aplicatie („Administrare → Utilizatori”), nu in AD. Pe laptop,
 `MCC_AUTH_LOCAL=admin` in `.env` sare peste logare.
 """
 
@@ -2192,7 +2192,7 @@ RUTE = {
 # Autentificarea AD (app/autentificare.py). Configurația se citește o dată, la pornire; fără
 # ea logarea răspunde 503, iar serverul spune la pornire de ce (vezi __main__).
 CONFIG_AUTH = autentificare.Config.din_mediu()
-# Rolul se dă în aplicație (pagina „Utilizatori”), nu în AD; MCC_ADMIN_INITIAL primește admin la
+# Rolul se dă în aplicație („Administrare → Utilizatori”), nu în AD; MCC_ADMIN_INITIAL primește admin la
 # prima logare, ca să existe cineva care să dea rolurile celorlalți.
 UTILIZATORI = utilizatori.Utilizatori(DSN, os.environ.get("MCC_ADMIN_INITIAL", ""))
 AUTENTIFICARE = autentificare.Autentificator(CONFIG_AUTH, roluri=UTILIZATORI.la_logare)

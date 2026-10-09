@@ -3,21 +3,21 @@ import { useQueryClient } from '@tanstack/react-query'
 import { App, Select, Switch, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import type { ContAplicatie, RolCont } from '@mcc/shared'
-import { ApiError } from '../api/client'
-import { modificaCont, useConturi } from '../api/utilizatori'
-import { useSesiune } from '../auth'
-import { Comutator } from '../components/Comutator'
-import { Eroare, Pill, SeIncarca } from '../components/comune'
-import { Tabel, type Coloana } from '../components/Tabel'
-import { T, useLang, type DictKey } from '../i18n'
-import { moment } from './logging/format'
-import '../styles/utilizatori.css'
+import { ApiError } from '../../api/client'
+import { modificaCont, useConturi } from '../../api/utilizatori'
+import { useSesiune } from '../../auth'
+import { Comutator } from '../../components/Comutator'
+import { Eroare, Pill, SeIncarca } from '../../components/comune'
+import { Tabel, type Coloana } from '../../components/Tabel'
+import { T, useLang, type DictKey } from '../../i18n'
+import { moment } from '../logging/format'
+import '../../styles/utilizatori.css'
 
 /** Codurile de eroare ale lui POST /api/utilizatori/modifica care au text propriu; restul, generic. */
 const ERORI_CU_TEXT = new Set(['propriul_cont', 'ultimul_admin', 'inexistent', 'interzis'])
 
 /**
- * Administrare → Utilizatori: rolul fiecărui cont (admin, analist sau fără rol) și starea lui.
+ * Tab-ul „Utilizatori” din Administrare: rolul fiecărui cont (admin, analist sau fără rol) și starea lui.
  * AD-ul verifică doar parola; contul apare aici la prima logare, fără rol (ca în SCC). Fiecare
  * schimbare se salvează pe loc, iar serverul o aplică imediat sesiunilor deschise. Filtrul
  * („așteaptă un rol”) stă în adresă.
@@ -133,7 +133,7 @@ export default function Utilizatori() {
         <Comutator<string>
           value={filtru}
           onChange={(v) => setSp((p) => {
-            const n = new URLSearchParams(p)
+            const n = new URLSearchParams(p)     // păstrează `tab` (Administrare)
             if (v === 'asteapta') n.set('stare', v)
             else n.delete('stare')
             return n

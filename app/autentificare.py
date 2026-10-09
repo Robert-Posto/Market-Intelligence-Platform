@@ -2,7 +2,7 @@
 
 De ce: pe mcc-test.libra.bank aplicația era deschisă oricui din rețea. Logarea se face cu
 contul de Windows, verificat la AD; AD-ul verifică doar parola și identitatea, iar rolul se dă în
-aplicație (pagina „Utilizatori”, `app/utilizatori.py`), ca în SCC. Până pe 09.10.2026 rolul venea
+aplicație („Administrare → Utilizatori”, `app/utilizatori.py`), ca în SCC. Până pe 09.10.2026 rolul venea
 din două grupuri AD (`MCC_LDAP_GRUP_*`), care nu există în Libra și nu se vor crea.
 
 Modulul nu știe nimic de server (testabil separat, `app/test_autentificare.py`):
@@ -430,7 +430,7 @@ class Sesiuni:
             return {"utilizator": s["utilizator"], "nume": s["nume"], "rol": s["rol"]}
 
     def aplica_rol(self, utilizator, rol):
-        """Rolul nou, schimbat din pagina „Utilizatori”, în toate sesiunile deschise ale contului.
+        """Rolul nou, schimbat din „Administrare → Utilizatori”, în toate sesiunile deschise ale contului.
 
         Fără rol (retras sau cont dezactivat) sesiunile se închid: următoarea cerere primește 401.
         Întoarce câte sesiuni au fost atinse."""

@@ -91,7 +91,7 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 036 | `products_discovery`: produsele concurenței fără echivalent în catalogul Libra; înlocuiește `descopera_concurenta` |
 | 037 | jurnalul joburilor: `job_types` (tipurile; unul nou e un `INSERT`), `jobs` (durată, tokeni, cost estimat, `errors` ținut de trigger), `jobs_error` (eroarea în `TEXT`, legată prin `id_job`), vederea `v_jobs`; scrise de `extragere_produse_bancare/jurnal_joburi.py`, citite de pagina Logging (`/api/jobs`) |
 | 038 | `jobs.runed_manually` (bool, implicit `FALSE`): jobul pornit din pagina „Rulare manuală”; `jurnal_joburi.py` îl scrie `TRUE` când procesul are `MIP_RULARE_MANUALA=1` (pusă de `app/rulari.py`); `v_jobs` primește coloana la coadă; pagina „Joburi și erori” o arată ca AUTOMAT / MANUAL |
-| 040 | `utilizatori`: conturile aplicației și rolul lor (`admin` / `analist` / `NULL` = neaprobat), `activ`, prima și ultima logare, cine a schimbat ultima dată; scrisă doar de `app/utilizatori.py` (la logare și din pagina „Utilizatori”). 039 rămâne liberă pentru ramura `dinu-george`, care are o migrare 038 nelivrată |
+| 040 | `utilizatori`: conturile aplicației și rolul lor (`admin` / `analist` / `NULL` = neaprobat), `activ`, prima și ultima logare, cine a schimbat ultima dată; scrisă doar de `app/utilizatori.py` (la logare și din „Administrare → Utilizatori”). 039 rămâne liberă pentru ramura `dinu-george`, care are o migrare 038 nelivrată |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
@@ -146,11 +146,11 @@ refuză să ruleze fără el) și `ANTHROPIC_API_KEY` pentru discovery.
 
 Orice dată (`/api/*`, `/pdf`, `/logos`, paginile din `app/`) cere sesiune: logare cu contul de Windows, verificat la
 AD prin LDAPS (`app/autentificare.py`). AD-ul verifică doar parola; rolul (admin / analist) se dă în aplicație, în
-pagina „Utilizatori” (`#/utilizatori`, tabela `utilizatori`, migrarea 040, `app/utilizatori.py`), ca în SCC. Un cont
+„Administrare → Utilizatori” (`#/administrare?tab=utilizatori`, tabela `utilizatori`, migrarea 040, `app/utilizatori.py`), ca în SCC. Un cont
 apare acolo la prima logare reușită, fără rol: până îi dă un admin unul, logarea răspunde 403 (`fara_rol`).
 `MCC_ADMIN_INITIAL` primește admin la prima logare (doar la crearea rândului). Nimeni nu-și retrage singur drepturile
 de admin și nu se poate retrage ultimul admin activ; schimbarea se aplică imediat sesiunilor deschise. Doar adminul are
-„Rulare manuală”, „Joburi și erori” și „Utilizatori” (`/api/rulari*`, `/api/rulare_manuala*`, `/api/jobs`,
+„Rulare manuală”, „Joburi și erori” și „Administrare” (`/api/rulari*`, `/api/rulare_manuala*`, `/api/jobs`,
 `/api/utilizatori*`): 403 pentru analist, verificat pe server. Până pe 09.10.2026 rolul venea din grupuri AD
 (`MCC_LDAP_GRUP_*`), care în Libra nu există.
 
@@ -652,7 +652,7 @@ docs/bs4/     notele scraperului BS4 (fezabilitate, comparații)
 
 Serverul e **read-only pentru date**: nicio rută nu scrie date colectate (rulările manuale
 pornesc scripturile, care scriu ele; serverul nu). Singura scriere e tabela `utilizatori`
-(`app/utilizatori.py`): la logare și din pagina „Utilizatori”, doar admin. Interogările
+(`app/utilizatori.py`): la logare și din „Administrare → Utilizatori”, doar admin. Interogările
 folosesc parametri (`%s`), nu interpolare de text.
 
 PDF-urile se deschid într-un **vizualizator propriu** (`pdf.html`, PDF.js), nu
