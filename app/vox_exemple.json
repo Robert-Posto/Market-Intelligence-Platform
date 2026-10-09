@@ -106,12 +106,20 @@
   {"intrebare": "Are BCR Apple Pay?",
    "asteptat": {"tip": "aplicatii", "banci": ["bcr"], "functie": null, "text_cautat_nenul": true}},
   {"intrebare": "Ce scriu clienții despre BT Pay?",
-   "asteptat": {"tip": "in_afara"}},
+   "asteptat": {"tip": "aplicatii", "banci": ["banca-transilvania"], "aspect": "recenzii"}},
   {"intrebare": "Câte trackere are aplicația ING?",
    "asteptat": {"tip": "in_afara"}},
   {"intrebare": "și la BRD?",
    "anterior": {"tip": "aplicatii", "banci": ["bcr"], "concept": null, "categorie": null, "termen": null, "produs_credit": null, "text_cautat": null, "clarificare": null, "segment": null, "metrica": null, "functie": "hce_contactless", "aspect": "functii", "prag_note": null},
    "asteptat": {"tip": "aplicatii", "banci": ["brd"], "functie": "hce_contactless"}},
   {"intrebare": "Care e cea mai bine notată aplicație cu cel puțin 1.000 de note?",
-   "asteptat": {"tip": "aplicatii", "banci": [], "aspect": "note", "prag_note": 1000}}
+   "asteptat": {"tip": "aplicatii", "banci": [], "aspect": "note", "prag_note": 1000}},
+  {"intrebare": "Se plâng clienții de logare la Libra?",
+   "asteptat": {"tip": "aplicatii", "banci": ["libra"], "aspect": "recenzii", "text_cautat_nenul": true}},
+  {"intrebare": "Ce scriu clienții despre RoPay?",
+   "asteptat": {"tip": "aplicatii", "banci": [], "aspect": "recenzii", "text_cautat_nenul": true}},
+  {"intrebare": "Ce recenzii are George?",
+   "asteptat": {"tip": "aplicatii", "banci": ["bcr"], "aspect": "recenzii"}},
+  {"intrebare": "Ce scriu clienții?",
+   "asteptat": {"tip": "neclar"}}
 ]
