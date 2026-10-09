@@ -333,7 +333,7 @@ class ValidareAplicatii(unittest.TestCase):
         p = s["properties"]
         self.assertIn("aplicatii", p["tip"]["enum"])
         self.assertEqual(p["functie"]["anyOf"][0]["enum"], ["hce_contactless", "in_app_chat", "ropay"])
-        self.assertEqual(p["aspect"]["anyOf"][0]["enum"], ["functii", "note"])
+        self.assertEqual(p["aspect"]["anyOf"][0]["enum"], ["functii", "note", "recenzii"])
         self.assertEqual(p["prag_note"], {"anyOf": [{"type": "integer"}, {"type": "null"}]})
         self.assertEqual(sorted(s["required"]), sorted(vox.CHEI))
 
@@ -405,6 +405,27 @@ class ValidareAplicatii(unittest.TestCase):
         curat = vox.verifica_anterior(vechi)
         self.assertEqual((curat["functie"], curat["aspect"], curat["prag_note"]), (None, None, None))
         self.assertEqual(vox.valideaza(curat, CTX)[0]["tip"], "cautare")
+
+    def test_recenzii_cu_banca_sau_cautare(self):
+        i, _ = vox.valideaza(apl(banci=["bcr"], aspect="recenzii"), CTX)
+        self.assertEqual((i["tip"], i["aspect"], i["banci"]), ("aplicatii", "recenzii", ["bcr"]))
+        i, _ = vox.valideaza(apl(banci=[], aspect="recenzii", text_cautat="logare"), CTX)
+        self.assertEqual((i["tip"], i["aspect"], i["text_cautat"]), ("aplicatii", "recenzii", "logare"))
+
+    def test_recenzii_golesc_functia_si_pragul(self):
+        """„Ce scriu clienții despre RoPay?": ce se caută în recenzii stă în text_cautat, nu în functie."""
+        i, _ = vox.valideaza(apl(banci=["bcr"], aspect="recenzii", functie="ropay", prag_note=100), CTX)
+        self.assertEqual((i["aspect"], i["functie"], i["prag_note"]), ("recenzii", None, None))
+
+    def test_recenzii_fara_nimic_e_neclar(self):
+        """„Ce scriu clienții?": fără aplicație și fără ce se caută, recenziile tuturor celor 22 de aplicații ar fi
+        peste 500 de carduri."""
+        for brut in (apl(banci=[], aspect="recenzii"), apl(banci=[], aspect="recenzii", text_cautat="AI")):
+            i, _ = vox.valideaza(brut, CTX)
+            self.assertEqual((i["tip"], i["aspect"]), ("neclar", None), brut)
+
+    def test_schema_are_recenzii(self):
+        self.assertEqual(vox.schema(CTX)["properties"]["aspect"]["anyOf"][0]["enum"], ["functii", "note", "recenzii"])
 
 
 class Rezumat(unittest.TestCase):

@@ -63,8 +63,8 @@ CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text
 # „cea mai ieftină variantă” cere cea mai bună valoare a fiecărei bănci, nu mediana (decizia lui
 # Nicolae, 07.10.2026); mediana rămâne implicită, ca în 2.1 și Versus
 METRICI = ("mediana", "cea_mai_buna")
-# Aplicațiile (decizia lui Nicolae, 08.10.2026): funcțiile din analiza aplicațiilor Android sau notele din magazine
-ASPECTE = ("functii", "note")
+# Aplicațiile (decizia lui Nicolae, 08.10.2026): funcțiile din analiza aplicațiilor Android, notele din magazine sau recenziile (decizia lui Nicolae, 09.10.2026)
+ASPECTE = ("functii", "note", "recenzii")
 # Pragurile oferite ca butoane sub clasamentul notelor. Fără prag (decizia lui Nicolae, 08.10.2026), ProCredit iese
 # primul în App Store cu 5,0 din 6 note (24.09.2026): sub cel mai mic prag, Vox spune asta și întreabă ce prag vrea
 PRAGURI_NOTE = (100, 1000)
@@ -388,11 +388,15 @@ def _aplicatii_curat(curat, prag):
     n-au sens aici. Un prag invalid se ignoră: rafinează întrebarea, nu-i schimbă sensul."""
     for k in ("concept", "categorie", "termen", "produs_credit", "segment", "metrica", "clarificare"):
         curat[k] = None
-    if curat["functie"]:
+    if curat["aspect"] == "recenzii":
+        curat["functie"] = None              # la recenzii, ce se caută stă în text_cautat
+        if not (curat["banci"] or curat["text_cautat"]):
+            curat["aspect"] = None           # „Ce scriu clienții?": fără aplicație și fără ce se caută
+    elif curat["functie"]:
         curat["aspect"] = "functii"          # o funcție e mereu despre funcții, nu despre note
     elif curat["aspect"] != "note":
-        # fără funcție, bancă sau text, „funcții” n-are la ce se referi: „Ce funcții au aplicațiile băncilor?” ajungea
-        # la „„” nu e printre funcțiile analizate” (revizia finală, 08.10.2026)
+        # fără funcție, bancă sau text, „funcții" n-are la ce se referi: „Ce funcții au aplicațiile băncilor?" ajungea
+        # la „„" nu e printre funcțiile analizate" (revizia finală, 08.10.2026)
         curat["aspect"] = "functii" if (curat["banci"] or curat["text_cautat"]) else None
     valid = isinstance(prag, int) and not isinstance(prag, bool) and 1 <= prag <= PRAG_NOTE_MAX
     curat["prag_note"] = prag if valid and curat["aspect"] == "note" else None
