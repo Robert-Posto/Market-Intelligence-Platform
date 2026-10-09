@@ -1877,6 +1877,62 @@ class FunctieDinIntrebare(unittest.TestCase):
         self.assertEqual((d["interpretare"]["tip"], d["interpretare"]["segment"]), ("neclar", "pj"))
 
 
+class EContinuare(unittest.TestCase):
+    """Întrebarea nouă care se leagă de cea dinainte (09.10.2026): cuvânt de legătură sau cel mult 4 cuvinte."""
+
+    def test_continuari(self):
+        for t in ("dar la Libra?", "și la BRD?", "dar pe 6 luni?", "La ING?", "Și care e cea mai ieftină?",
+                  "But at BRD?", "What about ING for 12 months?", "Also at BCR?"):
+            self.assertTrue(vox.e_continuare(t), t)
+
+    def test_intrebari_noi(self):
+        for t in ("Care e cea mai ieftină variantă de administrare a contului?",
+                  "Cât costă administrarea contului la BCR și la BRD?"):
+            self.assertFalse(vox.e_continuare(t), t)
+
+
+class SegmentMostenit(unittest.TestCase):
+    """Modelul copiază segmentul întrebării anterioare într-o întrebare nouă (conversațiile din 09.10.2026)."""
+
+    ANTERIOR = interp(segment="pj")
+
+    def fa(self, brut):
+        return vox.Vox(context=lambda: CTX, cauta=lambda *a: [], stare_banca=lambda b: None,
+                       client=ClientFals(brut), dir_jurnal=tempfile.mkdtemp(prefix="vox_sm_"))
+
+    def jurnal(self, q):
+        (nume,) = [f for f in os.listdir(q.dir) if f.endswith(".jsonl")]
+        with open(os.path.join(q.dir, nume), encoding="utf-8") as f:
+            return json.loads(f.readline())
+
+    def test_intrebare_noua_pierde_segmentul(self):
+        q = self.fa(interp(tip="clasament", segment="pj"))
+        d = q.intreaba("Care e cea mai ieftină variantă de administrare a contului?", self.ANTERIOR)
+        self.assertIsNone(d["interpretare"]["segment"])
+        self.assertEqual(self.jurnal(q)["plase"], ["segment_mostenit"])
+
+    def test_continuarea_pastreaza_segmentul(self):
+        q = self.fa(interp(banci=["libra"], segment="pj"))
+        d = q.intreaba("dar la Libra?", self.ANTERIOR)
+        self.assertEqual(d["interpretare"]["segment"], "pj")
+        self.assertNotIn("plase", self.jurnal(q))
+
+    def test_intrebarea_spune_segmentul(self):
+        q = self.fa(interp(tip="clasament", segment="pj"))
+        d = q.intreaba("Care e cea mai ieftină variantă de administrare a contului pentru firme?", self.ANTERIOR)
+        self.assertEqual(d["interpretare"]["segment"], "pj")
+
+    def test_fara_anterior_segmentul_ramane(self):
+        q = self.fa(interp(tip="clasament", segment="pj"))
+        d = q.intreaba("Care e cea mai ieftină variantă de administrare a contului?")
+        self.assertEqual(d["interpretare"]["segment"], "pj")
+
+    def test_segment_diferit_de_anterior_ramane(self):
+        q = self.fa(interp(tip="clasament", segment="pj"))
+        d = q.intreaba("Care e cea mai ieftină variantă de administrare a contului?", interp(segment="pf"))
+        self.assertEqual(d["interpretare"]["segment"], "pj")
+
+
 class Http(unittest.TestCase):
     """Rutele din server, pe un port liber, cu un client fals în locul modelului."""
 

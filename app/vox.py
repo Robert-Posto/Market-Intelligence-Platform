@@ -360,6 +360,17 @@ def segment_din_intrebare(intrebare):
     return gasite[0] if len(gasite) == 1 else None
 
 
+_LEGATURI = ("si", "dar", "iar", "insa", "and", "but", "what about", "how about", "also")
+_LEGATURA = re.compile(r"^(?:" + "|".join(_LEGATURI) + r")(?![^\W_])")
+
+
+def e_continuare(intrebare):
+    """Adevărat dacă întrebarea se sprijină pe cea de dinainte: începe cu un cuvânt de legătură („și la BRD?”, „dar pe 6
+    luni?”) sau are cel mult 4 cuvinte („La ING?”). Una mai lungă care nu începe așa se înțelege singură."""
+    norm = _fara_accente(intrebare).strip()
+    return bool(_LEGATURA.match(norm)) or len(re.findall(r"[^\W_]+", norm)) <= 4
+
+
 # Cuvintele distinctive ale fiecărei funcții (rădăcini, fără diacritice; „a b” = cuvinte consecutive). „Are BT Pay RoPay?” ieșea
 # fără funcție (parafrazele, 32/33, 09.10.2026), la fel #46 când promptul a primit o frază în plus: regula stă în cod. O
 # funcție nouă din bază, fără cuvinte aici, doar nu are plasă. Tabelul e strâns la ce nu apare în alte întrebări: „factur”
@@ -1248,6 +1259,15 @@ class Vox:
             # plus în prompt a răsturnat #46 („Are George plata contactless?”): regula stă în cod, nu în prompt
             # `neclar` doar alimentează `anterior`: fără segment, „la BCR” de după pierdea „firme” (re-revizia, N8)
             plase = []
+            # „Cât costă administrarea contului pentru firme la BCR?”, apoi „Care e cea mai ieftină variantă de administrare a
+            # contului?” ieșea clasament PJ (conversațiile din 09.10.2026): pagina trimite interpretarea anterioară ca „și la
+            # BRD?” să meargă, iar modelul îi copiază segmentul. Promptul de dinainte de recenzii făcea la fel, iar o frază nouă
+            # în prompt răstoarnă alte întrebări (#36, #42, #46), deci regula stă în cod
+            if (anterior and interp["tip"] in ("cautare", "clasament") and interp["segment"] is not None
+                    and interp["segment"] == anterior.get("segment") and segment_din_intrebare(intrebare) is None
+                    and not e_continuare(intrebare)):
+                interp["segment"] = None
+                plase.append("segment_mostenit")
             if interp["tip"] in ("cautare", "clasament", "neclar") and interp["segment"] is None:
                 interp["segment"] = segment_din_intrebare(intrebare)
                 if interp["segment"]:
