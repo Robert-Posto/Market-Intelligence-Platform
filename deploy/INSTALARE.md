@@ -22,6 +22,9 @@ Intrarea e cu parola AD, nu cu cheie. În `~/.ssh/config`, blocul `Host mcc-test
 | nginx | `deploy/nginx-mcc.conf`: HTTPS pe 443 (HTTP pe 80 redirecționează), servește `web/dist`; `/api`, `/logos`, `/pdf`, `/harta.html` merg la `:8765` |
 | certificatul | `/etc/nginx/ssl/`: wildcard-ul `*.libra.bank` de la Libra Enterprise Root CA (ca la rcc-test, command-center, st-test), valabil până la 10.02.2028; copie din `/srv/linux-sysprep/certs`, cheia 600 root |
 
+nginx (`www-data`) citește `web/dist` printr-un ACL pe `/opt/marketing` (`setfacl -m u:www-data:x`), nu prin grupul
+`marketing`: lista grupului e rescrisă din afară (pe 09.10.2026 `www-data` dispăruse din el, iar pagina dădea 500).
+
 `app/server.py` refuză orice conexiune care nu vine de pe loopback (`verify_request`).
 nginx stă pe același server, deci verificarea rămâne neatinsă.
 
