@@ -25,9 +25,13 @@ function TextRecenzie({ text, cuvinte }: { text: string; cuvinte: string[] }) {
   const { t } = useLang()
   const radacini = cuvinte.map(faraDiacritice)
   // La „card” (09.10.2026), 9 din 48 de recenzii arătate aveau potrivirea după caracterul 400 și nu arătau niciun cuvânt
-  // îngroșat: dacă nicio potrivire nu cade în partea scurtată, textul pornește desfăcut.
-  const [tot, setTot] = useState(() => radacini.length > 0 && text.length > LUNGIME
-    && !Array.from(text.slice(0, LUNGIME).matchAll(TOKENI)).some((m) => radacini.some((c) => faraDiacritice(m[0]).startsWith(c))))
+  // îngroșat. Căutarea e ȘI, deci textul pornește închis doar dacă FIECARE rădăcină are un cuvânt în partea scurtată: la
+  // „aplicatie card” 4 din 15 recenzii arătate ascundeau „card” după caracterul 400 (și „cont card” 3 din 12).
+  const [tot, setTot] = useState(() => {
+    if (!radacini.length || text.length <= LUNGIME) return false
+    const cuvinteScurte = Array.from(text.slice(0, LUNGIME).matchAll(TOKENI), (m) => faraDiacritice(m[0]))
+    return !radacini.every((c) => cuvinteScurte.some((w) => w.startsWith(c)))
+  })
   const scurt = !tot && text.length > LUNGIME
   const vizibil = scurt ? `${text.slice(0, LUNGIME).trimEnd()}…` : text
   const parti: ReactNode[] = []
