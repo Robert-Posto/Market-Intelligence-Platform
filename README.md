@@ -370,10 +370,11 @@ text”. Campaniile nu intră: pagina răspunde că sunt în afara ei; aplicați
   recenzii pe magazin, cu textul scurtat la 400 de caractere (se deschide când potrivirea e după el, ca să se vadă mereu cuvântul găsit),
   fără traducere (`web/src/pages/vox/Recenzii.tsx`). Pe Haiku, o frază nouă în prompt mută o întrebare de la limită (#36, #42, #46 pe
   09.10.2026), deci ce poate decide codul sigur, pe un vocabular închis, decide codul, doar când modelul lasă câmpul gol:
-  `segment_din_intrebare` („firme”, „PFA”, „IMM”, „persoane fizice”) și `functie_din_intrebare` (cuvintele distinctive ale celor 13
-  funcții, doar dacă se potrivește exact una). Promptul desparte „Cât costă…” (neclar) de „Unde e cea mai ieftină…” (clasament).
+  `segment_din_intrebare` („firme”, „PFA”, „IMM”, „persoane fizice”) și `functie_din_intrebare` (rădăcinile și expresiile înguste ale celor 13
+  funcții, doar dacă se potrivește exact una și modelul n-a pus nimic în `text_cautat`); când o plasă lucrează, rândul din jurnal
+  are cheia `plase`. Promptul desparte „Cât costă…” (neclar) de „Unde e cea mai ieftină…” (clasament).
   Evaluarea (57 de întrebări): 57 din 57 pe 09.10.2026, $0,1058, 14.131 de tokeni de intrare pe întrebare ($0,0019). Pe întrebări din
-  afara evaluării: 33 din 33 (parafraze) și 28 din 29 (10 în engleză); singurul eșec, „Ce dobândă are CEC la contul de economii
+  afara evaluării: 33 din 33 (parafraze, rejucate cu plasele pe răspunsurile înregistrate) și 28 din 29 (10 în engleză); singurul eșec, „Ce dobândă are CEC la contul de economii
   pentru firme?” → `neclar`, e o limită veche a dobânzilor, la fel cu promptul de dinainte.
 - Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
   nouă, repornește serverul.
