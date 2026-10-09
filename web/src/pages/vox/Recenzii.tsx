@@ -14,6 +14,8 @@ import '../../styles/rate_mobil.css'
  */
 const PRIMELE = 5
 const LUNGIME = 400
+// Ca la server, semnele combinate (\p{M}) țin de cuvânt.
+const TOKENI = /[\p{L}\p{M}\p{N}]+/gu
 
 /**
  * Cuvintele găsite, îngroșate cu aceeași regulă ca serverul (`vox.potriveste_recenzia`: fără diacritice, litere mici,
@@ -21,14 +23,17 @@ const LUNGIME = 400
  */
 function TextRecenzie({ text, cuvinte }: { text: string; cuvinte: string[] }) {
   const { t } = useLang()
-  const [tot, setTot] = useState(false)
+  const radacini = cuvinte.map(faraDiacritice)
+  // La „card” (09.10.2026), 9 din 48 de recenzii arătate aveau potrivirea după caracterul 400 și nu arătau niciun cuvânt
+  // îngroșat: dacă nicio potrivire nu cade în partea scurtată, textul pornește desfăcut.
+  const [tot, setTot] = useState(() => radacini.length > 0 && text.length > LUNGIME
+    && !Array.from(text.slice(0, LUNGIME).matchAll(TOKENI)).some((m) => radacini.some((c) => faraDiacritice(m[0]).startsWith(c))))
   const scurt = !tot && text.length > LUNGIME
   const vizibil = scurt ? `${text.slice(0, LUNGIME).trimEnd()}…` : text
-  const radacini = cuvinte.map(faraDiacritice)
   const parti: ReactNode[] = []
   let ultim = 0
   if (radacini.length) {
-    for (const m of vizibil.matchAll(/[\p{L}\p{N}]+/gu)) {
+    for (const m of vizibil.matchAll(TOKENI)) {
       if (radacini.some((c) => faraDiacritice(m[0]).startsWith(c))) {
         parti.push(vizibil.slice(ultim, m.index), <b key={m.index} className="vox-gasit">{m[0]}</b>)
         ultim = (m.index ?? 0) + m[0].length
@@ -54,11 +59,13 @@ function BlocMagazin({ k, mg, banca, m, cuvinte, cautat }: {
   return (
     <div className="vox-rec-magazin">
       <span className="vox-segment-cap">
-        {cautat
+        {mg.din === 0
+          ? t('vox.aplicatii.recenzii.magazin_gol', { magazin })
+          : cautat
           ? tn('vox.aplicatii.recenzii.magazin_cautare', mg.recenzii.length, { magazin, din: mg.din, text: cautat })
           : t('vox.aplicatii.recenzii.magazin', { magazin, n: mg.din })}
       </span>
-      {!mg.recenzii.length && !cautat && <p className="vox-nota"><span className="vox-punct gri" />{t('vox.aplicatii.recenzii.nimic')}</p>}
+      {!mg.recenzii.length && !cautat && mg.din > 0 && <p className="vox-nota"><span className="vox-punct gri" />{t('vox.aplicatii.recenzii.nimic')}</p>}
       {vizibile.map((r, i) => (
         <CardRecenzie key={`${r.data}-${i}`} banca={banca} m={m} nota={r.nota} data={r.data} versiune={r.versiune}
           magazin={magazin} text={r.text ? <TextRecenzie text={r.text} cuvinte={cuvinte} /> : null} raspuns={r.raspuns_banca}
@@ -110,7 +117,9 @@ export default function Recenzii({ a, m }: { a: AplicatiiT; m: Meta }) {
         <b>{cautat ? t('vox.aplicatii.recenzii.titlu_cautare', { text: cautat }) : t('vox.aplicatii.recenzii.titlu')}</b>
       </div>
       <p className="vox-nota"><span className="vox-punct gri" />
-        {t('vox.aplicatii.recenzii.esantion', { data: a.play_la ? formatZi(a.play_la, locale) : '—' })}
+        {a.play_la
+          ? t('vox.aplicatii.recenzii.esantion', { data: formatZi(a.play_la, locale) })
+          : t('vox.aplicatii.recenzii.esantion_fara_play')}
       </p>
       {!blocuri.length && cautat && (
         <p className="vox-nota"><span className="vox-punct" />{t('vox.aplicatii.recenzii.nimic_nicaieri', { text: cautat })}</p>
