@@ -224,14 +224,17 @@ def prompt(ctx):
         "aspect = note pentru notă (stelele și numărul de note) și clasamentul ei („cea mai bună aplicație” = cea mai "
         "bună notă); aspect = recenzii pentru ce scriu sau spun clienții despre o aplicație (recenzii, comentarii, "
         "păreri, plângeri), cu functie = null și text_cautat = cuvintele căutate în recenzii, doar dacă întrebarea "
-        "caută ceva anume („Se plâng clienții de logare la Libra?” → logare); altfel "
-        "functii. prag_note = numărul minim de note, doar dacă întrebarea îl cere („cu cel puțin 1.000 de "
+        "caută ceva anume, un cuvânt sau o funcție („Se plâng clienții de logare la Libra?” → logare; "
+        "„Ce spun clienții despre plata cu telefonul?” → banci = [], text_cautat = plata cu telefonul); "
+        "fără bancă numită, recenziile se caută la toate aplicațiile, deci nu ceri banca. "
+        "Fără note sau recenzii, aspect = functii. prag_note = numărul minim de note, doar dacă întrebarea îl cere („cu cel puțin 1.000 de "
         "note” → 1000), altfel null. La aplicatii, concept, categorie, termen, produs_credit, segment și "
         "metrica sunt null.",
         "- tip = neclar: lipsește banca (iar întrebarea nu compară băncile) sau nu se înțelege ce valoare; "
         "scrie atunci în clarificare "
         "o întrebare scurtă, în limba utilizatorului. O întrebare fără bancă și fără comparație "
-        "(„Cât costă administrarea contului?”) e neclar. La neclar completezi totuși ce ai înțeles "
+        "(„Cât costă administrarea contului?”) e neclar; cu o comparație "
+        "(„Unde e cea mai ieftină administrare a contului?”) e clasament. La neclar completezi totuși ce ai înțeles "
         "(banci, concept sau text_cautat): aplicația decide ce face cu ele.",
         "- tip = in_afara: orice altceva (trackere, permisiuni, campanii, sfaturi, texte de scris, întrebări "
         "generale).",

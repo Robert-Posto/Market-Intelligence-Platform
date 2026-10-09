@@ -234,6 +234,16 @@ class Schema(unittest.TestCase):
         self.assertNotIn("cele despre recenzii sau campanii rămân in_afara", text)
         self.assertIn("aspect = note pentru notă (stelele și numărul de note) și clasamentul ei", text)
         self.assertNotIn("Nota înseamnă doar stelele", text)
+        # #36 („Care e cea mai ieftină variantă de administrare a contului?”) a ieșit `neclar` de două ori pe
+        # 09.10.2026, după modificări în alte reguli; perechea fixează granița neclar/clasament
+        self.assertIn("(„Cât costă administrarea contului?”) e neclar; cu o comparație "
+                      "(„Unde e cea mai ieftină administrare a contului?”) e clasament.", text)
+        # „Ce scriu clienții despre RoPay?” cerea banca (testul țintit, 09.10.2026): recenziile fără bancă
+        # se caută la toate aplicațiile, iar o funcție poate fi chiar căutarea
+        self.assertIn("un cuvânt sau o funcție („Se plâng clienții de logare la Libra?” → logare; "
+                      "„Ce spun clienții despre plata cu telefonul?” → banci = [], text_cautat = plata cu telefonul); "
+                      "fără bancă numită, recenziile se caută la toate aplicațiile, deci nu ceri banca. "
+                      "Fără note sau recenzii, aspect = functii.", text)
 
 
 class Validare(unittest.TestCase):
