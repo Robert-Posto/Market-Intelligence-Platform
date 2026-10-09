@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare culturi (Agricultura)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat finanțării costurilor de infiintare/intretinere a culturilor agricole (semințe, insecticide, pesticide), destinat firmelor, cu rambursare adaptată ciclului de producție/sezonalității, la fel ca linia de credit Libra pentru inputuri agricole. Durata exactă (24-48 luni) nu e precizată explicit pe pagină, dar tipul de produs și segmentul de clienți coincid.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina este dedicată explicit finanțării agricole și descrie direct produsul 'Finanțare culturi' cu detalii despre tipul de costuri acoperite și structura rambursării, dar nu indică cifre exacte pentru durata minimă/maximă sau dobândă.",
+      "citat": "Iti oferim credit de nevoi generale revolving sau la termen in functie de nevoile si specificul afacerii tale; In cazul creditelor la termen, rambursarile pot fi lunare/trimestriale/semestriale, adaptate ciclului de productie; Finantarile vor acoperi costuri legate de infiintarea, intretinerea si administrarea culturilor, ca de exemplu: seminte, insecticide, pesticide, salarii, apa pentru irigatii, costul culesului si transportului, costul depozitarii, etc.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html#:~:text=Iti%20oferim%20credit%20de%20nevoi,si%20transportului%2C%20costul%20depozitarii%2C%20etc."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/finantare/agricultura.html"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1575,
+    "citire_cache": 32305,
+    "scriere_cache": 35050,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.109848
+  }
+}

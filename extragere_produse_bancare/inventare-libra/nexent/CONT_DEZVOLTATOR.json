@@ -1,0 +1,30 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CONT_DEZVOLTATOR",
+  "denumire": "Contul Dezvoltatorului",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Nexent Bank nu are un cont dedicat dezvoltatorilor imobiliari (tip escrow pentru avansuri clienți + plăți furnizori proiect, conform Legii 207/2025). Pagina oficială 'Servicii și Conturi Speciale' pentru Persoane Juridice (atât IMM https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale cât și Corporații https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale) listează explicit doar două produse: 'Cont de garanție de bună execuție' (garantare angajamente contractuale/finalizare proiect investiții, NU colectare avansuri clienți) și 'Mesaje SWIFT automate'. Nu există niciun produs tip escrow/cont colector pentru proiecte imobiliare rezidențiale. Contul de garanție de bună execuție este un produs general de garantare contractuală, nu unul dedicat specific dezvoltatorilor imobiliari pentru avansuri de la clienți persoane fizice cumpărători de locuințe."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale",
+    "https://nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale",
+    "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale/Cont-de-garantie-de-buna-executie",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Services-and-Special-Accounts",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 14,
+    "iesire": 3409,
+    "citire_cache": 298225,
+    "scriere_cache": 111879,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3734605000000001
+  }
+}

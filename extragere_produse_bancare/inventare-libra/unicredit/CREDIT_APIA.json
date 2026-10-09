@@ -1,0 +1,36 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare APIA (capital de lucru pe baza adeverințelor APIA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Același tip de produs (credit de capital de lucru pe adeverință APIA, până la 90% din subvenție, rambursare la încasarea APIA) și același segment (persoane juridice - companii agricole), identic cu CREDIT_APIA de la Libra Bank.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată agriculturii conține o secțiune explicită 'FINANTARE APIA' cu cifrele exacte ale produsului: procentul din subvenție și mecanismul de rambursare.",
+      "citat": "UniCredit Bank iti poate oferi si finantarea capitalului de lucru pentru desfasurarea activitatilor curente, pe baza adeverintelor eliberate de APIA - Valoarea finantata poate fi pana la 90% din valoarea subventiei de incasat, respectiv Schema de Plata Unica pe Suprafata (SAPS), plata redistributiva, plata pentru practici agricole benefice pentru clima si mediu si plati pentru zonele care se confrunta cu constrangeri naturale sau cu alte constrangeri semnificative; Rambursarea creditului se va face la momentul incasarii sumelor cuvenite de la APIA.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 4,
+    "iesire": 860,
+    "citire_cache": 6341,
+    "scriere_cache": 24917,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0721687
+  }
+}

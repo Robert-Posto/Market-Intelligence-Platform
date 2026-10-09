@@ -441,6 +441,90 @@ GRUPURI_RATE = {
 # rman in coada de verificare.
 
 
+# ---------------------------------------------------------------------------
+# Sursa „libra” pentru 2.1 și 2.2: aceleași interogări (matrice, rate, celula), dar
+# peste fluxul comparației cu Libra (extragere_produse_bancare: comparatie_libra +
+# surse_libra), nu peste observatii_curente. `obs_libra` are coloanele vederii
+# observatii_curente; câmpurile fluxului (produse_bancare_v2.json) se mapează pe
+# conceptele paginilor (GRUPURI, GRUPURI_RATE), iar categoria și segmentul intră în
+# cod_scenariu, ca filtrele existente să meargă neschimbate. Ce nu are corespondent
+# rămâne cu camp NULL și nu intră nicăieri.
+#
+# Câmpurile de cont / transfer vin doar de la produsele de cont (un comision de
+# administrare la un credit nu e „administrare cont”); cele de card și de la
+# produsele CARD_*. `%` e scris `%%`: interoghează() trimite mereu parametri.
+_CONTURI_LIBRA = "p.categorie_cod IN ('CONT_CURENT', 'CONT_OPERATIUNI', 'CARDURI_ACQUIRING')"
+_CARD_LIBRA = f"(p.cod LIKE 'CARD%%' OR {_CONTURI_LIBRA})"
+_CTE_LIBRA = f"""WITH obs_libra AS (
+  SELECT * FROM (
+    SELECT c.id, c.created_at, c.id_sursa, NULL::bigint AS id_produs, NULL::bigint AS id_hash,
+      CASE
+        WHEN c.unitate = '%%' AND c.camp IN ('dobanda_nominala', 'dobanda_fixa', 'dobanda_variabila',
+             'dobanda_la_scadenta', 'dobanda_fixa_introductiva') THEN 'nominala'
+        WHEN c.unitate = '%%' AND c.camp = 'dae' THEN 'dae'
+        WHEN c.unitate = '%%' AND c.camp = 'marja_banca' THEN 'marja_ircc'
+        WHEN c.unitate = '%%' AND c.camp LIKE 'comision%%' AND {_CONTURI_LIBRA} THEN 'comision_procent'
+        WHEN c.unitate = '%%' THEN NULL
+        WHEN p.cod LIKE 'CARD%%' AND c.camp IN ('comision_administrare_lunar', 'comision_administrare_anual',
+             'comision_administrare_card') THEN 'administrare_card'
+        WHEN c.camp = 'comision_administrare_card' AND {_CARD_LIBRA} THEN 'administrare_card'
+        WHEN c.camp = 'comision_emitere_card' AND {_CARD_LIBRA} THEN 'emitere_card'
+        WHEN c.camp = 'comision_reemitere_card' AND {_CARD_LIBRA} THEN 'reemitere_card'
+        WHEN c.camp IN ('comision_retragere_atm', 'comision_retragere_atm_alta_banca',
+             'comision_retragere_numerar') AND {_CARD_LIBRA} THEN 'retragere_numerar'
+        WHEN c.camp IN ('comision_administrare_lunar', 'cost_lunar') AND {_CONTURI_LIBRA} THEN 'administrare_cont'
+        WHEN c.camp = 'comision_deschidere' AND {_CONTURI_LIBRA} THEN 'deschidere_cont'
+        WHEN c.camp = 'comision_interogare_sold' AND {_CARD_LIBRA} THEN 'interogare_sold'
+        WHEN c.camp IN ('comision_plata_interbancara', 'comision_plata_intrabancara', 'comision_tranzactie_online')
+             AND {_CONTURI_LIBRA} THEN 'transfer_credit'
+        WHEN c.camp = 'comision_incasare' AND {_CONTURI_LIBRA} THEN 'incasare'
+        WHEN c.camp = 'comision_modificare' THEN 'modificare_anulare'
+        WHEN c.camp = 'comision_emitere_minim' AND p.categorie_cod = 'TRADE_FINANCE' THEN 'documentar'
+      END AS camp,
+      CASE WHEN p.categorie_cod = 'DEPOZITE' THEN 'depozite'
+           WHEN p.categorie_cod IN ('CREDIT_CAPITAL_LUCRU', 'CREDIT_INVESTITII') THEN 'credite'
+           ELSE 'conturi_carduri' END
+        || CASE p.segment WHEN 'PF' THEN '|pf' WHEN 'PJ' THEN '|pj' WHEN 'PF+PJ' THEN '|pf|pj' ELSE '' END
+        || CASE WHEN p.cod LIKE '%%PFA%%' THEN '|pfa' ELSE '' END AS cod_scenariu,
+      c.valoare_num, c.valoare_text,
+      CASE c.unitate WHEN '%%' THEN 'procent' ELSE c.unitate END AS unitate,
+      c.moneda AS valuta, c.citat, c.incredere AS confidence, c.ambiguu, 'llm'::text AS metoda_extractie,
+      -- produsul de credit (PRODUS_CREDIT) se ghicește din text: tipul produsului Libra în față
+      concat_ws(' · ',
+        CASE WHEN p.cod LIKE '%%CARD_CREDIT%%' OR p.cod LIKE 'OVERDRAFT%%' THEN 'Card de credit / overdraft'
+             WHEN p.cod LIKE '%%NEVOI_PERSONALE%%' OR p.cod = 'CREDIT_LIBRA_WAY' THEN 'Nevoi personale'
+             WHEN p.cod LIKE '%%IPOTEC%%' OR p.cod LIKE '%%IMOBILIAR%%' THEN 'Credit ipotecar' END,
+        p.denumire, c.denumire_la_banca) AS serviciu,
+      NULL::text AS sectiune, c.conditie,
+      -- termenul (TERMEN_LUNI) din scenariu: „12 luni”, „30 zile”
+      CASE WHEN c.scenariu->>'perioada_luni' IS NOT NULL
+             THEN round((c.scenariu->>'perioada_luni')::numeric)::int || ' luni'
+           WHEN c.scenariu->>'perioada_zile' IS NOT NULL
+             THEN round((c.scenariu->>'perioada_zile')::numeric)::int || ' zile' END AS frecventa,
+      NULL::text AS detaliu, c.pagina_pdf AS pagina, c.valabil_din AS data_vigoare,
+      NULL::text AS stare_data, c.motiv_ambiguu, 1 AS nr_aparitii, NULL::text AS coloana
+    FROM comparatie_libra c
+    JOIN produse_libra p ON p.id = c.id_produs_libra AND p.activ
+  ) x WHERE camp IS NOT NULL
+), surse_lv AS (
+  SELECT s.id, s.id_banca, 'url'::text AS tip_sursa, s.url AS sursa, s.rol, s.tip AS format,
+         s.url AS url_public
+    FROM surse_libra s
+)"""
+
+
+def _iq(libra, sql, params):
+    """interoghează(), iar cu `libra` aceeași interogare peste fluxul comparației (vezi _CTE_LIBRA)."""
+    if libra:
+        corp = sql.replace("observatii_curente", "obs_libra").replace("JOIN surse s ON", "JOIN surse_lv s ON").lstrip()
+        sql = _CTE_LIBRA + (", " + corp[5:] if corp[:5].upper() == "WITH " else "\n" + corp)
+    return interoghează(sql, params)
+
+
+def _sursa_libra(q):
+    return (q.get("sursa") or [""])[0] == "libra"
+
+
 def matrice(q):
     """Matrice banca x serviciu, cu interval min-max si numar de valori.
 
@@ -451,6 +535,7 @@ def matrice(q):
     O singura moneda per matrice: amestecarea lei cu euro in aceeasi celula ar
     produce intervale fara sens.
     """
+    libra = _sursa_libra(q)   # sursa=libra: fluxul comparației (_CTE_LIBRA)
     grup = (q.get("grup") or ["cont_curent"])[0]
     if grup not in GRUPURI:
         return {"eroare": f"grup necunoscut: {grup}"}
@@ -495,7 +580,7 @@ def matrice(q):
     # Se ia RANDUL de la mediana, nu valoarea calculata separat, ca `serviciu`
     # si `frecventa` afisate sa fie chiar ale cifrei afisate - altfel eticheta
     # ar explica alt pret decat cel de pe ecran.
-    celule = interoghează(
+    celule = _iq(libra, 
         f"""WITH randuri AS (
               SELECT b.slug AS banca, o.camp, o.valoare_num, o.unitate, o.serviciu,
                      o.frecventa, o.conditie, o.pagina, s.url_public, s.sursa, s.tip_sursa,
@@ -532,19 +617,19 @@ def matrice(q):
             FROM agregat a JOIN reprezentativ r USING (banca, camp)""",
         (campuri, unitate) + p_seg,
     )
-    excluse = interoghează(
+    excluse = _iq(libra, 
         f"""SELECT count(*)::int AS n FROM observatii_curente o
             WHERE o.camp = ANY(%s) AND o.unitate = %s AND o.ambiguu{filtru_seg}""",
         (campuri, unitate) + p_seg,
     )[0]["n"]
-    implauzibile = interoghează(
+    implauzibile = _iq(libra, 
         f"""SELECT count(*)::int AS n FROM observatii_curente o
             WHERE o.camp = ANY(%s) AND o.unitate = %s AND NOT o.ambiguu
               AND o.valoare_num > {PLAUZIBIL}{filtru_seg}""",
         (campuri, unitate) + p_seg,
     )[0]["n"]
 
-    banci_ord = interoghează(
+    banci_ord = _iq(libra, 
         f"""SELECT b.slug, b.nume, count(*)::int AS n
             FROM observatii_curente o JOIN surse s ON s.id = o.id_sursa
             JOIN banci b ON b.id = s.id_banca
@@ -553,7 +638,7 @@ def matrice(q):
             GROUP BY 1, 2 ORDER BY n DESC""",
         (campuri, unitate) + p_seg,
     )
-    segmente = interoghează(
+    segmente = _iq(libra, 
         """SELECT seg, count(*)::int AS n FROM (
              SELECT unnest(string_to_array(coalesce(o.cod_scenariu, ''), '|')) AS seg
              FROM observatii_curente o WHERE o.camp = ANY(%s) AND o.unitate = %s
@@ -594,6 +679,7 @@ def celula(q):
     """
     # cu `text` și fără `camp` (Vox): toate conceptele băncii, filtrate după cuvinte,
     # cel mult vox.MAX_RANDURI rânduri; fără `text` totul rămâne ca înainte
+    libra = _sursa_libra(q)   # sursa=libra: fluxul comparației (_CTE_LIBRA)
     camp = (q.get("camp") or [""])[0]
     cuvinte = vox.cuvinte_cautare((q.get("text") or [""])[0])
     if not (q.get("banca") and (camp or cuvinte)):
@@ -618,7 +704,7 @@ def celula(q):
     for c in cuvinte:
         extra += f" AND {_TEXT_CAUTARE} LIKE %s"
         p_extra += ("%" + c + "%",)
-    rows = interoghează(
+    rows = _iq(libra, 
         """SELECT o.valoare_num::float8 AS valoare, o.valoare_text, o.unitate,
                   o.valuta, o.cod_scenariu, o.citat, o.confidence::float8,
                   o.ambiguu, o.motiv_ambiguu, o.metoda_extractie,
@@ -746,6 +832,7 @@ def rate(q):
     Filtre: `termen` (depozite) si `produs` (credite). Fara ele, mediana pe
     banca amesteca termene si produse diferite.
     """
+    libra = _sursa_libra(q)   # sursa=libra: fluxul comparației (_CTE_LIBRA)
     categorie = (q.get("categorie") or ["depozite"])[0]
     if categorie not in GRUPURI_RATE:
         return {"eroare": f"categorie necunoscută: {categorie}"}
@@ -769,7 +856,7 @@ def rate(q):
                     AND NOT o.ambiguu AND o.valoare_num IS NOT NULL
                     AND o.valoare_num <= {prag}"""
     # cate valori are fiecare optiune de filtru, ca meniul sa spuna ce gasesti
-    optiuni = interoghează(
+    optiuni = _iq(libra, 
         f"""SELECT {TERMEN_LUNI} AS luni, {PRODUS_CREDIT} AS produs, count(*)::int AS n
             {baza_cat} GROUP BY 1, 2""",
         (campuri, categorie),
@@ -794,7 +881,7 @@ def rate(q):
                        "n": pe_termen.get("necunoscut", 0)}],
         "produse": [{"cheie": k, "eticheta": v, "n": pe_produs.get(k, 0)}
                     for k, v in PRODUSE_CREDIT.items()],
-        "celule": interoghează(
+        "celule": _iq(libra, 
             f"""WITH randuri AS (
                   SELECT b.slug AS banca, o.camp, o.valoare_num, o.serviciu,
                          o.frecventa, o.conditie, {TERMEN_LUNI} AS luni
@@ -827,7 +914,7 @@ def rate(q):
         # peste prag nu e dobanda de retail in categoria asta; sunt procente de
         # alt fel (reduceri, praguri de venit, cote de garantare, taxe) extrase
         # gresit ca dobanda. Vezi coada de verificare.
-        "excluse_implauzibile": interoghează(
+        "excluse_implauzibile": _iq(libra, 
             f"""SELECT count(*)::int AS n FROM observatii_curente o
                 WHERE o.unitate = 'procent' AND o.camp = ANY(%s)
                   AND split_part(o.cod_scenariu, '|', 1) = %s
@@ -838,7 +925,7 @@ def rate(q):
         # diferite: la depozite, varianta BS4 e singura care ajunge la garanti,
         # procredit, salt si vista. Fara defalcarea asta, contributia fiecarei
         # variante e invizibila in interfata.
-        "provenienta": interoghează(
+        "provenienta": _iq(libra, 
             f"""SELECT o.metoda_extractie AS metoda, count(*)::int AS valori,
                        count(DISTINCT b.slug)::int AS banci
                 FROM observatii_curente o
@@ -1377,6 +1464,95 @@ def comparatie_libra(q):
                 WHERE p.cod = %s AND NOT s.not_found
                 ORDER BY b.slug, s.incredere DESC NULLS LAST""", (cod,))
     return rez
+
+
+# Versus Libra din fluxul comparației: ce câmp se compară și în ce sens. Doar câmpurile cu
+# „mai bun” clar; sumele, perioadele, vârsta și „altele” sunt caracteristici, nu prețuri.
+# Dobânda e câștig la depozite și cost la credite / carduri de credit (sensul vine din categorie).
+_VS_LIBRA_MIC = {
+    "dae", "marja_banca", "rata_lunara", "total_platibil", "cost_lunar", "cost_evaluare",
+    "cost_asigurare", "chirie_pos_lunara", "avans_minim", "avans_min", "contributie_proprie_minima",
+}
+_VS_LIBRA_MARE = {"operatiuni_incluse", "numar_rate_fara_dobanda", "perioada_gratie", "cashback_maxim"}
+_VS_LIBRA_DOBANZI = {"dobanda_nominala", "dobanda_fixa", "dobanda_variabila", "dobanda_fixa_introductiva",
+                     "dobanda_variabila_ulterioara", "dobanda_la_scadenta"}
+# Câmpurile care depind de scenariu (sumă, termen): se compară doar pe scenariul de referință
+# al produsului (referinte_libra.json), altfel 4 luni ar sta lângă 12 luni.
+_VS_LIBRA_SCENARIU = _VS_LIBRA_DOBANZI | {"dae", "marja_banca", "rata_lunara", "total_platibil", "cost_asigurare"}
+
+
+def _sens_libra(camp, categorie):
+    if camp in _VS_LIBRA_DOBANZI:
+        return "mare_bun" if categorie == "DEPOZITE" else "mic_bun"
+    if camp in _VS_LIBRA_MARE:
+        return "mare_bun"
+    if camp in _VS_LIBRA_MIC or camp.startswith("comision_"):
+        return "mic_bun"
+    return None
+
+
+def versus_libra():
+    """Valorile fluxului comparației cu Libra, gata de pus în Versus Libra.
+
+    Pe produs Libra × câmp × bancă: câte valori, minimul, maximul, mediana (o valoare reală,
+    ca la /api/matrice) și citatul cu linkul valorii mediane. Intră doar valorile neambigue,
+    pe câmpurile din `_sens_libra`; cele care depind de scenariu doar pe scenariul de
+    referință (potrivire „exact” sau „aproximativ”), restul fără scenariu sau pe referință
+    (niciodată pe „alt” scenariu). Fără tabelele fluxului: `disponibil: false`.
+    """
+    if not interoghează("SELECT to_regclass('public.comparatie_libra') IS NOT NULL AS e")[0]["e"]:
+        return {"disponibil": False}
+    randuri = interoghează(
+        """SELECT p.cod AS produs, p.categorie_cod, b.slug AS banca, c.camp,
+                  coalesce(c.unitate, '') AS unitate, c.valoare_num::float8 AS valoare,
+                  c.citat, coalesce(c.link_live, s.url) AS link, c.conditie,
+                  c.scenariu->'referinta'->>'potrivire' AS potrivire
+             FROM comparatie_libra c
+             JOIN banci b ON b.id = c.id_banca
+             JOIN produse_libra p ON p.id = c.id_produs_libra AND p.activ
+             JOIN surse_libra s ON s.id = c.id_sursa
+            WHERE c.valoare_num IS NOT NULL AND NOT c.ambiguu
+            ORDER BY c.valoare_num""")
+    grupuri = {}
+    for r in randuri:
+        sens = _sens_libra(r["camp"], r["categorie_cod"])
+        if sens is None or not r["unitate"]:
+            continue
+        pe_referinta = r["potrivire"] in ("exact", "aproximativ")
+        if r["camp"] in _VS_LIBRA_SCENARIU and not pe_referinta:
+            continue
+        if r["potrivire"] == "alt":
+            continue
+        cheie = (r["produs"], r["camp"], r["unitate"], r["banca"])
+        grupuri.setdefault(cheie, {"sens": sens, "valori": []})["valori"].append(r)
+    celule = []
+    for (produs, camp, unitate, banca), g in grupuri.items():
+        vs = g["valori"]                 # deja în ordinea valorii
+        mediana = vs[(len(vs) - 1) // 2]  # mediana de jos: o valoare care chiar există
+        celule.append({
+            "produs": produs, "camp": camp, "unitate": unitate, "banca": banca, "sens": g["sens"],
+            "n": len(vs), "minim": vs[0]["valoare"], "maxim": vs[-1]["valoare"], "valoare": mediana["valoare"],
+            "referinta": any(v["potrivire"] in ("exact", "aproximativ") for v in vs),
+            "citat": mediana["citat"], "link": mediana["link"], "conditie": mediana["conditie"],
+        })
+    cu_celule = {c["produs"] for c in celule}
+    produse = interoghează(
+        """SELECT cod, denumire, segment, categorie_cod, prioritar
+             FROM produse_libra WHERE activ
+            ORDER BY prioritar DESC, denumire""")
+    return {"disponibil": True, "produse": [p for p in produse if p["cod"] in cu_celule], "celule": celule}
+
+
+def situatii_banci():
+    """Situațiile financiare anuale ale instituțiilor de credit (MF, data.gov.ro), din
+    date/situatii_financiare.json, scris de ingest/situatii_financiare_mf.py. Nu e în bază:
+    fișierul are tot (101 entități × 14 ani, ~200 KB), iar pagina calculează cotele singură."""
+    cale = os.path.join(os.path.dirname(AICI), "date", "situatii_financiare.json")
+    if not os.path.exists(cale):
+        return {"disponibil": False, "motiv": "lipsește date/situatii_financiare.json — rulează "
+                                              "python ingest/situatii_financiare_mf.py"}
+    with open(cale, encoding="utf-8") as f:
+        return {"disponibil": True, **json.load(f)}
 
 
 def retele():
@@ -2134,6 +2310,8 @@ RUTE = {
     "/api/sentiment": sentiment,
     "/api/istoric": istoric,
     "/api/versus_extra": lambda q: versus_extra(),
+    "/api/versus_libra": lambda q: versus_libra(),
+    "/api/situatii_banci": lambda q: situatii_banci(),
     "/api/stare": lambda q: stare(),
     "/api/acoperire": lambda q: acoperire(),
 }

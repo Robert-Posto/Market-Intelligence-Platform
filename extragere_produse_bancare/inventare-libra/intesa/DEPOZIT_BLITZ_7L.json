@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Dobânzi produse de economisire - Persoane Fizice (Depozite la termen RON, 6 luni)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de dobânzi arată atât rata standard de 6,25% pentru depozitul RON la 6 luni (identică numeric cu dobânda Blitz de la Libra), cât și rata promoțională de 7,50% condiționată de pachetul salarial; nu există niciun termen de 7 luni la Intesa, iar oferta promoțională e valabilă doar pentru persoane fizice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de dobânzi cu cifre explicite pentru depozitele la termen pe 6 luni, dar fără un produs dedicat de 7 luni sau pentru persoane juridice echivalent cu Blitz.",
+      "citat": "RON 500 LEI 5.50% 5.85% 6.25% 7.50% 6.50% 6.25% 6.00% 6.00%, Dobanda de 7.50% pentru depozitele in RON la 6 luni constituite in perioada 11.09-31.12.2025, in Sucursalele Bancii si online prin Mobile Banking",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/persoane-fizice/economii/Vino-cu-salariul---Super-dobanzi-la-economisire.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Campanie promoțională \"Vino cu salariul!\" - depozit la termen 6 luni",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul depozit promoțional pe termen scurt activ la Intesa, dar diferă semnificativ de Depozitul Blitz Libra: termen de 6 luni (nu 7), dobândă de 7,50% (vs 6,25% la Libra), disponibil exclusiv pentru persoane fizice (nu și juridice) și condiționat de virarea unui venit salarial minim de 4.000 RON, condiție pe care produsul Libra nu o impune.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată campaniei conține explicit cifrele produsului (termen, dobândă, sumă minimă), dar segmentul și condițiile diferă de Libra Blitz.",
+      "citat": "Perioada de constituire: 6 luni - Dobândă: 7,50% pe an, Fixă - Valută: RON - Suma minimă de constituire: 500 RON. Depunerile ulterioare nu sunt posibile.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4443,
+    "citire_cache": 38277,
+    "scriere_cache": 43038,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.15969239999999998
+  }
+}

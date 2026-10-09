@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/imminvest",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Programul IMM INVEST ROMÂNIA - Credite pentru investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru persoane juridice (firme/IMM), dar diferă esențial: este un program guvernamental cu garanție de stat FNGCIMM (80-90%), plafonat la 10 milioane lei, cu dobândă subvenționată 8 luni și eligibilitate limitată la IMM-uri conform Legii 346/2004, spre deosebire de un credit de investiții standard, negarantat de stat, disponibil și pentru PFA.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține cifre explicite pentru creditele de investiții (dobândă ROBOR 3M+2%, plafon 10 milioane lei, perioadă de grație 18 luni), dar produsul este un program de stat specific IMM, nu creditul general de investiții al băncii.",
+      "citat": "Valoarea maximă a creditelor poate fi de până la 5 milioane lei pentru capital de lucru și 10 milioane lei pentru investiții, fără a depăși suma totală cumulată de 10 milioane lei; Pentru creditele de investiții, poate fi acordată o perioadă de grație de maximum 18 luni, la începutul perioadei de creditare.",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-juridice/imminvest#:~:text=Valoarea%20maxim%C4%83%20a%20creditelor%20poate,la%20%C3%AEnceputul%20perioadei%20de%20creditare."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice/credite",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf",
+    "https://www.vistabank.ro/persoane-juridice/imminvest"
+  ],
+  "durata_s": 68,
+  "consum": {
+    "intrare": 10,
+    "iesire": 5644,
+    "citire_cache": 144455,
+    "scriere_cache": 76679,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2770485
+  }
+}

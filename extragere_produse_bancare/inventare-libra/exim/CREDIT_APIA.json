@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/credite-de-prefinantare-a-subventiilor-apia/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de prefinanțare a subvențiilor APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat creditării pe baza adeverinței APIA, pentru persoane juridice (agricultori), cu grație până la încasarea subvenției - identic ca tip și segment cu CREDIT_APIA de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu toate cifrele cheie (procente, monedă, termen, modalitate de rambursare) prezente în text.",
+      "citat": "valoare: pana la 85% din subventia APIA pentru suprafete; pana la 90% din subventia APIA pentru bunastare animale, moneda: LEI, perioada de acordare: termen scurt (maximum un an), rambursare: in rata unica, la data incasarii subventiei APIA",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/credite-de-prefinantare-a-subventiilor-apia/"
+  ],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 14801,
+    "iesire": 875,
+    "citire_cache": 12680,
+    "scriere_cache": 20936,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09322799999999999
+  }
+}

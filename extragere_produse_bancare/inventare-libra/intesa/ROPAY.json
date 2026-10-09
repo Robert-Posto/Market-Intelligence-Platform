@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/persoane-fizice/internet-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Plăți Instant (Internet Banking I-B@nk)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Secțiunea Plăți Instant descrie exact mecanismul de transfer instant în lei folosit și de funcția de plată prin telefon, cu cifre concrete (sumă maximă, timp de procesare), dar este disponibilă doar pentru persoane fizice prin Internet Banking, nu și pentru persoane juridice ca RoPay la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina conține valori concrete pentru serviciul de Plăți Instant (sumă maximă 50.000 lei, procesare sub 10 secunde), parte din infrastructura pe care se bazează și plata prin telefon.",
+      "citat": "Transfer bancar în lei, în România. Banii ajung în mai puțin de 10 secunde, oricand, la orice ora, 24h/zi, 7 zile.saptămână - Valoare maximă: 50.000 lei/Plată Instant - Plățile pot fi inițiate doar din Internet Banking (alege opțiunea Plată Instant)",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/digical-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mobile & Internet Banking - #withPAY",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Funcția #withPAY permite plăți și încasări instant folosind doar numărul de telefon, ca și RoPay, dar este oferită doar în cadrul Digical Mobile&Internet Banking, serviciu adresat exclusiv persoanelor fizice, în timp ce RoPay la Libra acoperă și persoane juridice.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie explicit funcția de plată/încasare instant prin numărul de telefon (#withPAY), dar nu listează cifre specifice (comision, limită) pentru această funcție separat de sistemul general de Plăți Instant.",
+      "citat": "#withPAY - pay and receive money instantly by using your phone number only Split&share - split payments or share payments, in real time with your friends, directly from the app",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/persoane-fizice/internetbanking/digical-banking.html",
+    "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/digical-banking.html",
+    "https://www.intesasanpaolobank.ro/persoane-fizice/internetbanking/digical-banking.html",
+    "https://www.intesasanpaolobank.ro/persoane-fizice/internet-banking.html"
+  ],
+  "durata_s": 110,
+  "consum": {
+    "intrare": 20287,
+    "iesire": 9235,
+    "citire_cache": 131489,
+    "scriere_cache": 65855,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.32385929999999996
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Cont curent pentru persoane juridice si entitati asimilate (încredere 0.55) — tbi bank nu are un produs de tip abonament/pachet dedicat PFA (cu card, IB/MB si operatiuni incluse la un pret fix lunar). Are doar un cont curent standard pentru persoane juridice/PFA, cu comision de administrare separat si comisioane per operatiune, fara structura de pachet all-inclusive."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent pentru persoane juridice si entitati asimilate",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "tbi bank nu are un produs de tip abonament/pachet dedicat PFA (cu card, IB/MB si operatiuni incluse la un pret fix lunar). Are doar un cont curent standard pentru persoane juridice/PFA, cu comision de administrare separat si comisioane per operatiune, fara structura de pachet all-inclusive.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Documentul de tarife pentru persoane juridice listeaza explicit comisioanele de deschidere, administrare si operare ale contului curent aplicabil si PFA, dar nu exista un produs-pachet de tip abonament comparabil cu cel de la Libra.",
+      "citat": "Deschidere cont curent / Current account opening 10 RON Administrare cont curent / Current account administration 10 RON/luna / 10 RON month",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "deschise": [],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2799,
+    "citire_cache": 29276,
+    "scriere_cache": 33616,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11789720000000001
+  }
+}

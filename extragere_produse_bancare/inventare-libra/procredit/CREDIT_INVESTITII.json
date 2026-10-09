@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de creditare destinat persoanelor juridice pentru finanțarea investițiilor (echipamente, imobile, terenuri, vehicule, active necorporale, construcția sediului), exact ca Credit de investiții Libra, pentru același segment - firme/PFA.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu descrierea detaliată a destinațiilor eligibile, condițiilor de eligibilitate și avantajelor financiare (avans zero, finanțare integrală, perioadă de grație, monedă LEI/EURO).",
+      "citat": "Creditul pentru Investiții oferit de ProCredit Bank este destinat clienților persoane juridice care doresc să își extindă sau să își îmbunătățească activitatea prin diverse tipuri de investiții. Acest produs de creditare oferă flexibilitate și suport financiar pentru diverse destinații eligibile, astfel încât afacerea ta să poată crește și evolua.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii/#:~:text=Creditul%20pentru%20Investi%C8%9Bii%20oferit%20de,s%C4%83%20poat%C4%83%20cre%C8%99te%20%C8%99i%20evolua."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii/"
+  ],
+  "durata_s": 12,
+  "consum": {
+    "intrare": 6,
+    "iesire": 828,
+    "citire_cache": 44803,
+    "scriere_cache": 50733,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14408510000000002
+  }
+}

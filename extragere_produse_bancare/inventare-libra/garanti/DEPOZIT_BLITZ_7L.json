@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (dobânzi standard, persoane fizice și persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen, oferit atât persoanelor fizice cât și persoanelor juridice (IMM și Corporate), ca și Blitz-ul Libra, dar la Garanti BBVA termenele standard sunt 1, 3, 6, 12 (și 15 pentru RON) luni — nu există o opțiune de 7 luni, iar dobânzile afișate sunt cele standard, nu o ofertă promoțională de tip „Blitz”.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina oficială de dobânzi conține un tabel explicit cu ratele pentru depozitele la termen pentru persoane fizice și pentru persoane juridice (Companii Medii & IMM și Corporate), dar fără niciun termen de 7 luni.",
+      "citat": "Currency Channel / Term 1 month 3 months 6 months 12 months15 months RON Agency 4.00% 4.10% 4.20% 4.25% 4.25% Internet / Mobile banking <50,000 RON 4.75% 5.00% 5.00% 5.10% 5.10%",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/#:~:text=Currency%20Channel%20%2F%20Term%201,4.75%25%205.00%25%205.00%25%205.10%25%205.10%25"
+    },
+    {
+      "url": "https://www.garantibbva.ro/persoane-fizice/depozit-la-termen/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit la termen Garanti BBVA",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina de produs pentru depozitul la termen standard al băncii; oferă aceeași categorie de produs (depozit la termen pentru persoane fizice, cu variantă echivalentă pentru persoane juridice), dar cu termene fixe de 1, 3, 6 sau 12 luni, fără opțiunea de 7 luni și fără caracterul promoțional „Blitz” al produsului Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului descrie clar termenele disponibile (1, 3, 6 sau 12 luni) și trimite către pagina de dobânzi pentru valori, dar nu menționează niciun termen de 7 luni sau vreo campanie Blitz activă.",
+      "citat": "Poţi alege să-ţi deschizi un depozit la termen pentru 1, 3, 6 sau 12 luni, în funcţie de nevoile şi posibilităţile tale",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/persoane-fizice/depozit-la-termen/#:~:text=Po%C5%A3i%20alege%20s%C4%83%2D%C5%A3i%20deschizi%20un,de%20nevoile%20%C5%9Fi%20posibilit%C4%83%C5%A3ile%20tale"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/campanii-curente/",
+    "https://www.garantibbva.ro/campanii-curente/regulamentul-campaniei-e-depozit-la-termen/",
+    "https://www.garantibbva.ro/en/individuals/term-deposit/",
+    "https://www.garantibbva.ro/persoane-fizice/campanii/",
+    "https://www.garantibbva.ro/persoane-fizice/depozit-la-termen/",
+    "https://www.garantibbva.ro/persoane-fizice/dobanzi-si-comisioane-depozite-persoane-fizice/",
+    "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/"
+  ],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 109474,
+    "iesire": 5069,
+    "citire_cache": 179985,
+    "scriere_cache": 91607,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5346525
+  }
+}

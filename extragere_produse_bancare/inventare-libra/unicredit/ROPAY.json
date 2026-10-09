@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/digital/ropay.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (plăți instant prin telefon/QR) și disponibil atât pentru persoane fizice (Mobile Banking) cât și pentru persoane juridice (Business Mobile), exact ca RoPay de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului RoPay cu limite valorice, costuri și condiții de utilizare explicite.",
+      "citat": "You can transfer amounts via RoPay Alias and QR code up to 50,000 lei per transaction, with instant processing 24/7 - including weekends and non-working days.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/PI-Conditii-generale-de-utilizare/Conditii-Generale_de_Utilizare_CGU.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Serviciul RoPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Condițiile generale de utilizare pentru persoane fizice definesc exact serviciul RoPay, limitele și modul de funcționare prin numărul de telefon (Alias) sau cod QR.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document contractual oficial care definește precis serviciul RoPay și limitele/termenele aferente (ex. T+0, 24/7).",
+      "citat": "Transfer credit – plăți şi încasări interbancare și intrabancare INSTANT de tip RoPay (\"ROPAY\")– transfer de fonduri în LEI, executat imediat, 24 de ore din 24 și în orice zi calendaristică, între conturi deschise la Bancă sau atunci când contul beneficiarului plății sau al plătitorului este deschis la o altă instituție de credit decât Banca.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "RoPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice (Corporate) conține explicit comisionul pentru opțiunea RoPay disponibilă în Business Mobile.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care conține cifra exactă a comisionului RoPay pentru clienți corporate.",
+      "citat": "Nu sunt incluse comisioanele sistemului de decontare SENT/ReGIS/SENT INSTANT/RoPay Instant: 0,51 Lei pentru plăți de mică valoare (sub 50.000 Lei), 6 Lei pentru plăți de mare valoare (peste 50.000 Lei) sau urgente, 0,45 Lei pentru plățile cu opțiunea \"INSTANT\" (până în 50.000 Lei) respectiv 0,20% din valoarea plății, maxim 0,10 lei pentru plățile cu opțiunea \"RoPay \" (până în 50.000 Lei).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "RoPay",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru IMM-uri conține explicit comisionul pentru opțiunea RoPay disponibilă în Business Mobile, aplicabil persoanelor juridice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife SME cu cifra exactă a comisionului RoPay.",
+      "citat": "0,20% din valoarea platii max 0,10 lei pentru plati de mica valoare cu optiunea \"RoPay\" (< 50.000 Lei).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (18 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2003,
+    "citire_cache": 6310,
+    "scriere_cache": 32566,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10271499999999999
+  }
+}

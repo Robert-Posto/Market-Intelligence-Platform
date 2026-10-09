@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/agro/Solu%C8%9Bii-non-cash/scrisoare-de-garantie-bancara",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoare de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași pagină de produs dar varianta cu detalii suplimentare privind maturitatea (max. 60 luni SGB, max. 120/180 luni plafon) și dobânda 0% până la executare.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina conține cifre detaliate: maturitate maximă, dobândă, tipuri de garanții, segmentul de clienți eligibil.",
+      "citat": "Maturitatea maximă a unui SGB este de 60 de luni, în timp ce maturitatea maximă a plafonului este de 120* de luni, Perioada de valabilitate mai mare de 120 luni, maxim 180 luni, se poate acorda exclusiv pentru proiecte de infrastructură.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/solutii-financiare-non-cash/scrisori-de-garantie-bancara",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoare de Garanție Bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat garanțiilor bancare pentru persoane juridice (SRL, PFA, II, SA etc.), aceeași funcție ca scrisorile de garanție Libra: eliminarea riscului la licitații/contracte.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține caracteristici și cifre explicite (maturitate, valabilitate, dobândă).",
+      "citat": "Scrisoarea de garanție bancară te ajută să obții noi contracte și să te asiguri că toate contractele avute cu partenerii tăi interni sau externi se vor finaliza așa cum trebuie.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție bancară (SGB)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane pentru persoane juridice, actualizat (07.07.2025), conține secțiune dedicată comisioanelor pentru emiterea/prelungirea SGB.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife, cu valori concrete ale comisioanelor pentru emitere SGB pe tipuri de garanții.",
+      "citat": "Emitere SGB garantie cash colateral 0.50%%, min. 75 € - max. 500 €/ trimestru sau fractiune de trimestru alte garantii 0,50 %, min. 75 € - max. 1.500 €/ trimestru sau fractiune de trimestru Fonduri Europene 1%, flat, calculat la valoarea scrisorii de garantie",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1417,
+    "citire_cache": 6318,
+    "scriere_cache": 14090,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0506666
+  }
+}

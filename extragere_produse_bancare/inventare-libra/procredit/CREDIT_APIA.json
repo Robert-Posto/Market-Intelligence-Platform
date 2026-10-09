@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/agricultura/finantare-cu-programe-nationale/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare prin programul APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat pentru persoane juridice din agricultură, bazat pe adeverința/convenția APIA, finanțare de capital de lucru până la 90% din subvenție, cu rambursare la încasarea subvenției și fără garanții suplimentare — identic ca tip și segment cu CREDIT_APIA de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu toate caracteristicile cheie (procent de finanțare, lipsă garanție, rambursare la încasare) explicitate în text.",
+      "citat": "ProCredit Bank îți oferă soluția ideală pentru finanțarea capitalului de lucru prin intermediul adeverinței APIA. Finanțare până la 90% din valoarea subvenției: Maximizează oportunitățile de investiție cu un procent mare de finanțare. Rambursare flexibilă: Plata se efectuează la încasarea subvenției APIA, oferindu-ți flexibilitate în gestionarea fluxului de numerar.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/agricultura/finantare-cu-programe-nationale/#:~:text=ProCredit%20Bank%20%C3%AE%C8%9Bi%20ofer%C4%83%20solu%C8%9Bia,%C3%AEn%20gestionarea%20fluxului%20de%20numerar."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/agricultura/finantare-cu-programe-nationale/"
+  ],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 6,
+    "iesire": 948,
+    "citire_cache": 33917,
+    "scriere_cache": 39334,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1146104
+  }
+}

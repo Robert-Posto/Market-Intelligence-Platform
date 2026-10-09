@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/credite/credite-pentru-lichiditate-si-capital-de-lucru/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit (în cadrul paginii „Credite pentru lichiditate și capital de lucru”)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs revolving de linie de credit pentru persoane juridice, destinat capitalului de lucru, cu utilizări și rambursări multiple în limita unui plafon — exact tipul și segmentul produsului Libra LINIE_CREDIT.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține secțiunea „Linia de credit” cu caracteristici concrete (monedă, garanții, tip revolving), deși fără procente de dobândă explicite.",
+      "citat": "Produs revolving pe termen scurt, cu posibilitatea de prelungire la scadență - Utilizări și rambursări multiple în limita plafonului disponibil - Moneda: LEI sau EURO - Garanții: flexible sau fără garanții solide în funcție de valoarea totală a facilității",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/credite/credite-pentru-lichiditate-si-capital-de-lucru/#:~:text=Produs%20revolving%20pe%20termen%20scurt%2C,de%20valoarea%20total%C4%83%20a%20facilit%C4%83%C8%9Bii"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/credite/credite-pentru-lichiditate-si-capital-de-lucru/"
+  ],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 6,
+    "iesire": 995,
+    "citire_cache": 32396,
+    "scriere_cache": 37478,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1101362
+  }
+}

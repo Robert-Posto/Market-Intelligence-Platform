@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Conturi curente – Persoane juridice (încredere 0.55) — Este contul curent de bază pentru firme/PFA la CREDITCOOP (același segment, persoane juridice), dar nu este structurat ca un abonament lunar cu pachet de servicii precum SHINE: nu există o taxă lunară fixă, nu sunt menționate multivalută (lei+euro) ca pachet, carduri business Gold incluse sau mPOS cu comision dedicat 0,59% — doar limite de tranzacționare și descrierea operațiunilor de bază."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Conturi curente – Persoane juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent de bază pentru firme/PFA la CREDITCOOP (același segment, persoane juridice), dar nu este structurat ca un abonament lunar cu pachet de servicii precum SHINE: nu există o taxă lunară fixă, nu sunt menționate multivalută (lei+euro) ca pachet, carduri business Gold incluse sau mPOS cu comision dedicat 0,59% — doar limite de tranzacționare și descrierea operațiunilor de bază.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina descrie produsul de cont curent pentru persoane juridice cu cifre privind limitele de plată, dar nu conține o structură de abonament lunar sau comisioane de tip pachet comparabile cu Abonament SHINE.",
+      "citat": "Aceste limite se aplică tuturor ordinelor de plată, cu excepția transferurilor care au loc între conturile proprii, și operațiunilor de constituire/lichidare depozite la termen. Limită zilnică* 200.000 lei Limita pe tranzacție* 50.000 Lei",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/#:~:text=Aceste%20limite%20se%20aplic%C4%83%20tuturor,Limita%20pe%20tranzac%C8%9Bie%2A%2050.000%20Lei"
+    }
+  ],
+  "deschise": [
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3854,
+    "citire_cache": 103236,
+    "scriere_cache": 61324,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21251720000000002
+  }
+}

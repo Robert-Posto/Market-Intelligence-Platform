@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_AGRI_IRIGATII",
+  "denumire": "Credit soluții pentru irigații (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Credit pentru investiții sustenabile (în cadrul Credite cu garanția InvestEU) (încredere 0.55) — Este singurul produs de credit cu garanția InvestEU pentru persoane juridice/IMM care menționează explicit investiții eficiente energetic în agricultură, dar este un credit general pentru investiții sustenabile (imobiliare, echipamente, auto) și nu un credit dedicat exclusiv sistemelor de irigații; termenul maxim e de 12 ani față de 12-60 luni la Libra."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții sustenabile (în cadrul Credite cu garanția InvestEU)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de credit cu garanția InvestEU pentru persoane juridice/IMM care menționează explicit investiții eficiente energetic în agricultură, dar este un credit general pentru investiții sustenabile (imobiliare, echipamente, auto) și nu un credit dedicat exclusiv sistemelor de irigații; termenul maxim e de 12 ani față de 12-60 luni la Libra.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține toate cifrele produsului (sumă, garanție, termen), dar produsul acoperă generic investiții sustenabile, nu irigații în mod specific.",
+      "citat": "Produs de finanțare dedicat investițiilor sustenabile cum ar fi achiziția, construcția, reabilitarea, modernizarea, consolidarea sau extinderea bunurilor imobiliare, echipamentelor, mijloacelor auto și a altor active fixe, necesare pentru activitatea și dezvoltarea societății, ținând cont de atenuarea schimbărilor climatice, adaptarea la schimbările climatice, tranziția către o economie circulara, impactul asupra mediului și managementul durabil al resurselor naturale, protecția și restaurarea biodiversității și a ecosistemelor, investiții eficiente energetic în agricultură și silvicultură, investiții în accesibilitate sociala.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/#:~:text=Produs%20de%20finan%C8%9Bare%20dedicat%20investi%C8%9Biilor,silvicultur%C4%83%2C%20investi%C8%9Bii%20%C3%AEn%20accesibilitate%20sociala."
+    }
+  ],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2716,
+    "citire_cache": 31426,
+    "scriere_cache": 39230,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1315322
+  }
+}

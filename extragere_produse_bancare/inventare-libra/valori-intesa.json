@@ -2,17 +2,17 @@
  "banca": "intesa",
  "urluri": [
   {
-   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-economisire-PJ-_01.04.2026.pdf||depozite la termen (persoane juridice)",
-   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-economisire-PJ-_01.04.2026.pdf",
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf||depozite la termen (persoane fizice)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf",
    "tip": "pdf",
    "metoda": "http",
-   "denumire_la_banca": "Depozite la termen (Persoane Juridice)",
-   "focus": "Produsul băncii: „Depozite la termen (Persoane Juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "denumire_la_banca": "Depozite la Termen (persoane fizice)",
+   "focus": "Produsul băncii: „Depozite la Termen (persoane fizice)”.\nCorespunde produsului Libra: „Depozit promoțional „1 An și 1 Lună\"”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
    "legaturi": [
     {
-     "id_sursa": 1325,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
+     "id_sursa": 2833,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
      "v2": "depozit-termen"
     }
    ],
@@ -30,40 +30,6 @@
    "respinse": [],
    "scrise": 0,
    "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf||depozite la termen (persoane fizice)",
-   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf",
-   "tip": "pdf",
-   "metoda": "http",
-   "denumire_la_banca": "Depozite la termen (Persoane Fizice)",
-   "focus": "Produsul băncii: „Depozite la termen (Persoane Fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1324,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -97,7 +63,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -199,7 +165,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -403,7 +369,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -449,18 +415,18 @@
    "tip": "pdf",
    "metoda": "http",
    "denumire_la_banca": "Credit de nevoi personale",
-   "focus": "Produsul băncii: „Credit de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoi personale”; „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "focus": "Produsul băncii: „Credit de nevoi personale”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”; „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
    "legaturi": [
-    {
-     "id_sursa": 1561,
-     "id_produs_libra": 37,
-     "cod": "CREDIT_NEVOI_PERSONALE",
-     "v2": "nevoi-personale"
-    },
     {
      "id_sursa": 1572,
      "id_produs_libra": 36,
      "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
+    },
+    {
+     "id_sursa": 1561,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
      "v2": "nevoi-personale"
     }
    ],
@@ -557,7 +523,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -591,7 +557,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 2,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -625,10 +591,2717 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 10,
+   "durata_s": 8,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/costuri-card-credit-gold.pdf||card de credit gold (mastercard gold)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/costuri-card-credit-gold.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de Credit Gold (Mastercard Gold)",
+   "focus": "Produsul băncii: „Card de Credit Gold (Mastercard Gold)”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2506,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Tarife-%C8%99i-Comisioane---Persoane-Fizice-valabile-din-15.12.2025.pdf||listă privind costurile standard ale băncii - persoane fizice (conturi curente + pachete de cont curent)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Tarife-%C8%99i-Comisioane---Persoane-Fizice-valabile-din-15.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Listă privind Costurile Standard ale Băncii - Persoane Fizice (Conturi Curente + Pachete de cont curent)",
+   "focus": "Produsul băncii: „Listă privind Costurile Standard ale Băncii - Persoane Fizice (Conturi Curente + Pachete de cont curent)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2556,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/persoane-fizice/economii/Vino-cu-salariul---Super-dobanzi-la-economisire.html||campanie promoțională \"vino cu salariul!\" - depozit la termen 6 luni",
+   "url": "https://www.intesasanpaolobank.ro/persoane-fizice/economii/Vino-cu-salariul---Super-dobanzi-la-economisire.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Campanie promoțională \"Vino cu salariul!\" - depozit la termen 6 luni",
+   "focus": "Produsul băncii: „Campanie promoțională \"Vino cu salariul!\" - depozit la termen 6 luni”.\nCorespunde produsului Libra: „Depozit promoțional Blitz (7 luni)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2807,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-premium.html||gold debit card (visa inspire gold) - premium package",
+   "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-premium.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "GOLD debit card (Visa Inspire Gold) - PREMIUM package",
+   "focus": "Produsul băncii: „GOLD debit card (Visa Inspire Gold) - PREMIUM package”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2616,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html||pachetele primus / optimo / maximo (pachete de cont curent pentru microîntreprinderi și antreprenori)",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetele PRIMUS / OPTIMO / MAXIMO (pachete de cont curent pentru microîntreprinderi și antreprenori)",
+   "focus": "Produsul băncii: „Pachetele PRIMUS / OPTIMO / MAXIMO (pachete de cont curent pentru microîntreprinderi și antreprenori)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2376,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-standard.html||pachet standard (cont curent + card + mobile&internet banking)",
+   "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-standard.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet STANDARD (cont curent + card + Mobile&Internet Banking)",
+   "focus": "Produsul băncii: „Pachet STANDARD (cont curent + card + Mobile&Internet Banking)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2558,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/persoane-fizice/internet-banking.html||schimb valutar online la curs bnr (prin internet banking i-b@nk)",
+   "url": "https://www.intesasanpaolobank.ro/persoane-fizice/internet-banking.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Schimb valutar online la curs BNR (prin Internet Banking I-B@nk)",
+   "focus": "Produsul băncii: „Schimb valutar online la curs BNR (prin Internet Banking I-B@nk)”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2265,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-micro-plus.html||pachetul micro plus",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-micro-plus.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Micro Plus",
+   "focus": "Produsul băncii: „Pachetul Micro Plus”.\nCorespunde produsului Libra: „Abonament RISE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2453,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/tarife-comisioane_persoane-fizice.pdf||schimburi valutare (tabel comisioane)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/tarife-comisioane_persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Schimburi valutare (tabel comisioane)",
+   "focus": "Produsul băncii: „Schimburi valutare (tabel comisioane)”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2799,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/alte-informatii/MiFID/Documentul-de-prezentare-MiFID.pdf||titluri de stat (serviciu de investiții mifid ii - instrumente financiare cu venit fix)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/alte-informatii/MiFID/Documentul-de-prezentare-MiFID.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Titluri de stat (serviciu de investiții MiFID II - instrumente financiare cu venit fix)",
+   "focus": "Produsul băncii: „Titluri de stat (serviciu de investiții MiFID II - instrumente financiare cu venit fix)”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2957,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf||abonament pos (în cadrul pachetelor tranzacționale small business)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Abonament POS (în cadrul Pachetelor tranzacționale Small Business)",
+   "focus": "Produsul băncii: „Abonament POS (în cadrul Pachetelor tranzacționale Small Business)”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2255,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/persoane-fizice/internet-banking.html||plăți instant (internet banking i-b@nk)",
+   "url": "https://www.intesasanpaolobank.ro/persoane-fizice/internet-banking.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Plăți Instant (Internet Banking I-B@nk)",
+   "focus": "Produsul băncii: „Plăți Instant (Internet Banking I-B@nk)”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2983,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/tarife-comisioane_persoane-juridice.pdf||visa business (card de debit)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/tarife-comisioane_persoane-juridice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Visa Business (card de debit)",
+   "focus": "Produsul băncii: „Visa Business (card de debit)”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2471,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-standard.html||card de debit visa inspire lei (în cadrul pachetului standard)",
+   "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-standard.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Visa Inspire LEI (în cadrul Pachetului STANDARD)",
+   "focus": "Produsul băncii: „Card de debit Visa Inspire LEI (în cadrul Pachetului STANDARD)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2620,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf||pachete tranzacționale start / micro plus / micro extra / profesional plus / profesional extra / ong complex",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete tranzacționale START / MICRO PLUS / MICRO EXTRA / PROFESIONAL PLUS / PROFESIONAL EXTRA / ONG COMPLEX",
+   "focus": "Produsul băncii: „Pachete tranzacționale START / MICRO PLUS / MICRO EXTRA / PROFESIONAL PLUS / PROFESIONAL EXTRA / ONG COMPLEX”.\nCorespunde produsului Libra: „Abonament RISE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2452,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf||dobânzi produse de economisire - persoane fizice (depozite la termen ron, 6 luni)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Dobânzi produse de economisire - Persoane Fizice (Depozite la termen RON, 6 luni)",
+   "focus": "Produsul băncii: „Dobânzi produse de economisire - Persoane Fizice (Depozite la termen RON, 6 luni)”.\nCorespunde produsului Libra: „Depozit promoțional Blitz (7 luni)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2806,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/conturi-operatiuni-imm/card-debit-visa-business-imm.html||card de debit business",
+   "url": "https://www.intesasanpaolobank.ro/imm/conturi-operatiuni-imm/card-debit-visa-business-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Business",
+   "focus": "Produsul băncii: „Card de debit Business”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2473,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-agricultura.html||credite pentru prefinanțarea subvenției apia (secțiunea credite pentru agricultură - microîntreprinderi)",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-agricultura.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite pentru prefinanțarea subvenției APIA (secțiunea Credite pentru agricultură - Microîntreprinderi)",
+   "focus": "Produsul băncii: „Credite pentru prefinanțarea subvenției APIA (secțiunea Credite pentru agricultură - Microîntreprinderi)”.\nCorespunde produsului Libra: „Credit APIA (convenție APIA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2678,
+     "id_produs_libra": 25,
+     "cod": "CREDIT_APIA",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf||pachete tranzacționale pentru pfa/ii/if și profesii liberale (profesional plus/extra)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete tranzacționale pentru PFA/II/IF și profesii liberale (PROFESIONAL PLUS/EXTRA)",
+   "focus": "Produsul băncii: „Pachete tranzacționale pentru PFA/II/IF și profesii liberale (PROFESIONAL PLUS/EXTRA)”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2390,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/dobanzi-produse-economisire_persoane-juridice.pdf||depozite la termen (persoane juridice)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/dobanzi-produse-economisire_persoane-juridice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la Termen (persoane juridice)",
+   "focus": "Produsul băncii: „Depozite la Termen (persoane juridice)”.\nCorespunde produsului Libra: „Depozit promoțional „1 An și 1 Lună\"”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2834,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/conturi-operatiuni-imm/cont-curent-imm.html||conturi de depozit escrow / conturi de depozit garanție de bună execuție / conturi de depozit gestionari",
+   "url": "https://www.intesasanpaolobank.ro/imm/conturi-operatiuni-imm/cont-curent-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Conturi de depozit Escrow / Conturi de depozit garanție de bună execuție / Conturi de depozit gestionari",
+   "focus": "Produsul băncii: „Conturi de depozit Escrow / Conturi de depozit garanție de bună execuție / Conturi de depozit gestionari”.\nCorespunde produsului Libra: „Contul Dezvoltatorului”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2549,
+     "id_produs_libra": 18,
+     "cod": "CONT_DEZVOLTATOR",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/utile/Descriere-Serviciu-FX-curs-BNR.pdf||descrierea serviciului schimb valutar online la curs bnr",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/utile/Descriere-Serviciu-FX-curs-BNR.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Descrierea Serviciului Schimb valutar online la curs BNR",
+   "focus": "Produsul băncii: „Descrierea Serviciului Schimb valutar online la curs BNR”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2264,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-de-afaceri-fara-garantii-1.html||credit de afaceri fără garanții materiale",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-de-afaceri-fara-garantii-1.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de afaceri fără garanții materiale",
+   "focus": "Produsul băncii: „Credit de afaceri fără garanții materiale”.\nCorespunde produsului Libra: „Credit Simplu IMM”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2230,
+     "id_produs_libra": 39,
+     "cod": "CREDIT_SIMPLU_IMM",
+     "v2": "linie-credit"
+    }
+   ],
+   "produse_v2": [
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||cont depozit escrow / cont depozit garanție de bună execuție (persoane juridice)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Cont depozit Escrow / Cont depozit garanție de bună execuție (persoane juridice)",
+   "focus": "Produsul băncii: „Cont depozit Escrow / Cont depozit garanție de bună execuție (persoane juridice)”.\nCorespunde produsului Libra: „Contul Dezvoltatorului”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2548,
+     "id_produs_libra": 18,
+     "cod": "CONT_DEZVOLTATOR",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/imm/credite-imm/leasing-imm.html||financial leasing (leasing financiar)",
+   "url": "https://www.intesasanpaolobank.ro/en/imm/credite-imm/leasing-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Financial Leasing (Leasing financiar)",
+   "focus": "Produsul băncii: „Financial Leasing (Leasing financiar)”.\nCorespunde produsului Libra: „Leasing financiar (Libra Development IFN)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2883,
+     "id_produs_libra": 46,
+     "cod": "LEASING_FINANCIAR",
+     "v2": "leasing"
+    }
+   ],
+   "produse_v2": [
+    "leasing"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf||pachetul start (din gama pachete tranzacționale pentru companii mici și întreprinzători individuali)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul START (din gama Pachete tranzacționale pentru companii mici și întreprinzători individuali)",
+   "focus": "Produsul băncii: „Pachetul START (din gama Pachete tranzacționale pentru companii mici și întreprinzători individuali)”.\nCorespunde produsului Libra: „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3230,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/credite-imm/capital-lucru-imm.html||capital de lucru (imm) – credit capital de lucru, linii revolving, overdraft, scontare facturi",
+   "url": "https://www.intesasanpaolobank.ro/imm/credite-imm/capital-lucru-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Capital de lucru (IMM) – credit capital de lucru, linii revolving, overdraft, scontare facturi",
+   "focus": "Produsul băncii: „Capital de lucru (IMM) – credit capital de lucru, linii revolving, overdraft, scontare facturi”.\nCorespunde produsului Libra: „Linie de credit / capital de lucru”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2272,
+     "id_produs_libra": 48,
+     "cod": "LINIE_CREDIT",
+     "v2": "linie-credit"
+    }
+   ],
+   "produse_v2": [
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||pachete cont curent primus / optimo / maximo (segment small business și sme)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete cont curent PRIMUS / OPTIMO / MAXIMO (segment Small Business și SME)",
+   "focus": "Produsul băncii: „Pachete cont curent PRIMUS / OPTIMO / MAXIMO (segment Small Business și SME)”.\nCorespunde produsului Libra: „Abonament PRIME (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2367,
+     "id_produs_libra": 5,
+     "cod": "ABONAMENT_PRIME",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credite-investitii-green.html||credit investiții green",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credite-investitii-green.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit Investiții Green",
+   "focus": "Produsul băncii: „Credit Investiții Green”.\nCorespunde produsului Libra: „Credit pentru energie verde”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2753,
+     "id_produs_libra": 29,
+     "cod": "CREDIT_ENERGIE_VERDE",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Fizice-valabile-din-01.10.2025.pdf||card de debit visa inspire lei",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Fizice-valabile-din-01.10.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Visa Inspire LEI",
+   "focus": "Produsul băncii: „Card de debit Visa Inspire LEI”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2621,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-primus.html||pachetul primus",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-primus.html",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Pachetul PRIMUS",
+   "focus": "Produsul băncii: „Pachetul PRIMUS”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2389,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 9,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||pachet primus / optimo / maximo (segment small business și sme)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet PRIMUS / OPTIMO / MAXIMO (segment Small Business și SME)",
+   "focus": "Produsul băncii: „Pachet PRIMUS / OPTIMO / MAXIMO (segment Small Business și SME)”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2388,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-investitii-imm.html||credite pentru investiții",
+   "url": "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-investitii-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite pentru investiții",
+   "focus": "Produsul băncii: „Credite pentru investiții”.\nCorespunde produsului Libra: „Credit de investiții”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2788,
+     "id_produs_libra": 34,
+     "cod": "CREDIT_INVESTITII",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf||pos (secțiunea e. pos din lista privind costurile standard ale băncii - persoane juridice)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "POS (secțiunea E. POS din Lista privind costurile standard ale băncii - Persoane Juridice)",
+   "focus": "Produsul băncii: „POS (secțiunea E. POS din Lista privind costurile standard ale băncii - Persoane Juridice)”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2254,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/microintreprinderi-antreprenori/credite-antreprenori/capital-lucru.html||working capital (capital de lucru) – microîntreprinderi și antreprenori, incl. linii revolving și overdraft",
+   "url": "https://www.intesasanpaolobank.ro/en/microintreprinderi-antreprenori/credite-antreprenori/capital-lucru.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Working capital (Capital de lucru) – microîntreprinderi și antreprenori, incl. linii revolving și overdraft",
+   "focus": "Produsul băncii: „Working capital (Capital de lucru) – microîntreprinderi și antreprenori, incl. linii revolving și overdraft”.\nCorespunde produsului Libra: „Linie de credit / capital de lucru”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2273,
+     "id_produs_libra": 48,
+     "cod": "LINIE_CREDIT",
+     "v2": "linie-credit"
+    }
+   ],
+   "produse_v2": [
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/credite-imm.html||credite acordate cu garanție fei",
+   "url": "https://www.intesasanpaolobank.ro/imm/credite-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite acordate cu garanție FEI",
+   "focus": "Produsul băncii: „Credite acordate cu garanție FEI”.\nCorespunde produsului Libra: „Credit InvestEU Competitivitate/Sustenabilitate”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2308,
+     "id_produs_libra": 33,
+     "cod": "CREDIT_INVESTEU_PJ",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||scrisoare de garanție bancară emisă (sgb/cgb/acreditiv stand-by) și scrisoare de garanție bancară primită",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisoare de garanție bancară emisă (SGB/CGB/acreditiv stand-by) și Scrisoare de garanție bancară primită",
+   "focus": "Produsul băncii: „Scrisoare de garanție bancară emisă (SGB/CGB/acreditiv stand-by) și Scrisoare de garanție bancară primită”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2942,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-garantie-FEI.html||credite acordate cu garanție fei (fei competitivitate / fei sustenabilitate)",
+   "url": "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-garantie-FEI.html",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Credite acordate cu garanție FEI (FEI Competitivitate / FEI Sustenabilitate)",
+   "focus": "Produsul băncii: „Credite acordate cu garanție FEI (FEI Competitivitate / FEI Sustenabilitate)”.\nCorespunde produsului Libra: „Credit InvestEU Competitivitate/Sustenabilitate”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2309,
+     "id_produs_libra": 33,
+     "cod": "CREDIT_INVESTEU_PJ",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 8,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf||pachetul start (pachete tranzacționale cont curent, lista costurilor standard - persoane juridice)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul START (Pachete tranzacționale cont curent, Lista costurilor standard - Persoane Juridice)",
+   "focus": "Produsul băncii: „Pachetul START (Pachete tranzacționale cont curent, Lista costurilor standard - Persoane Juridice)”.\nCorespunde produsului Libra: „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3231,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/imm/Internet-banking-imm/internet-banking-IBank-Imm.html||internet banking i-b@nk",
+   "url": "https://www.intesasanpaolobank.ro/en/imm/Internet-banking-imm/internet-banking-IBank-Imm.html",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Internet Banking I-B@nk",
+   "focus": "Produsul băncii: „Internet Banking I-B@nk”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2856,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 8,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/persoane-fizice/card-credit-gold.html||mastercard gold credit card (card de credit mastercard gold)",
+   "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/card-credit-gold.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mastercard Gold Credit Card (Card de credit Mastercard Gold)",
+   "focus": "Produsul băncii: „Mastercard Gold Credit Card (Card de credit Mastercard Gold)”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2507,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html||tarife si comisioane - persoane juridice (listă costuri standard)",
+   "url": "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Tarife si comisioane - Persoane Juridice (listă costuri standard)",
+   "focus": "Produsul băncii: „Tarife si comisioane - Persoane Juridice (listă costuri standard)”.\nCorespunde produsului Libra: „Linie de credit / capital de lucru”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2274,
+     "id_produs_libra": 48,
+     "cod": "LINIE_CREDIT",
+     "v2": "linie-credit"
+    }
+   ],
+   "produse_v2": [
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/page/internet-banking-companii||internet banking (i-b@nk) pentru companii - schimburi valutare",
+   "url": "https://www.intesasanpaolobank.ro/page/internet-banking-companii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Internet Banking (I-B@NK) pentru companii - Schimburi valutare",
+   "focus": "Produsul băncii: „Internet Banking (I-B@NK) pentru companii - Schimburi valutare”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2266,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/credite-imm.html||credite acordate cu garanție bid",
+   "url": "https://www.intesasanpaolobank.ro/imm/credite-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite acordate cu garanție BID",
+   "focus": "Produsul băncii: „Credite acordate cu garanție BID”.\nCorespunde produsului Libra: „Credit cu garanție BID”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2723,
+     "id_produs_libra": 27,
+     "cod": "CREDIT_BID_IMM",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||acreditiv (import/export) - secțiune finanțarea comerțului în lcs persoane juridice",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Acreditiv (import/export) - secțiune Finanțarea Comerțului în LCS Persoane Juridice",
+   "focus": "Produsul băncii: „Acreditiv (import/export) - secțiune Finanțarea Comerțului în LCS Persoane Juridice”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2416,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-imobiliar-green.html||credit imobiliar green",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-imobiliar-green.html",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Credit Imobiliar Green",
+   "focus": "Produsul băncii: „Credit Imobiliar Green”.\nCorespunde produsului Libra: „Credit imobiliar persoane juridice”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2762,
+     "id_produs_libra": 32,
+     "cod": "CREDIT_IMOBILIAR_PJ",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 8,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/page/pos-companii||pos (terminal pos pentru companii)",
+   "url": "https://www.intesasanpaolobank.ro/page/pos-companii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "POS (Terminal POS pentru companii)",
+   "focus": "Produsul băncii: „POS (Terminal POS pentru companii)”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2256,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf||internet banking i-b@nk / serviciul de internet banking i-b@nk",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Internet Banking I-B@nk / Serviciul de Internet banking I-B@nk",
+   "focus": "Produsul băncii: „Internet Banking I-B@nk / Serviciul de Internet banking I-B@nk”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2855,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||visa business (emis în lei)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Visa Business (emis în Lei)",
+   "focus": "Produsul băncii: „Visa Business (emis în Lei)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2619,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/corporate/cash-management/card-debit-visa-business-Corporate.html||card de debit business",
+   "url": "https://www.intesasanpaolobank.ro/corporate/cash-management/card-debit-visa-business-Corporate.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Business",
+   "focus": "Produsul băncii: „Card de debit Business”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2472,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/economii-investitii-imm/depozite-la-termen-imm.html||depozite la termen (imm)",
+   "url": "https://www.intesasanpaolobank.ro/imm/economii-investitii-imm/depozite-la-termen-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozite la termen (IMM)",
+   "focus": "Produsul băncii: „Depozite la termen (IMM)”.\nCorespunde produsului Libra: „Depozit promoțional „1 An și 1 Lună\"”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2835,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf||pachetul maximo (din structura primus / optimo / maximo pentru segmentul small business și sme)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul MAXIMO (din structura PRIMUS / OPTIMO / MAXIMO pentru segmentul Small Business și SME)",
+   "focus": "Produsul băncii: „Pachetul MAXIMO (din structura PRIMUS / OPTIMO / MAXIMO pentru segmentul Small Business și SME)”.\nCorespunde produsului Libra: „Abonament ELITE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2321,
+     "id_produs_libra": 1,
+     "cod": "ABONAMENT_ELITE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/corporate/cash-management/cont-curent-corporate.html||schimb valutar avantajos (în cadrul contului curent corporate)",
+   "url": "https://www.intesasanpaolobank.ro/corporate/cash-management/cont-curent-corporate.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Schimb valutar avantajos (în cadrul contului curent Corporate)",
+   "focus": "Produsul băncii: „Schimb valutar avantajos (în cadrul contului curent Corporate)”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2800,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||pachetul maximo (pachet cont curent - segment small business/sme)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul MAXIMO (pachet cont curent - segment Small Business/SME)",
+   "focus": "Produsul băncii: „Pachetul MAXIMO (pachet cont curent - segment Small Business/SME)”.\nCorespunde produsului Libra: „Abonament SHINE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2443,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf||pachetele primus / optimo / maximo",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetele PRIMUS / OPTIMO / MAXIMO",
+   "focus": "Produsul băncii: „Pachetele PRIMUS / OPTIMO / MAXIMO”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2375,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/deschidere-de-cont-online.html||deschidere de cont online / mobile banking - cont curent 100% online",
+   "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/deschidere-de-cont-online.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Deschidere de cont online / Mobile Banking - Cont curent 100% online",
+   "focus": "Produsul băncii: „Deschidere de cont online / Mobile Banking - Cont curent 100% online”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2557,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/finantarea-comertului-imm/acreditive-imm.html||acreditive (acreditivul documentar) - segment imm",
+   "url": "https://www.intesasanpaolobank.ro/imm/finantarea-comertului-imm/acreditive-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Acreditive (Acreditivul documentar) - segment IMM",
+   "focus": "Produsul băncii: „Acreditive (Acreditivul documentar) - segment IMM”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2418,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||pachete tranzacţionale cont curent (micro plus, micro extra, profesional plus, profesional extra)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete tranzacţionale cont curent (MICRO PLUS, MICRO EXTRA, PROFESIONAL PLUS, PROFESIONAL EXTRA)",
+   "focus": "Produsul băncii: „Pachete tranzacţionale cont curent (MICRO PLUS, MICRO EXTRA, PROFESIONAL PLUS, PROFESIONAL EXTRA)”.\nCorespunde produsului Libra: „Abonament RISE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2454,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html||credite pentru prefinanțarea subvenției apia (în cadrul pachetului credite pentru agricultură)",
+   "url": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite pentru prefinanțarea subvenției APIA (în cadrul pachetului Credite pentru agricultură)",
+   "focus": "Produsul băncii: „Credite pentru prefinanțarea subvenției APIA (în cadrul pachetului Credite pentru agricultură)”.\nCorespunde produsului Libra: „Credit APIA (convenție APIA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2677,
+     "id_produs_libra": 25,
+     "cod": "CREDIT_APIA",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/digical-banking.html||mobile & internet banking - #withpay",
+   "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/internetbanking/digical-banking.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mobile & Internet Banking - #withPAY",
+   "focus": "Produsul băncii: „Mobile & Internet Banking - #withPAY”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2984,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html||linie de credit (în cadrul pachetului „credite pentru agricultură” / „linia de credit recolta”)",
+   "url": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Linie de credit (în cadrul pachetului „Credite pentru agricultură” / „Linia de credit Recolta”)",
+   "focus": "Produsul băncii: „Linie de credit (în cadrul pachetului „Credite pentru agricultură” / „Linia de credit Recolta”)”.\nCorespunde produsului Libra: „Linie de credit pentru inputuri agricole (InvestEU)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2698,
+     "id_produs_libra": 23,
+     "cod": "CREDIT_AGRI_INPUTURI",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf||visa business gold (emis în lei / eur)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "VISA BUSINESS GOLD (emis în Lei / EUR)",
+   "focus": "Produsul băncii: „VISA BUSINESS GOLD (emis în Lei / EUR)”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2614,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/imm/finantarea-comertului-imm/scrisori-de-garantie-imm.html||scrisori de garanție bancară",
+   "url": "https://www.intesasanpaolobank.ro/imm/finantarea-comertului-imm/scrisori-de-garantie-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisori de garanție bancară",
+   "focus": "Produsul băncii: „Scrisori de garanție bancară”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2944,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/persoane-fizice/credite.html||descoperit de cont",
+   "url": "https://www.intesasanpaolobank.ro/persoane-fizice/credite.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Descoperit de cont",
+   "focus": "Produsul băncii: „Descoperit de cont”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2927,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-investitii-corporate.html||credite pentru investiții",
+   "url": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-investitii-corporate.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite pentru investiții",
+   "focus": "Produsul băncii: „Credite pentru investiții”.\nCorespunde produsului Libra: „Credit de investiții”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2787,
+     "id_produs_libra": 34,
+     "cod": "CREDIT_INVESTITII",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/card-visa-business-gold.html||cardul visa business gold lei și euro",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/card-visa-business-gold.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cardul Visa Business Gold LEI și EURO",
+   "focus": "Produsul băncii: „Cardul Visa Business Gold LEI și EURO”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2617,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/conditii-generale-afaceri_persoane-juridice.pdf||scrisori de garanție bancară",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/conditii-generale-afaceri_persoane-juridice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisori de garanție bancară",
+   "focus": "Produsul băncii: „Scrisori de garanție bancară”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2945,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Acreditive-Corporate.html||acreditive (acreditivul documentar) - segment corporate",
+   "url": "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Acreditive-Corporate.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Acreditive (Acreditivul documentar) - segment Corporate",
+   "focus": "Produsul băncii: „Acreditive (Acreditivul documentar) - segment Corporate”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2417,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html||pachetul maximo (parte din pachetele primus / optimo / maximo pentru microîntreprinderi)",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul MAXIMO (parte din Pachetele PRIMUS / OPTIMO / MAXIMO pentru microîntreprinderi)",
+   "focus": "Produsul băncii: „Pachetul MAXIMO (parte din Pachetele PRIMUS / OPTIMO / MAXIMO pentru microîntreprinderi)”.\nCorespunde produsului Libra: „Abonament PRIME (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2368,
+     "id_produs_libra": 5,
+     "cod": "ABONAMENT_PRIME",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Scrisori-de-garantie-Corporate.html||scrisori de garanție",
+   "url": "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Scrisori-de-garantie-Corporate.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisori de garanție",
+   "focus": "Produsul băncii: „Scrisori de garanție”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2943,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Tarife-%C8%99i-Comisioane---Persoane-Fizice-valabile-din-01.10.2025.pdf||card de debit visa gold inspire lei (profil premium)",
+   "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Tarife-%C8%99i-Comisioane---Persoane-Fizice-valabile-din-01.10.2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Visa Gold Inspire LEI (profil Premium)",
+   "focus": "Produsul băncii: „Card de debit Visa Gold Inspire LEI (profil Premium)”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2615,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html||pachetul maximo",
+   "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul MAXIMO",
+   "focus": "Produsul băncii: „Pachetul MAXIMO”.\nCorespunde produsului Libra: „Abonament ELITE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2322,
+     "id_produs_libra": 1,
+     "cod": "ABONAMENT_ELITE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.intesasanpaolobank.ro/en/persoane-fizice/credite/descoperit-cont-card.html||descoperit de cont (overdraft)",
+   "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/credite/descoperit-cont-card.html",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Descoperit de Cont (Overdraft)",
+   "focus": "Produsul băncii: „Descoperit de Cont (Overdraft)”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2926,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 7,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://ib.intesasanpaolobank.ro/de/Dialog/FAQs/GetList?language=ro-RO||schimb valutar (spot/tdy/tom/fwd) prin i-b@nk",
+   "url": "https://ib.intesasanpaolobank.ro/de/Dialog/FAQs/GetList?language=ro-RO",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Schimb valutar (SPOT/TDY/TOM/FWD) prin I-B@nk",
+   "focus": "Produsul băncii: „Schimb valutar (SPOT/TDY/TOM/FWD) prin I-B@nk”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2798,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "a9ccd7bc236d84f7d320f3561b68ba00a77eff13fe19e2f749033454a4962b93",
+   "observatii": [
+    {
+     "id": "ee1e453057a4127ffcc7f43fe4038384",
+     "id_url": 2798,
+     "id_produs": "schimb-valutar",
+     "camp": "comision_schimb",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a9ccd7bc236d84f7d320f3561b68ba00a77eff13fe19e2f749033454a4962b93",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Nu se percep taxe/ comisioane pentru operațiunile de schimb valutar.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.9,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "intesa",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "f4b994c062ede43016b00b483dc662a0d08a14fe0dcde1e88b1685490d61de3d"
+    },
+    {
+     "id": "c1b3f629dc0d50f87ee5d499d610e813",
+     "id_url": 2798,
+     "id_produs": "schimb-valutar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 20000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a9ccd7bc236d84f7d320f3561b68ba00a77eff13fe19e2f749033454a4962b93",
+     "conditii": [
+      "în intervalul orar 09:00-15:45",
+      "schimb valutar care implică moneda RON"
+     ],
+     "eticheta_libera": "sumă maximă schimb valutar la curs standard (în interval orar, implică RON)",
+     "citat": "În intervalul orar 09:00 – 15:45 suma maximă care poate fi schimbată este de echivalent EUR 20 000 pentru schimburile valutare care implică moneda RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "intesa",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "f4b994c062ede43016b00b483dc662a0d08a14fe0dcde1e88b1685490d61de3d"
+    },
+    {
+     "id": "538f854b3a4b774c51e9395814cb6547",
+     "id_url": 2798,
+     "id_produs": "schimb-valutar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 100000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a9ccd7bc236d84f7d320f3561b68ba00a77eff13fe19e2f749033454a4962b93",
+     "conditii": [
+      "în intervalul orar 09:00-15:45",
+      "schimb valutar care nu implică moneda RON"
+     ],
+     "eticheta_libera": "sumă maximă schimb valutar la curs standard (în interval orar, nu implică RON)",
+     "citat": "sau echivalent EUR 100 000 pentru schimburile valutare care nu implică moneda RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "intesa",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "f4b994c062ede43016b00b483dc662a0d08a14fe0dcde1e88b1685490d61de3d"
+    },
+    {
+     "id": "c1b3f629dc0d50f87ee5d499d610e813",
+     "id_url": 2798,
+     "id_produs": "schimb-valutar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 19999.99,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a9ccd7bc236d84f7d320f3561b68ba00a77eff13fe19e2f749033454a4962b93",
+     "conditii": [
+      "schimb valutar care implică moneda RON"
+     ],
+     "eticheta_libera": "sumă maximă schimb valutar (implică RON, general)",
+     "citat": "Suma maximă care poate fi schimbată este de echivalent EUR 19 999,99 pentru schimburile valutare care implică moneda RON",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [
+      {
+       "dimensiune": "valuta",
+       "valoare_text": "RON"
+      }
+     ],
+     "id_banca": "intesa",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "f4b994c062ede43016b00b483dc662a0d08a14fe0dcde1e88b1685490d61de3d"
+    },
+    {
+     "id": "538f854b3a4b774c51e9395814cb6547",
+     "id_url": 2798,
+     "id_produs": "schimb-valutar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 99999.99,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a9ccd7bc236d84f7d320f3561b68ba00a77eff13fe19e2f749033454a4962b93",
+     "conditii": [
+      "schimb valutar care nu implică moneda RON"
+     ],
+     "eticheta_libera": "sumă maximă schimb valutar (nu implică RON, general)",
+     "citat": "echivalent EUR 99 999,99 pentru alte schimburi valutare",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "intesa",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "f4b994c062ede43016b00b483dc662a0d08a14fe0dcde1e88b1685490d61de3d"
+    },
+    {
+     "id": "538f854b3a4b774c51e9395814cb6547",
+     "id_url": 2798,
+     "id_produs": "schimb-valutar",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 3000,
+     "unitate": "eur",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "a9ccd7bc236d84f7d320f3561b68ba00a77eff13fe19e2f749033454a4962b93",
+     "conditii": [
+      "în afara intervalului orar 09:00-15:45"
+     ],
+     "eticheta_libera": "sumă maximă schimb valutar în afara intervalului orar",
+     "citat": "iar în afara intervalului orar menționat se pot efectua schimburi valutare în limita a echivalent EUR 3 000",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "intesa",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "f4b994c062ede43016b00b483dc662a0d08a14fe0dcde1e88b1685490d61de3d"
+    }
+   ],
+   "respinse": [],
+   "scrise": 6,
+   "durata_s": 14,
+   "tokeni": {
+    "intrare": 15689,
+    "iesire": 1108
    }
   }
  ]

@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "citibank",
+  "cod": "CONT_ECONOMII",
+  "denumire": "Cont de economii",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Citibank Europe plc – Sucursala România deservește exclusiv clienți instituționali/corporate (companii mari, IMM-uri, sector public, ONG-uri) și nu oferă servicii bancare pentru persoane fizice, deci segmentul de clienți al produsului Libra (persoane fizice și juridice) nu este acoperit în partea sa pentru persoane fizice. Singurul produs înrudit identificat este pagina 'Money Market' din secțiunea Treasury, care descrie depozite standard la termen (inclusiv broken-date) în lei sau valută, plasate prin platforma CitiFX Pulse sau telefonic, destinate plasării lichidităților excedentare ale companiilor — acestea sunt depozite la termen fixe, nu un cont de economii cu dobândă la sold zilnic și retrageri oricând, deci diferă fundamental ca tip de produs față de CONT_ECONOMII Libra. Nu există o pagină, tarif sau document care să descrie un cont de economii flexibil analog."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/money-market.html"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2027,
+    "citire_cache": 28774,
+    "scriere_cache": 16180,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0664908
+  }
+}

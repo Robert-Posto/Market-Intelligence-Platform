@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen în lei (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit clasic la termen fix, dar CEC nu are o campanie promoțională de tip „Blitz”; termenele oferite sunt discrete (1, 3, 5, 6 luni, 1, 2, 3 ani) fără opțiunea exactă de 7 luni, iar dobânda maximă standard (5,05-5,25%) este sub cea a Libra (6,25%).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina conține tabelul complet de dobânzi pe termene pentru persoane fizice, dar nu există termenul de 7 luni și nu este un produs promoțional separat.",
+      "citat": "Ai dobânzi avantajoase la depozitele la termen în lei: până la 5,25 % dobândă anuală la depozitele în lei online pe 1 an/2 ani/3 ani constituite online.",
+      "rol2": null,
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei#:~:text=Ai%20dob%C3%A2nzi%20avantajoase%20la%20depozitele,an%2F2%20ani%2F3%20ani%20constituite%20online."
+    },
+    {
+      "url": "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen în lei (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Depozit clasic la termen pentru firme, cu perioadă aleasă flexibil între 1 lună și 1 an (poate include teoretic 7 luni), dar nu este o campanie promoțională „Blitz”, iar dobânda maximă (5,70%) diferă de cea a Libra (6,25%).",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina este dedicată depozitelor la termen pentru persoane juridice și conține cifre explicite de dobândă, dar nu menționează un produs promoțional de 7 luni similar cu Blitz.",
+      "citat": "Dobânzi avantajoase pentru disponibilitățile afacerii tale la depozitele la termen în lei: până la 5,70% pe an. Alegi perioada: între o lună și 1 an.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice#:~:text=Dob%C3%A2nzi%20avantajoase%20pentru%20disponibilit%C4%83%C8%9Bile%20afacerii,o%20lun%C4%83%20%C8%99i%201%20an."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice",
+    "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei"
+  ],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4289,
+    "citire_cache": 34730,
+    "scriere_cache": 55834,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.18943300000000002
+  }
+}

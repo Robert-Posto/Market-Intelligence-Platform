@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Connect 20",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul pachet/abonament lunar pentru persoane juridice la BRCI care grupează cont curent + card într-un abonament cu preț fix, deci același tip de produs (abonament corporate) și același segment (PJ) ca ABONAMENT_PRESTIGE de la Libra; diferă însă major nivelul: Connect 20 costă doar 20 lei/lună, oferă un singur card Mastercard Business Debit și conturi în lei și euro, fără mențiune de tranzacții SEPA nelimitate sau Live FX, spre deosebire de pachetul premium Libra cu 295 lei/lună, 7 carduri și Live FX.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată pachetului Connect 20 conține explicit prețul abonamentului, componentele incluse (conturi, card) și comisioanele aferente, fiind cel mai apropiat produs de tip abonament corporate la BRCI, deși la o scară mult mai mică decât PRESTIGE.",
+      "citat": "20 lei / luna · 0 lei · Cont in LEI si in EURO 150 lei / an · 0 lei · Taxa anuala Administrare Card Mastercard Business Debit 35 lei / luna · 0 lei · Taxa emitere Card Mastercard Business Debit 5 lei / luna · 0 lei · Info SMS pentru tranzactii cu cardul Connect 20 este un pachet tranzactional dedicat persoanelor juridice care nu detin un cont curent sau alte pachete de produse si servicii bancare la BRCI.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://companii.brci.ro/pjonboarding",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html"
+  ],
+  "durata_s": 69,
+  "consum": {
+    "intrare": 27575,
+    "iesire": 4157,
+    "citire_cache": 12750,
+    "scriere_cache": 19473,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1479525
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2022/12/Prezentare-MiFID-II.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Titluri de stat (instrument financiar MiFID)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul MiFID II al Exim confirmă că produsul titluri de stat este destinat exclusiv clienților persoane juridice, nu și persoanelor fizice, spre deosebire de produsul Libra care acoperă ambele segmente; include și costul asociat tranzacționării.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial de prezentare MiFID II care descrie explicit segmentul de clienți și costurile (comision) aplicabile titlurilor de stat.",
+      "citat": "Titluri de stat - produs care este destinat clientilor persoane juridice clasificati din punct de vedere MiFID ca Retail, Profesional sau Contrapartide Eligibile si se adreseaza investitorilor cu aversiune la risc sau celor care vor sa reduca riscul investitiilor.",
+      "pagina_pdf": 5,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Titluri de stat (Trezorerie și investiții)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este produsul de investiții în titluri de stat (certificate de trezorerie și obligațiuni) al Exim, dar pagina este listată exclusiv sub segmentul Corporate/IMM (persoane juridice); nu există o variantă dedicată persoanelor fizice, deși Libra acoperă ambele segmente.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată menționează explicit cele două categorii de titluri de stat oferite de bancă, dar fără cifre de dobândă (tranzacționate pe piața secundară, cotații variabile).",
+      "citat": "TITLURI DE STAT – Exim Banca Romaneasca ofera doua categorii de titluri de stat: pe termen scurt (certificate de trezorerie) si pe termen lung (obligatiuni), tranzactionate pe piata secundara.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/#:~:text=TITLURI%20DE%20STAT%20%E2%80%93%20Exim,%28obligatiuni%29%2C%20tranzactionate%20pe%20piata%20secundara."
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Titluri de stat (Ghid produse Cash Management)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ghidul de produse pentru clienți persoane juridice (Cash Management) listează aceleași două categorii de titluri de stat, confirmând că oferta este structurată doar pentru segmentul corporate.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document de prezentare generală a produselor pentru persoane juridice, cu secțiune dedicată titlurilor de stat dar fără randamente/cotații explicite.",
+      "citat": "TITLURI DE STAT Oferim doua categorii de titluri de stat: • pe termen scurt (certificate de trezorerie) si • pe termen lung (obligatiuni), tranzactionate pe piata secundara",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/",
+    "https://www.eximbank.ro/en/2022/12/05/depozite-si-investitii/"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 34372,
+    "iesire": 3418,
+    "citire_cache": 44088,
+    "scriere_cache": 54415,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2477791
+  }
+}

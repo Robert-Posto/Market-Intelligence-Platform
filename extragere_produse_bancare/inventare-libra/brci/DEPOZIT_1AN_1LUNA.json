@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/files/public/fisiere/DOBANZI%20DEPOZITE%20LA%20TERMEN%20PJ%2003.02.2025_cs.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Dobanzi standard persoane juridice - Depozite la termen",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul persoane juridice al depozitelor la termen, dar maturitatea maximă este de 12 luni (nu 13) și dobânzile sunt standard, nu promoționale ca la Libra (6,60%/6,10%).",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de dobânzi cu valori explicite pentru fiecare maturitate (1-12 luni) în RON, EUR, USD, pentru persoane juridice.",
+      "pagina_pdf": 1,
+      "citat": "DOBANZI STANDARD PERSOANE JURIDICE – DEPOZITE LA TERMEN (dobanzi valabile incepand cu 03.02.2025) *Suma minima de constituire a depozitelor este 2.000 lei/500 Euro/500 USD. 12 LUNI 2,25% 5,50% 3,25%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/depozitul-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen clasic, disponibil persoanelor fizice, dar BRCI nu are o variantă promoțională de 13 luni, ci doar termene standard de maximum 12 luni, fără structura de dobândă combinată 6,60%/6,10% a produsului Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului conține termenele și sumele minime, dar dobânzile exacte sunt doar în documentul linkat 'LISTA DOBANZI', nu în text.",
+      "citat": "Moneda depozitului: RON, EUR sau USD; Termenul de constituire: 1, 3, 6, 9 sau 12 luni; Oferă posibilitatea de prelungire automată, cu sau fără capitalizarea dobânzii; Suma minimă pentru constituire: 500 RON, 100 EUR sau 100 USD",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/depozitul-la-termen.html"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 6885,
+    "iesire": 2713,
+    "citire_cache": 32086,
+    "scriere_cache": 22190,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1027922
+  }
+}

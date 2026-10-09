@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/pfa-loans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "PFA loans – Unnamed needs with collateral / Investments through PFA loans",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit garantat cu ipotecă imobiliară, cu componentă pentru activitate curentă (până la 84 luni) și componentă pentru investiții (până la 180 luni) și plafoane apropiate (25.000–1.000.000 RON, respectiv 50.000–2.500.000 RON), dar la Garanti BBVA produsul este dedicat exclusiv segmentului PFA (persoane fizice autorizate), nu și firmelor (persoane juridice de tip SRL etc.) ca la Libra, iar plafonul maxim pentru investiții este mai mare (2,5 mil RON față de 1 mil RON la Libra).",
+      "incredere": 0.72,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit sumele, monedele și termenele de creditare, dar segmentul de clienți acoperit (doar PFA) e mai restrâns decât la Libra (firme + PFA).",
+      "citat": "The loan can be offered for a period of up to 84 months, according to your financial needs You can benefit from a bank loan for PFA whose value is between RON 25.000 and RON 1.000.000 and can be used without supporting documents Mix of guarantees: surety provided by the business owner(s), pledge on the current accounts of the company opened with Garanti BBVA, mortgage on real estate",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/sme-and-pfa/pfa-loans/#:~:text=The%20loan%20can%20be%20offered,BBVA%2C%20mortgage%20on%20real%20estate"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-pfa/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/pfa-loans/"
+  ],
+  "durata_s": 96,
+  "consum": {
+    "intrare": 8,
+    "iesire": 8329,
+    "citire_cache": 86268,
+    "scriere_cache": 49787,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22502709999999998
+  }
+}

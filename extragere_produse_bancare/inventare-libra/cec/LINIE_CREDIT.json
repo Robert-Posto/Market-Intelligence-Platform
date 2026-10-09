@@ -1,0 +1,36 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/linie-de-credit-pentru-activitatea-curenta",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linie de credit pentru activitatea curentă",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Linie de credit revolving pentru capitalul de lucru al firmelor/PFA, acoperind decalajul dintre plăți și încasări (materii prime, stocuri, salarii, taxe) - exact tipul de produs și segmentul Libra LINIE_CREDIT.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: suma maximă (30% din cifra de afaceri), perioada de creditare, monedele acceptate și condițiile de eligibilitate.",
+      "citat": "Suma maximă 30% din cifra de afaceri din ultimele 12 luni. Moneda creditului: lei, euro sau usd. Perioada de creditare: max 2 ani, cu posibilitatea de prelungire pe perioade similare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 4,
+    "iesire": 743,
+    "citire_cache": 6363,
+    "scriere_cache": 28202,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0792156
+  }
+}

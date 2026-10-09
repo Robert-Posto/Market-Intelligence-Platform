@@ -93,3 +93,40 @@ export const VersusExtra = z
   })
   .passthrough()
 export type VersusExtra = z.infer<typeof VersusExtra>
+
+/**
+ * /api/versus_libra: valorile fluxului comparației cu Libra (tabela comparatie_libra),
+ * pe produs Libra × câmp × bancă, cu sensul comparației pe câmp. Doar câmpurile cu
+ * „mai bun” clar; cele care depind de scenariu doar pe scenariul de referință.
+ */
+export const VersusCelulaLibra = z
+  .object({
+    produs: z.string(),
+    camp: z.string(),
+    unitate: z.string(),
+    banca: z.string(),
+    sens: z.enum(['mic_bun', 'mare_bun']),
+    n: z.number(),
+    minim: z.number(),
+    maxim: z.number(),
+    valoare: z.number(),
+    /** cel puțin o valoare e pe scenariul de referință al produsului */
+    referinta: z.boolean(),
+    citat: z.string().nullable(),
+    link: z.string().nullable(),
+    conditie: z.string().nullable(),
+  })
+  .passthrough()
+export type VersusCelulaLibra = z.infer<typeof VersusCelulaLibra>
+
+export const VersusLibra = z.discriminatedUnion('disponibil', [
+  z.object({ disponibil: z.literal(false) }),
+  z.object({
+    disponibil: z.literal(true),
+    produse: z.array(
+      z.object({ cod: z.string(), denumire: z.string(), segment: z.string().nullable(), categorie_cod: z.string().nullable() }).passthrough(),
+    ),
+    celule: z.array(VersusCelulaLibra),
+  }),
+])
+export type VersusLibra = z.infer<typeof VersusLibra>

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament lunar de cont curent pentru firme, cu cont lei+euro, card Mastercard Business și plăți prin Internet Banking, la fel ca Abonamentul SHINE de la Libra; diferă prețul (29 lei/lună față de 100 lei/lună) și faptul că nu include explicit un comision mPOS bundle de 0,59% ca la Libra, acesta fiind tratat separat la acceptare carduri prin POS.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru companii conține cifre concrete (preț lunar, plafoane de plăți) pentru pachetul Business, cel mai apropiat de structura abonamentului operațional SHINE, dar nu menționează un comision mPOS inclus.",
+      "citat": "Business 29 lei/luna Pentru companii în creștere! Cont curent în lei și euro Emitere și administrare card Mastercard Business Livrare card în România Internet și Mobile Banking Încasări intra/interbancare în lei și euro Plăți intrabancare în lei și euro prin Internet Banking Primele 50 plăți interbancare în lei și euro prin Internet Banking*",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/pachete-cont-curent#:~:text=Business%2029%20lei%2Fluna%20Pentru%20companii,%C8%99i%20euro%20prin%20Internet%20Banking%2A"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2006,
+    "citire_cache": 18830,
+    "scriere_cache": 19283,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07204550000000001
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BRCI iBanking și BRCI Mobile (Internet și Mobile Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este serviciul de Internet și Mobile Banking pentru persoane juridice (BRCI iBanking + aplicația BRCI Mobile), oferit în cadrul pachetului transacțional Connect 20 dedicat firmelor; nu există o pagină separată de tarifare doar pentru serviciul de online banking, el fiind inclus gratuit în pachetul de cont pentru PJ.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "Pagina descrie explicit serviciile BRCI iBanking și BRCI Mobile pentru firme și menționează că sunt gratuite în cadrul pachetului Connect 20 (abonament lunar 20 lei), dar nu are un tarif separat dedicat exclusiv serviciului de internet/mobile banking.",
+      "dovada_metoda": "Conținutul a fost obținut prin motorul de căutare; accesul direct la domeniul companii.brci.ro a fost blocat de robots.txt la încercarea de fetch live, deci un extractor automat ar putea întâmpina aceeași restricție.",
+      "citat": "Internet si Mobile Banking (BRCI iBanking si BRCI Mobile) pentru a fi conectat la contul tau oricand si oriunde te afli. Beneficiile pachetului Connect 20: GRATUIT, BRCI iBanking si aplicatia BRCI Mobile.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/cont-curent.html",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html",
+    "https://companii.brci.ro/pjonboarding",
+    "https://companii.brci.ro/content/comisioane.pdf",
+    "https://www2.brci.ro/"
+  ],
+  "durata_s": 76,
+  "consum": {
+    "intrare": 109078,
+    "iesire": 5087,
+    "citire_cache": 12644,
+    "scriere_cache": 28932,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3438848
+  }
+}

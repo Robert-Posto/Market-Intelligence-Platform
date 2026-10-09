@@ -1,0 +1,494 @@
+Salt Bank: 51 de rulat, 6 sărite (au rezultat), paralel 5, model claude-sonnet-5, termen 180 s/produs, domenii saltbank.ro
+  [cautare] Salt Bank cont business firme PFA
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro cont persoane juridice business
+  [cautare] Salt Bank România companii IMM cont curent
+  [ 2] https://www.saltbank.ro
+  [ 3] saltbank.ro
+       ! url_not_allowed
+       ! url_not_in_prior_context
+GOL     CONT_ONLINE_BUSINESS         blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat (fetch blocat la nivel de permisiuni), iar căut, $0.04
+  [cautare] Salt Bank plăți online comerciant eCommerce PFA firme
+  [cautare] Salt Bank persoane juridice PFA cont firma
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro business firme
+  [ 2] https://saltbank.ro/
+  [ 3] https://www.saltbank.ro/business
+       ! url_not_allowed
+       ! url_not_in_prior_context
+GOL     LIBRAPAY_ECOM                blocat_de_robots: Domeniul saltbank.ro a fost inaccesibil pentru fetch (permisiune refuzată), iar căutările , $0.05
+  [cautare] Salt Bank persoane juridice credit firme
+  [cautare] Salt Bank linie de credit IMM capital de lucru
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank credite companii
+  [ 2] https://saltbank.ro/
+  [ 3] https://www.saltbank.ro/persoane-juridice
+  [ 4] https://www.saltbank.ro/business
+       ! url_not_allowed
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     LINIE_CREDIT                 blocat_de_robots: Domeniul saltbank.ro a refuzat accesul direct (eroare de permisiune la web_fetch), iar cău, $0.05
+  [cautare] Salt Bank credit IMM firme persoane juridice
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank credit IMM
+  [cautare] saltbank.ro companii credit
+  [ 2] https://www.saltbank.ro
+  [ 3] https://saltbank.ro/
+       ! url_not_allowed
+       ! url_not_allowed
+GOL     CREDIT_SIMPLU_IMM            blocat_de_robots: Domeniul saltbank.ro a refuzat accesul (eroare de permisiune) la toate încercările de fetc, $0.05
+  [cautare] Salt Bank schimb valutar curs valutar aplicație
+  [cautare] saltbank.ro schimb valutar online curs real time
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank schimb valutar curs preferential aplicatie
+  [ 2] https://www.saltbank.ro/schimb-valutar
+  [ 3] https://www.saltbank.ro/produse
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro/
+       ! url_not_allowed
+GOL     LIVE_FX                      blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat (eroare de permisiune la web_fetch pentru pagin, $0.06
+  [cautare] Salt Bank terminal POS firme
+  [cautare] saltbank.ro persoane juridice IMM
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank business companii
+  [ 2] https://www.saltbank.ro/business
+  [ 3] https://www.saltbank.ro/companii
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     POS_FIZIC                    blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat (permisiune refuzată la fetch, posibil blocaj r, $0.05
+  [cautare] Salt Bank cont pentru firme PFA pachet cont
+  [cautare] saltbank.ro persoane juridice companii cont curent
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [ 2] https://saltbank.ro/
+  [cautare] Salt Bank firme cont
+       ! url_not_allowed
+GOL     ABONAMENT_OPERATIONAL        blocat_de_robots: Domeniul saltbank.ro (atât cu www cât și fără) a respins accesul tool-ului web_fetch cu er, $0.03
+  [cautare] Salt Bank persoane juridice firme cont
+  [cautare] Salt Bank PFA companii abonament
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank companii cont business
+  [ 2] https://www.saltbank.ro/companii
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     ABONAMENT_ELITE              blocat_de_robots: Domeniul saltbank.ro (atât www.saltbank.ro cât și varianta fără www) a refuzat accesul la , $0.05
+  [cautare] Salt Bank persoane juridice firme cont
+  [cautare] saltbank.ro PFA firme abonament
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank companii cont curent
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+  ! ABONAMENT_PRESTIGE: gata fără surse și fără motiv — reiau o dată
+  [cautare] Salt Bank PFA cont business
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank PFA cont business
+  [cautare] Salt Bank PFA cont business
+  [ 2] https://www.saltbank.ro/pfa
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     ABONAMENT_PFA                blocat_de_robots: Domeniul saltbank.ro (atât www.saltbank.ro cât și saltbank.ro) este inaccesibil prin fetch, $0.05
+  [cautare] Salt Bank persoane juridice cont firma PFA
+  [cautare] Salt Bank business abonament companii
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank firme IMM cont curent
+  [ 2] https://www.saltbank.ro/
+  [ 3] https://saltbank.ro/
+       ! url_not_allowed
+       ! url_not_allowed
+GOL     ABONAMENT_PRIME              blocat_de_robots: Nu am putut accesa deloc domeniul saltbank.ro (eroare de permisiune la fiecare încercare d, $0.05
+  [cautare] Salt Bank persoane juridice cont firma comisioane
+  [cautare] Salt Bank PFA business cont curent abonament
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank firme PFA cont
+  [ 2] https://www.saltbank.ro/persoane-juridice
+  [ 3] saltbank.ro
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     ABONAMENT_RISE               blocat_de_robots: Accesul direct la https://www.saltbank.ro/ a fost refuzat (permission denied), iar paginil, $0.05
+  [cautare] Salt Bank persoane juridice cont firma PFA
+  [cautare] Salt Bank business abonament card firme
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank IMM companii cont
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+GOL     ABONAMENT_SHINE              blocat_de_robots: Domeniul saltbank.ro a refuzat accesul ('You don't have permission to access this domain'), $0.05
+  [cautare] Salt Bank persoane juridice firme cont
+  [cautare] Salt Bank acreditiv documentar
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank IMM business credit companie
+GOL     ACREDITIVE                   produs_inexistent: Salt Bank este o bancă 100% digitală axată exclusiv pe persoane fizice (retail); nu oferă , $0.03
+  [cautare] Salt Bank persoane juridice cont firma IMM
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank companii business cont curent firma
+  [cautare] Salt Bank România persoane juridice
+  [ 2] https://www.saltbank.ro/companii
+  [ 3] https://www.saltbank.ro/business
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     ABONAMENT_PRESTIGE           blocat_de_robots: Pagina principala saltbank.ro a refuzat accesul (eroare de permisiune la fetch, posibil ro, $0.10
+  [cautare] Salt Bank API contabilitate integrare firme
+  [cautare] Salt Bank persoane juridice cont firma PFA
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro firme business
+GOL     API_CONTABILI                blocat_de_robots: Pagina principală saltbank.ro a returnat eroare de acces (permisiune refuzată), iar căutăr, $0.03
+  [cautare] Salt Bank card de credit
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank card de credit RON
+  [cautare] saltbank.ro card credit dobanda
+  [ 2] https://www.saltbank.ro/produse
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     CARD_CREDIT_PF               blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat (fetch blocat/permisiune refuzată), iar căutări, $0.04
+  [cautare] Salt Bank card de credit business persoane juridice
+  [cautare] saltbank.ro firme IMM card credit
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank companii card credit business
+  [ 2] https://www.saltbank.ro/firme
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     CARD_CREDIT_BUSINESS         blocat_de_robots: Domeniul saltbank.ro este blocat la acces (atât pagina principală, cât și paginile interne, $0.05
+  [cautare] Salt Bank card de credit business PFA firme
+  [cautare] saltbank.ro persoane juridice companii credit
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank IMM business credit
+  [ 2] https://saltbank.ro/
+  [ 3] https://www.saltbank.ro/business
+       ! url_not_allowed
+       ! url_not_in_prior_context
+GOL     CARD_CREDIT_PJ               blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat deloc prin web_fetch (eroare de permisiune/robo, $0.05
+  [cautare] Salt Bank business card de debit firme PFA
+  [cautare] saltbank.ro business companii cont
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank card business persoane juridice
+  [ 2] https://www.saltbank.ro/business
+       ! url_not_in_prior_context
+GOL     CARD_DEBIT_BUSINESS          blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat (eroare de permisiune la fetch, posibil blocare, $0.05
+  [cautare] Salt Bank card de debit cashback lounge asigurare calatorie
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank card debit comisioane retrageri gratuite
+  [cautare] saltbank.ro card dobanda sold cont
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+GOL     CARD_DEBIT_GOLD              blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat prin instrumentul web_fetch (eroare de permisiu, $0.04
+  [cautare] Salt Bank card debit cashback comisioane
+  [cautare] Salt Bank persoane juridice cont firma
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank card debit
+  [ 2] https://www.saltbank.ro/card
+  [ 3] https://www.saltbank.ro/produse
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro/
+       ! url_not_allowed
+GOL     CARD_DEBIT_FREE              blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat deloc - web_fetch a returnat eroare de permisiu, $0.06
+  [cautare] Salt Bank cont persoane juridice firme PFA
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank firme business companii cont curent
+  [ 2] https://www.saltbank.ro/persoane-juridice
+  [ 3] https://www.saltbank.ro/business
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank persoane juridice IMM cont firma
+GOL     CONT_DESTEPT                 blocat_de_robots: Domeniul saltbank.ro (atât cu www, cât și fără) este blocat pentru acces direct (eroare de, $0.07
+  [cautare] Salt Bank cont curent persoane fizice
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro cont curent
+  [ 2] https://saltbank.ro/
+  [ 3] https://www.saltbank.ro/cont-curent
+       ! url_not_allowed
+       ! url_not_in_prior_context
+  [cautare] Salt Bank cont online gratuit fara comisioane
+GOL     CONT_ONLINE_PERSONAL         blocat_de_robots: Domeniul saltbank.ro (atât cu www cât și fără) nu a putut fi accesat - toolul de fetch a r, $0.05
+  [cautare] Salt Bank persoane juridice cont firma IMM
+  [cautare] Salt Bank cont escrow dezvoltator imobiliar
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank România companii business cont
+  [ 2] https://www.saltbank.ro/companii
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     CONT_DEZVOLTATOR             blocat_de_robots: Domeniul saltbank.ro a refuzat accesul la toate adresele încercate (pagina principală și /, $0.05
+  [cautare] Salt Bank credite IMM persoane juridice
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank credit agricol echipamente firme
+  [cautare] saltbank.ro credite companii
+  [ 2] https://www.saltbank.ro/credite
+  [ 3] https://www.saltbank.ro/companii
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     CREDIT_AGRI_ECHIPAMENTE      blocat_de_robots: Accesul la domeniul saltbank.ro a fost refuzat de instrument (permisiune/robots), iar căut, $0.05
+  [cautare] Salt Bank credite IMM firme persoane juridice
+  [cautare] saltbank.ro credit agricultura irigatii
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+GOL     CREDIT_AGRI_IRIGATII         blocat_de_robots: Domeniul saltbank.ro este blocat la accesare (permisiune refuzată atât pentru https://www., $0.04
+  [cautare] Salt Bank credit agricultura firme IMM
+  [cautare] saltbank.ro credite persoane juridice companii
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank România companii business credit
+  [ 2] https://www.saltbank.ro/persoane-juridice
+  [ 3] https://www.saltbank.ro/business
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://saltbank.ro/
+       ! url_not_allowed
+GOL     CREDIT_AGRI_INPUTURI         blocat_de_robots: Accesul la domeniul saltbank.ro a fost refuzat la toate încercările de fetch (eroare de pe, $0.06
+  [cautare] Salt Bank credite persoane juridice firme
+  [cautare] saltbank.ro credit investiții IMM BERD
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank România persoane juridice business
+GOL     CREDIT_BERD_PJ               blocat_de_robots: Accesul la domeniul saltbank.ro a fost refuzat de instrumentul de fetch (permisiune interz, $0.03
+  [cautare] Salt Bank credit persoane juridice IMM firme
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank credite companii business
+  [ 2] https://www.saltbank.ro
+       ! url_not_allowed
+  [ 3] https://www.saltbank.ro/credite
+       ! url_not_in_prior_context
+  [cautare] saltbank.ro credit IMM
+GOL     CREDIT_APIA                  blocat_de_robots: Accesul la saltbank.ro a fost refuzat de instrumentul de fetch pe toate adresele încercate, $0.07
+  [cautare] Salt Bank credite IMM firme
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro credit persoane juridice
+  [ 2] https://www.saltbank.ro
+       ! url_not_allowed
+  [ 3] https://saltbank.ro/
+       ! url_not_allowed
+  [ 4] https://www.saltbank.ro/persoane-juridice
+       ! url_not_in_prior_context
+  [cautare] Salt Bank firme credit garanție
+GOL     CREDIT_BID_IMM               blocat_de_robots: Accesul la saltbank.ro a fost refuzat în mod repetat (eroare de permisiune / blocare robot, $0.09
+  [cautare] Salt Bank credite firme IMM persoane juridice
+  [cautare] Salt Bank credit energie verde fotovoltaice firme
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro credite companii
+  [ 2] https://www.saltbank.ro/credite
+  [ 3] https://www.saltbank.ro/business
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro/
+       ! url_not_allowed
+GOL     CREDIT_ENERGIE_VERDE         blocat_de_robots: Site-ul saltbank.ro nu a putut fi accesat (eroare de permisiune/robots.txt) nici măcar pen, $0.06
+  [cautare] Salt Bank credite persoane juridice companii
+  [cautare] saltbank.ro firme IMM credit
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank companii credit dezvoltatori imobiliari
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+  [ 3] https://www.saltbank.ro/credite
+       ! url_not_in_prior_context
+GOL     CREDIT_DEZVOLTATORI          blocat_de_robots: Domeniul saltbank.ro a fost inaccesibil instrumentului de fetch (eroare de permisiune), ia, $0.07
+  [cautare] Salt Bank credit persoane juridice firme PFA
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank credit IMM companii
+  [ 2] https://www.saltbank.ro/credite
+       ! url_not_in_prior_context
+  [cautare] Salt Bank companii credit
+GOL     CREDIT_HIPOCRATE             produs_inexistent: Salt Bank este o bancă digitală destinată exclusiv persoanelor fizice (retail); nu oferă c, $0.05
+  [cautare] Salt Bank credit IMM firme ipotecar
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro credite IMM persoane juridice
+  [ 2] https://www.saltbank.ro/
+  [ 3] https://saltbank.ro/
+       ! url_not_allowed
+       ! url_not_allowed
+GOL     CREDIT_IMM_IPOTECA           blocat_de_robots: Accesul la saltbank.ro este blocat pentru acest instrument (eroare de permisiune la fiecar, $0.04
+  [cautare] Salt Bank credit imobiliar persoane juridice
+  [cautare] Salt Bank credite firme IMM
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro credite firme
+  [ 2] https://www.saltbank.ro/firme
+  [ 3] https://www.saltbank.ro/companii
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro
+       ! url_not_allowed
+GOL     CREDIT_IMOBILIAR_PJ          blocat_de_robots: Domeniul saltbank.ro a refuzat accesul (eroare de permisiune) la toate încercările de fetc, $0.07
+  [cautare] Salt Bank credit investitii firme PFA
+  [cautare] saltbank.ro persoane juridice credite companii
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank firme credit
+  [ 2] https://www.saltbank.ro/firme
+  [ 3] https://www.saltbank.ro/business
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     CREDIT_INVESTITII            blocat_de_robots: Pagina principală https://www.saltbank.ro/ a returnat eroare de permisiune la accesare (pr, $0.05
+  [cautare] Salt Bank credite firme PFA companii
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank persoane juridice credite IMM
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank România persoane fizice sau juridice servicii
+GOL     CREDIT_PROFESII              blocat_de_robots: Domeniul saltbank.ro a refuzat accesul (permission denied) la toate încercările de fetch, , $0.05
+  [cautare] Salt Bank depozit dobanda
+  [cautare] Salt Bank depozit persoane juridice firme dobanda
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro depozit dobanda
+  [ 2] https://saltbank.ro/
+  [ 3] https://www.saltbank.ro/depozite
+       ! url_not_allowed
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro/produse/depozite
+       ! url_not_in_prior_context
+GOL     DEPOZIT_1AN_1LUNA            blocat_de_robots: Domeniul saltbank.ro returnează eroare de permisiune la toate încercările de acces (atât p, $0.06
+  [cautare] Salt Bank credit firme IMM avocați notari
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank credite persoane juridice companii
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank credite companii
+GOL     CREDIT_SOLON                 blocat_de_robots: Accesul la saltbank.ro a fost refuzat la toate încercările de web_fetch (eroare de permisi, $0.05
+  [cautare] Salt Bank schimb valutar curs
+  [cautare] saltbank.ro schimb valutar
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro curs valutar schimb euro
+GOL     FX_SPOT                      blocat_de_robots: Domeniul saltbank.ro (inclusiv varianta www) nu a putut fi accesat prin web_fetch - eroare, $0.04
+  [cautare] Salt Bank depozit dobândă termen
+  [cautare] saltbank.ro depozit la termen dobanda
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank depozit la termen dobândă procent
+  [ 2] https://www.saltbank.ro/depozite
+       ! url_not_in_prior_context
+GOL     DEPOZIT_BLITZ_7L             blocat_de_robots: Nu am putut accesa deloc domeniul saltbank.ro: web_fetch a refuzat accesul la pagina princ, $0.05
+  ! CREDIT_INVESTEU_PJ: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  CREDIT_INVESTEU_PJ           ReadTimeout: The read operation timed out
+  [cautare] Salt Bank descoperit de cont overdraft
+  [cautare] saltbank.ro overdraft
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank overdraft descoperit de cont persoane fizice
+  [ 2] https://www.saltbank.ro/produse
+  [ 3] https://www.saltbank.ro/overdraft
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro/
+       ! url_not_allowed
+GOL     OVERDRAFT_PF                 blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat (eroare de permisiune la fetch), iar căutările , $0.06
+  [cautare] Salt Bank leasing financiar firme IFN
+  [cautare] saltbank.ro persoane juridice credit firme
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank IMM firme credit produse
+  [ 2] https://www.saltbank.ro/despre-noi
+  [ 3] https://saltbank.ro
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     LEASING_FINANCIAR            blocat_de_robots: Nu am putut accesa deloc domeniul saltbank.ro – toate încercările de fetch (pagina princip, $0.06
+  [cautare] Salt Bank titluri de stat
+  [cautare] saltbank.ro plasamente investiții
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank depozit economii dobanda produse
+  [ 2] https://www.saltbank.ro/economii
+  [ 3] https://www.saltbank.ro/produse
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     PLASAMENTE                   blocat_de_robots: Pagina principală https://www.saltbank.ro/ nu a putut fi accesată (eroare de permisiune la, $0.05
+  [cautare] Salt Bank PFA firme business cont
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank persoane juridice PFA aplicatie
+  [ 2] https://www.saltbank.ro
+       ! url_not_allowed
+  [cautare] Salt Bank cont pentru PFA sau firme lansare
+GOL     INTERNET_BANKING             blocat_de_robots: Accesul la domeniul saltbank.ro a fost refuzat explicit de instrumentul web_fetch (eroare , $0.05
+  [cautare] Salt Bank persoane juridice firme PFA cont
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank depunere numerar bancomat firme
+  [cautare] saltbank.ro IMM business cont firma
+  [ 2] https://www.saltbank.ro/
+  [ 3] https://saltbank.ro/
+       ! url_not_allowed
+       ! url_not_allowed
+  [ 4] https://www.saltbank.ro/despre-noi
+       ! url_not_in_prior_context
+GOL     RCD_CASH_DEPOSIT             blocat_de_robots: Domeniul saltbank.ro a refuzat accesul la toate încercările de fetch (eroare de permisiune, $0.07
+  [cautare] Salt Bank RoPay plăți instant telefon
+  [cautare] Salt Bank transfer bani după numărul de telefon
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro RoPay
+  [ 2] https://saltbank.ro/
+  [ 3] https://www.saltbank.ro
+       ! url_not_allowed
+       ! url_not_allowed
+GOL     ROPAY                        blocat_de_robots: Domeniul saltbank.ro (inclusiv www.saltbank.ro) a refuzat accesul la toate încercările de , $0.05
+  [cautare] Salt Bank persoane juridice firme cont
+  [cautare] Salt Bank seif inteligent depunere numerar firme
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank companii IMM credit cont curent
+GOL     SMART_SAFE                   blocat_de_robots: Accesul la saltbank.ro a fost refuzat (permisiune interzisă la fetch), iar căutările web n, $0.03
+  [cautare] Salt Bank RoPay business companii QR
+  [cautare] saltbank.ro RoPay firme
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank companii persoane juridice incasari QR
+  [ 2] https://www.saltbank.ro/business
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     ROPAY_BUSINESS               blocat_de_robots: Domeniul saltbank.ro este blocat la acces (atât pagina principală cât și subpaginile au re, $0.05
+  [cautare] Salt Bank persoane juridice firme credite
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank scrisori de garanție bancară IMM
+  [ 2] https://saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro firme IMM credite garanții
+GOL     SCRISORI_GARANTIE            blocat_de_robots: Domeniul saltbank.ro (atât varianta www cât și fără www) a refuzat accesul instrumentului , $0.05
+
+salt: 0/51 produse cu surse, 1 erori, cost estimat $2.57, durata 4 min
+Reia: python descopera_surse_libra.py --banca salt --produse CREDIT_INVESTEU_PJ

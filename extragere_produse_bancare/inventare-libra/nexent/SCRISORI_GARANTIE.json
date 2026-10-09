@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/b36d869376376f0ae8ca4f9a3f377c74d96b8902.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife pentru persoane juridice, legat din pagina Corporate-SME (secțiunea 'Useful documents'/'List of taxes, fees and interest'), conține secțiunea dedicată 'SCRISORI DE GARANTIE' cu toate comisioanele aplicabile.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Document de tarife dedicat persoanelor juridice, cu tabel complet și explicit pentru produsul Scrisori de garanție, incluzând emitere, avizare, prelungire, executare, cesiune și anulare.",
+      "pagina_pdf": 2,
+      "citat": "SCRISORI DE GARANTIE Emitere (trimestrial) in RON / in valuta negociabil Min. 35 EUR / 140 RON Avizare in RON / in valuta 20 EUR / 80 RON Alte amendamente in RON / in valuta 20 EUR / 80 RON Prelungire valabilitate (trimestrial) in RON / in valuta negociabil Min. 35 EUR / 140 RON Executare 0.25%, Min. 75 EUR / echivalent in alta valuta Cesiune 0.20%, Min. 75 EUR / echivalent in alta valuta",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/Facilitati-NON-CASH",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de garanţie bancară şi Acreditive",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată produsului, pentru persoane juridice, care descrie scrisorile de garanție bancară ca angajament al băncii de a plăti un terț dacă debitorul nu-și onorează obligațiile contractuale - exact tipul de produs Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie clar produsul și tipurile de scrisori de garanție oferite, dar nu conține cifre (procente, comisioane, sume); valorile se găsesc în documentul de tarife atașat.",
+      "citat": "Scrisori de garanţie bancară reprezintă un angajament asumat de bancă în favoarea unei terţe persoane, de a plăti acesteia suma garantată, în cazul în care debitorul nu îşi onorează obligaţiile contractuale, banca oferă următoarele tipuri de scrisori de garanţie, în lei şi în valută",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Non-Cash-Financing",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Letters of guarantee (Non-Cash Financing)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în engleză a paginii dedicate, pentru persoane juridice, listând tipurile de scrisori de garanție (bid bond, performance bond, advance payment LG, custom LG, counter guarantee, payment LG).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagină dedicată produsului cu descriere detaliată a tipurilor de scrisori de garanție, dar fără cifre; valorile se găsesc doar în documentul de tarife.",
+      "citat": "Represent the bank's commitment to pay a sum of money to the beneficiary (third party, local or foreign) in the event that the customer fails to honor its obligations in accordance with the terms and conditions of the contract",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/Facilitati-NON-CASH",
+    "https://www.nexentbank.ro/upload/media/document/0001/06/55542767f9b364d9568de517506f19c2fd3a05cc.pdf",
+    "https://www.nexentbank.ro/en/Corporate-SME",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/b36d869376376f0ae8ca4f9a3f377c74d96b8902.pdf"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3499,
+    "citire_cache": 138959,
+    "scriere_cache": 67123,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.23060930000000002
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/t0-package/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "\"T0\" Package for Start-Up (Pachet de cont curent T0 pentru Clienții IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet gratuit dedicat start-up-urilor (IMM/PFA înființate în ultimele 12 luni) cu cont curent, card de debit business, online/mobile banking, plăți nelimitate și acceptare POS — exact același tip de produs și segment ca Cont Deștept; singura diferență notabilă e comisionul mPOS (0,99% vs 0,59% la Libra).",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată a ofertei conține explicit condițiile de eligibilitate (12 luni de la înființare) și cifrele comisionului POS.",
+      "citat": "The offer is addressed to SMEs and Individual Entrepreneurs who have been established in the last 12 months, respectively starting with January 5th, 2026 and who at the time of launching the offer are not clients of the Bank or who only hold a share capital account opened at Garanti Bank SA",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/t0-package/#:~:text=The%20offer%20is%20addressed%20to,opened%20at%20Garanti%20Bank%20SA"
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachet de cont curent T0 pentru Clienții IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de ofertă/condiții (Anexa 1) cu lista completă a serviciilor gratuite incluse în pachet și comisionul POS, pentru aceeași categorie de clienți start-up ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF-ul conține tabelul cu serviciile incluse gratuit și cifrele exacte ale comisionului de acceptare la plată POS și administrare terminal.",
+      "pagina_pdf": 2,
+      "citat": "Acceptarea la plată a cardurilor la terminalul POS: 0.99%/tranzacție Administrare lunară/mentenanță terminal POS: 35 lei/ terminal** percepută doar în cazul în care valoarea tranzacțiilor prin terminalul POS în luna precedentă a fost mai mică de 12.000 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/t0-package/",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf"
+  ],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3643,
+    "citire_cache": 31999,
+    "scriere_cache": 38923,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14014929999999998
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru prefinanțarea subvenției APIA (în cadrul pachetului Credite pentru agricultură)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pe termen scurt/mediu acordat în baza adeverințelor APIA, pentru activitatea curentă a fermierilor persoane juridice — același tip de produs și același segment ca CREDIT_APIA de la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată pachetului de credite agricole, în care sub-produsul de prefinanțare APIA este descris explicit, cu detalii despre schemele APIA acoperite, dar fără procentul exact din subvenție sau perioada de grație.",
+      "citat": "Credite pentru prefinanțarea subvenției APIA - credit pe termen scurt sau mediu, acordat în baza Adeverințelor emise de APIA pe diverse programe: Schemele de Plată, Directa și Măsurile de Mediu și Climă (SAPS, Plată redistributivă; Plată pentru înverzire, Măsura 10,Măsura 11 și Măsura 13), Axa II, Bunăstarea animalelor",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-agricultura.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru prefinanțarea subvenției APIA (secțiunea Credite pentru agricultură - Microîntreprinderi)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași prefinanțare pe adeverință APIA, de această dată în oferta dedicată microîntreprinderilor și PFA-urilor, segment acoperit și de produsul Libra (firme, PFA).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată a băncii pentru segmentul de microîntreprinderi/antreprenori, care listează explicit creditul de prefinanțare APIA cu programele acoperite, dar fără cifre de procent sau grație.",
+      "citat": "Credite pentru prefinanțarea subvenției APIA - credit pe termen scurt sau mediu, acordat în baza Adeverințelor emise de APIA pe diverse programe: Schemele de Plată Directă și Măsurile de Mediu și Climă (SAPS, Plată redistributive, Plată pentru înverzire, Măsura 10, Măsura 11 și Măsura 13), Axa II, Bunăstarea animalelor",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-agricultura.html"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3249,
+    "citire_cache": 30094,
+    "scriere_cache": 49196,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16151079999999998
+  }
+}

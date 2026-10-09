@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garanții FEI (Plafon FRR Competitivitate IMM / Plafon FRR Sustenabilitate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (credite de investiții/capital de lucru cu garanție FEI, pentru criterii InvestEU) și segment (IMM și Small Mid-Cap persoane juridice), cu aceleași două componente Competitivitate și Sustenabilitate ca la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit denumirile plafoanelor, procentele de garantare și sursa de finanțare InvestEU.",
+      "citat": "Plafonului FRR Competitivitate IMM destinat clientilor din categoria IMM, cu scopul imbunatatirii accesului la finantare pentru intreprinderile romanesti si de a revitaliza canalele de creditare blocate in timpul si dupa criza COVID-19. Plafonului FRR Sustenabilitate destinat clientilor din categoriile IMM si Small Mid-Cap – contribuie la transformarea verde si durabila a economiei romanesti, creditele fiind destinate in principal finantarii investitiilor verzi.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/#:~:text=Plafonului%20FRR%20Competitivitate%20IMM%20destinat,in%20principal%20finantarii%20investitiilor%20verzi."
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Loans secured by the European Investment Fund (RRF SME Competitiveness Product / RRF Sustainability Product)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în limba engleză a aceleiași pagini de produs, cu aceleași caracteristici și procente de garantare pentru cele două componente InvestEU.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Conține aceleași cifre ca pagina în română, confirmând detaliile produsului (procent garantare, valută, tip credit).",
+      "citat": "between minimum 30% and up to 70% from the value of the loan guaranteed within the RRF SME Competitiveness Product, except for clients having their registered office located in Bucharest and Ilfov County, where the maximum guarantee rate is 50%",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/#:~:text=between%20minimum%2030%25%20and%20up,maximum%20guarantee%20rate%20is%2050%25"
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2025/09/23/companies-loans-guaranteed-by-the-european-investment-fund/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Companies Loans Guaranteed by the European Investment Fund",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Articol de prezentare a aceluiași produs (credite pentru investiții și capital de lucru garantate FEI sub InvestEU), cu cifre suplimentare despre acoperirea garanției.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Articol general despre produs, cu cifre explicite privind procentul de garantare, dar fără detalii de sumă/termen specifice.",
+      "citat": "Exim Banca Romaneasca supports the development of Romanian companies by granting loans for investments and working capital under advantageous conditions, with European guarantees that can cover up to 70% of the financing value",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2025/09/23/companies-loans-guaranteed-by-the-european-investment-fund/#:~:text=Exim%20Banca%20Romaneasca%20supports%20the,70%25%20of%20the%20financing%20value"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/",
+    "https://www.eximbank.ro/en/2025/09/23/companies-loans-guaranteed-by-the-european-investment-fund/",
+    "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2200,
+    "citire_cache": 82868,
+    "scriere_cache": 52260,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1692396
+  }
+}

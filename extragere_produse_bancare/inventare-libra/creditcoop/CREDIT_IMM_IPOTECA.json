@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/creditul-imobiliar/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul imobiliar (Afaceri)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit pentru persoane juridice, garantat cu ipotecă imobiliară, destinat investițiilor imobiliare ale firmei, pe termen mediu/lung — acoperă componenta de investiții a produsului Libra, dar pagina nu publică plafoane de sumă (50.000-1 mil. RON) și nici termenul maxim de 180 luni; ratele de rambursare menționate sunt doar la 3 sau 6 luni, nu lunile exacte din oferta Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Este pagina dedicată a produsului de credit imobiliar pentru firme, garantat ipotecar, dar conține doar informații generale despre avantaje și garanții, fără plafoane de sumă sau dobânzi explicite.",
+      "citat": "consultanță și asistență gratuită; structură flexibilă de garanții; durata de finantare pe termen mediu sau lung; poti alege modalitatea de rambursare care ti se potriveste cel mai bine în functie de specificul activitatii companiei: lunar, o dată la 3 luni, la 6 luni etc.",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/creditul-imobiliar/#:~:text=consultan%C8%9B%C4%83%20%C8%99i%20asisten%C8%9B%C4%83%20gratuit%C4%83%3B%20structur%C4%83,luni%2C%20la%206%20luni%20etc."
+    },
+    {
+      "url": "https://www.creditcoop.ro/linia-de-credit/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit (Afaceri)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Linie de credit pentru firme, garantată inclusiv cu ipotecă asupra bunurilor mobile și/sau imobile — acoperă componenta de activitate curentă a produsului Libra, dar durata standard este de 12 luni (cu prelungire anuală), diferit de termenul de până la 84 de luni din oferta Libra, iar pagina nu publică plafonul maxim al liniei (600.000 RON la Libra).",
+      "incredere": 0.6,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina dedicată liniei de credit pentru firme menționează explicit termenul de 12 luni și garanția ipotecară pe bunuri mobile/imobile, dar nu conține plafoane de sumă.",
+      "citat": "Alege linia de credit pe termen de 12 luni, cu posibilitatea prelungirii la scadență.",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (14 cuvinte)",
+      "link_live": "https://www.creditcoop.ro/linia-de-credit/#:~:text=Alege%20linia%20de%20credit%20pe,cu%20posibilitatea%20prelungirii%20la%20scaden%C8%9B%C4%83."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/creditul-imobiliar/",
+    "https://www.creditcoop.ro/linia-de-credit/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3196,
+    "citire_cache": 76320,
+    "scriere_cache": 57174,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.190175
+  }
+}

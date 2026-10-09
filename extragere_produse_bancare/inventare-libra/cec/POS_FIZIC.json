@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/visa-eposibil",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Programul Visa ePOSibil",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs CEC Bank care include un terminal POS fizic pentru comercianți persoane juridice cu vânzare la locație, dar diferă esențial de produsul Libra: nu este un produs standard disponibil oricărui comerciant, ci un program promoțional limitat (2025-2028), destinat exclusiv comercianților care nu au mai acceptat carduri în ultimele 12 luni și condiționat de minimum 3 tranzacții Visa; gratuitatea (fără costuri fixe) este valabilă doar 6 luni, spre deosebire de un produs POS fizic standard, permanent.",
+      "incredere": 0.72,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina este dedicată programului și conține cifre concrete (perioada 2025–2028, minimum 3 tranzacții Visa, 6 luni fără costuri fixe), dar nu descrie un produs POS fizic general, ci un program cu eligibilitate restrânsă.",
+      "citat": "Derulat în perioada 2025–2028, programul oferă echipamente de acceptare (POS, mPOS, Tap-to-Phone sau soluții e-commerce) fără costuri fixe lunare timp de 6 luni pentru comercianții eligibili.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/visa-eposibil#:~:text=Derulat%20%C3%AEn%20perioada%202025%E2%80%932028%2C%20programul,6%20luni%20pentru%20comercian%C8%9Bii%20eligibili."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/visa-eposibil",
+    "https://www.cec.ro/documente-utile",
+    "https://www.cec.ro/smartphone-pos"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2553,
+    "citire_cache": 76162,
+    "scriere_cache": 67116,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2085684
+  }
+}

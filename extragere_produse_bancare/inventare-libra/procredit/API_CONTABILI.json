@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "ProCredit Bank nu oferă o integrare API dedicată cu programele de contabilitate. Are doar: (1) un API general PSD2/Open Banking (Account Information + Payment Initiation Service, standard Berlin Group) destinat furnizorilor terți autorizați, nu o integrare pentru contabili; (2) un parteneriat comercial cu aplicația de contabilitate Keez, care oferă cashback (50 lei/lună timp de 6 luni) clienților business ce au deja abonament Keez, fără a fi o integrare tehnică/API; (3) programul 'Conta Smart Pack', care este un program de recomandări pentru contabili (500 lei/recomandare validă), nu un produs de integrare contabilă. Niciunul dintre acestea nu reprezintă o soluție dedicată de integrare API cu softurile de contabilitate echivalentă cu API Contabili de la Libra."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/cont-business-keez-procredit/",
+    "https://www.procreditbank.ro/companii/",
+    "https://www.procreditbank.ro/companii/conta-smart-pack/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2154,
+    "citire_cache": 69277,
+    "scriere_cache": 57090,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1781364
+  }
+}

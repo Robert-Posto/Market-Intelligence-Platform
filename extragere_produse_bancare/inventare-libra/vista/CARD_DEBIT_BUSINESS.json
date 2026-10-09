@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_Iulie_2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Vista Visa Business Debit Card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane al băncii pentru persoane juridice, care conține un rând dedicat costurilor cardului de debit business (Vista Visa Business Debit Card).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document tarifar actual (2025) cu valori numerice explicite pentru retragerile de numerar pe cardul de debit business.",
+      "citat": "Retragere de numerar de la ATM-urile Euronet din Romania 0 Retragere de numerar de la ATM-urile si Ghiseele (POS-urile) de pe teritoriul Uniunii Europene si Spatiului Economic European 1% + 2,5 LEI/ tranzactie",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/carduri-de-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Vista Business Debit Card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit în lei pentru persoane juridice (firme), destinat plăților curente de zi cu zi ale companiei, exact ca produsul Libra Card de debit business.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu descrierea beneficiilor și comision ZERO menționat explicit, dar fără un tabel complet de tarife pe pagină.",
+      "citat": "Cardul Vista Business Debit Card este un card de debit contactless în lei, un instrument simplu și comod pentru plățile dumneavoastră de zi cu zi. Astfel, puteți face cumpărături online și offline, în România și în străinatate, comisionul pentru orice plată fiind ZERO.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_Iulie_2024_info.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Vista Visa Business Debit Card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Anexa de tarife, termene și condiții pentru persoane juridice care detaliază plafoanele de utilizare zilnică ale cardului de debit business, completând setul de cifre din documentul de tarife.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține plafoane numerice explicite (limite zilnice de tranzacționare) specifice cardului Vista Visa Business Debit Card.",
+      "citat": "CARDUL DE DEBIT Vista Visa Business Debit Card Limite zilnice de autorizare Limita zilnica utilizare card 30.000 LEI Limita zilnica retragere numerar de la ATM-uri (inclusa in Limita zilnica utilizare card) 10.000 LEI Numar zilnic tranzactii (ATM si POS) 15",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2321,
+    "citire_cache": 6317,
+    "scriere_cache": 40254,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12511640000000002
+  }
+}

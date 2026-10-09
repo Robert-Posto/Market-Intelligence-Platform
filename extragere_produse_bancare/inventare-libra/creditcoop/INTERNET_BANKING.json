@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Internet Banking - creditcoop.online (Afaceri)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de Condiții Generale de Afaceri conține o secțiune dedicată serviciului Internet Banking creditcoop.online, cu limite valorice distincte pentru Persoane juridice, segmentul corespunzător produsului Libra Internet & Mobile Banking business.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul general de condiții conține secțiunea E. Internet Banking-creditcoop.online cu cifre explicite (limite zilnice și per tranzacție) pentru Persoane juridice, dar nu este o pagină tarifară dedicată exclusiv acestui produs.",
+      "citat": "Persoane juridice | Tip limită | Limite maxime | Limită zilnică* 200.000 lei | Limita pe tranzacție* 50.000 Lei E.Internet Banking-creditcoop.online",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/internet-banking-afaceri/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2384,
+    "citire_cache": 87883,
+    "scriere_cache": 59823,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1909901
+  }
+}

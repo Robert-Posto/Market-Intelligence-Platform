@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/depozitonline",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit 100% online pentru persoane fizice (platforma „Patria de Oriunde”)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen cu dobândă promoțională de lansare/campanie, dar la Patria segmentul acoperit e doar persoane fizice (nu și juridice, ca la Libra Blitz) și termenul-cheie promovat este de 4 luni (LEI) / 7 luni (doar EUR), nu 7 luni în LEI ca la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată are cifre explicite de dobândă pentru depozitele online, dar segmentul (doar PF) și structura termenelor diferă de produsul Libra pentru PF și PJ.",
+      "citat": "La depozitele constituite pe platforma online ai următoarele dobânzi: 6,60% dobândă anuală pentru depozitul în LEI pe 4 luni, 2,60% dobândă anuală pentru depozitul în Euro pe 7 luni, până la 3,50% pe an la depozitele în dolari.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit la termen pentru firme (IMM) Patria Bank",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul persoane juridice, iar prin opțiunea de scadență variabilă (8-365 zile) se poate constitui un depozit pe durata de 7 luni, dar nu este un produs promoțional dedicat cu dobândă fixă afișată de tip „Blitz”, ci un depozit standard cu dobândă negociabilă, fără procentul de 6,25% menționat de Libra.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina de produs pentru depozite ale firmelor descrie posibilitatea termenului variabil care poate acoperi 7 luni, dar nu publică o dobândă fixă specifică pentru acest termen, ca document general de produs.",
+      "citat": "poți alege maturitatea care se potrivește afacerii tale: peste noapte (overnight), cu scadență fixă pentru: 1 lună, 3 luni, 6 luni, 12 luni și 24 luni, cu scadență variabilă, adică poți alege orice interval de zile între 8 și 365 de zile (cu cât alegi un număr mai mare de zile cu atât dobânda va fi mai bună), tip dobândă: fixă.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/d/20",
+    "https://www.patriabank.ro/depozitonline",
+    "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+    "https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen",
+    "https://www.patriabank.ro/",
+    "https://www.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+    "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+    "https://www.patriabank.ro/depozitonline",
+    "https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen",
+    "https://en.patriabank.ro/d/992"
+  ],
+  "durata_s": 106,
+  "consum": {
+    "intrare": 171190,
+    "iesire": 8177,
+    "citire_cache": 12676,
+    "scriere_cache": 33776,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5111252000000001
+  }
+}

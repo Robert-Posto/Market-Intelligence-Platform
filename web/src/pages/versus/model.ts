@@ -1,4 +1,4 @@
-import type { Rate, VersusExtra, VersusMatrice } from '@mcc/shared'
+import type { Rate, VersusCelulaLibra, VersusExtra, VersusLibra, VersusMatrice } from '@mcc/shared'
 import type { DictKey, Params } from '../../i18n'
 import { num } from '../../util/format'
 
@@ -111,6 +111,76 @@ export function sectiunePret(g: Grup, d: DateGrup, coloane: string[], bilant: Bi
     randuri.push({ camp: cp, celule: p, prezente: prezente.length, celMaiBun, stare: st })
   }
   return randuri.length ? { tip: 'pret', cheie: g.cheie, grup: g, titlu: d.titlu, sens: d.sens, randuri } : null
+}
+
+/**
+ * Un produs Libra din fluxul comparației (/api/versus_libra): rândurile sunt câmpurile
+ * produsului, iar sensul e pe rând, fiindcă un produs are și costuri (comisioane, DAE),
+ * și câștiguri (dobânda la depozit, operațiunile incluse).
+ */
+export interface RandLibra {
+  camp: string
+  unitate: string
+  sens: string
+  celule: Record<string, VersusCelulaLibra>
+  prezente: number
+  celMaiBun: number | null
+  stare: Stare
+}
+export interface SectiuneLibra {
+  tip: 'libra'
+  cheie: string
+  titlu: string
+  categorie: string | null
+  segment: string | null
+  randuri: RandLibra[]
+}
+
+type LibraDisponibil = Extract<VersusLibra, { disponibil: true }>
+
+/** Băncile cu valori în comparația cu Libra: intră și ele în lista din „Schimbă băncile”. */
+export const banciLibra = (d: VersusLibra): string[] =>
+  d.disponibil ? [...new Set((d as LibraDisponibil).celule.map((c) => c.banca))] : []
+
+/**
+ * O secțiune pe produs Libra, doar cu rândurile unde măcar o coloană are valoare.
+ * Bilanțul numără, ca la prețuri, toate rândurile, nu doar pe cele afișate.
+ */
+export function sectiuniLibra(d: VersusLibra, coloane: string[], bilant: Bilant, arata: string): SectiuneLibra[] {
+  if (!d.disponibil) return []
+  const date = d as LibraDisponibil
+  const pe: Record<string, Record<string, Record<string, VersusCelulaLibra>>> = {}
+  for (const c of date.celule) ((pe[c.produs] ??= {})[`${c.camp}|${c.unitate}`] ??= {})[c.banca] = c
+  const rez: SectiuneLibra[] = []
+  for (const p of date.produse) {
+    const randuri: RandLibra[] = []
+    const cate = (cel: Record<string, VersusCelulaLibra>) => coloane.filter((b) => cel[b]).length
+    const campuri = Object.entries(pe[p.cod] ?? {})
+      .filter(([, cel]) => cate(cel) > 0)
+      // întâi rândurile cu mai multe bănci (comparabile), apoi restul, alfabetic pe câmp
+      .sort(([ka, a], [kb, b]) => cate(b) - cate(a) || ka.localeCompare(kb))
+    for (const [cheie, cel] of campuri) {
+      const [camp, unitate] = cheie.split('|') as [string, string]
+      const sens = Object.values(cel)[0]!.sens
+      const prezente = coloane.map((b) => cel[b]).filter((x): x is VersusCelulaLibra => !!x)
+      const vals = prezente.map((x) => x.valoare)
+      const celMaiBun = vals.length ? (sens === 'mare_bun' ? Math.max(...vals) : Math.min(...vals)) : null
+      const st = stareLibra(Object.fromEntries(coloane.map((b) => [b, cel[b] ? cel[b].valoare : null])), sens)
+      bilant[st] += 1
+      if (!vizibil(st, arata)) continue
+      randuri.push({ camp, unitate, sens, celule: cel, prezente: prezente.length, celMaiBun, stare: st })
+    }
+    if (randuri.length) {
+      rez.push({ tip: 'libra', cheie: `libra:${p.cod}`, titlu: p.denumire, categorie: p.categorie_cod, segment: p.segment, randuri })
+    }
+  }
+  return rez
+}
+
+/** Unitățile din fluxul comparației, pe cheile dicționarului („%” e `unitate.procent`). */
+export const UNITATI_LIBRA: Record<string, DictKey | ''> = {
+  '%': 'unitate.procent', pp: 'pl.u.pp', lei: 'unitate.lei', eur: 'unitate.eur', usd: 'unitate.usd',
+  luni: 'pl.u.luni', ani: 'pl.u.ani', zile: 'pl.u.zile', numar: '',
 }
 
 /** Valoarea afișată în rândurile care nu vin din prețuri; `n` e cifra comparabilă (null: doar informativ). */

@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/creditul-imobiliar/",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul imobiliar (Afaceri/Persoane Juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat finanțării imobiliare pentru firme, listat sub meniul 'Afaceri' alături de Creditul standard, Linia de credit, Creditul Agro, destinat 'investiție imobiliară pentru afacerea ta', cu garanții reale imobiliare și rambursare adaptată 'specificul activitatii companiei'.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată exactă a produsului pentru persoane juridice, dar valorile numerice (dobândă, DAE) apar doar prin simulatorul JavaScript, nu în textul static.",
+      "citat": "Ai nevoie de o invesțitie imobiliară pentru afacerea ta pe care nu o poți susține din surse proprii? Vino și iți vom susține financiar investiția. durata de finantare pe termen mediu sau lung; poti alege modalitatea de rambursare care ti se potriveste cel mai bine în functie de specificul activitatii companiei: lunar, o dată la 3 luni, la 6 luni etc.",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/creditul-imobiliar/#:~:text=Ai%20nevoie%20de%20o%20inves%C8%9Bitie,luni%2C%20la%206%20luni%20etc."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/creditul-imobiliar/"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2106,
+    "citire_cache": 69986,
+    "scriere_cache": 46731,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1519007
+  }
+}

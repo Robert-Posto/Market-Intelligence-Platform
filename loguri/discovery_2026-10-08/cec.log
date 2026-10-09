@@ -1,0 +1,252 @@
+CEC Bank: 51 de rulat, 6 sărite (au rezultat), paralel 5, model claude-sonnet-5, termen 180 s/produs, domenii cec.ro
+  [cautare] CEC Bank linie de credit capital de lucru IMM
+  [cautare] CEC Bank linie de credit companii site:cec.ro
+GATA    LINIE_CREDIT                 1 surse, 0 citate verificate, echivalent, $0.08, 11s — Linie de credit pentru activitatea curentă
+  [cautare] CEC Bank plăți online comerciant card magazin online
+  [cautare] CEC Bank POS virtual plăți online e-commerce
+  [ 1] https://www.cec.ro/visa-eposibil
+  [ 2] https://www.cec.ro/persoane-juridice
+       ! url_not_in_prior_context
+  [ 3] https://www.cec.ro/banking-digital-afacerea-ta
+  [cautare] CEC Bank "plăți online" comerciant "magazin online" acceptare card comision
+GOL     LIBRAPAY_ECOM                potrivire_slaba: cel mai apropiat: Visa ePOSibil (încredere 0.55) — Este singurul produs CEC Bank destinat , $0.28
+  [cautare] CEC Bank cont curent online persoane juridice business
+  [cautare] CEC Bank cont curent companii deschidere online
+  [ 1] https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice
+  [ 2] https://www.cec.ro/presa/cec-bank-lanseaza-pachetele-de-cont-curent-100-digitale-pentru-persoanele-juridice-imm-si-pfa
+  [ 3] https://www.cec.ro/pachet-cont-bancar-imm-optim
+GATA    CONT_ONLINE_BUSINESS         3 surse, 2 citate verificate, echivalent, $0.22, 37s — Pachetul IMM Optim
+  [cautare] CEC Bank platforma schimb valutar online curs in timp real
+  [cautare] CEC Bank CEC FX online internet banking schimb valutar
+  [ 1] https://www.cec.ro/cec-fin
+  [ 2] https://www.cec.ro/trezorerie-schimburi-valutare
+GATA    LIVE_FX                      3 surse, 0 citate verificate, similar, $0.19, 46s — CEC Fin
+  [cautare] CEC Bank credit IMM fara garantii scoring persoane juridice
+  [cautare] CEC Bank credit pentru afaceri mici IMM 20000 200000 lei
+  [cautare] CEC Bank "credit rapid" IMM scoring fara ipoteca firma
+  [ 1] https://www.cec.ro/credit-activitate-curenta
+  [ 2] https://www.cec.ro/credit-activitate-curenta
+GATA    CREDIT_SIMPLU_IMM            1 surse, 0 citate verificate, similar, $0.20, 59s — Credit pentru activitatea curentă
+  [cautare] CEC Bank terminal POS comercianti
+  [cautare] site:cec.ro POS
+  [ 1] https://www.cec.ro/visa-eposibil
+  [ 2] https://www.cec.ro/documente-utile
+  [ 3] https://www.cec.ro/smartphone-pos
+GATA    POS_FIZIC                    1 surse, 1 citate verificate, similar, $0.21, 32s — Programul Visa ePOSibil
+  [cautare] CEC Bank pachet cont curent firme comision lunar IMM
+  [cautare] CEC Bank abonament companii plăți incluse card
+  [ 1] https://www.cec.ro/cont-bancar-pachet-imm-business
+GATA    ABONAMENT_ELITE              1 surse, 1 citate verificate, similar, $0.15, 38s — Pachetul IMM Business
+  [cautare] CEC Bank InvestEU credit companii
+  [cautare] CEC Bank InvestEU IMM finantare
+  [ 1] https://www.cec.ro/programe-ajutor-stat
+  [ 2] https://www.cec.ro/presa/cec-bank-acorda-imm-urilor-peste-350-mil-euro-imprumuturi-avantajoase-pentru-crestere
+  [ 3] https://www.cec.ro/garantia-de-portofoliu-pentru-imm
+  [ 4] https://www.cec.ro/credite-pentru-imm-cu-garantii-europene-fei-smei
+  [cautare] CEC Bank "InvestEU" credit investitii lei milioane dobanda
+       ! url_not_accessible
+  [ 5] https://www.cec.ro/credite-sme-eco-tech-pentru-imm
+  [ 6] https://www.cec.ro/credite-pentru-imm-cu-garantii-europene-cosme
+       ! url_not_accessible
+GOL     CREDIT_INVESTEU_PJ           nepublicat: CEC Bank a confirmat printr-un comunicat de presă (26.10.2023, https://www.cec.ro/presa/ce, $0.42
+  [cautare] CEC Bank pachet cont curent IMM comisioane
+  [cautare] CEC Bank pachet cont persoane juridice abonament lunar
+GATA    ABONAMENT_OPERATIONAL        3 surse, 0 citate verificate, echivalent, $0.10, 20s — Pachetul IMM Optim
+  [cautare] CEC Bank pachet cont curent persoane juridice abonament lunar
+  [cautare] CEC Bank companii pachet servicii cont curent IMM
+GATA    ABONAMENT_PRESTIGE           2 surse, 0 citate verificate, similar, $0.11, 22s — Pachetul IMM Premium
+  [cautare] CEC Bank acreditive documentare companii
+  [cautare] site:cec.ro acreditiv
+GATA    ACREDITIVE                   2 surse, 0 citate verificate, echivalent, $0.07, 14s — Acreditive (Finanțarea comerțului - Trade Finance)
+  [cautare] CEC Bank pachet cont curent firme abonament lunar
+  [cautare] CEC Bank pachet companii card business plăți instant
+  [ 1] https://www.cec.ro/cont-bancar-pachet-imm-business
+  [ 2] https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf
+GATA    ABONAMENT_PRIME              2 surse, 1 citate verificate, similar, $0.22, 28s — Pachetul IMM Business
+  [cautare] CEC Bank pachet cont PFA abonament lunar
+  [cautare] CEC Bank PFA profesii liberale cont curent card internet banking
+  [ 1] https://www.cec.ro/pachetul-profesional-dinamic
+  [ 2] https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf
+GATA    ABONAMENT_PFA                2 surse, 1 citate verificate, similar, $0.23, 45s — Pachetul Profesional Dinamic
+  [cautare] CEC Bank pachet cont curent persoane juridice abonament lunar
+  [cautare] CEC Bank pachet IMM cont curent comision lunar card business
+  [ 1] https://www.cec.ro/pachet-cont-bancar-imm-optim
+  [ 2] https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice
+GATA    ABONAMENT_SHINE              3 surse, 2 citate verificate, similar, $0.19, 32s — Pachetul IMM Optim
+  [cautare] CEC Bank pachet cont curent persoane juridice abonament lunar
+  [cautare] CEC Bank IMM pachet servicii card business internet banking comision lunar
+  [ 1] https://www.cec.ro/pachet-cont-bancar-imm-optim
+  [ 2] https://www.cec.ro/smartphone-pos
+GATA    ABONAMENT_RISE               2 surse, 1 citate verificate, similar, $0.20, 34s — Pachetul IMM Optim
+  [cautare] CEC Bank API contabilitate integrare program contabilitate
+  [cautare] CEC Bank API Open Banking contabili firme
+  ! API_CONTABILI: gata fără surse și fără motiv — reiau o dată
+  [cautare] CEC Bank card de credit afaceri IMM
+  [cautare] CEC Bank card de credit business persoane juridice
+GATA    CARD_CREDIT_BUSINESS         3 surse, 0 citate verificate, echivalent, $0.10, 19s — Cardul de credit Visa Business
+  [cautare] CEC Bank card de credit business IMM
+  [cautare] site:cec.ro card de credit business
+GATA    CARD_CREDIT_PJ               3 surse, 0 citate verificate, echivalent, $0.10, 17s — Cardul de credit Visa Business
+  [cautare] CEC Bank card de debit afaceri persoane juridice
+  [cautare] cec.ro card debit business
+  ! CARD_DEBIT_BUSINESS: gata fără surse și fără motiv — reiau o dată
+  [cautare] CEC Bank card de credit persoane fizice
+  [cautare] CEC Bank card credit rate fara dobanda 56 zile gratie
+GATA    CARD_CREDIT_PF               4 surse, 0 citate verificate, echivalent, $0.10, 32s — Carduri de credit (Visa Affinity, Visa Platinum, Mastercard Standard)
+  [cautare] CEC Bank API contabilitate integrare firme
+  [cautare] CEC Bank Open Banking API persoane juridice
+  [cautare] CEC Bank integrare soft contabilitate extras cont automat firme
+GOL     API_CONTABILI                produs_inexistent: CEC Bank are doar API-uri PSD2/Open Banking (pagina https://www.cec.ro/api-uri-psd2) desti, $0.16
+  [cautare] CEC Bank cont curent start-up gratuit 12 luni firme
+  [cautare] CEC Bank pachet start-up PFA cont gratuit
+  [ 1] https://www.cec.ro/cont-bancar-pachet-startup-
+GATA    CONT_DESTEPT                 4 surse, 0 citate verificate, echivalent, $0.13, 29s — Pachetul Start UP
+  [cautare] CEC Bank cont curent online persoane fizice deschidere 100% online
+  [cautare] CEC Bank cont online persoane fizice
+  [ 1] https://www.cec.ro/BunVenit/cont-bancar-online
+GATA    CONT_ONLINE_PERSONAL         3 surse, 0 citate verificate, echivalent, $0.14, 25s — Pachetul "Bun Venit" - Cont bancar 100% online
+  [cautare] CEC Bank card de debit Gold asigurare calatorie lounge cashback
+  [cautare] CEC Bank carduri de debit persoane fizice tipuri
+  [ 1] https://www.cec.ro/cardul-debit-mastercard-world
+  [ 2] https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-persoane-fizice.pdf
+GATA    CARD_DEBIT_GOLD              2 surse, 1 citate verificate, similar, $0.40, 72s — Cardul de debit Mastercard World
+  [cautare] CEC Bank card de debit gratuit emitere administrare
+  [cautare] site:cec.ro card de debit
+  [ 1] https://www.cec.ro/carduri-de-debit
+  [ 2] https://cec.ro/persoane-fizice/carduri-debit/card-euro-visa-multicurrency-online
+       ! url_not_allowed
+  [ 3] https://www.cec.ro/carduri-de-debit-business
+GATA    CARD_DEBIT_FREE              2 surse, 0 citate verificate, similar, $0.31, 77s — Cardul de debit VISA Multicurrency
+  [cautare] CEC Bank credit irigatii InvestEU agricultura
+  [cautare] CEC Bank credit investitii agricultura persoane juridice
+  [ 1] https://www.cec.ro/credit-fermieri-pentru-investitii
+  [ 2] https://www.cec.ro/credit-rapid-agro-achizitie-utilaje
+       ! url_not_in_prior_context
+GOL     CREDIT_AGRI_IRIGATII         produs_inexistent: CEC Bank nu are un credit dedicat exclusiv sistemelor de irigații sau garantat prin Invest, $0.13
+  [cautare] CEC Bank credit inputuri agricole InvestEU
+  [cautare] CEC Bank linie de credit agricultura capital de lucru campanie agricola
+  [cautare] CEC Bank InvestEU garanție credit agricol
+GOL     CREDIT_AGRI_INPUTURI         produs_inexistent: CEC Bank nu are un produs dedicat garantat prin InvestEU pentru inputuri agricole. Banca o, $0.14
+  [cautare] CEC Bank credit APIA subventie agricultura
+  [cautare] CEC Bank credit agricultura subventie APIA IMM
+  [ 1] https://www.cec.ro/subventii-agricole-apia
+GATA    CREDIT_APIA                  1 surse, 1 citate verificate, echivalent, $0.12, 18s — Credit subvenții agricole APIA
+  [cautare] CEC Bank credit agricultura utilaje agricole IMM
+  [cautare] CEC Bank InvestEU credit agricultura
+  [cautare] CEC Bank "InvestEU" credit
+GATA    CREDIT_AGRI_ECHIPAMENTE      2 surse, 0 citate verificate, similar, $0.16, 63s — Credit rapid AGRO pentru investiții
+  [cautare] CEC Bank credit garanție BID IMM
+  [cautare] CEC Bank garanție BID finanțare investiții IMM
+GATA    CREDIT_BID_IMM               3 surse, 0 citate verificate, echivalent, $0.11, 19s — Garanția de Portofoliu pentru IMM (BID)
+  [cautare] CEC Bank credit dezvoltatori imobiliari persoane juridice
+  [cautare] CEC Bank finanțare proiecte imobiliare rezidențiale companii
+  [cautare] CEC Bank "credit pentru dezvoltatori" OR "dezvoltatori imobiliari" finanțare construcție locuințe
+GOL     CREDIT_DEZVOLTATORI          produs_inexistent: CEC Bank nu are un produs dedicat de creditare pentru dezvoltatori imobiliari (finanțare p, $0.10
+  [cautare] CEC Bank credit energie verde fotovoltaice IMM
+  [cautare] CEC Bank credit panouri fotovoltaice companii
+  [ 1] https://www.cec.ro/imm/credite/credit-investitii-verzi
+       ! url_not_accessible
+  [ 2] https://www.cec.ro/imm/credite/credit-investitii-verzi
+       ! url_not_accessible
+GATA    CREDIT_ENERGIE_VERDE         2 surse, 0 citate verificate, echivalent, $0.18, 25s — Credite BEI pentru panouri fotovoltaice și alte investiții verzi
+  [cautare] CEC Bank credit medici clinici cabinete medicale IMM
+  [cautare] CEC Bank "sănătate" credit IMM cabinete medicale
+  [cautare] CEC Bank credit "cabinete medicale" OR "clinici" OR "medici" firma dobanda site:cec.ro
+GOL     CREDIT_HIPOCRATE             produs_inexistent: CEC Bank oferă produse generale pentru IMM (Credit pentru activitatea curentă, Credit pent, $0.09
+  ! CARD_DEBIT_BUSINESS: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  CARD_DEBIT_BUSINESS          ReadTimeout: The read operation timed out
+  [cautare] CEC Bank credit de investiții persoane juridice
+  [cautare] CEC Bank credit investitii IMM
+GATA    CREDIT_INVESTITII            1 surse, 0 citate verificate, echivalent, $0.10, 9s — Credit de investiții
+  [cautare] CEC Bank credit profesii liberale PFA avocati notari medici arhitecti
+  [cautare] CEC Bank credit IMM persoane juridice liste produse companii
+  [cautare] CEC Bank credit dedicat medici arhitecti contabili IT CAEN 62 63
+GOL     CREDIT_PROFESII              produs_inexistent: CEC Bank nu are un credit dedicat psihologilor, arhitecților/geodezilor, contabililor/audi, $0.10
+  ! CONT_DEZVOLTATOR: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  CONT_DEZVOLTATOR             ReadTimeout: The read operation timed out
+  [cautare] CEC Bank credit investitii garantie BERD InvestEU
+  [cautare] CEC Bank InvestEU garantie BERD credit IMM
+  [ 1] https://www.cec.ro/garantia-de-portofoliu-pentru-imm
+  [ 2] https://www.cec.ro/finantare-cu-garantie-individuala-bid
+  [cautare] CEC Bank "FEI-SMEI" credite IMM garanție europeană
+GATA    CREDIT_BERD_PJ               1 surse, 0 citate verificate, similar, $0.26, 102s — Garanția de Portofoliu pentru IMM (BID)
+  [cautare] CEC Bank credit imobiliar persoane juridice companii
+  [cautare] CEC Bank credit investitii imobiliare IMM
+  [ 1] https://www.cec.ro/credit-de-investitii
+  [ 2] https://www.cec.ro/persoane-juridice
+GATA    CREDIT_IMOBILIAR_PJ          2 surse, 0 citate verificate, similar, $0.20, 55s — Credit de investiții
+  [cautare] CEC Bank credit notari avocați executori judecătorești practicieni insolvență
+  [cautare] CEC Bank credit profesii liberale avocați notari
+  [ 1] https://www.cec.ro/credit-activitate-curenta
+  [cautare] CEC Bank "profesii liberale" credit notari avocați executori dedicat
+GOL     CREDIT_SOLON                 produs_inexistent: CEC Bank nu are un credit dedicat notarilor/avocaților/executorilor judecătorești/practici, $0.12
+  [cautare] CEC Bank internet banking business firme IMM
+  [cautare] CEC Bank CEC net business comisioane
+GATA    INTERNET_BANKING             3 surse, 0 citate verificate, echivalent, $0.11, 16s — Internet Banking Persoane Juridice
+  [cautare] CEC Bank credit IMM garantat cu ipoteca
+  [cautare] CEC Bank credit garanție imobiliară IMM companii
+  [ 1] https://www.cec.ro/persoane-juridice/credite
+  [ 2] https://www.cec.ro/credit-activitate-curenta
+       ! url_not_in_prior_context
+  [ 3] https://www.cec.ro/credit-de-investitii
+  [ 4] https://www.cec.ro/linie-de-credit-pentru-activitatea-curenta
+  [cautare] CEC Bank "credit de investiții" ipotecă sumă maximă garanție imobiliară IMM
+GATA    CREDIT_IMM_IPOTECA           2 surse, 0 citate verificate, similar, $0.31, 87s — Credit pentru activitatea curentă
+  [cautare] CEC Bank depozit promoțional dobândă
+  [cautare] CEC Bank depozit 13 luni dobândă
+  [cautare] CEC Bank "13 luni" depozit promoțional
+  [ 1] https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei
+  [ 2] https://admin-aws.cec.ro/dobanzi-depozite-lei-persoane-juridice
+       ! url_not_accessible
+  [ 3] https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice
+  [ 4] https://www.cec.ro/dobanzi-depozite-lei
+GATA    DEPOZIT_1AN_1LUNA            2 surse, 2 citate verificate, similar, $0.34, 43s — Depozite la termen în lei (persoane fizice)
+  [cautare] CEC Bank depozit promotional dobanda 7 luni
+  [cautare] CEC Bank depozit la termen dobanzi 2026
+  [ 1] https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice
+  [ 2] https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei
+GATA    DEPOZIT_BLITZ_7L             2 surse, 2 citate verificate, similar, $0.19, 52s — Depozite la termen în lei (persoane fizice)
+  [cautare] CEC Bank descoperit de cont persoane fizice overdraft salariu
+  [cautare] CEC Bank overdraft card salariu dobanda
+GATA    OVERDRAFT_PF                 3 surse, 0 citate verificate, echivalent, $0.09, 25s — Descoperitul de cont - Overdraft
+  [cautare] CEC Bank titluri de stat
+  [cautare] cec.ro titluri de stat Tezaur Fidelis
+GATA    PLASAMENTE                   4 surse, 0 citate verificate, echivalent, $0.08, 20s — Titluri de stat (produse de trezorerie)
+  [cautare] CEC Bank leasing financiar auto echipamente persoane juridice
+  [cautare] site:cec.ro leasing
+  [ 1] https://www.cec.ro/credit-pentru-activitatea-de-leasing
+  [ 2] https://cec.ro/en/legal-persons/loans/smes-and-corporations/loans-leasing-activities
+       ! url_not_allowed
+  [cautare] cec.ro "activitatea de leasing" credit societati leasing
+GOL     LEASING_FINANCIAR            produs_inexistent: CEC Bank nu are un produs propriu de leasing financiar (auto sau echipamente) oferit print, $0.22
+  [cautare] CEC Bank RoPay plăți instant telefon
+  [cautare] CEC Bank plată instantă mobil număr telefon
+  [ 1] https://www.cec.ro/serviciul-ropay-pf
+  [ 2] https://www.cec.ro/mobile-banking-persoane-juridice
+  [ 3] https://www.cec.ro/serviciul-ropay-pj
+GATA    ROPAY                        3 surse, 2 citate verificate, echivalent, $0.20, 27s — Serviciul RoPay (persoane fizice)
+  [cautare] CEC Bank seif inteligent depunere numerar firme
+  [cautare] CEC Bank Smart Safe companii
+  [cautare] CEC Bank "seif inteligent" OR "cash management" sediul clientului numerar firma
+GOL     SMART_SAFE                   produs_inexistent: CEC Bank oferă depunere numerar prin bancomate multifuncționale (MFM) și Agenția Digitală,, $0.10
+  [cautare] CEC Bank RoPay QR încasări comercianți
+  [cautare] CEC Bank RoPay
+  [ 1] https://www.cec.ro/serviciul-ropay-pj
+  [ 2] https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf
+       ! url_not_in_prior_context
+  [cautare] cec.ro "RoPay PJ" persoane juridice comerciant cod QR
+  [ 3] https://www.cec.ro/serviciul-ropay-pj
+       ! url_not_in_prior_context
+  [ 4] https://www.cec.ro/mobile-banking-persoane-juridice
+  [ 5] https://www.cec.ro/serviciul-ropay-pj
+  [ 6] https://www.cec.ro/serviciul-ropay-pj
+GATA    ROPAY_BUSINESS               3 surse, 1 citate verificate, echivalent, $0.52, 56s — Serviciul RoPay (PJ) - Tarif de comisioane și speze pentru persoane juridice
+  ! FX_SPOT: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  FX_SPOT                      ReadTimeout: The read operation timed out
+  ! RCD_CASH_DEPOSIT: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  RCD_CASH_DEPOSIT             ReadTimeout: The read operation timed out
+  ! SCRISORI_GARANTIE: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  SCRISORI_GARANTIE            ReadTimeout: The read operation timed out
+
+cec: 35/51 produse cu surse, 5 erori, cost estimat $8.40, durata 10 min
+Reia: python descopera_surse_libra.py --banca cec --produse CARD_DEBIT_BUSINESS,CONT_DEZVOLTATOR,FX_SPOT,RCD_CASH_DEPOSIT,SCRISORI_GARANTIE

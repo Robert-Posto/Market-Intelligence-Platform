@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/oferta-odero.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent MicroStar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet lunar de cont curent (abonament operațional) dedicat persoanelor juridice/PFA cu cifra de afaceri sub 1 milion EUR, incluzând conturi, card de debit, internet/mobile banking la un preț fix lunar - exact tipul de produs și segmentul Libra ABONAMENT_OPERATIONAL.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată pachetului MicroStar conține prețul de bază și lista completă de produse/servicii incluse.",
+      "citat": "Documente IMM · MicroStar · 45 lei/luna · Documente necesare pentru deschiderea contului curent · Pentru persoane juridice cu cifra de afaceri anuala < 1 milion EUR",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele MicroStar și Creativ (pachete de cont curent)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată pachetelor de cont curent pentru firme/PFA/liber profesioniști, cu structura și costurile incluse pentru administrarea produselor conexe contului - corespunde abonamentului operațional Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina descrie explicit componența și condițiile pachetelor MicroStar și Creativ, inclusiv cifre de afaceri eligibile și numărul de operațiuni incluse.",
+      "citat": "Pachetul Creativ, destinat liber profesionistilor, persoanelor fizice autorizate si ONG, dar si persoanelor juridice (inclusiv start-up) cu cifra de afaceri anuala < 0.5 milioane EUR, va include comisioanele pentru administrarea produselor si comisioanele de transfer pentru platile incluse",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont (MicroStar, Creativ, Partener, Smart, Progresiv etc.)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife și comisioane SME listează explicit toate pachetele de cont curent (abonamente operaționale) pentru persoane juridice/PFA, cu prețul de bază lunar al fiecăruia.",
+      "incredere": 0.88,
+      "explicatie_incredere": "PDF oficial de tarife care conține tabelul cu denumirea pachetului și prețul de bază lunar pentru fiecare variantă (MicroStar, Partener, Smart, Progresiv etc.).",
+      "citat": "MicroStar^2 49 Lei | Nume pachet | Preţ de bază (Lei/lună) | Partener | 39 | Smart | 99 | Progresiv | 299 | Basic | 49",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Genius IMM PRO / Genius IMM MAX (pachete de cont curent pentru companii cu cifră de afaceri mare)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un pachet/abonament lunar de cont curent pentru persoane juridice, dar dedicat segmentului corporate (cifră de afaceri 1-10 milioane EUR), nu IMM-urilor mici/PFA ca în cazul MicroStar; termenii de eligibilitate diferă.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina prezintă explicit prețul pachetului (55 Lei/lună) și componența produselor/serviciilor incluse pentru Genius IMM MAX.",
+      "citat": "Current Account Package - Genius IMM MAX For legal entities with annual Turnover between ( ≥) 3 million and (≤) 10 million EURs PACKAGE FEE: 55 LEI / MONTH",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2463,
+    "citire_cache": 6332,
+    "scriere_cache": 33658,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11004939999999999
+  }
+}

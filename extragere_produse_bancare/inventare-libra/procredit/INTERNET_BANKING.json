@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/banking-servicii-digitale/internet-banking/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking (ProB@nking Plus) pentru companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este serviciul de internet banking dedicat exclusiv persoanelor juridice (companii), echivalent funcțional cu Internet & Mobile Banking business de la Libra: acces la conturi, autorizare plăți, transferuri naționale/internaționale.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului, cu denumire comercială clară (ProB@nking Plus) și descriere funcțională completă pentru clienți business, inclusiv operațiunile disponibile.",
+      "citat": "Printre operațiunile care pot fi efectuate pe platforma de Internet Banking se numară: deschiderea de conturi curente și depozite la termen, vizualizarea soldurilor și a tranzacțiilor efectuate, efectuarea de transferuri, schimb valutar (la curs standard sau special), diverse solicitări precum aplicație pentru card Visa, modificare numar telefon/e-mail, solicitare declarații/adrese, etc.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/en/smes/probnking-plus-internet-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "ProB@nking Plus - Internet Banking (SMEs)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată (variantă engleză) a aceluiași serviciu de internet banking pentru firme (SMEs), cu tabel de dobânzi bonus aplicabile depozitelor constituite prin platformă.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului pentru segmentul SME, conține cifre concrete (dobânzi pe termene) legate direct de utilizarea serviciului de internet banking.",
+      "citat": "Through ProB@nking Plus the internet banking application brought to you by ProCredit Bank, you can perform daily banking operations, anytime, with the following advantages: You save time, having 24/7 access from any computer connected to the Internet",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://procreditbank.ro/ro/imm-uri/plati-internationale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Plăți internaționale prin Internet Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentează funcționalitatea de plăți internaționale disponibilă prin platforma de internet banking pentru companii, cu comisioane specifice.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagină conexă care detaliază o funcționalitate specifică a serviciului de internet banking pentru firme, cu mențiune de comision zero la încasări internaționale, dar nu e pagina principală a produsului.",
+      "citat": "ProCredit Bank îți oferă posibilitatea de a efectua plăți internaționale prin intermediul platformei de Internet Banking. Comision 0 pentru încasările internaționale: Beneficiezi de zero comisioane pentru încasările internaționale, optimizând astfel costurile financiare ale companiei tale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1635,
+    "citire_cache": 6317,
+    "scriere_cache": 32198,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09811639999999999
+  }
+}

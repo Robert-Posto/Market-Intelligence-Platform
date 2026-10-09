@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/conturi-curente",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele de cont curent Vista Bank pentru persoane juridice (Pachetul Vista de Bază, Pachetul Vista Activ, Pachetul Vista Activ Plus)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet lunar de cont curent pentru persoane juridice, cu servicii incluse (conturi, internet/mobile banking, carduri, alerte SMS) contra unui abonament lunar fix, exact ca Abonamentul operațional Libra pentru firme/PFA.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată conține denumirile pachetelor, conținutul fiecăruia și costul lunar exact pentru fiecare variantă.",
+      "citat": "Pachetul Vista de Bază are un cost lunar unic de 50 de lei. Pachetele se acordă persoanelor juridice rezidente cu cifra de afaceri ≤ 3.000.000 Euro echivalent în lei, conform datelor din ultimul bilanț anual depus la autoritățile fiscale competente.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_Iulie_2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de cont curent persoane juridice (DE BAZA, ACTIV, ACTIV PLUS)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane conține tabelul cu cele 3 pachete de cont curent pentru persoane juridice, cu abonamentul lunar și condițiile de eligibilitate.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife (Anexa 1 la Contractul Cadru) cu tabel explicit al celor 3 pachete și costurilor lunare.",
+      "citat": "Tip pachet DE BAZA ACTIV ACTIV PLUS Administrare Pachet 50 LEI/ Luna 150 LEI/ Luna 250 LEI/ luna Conditii de eligibilitate Pachetele sunt oferite clientilor cu cifra de afaceri ≤ 3.000.000 Euro echivalent",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1922,
+    "citire_cache": 6333,
+    "scriere_cache": 34509,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1067671
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "PKO Visa Business Debit RO",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit dedicat clienților corporate (persoane juridice), listat explicit în secțiunea 'Plăți și Carduri' a produselor pentru firme și detaliat cu tarife proprii în lista de prețuri, la fel ca CARD_DEBIT_BUSINESS de la Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Documentul conține o secțiune dedicată 'PKO VISA BUSINESS DEBIT RO' cu un tabel complet de comisioane (emitere, mentenanță lunară, retrageri numerar, conversie valutară, PIN etc.).",
+      "pagina_pdf": 4,
+      "citat": "PKO VISA BUSINESS DEBIT RO Emitere card sau reînnoire card - comision pentru fiecare perioadă de valabilitate a cardului de 12 luni începută 40 RON Comision lunară pentru serviciul de card 0 RON Decontarea lunară a tranzacțiilor fără numerar interne și externe - din valoarea operațiunii 0 RON",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 10,
+    "iesire": 1271,
+    "citire_cache": 43846,
+    "scriere_cache": 52127,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1518167
+  }
+}

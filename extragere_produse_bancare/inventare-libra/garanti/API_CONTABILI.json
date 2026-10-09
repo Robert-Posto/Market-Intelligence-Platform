@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/01/T0013_V23_Tarife-si-comisioane-standard-pentru-Clientii-IMM_Ianuarie-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Transmitere extrase de cont via e-mail în format .pdf și .csv sau prin SFTP în format MT940",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cel mai apropiat echivalent pentru integrarea cu programele de contabilitate la clienții IMM/PFA: exportul automat al extraselor de cont (CSV/MT940) prin e-mail sau SFTP, folosit pentru încărcarea datelor bancare în softul de contabilitate. Diferă canalul: nu este o integrare API directă cu programele de contabilitate, ci un export de fișiere (SFTP/e-mail) în formate standard (MT940, CSV, PDF).",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul de tarife pentru clienții IMM conține explicit linia tarifară pentru acest serviciu, cu valoarea 'Gratuit', aplicabilă segmentului firme/PFA vizat de produsul Libra.",
+      "pagina_pdf": 3,
+      "citat": "Transmitere extrase de cont via e-mail în format .pdf și .csv sau prin SFTP în format MT940 Gratuit",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (18 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/corporate-banking/electronic-solutions/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Electronic account statement MT940, MT942 and CSV",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina descrie serviciul de extrase electronice de cont (MT940/MT942/CSV) destinat clienților corporate, compatibil cu orice aplicație de contabilitate, ceea ce corespunde funcției de integrare cu softul de contabilitate, dar prin fișiere/SWIFT/FTP, nu printr-un API dedicat.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Pagina dedicată descrie explicit avantajele serviciului (actualizare zilnică, compatibilitate cu softul de contabilitate) dar nu conține cifre de tarif, acestea fiind în documentul de tarife separat.",
+      "citat": "User friendly operation enabled by the text format: the information received is compatible with any accounting software application",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (18 cuvinte)",
+      "link_live": "https://www.garantibbva.ro/en/corporate-banking/electronic-solutions/#:~:text=User%20friendly%20operation%20enabled%20by,with%20any%20accounting%20software%20application"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/corporate-banking/electronic-solutions/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/account-management-services/",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/01/T0013_V23_Tarife-si-comisioane-standard-pentru-Clientii-IMM_Ianuarie-2026.pdf"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3108,
+    "citire_cache": 52488,
+    "scriere_cache": 79152,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2394736
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "citibank",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Operatiuni documentare (acreditive documentare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina descrie explicit serviciile de acreditive documentare (emitere, avizare, confirmare, plată/negociere) pentru firme importatoare și exportatoare, exact ca produsul Libra Acreditive documentare pentru persoane juridice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina este dedicată operațiunilor documentare și menționează explicit acreditivele de import și export, dar nu conține cifre/tarife concrete (procente, comisioane).",
+      "citat": "Citi Romania ofera intreaga gama de servicii necesare in derularea operatiunilor de comert international de la emitere, avizare, modificari, confirmari, plata/negociere acreditive pana la administrare incassouri documentare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/trade-finance.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Trade Finance - Letters of Credit Financing",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în engleză a paginii de trade finance menționează explicit finanțarea prin scrisori de credit (letters of credit) ca parte a soluțiilor dedicate firmelor.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Pagina generală de trade finance menționează letters of credit financing printre produse, dar fără cifre specifice (comisioane, dobânzi).",
+      "citat": "We offer innovative solutions to the most complex deals, including bills discounting, letters of credit financing, pre-export financing, receivables financing and forfeiting.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1351,
+    "citire_cache": 6326,
+    "scriere_cache": 16247,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0554007
+  }
+}

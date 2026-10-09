@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen (persoane fizice) - Interests - Term deposit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen cu dobândă fixă pentru persoane fizice, dar Garanti BBVA nu are termenul de 13 luni (1 an și 1 lună) din produsul Libra, ci doar 1, 3, 6, 12 și 15 luni, iar dobânzile nu sunt structurate ca o ofertă promoțională unică 'totală'.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina oficială de dobânzi conține un tabel explicit cu dobânzile pentru depozitul la termen în RON/EUR/USD pentru persoane fizice, inclusiv termenul de 15 luni, dar nu există un termen de 13 luni.",
+      "citat": "Interests - Term deposit 1. Individuals and Authorized Natural Persons Currency Channel / Term 1 month 3 months 6 months 12 months15 months RON Agency 4.00% 4.10% 4.20% 4.25% 4.25% Internet / Mobile banking <50,000 RON 4.75% 5.00% 5.00% 5.10% 5.10%",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/#:~:text=Interests%20%2D%20Term%20deposit%201.,4.75%25%205.00%25%205.00%25%205.10%25%205.10%25"
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/interest-rates-and-fees-for-sme-and-pfa-savings-accounts/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Fixed interest term deposit (SME) / Fixed interest term deposit (PFA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul de persoane juridice/PFA cu depozite la termen cu dobândă fixă, dar termenele disponibile sunt 1, 3, 6, 12 și (pentru PFA) 15 luni, nu 13 luni ca la produsul promoțional Libra, și nu este prezentat ca o campanie promoțională distinctă.",
+      "incredere": 0.78,
+      "explicatie_incredere": "Document oficial cu tabele de dobânzi separate pentru SME și PFA, cu cifre explicite pentru fiecare termen, dar fără un termen de 13 luni corespunzător exact produsului Libra.",
+      "citat": "Fixed interest term deposit (SME) Currency/period 1 month 3 months 6 months 1 year Agency Agency Agency Agency RON 4,50% 5,00% 5,25% 5,50% EUR 1,20% 1,35% 1,50% 1,75%",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/sme-and-pfa/interest-rates-and-fees-for-sme-and-pfa-savings-accounts/#:~:text=Fixed%20interest%20term%20deposit%20%28SME%29,EUR%201%2C20%25%201%2C35%25%201%2C50%25%201%2C75%25"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/individuals/fees-and-interest-rates-for-individuals-deposits/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/interest-rates-and-fees-for-sme-and-pfa-savings-accounts/"
+  ],
+  "durata_s": 67,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5661,
+    "citire_cache": 79363,
+    "scriere_cache": 60567,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2239161
+  }
+}

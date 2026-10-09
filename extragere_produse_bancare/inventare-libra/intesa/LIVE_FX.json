@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/utile/Descriere-Serviciu-FX-curs-BNR.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Descrierea Serviciului Schimb valutar online la curs BNR",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de condiții pentru serviciul de schimb valutar online, cu formule de calcul și plafoane concrete, dar limitat la persoane fizice și la perechea LEI-EUR, spre deosebire de Live FX (PF și PJ, schimburi frecvente, mai multe valute).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document PDF dedicat exclusiv acestui serviciu, cu cifre exacte (plafoane lunare, exemple de curs și calcul).",
+      "citat": "Maxim 1.000 EUR echivalent pe luna pentru Oferta Tranzactionala START, Maxim 2.000 EUR echivalent pe luna pentru Oferta Tranzactionala PLUS, Maxim 5.000 EUR echivalent pe luna pentru Oferta Tranzactionala PREMIUM.",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/persoane-fizice/internet-banking.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Schimb valutar online la curs BNR (prin Internet Banking I-B@nk)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un serviciu de schimb valutar online, derulat direct din Internet/Mobile Banking, fără dealer – ca și Live FX – dar la Intesa este restrâns doar la persoane fizice cu anumite oferte tranzacționale (START/PLUS/PREMIUM) și doar pentru perechea LEI-EUR, cu plafoane lunare, spre deosebire de Live FX care vizează PF și PJ cu schimburi frecvente și mai multe valute.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată serviciului de schimb valutar online descrie mecanismul și beneficiarii, cu cifre despre plafoane și curs.",
+      "citat": "Serviciul de schimb valutar online la curs BNR reprezintă o ofertă specială, de care beneficiază clienții persoane fizice, titulari ai Ofertelor Tranzacționale START, PLUS, PREMIUM, care au contractat Digital Banking (Mobile si Internet Banking) sau Internet Banking I-B@nk (activat pana la data de 26.06.2023).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/page/internet-banking-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking (I-B@NK) pentru companii - Schimburi valutare",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul de persoane juridice cu schimburi valutare valută-valută și valută-lei prin Internet Banking, dar nu descrie o platformă dedicată cu curs real-time ca Live FX, ci doar o funcționalitate standard de schimb în cadrul IB, fără cifre de curs sau plafoane specifice.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina menționează explicit operațiunea de schimb valutar prin IB pentru companii, dar fără cifre concrete de curs sau comisioane.",
+      "citat": "Schimburi valutare: valută-valută, valută-lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (4 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2957,
+    "citire_cache": 6400,
+    "scriere_cache": 25990,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.095833
+  }
+}

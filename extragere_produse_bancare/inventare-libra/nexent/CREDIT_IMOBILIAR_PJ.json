@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Corporate-Projects-Financing",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Corporate Projects Financing (Finanțarea proiectelor)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit pentru firme care include explicit achiziția de imobile ca una din destinații, alături de echipamente și construcții - nu este un credit imobiliar dedicat exclusiv achiziției/construcției de bunuri imobile, iar maturitatea maximă e de doar 5 ani (mult sub termenele tipice ale unui credit imobiliar clasic).",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete (maturitate maximă 5 ani) și menționează explicit achiziția de bunuri imobile ca destinație a creditului.",
+      "citat": "The credit for project financing is suitable for: Purchasing real estate; Purchasing equipment/tehnologies new or second hand, of any type; Financing construction of new buidings on free land; Financing building extensions. Long term maturity: maximum 5 years.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Corporate-Projects-Financing#:~:text=The%20credit%20for%20project%20financing,term%20maturity%3A%20maximum%205%20years."
+    },
+    {
+      "url": "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari/Finantarea-proiectelor-corporate",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțarea proiectelor",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Versiunea în limba română a aceluiași produs de finanțare a proiectelor pentru companii, care include achiziția de bunuri imobile ca una dintre destinațiile posibile ale creditului, nu este un credit imobiliar dedicat.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina confirmă în limba română că achiziția de bunuri imobile este una din destinațiile creditului de finanțare a proiectelor pentru companii.",
+      "citat": "Creditul pentru finanţarea proiectelor este destinat: Achiziţiei de bunuri imobile; Achiziţiei de echipamente/tehnologii noi şi second hand, de orice tip; Finanţării construcţiei de clădiri noi pe teren liber.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Corporate-Projects-Financing",
+    "https://www.nexentbank.ro/Corporate-SME/Corporate-Banking/Financing/Corporate-Projects-Financing",
+    "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari/Finantarea-proiectelor-corporate"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 39948,
+    "iesire": 2693,
+    "citire_cache": 72194,
+    "scriere_cache": 32375,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2022023
+  }
+}

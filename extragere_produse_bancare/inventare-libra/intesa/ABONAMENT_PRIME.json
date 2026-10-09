@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete cont curent PRIMUS / OPTIMO / MAXIMO (segment Small Business și SME)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Lista de costuri standard pentru persoane juridice conține explicit tabelul cu cele trei pachete de cont curent business (PRIMUS/OPTIMO/MAXIMO), cu comision lunar și numărul de conturi Lei/EUR/USD incluse - comparabil ca tip de produs (abonament lunar business cu conturi multi-valută) cu Abonamentul PRIME de la Libra, dar fără mențiune explicită a unui pachet fix de plăți instant/încasări sau a unui serviciu echivalent 'Live FX'.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisionul lunar (29/49/99 Lei) și structura conturilor incluse (Lei, EUR/USD) pentru fiecare dintre cele trei pachete, inclusiv MAXIMO cel mai apropiat ca preț și complexitate de Abonamentul PRIME.",
+      "citat": "PACHET PRIMUS OPTIMO MAXIMO Comision lunar de administrare pachet (Lei) 29 Lei 49 Lei 99 Lei Cont curent in Lei 1 cont 1 cont 2 conturi Cont curent in EUR sau USD - 1 cont 2 conturi",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul MAXIMO (parte din Pachetele PRIMUS / OPTIMO / MAXIMO pentru microîntreprinderi)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament/pachet lunar de cont curent pentru firme (microîntreprinderi/SME), cu conturi în Lei și EUR/USD, card business și operațiuni incluse - același tip de produs și segment ca Abonamentul PRIME de la Libra, dar structura exactă a plăților incluse (instant/încasări) și funcția Live FX nu apar explicit, iar prețul (99 Lei) diferă de cel Libra (95 Lei).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina hub de produs enumeră cele trei pachete (PRIMUS, OPTIMO, MAXIMO) cu componența lor (nr. de conturi pe valută, card, internet banking), dar nu detaliază plafonul exact de tranzacții gratuite ca la Libra.",
+      "citat": "Pachetul MAXIMO 2 conturi curente în Lei, 2 conturi curente în EUR sau USD, Internet Banking, Card de debit Visa Business Gold, încasări.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-maximo.html"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4497,
+    "citire_cache": 92191,
+    "scriere_cache": 64486,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22463919999999998
+  }
+}

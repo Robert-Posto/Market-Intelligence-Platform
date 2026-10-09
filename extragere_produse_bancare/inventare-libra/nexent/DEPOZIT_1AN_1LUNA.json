@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/dobanzi-cotatii-si-cursuri/dobanzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen cu dobândă fixă (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (depozit la termen cu dobândă fixă, destinat economisirii) și același segment principal (persoane fizice), dar Nexent Bank nu are un termen promoțional de 13 luni ca Libra, ci doar termene standard de 1, 3, 6, 9, 12 și 24 de luni, fără dobândă totală de tip 6,60%/6,10%.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține grila completă de dobânzi curente pentru depozitele la termen ale persoanelor fizice, cu cifre exacte pe fiecare termen și canal, dar nu există un termen de 13 luni echivalent celui promoțional Libra.",
+      "citat": "12 luni | 5,25% | 1,75% | 2,75% | 5,40% | 1,75% | 2,75% | 5,75% | 2,25% | 3,25% | 5,90% | 2,25% | 3,25%",
+      "rol_detaliu": "grid",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/dobanzi-cotatii-si-cursuri/dobanzi#:~:text=12%20luni%20%7C%205%2C25%25%20%7C,5%2C90%25%20%7C%202%2C25%25%20%7C%203%2C25%25"
+    },
+    {
+      "url": "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Depozite-Corporate",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite Corporate",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (depozit la termen) pentru segmentul de persoane juridice, dar pagina descrie depozite standard, pe orice maturitate predefinită, fără o campanie promoțională specifică de 13 luni ca la Libra, iar cifrele de dobândă nu sunt publicate direct pe pagină.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina este dedicată depozitelor pentru companii și confirmă existența unor depozite la termen cu dobândă fixă pe orice maturitate, dar nu afișează explicit procente sau un termen de 13 luni; cifrele trebuie preluate separat din grila de dobânzi.",
+      "citat": "The interest rates are fixed for the whole life of the deposit; Currencies: ROL, EUR, USD; The deposits can be opened using any predefined maturity; The minimum amount for opening a term deposit varies depending the options made; The deposit has a roll-over option.",
+      "rol_detaliu": "pagina-produs",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/persoane-fizice/Economii/Depozite-la-termen",
+    "https://www.nexentbank.ro/Bani-Noi",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Produse-de-economisire",
+    "https://www.nexentbank.ro/dobanzi-cotatii-si-cursuri/dobanzi"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3755,
+    "citire_cache": 183566,
+    "scriere_cache": 98354,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3201682
+  }
+}

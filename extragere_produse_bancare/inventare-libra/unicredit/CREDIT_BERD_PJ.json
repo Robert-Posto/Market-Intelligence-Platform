@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "UniCredit nu are un credit de investiții cu garanție BERD de 80% echivalent cu produsul Libra. Banca are programe similare ca tip (credit de investiții IMM cu garanție UE până la 80%), dar cu garanți diferiți: InvestEU/FEI (Fondul European de Investiții) - garanție 30-80%, finanțare până la 7,5 mil EUR, maturitate până la 144 luni pentru investiții (https://www.unicredit.ro/en/sme/borrowing/special-programs.html); și garanția BID (Banca de Investiții și Dezvoltare) - garanție max 70-80%, plafon 10 mil lei (https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumenteInstitutional/UCB-Oferta-Clienti-IMM-Garantie-BID.pdf). Singurul produs care implică efectiv BERD este RoSEFF, dar e dedicat exclusiv eficienței energetice/energiei regenerabile (finanțare max 1 mil EUR + grant UE), nu investițiilor generale ca produsul Libra (https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/finantare/programe-externe.html/). Deoarece produsul Libra cere specific garanție BERD, iar banca nu oferă o variantă dedicată cu acest garant pentru investiții generale, marchez ca produs_inexistent conform regulii despre garant specific."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/finantare/programe-externe.html/",
+    "https://www.unicredit.ro/en/sme/borrowing/special-programs.html"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3898,
+    "citire_cache": 35561,
+    "scriere_cache": 50509,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1723767
+  }
+}

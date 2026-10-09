@@ -1,0 +1,77 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-15052025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Mastercard Standard (card de debit atașat pachetelor de cont curent)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife arată că emiterea/administrarea cardului Mastercard Standard este inclusă gratuit doar în cadrul pachetului Starter (administrare pachet 0 lei/lună); în afara pachetului gratuit, emiterea costă 25 lei și administrarea 5 lei/lună, iar produsul este doar pentru persoane fizice, nu și juridice ca la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisioanele de emitere și administrare pentru cardul Mastercard Standard, inclusiv varianta inclusă gratuit în pachet.",
+      "citat": "Administrare pachet 0 lei/ lună 0/8 lei/ lun ă* 36 lei/ lună Card de debit în lei atașat contului curent inclus în pachet (emitere, reînnoire card la expirare, administrare, livrare card emis / reînnoit la expirare prin curier în România) – 1 card, opțional",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/persoane-fizice/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Standard (inclus în pachetul Starter)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cardul Mastercard Standard devine fără costuri de emitere/administrare doar dacă e inclus în pachetul de cont Starter (0 lei/lună); nu există un card de debit independent, gratuit, valabil și pentru persoane juridice ca la Libra.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina de pachete arată condițiile (pachetul Starter) în care cardul de debit este emis și administrat gratuit, dar cifrele complete de comisioane sunt în documentul de tarife.",
+      "citat": "Cont curent în lei Cont de economii în lei Emitere și administrare card de debit fizic contactless Mastercard Standard Livrare card în România Internet Banking Mobile Banking",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/persoane-fizice/mastercard-standard",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Standard",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit de bază pentru persoane fizice la TechVentures Bank (fără cashback dedicat, segment doar PF, nu și PJ ca la Libra); costurile de emitere/administrare depind de pachetul de cont ales, nu sunt general zero ca la Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Este pagina dedicată a cardului, dar nu conține cifre despre comisioane de emitere/administrare, acestea fiind în documentele de tarife.",
+      "citat": "Cardul este adresat persoanelor fizice, cu vârsta de peste 18 ani. Cardul se emite în lei sau euro, în funcție de preferințele tale. Termen de valabilitate: 3 ani, cu posibilitatea de prelungire automată.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/companii/carduri",
+    "https://techventures.bank/persoane-fizice/mastercard-standard",
+    "https://techventures.bank/companii/mastercard-business",
+    "https://techventures.bank/persoane-fizice/mastercard-standard",
+    "https://techventures.bank/documente-utile"
+  ],
+  "durata_s": 77,
+  "consum": {
+    "intrare": 50581,
+    "iesire": 5755,
+    "citire_cache": 25112,
+    "scriere_cache": 38581,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2601869
+  }
+}

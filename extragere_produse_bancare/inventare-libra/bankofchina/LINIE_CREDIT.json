@@ -1,0 +1,28 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Secțiunea Corporate Loans a sucursalei București (https://www.bankofchina.com/ro/en/cbservice/cb2/) listează un singur produs: Fixed Asset Loan, destinat exclusiv investițiilor în active fixe (construcții, echipamente, tehnologie), împărțit în Long-term Loan și Temporary Circulating Loan. Acesta este un alt tip de produs decât o linie de credit reînnoibilă pentru capital de lucru (acoperirea decalajului dintre încasări și plăți, stocuri, sezonalitate) — nu este revolving, nu vizează finanțarea ciclului de exploatare curent. Secțiunea 'Other Services' e goală, iar restul site-ului (RMB Service, Trade Services, Treasury) acoperă decontări, comerț exterior și garanții bancare, nu capital de lucru revolving. Nu există nicio pagină, tarif sau fișă de condiții pentru un produs echivalent sau similar cu linia de credit de capital de lucru la această sucursală."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb2/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb2/202104/t20210430_19360666.html",
+    "https://www.bankofchina.com/ro/en/cbservice/cbo/"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 10,
+    "iesire": 1673,
+    "citire_cache": 72496,
+    "scriere_cache": 26522,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09755420000000001
+  }
+}

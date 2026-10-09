@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Business (Revolut Business) — acces aplicație mobilă și web",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Revolut Business este contul de afaceri 100% digital, administrat integral prin aplicația mobilă și platforma web; nu există un canal fizic/sucursală, deci aplicația/portalul web ESTE echivalentul internet & mobile banking-ului pentru firme la Libra, destinat persoanelor juridice/PFA.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată contului Business descrie funcțiile de management de cont, carduri, plăți, integrări — toate operate din aplicația mobilă/web, dar nu are un tabel separat de tarife pentru canalul digital în sine.",
+      "citat": "Deschide un cont Revolut Business online, în doar câteva minute. Obține transferuri locale și internaționale rapide, plăți care decurg fără probleme și instrumente de gestionare a cheltuielilor.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Planuri Revolut Business — Acces pe aplicația mobilă și pe web",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarifare a planurilor Business listează explicit „Acces pe aplicația mobilă și pe web” ca o caracteristică inclusă în toate planurile, alături de prețurile lunare (Basic 50 lei/lună, Grow 200 lei/lună, Scale 700 lei/lună), fiind cea mai apropiată sursă cu cifre pentru canalul digital de business banking.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de tarife pentru contul Business în care accesul mobil/web apare explicit ca feature, cu prețurile planurilor asociate, dar fără un cost separat doar pentru internet banking.",
+      "citat": "Basic 50 lei/lună Obține elementele esențiale pentru a începe să operezi imediat. Grow 200 lei/lună Descoperă instrumentele de care ai nevoie pentru a gestiona cheltuielile cu ușurință. Scale 700 lei/lună",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1647,
+    "citire_cache": 6325,
+    "scriere_cache": 31974,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.097678
+  }
+}

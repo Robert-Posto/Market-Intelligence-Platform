@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru investiții (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "ProCredit Bank nu are un credit imobiliar dedicat pentru firme; are un credit de investiții general pentru persoane juridice care acoperă, printre altele, achiziția de imobile, achiziția de teren și construcția sediului. Diferă de produsul Libra prin faptul că nu e dedicat exclusiv imobiliarelor, ci e un credit multi-destinație (echipamente, vehicule, software, părți sociale etc.).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată a produsului de investiții pentru firme și menționează explicit achiziția de imobile și construcția sediului ca destinații eligibile, dar pagina nu conține cifre de dobândă sau comisioane specifice componentei imobiliare.",
+      "citat": "Achiziția de Imobile: Finanțarea achiziției de imobile pentru sediu social, puncte de lucru, hale de producție și alte spații necesare desfășurării activității. Achiziția de Teren: Finanțarea achiziției de terenuri, inclusiv terenuri agricole, pentru extinderea activităților și diversificarea producției.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii/#:~:text=Achizi%C8%9Bia%20de%20Imobile%3A%20Finan%C8%9Barea%20achizi%C8%9Biei,extinderea%20activit%C4%83%C8%9Bilor%20%C8%99i%20diversificarea%20produc%C8%9Biei."
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Listă de prețuri persoane juridice - comisioane evaluare garanții imobiliare",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul general de tarife pentru persoane juridice conține comisioanele de evaluare a garanțiilor imobiliare (teren, construcție, spații comerciale) aplicabile creditelor garantate cu imobile, inclusiv Creditul pentru investiții care poate finanța achiziția de imobile.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul de tarife este general pentru toate produsele de creditare PJ și nu denumește explicit 'credit imobiliar', dar conține comisioanele de evaluare a garanțiilor imobiliare relevante pentru componenta de achiziție imobile din Creditul pentru investiții.",
+      "citat": "Teren + construcție (comercial, birouri) Scd < 1.000 m² 1.650 LEI | Teren + construcție (comercial, birouri) Scd = [ 1.000 m² – 2.000 m² ] 2.200 – 3.300 LEI | Teren extravilan < 20 ha 1.430 LEI",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii/"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2398,
+    "citire_cache": 90407,
+    "scriere_cache": 61861,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1967299
+  }
+}

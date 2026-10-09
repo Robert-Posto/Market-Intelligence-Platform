@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/agricultura/finantare-cu-programe-europene/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Programul InvestEU dedicat Finanțării Practicilor Sustenabile (Agricultură) - include Modernizarea echipamentelor agricole",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de condiții pentru programul InvestEU în agricultură listează explicit 'Modernizarea echipamentelor agricole' ca destinație eligibilă, cu cifre concrete pentru garanție și maturitate, pentru același segment (agricultori/firme din agricultură).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial al băncii cu cifre explicite (garanție 70%, maturitate 15 ani) aplicabile produsului, iar 'Modernizarea echipamentelor agricole' apare explicit ca destinație eligibilă prin InvestEU.",
+      "citat": "Garanție de până la 70%, fără costuri suplimentare pentru client, susținută de Fondul European de Investiții Credite pentru investiții și/sau capital de lucru Avans zero Maturitate credite pentru capital de lucru: până la 3 ani Maturitate extinsă pentru investiții: pana la 15 ani",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/agricultura/finantare-cu-programe-europene/#:~:text=Garan%C8%9Bie%20de%20p%C3%A2n%C4%83%20la%2070%25%2C,investi%C8%9Bii%3A%20pana%20la%2015%20ani"
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Programul InvestEU pentru companii - Investiții în echipamente noi și eficiente energetic",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea pentru segmentul companii a aceluiași program InvestEU, cu aceleași cifre de garanție și maturitate, confirmând condițiile aplicabile creditului de echipamente (inclusiv agricole) finanțat prin InvestEU.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial cu cifre explicite privind garanția FEI și maturitatea, dar acoperă toate destinațiile InvestEU (nu doar agricultura), deci e un nivel mai general față de pagina dedicată agriculturii.",
+      "citat": "Acordul semnat între ProCredit Bank și FEI reprezintă un pas important în sprijinirea eforturilor noastre de a oferi finanțare avantajoasă întreprinderilor mici și mijlocii din România, prin garantarea până la 70% din valoarea finanțărilor (50% pentru București și 70% pentru restul județelor).",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/#:~:text=Acordul%20semnat%20%C3%AEntre%20ProCredit%20Bank,%C8%99i%2070%25%20pentru%20restul%20jude%C8%9Belor%29."
+    },
+    {
+      "url": "https://www.procreditbank.ro/agricultura/credite/credite-pentru-utilaje/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru utilaje agricole (finanțate prin InvestEU)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții dedicat achiziției de utilaje agricole, pentru clienți persoane juridice/PFA din agricultură, finanțat prin programul InvestEU - același tip de produs și segment ca produsul Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată exact acestui produs (utilaje agricole, InvestEU) dar nu conține cifre proprii privind dobânda sau termenul în luni, acestea fiind detaliate în pagina de programe europene.",
+      "citat": "ProCredit Bank îți oferă soluții de finanțare adaptate nevoilor tale pentru achiziția echipamentelor agricole necesare dezvoltării fermei tale. Beneficiază de condiții avantajoase și suport financiar pentru a-ți susține planurile de viitor.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/agricultura/credite/credite-pentru-utilaje/#:~:text=ProCredit%20Bank%20%C3%AE%C8%9Bi%20ofer%C4%83%20solu%C8%9Bii,a%2D%C8%9Bi%20sus%C8%9Bine%20planurile%20de%20viitor."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/agricultura/credite/credite-pentru-utilaje/",
+    "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/",
+    "https://www.procreditbank.ro/agricultura/finantare-cu-programe-europene/"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3311,
+    "citire_cache": 89693,
+    "scriere_cache": 68287,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22178209999999998
+  }
+}

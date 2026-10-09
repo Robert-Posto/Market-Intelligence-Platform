@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/agri/credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru prefinanțarea subvențiilor APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de activitate curentă pe baza subvenției APIA (adeverință/decizie de plată), acordat persoanelor juridice (fermieri organizați ca SRL, SA, Societate agricolă, Cooperativă), cu grație până la încasarea subvenției - aceeași logică și același segment ca produsul Libra CREDIT_APIA.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține descrierea produsului, segmentul de clienți, perioada de creditare și condițiile de garanție, cu termeni specifici APIA.",
+      "citat": "Creditul pentru prefinanțarea subvențiilor APIA este o facilitate pe termen scurt care te ajută să acoperi deficitul de capital curent până la momentul încasării subvențiilor APIA.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/agri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru prefinanțarea subvențiilor APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași pagină de produs (secțiunea AGRI) descrie creditul de prefinanțare APIA pentru fermieri organizați ca persoane juridice, cu condiții de eligibilitate și garanție pe sumele viitoare de la APIA.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina conține segmentul de clienți (peste 250 hectare, minimum 2 ani experiență, SRL/SA/Societate agricolă/Cooperativă) și condițiile de garanție bazate pe subvenția APIA.",
+      "citat": "Creditul se adresează fermierilor cu peste 250 hectare lucrate, cu minimum 2 ani de experiență și organizați ca SRL, SA, Societate agricolă, Cooperativă Agricolă.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/en/agri/loans",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Loan for prefinancing APIA subsidies",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în engleză a aceleiași pagini de produs, confirmă segmentul (fermieri organizați ca persoane juridice) și condițiile creditului de prefinanțare a subvențiilor APIA, inclusiv perioada de creditare și grație.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține cifre explicite despre perioada de creditare (18 luni) și perioada de grație (18 luni) pentru creditul analog din meniul 'Agri campaign loan', precum și descrierea creditului de prefinanțare APIA.",
+      "citat": "The loan for the prefinancing APIA subsidies is a short-term facility that helps you cover the current capital shortfall until you collect the APIA subsidies.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1429,
+    "citire_cache": 6342,
+    "scriere_cache": 36364,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1064764
+  }
+}

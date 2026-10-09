@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent (Startup / Business / Unlimited)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (abonament lunar pentru persoane juridice, cu cont curent, card de business și operațiuni de plată incluse), dar diferă structura: TechVentures oferă trei trepte de abonament (25/29/200 lei), fără mențiune explicită de plăți nelimitate sau comision mPOS, iar plățile interbancare gratuite sunt plafonate (5/50/100), spre deosebire de Abonament RISE care are plăți/încasări nelimitate la 50 lei/lună și mPOS 0,59%.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru companii conține cifrele exacte ale fiecărui pachet (preț lunar, număr de carduri, plăți incluse), dar nu menționează mPOS sau retrageri gratuite ca la Libra.",
+      "citat": "Unlimited 200 lei/luna Tot ce ai nevoie pentru afacere! 10 conturi curente în lei și valută Emitere și administrare card Mastercard Business în lei sau euro (2 carduri) Livrare card în România Internet și Mobile Banking Încasări intra/interbancare în lei și valută Plăți intrabancare în lei și valută prin Internet Banking Primele 100 plăți interbancare în lei și euro prin Internet Banking*",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/pachete-cont-curent#:~:text=Unlimited%20200%20lei%2Fluna%20Tot%20ce,%C8%99i%20euro%20prin%20Internet%20Banking%2A"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2178,
+    "citire_cache": 18879,
+    "scriere_cache": 19317,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0738603
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Administrare cont curent / Pachet servicii bancare (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice listează explicit comisionul de administrare pentru contul curent individual și pentru pachetul de servicii bancare (abonamentul operațional) al firmelor.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Lista de prețuri pentru persoane juridice conține valorile exacte ale comisionului lunar pentru cele două variante de pachet de cont curent.",
+      "citat": "Administrare cont curent 58 LEI Comisionul se preia lunar. Administrare pachet servicii bancare 86 lei Comisionul se preia lunar Pachet servicii bancare 3 conturi curente incluse (LEI, EUR, USD/GBP)",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent pentru companii (pachet GROW)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pachetul de cont curent (abonament operațional) dedicat persoanelor juridice la ProCredit Bank, cu servicii incluse (plăți, carduri, extrase) și cost lunar, exact ca Abonamentul operațional Libra pentru firme/PFA.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru companii conține cifrele concrete ale pachetului curent GROW (comision, durată promoție, sumă cashback).",
+      "citat": "ZERO comision de administrare timp de 24 de luni - 50 lei / lună timp de 5 luni* Timp de 5 luni, câștigi până la 250 lei în total dacă efectuezi minimum 2 tranzacții eligibile lunar.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/#:~:text=ZERO%20comision%20de%20administrare%20timp,minimum%202%20tranzac%C8%9Bii%20eligibile%20lunar."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+    "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+    "https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2111,
+    "citire_cache": 37073,
+    "scriere_cache": 73579,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2124841
+  }
+}

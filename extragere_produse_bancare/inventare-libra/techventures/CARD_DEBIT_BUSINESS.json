@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/mastercard-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit atașat contului curent, emis pentru persoane juridice (utilizatori autorizați), exact segmentul business/PFA ca produsul Libra Card de debit business.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu descriere completă și detalii tehnice (valabilitate, monedă, tehnologie).",
+      "citat": "Cardul este adresat persoanelor juridice și se emite pe numele utilizatorilor autorizați. Cardul se emite în lei sau euro, în funcție de preferințele tale. Termen de valabilitate: 3 ani, cu posibilitatea de prelungire automată.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01032024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Mastercard Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru entități economice, cu secțiune dedicată cardurilor Mastercard Business (comisioane pe operațiuni, administrare etc.).",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF oficial de tarife, cu secțiune explicită '6. Carduri Mastercard Business (lei/euro)' și detalii despre comisioane pe pachete.",
+      "citat": "Card de debit de tip Mastercard Business, atașat unuia dintre conturile curente. Comisioanele pe operațiuni se percep la momentul efectuării operațiunii. Carduri Mastercard Business (lei/ euro)",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Business (în pachetele Startup/Business/Unlimited)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de pachete de cont curent pentru companii prezintă cardul de debit Mastercard Business inclus în fiecare pachet, cu costurile lunare ale pachetelor aferente.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină cu cifre (comisioane lunare pachete și dobânzi la cont) în care cardul business apare explicit ca element inclus.",
+      "citat": "Cont curent în lei și euro Emitere și administrare card de debit fizic contactless Mastercard Business Livrare card în România Internet și Mobile Banking Încasări intra/interbancare în lei Plăți intrabancare în lei prin Internet Banking Primele 5 plăți interbancare în lei prin Internet Banking",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1312,
+    "citire_cache": 6311,
+    "scriere_cache": 20255,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0650277
+  }
+}

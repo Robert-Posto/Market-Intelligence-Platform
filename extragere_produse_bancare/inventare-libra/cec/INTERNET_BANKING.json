@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/internet-banking-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking Persoane Juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată serviciului de Internet Banking pentru persoane juridice (firme/IMM), exact echivalentul Internet & Mobile Banking business de la Libra: acces online la conturi, plăți, depozite și credite pentru afacere.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina produsului conține explicit comisioanele serviciului de Internet Banking pentru persoane juridice.",
+      "citat": "Comisionul pentru Internet Banking este: ZERO în cadrul pachetelor de cont bancar. Vezi detalii · 20 lei/lună dacă achiziționezi Internet Banking ca serviciu separat",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/mobile-banking-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mobile Banking Persoane Juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată serviciului Mobile Banking pentru persoane juridice, componenta mobilă a aceluiași pachet digital business pe care îl descrie produsul Libra (Internet & Mobile Banking business).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina produsului conține explicit comisioanele serviciului de Mobile Banking pentru persoane juridice.",
+      "citat": "Comisionul pentru Mobile Banking este: ZERO în cadrul pachetelor de cont bancar. Vezi detalii · 20 lei/lună dacă achiziționezi Mobile Banking ca serviciu separat",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/cont-bancar-pachet-imm-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul IMM Business (include Internet Banking și Mobile Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachetul de cont bancar pentru firme care include gratuit Internet Banking și Mobile Banking, cu detalii despre activare și funcționalități ale serviciilor digitale pentru persoane juridice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul descrie pachetul de cont care include Internet/Mobile Banking, cu comisionul de administrare și condițiile de activare a serviciilor digitale.",
+      "citat": "Comisionul lunar de administrare este 119 de lei și economisești 501 lei din reducerile la comisioane (detalii în Q&As).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (19 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1311,
+    "citire_cache": 6308,
+    "scriere_cache": 38167,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10979710000000001
+  }
+}

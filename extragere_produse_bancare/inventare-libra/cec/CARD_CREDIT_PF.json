@@ -1,0 +1,83 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/persoane-fizice/carduri-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Carduri de credit (Visa Affinity, Visa Platinum, Mastercard Standard)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Linie de credit revolving in lei pentru persoane fizice, cu perioada de gratie si sistem de rate fara dobanda la comercianti, exact ca produsul Libra Card de credit (PF).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicata familiei de carduri de credit PF contine explicit dobanda, perioada de gratie si mecanismul de rate fara dobanda.",
+      "citat": "Rata dobânzii anuale este variabilă (IRCC+ 16,42%), dar nu plătești dobânzi decât pentru sumele efectiv utilizate. Ai perioadă de grație de până la 59 de zile pentru plățile cu cardul de cumpărături.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/persoane-fizice/carduri-credit/card-de-credit-visa-platinum",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de credit Visa Platinum",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving PF cu limita maxima de 100.000 lei, comparabila cu plafonul de 100.000 RON mentionat in produsul Libra, si perioada de gratie similara (59 vs 56 zile).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicata Visa Platinum contine cifrele cheie: limita maxima, perioada de gratie si dobanda.",
+      "citat": "Beneficiezi de până la 100.000 lei limită de credit și perioadă de grație de până la 59 de zile. Până la 24 de rate fără dobândă, pentru tranzacțiile efectuate la orice comerciant din lume sau, alternativ, rata dobânzii anuală este IRCC+16,42%, cu până la 59 de zile perioadă de grație.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-credit-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comisioane si dobanzi de functionare a cardurilor de credit si serviciilor card - persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife si comisioane care acopera cardurile de credit PF (Visa Affinity, Visa Platinum, Mastercard) corespunzatoare produsului Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF-ul listeaza explicit comisioanele si dobanzile de functionare pentru cardurile de credit persoane fizice, inclusiv Visa Platinum.",
+      "citat": "Comisioane si dobanzi de functionare a cardurilor de credit si serviciilor card oferite de CEC Bank - ofertă valabilă începând cu 01 octombrie 2026, inclusiv- Administrare lunara card principal 4 lei",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-carduri-credit-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Exemple de calcul pentru cardurile de credit oferite de CEC Bank",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document precontractual cu exemple de calcul (DAE, dobanda, rata) pentru cardurile de credit PF, echivalent fiselor de informare precontractuala.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Contine exemple de calcul cu cifre concrete (valoare credit, dobanda, DAE) pentru fiecare card de credit PF.",
+      "citat": "Valoare credit 20.000 lei Perioada de creditare (ani) 1 an (12 luni) Rata lunara 1.871,79 Total de plată 22.712 DAE 26,89% Dobânda variabilă IRCC + 16,42%=21,99%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2619,
+    "citire_cache": 6334,
+    "scriere_cache": 30701,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1042173
+  }
+}

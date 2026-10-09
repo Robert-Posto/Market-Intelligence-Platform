@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții sustenabile (în cadrul Creditelor cu garanția InvestEU)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de creditare pentru companii la Garanti BBVA care acoperă explicit investiții legate de atenuarea schimbărilor climatice (deci inclusiv energie regenerabilă), dar este un credit general pentru investiții sustenabile (imobile, echipamente, auto, agricultură, biodiversitate etc.), nu un credit dedicat exclusiv capacităților de producție fotovoltaică/eoliană ca la Libra; de asemenea impune condiția garanției InvestEU, nemenționată la Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține caracteristicile complete ale produsului (sumă maximă, durată, procent de garantare) dar produsul vizează sustenabilitate în sens larg, nu specific energia verde/producție regenerabilă.",
+      "citat": "Produsul de finanțare dedicat investițiilor sustenabile cum ar fi achiziția, construcția, reabilitarea, modernizarea, consolidarea sau extinderea bunurilor imobiliare, echipamentelor, mijloacelor auto și a altor active fixe, necesare pentru activitatea și dezvoltarea societății, ținând cont de atenuarea schimbărilor climatice... Suma creditului: maxim 7.5 Mil EUR, Perioada de creditare: până la 12 ani, Garanţii: garanția InvestEU 70% din valoarea creditului",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/#:~:text=Produsul%20de%20finan%C8%9Bare%20dedicat%20investi%C8%9Biilor,InvestEU%2070%25%20din%20valoarea%20creditului"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/",
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+    "https://www.garantibbva.ro/imm-si-pfa/finantari-sustenabile/"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 20029,
+    "iesire": 3803,
+    "citire_cache": 128655,
+    "scriere_cache": 65521,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2676215
+  }
+}

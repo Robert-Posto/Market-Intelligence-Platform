@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bnpparibas",
+  "cod": "LEASING_FINANCIAR",
+  "denumire": "Leasing financiar (Libra Development IFN)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://romania-leasingsolutions.bnpparibas.com/en/faq/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Finance Lease / Operating Lease (BNP Paribas Leasing Solutions Romania)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este entitatea de leasing dedicată a grupului BNP Paribas pentru clienți persoane juridice din România, oferind finance lease și operating lease pentru echipamente profesionale (și, pe alte pagini ale grupului, vehicule); segmentul (companii) și tipul de produs (leasing financiar prin entitate specializată de tip IFN) corespund, dar pagina nu publică avansul minim sau dobânda, doar durata orientativă a contractului, spre deosebire de Libra care detaliază avans de la 15%/20% și termene separate auto/echipamente.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina FAQ descrie explicit tipurile de leasing financiar oferite de entitatea română de leasing a grupului și dă o cifră despre durata contractului, dar nu conține avans sau dobândă.",
+      "citat": "Contract period : The period during which the equipment will be rented. The duration can vary according to what type of equipment is being financed, and should be similar in length to the tax depreciation period of the investment. It is normally between three and seven years.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://romania.bnpparibas.com/",
+    "https://romania-leasingsolutions.bnpparibas.com/en/our-solutions/",
+    "https://romania-leasingsolutions.bnpparibas.com/",
+    "https://romania-leasingsolutions.bnpparibas.com/en/faq/",
+    "https://www.romania.bnpparibas.com/en/corporates-institutions/",
+    "https://romania-leasingsolutions.bnpparibas.com/en/our-solutions/finance-my-investments/finance-your-professional-equipment-and-vehicles"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 12635,
+    "iesire": 4231,
+    "citire_cache": 86877,
+    "scriere_cache": 42549,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1913279
+  }
+}

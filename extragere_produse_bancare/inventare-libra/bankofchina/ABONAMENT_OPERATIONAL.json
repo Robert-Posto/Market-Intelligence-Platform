@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Account maintenance fee / Taxă de mentenanță cont curent (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este taxa lunară de operare/întreținere a contului curent pentru persoane juridice, echivalentul funcțional al abonamentului operațional (pachet cont) de la Libra Bank - se plătește lunar pentru deținerea și operarea contului, diferențiat pe valute.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife al băncii listează explicit 'Account maintenance' cu sume lunare distincte pe fiecare valută (RON, EUR, USD, CNY), exact tipul de comision pe care îl acoperă un abonament operațional.",
+      "pagina_pdf": 1,
+      "citat": "Account opening Free of charge | Account maintenance (RON) 30 RON/month | Account maintenance (EUR) 5 EUR/month | Account maintenance (USD) 5 USD/month | Account maintenance (CNY) 55 CNY/month | Account closing Free of charge",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360672.html"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1983,
+    "citire_cache": 25055,
+    "scriere_cache": 21396,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.078343
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "EximBank nu are un produs dedicat de tip API pentru integrare cu programele de contabilitate ale firmelor. Există doar: (1) un parteneriat cu EasyBill pentru facturare electronică gratuită 1 an, care menționează generic posibilitatea de conectare cu aplicații contabile/ERP-uri, dar este un serviciu de facturare, nu un API bancar de integrare contabilă; (2) documentul generic 'ACCES API PSD2'/Open Banking (Documentatie-tehnica_Open_Banking.pdf), care este interfața standard PSD2 pentru furnizori terți de servicii de plată (TPP), nu un produs dedicat de integrare cu softurile de contabilitate pentru clienți persoane juridice. Niciunul nu este echivalent sau similar strict cu API Contabili."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2026/04/21/un-an-fara-griji-facturare-gratuita-pentru-micii-antreprenori/",
+    "https://www.eximbank.ro/en/documents/"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2029,
+    "citire_cache": 26756,
+    "scriere_cache": 35744,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1150132
+  }
+}

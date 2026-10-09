@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2023/11/09/card-de-credit-mastercard-gold/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit DESTEPT Mastercard Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving in lei pentru persoane fizice, cu perioada de gratie, plata in rate fara dobanda la comercianti si limite de credit exprimate in functie de venit - acelasi tip de produs si segment ca si cardul Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicata a produsului contine toate cifrele cheie: perioada de gratie, limite de credit, dobanzi si costul anual.",
+      "citat": "Cea mai generoasa perioada de gratie, de pana la 61 de zile, in care nu platesti dobanda pentru cumparaturile efectuate. Limita de credit minima: 6.000 lei; Limita de credit maxima: 250.000 lei;",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2023/11/09/card-de-credit-mastercard-gold/#:~:text=Cea%20mai%20generoasa%20perioada%20de,de%20credit%20maxima%3A%20250.000%20lei%3B"
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2023/05/Taxe-si-comisioane-carduri.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de credit Mastercard Standard / Mastercard Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de taxe si comisioane al bancii contine o sectiune dedicata exclusiv cardurilor de credit pentru persoane fizice, echivalente cu cardul de credit Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "pagina_pdf": 3,
+      "explicatie_incredere": "PDF oficial de tarife cu sectiunea 2 dedicata integral cardurilor de credit persoane fizice, cu valori complete pentru comisioane si costuri.",
+      "citat": "TAXE SI COMISIOANE AFERENTE CARDURILOR DE CREDIT PERSOANE FIZICE MASTERCARD STANDARD MASTERCARD GOLD Administrare anuala Principal 45 lei 150 lei Numarul de rate Cost activare 3/6/12 0% 24 24%",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2023/11/10/card-de-credit-mastercard-standard/",
+    "https://www.eximbank.ro/wp-content/uploads/2023/05/Taxe-si-comisioane-carduri.pdf",
+    "https://eximbank.ro/2023/11/10/card-de-credit-mastercard-standard/",
+    "https://www.eximbank.ro/2023/11/09/card-de-credit-mastercard-gold/",
+    "https://www.eximbank.ro/2023/11/10/card-de-credit-mastercard-standard/"
+  ],
+  "durata_s": 31,
+  "consum": {
+    "intrare": 45698,
+    "iesire": 2680,
+    "citire_cache": 81696,
+    "scriere_cache": 51638,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.26363020000000004
+  }
+}

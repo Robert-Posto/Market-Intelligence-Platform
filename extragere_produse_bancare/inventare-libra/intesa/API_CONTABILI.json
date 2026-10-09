@@ -1,0 +1,45 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Reports regarding current account / Reconciliation solutions (încredere 0.55) — Libra API_Contabili este o integrare pentru firme cu programele de contabilitate. Intesa nu are un produs explicit numit 'API pentru contabili', dar oferă pe pagina de Conturi și Operațiuni pentru IMM o soluție de reconciliere a extrasului de cont dedicată utilizatorilor de aplicații contabile interne, adică același tip de funcționalitate (legătură bancă-contabilitate) pentru același segment (firme), dar fără menționarea unui API dedicat sau a unor cifre de preț."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/imm/conturi-operatiuni-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Reports regarding current account / Reconciliation solutions",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Libra API_Contabili este o integrare pentru firme cu programele de contabilitate. Intesa nu are un produs explicit numit 'API pentru contabili', dar oferă pe pagina de Conturi și Operațiuni pentru IMM o soluție de reconciliere a extrasului de cont dedicată utilizatorilor de aplicații contabile interne, adică același tip de funcționalitate (legătură bancă-contabilitate) pentru același segment (firme), dar fără menționarea unui API dedicat sau a unor cifre de preț.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Produsul este menționat explicit ca soluție de reconciliere pentru utilizatorii de aplicații contabile, dar descrierea este scurtă, fără detalii tehnice sau tarife, iar pagina este dominată de meniul de navigare.",
+      "citat": "Standardized solution offered to Corporates at ISP Group level - Solution for centralized reconciliation within the Group - Reconciliere facilă pentru userii de aplicații contabile interne",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/imm/conturi-operatiuni-imm.html",
+    "https://www.intesasanpaolobank.ro/en/imm/conturi-operatiuni-imm.html",
+    "https://www.intesasanpaolobank.ro/en/imm/conturi-operatiuni-imm/rapoarte--privind-contul-curent-imm.html",
+    "https://www.intesasanpaolobank.ro/imm/conturi-operatiuni-imm/rapoarte--privind-contul-curent-imm.html",
+    "https://www.intesasanpaolobank.ro/imm/conturi-operatiuni-imm/rapoarte--privind-contul-curent-imm.html"
+  ],
+  "durata_s": 69,
+  "consum": {
+    "intrare": 41259,
+    "iesire": 5076,
+    "citire_cache": 68580,
+    "scriere_cache": 60257,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.29763649999999997
+  }
+}

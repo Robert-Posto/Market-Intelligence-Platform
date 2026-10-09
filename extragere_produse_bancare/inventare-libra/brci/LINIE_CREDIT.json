@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/linia-de-credit.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linie de credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de creditare reînnoibilă pentru persoane juridice, destinat completării capitalului de lucru, exact ca Linia de credit Libra.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea destinației (capital de lucru) și termenul facilității (până la 12 luni, cu posibilitate de prelungire), dar nu afișează explicit dobânda sau comisioanele.",
+      "citat": "Linia de credit BRCI se acordă pentru completarea capitalului de lucru necesar în vederea sprijinirii activității dumneavoastră comerciale sau refinanțarea altor facilități de acelasi tip; Este pusă la dispoziția dumneavoastră pe o perioadă de până la 12 luni, în baza unui contract de credit, cu posibilitate de prelungire.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/linia-de-credit.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 5599,
+    "iesire": 1203,
+    "citire_cache": 12754,
+    "scriere_cache": 18392,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07175879999999998
+  }
+}

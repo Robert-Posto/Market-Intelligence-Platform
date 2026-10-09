@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garanția InvestEU (Linie de credit / Credit în rate / Credit investiții echipamente / Credit investiții imobiliare / Credit investiții sustenabile)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată pentru IMM/PFA care acoperă atât finanțarea activității curente (linie de credit revolving și credit în rate), cât și investiții (echipamente, imobiliare, sustenabile), toate garantate InvestEU 50-70%, exact ca produsul Libra Credit InvestEU Competitivitate/Sustenabilitate.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată conține cifre exacte (sume, termene, procente garanție) pentru toate cele 5 variante de credit InvestEU oferite firmelor.",
+      "citat": "Suma creditului: maxim 7.5 Mil EUR - Perioada de creditare: 12 – 18 luni, cu posibilitatea prelungirii, dar nu mai mult de 48 luni perioada cumulata (perioada inițială aprobata și prelungirile aferente) - Garanții: garanția InvestEU intre 50% - 70% din valoarea creditului și alte garanții suplimentare",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/#:~:text=Suma%20creditului%3A%20maxim%207.5%20Mil,creditului%20%C8%99i%20alte%20garan%C8%9Bii%20suplimentare"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1075,
+    "citire_cache": 36073,
+    "scriere_cache": 42621,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12452909999999999
+  }
+}

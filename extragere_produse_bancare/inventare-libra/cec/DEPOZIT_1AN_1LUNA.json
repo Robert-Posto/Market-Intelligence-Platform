@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen în lei (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen cu dobândă fixă pentru persoane fizice, dar CEC nu are o campanie promoțională de 13 luni; termenul standard afișat este de 12 luni (sau 1/2/3 ani), fără bonusul promoțional dublu descris de Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată depozitelor la termen în lei pentru persoane fizice conține cifre explicite de dobândă, dar nu există un produs promoțional de 13 luni echivalent.",
+      "citat": "Ai dobânzi avantajoase la depozitele online în lei: până la 5,05% pe 12 luni. Banii tăi sunt în siguranță și cresc. Poți economisi oricând și de oriunde.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei#:~:text=Ai%20dob%C3%A2nzi%20avantajoase%20la%20depozitele,economisi%20oric%C3%A2nd%20%C8%99i%20de%20oriunde."
+    },
+    {
+      "url": "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen în lei (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Depozit la termen cu dobândă fixă pentru persoane juridice, segmentul corespunzător componentei „persoane juridice” a produsului Libra, dar termenul maxim standard este de 1 an, nu 13 luni, și nu există o campanie promoțională dedicată.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată depozitelor la termen în lei pentru persoane juridice conține cifre explicite de dobândă, dar fără un produs promoțional de 13 luni.",
+      "citat": "Planurile și proiectele tale devin mai ușor realitate dacă strângi bani din timp. La CEC Bank, îți oferim dobânzi avantajoase la depozitele în lei online pentru persoanele juridice: până la 4,80% pe an.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice#:~:text=Planurile%20%C8%99i%20proiectele%20tale%20devin,p%C3%A2n%C4%83%20la%204%2C80%25%20pe%20an."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/persoane-fizice/depozite/dobanzi-depozite-lei",
+    "https://admin-aws.cec.ro/dobanzi-depozite-lei-persoane-juridice",
+    "https://www.cec.ro/dobanzi-depozite-lei-persoane-juridice",
+    "https://www.cec.ro/dobanzi-depozite-lei"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 45963,
+    "iesire": 3336,
+    "citire_cache": 79624,
+    "scriere_cache": 77803,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3357183
+  }
+}

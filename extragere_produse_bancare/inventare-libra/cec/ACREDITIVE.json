@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/finantari-comerciale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditive (Finanțarea comerțului - Trade Finance)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic: acreditive documentare pentru persoane juridice, descris ca instrument de plată în comerțul internațional cu angajament ferm al băncii, cu plafon dedicat și costuri aferente.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată secțiunii Acreditive din cadrul Finanțării comerțului, cu cifre concrete privind plafonul și costurile.",
+      "citat": "Prin CEC Bank, poți obține un plafon pentru derularea acreditivelor, valabil pe maximum 12 luni - pentru efectuarea tragerilor, cu posibilitate de prelungire. Nivelul plafonului se stabilește în baza unui proces de analiză, similar celui de analiză pentru acordarea creditelor și poate fi maximum 125% din nivelul valorii cumulate a contractelor sau comenzilor cu plata prin acreditiv.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive (secțiunea 9 - Acreditive de export / Acreditive de import)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru persoane juridice ce conține secțiune dedicată cu toate comisioanele pentru acreditive de export și import, exact produsul corespunzător ACREDITIVE.",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF oficial de tarife și comisioane cu secțiune explicită 'ACREDITIVE' (9.1 Acreditive de export, 9.2 Acreditive de import) cu valori numerice complete.",
+      "citat": "Deschidere/prelungire acreditiv (comision/ trim sau fractiune) 0,30% min 75 EUR, max 2.000 EUR | Majorare (comision/trim. sau fractiune, aplicat la valoarea majorarii) 0,30% min 75 EUR, max 2.000 EUR | Plata 0,25% min 75 EUR",
+      "pagina_pdf": 8,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 14,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1167,
+    "citire_cache": 6296,
+    "scriere_cache": 23723,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0722447
+  }
+}

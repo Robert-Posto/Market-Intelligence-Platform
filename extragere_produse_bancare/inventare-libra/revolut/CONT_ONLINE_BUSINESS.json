@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Revolut Business Account",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane juridice deschis online, cu IBAN românesc, abonamente lunare pe planuri și card business — același tip de produs și segment ca Cont Online Business Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată descrie explicit contul business deschis online, cu IBAN/SWIFT românesc și servicii de business banking.",
+      "citat": "Receive money with your Romanian IBAN and SWIFT/BIC account details - Accept payments online or in person - Exchange 25+ currencies at the interbank rate (within allowance, during market hours) - Pay taxes to the Ministry of Finance right from your Business account",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Revolut Business Account Pricing (Basic/Grow/Scale/Enterprise)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarifare care prezintă abonamentele lunare, limitele de transferuri fără comision și dobânzile la economii pentru contul business, exact tipul de informații relevante pentru Cont Online Business.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina conține cifrele exacte ale abonamentelor (50/200/700 lei) și comisioanele/limitele pentru fiecare plan al contului business.",
+      "citat": "Basic lei 50/month Get the essentials to start operating immediately. Unlimited team members - 10 no-fee local transfers - Exchange lei 5,500 at the interbank rate during market hours - Accept online and in-person payments - 2,75% p.a. (variable) on savings",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://help.revolut.com/en-RO/help/setting-up-an-account/is-my-business-eligible/why-is-my-account-not-eligible/business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Eligibility to open a Business account",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Fișa de eligibilitate pentru deschiderea contului business confirmă segmentul de clienți (companii înregistrate în România) și condițiile de bază.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina de condiții precontractuale confirmă cerințele de eligibilitate pentru firme, dar nu conține cifre financiare ale produsului.",
+      "citat": "Your company must be fully incorporated, active, and registered in Romania. Your company must not be a charity, operate in the public sector, or act as a cooperative",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1443,
+    "citire_cache": 6340,
+    "scriere_cache": 33132,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.098536
+  }
+}

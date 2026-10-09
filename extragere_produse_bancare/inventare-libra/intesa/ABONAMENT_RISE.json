@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete tranzacționale START / MICRO PLUS / MICRO EXTRA / PROFESIONAL PLUS / PROFESIONAL EXTRA / ONG COMPLEX",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (abonament operațional lunar cu cont curent, card de debit business, internet banking, plăți/încasări/depuneri incluse) pentru același segment (firme și PFA/II/IF), dar Intesa nu are un singur abonament unic ca RISE, ci mai multe trepte de preț în funcție de cifra de afaceri/profesie: MICRO PLUS (49 lei, companii <1M€) și PROFESIONAL PLUS/EXTRA (19/39 lei, PFA/II/IF); plus numărul de retrageri gratuite este limitat (2-5), nu nelimitat ca la RISE, iar comisionul mPOS nu e indicat procentual (doar 'ZERO' la administrarea terminalului).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Fișă de produs dedicată, cu tabel complet de comisioane lunare, operațiuni gratuite incluse și condiții, pentru toate pachetele tranzacționale pentru firme și PFA.",
+      "citat": "START MICRO PLUS MICRO EXTRA PROFESIONAL PLUS PROFESIONAL EXTRA ONG COMPLEX COMISION LUNAR DE ADMINISTRARE PACHET 0* 49 99 19 39 49",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-micro-plus.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Micro Plus",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina dedicată pachetului cel mai apropiat ca preț (49 lei vs 50 lei la RISE) pentru segmentul companii mici, cu cont, card Visa Business și internet banking incluse, dar acoperă doar segmentul firme (nu și PFA, care au un pachet separat Profesional Plus/Extra) și nu oferă retrageri nelimitate gratuite.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Pagina produsului conține explicit comisionul lunar de 49 lei și componența pachetului (cont, card, internet banking, transferuri, încasări, depuneri).",
+      "motiv": "",
+      "citat": "Pachetul Micro Plus este destinat companiilor cu cifra de afaceri <1M EUR și conține produsele și serviciile bancare de care ai nevoie la un cost mai mic decât dacă le-ai achiziționa individual. Comision lunar de administrare pachet 49 Lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete tranzacţionale cont curent (MICRO PLUS, MICRO EXTRA, PROFESIONAL PLUS, PROFESIONAL EXTRA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă aceleași comisioane lunare pe trepte (49/99 lei pentru companii, 19/39 lei pentru PFA), diferit de structura RISE cu un singur abonament de 50 lei pentru ambele segmente.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document general de tarife și comisioane pentru persoane juridice, în care pachetele apar explicit cu valorile comisioanelor lunare de administrare.",
+      "citat": "Comision de administrare lunară pachet MICRO PLUS 49 Lei Comision de administrare lunară pachet MICRO EXTRA 99 Lei Comision de administrare lunară pachet PROFESIONAL PLUS 19 Lei Comision de administrare lunară pachet PROFESIONAL EXTRA 39 Lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-micro-plus.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf"
+  ],
+  "durata_s": 90,
+  "consum": {
+    "intrare": 6,
+    "iesire": 8252,
+    "citire_cache": 38692,
+    "scriere_cache": 37715,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1845579
+  }
+}

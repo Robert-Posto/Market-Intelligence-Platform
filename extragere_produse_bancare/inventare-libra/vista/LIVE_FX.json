@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/public/docs/Manual_de_utilizare_Internet_Banking_Vista_Bank_08.11.2023.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Schimburi valutare (Negociere schimb valutar) – Vista Internet & Mobile Banking",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Vista oferă schimb valutar online direct din Internet/Mobile Banking, cu cursuri afișate în pagină (standard) și opțiune de schimb negociat – același tip de funcționalitate ca Live FX (schimb valutar prin platformă online, separat de schimbul clasic prin ghișeu/dealer) și pentru același segment (persoane fizice și juridice, conform tabelului de funcționalități din manual). Diferă însă de Live FX prin faptul că schimbul standard se face doar între conturile proprii deschise la bancă, iar negocierea sumelor mari (≥10.000 EUR) presupune a fi contactat telefonic/prin email de bancă, nu o executare automată instant pe platformă.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial al băncii descrie explicit modulul de schimb valutar online (standard și negociat) din Internet Banking, cu pragul concret de 10.000 EUR și intervalul orar de negociere.",
+      "pagina_pdf": 37,
+      "citat": "Cursurile valutare se negociaza incepand de la sume egale sau mai mari cu 10.000 EURO sau echivalent, de luni pana vineri, intre orele 09.00-16.00.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/vista-internet-si-mobile-banking",
+    "https://www.vistabank.ro/public/docs/Manual_de_utilizare_Internet_Banking_Vista_Bank_08.11.2023.pdf"
+  ],
+  "durata_s": 112,
+  "consum": {
+    "intrare": 6,
+    "iesire": 9311,
+    "citire_cache": 38940,
+    "scriere_cache": 139138,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.448755
+  }
+}

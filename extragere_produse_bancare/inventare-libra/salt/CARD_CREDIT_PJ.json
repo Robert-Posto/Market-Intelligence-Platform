@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-08",
+  "banca": "salt",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "blocat_de_robots",
+    "nota": "Domeniul saltbank.ro nu a putut fi accesat deloc prin web_fetch (eroare de permisiune/robots chiar și pentru pagina principală indicată), iar web_search nu a returnat rezultate utile. Din cunoștințe generale, Salt Bank este un neobank românesc axat în principal pe clienți persoane fizice (retail), fără informații publice confirmate despre un card de credit business revolving pentru PJ/PFA; nu am putut însă verifica direct pe site din cauza blocării accesului."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.saltbank.ro/",
+    "https://saltbank.ro/",
+    "https://www.saltbank.ro/business"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 7470,
+    "iesire": 1092,
+    "citire_cache": 19300,
+    "scriere_cache": 6842,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.046825000000000006
+  }
+}

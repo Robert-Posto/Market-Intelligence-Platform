@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet servicii bancare (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul pachet de cont curent pentru persoane juridice cu mai multe conturi (LEI/EUR/USD-GBP), plăți naționale incluse și mai multe carduri Visa incluse într-un comision lunar fix, deci același tip de produs (abonament/pachet corporate) și același segment (PJ). Diferă însă semnificativ: comision 86 lei/lună (nu 295 lei), plăți naționale incluse doar până la 50.000 lei (nu nelimitate lei/euro/SEPA), maxim 3 carduri Visa debit standard (nu 5 standard + 2 Gold) și nu include vreun serviciu de tip Live FX.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice listează explicit pachetul cu valoarea comisionului lunar și componentele incluse (conturi, plăți, carduri).",
+      "pagina_pdf": 1,
+      "citat": "Administrare pachet servicii bancare 86 lei Comisionul se preia lunar Pachet servicii bancare 3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse Card Visa debit (maxim trei carduri incluse)",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+    "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2388,
+    "citire_cache": 36517,
+    "scriere_cache": 60540,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1825454
+  }
+}

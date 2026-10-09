@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/credite-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite acordate cu garanție FEI",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina-hub de credite IMM descrie același produs (credite investiții + capital de lucru garantate FEI) cu cifre concrete privind procentul de garantare, confirmând segmentul IMM/PJ și natura de finanțare europeană similară programului InvestEU.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Document general (pagina de listare credite IMM) în care produsul FEI apare explicit cu valori (procent garantare 50-70%).",
+      "citat": "Credite acordate cu garanție FEI Credite pentru investiții, linii de credit pentru capital de lucru cu scopul facilitării accesului la finanțare și dezvoltării IMM-urilor. Credite la costuri avantajoase ca urmare a acordului cu FEI Procent garantare max. 50 - 70%, în funcție de regiunea de dezvoltare",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-garantie-FEI.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite acordate cu garanție FEI (FEI Competitivitate / FEI Sustenabilitate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat de credite pentru investiții și linii de capital de lucru pentru IMM-uri, garantate de FEI, structurat explicit pe cele două componente 'FEI Competitivitate' și 'FEI Sustenabilitate' — aceeași denumire conceptuală (Competitivitate/Sustenabilitate) ca produsul Libra InvestEU, același tip de garanție europeană (FEI fiind implementatorul programului InvestEU).",
+      "incredere": 0.6,
+      "incredere_metoda": 0.5,
+      "explicatie_incredere": "Pagina dedicată confirmă prin meta-descriere denumirile 'FEI Competitivitate' și 'FEI Sustenabilitate', dar conținutul cu cifre (dobânzi, sume, termene) nu a putut fi extras prin fetch simplu — pare randat dinamic.",
+      "citat": "Credite pentru investiții, linii de credit pentru capital de lucru cu scopul facilitării accesului la finanțare și dezvoltării IMM-urilor. FEI Competitivitate și FEI Sustenabilitate",
+      "citat_verificat": true,
+      "link_live": "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-garantie-FEI.html#:~:text=Credite%20pentru%20investi%C8%9Bii%2C%20linii%20de,FEI%20Competitivitate%20%C8%99i%20FEI%20Sustenabilitate"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/imm/credite-imm.html",
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-garantie-FEI.html",
+    "https://www.intesasanpaolobank.ro/en/imm/credite-imm/credite-garantie-FEI.html",
+    "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_Septembrie-2026.pdf"
+  ],
+  "durata_s": 104,
+  "consum": {
+    "intrare": 16,
+    "iesire": 7576,
+    "citire_cache": 314555,
+    "scriere_cache": 110460,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.414853
+  }
+}

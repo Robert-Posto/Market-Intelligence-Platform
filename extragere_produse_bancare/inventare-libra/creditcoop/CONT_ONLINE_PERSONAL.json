@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent în lei (Cont de plăți – Persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de comisioane pentru contul curent/de plăți în lei pentru persoane fizice conține toate costurile aplicabile; diferă de produsul Libra prin faptul că mobile banking nu este disponibil, iar administrarea Internet Banking are cost lunar separat, ceea ce indică un model mai puțin digital decât un cont 100% online.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial FIPC-like de comisioane, cu denumirea contului și toate valorile numerice pentru administrare cont, plăți, retrageri și internet banking.",
+      "citat": "Administrarea contului Lunar 8 lei Comision anual total 96 lei Administrare Internet Banking Lunar 5 lei Comision anual total 60 lei Mobile banking Serviciul nu este disponibil",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.creditcoop.ro/cont-de-plati-persoane-fizice/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont de plăți – Persoane fizice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent/de plăți dedicat persoanelor fizice la CREDITCOOP, deci același tip de produs și segment ca Cont Online Personal Libra; diferă însă canalul: deschiderea contului și activarea Internet Banking se fac la ghișeu (conform secțiunii Internet Banking și FAQ), nu există mobile banking, deci nu este un cont 100% online cu acces digital complet precum la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete (limite zilnice, limite pe tranzacție, orare de procesare) pentru acest cont de plăți pentru persoane fizice.",
+      "citat": "Limită zilnică* 100.000 lei Limita pe tranzacție* 50.000 Lei Pentru ordinele de plată care depășesc aceste limite, vă așteptam la ghișeul băncii.",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/cont-de-plati-persoane-fizice/#:~:text=Limit%C4%83%20zilnic%C4%83%2A%20100.000%20lei%20Limita,v%C4%83%20a%C8%99teptam%20la%20ghi%C8%99eul%20b%C4%83ncii."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/cont-de-plati-persoane-fizice/",
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2360,
+    "citire_cache": 133624,
+    "scriere_cache": 59996,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2003348
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/credite/credite-pentru-lichiditate-si-capital-de-lucru/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru capital de lucru",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit general pentru companii/IMM, pe baza de analiza financiara, fara destinatie de investitie imobiliara, similar ca scop cu Credit Simplu IMM de la Libra. Difera insa: ProCredit nu specifica un interval fix de suma (Libra: 20.000-200.000 lei), termenul maxim este de 36 luni (Libra: pana la 48 luni), iar garantiile sunt descrise generic drept 'flexibile adaptate activitatii companiei', fara a exclude explicit garantia imobiliara sau a mentiona scoringul ca metoda de aprobare.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina dedicata produsului contine cifre concrete (termen maxim, tip garantii, moneda) pentru 'Credit pentru capital de lucru', dar lipsesc sumele minime/maxime si mentiunea explicita a scoringului, elemente cheie in definirea produsului Libra.",
+      "citat": "Rambursarea creditului: poate fi lunară sau sezonieră, în funcție de specificul activității, pe baza unui grafic de rambursare Moneda creditului: LEI sau EURO Garanții: oferim garanții flexibile care sunt adaptate activității companiei Perioada de creditare: maxim 36 luni",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/credite/credite-pentru-lichiditate-si-capital-de-lucru/#:~:text=Rambursarea%20creditului%3A%20poate%20fi%20lunar%C4%83,de%20creditare%3A%20maxim%2036%20luni"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/credite/credite-pentru-lichiditate-si-capital-de-lucru/",
+    "https://www.procreditbank.ro/companii/credite/limita-de-credit/"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2172,
+    "citire_cache": 79384,
+    "scriere_cache": 54585,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17407530000000002
+  }
+}

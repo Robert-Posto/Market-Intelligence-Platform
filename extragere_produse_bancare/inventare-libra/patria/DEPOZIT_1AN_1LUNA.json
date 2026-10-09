@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/depozitonline",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit 100% online „Patria de Oriunde”",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul depozit cu dobândă promoțională de top (6,60% - aceeași cifră cu cea din denumirea produsului Libra) la Patria Bank, dar diferă termenul (4 luni, nu 13 luni ca la Libra) și segmentul (doar persoane fizice fără cont curent deja deschis, nu și persoane juridice ca la Libra).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată conține cifre explicite (procent, termen, monedă) pentru depozitul promoțional, dar termenul și segmentul de clienți diferă semnificativ de produsul Libra.",
+      "dovada_metoda": "Conținutul a fost obținut din rezultatele motorului de căutare (cache al paginii), fetch-ul direct a eșuat, dar textul extras conține cifre explicite ca și la o accesare HTTP normală.",
+      "citat": "6,60% dobândă anuală pentru depozitul în LEI pe 4 luni 2,60% dobândă anuală pentru depozitul în Euro pe 7 luni până la 3,50% pe an la depozitele în dolari Detalii despre depozitele bancare la termen constitute online prin platformă Moneda depozitului bancar la termen: LEI, EUR, USD.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/20",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Lista ratelor de dobândă la produsele de economisire (Depozitul Patria Clasic / bonus online Patria de Oriunde)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de dobânzi standard arată bonusul acordat depozitelor constituite prin platforma online „Patria de Oriunde” (care generează dobânda promoțională menționată pe pagina produsului), dar nu există niciun termen de 13 luni sau un produs promoțional „1 An și 1 Lună”; termenele disponibile sunt 1, 3, 6, 12, 24 de luni.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul general de dobânzi conține cifrele bonusului pentru depozitele online, dar nu acoperă un termen de 13 luni echivalent cu produsul Libra.",
+      "dovada_metoda": "Conținutul PDF a fost obținut din rezultatele motorului de căutare (fetch direct a fost blocat de permisiuni), textul extras conține tabele cu cifre ca la o citire HTTP a PDF-ului.",
+      "citat": "Depozitele \"Clasic\" in RON constituite prin Patria Online Internet & Mobile Banking sau prin Platforma Online \"Patria de Oriunde\" beneficiaza de bonus de dobanda de 2.00pp pentru termenul de 1 luna, de 2.25pp pentru termenul de 3 luni, de 2.75pp pentru termenele de 6 si 12 luni si 2.50pp pentru termenul de 24 de luni.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/d/20",
+    "https://www.patriabank.ro/depozitonline",
+    "https://en.patriabank.ro/d/20",
+    "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+    "https://en.patriabank.ro/d/992"
+  ],
+  "durata_s": 77,
+  "consum": {
+    "intrare": 66307,
+    "iesire": 6413,
+    "citire_cache": 48247,
+    "scriere_cache": 49469,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3300659
+  }
+}

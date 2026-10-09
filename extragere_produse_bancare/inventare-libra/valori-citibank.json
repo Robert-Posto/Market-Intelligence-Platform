@@ -49,7 +49,8 @@
    "tokeni": {
     "intrare": 4874,
     "iesire": 151
-   }
+   },
+   "verificare_azi": "eroare"
   },
   {
    "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html||citidirect be® mobile",
@@ -99,6 +100,557 @@
    "tokeni": {
     "intrare": 7290,
     "iesire": 193
+   },
+   "verificare_azi": "eroare"
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/treasury/foreign-market.html||piața valutară - tranzacții same day & spot",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/treasury/foreign-market.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Piața valutară - Tranzacții Same day & SPOT",
+   "focus": "Produsul băncii: „Piața valutară - Tranzacții Same day & SPOT”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2139,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "7e0005354848c15e6910d1db6b85abf78d31222d6d87b72fbd4c50079833fbbd",
+   "observatii": [
+    {
+     "id": "b1038c38c609fe607fac46bba9fcee36",
+     "id_url": 2139,
+     "id_produs": "schimb-valutar",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar calitativ produsul „Tranzacții Same day & SPOT” (rate negociate peste 50.000 USD, acces la CitiFX Pulse), fără a publica valori concrete de curs, marjă, spread sau comision de schimb pe vreo valută.",
+     "content_hash": "7e0005354848c15e6910d1db6b85abf78d31222d6d87b72fbd4c50079833fbbd",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "09b805677086022d70f2ab03897647f028d94a7a45cfd3ad54d56c2f075f1dc3"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 4577,
+    "iesire": 174
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/treasury/foreign-market.html||citifx pulse",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/treasury/foreign-market.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "CitiFX Pulse",
+   "focus": "Produsul băncii: „CitiFX Pulse”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1918,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "7e0005354848c15e6910d1db6b85abf78d31222d6d87b72fbd4c50079833fbbd",
+   "observatii": [
+    {
+     "id": "0032fcf80c1a2ccf1b18b84ec797ad18",
+     "id_url": 1918,
+     "id_produs": "schimb-valutar",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul menționează platforma CitiFX Pulse doar descriptiv (acces la rate de schimb în timp real, tranzacții valutare, swap-uri, forward-uri), fără a publica vreo valoare numerică (curs, spread, comision) pentru aceasta.",
+     "content_hash": "7e0005354848c15e6910d1db6b85abf78d31222d6d87b72fbd4c50079833fbbd",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "09b805677086022d70f2ab03897647f028d94a7a45cfd3ad54d56c2f075f1dc3"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 4582,
+    "iesire": 172
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html||scrisori de garanție bancară",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisori de garanție bancară",
+   "focus": "Produsul băncii: „Scrisori de garanție bancară”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2195,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "99b63ee85bf89c223dafac4853e499f719ae2b3b5e9e7c54378d100336f18bba",
+   "observatii": [
+    {
+     "id": "ceca469ca54ec69020f7ba1e62a5ac27",
+     "id_url": 2195,
+     "id_produs": "garantii-acreditive",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul menționează produsul „Scrisori de garanție bancară” doar descriptiv, fără nicio cifră privind comisioane, colateral sau perioade de valabilitate.",
+     "content_hash": "99b63ee85bf89c223dafac4853e499f719ae2b3b5e9e7c54378d100336f18bba",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6caaefcbbc55b3d99999f89b6106d98153d7f978b41c0bcf26685eee6c7c08fd"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4529,
+    "iesire": 139
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html||operatiuni documentare (acreditive documentare)",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Operatiuni documentare (acreditive documentare)",
+   "focus": "Produsul băncii: „Operatiuni documentare (acreditive documentare)”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1985,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "99b63ee85bf89c223dafac4853e499f719ae2b3b5e9e7c54378d100336f18bba",
+   "observatii": [
+    {
+     "id": "5b03740387b05a1ec76ee45eea3ff441",
+     "id_url": 1985,
+     "id_produs": "garantii-acreditive",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar calitativ serviciile de acreditive, incasso și garanții bancare oferite de Citi Romania, fără a conține nicio valoare numerică (comisioane, colateral, perioade de valabilitate etc.) pentru acreditive documentare.",
+     "content_hash": "99b63ee85bf89c223dafac4853e499f719ae2b3b5e9e7c54378d100336f18bba",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6caaefcbbc55b3d99999f89b6106d98153d7f978b41c0bcf26685eee6c7c08fd"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 5,
+   "tokeni": {
+    "intrare": 4531,
+    "iesire": 169
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/foreign-market.html||foreign exchange market - same day & spot transactions",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/foreign-market.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Foreign Exchange Market - Same day & SPOT transactions",
+   "focus": "Produsul băncii: „Foreign Exchange Market - Same day & SPOT transactions”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2138,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "144ac1ef4842342a450a77c480f0e42055c376d89ff2f6b8eaace608a6bff7b4",
+   "observatii": [
+    {
+     "id": "7620d324e784769dde9321c5c392bf51",
+     "id_url": 2138,
+     "id_produs": "schimb-valutar",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "nepublicat",
+     "nota": "Textul descrie doar general serviciul de schimb valutar (same day & SPOT), menționând că peste 50.000 USD se oferă curs negociat, dar nu publică nicio valoare numerică concretă (curs cumpărare/vânzare, marjă, spread sau comision) pentru nicio valută.",
+     "content_hash": "144ac1ef4842342a450a77c480f0e42055c376d89ff2f6b8eaace608a6bff7b4",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6bf1933070f6d35cf12118b5eff2548150196ad081f813459e2f40fb02091f9c"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4332,
+    "iesire": 182
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/citifx-pulse.html||citifx pulse",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/citifx-pulse.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "CitiFX Pulse",
+   "focus": "Produsul băncii: „CitiFX Pulse”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1919,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "a747d2e6d4ef2375cdc1bf276b07ae965c4254a0be52ec3117db8b2f2ba07dc6",
+   "observatii": [
+    {
+     "id": "8a02bd79be927f806275c39a11a62d2d",
+     "id_url": 1919,
+     "id_produs": "schimb-valutar",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar funcționalitățile și beneficiile platformei CitiFX Pulse (acces, securitate, costuri zero de abonare/instalare/mentenanță), fără a publica valori concrete de curs valutar, spread, marjă sau comision de schimb pentru vreo valută.",
+     "content_hash": "a747d2e6d4ef2375cdc1bf276b07ae965c4254a0be52ec3117db8b2f2ba07dc6",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5b8a5fe87777d1e7b0098bdf90764c1eacaece626dee9e9c464038211dedcc32"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 4609,
+    "iesire": 179
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/capital-market.html||capital market - t-bills and t-bonds / government bonds",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/capital-market.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Capital Market - T-bills and T-bonds / Government bonds",
+   "focus": "Produsul băncii: „Capital Market - T-bills and T-bonds / Government bonds”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2161,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "d38d678c94a134abfc3a349939d9a2b4bab9703fd1d490f3ffe9026f8d1662e8",
+   "observatii": [
+    {
+     "id": "c3ff5ebe129cc88dc05d24bdf7c8f01c",
+     "id_url": 2161,
+     "id_produs": "investitii-retail",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul descrie în termeni generali produsele de piață de capital (titluri de stat, obligațiuni corporative, instrumente derivate etc.) oferite de Citi Romania, dar nu conține nicio valoare numerică concretă (comisioane de subscriere, răscumpărare, administrare, custodie, tranzacționare sau sume minime) pentru produsul „T-bills and T-bonds / Government bonds”.",
+     "content_hash": "d38d678c94a134abfc3a349939d9a2b4bab9703fd1d490f3ffe9026f8d1662e8",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "cb7422e43eedb7d49d477fc693294d69511369284c83cc9f49258b01421efbbe"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 3791,
+    "iesire": 222
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/trade-finance.html||trade finance - letters of credit financing",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/trade-finance.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Trade Finance - Letters of Credit Financing",
+   "focus": "Produsul băncii: „Trade Finance - Letters of Credit Financing”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1986,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "88aa6b8df025af0d3c1cd8b5d6c49389bf1ebf77201698d887192737a3441381",
+   "observatii": [
+    {
+     "id": "55b7905fdf76fb8f216d106a7ab6ff82",
+     "id_url": 1986,
+     "id_produs": "garantii-acreditive",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul menționează doar general serviciile de trade finance (inclusiv letters of credit financing), fără a oferi cifre, procente, comisioane sau condiții concrete pentru acest produs.",
+     "content_hash": "88aa6b8df025af0d3c1cd8b5d6c49389bf1ebf77201698d887192737a3441381",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "615bb019152fb762ec8fdca29711803981d0b61499ed6b794a1a8f5fa4b4aa85"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 3,
+   "tokeni": {
+    "intrare": 3634,
+    "iesire": 143
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/financing-solutions/corp-banking.html||term financing (corporate and investment banking)",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/financing-solutions/corp-banking.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Term Financing (Corporate and Investment Banking)",
+   "focus": "Produsul băncii: „Term Financing (Corporate and Investment Banking)”.\nCorespunde produsului Libra: „Credit de investiții”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2117,
+     "id_produs_libra": 34,
+     "cod": "CREDIT_INVESTITII",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "6bfc0814e9da1e752fdfa41296b33d84905ed526d692bbbb12b77c9e43537070",
+   "observatii": [
+    {
+     "id": "82b07c0dc543329b64bdb1274bd17397",
+     "id_url": 2117,
+     "id_produs": "credit-investitii",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie doar calitativ \"Term Financing\" (scop, flexibilitate, structurare), fără nicio cifră concretă despre dobândă, perioadă maximă, contribuție proprie sau comisioane.",
+     "content_hash": "6bfc0814e9da1e752fdfa41296b33d84905ed526d692bbbb12b77c9e43537070",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "a596c602ce32f6ac986425e1c639d341bf2d2727886222c313f160b9e949e19f"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 5115,
+    "iesire": 152
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/financing-solutions/commercial-bank.html||investment loans (citi commercial bank)",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/financing-solutions/commercial-bank.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Investment loans (Citi Commercial Bank)",
+   "focus": "Produsul băncii: „Investment loans (Citi Commercial Bank)”.\nCorespunde produsului Libra: „Credit de investiții”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2116,
+     "id_produs_libra": 34,
+     "cod": "CREDIT_INVESTITII",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "0c97f8b26cc53ea96860ff07a96a6e02682cfaafab54a4a187fc87c948f42a55",
+   "observatii": [
+    {
+     "id": "d91f2bc04b6d0d26cdf89aeb1cc0407b",
+     "id_url": 2116,
+     "id_produs": "credit-investitii",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie calitativ „Investment loans” (destinație, flexibilitate termen, tragere în tranșe) dar nu conține nicio cifră concretă despre dobândă, perioadă maximă, contribuție proprie sau comisioane, deci nu există date numerice de raportat.",
+     "content_hash": "0c97f8b26cc53ea96860ff07a96a6e02682cfaafab54a4a187fc87c948f42a55",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "6b7c4ed71a441dd781fb5da32b40a4df90cdb2d02c705fc4150cfa6cc5eabdf8"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 3929,
+    "iesire": 176
+   }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html||citidirect be® / citidirect be® mobile",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "CitiDirect BE® / CitiDirect BE® Mobile",
+   "focus": "Produsul băncii: „CitiDirect BE® / CitiDirect BE® Mobile”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2133,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "7e7b6743b9742cea5d26f5f5c3bbe1f35f97767a26378ad3ca36862f28691318",
+   "observatii": [
+    {
+     "id": "e9620d98ec0c77c52231463e11d16b3e",
+     "id_url": 2133,
+     "id_produs": "banking-digital",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie funcționalitățile, beneficiile și cerințele tehnice ale CitiDirect BE® / CitiDirect BE® Mobile, dar nu conține nicio cifră privind costul abonamentului, comisioane pe tranzacții online față de ghișeu sau costul dispozitivului de autentificare (deși este menționat un „credit-card sized device” pentru autentificare, nu i se precizează costul).",
+     "content_hash": "7e7b6743b9742cea5d26f5f5c3bbe1f35f97767a26378ad3ca36862f28691318",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d87ae00e4cea0d05c0e5106c74cbc472534cc3e63ee398a65cd1e24759851107"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 7292,
+    "iesire": 223
    }
   }
  ]

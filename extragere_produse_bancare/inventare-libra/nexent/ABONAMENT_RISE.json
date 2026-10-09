@@ -1,0 +1,62 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/581947265d918cd664492b54a2eb112067c68d94.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent persoane juridice / Comision administrare client IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs comparabil la Nexent Bank pentru firme: un cont curent operațional cu comision lunar de administrare pentru IMM. Spre deosebire de Abonamentul RISE, aici nu există o taxă unică lunară care să includă cardurile și mPOS-ul într-un singur pachet; fiecare serviciu (cont, card, retrageri, POS) are comision propriu, listat separat în acest document de tarife pentru persoane juridice.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul este lista oficială de taxe și comisioane pentru persoane juridice la Nexent Bank și conține explicit comisionul lunar de administrare cont pentru clienți IMM, cu cifre.",
+      "citat": "Comision administrare client Pentru IMM – lunar echivalent a 12.5 / 25 RON Pentru clienti Corporate & Commercial - anual perceput in Martie echivalent a 150 RON",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/c65f86ba4c3ff2476f13d4f98a69b4aab211c4f2.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Visa Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cardul de debit Visa Business pentru persoane juridice acoperă componenta de carduri business din Abonamentul RISE, dar la Nexent este un produs separat, cu taxă proprie de emitere și administrare anuală, nu este inclus gratuit într-un abonament lunar unic ca la Libra.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "PDF dedicat cardului de debit Visa Business pentru persoane juridice, cu cifre explicite pentru taxa de emitere și administrare, dar fără conexiune la un pachet operațional unic de tip abonament.",
+      "citat": "Taxa emitere* 20 RON 10 EUR Taxa anuala de administrare card** 40 RON 15 EUR Taxa reinnoire card (dupa 3 ani) 20 RON 10 EUR",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/Corporate-SME/Small-and-Medium-Companies",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Operations",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Company-Cards",
+    "https://www.nexentbank.ro/en/Corporate-SME/Avantaj-SoftPOS",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/c65f86ba4c3ff2476f13d4f98a69b4aab211c4f2.pdf",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/581947265d918cd664492b54a2eb112067c68d94.pdf"
+  ],
+  "durata_s": 80,
+  "consum": {
+    "intrare": 14,
+    "iesire": 6454,
+    "citire_cache": 328854,
+    "scriere_cache": 114453,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4164713
+  }
+}

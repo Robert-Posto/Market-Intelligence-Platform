@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Unlimited (pachete de cont curent pentru companii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt pachete lunare de cont curent pentru persoane juridice cu card inclus și un număr de operațiuni gratuite, dar diferă pragurile: Unlimited costă 200 lei/lună (vs 225 lei la Libra ELITE), include 2 carduri (vs 3) și primele 100 plăți interbancare lei/euro (vs 50 plăți și 50 SEPA la Libra); nu se menționează explicit un serviciu de tip Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor pentru companii listează explicit denumirea, prețul și serviciile incluse în pachetul Unlimited, cel mai complet pachet corporate al băncii.",
+      "citat": "Unlimited 200 lei/luna Tot ce ai nevoie pentru afacere! 10 conturi curente în lei și valută - Emitere și administrare card Mastercard Business în lei sau euro (2 carduri) - Primele 100 plăți interbancare în lei și euro prin Internet Banking",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/conturi-pachete-cont-curent",
+    "https://techventures.bank/companii/cont-curent",
+    "https://techventures.bank/companii/pachete-cont-curent"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 43790,
+    "iesire": 3029,
+    "citire_cache": 49241,
+    "scriere_cache": 35299,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21596569999999998
+  }
+}

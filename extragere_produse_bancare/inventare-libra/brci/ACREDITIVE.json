@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/acreditivul-documentar.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditiv documentar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată de la BRCI, în secțiunea Operațiuni documentare pentru Persoane Juridice, descrie același tip de produs (acreditiv documentar pentru comerț internațional) și același segment de clienți (firme) ca produsul Libra ACREDITIVE.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este pagina dedicată produsului (titlu, descriere, documente), dar cifrele vizibile în extrasul paginii sunt comisionul general de conversie valutară (2%) și data listei de tarife, nu comisioane specifice acreditivului; lista de tarife completă e doar linkuită, nu extrasă.",
+      "citat": "Lista de tarife și comisioane (conturi, operatiuni, carduri business, program procesare) pana in 18.11.2024 Descarcă Comision conversie valutara practicat de BRCI pentru tranzactiile realizate in alta moneda decat cea a cardului 2%",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/files/public/poze/Persoane%20Juridice/ACREDITIV%20DOCUMENTAR%20EXPORT%20PJ_17_iul_2014%20v4_c13.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Acreditiv Documentar de Export",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Formular și condiții generale emise de BRCI pentru operațiunea de Acreditiv Documentar de Export, destinat clienților persoane juridice (ordonatori/beneficiari firme), confirmând existența produsului și regulile UCP 600 care îl guvernează.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Document oficial PDF al băncii, specific produsului, dar este un formular operațional/condiții generale, nu conține comisioane sau dobânzi explicite, doar referința la standardul UCP 600.",
+      "citat": "Application is governed by the provisions of the Uniform Customs and Practice for documentary letter of credits, 2007 Revised Edition, Publication no. 600 (UCP) of the International Chamber of Commerce",
+      "citat_verificat": true,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://brci.ro/ro/produse/acreditiv-documentar.html",
+    "https://www.brci.ro/ro/produse/acreditiv-documentar.html",
+    "https://brci.ro/ro/produse/scrisoare-garantie.html",
+    "https://www2.brci.ro/",
+    "https://www.brci.ro/files/public/poze/Persoane%20Juridice/ACREDITIV%20DOCUMENTAR%20EXPORT%20PJ_17_iul_2014%20v4_c13.pdf",
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/articol/program-agentii-brci-in-16-12-2022.html",
+    "https://companii.brci.ro/pjonboarding",
+    "https://www.brci.ro/ro/produse/acreditivul-documentar.html",
+    "https://companii.brci.ro/content/comisioane.pdf"
+  ],
+  "durata_s": 131,
+  "consum": {
+    "intrare": 251327,
+    "iesire": 11097,
+    "citire_cache": 79575,
+    "scriere_cache": 44602,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.741044
+  }
+}

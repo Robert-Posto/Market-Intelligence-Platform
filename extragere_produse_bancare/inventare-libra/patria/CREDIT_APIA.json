@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/agro/credite/credit-APIA",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip și segment: credit în lei pe baza adeverinței APIA, pentru persoane juridice, PFA și alte forme de producători agricoli, cu grație până la încasarea subvenției, exact ca produsul Libra Credit APIA.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele exacte ale creditului APIA (procent de finanțare, segment de clienți, modalitate de rambursare).",
+      "citat": "Credit în lei, cu o valoare de maxim 90% din valoarea subvenției APIA, acordat pe termen scurt, utilizabil într-o singură tranșă, care te ajută să-ţi faci treaba până la încasarea subvenţiei APIA",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/agro/credite/credit-apia-in-avans",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit APIA în AVANS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Variantă înrudită a aceluiași tip de produs (finanțare pe baza subvenției APIA, pentru aceiași producători agricoli persoane juridice/PFA), dar diferă momentul finanțării: aici se finanțează anterior eliberării adeverinței APIA (prefinanțare pe baza campaniei anterioare), nu pe adeverința curentă.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre clare (procent, termen, plafon) dar produsul diferă de bază prin momentul și baza de calcul al finanțării.",
+      "citat": "Credit în lei pe o perioadă de maxim 20 luni, cu o valoare de maxim 70% din valoarea subvenției cuvenite în anul anterior, care te ajută să-ți acoperi cheltuielile până la momentul emiterii adeverinței APIA pentru anul în curs",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1072,
+    "citire_cache": 6337,
+    "scriere_cache": 36445,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1031079
+  }
+}

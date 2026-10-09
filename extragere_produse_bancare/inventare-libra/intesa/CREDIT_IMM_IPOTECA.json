@@ -1,0 +1,29 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "nu_am_gasit",
+    "nota": "Am verificat paginile IMM/Microîntreprinderi/Corporate de credite la Intesa Sanpaolo Bank România (imm/credite-imm.html, microintreprinderi-antreprenori/credite-antreprenori.html, corporate/credite-corporate.html) și documentul de tarife pentru persoane juridice (LCS-PERSOANE-JURIDICE_Septembrie-2026.pdf). Banca listează: Capital de lucru, Credite pentru investiții, Credite cu garanție FEI, Credite cu garanție BID, IMM Invest Plus (garantat de stat) și, pentru microîntreprinderi, un 'Credit Imobiliar Green' — dar acesta este un credit de ACHIZIȚIE dedicat strict construcțiilor/imobilelor cu clasă energetică A sau B, nu un credit/linie general(ă) de capital de lucru și investiții garantat(ă) cu ipotecă pe orice imobil, cum este produsul Libra. Nu am găsit la Intesa un produs generic 'credit/linie IMM garantat cu ipotecă' cu plafoane (50.000–1 mil. RON, linie max. 600.000) și termene (84/180 luni) comparabile; paginile de credite IMM/microîntreprinderi sunt randate integral prin JavaScript, iar conținutul text extras prin fetch simplu nu conține cifre pentru a confirma vreo potrivire parțială, chiar și pentru produse apropiate ca 'Credite pentru investiții' sau 'Capital de lucru'."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori.html",
+    "https://www.intesasanpaolobank.ro/imm/credite-imm.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-imobiliar-green.html",
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-investitii-imm.html",
+    "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html"
+  ],
+  "durata_s": 105,
+  "consum": {
+    "intrare": 12,
+    "iesire": 7711,
+    "citire_cache": 242994,
+    "scriere_cache": 93596,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3597228
+  }
+}

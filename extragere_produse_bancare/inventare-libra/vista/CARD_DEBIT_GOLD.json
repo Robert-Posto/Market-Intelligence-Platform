@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/conturi-si-pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Vista Platinum (card de debit Vista Visa Platinum)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit premium cu asigurare de călătorie și acces la lounge (Priority Pass), similar cu Card de debit Gold Libra, dar disponibil doar pentru persoane fizice (nu și juridice), cu cost anual de 500 lei (vs 48 lei la Libra) și fără mențiune explicită de cashback sau dobândă la sold.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetului Vista Platinum descrie explicit beneficiile cardului de debit Platinum (Priority Pass, asigurare de călătorie, concierge) și costul anual de 500 lei.",
+      "citat": "Întregul univers al privilegiilor exclusiviste atașate cardului de debit Vista Platinum: acces la programul VISA Premium, servicii premium de concierge incluse, programul Priority Pass și asigurare de călătorie cu protecție împotriva a 4 categorii de riscuri.",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-fizice/conturi-si-pachete-de-cont-curent#:~:text=%C3%8Entregul%20univers%20al%20privilegiilor%20exclusiviste,a%204%20categorii%20de%20riscuri."
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000312_Anexa_1_CGA_PF_RO_10_2026.pdf?v=3",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Vista Visa Debit Platinum",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife confirmă existența cardului de debit Platinum pentru persoane fizice, cu comision de administrare de 500 lei/an perceput ca parte a pachetului Platinum, diferit de structura Libra (48 lei/an, segment PF+PJ).",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul PDF oficial de tarife conține un tabel dedicat cardului Vista Visa Debit Platinum cu toate comisioanele relevante și administrarea anuală a pachetului Platinum.",
+      "pagina_pdf": 11,
+      "citat": "TIP PACHET STANDARD VIRARE VENITURI PREMIUM PLATINUM LEI PLATINUM EUR Administrare Pachet 5 LEI/Luna 0 0 500 LEI/AN Echiv.500 LEI/AN",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-fizice/carduri",
+    "https://www.vistabank.ro/persoane-fizice/conturi-si-pachete-de-cont-curent",
+    "https://www.vistabank.ro/public/docs/1000312_Anexa_1_CGA_PF_RO_10_2026.pdf?v=3"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3542,
+    "citire_cache": 97791,
+    "scriere_cache": 94936,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.29233420000000004
+  }
+}

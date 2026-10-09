@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetele PRIMUS / OPTIMO / MAXIMO",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice conține secțiunea 2.2 'PACHETE CONT CURENT – CLIENTI DIN SEGMENTUL SMALL BUSINESS SI SME' cu comisioanele lunare de administrare pentru cele trei pachete, echivalentul direct al abonamentului operațional Libra pentru firme/PFA.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document de tarife oficial, cu tabel explicit al comisioanelor lunare de administrare pentru fiecare pachet (PRIMUS 29 Lei, OPTIMO 49 Lei, MAXIMO 99 Lei) și componența fiecăruia.",
+      "pagina_pdf": 3,
+      "citat": "PACHET PRIMUS OPTIMO MAXIMO Comision lunar de administrare pachet (Lei) 29 Lei 49 Lei 99 Lei Cont curent in Lei 1 cont 1 cont 2 conturi",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele PRIMUS / OPTIMO / MAXIMO (pachete de cont curent pentru microîntreprinderi și antreprenori)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este abonamentul lunar de cont curent (pachet tranzacțional) dedicat firmelor/PFA, exact tipul de produs 'Abonament operațional' al Libra, oferit aici sub formă de trei trepte (PRIMUS/OPTIMO/MAXIMO) diferențiate după cifra de afaceri.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată enumeră cele trei pachete de cont curent pentru persoane juridice/PFA, cu praguri numerice de eligibilitate (cifră de afaceri, nr. conturi incluse), dar comisioanele lunare exacte sunt detaliate în documentul de tarife.",
+      "citat": "2 conturi curente în Lei, 2 conturi curente în EUR sau USD, Internet Banking, Card de debit Visa Business Gold, încasări.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-primus.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf"
+  ],
+  "durata_s": 124,
+  "consum": {
+    "intrare": 12,
+    "iesire": 10727,
+    "citire_cache": 91495,
+    "scriere_cache": 123650,
+    "apeluri": 2,
+    "cost_estimat_usd": 0.434718
+  }
+}

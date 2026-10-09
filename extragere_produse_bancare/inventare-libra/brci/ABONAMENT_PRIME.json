@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Connect 20",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul pachet tranzacțional lunar dedicat persoanelor juridice la BRCI (cont curent lei+euro, 1 card Mastercard Business, abonament lunar fix), deci același tip de produs (abonament corporate) și același segment (PJ), dar diferă semnificativ: nu are cont în USD, nu are prag de 25 plăți/încasări instant, nu include Live FX și oferă doar 1 card (nu 2) la un abonament de 20 lei/lună față de 95 lei/lună la Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina produsului Connect 20 conține explicit cifrele abonamentului lunar, numărul de conturi și cardul inclus, dar nu am putut deschide pagina direct (blocată de robots.txt), textul provine din indexarea motorului de căutare.",
+      "citat": "20 lei / luna · 0 lei · Cont in LEI si in EURO 150 lei / an · 0 lei · Taxa anuala Administrare Card Mastercard Business Debit 35 lei / luna · 0 lei · Taxa emitere Card Mastercard Business Debit 5 lei / luna · 0 lei · Info SMS pentru tranzactii cu cardul",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://companii.brci.ro/pjonboarding",
+    "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html"
+  ],
+  "durata_s": 60,
+  "consum": {
+    "intrare": 73341,
+    "iesire": 3770,
+    "citire_cache": 12728,
+    "scriere_cache": 25851,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.25155510000000003
+  }
+}

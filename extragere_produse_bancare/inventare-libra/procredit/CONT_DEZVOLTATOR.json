@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CONT_DEZVOLTATOR",
+  "denumire": "Contul Dezvoltatorului",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Contul Escrow",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice conține o secțiune dedicată „CONT ESCROW” cu comisionul de deschidere/modificare, confirmând existența produsului la ProCredit, dar fără detalii privind o variantă dedicată proiectelor imobiliare din Legea 207/2025.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de tarife, valabil curent (din 10.08.2026), cu o secțiune explicită numită „2. CONT ESCROW” care conține comisionul aplicabil, deci produsul apare clar cu valori concrete.",
+      "pagina_pdf": 1,
+      "citat": "2. CONT ESCROW Deschidere/modificare cont ESCROW 0.1% din suma , minim 60 eur/echivalent",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (13 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Contul Escrow",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de la ProCredit Bank asemănător cu Contul Dezvoltatorului: un cont special pentru persoane juridice, folosit mai ales în tranzacții imobiliare, care securizează fondurile până la finalizarea tranzacției. Diferă însă de produsul Libra prin faptul că nu este descris ca fiind dedicat special proiectelor imobiliare reglementate de Legea 207/2025 (încasare avansuri de la mai mulți cumpărători și plăți către furnizorii proiectului), ci ca un cont escrow generic, folosit în diverse tipuri de tranzacții (nu doar imobiliare, nu doar pentru dezvoltatori).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie explicit Contul Escrow ca fiind destinat persoanelor juridice și folosit cel mai frecvent în tranzacții imobiliare, dar nu conține cifre (dobânzi/comisioane) și nu menționează Legea 207/2025 sau un flux dedicat dezvoltatorilor imobiliari.",
+      "citat": "Pe lângă acestea, punem la dispoziție și conturi speciale, precum Contul Escrow, care este folosit în diverse tipuri de tranzacții, dintre care cele mai obișnuite sunt cele imobiliare. Funcționând ca un intermediar de încredere, Contul Escrow garantează că fondurile sunt securizate și disponibile până când tranzacția este finalizată conform condițiilor stabilite.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/#:~:text=Pe%20l%C3%A2ng%C4%83%20acestea%2C%20punem%20la,este%20finalizat%C4%83%20conform%20condi%C8%9Biilor%20stabilite."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+    "https://www.procreditbank.ro/wp-content/uploads/2025/03/Lista-preturi-PJ-RO_12.05.2025.pdf",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2810,
+    "citire_cache": 142291,
+    "scriere_cache": 84010,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.26660320000000004
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent T0 pentru Clienții IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de tip 'pachet/abonament de cont curent' dedicat segmentului IMM și PFA (același segment ca Abonamentul PRESTIGE de la Libra), cu tranzacții/încasări nelimitate incluse. Diferă însă fundamental: este GRATUIT (0 lei/lună) față de 295 lei/lună la Libra, include doar 1 card de debit business (nu 5 standard + 2 Gold), nu menționează Live FX, și este valabil doar ca ofertă promoțională pentru firme înființate în ultimele 12 luni, nu un abonament permanent pentru orice companie.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul este dedicat exact acestui pachet și conține toate cifrele relevante (taxe, comisioane, condiții de eligibilitate), dar structura produsului (gratuit, doar firme noi) diferă mult de abonamentul plătit PRESTIGE de la Libra.",
+      "citat": "IMM-urilor și Întreprinzatorilor Individuali care s-au înființat în ultimele 12 luni anterioare contractării ofertei, respectiv începând cu data de 5 ianuarie 2026 și care la momentul lansării ofertei nu sunt clienți ai Băncii sau care au deschis la Garanti Bank S.A un cont de capital social.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/cash-management/cont-curent/",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+    "https://www.garantibbva.ro/en/sme-and-pfa/current-account/"
+  ],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 26238,
+    "iesire": 4447,
+    "citire_cache": 90804,
+    "scriere_cache": 58332,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2609368
+  }
+}

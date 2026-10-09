@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/conturi-curente",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele de cont curent Vista Bank pentru persoane juridice (Pachetul Vista de Bază / Activ / Activ Plus)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (cont curent pentru persoane juridice, cu card business atașat și pachete operaționale), dar diferă canalul: deschiderea și gestionarea nu se fac exclusiv online, ci presupun depunerea unei Cereri pentru Produse și Servicii Bancare și documentație la bancă, nefiind un produs 'online-only' precum Cont Online Business de la Libra.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina dedicată conturilor curente PJ conține cifre concrete (cost lunar, plafon cifră de afaceri) dar descrie un produs generic, nu unul gestionat exclusiv online.",
+      "citat": "Pachetul Vista de Bază are un cost lunar unic de 50 de lei. Pachetele se acordă persoanelor juridice rezidente cu cifra de afaceri ≤ 3.000.000 Euro echivalent în lei, conform datelor din ultimul bilanț anual depus la autoritățile fiscale competente.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/Manual_Vista%20MB_IB_RO_iul24.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Manual Vista Internet/Mobile Banking",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă explicit că, spre deosebire de Cont Online Business Libra, la Vista Bank persoanele juridice nu pot deschide cont curent prin aplicația de Internet/Mobile Banking, deci nu există un echivalent 'deschis exclusiv online' pentru firme.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Documentul tehnic confirmă limitarea canalului online pentru persoane juridice, dar nu este o pagină de produs cu tarife complete.",
+      "citat": "fizice, se pot deschide maximum 5 conturi curente: in RON, EUR, USD, GBP si CHF. Persoanele juridice nu pot deschide conturi curente prin aplicatia Internet/Mobile Banking.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3284,
+    "citire_cache": 6332,
+    "scriere_cache": 22322,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.08991940000000001
+  }
+}

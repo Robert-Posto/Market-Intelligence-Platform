@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2023/09/Lista-de-dobanzi-taxe-si-comisioane-pentru-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Contul curent standard",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife acopera explicit 'Contul curent standard' pentru persoane fizice, cu comisioane de deschidere/administrare/inchidere; este echivalentul functional al Contului Online Personal Libra ca tip de cont, dar la tbi bank acest cont standard nu se deschide/opereaza online, spre deosebire de produsul Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de tarife, Anexa 2 la Conditiile Generale de Afaceri, cu cifrele exacte pentru sectiunea I. Contul curent standard.",
+      "citat": "Conturi curente in lei si valuta | Comision | Deschidere cont | 0 | Administrare cont | 0 | Inchidere cont | 0 | Eliberare extras de cont la ghiseele Bancii (1/luna) | 0 | Eliberare duplicat extras de cont | 5 RON",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/persoane-fizice/operatiuni-bancare/operatiuni-cont-curent/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont curent standard (Operatiuni cont curent / Deschidere cont)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent pentru persoane fizice la tbi bank (acelasi tip de produs, acelasi segment), dar canalul difera fundamental fata de Libra: pagina precizeaza explicit ca acest cont NU este accesibil online, spre deosebire de Contul Online Personal Libra care e deschis 100% digital.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este pagina dedicata serviciilor de cont curent PF, dar nu contine cifre de dobanzi/comisioane, doar descrierea produsului si a canalului de acces.",
+      "citat": "Clientii care au deschis la Banca un cont curent nu au posibilitatea de a initia plati sau de a obtine informatii cu privire la acest cont prin intermediul unor prestatori de servicii terti deoarece contul nu este accesibil online.",
+      "citat_verificat": true,
+      "link_live": "https://tbibank.ro/persoane-fizice/operatiuni-bancare/operatiuni-cont-curent/#:~:text=Clientii%20care%20au%20deschis%20la,contul%20nu%20este%20accesibil%20online."
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2022/09/Conditii_Generale_de_Afaceri_ale_Bancii_pentru_persoane_fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Cont curent persoane fizice (Conditii Generale de Afaceri)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Conditiile generale confirma ca deschiderea contului curent PF la tbi bank presupune prezentarea clientului la banca/unitatile teritoriale, deci nu este un flux 100% online ca la Contul Online Personal Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Document contractual general care descrie procesul de deschidere a contului, inclusiv obligatia de prezentare la banca, dar nu contine cifre specifice de tarife.",
+      "citat": "Clientul se angajeaza prin prezentele CGA sa se prezinte la Banca/Unitatile teritoriale ale Bancii si sa completeze un formular intermediul extrasului de cont",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/",
+    "https://tbibank.ro/persoane-fizice/operatiuni-bancare/operatiuni-cont-curent/"
+  ],
+  "durata_s": 41,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3465,
+    "citire_cache": 27647,
+    "scriere_cache": 36894,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1324264
+  }
+}

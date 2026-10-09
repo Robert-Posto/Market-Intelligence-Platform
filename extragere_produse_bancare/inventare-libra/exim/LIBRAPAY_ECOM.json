@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/09/Taxe-si-comisioane-furnizare-servicii-de-acceptare-la-EFTPOS-si-VPOS.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Servicii de acceptare la VPOS (plăți online e-commerce)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document dedicat exclusiv serviciului de acceptare a plăților cu cardul pentru comercianți, cu secțiune separată pentru 'Plați online (e-commerce) (VPOS)' și comisioane distincte pentru carduri de companii (Business/Corporate), exact ca LibraPay eCommerce care e un gateway de acceptare plăți online pentru persoane juridice.",
+      "incredere": 0.93,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul conține explicit tabelul de comisioane pentru VPOS/e-commerce, separat pe tipuri de carduri (persoane fizice vs companii) și taxa de integrare a paginii de plată, toate cifre exacte și verificabile.",
+      "citat": "COMISIOANE TRANZACȚII (indiferent de Banca emitentă a cardului) POS în magazin (EFTPOS) Plați online (e-commerce) (VPOS) Comision tranzacții - Carduri companii (Business / Corporate) 1,90% 1,90% 2,00% 2,00% 1,00% Integrare pagina plata e-commerce 400 RON (aplicabil o singura data)",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2025/06/11/transactional-offers/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+    "https://www.eximbank.ro/2022/12/15/operatiuni-curente/",
+    "https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf",
+    "https://www.eximbank.ro/documente-diverse/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/09/Taxe-si-comisioane-furnizare-servicii-de-acceptare-la-EFTPOS-si-VPOS.pdf"
+  ],
+  "durata_s": 68,
+  "consum": {
+    "intrare": 16,
+    "iesire": 4963,
+    "citire_cache": 424744,
+    "scriere_cache": 114232,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4201908
+  }
+}

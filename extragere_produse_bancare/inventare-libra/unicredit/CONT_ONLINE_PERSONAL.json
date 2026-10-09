@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent persoane fizice (oferte OPTIM, STAR, YOUNG, PENSIONAR etc. și Oferta Standard)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de comisioane și dobânzi pentru conturile curente ale persoanelor fizice, inclusiv cel deschis 100% online, cu toate tarifele standard și dobânda contului curent.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document tarifar oficial, actualizat, cu valori exacte pentru administrarea contului curent, dobânda contului curent (0%) și comisioanele standard aplicabile.",
+      "pagina_pdf": 6,
+      "citat": "Administrarea contului curent (comision perceput lunar în ultima zi lucrătoare a lunii) 12 Lei/ lună 4 Euro; 4 USD; 4 GBP/ lună Dobândă anuală cont curent/ cont curent Junior 0 0",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/digital/campanie-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont bancar online 100% (deschidere 100% digitală prin Mobile Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată UniCredit pentru deschiderea unui cont curent personal 100% online, direct din aplicația Mobile Banking, fără deplasare la bancă - același tip de produs și segment (persoane fizice) ca Cont Online Personal Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina oficială dedicată contului curent deschis 100% online, cu cifre concrete despre comisioane (0 Lei, excepția de 12 Lei/lună) pentru ofertele de cont asociate.",
+      "citat": "Se aplică 0 (zero) comision pentru administrarea lunară a contului/conturilor curente inclus/e în ofertă şi pentru furnizarea (administrarea) cardului/cardurilor de debit inclus/e în ofertă, cu excepţia cardului de debit Mastercard Gold fizic sau virtual, pentru care se aplică un comision de 12 Lei/lună în oferta STAR.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/ContCurent/oferta-optim.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Oferta tranzacțională OPTIM (cont curent, inclusiv deschis 100% online)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "OPTIM este oferta de cont curent implicită pentru clienți persoane fizice, inclusiv cei care deschid contul 100% online din Mobile Banking, menționată explicit pe pagina dedicată contului online.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină de produs cu cifre concrete despre costuri și condiții de eligibilitate pentru oferta de cont curent asociată deschiderii online.",
+      "citat": "Poti deschide un cont bancar 100% online direct din Mobile Banking. Ai ZERO costuri la administrarea unui cont curent in Lei si a unui cont curent in Euro. Ai ZERO costuri pentru transfer credit - plati interbancare in Lei catre orice banca din Romania, prin Mobile Banking & Online Banking.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/ContCurent/oferta-optim.html#:~:text=Poti%20deschide%20un%20cont%20bancar,Mobile%20Banking%20%26%20Online%20Banking."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/cont-curent-geniuscont.html",
+    "https://mobile.unicredit.ro/content/cee2020-pws-ro/ro/persoane-fizice/digital/campanie-cont-curent.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+    "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/ContCurent/oferta-optim.html"
+  ],
+  "durata_s": 49,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3850,
+    "citire_cache": 194953,
+    "scriere_cache": 119724,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.37682059999999995
+  }
+}

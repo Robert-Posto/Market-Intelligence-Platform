@@ -1,0 +1,25 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Vista Bank nu are un produs dedicat de integrare API cu programele de contabilitate pentru firme/PFA. Banca are doar un API PSD2/Open Banking (apivbr.vistabank.ro, PSD2_API_Documentation_Vista_Bank.pdf) destinat furnizorilor terți de servicii de plată (TPP - fintech-uri, alte bănci) pentru inițiere de plăți și informații despre conturi, nu o integrare directă cu softuri de contabilitate pentru clienți persoane juridice. Secțiunea 'Persoane juridice' a site-ului conține doar conturi curente, depozite, credite și carduri business, fără niciun serviciu de tip 'API Contabili'."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice/conturi-curente"
+  ],
+  "durata_s": 14,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1027,
+    "citire_cache": 28783,
+    "scriere_cache": 33843,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1006461
+  }
+}

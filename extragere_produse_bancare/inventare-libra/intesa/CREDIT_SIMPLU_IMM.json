@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-de-afaceri-fara-garantii-1.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de afaceri fără garanții materiale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit pentru activitatea curentă adresat microîntreprinderilor/antreprenorilor (persoane juridice, PFA), fără garanție imobiliară, la fel ca Credit Simplu IMM; diferă însă suma maximă (500.000 lei, fără prag minim declarat, față de 20.000–200.000 lei la Libra), perioada maximă (36 luni față de 48 luni) și tipul de garanție (contract de fideiusiune din partea acționarului majoritar, nu doar scoring fără nicio garanție).",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit suma maximă, perioada maximă și tipul de garanție cerut.",
+      "citat": "Destinația: Finanțare activitate curentă și refinanțarea altor credite. Suma maximă: 500.000 lei. Perioada maximă de creditare: 36 de luni. Contract de fideiusiune din partea acționarului majoritar și a soțului/soției acestuia/acesteia.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-de-afaceri-fara-garantii-1.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2308,
+    "citire_cache": 87704,
+    "scriere_cache": 60584,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19209679999999998
+  }
+}

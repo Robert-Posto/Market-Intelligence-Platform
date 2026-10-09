@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Alte finanțări agricultură (finanțarea achiziției de utilaje, echipamente agricole)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru achiziția de utilaje/echipamente agricole, destinat tot firmelor din agricultură, dar la UniCredit nu apare ca produs dedicat garantat prin InvestEU, ci ca o finanțare generală (termen scurt/mediu/lung, revolving sau la termen, fără interval explicit de 12-84 luni); garanția InvestEU apare separat, ca instrument generic pentru IMM-uri, nelegat explicit de acest tip de echipamente.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată agriculturii menționează explicit finanțarea achiziției de utilaje și echipamente agricole pentru firme, dar fără cifre de dobândă/comision și fără legătura explicită cu garanția InvestEU.",
+      "citat": "Finantari pe termen scurt mediu sau lung; fie pentru finantarea cheltuielilor curente ale fermei, fie pentru finantarea achizitiei de utilaje, echipamente agricole, linii de productie sau constructia/modernizarea fermei; Revolving sau la termen (cu rambursari); In lei sau euro.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "InvestEU guarantee instrument (Special Programs / IMM Invest)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Oferă exact mecanismul de garantare InvestEU pentru credite de investiții la firme (IMM), cu maturitate și procent de garantare explicite, dar este un instrument generic pentru orice tip de investiție IMM, nededicat specific utilajelor agricole.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul arată condițiile concrete ale garanției InvestEU (procent, comision, maturitate) aplicabile creditelor de investiții la UniCredit, dar nu este specific sectorului agricol sau utilajelor agricole.",
+      "citat": "Through InvestEU, UniCredit Bank offers you working capital loans (revolving and non-revolving), and also financing for investments, all supported by advantageous guarantees. Guarantee between 30% and 80%, with a maturity period between 12 and 48 months for revolving working capital and up to 144 months for investments.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html#:~:text=Through%20InvestEU%2C%20UniCredit%20Bank%20offers,to%20144%20months%20for%20investments."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/finantare/agricultura.html",
+    "https://www.unicredit.ro/en/sme/borrowing/special-programs.html"
+  ],
+  "durata_s": 58,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4148,
+    "citire_cache": 79448,
+    "scriere_cache": 57616,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20142559999999998
+  }
+}

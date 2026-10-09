@@ -30,6 +30,8 @@ export interface CerereSertar {
   scenariu: string
   termen?: string
   produs?: string
+  /** 'libra': valorile vin din fluxul comparației (api/sursa.ts), ca celula pe care s-a dat clic */
+  sursa?: string
 }
 
 /** Textul românesc al datelor: „retrasă din ofertă” e scris de bancă, nu de noi. */
@@ -42,7 +44,7 @@ export default function Sertar({ cerere, onClose }: { cerere: CerereSertar | nul
     queryKey: ['celula', cerere],
     enabled: !!cerere,
     queryFn: () =>
-      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '' }),
+      api('/api/celula', Celula, { banca: cerere!.banca, camp: cerere!.camp, unitate: cerere!.unitate, scenariu: cerere!.scenariu, termen: cerere!.termen ?? '', produs: cerere!.produs ?? '', sursa: cerere!.sursa ?? '' }),
   })
   const titlu = cerere ? `${meta.data?.nume[cerere.banca] ?? cerere.banca} · ${etNume(cerere.camp, t)}` : ''
   return (

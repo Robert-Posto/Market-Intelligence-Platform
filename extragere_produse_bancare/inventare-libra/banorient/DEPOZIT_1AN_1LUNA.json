@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Dobânda standard la depozite (Depozit la termen)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de depozit la termen clasic oferit de bancă, disponibil atât pentru persoane fizice cât și juridice, dar banca nu are niciun depozit promoțional de 13 luni (1 An și 1 Lună); grila ei de dobânzi standard se oprește la maturitatea de 12 luni, cu dobânzi mult mai mici (max. 2.75% RON, 1.00% EUR) decât cele promoționale ale Libra (~6.60%/6.10%).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina conține grila oficială de dobânzi la depozite pe termene standard (3 zile–12 luni), dar fără echivalent pentru termenul de 13 luni și fără caracter promoțional, deci acoperă doar parțial produsul Libra.",
+      "citat": "Suma minimă pentru depozitele purtătoare de dobândă este de 200.000 RON/50.000 EUR/50.000 USD. Perioada EUR USD RON 12 luni 1.00 % 2.50 % 2.75 %",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Suma%20minim%C4%83%20pentru%20depozitele%20purt%C4%83toare,%25%202.50%20%25%202.75%20%25"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2579,
+    "citire_cache": 17206,
+    "scriere_cache": 27193,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0972257
+  }
+}

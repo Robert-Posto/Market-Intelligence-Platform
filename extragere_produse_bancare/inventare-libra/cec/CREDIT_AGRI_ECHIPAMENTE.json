@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/credit-rapid-agro-achizitie-utilaje",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit rapid AGRO pentru investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit de investiții în rate pentru utilaje agricole, pentru firme/PFA din agricultură, cu termen până la 7 ani (84 luni) - acoperă bine intervalul 12-84 luni al produsului Libra; diferă garanția (FGCR, schemă națională) față de InvestEU (garanție UE) și plafonul mai mic (max 500.000 lei).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține explicit cifrele produsului: dobândă, sumă maximă, perioadă, comisioane.",
+      "citat": "Poți accesa creditul indiferent de forma de organizare: societate comercială, profesii liberale sau fermieri. Moneda creditului: lei. Suma maximă: 500 000 lei. Perioada de creditare: max 7 ani. Rata dobânzii anuale: ROBOR 6M + 2,50%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/credite-rural-plus",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite RURAL PLUS - componenta investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit de investiții pentru firme din agricultură care include explicit achiziția de echipamente/utilaje, termen 72 luni (în intervalul 12-84 luni Libra); diferă garanția (FGCR/stat român) față de InvestEU și plafonul maxim mai mare (10 milioane lei, respectiv 5 milioane pentru agricultura primară).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține cifrele produsului și menționează explicit achiziția de echipamente/utilaje ca destinație eligibilă.",
+      "citat": "Rata dobânzii: ROBOR 3M + 1,50% Perioade de creditare: maximum 72 luni, inclusiv perioada de grație, fără posibilitate de prelungire achiziție de echipamente/mașini/utilaje/mijloace de transport/alte mijloace fixe inclusiv TVA",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 63,
+  "consum": {
+    "intrare": 6,
+    "iesire": 5514,
+    "citire_cache": 39094,
+    "scriere_cache": 38142,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.15832580000000002
+  }
+}

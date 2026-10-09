@@ -4020,6 +4020,177 @@
     "intrare": 4657,
     "iesire": 919
    }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/persoane-fizice/alte-servicii/plati-instant||plăți instant (persoane fizice)",
+   "url": "https://www.patriabank.ro/persoane-fizice/alte-servicii/plati-instant",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Plăți Instant (persoane fizice)",
+   "focus": "Produsul băncii: „Plăți Instant (persoane fizice)”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2954,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "c2d9ccab72d1e5b25c63c2048dc246b6e5261c7809a3183cbcb85dc1fb1dfd83",
+   "observatii": [
+    {
+     "id": "d19a164d7e050aa398b671b852742a2b",
+     "id_url": 2954,
+     "id_produs": "plati-transferuri",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul descrie funcționalitatea serviciului de Plăți Instant, dar nu conține nicio valoare numerică de comision; se menționează doar că tarifele sunt incluse în lista de tarife și comisioane persoane fizice, fără a fi reproduse aici.",
+     "content_hash": "c2d9ccab72d1e5b25c63c2048dc246b6e5261c7809a3183cbcb85dc1fb1dfd83",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "ae784fc54418293e869be0f3f69720ffb4961acc1c9aa28643fccf143d782626"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 4,
+   "tokeni": {
+    "intrare": 3906,
+    "iesire": 171
+   }
+  },
+  {
+   "cheie": "https://www.patriabank.ro/afaceri-mici/solutii-financiare-non-cash/scrisori-de-garantie-bancara||scrisoare de garanție bancară",
+   "url": "https://www.patriabank.ro/afaceri-mici/solutii-financiare-non-cash/scrisori-de-garantie-bancara",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisoare de Garanție Bancară",
+   "focus": "Produsul băncii: „Scrisoare de Garanție Bancară”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2949,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "8814f56b2f4c950b330da1ac03a9fd12e49fe596ff2768371a297bebfc3cd695",
+   "observatii": [
+    {
+     "id": "6a2f1bd4e7f18fb3bb98cd859aab4e5f",
+     "id_url": 2949,
+     "id_produs": "garantii-acreditive",
+     "camp": "perioada_valabilitate",
+     "cod_scenariu": null,
+     "valoare_num": 120,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8814f56b2f4c950b330da1ac03a9fd12e49fe596ff2768371a297bebfc3cd695",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Până la 120* de luni valabilitate",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „perioada_valabilitate” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "104342f822fdae4ed02462cd44ece54a7de83f8c051208196890e95a9863c65c"
+    },
+    {
+     "id": "7057eb5f227ee9331108b0bae6c41c58",
+     "id_url": 2949,
+     "id_produs": "garantii-acreditive",
+     "camp": "perioada_valabilitate",
+     "cod_scenariu": "VALAB_180L_INFRASTRUCTURA",
+     "valoare_num": 180,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8814f56b2f4c950b330da1ac03a9fd12e49fe596ff2768371a297bebfc3cd695",
+     "conditii": [
+      "exclusiv pentru proiecte de infrastructură"
+     ],
+     "eticheta_libera": null,
+     "citat": "Perioada de valabilitate mai mare de 120 luni, maxim 180 luni, se poate acorda exclusiv pentru proiecte de infrastructură.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.7,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "104342f822fdae4ed02462cd44ece54a7de83f8c051208196890e95a9863c65c"
+    },
+    {
+     "id": "6a2f1bd4e7f18fb3bb98cd859aab4e5f",
+     "id_url": 2949,
+     "id_produs": "garantii-acreditive",
+     "camp": "perioada_valabilitate",
+     "cod_scenariu": null,
+     "valoare_num": 60,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8814f56b2f4c950b330da1ac03a9fd12e49fe596ff2768371a297bebfc3cd695",
+     "conditii": [],
+     "eticheta_libera": null,
+     "citat": "Maturitatea maximă a unui SGB este de 60 de luni, în timp ce maturitatea maximă a plafonului este de 120* de luni",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „perioada_valabilitate” apare de 3 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "patria",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "104342f822fdae4ed02462cd44ece54a7de83f8c051208196890e95a9863c65c"
+    }
+   ],
+   "respinse": [],
+   "scrise": 3,
+   "durata_s": 8,
+   "tokeni": {
+    "intrare": 3924,
+    "iesire": 545
+   }
   }
  ]
 }

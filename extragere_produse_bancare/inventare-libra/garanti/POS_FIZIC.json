@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0014-v24._-April-2026_RO_.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Terminal POS / Comisioane standard aferente acceptarii la plata a cardurilor",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife al Garanti BBVA pentru comercianti (persoane juridice/PFA) contine exact serviciul de acceptare la plata cu cardul prin terminal POS fizic, cu abonament lunar si comisioane pe tranzactie, same tip de produs si acelasi segment ca POS_FIZIC de la Libra Bank.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul contine explicit grila de tarife pentru terminalul POS fizic (abonament lunar, taxa de inrolare, comision pe tranzactie) defalcata pe praguri de cifra de afaceri a comerciantului.",
+      "citat": "Pentru comercianti cu cifra de afaceri intre 0 si 50.000 EUR/an Abonamente si comisioane pentru acceptarea la plata a cardurilor Visa/MasterCard Tip abonament/POS 79 RON lunar Carduri emise de GarantiBank 0.85",
+      "pagina_pdf": 11,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0014-v24._-April-2026_RO_.pdf",
+    "https://www.garantibbva.ro/ro/imm/conturi-si-servicii/managementul-lichiditatilor.html",
+    "https://www.garantibbva.ro/ro/imm/conturi-si-servicii/managementul-lichiditatilor.html"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 133539,
+    "iesire": 2436,
+    "citire_cache": 12670,
+    "scriere_cache": 30771,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.37089949999999994
+  }
+}

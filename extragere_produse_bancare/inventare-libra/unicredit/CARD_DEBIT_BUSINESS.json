@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Visa*/Mastercard Business Silver si Visa*/Mastercard Business Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice contine o sectiune dedicata 'CARDURI DE DEBIT' cu comisioane si limite pentru cardurile business Silver/Gold, echivalent segmentului si tipului de produs Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Tabel explicit cu denumirea produselor de card de debit business si valorile exacte ale comisionului anual, comisioanelor de tranzactie si limitelor zilnice.",
+      "citat": "Comision anual 20 Euro 65 Euro Tranzacție POS națională și internațională gratuit gratuit Limita de utilizare ATM (/zi) 10 tranzacții/ 4.000 Lei 10 tranzacții/ 8.000 Lei Limita de utilizare POS (/zi) 10 tranzacții/ 8.000 Lei",
+      "pagina_pdf": 7,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Business Silver / Mastercard Business Gold debit card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit dedicat persoanelor juridice (IMM/companii), acelasi tip de produs si acelasi segment ca si Libra CARD_DEBIT_BUSINESS.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicata exclusiv cardurilor de debit pentru IMM, cu descriere functionala si praguri numerice pentru plati contactless.",
+      "citat": "You can make fast contactless payments at POS, for low value amounts (Value established by the international organizations cards Visa or MasterCard ; for example under 100 Lei in Romania) without PIN. It will be necessary to introduce the PIN code if the cumulative amount of previous consecutive contactless transactions exceeds the threshold of 150 Euro or equivalent.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html#:~:text=You%20can%20make%20fast%20contactless,of%20150%20Euro%20or%20equivalent."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/micro/carduri-de-debit.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+    "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html"
+  ],
+  "durata_s": 82,
+  "consum": {
+    "intrare": 8,
+    "iesire": 7343,
+    "citire_cache": 120540,
+    "scriere_cache": 89615,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.32159150000000003
+  }
+}

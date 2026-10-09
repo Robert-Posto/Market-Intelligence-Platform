@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanție FEI (Credit COMPETITIVENESS)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (credit garantat FEI în cadrul InvestEU, pentru capital de lucru și investiții, persoane juridice) ca cel de la Libra, dar diferă plafoanele (max. 1.000.000 EUR pt. capital de lucru vs 250k-10 mil. RON la Libra; max. 7.500.000 EUR pt. investiții vs 15-20 mil. RON la Libra) și termenele (36 luni fix la capital de lucru, 7-15 ani la investiții, față de 12-120 luni la Libra).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina este dedicată produsului, numește explicit 'Credit COMPETITIVENESS' cu garanție FEI/InvestEU și conține cifrele exacte pentru ambele componente (capital de lucru și investiții).",
+      "citat": "Avantajele Creditului pentru investiții cu garanție Competitiveness - Perioada de acordare: -Credit investiții imobiliare- 15 ani (fixă); -Credit investiții mobiliare- între 7 și 10 ani; -Credit investiții mobiliare echipamente eco- între 7 și 10 ani; - Rambursare: cu rate personalizate în funcție de activitatea companiei - Monedă facilitate: EUR/RON - Expunere maximă: 7.500.000 EUR sau echivalent în RON",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/imm_corporate/credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit cu garanție FEI (Credit COMPETITIVENESS)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina hub pentru credite IMM confirmă existența produsului COMPETITIVENESS cu garanție FEI pentru persoane juridice rezidente în România, dar nu detaliază complet toate cifrele (acestea se găsesc pe pagina dedicată).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Menționează explicit produsul COMPETITIVENESS cu garanție FEI și condițiile generale de eligibilitate, dar fără cifre complete despre sume și termene.",
+      "citat": "Produsele de creditare COMPETITIVENESS, cu garanție gratuită din partea FEI, se adresează clienților rezidenți în România, ce îndeplinesc condițiile de eligibilitate aferente Convenției de garantare semnate cu FEI",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/despre-patria/informatii-presa/comunicate-de-presa/creditul-competitiveness",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credit COMPETITIVENESS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Comunicatul de lansare descrie produsul ca fiind destinat afacerilor medii și mari (persoane juridice), cu garanție FEI pentru credite de capital de lucru și investiții, confirmând segmentul și tipul de produs, dar fără toate cifrele detaliate ca pe pagina dedicată.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Confirmă lansarea, segmentul de clienți (afaceri medii și mari) și tipul de garanție FEI/InvestEU, dar conține mai puține cifre concrete decât pagina dedicată produsului.",
+      "citat": "Entitățile persoane juridice (cu excepția Producătorilor Agricoli Individuali) care dețin o afacere cu activitate de minim 3 ani, pot beneficia de garanție gratuită din partea Fondului European de Investiții pentru credite care acoperă nevoia de capital de lucru și credite de investiții, ambele beneficiind de o perioadă extinsă de creditare, față de produsele standard.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei",
+    "https://www.patriabank.ro/imm_corporate/credite",
+    "https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei",
+    "https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei",
+    "https://www.patriabank.ro/imm_corporate/credite",
+    "https://www.patriabank.ro/imm_corporate/credite",
+    "https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei"
+  ],
+  "durata_s": 82,
+  "consum": {
+    "intrare": 174021,
+    "iesire": 7046,
+    "citire_cache": 12758,
+    "scriere_cache": 28794,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4930386
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000312_anexa_1_cga_pf_ro_aprilie_2024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Lista de Tarife, Termene și Condiții pentru persoane fizice - Cont Curent",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul conține tarifele pentru deschiderea, administrarea și operarea contului curent pentru persoane fizice (echivalentul contului de bază din spatele produsului 'Cont Online Personal'), inclusiv costuri pentru transferuri prin Internet/Mobile Banking.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisioanele pentru cont curent PF, inclusiv administrare și transferuri prin Internet Banking/Mobile Banking.",
+      "citat": "Administrare cont curent nu se aplica pentru contul utilizat pentru plata ratelor lunare in cazul clientilor care solicita un produs de creditare si conturilor curente deschise anterior datei 28 octombrie 2019; 0,25% minim 100 EUR maxim 1.000 EUR",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/conturi-si-pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Conturi și pachete de cont curent (Vista Standard / Platinum / Premium / Virare Venituri) - persoane fizice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent pentru persoane fizice cu acces digital complet prin Vista Internet și Mobile Banking, însă nu este prezentat explicit ca produs cu deschidere 100% online precum Cont Online Personal Libra; aici deschiderea contului se face standard, iar accesul digital e asigurat de aplicațiile Vista Internet/Mobile Banking.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie contul curent PF și pachetele aferente cu caracteristici și beneficii, dar nu menționează explicit un proces de deschidere 100% online fără deplasare la sucursală.",
+      "citat": "Prin contul curent în lei sau valută deschis la Vista Bank vă puteți gestiona eficient resursele financiare și aveți acces la diverse alte produse și servicii ale băncii. Deschiderea contului curent este gratuită.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/vista-internet-si-mobile-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Vista Internet și Mobile Banking",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Reprezintă canalul digital complet (acces online/mobil) asociat contului curent PF, componenta care la Libra definește caracterul '100% online' al contului, dar la Vista este un serviciu separat atașat contului curent clasic, nu un produs de cont de sine stătător deschis integral online.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie funcționalitățile de acces digital (deschidere conturi noi, operațiuni, plăți) disponibile prin aplicație, relevante pentru accesul digital complet, dar nu este o pagină de produs 'cont online' dedicată.",
+      "citat": "Aplicațiile Vista Internet & Mobile Banking reprezintă o alternativă rapidă și confortabilă de a vă accesa oricând și de oriunde conturile, de a ordona tranzacții sau de a vă gestiona lichiditățile și creditele, atât de pe calculator sau laptop, cât și de pe telefonul mobil sau tabletă.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2319,
+    "citire_cache": 45676,
+    "scriere_cache": 46901,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1495897
+  }
+}

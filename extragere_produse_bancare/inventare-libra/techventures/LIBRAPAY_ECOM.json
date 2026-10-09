@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/e-commerce",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "e-Commerce (soluție Twispay)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de acceptare plăți online cu cardul pentru magazine online/persoane juridice, prin platforma partener Twispay, analog gateway-ului LibraPay eCommerce - același tip de produs (gateway de plăți online) și același segment (firme cu magazin online).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea serviciului și cifra exactă a comisionului de procesare.",
+      "citat": "Comision standard de procesare de până la 1,20% din volumul tranzacțiilor Carduri acceptate: VISA Mastercard",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (15 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/"
+  ],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 4,
+    "iesire": 589,
+    "citire_cache": 6346,
+    "scriere_cache": 23216,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0652072
+  }
+}

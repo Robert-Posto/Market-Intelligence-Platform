@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "EXIM BUSINESS COMPLET (pachet de servicii pentru PFA și microîntreprinderi)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament lunar corporate pentru persoane juridice (PFA/microîntreprinderi) care grupează conturi curente lei/valută, card de debit business și internet/mobile banking, la fel ca Abonamentul PRIME. Diferă însă segmentul de mărime a firmei (dedicat explicit microîntreprinderilor/PFA, nu corporate general), prețul (70 lei/lună vs. 95 lei/lună), numărul de carduri incluse (1, nu 2) și lipsa unei componente explicite de tip Live FX sau a unor plafoane fixe de 25 plăți + 25 încasări instant incluse gratuit.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată prezintă explicit cele patru variante de abonament (SMART, START, ACTIV, COMPLET) cu prețurile lunare și beneficiile incluse pentru conturi, carduri și plăți.",
+      "citat": "EXIM BUSINESS COMPLET (70 lei/luna) Costuri ZERO: deschiderea contului curent; administrarea lunara a conturilor curente in lei si valuta; furnizarea (emiterea) si administrarea cardului de debit inclus in oferta; administrare lunara Internet/Mobile Banking (e-ximBanking); incasari nelimitate intrabancare/interbancare in lei si valuta; plati nelimitate intrabancare prin e-ximBanking.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=EXIM%20BUSINESS%20COMPLET%20%2870%20lei%2Fluna%29,plati%20nelimitate%20intrabancare%20prin%20e%2DximBanking."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+    "https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 52232,
+    "iesire": 2519,
+    "citire_cache": 45577,
+    "scriere_cache": 49496,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2625094
+  }
+}

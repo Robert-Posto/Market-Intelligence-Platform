@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "tbi bank nu are un card de credit business revolving pentru PJ/PFA. Pagina de credite pentru companii (https://tbibank.ro/companii/credite-companii/) listeaza doar: Credit online fara garantii, Credit pentru Dezvoltari Imobiliare, Credit pentru activitatea curenta si Credit de investitii - toate credite in rate/linii fara card atasat, nu linii revolving pe card business. Singurul produs 'card de credit' gasit la tbi bank (document PDF 'Lista_dobanzi_taxe_si_comisioane_card_de_credit', brand tbicredit.ro) este un card de credit de consum pentru persoane fizice (limita exemplu 9.000 RON, dobanda 32%), nu un produs pentru persoane juridice/PFA, deci nu corespunde segmentului de business al produsului Libra CARD_CREDIT_PJ."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/wp-content/uploads/2022/09/Lista_dobanzi_taxe_si_comisioane_card_de_credit_incepand_cu_1_Feb_2019_new.pdf",
+    "https://tbibank.ro/companii/credite-companii/"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1641,
+    "citire_cache": 62660,
+    "scriere_cache": 34910,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11623299999999999
+  }
+}

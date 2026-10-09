@@ -1,0 +1,63 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/agro/credite/linia-de-credit-agro",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linie de credit Patria Agro",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o linie de credit dedicată agricultorilor (persoane juridice, PFA, societăți agricole etc.) pentru achiziția de inputuri agricole (semințe, pesticide, îngrășăminte, motorină), ca și produsul Libra. Diferă însă termenul (aici maxim 12 luni, cu prelungire, față de 24-48 luni la Libra) și lipsește legătura explicită cu o garanție/program InvestEU.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu termeni concreți (monedă, durată, mod de calcul al dobânzii) prezentați direct în text.",
+      "dovada_metoda": "Cifrele (12 luni, acordare în lei) apar direct în textul paginii, fără a fi nevoie de randare JavaScript.",
+      "citat": "se acordă în lei, pe maxim 12 luni cu posibilitatea de prelungire fără re-înregistrare garanții - valoarea maximă acordată: nu avem o limită de sumă, stabilim împreună în funcție de necesitătile firmei și capacitatea de rambursare",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit Agro capital de lucru și cheltuieli generale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Produs destinat explicit finanțării achiziției de inputuri agricole de la partenerii agro ai băncii, pentru același segment de clienți (persoane juridice, PFA, societăți agricole), cu rambursare sezonieră corelată cu recolta. Diferă fiind un credit cu rate (nu linie de credit revolving), pe maxim 36 de luni, fără menționarea unei garanții InvestEU.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina dedicată menționează explicit finanțarea inputurilor agricole și durata maximă de creditare, dar nu detaliază dobânzi sau comisioane exacte.",
+      "dovada_metoda": "Durata de 36 de luni și condițiile de rambursare apar direct în textul paginii.",
+      "citat": "Durata de creditare este maxim 36 de luni pentru destinația capital de lucru permanent și poate Garanțiile solicitate sunt flexibile și corelate cu specificul afacerii tale.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/agro/credite",
+    "https://www.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale",
+    "https://www.patriabank.ro/agro/credite/linie-de-credit",
+    "https://en.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale",
+    "https://www.patriabank.ro/agro/credite",
+    "https://www.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale",
+    "https://www.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale",
+    "https://en.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura"
+  ],
+  "durata_s": 124,
+  "consum": {
+    "intrare": 147135,
+    "iesire": 10657,
+    "citire_cache": 40432,
+    "scriere_cache": 36139,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.49927389999999994
+  }
+}

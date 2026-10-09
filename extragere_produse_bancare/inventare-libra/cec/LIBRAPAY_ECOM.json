@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Visa ePOSibil (încredere 0.55) — Este singurul produs CEC Bank destinat comercianților persoane juridice pentru acceptarea plăților online cu cardul (printre altele, include soluții e-commerce), însă nu este un produs/gateway dedicat permanent precum LibraPay eCommerce, ci un program promoțional Visa (2025-2028) ce acoperă deopotrivă POS fizic, mPOS, Tap-to-Phone și soluții e-commerce, fără costuri fixe doar primele 6 luni și limitat la comercianți eligibili (fără acceptare de carduri în ultimul an)."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.cec.ro/visa-eposibil",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Visa ePOSibil",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs CEC Bank destinat comercianților persoane juridice pentru acceptarea plăților online cu cardul (printre altele, include soluții e-commerce), însă nu este un produs/gateway dedicat permanent precum LibraPay eCommerce, ci un program promoțional Visa (2025-2028) ce acoperă deopotrivă POS fizic, mPOS, Tap-to-Phone și soluții e-commerce, fără costuri fixe doar primele 6 luni și limitat la comercianți eligibili (fără acceptare de carduri în ultimul an).",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina menționează explicit opțiunea de soluție eCommerce pentru comercianți, dar nu conține cifre specifice de comision per tranzacție pentru plățile online, ci doar condițiile programului (perioadă, prag de 3 tranzacții).",
+      "citat": "Derulat în perioada 2025–2028, programul oferă echipamente de acceptare (POS, mPOS, Tap-to-Phone sau soluții e-commerce) fără costuri fixe lunare timp de 6 luni pentru comercianții eligibili.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/visa-eposibil#:~:text=Derulat%20%C3%AEn%20perioada%202025%E2%80%932028%2C%20programul,6%20luni%20pentru%20comercian%C8%9Bii%20eligibili."
+    }
+  ],
+  "deschise": [
+    "https://www.cec.ro/visa-eposibil",
+    "https://www.cec.ro/persoane-juridice",
+    "https://www.cec.ro/banking-digital-afacerea-ta"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 40148,
+    "iesire": 2145,
+    "citire_cache": 46297,
+    "scriere_cache": 69498,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2847504
+  }
+}

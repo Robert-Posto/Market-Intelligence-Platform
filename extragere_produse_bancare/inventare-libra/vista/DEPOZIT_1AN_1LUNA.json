@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/depozite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la termen \"VISTA 12+1\"",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina pentru persoane fizice prezintă același produs Vista 12+1 (12 luni plus bonus de o lună), cu dobânzi curente afișate pentru RON/EUR/USD, structură diferită de depozitul promoțional pe 13 luni cu rată unică al Libra.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată persoanelor fizice conține descrierea completă a produsului și tabelul actualizat cu dobânzile anuale pentru termenul de 12 luni plus bonusul extra.",
+      "citat": "Aveți EXTRA BONUS dobânda pe o lună, la scadența depozitului Primiți lunar dobânda și o puteți retrage fără comision, în aceeași zi Comision ZERO pentru constituirea, administrarea şi închiderea depozitului la termen",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la termen \"VISTA 12+1\"",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt depozite pe termen lung cu o lună suplimentară de bonus (12 luni + 1 lună bonus la Vista, față de 13 luni unică rată la Libra), disponibile atât pentru persoane fizice cât și juridice; diferă structura dobânzii (bonus la final vs. rată fixă unică pe 13 luni) și nivelul dobânzii.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține denumirea produsului, segmentul de clienți și tabelul cu dobânzile pe monede pentru termenul de 12 luni plus bonus.",
+      "citat": "Depozitul poate fi constituit de către persoane fizice sau juridice; Suma minimă a depozitului este 4.500 Lei / 1.000 Euro sau 1.000 USD; Depozitul la termen nu are limită maximă de sumă.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-juridice/depozite-la-termen#:~:text=Depozitul%20poate%20fi%20constituit%20de,are%20limit%C4%83%20maxim%C4%83%20de%20sum%C4%83."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-fizice/depozite-la-termen",
+    "https://www.vistabank.ro/persoane-juridice/depozite-la-termen",
+    "https://www.vistabank.ro/persoane-fizice",
+    "https://www.vistabank.ro/persoane-fizice/depozite"
+  ],
+  "durata_s": 38,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2919,
+    "citire_cache": 148549,
+    "scriere_cache": 65923,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2237273
+  }
+}

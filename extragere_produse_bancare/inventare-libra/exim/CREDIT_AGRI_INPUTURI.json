@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/en/2019/08/03/investments-credit-2/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "SME Plus Credits – componenta RURAL PLUS / AGRO PLUS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o linie de credit pentru capital de lucru dedicată fermierilor și companiilor din agricultură/pescuit/acvacultură/sector alimentar (segment persoane juridice, ca și produsul Libra), dar diferă: garanția este de stat (schema IMM INVEST/PLUS), nu InvestEU, durata maximă este de 36 de luni (vs. 24–48 luni la Libra) și produsul nu este dedicat explicit achiziției de inputuri agricole, ci finanțării generale a capitalului de lucru și investițiilor în agribusiness.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină dedicată a băncii care descrie explicit componentele AGRO PLUS și RURAL PLUS cu cifre (sumă maximă, durată, dobândă), dar nu este un produs identic (nu e InvestEU și nu e specific pentru inputuri).",
+      "citat": "The RURAL PLUS component aims at granting state securing facilities, in a transparent and undiscriminating way for investment credits and the credits for working capital granted to farmers, small and medium size enterprises, as well as to large companies from agriculture, fishery, aquaculture and food sector.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2019/08/03/investments-credit-2/#:~:text=The%20RURAL%20PLUS%20component%20aims,fishery%2C%20aquaculture%20and%20food%20sector."
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2024/04/30/exim-banca-romaneasca-grants-loans-under-the-imm-plus-program/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Program IMM PLUS – componentele AGRO PLUS / RURAL PLUS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Comunicat cu cifrele actualizate ale programului de credite pentru capital de lucru/investiții pentru fermieri și companii agricole, cu garanție de stat, nu InvestEU; durată max. 36 luni pentru linii de capital de lucru, diferit de 24-48 luni la produsul Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Document general (comunicat de presă) în care produsul apare explicit cu valori (sumă maximă, durată, dobândă), dar nu este o pagină dedicată exclusiv componentei agricole.",
+      "citat": "RURAL PLUS, to support ensuring liquidity through investment loans and credit/lines of credit for working capital granted to farmers, IMMs, small businesses with medium market capitalization, as well as large enterprises in the agriculture, fishing, aquaculture, food, and agricultural product trade sectors, excluding tobacco and alcoholic beverages.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2024/04/30/exim-banca-romaneasca-grants-loans-under-the-imm-plus-program/#:~:text=RURAL%20PLUS%2C%20to%20support%20ensuring,excluding%20tobacco%20and%20alcoholic%20beverages."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2024/04/30/exim-banca-romaneasca-grants-loans-under-the-imm-plus-program/",
+    "https://www.eximbank.ro/credite-cu-garantii-de-stat/",
+    "https://www.eximbank.ro/en/2019/08/03/investments-credit-2/"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 24792,
+    "iesire": 2775,
+    "citire_cache": 82938,
+    "scriere_cache": 42011,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1989491
+  }
+}

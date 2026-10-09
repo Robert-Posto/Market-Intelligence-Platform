@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2025/04/Comisioane-Exim-Banca-Romaneasca.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depunere de numerar în bancnote (secțiunea Cash Management – Operațiuni cu numerar)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de operațiune (depunere de numerar în bancnote) pentru clienți persoane juridice, document confirmat de Ghidul de produse Cash Management ca fiind destinat clienților PJ. Diferă însă față de produsul Libra: documentul nu specifică faptul că depunerea se face printr-un echipament automat (terminal multifuncțional/recycler) cu numărare și validare rapidă, nici un termen explicit de creditare în aceeași zi până la o oră fixă (16:00); este listată generic ca serviciu gratuit, indiferent de canal (ghișeu sau terminal).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul general de comisioane pentru persoane juridice conține explicit linia 'Depunere de numerar în bancnote' cu valoarea comisionului (gratuit), dar fără detalii despre canalul automat sau momentul creditării.",
+      "citat": "Operațiuni cu numerar 1. Depunere de numerar în bancnote gratuit - 2. Depunere de numerar în monedă metalică 1,50% flat 3. Retragere numerar ✓ în lei 0,5%, min. 2 lei flat ✓ în valută 1%, min. 5 EUR flat",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf",
+    "https://www.eximbank.ro/wp-content/uploads/2025/04/Comisioane-Exim-Banca-Romaneasca.pdf"
+  ],
+  "durata_s": 83,
+  "consum": {
+    "intrare": 6,
+    "iesire": 6558,
+    "citire_cache": 31870,
+    "scriere_cache": 87143,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2898235
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/credit-activitate-curenta",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru activitatea curentă",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit pentru persoane juridice/PFA destinat activității curente, care acceptă explicit ipoteca imobiliară ca garanție (alături de alte tipuri), ca și produsul Libra; diferă însă durata maximă (3 ani la CEC față de 84 de luni la Libra) și faptul că suma nu este exprimată ca interval fix în RON, ci ca procent din cifra de afaceri.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată conține cifre concrete (durată, perioadă de grație, tipuri de garanții) dar nu specifică un interval de sumă fix ca la Libra și garanția nu este exclusiv ipotecară.",
+      "citat": "Perioada de creditare: max 3 ani. In cazul creditelor acordate exclusiv pentru plata datoriilor restante la bugetul de stat max 5 ani. Perioadă de grație: max 12 luni Mix de garanții flexibil: ipoteci mobiliare, imobiliare, cash colateral, scrisori de garanție",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit pentru persoane juridice/PFA destinat investițiilor, cu garanții flexibile (poate include ipotecă imobiliară), similar componentei de investiții din produsul Libra; diferă durata maximă (12 ani/144 luni față de 180 luni la Libra) și modul de calcul al sumei (85% din valoarea investiției, nu un interval fix în RON).",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina dedicată conține cifre (durată, contribuție proprie, valoare finanțare) dar garanția nu este specificată explicit ca fiind ipotecă imobiliară, ci generic 'garanții acceptate'.",
+      "citat": "Perioada de creditare: maximum 12 ani, corelată cu durata maximă de viață a investiției finanțate. Valoarea creditului: maximum 85% din valoarea investiției, excluzând TVA. Contribuție proprie minimum 15% din valoarea proiectului, Perioadă de grație Maximum 12 luni",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/persoane-juridice/credite",
+    "https://www.cec.ro/credit-activitate-curenta",
+    "https://www.cec.ro/credit-de-investitii",
+    "https://www.cec.ro/linie-de-credit-pentru-activitatea-curenta"
+  ],
+  "durata_s": 87,
+  "consum": {
+    "intrare": 10,
+    "iesire": 7505,
+    "citire_cache": 165282,
+    "scriere_cache": 81590,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3121014
+  }
+}

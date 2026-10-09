@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://brci.ro/ro/produse/scrisoare-garantie.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoare de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat pentru persoane juridice, descris explicit ca instrument de garantare bancară emis de bancă la ordinul clientului în favoarea unui beneficiar, echivalent direct cu Scrisorile de garanție bancară Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată oficială a produsului, cu descriere clară a mecanismului, dar fără cifre (comisioane, sume, termene) afișate direct în textul extras.",
+      "citat": "Scrisoarea de garanție este un instrument irevocabil și reprezintă un angajament de plată asumat de o bancă, din ordinul clientului său; Acest angajament se referă la plata unei sume de bani către beneficiarul garanției, ca urmare a prezentării unei cereri de plată în conformitate cu termenii și condițiile scrisorii de garanție.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://brci.ro/ro/produse/scrisoare-garantie.html",
+    "https://brci.ro/ro/produse/scrisoare-garantie/beneficii.html",
+    "https://www.brci.ro/ro/produse/scrisoare-garantie.html"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 33677,
+    "iesire": 2478,
+    "citire_cache": 26452,
+    "scriere_cache": 20733,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1492569
+  }
+}

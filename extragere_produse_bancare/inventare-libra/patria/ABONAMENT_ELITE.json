@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent pentru firme (UȘOR / PRACTIC / COMPLET)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este abonamentul lunar echivalent pentru persoane juridice: pachet de cont curent cu plăți/încasări incluse, card de business și SMS Alert, dar diferă de Abonamentul ELITE Libra prin faptul că include un singur card (nu 3), nu menționează explicit 50 operațiuni SEPA separate și nu oferă serviciul Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru firme conține tabelul cu cele 3 variante, costurile lunare și numărul de operațiuni incluse (plăți/încasări instrumente de debit, plăți interbancare), fiind cel mai apropiat produs de tip abonament corporate cu tranzacții incluse.",
+      "citat": "Cont curent | ✔ | ✔ | ✔ | Servicii de internet banking | ✔ | ✔ | ✔ | Card de Business Patria MasterCard Business | ✔ | ✔ | ✔ | Incasari instrumente debit | 5 | 15 | nelimitat | Plati instrumente debit | 5 | 15 | nelimitat | Cost | 85 lei/lună | 100 lei/lună | 200 lei/lună",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 64698,
+    "iesire": 1994,
+    "citire_cache": 41276,
+    "scriere_cache": 6358,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1734862
+  }
+}

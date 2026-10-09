@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/09/23/credite-pentru-companii-garantate-de-fondul-european-de-investitii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru companii garantate de Fondul European de Investitii (plafonul Sustenabilitate / Green Guarantee FEI)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit pentru companii (IMM si corporate) destinat in principal finantarii investitiilor verzi, deci acelasi tip de instrument (credit) si acelasi segment de clienti (persoane juridice), insa nu este dedicat exclusiv capacitatilor de productie fotovoltaica/eoliana ca produsul Libra, ci oricarui tip de investitie verde, iar mecanismul se bazeaza pe o garantie FEI atasata creditului, nu pe un credit de sine statator dedicat energiei regenerabile.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina este dedicata acestui produs de creditare si contine cifre concrete (procent de garantare, conditii), dar scopul 'investitii verzi' este mult mai larg decat capacitatile de productie fotovoltaica/eoliana specificate de produsul Libra.",
+      "citat": "Garantiile FEI pot fi accesate in cadrul a doua plafoane, respectiv Competitivitate IMM, si Sustenabilitate, destinat sa contribuie la transformarea verde si durabila a economiei romanesti, creditele fiind destinate in principal finantarii investitiilor verzi.",
+      "tip_potrivire_sursa": "html",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/fonduri-de-stat/",
+    "https://www.eximbank.ro/sitemap/",
+    "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/",
+    "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/",
+    "https://www.eximbank.ro/corporate/credite-corporate/",
+    "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/",
+    "https://www.eximbank.ro/imm/imm-2-10-mil-lei/credite/",
+    "https://www.eximbank.ro/corporate/credite-corporate/",
+    "https://www.eximbank.ro/2022/12/05/credite-corporate/",
+    "https://www.eximbank.ro/2022/12/05/credite-imm-10-mil-lei/",
+    "https://www.eximbank.ro/en/2025/09/23/companies-loans-guaranteed-by-the-european-investment-fund/",
+    "https://www.eximbank.ro/en/state-funds/",
+    "https://www.eximbank.ro/2025/09/23/credite-pentru-companii-garantate-de-fondul-european-de-investitii/"
+  ],
+  "durata_s": 132,
+  "consum": {
+    "intrare": 310179,
+    "iesire": 6415,
+    "citire_cache": 219971,
+    "scriere_cache": 75498,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.9172472
+  }
+}

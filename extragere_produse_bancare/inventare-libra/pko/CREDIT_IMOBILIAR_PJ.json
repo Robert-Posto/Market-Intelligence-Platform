@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dobânzilor.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credite de investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de dobânzi al sucursalei pentru clienți corporate (persoane juridice) listează 'Credite de investiții' cu formula de dobândă variabilă, dar acesta este un credit general de investiții, nu un produs dedicat exclusiv creditului imobiliar.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Document oficial de dobânzi al băncii, care conține explicit rândul 'Credite de investiții' cu formula de calcul a dobânzii, aplicabilă clienților persoane juridice.",
+      "citat": "Credite de investiții Investment loans ROBOR/SOFR/EURIBOR/WIBOR + marja ROBOR/SOFR/EURIBOR/WIBOR + margin",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (11 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.pkobp.pl/ro/filiala-romania/produse",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de Investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "PKO Sucursala București deservește exclusiv persoane juridice și oferă un 'Credit de Investiții' ca produs general de finanțare a investițiilor (care poate include achiziții/dezvoltări imobiliare), dar nu există un produs dedicat explicit de tip 'credit imobiliar' separat de restul creditelor de investiții pentru firme.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina de produse listează doar denumirea 'Credit de Investiții' în lista de credite pentru companii, fără cifre sau detalii specifice despre finanțarea imobiliară.",
+      "citat": "Credite - Facilitate de descoperit de Cont - Credit de capital de lucru reînnoibil - Credit de capital de lucru ne-reînnoibil - Credit de Investiții - Facilitate de credit multi-produs",
+      "citat_verificat": true,
+      "link_live": "https://www.pkobp.pl/ro/filiala-romania/produse#:~:text=Credite%20%2D%20Facilitate%20de%20descoperit,%2D%20Facilitate%20de%20credit%20multi%2Dprodus"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dobânzilor.pdf",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2969,
+    "citire_cache": 44117,
+    "scriere_cache": 57360,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1819334
+  }
+}

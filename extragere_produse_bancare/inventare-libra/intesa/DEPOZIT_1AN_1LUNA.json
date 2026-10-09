@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la Termen (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de tip depozit la termen cu dobândă fixă oferit continuu de Intesa pentru persoane fizice, dar nu există un termen de 13 luni (1 an și 1 lună) ca la Libra, nici o campanie promoțională activă pe acest termen; cele mai apropiate trepte sunt 12 luni (6,50%) și 18 luni (6,25%), iar produsul nu e promoțional, ci standard.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de dobânzi conține un tabel explicit cu toate termenele și ratele pentru depozitele la termen persoane fizice, valabil din 01.11.2025.",
+      "pagina_pdf": 3,
+      "citat": "MONEDA SUMA MINIMA 1 LUNA 3 LUNI 6 LUNI 6 LUNI* 12 LUNI 18 LUNI 24 LUNI 36 LUNI RON 500 LEI 5.50% 5.85% 6.25% 7.50% 6.50% 6.25% 6.00% 6.00%",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/dobanzi-produse-economisire_persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la Termen (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul persoane juridice al produsului Libra, dar maturitatea maximă oferită este de 12 luni, fără opțiune de 13 luni și fără caracter promoțional; cea mai apropiată treaptă este 12 luni la 5,10% dobândă anuală fixă.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de dobânzi pentru persoane juridice conține un tabel cu termenele și ratele pentru depozitele la termen, valabil din 01.01.2025.",
+      "pagina_pdf": 1,
+      "citat": "MONEDA SUMA MINIMA 1 LUNA 3 LUNI 6 LUNI 12 LUNI RON 5 000 LEI 3.95% 4.00% 4.95% 5.10%",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (19 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/economii-investitii-imm/depozite-la-termen-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozite la termen (IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina dedicată depozitelor la termen pentru segmentul IMM/persoane juridice, dar termenele disponibile sunt doar 1, 3, 6 sau 12 luni, fără opțiunea de 13 luni și fără caracter promoțional specific.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina descrie clar caracteristicile produsului (termene, sumă minimă) dar trimite către PDF-ul de dobânzi pentru cifrele exacte, fără cifre proprii suplimentare.",
+      "citat": "Perioada de constituire: 1, 3, 6, sau 12 luni Dobândă: Fixă sau variabilă Valută:Lei, Euro sau Usd Depuneri ulterioare: Nu sunt posibile",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Dobanzi-produse-de-economisire-01.11.2025.pdf",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/dobanzi-produse-economisire_persoane-juridice.pdf"
+  ],
+  "durata_s": 84,
+  "consum": {
+    "intrare": 6,
+    "iesire": 7418,
+    "citire_cache": 40126,
+    "scriere_cache": 46769,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19913969999999998
+  }
+}

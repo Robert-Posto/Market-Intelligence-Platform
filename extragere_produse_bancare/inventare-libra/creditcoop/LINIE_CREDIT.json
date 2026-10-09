@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/linia-de-credit/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de creditare reînnoibilă pentru persoane juridice, destinat finanțării activității curente (capital de lucru), cu trageri și rambursări multiple și reutilizarea sumelor rambursate, exact ca Linia de credit Libra.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea completă a liniei de credit pentru firme, cu termenul de creditare (12 luni) și condițiile de utilizare, dar valoarea exactă a dobânzii/DAE este generată doar interactiv prin simulator.",
+      "citat": "Alege linia de credit pe termen de 12 luni, cu posibilitatea prelungirii la scadență. consultanță și asistență gratuită; dobandă fixă pe toată perioada de creditare; structură flexibilă de garanții; ai acces permanent la plafonul liniei de credit; ai trageri și rambursări multiple existând posibilitatea reutilizării sumelor rambursate; plătești dobânda doar pentru suma utilizată proporțional cu perioada de utilizare a acesteia; nu există comision de neutilizare a liniei de credit; la scadenta, linia de credit poate fi prelungita pe o perioada de maxim 12 luni",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/linia-de-credit/#:~:text=Alege%20linia%20de%20credit%20pe,perioada%20de%20maxim%2012%20luni"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/linia-de-credit/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 10,
+    "iesire": 1742,
+    "citire_cache": 114628,
+    "scriere_cache": 48972,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1627956
+  }
+}

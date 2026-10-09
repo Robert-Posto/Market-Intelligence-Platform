@@ -1,0 +1,83 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/cont-bancar-pachet-startup-",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Start UP",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet de cont bancar dedicat start-up-urilor (persoane juridice/PFA), gratuit în primul an, cu cont curent, card de debit, Internet/Mobile Banking - exact ca segmentul și tipul produsului Cont Deștept de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu cifre explicite despre gratuitatea comisionului de administrare în primul an și serviciile incluse.",
+      "citat": "Un pachet de servicii complete pentru start-up-uri, cu ZERO costuri în primul an. Comisonul lunar de administrare este zero lei în primul an de la deschiderea pachetului.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Start UP",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de listă a pachetelor de cont bancar pentru persoane juridice prezintă Pachetul Start UP cu serviciile incluse și gratuitatea primului an, alături de celelalte pachete IMM.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține cifrele exacte ale pachetului Start UP (servicii incluse, zero comisioane primul an) comparativ cu alte pachete IMM.",
+      "citat": "Servicii incluse: cont curent în lei, card de debit, Internet Banking, Mobile Banking, cont de economii. Comisionul lunar de administrare: un an cu ZERO COMISIOANE la pachetul complet de servicii bancare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet Start-UP",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane juridice listează explicit Pachetul Start-UP cu valoarea comisionului de administrare și condiția de gratuitate pe 12 luni.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de tarife oficial, cu rândul dedicat Pachetului Start-UP și cifra exactă (GRATUIT* în primele 12 luni, apoi se transformă în IMM Optim).",
+      "citat": "Administrare Pachet Start-UP GRATUIT* In cazul pachetului Start-UP, nu se percepe comision de administrare/pachet in primele 12 luni de la data achizitionarii acestuia. Dupa expirarea perioadei de gratuitate de la data achizitionarii, acesta va fi transformat automat in Pachet IMM Optim.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://cloud.cec.ro/cec-in-pj",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Start UP (CEC_IN)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta 100% online a aceluiași pachet Start UP pentru SRL și PFA cu minim 30 de zile de la înregistrare, servicii identice: cont curent, card, Internet/Mobile Banking.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina menționează explicit condițiile de eligibilitate (SRL/PFA minim 30 zile) și gratuitatea costurilor în primul an, dar nu detaliază toate comisioanele.",
+      "citat": "Cu Pachetul de cont bancar Start UP ai tot ce îți trebuie pentru începutul afacerii tale! Compania ta trebuie să fie înregistrată la RECOM din categoria SRL și PFA de minim 30 de zile.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/cont-bancar-pachet-startup-"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2380,
+    "citire_cache": 32966,
+    "scriere_cache": 39334,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1287402
+  }
+}

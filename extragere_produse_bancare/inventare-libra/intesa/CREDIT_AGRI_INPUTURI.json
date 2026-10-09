@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linie de credit (în cadrul pachetului „Credite pentru agricultură” / „Linia de credit Recolta”)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o linie de credit dedicată agriculturii, pentru finanțarea cheltuielilor curente (semințe, combustibili, consumabile, întreținere utilaje), adresată persoanelor juridice din agricultură - același tip de produs și segment ca produsul Libra. Diferă: pagina nu menționează o garanție/finanțare prin programul InvestEU, nu specifică un termen de 24-48 luni și nu oferă cifre (dobândă, comision, sumă) pentru acest produs.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Este pagina dedicată produselor de credit agricol pentru persoane juridice (corporate), descrie explicit linia de credit pentru inputuri agricole, dar textul public nu conține cifre (dobândă, termen, sumă maximă) pentru acest produs specific.",
+      "citat": "Linie de credit - vizează cheltuielile activității curente (semințe, combustibili, consumabile, întreținere utilaje etc); Linia de credit Recolta - Finanțarea cheltuielilor curente: semințe, combustibil, etc",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html",
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-agricultura-imm.html",
+    "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_Septembrie-2026.pdf"
+  ],
+  "durata_s": 97,
+  "consum": {
+    "intrare": 12,
+    "iesire": 7254,
+    "citire_cache": 217762,
+    "scriere_cache": 95511,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3548939
+  }
+}

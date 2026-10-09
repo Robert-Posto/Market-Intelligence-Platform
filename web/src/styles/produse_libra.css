@@ -115,6 +115,16 @@ button.pl-card[hidden]{display:none}
 }
 
 /* Produsele concurenței: carduri pe categorie, fiecare duce la pagina băncii */
+/* bara de filtre, ca la 2.1: bifa stă pe linia câmpurilor, nu pe a etichetelor */
+.pc-filtre .ant-checkbox-wrapper.pc-bifa{align-self:flex-end;min-height:32px;align-items:center;font-size:12.5px;color:var(--ink)}
+.pc-filtre .ant-input-affix-wrapper.cauta{width:230px}
+.pc-meniu .ant-select-item-option-selected:not(.ant-select-item-option-disabled){background:var(--accent-tint);color:var(--accent)}
+.pc-meniu .ant-select-item-option-selected .pc-opt .n{border-color:var(--accent);color:var(--accent)}
+/* opțiunile din Categorie / Bancă: numele la stânga, câte produse la dreapta */
+.pc-opt{display:flex;align-items:baseline;justify-content:space-between;gap:24px}
+.pc-opt .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);
+           background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:0 7px}
+.pc-rezumat{margin:0 0 14px}
 .pc-sec h2{margin-bottom:10px}
 .pc-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
 a.pc-produs{display:flex;flex-direction:column;gap:5px;padding:11px 13px;border:1px solid var(--line);

@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/accept-payments-pricing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Terminalul Revolut",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila de tarife pentru plăți România listează explicit costul unic de achiziție al Terminalului Revolut, dispozitivul fizic POS pentru firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul oficial de tarifare pentru acceptarea plăților (RO) conține costul hardware-ului Terminalului Revolut și comisioanele de procesare pentru plăți fizice.",
+      "citat": "Cost unic pentru hardware Terminalul Revolut - 900 lei + TVA The Lite Terminal - 139 € + TVA Prețuri de la 0,8 % + 0,12 lei Plăți în persoană",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/business/revolut-terminal/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Revolut Terminal",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Terminal fizic POS portabil pentru acceptarea plăților cu cardul la locație, destinat conturilor Revolut Business (persoane juridice) cu vânzare fizică — corespunde exact produsului Libra 'Terminal POS fizic'.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina descrie clar dispozitivul fizic, funcțiile și prețul hardware-ului, dar prețul afișat este în GBP (varianta UK), nu în RON.",
+      "citat": "Our Revolut Terminal and Lite Terminal are portable sales devices with built-in Point of Sale software, enabling you to: accept in-person card, contactless, and digital wallet payments in under 2 seconds.",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/business/revolut-terminal/#:~:text=Our%20Revolut%20Terminal%20and%20Lite,payments%20in%20under%202%20seconds."
+    },
+    {
+      "url": "https://help.revolut.com/ro-RO/business/help/merchant-accounts/revolut-terminal/transactions-with-revolut-terminal/cards-and-contactless-payments-with-revolut-terminal/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Terminal Revolut",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Articolul de ajutor în limba română descrie condițiile de utilizare a Terminalului Revolut (dispozitiv fizic POS), inclusiv monedele acceptate și limita per tranzacție.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină de suport oficială RO cu cifre concrete (limita de tranzacție, lista monedelor acceptate inclusiv RON) despre terminalul fizic.",
+      "citat": "Terminalul Revolut acceptă următoarele monede: AUD, CAD, CHF, DKK, EUR, GBP, HKD, HUF, ILS, JPY, NOK, NZD, PLN, RON, SEK, THB, TRY, USD, ZAR. Terminalul are o limită per tranzacție de 20.000 GBP (sau echivalentul în altă monedă).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/ro-RO/business/accept-payments-pricing/",
+    "https://www.revolut.com/en-RO/business/revolut-terminal/",
+    "https://www.revolut.com/business/revolut-terminal/",
+    "https://www.revolut.com/ro-RO/business/revolut-terminal/"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 74049,
+    "iesire": 4546,
+    "citire_cache": 40847,
+    "scriere_cache": 43177,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3096699
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/articol/plati-instant-din-17-06-2024.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Serviciul Plăți Instant (dezvoltat de TRANSFOND)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (transfer interbancar instant, 24/7/365, fără comision suplimentar) ca RoPay, dar pagina BRCI nu menționează explicit funcția de plată către un număr de telefon (alias), ci descrie transferul interbancar instant generic către IBAN; segmentul de clienți pare general (nu se precizează distinct PF/PJ).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina este dedicată serviciului de plăți instant și conține cifre concrete (plafon, procent comision), dar nu confirmă explicit mecanismul de plată prin număr de telefon specific RoPay.",
+      "citat": "Acest serviciu permite transferul interbancar al sumelor de pana la 50.000 lei in mai putin de 10 secunde, in orice moment al zilei, pe tot parcursul anului (24/7/365) catre bancile care accepta acest sistem de plati.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/ro/articol/plati-instant-din-17-06-2024.html",
+    "https://www.brci.ro/ro/articol/plati-instant-din-17-06-2024.html"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 29306,
+    "iesire": 2122,
+    "citire_cache": 30013,
+    "scriere_cache": 19105,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1335971
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Internet Banking I-B@nk / Serviciul de Internet banking I-B@nk",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice listează explicit comisioanele de administrare a aplicației I-B@nk, limitele de tranzacționare prin Internet Banking și includerea serviciului în pachetele de cont curent pentru firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife și comisioane pentru persoane juridice, cu valori exacte pentru administrarea I-B@nk, configurare token și limite zilnice de tranzacționare.",
+      "pagina_pdf": 2,
+      "citat": "Administrare aplicație I-B@nk Echiv. 10 Euro/lună/contract Configurare inițială Hard Token Echiv. 30 Lei/token Instalare Mobile Token I-B@nk Gratuit",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (18 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/imm/Internet-banking-imm/internet-banking-IBank-Imm.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking I-B@nk",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aplicație de internet & mobile banking dedicată persoanelor juridice (IMM, companii mici, întreprinzători individuali) pentru administrarea conturilor și efectuarea plăților, exact segmentul și tipul de produs ca INTERNET_BANKING de la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată oficială a produsului pentru segmentul IMM, cu descrierea completă a beneficiilor și funcționalităților, dar conținutul text extras automat nu conține cifre (acestea apar doar în documentele PDF linkate).",
+      "citat": "Speed and ease of administration Full control Reduced commissions compared to those applied at the bank's counter High security Instant and Intra-bank transactions 24/7 Easy to use",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/imm/Internet-banking-imm/internet-banking-IBank-Imm.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+    "https://www.intesasanpaolobank.ro/en/imm/Internet-banking-imm/internet-banking-IBank-Imm.html"
+  ],
+  "durata_s": 65,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4517,
+    "citire_cache": 102177,
+    "scriere_cache": 77146,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2584864
+  }
+}

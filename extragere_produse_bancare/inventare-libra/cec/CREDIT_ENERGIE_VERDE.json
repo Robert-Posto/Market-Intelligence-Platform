@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/imm/credite/credit-investitii-verzi",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite BEI pentru panouri fotovoltaice și alte investiții verzi",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții dedicat persoanelor juridice/PFA pentru capacități de producție verde (panouri fotovoltaice și alte proiecte eco), de la zero, finanțat prin BEI, exact ca produsul Libra pentru energie verde destinat firmelor.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele exacte: suma maximă, perioada de creditare, contribuția proprie și reducerea de dobândă.",
+      "citat": "Eligibilitate: poți accesa creditul pentru investiții verzi indiferent de forma de organizare: societate comercială, PFA sau Întreprindere Individuală/Familială. Moneda creditului: lei. Suma maximă: max 699 000 lei. Perioada de creditare: min 2 ani, max 10 ani. Perioadă de grație: max 6 luni. Valoarea creditului: max 85% din valoarea investiției, excluzând TVA. Contribuție proprie: min 15%.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/presa/cec-bank-finanteaza-proiecte-care-implica-achizitiile-verzi-cu-fonduri-si-garantii-oferite-de",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Credite verzi BEI pentru IMM-uri (panouri fotovoltaice și alte investiții verzi)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicat de presă care detaliază exact aceleași credite verzi pentru IMM-uri destinate panourilor fotovoltaice/solare, cu cifre despre plafon, dobândă și garanție, confirmând condițiile din pagina de produs.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este un comunicat general despre produs, nu pagina de produs în sine, dar conține cifre explicite despre plafon, dobândă și garanție.",
+      "citat": "Valoarea maximă a creditului de investiții sau a liniilor de credit este de 699.000 lei și se pot obține garanții europene gratuite prin Programul COSME pentru până la 50% din valoarea finanțării. Dobânda pentru creditele verzi este redusă cu 0,75 puncte procentuale, față de cea standard.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/imm/credite/credit-investitii-verzi",
+    "https://www.cec.ro/imm/credite/credit-investitii-verzi"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 45561,
+    "iesire": 1980,
+    "citire_cache": 12666,
+    "scriere_cache": 25536,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1772952
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Plan Grow (Revolut Business)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente lunare corporate cu carduri incluse și tranzacții facilitate, dar Grow (200 lei/lună) oferă alocări limitate (5 transferuri internaționale, 100 locale fără comision, 1 card Metal gratuit), spre deosebire de Prestige care promite tranzacții nelimitate lei/euro/SEPA și 7 carduri (5 standard+2 Gold) incluse direct în preț.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată de tarifare pentru conturi business conține explicit prețul lunar, alocările de transferuri și numărul de carduri Metal incluse pentru planul Grow.",
+      "citat": "Grow 200 lei/lună Descoperă instrumentele de care ai nevoie pentru a gestiona cheltuielile cu ușurință. Scale 700 lei/lună Obține limite mai mari pentru a te extinde la nivel global.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/business-grow-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Business fees (Grow)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă prețul abonamentului Grow (200 RON/lună) și alocarea de 100.000 RON/lună la schimb valutar, dar nu oferă tranzacții nelimitate ca Prestige, ci doar alocări cu comision peste prag.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document legal de tarife care detaliază exact comisionul lunar al planului Grow și condițiile de schimb valutar, confirmând cifrele de pe pagina principală.",
+      "citat": "200 RON per month If you downgrade within the first 14 days of your plan starting without having used any benefits available under the plan, we will issue you a refund.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3858,
+    "citire_cache": 6378,
+    "scriere_cache": 32636,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1214536
+  }
+}

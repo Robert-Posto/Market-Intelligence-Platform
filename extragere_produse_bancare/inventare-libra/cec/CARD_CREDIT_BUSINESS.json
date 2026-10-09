@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CARD_CREDIT_BUSINESS",
+  "denumire": "Card de credit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/cardul-de-credit-visa-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de credit Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit destinat persoanelor juridice (IMM, PFA), aceeași categorie de produs ca CARD_CREDIT_BUSINESS Libra: linie de credit accesată prin card, cu rate fără dobândă, perioadă de grație și dobândă variabilă.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui produs, cu cifre complete despre limită, dobândă, perioadă de grație și rate fără dobândă.",
+      "citat": "Cu cardul Visa Business ai o limită de credit de până la 200.000 de lei. Până la 24 de rate fără dobândă, la orice comerciant din lume și până la 59 de zile perioadă de grație.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-credit-persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de credit - Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și dobânzi pentru cardul de credit Visa Business destinat persoanelor juridice, corespunzător CARD_CREDIT_BUSINESS.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document PDF dedicat exclusiv acestui produs, cu toate comisioanele și dobânzile detaliate, valabil din aprilie 2026.",
+      "citat": "Comisioane si dobanzi de functionare a cardurilor de credit Business oferite de CEC Bank - ofertă valabilă începând cu 01 aprilie 2026, inclusiv- Carduri de credit- Visa Business. Dobanda anuala standard: ROBOR 3M + 12,50 pp ( actualmente in total 18,38% pe an )",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/persoane-juridice/credite/imm-uri-si-corporatii/descoperit-de-cont-pe-card-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Credit Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina din meniul IMM & Profesii liberale listează explicit produsul 'Card Credit Business' ca linie separată în catalogul de produse pentru persoane juridice.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Confirmă existența și denumirea oficială a produsului în structura site-ului pentru persoane juridice, dar conținutul extras pentru acest URL arată alte produse (nevoi personale); linkul 'Card Credit Business' din meniu duce la pagina deja raportată mai sus.",
+      "citat": "Pachete de cont curent IMM. Carduri Business Visa și Mastercard. Cont bancar standard și conturi speciale. Card Credit Business.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (19 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1461,
+    "citire_cache": 6308,
+    "scriere_cache": 34512,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10215959999999999
+  }
+}

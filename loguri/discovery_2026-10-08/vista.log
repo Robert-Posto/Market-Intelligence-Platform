@@ -1,0 +1,261 @@
+Vista Bank (Romania): 50 de rulat, 7 sărite (au rezultat), paralel 5, model claude-sonnet-5, termen 180 s/produs, domenii vistabank.ro
+  [cautare] Vista Bank plăți online card comerciant eCommerce
+  [cautare] vistabank.ro POS online magazin virtual
+  [cautare] Vista Bank acceptare la plata carduri comercianti POS virtual firme
+GOL     LIBRAPAY_ECOM                produs_inexistent: Vista Bank nu oferă servicii de acceptare la plată a cardurilor online (acquiring/gateway), $0.13
+  [cautare] Vista Bank InvestEU credit companii
+  [cautare] vistabank.ro credit InvestEU IMM
+  [cautare] vistabank.ro BEI fonduri europene credit firme
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+GOL     CREDIT_INVESTEU_PJ           produs_inexistent: Vista Bank nu are un produs dedicat InvestEU (garanție UE) pentru competitivitate/sustenab, $0.13
+  [cautare] Vista Bank cont curent business online firme
+  [cautare] vistabank.ro cont online IMM
+GATA    CONT_ONLINE_BUSINESS         2 surse, 0 citate verificate, similar, $0.09, 37s — Pachetele de cont curent Vista Bank pentru persoane juridice (Pachetul Vista de Bază / Activ / Activ Plus)
+  [cautare] vistabank.ro terminal POS comercianti
+  [cautare] Vista Bank POS terminal plata card companii
+  [ 1] https://www.vistabank.ro/companii
+  [ 2] https://www.vistabank.ro/
+       ! url_not_in_prior_context
+  [ 3] https://www.vistabank.ro/persoane-juridice
+  [ 4] https://www.vistabank.ro/persoane-juridice/conturi-curente
+  [cautare] vistabank.ro "POS" comerciant achizitioneaza terminal plata card magazin
+GOL     POS_FIZIC                    produs_inexistent: Vista Bank (România) nu oferă, conform paginilor publice persoane-juridice/conturi-curente, $0.22
+  [cautare] Vista Bank pachet cont curent companii abonament lunar
+  [cautare] vistabank.ro pachete companii IMM comisioane
+GATA    ABONAMENT_ELITE              1 surse, 0 citate verificate, similar, $0.10, 25s — Pachetul Vista Activ Plus
+  [cautare] Vista Bank credit IMM firme fara garantie imobiliara
+  [cautare] vistabank.ro credit companii IMM
+  [ 1] https://www.vistabank.ro/persoane-juridice
+       ! url_not_in_prior_context
+  [ 2] https://www.vistabank.ro/persoane-juridice/imminvest
+  [ 3] https://www.vistabank.ro/agri
+  [ 4] https://www.vistabank.ro/persoane-juridice/credite
+  [ 5] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+GOL     CREDIT_SIMPLU_IMM            nepublicat: Vista Bank are o pagină generică (vistabank.ro/persoane-juridice/credite) care menționează, $0.34
+  [cautare] Vista Bank pachet cont curent persoane juridice comision
+  [cautare] vistabank.ro pachete companii cont curent abonament
+GATA    ABONAMENT_OPERATIONAL        2 surse, 0 citate verificate, echivalent, $0.11, 21s — Pachetele de cont curent Vista Bank pentru persoane juridice (Pachetul Vista de Bază, Pachetul Vista Activ, Pachetul Vista Activ Plus)
+  [cautare] Vista Bank pachet cont curent firme abonament lunar
+  [cautare] vistabank.ro pachete companii cont curent
+  ! ABONAMENT_PRIME: gata fără surse și fără motiv — reiau o dată
+  [cautare] Vista Bank PFA cont pachet abonament
+  [cautare] vistabank.ro PFA profesii liberale
+  [ 1] https://www.vistabank.ro/persoane-juridice/conturi-curente
+  [cautare] vistabank.ro "profesii liberale" OR "PFA" pachet cont curent
+  [ 2] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_11.2025.pdf
+GATA    ABONAMENT_PFA                2 surse, 1 citate verificate, similar, $0.22, 44s — Pachetul DE BAZA (Pachete de produse si servicii bancare pentru persoane juridice)
+  [cautare] Vista Bank pachet cont curent IMM comision lunar companii
+  [cautare] vistabank.ro abonament companii pachet business card
+GATA    ABONAMENT_PRIME              2 surse, 0 citate verificate, similar, $0.18, 34s — Pachetele de cont curent Vista Bank pentru persoane juridice (Pachetul Vista de Bază / Activ / Activ Plus)
+  [cautare] Vista Bank platforma schimb valutar online curs real time
+  [cautare] vistabank.ro FX online internet banking
+  [ 1] https://www.vistabank.ro/vista-internet-si-mobile-banking
+  [ 2] https://www.vistabank.ro/public/docs/Manual_de_utilizare_Internet_Banking_Vista_Bank_08.11.2023.pdf
+GATA    LIVE_FX                      1 surse, 0 citate verificate, similar, $0.45, 112s — Schimburi valutare (Negociere schimb valutar) – Vista Internet & Mobile Banking
+  [cautare] Vista Bank pachet cont curent firme abonament lunar
+  [cautare] vistabank.ro pachet companii cont curent comisioane
+GATA    ABONAMENT_RISE               2 surse, 0 citate verificate, similar, $0.11, 32s — Pachetul Vista de Bază
+  [cautare] Vista Bank API contabilitate integrare program contabilitate
+  [cautare] vistabank.ro API open banking firme
+  [ 1] https://www.vistabank.ro/persoane-juridice/conturi-curente
+GOL     API_CONTABILI                produs_inexistent: Vista Bank nu are un produs dedicat de integrare API cu programele de contabilitate pentru, $0.10
+  [cautare] vistabank.ro acreditive documentare
+  [cautare] vistabank.ro servicii comerciale internationale companii
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+  [ 2] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+GATA    ACREDITIVE                   3 surse, 1 citate verificate, echivalent, $0.20, 25s — ACREDITIVE (Export/Acreditive primite, Import/Acreditive emise)
+  [cautare] Vista Bank pachet cont curent companii comision lunar
+  [cautare] vistabank.ro IMM pachet abonament lunar card business
+  [ 1] https://www.vistabank.ro/persoane-juridice/conturi-curente
+  [ 2] https://www.vistabank.ro/public/docs/10.00319_Anexa_1_CGA_PJ_RO_Mai_2023.pdf
+  [ 3] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+GATA    ABONAMENT_SHINE              2 surse, 1 citate verificate, similar, $0.29, 47s — Pachetul Vista Activ / Pachetul Vista Activ Plus (pachete de cont curent pentru persoane juridice)
+  [cautare] vistabank.ro card de credit business companii
+  [cautare] Vista Bank card credit persoane juridice
+GATA    CARD_CREDIT_BUSINESS         3 surse, 0 citate verificate, echivalent, $0.11, 17s — Vista Business Credit Card
+  ! LINIE_CREDIT: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  LINIE_CREDIT                 ReadTimeout: The read operation timed out
+  [cautare] Vista Bank card de credit persoane fizice
+  [cautare] vistabank.ro card de credit
+GATA    CARD_CREDIT_PF               2 surse, 0 citate verificate, echivalent, $0.13, 31s — Vista Classic Credit Card / Vista Visa Classic Credit Card
+  [cautare] vistabank.ro card de credit business companii
+  [cautare] Vista Bank card credit IMM
+  [ 1] https://www.vistabank.ro/persoane-juridice/carduri-de-business
+       ! url_not_in_prior_context
+  [ 2] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_Iulie_2024_info.pdf
+  [ 3] https://www.vistabank.ro/agri/carduri-de-business
+GATA    CARD_CREDIT_PJ               2 surse, 1 citate verificate, echivalent, $0.28, 31s — Vista Business Credit Card (Vista Visa Business Credit Card)
+  [cautare] vistabank.ro card de debit business
+  [cautare] vistabank.ro card debit companii IMM
+GATA    CARD_DEBIT_BUSINESS          3 surse, 0 citate verificate, echivalent, $0.13, 25s — Vista Visa Business Debit Card
+  [cautare] Vista Bank cont curent start-up firme gratuit
+  [cautare] vistabank.ro cont start-up IMM
+  [ 1] https://www.vistabank.ro/persoane-juridice/conturi-curente
+GOL     CONT_DESTEPT                 produs_inexistent: Vista Bank nu are un pachet dedicat start-up-urilor cu perioadă gratuită. Oferă doar 3 pac, $0.10
+  [cautare] Vista Bank card de debit
+  [ 1] https://www.vistabank.ro/
+  [ 2] https://www.vistabank.ro/persoane-juridice
+  [ 3] https://www.vistabank.ro/persoane-fizice/carduri
+  [ 4] https://www.vistabank.ro/persoane-juridice/carduri-de-business
+GATA    CARD_DEBIT_FREE              3 surse, 2 citate verificate, similar, $0.19, 37s — Vista Debit Card
+  [cautare] Vista Bank cont dezvoltator imobiliar Legea 207/2025
+  [cautare] Vista Bank cont escrow dezvoltator imobiliar
+  [ 1] https://www.vistabank.ro/persoane-juridice/conturi-curente
+  [ 2] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_Iulie_2024.pdf
+  [cautare] vistabank.ro cont dezvoltator rezidential proiect imobiliar
+GOL     CONT_DEZVOLTATOR             produs_inexistent: Vista Bank nu are un produs dedicat tip 'Contul Dezvoltatorului' pentru proiecte imobiliar, $0.19
+  [cautare] Vista Bank card de debit
+  [cautare] vistabank.ro card debit Gold
+  [ 1] https://www.vistabank.ro/persoane-fizice/carduri
+  [ 2] https://www.vistabank.ro/persoane-fizice/conturi-si-pachete-de-cont-curent
+  [ 3] https://www.vistabank.ro/public/docs/1000312_Anexa_1_CGA_PF_RO_10_2026.pdf?v=3
+GATA    CARD_DEBIT_GOLD              2 surse, 1 citate verificate, similar, $0.29, 45s — Pachetul Vista Platinum (card de debit Vista Visa Platinum)
+  [cautare] Vista Bank cont online persoane fizice
+  [cautare] vistabank.ro cont curent persoane fizice online
+  [cautare] vistabank.ro deschide cont online 100%
+GATA    CONT_ONLINE_PERSONAL         3 surse, 0 citate verificate, similar, $0.15, 30s — Lista de Tarife, Termene și Condiții pentru persoane fizice - Cont Curent
+  [cautare] Vista Bank credit irigatii InvestEU agricultura
+  [cautare] vistabank.ro credit agricultura IMM
+GOL     CREDIT_AGRI_IRIGATII         produs_inexistent: Vista Bank are o secțiune AGRI cu mai multe credite pentru fermieri (Credit campanie agric, $0.10
+  [cautare] Vista Bank credit echipamente agricole InvestEU
+  [cautare] vistabank.ro credit agricultura IMM
+  [ 1] https://www.vistabank.ro/agri
+GATA    CREDIT_AGRI_ECHIPAMENTE      1 surse, 1 citate verificate, similar, $0.15, 37s — Creditul pentru achiziție de echipamente/utilaje agricole noi și second-hand
+  [cautare] Vista Bank credit APIA subventie agricultura
+  [cautare] vistabank.ro credit APIA
+GATA    CREDIT_APIA                  3 surse, 0 citate verificate, echivalent, $0.11, 18s — Creditul pentru prefinanțarea subvențiilor APIA
+  [cautare] Vista Bank BERD credit investitii IMM garantie
+  [cautare] vistabank.ro InvestEU credit garantie
+  [ 1] https://www.vistabank.ro/persoane-juridice
+       ! url_not_in_prior_context
+  [cautare] vistabank.ro credit investitii companii IMM garantie BERD EIF
+GOL     CREDIT_BERD_PJ               produs_inexistent: Vista Bank nu are un credit de investiții cu garanție BERD/InvestEU. Are doar programul ge, $0.21
+  ! ABONAMENT_PRESTIGE: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  ABONAMENT_PRESTIGE           ReadTimeout: The read operation timed out
+  [cautare] Vista Bank credit agricultura IMM
+  [cautare] vistabank.ro credit agricultura InvestEU
+GATA    CREDIT_AGRI_INPUTURI         2 surse, 0 citate verificate, similar, $0.14, 53s — Creditul parteneriat Vista Bank – Naturevo
+  [cautare] Vista Bank garanție BID credit IMM
+  [cautare] vistabank.ro BID garanție finantare
+GOL     CREDIT_BID_IMM               produs_inexistent: Vista Bank nu are un produs de creditare cu garanție BID (garant specific). Banca are Prog, $0.10
+  [cautare] Vista Bank credit medici cabinete medicale
+  [cautare] vistabank.ro credit medici IMM
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+GOL     CREDIT_HIPOCRATE             produs_inexistent: Vista Bank nu are un produs de credit dedicat profesiilor medicale (cabinete/clinici medic, $0.09
+  [cautare] vistabank.ro credit energie verde fotovoltaice IMM
+  [cautare] Vista Bank credit panouri fotovoltaice companii
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+GOL     CREDIT_ENERGIE_VERDE         produs_inexistent: Vista Bank nu are un credit dedicat pentru capacități de producție de energie verde (fotov, $0.10
+  [cautare] Vista Bank Romania credit dezvoltatori imobiliari
+  [cautare] vistabank.ro finanțare proiecte imobiliare companii
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+       ! url_not_in_prior_context
+  [ 2] https://www.vistabank.ro/en/legal-entities/loans
+  [ 3] https://www.vistabank.ro/
+  [ 4] https://www.vistabank.ro/persoane-juridice/credite
+  [ 5] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+GOL     CREDIT_DEZVOLTATORI          potrivire_slaba: cel mai apropiat: Finanțări Imobiliare / Finanțări Proiecte (încredere 0.55) — Vista Bank , $0.32
+  [cautare] vistabank.ro credit imobiliar persoane juridice
+  [cautare] vistabank.ro credite companii imobiliare IMM
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+  [ 2] https://www.vistabank.ro/persoane-juridice
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [cautare] vistabank.ro persoane-juridice credite investitii
+GOL     CREDIT_IMOBILIAR_PJ          produs_inexistent: Vista Bank nu publică un credit imobiliar dedicat persoanelor juridice (firme/PFA). Pagina, $0.23
+  [cautare] vistabank.ro credite profesii liberale firme IMM
+  [cautare] vistabank.ro credit IMM companii persoane juridice
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+       ! url_not_in_prior_context
+  [ 2] https://www.vistabank.ro/persoane-juridice
+       ! url_not_in_prior_context
+  [ 3] https://www.vistabank.ro/
+  [ 4] https://www.vistabank.ro/persoane-juridice/credite
+  [ 5] https://www.vistabank.ro/persoane-juridice
+GOL     CREDIT_PROFESII              produs_inexistent: Vista Bank nu are un produs de credit dedicat profesiilor liberale (psihologi, arhitecți/g, $0.27
+  [cautare] vistabank.ro credit notari avocati executori judecatoresti
+  [cautare] vistabank.ro credit liber profesii juridice avocati notari
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+       ! url_not_in_prior_context
+  [ 2] https://www.vistabank.ro/
+  [ 3] https://www.vistabank.ro/persoane-juridice/credite
+  [ 4] https://www.vistabank.ro/persoane-juridice
+GOL     CREDIT_SOLON                 produs_inexistent: Vista Bank nu are un credit dedicat notarilor/avocaților/executorilor judecătorești/practi, $0.14
+  [cautare] Vista Bank credit IMM ipotecar companii
+  [cautare] vistabank.ro credit garantat cu ipoteca companii
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+       ! url_not_in_prior_context
+  [ 2] https://www.vistabank.ro/persoane-juridice/imminvest
+  [ 3] https://www.vistabank.ro/
+  [ 4] https://www.vistabank.ro/persoane-juridice/credite
+  [ 5] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+GOL     CREDIT_IMM_IPOTECA           nepublicat: Vista Bank are o pagină generală de credite pentru persoane juridice (https://www.vistaban, $0.30
+  [cautare] Vista Bank internet banking firme IMM
+  [cautare] vistabank.ro internet banking business companii
+  [ 1] https://www.vistabank.ro/vista-internet-si-mobile-banking
+  [ 2] https://www.vistabank.ro/persoane-juridice/conturi-si-pachete-de-cont-curent
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.vistabank.ro/en/vista-internet-si-mobile-banking
+  [ 4] https://www.vistabank.ro/persoane-juridice
+  [ 5] https://www.vistabank.ro/vista-internet-si-mobile-banking
+  [ 6] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_11.2025.pdf
+GATA    INTERNET_BANKING             2 surse, 1 citate verificate, echivalent, $0.28, 25s — Internet / Mobile Banking (persoane juridice)
+  [cautare] vistabank.ro credit investitii persoane juridice
+  [cautare] vistabank.ro credit companii IMM investitii dobanda
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+  [ 2] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+  [ 3] https://www.vistabank.ro/persoane-juridice/imminvest
+GATA    CREDIT_INVESTITII            1 surse, 1 citate verificate, similar, $0.28, 68s — Programul IMM INVEST ROMÂNIA - Credite pentru investiții
+  [cautare] Vista Bank depozit dobanda persoane fizice
+  [cautare] vistabank.ro depozit la termen dobanda
+  [ 1] https://www.vistabank.ro/persoane-fizice/depozite-la-termen
+  [ 2] https://www.vistabank.ro/persoane-juridice/depozite-la-termen
+       ! url_not_in_prior_context
+  [ 3] https://www.vistabank.ro/persoane-fizice
+  [ 4] https://www.vistabank.ro/persoane-fizice/depozite
+GATA    DEPOZIT_1AN_1LUNA            2 surse, 1 citate verificate, similar, $0.22, 38s — Depozitul la termen "VISTA 12+1"
+  [cautare] Vista Bank descoperit de cont persoane fizice
+  [cautare] vistabank.ro overdraft card salariu
+GATA    OVERDRAFT_PF                 2 surse, 0 citate verificate, echivalent, $0.09, 17s — Descoperit de cont curent în Lei (atașat Cardului de salariu)
+  [cautare] vistabank.ro schimb valutar
+  [cautare] vistabank.ro curs valutar tranzactionare valuta
+  [ 1] https://www.vistabank.ro/trezorerie
+GATA    FX_SPOT                      3 surse, 1 citate verificate, echivalent, $0.16, 49s — Tranzacții FX Spot / Forward / Swap (Trezorerie și Piețe de Capital)
+  [cautare] Vista Bank leasing auto echipamente firme
+  [cautare] vistabank.ro leasing financiar companii
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+  [cautare] "Vista Leasing" vistabank.ro auto echipamente avans
+  [ 2] https://www.vistabank.ro/persoane-juridice
+  [ 3] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+GOL     LEASING_FINANCIAR            nepublicat: Vista Bank menționează doar generic 'Vista Leasing' (entitate afiliată băncii, fostă Alpha, $0.21
+  [cautare] Vista Bank automat depunere numerar firme
+  [cautare] vistabank.ro RCD depunere numerar companii
+  [cautare] Vista Bank automat reincarcare numerar bancnote firme ATM depozit
+GOL     RCD_CASH_DEPOSIT             produs_inexistent: Vista Bank nu publică un produs dedicat de tip automat/recycler de numerar (RCD) pentru pe, $0.11
+  [cautare] vistabank.ro titluri de stat
+  [cautare] vistabank.ro plasamente
+  [ 1] https://www.vistabank.ro/trezorerie
+  [cautare] vistabank.ro tarif comisioane piete de capital titluri de stat
+GATA    PLASAMENTE                   2 surse, 1 citate verificate, echivalent, $0.15, 37s — Titluri de stat / Servicii de piețe de capital (Trezorerie și Piețe de Capital)
+  [cautare] Vista Bank RoPay
+  [cautare] vistabank.ro RoPay comercianti QR
+  [cautare] vistabank.ro companii RoPay comercianti incasari QR persoane juridice
+GOL     ROPAY_BUSINESS               nepublicat: Vista Bank a lansat RoPay doar pentru persoane fizice (P2P prin QR - iulie 2025, Contactle, $0.16
+  [cautare] Vista Bank seif inteligent numerar companii
+  [cautare] vistabank.ro depunere numerar seif IMM
+  [cautare] vistabank.ro "cash management" OR "smart safe" OR "seif inteligent"
+GOL     SMART_SAFE                   produs_inexistent: Vista Bank nu oferă un produs de tip seif inteligent la locația clientului pentru depunere, $0.10
+  [cautare] vistabank.ro scrisori de garanție bancară
+  [cautare] site:vistabank.ro garantii companii
+  [ 1] https://www.vistabank.ro/persoane-juridice/credite
+  [ 2] https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf
+GATA    SCRISORI_GARANTIE            2 surse, 0 citate verificate, echivalent, $0.19, 25s — Scrisori de Garanție
+  [cautare] vistabank.ro depozit promoțional dobândă
+  [cautare] vistabank.ro depozit la termen dobânzi persoane fizice
+  [cautare] vistabank.ro persoane-fizice depozite-la-termen
+  [ 1] https://www.vistabank.ro/agri/depozite-la-termen
+GOL     DEPOZIT_BLITZ_7L             potrivire_slaba: cel mai apropiat: Depozite la Termen Vista Bank (ofertă standard pe termene de 1-12 luni) , $0.24
+
+vista: 26/50 produse cu surse, 2 erori, cost estimat $8.68, durata 7 min
+Reia: python descopera_surse_libra.py --banca vista --produse LINIE_CREDIT,ABONAMENT_PRESTIGE

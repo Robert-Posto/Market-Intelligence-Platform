@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet \"DIGITAL RON\"",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un pachet lunar pentru IMM și PFA care include cont curent, card de debit business și Internet/Mobile Banking, la fel ca Abonamentul PFA de la Libra; diferă însă prețul (119 lei/lună față de 29 lei/lună), eligibilitatea (doar clienți noi, cifră de afaceri sub 25 milioane lei) și caracterul de campanie cu valabilitate limitată (05.01.2026-31.12.2026), nu de produs permanent cu un număr fix de operațiuni incluse.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este pagina dedicată a pachetului curent pentru IMM/PFA, cu cifra exactă a abonamentului lunar și lista serviciilor incluse.",
+      "citat": "The Package cost is 119 RON per month. The following products and services are included in the Package: One RON current account; Administration fee for one RON current account; Issuance of one business debit card; Maintenance of one business debit card; Internet and Mobile Banking services can be activated for an unlimited number of users; Monthly Administration Fee for Internet and Mobile Banking services; Intrabank RON payments via Internet and Mobile Banking.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/#:~:text=The%20Package%20cost%20is%20119,via%20Internet%20and%20Mobile%20Banking."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/campanii-curente/pachet-digital-ron/",
+    "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2018,
+    "citire_cache": 36537,
+    "scriere_cache": 38919,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12479690000000002
+  }
+}

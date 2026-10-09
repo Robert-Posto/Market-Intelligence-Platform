@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/cardul-de-credit-visa-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de credit Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Linie de credit revolving pe card de credit business pentru persoane juridice (IMM), cu perioadă de grație și limită de credit - corespunde direct produsului Libra CARD_CREDIT_PJ.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: limita maximă, procentul de rambursare minimă, perioada de grație și formula dobânzii.",
+      "citat": "Cu cardul Visa Business ai o limită de credit de până la 200.000 de lei. Rambursezi doar 10% din suma datorată sau mai mult, la alegerea ta și ai perioadă de grație de până la 59 de zile. Pentru sumele nerambursate, ai dobândă atractivă: ROBOR 3M+12,50%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/2026-07/Tarife%20carduri%20credit%20business%20iul%202026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de credit - Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și dobânzi dedicat exclusiv cardului de credit business (Visa Business) pentru persoane juridice, cu toate comisioanele și dobânzile aplicabile liniei de credit.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF oficial de tarife, actualizat iulie 2026, cu toate dobânzile și comisioanele cardului de credit business explicit detaliate.",
+      "citat": "Dobanda curenta perceputa la suma utilizata din limita de credit Dobanda anuala standard: ROBOR 3M + 12,50 pp ( actualmente in total 18,34% pe an ) ROBOR 3M se actualizeaza trimestrial",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/2026-07/ghid-utilizare-carduri-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Ghid de utilizare al cardurilor (Card de credit business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ghidul de utilizare descrie mecanismul liniei de credit pe cardul business, perioada de grație și condițiile de rambursare, aplicabile cardului de credit Visa Business PJ.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de condiții care acoperă toate cardurile, inclusiv cel business, cu detalii despre perioada de grație și mecanismul de credit, dar fără cifre specifice de limită.",
+      "citat": "Ai perioadă de grație de până la 59 de zile pentru plățile cu cardul de cumpărături. Ai 0% dobândă atunci când rambursezi integral sumele utilizate prin cardul de credit până la scadența lunară.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1489,
+    "citire_cache": 6341,
+    "scriere_cache": 35194,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1041512
+  }
+}

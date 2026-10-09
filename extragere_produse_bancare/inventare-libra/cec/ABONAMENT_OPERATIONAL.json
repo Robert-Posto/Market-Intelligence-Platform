@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/pachet-cont-bancar-imm-optim",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul IMM Optim",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet de cont bancar standard pentru IMM-uri, cel mai reprezentativ echivalent al abonamentului operațional Libra pentru persoane juridice, cu servicii incluse (cont curent, card, Internet/Mobile Banking) și comision unic lunar.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina produsului conține cifrele exacte: comision lunar de administrare, economii lunare, numărul de plăți incluse gratuit.",
+      "citat": "Servicii incluse: cont curent în lei și valută, card de debit, Internet Banking, Mobile Banking, cont de economii. Ai comision zero pentru încasări prin ordin de plată în lei și valută, primele 10 plăți efectuate lunar, de la distanță Comisionul lunar de administrare este de 59 de lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont bancar (IMM Optim / IMM Business / IMM Premium / Comunitate / Profesional Dinamic / Start UP)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina hub cu toate pachetele de cont bancar (abonament operațional) pentru persoane juridice/PFA ale CEC Bank, exact tipul de produs și segmentul corespunzător ABONAMENT_OPERATIONAL de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține denumirile, serviciile incluse și comisioanele lunare de administrare pentru fiecare pachet de cont destinat firmelor.",
+      "citat": "Comisionul lunar de administrare este de 59 de lei. Poți economisi 122 de lei lunar din reducerile la comisioane. Pachetul IMM Business Comision zero la încasări și pentru 50 de plăți interbancare în lei, de la distanță, lunar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarif de comisioane si speze pentru persoane juridice - secțiunea Pachete de cont (IMM Optim/Business/Premium/Start-UP/Comunitate/Profesional Dinamic/Acces EU/CSV Premium)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife conține toate comisioanele lunare de administrare ale pachetelor de cont pentru persoane juridice, corespondent direct al abonamentului operațional Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document PDF general de tarife, dar conține explicit valorile comisioanelor pentru fiecare pachet de cont bancar destinat firmelor.",
+      "citat": "Administrare Pachet Comunitate 39 lei /luna Administrare Pachet Start-UP GRATUIT Administrare Pachet Profesional Dinamic 39 lei/luna Administrare Pachet Acces EU 49 lei/luna Administrare Pachet Optim 59 lei/luna Administrare Pachet IMM Business 119 lei/luna Administrare Pachet IMM Premium 239 lei/luna Administrare Pachet CSV Premium 249 lei/luna",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1849,
+    "citire_cache": 6324,
+    "scriere_cache": 33217,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1028053
+  }
+}

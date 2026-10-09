@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/pachet-cont-bancar-imm-premium",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul IMM Premium",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pachetul corporate de top al CEC Bank pentru firme mari, cu comision lunar unic, conturi lei/valută, card de debit, Internet/Mobile Banking și curs valutar negociat - similar ca poziționare cu Abonamentul PRESTIGE de la Libra (abonament corporate cu tranzacții incluse și Live FX). Diferă însă structura: IMM Premium costă 239 lei/lună (nu 295), nu specifică explicit 5+2 carduri, ci include cont de salarii și reduceri procentuale la operațiuni, nu tranzacții complet nelimitate.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre exacte (comision, procent dobândă, reduceri) pentru pachetul corporate echivalent ca nivel (afaceri mari).",
+      "citat": "Pachetul de cont bancar IMM Premium include servicii pentru operațiunile de zi cu zi și reduceri de comisioane la operațiuni, inclusiv în valută. Servicii incluse: conturi curente în lei și valută, card de debit, Internet Banking, Mobile Banking, cont de economii, cont de salarii.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Administrare Pachet IMM Premium",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife confirmă comisionul lunar al pachetului corporate de top (IMM Premium) alături de celelalte pachete, permițând extragerea zilnică a valorii comisionului.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit valoarea comisionului lunar pentru Pachetul IMM Premium (239 lei/lună), alături de celelalte pachete corporate.",
+      "citat": "Administrare Pachet IMM Business 119 lei/luna Administrare Pachet IMM Premium 239 lei/luna Administrare Pachet CSV Premium 249 lei/luna Serviciul INFO SMS cont curent LEI 25 lei/luna",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1723,
+    "citire_cache": 6361,
+    "scriere_cache": 35137,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10635270000000001
+  }
+}

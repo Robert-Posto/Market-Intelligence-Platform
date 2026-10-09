@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Start-Up",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat start-up-urilor (companii in primii 2 ani de la infiintare), pentru PFA si microintreprinderi, cu pachet gratuit in primul an: cont curent, card de debit business, internet/mobile banking, plati si incasari nelimitate, plus comision POS la incasari - aceleasi caracteristici cheie ca Cont Destept de la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina dedicata produsului contine cifrele esentiale (comision lunar dupa gratuitate, comision POS, praguri de plati), confirmate din continutul indexat al paginii; fetch-ul direct a esuat dar textul a fost obtinut prin cautare.",
+      "citat": "100% reducere pentru comisionul aferent platilor < 50.000 lei interbancare (regim normal) prin e-ximBanking/Ghiseu (mai putin comisionul de procesare Transfond in valoare de 0,51 lei, suportat de client); 2 retrageri/luna de al ATM-ul bancii. Facilitati aferente POS – cu un cost al comisionului la incasari PF – 0,9%/tranzactii.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 19668,
+    "iesire": 2435,
+    "citire_cache": 12690,
+    "scriere_cache": 25701,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1304765
+  }
+}

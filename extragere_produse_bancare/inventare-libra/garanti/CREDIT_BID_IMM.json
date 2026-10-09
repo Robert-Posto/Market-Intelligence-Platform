@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantia-bid/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garanția BID",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat pentru IMM/PFA, finanțare în lei garantată de BID (Banca Interamericană de Dezvoltare), cu trei componente (capital de lucru, echipamente, imobiliar), exact ca la Libra unde garanția BID acoperă atât investiții cât și activitate curentă.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv produsului, cu cifre complete pentru procentul de garanție, plafonul creditului și perioada de creditare pentru fiecare componentă.",
+      "citat": "Suma creditului: maxim 14 Mil RON, fără ca ajutorul de minimis să depășească 300.000 EUR/beneficiar, calculat pe ultimii 3 ani calendaristici Perioada de creditare: max. 66 luni Garanții: garanția BID până la 80% din valoarea creditului și alte garanții suplimentare (dacă este cazul)",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantia-bid/#:~:text=Suma%20creditului%3A%20maxim%2014%20Mil,garan%C8%9Bii%20suplimentare%20%28dac%C4%83%20este%20cazul%29"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantia-bid/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/",
+    "https://www.garantibbva.ro/imm-si-pfa/",
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-pe-termen-scurt-si-mediu/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/pfa-loans/",
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantia-bid/"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 76993,
+    "iesire": 2599,
+    "citire_cache": 172422,
+    "scriere_cache": 75864,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.40412040000000005
+  }
+}

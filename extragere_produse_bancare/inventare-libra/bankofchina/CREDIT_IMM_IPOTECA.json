@@ -1,0 +1,44 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Fixed Asset Loan (încredere 0.55) — Este singurul produs listat sub secțiunea Corporate Loans a BOC România: un credit pentru persoane juridice garantat cu ipotecă/gaj, destinat investițiilor în active fixe (inclusiv achiziție de clădiri), proces care implică explicit 'mortgage contract'. Diferă de produsul Libra prin lipsa componentei de linie de credit pentru activitate curentă și prin absența totală a cifrelor publice (sume minime/maxime, dobândă, termen în luni)."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb2/202104/t20210430_19360666.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Fixed Asset Loan",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs listat sub secțiunea Corporate Loans a BOC România: un credit pentru persoane juridice garantat cu ipotecă/gaj, destinat investițiilor în active fixe (inclusiv achiziție de clădiri), proces care implică explicit 'mortgage contract'. Diferă de produsul Libra prin lipsa componentei de linie de credit pentru activitate curentă și prin absența totală a cifrelor publice (sume minime/maxime, dobândă, termen în luni).",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina descrie clar tipul de produs (credit pentru firme garantat cu ipotecă, destinat activelor fixe) și procesul de garantare, dar nu publică nicio sumă, procent de dobândă sau termen în luni, spre deosebire de pagina Libra.",
+      "citat": "Fixed Asset Loan refers to loans granted by Bank of China (Central and Eastern Europe) Limited Bucharest Branch to meet the demands of enterprises in their investments in fixed assets. Investments by enterprises in fixed assets include capital construction, technical innovation, developing and manufacturing of the new products as well as related house purchase, civil engineering, purchase and installation of the technical equipment, etc.",
+      "citat_verificat": true,
+      "link_live": "https://www.bankofchina.com/ro/en/cbservice/cb2/202104/t20210430_19360666.html#:~:text=Fixed%20Asset%20Loan%20refers%20to,of%20the%20technical%20equipment%2C%20etc."
+    }
+  ],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb2/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb2/202104/t20210430_19360666.html",
+    "https://www.bankofchina.com/ro/en/bocinfo/bi2/202109/t20210908_20014518.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2802,
+    "citire_cache": 80807,
+    "scriere_cache": 53178,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1771464
+  }
+}

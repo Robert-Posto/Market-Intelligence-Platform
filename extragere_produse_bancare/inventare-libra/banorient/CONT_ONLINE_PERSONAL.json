@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent / Cont Premium - persoane fizice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife (sectiunea PERSOANE FIZICE) arata comisioanele si dobanzile pentru contul curent si contul Premium, insa este un cont traditional operat prin agentie/casierie, fara proces de deschidere 100% online ca la Cont Online Personal Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul contine cifre concrete (comisioane de administrare, dobanzi creditoare/penalizatoare) aplicabile explicit contului curent pentru persoane fizice.",
+      "citat": "Administrare cont curent (comision aplicabil lunar pentru fiecare cont in valuta contului) 5 RON/ luna 1 EUR / luna 1.5 USD / luna 1 GBP / luna 1.5 CHF / luna",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Administrare%20cont%20curent%20%28comision%20aplicabil,luna%201.5%20CHF%20%2F%20luna"
+    },
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "\"BANORIENT Premium\" Sight account / Cont curent",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un cont curent la vedere pentru persoane fizice (si juridice), dar nu exista nicio mentiune despre deschidere 100% online; banca este orientata spre trade finance si operatiuni cu numerar/casierie, deci canalul difera fata de Cont Online Personal.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie explicit contul BANORIENT Premium oferit persoanelor fizice, dar nu contine cifre (dobanda exacta e doar in documentul de tarife) si nu mentioneaza deschidere online.",
+      "citat": "Contul BANORIENT Premium este un cont la vedere oferit de BANQUE BANORIENT FRANCE Romania clienţilor săi persoane fizice sau juridice, titulari ai unui cont curent. Banca va acorda clientului o dobândă lunară preferenţială, în funcţie de soldul înregistrat pe cont la sfârşitul fiecărei zi bancare, cu condiţia ca soldul să nu depăşească un nivel minim stabilit.",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/products-and-services#:~:text=Contul%20BANORIENT%20Premium%20este%20un,dep%C4%83%C5%9Feasc%C4%83%20un%20nivel%20minim%20stabilit."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5635,
+    "citire_cache": 31423,
+    "scriere_cache": 30572,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1390806
+  }
+}

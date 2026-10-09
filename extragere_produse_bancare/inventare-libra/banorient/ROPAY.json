@@ -1,0 +1,28 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Site-ul bancii (sucursala Romania) nu ofera un produs de plati instant prin telefon pentru clientii din Romania, echivalent cu RoPay. Pagina 'Produse si servicii' pentru Romania (https://www.banorientfrance.com/romanian/romania/products-and-services) listeaza doar: cont curent BANORIENT Premium, carduri Mastercard, Internet Banking si Open Banking - fara niciun serviciu de plati instant prin numar de telefon. Pagina 'Mobile Banking' (https://www.banorientfrance.com/romanian/mobile-banking) precizeaza explicit ca serviciul de mobile banking 'va fi disponibil in curand in Romania', deci inca nu exista. Singurul produs de plati instant gasit pe site, 'Aani Instant Payments' (https://www.banorientfrance.com/romanian/aani-instant-payments), este un sistem operat de Al Etihad Payments (Banca Centrala a EAU) si este limitat strict la transferuri domestice in AED intre conturi detinute la institutii licentiate din Emiratele Arabe Unite - nu este disponibil pentru clientii sucursalei din Romania si nu foloseste RON; este deci un produs dintr-o alta tara/jurisdictie, nu un echivalent sau similar valabil pentru segmentul vizat de RoPay (persoane fizice si juridice din Romania)."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/aani-instant-payments",
+    "https://www.banorientfrance.com/romanian/mobile-banking",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1859,
+    "citire_cache": 34847,
+    "scriere_cache": 27803,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0950829
+  }
+}

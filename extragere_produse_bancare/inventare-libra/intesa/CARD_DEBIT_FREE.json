@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Visa Business (emis în Lei)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit standard pentru persoane juridice la Intesa; emiterea e gratuită ca la Libra, dar există un comision anual de administrare (40 Lei/card/an), spre deosebire de cardul Libra fără costuri de administrare.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Secțiunea C. CARDURI BUSINESS din lista oficială de costuri standard pentru persoane juridice listează explicit valorile pentru Visa Business.",
+      "citat": "VISA BUSINESS (emis în Lei) Valoare Emitere Gratuit Administrare card 40 Lei/card/an Administrare cont card Gratuit Înlocuire card la expirare Gratuit Refuz la plată nejustificat 20 Lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/pachet-card-cont/pachet-standard.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Visa Inspire LEI (în cadrul Pachetului STANDARD)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit de bază pentru persoane fizice, dar nu este gratuit necondiționat ca la Libra: emiterea/administrarea e gratuită doar dacă se îndeplinesc condiții de rulaj/sold (altfel 15 Lei/an) și pachetul însuși costă 10 Lei/lună dacă nu sunt îndeplinite condițiile.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina pachetului descrie explicit cardul de debit asociat și comisioanele standard vs. promoționale, cu cifre concrete.",
+      "citat": "Monthly administration fee for Mobile&Internet Banking application echivalent 2 EURO. Visa Inspire annual debit card issuance and administration fee 15 LEI.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Fizice-valabile-din-01.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Visa Inspire LEI",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife standard pentru persoane fizice conține secțiunea dedicată cardului Visa Inspire LEI, cu comisionul de emitere taxabil în afara pachetului și gratuit doar în profilul de cost Standard al pachetului.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisioanele cardului de debit de bază, deși structura e pe profiluri de cost/pachete, nu un card unic gratuit.",
+      "citat": "CARD DE DEBIT VISA INSPIRE LEI VISA INSPIRE LEI Pachet Pachet Profil Cost fara pachet Profil Cost Profil Cost Standard Econom 25 Emitere card principal 15 Lei Gratuit",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/persoane-fizice/card-visa-inspire.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/card-debit-visa-business.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf"
+  ],
+  "durata_s": 119,
+  "consum": {
+    "intrare": 10,
+    "iesire": 9637,
+    "citire_cache": 157990,
+    "scriere_cache": 107672,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.397168
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachet de cont curent T0 pentru Clienții IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un pachet/abonament operațional lunar pentru firme (IMM/PFA) cu cont lei+valută, card de debit business, plăți digitale și comision explicit la terminalul POS — aceeași categorie de produs și segment ca Abonament SHINE. Diferă: aici pachetul este gratuit (0 lei/lună, doar pentru firme înființate în ultimele 12 luni) și comisionul mPOS este 0,99% față de 0,59% la Libra, iar cardul nu e descris ca fiind de tip Gold.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de ofertă cu cifre exacte pentru toate componentele pachetului, inclusiv comisionul POS și taxa de mentenanță terminal.",
+      "citat": "Taxă administrare pentru un cont curent în lei și unul în valuta Gratuit Taxă de administrare pentru un card de debit business Gratuit Acceptarea la plată a cardurilor la terminalul POS: 0.99%/tranzacție Administrare lunară/mentenanță terminal POS: 35 lei/ terminal",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/t0-package/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "T0 Package for Start-Up / Pachet T0",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina web a aceluiași pachet T0 pentru IMM/PFA nou-înființate, cu card de debit business și comision POS 0,99%/tranzacție, echivalent funcțional cu Shine dar cu preț zero și eligibilitate restrânsă la firme noi.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată a campaniei conține aceleași cifre ca PDF-ul de ofertă (card business, POS 0,99%, 35 lei/terminal).",
+      "citat": "Acceptance of cards payments at the POS terminal: 0.99%/transaction Monthly administration/maintenance of POS terminal: RON 35 /terminal** charged only if the value of transactions through the POS terminal, in the previous month, was less than RON 12,000",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "DIGITAL RON Package / Business IMM DIGITAL Package",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Abonament lunar plătit (119 RON/lună) pentru IMM/PFA, cu cont curent, card de debit business, Internet/Mobile Banking și plăți nelimitate incluse — structură de tip abonament ca Shine, dar fără cont în euro explicit, fără card Gold și fără comision mPOS menționat în pagină.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina conține cifra exactă a abonamentului lunar (119 RON) și componentele incluse, dar nu menționează comisionul pentru acceptarea cardurilor la POS pentru acest pachet specific.",
+      "citat": "The Package cost is 119 RON per month. The following products and services are included in the Package: One RON current account; Administration fee for one RON current account; Issuance of one business debit card; Maintenance of one business debit card",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/#:~:text=The%20Package%20cost%20is%20119,of%20one%20business%20debit%20card"
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2025/10/Regulament-Pachet-Business-IMM-DIGITAL_-EN.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Business IMM DIGITAL Package",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Regulamentul oficial al aceluiași pachet DIGITAL RON de 119 RON/lună pentru IMM cu cifră de afaceri 5-25 milioane lei, confirmă componentele: cont curent, card business, internet/mobile banking, plăți nelimitate — fără mențiune explicită de cont euro sau comision mPOS.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document contractual oficial cu cifra exactă a abonamentului (119 RON/lună) și lista completă de servicii incluse.",
+      "citat": "The Package cost is 119 RON per month. The following products and services are included in the Package: One RON current account; Administration fee for one RON current account; Issuance of one business debit card; Maintenance of one business debit card",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/",
+    "https://www.garantibbva.ro/pachete-curente-pentru-imm-pfa/pachet-digital-ron/",
+    "https://www.garantibbva.ro/current-campaigns-sme-and-pfa/digital-ron-package/",
+    "https://www.garantibbva.ro/wp-content/uploads/2025/10/Regulament-Pachet-Business-IMM-DIGITAL_-EN.pdf",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf"
+  ],
+  "durata_s": 81,
+  "consum": {
+    "intrare": 31917,
+    "iesire": 6674,
+    "citire_cache": 144565,
+    "scriere_cache": 60542,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.310842
+  }
+}

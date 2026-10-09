@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete Servicii (EXIM BUSINESS SMART / START / ACTIV / COMPLET)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament lunar de servicii bancare pentru firme/PFA (PFA si Microintreprinderi), cu cont curent lei+valuta, card de debit business si Internet/Mobile Banking, la fel ca Abonamentul ELITE de la Libra. Diferă însă scara: cel mai scump abonament Exim costă doar 70 lei/lună (față de 225 lei/lună la Libra ELITE), nu menționează explicit Live FX și pare să includă un singur card, nu 3.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată prezintă toate cele 4 variante de abonament cu prețuri, servicii incluse și reduceri, deci conține cifrele produsului comparabil, chiar dacă nivelul de preț/servicii e mult sub cel al pachetului ELITE.",
+      "citat": "EXIM BUSINESS COMPLET (70 lei/luna) Costuri ZERO: deschiderea contului curent; administrarea lunara a conturilor curente in lei si valuta; furnizarea (emiterea) si administrarea cardului de debit inclus in oferta; administrare lunara Internet/Mobile Banking (e-ximBanking); incasari nelimitate intrabancare/interbancare in lei si valuta; plati nelimitate intrabancare prin e-ximBanking",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=EXIM%20BUSINESS%20COMPLET%20%2870%20lei%2Fluna%29,plati%20nelimitate%20intrabancare%20prin%20e%2DximBanking"
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2025/06/11/transactional-offers/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Transactional offers (SUBSCRIPTION RON 70/MONTH)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Versiunea în limba engleză a aceleiași pagini cu abonamentele pentru PFA și microîntreprinderi; confirmă aceleași praguri de preț (25/40/45/70 lei) și componența pachetului (conturi curente, card de debit Mastercard Business, Internet/Mobile Banking), fără pragul de 225 lei și fără Live FX din oferta Libra ELITE.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Conține cifrele exacte ale celor patru abonamente, dar niciunul nu atinge nivelul de preț/servicii al Abonamentului ELITE de la Libra.",
+      "citat": "SUBSCRIPTION – RON 70/MONTH Free facilities (administrative and transactional): Opening of the current account; Monthly administration of current accounts in RON and foreign currency; Issuance and administration of the debit card included in the offer",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2025/06/11/transactional-offers/#:~:text=SUBSCRIPTION%20%E2%80%93%20RON%2070%2FMONTH%20Free,card%20included%20in%20the%20offer"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2025/06/11/transactional-offers/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2969,
+    "citire_cache": 94710,
+    "scriere_cache": 59097,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1963905
+  }
+}

@@ -1,0 +1,49 @@
+/* Situație bănci (sb-*): graficul pe ani, reperele Libra și tabelele.
+   Culorile seriilor: paleta categorială validată (scripts/validate_palette.js, 09.10.2026) pe
+   suprafața aplicației, în ambele teme; Libra ia roșul paletei, celelalte 7 sloturi în ordine fixă. */
+:root {
+  --sb-libra: #e34948; --sb-1: #2a78d6; --sb-2: #eb6834; --sb-3: #1baf7a; --sb-4: #eda100;
+  --sb-5: #e87ba4; --sb-6: #008300; --sb-7: #4a3aa7; --sb-rest: #cfc4b8;
+}
+:root[data-theme="dark"] {
+  --sb-libra: #e66767; --sb-1: #3987e5; --sb-2: #d95926; --sb-3: #199e70; --sb-4: #c98500;
+  --sb-5: #d55181; --sb-6: #008300; --sb-7: #9085e9; --sb-rest: #5a4a4c;
+}
+.sb-filtre { gap: 8px 16px; align-items: flex-end }
+.sb-filtre .sb-banci { flex: 1 1 360px; min-width: 260px }
+.sb-filtre .sb-banci .ant-select { width: 100% }
+.sb-kpi { margin-bottom: 18px }
+.sb-u { font-size: 14px; font-weight: 400 }
+.sb-titlu { margin: 0 0 4px }
+.sb-titlu .gri { font-size: 14px; font-weight: 400 }
+.sb-nota { margin: 0 0 12px; max-width: 90ch }
+.sb-grafic { width: 100%; min-height: 380px }
+.sb-leg { color: var(--ink); font-size: 12px }
+.sb-cap-tabel { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-bottom: 12px }
+.sb-cap-tabel h2 { margin: 0 }
+/* 14 ani + bancă: tabelul derulează orizontal în secțiune, nu toată pagina */
+.sb-scroll { overflow-x: auto }
+.sb-scroll .ant-table-wrapper.t td, .sb-scroll .ant-table-wrapper.t th { white-space: nowrap }
+.sb-unitate { margin: -4px 0 10px }
+/* coloana băncii fixă la derularea orizontală, cu lățime mărginită (numele lungi de sucursale se taie) */
+.sb-scroll .ant-table-wrapper.t th:first-child, .sb-scroll .ant-table-wrapper.t td:first-child {
+  position: sticky; left: 0; z-index: 2; background: var(--surface); max-width: 280px; overflow: hidden; text-overflow: ellipsis;
+  box-shadow: 1px 0 0 var(--line) }
+.sb-scroll .ant-table-wrapper.t .ant-table-thead > tr > th:first-child { z-index: 3; background: var(--cap-tabel) }
+.sb-scroll .ant-table-wrapper.t tr.libra td:first-child { background: var(--accent-tint) }
+.sb-gol { margin-top: 12px }
+.sb-plus { color: var(--ok) }
+.sb-minus { color: var(--warn) }
+/* cota de piață: donut cu cota Libra în centru și lista cu cifrele alături */
+.sb-cota { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 40px }
+.sb-donut { position: relative; flex: 0 1 340px; min-width: 240px }
+.sb-centru { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; text-align: center }
+.sb-centru .n { font-size: 28px; font-weight: 600; color: var(--ink) }
+.sb-centru .gri { font-size: 12px }
+.sb-lista { flex: 1 1 340px; max-width: 560px; border-collapse: collapse; font-size: 13px }
+.sb-lista th { text-align: left; font-weight: 600; color: var(--muted); font-size: 12px; padding: 0 8px 6px; border-bottom: 1px solid var(--line) }
+.sb-lista td { padding: 6px 8px; border-bottom: 1px solid var(--line); color: var(--ink) }
+.sb-lista .num { text-align: right; white-space: nowrap }
+.sb-lista tr.libra td { font-weight: 600; background: var(--accent-tint) }
+.sb-lista tr.rest td { color: var(--muted) }
+.sb-bulina { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; vertical-align: -1px }

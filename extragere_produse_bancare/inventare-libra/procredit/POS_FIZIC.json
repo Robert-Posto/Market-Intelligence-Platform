@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comision echipament POS",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru persoane juridice, valabil din 10.08.2026, conține explicit comisionul lunar pentru echipamentul POS (GPRS Desk/Mobile), la secțiunea Alte Comisioane - Servicii.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Rândul din tabel cu valorile exacte ale comisionului pentru echipamentul POS apare explicit în documentul oficial de prețuri pentru firme.",
+      "citat": "Comision echipament POS 30 LEI GPRS Desk 60 LEI GPRS Mobile",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (11 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/servicii-bancare/terminale-pos/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Terminale POS pentru companii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată terminalelor POS fizice pentru persoane juridice (firme), exact același tip de produs și segment ca Terminal POS fizic Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie clar produsul (instalare, training gratuit, tarifare transparentă) dar nu conține cifre; trimite explicit către lista de prețuri pentru comision.",
+      "citat": "Specialiștii noștri se vor ocupa de instalarea terminalului POS la locația ta și vor oferi training gratuit pentru tine și angajații tăi, astfel încât să puteți începe să folosiți echipamentul imediat.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/servicii-bancare/terminale-pos/#:~:text=Speciali%C8%99tii%20no%C8%99tri%20se%20vor%20ocupa,%C3%AEncepe%20s%C4%83%20folosi%C8%9Bi%20echipamentul%20imediat."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/servicii-bancare/terminale-pos/",
+    "https://www.procreditbank.ro/wp-content/uploads/files/Lista_preturi_PJ_RO_15_06_2022.pdf",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 10,
+    "iesire": 1739,
+    "citire_cache": 146352,
+    "scriere_cache": 83923,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2564879
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/retail-banking/current-accounts",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Current Accounts / Online Current Account (Cont Curent Online)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane fizice, deschis 100% online, cu card de debit Mastercard atașat și acces digital complet prin aplicația monet sau Internet Banking - același tip de produs și segment ca CONT_ONLINE_PERSONAL.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată contului curent descrie explicit deschiderea online, comisioanele zero și beneficiile digitale, cu cifre concrete pentru fiecare taxă.",
+      "citat": "Open a Nexent Bank current account online and manage your money anytime through the monet mobile app or Internet Banking, with no branch visits and no unnecessary paperwork. In just a few minutes, you'll have a fully functional bank account together with a Mastercard debit card, ready for payments anywhere in the world.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/retail-banking/current-accounts#:~:text=Open%20a%20Nexent%20Bank%20current,payments%20anywhere%20in%20the%20world."
+    },
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane fizice conține explicit comisioanele contului curent (deschidere, administrare, extras de cont, descoperit de cont), valabil din 01.01.2026.",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF oficial cu lista completă de comisioane pentru contul curent la persoane fizice, cu cifre exacte per fiecare operațiune.",
+      "citat": "Comision deschidere de cont - 0; Administrarea contului - Comision administrare client (lunar) - echivalent 3 RON; Extras de cont lunar / ultimul extras RON/FX 0; Rata de dobanda pentru descoperit de cont neautorizat RON 40% / an, FX 20% / an.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/retail-banking/current-accounts",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1841,
+    "citire_cache": 39849,
+    "scriere_cache": 54158,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16178679999999998
+  }
+}

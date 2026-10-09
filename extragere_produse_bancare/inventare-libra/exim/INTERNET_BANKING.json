@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2022/12/Termeni-si-conditii-pentru-utilizarea-serviciului-de-Internet-Banking-Persoane-Juridice-2023.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "e-xim Banking (Serviciul Internet Banking pentru Persoane Juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document dedicat exclusiv serviciului de Internet/Mobile Banking pentru persoane juridice, entități fără personalitate juridică sau persoane fizice autorizate (PFA), exact segmentul vizat de produsul Libra Internet & Mobile Banking business.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este documentul contractual oficial (Termeni și Condiții) specific serviciului de Internet Banking pentru persoane juridice/PFA, cu definiții tehnice și reguli de securitate/blocare detaliate, deși nu conține un tarif explicit (tarifele sunt într-un document separat).",
+      "citat": "Accesul la E eB al Utilizatorului care foloseşte de 3 ori consecutiv o Parolă E eB greşită , 5 încercări eronate ale PIN-ului Digipass sau ale codului de validare furnizat de Digipass sau ale codului primit prin SMS, va fi blocat automat de sistemul Băncii.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "e-xim Banking (Internet Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de comisioane standard al Exim Banca Românească (produse pentru persoane juridice: Trade Finance, Cash Management, carduri business) conține o secțiune dedicată 'Internet Banking' cu abonamentul lunar și costul dispozitivului de autentificare pentru serviciul e-xim Banking, oferit clienților persoane juridice/PFA.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Secțiunea 'Internet Banking' din lista de comisioane standard pentru persoane juridice conține cifrele exacte ale abonamentului lunar și ale comisionului pentru digipass.",
+      "citat": "Internet Banking 1. Abonament lunar e-xim Banking 20 lei lunar 2. Comision digipass 115 lei (TVA inclus) flat 3. Activare serviciu e-xim Banking gratuit",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf",
+    "https://www.eximbank.ro/wp-content/uploads/2022/12/Termeni-si-conditii-pentru-utilizarea-serviciului-de-Internet-Banking-Persoane-Juridice-2023.pdf",
+    "https://www.eximbank.ro/intreprinderi-mici-si-mijlocii/internet-mobile-banking/",
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/",
+    "https://www.eximbank.ro/2022/12/15/operatiuni-curente/"
+  ],
+  "durata_s": 95,
+  "consum": {
+    "intrare": 117380,
+    "iesire": 6945,
+    "citire_cache": 362691,
+    "scriere_cache": 152836,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.7588382
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/conturi-curente",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Vista Activ Plus",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul pachet lunar de cont curent pentru persoane juridice la Vista Bank, cu carduri de debit, internet/mobile banking și plăți incluse, dar nu specifică un număr fix de operațiuni incluse (plăți/SEPA/instrumente de debit) și nu include un serviciu de tip Live FX, spre deosebire de Abonamentul ELITE de la Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetelor pentru persoane juridice conține explicit costul lunar și lista de beneficii ale celui mai complet pachet (Vista Activ Plus), fiind cel mai apropiat echivalent de abonamentul corporate ELITE, dar fără detalierea numărului de tranzacții incluse.",
+      "citat": "Număr nelimitat de conturi curente în lei sau valută; Vista Internet Banking și Mobile Banking; Carduri de debit în lei sau euro; Alerte SMS, prin care vă informăm prompt la fiecare plată cu cardul; Zero comision pentru depuneri de numerar (bancnote) la casierie; Pachetul Vista Activ Plus are un cost lunar unic de 250 de lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2097,
+    "citire_cache": 6363,
+    "scriere_cache": 32117,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1025431
+  }
+}

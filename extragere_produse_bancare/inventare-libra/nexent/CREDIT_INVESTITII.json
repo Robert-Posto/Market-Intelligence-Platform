@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Investment-Loan",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Investment Loan (Creditul de investiții pentru companii / IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru persoane juridice (IMM) destinat achiziției de echipamente, mijloace de transport, spații comerciale/industriale sau refinanțării unor credite similare - exact tipul de produs 'credit de investiții' pentru firme, cu termen și perioadă de grație explicite.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Este pagina dedicată exclusiv produsului 'Investment Loan' pentru IMM-uri, cu destinațiile de finanțare, maturitatea maximă și perioada de grație precizate explicit în text.",
+      "citat": "Investments loan is destined for the purchase of: technical equipment, production lines, installation; office equipment (computers, xerox, etc.); non-register vehicles (bull-dozers, excavators, cranes or any other caterpillars vehicles); Utilitary and tourisms vehicles; Office space; commercial space, warehouse; Re-technologizing and updating installations and technological lines; Refinancing credits with similar destinations from other financial institutions; Investment financing (VAT included); Long term credit maturity: maximum 5 years Grace period: up to 6 months",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Investment-Loan#:~:text=Investments%20loan%20is%20destined%20for,period%3A%20up%20to%206%20months"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Investment-Loan"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2002,
+    "citire_cache": 44519,
+    "scriere_cache": 24673,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09061830000000001
+  }
+}

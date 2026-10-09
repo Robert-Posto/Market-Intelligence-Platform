@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Servicii de investiții - tranzacționare obligațiuni (MiFID II) - Chestionar de clasificare a clienților (încredere 0.55) — Este singurul produs de investiții/plasamente identificat la Nexent Bank, constând în tranzacționare de obligațiuni (nu specific titluri de stat), dar este oferit EXCLUSIV persoanelor juridice clasificate drept 'Clienți Profesionali' (praguri de bilanț >=20 mil EUR, cifră de afaceri >=40 mil EUR, fonduri proprii >=2 mil EUR), spre deosebire de produsul Libra care vizează atât persoane fizice cât și juridice în general."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/01/dae3e6e13e3656d35c1e7b5dc9032c4450470277.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Servicii de investiții - tranzacționare obligațiuni (MiFID II) - Chestionar de clasificare a clienților",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de investiții/plasamente identificat la Nexent Bank, constând în tranzacționare de obligațiuni (nu specific titluri de stat), dar este oferit EXCLUSIV persoanelor juridice clasificate drept 'Clienți Profesionali' (praguri de bilanț >=20 mil EUR, cifră de afaceri >=40 mil EUR, fonduri proprii >=2 mil EUR), spre deosebire de produsul Libra care vizează atât persoane fizice cât și juridice în general.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Documentul descrie explicit serviciul de tranzacționare a obligațiunilor sub MiFID II, dar nu conține cifre de dobândă/comision, iar segmentul de clienți eligibili este mult mai restrâns decât la Libra.",
+      "citat": "Credit Europe Bank (România) SA (”CEB”) oferă servicii de investiții, constând în tranzacționarea de obligațiuni si tranzacții de tip forward pe cursul de schimb, servicii care intră sub incidența MiFID II. CEB SA oferă aceste servicii exclusiv persoanelor juridice clasificate ca fiind Clienți Profesionali.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "deschise": [
+    "https://www.nexentbank.ro/upload/media/document/0001/01/dae3e6e13e3656d35c1e7b5dc9032c4450470277.pdf"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2202,
+    "citire_cache": 57471,
+    "scriere_cache": 38322,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12933519999999998
+  }
+}

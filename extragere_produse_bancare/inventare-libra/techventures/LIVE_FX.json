@@ -1,0 +1,44 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/operatiuni-fara-numerar",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Schimburi valutare pe cont (prin Internet/Mobile Banking)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de serviciu (schimb valutar online, inițiat din Internet/Mobile Banking, pentru persoane juridice) ca Live FX, dar la TechVentures Bank nu există o platformă dedicată separată cu cursuri live afișate constant, ci doar opțiunea de a face schimb valutar din cont online și, pentru sume peste 10.000 EUR, de a solicita negociere a cursului în timp real. Lipsește componenta de 'platformă dedicată' distinctă de operațiunea FX clasică.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie explicit opțiunea de schimb valutar online și negocierea cursului în timp real pentru sume mari, dar nu există un produs separat numit/poziționat ca platformă de tranzacționare valutară.",
+      "citat": "Cursul valutar este mai avantajos la tranzacțiile efectuate online, din Internet sau Mobile Banking. În plus, pentru sume care depășesc 10.000 EUR sau echivalent, poți solicita în timp real negocierea cursului. Poți face schimburi valutare direct din cont pentru următoarele valute: EUR, USD, GBP, CHF, HUF.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/operatiuni-fara-numerar",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/companii/operatiuni",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/internet-banking",
+    "https://techventures.bank/institutii-financiare",
+    "https://techventures.bank/companii/digital-banking"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 20261,
+    "iesire": 2293,
+    "citire_cache": 70139,
+    "scriere_cache": 34909,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16475230000000002
+  }
+}

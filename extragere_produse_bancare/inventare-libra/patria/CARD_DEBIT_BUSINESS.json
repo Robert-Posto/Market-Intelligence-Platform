@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Mastercard Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit dedicat persoanelor juridice/antreprenorilor (firme, PFA), exact ca produsul Libra CARD_DEBIT_BUSINESS, cu descrierea comisioanelor de emitere, plăți și retrageri.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv cardului de debit business, cu avantaje și comisioane menționate explicit (ZERO comision emitere, comision plăți).",
+      "citat": "Cardul de debit Mastercard Business simplifică operațiunile zilnice ale afacerii tale, oferindu-ți posibilitatea de a plăti și retrage numerar fără comision, inclusiv online. ZERO lei/ EUR comision de emitere, ZERO lei/ EUR comision pentru plăți la comercianți (în țară și străinătate)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de debit - Mastercard Business Lider LEI / Mastercard Standard Euro",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru persoane juridice, cu secțiune dedicată cardurilor de debit business (Mastercard Business Lider), incluzând toate comisioanele relevante.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Tabel detaliat cu valorile exacte ale comisioanelor pentru cardul de debit business: emitere, administrare lunară, retrageri ATM, plăți la comercianți.",
+      "citat": "Taxa emitere card (inclusiv carduri suplimentare) gratuit Taxa lunara administrare card 5 LEI / luna 1 € / luna Taxa utilizare terminale ATM/MFM-urile proprii si Euronet 0,75 %, min. 5 LEI 0,75 %, min. 1 €",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de Business Patria MasterCard Business (inclus în pachetele de cont curent)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina pachetelor de cont curent pentru firme confirmă includerea cardului de debit business în toate variantele de pachet, cu detalii despre comisioane de emitere/administrare.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină generală despre pachete de cont, dar conține cifre specifice despre cardul business (comision emitere, administrare anuală) relevante pentru produsul căutat.",
+      "citat": "ZERO comisioane la emiterea de card Patria MasterCard Business, de administrare anuală (după primul an, se va percepe un comision conform Tarifelor si Comisioanelor Standard în vigoare), la interogare sold ATM sau în agențiile Patria Bank",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1500,
+    "citire_cache": 6312,
+    "scriere_cache": 30785,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09323290000000001
+  }
+}

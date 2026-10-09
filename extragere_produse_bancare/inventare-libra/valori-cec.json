@@ -7,46 +7,24 @@
    "tip": "html",
    "metoda": "http",
    "denumire_la_banca": "Depozite la termen în lei (persoane juridice)",
-   "focus": "Produsul băncii: „Depozite la termen în lei (persoane juridice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "focus": "Produsul băncii: „Depozite la termen în lei (persoane juridice)”.\nCorespunde produsului Libra: „Depozit promoțional „1 An și 1 Lună\"”; „Depozit la termen”; „Depozit promoțional Blitz (7 luni)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
    "legaturi": [
+    {
+     "id_sursa": 2218,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
+     "v2": "depozit-termen"
+    },
     {
      "id_sursa": 1367,
      "id_produs_libra": 43,
      "cod": "DEPOZIT_TERMEN",
      "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "cheie": "https://www.cec.ro/sites/default/files/2026-06/Termeni%20si%20conditii%20Mobile%20si%20Interne%20Banking_editie%20valabila%20din%20data%20de%2003.08.2026.pdf||depozit la termen cu rată fixă a dobânzii (pf și pj)",
-   "url": "https://www.cec.ro/sites/default/files/2026-06/Termeni%20si%20conditii%20Mobile%20si%20Interne%20Banking_editie%20valabila%20din%20data%20de%2003.08.2026.pdf",
-   "tip": "pdf",
-   "metoda": "http",
-   "denumire_la_banca": "Depozit la termen cu rată fixă a dobânzii (PF și PJ)",
-   "focus": "Produsul băncii: „Depozit la termen cu rată fixă a dobânzii (PF și PJ)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
+    },
     {
-     "id_sursa": 1291,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
+     "id_sursa": 2235,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
      "v2": "depozit-termen"
     }
    ],
@@ -109,12 +87,24 @@
    "tip": "html",
    "metoda": "http",
    "denumire_la_banca": "Depozite la termen în lei (persoane fizice)",
-   "focus": "Produsul băncii: „Depozite la termen în lei (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "focus": "Produsul băncii: „Depozite la termen în lei (persoane fizice)”.\nCorespunde produsului Libra: „Depozit promoțional Blitz (7 luni)”; „Depozit la termen”; „Depozit promoțional „1 An și 1 Lună\"”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
    "legaturi": [
+    {
+     "id_sursa": 2234,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
+     "v2": "depozit-termen"
+    },
     {
      "id_sursa": 1366,
      "id_produs_libra": 43,
      "cod": "DEPOZIT_TERMEN",
+     "v2": "depozit-termen"
+    },
+    {
+     "id_sursa": 2217,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
      "v2": "depozit-termen"
     }
    ],
@@ -301,7 +291,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -335,7 +325,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -471,7 +461,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -539,7 +529,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -573,7 +563,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -675,7 +665,2347 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/inline-files/Anexa%2011c%20-Manual%20Utilizare%20CEC%20Fin.pdf||manual de utilizare al platformei de tranzacționare cec fin",
+   "url": "https://www.cec.ro/sites/default/files/inline-files/Anexa%2011c%20-Manual%20Utilizare%20CEC%20Fin.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Manual de utilizare al platformei de tranzacționare CEC Fin",
+   "focus": "Produsul băncii: „Manual de utilizare al platformei de tranzacționare CEC Fin”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1758,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
    "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/credit-activitate-curenta||credit pentru activitatea curentă",
+   "url": "https://www.cec.ro/credit-activitate-curenta",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit pentru activitatea curentă",
+   "focus": "Produsul băncii: „Credit pentru activitatea curentă”.\nCorespunde produsului Libra: „Credit Simplu IMM”; „Credit IMM garantat cu ipotecă”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1767,
+     "id_produs_libra": 39,
+     "cod": "CREDIT_SIMPLU_IMM",
+     "v2": "linie-credit"
+    },
+    {
+     "id_sursa": 2213,
+     "id_produs_libra": 31,
+     "cod": "CREDIT_IMM_IPOTECA",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii",
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-carduri-credit-persoane-fizice.pdf||exemple de calcul pentru cardurile de credit oferite de cec bank",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/exemple-calcul-carduri-credit-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Exemple de calcul pentru cardurile de credit oferite de CEC Bank",
+   "focus": "Produsul băncii: „Exemple de calcul pentru cardurile de credit oferite de CEC Bank”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1909,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/mobile-banking-persoane-juridice||mobile banking persoane juridice",
+   "url": "https://www.cec.ro/mobile-banking-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mobile Banking Persoane Juridice",
+   "focus": "Produsul băncii: „Mobile Banking Persoane Juridice”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2209,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/inline-files/Anexa%202d-Prezentare%20produse%20trezorerie.pdf||titluri de stat (produse de trezorerie)",
+   "url": "https://www.cec.ro/sites/default/files/inline-files/Anexa%202d-Prezentare%20produse%20trezorerie.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Titluri de stat (produse de trezorerie)",
+   "focus": "Produsul băncii: „Titluri de stat (produse de trezorerie)”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2247,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/credit-de-investitii||credit de investiții",
+   "url": "https://www.cec.ro/credit-de-investitii",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit de investiții",
+   "focus": "Produsul băncii: „Credit de investiții”.\nCorespunde produsului Libra: „Credit de investiții”; „Credit imobiliar persoane juridice”; „Credit IMM garantat cu ipotecă”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2151,
+     "id_produs_libra": 34,
+     "cod": "CREDIT_INVESTITII",
+     "v2": "credit-investitii"
+    },
+    {
+     "id_sursa": 2189,
+     "id_produs_libra": 32,
+     "cod": "CREDIT_IMOBILIAR_PJ",
+     "v2": "credit-investitii"
+    },
+    {
+     "id_sursa": 2214,
+     "id_produs_libra": 31,
+     "cod": "CREDIT_IMM_IPOTECA",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/inline-files/Comisioane%20operatiuni%20cu%20Titluri%20de%20stat.pdf||titluri de stat - persoane fizice",
+   "url": "https://www.cec.ro/sites/default/files/inline-files/Comisioane%20operatiuni%20cu%20Titluri%20de%20stat.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Titluri de stat - persoane fizice",
+   "focus": "Produsul băncii: „Titluri de stat - persoane fizice”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2248,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/credite-rural-plus||credite rural plus - componenta investiții",
+   "url": "https://www.cec.ro/credite-rural-plus",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite RURAL PLUS - componenta investiții",
+   "focus": "Produsul băncii: „Credite RURAL PLUS - componenta investiții”.\nCorespunde produsului Libra: „Credit echipamente agricole (InvestEU)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2074,
+     "id_produs_libra": 22,
+     "cod": "CREDIT_AGRI_ECHIPAMENTE",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-juridice/credite/imm-uri-si-corporatii/descoperit-de-cont-pe-card-business||card credit business",
+   "url": "https://www.cec.ro/persoane-juridice/credite/imm-uri-si-corporatii/descoperit-de-cont-pe-card-business",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Card Credit Business",
+   "focus": "Produsul băncii: „Card Credit Business”.\nCorespunde produsului Libra: „Card de credit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1884,
+     "id_produs_libra": 11,
+     "cod": "CARD_CREDIT_BUSINESS",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/pachet-cont-bancar-imm-optim||pachetul imm optim",
+   "url": "https://www.cec.ro/pachet-cont-bancar-imm-optim",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Optim",
+   "focus": "Produsul băncii: „Pachetul IMM Optim”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”; „Cont Online Business”; „Abonament SHINE”; „Abonament RISE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1796,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 1718,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 1857,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 1864,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-credit-persoane-fizice.pdf||comisioane si dobanzi de functionare a cardurilor de credit si serviciilor card - persoane fizice",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-credit-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Comisioane si dobanzi de functionare a cardurilor de credit si serviciilor card - persoane fizice",
+   "focus": "Produsul băncii: „Comisioane si dobanzi de functionare a cardurilor de credit si serviciilor card - persoane fizice”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1908,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/credit-rapid-agro-achizitie-utilaje||credit rapid agro pentru investiții",
+   "url": "https://www.cec.ro/credit-rapid-agro-achizitie-utilaje",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit rapid AGRO pentru investiții",
+   "focus": "Produsul băncii: „Credit rapid AGRO pentru investiții”.\nCorespunde produsului Libra: „Credit echipamente agricole (InvestEU)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2073,
+     "id_produs_libra": 22,
+     "cod": "CREDIT_AGRI_ECHIPAMENTE",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/plasamente-titluri-stat||plasamente în titluri de stat",
+   "url": "https://www.cec.ro/plasamente-titluri-stat",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Plasamente în titluri de stat",
+   "focus": "Produsul băncii: „Plasamente în titluri de stat”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2249,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/pachet-cont-bancar-imm-premium||pachetul imm premium",
+   "url": "https://www.cec.ro/pachet-cont-bancar-imm-premium",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Premium",
+   "focus": "Produsul băncii: „Pachetul IMM Premium”.\nCorespunde produsului Libra: „Abonament PRESTIGE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1807,
+     "id_produs_libra": 4,
+     "cod": "ABONAMENT_PRESTIGE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-credit-persoane-juridice.pdf||carduri de credit - visa business",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-credit-persoane-juridice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Carduri de credit - Visa Business",
+   "focus": "Produsul băncii: „Carduri de credit - Visa Business”.\nCorespunde produsului Libra: „Card de credit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1883,
+     "id_produs_libra": 11,
+     "cod": "CARD_CREDIT_BUSINESS",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/descoperit-cont-overdraft||descoperitul de cont - overdraft",
+   "url": "https://www.cec.ro/descoperit-cont-overdraft",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Descoperitul de cont - Overdraft",
+   "focus": "Produsul băncii: „Descoperitul de cont - Overdraft”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2240,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/presa/cec-bank-continua-finantarea-imm-urilor-si-cu-garantia-bancii-de-investitii-si-dezvoltare-din||garanția de portofoliu pentru imm (bid)",
+   "url": "https://www.cec.ro/presa/cec-bank-continua-finantarea-imm-urilor-si-cu-garantia-bancii-de-investitii-si-dezvoltare-din",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Garanția de Portofoliu pentru IMM (BID)",
+   "focus": "Produsul băncii: „Garanția de Portofoliu pentru IMM (BID)”.\nCorespunde produsului Libra: „Credit cu garanție BID”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2083,
+     "id_produs_libra": 27,
+     "cod": "CREDIT_BID_IMM",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/exemplu-calcul-descoperit-cont.pdf||descoperit de cont card debit (visa/mastercard/mastercard world)",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/exemplu-calcul-descoperit-cont.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Descoperit de cont card debit (Visa/Mastercard/Mastercard World)",
+   "focus": "Produsul băncii: „Descoperit de cont card debit (Visa/Mastercard/Mastercard World)”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2241,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://cloud.cec.ro/cec-in-pj||pachetul start up (cec_in)",
+   "url": "https://cloud.cec.ro/cec-in-pj",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Start UP (CEC_IN)",
+   "focus": "Produsul băncii: „Pachetul Start UP (CEC_IN)”.\nCorespunde produsului Libra: „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1955,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice||pachetul imm optim (în grila de pachete de cont bancar pentru persoane juridice)",
+   "url": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Optim (în grila de pachete de cont bancar pentru persoane juridice)",
+   "focus": "Produsul băncii: „Pachetul IMM Optim (în grila de pachete de cont bancar pentru persoane juridice)”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1719,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-debit-persoane-juridice.pdf||carduri de debit visa/mastercard business",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-debit-persoane-juridice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Carduri de debit Visa/Mastercard Business",
+   "focus": "Produsul băncii: „Carduri de debit Visa/Mastercard Business”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1996,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/presa/cec-bank-finanteaza-proiecte-care-implica-achizitiile-verzi-cu-fonduri-si-garantii-oferite-de||credite verzi bei pentru imm-uri (panouri fotovoltaice și alte investiții verzi)",
+   "url": "https://www.cec.ro/presa/cec-bank-finanteaza-proiecte-care-implica-achizitiile-verzi-cu-fonduri-si-garantii-oferite-de",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite verzi BEI pentru IMM-uri (panouri fotovoltaice și alte investiții verzi)",
+   "focus": "Produsul băncii: „Credite verzi BEI pentru IMM-uri (panouri fotovoltaice și alte investiții verzi)”.\nCorespunde produsului Libra: „Credit pentru energie verde”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2115,
+     "id_produs_libra": 29,
+     "cod": "CREDIT_ENERGIE_VERDE",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/||garanția de portofoliu pentru imm",
+   "url": "https://www.cec.ro/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Garanția de Portofoliu pentru IMM",
+   "focus": "Produsul băncii: „Garanția de Portofoliu pentru IMM”.\nCorespunde produsului Libra: „Credit cu garanție BID”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2084,
+     "id_produs_libra": 27,
+     "cod": "CREDIT_BID_IMM",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice||pachete de cont bancar (imm optim / imm business / imm premium / comunitate / profesional dinamic / start up)",
+   "url": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete de cont bancar (IMM Optim / IMM Business / IMM Premium / Comunitate / Profesional Dinamic / Start UP)",
+   "focus": "Produsul băncii: „Pachete de cont bancar (IMM Optim / IMM Business / IMM Premium / Comunitate / Profesional Dinamic / Start UP)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1797,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-persoane-fizice.pdf||card de debit mastercard world",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-persoane-fizice.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Mastercard World",
+   "focus": "Produsul băncii: „Card de debit Mastercard World”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1994,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/presa/cec-bank-lanseaza-pachetele-de-cont-curent-100-digitale-pentru-persoanele-juridice-imm-si-pfa||pachetul imm optim (lansare 100% digitală pentru persoane juridice imm și pfa)",
+   "url": "https://www.cec.ro/presa/cec-bank-lanseaza-pachetele-de-cont-curent-100-digitale-pentru-persoanele-juridice-imm-si-pfa",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Optim (lansare 100% digitală pentru persoane juridice IMM și PFA)",
+   "focus": "Produsul băncii: „Pachetul IMM Optim (lansare 100% digitală pentru persoane juridice IMM și PFA)”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1720,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/termeni_si_conditii_RoPay.pdf||termeni și condiții de utilizare a serviciului ropay (caz de utilizare person to business)",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/termeni_si_conditii_RoPay.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Termeni și condiții de utilizare a serviciului RoPay (caz de utilizare Person to Business)",
+   "focus": "Produsul băncii: „Termeni și condiții de utilizare a serviciului RoPay (caz de utilizare Person to Business)”.\nCorespunde produsului Libra: „RoPay for Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2305,
+     "id_produs_libra": 55,
+     "cod": "ROPAY_BUSINESS",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/BunVenit/cont-bancar-online||pachetul \"bun venit\" - cont bancar 100% online",
+   "url": "https://www.cec.ro/BunVenit/cont-bancar-online",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul \"Bun Venit\" - Cont bancar 100% online",
+   "focus": "Produsul băncii: „Pachetul \"Bun Venit\" - Cont bancar 100% online”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1982,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice||pachetul start up",
+   "url": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Start UP",
+   "focus": "Produsul băncii: „Pachetul Start UP”.\nCorespunde produsului Libra: „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1953,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||administrare pachet optim",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Administrare Pachet Optim",
+   "focus": "Produsul băncii: „Administrare Pachet Optim”.\nCorespunde produsului Libra: „Abonament RISE”; „Abonament SHINE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1865,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 1859,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/presa/cec-bank-simplifica-accesul-la-servicii-bancare-cont-deschis-100-online-maximum-10-minute-si||flux digital de deschidere cont 100% online (cec bank)",
+   "url": "https://www.cec.ro/presa/cec-bank-simplifica-accesul-la-servicii-bancare-cont-deschis-100-online-maximum-10-minute-si",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Flux digital de deschidere cont 100% online (CEC Bank)",
+   "focus": "Produsul băncii: „Flux digital de deschidere cont 100% online (CEC Bank)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1983,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/subventii-agricole-apia||credit subvenții agricole apia",
+   "url": "https://www.cec.ro/subventii-agricole-apia",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credit subvenții agricole APIA",
+   "focus": "Produsul băncii: „Credit subvenții agricole APIA”.\nCorespunde produsului Libra: „Credit APIA (convenție APIA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2049,
+     "id_produs_libra": 25,
+     "cod": "CREDIT_APIA",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice||pachetul imm optim",
+   "url": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Optim",
+   "focus": "Produsul băncii: „Pachetul IMM Optim”.\nCorespunde produsului Libra: „Abonament SHINE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1858,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||administrare pachet imm premium",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Administrare Pachet IMM Premium",
+   "focus": "Produsul băncii: „Administrare Pachet IMM Premium”.\nCorespunde produsului Libra: „Abonament PRESTIGE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1808,
+     "id_produs_libra": 4,
+     "cod": "ABONAMENT_PRESTIGE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cardul-debit-mastercard-world||cardul de debit mastercard world",
+   "url": "https://www.cec.ro/cardul-debit-mastercard-world",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cardul de debit Mastercard World",
+   "focus": "Produsul băncii: „Cardul de debit Mastercard World”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1993,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/presa/cec-bank-sustine-platile-instant-prin-ropay-alias||ropay alias",
+   "url": "https://www.cec.ro/presa/cec-bank-sustine-platile-instant-prin-ropay-alias",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "RoPay Alias",
+   "focus": "Produsul băncii: „RoPay Alias”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2277,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/trezorerie-schimburi-valutare||schimburi valutare prin cec fin și internet banking cec online",
+   "url": "https://www.cec.ro/trezorerie-schimburi-valutare",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Schimburi Valutare prin CEC Fin și Internet Banking CEC Online",
+   "focus": "Produsul băncii: „Schimburi Valutare prin CEC Fin și Internet Banking CEC Online”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1757,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cardul-de-credit-visa-business||cardul de credit visa business",
+   "url": "https://www.cec.ro/cardul-de-credit-visa-business",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cardul de credit Visa Business",
+   "focus": "Produsul băncii: „Cardul de credit Visa Business”.\nCorespunde produsului Libra: „Card de credit business”; „Card de credit business (PJ/PFA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1882,
+     "id_produs_libra": 11,
+     "cod": "CARD_CREDIT_BUSINESS",
+     "v2": "card-credit"
+    },
+    {
+     "id_sursa": 1887,
+     "id_produs_libra": 13,
+     "cod": "CARD_CREDIT_PJ",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/pachetul-profesional-dinamic||pachetul profesional dinamic",
+   "url": "https://www.cec.ro/pachetul-profesional-dinamic",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Profesional Dinamic",
+   "focus": "Produsul băncii: „Pachetul Profesional Dinamic”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1850,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||tarif de comisioane si speze pentru persoane juridice - secțiunea pachete de cont (imm optim/business/premium/start-up/comunitate/profesional dinamic/acces eu/csv premium)",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Tarif de comisioane si speze pentru persoane juridice - secțiunea Pachete de cont (IMM Optim/Business/Premium/Start-UP/Comunitate/Profesional Dinamic/Acces EU/CSV Premium)",
+   "focus": "Produsul băncii: „Tarif de comisioane si speze pentru persoane juridice - secțiunea Pachete de cont (IMM Optim/Business/Premium/Start-UP/Comunitate/Profesional Dinamic/Acces EU/CSV Premium)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1798,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/finantari-comerciale||acreditive (finanțarea comerțului - trade finance)",
+   "url": "https://www.cec.ro/finantari-comerciale",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Acreditive (Finanțarea comerțului - Trade Finance)",
+   "focus": "Produsul băncii: „Acreditive (Finanțarea comerțului - Trade Finance)”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1836,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sectiune-credite-finantare-imm||credite pentru investiții (secțiune finanțare imm)",
+   "url": "https://www.cec.ro/sectiune-credite-finantare-imm",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite pentru investiții (secțiune Finanțare IMM)",
+   "focus": "Produsul băncii: „Credite pentru investiții (secțiune Finanțare IMM)”.\nCorespunde produsului Libra: „Credit imobiliar persoane juridice”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2190,
+     "id_produs_libra": 32,
+     "cod": "CREDIT_IMOBILIAR_PJ",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/visa-eposibil||programul visa eposibil",
+   "url": "https://www.cec.ro/visa-eposibil",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Programul Visa ePOSibil",
+   "focus": "Produsul băncii: „Programul Visa ePOSibil”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1771,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cec-fin||cec fin - titluri de stat",
+   "url": "https://www.cec.ro/cec-fin",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "CEC Fin - Titluri de Stat",
+   "focus": "Produsul băncii: „CEC Fin - Titluri de Stat”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2250,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/carduri-credit||carduri de credit (visa affinity, visa platinum, mastercard standard)",
+   "url": "https://www.cec.ro/persoane-fizice/carduri-credit",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Carduri de credit (Visa Affinity, Visa Platinum, Mastercard Standard)",
+   "focus": "Produsul băncii: „Carduri de credit (Visa Affinity, Visa Platinum, Mastercard Standard)”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1906,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||acreditive (secțiunea 9 - acreditive de export / acreditive de import)",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Acreditive (secțiunea 9 - Acreditive de export / Acreditive de import)",
+   "focus": "Produsul băncii: „Acreditive (secțiunea 9 - Acreditive de export / Acreditive de import)”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1837,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/garantia-de-portofoliu-pentru-imm||garanția de portofoliu pentru imm (bid)",
+   "url": "https://www.cec.ro/garantia-de-portofoliu-pentru-imm",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Garanția de Portofoliu pentru IMM (BID)",
+   "focus": "Produsul băncii: „Garanția de Portofoliu pentru IMM (BID)”.\nCorespunde produsului Libra: „Credit cu garanție BID”; „Credit de investiții InvestEU BERD”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2082,
+     "id_produs_libra": 27,
+     "cod": "CREDIT_BID_IMM",
+     "v2": "imm-invest"
+    },
+    {
+     "id_sursa": 2183,
+     "id_produs_libra": 26,
+     "cod": "CREDIT_BERD_PJ",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii",
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/serviciul-ropay-pf||serviciul ropay (persoane fizice)",
+   "url": "https://www.cec.ro/serviciul-ropay-pf",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Serviciul RoPay (persoane fizice)",
+   "focus": "Produsul băncii: „Serviciul RoPay (persoane fizice)”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2275,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cec-fin||cec fin",
+   "url": "https://www.cec.ro/cec-fin",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "CEC Fin",
+   "focus": "Produsul băncii: „CEC Fin”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1756,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/carduri-credit/card-de-credit-visa-platinum||cardul de credit visa platinum",
+   "url": "https://www.cec.ro/persoane-fizice/carduri-credit/card-de-credit-visa-platinum",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cardul de credit Visa Platinum",
+   "focus": "Produsul băncii: „Cardul de credit Visa Platinum”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1907,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||pachetul imm business",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Business",
+   "focus": "Produsul băncii: „Pachetul IMM Business”.\nCorespunde produsului Libra: „Abonament PRIME (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1847,
+     "id_produs_libra": 5,
+     "cod": "ABONAMENT_PRIME",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/imm/credite/credit-investitii-verzi||credite bei pentru panouri fotovoltaice și alte investiții verzi",
+   "url": "https://www.cec.ro/imm/credite/credit-investitii-verzi",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Credite BEI pentru panouri fotovoltaice și alte investiții verzi",
+   "focus": "Produsul băncii: „Credite BEI pentru panouri fotovoltaice și alte investiții verzi”.\nCorespunde produsului Libra: „Credit pentru energie verde”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2114,
+     "id_produs_libra": 29,
+     "cod": "CREDIT_ENERGIE_VERDE",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/serviciul-ropay-pj||serviciul ropay (persoane juridice)",
+   "url": "https://www.cec.ro/serviciul-ropay-pj",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Serviciul RoPay (persoane juridice)",
+   "focus": "Produsul băncii: „Serviciul RoPay (persoane juridice)”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2276,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/persoane-fizice/carduri-debit/card-euro-visa-multicurrency-online||cardul de debit visa multicurrency",
+   "url": "https://www.cec.ro/persoane-fizice/carduri-debit/card-euro-visa-multicurrency-online",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cardul de debit VISA Multicurrency",
+   "focus": "Produsul băncii: „Cardul de debit VISA Multicurrency”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1995,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||pachetul profesional dinamic",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Profesional Dinamic",
+   "focus": "Produsul băncii: „Pachetul Profesional Dinamic”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1851,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/internet-banking-persoane-juridice||internet banking persoane juridice",
+   "url": "https://www.cec.ro/internet-banking-persoane-juridice",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Internet Banking Persoane Juridice",
+   "focus": "Produsul băncii: „Internet Banking Persoane Juridice”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2208,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/serviciul-ropay-pj||serviciul ropay pj",
+   "url": "https://www.cec.ro/serviciul-ropay-pj",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Serviciul RoPay PJ",
+   "focus": "Produsul băncii: „Serviciul RoPay PJ”.\nCorespunde produsului Libra: „RoPay for Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2304,
+     "id_produs_libra": 55,
+     "cod": "ROPAY_BUSINESS",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cont-bancar-pachete||pachete de cont bancar (grila pachetelor cec bank, inclusiv bun venit)",
+   "url": "https://www.cec.ro/cont-bancar-pachete",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete de cont bancar (grila pachetelor CEC Bank, inclusiv Bun Venit)",
+   "focus": "Produsul băncii: „Pachete de cont bancar (grila pachetelor CEC Bank, inclusiv Bun Venit)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1984,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||pachet start-up",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet Start-UP",
+   "focus": "Produsul băncii: „Pachet Start-UP”.\nCorespunde produsului Libra: „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1954,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/intrebari-raspunsuri/cati-bani-pot-imprumuta-prin-overdraft-descoperit-de-cont||overdraft (descoperit de cont)",
+   "url": "https://www.cec.ro/intrebari-raspunsuri/cati-bani-pot-imprumuta-prin-overdraft-descoperit-de-cont",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Overdraft (descoperit de cont)",
+   "focus": "Produsul băncii: „Overdraft (descoperit de cont)”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2242,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/2026-07/ghid-utilizare-carduri-2026.pdf||ghid de utilizare al cardurilor (card de credit business)",
+   "url": "https://www.cec.ro/sites/default/files/2026-07/ghid-utilizare-carduri-2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Ghid de utilizare al cardurilor (Card de credit business)",
+   "focus": "Produsul băncii: „Ghid de utilizare al cardurilor (Card de credit business)”.\nCorespunde produsului Libra: „Card de credit business (PJ/PFA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1889,
+     "id_produs_libra": 13,
+     "cod": "CARD_CREDIT_PJ",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cont-bancar-pachet-imm-business||pachetul imm business (include internet banking și mobile banking)",
+   "url": "https://www.cec.ro/cont-bancar-pachet-imm-business",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Business (include Internet Banking și Mobile Banking)",
+   "focus": "Produsul băncii: „Pachetul IMM Business (include Internet Banking și Mobile Banking)”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2210,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf||serviciul ropay (pj) - tarif de comisioane și speze pentru persoane juridice",
+   "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Serviciul RoPay (PJ) - Tarif de comisioane și speze pentru persoane juridice",
+   "focus": "Produsul băncii: „Serviciul RoPay (PJ) - Tarif de comisioane și speze pentru persoane juridice”.\nCorespunde produsului Libra: „RoPay for Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2303,
+     "id_produs_libra": 55,
+     "cod": "ROPAY_BUSINESS",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/linie-de-credit-pentru-activitatea-curenta||linie de credit pentru activitatea curentă",
+   "url": "https://www.cec.ro/linie-de-credit-pentru-activitatea-curenta",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Linie de credit pentru activitatea curentă",
+   "focus": "Produsul băncii: „Linie de credit pentru activitatea curentă”.\nCorespunde produsului Libra: „Linie de credit / capital de lucru”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1675,
+     "id_produs_libra": 48,
+     "cod": "LINIE_CREDIT",
+     "v2": "linie-credit"
+    }
+   ],
+   "produse_v2": [
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/sites/default/files/2026-07/Tarife%20carduri%20credit%20business%20iul%202026.pdf||carduri de credit - visa business",
+   "url": "https://www.cec.ro/sites/default/files/2026-07/Tarife%20carduri%20credit%20business%20iul%202026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Carduri de credit - Visa Business",
+   "focus": "Produsul băncii: „Carduri de credit - Visa Business”.\nCorespunde produsului Libra: „Card de credit business (PJ/PFA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1888,
+     "id_produs_libra": 13,
+     "cod": "CARD_CREDIT_PJ",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cont-bancar-pachet-imm-business||pachetul imm business",
+   "url": "https://www.cec.ro/cont-bancar-pachet-imm-business",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul IMM Business",
+   "focus": "Produsul băncii: „Pachetul IMM Business”.\nCorespunde produsului Libra: „Abonament ELITE (corporate)”; „Abonament PRIME (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1793,
+     "id_produs_libra": 1,
+     "cod": "ABONAMENT_ELITE",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 1846,
+     "id_produs_libra": 5,
+     "cod": "ABONAMENT_PRIME",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.cec.ro/cont-bancar-pachet-startup-||pachetul start up",
+   "url": "https://www.cec.ro/cont-bancar-pachet-startup-",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Start UP",
+   "focus": "Produsul băncii: „Pachetul Start UP”.\nCorespunde produsului Libra: „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1952,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0

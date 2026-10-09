@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet servicii bancare (Administrare pachet servicii bancare)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul pachet de cont curent plătit, standard (non-promoțional), pentru persoane juridice la ProCredit, cu mai multe conturi, carduri și plăți incluse — segmentul și tipul de produs coincid cu Abonamentul ELITE de la Libra, dar diferă structura prețului (86 lei/lună vs 225 lei/lună), tipul de plafon (plăți naționale incluse până la 50.000 lei/tranzacție, nu un număr fix de 50 operațiuni) și lipsește componenta Live FX.",
+      "incredere": 0.78,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice prezintă explicit pachetul cu cifre (86 lei/lună, 3 conturi curente, plăți naționale până la 50.000 lei incluse, maxim trei carduri), dar nu conține toate elementele specifice ELITE (SEPA, Live FX).",
+      "citat": "Administrare pachet servicii bancare 86 lei Comisionul se preia lunar Pachet servicii bancare 3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Card Visa debit (maxim trei carduri incluse)",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/landing/prozero24/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ProZero24 – Cont curent pentru companii",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pachet de cont curent pentru companii cu plăți naționale și SEPA incluse și până la 3 carduri, similar ca structură cu ELITE, dar comisionul este promoțional (zero 24 de luni, apoi 150 lei/lună) și plafoanele sunt pe valoare (sub 50.000 lei) nu pe număr de operațiuni, iar Live FX nu este menționat.",
+      "incredere": 0.72,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține cifre clare despre plăți, carduri și comisionul de 150 lei/lună după perioada promoțională, dar nu acoperă exact structura pe număr de tranzacții sau Live FX din ELITE.",
+      "citat": "Plăți naționale <50.000 lei Nelimitate* Plăți SEPA <50.000 lei Nelimitate** Plăți SEPA >50.000 lei 10 lei (echivalent) Carduri de debit Până la 3 incluse",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/landing/prozero24/#:~:text=Pl%C4%83%C8%9Bi%20na%C8%9Bionale%20%3C50.000%20lei%20Nelimitate%2A,debit%20P%C3%A2n%C4%83%20la%203%20incluse"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+    "https://www.procreditbank.ro/landing/prozero24/"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3083,
+    "citire_cache": 35213,
+    "scriere_cache": 58110,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1831596
+  }
+}

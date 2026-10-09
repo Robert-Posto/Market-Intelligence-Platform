@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent Genius IMM MAX",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pachet de cont curent lunar pentru persoane juridice segment Corporate, cu carduri de debit incluse și tranzacții interbancare; diferă structura prețului: la UniCredit prețul de bază e mic (55 Lei/lună) dar tranzacțiile nelimitate în lei/valută și cardurile suplimentare se plătesc ca extra-opțiuni separate, în timp ce Libra PRESTIGE include totul (tranzacții nelimitate lei/euro/SEPA, 5+2 carduri, Live FX) într-un singur preț de 295 lei/lună.",
+      "incredere": 0.85,
+      "explicitie_incredere": "nu e folosit acest camp",
+      "explicatie_incredere": "Pagina dedicată a pachetului conține cifrele exacte ale prețului de bază și ale extra-opțiunilor de tranzacții nelimitate.",
+      "citat": "Current Account Package - Genius IMM MAX For legal entities with annual Turnover between ( ≥) 3 million and (≤) 10 million EURs PACKAGE FEE: 55 LEI / MONTH",
+      "rol_corect": "pagina-produs",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html#:~:text=Current%20Account%20Package%20%2D%20Genius,FEE%3A%2055%20LEI%20%2F%20MONTH"
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont GENIUS IMM MAX (Comisioane & Dobânzi Corporate)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru segmentul Corporate (cifră de afaceri peste 1 milion Euro) listează explicit pachetele GENIUS IMM PRO și GENIUS IMM MAX, cu preț de bază și extra-opțiuni pentru tranzacții nelimitate în lei/valută și retrageri nelimitate cu cardul, comparabile funcțional cu Abonamentul PRESTIGE de la Libra, dar organizate ca extra-opțiuni plătite separat, nu incluse într-un singur preț fix.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care confirmă segmentul de clienți (Corporate) și prețurile exacte ale pachetului și extra-opțiunilor sale.",
+      "citat": "Pachetul GENIUS IMM MAX este destinat clienților Corporate cu cifra de afaceri anuală cuprinsă între 3 milioane de Euro și 10 milioane de Euro.",
+      "pagina_pdf": 5,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+    "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3316,
+    "citire_cache": 33621,
+    "scriere_cache": 75040,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22749619999999998
+  }
+}

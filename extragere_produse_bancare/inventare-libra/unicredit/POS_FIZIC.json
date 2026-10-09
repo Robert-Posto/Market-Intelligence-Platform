@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Terminal POS (comisioane acceptare la plată a cardurilor)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de comisioane pentru persoane juridice cu cifra de afaceri <1 milion Euro, PFA și liber profesioniști, care conține secțiunea dedicată comisionului fix lunar pentru gestiunea terminalului POS și comisionului pentru terminal POS pierdut/deteriorat.",
+      "incredere": 0.92,
+      "explicatie_incredere": "PDF-ul oficial de tarife conține explicit rândul cu comisionul lunar pentru terminalul POS și valorile numerice corespunzătoare.",
+      "citat": "Comision fix lunar pentru gestiunea terminalului POS* dacă valoarea lunară a tranzacţiilor finalizate cu succes pe terminalul POS este mai mică sau egală cu 2.000 Lei 65 Lei / terminal POS",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pos-ecommerce.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "POS & e-Commerce (Terminal POS)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată terminalului POS fizic pentru persoane juridice/IMM, destinat comercianților cu vânzare fizică (retail, farmacii, benzinării etc.), exact ca produsul Libra Terminal POS fizic.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina este dedicată explicit serviciului de acceptare la plată cu cardul pe terminal POS fizic, cu descriere a serviciilor și câteva cifre (plafoane, procente de discount).",
+      "citat": "Acest serviciu permite clientilor retragerea de numerar la POS, in limita a 150 lei / tranzactie, atunci cand acestia platesc cu un card Visa sau Mastercard cumparaturile facute in magazinul tau.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/sme/banking/pos-ecommerce.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/tranzactionare/pos-ecommerce.html"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2258,
+    "citire_cache": 116164,
+    "scriere_cache": 91817,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2753713
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Conturi curente – Persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pachetul de cont curent operațional dedicat firmelor/PFA (persoane juridice), cu încasări/plăți, ordine de plată, depozite la termen asociate contului, limite zilnice și pe tranzacție - echivalentul funcțional al unui abonament operațional pentru conturi de firmă.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conturilor curente pentru persoane juridice conține cifre concrete despre limitele de tranzacționare, deși nu afișează explicit un cost lunar de abonament.",
+      "citat": "Limită zilnică* 200.000 lei Limita pe tranzacție* 50.000 Lei * Limita zilnică și limita pe tranzacție pot fi modificate doar cu aprobarea expresă",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/#:~:text=Limit%C4%83%20zilnic%C4%83%2A%20200.000%20lei%20Limita,modificate%20doar%20cu%20aprobarea%20expres%C4%83"
+    },
+    {
+      "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Condiții Generale de Afaceri – Conturi persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul CGA conține secțiunea cu limitele specifice pentru Persoane juridice (zilnică și pe tranzacție) aplicabile contului curent de firmă, precum și capitolul de dobânzi, comisioane, taxe și speze bancare aplicabil acestor conturi.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document general de condiții (PDF) care conține un tabel explicit cu limitele pentru Persoane juridice și face trimitere la Lista de comisioane și dobânzi aplicabilă conturilor, deși cifrele tarifare complete sunt într-un document separat nelistat public.",
+      "citat": "Persoane juridice Tip limită Limite maxime Limită zilnică* 200.000 lei Limita pe tranzacție* 50.000 Lei CAPITOLUL VI - DOBÂNZI, COMISIOANE, TAXE ŞI SPEZE BANCARE",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 15741,
+    "iesire": 2518,
+    "citire_cache": 67120,
+    "scriere_cache": 54223,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2056435
+  }
+}

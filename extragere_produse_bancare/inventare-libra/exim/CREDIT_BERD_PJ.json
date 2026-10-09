@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garantii FEI",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite de investiții pentru firme garantate printr-un mecanism UE InvestEU, dar la Exim garantul este Fondul European de Investiții (FEI), nu BERD, iar procentul de garantare este de 30-70% (max. 50% în București-Ilfov), nu 80% ca la Libra; nu se specifică plafon maxim în lei, durată 12-120 luni sau perioadă de grație ca la produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului, în limba română, cu cifrele exacte ale garanției FEI și tipurile de credite acoperite.",
+      "citat": "intre minimum 30% si maximum 70% din valoarea creditului garantat sub Plafonul FRR Competitivitate IMM, cu exceptia clientilor cu sediul social stabilit in Bucuresti si Ilfov, in cazul carora procentul maxim de garantare este 50%",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/#:~:text=intre%20minimum%2030%25%20si%20maximum,maxim%20de%20garantare%20este%2050%25"
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Loans secured by the European Investment Fund",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Versiunea în limba engleză a aceleiași pagini de produs; confirmă aceleași cifre de garantare FEI (30-70%), diferite de garanția BERD 80% a produsului Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată, duplicat lingvistic al sursei principale, cu aceleași cifre despre garanția FEI.",
+      "citat": "between minimum 30% and up to 70% from the value of the loan guaranteed within the RRF SME Competitiveness Product, except for clients having their registered office located in Bucharest and Ilfov County, where the maximum guarantee rate is 50%",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/#:~:text=between%20minimum%2030%25%20and%20up,maximum%20guarantee%20rate%20is%2050%25"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/",
+    "https://www.eximbank.ro/category/noutati/page/7/",
+    "https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/"
+  ],
+  "durata_s": 26,
+  "consum": {
+    "intrare": 29772,
+    "iesire": 1926,
+    "citire_cache": 41535,
+    "scriere_cache": 43736,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.196451
+  }
+}

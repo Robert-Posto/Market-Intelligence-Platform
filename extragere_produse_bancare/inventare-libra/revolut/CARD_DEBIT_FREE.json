@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/a-radically-better-account/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Standard Revolut (card de debit gratuit)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit gratuit, fără comisioane de emitere/administrare, din planul Standard Revolut, echivalent funcțional cu Card de debit Free de la Libra, dar acoperă doar segmentul persoane fizice (persoanele juridice au nevoie de un plan Revolut Business plătit, de la 50 lei/lună), iar cashback-ul nu e inclus automat ci prin add-on-ul opțional Revolut Pro.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată planului Standard confirmă explicit lipsa comisioanelor de administrare/întreținere și 0% DAE/NIR pentru acest plan, fiind cea mai apropiată variantă de card de debit gratuit.",
+      "citat": "Fără comisioane de administrare sau de întreținere a contului, 0% DAE, 0% NIR, pentru planurile Standard. Suport clienți 24/7 în aplicație.",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/ro-RO/a-radically-better-account/#:~:text=F%C4%83r%C4%83%20comisioane%20de%20administrare%20sau,Suport%20clien%C8%9Bi%2024%2F7%20%C3%AEn%20aplica%C8%9Bie."
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/our-pricing-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Plan Standard + Revolut Pro (cashback)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Grila de planuri arată că planul Standard este gratuit (card inclus) și că procentul de cashback la cheltuieli (0,4% pentru Standard) se obține doar prin contul opțional Revolut Pro, spre deosebire de Libra unde cashback-ul la parteneri este parte a cardului de debit standard; de asemenea acoperă doar persoane fizice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul de comparare a planurilor conține explicit cifra planului Standard (Gratuit) și procentul de cashback (0,4%) aplicabil cardului din acel plan.",
+      "citat": "Cont gratuit pentru liber-profesioniști care îți permite să obții cashback la cheltuieli și să faci vânzări direct din aplicația mobilă Revolut. Se aplică comisioane pentru anumite caracteristici de plată.",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/ro-RO/our-pricing-plans/#:~:text=Cont%20gratuit%20pentru%20liber%2Dprofesioni%C8%99ti%20care,pentru%20anumite%20caracteristici%20de%20plat%C4%83."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/ro-RO/our-pricing-plans/",
+    "https://www.revolut.com/ro-RO/a-radically-better-account/"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4575,
+    "citire_cache": 123363,
+    "scriere_cache": 62102,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2256976
+  }
+}

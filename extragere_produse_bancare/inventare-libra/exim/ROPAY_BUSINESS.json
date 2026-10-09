@@ -1,0 +1,29 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Exim Banca Românească nu oferă un produs de încasare prin cod QR în schema națională RoPay pentru persoane juridice. Banca are, separat, (1) servicii de acceptare POS cu card (contact/contactless) pentru comercianți, descrise în Ghidul de produse Cash Management (pagina 4-5), și (2) un serviciu general de 'Plăți Instant' IBAN-to-IBAN disponibil 24/7/365 inclusiv pentru persoane juridice, cu plafon de 10.000 lei/tranzacție (eximbank.ro/2026/04/06/am-lansat-platile-instant-trimiti-si-primesti-bani-24-7-365/ și PDF 'Conditii-si-limite-plati-instant.pdf'). Niciunul dintre acestea nu este echivalent funcțional cu RoPay for Business: POS-ul e plată cu cardul fizic/contactless, nu încasare prin QR, iar Plățile Instant sunt transferuri cont-la-cont (IBAN), nu un mecanism de afișare/scanare QR pentru încasări comerciale. Nu am găsit nicio mențiune a 'RoPay' pe site-ul eximbank.ro (căutări directe și navigare prin secțiunile Persoane Juridice > PFA/IMM/Corporate > Operațiuni curente nu au returnat niciun rezultat)."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/12/15/operatiuni-curente-imm-2-10-mil-lei/",
+    "https://www.eximbank.ro/2022/12/15/operatiuni-curente/",
+    "https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf",
+    "https://www.eximbank.ro/2026/04/06/am-lansat-platile-instant-trimiti-si-primesti-bani-24-7-365/"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2210,
+    "citire_cache": 113647,
+    "scriere_cache": 83413,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2533819
+  }
+}

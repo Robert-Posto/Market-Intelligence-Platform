@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent pentru companii (Startup / Business / Unlimited)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact același tip de produs: un abonament/pachet lunar de cont curent dedicat persoanelor juridice (firme), cu mai multe trepte de servicii incluse, la fel ca Abonamentul operațional de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conturilor și pachetelor de cont curent pentru companii listează explicit pachetele Startup, Business, Unlimited cu prețul lunar și serviciile incluse.",
+      "citat": "Unlimited 200 lei/luna Tot ce ai nevoie pentru afacere! 10 conturi curente în lei și valută Emitere și administrare card Mastercard Business în lei sau euro (2 carduri) Livrare card în România Internet Banking Încasări intra/interbancare în lei și valută",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetele TechVentures Bank pentru companii (Startup / Business / Unlimited)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina principală listează aceleași trei pachete de cont pentru firme (persoane juridice), completând cu prețul pachetului Business, care lipsea din pagina dedicată.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Conține cifrele pachetului Business (75 lei/lună) alături de Startup (25 lei/lună) și Unlimited (200 lei/lună), confirmând structura tarifară a abonamentului operațional.",
+      "citat": "STARTUP 25 lei/luna Pentru companii la inceput de drum! BUSINESS 75 lei/luna Pentru companii in crestere! UNLIMITED 200 lei/luna Tot ce ai nevoie pentru afacere!",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/conturi-pachete-cont-curent",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/documente-utile"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 101858,
+    "iesire": 4163,
+    "citire_cache": 80699,
+    "scriere_cache": 43785,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3709483
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Nexent Bank nu are un gateway de plăți online / acceptare carduri e-commerce dedicat persoanelor juridice, similar cu LibraPay eCommerce. Cel mai apropiat produs găsit, Avantaj SoftPOS (https://www.nexentbank.ro/en/Corporate-SME/Avantaj-SoftPOS), este o soluție de transformare a telefonului în terminal POS fizic/contactless pentru plăți card-present, nu un gateway pentru integrare pe magazin online sau facturare online. Cardurile business (Visa Business) menționează generic posibilitatea de tranzacții e-commerce ca o caracteristică a cardului, dar nu reprezintă un serviciu de acceptare pentru comercianți. Nu există pagină dedicată, tarife sau FIPC pentru un produs de tip 'virtual POS'/payment gateway pentru firme."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/retail-banking/Avantaj-SoftPOS",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Services-and-Special-Accounts",
+    "https://www.nexentbank.ro/en/Corporate-SME/Avantaj-SoftPOS"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2686,
+    "citire_cache": 96211,
+    "scriere_cache": 83180,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2540682
+  }
+}

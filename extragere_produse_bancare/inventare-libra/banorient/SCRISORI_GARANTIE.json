@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garantie bancara (Trade Finance)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic: scrisori de garanție bancară emise pentru persoane juridice, cu comisioane de emitere, modificare și plată în executare, atât în RON cât și în valută, secțiune dedicată III-5 în documentul de tarife.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul de tarife conține o secțiune explicită 'SCRISORI DE GARANTIE BANCARA' cu comisioane detaliate pentru emitere, majorare valoare, prelungire valabilitate și plată în executare, atât emise cât și primite, în RON și valută.",
+      "citat": "III-5 SCRISORI DE GARANTIE BANCARA RON: Emise Emitere / majorare valoare / prelungire valabilitate garanţii cu valoare < 1000 RON 50 RON / trimestru si fracţie garanţii cu valoare > 1000 RON 0.3% / trimestru, min. 100 RON / trimestru şi fracţie",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=III%2D5%20SCRISORI%20DE%20GARANTIE%20BANCARA,RON%20%2F%20trimestru%20%C5%9Fi%20frac%C5%A3ie"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges"
+  ],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 6,
+    "iesire": 861,
+    "citire_cache": 17147,
+    "scriere_cache": 27160,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0799514
+  }
+}

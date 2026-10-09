@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/11/16/gold-mastercard/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Mastercard Gold",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt carduri de debit premium cu beneficii de călătorie (lounge, asigurare/servicii de urgență) și cashback/reduceri la comercianți, dar la Exim cardul este doar pentru persoane fizice (nu acoperă și persoane juridice ca la Libra), nu oferă dobândă la soldul din cont și nu are un pachet explicit de retrageri gratuite lunare; costul anual de administrare (120 lei/an, din 10 lei/lună conform listei de tarife) diferă de cel al Libra (48 lei/an).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu descrierea completă a beneficiilor (lounge, Priceless Cities, servicii de urgență) și cifre concrete despre acces gratuit la lounge.",
+      "citat": "acces gratuit in limita a 3 intrari/an in lounge-urile din Romania si in cele din rețeaua Priority Pass din peste 1.800 de locatii aflate in aeroporturile din toata lumea.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/16/gold-mastercard/#:~:text=acces%20gratuit%20in%20limita%20a,in%20aeroporturile%20din%20toata%20lumea."
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2022/11/Taxe-si-comisioane-carduri-2.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Mastercard Gold",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de tarife care listează explicit comisionul de administrare lunară pentru Mastercard Gold (10 lei/lună = 120 lei/an), diferit de cei 48 lei/an ai cardului Libra; de asemenea, retragerile la ATM proprii nu sunt gratuite (0,2% minim 5 lei), spre deosebire de cele 3 retrageri gratuite/lună de la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de tarife în care produsul Gold Mastercard apare explicit, cu valori clare pentru emitere, administrare și tranzacții.",
+      "citat": "Tip card Standard Mastercard Gold Mastercard World Mastercard Administrare lunara Principal 2 lei 10 lei 20 lei Suplimentar 0 lei",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/11/16/gold-mastercard/",
+    "https://www.eximbank.ro/wp-content/uploads/2022/11/Taxe-si-comisioane-carduri-2.pdf"
+  ],
+  "durata_s": 58,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5309,
+    "citire_cache": 77041,
+    "scriere_cache": 49766,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19292920000000002
+  }
+}

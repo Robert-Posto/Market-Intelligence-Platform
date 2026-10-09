@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/Credite/carduri-de-credit.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "UniCreditCard Premium / UniCreditCard Principal (card de credit, emis de UniCredit Consumer Financing)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving in lei pentru persoane fizice, cu perioada de gratie, rate fara dobanda la comercianti parteneri si limita de credit in functie de venit - acelasi tip de produs si segment ca CARD_CREDIT_PF.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicata contine descrierea completa a produsului, limitele de credit, perioada de gratie, dobanda si comisioanele, cu cifre exacte pentru ambele variante de card.",
+      "citat": "Perioada de gratie de maximum 50 de zile este valabila doar pentru platile la comercianti si plati utilitati si poti beneficia de ea daca rambursezi pana la scadenta totalul de plata datorat; Rata dobanzilor este fixa pe intreaga durata a contractului si variaza in functie de tipul de tranzactie: 27,99%, pentru tranzactii la comercianti sau online si la utilizare ATM",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/persoane-fizice/Credite/carduri-de-credit.html#:~:text=Perioada%20de%20gratie%20de%20maximum,online%20si%20la%20utilizare%20ATM"
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/popupeditpages/PI-CardCredit-Details/UniCreditCardPremium-Detalii.modal.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "UniCreditCard Premium",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Fisa detaliata a cardului de credit Premium (persoane fizice), cu grace period de 56 de zile, dobanzi fixe si comisioane complete, comparabila punct cu punct cu descrierea CARD_CREDIT_PF.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina modal contine tabelul complet 'Cat ma costa' cu dobanzi, comisioane si limite pentru UniCreditCard Premium, insa pare o versiune de arhiva/legacy a fisei de produs, de aceea increderea e usor mai mica decat pentru pagina curenta.",
+      "citat": "Perioada de gratie de maximum 56 de zile este valabila doar pentru platile la comercianti si poti beneficia de ea daca rambursezi la timp sumele folosite; Rata dobanzilor este fixa pe intreaga durata a contractului si variaza in functie de tipul de tranzactie: 24,99%, pentru tranzactii la comercianti sau online, si 26,99% la utilizare ATM",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/popupeditpages/PI-CardCredit-Details/UniCreditCardPremium-Detalii.modal.html#:~:text=Perioada%20de%20gratie%20de%20maximum,si%2026%2C99%25%20la%20utilizare%20ATM"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/popupeditpages/PI-CardCredit-Details/UniCreditCardPremium-Detalii.modal.html",
+    "https://www.unicredit.ro/ro/persoane-fizice/asistenta/card-de-credit.html",
+    "https://www.unicredit.ro/ro/persoane-fizice/Credite/carduri-de-credit.html"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2759,
+    "citire_cache": 96399,
+    "scriere_cache": 69747,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2212533
+  }
+}

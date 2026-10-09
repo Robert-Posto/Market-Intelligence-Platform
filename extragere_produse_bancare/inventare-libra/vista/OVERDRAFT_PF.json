@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-fizice/carduri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperit de cont curent în Lei (atașat Cardului de salariu)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact același tip de produs: descoperit de cont pentru persoane fizice, condiționat de virarea salariului, cu plafon exprimat în salarii nete și sumă maximă în lei, identic ca logică cu overdraft-ul Libra (6 salarii nete, plafon maxim, dobândă doar pe suma utilizată).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată cardurilor conține explicit secțiunea 'Descoperit de cont curent în Lei' cu formula dobânzii, plafonul de salarii și suma maximă finanțată, plus un exemplu de calcul DAE.",
+      "citat": "Dacă aduci salariul la Vista Bank, ai posibilitatea de a accesa un descoperit de cont curent în Lei, cu o dobândă specială: IRCC + marjă fixă 7,50%. Suma finanțată poate fi de până la 6 salarii nete, dar nu mai mult de 40.000 LEI. Pentru limite de credit mai mari de 3 salarii lunare nete, va trebui să prezinți garanții reale și/sau personale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/en/individuals/cards",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Current account overdraft in LEI (Payroll card)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în engleză a aceleiași pagini de produs, cu aceleași cifre și un exemplu reprezentativ de calcul DAE pentru facilitatea de overdraft.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Conține aceleași cifre ca pagina în română plus un exemplu numeric complet de calcul al ratei lunare și DAE pentru o sumă de 5.000 Lei.",
+      "citat": "If you bring your salary to Vista Bank, you have the opportunity to access a current account in Lei with a special interest rate: IRCC + fixed margin 7.50% The funded amount can be up to 6 net salaries, but not more than 40,000 LEI.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1270,
+    "citire_cache": 6336,
+    "scriere_cache": 31037,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0915677
+  }
+}

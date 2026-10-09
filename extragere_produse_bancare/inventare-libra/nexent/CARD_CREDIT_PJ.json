@@ -1,0 +1,45 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Card de debit Visa Business (cu facilitate de overdraft) (încredere 0.55) — Este singurul produs de card pentru persoane juridice la Nexent Bank care oferă o linie de finanțare pe card (overdraft) companiei, cu rambursare lunară; diferă însă de produsul Libra prin faptul că este structurat ca overdraft pe un card de debit, nu ca un card de credit revolving dedicat, și nu are plafoane explicite de tip 10.000–500.000 lei sau limitare la 5% din cifra de afaceri."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Visa Business (cu facilitate de overdraft)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de card pentru persoane juridice la Nexent Bank care oferă o linie de finanțare pe card (overdraft) companiei, cu rambursare lunară; diferă însă de produsul Libra prin faptul că este structurat ca overdraft pe un card de debit, nu ca un card de credit revolving dedicat, și nu are plafoane explicite de tip 10.000–500.000 lei sau limitare la 5% din cifra de afaceri.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina descrie explicit facilitatea de overdraft acordată persoanei juridice pe cardul Visa Business, dar nu conține cifre despre plafoane minime/maxime sau procent din CA, specifice produsului Libra.",
+      "citat": "Visa Business este un card de debit în lei sau euro pentru persoane juridice ai căror angajaţi efectuează în mod frecvent călătorii de afaceri şi achiziţionează bunuri şi servicii pentru companie. Banca poate acorda persoanei juridice o limită de overdraft care va putea fi repartizată fiecărui utilizator de card (angajat al companiei), conform opţiunii exprimate de către companie. Suma utilizată în decursul unei luni trebuie rambursată integral luna următoare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale",
+    "https://nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Carduri-pentru-Persoane-Juridice",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Credite-IMM"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4107,
+    "citire_cache": 174701,
+    "scriere_cache": 91658,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3051752
+  }
+}

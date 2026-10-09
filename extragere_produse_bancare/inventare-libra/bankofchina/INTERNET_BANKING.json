@@ -1,0 +1,74 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "NetBank (Online Banking) pentru persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de taxe și comisioane pentru persoane juridice conține o secțiune dedicată 'ONLINE BANKING' cu toate comisioanele aferente serviciului NetBank (echivalentul Internet & Mobile Banking business de la Libra).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial de tarife, în vigoare din 1 iulie 2025, cu secțiune explicită pentru Online Banking cu cifre concrete.",
+      "pagina_pdf": 3,
+      "citat": "ONLINE BANKING Înregistrare în NetBank Gratuit Adăugare / Modificare / Ștergere utilizator NetBank Gratuit Resetare parolă NetBank Gratuit Înlocuire E-token 40RON",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bankofchina.com/ro/en/custserv/cs2/202104/t20210430_19360682.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Corporate Online Banking Service (NetBank)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Serviciu de internet banking dedicat persoanelor juridice, permițând verificarea soldurilor, transferuri și plăți externe - același tip de produs și segment ca Internet & Mobile Banking business de la Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată descrie explicit serviciul NetBank pentru clienți corporate, dar nu conține cifre (taxe), de aceea este completată de documentul de tarife.",
+      "citat": "NetBank service enables corporate customers to check, download or print present-day or historical transaction records of accounts, check, download or print present-day or historical balance records of accounts, handle internal transfers between the accounts of their own or to the accounts of other customers in same or different currencies within the Bank, handle RON, CNY, EUR or USD outgoing remittance from account in the same currency or in different currencies.",
+      "citat_verificat": true,
+      "link_live": "https://www.bankofchina.com/ro/en/custserv/cs2/202104/t20210430_19360682.html#:~:text=NetBank%20service%20enables%20corporate%20customers,currency%20or%20in%20different%20currencies."
+    },
+    {
+      "url": "https://pic.bankofchina.com/bocappd/Romania/202108/P020210820770814413139.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Condiții Generale de Afaceri privind furnizarea de servicii E-banking (Netbank Service)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Regulamentul contractual complet pentru serviciul de E-banking/NetBank destinat clienților corporate, inclusiv persoane juridice, descriind condițiile de utilizare, autentificare, limite și reziliere.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document de condiții generale (FIPC-like) specific serviciului de e-banking, menționează explicit persoanele juridice, dar nu conține cifre de tarife (acestea sunt în documentul de taxe).",
+      "citat": "Persoanele juridice și entitățile fără personalitate juridică pot iniția mai multe tranzacții între intrarea în și conectarea la serviciul de E-banking, iar aprobarea mai multor tranzacții poate fi aprobată cu o singură identificare E-token.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/custserv/cs2/",
+    "https://www.bankofchina.com/ro/en/bocinfo/bi2/202109/t20210908_20014518.html",
+    "https://www.bankofchina.com/ro/en/custserv/cs2/202104/t20210430_19360682.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2142,
+    "citire_cache": 52554,
+    "scriere_cache": 52295,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1626843
+  }
+}

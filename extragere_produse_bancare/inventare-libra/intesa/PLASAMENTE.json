@@ -1,0 +1,49 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/alte-informatii/MiFID/Documentul-de-prezentare-MiFID.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Titluri de stat (serviciu de investiții MiFID II - instrumente financiare cu venit fix)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Banca descrie și oferă intermediere pentru tranzacționarea titlurilor de stat (piață primară și secundară) ca serviciu de investiții MiFID, însă documentul precizează explicit că în prezent acest serviciu nu se derulează cu clienți Retail (persoane fizice), ci doar cu Clienți Profesionali și Contrapărți Eligibile, deci segmentul de clienți nu acoperă integral 'persoane fizice și juridice' ca la Libra.",
+      "incredere": 0.72,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul este cel mai relevant material public găsit despre produsul titluri de stat la această bancă, definește clar produsul și piețele de tranzacționare, dar nu conține un tarif/dobândă specifică și limitează accesul retail.",
+      "pagina_pdf": 9,
+      "citat": "Titluri de stat - sunt titluri de creanța emise de guvern, iar in funcție de scadenta acestora se împart in: a) obligațiuni - titluri de stat cu scadenta inițiala mai mare de 1 an, cu plăti periodice de dobânda (cupon); b) certificatele de trezorerie - titluri de stat cu scadenta inițiala mai mica de un an, fără cupon, fiind emise la o valoare mai mica decât valoarea lor nominala rambursabila la scadenta.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/page/internet-banking-companii",
+    "https://www.intesasanpaolobank.ro/imm/economii-investitii-imm/operatiuni-titluri-de-stat.html",
+    "https://www.intesasanpaolobank.ro/corporate/economii-investitii-corporate/depozite-la-termen-Corporate.html",
+    "https://www.intesasanpaolobank.ro/page/mobilitatea-conturilor",
+    "https://www.intesasanpaolobank.ro/corporate/cash-management/Operatiuni-titluri-de-stat-Corporate.html",
+    "https://www.intesasanpaolobank.ro/corporate/cash-management.html",
+    "https://www.intesasanpaolobank.ro/corporate/economii-investitii-corporate/titluri-de-stat-Corporate.html",
+    "https://www.intesasanpaolobank.ro/corporate/economii-investitii-corporate/operatiuni-titluri-de-stat-Corporate.html",
+    "https://www.intesasanpaolobank.ro/imm",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/alte-informatii/MiFID/Documentul-de-prezentare-MiFID.pdf",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/kfs/Pachetul-Econom_informatii-esentiale.pdf"
+  ],
+  "durata_s": 125,
+  "consum": {
+    "intrare": 147680,
+    "iesire": 9361,
+    "citire_cache": 280118,
+    "scriere_cache": 129755,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.7693811000000002
+  }
+}

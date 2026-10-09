@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/bonds/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Obligațiuni (inclusiv obligațiuni de stat / titluri de stat)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produsul Revolut de investiții în obligațiuni, care include explicit obligațiuni de stat (titluri de stat), este deschis persoanelor fizice și corespunde segmentului de plasamente în titluri de stat al Libra; conține randamente și sume minime concrete.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține cifre explicite (randament, comision, sumă minimă) și menționează explicit obligațiunile de stat ca parte a ofertei.",
+      "citat": "Investește în obligațiuni și obține plăți regulate, cu dobândă fixă de până la 6,5% anual. Adaugă obligațiuni în portofoliu și bucură-te de plăți regulate, cu dobândă fixă de până la 6,5%¹ pe an.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://help.revolut.com/ro-RO/help/wealth/stocks/bonds/bonds-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comisioane pentru obligațiuni",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul detaliază comisioanele exacte percepute pentru tranzacționarea obligațiunilor (inclusiv de stat), aplicabile persoanelor fizice care investesc prin Revolut.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina de tarife conține procente și sume exacte ale comisioanelor aplicate tranzacțiilor cu obligațiuni.",
+      "citat": "Comisionul este perceput de la prima tranzacție la o rată de 0,25% din valoarea tranzacției sau 1 € per tranzacție (oricare este mai mare) pentru clienții Standard, Plus, Premium, Metal și Ultra.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/business/flexible-cash-funds/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Fonduri flexibile de investiții (Business)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pentru persoane juridice, Revolut nu oferă cumpărare directă de titluri de stat ci acces la fonduri de piață monetară care investesc în titluri de stat/trezorerie și depozite bancare; segmentul (firme) și scopul (plasare lichidități în instrumente guvernamentale) sunt comparabile, dar instrumentul este un fond, nu o obligațiune/titlu individual.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina de produs pentru firme descrie explicit investiția în titluri de stat/trezorerie prin fonduri de piață monetară, dar nu oferă cifre de dobândă fixă specifice unui titlu individual.",
+      "citat": "Fondurile flexibile de investiții reprezintă o modalitate de a-ți crește economiile prin investiții în fonduri de piață monetară. Fiecare fond investește în diferite tipuri de active, cum ar fi valorile mobiliare garantate de stat pentru fondul în USD sau depozite bancare și obligațiuni pentru fondurile în EUR și GBP.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2332,
+    "citire_cache": 6317,
+    "scriere_cache": 27039,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0921889
+  }
+}

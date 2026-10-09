@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive documentare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane standard pentru clienți IMM (persoane juridice/PFA), cu secțiune dedicată integral 'Acreditive documentare', import și export, cu valori exacte.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife, actualizat (Aprilie 2026), cu toate comisioanele explicite pentru acreditive de import și export.",
+      "citat": "Emitere în bază de surse proprii Negociabil min. 1,25% p.a., minim 100 EUR Emitere în bază de facilitate de credit Negociabil, minim 100 EUR Emitere în regim de urgență (în max. 24 ore, aplicabil doar emiterilor în baza de facilitate de credit) 75 EUR",
+      "pagina_pdf": 10,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2025/08/tarife-comisioane-corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive documentare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane standard pentru clienți Corporate (persoane juridice), cu secțiune dedicată 'Acreditive documentare' (import/export), aceleași tip de produs, segment corporate.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife pentru segmentul Corporate, cu valori explicite pentru comisioanele de acreditive documentare de import și export.",
+      "citat": "Comision de discrepante 75 EUR/ set Comision de acordare linie pentru acreditive documentare Comision de emitere in baza de surse proprii Comision de emitere in baza de facilitate de credit Emitere in regim de urgenta (in max. 24 ore, aplicabil doar emiterilor in baza de facilitate de credit)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/facilities-for-foreign-trade-financing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Documentary letters of credit (Acreditive documentare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată produsului de acreditive documentare pentru clienți IMM/companii, descriind exact mecanismul acreditivului documentar de import/export, același tip de produs și segment ca Libra Acreditive documentare.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie clar produsul și beneficiile lui, dar nu conține cifre (procente, comisioane), acestea fiind în documentul de tarife.",
+      "citat": "The Documentary letter of credit is an unconditional commitment to pay offered to the exporter by the importer’s bank. Normally, the exporter receives the documentary letter of credit before delivering the goods.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/facilities-for-foreign-trade-financing/#:~:text=The%20Documentary%20letter%20of%20credit,credit%20before%20delivering%20the%20goods."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/facilities-for-foreign-trade-financing/",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2176,
+    "citire_cache": 28511,
+    "scriere_cache": 79998,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2274692
+  }
+}

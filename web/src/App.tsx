@@ -13,6 +13,7 @@ import Istoric from './pages/Istoric'
 import Versus from './pages/Versus'
 import Banca from './pages/Banca'
 import Concurenta from './pages/Concurenta'
+import SituatieBanci from './pages/SituatieBanci'
 import SursePagina from './pages/SursePagina'
 import Coada from './pages/Coada'
 import Logging from './pages/Logging'
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/versus" element={<Versus />} />
         <Route path="/banca" element={<Banca />} />
         <Route path="/concurenta" element={<Concurenta />} />
+        <Route path="/situatie" element={<SituatieBanci />} />
         <Route path="/surse" element={<SursePagina />} />
         <Route path="/coada" element={<Coada />} />
         {/* Inventar produse scrie în produse_libra.json: doar admin, ca rulările */}

@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_11.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Internet / Mobile Banking (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife, termeni și condiții pentru persoane juridice, conține secțiune dedicată 'INTERNET / MOBILE BANKING' cu comisioanele de administrare și de transfer prin aceste aplicații, exact produsul căutat (echivalentul business al Internet & Mobile Banking Libra).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Secțiune dedicată cu cifre exacte: comision lunar de administrare pentru IB+MB și comisioane de transfer prin Internet/Mobile Banking pentru persoane juridice.",
+      "pagina_pdf": 7,
+      "citat": "INTERNET / MOBILE BANKING Comision Lunar de Administrare pentru ambele aplicatii (IB+MB) 10 EUR Comision Lunar de Administrare Mobile Banking 10 EUR TRANSFERURI PRIN INTERNET / MOBILE BANKING LEI Transferuri intrabancare Fara comision",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/vista-internet-si-mobile-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Vista Internet și Mobile Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată serviciului de internet și mobile banking al Vista Bank, disponibil atât pentru persoane fizice cât și pentru persoane juridice (meniul include 'Scheme de autorizare complexe pentru persoane juridice'), echivalent funcțional cu Internet & Mobile Banking business de la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit funcționalitățile pentru persoane juridice (scheme de autorizare complexe), dar nu conține cifre tarifare, acestea fiind în documentul de tarife.",
+      "citat": "Aplicațiile Vista Internet & Mobile Banking reprezintă o alternativă rapidă și confortabilă de a vă accesa oricând și de oriunde conturile, de a ordona tranzacții sau de a vă gestiona lichiditățile și creditele, atât de pe calculator sau laptop, cât și de pe telefonul mobil sau tabletă.",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/vista-internet-si-mobile-banking#:~:text=Aplica%C8%9Biile%20Vista%20Internet%20%26%20Mobile,pe%20telefonul%20mobil%20sau%20tablet%C4%83."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/vista-internet-si-mobile-banking",
+    "https://www.vistabank.ro/persoane-juridice/conturi-si-pachete-de-cont-curent",
+    "https://www.vistabank.ro/en/vista-internet-si-mobile-banking",
+    "https://www.vistabank.ro/persoane-juridice",
+    "https://www.vistabank.ro/vista-internet-si-mobile-banking",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_11.2025.pdf"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 19188,
+    "iesire": 2152,
+    "citire_cache": 78308,
+    "scriere_cache": 80454,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2766926
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/cont-bancar-pachet-imm-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul IMM Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament/pachet corporate lunar pentru persoane juridice (IMM-uri medii/mari) cu cont curent lei+valută, card de debit business, Internet/Mobile Banking și plăți interbancare incluse gratuit, similar ca structură cu Abonamentul PRIME Libra, dar diferă pragul de segment (afaceri 500 mii-1 mil. EUR cifră de afaceri, nu microîntreprinderi/PFA), numărul de plăți incluse (50 lei + 25 valută față de 25+25 la Libra), comisionul lunar (119 lei vs 95 lei) și nu se menționează explicit 2 carduri sau serviciu tip Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifrele cheie: comisionul lunar, numărul de plăți gratuite și serviciile incluse.",
+      "citat": "Pachet de cont bancar recomandat afacerilor medii și mari, cu cifră de afaceri între 500 mii și 1 milion de euro. Comisionul lunar de administrare este 119 de lei și economisești 501 lei din reducerile la comisioane.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/cont-bancar-pachet-imm-business#:~:text=Pachet%20de%20cont%20bancar%20recomandat,lei%20din%20reducerile%20la%20comisioane."
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul IMM Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă comisionul lunar de administrare al Pachetului IMM Business, echivalentul cel mai apropiat ca tip și segment de Abonamentul PRIME Libra, deși diferă pragul de eligibilitate, numărul de operațiuni incluse și lipsesc serviciile FX/2 carduri specifice Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de tarife în care apare explicit valoarea comisionului lunar pentru Pachetul IMM Business alături de celelalte pachete corporate.",
+      "citat": "Administrare Pachet IMM Business 119 lei/luna",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (6 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/cont-bancar-pachet-imm-business",
+    "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2001,
+    "citire_cache": 37729,
+    "scriere_cache": 76137,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2179103
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/01/c347abf76fdb1c5d9013d7f215a5732e6c6137c4.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Visa Clasic Debit / Mastercard Standard Debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă taxa de emitere 0 lei și taxa anuală 0 lei pentru cardurile de debit de bază ale băncii, pentru persoane fizice; nu există o variantă cu cashback la parteneri sau pentru persoane juridice în acest document.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de comisioane și dobânzi, cu tabel complet de taxe pentru cardul de debit Visa Clasic, inclusiv taxa de emitere și taxa anuală.",
+      "citat": "LISTA DE TAXE, COMISIOANE SI DOBANZI APLICABILE CARDURILOR DE DEBIT VISA CLASIC DEBIT IN LEI / EURO INCEPAND CU DATA DE 14.11.2017 Taxa emitere 0 0 Taxa anuala* 0 1 EUR",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/en/retail-banking/Debit-Cards/Visa-Clasic-Debit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Visa Clasic Debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un card de debit fără costuri de emitere, la fel ca Libra Card de debit Free, dar este disponibil doar pentru persoane fizice (Libra acoperă și persoane juridice) și nu oferă cashback la parteneri, doar scutiri de comisioane standard.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată a produsului conține caracteristicile principale și cifrele privind comisioanele de emitere, dar nu menționează niciun program de cashback.",
+      "citat": "Visa Clasic Debit from Nexent Bank is a multifunctional debit card in lei or in euro, for individuals. Debit card in lei or euro for individuals; National and international coverage for transactions at merchants or cash withdrawals from any ATM which display Visa logo; 0 issuing fee (including for supplementary card); 0 commissions for commercial transactions made abroad",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/Mastercard-Standard-Debit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Standard Debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit fără comision de emitere sau administrare, pentru persoane fizice; segmentul persoane juridice nu este acoperit de acest produs, iar cashback-ul la parteneri nu este menționat (cashback-ul Nexent este asociat doar cardurilor de credit Card Avantaj).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată menționează explicit 0 lei comision de emitere și administrare, confirmând echivalența parțială cu Libra Card de debit Free.",
+      "citat": "Ai 0 (ZERO) lei comision pentru: Emiterea cardului (inclusiv pentru cardul suplimentar); Tranzacţiile comerciale efectuate la POS, oriunde în lume; Plăți rapide folosind tehnologia contactless; Tranzacţiile comerciale în străinătate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/persoane-fizice/Carduri-de-Debit/Visa-Clasic-Debit"
+  ],
+  "durata_s": 75,
+  "consum": {
+    "intrare": 6,
+    "iesire": 6042,
+    "citire_cache": 64567,
+    "scriere_cache": 34288,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.15906539999999997
+  }
+}

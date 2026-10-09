@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/companii/credite-companii/credit-online-pentru-afaceri-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit online fara garantii (Credit IMM / Credit online pentru afaceri IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este credit negarantat pentru persoane juridice/IMM, acordat pe baza de documentatie redusa si scoring, fara garantii materiale - acelasi tip si segment ca Credit Simplu IMM de la Libra, dar suma maxima (124.000 lei) si termenul maxim (24 luni) sunt mult sub plafonul Libra (200.000 lei / 48 luni).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicata a produsului contine toate cifrele cheie: suma maxima, perioada maxima, exemplu reprezentativ de rata si cost total.",
+      "citat": "Suma maxima 124000 lei Perioada maxima 24 luni Rambursare Rate lunare egale Garantii materiale NU Cont la tbi bank NU. Exemplu: Pentru un credit in valoare de 124.000 lei pe 24 luni, valoarea ratei lunare este de aproximativ 6.618 lei, iar valoarea totala rambursata de client este de 158.832 lei.",
+      "citat_verificat": true,
+      "link_live": "https://tbibank.ro/companii/credite-companii/credit-online-pentru-afaceri-imm/#:~:text=Suma%20maxima%20124000%20lei%20Perioada,client%20este%20de%20158.832%20lei."
+    },
+    {
+      "url": "https://crediteimm.tbibank.ro/",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "tbi Business Express",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Landing page-ul de aplicare online pentru acelasi tip de credit negarantat pentru persoane juridice, dar cu un plafon superior (250.000 RON) fata de pagina principala a produsului; continutul numeric nu s-a incarcat prin fetch simplu (necesita randare JS), de aceea valorile provin din rezultatul de cautare care a indexat pagina randata.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina pare sa fie varianta curenta/actualizata a aplicatiei online cu suma maxima diferita (250.000 RON), dar continutul nu a putut fi confirmat direct prin fetch (pagina goala, probabil JS), doar prin indexarea anterioara.",
+      "citat": "Pentru Persoane Juridice - Credit rapid până la 250000 RON - Aplicație Exclusiv Online - Răspuns în maxim 24 ore - Fără cont curent la tbi bank - Nicio vizită la bancă",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/companii/credite-companii/credit-online-pentru-afaceri-imm/",
+    "https://crediteimm.tbibank.ro/"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2718,
+    "citire_cache": 60987,
+    "scriere_cache": 31547,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11826089999999999
+  }
+}

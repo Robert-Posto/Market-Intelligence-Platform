@@ -1,0 +1,30 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CARD_CREDIT_BUSINESS",
+  "denumire": "Card de credit business",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Nexent Bank nu are un card de credit dedicat persoanelor juridice (firme/PFA). Atât secțiunea IMM (\"Company Cards\": https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Company-Cards) cât și secțiunea Corporate (\"Business Cards\": https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards) conduc către același produs, VISA Business, care este explicit un card de DEBIT in lei sau euro, cu posibilitatea atașării unei facilități de overdraft (max. 3 salarii nete, maxim 5.000 EUR) - nu un card de credit revolving. Pagina indică textual: 'VISA Business is a debit card in lei or euro for legal entities... The Bank may grant to the legal entity an overdraft limit'. Singurele carduri de credit găsite pe site (Card Avantaj, Optimo Card, Nexent Diamond) sunt exclusiv pentru persoane fizice, condiționate de venit salarial/ANAF, fără nicio variantă pentru companii/PFA. Nu există deci un echivalent sau similar real al unui 'card de credit business' pentru persoane juridice la această bancă - cel mai apropiat produs este cardul de debit business cu overdraft menționat mai sus, care este un tip de produs diferit (debit, nu credit)."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Company-Cards",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Company-Cards",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 25665,
+    "iesire": 3139,
+    "citire_cache": 145927,
+    "scriere_cache": 92431,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3429829
+  }
+}

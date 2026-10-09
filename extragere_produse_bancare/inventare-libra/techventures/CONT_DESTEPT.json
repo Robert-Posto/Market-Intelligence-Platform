@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Startup",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pachetul dedicat firmelor la început de drum (cont curent, card Mastercard Business, Internet Banking, încasări/plăți), ca și Cont Deștept, dar la TechVentures costă 25 lei/lună (nu este gratuit 12 luni) și nu menționează mPOS 0,59% sau plăți nelimitate.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent conține secțiunea Startup cu preț lunar și lista de servicii incluse, dar nu precizează un comision mPOS sau gratuitate temporară.",
+      "citat": "Startup 25 lei/luna Pentru companii la început de drum! Cont curent în lei și euro Emitere și administrare card de debit fizic contactless Mastercard Business Internet Banking Încasări intra/interbancare în lei Plăți intrabancare în lei prin Internet Banking Primele 5 plăți interbancare în lei prin Internet Banking",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/pachete-cont-curent#:~:text=Startup%2025%20lei%2Fluna%20Pentru%20companii,%C3%AEn%20lei%20prin%20Internet%20Banking"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/acceptare-carduri-prin-pos",
+    "https://techventures.bank/documente-utile"
+  ],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 13583,
+    "iesire": 1418,
+    "citire_cache": 25195,
+    "scriere_cache": 19272,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09456500000000001
+  }
+}

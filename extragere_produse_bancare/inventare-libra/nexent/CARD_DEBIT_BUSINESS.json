@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/c65f86ba4c3ff2476f13d4f98a69b4aab211c4f2.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de taxe, comisioane și dobânzi aplicabil exact cardurilor de debit Visa Business pentru persoane juridice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF dedicat exclusiv listei de taxe, comisioane și dobânzi pentru acest card, cu toate cifrele relevante structurate pe tabele.",
+      "pagina_pdf": 1,
+      "citat": "Taxa emitere* 20 RON 10 EUR Taxa anuala de administrare card** 40 RON 15 EUR Taxa reinnoire card (dupa 3 ani) 20 RON 10 EUR Rata dobanzii pentru iesire in descoperit neautorizat de cont 40% 20%",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Visa Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit internațional emis sub siglă Visa, destinat persoanelor juridice (firme), cu posibilitate de overdraft atașat - exact segmentul și tipul de produs ca CARD_DEBIT_BUSINESS.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv acestui card de debit business, cu descriere a caracteristicilor și public țintă clar precizat.",
+      "citat": "Visa Business este un card de debit în lei sau euro pentru persoane juridice ai căror angajaţi efectuează în mod frecvent călătorii de afaceri şi achiziţionează bunuri şi servicii pentru companie.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business#:~:text=Visa%20Business%20este%20un%20card,bunuri%20%C5%9Fi%20servicii%20pentru%20companie."
+    },
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "VISA Business (Business Debit Card)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în limba engleză a aceleiași pagini dedicate cardului de debit business, cu aceleași caracteristici și cifre.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conținut identic cu pagina RO, utilă ca sursă suplimentară/backup pentru extractorul de valori.",
+      "citat": "VISA Business is a debit card in lei or euro for legal entities whose employees frequently carry business trips and purchase goods and services for the company.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards#:~:text=VISA%20Business%20is%20a%20debit,and%20services%20for%20the%20company."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/Corporate-SME/Corporate-Banking/Business-Cards",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards",
+    "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/c65f86ba4c3ff2476f13d4f98a69b4aab211c4f2.pdf"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2029,
+    "citire_cache": 79126,
+    "scriere_cache": 62613,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19266370000000002
+  }
+}

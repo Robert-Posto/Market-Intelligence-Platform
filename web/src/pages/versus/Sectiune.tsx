@@ -5,7 +5,8 @@ import { etDesc, etNume, unitTxt } from '../../components/valori'
 import { useLang } from '../../i18n'
 import { deLaServer } from '../../i18n/server'
 import { num } from '../../util/format'
-import { REFERINTA, type CelulaVs, type SectiuneExtra, type SectiunePret } from './model'
+import { numeCategorie } from '../produse/logica'
+import { REFERINTA, UNITATI_LIBRA, type CelulaVs, type SectiuneExtra, type SectiuneLibra, type SectiunePret } from './model'
 
 interface Comun {
   coloane: string[]
@@ -21,11 +22,12 @@ function Pliabila({ cap, children }: { cap: ReactNode; children: ReactNode }) {
   return <Collapse className="vs-sec" ghost defaultActiveKey={['s']} items={[{ key: 's', showArrow: false, label: cap, children }]} />
 }
 
-function CapSectiune({ titlu, sens, coloane, nume }: Comun & { titlu: string; sens: string }) {
+/** `sub`: textul mic de lângă titlu în locul sensului (la produsele Libra sensul e pe rând). */
+function CapSectiune({ titlu, sens, sub, coloane, nume }: Comun & { titlu: string; sens: string; sub?: string }) {
   const { t } = useLang()
   return (
     <div className="vs-sec-cap">
-      <div className="t">{titlu}<span>{t(sens === 'mare_bun' ? 'versus.sens_mare_bun' : 'versus.sens_mic_bun')}</span></div>
+      <div className="t">{titlu}<span>{sub ?? t(sens === 'mare_bun' ? 'versus.sens_mare_bun' : 'versus.sens_mic_bun')}</span></div>
       {coloane.map((b) => <div key={b} className={b === REFERINTA ? 'c ref' : 'c'}>{nume[b]}</div>)}
     </div>
   )
@@ -116,6 +118,55 @@ export function SectiunePretVs({ s, coloane, nume, deschide }: Comun & { s: Sect
                   onClick={() => deschide({ banca: b, camp: r.camp, unitate: g.unitate, scenariu: g.api === 'rate' ? g.cheie : '' })}>
                   <ValoarePret c={c} sens={s.sens} unitate={g.unitate} />
                 </span>
+                <Marcaje bun={bun} pierde={pierde} />
+              </div>
+            )
+          })}
+        </div>
+      ))}
+    </Pliabila>
+  )
+}
+
+/**
+ * Un produs Libra din fluxul comparației: valoarea băncii pe câmpul produsului echivalent
+ * (mediana, dacă documentul are mai multe variante). Citatul stă în tooltip, iar clic pe
+ * valoare deschide documentul băncii (nu sertarul: valorile nu vin din `observations`).
+ */
+export function SectiuneLibraVs({ s, coloane, nume }: Comun & { s: SectiuneLibra }) {
+  const { t, locale } = useLang()
+  const unitate = (u: string) => {
+    const k = UNITATI_LIBRA[u]
+    return k === undefined ? unitTxt(u, t) : k ? t(k) : ''
+  }
+  const sub = [t('versus.libra_produs'), s.segment, s.categorie && numeCategorie(s.categorie, t)].filter(Boolean).join(' · ')
+  // același câmp în două unități („Administrare lunară” în lei și în %): unitatea intră în etichetă
+  const repetate = new Set(s.randuri.map((r) => r.camp).filter((c, i, a) => a.indexOf(c) !== i))
+  const eticheta = (camp: string, u: string) => etNume(camp, t) + (repetate.has(camp) ? ` (${unitate(u).trim() || u})` : '')
+  return (
+    <Pliabila cap={<CapSectiune titlu={s.titlu} sens="" sub={sub} coloane={coloane} nume={nume} />}>
+      {s.randuri.map((r, k) => (
+        <div key={`${r.camp}|${r.unitate}`} className={k % 2 ? 'vs-rand alt' : 'vs-rand'}>
+          <EtichetaRand et={eticheta(r.camp, r.unitate)} desc={t(r.sens === 'mare_bun' ? 'versus.sens_mare_bun' : 'versus.sens_mic_bun')}
+            cate={r.prezente} total={coloane.length} />
+          {coloane.map((b) => {
+            const c = r.celule[b]
+            if (!c) return <Gol key={b} title={t('versus.celula_goala_title')} />
+            const bun = r.prezente > 1 && c.valoare === r.celMaiBun
+            const pierde = b === REFERINTA && r.stare === 'pierde'
+            const u = unitate(r.unitate)
+            const multe = c.n > 1 && c.minim !== c.maxim
+            const titlu = [c.citat && `„${c.citat}”`, c.link && t('versus.libra_clic_sursa')].filter(Boolean).join(' — ')
+            return (
+              <div key={b} className={['vs-cel', bun && 'best', pierde && 'pierde'].filter(Boolean).join(' ')}>
+                <Tooltip title={titlu || undefined}>
+                  <a className="celula vs-libra" href={c.link ?? undefined} target="_blank" rel="noopener noreferrer">
+                    {multe && <span className="v-pref">{t('comun.valoare.de_obicei')}</span>}
+                    <span className="v-num">{num(c.valoare, locale)}{u}</span>
+                    {multe && <span className="v-ctx">{num(c.minim, locale)}{u} – {num(c.maxim, locale)}{u}</span>}
+                    {c.referinta && <span className="v-ctx">{t('versus.libra_referinta')}</span>}
+                  </a>
+                </Tooltip>
                 <Marcaje bun={bun} pierde={pierde} />
               </div>
             )

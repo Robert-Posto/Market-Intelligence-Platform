@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete Servicii (EXIM BUSINESS SMART / START / ACTIV / COMPLET)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Abonamente lunare pentru PFA și microîntreprinderi care includ cont curent, card de debit business, Internet/Mobile Banking, exact ca Abonamentul PFA Libra, cu mai multe variante de preț lunar.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu denumiri clare ale pachetelor și prețurile lunare exacte pentru fiecare variantă.",
+      "citat": "EXIM BUSINESS SMART - EXIM BUSINESS START (25 lei/luna) - EXIM BUSINESS ACTIV (40 lei/luna) - EXIM BUSINESS COMPLET (70 lei/luna)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "PACHET START-UP",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament de cont+card business+IB/MB pentru PFA/microîntreprinderi ca la Libra, dar e rezervat exclusiv afacerilor la început de drum (primii 2 ani de la înființare) și e gratuit primul an, cu abonament de 45 lei/lună după expirare, spre deosebire de abonamentul fix de 29 lei/lună de la Libra disponibil oricărui PFA.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului cu cifre clare despre cost (45 lei/lună) și componente (cont, card, IB/MB), dar segmentul este restrâns la afaceri noi.",
+      "citat": "La expirarea anului de gratuitate, detinatorii Pachetului Start-Up pot opta pentru un abonament lunar de 45 de lei/luna.",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (18 cuvinte)",
+      "link_live": "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/#:~:text=La%20expirarea%20anului%20de%20gratuitate%2C,lunar%20de%2045%20de%20lei%2Fluna."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
+    "https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2012,
+    "citire_cache": 87328,
+    "scriere_cache": 53154,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1704866
+  }
+}

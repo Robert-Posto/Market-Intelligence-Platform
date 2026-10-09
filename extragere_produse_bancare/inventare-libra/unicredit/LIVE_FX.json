@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/en/financial-institutions/financial-markets/treasury.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "UCTrader - FX Electronic Trading Platform",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot o platformă electronică de tranzacționare valutară online, cu cursuri în timp real, oferită direct de bancă (similar cu Live FX), dar este poziționată pe segmentul Financial Institutions/Corporate treasury și nu este prezentată ca disponibilă și pentru persoane fizice, spre deosebire de Live FX care vizează explicit persoane fizice și juridice.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată descrie explicit platforma UCTrader, cu numărul de valute și perechi valutare acoperite, dar nu conține cifre despre comisioane sau curs, iar segmentul de clienți vizat diferă de cel al Live FX.",
+      "citat": "UCTrader Electronic Trading Platform offers state-of-the-art FX execution capabilities for more than 50 currencies and 140 currency pairs. The connection in the platform applies the new security protocols, each user account is using 2 factor authentication, requiring both a PIN or a password and a one-time passcode.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/financial-institutions/financial-markets/treasury.html#:~:text=UCTrader%20Electronic%20Trading%20Platform%20offers,password%20and%20a%20one%2Dtime%20passcode."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/financial-institutions/financial-markets/treasury.html",
+    "https://www.unicredit.ro/ro/institutii-financiare/piete-financiare/trezorerie.html"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 28189,
+    "iesire": 1781,
+    "citire_cache": 38788,
+    "scriere_cache": 33793,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1664281
+  }
+}

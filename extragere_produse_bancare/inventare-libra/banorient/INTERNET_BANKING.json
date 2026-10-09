@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/internet-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "eBanking Internet Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este serviciul de internet banking al băncii (acces online la conturi, verificare solduri și tranzacții, transferuri între conturi proprii, plăți către beneficiari, autentificare cu OTP), aceeași funcție ca Internet & Mobile Banking business de la Libra; pagina e listată sub secțiunea băncii pentru România și face trimitere la portalul dedicat eBank-ro folosit și de clienți persoane juridice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată descrie explicit funcționalitățile serviciului (transferuri, verificare solduri, autentificare cu doi factori) și menționează că serviciul e gratuit, dar nu separă explicit segmentul persoane juridice de cel persoane fizice.",
+      "citat": "Pentru a consolida acest climat de încredere, am adoptat o platformă complexa de autentificare pe baza a doi factori, incluzand parolele One-Time-Pass (OTP) . Acest tip de autentificare sporeste securitatea serviciului eBanking Internet Banking.",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/internet-banking#:~:text=Pentru%20a%20consolida%20acest%20climat,securitatea%20serviciului%20eBanking%20Internet%20Banking."
+    },
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de produse și servicii a sucursalei România prezintă Internet Banking în cadrul ofertei de banking corporate și comercial a băncii, confirmând că serviciul deservește inclusiv clienții persoane juridice, exact segmentul vizat de produsul Libra Internet & Mobile Banking business.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Produsul este menționat explicit cu o dată de lansare (2010) în pagina dedicată produselor și serviciilor pentru clienții corporate/comerciali ai sucursalei România, dar fără alte cifre (comisioane, limite).",
+      "citat": "Serviciile de Internet Banking sunt disponibile incepand cu mai 2010 pentru a oferi clienţilor noştri acces la conturile lor prin intermediul Internetului.",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/products-and-services#:~:text=Serviciile%20de%20Internet%20Banking%20sunt,conturile%20lor%20prin%20intermediul%20Internetului."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/internet-banking",
+    "https://www.banorientfrance.com/romanian/mobile-banking",
+    "https://www.banorientfrance.com/romanian/romania/service-charges",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services"
+  ],
+  "durata_s": 76,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5718,
+    "citire_cache": 33204,
+    "scriere_cache": 32542,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1451918
+  }
+}

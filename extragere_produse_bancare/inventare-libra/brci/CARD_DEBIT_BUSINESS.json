@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/card-mastercard-business.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Mastercard Business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este cardul de debit Mastercard destinat persoanelor juridice (companii, PFA) pentru operațiuni curente, fără legătură cu un partener extern, deci corespunde direct conceptului de 'Card de debit business' de la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată a produsului conține caracteristici tehnice și cifre concrete (POS gratuit, până la 250 de carduri pe cont), dar nu am putut accesa pagina live din cauza restricției robots.txt, informația provine din indexarea publică a paginii.",
+      "citat": "Card MASTERCARD business debit in Lei embosat, cu CHIP si cu tehnologie contactless; Plăti rapide folosind tehnologia contactless; Tranzacții comerciale efectuate la POS, oriunde in lume GRATUIT; Se poate utiliza atât in Romania cat si in afara tarii; Posibilitate de a solicita pana la 250 carduri pe același cont;",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/ro/produse/card-mastercard-business.html",
+    "https://brci.ro/ro/produse/card-mastercard-business.html",
+    "https://brci.ro/ro/produse/scrisoare-garantie.html"
+  ],
+  "durata_s": 49,
+  "consum": {
+    "intrare": 72133,
+    "iesire": 2807,
+    "citire_cache": 12644,
+    "scriere_cache": 25736,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2392048
+  }
+}

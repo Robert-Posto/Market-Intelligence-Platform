@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumenteInstitutional/UCB-Oferta-Clienti-IMM-Garantie-BID.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru IMM Garantat de BID (Ofertă de finanțare pentru IMM cu garanție BID până la 80%)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat de finanțare pentru IMM-uri (persoane juridice) cu garanție emisă de BID, exact ca produsul Libra: procent de garantare, plafon valoare garanție, destinație investiții sau capital de lucru.",
+      "incredere": 0.97,
+      "explicatie_incredere": "Document PDF dedicat exclusiv acestui produs, cu toate cifrele relevante: procent garantare, comision, plafoane, maturitate.",
+      "citat": "Procentul de garantare: maximum 70%* din valoarea fiecărei facilități de credit Comisionul de garantare: 0.7% pe an, calculat la soldul lunar al creditului și plătibil trimestrial Perioada de valabilitate a schemei: 31.12.2027",
+      "dovada_metoda": "Conținut text extras direct din PDF, cu cifre explicite despre procent de garantare, comision și valabilitate schemă.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "SME loans Guaranteed by BID / Financing offer for SMEs with BID guarantee up to 80%",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina oficială de produs pentru IMM-uri (special programs) care include secțiunea dedicată creditului garantat de BID, cu aceleași cifre ca PDF-ul: procent garantare, comision, valoare maximă garanție.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina web de produs conține explicit secțiunea despre garanția BID cu cifre (procent, comision, valabilitate schemă), alături de alte programe de garantare.",
+      "citat": "Guarantee percentage: maximum 70%* of the value of each credit facility Guarantee fee: 0.7% per year, calculated to the monthly balance of the loan and payable quarterly Scheme validity period: 31.12.2027",
+      "dovada_metoda": "Cifrele apar direct în conținutul text al paginii HTML, fără a fi nevoie de randare JavaScript suplimentară.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/institutional/centru-media/comunicate-de-presa/UniCreditBank-in-parteneriat-cu-BID-lanseaza-un-nou-instrument-de-garantare-pentru-IMM-uri1.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Creditul pentru IMM Garantat de BID (comunicat de lansare parteneriat UniCredit-BID)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicat de presă care confirmă lansarea oficială a produsului și volumul total de finanțare, utile ca context dar fără cifre complete de dobândă/comision.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagină de comunicat de presă, confirmă existența și denumirea produsului dar nu conține toate cifrele tehnice (acestea sunt doar în PDF).",
+      "citat": "UniCredit Bank, în parteneriat cu Banca de Investiții și Dezvoltare (BID), lansează un nou instrument de garantare destinat întreprinderilor mici și mijlocii (IMM-uri), cu un volum total de credite care depășește 1 miliard de lei.",
+      "dovada_metoda": "Text simplu extras din pagina de comunicat, fără tabele sau cifre tehnice de dobândă.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1724,
+    "citire_cache": 6338,
+    "scriere_cache": 33794,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1030006
+  }
+}

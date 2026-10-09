@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/companii/credite-companii/credit-de-investitii/",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investitii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată, pentru persoane juridice, exact pentru finanțarea investițiilor (achiziții imobile, echipamente, construcții) — același tip de produs și segment ca CREDIT_INVESTITII de la Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Este pagina dedicată exactă a produsului 'Credit de investitii' pentru persoane juridice, dar textul static nu conține cifre (dobândă, comision, sumă, termen); acestea apar probabil doar după completarea formularului/simulare, de aceea extragerea automată de valori nu va găsi cifre momentan.",
+      "citat": "Fie ca doresti sa eficientizezi liniile de productie existente, sa obtii un spatiu de stocare mai mare, sa beneficiezi de un sediu mai incapator sau sa adaugi noi produse si servicii in portofoliul afacerii tale, venim in sprijinul tau cu o facilitate de finantare printr-un credit de investitii.",
+      "citat_verificat": true,
+      "link_live": "https://tbibank.ro/companii/credite-companii/credit-de-investitii/#:~:text=Fie%20ca%20doresti%20sa%20eficientizezi,finantare%20printr%2Dun%20credit%20de%20investitii."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/companii/credite-companii/credit-de-investitii/",
+    "https://tbibank.ro/despre-tbi-group/documente/",
+    "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi%2C%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf"
+  ],
+  "durata_s": 49,
+  "consum": {
+    "intrare": 12,
+    "iesire": 3312,
+    "citire_cache": 154555,
+    "scriere_cache": 63090,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22177999999999998
+  }
+}

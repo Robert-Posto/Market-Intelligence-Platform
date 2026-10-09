@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/loans-for-basic-self-employed/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru profesii liberale de bază (Loans for basic self-employed) – Nevoi nenominalizate fără garanții reale",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit de nevoi nenominalizate pentru afacere, fără garanție imobiliară, cu sumă 20.000–200.000 RON aproape identică cu Credit Simplu IMM (20.000–200.000 lei), dar segmentul e mai restrâns: produsul Garanti e dedicat profesiilor liberale/PFA de bază, nu și firmelor (persoane juridice de tip SRL) ca la Libra; de asemenea termenul maxim este 84 luni față de 48 luni la Libra, iar garanția presupune fidejusiune și gaj pe conturi, nu e pur 'pe scoring fără garanție' ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată prezintă explicit plaja de sumă, termenul și tipul de garanție pentru acest produs, dar nu precizează un plafon raportat la cifra de afaceri ca la Libra.",
+      "citat": "The loan can be offered for a period of up to 84 months, in line with your financial needs You can benefit from a credit ranging from 20.000 RON to 200.000 RON, which you can use to develop your business",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/sme-and-pfa/loans-for-basic-self-employed/#:~:text=The%20loan%20can%20be%20offered,use%20to%20develop%20your%20business"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/sme-and-pfa/loans-for-basic-self-employed/",
+    "https://www.garantibbva.ro/imm-si-pfa/credite-pentru-profesii-liberale-si-pfa/credite-pentru-profesii-liberale-de-baza/"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 35933,
+    "iesire": 3340,
+    "citire_cache": 43131,
+    "scriere_cache": 40525,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2152047
+  }
+}

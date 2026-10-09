@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Revolut Business - Plan Basic",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Abonament lunar pentru cont operațional de firmă (persoane juridice), cu cont multi-valută (lei + alte 30+ monede), carduri business, plăți instant și acceptare plăți online/în persoană - același tip de produs și segment ca Abonamentul SHINE de la Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată de tarifare a planurilor Revolut Business conține explicit prețul în lei pentru planul Basic și caracteristicile incluse (transfer multi-valută, carduri, acceptare plăți).",
+      "citat": "Basic lei 50/month Get the essentials to start operating immediately. Unlimited team members 10 no-fee local transfers Exchange lei 5,500 at the interbank rate during market hours Accept online and in-person payments",
+      "rol_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/en-RO/business/business-account-plans/#:~:text=Basic%20lei%2050%2Fmonth%20Get%20the,Accept%20online%20and%20in%2Dperson%20payments"
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/business-basic-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Revolut Business Fees (Basic) - document de condiții/tarife complet",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru planul Basic (echivalentul segmentului de firme/PFA al Libra) detaliază comisioane pentru transferuri locale, internaționale, procesare plăți în persoană (0.8%/2.6%) și taxe aplicabile aplicațiilor business.",
+      "incredere": 0.88,
+      "explicatie_incredere": "Document legal oficial de tarife care listează explicit toate comisioanele aplicabile planului Basic, inclusiv cele pentru acceptarea de plăți, transferuri și aplicații business.",
+      "citat": "In person Card Transactions (Revolut Reader and Revolut Terminal) Payments from EEA consumer cards: 0.8% of the transaction value Payments from any other cards: 2.6% of the transaction value UK (GBP): £ 0.02 Eurozone (EUR): € 0.02",
+      "rol_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/business/accept-payments-pricing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Revolut Business - Payment Acceptance Pricing (acceptare plăți card/mPOS)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru acceptarea plăților cu cardul (echivalentul comisionului mPOS 0,59% din Abonamentul SHINE), aplicabil conturilor Revolut Business pentru firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține explicit comisioanele pentru plăți în persoană și online în lei, componenta de tarif care corespunde comisionului mPOS al Libra.",
+      "citat": "Prices starting from 0,8% + lei 0.12 In-person payments 1% + lei 1.20 Online payments Get clear, transparent, and competitive pricing so you always know what you pay.",
+      "rol_pdf": null,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/en-RO/business/accept-payments-pricing/",
+    "https://www.revolut.com/en-RO/business/business-account-plans/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2467,
+    "citire_cache": 72981,
+    "scriere_cache": 53732,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1736122
+  }
+}

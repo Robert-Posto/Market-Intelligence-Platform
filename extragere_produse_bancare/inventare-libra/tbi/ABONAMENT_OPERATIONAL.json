@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent pentru persoane juridice și entități asimilate",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă exact contul curent operațional pentru firme/PFA (deschidere, administrare, închidere, dobânzi), dar este structurat ca un singur produs cu comisioane per serviciu, nu ca un „abonament/pachet” cu variante incluse, cum e produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document tarifar oficial, în vigoare din iunie 2024, cu cifrele exacte pentru deschiderea și administrarea contului curent al persoanelor juridice.",
+      "citat": "Deschidere cont curent/ Current account opening 10 RON Administrare cont curent / Current account administration 10 RON/luna / 10 RON month",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/companii/plati/conturi/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Conturi curente pentru persoane juridice (Conturi in RON si EUR)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent operațional pentru persoane juridice, dar tbi bank nu oferă un „pachet/abonament” cu niveluri de servicii precum Libra, ci un singur tip de cont cu taxe individuale per serviciu.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie contul curent pentru firme și trimite către listele de tarife, dar nu conține cifre direct în text.",
+      "citat": "tbi bank deschide si administreaza conturi curente in RON si EUR",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (11 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf"
+  ],
+  "durata_s": 31,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2281,
+    "citire_cache": 39739,
+    "scriere_cache": 58282,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1764748
+  }
+}

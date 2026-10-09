@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/product/depozitul-online/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozitul Online",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen, pentru persoane fizice, cu dobândă fixă pe toată durata, dar tbi bank nu are un termen promoțional de 13 luni (\"1 An și 1 Lună\"); grila sa de termene sare de la 12 la 15 luni, iar produsul nu e structurat ca ofertă promoțională cu dobândă combinată.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține tabelul complet de dobânzi pe toate termenele, inclusiv 12 și 15 luni, dar nu există termenul de 13 luni cerut de produsul Libra.",
+      "citat": "RON · 1 LUNA 6,50% · 3 LUNI 6,70% · 5 LUNI 6,90% · 6 LUNI 7,00% · 9 LUNI 7,00% · 12 LUNI 7,00% · 15 LUNI 7,20% · 18 LUNI 7,30% · 24 LUNI 7,50% · 36 LUNI 7,50%",
+      "citat_verificat": true,
+      "link_live": "https://tbibank.ro/product/depozitul-online/#:~:text=RON%20%C2%B7%201%20LUNA%206%2C50%25,7%2C50%25%20%C2%B7%2036%20LUNI%207%2C50%25"
+    },
+    {
+      "url": "https://tbibank.ro/news/informare-privind-actualizarea-dobanzilor-2/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen (Persoane Fizice și Juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Articolul oficial de actualizare a dobânzilor acoperă atât persoane fizice cât și juridice, cu depozite la termen standard (1-36 luni, respectiv 1-12 luni pentru firme), dar fără un termen de 13 luni și fără structura promoțională \"1 An și 1 Lună\" a Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul conține grilele complete de dobânzi curente pentru ambele segmente (fizice și juridice), cu cifre explicite pentru fiecare termen, actualizate la 26.08.2026.",
+      "citat": "Persoane Juridice | Depozite / Valuta/Perioada | Depozite / 1 luna | Depozite / 3 luni | Depozite / 6 luni | Depozite / 12 luni LEI | 4,50% | 5,00% | 6,00% | 6,10%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/",
+    "https://tbibank.ro/companii/depozite/depozit-persoane-juridice/",
+    "https://tbibank.ro/product/depozitul-online/"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3866,
+    "citire_cache": 33637,
+    "scriere_cache": 48711,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1671769
+  }
+}

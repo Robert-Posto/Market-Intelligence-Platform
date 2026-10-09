@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat de credit de investiții pentru persoane juridice (societăți comerciale, profesii liberale, fermieri), exact ca produsul Libra pentru firme/PFA.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține toate cifrele cheie ale creditului de investiții: monedă, perioadă, procent finanțare, contribuție proprie, grație.",
+      "citat": "Moneda creditului: lei, euro, usd Destinație: proiecte de investiții sau refinanțarea altor credite de investiții Perioada de creditare: maximum 12 ani, corelată cu durata maximă de viață a investiției finanțate Perioadă de grație: maximum 12 luni Valoarea creditului: maximum 85% din valoarea investiției, excluzând TVA",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 9,
+  "consum": {
+    "intrare": 4,
+    "iesire": 643,
+    "citire_cache": 6302,
+    "scriere_cache": 38130,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10302339999999999
+  }
+}

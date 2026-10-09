@@ -1,0 +1,23 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "CEC Bank are doar API-uri PSD2/Open Banking (pagina https://www.cec.ro/api-uri-psd2) destinate furnizorilor terți de servicii de plată/informare conturi (TPP) și dezvoltatorilor care construiesc aplicații proprii - nu o integrare dedicată, comercializată direct firmelor/PFA, cu programele de contabilitate (SAGA, WinMentor etc.). Funcționalitatea Open Banking este expusă doar în aplicația proprie Mobile/Internet Banking a CEC pentru vizualizarea conturilor de la alte bănci, nu pentru export către softuri de contabilitate. Nu există pagină de produs, tarife sau condiții care să menționeze o integrare API pentru contabili ca produs de sine stătător."
+  },
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3073,
+    "citire_cache": 32269,
+    "scriere_cache": 49274,
+    "apeluri": 2,
+    "cost_estimat_usd": 0.1603888
+  }
+}

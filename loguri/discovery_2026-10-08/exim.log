@@ -1,0 +1,417 @@
+Exim Banca Românească: 51 de rulat, 6 sărite (au rezultat), paralel 5, model claude-sonnet-5, termen 180 s/produs, domenii eximbank.ro
+  [cautare] EximBank InvestEU credit IMM
+  [cautare] eximbank.ro InvestEU
+  [ 1] https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/
+  [ 2] https://www.eximbank.ro/en/2025/09/23/companies-loans-guaranteed-by-the-european-investment-fund/
+  [ 3] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+GATA    CREDIT_INVESTEU_PJ           3 surse, 3 citate verificate, echivalent, $0.17, 27s — Credite cu garanții FEI (Plafon FRR Competitivitate IMM / Plafon FRR Sustenabilitate)
+  [cautare] eximbank.ro linie de credit capital de lucru IMM
+  [cautare] eximbank.ro credit pentru capital de lucru companii
+  [ 1] https://www.eximbank.ro/2022/12/05/credit-capital-de-lucru-la-termen/
+  [ 2] https://www.eximbank.ro/en/2022/12/05/credite/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/2022/12/05/credite/
+  [ 4] https://www.eximbank.ro/en/2022/12/05/working-capital-loan/
+  [ 5] https://www.eximbank.ro/2022/12/05/credite-corporate/
+GATA    LINIE_CREDIT                 2 surse, 2 citate verificate, echivalent, $0.18, 42s — Credit rapid pentru capital de lucru
+  [cautare] Exim Banca Românească cont curent online persoane juridice
+  [cautare] eximbank.ro cont curent companii deschidere online
+  [ 1] https://www.eximbank.ro/
+  [ 2] https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/
+  [ 3] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+  [ 4] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+  [cautare] eximbank.ro deschidere cont online firma PFA fara deplasare la banca
+GATA    CONT_ONLINE_BUSINESS         2 surse, 2 citate verificate, similar, $0.26, 43s — PACHETE SERVICII (EXIM BUSINESS SMART / START / ACTIV / COMPLET)
+  [cautare] eximbank.ro credit IMM fara garantii scoring
+  [cautare] eximbank credit pentru microîntreprinderi pana la 200.000 lei
+  [ 1] https://www.eximbank.ro/en/2022/12/05/credite/
+  [ 2] https://www.eximbank.ro/credite/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/2022/12/05/credite/
+  [cautare] eximbank.ro "credit rapid pentru capital de lucru" dobanda
+  [ 4] https://www.eximbank.ro/2022/12/05/credit-capital-de-lucru/
+GATA    CREDIT_SIMPLU_IMM            1 surse, 1 citate verificate, similar, $0.21, 47s — Credit capital de lucru la termen
+  [cautare] Exim Banca Românească platforma schimb valutar online curs real time
+  [cautare] eximbank.ro FX online internet banking curs valutar
+  [ 1] https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/
+  [ 2] https://www.eximbank.ro/platforma-on-line-pentru-tranzactionarea-schimburilor-valutare/
+GATA    LIVE_FX                      2 surse, 1 citate verificate, similar, $0.14, 28s — Platformă de tranzacționare valutară (Trezorerie și investiții)
+  [cautare] eximbank.ro terminal POS comercianți
+  [cautare] eximbank POS terminal plata card firme
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2024/03/Comisioane-Exim-Banca-Romaneasca.pdf
+GATA    POS_FIZIC                    1 surse, 0 citate verificate, echivalent, $0.26, 25s — Servicii de acceptare la POS (POS fizic / POS unattended)
+  [cautare] eximbank.ro plăți online card comerciant
+  [cautare] eximbank.ro POS virtual e-commerce
+  [ 1] https://www.eximbank.ro/en/2025/06/11/transactional-offers/
+  [cautare] eximbank.ro "acceptare carduri" comercianti POS virtual
+  [ 2] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+  [ 3] https://www.eximbank.ro/2022/12/15/operatiuni-curente/
+  [ 4] https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf
+  [ 5] https://www.eximbank.ro/documente-diverse/
+  [ 6] https://www.eximbank.ro/wp-content/uploads/2026/09/Taxe-si-comisioane-furnizare-servicii-de-acceptare-la-EFTPOS-si-VPOS.pdf
+GATA    LIBRAPAY_ECOM                1 surse, 0 citate verificate, echivalent, $0.42, 68s — Servicii de acceptare la VPOS (plăți online e-commerce)
+  [cautare] eximbank.ro pachet cont curent companii abonament
+  [cautare] eximbank.ro pachete de servicii persoane juridice cont curent
+  [ 1] https://www.eximbank.ro/en/2025/06/11/transactional-offers/
+  [ 2] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+GATA    ABONAMENT_OPERATIONAL        2 surse, 2 citate verificate, echivalent, $0.16, 22s — Pachete Servicii (Exim Business Smart / Start / Activ / Complet)
+  [cautare] Eximbank pachet cont curent persoane juridice comision lunar
+  [cautare] eximbank.ro abonament companii pachet servicii cont curent
+  [ 1] https://www.eximbank.ro/en/2025/06/11/transactional-offers/
+  [cautare] Eximbank "EXIM BUSINESS SMART" abonament
+  [ 2] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+GATA    ABONAMENT_ELITE              2 surse, 2 citate verificate, similar, $0.20, 37s — Pachete Servicii (EXIM BUSINESS SMART / START / ACTIV / COMPLET)
+  [cautare] eximbank.ro PFA cont pachet abonament
+  [cautare] eximbank pachet cont curent PFA persoane fizice autorizate
+  [ 1] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+  [ 2] https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/
+GATA    ABONAMENT_PFA                2 surse, 1 citate verificate, echivalent, $0.17, 29s — Pachete Servicii (EXIM BUSINESS SMART / START / ACTIV / COMPLET)
+  [cautare] eximbank.ro acreditive documentare
+GATA    ACREDITIVE                   2 surse, 0 citate verificate, echivalent, $0.05, 11s — Acreditive de import / Acreditive de export
+  [cautare] eximbank.ro pachet cont curent persoane juridice abonament lunar
+  [cautare] eximbank IMM pachet cont curent comision lunar carduri business
+  [ 1] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+  [ 2] https://www.eximbank.ro/
+  [ 3] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+  [ 4] https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/
+       ! url_not_accessible
+GATA    ABONAMENT_PRIME              1 surse, 1 citate verificate, similar, $0.26, 34s — EXIM BUSINESS COMPLET (pachet de servicii pentru PFA și microîntreprinderi)
+  [cautare] eximbank.ro pachet cont curent IMM firme comision lunar
+  [cautare] eximbank.ro card business mPOS plăți instant pachet companii
+  [ 1] https://www.eximbank.ro/pachete-servicii/
+  [ 2] https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+GATA    ABONAMENT_SHINE              1 surse, 1 citate verificate, similar, $0.18, 36s — EXIM BUSINESS COMPLET (parte a gamei „Pachete servicii” / abonamente EXIM BUSINESS)
+  [cautare] eximbank.ro card de credit business
+  [cautare] Exim Banca Românească card de credit persoane juridice
+  [cautare] eximbank.ro "card de credit" "persoane juridice" OR firme business
+GOL     CARD_CREDIT_BUSINESS         produs_inexistent: Exim Banca Românească nu are card de credit pentru persoane juridice. Oferta bancii separă, $0.14
+  [cautare] eximbank.ro API contabilitate integrare
+  [cautare] eximbank.ro internet banking API contabili firme
+  [ 1] https://www.eximbank.ro/2026/04/21/un-an-fara-griji-facturare-gratuita-pentru-micii-antreprenori/
+  [ 2] https://www.eximbank.ro/en/documents/
+GOL     API_CONTABILI                produs_inexistent: EximBank nu are un produs dedicat de tip API pentru integrare cu programele de contabilita, $0.12
+  [cautare] Eximbank pachet servicii cont curent companii abonament lunar
+  [cautare] eximbank.ro pachete IMM comisioane carduri incluse
+  [ 1] https://www.eximbank.ro/2025/06/11/oferta-tranzactionala/
+  [ 2] https://www.eximbank.ro/en/2025/06/11/transactional-offers/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/en/2023/01/05/operatiuni-curente-3/
+  [ 4] https://www.eximbank.ro/en/2023/01/05/operatiuni-curente-2-2/
+  [ 5] https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf
+  [ 6] https://www.eximbank.ro/en/2023/01/05/business-card/?corporate
+  [ 7] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+GATA    ABONAMENT_PRESTIGE           1 surse, 1 citate verificate, similar, $0.41, 66s — Pachete servicii - EXIM BUSINESS COMPLET / ACTIV / START / SMART
+  [cautare] eximbank.ro card de credit business companii
+  [cautare] eximbank card credit IMM
+  [ 1] https://www.eximbank.ro/en/category/pfa-and-microenterprises/
+GOL     CARD_CREDIT_PJ               produs_inexistent: Exim Banca Românească nu are un card de credit revolving dedicat persoanelor juridice/PFA., $0.11
+  [cautare] eximbank.ro card de credit persoane fizice
+  [ 1] https://www.eximbank.ro/
+  [ 2] https://www.eximbank.ro/2023/11/10/card-de-credit-mastercard-standard/
+  [ 3] https://www.eximbank.ro/wp-content/uploads/2023/05/Taxe-si-comisioane-carduri.pdf
+       ! url_not_accessible
+  [ 4] https://eximbank.ro/2023/11/10/card-de-credit-mastercard-standard/
+  [ 5] https://www.eximbank.ro/2023/11/09/card-de-credit-mastercard-gold/
+       ! url_not_accessible
+  [ 6] https://www.eximbank.ro/2023/11/10/card-de-credit-mastercard-standard/
+       ! url_not_accessible
+GATA    CARD_CREDIT_PF               2 surse, 1 citate verificate, echivalent, $0.26, 31s — Card de credit DESTEPT Mastercard Gold
+  [cautare] Exim Banca Românească pachet cont curent firme comision lunar
+  [cautare] eximbank.ro pachet servicii IMM card business internet banking
+  [cautare] eximbank.ro "oferte tranzactionale" abonament lei luna cont curent card business
+  [ 1] https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/
+  [ 2] https://www.eximbank.ro/2026/06/23/servicii-bancare-cu-zero-costuri-in-primele-6-luni-pentru-microintreprinderi/
+  [ 3] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+  [ 4] https://www.eximbank.ro/wp-content/uploads/2025/06/Document-de-informare-cu-privire-la-comisioane-pentru-Pachetul-EXIM-BUSINESS-START.pdf
+  [ 5] https://www.eximbank.ro/documente-diverse/
+       ! url_not_in_prior_context
+  [ 6] https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf
+GATA    ABONAMENT_RISE               2 surse, 1 citate verificate, echivalent, $0.44, 100s — Pachete servicii (EXIM BUSINESS START / ACTIV / SMART / COMPLET)
+  [cautare] eximbank.ro cont curent start-up IMM pachet gratuit
+  [cautare] eximbank.ro pachet start-up cont firme PFA
+  [ 1] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+       ! url_not_accessible
+GATA    CONT_DESTEPT                 1 surse, 0 citate verificate, echivalent, $0.13, 30s — Pachet Start-Up
+  [cautare] eximbank.ro card de debit business firme
+  [cautare] eximbank card debit companii IMM
+GATA    CARD_DEBIT_BUSINESS          3 surse, 0 citate verificate, echivalent, $0.16, 61s — Mastercard Business (carduri de debit persoane juridice)
+  [cautare] Eximbank cont dezvoltator imobiliar Legea 207/2025
+  [cautare] eximbank.ro cont dezvoltator proiect imobiliar avans cumparatori
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2016/07/EximBank_Cash_mangement_iulie-2016.pdf
+  [cautare] eximbank cont escrow companii agent escrow
+GOL     CONT_DEZVOLTATOR             produs_inexistent: Exim Banca Românească nu are un produs dedicat dezvoltatorilor imobiliari conform Legii 20, $0.27
+  [cautare] Exim Banca Românească card de debit
+  [ 1] https://www.eximbank.ro/
+  [ 2] https://www.eximbank.ro/2022/11/16/gold-mastercard/
+  [ 3] https://www.eximbank.ro/wp-content/uploads/2022/11/Taxe-si-comisioane-carduri-2.pdf
+GATA    CARD_DEBIT_GOLD              2 surse, 1 citate verificate, similar, $0.19, 58s — Card de debit Mastercard Gold
+  [cautare] eximbank.ro cont curent persoane fizice online
+  [cautare] eximbank cont online persoane fizice deschidere 100% online
+  [ 1] https://www.eximbank.ro/2023/07/04/produse-bancare-100-online-de-la-exim-banca-romaneasca/
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2025/01/Document-de-informare-cu-privire-la-comisioane-pentru-Pachetul-de-produse-si-servicii-eSential.pdf
+GATA    CONT_ONLINE_PERSONAL         2 surse, 1 citate verificate, echivalent, $0.13, 22s — Pachet de produse si servicii eSential
+  [cautare] eximbank.ro credit echipamente agricole InvestEU
+  [cautare] eximbank.ro credit investitii agricultura utilaje
+GOL     CREDIT_AGRI_ECHIPAMENTE      produs_inexistent: EximBank nu are un credit dedicat exclusiv echipamentelor agricole garantat prin InvestEU., $0.09
+  [cautare] Eximbank credit APIA subventie agricultura
+  [cautare] eximbank.ro credit agricultura subventie APIA
+  [ 1] https://www.eximbank.ro/credite-de-prefinantare-a-subventiilor-apia/
+       ! url_not_accessible
+GATA    CREDIT_APIA                  1 surse, 0 citate verificate, echivalent, $0.09, 13s — Credite de prefinanțare a subvențiilor APIA
+  [cautare] eximbank credit irigatii InvestEU
+  [cautare] eximbank.ro irigatii credit agricultura
+GOL     CREDIT_AGRI_IRIGATII         produs_inexistent: EximBank nu are un credit dedicat pentru sisteme de irigații sub InvestEU. Există doar pro, $0.08
+  [cautare] eximbank.ro credit agricultura InvestEU
+  [cautare] eximbank.ro linie de credit inputuri agricole
+  [ 1] https://www.eximbank.ro/en/2024/04/30/exim-banca-romaneasca-grants-loans-under-the-imm-plus-program/
+  [ 2] https://www.eximbank.ro/credite-cu-garantii-de-stat/
+       ! url_not_in_prior_context
+  [cautare] eximbank.ro RURAL PLUS AGRO PLUS linie de credit capital de lucru agricultura
+  [ 3] https://www.eximbank.ro/en/2019/08/03/investments-credit-2/
+GATA    CREDIT_AGRI_INPUTURI         2 surse, 2 citate verificate, similar, $0.20, 35s — SME Plus Credits – componenta RURAL PLUS / AGRO PLUS
+  [cautare] EximBank InvestEU credit investitii garantie
+  [cautare] EximBank credit investitii garantie BERD
+  [ 1] https://www.eximbank.ro/en/2025/09/22/loans-secured-by-the-european-investment-fund/
+  [ 2] https://www.eximbank.ro/category/noutati/page/7/
+       ! url_not_accessible
+  [ 3] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+GATA    CREDIT_BERD_PJ               2 surse, 2 citate verificate, similar, $0.20, 26s — Credite cu garantii FEI
+  [cautare] eximbank.ro credit medici cabinete medicale
+  [cautare] eximbank credit profesii liberale IMM
+  [ 1] https://www.eximbank.ro/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/
+  [cautare] Exim Banca Românească credit dezvoltatori imobiliari       ! url_not_in_prior_context
+
+  [cautare] eximbank.ro finanțare proiecte rezidențiale dezvoltatori imobiliari  [ 2] https://www.eximbank.ro/en/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/
+
+  [ 1] https://www.eximbank.ro/credite-companii/
+  [ 2] https://www.eximbank.ro/en/2022/12/05/investment-loan/
+       ! url_not_in_prior_context
+  [cautare] eximbank.ro "credit punte" OR "finanțare proiecte imobiliare" companii dezvoltator
+GATA    CREDIT_HIPOCRATE             1 surse, 1 citate verificate, echivalent, $0.13, 15s — Credits for businesses in medical field / Credite pentru afaceri din domeniul medical
+GOL     CREDIT_DEZVOLTATORI          produs_inexistent: Exim Banca Românească nu publică un produs dedicat finanțării dezvoltatorilor imobiliari (, $0.13
+  [cautare] eximbank.ro card de debit persoane fizice
+  [ 1] https://www.eximbank.ro/
+  [ 2] https://www.eximbank.ro/2022/11/16/standard-mastercard/
+  [ 3] https://www.eximbank.ro/2022/12/05/business-card/
+       ! url_not_accessible
+  [cautare] eximbank.ro Business Card debit persoane juridice comision emitere
+  [ 4] https://www.eximbank.ro/mastercard-business/
+       ! url_not_accessible
+  [ 5] https://www.eximbank.ro/en/2022/12/05/business-card-5/
+GATA    CARD_DEBIT_FREE              4 surse, 2 citate verificate, echivalent, $0.47, 128s — Card de debit Mastercard Standard
+  [cautare] eximbank.ro credit energie verde fotovoltaice IMM
+  [cautare] eximbank finanțare panouri fotovoltaice companii
+  [ 1] https://www.eximbank.ro/credite-ntreprinderi/garantie-pentru-proiecte-de-energie-regenerabila/
+  [ 2] https://www.eximbank.ro/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/2022/12/05/credite-corporate/
+  [ 4] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 5] https://www.eximbank.ro/2022/12/05/credite-corporate/
+  [ 6] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 7] https://www.eximbank.ro/2022/12/05/credite-corporate/
+       ! url_not_accessible
+  [ 8] https://www.eximbank.ro/2022/12/05/credite/
+  [ 9] https://www.eximbank.ro/2023/12/12/finantari-bei/
+  [10] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+  [11] https://www.eximbank.ro/2022/12/05/credite-corporate/
+       ! url_not_accessible
+       ! url_not_accessible
+  [12] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+  [13] https://www.eximbank.ro/2022/12/05/credite-imm-10-mil-lei/
+       ! url_not_accessible
+  [14] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+  [15] https://eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+  ! CREDIT_ENERGIE_VERDE: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: The final block in an assistant message cannot be `thinking`.'}, 'request_id': 'req_011CfpzP6tkkahydpSnBUyn3'} (tentativa 1)
+  [cautare] eximbank.ro credit imobiliar companii
+  [cautare] eximbank credit pentru achizitie imobil sediu firma
+  [ 1] https://www.eximbank.ro/2022/12/05/credit-pentru-investitii/
+  [ 2] https://www.eximbank.ro/en/2022/12/05/investment-loan/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/en/category/pfa-and-microenterprises/finantare-en/
+  [cautare] eximbank.ro "credit pentru investitii" companii imobil
+  [ 4] https://www.eximbank.ro/2022/12/05/investment-loan/
+       ! url_not_in_prior_context
+GATA    CREDIT_IMOBILIAR_PJ          1 surse, 1 citate verificate, similar, $0.18, 24s — Investment Loan (Credit pentru investiții)
+  [cautare] eximbank.ro credit de investitii companii
+  [cautare] eximbank credit investitii IMM dobanda
+  [ 1] https://www.eximbank.ro/2022/12/05/credite-corporate/
+  [ 2] https://www.eximbank.ro/2022/12/05/credite/
+       ! url_not_accessible
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/en/2022/12/05/credite/
+  [ 4] https://www.eximbank.ro/en/2022/12/05/investment-loan/
+  [ 5] https://www.eximbank.ro/2022/12/05/credite-corporate
+  [ 6] https://www.eximbank.ro/2022/12/05/investment-loan/
+       ! url_not_accessible
+       ! url_not_in_prior_context
+GATA    CREDIT_INVESTITII            3 surse, 2 citate verificate, echivalent, $0.25, 40s — Credit pentru investiții (segment IMM 2-10 mil LEI)
+  [cautare] eximbank.ro credite profesii liberale avocati medici contabili IMM
+  [cautare] eximbank.ro credit IMM persoane juridice produse
+  [ 1] https://www.eximbank.ro/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/
+  [ 2] https://www.eximbank.ro/2022/12/05/credite/
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/en/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/
+  [ 4] https://www.eximbank.ro/en/2022/12/05/credite/
+       ! url_not_accessible
+GOL     CREDIT_PROFESII              produs_inexistent: Exim Banca Românească are o secțiune dedicată profesiilor liberale („Authorised Individual, $0.23
+  [cautare] Eximbank credit IMM garantat cu ipoteca
+  [cautare] eximbank.ro credit imobiliar IMM companii
+  [ 1] https://www.eximbank.ro/en/2022/12/05/investment-loan/
+  [ 2] https://www.eximbank.ro/2022/12/05/credit-pentru-investitii/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/credite/
+  [ 4] https://www.eximbank.ro/2022/12/05/investment-loan/
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 5] https://www.eximbank.ro/
+  [ 6] https://www.eximbank.ro/2022/12/05/credit-pentru-investitii/
+  [ 7] https://www.eximbank.ro/2022/12/05/credite/
+  [ 8] https://www.eximbank.ro/2022/12/05/credite-imm-10-mil-lei/
+       ! url_not_accessible
+GATA    CREDIT_IMM_IPOTECA           2 surse, 2 citate verificate, similar, $0.42, 58s — Credit pentru investiții (PFA și Microîntreprinderi)
+  [cautare] eximbank credit notari avocati executori judecatoresti
+  [cautare] eximbank credit liber profesionisti avocati notari
+  [ 1] https://www.eximbank.ro/2022/12/05/credite-corporate/
+       ! url_not_accessible
+GOL     CREDIT_SOLON                 produs_inexistent: Exim Banca Românească nu are un produs de credit dedicat juriștilor (notari, avocați, exec, $0.10
+  [cautare] EximBank credit garanție BID IMM
+  [cautare] EximBank garantii internationale IMM credit investitii
+  [cautare] eximbank.ro "BID" credit garantie produs IMM pagina
+  [ 1] https://www.eximbank.ro/
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2026/05/Raport-anual-Exim-Banca-Romaneasca-2025.pdf
+  [ 3] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+  [ 4] https://www.eximbank.ro/2022/12/05/credite-corporate/
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 5] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/?pfa-microintreprinderi
+       ! url_not_accessible
+  [ 6] https://eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+  [ 7] https://eximbank.ro/2022/12/05/credite-corporate/
+       ! url_not_accessible
+  [ 8] https://www.eximbank.ro/2022/12/05/credite/
+  [ 9] https://www.eximbank.ro/2022/12/05/credite-imm-10-mil-lei/
+       ! url_not_accessible
+  [10] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+  [11] https://www.eximbank.ro/2022/12/05/credite-imm-10-mil-lei/
+       ! url_not_accessible
+  [12] https://www.eximbank.ro/2022/12/05/credite-corporate/
+  ! CREDIT_BID_IMM: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: The final block in an assistant message cannot be `thinking`.'}, 'request_id': 'req_011CfpzTJGUxpFa7vwW8w81y'} (tentativa 1)
+  [cautare] eximbank.ro depozit la termen dobanda
+  [cautare] eximbank depozit promotional dobanda 2026
+  [ 1] https://www.eximbank.ro/2025/12/12/depozitul-plus-lei/
+  [ 2] https://www.eximbank.ro/2026/09/15/depozitul-plus-euro/
+       ! url_not_accessible
+  [ 3] https://www.eximbank.ro/2026/09/15/depozitul-plus-lei/
+GATA    DEPOZIT_1AN_1LUNA            3 surse, 2 citate verificate, similar, $0.17, 29s — Depozitul PLUS LEI (Depozit PLUS START / Depozit PLUS ACTIV)
+  [cautare] eximbank.ro schimb valutar spot
+  [cautare] eximbank.ro curs valutar tranzactii valutare
+  [ 1] https://eximbank.ro/corporate/trezorerie-si-investii
+  [ 2] https://www.eximbank.ro/curs-valutar/
+       ! url_not_in_prior_context
+  [ 3] https://www.eximbank.ro/curs-valutar/
+       ! url_not_accessible
+GATA    FX_SPOT                      1 surse, 0 citate verificate, echivalent, $0.24, 30s — Piata valutara (tranzactii FX Today/Tomorrow/Spot) - Trezorerie si investitii
+  [cautare] eximbank.ro depozit la termen dobanda
+  [cautare] eximbank depozit promotional
+  [cautare] eximbank depozit la termen persoane juridice dobanda
+GATA    DEPOZIT_BLITZ_7L             2 surse, 0 citate verificate, similar, $0.19, 43s — Depozitul PLUS START / Depozitul PLUS ACTIV în lei (7 luni)
+  [cautare] Exim Banca Românească credit energie verde fotovoltaice IMM
+  [cautare] eximbank.ro credit energie regenerabila companii
+  [ 1] https://www.eximbank.ro/
+  [cautare] eximbank.ro "garanție verde" OR "credit verde" companii persoane juridice
+  [ 2] https://www.eximbank.ro/fonduri-de-stat/
+  [ 3] https://www.eximbank.ro/sitemap/
+  [ 4] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+  [ 5] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+  [ 6] https://www.eximbank.ro/corporate/credite-corporate/
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 7] https://www.eximbank.ro/2025/09/22/credite-cu-garantii-fei/
+       ! url_not_accessible
+  [ 8] https://www.eximbank.ro/imm/imm-2-10-mil-lei/credite/
+  [ 9] https://www.eximbank.ro/corporate/credite-corporate/
+       ! url_not_accessible
+       ! url_not_accessible
+  [10] https://www.eximbank.ro/2022/12/05/credite-corporate/
+  [11] https://www.eximbank.ro/2022/12/05/credite-imm-10-mil-lei/
+       ! url_not_accessible
+       ! url_not_accessible
+  [12] https://www.eximbank.ro/en/2025/09/23/companies-loans-guaranteed-by-the-european-investment-fund/
+  [13] https://www.eximbank.ro/en/state-funds/
+  [14] https://www.eximbank.ro/2025/09/23/credite-pentru-companii-garantate-de-fondul-european-de-investitii/
+GATA    CREDIT_ENERGIE_VERDE         1 surse, 0 citate verificate, similar, $0.92, 132s — Credite pentru companii garantate de Fondul European de Investitii (plafonul Sustenabilitate / Green Guarantee FEI)
+  [cautare] eximbank.ro descoperit de cont persoane fizice overdraft
+  [cautare] eximbank.ro credit cont curent persoane fizice
+  [ 1] https://www.eximbank.ro/2022/11/09/descoperit-de-cont-autorizat/
+GATA    OVERDRAFT_PF                 1 surse, 1 citate verificate, echivalent, $0.11, 14s — Descoperit de cont
+  [cautare] eximbank.ro leasing financiar
+  [cautare] eximbank leasing auto echipamente companii
+  [ 1] https://www.eximbank.ro/credite-corporate/
+  [ 2] https://www.eximbank.ro/
+       ! url_not_in_prior_context
+GOL     LEASING_FINANCIAR            produs_inexistent: Exim Banca Românească nu are un produs propriu de leasing financiar (auto sau echipamente), $0.13
+  [cautare] eximbank RoPay plăți instant telefon
+  [cautare] eximbank plăți instant IBAN telefon
+  [cautare] "RoPay" eximbank.ro
+GOL     ROPAY                        nu_am_gasit: Exim Banca Românească nu are nicio pagină sau document public care să descrie un serviciu , $0.09
+  [cautare] Eximbank titluri de stat plasamente persoane fizice
+  [cautare] eximbank.ro depozite plasamente persoane juridice
+  [ 1] https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/
+  [ 2] https://www.eximbank.ro/en/2022/12/05/depozite-si-investitii/
+       ! url_not_accessible
+  [cautare] eximbank.ro persoane fizice titluri de stat investitii site:eximbank.ro
+GATA    PLASAMENTE                   3 surse, 1 citate verificate, similar, $0.25, 42s — Titluri de stat (instrument financiar MiFID)
+  [cautare] eximbank.ro RoPay
+  [cautare] eximbank RoPay comercianti QR
+  [ 1] https://www.eximbank.ro/
+  [cautare] eximbank POS virtual incasari comercianti QR plati instant companii
+  [ 2] https://www.eximbank.ro/2022/12/15/operatiuni-curente-imm-2-10-mil-lei/
+  [ 3] https://www.eximbank.ro/2022/12/15/operatiuni-curente/
+       ! url_not_accessible
+  [ 4] https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf
+  [ 5] https://www.eximbank.ro/2026/04/06/am-lansat-platile-instant-trimiti-si-primesti-bani-24-7-365/
+GOL     ROPAY_BUSINESS               produs_inexistent: Exim Banca Românească nu oferă un produs de încasare prin cod QR în schema națională RoPay, $0.25
+  ! CREDIT_BID_IMM: ReadTimeout: The read operation timed out (tentativa 2)
+EROARE  CREDIT_BID_IMM               ReadTimeout: The read operation timed out
+  [cautare] eximbank.ro scrisori de garanție bancară
+  [cautare] eximbank.ro garanții bancare persoane juridice
+  [ 1] https://www.eximbank.ro/2022/12/05/scrisori-de-garantie-bancara-2/
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf
+GATA    SCRISORI_GARANTIE            2 surse, 1 citate verificate, echivalent, $0.20, 21s — Scrisori de garanție emise / Scrisori de garanție primite
+  [cautare] eximbank.ro internet banking firme
+  [cautare] eximbank.ro EximBank eBanking persoane juridice
+  [cautare] eximbank.ro tarife comisioane persoane juridice internet banking abonament lunar
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2022/12/Termeni-si-conditii-pentru-utilizarea-serviciului-de-Internet-Banking-Persoane-Juridice-2023.pdf
+  [ 3] https://www.eximbank.ro/intreprinderi-mici-si-mijlocii/internet-mobile-banking/
+       ! url_not_in_prior_context
+  [ 4] https://www.eximbank.ro/
+  [ 5] https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/
+  [ 6] https://www.eximbank.ro/2022/12/15/operatiuni-curente/
+GATA    INTERNET_BANKING             2 surse, 0 citate verificate, echivalent, $0.76, 95s — e-xim Banking (Serviciul Internet Banking pentru Persoane Juridice)
+  [cautare] Eximbank seif inteligent depunere numerar firme
+  [cautare] eximbank.ro cash management depunere numerar la sediul clientului
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf
+  [cautare] Eximbank "noapte" OR "ATM" depunere numerar firme seif automat
+GOL     SMART_SAFE                   produs_inexistent: Exim Banca Românească oferă pentru persoane juridice produse de cash management: cont cure, $0.19
+  [cautare] eximbank.ro depunere numerar automat bancnote persoane juridice
+  [cautare] eximbank automat depunere numerar RCD firme
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2025/04/Comisioane-Exim-Banca-Romaneasca.pdf
+GATA    RCD_CASH_DEPOSIT             1 surse, 0 citate verificate, similar, $0.29, 83s — Depunere de numerar în bancnote (secțiunea Cash Management – Operațiuni cu numerar)
+
+exim: 37/51 produse cu surse, 1 erori, cost estimat $11.40, durata 7 min
+Reia: python descopera_surse_libra.py --banca exim --produse CREDIT_BID_IMM

@@ -1,0 +1,545 @@
+Patria Bank: 51 de rulat, 6 sărite (au rezultat), paralel 5, model claude-sonnet-5, termen 180 s/produs, domenii patriabank.ro
+  [cautare] Patria Bank plăți online comercianți card gateway
+  [cautare] site:patriabank.ro plati online e-commerce
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos
+  [cautare] Patria Bank acceptare plăți card comercianți POS virtual terminal online magazin
+       ! url_not_in_prior_context
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos-patria
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos-patria
+       ! too_many_requests
+GOL     LIBRAPAY_ECOM                produs_inexistent: Patria Bank oferă doar acceptare de plăți prin Terminale POS fizice pentru comercianți (in, $0.24
+  [cautare] Patria Bank linie de credit capital de lucru IMM
+  [cautare] patriabank.ro credit linie capital de lucru firme
+  [ 1] https://www.patriabank.ro/afaceri-mici/credite/credit-pentru-capital-de-lucru
+       ! too_many_requests
+GATA    LINIE_CREDIT                 1 surse, 0 citate verificate, echivalent, $0.17, 35s — Credit pentru capital de lucru / Linia de credit Afaceri Mici
+  [cautare] Patria Bank credit IMM microintreprinderi fara garantie
+  [cautare] Patria Bank credite companii IMM site:patriabank.ro
+  [ 1] https://www.patriabank.ro/afaceri-mici/credite/credit-prompt
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/afaceri-mici/credite/credit-prompt
+       ! too_many_requests
+  [ 3] https://www.patriabank.ro/afaceri-mici/credite/credit-prompt
+       ! too_many_requests
+GATA    CREDIT_SIMPLU_IMM            1 surse, 0 citate verificate, similar, $0.30, 36s — Credit PROMPT
+  [cautare] Patria Bank pachet cont curent firme abonament lunar plăți incluse
+  [cautare] Patria Bank IMM pachet servicii cont tarife comisioane
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+GATA    ABONAMENT_ELITE              1 surse, 0 citate verificate, similar, $0.17, 29s — Pachete de cont curent pentru firme (UȘOR / PRACTIC / COMPLET)
+  [cautare] Patria Bank cont curent online firme PFA
+  [cautare] Patria Bank cont online business deschidere 100% online companii
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+  [ 4] https://www.patriabank.ro/
+       ! too_many_requests
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+       ! too_many_requests
+  [ 6] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+       ! too_many_requests
+GATA    CONT_ONLINE_BUSINESS         2 surse, 0 citate verificate, similar, $0.34, 67s — Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici
+  [cautare] Patria Bank InvestEU credit companii
+  [cautare] Patria Bank credit investitii IMM garantie FNGCIMM BEI
+  [ 1] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+  [ 2] https://www.patriabank.ro/imm_corporate/credite
+       ! too_many_requests
+       ! too_many_requests
+  [ 3] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! too_many_requests
+  [ 4] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/imm_corporate/credite
+       ! too_many_requests
+  [ 6] https://www.patriabank.ro/imm_corporate/credite
+       ! url_not_accessible
+  [ 7] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! url_not_accessible
+GATA    CREDIT_INVESTEU_PJ           3 surse, 0 citate verificate, similar, $0.49, 82s — Credit cu garanție FEI (Credit COMPETITIVENESS)
+  [cautare] Patria Bank terminal POS comercianți
+  [cautare] patriabank.ro POS terminal plata card companii
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos-patria
+  [ 2] https://www.patriabank.ro/d/2142
+       ! url_not_accessible
+       ! url_not_allowed
+GATA    POS_FIZIC                    2 surse, 0 citate verificate, echivalent, $0.14, 52s — Serviciul de acceptare la plata al cardurilor (POS-uri)
+  [cautare] Patria Bank pachet cont PFA abonament lunar
+  [cautare] patriabank.ro PFA cont curent pachet
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+GATA    ABONAMENT_PFA                1 surse, 0 citate verificate, similar, $0.17, 23s — Pachete de cont curent Afaceri Mici / Agro (UȘOR, PRACTIC, COMPLET)
+  [cautare] Patria Bank pachet cont curent companii abonament lunar
+  [cautare] Patria Bank IMM pachete cont curent persoane juridice
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+GATA    ABONAMENT_OPERATIONAL        1 surse, 0 citate verificate, echivalent, $0.17, 35s — Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici/Agro
+  [cautare] Patria Bank pachet cont curent persoane juridice abonament lunar
+  [cautare] Patria Bank IMM pachet cont business comision lunar card
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+GATA    ABONAMENT_PRIME              1 surse, 0 citate verificate, similar, $0.17, 31s — Pachete de cont curent Afaceri mici/Agro (UȘOR / PRACTIC / COMPLET)
+  [cautare] Patria Bank schimb valutar online platforma curs preferential
+  [cautare] Patria Bank Live FX curs valutar timp real internet banking
+  [ 1] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+  [ 2] https://www.patriabank.ro/agro/digital-banking/serviciul-de-internet-banking
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 3] https://corporate.patriabank.ro/Corporate/Home/Documents/ghid-de-utilizare-al-serviciului-de-Internet-Banking-Persoane-Juridice.pdf
+GATA    LIVE_FX                      2 surse, 0 citate verificate, similar, $0.44, 85s — Schimb valutar (în cadrul Patria Online Banking - Persoane Juridice)
+  [cautare] Patria Bank pachet cont curent persoane juridice abonament lunar
+  [cautare] Patria Bank IMM pachet companii card Gold comision lunar
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+GATA    ABONAMENT_PRESTIGE           1 surse, 0 citate verificate, similar, $0.16, 37s — Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici/Agro
+  [cautare] Patria Bank pachet cont curent IMM comision lunar
+  [cautare] Patria Bank abonament companii card business
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos
+       ! url_not_accessible
+       ! url_not_in_prior_context
+  [ 3] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+  [ 4] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! too_many_requests
+GATA    ABONAMENT_SHINE              1 surse, 0 citate verificate, similar, $0.26, 33s — Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici/Agro
+  [cautare] patriabank.ro acreditive documentare
+GATA    ACREDITIVE                   3 surse, 0 citate verificate, echivalent, $0.05, 17s — Acreditive (Finanțarea Comerțului) - Tarife și comisioane persoane juridice
+  [cautare] Patria Bank pachet cont curent IMM comision lunar abonament
+  [cautare] Patria Bank pachet companii card business mPOS comision
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/d/2142
+  [ 3] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business
+       ! url_not_allowed
+       ! url_not_accessible
+GATA    ABONAMENT_RISE               2 surse, 0 citate verificate, similar, $0.23, 53s — Pachete de cont curent (UȘOR / PRACTIC / COMPLET) pentru Afaceri mici/Agro
+  [cautare] Patria Bank card de credit business IMM
+  [cautare] site:patriabank.ro card de credit companii
+  [cautare] patriabank.ro overdraft companii card de credit persoane juridice
+GOL     CARD_CREDIT_BUSINESS         produs_inexistent: Patria Bank nu are un card de credit dedicat persoanelor juridice. Pentru companii oferă d, $0.14
+  [cautare] Patria Bank API contabilitate integrare companii
+  [cautare] site:patriabank.ro API contabili
+  [ 1] https://www.patriabank.ro/afaceri-mici/digital-banking/patria-smart-api
+  [ 2] https://www.patriabank.ro/d/2142
+       ! url_not_accessible
+       ! url_not_allowed
+  [ 3] https://www.patriabank.ro/afaceri-mici/digital-banking/patria-smart-api
+       ! url_not_accessible
+  [ 4] https://www.patriabank.ro/afaceri-mici/digital-banking/patria-smart-api/
+       ! url_not_accessible
+GATA    API_CONTABILI                1 surse, 0 citate verificate, similar, $0.16, 37s — Patria SMART API
+  [cautare] Patria Bank card de credit business IMM PFA
+  [cautare] Patria Bank card credit companii IMM
+  [cautare] patriabank.ro "card de credit" persoane juridice OR companii OR IMM limita revolving
+GOL     CARD_CREDIT_PJ               produs_inexistent: Patria Bank nu are un produs de tip card de credit business revolving pentru persoane juri, $0.11
+  [cautare] Patria Bank card de debit business IMM
+  [cautare] patriabank.ro card debit persoane juridice
+GATA    CARD_DEBIT_BUSINESS          3 surse, 0 citate verificate, echivalent, $0.09, 18s — Card de debit Mastercard Business
+  [cautare] Patria Bank cont dezvoltator imobiliar Legea 207/2025
+  [cautare] Patria Bank cont escrow dezvoltator imobiliar
+  [ 1] https://www.patriabank.ro/corporate
+  [cautare] Patria Bank "cont de garantare" OR "cont dezvoltator" OR "escrow" dezvoltatori imobiliari
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/corporate
+       ! too_many_requests
+GOL     CONT_DEZVOLTATOR             produs_inexistent: Patria Bank nu are un produs dedicat pentru dezvoltatori imobiliari conform Legii 207/2025, $0.11
+  [cautare] Patria Bank card de debit
+  [cautare] patriabank.ro card debit comision emitere
+  [ 1] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business
+       ! too_many_requests
+       ! too_many_requests
+GATA    CARD_DEBIT_FREE              4 surse, 0 citate verificate, similar, $0.23, 83s — Cardul de debit Patria Bank
+  [cautare] Patria Bank cont curent start-up firme IMM pachet gratuit
+  [cautare] Patria Bank pachet start-up persoane juridice cont gratuit 12 luni
+  [ 1] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+  [ 3] https://www.patriabank.ro/afaceri-mici
+       ! url_not_accessible
+       ! url_not_in_prior_context
+  [ 4] https://www.patriabank.ro/imm/operatiuni-curente
+  [ 5] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+       ! too_many_requests
+       ! url_not_accessible
+  [ 6] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+  [ 7] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+  [ 8] https://www.patriabank.ro/imm/operatiuni-curente
+       ! too_many_requests
+       ! url_not_accessible
+  [ 9] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+       ! too_many_requests
+  [cautare] Patria Bank "start-up" cont curent gratuit firma nou înființată
+  [10] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+  [11] https://www.patriabank.ro/imm/operatiuni-curente
+       ! url_not_accessible
+GOL     CONT_DESTEPT                 produs_inexistent: Patria Bank nu are un pachet de cont curent dedicat start-up-urilor, gratuit 12 luni, echi, $0.56
+  [cautare] Patria Bank card de credit persoane fizice
+  [cautare] patriabank.ro card credit
+GATA    CARD_CREDIT_PF               2 surse, 0 citate verificate, echivalent, $0.20, 120s — Card de credit (online) Patria Bank
+  [cautare] Patria Bank card de debit Gold cashback lounge
+  [cautare] Patria Bank carduri de debit persoane fizice
+  [ 1] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+  [ 2] https://www.patriabank.ro/d/22
+       ! url_not_accessible
+       ! url_not_allowed
+  [ 3] https://www.patriabank.ro/d/1782
+       ! url_not_allowed
+  [ 4] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! too_many_requests
+  [ 5] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! url_not_accessible
+  [cautare] patriabank.ro Tarife si Comisioane Persoane Fizice pdf Mastercard Gold
+GATA    CARD_DEBIT_GOLD              2 surse, 0 citate verificate, similar, $0.43, 106s — Card Mastercard Gold (lei)
+  [cautare] Patria Bank credit APIA agricultura subventie
+  [cautare] patriabank.ro credit APIA
+GATA    CREDIT_APIA                  2 surse, 0 citate verificate, echivalent, $0.10, 15s — Credit APIA
+  [cautare] Patria Bank credit irigatii InvestEU
+  [cautare] Patria Bank credit agricultura investitii IMM
+  [ 1] https://www.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura
+       ! url_not_in_prior_context
+  [ 2] https://en.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura
+       ! url_not_accessible
+GATA    CREDIT_AGRI_IRIGATII         1 surse, 0 citate verificate, similar, $0.22, 38s — Credit pentru investiții în agricultură
+  [cautare] Patria Bank credit agricultura utilaje InvestEU
+  [cautare] Patria Bank finanțare agricultori IMM credit echipamente agricole
+  [ 1] https://www.patriabank.ro/agro/credite-agricole/investitii/credit-pentru-investitii-in-agricultura
+       ! url_not_accessible
+  [ 2] https://en.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura
+  [ 4] https://www.patriabank.ro/agro/credite/credit-investeu
+       ! url_not_in_prior_context
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/agro/credite
+  [ 6] https://en.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura
+       ! url_not_accessible
+       ! url_not_accessible
+GATA    CREDIT_AGRI_ECHIPAMENTE      1 surse, 0 citate verificate, similar, $0.35, 74s — Credit pentru investiții în agricultură (Credit de Investiții Agro)
+  [cautare] Patria Bank credit dezvoltatori imobiliari
+  [cautare] Patria Bank finanțare proiecte imobiliare companii
+GOL     CREDIT_DEZVOLTATORI          produs_inexistent: Patria Bank nu are un produs dedicat pentru dezvoltatori imobiliari (finanțare pe faze de , $0.11
+  [cautare] Patria Bank garanție BID credit IMM
+  [cautare] patriabank.ro BID garanție finanțare companii
+  [ 1] https://www.patriabank.ro/imm/credite/credit-cu-garantie-bid-pentru-imm-uri
+  [ 2] https://www.patriabank.ro/afaceri-mici/credite/credit-cu-garantie-bid-pentru-imm-uri
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://en.patriabank.ro/imm
+  [ 4] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/afaceri-mici/credite/credit-investitii
+  [ 6] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 7] https://www.patriabank.ro/
+  [ 8] https://www.patriabank.ro/afaceri-mici/solutii-financiare-non-cash/scrisori-de-garantie-bancara
+       ! url_not_accessible
+       ! too_many_requests
+  [ 9] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+  [10] https://www.patriabank.ro/despre-patria/informatii-presa/comunicate-de-presa/patria-bank-si-banca-de-investitii-si-dezvoltare
+       ! url_not_accessible
+       ! url_not_in_prior_context
+  [11] https://www.patriabank.ro/despre-patria/informatii-presa/comunicate-de-presa
+  [12] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! too_many_requests
+       ! too_many_requests
+  [13] https://www.patriabank.ro/despre-patria/informatii-presa/comunicate-de-presa
+       ! url_not_accessible
+  [14] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! too_many_requests
+  [15] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! url_not_accessible
+  [16] https://www.patriabank.ro/afaceri-mici/credite/credit-cu-garantie-bid-pentru-imm-uri
+  ! CREDIT_BID_IMM: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: The final block in an assistant message cannot be `thinking`.'}, 'request_id': 'req_011CfpzpgVYEN19p6wgiCtqU'} (tentativa 1)
+  [cautare] Patria Bank credit InvestEU BERD garanție companii
+  [cautare] Patria Bank credit garanție BERD IMM
+  [ 1] https://www.patriabank.ro/afaceri-mici/credite/credit-garantie-bid
+  [cautare] Patria Bank "Credit cu garanție BID" pentru IMM-uri
+       ! url_not_in_prior_context
+  [ 2] https://www.patriabank.ro/afaceri-mici/credite/credit-cu-garantie-bid
+  [ 3] https://www.patriabank.ro/imm/credite/credit-cu-garantie-bid-pentru-imm-uri
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.patriabank.ro/afaceri-mici/credite
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! url_not_accessible
+  [ 6] https://en.patriabank.ro/imm
+  [ 7] https://www.patriabank.ro/imm/credite
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 8] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] "credit cu garanție BID" Patria Bank IMM
+  [ 9] https://www.patriabank.ro/agro/credite/credit-investeu
+  [10] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! url_not_accessible
+       ! too_many_requests
+GOL     CREDIT_BERD_PJ               produs_inexistent: Patria Bank nu are un credit de investiții cu garanție dedicată BERD. Banca are produse si, $0.65
+  [cautare] Patria Bank credit agricultura InvestEU inputuri agricole
+  [cautare] Patria Bank credit fermieri linie de credit sezonier agricultura
+  [ 1] https://www.patriabank.ro/agro/credite
+  [ 2] https://www.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/agro/credite/linie-de-credit
+  [ 4] https://en.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 5] https://www.patriabank.ro/agro/credite
+  [ 6] https://www.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale
+       ! url_not_accessible
+       ! too_many_requests
+  [ 7] https://www.patriabank.ro/agro/credite/credit-capital-de-lucru-si-cheltuieli-generale
+       ! url_not_accessible
+  [ 8] https://en.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura
+       ! url_not_accessible
+  [cautare] patriabank.ro "linie de credit" Patria Agro semințe pesticide îngrășăminte motorină
+GATA    CREDIT_AGRI_INPUTURI         2 surse, 0 citate verificate, similar, $0.50, 124s — Linie de credit Patria Agro
+  [cautare] Patria Bank credit energie verde fotovoltaice IMM
+  [cautare] patriabank.ro credit panouri fotovoltaice companii
+  [ 1] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+  [ 2] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! url_not_accessible
+       ! too_many_requests
+  [ 3] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! url_not_accessible
+  [ 4] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! too_many_requests
+  [ 5] https://www.patriabank.ro/corporate/credite-acordate-din-surse-bei
+       ! too_many_requests
+  [ 6] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! url_not_accessible
+  [ 7] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! too_many_requests
+  [ 8] https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus
+       ! too_many_requests
+  [cautare] Patria Bank credit imm plus construct plus energie verde eficienta energetica
+GOL     CREDIT_ENERGIE_VERDE         produs_inexistent: Patria Bank nu are un produs dedicat 'credit pentru energie verde' (finanțare capacități f, $0.43
+  ! CONT_ONLINE_PERSONAL: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  CONT_ONLINE_PERSONAL         ReadTimeout: The read operation timed out
+  [cautare] Patria Bank credit medici cabinete medicale
+  [cautare] patriabank.ro credit sanatate medici clinici
+  [ 1] https://www.patriabank.ro/imm/credite
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/imm
+  [ 3] https://www.patriabank.ro/
+       ! url_not_in_prior_context
+       ! url_not_accessible
+  [ 4] https://www.patriabank.ro/imm/credite
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/imm/credite
+       ! url_not_accessible
+GOL     CREDIT_HIPOCRATE             produs_inexistent: Patria Bank oferă produse de creditare generale pentru IMM (persoane juridice), precum Ove, $0.22
+  [cautare] Patria Bank credit garantie BID IMM
+  [cautare] Patria Bank BID Banca Interamericana de Dezvoltare garantie credit
+  [ 1] https://www.patriabank.ro/afaceri-mici/credite/credit-cu-garantie-bid
+  [ 2] https://www.patriabank.ro/corporate/credite/credit-cu-garantie-bid
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.patriabank.ro/afaceri-mici/credite
+  [ 4] https://www.patriabank.ro/corporate/credite-acordate-din-surse-bei
+       ! url_not_accessible
+       ! too_many_requests
+  [ 5] https://www.patriabank.ro/afaceri-mici/credite
+  [ 6] https://en.patriabank.ro/imm
+       ! too_many_requests
+       ! url_not_accessible
+  [ 7] https://www.patriabank.ro/afaceri-mici/credite
+       ! too_many_requests
+  [cautare] patriabank.ro "credit cu garanție BID"
+  [ 8] https://www.patriabank.ro/afaceri-mici/credite/credit-cu-garantie-bid-pentru-imm-uri
+  [ 9] https://www.patriabank.ro/imm/credite/credit-cu-garantie-bid-pentru-imm-uri
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [10] https://www.patriabank.ro/afaceri-mici/credite
+       ! too_many_requests
+  [11] https://www.patriabank.ro/imm/credite
+       ! too_many_requests
+  [12] https://www.patriabank.ro/imm/credite
+       ! url_not_accessible
+  [13] https://www.patriabank.ro/afaceri-mici/credite
+  ! CREDIT_BID_IMM: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: The final block in an assistant message cannot be `thinking`.'}, 'request_id': 'req_011Cfpzti3R3aaDEfUqcftaA'} (tentativa 2)
+EROARE  CREDIT_BID_IMM               BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: 
+  [cautare] Patria Bank credit profesii liberale medici avocati IMM
+  [cautare] Patria Bank credite IMM persoane juridice site:patriabank.ro
+  [ 1] https://www.patriabank.ro/afaceri-mici
+       ! too_many_requests
+GOL     CREDIT_PROFESII              produs_inexistent: Patria Bank nu are un produs de credit dedicat exclusiv profesiilor liberale (psihologi, a, $0.14
+  [cautare] Patria Bank credit investitii IMM companii
+  [cautare] patriabank.ro credit investitii persoane juridice
+  [ 1] https://www.patriabank.ro/afaceri-mici/credite/credit-pentru-investitii
+  [ 2] https://www.patriabank.ro/afaceri-mici/credite
+       ! url_not_in_prior_context
+       ! too_many_requests
+  [ 3] https://www.patriabank.ro/afaceri-mici/credite
+       ! url_not_accessible
+  [ 4] https://www.patriabank.ro/afaceri-mici/credite
+       ! too_many_requests
+  [ 5] https://www.patriabank.ro/afaceri-mici/credite
+       ! url_not_accessible
+  [ 6] https://www.patriabank.ro/corporate/credite-acordate-din-surse-bei
+       ! url_not_accessible
+  [ 7] https://www.patriabank.ro/corporate/credite-acordate-din-surse-bei
+       ! too_many_requests
+  [ 8] https://www.patriabank.ro/corporate/credite-acordate-din-surse-bei
+       ! too_many_requests
+  [ 9] https://www.patriabank.ro/corporate/credite-acordate-din-surse-bei
+       ! too_many_requests
+  [10] https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei
+       ! url_not_accessible
+  [11] https://www.patriabank.ro/afaceri-mici/credite/credit-pentru-investitii
+  ! CREDIT_INVESTITII: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: The final block in an assistant message cannot be `thinking`.'}, 'request_id': 'req_011CfpzuQLLnozjQFHESTLK6'} (tentativa 1)
+  [cautare] Patria Bank credit notari avocati executori judecatoresti
+  [cautare] Patria Bank credit profesii liberale juridice
+  [cautare] Patria Bank "notari" OR "avocati" OR "practicieni in insolventa" credit dedicat
+GOL     CREDIT_SOLON                 produs_inexistent: Patria Bank nu are un credit dedicat notarilor, avocaților, executorilor judecătorești sau, $0.09
+  [cautare] Patria Bank credit imobiliar companii IMM
+  [cautare] patriabank.ro credit pentru achizitie imobil companii
+  [ 1] https://en.patriabank.ro/imm
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/imm
+       ! url_not_in_prior_context
+  [ 3] https://en.patriabank.ro/imm
+       ! url_not_accessible
+  [cautare] patriabank.ro credit ipotecar IMM achizitie sediu imobil firma
+  [ 4] https://www.patriabank.ro/afaceri-mici
+       ! too_many_requests
+GATA    CREDIT_IMOBILIAR_PJ          2 surse, 0 citate verificate, similar, $0.47, 63s — Credit pentru investiții (Patria Micro)
+  [cautare] Patria Bank credit IMM garantat ipoteca
+  [cautare] patriabank.ro credit ipotecar IMM afaceri
+  [ 1] https://www.patriabank.ro/imm/credite
+  [ 2] https://www.patriabank.ro/afaceri-mici/credite/credit-investitii
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 3] https://patriabank.ro/imm/credite
+  [ 4] https://patriabank.ro/afaceri-mici/credite/credit-investitii
+       ! url_not_accessible
+       ! too_many_requests
+  [ 5] https://www.patriabank.ro/afaceri-mici/credite/credit-investitii
+       ! too_many_requests
+  [ 6] https://www.patriabank.ro/afaceri-mici/credite/credit-investitii
+       ! too_many_requests
+  [cautare] patriabank.ro imm credit-pentru-investitii OR credit-investitii ipotecar IMM
+GATA    CREDIT_IMM_IPOTECA           1 surse, 0 citate verificate, similar, $0.45, 76s — Credit pentru investiții (Patria Micro)
+  [cautare] Patria Bank credit de investitii IMM
+  [cautare] patriabank.ro credit investitii companii
+GATA    CREDIT_INVESTITII            1 surse, 0 citate verificate, echivalent, $0.09, 66s — Credit pentru investiții
+  [cautare] Patria Bank leasing financiar firme
+  [cautare] patriabank.ro leasing
+  [cautare] "Patria Bank" "leasing financiar" auto echipamente
+  [ 1] https://www.patriabank.ro/imm
+       ! url_not_in_prior_context
+  [ 2] https://en.patriabank.ro/imm
+       ! url_not_accessible
+GOL     LEASING_FINANCIAR            produs_inexistent: Patria Bank nu are o divizie de leasing financiar (IFN) proprie listată pe patriabank.ro. , $0.16
+  [cautare] Patria Bank Internet Banking Mobile Banking IMM firme
+  [cautare] Patria Bank PatriaNet business tarife comisioane
+GATA    INTERNET_BANKING             3 surse, 0 citate verificate, echivalent, $0.12, 36s — Serviciul de Internet Banking (Patria Online Banking) - persoane juridice
+  [cautare] patriabank.ro schimb valutar
+  [cautare] patriabank.ro curs valutar tranzactii dealing
+  [ 1] https://www.patriabank.ro/curs-valutar/
+  [ 2] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+       ! url_not_in_prior_context
+       ! url_not_accessible
+  [ 3] https://en.patriabank.ro/exchange-rates
+  [ 4] https://www.patriabank.ro/curs-valutar/
+       ! url_not_in_prior_context
+  [ 5] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+       ! url_not_accessible
+GATA    FX_SPOT                      2 surse, 1 citate verificate, echivalent, $0.32, 45s — Curs valutar / Schimb valutar (Exchange rates)
+  [cautare] Patria Bank depozit promotional dobanda
+  [cautare] Patria Bank depozit la termen dobanzi persoane fizice
+  [ 1] https://www.patriabank.ro/d/20
+  [ 2] https://www.patriabank.ro/depozitonline
+       ! url_not_allowed
+       ! url_not_accessible
+  [ 3] https://en.patriabank.ro/d/20
+  [ 4] https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare
+       ! url_not_in_prior_context
+       ! url_not_accessible
+  [ 5] https://en.patriabank.ro/d/992
+  [cautare] Patria Bank depozit 13 luni OR "1 an si 1 luna" dobanda
+       ! url_not_allowed
+GATA    DEPOZIT_1AN_1LUNA            2 surse, 0 citate verificate, similar, $0.33, 77s — Depozit 100% online „Patria de Oriunde”
+  [cautare] Patria Bank descoperit de cont persoane fizice
+  [cautare] patriabank.ro overdraft card de credit descoperit de cont
+GATA    OVERDRAFT_PF                 3 surse, 0 citate verificate, echivalent, $0.09, 17s — Overdraft - Descoperire de Cont pentru persoane fizice
+  [cautare] Patria Bank titluri de stat
+  [cautare] patriabank.ro titluri de stat intermediere
+  [cautare] Patria Bank Fidelis titluri de stat subscriere persoane fizice
+GOL     PLASAMENTE                   produs_inexistent: Patria Bank nu oferă un serviciu dedicat de intermediere/subscriere directă a titlurilor d, $0.10
+  [cautare] Patria Bank RoPay cod QR comercianti
+  [cautare] Patria Bank RoPay incasari QR
+  [ 1] https://www.patriabank.ro/afaceri-mici/digital-banking
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.patriabank.ro/afaceri-mici/digital-banking/plati-instant
+  [ 4] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] patriabank.ro RoPay
+GOL     ROPAY_BUSINESS               nu_am_gasit: Nu am găsit la Patria Bank nicio pagină dedicată unui serviciu de încasare prin cod QR (ti, $0.18
+  [cautare] Patria Bank scrisori de garanție bancară
+GATA    SCRISORI_GARANTIE            3 surse, 0 citate verificate, echivalent, $0.05, 16s — Scrisoare de garanție bancară
+  [cautare] Patria Bank RoPay plăți instant telefon
+  [cautare] Patria Bank plăți instant prin numărul de telefon
+  [ 1] https://www.patriabank.ro/persoane-fizice/alte-servicii
+  [cautare] Patria Bank RoPay bănci participante
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/persoane-fizice/alte-servicii/plati-instant
+  [ 3] https://www.patriabank.ro/afaceri-mici/digital-banking/plati-instant
+       ! url_not_accessible
+       ! too_many_requests
+GATA    ROPAY                        2 surse, 0 citate verificate, similar, $0.15, 32s — Plăți Instant persoane juridice
+  [cautare] Patria Bank seif inteligent depunere numerar firme
+  [cautare] Patria Bank Smart Safe Force One
+GOL     SMART_SAFE                   produs_inexistent: Patria Bank nu are un produs de tip seif inteligent la sediul clientului cu înregistrare a, $0.06
+  [cautare] Patria Bank depozit promoțional dobândă
+  [cautare] Patria Bank depozit la termen dobânzi 2026
+  [ 1] https://www.patriabank.ro/d/20
+  [ 2] https://www.patriabank.ro/depozitonline
+       ! url_not_allowed
+       ! url_not_accessible
+  [ 3] https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare
+  [ 4] https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/
+  [ 6] https://www.patriabank.ro/persoane-fizice/economii/depozite-bancare
+       ! url_not_accessible
+       ! url_not_in_prior_context
+  [ 7] https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare
+  [ 8] https://www.patriabank.ro/depozitonline
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 9] https://en.patriabank.ro/afaceri-mici/depozite/depozite-la-termen
+  [10] https://en.patriabank.ro/d/992
+       ! url_not_accessible
+       ! url_not_allowed
+GATA    DEPOZIT_BLITZ_7L             2 surse, 0 citate verificate, similar, $0.51, 106s — Depozit 100% online pentru persoane fizice (platforma „Patria de Oriunde”)
+  [cautare] Patria Bank automat depunere numerar persoane juridice
+  [cautare] Patria Bank depunere numerar companii bancnote creditare aceeasi zi
+  [ 1] https://www.patriabank.ro/d/2142
+       ! url_not_allowed
+  [ 2] https://www.patriabank.ro/d/2142
+       ! url_not_allowed
+  [ 3] https://www.patriabank.ro/d/27/lista-taxe-si-comisioane-pentru-persoane-juridice.pdf
+       ! url_not_allowed
+GATA    RCD_CASH_DEPOSIT             1 surse, 0 citate verificate, similar, $0.25, 47s — Depuneri de numerar in conturile clientului la MFM (echipament electronic de tip bancomat multifunctional)
+
+patria: 34/51 produse cu surse, 2 erori, cost estimat $11.71, durata 9 min
+Reia: python descopera_surse_libra.py --banca patria --produse CONT_ONLINE_PERSONAL,CREDIT_BID_IMM

@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/credite-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite acordate cu garanție BID",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (credit de investiții/capital de lucru garantat de BID) și segment (IMM/persoane juridice), cu procent de garantare 70-80% identic cu cel menționat la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina hub de credite IMM conține secțiunea dedicată 'Credite acordate cu garanție BID' cu cifrele exacte ale procentului de garantare; pagina proprie a produsului (link direct din meniu) nu a returnat conținut text la fetch (posibil randare JS).",
+      "citat": "Finanțare pentru IMM-uri susținută de garanția BID, la costuri reduse. Garanție de portofoliu oferită de BID - Procent de garantare de 70%-80%, în funcție de companie - Costuri mai mici, sub forma de beneficiu financiar",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/imm/credite-imm.html",
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-acordate-cu-garantie-BID-pentru-IMM.html",
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-acordate-cu-garantie-BID-pentru-IMM.html"
+  ],
+  "durata_s": 62,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4247,
+    "citire_cache": 113527,
+    "scriere_cache": 61767,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2196129
+  }
+}

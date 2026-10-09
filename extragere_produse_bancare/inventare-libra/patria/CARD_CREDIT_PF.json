@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/card-credit-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit (online) Patria Bank",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving în lei pentru persoane fizice, cu perioadă de grație, rate fără dobândă la comercianți și plafon raportat la venituri nete - exact tipul și segmentul produsului Libra CARD_CREDIT_PF.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre explicite despre dobândă, comision de administrare și comision de emitere.",
+      "citat": "Tarif standard 5 lei comision lunar de administrare plastic aplicabil după efectuarea primei tranzacții la POS fizic sau online Dobândă standard aplicabilă (variabilă): IRCC + marjă fixă 23% Comision emitere card de credit principal/suplimentar 10 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://en.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de credit Patria Bank (Card de cumpărături)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași categorie de produs (card de credit revolving RON pentru persoane fizice, cu grație și rate fără dobândă la comercianți), pagină alternativă cu plafonul exprimat în venituri nete și sumă maximă.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină de produs cu cifre explicite privind plafonul (venituri nete/sumă maximă) și perioada de creditare.",
+      "citat": "Poți obține până la 30.000 lei (în limita a 4 venituri lunare nete), pe o perioadă de 12 luni, cu posibilitatea prelungirii automate pe perioade egale",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 120,
+  "consum": {
+    "intrare": 4,
+    "iesire": 10896,
+    "citire_cache": 6338,
+    "scriere_cache": 35943,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2000931
+  }
+}

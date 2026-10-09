@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/sites/default/files/inline-files/Anexa%202d-Prezentare%20produse%20trezorerie.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Titluri de stat (produse de trezorerie)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Fișa de prezentare detaliată a produsului, valabilă atât pentru persoane fizice cât și juridice, cu valori nominale, categorii de titluri și regim fiscal.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document de prezentare a produsului cu cifre concrete: valori nominale, termene, exemple de randament.",
+      "citat": "Valoarea nominala individuala a unui titlu de stat – 5.000 Ron, 10.000 Ron, 1000 Eur, 2000 Usd. Clienti -persoanele fizice si juridice, rezidente sau nerezidente, au posibilitatea cumpararii si tranzactionarii de titluri de stat prin intermediul pietei secundare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/inline-files/Comisioane%20operatiuni%20cu%20Titluri%20de%20stat.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Titluri de stat - persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Tarif de comisioane dedicat exact operațiunilor cu titluri de stat pentru persoane fizice, cu toate procentele pe tip de operațiune.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document de tarife specific produsului, cu procente exacte pentru custodie, adjudecare, transfer și tranzacționare.",
+      "citat": "Comision de custodie in cont Omnibus 0,03%/ an + TVA, Comision de participare pe piata primara 0 LEI/operatiune, Comision pentru procesarea gajurilor cu titlurile de stat 0,01 % + TVA",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/plasamente-titluri-stat",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Plasamente în titluri de stat",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (investiții în titluri de stat emise în lei sau valută) și segment (persoane fizice și juridice), cu valori minime de tranzacționare specificate.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagină dedicată produsului cu descriere, condiții de acces și valori minime concrete pentru tranzacții.",
+      "citat": "Valorile minime pentru astfel de investiții pentru o tranzacție sunt: 250.000 Lei, 100.000 Eur/USD. Pentru operațiunile vânzare/cumpărare prin operațiuni reversibile, CEC Bank nu percepe comisioane.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/cec-fin",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "CEC Fin - Titluri de Stat",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Platforma/produsul prin care clienții juridici și fizici accesează piața primară și secundară a titlurilor de stat, parte a aceleiași oferte de plasamente.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagină de produs care descrie accesul la piața titlurilor de stat, dar fără cifre de tarife/dobânzi explicite în text.",
+      "citat": "Titluri de Stat Acces la piața primară a titlurilor de stat emise de Ministerul Finanțelor, cu participare realizată în numele clienților.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1751,
+    "citire_cache": 6300,
+    "scriere_cache": 23252,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07690799999999999
+  }
+}

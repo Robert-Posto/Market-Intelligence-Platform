@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "CARD_DEBIT_BUSINESS",
+  "denumire": "Card de debit business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/cards/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Carduri de companie (carduri de debit fizice și virtuale Revolut Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată cardurilor de debit business pentru persoane juridice/PFA din contul Revolut Business, cu descriere a tipurilor de carduri (fizice, virtuale, Metal), limite și costuri — exact segmentul și tipul de produs ca CARD_DEBIT_BUSINESS.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina este dedicată explicit cardurilor de debit pentru firme și conține cifre concrete despre limite de carduri și taxe de livrare.",
+      "citat": "Fiecare membru al echipei poate avea până la 3 carduri fizice active și până la 200 de carduri virtuale active. Pentru orice carduri suplimentare se va percepe o taxă de livrare standard începând de la 4,99 £ (sau echivalentul în altă monedă).",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/business/revolut-business-affiliates/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Planuri Revolut Business (Basic, Grow, Scale) – includ emiterea de carduri de debit business",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina listează planurile plătite ale contului Revolut Business cu prețurile lunare, planuri care includ și emiterea cardurilor de debit business descrise în pagina dedicată cardurilor.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de tarife al contului Business, în care sunt menționate explicit prețurile planurilor ce determină numărul de carduri Metal gratuite și alte beneficii pentru cardurile de debit business.",
+      "citat": "Basic De la 50 lei/lună Obține instrumentele esențiale pentru a-ți gestiona afacerea. Grow De la 200 lei/lună Deblochează instrumentele de care ai nevoie pentru a gestiona cheltuielile fără griji.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1206,
+    "citire_cache": 6325,
+    "scriere_cache": 39382,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.111788
+  }
+}

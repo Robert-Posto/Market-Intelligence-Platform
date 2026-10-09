@@ -1,0 +1,45 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Credit de investiții (persoane juridice) (încredere 0.55) — Este singurul credit pentru companii la tbi bank care include explicit achiziția de imobile ca scop de finanțare, dar este un credit general de investiții (acoperă și echipamente, mașini), nu un credit imobiliar dedicat, iar pagina nu publică dobânzi/comisioane/plafoane proprii produsului."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://tbibank.ro/companii/credite-companii/credit-de-investitii/",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul credit pentru companii la tbi bank care include explicit achiziția de imobile ca scop de finanțare, dar este un credit general de investiții (acoperă și echipamente, mașini), nu un credit imobiliar dedicat, iar pagina nu publică dobânzi/comisioane/plafoane proprii produsului.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina este dedicată produsului și menționează explicit achiziția de imobile ca scop, dar nu afișează nicio cifră (dobândă, comision, sumă, termen) specifică acestui credit; ratele se comunică doar individual după aprobare.",
+      "citat": "Fie ca doresti sa eficientizezi liniile de productie existente, sa obtii un spatiu de stocare mai mare, sa beneficiezi de un sediu mai incapator sau sa adaugi noi produse si servicii in portofoliul afacerii tale, venim in sprijinul tau cu o facilitate de finantare printr-un credit de investitii. Scopuri multiple: Achizitie imobile, echipamente, masini",
+      "citat_verificat": true,
+      "link_live": "https://tbibank.ro/companii/credite-companii/credit-de-investitii/#:~:text=Fie%20ca%20doresti%20sa%20eficientizezi,multiple%3A%20Achizitie%20imobile%2C%20echipamente%2C%20masini"
+    }
+  ],
+  "deschise": [
+    "https://tbibank.ro/companii/credite-companii/credit-de-investitii/",
+    "https://tbibank.ro/companii/credite-companii/",
+    "https://tbibank.ro/wp-content/uploads/2022/09/Lista_de_dobanzi_taxe_si_comisioane_pentru_persoane_juridice_incepand_cu_15_12_2019_rev.pdf",
+    "https://tbibank.ro/despre-tbi-group/documente/",
+    "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi%2C%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 12,
+    "iesire": 5022,
+    "citire_cache": 177550,
+    "scriere_cache": 74284,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.27146400000000004
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/agricultura/credite/credite-pentru-insamantare/",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru însămânțare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat firmelor cu activitate agricolă, destinat finanțării achiziției de inputuri (semințe, îngrășăminte, pesticide) cu rambursare corelată cu sezonul agricol; procesul de aplicare menționează explicit programul InvestEU, exact ca produsul Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Este pagina dedicată produsului, descrie exact scopul (finanțarea inputurilor agricole) și segmentul (fermieri/firme agricole), iar procesul de aplicare menționează programul InvestEU, dar pagina nu conține cifre explicite (dobândă, sumă, termen în luni) specifice acestui produs.",
+      "citat": "Creditele noastre pentru însămânțare sunt concepute pentru a asigura resursele financiare necesare pe tot parcursul procesului agricol, de la achiziția inputurilor până la vânzarea produselor. Achiziția inputurilor: Credite pentru semințe, îngrășăminte, pesticide și alte materiale esențiale necesare începutului de sezon agricol.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/agricultura/credite/credite-pentru-insamantare/#:~:text=Creditele%20noastre%20pentru%20%C3%AEns%C4%83m%C3%A2n%C8%9Bare%20sunt,necesare%20%C3%AEnceputului%20de%20sezon%20agricol."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/agricultura/credite/credite-pentru-insamantare/",
+    "https://www.procreditbank.ro/landing/agro/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2309,
+    "citire_cache": 40877,
+    "scriere_cache": 59246,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1793924
+  }
+}

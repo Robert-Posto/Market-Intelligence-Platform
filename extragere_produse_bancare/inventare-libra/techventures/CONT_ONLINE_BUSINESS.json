@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent (Startup / Business / Unlimited)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un cont curent pentru persoane juridice cu card business și abonament de Internet/Mobile Banking, deci același tip de produs și segment, dar nu este descris ca deschis și gestionat exclusiv online (pachetele par disponibile și prin canale clasice/sucursale), spre deosebire de Cont Online Business de la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată conține denumirile pachetelor, prețurile lunare și condițiile de card/internet banking, dar nu menționează explicit caracterul 'exclusiv online' al deschiderii contului.",
+      "citat": "Business 29 lei/luna Pentru companii în creștere! Cont curent în lei și euro Emitere și administrare card Mastercard Business Internet și Mobile Banking Primele 50 plăți interbancare în lei și euro prin Internet Banking",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/pachete-cont-curent#:~:text=Business%2029%20lei%2Fluna%20Pentru%20companii,%C8%99i%20euro%20prin%20Internet%20Banking"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/cont-curent",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/digital-banking",
+    "https://techventures.bank/companii/conturi-pachete-cont-curent",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/pachete-cont-curent"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 70350,
+    "iesire": 2537,
+    "citire_cache": 25170,
+    "scriere_cache": 24613,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2326365
+  }
+}

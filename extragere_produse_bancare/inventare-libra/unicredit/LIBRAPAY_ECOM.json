@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pos-ecommerce.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "E-Commerce UniCredit (Modulul de e-Commerce UniCredit, parte din POS & e-Commerce)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este soluția dedicată persoanelor juridice (IMM) pentru acceptarea plăților online cu cardul în magazine online, cu integrare API/plug-and-play în platforme de tip shopping cart, exact ca LibraPay eCommerce.",
+      "incredere": 0.78,
+      "explicatie_incredere": "Este pagina dedicată produsului, cu descrierea completă a modulului de e-Commerce (API, 3DSecure, monitorizare, integrare contabilitate), dar nu conține cifre explicite de comision pentru acest serviciu (doar trimitere la contactare pentru tarife).",
+      "citat": "Modulul de e-Commerce UniCredit este solutia adaptata afacerii tale, simplu de integrat cu cele mai utilizate shopping cart-uri si pregatita sa sustina cresterea sustenabila a acesteia, putand sa te bucuri de multe beneficii precum",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/sme/banking/pos-ecommerce.html",
+    "https://www.unicredit.ro/ro/imm/tranzactionare/pos-ecommerce.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/tranzactionare/pos-ecommerce.html",
+    "https://www.unicredit.ro/ro/imm/diverse/documente-utile.html"
+  ],
+  "durata_s": 44,
+  "consum": {
+    "intrare": 32729,
+    "iesire": 3383,
+    "citire_cache": 131479,
+    "scriere_cache": 59386,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2740488
+  }
+}

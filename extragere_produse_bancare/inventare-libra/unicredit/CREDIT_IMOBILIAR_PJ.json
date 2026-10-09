@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții – Achiziție imobil / teren (Investiții IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este creditul de investiții dedicat persoanelor juridice (IMM, PFA) pentru achiziția unui sediu, spațiu de producție sau teren, adică exact tipul de credit imobiliar pentru firme descris de produsul Libra; segmentul de clienți (persoane juridice/PFA) coincide.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina dedicată a produsului de investiții imobiliare pentru companii, dar textul static nu afișează rate ale dobânzii, comisioane sau valori maxime ale creditului; posibil ca aceste cifre să fie generate printr-un simulator încărcat via JavaScript la aplicare.",
+      "citat": "Daca a sosit momentul sa achizitionezi un sediu pentru afacerea ta,un spatiu pentru productie, un teren sau daca doresti sa refinantezi o investitie efectuata din surse proprii cu mai putin de 12 luni in urma, UniCredit Bank iti poate sustine finantarea printr-o solutie dedicata, un credit de investitii adaptat nevoii si activitatii companiei tale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/sme/borrowing/investments.html",
+    "https://www.unicredit.ro/ro/sme/finantare/investitii.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/finantare/investitii.html",
+    "https://www.unicredit.ro/ro/imm/diverse/documente-utile.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf"
+  ],
+  "durata_s": 92,
+  "consum": {
+    "intrare": 27511,
+    "iesire": 6795,
+    "citire_cache": 196363,
+    "scriere_cache": 101430,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4158196
+  }
+}

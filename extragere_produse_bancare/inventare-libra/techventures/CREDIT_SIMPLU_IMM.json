@@ -1,0 +1,45 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/credit-pentru-activitate-curenta",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru activitate curentă (Capital de lucru)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite pentru companii/PJ destinate acoperirii nevoilor curente de capital de lucru, dar produsul TechVentures nu menționează plafoane de sumă (20.000-200.000 lei la Libra), nu precizează aprobare pe scoring rapid și nu exclude explicit garanția imobiliară; termenul maxim e de 3 ani față de 48 de luni la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată descrie clar produsul de capital de lucru pentru companii, dar conține doar o singură cifră (termenul de 3 ani) și nu precizează sumele, dobânda sau condițiile de garantare care ar permite o comparație completă cu Credit Simplu IMM.",
+      "citat": "Capitalul de lucru se acordă în lei sau euro pentru finanțarea nevoilor curente și îmbunătățirea lichidității companiei. Capitalul de lucru se poate acorda și pentru refinanțarea unor credite cu destinație similară. Perioada de acordare: până la 3 ani.",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/credit-pentru-activitate-curenta#:~:text=Capitalul%20de%20lucru%20se%20acord%C4%83,acordare%3A%20p%C3%A2n%C4%83%20la%203%20ani."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/credit-pentru-activitate-curenta",
+    "https://techventures.bank/companii/credite-de-investitii",
+    "https://techventures.bank/companii/credite-activitate-curenta",
+    "https://techventures.bank/companii/linia-de-credit",
+    "https://techventures.bank/companii/credit-pentru-activitate-curenta",
+    "https://techventures.bank/companii/credite-pe-documente",
+    "https://techventures.bank/companii/credit-pentru-activitate-curenta",
+    "https://techventures.bank/companii/linia-de-credit"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 54678,
+    "iesire": 3616,
+    "citire_cache": 65026,
+    "scriere_cache": 31583,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2374787
+  }
+}

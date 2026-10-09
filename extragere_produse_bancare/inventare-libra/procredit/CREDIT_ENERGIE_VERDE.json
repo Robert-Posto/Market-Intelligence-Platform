@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii-in-parcuri-fotovoltaice/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru investiții în parcuri fotovoltaice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat finanțării capacităților de producție de energie din surse regenerabile (parcuri fotovoltaice), destinat persoanelor juridice (IMM-uri locale și investitori), la fel ca produsul Libra Credit pentru energie verde; include scheme PPA/CfD și garanții InvestEU, specifice proiectelor de producție de energie, nu de autoconsum.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu cifre concrete (procent capital propriu, procent garanție), dar nu include dobânzi sau comisioane explicite, de aceea nu atinge pragul de 0.9.",
+      "citat": "Criterii de eligibilitate: Investitori străini & IMM-uri locale Capital propriu: cel puțin 30% din valoarea totală a creditului Moneda creditului: LEI sau EURO Contract de achiziție a energiei electrice: PPA (Power Purchase Agreement), Schema CfD (Contracte pentru diferență) Garanții: Posibilitatea de garanție de până la 70% prin InvestEU, pentru proiectele eligibile",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii-in-parcuri-fotovoltaice/#:~:text=Criterii%20de%20eligibilitate%3A%20Investitori%20str%C4%83ini,prin%20InvestEU%2C%20pentru%20proiectele%20eligibile"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/credite/credite-pentru-investitii-in-parcuri-fotovoltaice/",
+    "https://www.procreditbank.ro/wp-content/uploads/2025/03/Lista-preturi-PJ-RO_12.05.2025.pdf"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2719,
+    "citire_cache": 154655,
+    "scriere_cache": 82224,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.263701
+  }
+}

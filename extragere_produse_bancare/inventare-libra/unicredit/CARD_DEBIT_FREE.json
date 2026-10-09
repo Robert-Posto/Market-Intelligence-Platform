@@ -1,0 +1,88 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Mastercard Standard (fizic/virtual)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit pentru persoane fizice, fără comision de emitere și, pentru primul card fizic/virtual deținut, fără comision de administrare — același tip de produs și segment ca Libra Card de debit Free (componenta persoane fizice).",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife al băncii listează explicit, într-un tabel dedicat cardurilor de debit, valorile 0 Lei pentru emitere și administrare la cardul Mastercard Standard.",
+      "pagina_pdf": 9,
+      "citat": "Se aplică 0 (zero) comision pentru administrarea lunară a contului/conturilor curente inclus/e în ofertă și pentru furnizarea (administrarea) cardului/ cardurilor de debit inclus/e în ofertă, cu excepția: (i) cardului de debit Mastercard Gold fizic sau virtual, pentru care se aplică un comision de 12 Lei/lună în oferta STAR",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit business Mastercard Business Silver / Business Gold",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de tarife pentru segmentul companii (SME) care listează comisioanele cardurilor de debit business; spre deosebire de Libra (fără costuri de emitere/administrare), UniCredit percepe comision anual de administrare pentru cardul business.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Documentul oficial de tarife SME conține un tabel dedicat cardurilor de debit business (Mastercard Business Gold/Silver) cu valori explicite ale comisionului anual de administrare.",
+      "pagina_pdf": 9,
+      "citat": "Card principal 20 Euro/ an 5 Lei/ lună Card suplimentar 20 Euro/ an 5 Lei/ lună Tranzacţie POS naţională 0 0 Tranzacţie POS internaţională 0 0",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/digital/ShopSmartEN.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Programul ShopSmart (cashback pentru cardurile de debit UniCredit Bank)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Descrie componenta de cashback la comercianți parteneri, utilizabilă cu cardul de debit UniCredit Bank pentru persoane fizice — corespunde elementului 'cashback la parteneri' din produsul Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina descrie mecanismul de cashback și perioada de plată, dar valorile procentuale exacte ale ofertelor sunt afișate doar în aplicație, nu în text.",
+      "citat": "The Cashback is paid to your account, in aggregate, for all individual transactions made (if you made payment with a card issued by UniCredit Bank) by the end of the month following that in which the transactions were made.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Debit cards for SMEs (Mastercard Business Silver / Mastercard Business Gold)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (card de debit) și segment (companii/IMM) ca Libra, dar spre deosebire de Libra, la UniCredit cardul business nu este gratuit — conform tarifelor SME se percepe un comision anual de administrare (20 Euro/an sau 5 Lei/lună), deci diferă caracteristica 'fără costuri de administrare'.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina este dedicată explicit cardului de debit pentru IMM, dar singura cifră din text este comisionul 0 la tranzacțiile POS; costurile de emitere/administrare apar doar în documentul de tarife SME.",
+      "citat": "You have 0 commission for the payments at a POS; You can make fast contactless payments at POS, for low value amounts (Value established by the international organizations cards Visa or MasterCard ; for example under 100 Lei in Romania) without PIN.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html#:~:text=You%20have%200%20commission%20for,Lei%20in%20Romania%29%20without%20PIN."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf"
+  ],
+  "durata_s": 86,
+  "consum": {
+    "intrare": 8,
+    "iesire": 7148,
+    "citire_cache": 95028,
+    "scriere_cache": 112992,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3729816
+  }
+}

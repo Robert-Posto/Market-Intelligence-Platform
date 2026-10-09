@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/?page_id=1479",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit / Capital de lucru (Activitate curentă)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs pentru persoane juridice: linie de credit revolving pentru finanțarea activității curente, plus componenta separată 'Capital de lucru' pentru nevoi curente și îmbunătățirea lichidității — aceeași nevoie ca produsul Libra (decalaj plăți-încasări, sezonalitate).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina conține cifre concrete (termen maxim, procent de finanțare) și descrie explicit atât linia de credit cât și capitalul de lucru pentru firme, deși accesul direct la pagină e momentan blocat și conținutul a fost obținut dintr-o variantă indexată.",
+      "citat": "Linia de credit se acorda in lei sau euro pentru finantarea activitatii curente pe termen scurt (maximum 1 an). Functioneaza in sistem revolving, in perioada de acordare efectuandu-se trageri si rambursari multiple din plafonul disponibil pus la dispozitia companiei.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/companii/linia-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului 'Linia de credit' pentru companii, cu caracter revolving (trageri și rambursări multiple), exact tipul de produs cerut de Libra pentru capitalul de lucru.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este pagina oficială dedicată produsului, confirmată prin rezultatele de căutare, dar textul capturat nu conține cifre (procente/sume), iar accesul direct a fost blocat la momentul verificării.",
+      "citat": "caracter revolving al plafonului (permite trageri și rambursări multiple pe perioada de creditare) - operativitate în analizarea solicitării clientului - arie largă a destinațiilor pentru care pot fi utilizate",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/companii/credite-activitate-curenta",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Activitate curentă – Linia de credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub pentru creditele destinate activității curente a firmelor, care listează 'Linia de credit' ca soluție de flexibilitate în utilizarea fondurilor pentru afacere, corespunzând segmentului și scopului produsului Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Confirmă existența și poziționarea produsului 'Linia de credit' în oferta pentru firme (acoperirea cheltuielilor curente, materii prime, stocuri, activități sezoniere), dar nu conține cifre proprii, acestea fiind pe pagina de produs linkată.",
+      "citat": "Îți oferim sprijinul necesar pentru a acoperi cheltuielile cotidiene ale afacerii tale, precum materii prime, stocuri, taxe ori salarii sau pentru finanțarea unor activități sezoniere. Astfel, scapi de grija plăților imediate și te poți concentra pe dezvoltarea businessului tău.",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/credite-activitate-curenta#:~:text=%C3%8E%C8%9Bi%20oferim%20sprijinul%20necesar%20pentru,concentra%20pe%20dezvoltarea%20businessului%20t%C4%83u."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/linia-de-credit",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/linia-de-credit",
+    "https://techventures.bank/companii/credite-activitate-curenta",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+    "https://techventures.bank/companii/linia-de-credit",
+    "https://techventures.bank/?page_id=1479"
+  ],
+  "durata_s": 90,
+  "consum": {
+    "intrare": 119882,
+    "iesire": 6178,
+    "citire_cache": 87879,
+    "scriere_cache": 36091,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.40934729999999997
+  }
+}

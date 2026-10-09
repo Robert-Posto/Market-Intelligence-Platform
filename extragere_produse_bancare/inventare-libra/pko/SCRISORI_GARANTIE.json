@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Garanții, contragaranții, acreditive stand-by",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea III a listei de prețuri acoperă exact scrisorile de garanție bancară (garanții, contragaranții, acreditive stand-by) emise pentru clienți persoane juridice, cu comisioane detaliate pentru emitere, modificare, duplicat, plată etc.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial de tarife al sucursalei România, cu secțiune dedicată integral garanțiilor bancare și cifre exacte pentru fiecare tip de comision.",
+      "pagina_pdf": 7,
+      "citat": "GARANTII, CONTRAGARANTII, ACREDITIVE STAND-BY EMISE DE PKO BANK POLSKI S.A. VARSOVIA, SUCURSALA BUCURESTI. Comision de emitere – calculat pentru fiecare perioadă de trei luni începută: conform contractului cu clientul, nu mai puțin de 0,5% trimestrial, min. 250 RON.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.pkobp.pl/ro/filiala-romania/produse",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de produse ale sucursalei enumeră 'Garanții' ca produs distinct în categoria Finanțare Comercială, destinat clienților corporate.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina listează produsul prin denumire dar nu conține cifre proprii; valorile se găsesc doar în documentul de tarife.",
+      "citat": "Finanțare Comercială - Garanții - Acreditive",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (6 cuvinte)",
+      "link_live": "https://www.pkobp.pl/ro/filiala-romania/produse#:~:text=Finan%C8%9Bare%20Comercial%C4%83%20%2D%20Garan%C8%9Bii%20%2D%20Acreditive"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 10,
+    "iesire": 1796,
+    "citire_cache": 78547,
+    "scriere_cache": 73223,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2167469
+  }
+}

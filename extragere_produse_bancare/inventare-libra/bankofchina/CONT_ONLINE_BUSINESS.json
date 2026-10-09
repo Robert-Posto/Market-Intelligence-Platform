@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont Curent / Administrare Cont (Lista de Taxe și Comisioane pentru Persoane Juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice listează comisioanele de administrare a contului curent PJ (deschidere, administrare lunară, închidere, NetBank), însă nu există un produs separat 'online' cu abonamente sau card business precum la Libra; serviciile online (NetBank) sunt gratuite ca funcție standard, nu ca produs dedicat.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife cu cifre exacte pentru administrarea contului curent al persoanelor juridice, inclusiv taxele aferente serviciilor online banking (NetBank).",
+      "citat": "Deschidere Cont Gratuit Administrare Cont(RON) 30RON / luna Administrare Cont(EUR) 5EUR / lună Administrare Cont(USD) 5USD/ lună Administrare Cont(CNY) 55CNY / lună Închidere Cont Gratuit",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360672.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Corporate Current Account",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cont curent pentru persoane juridice (companii), aceeași categorie de client ca în produsul Libra, dar deschiderea primului cont necesită prezență fizică la ghișeu, deci nu este un produs 'exclusiv online' precum Cont Online Business, iar pagina nu menționează card business sau abonamente operaționale.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată produsului descrie clar contul curent pentru persoane juridice, dar nu conține cifre (tarife) și contrazice caracteristica 'exclusiv online' a produsului Libra.",
+      "citat": "Corporate customers can open current accounts in RON, USD, EUR, and CNY with the Bank. In case of opening the first current account with the Bank, customer needs to go to the counters of the Bank in person with valid identity documents.",
+      "citat_verificat": true,
+      "link_live": "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360672.html#:~:text=Corporate%20customers%20can%20open%20current,person%20with%20valid%20identity%20documents."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360672.html",
+    "https://www.bankofchina.com/ro/en/bocinfo/bi2/202109/t20210908_20014518.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
+  ],
+  "durata_s": 38,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2520,
+    "citire_cache": 44300,
+    "scriere_cache": 46246,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14969100000000002
+  }
+}

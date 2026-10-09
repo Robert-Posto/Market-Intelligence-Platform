@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2023/04/T0014-v18.00-24-02-2023_RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane standard pentru clienți corporate, cu secțiune dedicată 'Scrisori de garantie' ce acoperă emitere, modificare, executare, primire, avizare - exact produsul de scrisori de garanție bancară pentru firme.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul conține o secțiune dedicată 'Scrisori de garantie' cu toate comisioanele și procentele aplicabile, inclusiv pentru primire și avizare.",
+      "pagina_pdf": 8,
+      "citat": "Comision de acordare linie pentru scrisori de garantie Procent negociabil, aplicabil la limita totala aprobata, platibil o singura data la data semnarii contractului de credit Comision de emitere in baza de surse proprii Procent negociabil aplicabil pe trimestru sau fractiune de trimestru, minim 0.25% pe trimestru si fractiune de trimestru, minim EUR 50 pe trimestru si fractiune de trimestru",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/corporate-banking/letters-of-guarantee-and-letters-of-credit/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Letters of guarantee and letters of credit / Scrisori de garanție și acreditive",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată de produs pentru clienți Corporate, descriind scrisorile de garanție bancară (Bid Bonds, Payment Guarantees, Performance Bonds, Retention Bonds, Warranty Bonds) ca soluții non-cash de garantare pentru firme.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina de produs dedicată menționează explicit tipurile de scrisori de garanție oferite, dar nu conține cifre/comisioane - acestea sunt în documentul de tarife separat.",
+      "citat": "The bank Letters of Guarantee and Letters of Credit of various types are non-cash facilities that ensure the Beneficiary (the commercial partner of Bank's client) against various types of risks such as: payment, performance, warranty etc.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/corporate-banking/letters-of-guarantee-and-letters-of-credit/#:~:text=The%20bank%20Letters%20of%20Guarantee,as%3A%20payment%2C%20performance%2C%20warranty%20etc."
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/facilities-for-foreign-trade-financing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Letters of guarantee (Facilities for Foreign Trade Financing) / Scrisori de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată pentru segmentul IMM și PFA ce descrie scrisorile de garanție bancară ca facilități non-cash, cu colaterale cash/gaj/ipotecă, exact echivalentul SCRISORI_GARANTIE pentru acest segment de clienți persoane juridice.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată descrie clar produsul 'Letters of guarantee' pentru segmentul IMM/PFA, dar fără cifre concrete de comisioane (acestea sunt în PDF-ul de tarife).",
+      "citat": "Letters of guarantee, in their various forms, are non-cash facilities offering insurance of payment to their beneficiaries. Their maturity is variable, correlated with the related transaction, and the collaterals can come as cash, pledges, mortgages on immovable and movables.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/facilities-for-foreign-trade-financing/#:~:text=Letters%20of%20guarantee%2C%20in%20their,mortgages%20on%20immovable%20and%20movables."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/corporate-banking/scrisori-de-garantie-si-acreditive/",
+    "https://www.garantibbva.ro/wp-content/uploads/2023/04/T0014-v18.00-24-02-2023_RO.pdf",
+    "https://www.garantibbva.ro/en/corporate-banking/letters-of-guarantee-and-letters-of-credit/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/facilities-for-foreign-trade-financing/"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2645,
+    "citire_cache": 69116,
+    "scriere_cache": 64101,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20054170000000002
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Commissions-and-interests-PI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Mastercard Gold / Visa Gold debit card",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife conține exact comisioanele pentru cardul Mastercard Gold (întreținere, retrageri gratuite, cashback la POS), comparabil cu Card de debit Gold de la Libra, dar cu plafon de 4 retrageri gratuite/lună (nu 3) și fără dobândă la sold, acest card fiind disponibil doar persoanelor fizice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Tabelul oficial de comisioane prezintă explicit valorile pentru cardul Mastercard Gold: emitere, întreținere lunară, retrageri de numerar gratuite și cashback la POS.",
+      "pagina_pdf": 10,
+      "citat": "0 commission is applied for 4 transactions/month, from the 5th cash withdrawal transaction made within the same month, with the main and/or supplementary Mastercard Gold and Mastercard Platinum cards, a commission of 1.5%, min. 5 Lei/transaction will apply.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/banking/debit-cards.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Gold debit card (Card de debit Mastercard Gold)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un card de debit cu asigurare de călătorie, acces lounge aeroport și beneficii premium, dar la UniCredit acest card este disponibil doar pentru persoane fizice (echivalentul pentru firme este un produs separat, Mastercard Business Gold), iar contul curent nu are dobândă (0%), spre deosebire de Libra care oferă 1% la soldul peste 500 lei pe același produs valabil și pentru PF și PJ.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată descrie explicit beneficiile cardului Gold (asigurare călătorie, lounge, cashback prin ShopSmart) cu cifre concrete pentru pragurile de acces lounge.",
+      "citat": "If you are a holder of a Mastercard Gold debit card, you benefit from free access up to 3 times during the program in over 1800 Lounges in 146 countries if you have made transactions at the POS or online during the previous calendar period up to a maximum of 96 hours before requesting access to the Premium Location, of at least 4,500 Lei.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/persoane-fizice/banking/debit-cards.html#:~:text=If%20you%20are%20a%20holder,of%20at%20least%204%2C500%20Lei."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/persoane-fizice/banking/debit-cards.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Commissions-and-interests-PI.pdf"
+  ],
+  "durata_s": 62,
+  "consum": {
+    "intrare": 6,
+    "iesire": 5244,
+    "citire_cache": 36651,
+    "scriere_cache": 87754,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2791672
+  }
+}

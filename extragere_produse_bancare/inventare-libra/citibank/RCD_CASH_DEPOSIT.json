@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "citibank",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Colectare numerar in sucursala Citi (încredere 0.55) — Același segment (persoane juridice) și același tip general de serviciu (depunere de numerar la sucursala băncii, cu creditare), dar canalul diferă: la Citi este depunere manuală la ghișeu, nu printr-un echipament automat de numărare și validare ca RCD Cash Deposit; pagina nu precizează un termen orar de creditare în aceeași zi."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/receivables.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Colectare numerar in sucursala Citi",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același segment (persoane juridice) și același tip general de serviciu (depunere de numerar la sucursala băncii, cu creditare), dar canalul diferă: la Citi este depunere manuală la ghișeu, nu printr-un echipament automat de numărare și validare ca RCD Cash Deposit; pagina nu precizează un termen orar de creditare în aceeași zi.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Este singura pagină dedicată serviciului de depunere numerar pentru PJ la Citi România, dar nu conține nicio cifră (procent, comision, sumă, termen orar) legată de acest serviciu.",
+      "citat": "Citi Romania pune la dispozitia clientilor sai serviciul de depunere de numerar la ghiseu, in cadrul sucursalei proprii din Bucuresti.",
+      "citat_verificat": true,
+      "link_live": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/receivables.html#:~:text=Citi%20Romania%20pune%20la%20dispozitia,cadrul%20sucursalei%20proprii%20din%20Bucuresti."
+    }
+  ],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/receivables.html"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3638,
+    "citire_cache": 37656,
+    "scriere_cache": 23396,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10241720000000001
+  }
+}

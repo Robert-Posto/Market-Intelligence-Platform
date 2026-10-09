@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Fees-and-Comissions-Corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "BusinessNet Connect",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife conține explicit comisioanele pentru BusinessNet Connect (soluția de integrare cu ERP-ul contabil), dar se aplică doar clienților Corporate cu cifră de afaceri peste 1 milion EUR, nu tuturor firmelor/PFA ca la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit BusinessNet Connect cu taxă de instalare și mentenanță în cifre concrete.",
+      "citat": "BUSINESSNET CONNECT Set up fee 400 Euro/ BusinessNet Connect user Maintenance fee 10 Euro/ month/ company",
+      "pagina_pdf": 4,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (16 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/cib/cash-management/e-channels.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "BusinessNet Connect",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este soluția UniCredit de integrare automată (API/sincronizare de date) între sistemul financiar-contabil (ERP) al firmei și platforma bancară, exact ca API Contabili, dar este dedicată explicit companiilor mari și mijlocii (segment Corporate), nu tuturor firmelor/PFA ca produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit funcționalitatea de sincronizare automată cu sistemul de contabilitate (ERP), dar nu conține cifre de preț.",
+      "citat": "BusinessNet Connect is designed for large and medium-sized companies handling a high number of outgoing and incoming payments. This innovative solution streamlines internal processes and simplifies the procedure of active and passive communication between your company's Financial and Accounting System (ERP) and BusinessNet Professional.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/cib/cash-management/e-channels.html#:~:text=BusinessNet%20Connect%20is%20designed%20for,System%20%28ERP%29%20and%20BusinessNet%20Professional."
+    },
+    {
+      "url": "https://www.unicredit.ro/en/popupeditpages/CIB-Cash-Management/BusinessNet-Avantaje-si-cerinte-tehnice.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "BusinessNet Connect / BusinessNet Professional (interfacing with ERP)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Detaliază mecanismul tehnic de interfațare cu sistemele de contabilitate (ERP) prin BusinessNet Professional, aceeași categorie de produs ca API Contabili, dar pentru segmentul companiilor mari/mijlocii.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina descrie în detaliu avantajele și mecanismul de interfațare cu sistemele de contabilitate, dar fără cifre tarifare proprii pe această pagină.",
+      "citat": "The BusinessNet Professional package includes a facility of interfacing with accounting and administration systems (ERP) through: The possibility to export bank statements in MT940 format (SWIFT standard) structured/unstructured.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/popupeditpages/CIB-Cash-Management/BusinessNet-Avantaje-si-cerinte-tehnice.html#:~:text=The%20BusinessNet%20Professional%20package%20includes,MT940%20format%20%28SWIFT%20standard%29%20structured%2Funstructured."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/cib/cash-management/e-channels.html",
+    "https://www.unicredit.ro/ro/cib/cash-management/e-channels.html",
+    "https://www.unicredit.ro/en/popupeditpages/CIB-Cash-Management/BusinessNet-Avantaje-si-cerinte-tehnice.html",
+    "https://www.unicredit.ro/en/cib/miscellaneous/useful-documents.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Fees-and-Comissions-Corporate.pdf"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 20239,
+    "iesire": 3082,
+    "citire_cache": 75980,
+    "scriere_cache": 76308,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.277264
+  }
+}

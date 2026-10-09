@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachet de cont curent T0 pentru Clienții IMM",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de ofertă (anexă contractuală) detaliază exact serviciile incluse gratuit în pachet (cont, card debit business, IB/MB, plăți/încasări) plus comisionul POS 0,99%, foarte apropiat de structura Abonamentului RISE, dar valabil doar 1 an și doar pentru firme nou-înființate, nu un abonament permanent de 50 lei/lună.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document PDF oficial cu toate cifrele pachetului T0, destinat semnării de către client.",
+      "citat": "Acceptarea la plată a cardurilor la terminalul POS: 0.99%/tranzacție Administrare lunară/mentenanță terminal POS: 35 lei/ terminal percepută doar în cazul în care valoarea tranzacțiilor prin terminalul POS în luna precedentă a fost mai mică de 12.000 lei",
+      "rol_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/t0-package/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent T0 pentru Clienții IMM (\"T0\" Package for Start-Up)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un pachet/abonament operațional pentru firme (PJ/PFA) cu plăți și încasări nelimitate prin IB/MB, card de debit business gratuit și comision POS redus — exact ca RISE; diferă însă prin faptul că este o ofertă-campanie cu termen limitat (valabilă până la 31.12.2026) destinată exclusiv firmelor înființate în ultimele 12 luni, nu un abonament lunar general disponibil tuturor PJ ca la Libra, iar comisionul lunar nu este fix de 50 lei ci 0 lei doar temporar, urmat de tarifele standard.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată ofertei conține toate cifrele relevante (POS 0,99%, 35 lei/terminal) și condițiile de eligibilitate.",
+      "citat": "Acceptance of cards payments at the POS terminal: 0.99%/transaction Monthly administration/maintenance of POS terminal: RON 35 /terminal charged only if the value of transactions through the POS terminal, in the previous month, was less than RON 12,000",
+      "rol_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/t0-package/#:~:text=Acceptance%20of%20cards%20payments%20at,was%20less%20than%20RON%2012%2C000"
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane standard pentru Clienții IMM (cont curent și carduri de acceptare)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul standard de tarife pentru IMM arată costurile de bază (administrare cont 25 RON/lună, card de debit, abonament POS 79 RON/lună cu comision 0,85-1%) care se aplică după expirarea ofertei T0 sau pentru firmele care nu sunt eligibile pentru pachetul gratuit, oferind contextul tarifar standard echivalent componentelor din RISE (cont, card, POS).",
+      "incredere": 0.7,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Document general de tarife IMM în care apar explicit taxa de administrare cont și comisioanele de acceptare carduri (abonament POS), dar nu este o pagină dedicată unui pachet unic precum RISE.",
+      "citat": "Taxă administrare cont curent 25 RON/cont/lună; 79 RON lunar abonament/POS, Carduri emise de GarantiBank 0.85 comision tranzacție (%)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (18 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/campanii-curente-imm-si-pfa/pachet-t0/",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+    "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/t0-package/"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2650,
+    "citire_cache": 70020,
+    "scriere_cache": 42724,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14733
+  }
+}

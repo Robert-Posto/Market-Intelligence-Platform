@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/credite/credit-prompt",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit PROMPT",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit PROMPT este, ca și Credit Simplu IMM de la Libra, un credit fără garanții reale pentru microîntreprinderi, cu sumă dimensionată în funcție de cifra de afaceri și aprobare rapidă pe bază de documentație (similar unui scoring); diferă faptul că pagina Patria nu precizează explicit termenul maxim de rambursare (Libra: până la 48 luni) și este exclus explicit domeniul agricol, iar plafonul maxim (250.000 lei) depășește ușor intervalul Libra (20.000–200.000 lei).",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Este pagina dedicată a produsului Credit PROMPT, cu cifre explicite despre plafon și condiții, dar fără dobândă sau termen afișate.",
+      "citat": "Fără garanții reale din partea afacerii tale Simplu de accesat Până la 250.000 de lei în funcție de cifra de afaceri a activității tale Aprobare rapidă de la momentul depunerii documentației necesare și completarea acesteia la bancă",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/credite/credit-prompt",
+    "https://www.patriabank.ro/afaceri-mici/credite/credit-prompt",
+    "https://www.patriabank.ro/afaceri-mici/credite/credit-prompt"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 95670,
+    "iesire": 2600,
+    "citire_cache": 12702,
+    "scriere_cache": 33370,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3033054
+  }
+}

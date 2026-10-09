@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/cec-fin",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "CEC Fin",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "CEC Fin este o platformă online dedicată de tranzacționare valutară cu cursuri în timp real, accesată prin Internet Banking - același tip de produs ca Live FX; diferă segmentul: pagina este listată doar la secțiunea Persoane juridice/Trezorerie (multi-user pentru 'conturile tuturor societăților'), spre deosebire de Live FX care e oferit atât persoanelor fizice cât și juridice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului descrie explicit funcționalitățile platformei (cursuri în timp real, ordine la curs limită, alerte, grafice, decontare în timp real), dar nu conține cifre proprii (ex. spread-uri) - cifrele detaliate apar pe pagina conexă trezorerie-schimburi-valutare.",
+      "citat": "Acces rapid la schimburi valutare, managementul lichidității și soluții de acoperire a riscului valutar. Cursuri personalizate, actualizate în timp real Accesați cursuri de schimb adaptate profilului companiei dumneavoastră, în funcție de volumele tranzacționate și frecvența operațiunilor.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/trezorerie-schimburi-valutare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Schimburi Valutare prin CEC Fin și Internet Banking CEC Online",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina descrie aceeași platformă CEC Fin cu cursuri actualizate în timp real și praguri de sumă, dar produsul este orientat spre 'afacerea dumneavoastră' (companii), nu spre persoane fizice, spre deosebire de Live FX disponibil ambelor segmente.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină cu cifre concrete (plaje de sume, praguri pentru curs negociat) legate explicit de platforma de schimb valutar online.",
+      "citat": "Cursuri personalizate si actalizate in timp real fata de preturile pietei, valabile pentru orice sume intre 1-500.000 eur echivalent. stabiliti cursuri de schimb personalizate pentru afacerea dumneavoastra in functie de volumele tranzactionate, frecventa operatiunilor sau valoarea individuala a tranzactiilor.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/inline-files/Anexa%2011c%20-Manual%20Utilizare%20CEC%20Fin.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Manual de utilizare al platformei de tranzacționare CEC Fin",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Manualul descrie funcțiile platformei online CEC Fin (perechi valutare, ordine la curs limită, alerte de preț), echivalente cu Live FX, dar accesul este condiționat de serviciul Internet Banking contractat de persoane juridice cu utilizatori multipli/administrator de societate.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document oficial de utilizare a platformei, cu descrierea detaliată a funcționalităților, dar fără cifre de tarife/comisioane explicite.",
+      "citat": "Pentru a accesa CEC Fin, trebuie să aveți contractat cu CEC Bank serviciul Internet Banking Online și să existe cel puțin un utilizator cu dispozitiv de autentificare activ la data acordării accesului în platformă.",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/cec-fin",
+    "https://www.cec.ro/trezorerie-schimburi-valutare"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3605,
+    "citire_cache": 38850,
+    "scriere_cache": 57975,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.18876949999999998
+  }
+}

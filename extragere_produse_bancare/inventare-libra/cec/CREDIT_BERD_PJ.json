@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/garantia-de-portofoliu-pentru-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanția de Portofoliu pentru IMM (BID)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru persoane juridice (IMM) garantat de o instituție financiară de dezvoltare, cu plafon de 10 milioane lei/tranzacție și durată maximă de 120 de luni pentru investiții - foarte apropiat ca structură de creditul InvestEU BERD. Diferă însă garantul (BID - Banca de Investiții și Dezvoltare din România, nu BERD) și procentul de garantare (70%, respectiv 80% doar pentru categorii speciale, față de 80% flat la Libra).",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată produsului, cu cifre explicite despre valoarea garantată, durata maximă și procentul de garantare BID.",
+      "citat": "Moneda: lei Valoarea maximă garantată a tranzacției: 10 milioane lei/ tranzacție. Un beneficiar final poate beneficia de mai multe tranzacții, cu condiția îndeplinirii criteriilor de eligibilitate atât de la nivel de beneficiar final, cât și la nivel de produs Durata maximă: 120 luni (Creditul de investitii) și 60 luni (Creditul pentru Capital de Lucru)",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/garantia-de-portofoliu-pentru-imm",
+    "https://www.cec.ro/finantare-cu-garantie-individuala-bid"
+  ],
+  "durata_s": 102,
+  "consum": {
+    "intrare": 8,
+    "iesire": 8964,
+    "citire_cache": 80684,
+    "scriere_cache": 60434,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2568778
+  }
+}

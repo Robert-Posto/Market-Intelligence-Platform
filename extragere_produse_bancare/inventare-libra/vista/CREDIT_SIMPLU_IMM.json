@@ -1,0 +1,29 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "nepublicat",
+    "nota": "Vista Bank are o pagină generică (vistabank.ro/persoane-juridice/credite) care menționează 'Credite pentru capital de lucru' pentru companii, descriind calitativ scopul (finanțarea cheltuielilor zilnice), dar fără nicio cifră publicată (sumă minimă/maximă, termen, dobândă, comisioane) - nu poate fi folosită de un extractor automat. Singurul produs de creditare pentru IMM-uri cu cifre publicate este Programul IMM INVEST ROMÂNIA (vistabank.ro/persoane-juridice/imminvest), dar acesta este un program guvernamental garantat de FNGCIMM, cu plafoane de până la 10 milioane lei și care necesită ipotecă imobiliară/mobiliară asupra activelor finanțate - diferă fundamental de Credit Simplu IMM (produs pe scoring, fără garanție imobiliară, plafon 20.000-200.000 lei), deci nu calitate de echivalent sau similar strict. Nu am găsit niciun credit general, negarantat, bazat pe scoring, pentru sume mici (sub 200.000 lei) destinat IMM-urilor/PFA pe site-ul Vista Bank."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice",
+    "https://www.vistabank.ro/persoane-juridice/imminvest",
+    "https://www.vistabank.ro/agri",
+    "https://www.vistabank.ro/persoane-juridice/credite",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 23212,
+    "iesire": 5226,
+    "citire_cache": 150108,
+    "scriere_cache": 83609,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3377281
+  }
+}

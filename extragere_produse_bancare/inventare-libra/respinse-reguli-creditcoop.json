@@ -1,8 +1,9 @@
 {
  "banca": "creditcoop",
- "total": 1,
+ "total": 2,
  "pe_motiv": {
-  "valoare de depozit la termen, nu de cont de economii": 1
+  "valoare de depozit la termen, nu de cont de economii": 1,
+  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 1
  },
  "valori": [
   {
@@ -16,6 +17,18 @@
    "citat": "Fără comision la constituirea depozitului",
    "incredere": 0.8,
    "motiv": "valoare de depozit la termen, nu de cont de economii"
+  },
+  {
+   "url": "https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_administrare_card",
+   "valoare_num": 0.0,
+   "unitate": "lei",
+   "citat": "• Pentru sume < 50.000 lei (Standard) 10 lei / operațiune",
+   "incredere": 0.95,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   }
  ]
 }

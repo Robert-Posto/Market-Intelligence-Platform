@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/persoane-fizice/overdraft-flexfund/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "FlexFund Overdraft",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Descoperit de cont pentru persoane fizice, dobândă doar pe suma utilizată, similar ca structură cu OVERDRAFT_PF de la Libra, deși plafonul e exprimat ca multiplu de venit diferit (2-3x venit vs 6 salarii/max 70.000 lei la Libra).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele cheie: dobândă, plafon, perioadă, condiții de eligibilitate.",
+      "citat": "Cu FlexFund Overdraft de la ProCredit Bank beneficiezi de un descoperit de cont de până la 2 salarii, disponibil pe contul tău de debit. Până la de 3 x venitul tău lunar, 12% dobândă anuală (doar pentru suma utilizată), Perioadă flexibilă de creditare de până la 5 ani",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/09/lista-de-dobanzi-si-comisioane-produse-de-creditare-pf.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "FlexFund Overdraft (Descoperit de cont - Overdraft)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de dobânzi și comisioane care listează explicit produsul Overdraft pentru persoane fizice cu toate cifrele relevante.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document de dobânzi și comisioane cu tabel dedicat produsului Overdraft, incluzând rata dobânzii, maturitate și comisioane.",
+      "citat": "Tip produs Overdraft Moneda LEI Maturitate Pana la 5 ani Tip dobanda Fixa Rata anuala a dobanzii 12% Comision analiza dosar 0 LEI Comision rambursare anticipata 0% Comision unic pentru servicii solicitate de client 100 LEI",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/01/Lista-de-preturi-persoane-fizice-_-04.12.2024_final.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "FlexFund Overdraft",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Lista de prețuri pentru persoane fizice include produsul FlexFund Overdraft cu exemplu de calcul și dobândă fixă.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de tarife general pentru persoane fizice în care apare explicit produsul FlexFund Overdraft cu dobândă fixă de 12%.",
+      "citat": "Pentru un FlexFund Overdraft (descoperit de cont) cu o limită maximă de 10 000 RON, acordat pe o perioadă de 60 de luni (5 ani), având dobânda fixă de 12% pe an, comision de analiză 0.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1552,
+    "citire_cache": 6336,
+    "scriere_cache": 32430,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0978702
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_AGRI_IRIGATII",
+  "denumire": "Credit soluții pentru irigații (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/agricultura/credite/credite-pentru-utilaje/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru utilaje agricole",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit de investiții pentru echipamente agricole (același segment: fermieri/IMM agricole) care menționează explicit sistemele de irigații ca una dintre tehnologiile finanțabile, dar nu este un produs dedicat exclusiv irigațiilor și nu are termenul 12-60 luni specific din produsul Libra, ci o perioadă de finanțare generică 'extinsă'.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina conține cifre/beneficii concrete (finanțare integrală, TVA inclus, fără avans) și menționează explicit 'sistemele de irigații eficiente din punct de vedere energetic' ca exemplu de investiție finanțabilă, dar nu are un produs numit distinct pentru irigații cu termene proprii.",
+      "metoda_dovada": "http",
+      "citat": "Agricultura modernă se bazează pe tehnologii care pot îmbunătăți eficiența energetică, cum ar fi tractoarele și utilajele agricole cu consum redus de combustibil, sistemele de irigații eficiente din punct de vedere energetic, sistemele de iluminat LED pentru culturile crescute în interior și altele.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/agricultura/credite/credite-pentru-utilaje/#:~:text=Agricultura%20modern%C4%83%20se%20bazeaz%C4%83%20pe,crescute%20%C3%AEn%20interior%20%C8%99i%20altele."
+    },
+    {
+      "url": "https://www.procreditbank.ro/agricultura/finantare-cu-programe-europene/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Programul InvestEU dedicat Finanțării Practicilor Sustenabile",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este programul InvestEU dedicat agriculturii (același segment: fermieri/antreprenori agricoli, aceeași sursă de garantare FEI) prin care se pot finanța investiții, inclusiv echipamente și practici agricole durabile, dar pagina nu listează explicit 'irigații' ca destinație dedicată și nu are termenul 12-60 luni din produsul Libra (are maturitate de până la 3 ani pentru capital de lucru și până la 15 ani pentru investiții).",
+      "incredere": 0.68,
+      "explicatie_incredere": "Pagina este dedicată programului InvestEU pentru agricultură și conține cifre concrete (garanție 70%, avans zero, maturitate 3-15 ani), însă nu menționează explicit cuvântul 'irigații' ca destinație separată, ci doar categorii generale ca 'Practici agricole durabile' și 'Modernizarea echipamentelor agricole'.",
+      "citat": "Garanție de până la 70%, fără costuri suplimentare pentru client, susținută de Fondul European de Investiții - Credite pentru investiții și/sau capital de lucru - Avans zero - Maturitate credite pentru capital de lucru: până la 3 ani - Maturitate extinsă pentru investiții: pana la 15 ani",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/agricultura/finantare-cu-programe-europene/#:~:text=Garan%C8%9Bie%20de%20p%C3%A2n%C4%83%20la%2070%25%2C,investi%C8%9Bii%3A%20pana%20la%2015%20ani"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/ro/agricultori/credite/credite-pentru-destinatii-mixte",
+    "https://www.procreditbank.ro/agricultura/finantare-cu-programe-europene/",
+    "https://www.procreditbank.ro/agricultura/credite/credite-pentru-utilaje/"
+  ],
+  "durata_s": 64,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5294,
+    "citire_cache": 87036,
+    "scriere_cache": 67108,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2381332
+  }
+}

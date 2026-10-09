@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Bank of China CEE Ltd - Sucursala București oferă doar un Developer Portal PSD2 generic (Payment Initiation Service, Account Information Service, Fund Confirmation Service) destinat Third Party Providers pentru Open Banking, nu o integrare dedicată cu programele de contabilitate pentru firme/PFA. Site-ul băncii (secțiunile Corporate Banking: RMB Service, Deposits, Corporate Loans, Trade Services, Treasury & FX, Other Services) nu listează niciun produs de tip 'API Contabili' sau echivalent dedicat integrării cu software-uri de contabilitate. Open Banking PSD2 nu este echivalent cu o integrare pentru contabili, conform regulilor de potrivire."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/custserv/201903/t20190307_14902791.html",
+    "https://www.bankofchina.com/ro/en/cbservice/cbo/"
+  ],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1096,
+    "citire_cache": 24042,
+    "scriere_cache": 20995,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.06826789999999999
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Credit-Line",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "The Credit Line / Linia de credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Linie de credit reînnoibilă pentru companii, destinată capitalului de lucru (plata furnizorilor, utilităților, taxelor, salariilor), cu termen de 12 luni și plafon legat de cifra de afaceri — același tip de produs și segment ca LINIE_CREDIT Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre explicite: maturitate, procent din cifra de afaceri și comision pentru sume neutilizate.",
+      "citat": "Maturity: credit line maturity is maximum 12 months; Amount: up to 25% of the yearly turnover; 0% commission for unused amounts; Fast approval to the credit line.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Credite-IMM/Finantarea-creantelor",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit pentru finanțarea creanțelor",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o variantă a liniei de credit pentru IMM-uri, dar legată de cesionarea de efecte comerciale (facturi/bilete la ordin) ca garanție, nu o linie generică de capital de lucru; termenul și garanțiile diferă (garanții: bilete la ordin, facturi).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată IMM, cu cifre explicite privind durata, plafonul și comisioanele liniei de credit pentru finanțarea creanțelor.",
+      "citat": "Perioada de finanţare: linia de credit se acordă pe maximum 12 luni, cu utilizări în cadrul acestei perioade în funcţie de efectele cesionate; Suma finanţată: până la 25% din cifra de afaceri a companiei; 0% comision pentru sumele neutilizate din credit",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 14,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1134,
+    "citire_cache": 6388,
+    "scriere_cache": 22248,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0682456
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent pentru persoane juridice (Lista de dobanzi, taxe si comisioane pentru persoane juridice si entitati asimilate)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent standard pentru persoane juridice oferit de tbi bank, acelasi tip de produs si acelasi segment (PJ), dar deschiderea se face traditional, pe baza unui formular 'Cerere servicii cont curent persoane juridice' semnat, nu printr-un flux exclusiv online precum Cont Online Business de la Libra; pe site, produsele de credit pentru firme subliniaza explicit ca functioneaza 'Fara cont curent la tbi bank', semn ca acest cont curent nu este gandit ca un produs digital de sine statator.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul de tarife contine explicit comisioanele pentru deschiderea si administrarea contului curent pentru persoane juridice, cu valori numerice clare.",
+      "citat": "Deschidere cont curent/ Current account opening 10 RON Administrare cont curent / Current account administration 10 RON/luna / 10 RON month",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Conditii%20Generale%20de%20Afaceri%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Conditii Generale de Afaceri pentru persoane juridice si entitati asimilate (contract de cont curent PJ)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de conditii generale care guverneaza contul curent pentru persoane juridice la tbi bank; acelasi tip de produs si segment ca si Cont Online Business, dar canalul de deschidere/operare difera: contractul se bazeaza pe o cerere scrisa semnata de client, fara mentiuni despre deschidere sau administrare exclusiv online ori card business dedicat.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul descrie in detaliu regulile contului curent PJ (deschidere, inchidere, dobanzi, produse asociate) dar nu contine cifre specifice unui produs 'online' dedicat, ci conditii generale cu un termen numeric relevant privind inactivitatea contului.",
+      "citat": "Astfel, Banca are dreptul de a inchide /suspenda unul sau mai multe dintre conturile Clientului, spre exemplu, in cazul in care acesta nu il/le utilizeaza pentru o perioada de 6 (sase) luni consecutive.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/companii/",
+    "https://tbibank.ro/persoane-fizice/operatiuni-bancare/operatiuni-cont-curent/",
+    "https://tbibank.ro/companii/credite-companii/"
+  ],
+  "durata_s": 62,
+  "consum": {
+    "intrare": 10,
+    "iesire": 5068,
+    "citire_cache": 121928,
+    "scriere_cache": 55393,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2135681
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "LEASING_FINANCIAR",
+  "denumire": "Leasing financiar (Libra Development IFN)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/imm/credite-imm/leasing-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Financial Leasing (Leasing financiar)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de leasing financiar pentru vehicule, echipamente și utilaje, destinat persoanelor juridice (IMM-uri), cu condiții de finanțare (avans, durată, dobândă) comparabile cu leasingul financiar Libra pentru firme/PFA.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată Leasing Financiar la Intesa Sanpaolo conține cifre concrete despre avans, durată, valoare reziduală și comisioane pentru leasing auto și echipamente.",
+      "citat": "Currency: RON / EUR Deposit: min. 10% Financing term: - 1–5 years for vehicles - 1–6 years for equipment Residual value: 1–5% of the purchase price of the asset Interest rate: variable, based on the 3-month Euribor / Robor index + an attractive fixed margin Administration fee: charged once, upon signing the contract Monthly operational fee: starting from 0 (zero) Logistics fee: 200 EUR + VAT Repayment frequency: monthly, quarterly, half-yearly",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/leasing-imm.html",
+    "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-investitii-corporate.html",
+    "https://www.intesasanpaolobank.ro/corporate/credite-corporate/leasing-corporate.html",
+    "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+    "https://www.intesasanpaolobank.ro/en/imm/credite-imm/leasing-imm.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_Septembrie-2026.pdf"
+  ],
+  "durata_s": 78,
+  "consum": {
+    "intrare": 12,
+    "iesire": 5594,
+    "citire_cache": 207679,
+    "scriere_cache": 106812,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3645298
+  }
+}

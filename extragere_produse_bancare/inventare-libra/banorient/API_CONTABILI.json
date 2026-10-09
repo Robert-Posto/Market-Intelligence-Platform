@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Banca oferă doar o platformă generică PSD2 Open Banking (Banorient France API) destinată furnizorilor terți (TPP - AISP/PISP) conform directivei europene, nu o integrare dedicată cu programe de contabilitate pentru firme/PFA. Este un alt tip de produs (Open Banking generic pentru dezvoltatori terți), nu o integrare API-Contabili specifică segmentului de persoane juridice. Vezi https://www.banorientfrance.com/romanian/open-banking și https://www.banorientfrance.com/romanian/romania/products-and-services."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/open-banking"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 6,
+    "iesire": 937,
+    "citire_cache": 17173,
+    "scriere_cache": 17290,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0560416
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/11/16/standard-mastercard/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Mastercard Standard",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de debit pentru persoane fizice, fără comision de emitere, cu beneficii/reduceri la parteneri (Priceless Cities, Ghiseul.ro), echivalent segmentului persoane fizice al produsului Libra. Zero administrare este menționat explicit pentru cardul atașat pachetelor de cont.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele comisioanelor (0 lei) pentru emitere, retragere ATM și administrare in cadrul pachetelor.",
+      "citat": "ZERO COMISION emitere (furnizare) card; la achitarea cu cardul a cumparaturilor în magazine si pe internet; de transfer intre conturi curente la ATM-ul bancii; schimbare PIN la ATM-ul bancii. In plus, pentru cardul de debit din cadrul pachetelor de cont ai: 0 lei comision de retragere numerar de la orice ATM din Romania sau din UE; 0 lei administrare card de debit.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/16/standard-mastercard/#:~:text=ZERO%20COMISION%20emitere%20%28furnizare%29%20card%3B,lei%20administrare%20card%20de%20debit."
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2022/11/Taxe-si-comisioane-carduri.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Mastercard Standard / Gold / World - Persoane Fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife confirmă comision zero de emitere pentru toate cardurile de debit persoane fizice, în linie cu promisiunea Libra de card fără costuri de emitere.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisioanele (0 lei) pentru emiterea cardurilor de debit persoane fizice.",
+      "citat": "CARDURI DE DEBIT PERSOANE FIZICE COMISIOANE FURNIZARE (EMITERE) SI ADMINISTRARE Furnizare (Emitere) card 0 lei 0 lei 0 lei Furnizare (Emitere) card in regim de urgenta Furnizare (Emitere) + 10 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2024/11/Conditii-generale-de-utilizare-a-cardurilor-Mastercard-Business.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Mastercard Business - Persoane Juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru cardul Mastercard Business arată emitere gratuită (0 lei) dar o administrare lunară de 5 lei (Standard) / 15 lei (World), diferit de administrarea gratuită promisă de Libra.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Anexa de comisioane din condițiile generale ale cardului Business listează explicit valorile de emitere și administrare lunară.",
+      "citat": "MASTERCARD BUSINESS Standard World COMISIOANE FURNIZRE (EMITERE) SI ADMINISTRARE Furnizare (Emitere) 0 lei 0 lei Furnizare (Emitere), in regim de urgenta Furnizare (Emitere) + 30 lei Furnizare (Emitere) + 30 lei Administrare lunara 5 lei 15 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2022/12/05/business-card-5/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Business (Business Card)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit pentru persoane juridice (companii), cu emitere gratuită, dar cu comision lunar de administrare de 5 lei - spre deosebire de Libra Card Free care este descris fără costuri de administrare; segmentul (persoane juridice) corespunde.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată produsului pentru persoane juridice menționează explicit comision zero la emitere si valabilitate de 5 ani, dar nu detaliază administrarea lunară (vezi documentul de tarife asociat).",
+      "citat": "ZERO COMMISSION card issuance (supply) when paying by card the shopping in shops and on Internet PIN change on the bank ATM FLEXIBILITY valid for 5 years unlimited number of additional cards",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2022/12/05/business-card-5/#:~:text=ZERO%20COMMISSION%20card%20issuance%20%28supply%29,unlimited%20number%20of%20additional%20cards"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/11/16/standard-mastercard/",
+    "https://www.eximbank.ro/2022/12/05/business-card/",
+    "https://www.eximbank.ro/mastercard-business/",
+    "https://www.eximbank.ro/en/2022/12/05/business-card-5/"
+  ],
+  "durata_s": 128,
+  "consum": {
+    "intrare": 91771,
+    "iesire": 11266,
+    "citire_cache": 100887,
+    "scriere_cache": 60860,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.46852940000000004
+  }
+}

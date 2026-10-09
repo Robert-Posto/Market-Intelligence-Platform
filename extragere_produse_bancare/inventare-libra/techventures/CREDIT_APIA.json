@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/credite-agricultura",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul agricol APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de activitate curentă pe baza subvenției APIA, destinat persoanelor juridice din agricultură, cu rambursare la încasarea subvenției - exact același tip de produs și segment ca CREDIT_APIA de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține denumirea produsului și cifre concrete (procent din subvenție, mecanism de rambursare).",
+      "citat": "Creditul agricol APIA este un credit în lei destinat finanțării capitalului de lucru. Beneficiarii sunt persoanele juridice și categoriile asimilate care desfășoară o activitate agricolă în calitate de utilizatori legali ai suprafețelor de teren agricol și/sau deținători legali de animale, potrivit legislației în vigoare.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/credite-agricultura",
+    "https://techventures.bank/companii/credite-activitate-curenta"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 6327,
+    "iesire": 1157,
+    "citire_cache": 25205,
+    "scriere_cache": 19735,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0786025
+  }
+}

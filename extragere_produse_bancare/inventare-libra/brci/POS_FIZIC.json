@@ -1,0 +1,34 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "blocat_de_robots",
+    "nota": "Toate încercările de a deschide pagini de pe brci.ro (inclusiv www.brci.ro, www2.brci.ro, companii.brci.ro) au fost respinse de uneltele de fetch cu mesajul „nu aveți permisiunea de a accesa acest domeniu”, ceea ce indică un blocaj robots.txt la nivel de domeniu. Din fragmentele obținute prin web_search nu am identificat o pagină dedicată unui terminal POS fizic pentru comercianți (acquiring) la BRCI; au apărut doar produse de tip card de debit/business pentru comercianți (Card Mastercard Business, Card Mastercard PayPoint Business), care sunt carduri emise comerciantului, nu terminale POS instalate la locația acestuia pentru acceptarea plăților cu cardul. Nu am putut confirma nici existența, nici inexistența certă a unui produs echivalent din cauza blocajului de acces, deci nu pot raporta surse verificate."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/ro/persoane-juridice.html",
+    "https://www.brci.ro/",
+    "https://brci.ro/ro/produse/scrisoare-garantie.html",
+    "https://companii.brci.ro/pjonboarding",
+    "https://www2.brci.ro/",
+    "https://www.brci.ro/ro/articol/securitatea-informatiei.html",
+    "https://www.brci.ro/ro/produse/card-mastercard-paypoint-business.html",
+    "https://www.brci.ro/ro/produse/card-mastercard-business.html",
+    "https://brci.ro/ro/produse/card-mastercard-paypoint-business.html",
+    "http://www.brci.ro/ro/produse/card-mastercard-paypoint-business.html"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 97823,
+    "iesire": 3534,
+    "citire_cache": 29908,
+    "scriere_cache": 24225,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.29753009999999996
+  }
+}

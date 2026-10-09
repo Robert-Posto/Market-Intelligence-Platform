@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Connect 20",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet tranzacțional lunar dedicat persoanelor juridice, cu abonament lunar fix, ce include cont curent lei+euro, card de debit business și servicii gratuite de administrare — corespunde unui abonament operațional (pachet cont) pentru firme.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetului Connect 20 conține explicit structura abonamentului lunar și valorile comisioanelor incluse/gratuite.",
+      "citat": "Connect 20 este un pachet tranzactional dedicat persoanelor juridice care nu detin un cont curent sau alte pachete de produse si servicii bancare la BRCI. Abonament lunar 20 lei. Zero Griji. 20 lei / luna. 0 lei. Cont in LEI si in EURO.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachetul CONNECT 20 (oferit prin Partener NETOPIA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina detaliază aceeași schemă de abonament Connect 20 pentru persoane juridice, cu abonamentul lunar de 20 lei, comisioane gratuite de administrare cont și reduceri de 20% la plăți.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina de produs pentru cardul Netopia Business descrie explicit condițiile pachetului Connect 20 cu valoarea abonamentului și beneficiile aferente contului.",
+      "citat": "Vei beneficia de pachetul BRCI CONNECT 20 prin Partener NETOPIA, cu un abonament lunar de 20 lei, ce include: Pachetul CONNECT 20 (oferit prin Partener NETOPIA) 1 Cont Curent in Lei 1 Cont Curent in Euro 1 Card Mastercard Business Debit Lei oferit prin Partener",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/cont-curent-pj.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent persoane juridice / Lista de tarife și comisioane PJ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul general de tarife și comisioane pentru persoane juridice (conturi, operațiuni, carduri business, program procesare) acoperă și structura de comisioane aplicabilă pachetelor de cont, inclusiv Connect 20.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina conține lista de tarife și comisioane PJ ca document descărcabil, relevantă pentru componentele de preț ale pachetului operațional, dar cifrele specifice Connect 20 sunt detaliate separat.",
+      "citat": "Lista de tarife și comisioane (conturi, operatiuni, carduri business, program procesare) din 18.11.2024 Descarcă. Incepand cu 15.11.2022 dobanda standard pentru disponibilitatile la vedere din contul curent in Lei este 2.00% p.a.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://companii.brci.ro/pjonboarding",
+    "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html",
+    "https://companii.brci.ro",
+    "https://www2.brci.ro/"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 57762,
+    "iesire": 2379,
+    "citire_cache": 12676,
+    "scriere_cache": 23363,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20025669999999998
+  }
+}

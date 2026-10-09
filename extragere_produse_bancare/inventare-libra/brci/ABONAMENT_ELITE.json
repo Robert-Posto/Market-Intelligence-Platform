@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Connect 20",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Connect 20 este un pachet/abonament lunar pentru persoane juridice (cont curent + card + banking), deci același tip de produs și același segment ca Abonamentul ELITE de la Libra, dar diferă semnificativ: preț mult mai mic (20 lei/lună vs 225 lei/lună), nu specifică un număr fix de operațiuni incluse (plăți/încasări/SEPA) comparabil cu cele 50 incluse la Libra, include un singur card (nu 3) și nu oferă Live FX.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată pachetului Connect 20 conține cifrele abonamentului (20 lei/lună, taxe carduri) dar nu detaliază plafoane de tranzacții precum produsul Libra.",
+      "citat": "Connect 20 este un pachet tranzactional dedicat persoanelor juridice care nu detin un cont curent sau alte pachete de produse si servicii bancare la BRCI. 20 lei / luna · 0 lei · Cont in LEI si in EURO 150 lei / an · 0 lei · Taxa anuala Administrare Card Mastercard Business Debit",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://companii.brci.ro/pjonboarding",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 25258,
+    "iesire": 2736,
+    "citire_cache": 12736,
+    "scriere_cache": 23105,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1381857
+  }
+}

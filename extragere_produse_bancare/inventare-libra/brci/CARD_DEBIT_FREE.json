@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://vreaucont.brci.ro/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Mastercard (Cont Total Digital MIND by BRCI)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acelasi tip de produs (card de debit Mastercard pentru persoane fizice) si acelasi segment (persoane fizice), cu zero costuri de emitere si administrare ca la Libra, dar disponibil doar prin canalul de onboarding 100% digital MIND si fara mentiune explicita de cashback la parteneri.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicata contului total digital MIND enumera explicit zero comision de emitere si zero taxa anuala de administrare pentru cardul de debit Mastercard principal.",
+      "citat": "ZERO comision de emitere, ZERO taxă anuală de administrare (card principal) Card de debit Mastercard embosat, cu chip, contactless. ZERO comision la plățile în Lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acelasi tip de produs (card de debit Mastercard) si acelasi segment (persoane fizice) ca partea persoane fizice a produsului Libra, dar pagina nu mentioneaza cashback la parteneri, doar comisioane pentru tranzactii POS (gratuite) si retragere ATM (1 Leu).",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina dedicata cardului de debit contine cifre concrete (comision ATM 1 Leu, POS gratuit) dar nu confirma scutirea de taxe de emitere/administrare si nu mentioneaza cashback.",
+      "citat": "Card MASTERCARD debit in Lei embosat, cu CHIP si cu tehnologie contactless; Plati rapide folosind tehnologia contactless; Tranzactii la comercianti efectuate la POS, oriunde in lume GRATUIT; Comision fix de doar 1 Leu / tranzactie la retragerea de numerar la ATM-urile oricarei banci din Romania sau UE",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/card-mastercard-business.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Mastercard Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acelasi tip de produs (card de debit Mastercard) si acelasi segment (persoane juridice) ca partea de business a produsului Libra, insa fara mentiune de cashback general la parteneri (cashback apare doar la variantele co-brand NETOPIA/PayPoint, legate de un partener specific, nu la cardul general de business).",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina produsului de business enumera caracteristici si o taxa (POS gratuit) dar nu afiseaza explicit taxele de emitere/administrare sau cashback general in textul extras.",
+      "citat": "Card MASTERCARD business debit in Lei embosat, cu CHIP si cu tehnologie contactless; Plăti rapide folosind tehnologia contactless; Tranzacții comerciale efectuate la POS, oriunde in lume GRATUIT; Se poate utiliza atât in Romania cat si in afara tarii; Posibilitate de a solicita pana la 250 carduri pe același cont",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html",
+    "https://www.brci.ro/ro/produse/card-mastercard-business.html"
+  ],
+  "durata_s": 100,
+  "consum": {
+    "intrare": 25775,
+    "iesire": 8560,
+    "citire_cache": 12640,
+    "scriere_cache": 23646,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.198793
+  }
+}

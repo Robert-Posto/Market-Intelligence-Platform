@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "necesita_alt_domeniu",
+    "nota": "PKO Bank Polski Sucursala București deservește exclusiv clienți corporate (persoane juridice) - site-ul declară explicit: 'Sucursala din București a PKO Bank Polski deservește clienții corporate care își desfășoară activitatea în România'. Produsul Libra OVERDRAFT_PF este pentru persoane fizice (PF), segment pe care această sucursală nu îl deservește deloc - nu există conturi curente, carduri sau credite pentru persoane fizice, doar produse Business (Card de debit Visa Business, iPKO Biznes, credite corporate). Deși există 'Facilitate de descoperit de Cont' în lista de Credite, aceasta este clar un produs pentru companii (segment corporate), nu echivalent cu overdraftul PF Libra. Nu există alt domeniu retail/PF al PKO în România - întreaga prezență locală este doar sucursala corporate."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse"
+  ],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1140,
+    "citire_cache": 23817,
+    "scriere_cache": 19415,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0647129
+  }
+}

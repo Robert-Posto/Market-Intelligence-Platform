@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Connect 20",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Connect 20 este un pachet de cont curent pentru persoane juridice, deschis 100% online, cu abonament lunar și card de debit business asociat - același tip de produs (cont business digital cu abonament) și același segment de clienți (PJ) ca și Cont Online Business de la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Este pagina dedicată de onboarding online a pachetului Connect 20, cu detalii explicite despre conturi, card și tarifele abonamentului.",
+      "citat": "Beneficiile pachetului Connect 20: GRATUIT, BRCI iBanking si aplicatia BRCI Mobile, GRATUIT Incasari intrabancare si interbancare, 20% reducere la plati electronice interbancare, GRATUIT Taxa emitere si Taxa anuala administrare card, 30% reducere Taxa inlocuire si Taxa reemitere card, GRATUIT Info SMS pentru tranzactii cu cardul. Abonament lunar 20 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+      "tip": "html",
+      "tip_potrivire": "echivalent",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Connect 20 (oferit prin Partener NETOPIA)",
+      "motiv_potrivire": "Pagina descrie același pachet Connect 20 (cont curent lei+euro deschis online, administrat prin abonament lunar, cu card Mastercard Business Debit), de data aceasta în varianta oferită prin partenerul NETOPIA, confirmând structura de tarife a produsului echivalent cu Cont Online Business.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Documentul de prezentare a cardului business menționează explicit pachetul Connect 20, abonamentul lunar de 20 lei și componentele incluse (conturi + card), deci acoperă aceeași ofertă, chiar dacă pagina e centrată pe card.",
+      "citat": "Vei beneficia de pachetul BRCI CONNECT 20 prin Partener NETOPIA, cu un abonament lunar de 20 lei, ce include: Pachetul CONNECT 20 (oferit prin Partener NETOPIA) 1 Cont Curent in Lei 1 Cont Curent in Euro 1 Card Mastercard Business Debit Lei oferit prin Partener Instrumente de Plata cu Acces la Distanta (BRCI iBanking si BRCI Mobile Banking).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://companii.brci.ro/pjonboarding",
+    "https://www2.brci.ro/",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html",
+    "https://brci.ro/ro/produse/card-mastercard-netopia-business.html"
+  ],
+  "durata_s": 114,
+  "consum": {
+    "intrare": 39000,
+    "iesire": 7747,
+    "citire_cache": 12674,
+    "scriere_cache": 18883,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20521230000000001
+  }
+}

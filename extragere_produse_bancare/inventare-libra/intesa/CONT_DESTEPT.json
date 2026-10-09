@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "fise-produs",
+      "denumire_la_banca": "Pachetul START (din gama Pachete tranzacționale pentru companii mici și întreprinzători individuali)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul pachet de cont curent pentru firme mici/PFA la Intesa care poate ajunge la cost zero și include cont, card de debit Visa Business, internet banking și plăți/încasări nelimitate intrabancar, la fel ca «Cont Deștept». Diferă însă condiția: gratuitatea depinde de rulajul lunar (>20.000 lei), nu este un beneficiu garantat 12 luni pentru firme nou-înființate (start-up), iar comisionul POS nu are procentul specific de 0,59% menționat de Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este fișa de produs dedicată pachetelor tranzacționale pentru companii mici, cu cifrele exacte ale pachetului START (cost, prag de gratuitate, componență).",
+      "pagina_pdf": 2,
+      "citat": "Pachetul START porneste de la 0 lei/luna, daca rulajul lunar creditor prin conturile curente deschise la Intesa Sanpaolo Bank este mai mare de 20.000 lei/ luna.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul START (Pachete tranzacționale cont curent, Lista costurilor standard - Persoane Juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife confirmă comisionul standard de 29 Lei/lună pentru pachetul START și condiția de scutire totală, echivalent structural cu pachetul gratuit pentru start-up al Libra, dar fără dedicare explicită pentru firme nou-înființate.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisionul și condiția de gratuitate pentru pachetul START, aplicabil companiilor mici și întreprinzătorilor individuali.",
+      "pagina_pdf": 2,
+      "citat": "Comisionul de administrare lunară pachet tranzacțional START este zero, în condițiile în care rulajul lunar creditor prin conturile curente deschise la Banca Comerciala Intesa Sanpaolo Romania SA este mai mare de 20.000 lei/lună.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori.html",
+    "https://www.intesasanpaolobank.ro/en/microintreprinderi-antreprenori",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf"
+  ],
+  "durata_s": 98,
+  "consum": {
+    "intrare": 14,
+    "iesire": 8027,
+    "citire_cache": 267375,
+    "scriere_cache": 103333,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.39210549999999994
+  }
+}

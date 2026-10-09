@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/pachet-grow/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet GROW (pachet de cont curent de business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pachetul operațional de cont curent pentru persoane juridice (firme/PFA) la ProCredit, cu plăți naționale nelimitate sub 50.000 lei, carduri incluse și comision lunar de administrare, exact ca Abonamentul RISE de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată a pachetului conține cifre exacte despre comision, carduri incluse și plăți incluse.",
+      "citat": "Comision de administrare 0 lei pe lună, timp de 24 de luni. Conturi incluse 1 cont curent lei + 2 conturi în valută. Plăți naționale sub 50.000 de lei Nelimitate. Carduri de debit incluse 3 carduri. După încheierea perioadei promoționale de 24 de luni, comisionul standard de administrare este de 86 lei/lună.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/pachet-grow/#:~:text=Comision%20de%20administrare%200%20lei,administrare%20este%20de%2086%20lei%2Flun%C4%83."
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent pentru companii (G R O W)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina centrală de produs pentru conturile curente de business la ProCredit, care prezintă pachetul GROW ca ofertă principală pentru persoane juridice, cu cifre despre comision și durată.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina hub a produsului conține cifrele campaniei curente (comision, durată), deși detaliile complete sunt pe pagina dedicată GROW.",
+      "citat": "Contul tău de business G R O W 100% online ZERO comision de administrare timp de 24 de luni 50 lei / lună timp de 5 luni*",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/#:~:text=Contul%20t%C4%83u%20de%20business%20G,lun%C4%83%20timp%20de%205%20luni%2A"
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet servicii bancare (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice listează pachetul de cont curent de business (varianta standard, fără promoție) cu comision lunar, conturi, carduri și plăți naționale incluse, echivalent cu Abonamentul RISE.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document tarife oficial, PDF, cu rândul exact al pachetului de servicii bancare și valoarea comisionului lunar standard.",
+      "citat": "Administrare pachet servicii bancare 86 lei Comisionul se preia lunar Pachet servicii bancare 3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse Card Visa debit (maxim trei carduri incluse)",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+    "https://www.procreditbank.ro/landing/prozero24/",
+    "https://www.procreditbank.ro/companii/pachet-grow/",
+    "https://www.procreditbank.ro/companii/servicii-bancare/terminale-pos/",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf"
+  ],
+  "durata_s": 49,
+  "consum": {
+    "intrare": 12,
+    "iesire": 3837,
+    "citire_cache": 263583,
+    "scriere_cache": 112160,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3715106
+  }
+}

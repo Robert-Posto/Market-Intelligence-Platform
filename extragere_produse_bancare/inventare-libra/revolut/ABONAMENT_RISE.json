@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Plan Basic (Revolut Business)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente lunare pentru firme/PFA la 50 lei/lună, cu carduri business și operațiuni de plată, dar Revolut Basic oferă doar 10 transferuri locale fără comision (nu nelimitate ca RISE) și nu include card fizic gratuit în același mod.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată planurilor Revolut Business prezintă explicit prețul de 50 lei/lună și beneficiile planului Basic, echivalentul cel mai apropiat de abonamentul operațional RISE.",
+      "citat": "Basic 50 lei/lună Obține elementele esențiale pentru a începe să operezi imediat. Membri ai echipei nelimitați, 10 de transferuri locale fără comision, Schimbă 5.500 lei la cursul interbancar în timpul orelor de piață, Acceptă plăți online și în persoană, 2,75 % pe an (variabil) la economii",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/business-basic-fees/",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Business Fees (Basic plan)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru planul Basic (echivalentul RISE ca segment și tip) arată taxa de plan de 50 RON/lună, comision de 2% la retrageri ATM și alocația de 10 transferuri locale gratuite/lună, diferit de retragerile gratuite și plățile nelimitate din RISE.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife cu cifre exacte pentru planul Basic: taxa lunară, comisioane de retragere și alocații de transferuri.",
+      "citat": "50 RON · First or Additional Plastic Card A card fee may apply. 2% fee on all withdrawals Local transfers · 10 per month. 27 RON per additional transfer",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/business/accept-payments-pricing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acceptă plăți cu Revolut Business (comisioane de procesare card)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Această pagină conține comisioanele de procesare a plăților cu cardul (echivalentul funcției mPOS din RISE), dar procentele diferă (de la 0,8% + 0,12 lei) față de 0,59% la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina conține cifre explicite despre comisioanele pentru plăți în persoană, incluse fără taxă lunară suplimentară în planurile Revolut Business, relevante pentru componenta mPOS a abonamentului RISE.",
+      "citat": "Prețuri de la 0,8 % + 0,12 lei Plăți în persoană 1% + 1,20 lei Plăți online. Fără comisioane lunare adiționale. Taxă lunară Inclus în planurile Revolut Business",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2075,
+    "citire_cache": 6361,
+    "scriere_cache": 29006,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0945452
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/product/depozitul-simplu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul Simplu",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este depozitul standard la termen al tbi bank pentru persoane fizice (RON/EUR/USD), dar nu există o scadență de 7 luni și nici o ofertă promoțională de tip „Blitz”; cele mai apropiate trepte sunt 6 luni și 9 luni, ambele cu 7,00% p.a. în RON, față de 6,25% la Libra pe 7 luni.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține grila completă de dobânzi pe toate termenele disponibile, dar nu include un termen de 7 luni.",
+      "citat": "LEI · 1 LUNA 6,50% · 3 LUNI 6,70% · 5 LUNI 6,90% · 6 LUNI 7,00% · 9 LUNI 7,00% · 12 LUNI 7,00% · 15 LUNI 7,20% · 18 LUNI 7,30% · 24 LUNI 7,50% · 36 LUNI",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/2026/05/Informare-actualizare-dobanzi-Depozite_20mai2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen - Persoane Juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă depozitele la termen pentru persoane juridice (segment relevant pentru Libra Blitz care se adresează și firmelor), dar grila de scadențe se oprește la 12 luni (1, 3, 6, 12 luni), fără termen de 7 luni și fără caracter promoțional-limitat; dobânzile sunt mult sub 6,25% (max. 6,10% la 12 luni în RON).",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de dobânzi, actualizat la 20.05.2026, cu cifre explicite pentru depozitele persoanelor juridice, dar fără scadența de 7 luni cerută de produsul Libra.",
+      "citat": "Dobânzi în vigoare din 20.05.2026 pentru Persoane Fizice și Juridice Depozite Valută/Perioada 1 lună 3 luni 6 luni 12 luni LEI 4,50% 5,00% 6,00% 6,10%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://tbibank.ro/product/depozitul-online/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul Online",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Alt canal (online) al aceluiași tip de depozit la termen pentru persoane fizice; nu are termen de 7 luni (grila standard merge de la 1 la 36 luni cu pași de 1,3,5,6,9,12...) și nu este o ofertă promoțională limitată precum Blitz-ul Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina produsului nu afișează cifre fixe în textul static (calculator dinamic de dobândă), valorile exacte fiind confirmate doar din PDF-urile de dobânzi asociate.",
+      "citat": "Ai printre cele mai avantajoase dobanzi din piata, ZERO costuri pentru deschiderea, administrarea sau retragerea sumelor din depozit in numerar sau prin transfer bancar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 101,
+  "consum": {
+    "intrare": 8,
+    "iesire": 9100,
+    "citire_cache": 12776,
+    "scriere_cache": 64207,
+    "apeluri": 2,
+    "cost_estimat_usd": 0.2540887
+  }
+}

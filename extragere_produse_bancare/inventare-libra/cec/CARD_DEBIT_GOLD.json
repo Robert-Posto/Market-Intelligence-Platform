@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/cardul-debit-mastercard-world",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de debit Mastercard World",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit premium activ cel mai apropiat de Libra Card de debit Gold: oferă asigurare de călătorie, cashback și acces lounge, dar la CEC este disponibil doar pentru persoane fizice (nu și persoane juridice ca la Libra), nu bonifică dobândă la soldul din cont (0,00% p.a.) și are un comision anual de administrare mult mai mare (25 lei/lună, adică ~300 lei/an față de 48 lei/an la Libra). Produsul omonim Visa Gold al CEC a fost retras din ofertă din 11.08.2025, Mastercard World fiind succesorul său de facto ca poziționare.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre concrete (cashback maxim 0,5%) și descrie explicit beneficiile VIP comparabile cu cele ale cardului Libra Gold.",
+      "citat": "Ai servicii VIP incluse: asigurări calătorie, hoteluri, acces lounge-uri aeroporturi și 3D Secure. Ți se restituie lunar în contul de card maximum 0,5% din valoarea tranzacțiilor comerciale",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/cardul-debit-mastercard-world#:~:text=Ai%20servicii%20VIP%20incluse%3A%20asigur%C4%83ri,0%2C5%25%20din%20valoarea%20tranzac%C8%9Biilor%20comerciale"
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Mastercard World",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife prezintă explicit comisioanele și dobânzile cardului Mastercard World (segmentul cel mai apropiat de Libra Gold ca poziționare premium), inclusiv comisionul de administrare lunară de 25 lei și dobânda zero la sold creditor, spre deosebire de dobânda de 1% peste 500 lei oferită de Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife CEC Bank, valabil din 01 octombrie 2026, care listează explicit valorile numerice pentru cardul Mastercard World (administrare, dobânzi, comisioane de retragere).",
+      "citat": "Administrare lunara cont de card 0 lei ** 0 (zero) lei Administrare lunara card principal 4 lei** 25 lei Dobanda bonificata la sold creditor La vedere (0,00% p.a.)",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/cardul-debit-mastercard-world",
+    "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-persoane-fizice.pdf"
+  ],
+  "durata_s": 72,
+  "consum": {
+    "intrare": 6,
+    "iesire": 5659,
+    "citire_cache": 37108,
+    "scriere_cache": 136206,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4045386
+  }
+}

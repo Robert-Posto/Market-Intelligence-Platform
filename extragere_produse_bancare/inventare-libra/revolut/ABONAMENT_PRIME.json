@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Revolut Business – planul Grow",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente lunare corporate cu cont multi-valută, carduri business și plafoane de tranzacții incluse, dar diferă prețul (200 lei/lună la Revolut Grow față de 95 lei/lună la Libra PRIME), numărul de transferuri fără comision incluse (100 locale + 5 internaționale vs 25 plăți instant + 25 încasări) și numărul de carduri business incluse (1 card metal complimentar vs 2 carduri business la Libra); Revolut nu oferă un serviciu „Live FX” echivalent, ci doar schimb valutar la curs interbancar într-un plafon lunar.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina de prețuri Revolut Business conține explicit cifrele planului Grow (preț, plafoane de transfer, carduri incluse) relevante pentru compararea cu abonamentul corporate Libra PRIME.",
+      "citat": "Growlei 200/month Grow Banking Multi-currency accounts Set up as many currency accounts as you need to organise and manage your money with local & global account details ✓ No-fee international transfers Outside your monthly allowance, a lei 27 fee applies 5 No-fee local transfers Outside your monthly allowance, a lei 1 fee applies 100 Corporate cards Metal cards Stand out with stainless steel cards 1 complimentary",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/en-RO/business/business-account-plans/#:~:text=Growlei%20200%2Fmonth%20Grow%20Banking%20Multi%2Dcurrency,stainless%20steel%20cards%201%20complimentary"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/en-RO/business/business-account-plans/"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1941,
+    "citire_cache": 34248,
+    "scriere_cache": 41982,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1312266
+  }
+}

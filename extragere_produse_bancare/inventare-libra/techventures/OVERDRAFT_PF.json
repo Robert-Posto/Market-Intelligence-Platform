@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/persoane-fizice/overdraft",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Overdraft",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt descoperite de cont/linii de finanțare pentru persoane fizice cu dobândă doar pe suma utilizată, dar diferă plafonul maxim (TechVentures: max. 3 salarii nete, plafon 25.000 lei vs. Libra: max. 6 salarii nete, plafon 70.000 lei) și structura (la TechVentures produsul e denumit și tratat ca o linie de finanțare/credit cu termen de 60 de luni, nu un simplu descoperit de cont reînnoibil anual).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: suma maximă finanțată, perioada de acordare, dobânda, comisioanele și un exemplu complet de calcul DAE.",
+      "citat": "Suma finanțată: maximum 3 salarii/alte venituri nete lunare eligibile, dar nu mai mult de 25.000 lei. Perioada de acordare: maximum 60 de luni, cu posibilitatea de prelungire pe intervale egale (60 luni).",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/persoane-fizice/overdraft#:~:text=Suma%20finan%C8%9Bat%C4%83%3A%20maximum%203%20salarii%2Falte,pe%20intervale%20egale%20%2860%20luni%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/persoane-fizice/overdraft",
+    "https://techventures.bank/persoane-fizice/overdraft"
+  ],
+  "durata_s": 41,
+  "consum": {
+    "intrare": 12255,
+    "iesire": 967,
+    "citire_cache": 43615,
+    "scriere_cache": 25674,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10708799999999999
+  }
+}

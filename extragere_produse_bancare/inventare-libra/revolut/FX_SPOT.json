@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://help.revolut.com/en-RO/help/wealth/exchanging-money/how-much-does-it-cost-to-make-an-exchange/will-i-be-charged-for-exchanging-foreign-currencies/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Currency exchange (Exchange) – Revolut Personal",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina descrie schimbul valutar (exchange) pentru clienții persoane fizice Revolut, cu comisioane și plafoane exprimate în lei, echivalent cu FX_SPOT la segmentul PF.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține explicit comisioanele de fair usage și de weekend pentru schimb valutar, specifice pieței românești (în lei).",
+      "citat": "Standard: 1% fee charged for exchanges over 5000 lei or equivalent Plus: 0.5% fee charged for exchanges over 15.000 lei or equivalent Premium, Metal, and Ultra: no additional exchange fees",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/standard-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Exchange – Personal Fees (Standard), Revolut Bank UAB Sucursala București",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife al sucursalei românești Revolut descrie explicit serviciul de schimb valutar (exchange) pentru persoane fizice, cu rata Revolut și comisioanele aplicabile, echivalent cu FX_SPOT PF.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este documentul legal de tarife emis de Revolut Bank UAB Sucursala București, cu secțiune dedicată „Exchange” și cifre concrete pentru limite și comisioane.",
+      "citat": "Whenever you make a money currency exchange using Revolut Bank within your plan’s exchange limit: You get the Revolut exchange rate; We add an exchange fee (if one applies); and Where possible, we will tell you the total cost before you make the exchange.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/business-scale-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Exchanging money currencies – Business fees (Scale), Revolut Bank UAB Sucursala București",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru clienți persoane juridice (Revolut Business) care descrie explicit schimbul valutar, cu plafon lunar și comision, echivalent cu FX_SPOT pentru segmentul PJ.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Tabelul de tarife arată explicit alocația lunară gratuită pentru schimb valutar (400.000 RON) și comisionul de 0,6% peste alocație, plus 1% în afara orelor de piață.",
+      "citat": "Exchanging money currencies · 400 000 RON per month · 0.6% fee where you exceed your allowance · 1% if you’re exchanging money outside of foreign exchange market hours",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/currency-converter/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Currency Converter – Revolut",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată conversiei valutare live, instrumentul prin care clienții PF/PJ văd rata de schimb Revolut înainte de a efectua un schimb spot, corespunzător funcției FX_SPOT.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina afișează un exemplu de curs valutar live (lei 1000 → €185.50) fără a detalia însă comisioanele complete, care sunt tratate în paginile de tarife.",
+      "citat": "Check live foreign exchange rates, then use Revolut to convert money when the price is right for you.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (18 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2486,
+    "citire_cache": 6309,
+    "scriere_cache": 32629,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1077023
+  }
+}

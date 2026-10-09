@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/credite-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru persoane juridice destinat realizării, dezvoltării, modernizării sau retehnologizării capacităților de producție, exact ca produsul Libra Credit de investiții.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: monedă, termen maxim, avans minim și perioadă de grație.",
+      "citat": "Se acordă în lei sau euro, pe o perioadă de până la 10 ani, cu un avans de minimum 20%, pentru realizarea, dezvoltarea, modernizarea, retehnologizarea capacităților de producție (utilaje, mașini, instalații, clădiri).",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/credite-de-investitii#:~:text=Se%20acord%C4%83%20%C3%AEn%20lei%20sau,produc%C8%9Bie%20%28utilaje%2C%20ma%C8%99ini%2C%20instala%C8%9Bii%2C%20cl%C4%83diri%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/credite-de-investitii",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 10,
+    "iesire": 1187,
+    "citire_cache": 62830,
+    "scriere_cache": 49015,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1469935
+  }
+}

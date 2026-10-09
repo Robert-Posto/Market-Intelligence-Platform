@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/digital-banking/plati-instant",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Plăți Instant persoane juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Serviciu de plăți interbancare instant pentru persoane juridice, dar efectuat tot pe baza contului bancar al beneficiarului (IBAN), nu prin numărul de telefon ca la RoPay, deci diferă canalul/mecanismul de identificare a beneficiarului.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată serviciului conține cifre concrete (plafon de 49.999 lei) și lista băncilor participante, fiind document cu cifrele produsului similar.",
+      "citat": "Sumă generoasă - transfer rapid (plată/încasare) pentru sumele de pâna în 49.999 lei, pe teritoriul României, prin băncile care oferă acest serviciu. Băncile elibigile, participante la sistemul de plăți instant sunt: BCR, BRD, BT, CEC Bank, Libra Internet Bank, Raiffeisen Bank, Vista Bank, Intesa Sanpaolo Bank, ING Bank.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/persoane-fizice/alte-servicii/plati-instant",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Plăți Instant (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un serviciu de plăți instant interbancare, dar la Patria Bank se face către un cont bancar (IBAN), nu prin simpla introducere a numărului de telefon al beneficiarului ca la RoPay; canalul de identificare a beneficiarului diferă.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată serviciului de Plăți Instant pentru persoane fizice explică mecanismul de plată, dar nu conține cifre de comision, doar condiții de eligibilitate și trimitere către lista băncilor participante.",
+      "citat": "Este disponibil sub forma unei opțiuni de selecție a tipului de prioritate dorit pentru plata respectivă către un cont deschis la oricare din băncile beneficiare care oferă la rândul lor acest serviciu.",
+      "rol_alt": null,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/persoane-fizice/alte-servicii",
+    "https://www.patriabank.ro/persoane-fizice/alte-servicii/plati-instant",
+    "https://www.patriabank.ro/afaceri-mici/digital-banking/plati-instant"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 23028,
+    "iesire": 2637,
+    "citire_cache": 32807,
+    "scriere_cache": 28550,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1503624
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depunere numerar / Cash deposit (operațiuni cu numerar la ghișeu, persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "tbi bank oferă depunere de numerar pentru persoane juridice, dar exclusiv manual la ghișeu (funcționarul bancar procesează formularul de depunere), nu printr-un echipament automat de numărare/validare bancnote (recycler/RCD) cu creditare instant ca la Libra; canalul (ghișeu uman vs. automat de autoservire) diferă, restul (segment PJ, operațiune de depunere numerar RON) e comparabil.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice listează explicit rândul 'Depunere / Deposit' la secțiunea B. OPERAȚIUNI CU NUMERAR cu comision 0, dar nu există nicio mențiune de echipament automat de depunere, iar condițiile generale descriu procesul ca fiind la ghișeu, cu funcționar bancar.",
+      "citat": "OPERATIUNI IN LEI / OPERATIONS IN LEI Comision / Fees Depunere / Deposit 0 Retragere / Withdrawal 30,75% min. 2,5 RON",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2865,
+    "citire_cache": 78804,
+    "scriere_cache": 51151,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17230430000000002
+  }
+}

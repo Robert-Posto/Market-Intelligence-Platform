@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/trezorerie",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Titluri de stat / Servicii de piețe de capital (Trezorerie și Piețe de Capital)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată de trezorerie a Vista Bank prezintă explicit produsul de investiții în titluri de stat și alte instrumente cu venit fix, disponibil atât pentru persoane fizice, cât și juridice, la fel ca produsul Libra „Plasamente / titluri de stat”.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată a băncii pentru acest tip de produs, cu secțiune proprie „Titluri de stat” și „Servicii de piețe de capital”, dar fără cifre concrete (dobânzi/comisioane) pentru titluri de stat în text.",
+      "citat": "Titluri de stat Vista Bank este licenţiat ca dealer pentru Titluri de Stat și vă poate ajuta să investiți în instrumente cu venit fix. Servicii de piețe de capital Vista Bank vă oferă posibilitatea de a investi pe piețele de capital locală și internaționale printr-o gamă diversificată de active (acțiuni, obligațiuni, titluri de stat locale și internaționale).",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/trezorerie#:~:text=Titluri%20de%20stat%20Vista%20Bank,de%20stat%20locale%20%C8%99i%20interna%C8%9Bionale%29."
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/Documentul_de_prezentare_MiFID_II.pdf?v=2",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Titluri de stat (obligațiuni de stat / certificate de trezorerie) - Documentul de prezentare MiFID II",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul descrie explicit instrumentul 'Titluri de stat' (obligațiuni de stat cu cupon și certificate de trezorerie fără cupon) pe care Vista Bank îl oferă clienților, corespunzător produsului Libra pentru plasamente în titluri de stat.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Document precontractual MiFID II care definește și descrie caracteristicile titlurilor de stat oferite de bancă, dar nu conține randamente curente, ci doar descrierea tipului de instrument.",
+      "citat": "Titluri de stat sub forma obligatiunilor de stat cu cupon sau certificate de trezorerie fara cupon: Titlurile de stat sunt instrumente financiare de datorie emise de Ministerul Finantelor, fiind subclasificate in obligatiuni de stat (cu scadenta mai mare de un an) si certificate de trezorerie (cu scadenta mai mica de un an).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/trezorerie"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2728,
+    "citire_cache": 56676,
+    "scriere_cache": 44626,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1501962
+  }
+}

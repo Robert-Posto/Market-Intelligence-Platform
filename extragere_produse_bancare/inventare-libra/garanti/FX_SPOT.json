@@ -1,0 +1,52 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/corporate-banking/foreign-exchange-transactions/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Foreign Exchange Transactions / Tranzacții valutare (Corporate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată tranzacțiilor valutare pentru companii, care descrie explicit tranzacții Spot (și Forward) executate de Treasury Trading Desk pentru sume peste 10.000 EUR, exact tipul de produs 'schimb valutar spot' pentru segmentul persoane juridice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată, oficială, a băncii pentru tranzacții valutare corporate și menționează explicit cuvântul 'Spot' alături de un prag cantitativ (10.000 EUR), dar nu publică marje/curs exacte.",
+      "citat": "For amounts over EUR 10,000 in equivalent, Garanti BBVA Treasury Trading Desk can offer competitive quotations for Spot and Forward exchange rates permanently updated on the market movements.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/corporate-banking/foreign-exchange-transactions/#:~:text=For%20amounts%20over%20EUR%2010%2C000,updated%20on%20the%20market%20movements."
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Schimb valutar (operațiune în cadrul tarifelor pentru Clienții IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru clienți IMM (persoane juridice) listează 'Schimb valutar' ca operațiune cu limite zilnice/tranzacție și marjă de ajustare a cursului, dar este un produs de schimb la ghișeu/online, nu o tranzacție spot negociată prin Treasury Desk ca la pagina corporate.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document oficial de tarife, în care produsul 'Schimb valutar' apare explicit cu limite în RON și comision, dar fără cotații de curs sau marjă exactă pentru tranzacții de tip spot negociat.",
+      "citat": "2.000.000 RON 2.000.000 RON 10 RON Schimb valutar limită zilnică limită maximă pe tranzacție limită minimă pe tranzacție 2.000.000 RON 2.000.000 RON 1 RON marjă ajustare curs valutar pentru tranzacții în valută 10 RON Gratuit",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/corporate-banking/foreign-exchange-transactions/"
+  ],
+  "durata_s": 116,
+  "consum": {
+    "intrare": 6,
+    "iesire": 10224,
+    "citire_cache": 41663,
+    "scriere_cache": 41867,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2152521
+  }
+}

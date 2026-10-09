@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://corporate.patriabank.ro/Corporate/Home/Documents/ghid-de-utilizare-al-serviciului-de-Internet-Banking-Persoane-Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Schimb valutar (în cadrul Patria Online Banking - Persoane Juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de funcționalitate - schimb valutar online, direct din Internet Banking, cu afișarea cursurilor practicate de bancă - dar la Patria Bank aceasta este o secțiune (modul) a Internet Bankingului standard, limitată la schimburi între conturile proprii ale aceluiași client, nu o platformă dedicată de tranzacționare FX separată ca Live FX; de asemenea acest document acoperă doar segmentul persoane juridice.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Ghidul de utilizare descrie explicit secțiunea 'Schimburi valutare' din Internet Banking, cu câmpurile necesare și un tabel de cursuri valutare afișate live (EUR, USD, GBP etc.), însă nu este o pagină de produs comercial de sine stătătoare.",
+      "pagina_pdf": 27,
+      "citat": "În cadrul secțiunii \"Schimb valutar\" poate fi efectuată operațiunea de schimb valutar, fiind necesară completarea următoarelor câmpuri: Din contul - selectaţi din lista derulantă contul curent DIN care doriţi să efectuaţi schimbul valutar (contul debitat din care doriți să vindeți valuta); În contul - selectaţi din lista derulantă contul curent ÎN care doriţi să efectuaţi schimbul valutar (contul creditat în care doriți să cumpărați valuta); Suma - suma dorită (se va alege și moneda în cazul schimbului valutar).",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Happy Hour - schimb valutar LEI/EUR prin Internet Banking/Mobile Banking",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un mecanism de schimb valutar online, direct din Internet/Mobile Banking, cu curs preferențial (curs BNR) - dar limitat la un interval orar fix (Happy Hour 09:30 și 10:30) și doar la perechea LEI/EUR, spre deosebire de Live FX care oferă cursuri de piață în timp real pe tot parcursul zilei și pentru mai multe valute; de asemenea acoperă doar segmentul persoane fizice.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina pachetelor de cont curent menționează explicit caracteristica Happy Hour cu intervalul orar și curs aplicat, dar nu este o pagină dedicată unei platforme FX, ci o caracteristică a unui pachet de cont.",
+      "citat": "Happy Hour 09:30 și 10:30 - ai curs BNR pentru schimburile LEI/EUR și EUR/LEI din Internet Banking sau Mobile Banking. În cadrul Happy Hour, pentru tranzacțiile de schimb valutar LEI/EUR și EUR/LEI efectuate exclusiv prin Internet Banking și Mobile Banking, se aplică cursul BNR valabil în ziua respectivă.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria",
+    "https://www.patriabank.ro/agro/digital-banking/serviciul-de-internet-banking",
+    "https://corporate.patriabank.ro/Corporate/Home/Documents/ghid-de-utilizare-al-serviciului-de-Internet-Banking-Persoane-Juridice.pdf"
+  ],
+  "durata_s": 85,
+  "consum": {
+    "intrare": 17068,
+    "iesire": 6427,
+    "citire_cache": 34905,
+    "scriere_cache": 134701,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.44213949999999996
+  }
+}

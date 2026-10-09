@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Revolut Business – Planuri (Basic, Grow, Scale, Enterprise)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pachetul de cont/abonament lunar pentru persoane juridice (firme), cu niveluri plătite lunar (Basic 50 lei/lună, Grow 200 lei/lună, Scale 700 lei/lună, Enterprise personalizat), exact ca un abonament operațional pentru firme.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată planurilor Revolut Business conține explicit tarifele lunare și beneficiile fiecărui pachet, cu cifre complete.",
+      "citat": "Basic 50 lei/lună Obține elementele esențiale pentru a începe să operezi imediat. Grow 200 lei/lună Descoperă instrumentele de care ai nevoie pentru a gestiona cheltuielile cu ușurință. Scale 700 lei/lună Obține limite mai mari pentru a te extinde la nivel global.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/legal/business-grow-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Business fees (Grow)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane pentru planul Grow al contului de business (pachet operațional pentru firme), cu cifre exacte pentru abonament, transferuri și schimb valutar.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina legală de tarife detaliază exact comisionul lunar al abonamentului (200 RON) și limitele/comisioanele pentru transferuri și schimb valutar.",
+      "citat": "200 RON per month If you downgrade within the first 14 days of your plan starting without having used any benefits available under the plan, we will issue you a refund.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/legal/business-standard-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Business fees (Enterprise)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru planul Enterprise al contului Business (pachet operațional pentru firme mari), inclusiv comisioane pentru aplicații suplimentare (Expenses, Payroll).",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Conține cifre explicite pentru comisioane aplicabile planului Enterprise, inclusiv taxe pe membru de echipă pentru aplicațiile de expense/payroll.",
+      "citat": "Expenses app · 30 RON per active team member A team member becomes active after they've submitted their first expense. Payroll app · 18 RON per active team member A team member becomes active after the Account Owner confirms that team member's first pay run per billing cycle.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1466,
+    "citire_cache": 6341,
+    "scriere_cache": 32265,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0965987
+  }
+}

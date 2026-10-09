@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete Servicii (Exim Business Smart / Start / Activ / Complet)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet de cont pe bază de abonament lunar pentru PFA și microîntreprinderi (persoane juridice), incluzând cont curent, card de debit și Internet/Mobile Banking - corespunde exact 'Abonamentului operațional (pachet cont)' Libra pentru persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține denumirile și prețurile exacte ale celor patru variante de abonament, cu lista de servicii incluse pentru fiecare.",
+      "citat": "EXIM BUSINESS START (25 lei/luna) Costuri ZERO: deschiderea contului curent; administrarea lunara a conturilor curente in lei si valuta; furnizarea (emiterea) si administrarea cardului de debit inclus in oferta; administrare lunara Internet/Mobile Banking (e-ximBanking)",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=EXIM%20BUSINESS%20START%20%2825%20lei%2Fluna%29,administrare%20lunara%20Internet%2FMobile%20Banking%20%28e%2DximBanking%29"
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2025/06/11/transactional-offers/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Transactional offers (Business Smart/Start/Activ/Complet packages)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în engleză a aceleiași pagini de pachete de cont pentru PFA și microîntreprinderi, cu aceleași sume și beneficii pe variante de abonament.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Conține aceleași cifre (25/40/45/70 lei pe lună) ca pagina română, utilă ca sursă secundară de verificare.",
+      "citat": "BASE SUBSCRIPTION – RON 25/MONTH SUBSCRIPTION – RON 40/MONTH SUBSCRIPTION – RON 45/MONTH SUBSCRIPTION – RON 70/MONTH",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (17 cuvinte)",
+      "link_live": "https://www.eximbank.ro/en/2025/06/11/transactional-offers/#:~:text=BASE%20SUBSCRIPTION%20%E2%80%93%20RON%2025%2FMONTH,45%2FMONTH%20SUBSCRIPTION%20%E2%80%93%20RON%2070%2FMONTH"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2025/06/11/transactional-offers/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1637,
+    "citire_cache": 81329,
+    "scriere_cache": 50426,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1587168
+  }
+}

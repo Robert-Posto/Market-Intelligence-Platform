@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/credit-activitate-curenta",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru activitatea curentă",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este creditul general pentru IMM/PFA/profesii liberale destinat capitalului de lucru, acordat pe baza analizei bonității afacerii (nu neapărat scoring automat ca la Libra). Diferă însă caracteristici importante față de Credit Simplu IMM: durata maximă e de doar 3 ani (nu 48 luni), suma maximă se calculează ca procent din cifra de afaceri anuală (nu sumă fixă 20.000-200.000 lei) și garanțiile sunt un 'mix flexibil' care include explicit ipoteci imobiliare și mobiliare, cash colateral și scrisori de garanție - deci nu este un produs explicit fără garanție imobiliară precum cel de la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre concrete (durată, procent din cifra de afaceri, perioadă de grație, tipuri de garanții), dar nu este un produs identic ca structură (sumă fixă + fără garanție imobiliară) cu Credit Simplu IMM.",
+      "citat": "Perioada de creditare: max 3 ani. In cazul creditelor acordate exclusiv pentru plata datoriilor restante la bugetul de stat max 5 ani. Perioadă de grație: max 12 luni Mix de garanții flexibil: ipoteci mobiliare, imobiliare, cash colateral, scrisori de garanție",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/credit-activitate-curenta",
+    "https://www.cec.ro/credit-activitate-curenta"
+  ],
+  "durata_s": 59,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4816,
+    "citire_cache": 94586,
+    "scriere_cache": 53043,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19970469999999999
+  }
+}

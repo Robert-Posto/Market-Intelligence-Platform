@@ -1,0 +1,51 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive de import / Acreditive de export",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de comisioane curent (valabil din 01.04.2026) care conține secțiuni dedicate cu tarife explicite pentru acreditive de import și export, corespunzătoare produsului Libra Acreditive documentare.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife, actualizat, cu valori concrete pentru fiecare tip de comision aferent acreditivelor.",
+      "citat": "Comision de plată/verificare documente 0,3%, min. 100 EUR flat Verificare documente 0,15%, min. 80 EUR flat, la valoarea documentelor Negociere 0,20%, min. 100 EUR flat, la valoarea documentelor",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/acreditive/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditiv documentar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată produsului pentru firme, descrie acreditivul documentar de import și de export, exact ca produsul Libra Acreditive documentare destinat persoanelor juridice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului cu descriere detaliată a tipurilor (import/export) și avantajelor, dar fără cifre/tarife concrete.",
+      "citat": "Exim Banca Romaneasca isi asuma angajamentul irevocabil in numele clientului sau importator de a plati exportatorului contravaloarea unor documente care evidentiaza livrarea marfii sau furnizarea serviciului.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 4,
+    "iesire": 935,
+    "citire_cache": 6303,
+    "scriere_cache": 16842,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.052723599999999995
+  }
+}

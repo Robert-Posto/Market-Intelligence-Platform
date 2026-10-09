@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depunere de numerar la terminale de tip CASH BOX",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este un terminal automat de depunere numerar bancnote, dedicat clienților entități economice (persoane juridice), cu comision specific diferit de depunerea la ghișeu sau ATM clasic — același tip de produs și segment ca RCD Cash Deposit.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul de tarife pentru entități economice listează explicit comisionul pentru terminalele CASH BOX, dar pagina nu detaliază programul de creditare la 16:00 sau specificul tehnic al echipamentului.",
+      "citat": "Depunere de numerar la terminale de tip CASH BOX Depositing cash at CASH BOX-type terminals 0,15%, minim um 15 lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01032024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depunere de numerar la terminale de tip CASH BOX",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiune anterioară a listei de tarife pentru persoane juridice (entități economice), confirmă existența aceluiași serviciu de depunere la terminal CASH BOX cu comision dedicat, distinct de depunerea la ghișeu.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document de tarife general pentru PJ în care produsul CASH BOX apare explicit cu valoare de comision, dar fără alte detalii de operare ale echipamentului.",
+      "citat": "Depunere de numerar la terminale de tip CASH BOX 0,15%, minimum 10 lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (13 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/operatiuni-cu-numerar",
+    "https://techventures.bank/companii/alte-servicii",
+    "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf"
+  ],
+  "durata_s": 76,
+  "consum": {
+    "intrare": 54832,
+    "iesire": 2740,
+    "citire_cache": 25235,
+    "scriere_cache": 20444,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19322099999999998
+  }
+}

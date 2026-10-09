@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_SIMPLU_IMM",
+  "denumire": "Credit Simplu IMM",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/credit-capital-de-lucru/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit capital de lucru la termen",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite simple pentru capital de lucru destinate firmelor mici și PFA, acordate fără documente justificative de utilizare, dar la Exim suma maximă (2.000.000 RON) și minimă (30.000 RON) sunt mult mai mari decât la Libra (20.000-200.000 lei), termenul maxim e 36 luni față de 48 la Libra, iar garanția nu exclude explicit ipoteca imobiliară (structura include ipotecă mobiliară pe conturi și fideiusiune, plus posibile garanții suplimentare, inclusiv imobiliare), și nu se menționează explicit creditarea pe bază de scoring.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este pagina dedicată a produsului, aflată în meniul pentru PFA și Microîntreprinderi, cu cifre explicite despre sumă și termen, dar fără mențiune de scoring sau procent din cifra de afaceri.",
+      "citat": "Oferim produse de finantare competitive pentru finantarea activitatii curente prin acordarea creditului capital de lucru destinat companiilor si persoanelor fizice autorizate. Suma minima: 30.000 RON Suma maxima: 2.000.000 RON* Perioada maxima de creditare: 3 ani",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/12/05/credit-capital-de-lucru/#:~:text=Oferim%20produse%20de%20finantare%20competitive,maxima%20de%20creditare%3A%203%20ani"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2022/12/05/credite/",
+    "https://www.eximbank.ro/credite/",
+    "https://www.eximbank.ro/2022/12/05/credite/",
+    "https://www.eximbank.ro/2022/12/05/credit-capital-de-lucru/"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 23783,
+    "iesire": 3355,
+    "citire_cache": 76112,
+    "scriere_cache": 46004,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2113484
+  }
+}

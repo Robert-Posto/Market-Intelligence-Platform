@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/conturi-curente",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Vista Activ / Pachetul Vista Activ Plus (pachete de cont curent pentru persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament lunar pentru firme care include conturi lei+valută, carduri de debit business, plăți instant și comisioane reduse la transferuri - același tip de produs (pachet operațional business) și același segment (persoane juridice), dar nu include card de tip Gold și nu menționează mPOS/acquiring cu comision pentru comercianți, spre deosebire de Abonament SHINE.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor pentru persoane juridice conține explicit denumirea, costul lunar și beneficiile fiecărui pachet, inclusiv plățile instant.",
+      "citat": "Produse și servicii esențiale pentru administrarea încasărilor și plăților companiei dumneavoastră, care răspund totodată nevoii de mobilitate și control de oriunde, oricând. Comision redus la plățile interbancare prin Internet Banking și/sau Mobile Banking în LEI (inclusiv în regim instant) și în EUR, pe teritoriul Uniunii Europene și Spațiului Economic European: 2,75 LEI pentru sume sub 1.000 LEI; 5,25 LEI pentru sume între 1.000 LEI și 50.000 LEI; 12 LEI pentru sume ≥ 50.000 LEI și urgențe.",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-juridice/conturi-curente#:~:text=Produse%20%C8%99i%20servicii%20esen%C8%9Biale%20pentru,%E2%89%A5%2050.000%20LEI%20%C8%99i%20urgen%C8%9Be."
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete de produse și servicii bancare (DE BAZA, ACTIV, ACTIV PLUS) - persoane juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife conține tabelul cu cele 3 pachete lunare pentru firme (cont curent lei/valută, card de debit Visa Business, internet/mobile banking, transferuri instant), echivalent funcțional cu Abonamentul SHINE, dar fără variantă de card Gold sau serviciu mPOS dedicat.",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF-ul oficial de tarife, valabil din 7 octombrie 2026, conține tabelul exact cu cele 3 pachete și comisioanele lor, inclusiv cele pentru transferuri instant prin Internet/Mobile Banking.",
+      "pagina_pdf": 8,
+      "citat": "Tip pachet DE BAZA ACTIV ACTIV PLUS Administrare Pachet 50 LEI/ Luna 150 LEI/ Luna 250 LEI/luna Conditii de eligibilitate Pachetele sunt oferite clientilor cu cifra de afaceri ≤ 3.000.000 Euro echivalent Card de debit LEI/ EURO Optional – Card Visa Business Debit.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice/conturi-curente",
+    "https://www.vistabank.ro/public/docs/10.00319_Anexa_1_CGA_PJ_RO_Mai_2023.pdf",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3544,
+    "citire_cache": 99419,
+    "scriere_cache": 91950,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2852148
+  }
+}

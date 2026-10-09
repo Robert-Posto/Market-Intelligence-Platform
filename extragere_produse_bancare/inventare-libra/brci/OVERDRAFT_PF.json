@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/public/index.php/ro/produse/overdraft.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Overdraft (Persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de descoperit de cont pentru persoane fizice, cu limită calculată ca multiplu al venitului net lunar (salariu/pensie) și dobândă aplicată doar pe suma utilizată, exact ca produsul Libra OVERDRAFT_PF.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului Overdraft pentru persoane fizice conține explicit limita de credit, formula de calcul (multiplu de venit), rata dobânzii, DAE și exemplu reprezentativ cu sume.",
+      "citat": "Până la 60.000 lei limită de credit, calculată astfel: Până la de 6 ori venitul net lunar eligibil dacă acesta provine din salariu, exercitarea unor profesii liberale sau contracte de management, de mandat sau de administrare; Până la de 3 ori venitul net lunar eligibil dacă acesta provine din pensie.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/cont-de-economii-1.html",
+    "https://www.brci.ro/public/index.php/ro/produse/overdraft.html",
+    "https://www.brci.ro/ro/produse/overdraft.html",
+    "https://www.brci.ro/public/index.php/ro/produse/overdraft.html"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 89860,
+    "iesire": 1912,
+    "citire_cache": 6341,
+    "scriere_cache": 6341,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21596069999999998
+  }
+}

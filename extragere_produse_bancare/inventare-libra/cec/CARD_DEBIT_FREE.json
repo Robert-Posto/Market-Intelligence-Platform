@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/persoane-fizice/carduri-debit/card-euro-visa-multicurrency-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de debit VISA Multicurrency",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit standard pentru persoane fizice, fără comision de emitere sau administrare (la fel ca Libra Free), dar nu se promovează niciun cashback la parteneri și nu acoperă segmentul persoane juridice.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifra comisionului (ZERO) de administrare și emitere, dar lipsește componenta de cashback prezentă la produsul Libra.",
+      "citat": "Comisionul lunar de administrare al cardului de debit este ZERO. Nu plătești comision pentru contul curent în lei, nici pentru conturile în valută, nici pentru CEC app - Mobile Banking.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane-carduri-debit-persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de debit Visa/Mastercard Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cardul de debit dedicat persoanelor juridice, dar spre deosebire de Libra Free are comision lunar de administrare (5 lei) și, pentru varianta Mastercard, comision de emitere inițială (10 lei), deci nu este complet gratuit.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Documentul de tarife listează explicit comisioanele de deschidere, emitere și administrare pentru cardurile de debit business, cu valori concrete.",
+      "citat": "Carduri de debit- Visa/Mastercard Business. I. Comisioane aplicabile contului de card 5. Deschidere cont de card 0 ( zero ) lei 6. ^Administrare lunara cont inclusiv emitere raport activitate 5 lei * card(uri) 7.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/carduri-de-debit",
+    "https://cec.ro/persoane-fizice/carduri-debit/card-euro-visa-multicurrency-online",
+    "https://www.cec.ro/carduri-de-debit-business"
+  ],
+  "durata_s": 77,
+  "consum": {
+    "intrare": 44087,
+    "iesire": 5087,
+    "citire_cache": 48980,
+    "scriere_cache": 64175,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3092775
+  }
+}

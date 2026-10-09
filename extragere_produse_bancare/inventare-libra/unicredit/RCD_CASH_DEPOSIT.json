@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Multifuncțional de numerar (BNA) - Self Service",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "UniCredit oferă pentru persoane juridice (cifra de afaceri <1 milion Euro, PFA) un echipament automat de depunere/retragere numerar (BNA), utilizat prin card/cod de bare, cu limite anuale dedicate pentru depuneri - același tip de produs (echipament de depunere bancnote) și același segment (PJ/PFA), dar canalul diferă: este un terminal self-service accesat cu cardul/codul de bare, nu un echipament de numărare-validare la ghișeu cu creditare garantată până la o oră fixă (16:00) ca la Libra.",
+      "incredere": 0.78,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Documentul de tarife pentru persoane juridice conține o secțiune dedicată BNA cu cifre (limite anuale de 720.000 Lei) și comisioane de depunere, dar nu specifică un prag orar de creditare în aceeași zi.",
+      "citat": "SELF SERVICE - MULTIFUNCŢIONAL DE NUMERAR - BNA Limita anuală pentru retrageri de numerar 720.000 Lei 720.000 Lei Limita anuală pentru depuneri de numerar 720.000 Lei 720.000 Lei",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Multifuncțional de numerar (BNA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice cu cifră de afaceri peste 1 milion Euro listează separat comisioanele pentru depuneri de numerar prin Multifuncționalul de numerar (BNA) și pentru depunerea de sume colectate prin transport securizat - același tip de serviciu (depunere automată de bancnote) și segment (PJ), dar documentul nu menționează un termen fix de creditare în aceeași zi (ex. 16:00) ca la produsul Libra, ci doar comisioane procentuale.",
+      "incredere": 0.72,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Documentul de tarife corporate conține explicit rândul 'Multifuncțional de numerar (BNA)' cu comisioane de depunere numerar, dar fără detalii despre orele de creditare, deci cifrele sunt parțiale pentru compararea directă a condițiilor de creditare.",
+      "citat": "Multifuncțional de numerar (BNA) Retragere numerar în valută locală Depunere numerar în valută locală Depunere numerar în valută străină 2000 Euro/ lună/ cont 500 Euro/ raport mult de 100 de monede 0,5, min. 5Lei 0,1% 0",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 61,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4994,
+    "citire_cache": 34697,
+    "scriere_cache": 42487,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1631089
+  }
+}

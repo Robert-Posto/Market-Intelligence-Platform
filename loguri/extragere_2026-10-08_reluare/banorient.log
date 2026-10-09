@@ -1,0 +1,39 @@
+banorient: 17 URL-uri (19 legături produs Libra), 14 de verificat, cu comparație de amprentă, paralel 4
+Traceback (most recent call last):
+  File "C:\Users\george.dinu\Desktop\proiect-it-george\extragere_produse_bancare\extrage_comparatie_libra.py", line 950, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\george.dinu\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\george.dinu\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\george.dinu\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\george.dinu\Desktop\proiect-it-george\extragere_produse_bancare\extrage_comparatie_libra.py", line 826, in main
+    await ruleaza(arg, job)
+  File "C:\Users\george.dinu\Desktop\proiect-it-george\extragere_produse_bancare\extrage_comparatie_libra.py", line 910, in ruleaza
+    r = await f
+        ^^^^^^^
+  File "C:\Users\george.dinu\AppData\Local\Programs\Python\Python314\Lib\asyncio\tasks.py", line 618, in _wait_for_one
+    return f.result() if resolve else f
+           ~~~~~~~~^^
+  File "C:\Users\george.dinu\Desktop\proiect-it-george\extragere_produse_bancare\extrage_comparatie_libra.py", line 774, in un_url
+    noteaza(idb, grup, rez, schimbat=not neschimbat)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\george.dinu\Desktop\proiect-it-george\extragere_produse_bancare\extrage_comparatie_libra.py", line 742, in noteaza
+    cur.execute("""
+    ~~~~~~~~~~~^^^^
+        UPDATE surse_libra SET ultima_verificare = now(), ultimul_status = %s,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+                                          ELSE esecuri_consecutive + 1 END
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         WHERE id = %s""", (status, cod_http, h, status, l["id_sursa"]))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: "interzis de robots.txt"
+LINE 3:                        ultimul_cod_http = 'interzis de robot...
+                                                  ^
+

@@ -1,0 +1,50 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Tabela kursów walut dla Oddziału w Rumunii / Tabelul cursului de schimb (încredere 0.55) — Este tabelul de curs valutar al sucursalei PKO Bank Polski din România, folosit pentru conversii/schimb valutar - cel mai apropiat echivalent funcțional al produsului 'Schimb valutar spot'. Diferă segmentul de clienți: sucursala deservește exclusiv clienți corporate, nu și persoane fizice, iar pagina nu listează un produs FX spot dedicat, ci doar un instrument de afișare a cursurilor (încărcat dinamic, fără cifre statice în conținut)."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.pkobp.pl/oddzial-rumunia/kursy-walut",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "simulator",
+      "denumire_la_banca": "Tabela kursów walut dla Oddziału w Rumunii / Tabelul cursului de schimb",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tabelul de curs valutar al sucursalei PKO Bank Polski din România, folosit pentru conversii/schimb valutar - cel mai apropiat echivalent funcțional al produsului 'Schimb valutar spot'. Diferă segmentul de clienți: sucursala deservește exclusiv clienți corporate, nu și persoane fizice, iar pagina nu listează un produs FX spot dedicat, ci doar un instrument de afișare a cursurilor (încărcat dinamic, fără cifre statice în conținut).",
+      "incredere": 0.55,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina este dedicată explicit cursurilor de schimb ale sucursalei, dar valorile (cursurile) se încarcă dinamic prin JavaScript/API și nu apar ca text static în conținutul extras ('Brak wyników dla podanej daty' / nicio valoare afișată).",
+      "citat": "Tabele kursów walut dla PKO Banku Polskiego Oddział w Rumunii Wybierz godzinę i datę z jakiej chcesz wyświetlić kursy Brak wyników dla podanej daty Wyświetlono 0 z 0 kursów",
+      "citat_verificat": true,
+      "link_live": "https://www.pkobp.pl/oddzial-rumunia/kursy-walut#:~:text=Tabele%20kurs%C3%B3w%20walut%20dla%20PKO,Wy%C5%9Bwietlono%200%20z%200%20kurs%C3%B3w"
+    }
+  ],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/www.pkobp.pl/ro/filiala-romania/tabelul-cursului-de-schimb",
+    "https://www.pkobp.pl/ro/filiala-romania/tabelul-cursului-de-schimb",
+    "https://www.pkobp.pl/www.pkobp.pl/ro/filiala-romania/tabelul-cursului-de-schimb",
+    "https://www.pkobp.pl/oddzial-rumunia/kursy-walut",
+    "https://www.pkobp.pl/en/romania-branch/exchange-rate-table",
+    "https://www.pkobp.pl/oddzial-rumunia/produkty",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 31024,
+    "iesire": 3274,
+    "citire_cache": 122426,
+    "scriere_cache": 62948,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2766432
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2025/09/T0012-Tarife-si-comisioane-standard-persoane-fizice_01.09.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cardul de debit Bonus Debit Card",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit atașat contului curent, cu emitere, reînnoire și administrare primului card gratuite (același principiu ca Libra Card de debit Free), dar disponibil doar pentru persoane fizice, nu și pentru persoane juridice la aceleași condiții.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul oficial de tarife standard listează explicit valorile 'Gratuit' pentru emitere, reînnoire și administrarea primului card de debit Bonus Debit Card.",
+      "citat": "CARDUL DE DEBIT BONUS DEBIT CARD emitere card si reînnoire card Gratuit administrare primul card Gratuit administrare începând cu al doilea card 10 LEI/an",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/informatii-comisioane-cont-curent-standard-lei/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Bonus Debit Card (card de debit atașat Contului curent standard în lei)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un card de debit cu furnizare/administrare gratuită, la fel ca produsul Libra, dar la Garanti BBVA acest card gratuit este disponibil doar pentru persoane fizice; pentru persoane juridice banca are un card de debit Bonus cu taxe de emitere (10 RON) și administrare (40 RON/an), deci segmentul de firme nu beneficiază de gratuitate completă ca la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina de tarife oficială arată explicit comisionul 0 LEI pentru 'Furnizarea unui card de debit' și identifică produsul comercial drept Bonus Debit Card.",
+      "citat": "Furnizarea unui card de debit | 0 LEI | Furnizarea unui card de credit | 0 LEI | Emitere si reinnoire card de debit Bonus Debit Card",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/current-account-and-0-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Bonus Debit Card atașat Contului curent în Lei",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina de produs descrie cardul de debit gratuit (administrare cont curent și card 0 comision) plus un mecanism de recompense ('Bonus Points' la fiecare plată cu cardul), analog cashback-ului oferit de Libra, dar pentru persoane fizice; nu există o pagină echivalentă dedicată pentru persoane juridice cu card gratuit.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată contului curent și cardului de debit prezintă explicit gratuitatea administrării cardului și procentul de recompensă pentru plăți, deci conține cifre relevante.",
+      "citat": "Choose the attached MasterCard Bonus Debit Card Lei Current Account and receive 0.05% of the value of each card payment as Bonus Points",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/persoane-fizice/cont-curent-si-card-de-debit/",
+    "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 8,
+    "iesire": 4529,
+    "citire_cache": 69730,
+    "scriere_cache": 48296,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17999199999999999
+  }
+}

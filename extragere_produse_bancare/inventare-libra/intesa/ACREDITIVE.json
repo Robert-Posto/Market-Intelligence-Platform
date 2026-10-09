@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditiv (import/export) - secțiune Finanțarea Comerțului în LCS Persoane Juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife standard pentru persoane juridice conține o secțiune dedicată explicit acreditivelor (emise/primite, import/export) cu toate comisioanele aferente, exact produsul ACREDITIVE de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF oficial de tarife care listează explicit comisioane numerice pentru fiecare etapă a acreditivului documentar (avizare, negociere documente, amendament, discrepanțe etc.).",
+      "citat": "Negociere documente în cadrul acreditivelor la vedere 0,20% min. echiv.150 Euro; Discrepanţe Acreditiv import Echiv. 50 Euro; Anulare/neutilizare Acreditiv import Echiv. 50 Euro.",
+      "pagina_pdf": 9,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Acreditive-Corporate.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditive (Acreditivul documentar) - segment Corporate",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată acreditivului documentar pentru persoane juridice (segment Corporate), exact același tip de produs ca ACREDITIVE de la Libra: instrument de plată documentar pentru comerț internațional.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina descrie în detaliu tipurile de acreditive oferite (la vedere, la termen, acceptare, negociere) dar nu conține cifre de tarife direct în text.",
+      "citat": "Acreditivul documentar reprezintă un agajament de plată irevocabil al băncii, asumat în baza instructiunilor clientului său, în favoarea beneficiarului acreditivului, de a plăti pentru marfa livrată/serviciile prestate numai la prezentarea de către beneficiar a documentelor solicitate în acreditiv, în conformitate cu termenele și condițiile acestuia.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/finantarea-comertului-imm/acreditive-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditive (Acreditivul documentar) - segment IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta pentru segmentul IMM a aceluiași produs de acreditive documentare, aplicabilă firmelor mici și mijlocii, segment compatibil cu PFA/firme de la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată produsului pentru IMM, cu descrierea tipurilor de acreditive, dar fără cifre explicite de tarife în corpul textului.",
+      "citat": "Cele mai uzuale tipuri de acreditive documentare pe care ți le punem la dispoziție sunt: Acreditive cu plata la vedere sau cu plata la termen, Acreditive plătibile prin acceptare sau negociere.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Acreditive-Corporate.html",
+    "https://www.intesasanpaolobank.ro/page/acreditive"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2410,
+    "citire_cache": 72259,
+    "scriere_cache": 61528,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1923878
+  }
+}

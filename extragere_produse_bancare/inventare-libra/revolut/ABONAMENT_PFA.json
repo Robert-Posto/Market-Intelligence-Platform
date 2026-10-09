@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Revolut Business – planul Basic",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cont de business cu abonament lunar, card, IB/MB și operațiuni incluse, deschis inclusiv pentru PFA/liber-profesioniști înregistrați în România; diferă structura (alocații de transferuri/schimb valutar în loc de un plafon fix de 50 operațiuni/lună) și faptul că nu e un produs dedicat exclusiv PFA, ci planul general de bază pentru firme mici.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată de prețuri conține explicit suma abonamentului și lista de beneficii incluse pentru planul Basic.",
+      "citat": "Basic lei 50/month Get the essentials to start operating immediately. Unlimited team members 10 no-fee local transfers Exchange lei 5,500 at the interbank rate during market hours Accept online and in-person payments 2,75% p.a. (variable) on savings",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/en-RO/business/business-account-plans/#:~:text=Basic%20lei%2050%2Fmonth%20Get%20the,2%2C75%25%20p.a.%20%28variable%29%20on%20savings"
+    },
+    {
+      "url": "https://www.revolut.com/pro-vs-business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Revolut Business pentru liber-profesioniști înregistrați",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă segmentul de clienți relevant (PFA/liber-profesioniști înregistrați) eligibil pentru contul Revolut Business în România, echivalent de segment cu Abonamentul PFA Libra, dar fără o denumire comercială dedicată exclusiv acestui segment.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina de comparație Pro vs Business precizează explicit că România e una dintre țările unde liber-profesionezii înregistrați pot deschide cont Revolut Business, însă nu conține toate cifrele planului (acestea sunt pe pagina de prețuri).",
+      "citat": "Revolut Business is supported for registered freelancers in FR, DE, IT, RO, PL, NL, BE, GR, BG, DK, EE, SI, LV, HR, FI, IS, NO.",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/pro-vs-business/#:~:text=Revolut%20Business%20is%20supported%20for,LV%2C%20HR%2C%20FI%2C%20IS%2C%20NO."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/en-RO/legal/business-basic-fees/",
+    "https://www.revolut.com/en-RO/business/business-account-plans/",
+    "https://www.revolut.com/pro-vs-business/"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1846,
+    "citire_cache": 70054,
+    "scriere_cache": 47024,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1500468
+  }
+}

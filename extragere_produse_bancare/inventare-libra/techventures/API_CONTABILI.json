@@ -1,0 +1,28 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "TechVentures Bank are doar un API generic PSD2/Open Banking (pagini https://techventures.bank/institutii-financiare/ifn/api și https://techventures.bank/psd2), destinat conectării cu aplicații fintech sau de management al bugetului și accesului terților autorizați (TPP) la informații de cont. Nu există o integrare dedicată cu programe de contabilitate (gen SmartBill, Saga etc.) pentru persoane juridice, deci nu există echivalent sau similar pentru API_CONTABILI; Open Banking/PSD2 este un alt tip de produs, nu o integrare pentru contabili."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/api",
+    "https://techventures.bank/companii/alte-servicii",
+    "https://techventures.bank/companii/digital-banking"
+  ],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 6698,
+    "iesire": 1443,
+    "citire_cache": 43855,
+    "scriere_cache": 23525,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09540950000000001
+  }
+}

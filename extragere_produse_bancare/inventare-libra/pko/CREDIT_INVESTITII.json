@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dob%C3%A2nzilor.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credite de investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi al sucursalei listează separat 'Credite de investiții' în categoria credite comerciale pentru persoane juridice, cu formula de dobândă aplicabilă, corespunzător exact produsului Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial PDF al băncii, cu rând dedicat explicit produsului 'Credite de investiții' și formula de dobândă variabilă aplicabilă.",
+      "pagina_pdf": 2,
+      "citat": "Credite de investiții Investment loans ROBOR/SOFR/EURIBOR/WIBOR + marja ROBOR/SOFR/EURIBOR/WIBOR + margin",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (11 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.pkobp.pl/ro/filiala-romania/produse",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de Investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de credit pentru persoane juridice destinat finanțării investițiilor companiei, listat explicit în secțiunea Credite a sucursalei corporate din România, același tip și segment ca și CREDIT_INVESTITII.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina listează explicit denumirea produsului 'Credit de Investiții' în categoria Credite pentru clienți corporate, dar nu conține cifre (dobânzi/comisioane) direct pe pagină.",
+      "citat": "Credite - Facilitate de descoperit de Cont - Credit de capital de lucru reînnoibil - Credit de capital de lucru ne-reînnoibil - Credit de Investiții - Facilitate de credit multi-produs",
+      "citat_verificat": true,
+      "link_live": "https://www.pkobp.pl/ro/filiala-romania/produse#:~:text=Credite%20%2D%20Facilitate%20de%20descoperit,%2D%20Facilitate%20de%20credit%20multi%2Dprodus"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+    "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dobânzilor.pdf"
+  ],
+  "durata_s": 26,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2134,
+    "citire_cache": 47564,
+    "scriere_cache": 64745,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1927313
+  }
+}

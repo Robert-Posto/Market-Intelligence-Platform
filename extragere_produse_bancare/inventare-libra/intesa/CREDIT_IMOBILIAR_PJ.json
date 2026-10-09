@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-imobiliar-green.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit Imobiliar Green",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul credit imobiliar dedicat clienților persoane juridice/microîntreprinderi la Intesa Sanpaolo, dar spre deosebire de produsul Libra (fără restricții menționate), acesta este limitat exclusiv la achiziția de imobile încadrate în clasa energetică A sau B - o condiție de eligibilitate care restrânge scopul creditului la proprietăți 'verzi'.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este clar pagina dedicată produsului de credit imobiliar pentru firme/PFA, dar textul extras nu conține cifre (dobândă, comision, sumă, termen) - acestea par randate prin JavaScript sau necesită accesare interactivă, de unde metoda playwright.",
+      "citat": "Credit pentru achiziția de construcții / bunuri imobile încadrate în clasa de eficiență energetică A sau B, conform certificatului de performanță energetică",
+      "citat_verificat": true,
+      "link_live": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-imobiliar-green.html#:~:text=Credit%20pentru%20achizi%C8%9Bia%20de%20construc%C8%9Bii,conform%20certificatului%20de%20performan%C8%9B%C4%83%20energetic%C4%83"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credit-imobiliar-green.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/Lista-costuri-credite-PF-02.10.2025.pdf",
+    "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_Septembrie-2026.pdf",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/kfs/caracteristici-credit-imobiliar-green.pdf",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/credite-antreprenori/credite-investitii.html"
+  ],
+  "durata_s": 69,
+  "consum": {
+    "intrare": 14,
+    "iesire": 5093,
+    "citire_cache": 310065,
+    "scriere_cache": 110122,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.388276
+  }
+}

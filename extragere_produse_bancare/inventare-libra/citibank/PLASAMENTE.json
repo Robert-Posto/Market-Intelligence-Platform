@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "citibank",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/capital-market.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Capital Market - T-bills and T-bonds / Government bonds",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (plasamente în titluri de stat/obligațiuni guvernamentale), dar Citi Romania oferă acest serviciu doar clienților instituționali/corporate, nu și persoanelor fizice, segment care face parte din produsul Libra PLASAMENTE.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată Treasury - Capital Market descrie explicit serviciul de plasare a ordinelor de cumpărare titluri de stat (T-bills/T-bonds) și obligațiuni guvernamentale, cu detalii despre piața primară și secundară.",
+      "citat": "Our customers can place orders to buy securities the primary market, at auctions organized by the Ministry of Finance. City Romania is also active in secondary markets for government bonds, due to excellent relationships with institutional investors.",
+      "citat_verificat": true,
+      "link_live": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/capital-market.html#:~:text=Our%20customers%20can%20place%20orders,excellent%20relationships%20with%20institutional%20investors."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/treasury/capital-market.html"
+  ],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1236,
+    "citire_cache": 19793,
+    "scriere_cache": 14938,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.053675600000000004
+  }
+}

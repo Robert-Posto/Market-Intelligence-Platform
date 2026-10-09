@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent MicroStar",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt pachete lunare de cont curent pentru persoane juridice/PFA, cu card de debit si tranzactii incluse, dar MicroStar este un pachet de baza (49 lei/luna, 10 plati interbancare incluse, 1 card de debit) fata de ELITE Libra, un pachet premium (225 lei/luna, 50 operatiuni, 3 carduri, Live FX inclus) - difera nivelul de pachet, numarul de tranzactii incluse si pretul.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicata a pachetului MicroStar contine cifre exacte (pret, numar conturi, tranzactii incluse, carduri) pentru segmentul persoane juridice/PFA cu cifra de afaceri <1 milion EUR.",
+      "citat": "MicroStar 49 lei/luna Pentru persoane juridice cu cifra de afaceri anuala < 1 milion EUR Card de debit Mastercard Business Gold Mastercard Business Silver Interbancare Lei in limita a 10 tranzactii/luna",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html#:~:text=MicroStar%2049%20lei%2Fluna%20Pentru%20persoane,in%20limita%20a%2010%20tranzactii%2Fluna"
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent MicroStar",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirma pretul de baza al pachetului MicroStar (49 Lei/luna) si segmentul de clienti (persoane juridice cu cifra de afaceri pana la 1 milion Euro, PFA, liber profesionisti), echivalent ca tip si segment cu ELITE Libra, dar cu volum de tranzactii si beneficii mult mai reduse.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul de tarife lista explicit pachetul MicroStar cu pretul de baza si definitia segmentului de clienti eligibili.",
+      "pagina_pdf": 3,
+      "citat": "Pachetul MicroStar este destinat persoanelor fizice autorizate, liber profesioniștilor, organizaţiilor non-profit și companiilor cu cifra de afaceri anuală până la 1 milion Euro. MicroStar² 49 Lei",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+    "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+    "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html"
+  ],
+  "durata_s": 63,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5829,
+    "citire_cache": 116959,
+    "scriere_cache": 90433,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3077803
+  }
+}

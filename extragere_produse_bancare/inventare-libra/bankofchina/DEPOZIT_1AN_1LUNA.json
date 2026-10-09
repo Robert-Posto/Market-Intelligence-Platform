@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozite la termen (Corporate Time Deposits) - Lista de Taxe și Comisioane / Ratele Dobânzilor pentru Persoane Juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (depozit la termen) dar doar pentru segmentul persoane juridice (Libra acoperă și persoane fizice), cu termene standard de 1, 3, 6 și 12 luni (fără opțiunea promoțională de 13 luni) și fără caracter promoțional - dobânzile sunt ordinare de piață, nu o ofertă specială.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife conține tabelul complet cu ratele dobânzilor pentru depozitele la termen pe valute și praguri de sumă, dar nu există un termen de 13 luni sau o dobândă promoțională comparabilă cu cea Libra.",
+      "pagina_pdf": 5,
+      "citat": "Depozite la termen RON Sumă/Durată 1lună 3luni 6luni 12luni <250.000 0.05 0.15 0.20 0.30 ≥250.000; <1.000.000 0.10 0.20 0.25 0.35 ≥ 1.000.000 0.15 0.25 0.35 0.45",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360670.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Corporate Time Deposits",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina descrie depozitul la termen standard al băncii, disponibil doar pentru clienți persoane juridice (bancă exclusiv corporate, fără secțiune retail/persoane fizice), cu termene fixe de 1, 3, 6 și 12 luni, fără variantă promoțională de 13 luni ca la Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului descrie clar tipul și termenele depozitului, dar nu conține cifre de dobândă (acestea sunt doar în documentul PDF de tarife).",
+      "citat": "Customers may open time deposit accounts in RON, EUR, USD and CNY separately. The periods of time deposit for RON, USD,EUR and CNY are: one month, three months, six months and twelve months.",
+      "citat_verificat": true,
+      "link_live": "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360670.html#:~:text=Customers%20may%20open%20time%20deposit,six%20months%20and%20twelve%20months."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb1/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb1/202104/t20210430_19360670.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
+  ],
+  "durata_s": 55,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3005,
+    "citire_cache": 63324,
+    "scriere_cache": 46672,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1594148
+  }
+}

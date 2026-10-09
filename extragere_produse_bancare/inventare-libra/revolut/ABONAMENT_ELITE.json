@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Planurile Revolut Business (Basic / Grow / Scale / Enterprise)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente lunare de cont curent pentru persoane juridice, cu comision lunar fix, plafon de tranzacții incluse (transferuri locale/internaționale) și carduri incluse, plus schimb valutar la curs preferențial. Diferă structura exactă a plafoanelor: Libra are un singur plafon de 50 de operațiuni pentru plăți+SEPA+instrumente de debit și 3 carduri fixe, în timp ce Revolut Grow (200 lei/lună, cel mai apropiat ca preț de cei 225 lei/lună ai Libra) separă plafoanele pe tipuri de transfer (100 transferuri locale, 5 internaționale fără comision) și cardurile fizice/virtuale au alte limite per membru de echipă.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată de tarifare conține explicit toate planurile (Basic 50 lei, Grow 200 lei, Scale 700 lei, Enterprise personalizat) cu cifrele exacte ale plafoanelor incluse pentru transferuri, schimb valutar și carduri.",
+      "citat": "Grow 200 lei/lună Descoperă instrumentele de care ai nevoie pentru a gestiona cheltuielile cu ușurință. Transferuri internaționale fără comision 0 5 25 Personalizat Transferuri locale fără comisioane 10 100 1.000 Personalizat",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/ro-RO/business/business-account-plans/#:~:text=Grow%20200%20lei%2Flun%C4%83%20Descoper%C4%83%20instrumentele,comisioane%2010%20100%201.000%20Personalizat"
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Revolut Business Account Plans (Basic / Grow / Scale / Enterprise)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Versiunea în engleză a aceleiași pagini de tarifare pentru contul Business, cu aceleași planuri și sume în lei; confirmă structura de abonament lunar cu plafoane incluse, diferită de schema unică de 50 operațiuni a Libra ELITE.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina oficială de tarifare Business pentru piața românească, cu cifrele exacte în lei pentru fiecare plan (Basic, Grow, Scale), confirmă aceleași date ca versiunea ro-RO.",
+      "citat": "Basic lei 50/month Grow lei 200/month Unlock the tools you need to manage spend with ease. Scale lei 700/month Access higher allowances to expand globally.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/ro-RO/business/business-account-plans/",
+    "https://www.revolut.com/ro-RO/business/planurile-noastre"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 34584,
+    "iesire": 2361,
+    "citire_cache": 12742,
+    "scriere_cache": 27407,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16384390000000001
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la termen (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (depozit la termen cu dobândă fixă, pentru firme) și același segment (persoane juridice), dar TechVentures nu are un depozit PROMOȚIONAL de 13 luni — oferă doar termene standard de 1, 3, 4, 6, 9 și 12 luni, fără variantă de 13 luni și fără caracter promoțional.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată depozitelor la termen pentru companii conține grila completă de dobânzi pe toate monedele și termenele, dar nu există un produs cu termen de 13 luni sau denumit promoțional.",
+      "citat": "Perioada: 1 lună, 3 luni, 6 luni, 9 luni, 12 luni 12 luni                               | 5,50%      | 6,00%  | 1,75%     | 1,80%  | 0,30%     | |",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/depozite-la-termen#:~:text=Perioada%3A%201%20lun%C4%83%2C%203%20luni%2C,1%2C80%25%20%7C%200%2C30%25%20%7C%20%7C"
+    },
+    {
+      "url": "https://techventures.bank/persoane-fizice/depozite-la-termen",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul la termen (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (depozit la termen cu dobândă fixă, pentru persoane fizice) și același segment, dar fără termen de 13 luni și fără caracter promoțional — TechVentures oferă termene standard de 1,3,4,6,9,12,18,24,36 luni.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată conține tabelul complet de dobânzi pentru toate termenele și monedele disponibile persoanelor fizice, dar nu include un termen de 13 luni sau un produs promoțional echivalent.",
+      "citat": "12 luni                               | 6,00%     | 6,25%  | 2,60%     | 2,65%  | 0,30%     | |",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (14 cuvinte)",
+      "link_live": "https://techventures.bank/persoane-fizice/depozite-la-termen#:~:text=12%20luni%20%7C%206%2C00%25%20%7C,2%2C65%25%20%7C%200%2C30%25%20%7C%20%7C"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/depozite-la-termen",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/persoane-fizice/depozite-la-termen"
+  ],
+  "durata_s": 43,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3224,
+    "citire_cache": 43911,
+    "scriere_cache": 31712,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12031819999999999
+  }
+}

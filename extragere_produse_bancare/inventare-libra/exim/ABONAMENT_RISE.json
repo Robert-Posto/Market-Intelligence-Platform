@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete servicii (EXIM BUSINESS START / ACTIV / SMART / COMPLET)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este abonamentul operațional lunar pentru PFA și microîntreprinderi (persoane juridice), cu conturi curente, card de debit business, Internet/Mobile Banking, plăți/încasări nelimitate intrabancare și facilitate POS opțională — exact tipul și segmentul produsului Libra Abonament RISE. Prețurile Exim variază pe trepte (25/40/45/70 lei/lună) față de prețul unic de 50 lei/lună al RISE, iar comisionul POS standard este 0,9% (vs. 0,59% la Libra), diferențe notate ca variații de preț în cadrul aceluiași tip de produs.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată a băncii prezintă explicit toate variantele de abonament lunar cu cifrele aferente (preț lunar, comisioane incluse, procent POS).",
+      "citat": "Facilitati aferente POS – cu un cost al comisionului la incasari PF – 0,9%/tranzactii. In afara promotiei, abonamentul pentru pachetul EXIM BUSINESS SMART este de 45 lei/luna.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=Facilitati%20aferente%20POS%20%E2%80%93%20cu,SMART%20este%20de%2045%20lei%2Fluna."
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comisioane Exim Banca Românească – Taxe și comisioane furnizare servicii de acceptare la POS",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul general de comisioane al băncii confirmă comisionul standard pentru acceptare la POS aplicabil Persoanelor Juridice (1,80% flat, indiferent de rulaj), complementar cifrelor din pagina Pachete servicii, pentru compania care deține abonamentul.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Document general de tarife, nu menționează explicit denumirea pachetului, dar conține valorile de comision POS aplicabile persoanelor juridice, relevante pentru componenta mPOS a produsului echivalent.",
+      "pagina_pdf": 12,
+      "citat": "Comisioane tranzacții (Indiferent de banca emitentă a cardului) Rulaj lunar / POS fizic <7.500 RON Persoane Fizice 1,75%, min 70 lei flat Persoane Juridice 1,80% flat",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/",
+    "https://www.eximbank.ro/2026/06/23/servicii-bancare-cu-zero-costuri-in-primele-6-luni-pentru-microintreprinderi/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+    "https://www.eximbank.ro/wp-content/uploads/2025/06/Document-de-informare-cu-privire-la-comisioane-pentru-Pachetul-EXIM-BUSINESS-START.pdf",
+    "https://www.eximbank.ro/documente-diverse/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf"
+  ],
+  "durata_s": 100,
+  "consum": {
+    "intrare": 14,
+    "iesire": 8180,
+    "citire_cache": 318404,
+    "scriere_cache": 118684,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.44221879999999997
+  }
+}

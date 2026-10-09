@@ -1,0 +1,25 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Nexent Bank nu are un produs dedicat de tip API pentru integrarea cu programele de contabilitate pentru persoane juridice. Banca oferă doar o funcție de import manual de plăți dintr-un fișier txt generat de programul de contabilitate al firmei (în cadrul Internet Banking), nu o integrare API automată: 'Payments import: in case of legal entities, the customer can import the payment orders to employees or suppliers from the accounting program of the company through an txt file'. De asemenea, banca are un API Gateway generic PSD2 (NextGenPSD2 XS2A Framework, la api.psd2.nexentbank.ro) destinat furnizorilor terți de servicii de plată (Open Banking/TPP), dar acesta este un API de acces la cont standardizat la nivel de piață, nu un produs dedicat de integrare cu programele de contabilitate ale firmelor, deci nu corespunde tipului de produs Libra."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Internet-Banking"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3246,
+    "citire_cache": 27133,
+    "scriere_cache": 35683,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1271061
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-pe-termen-scurt-si-mediu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linie de credit pentru plăți aferente activității curente",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este o linie de credit revolving, cu limită aprobată, destinată finanțării activității curente a companiilor (IMM/PFA) - acoperă exact același tip de nevoie (decalaj plăți-încasări, capital de lucru) ca produsul Libra LINIE_CREDIT, pentru același segment de clienți (persoane juridice, firme, PFA).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu caracteristici detaliate (tip credit, perioadă de utilizare, maturitate, caracter revolving), dar fără un procent de dobândă explicit afișat în text.",
+      "citat": "Tip Credit: linie de credit revolving cu o limită aprobată; Obiectul creditului: finanţarea activităţii curente a împrumutatului (onorarea obligaţiilor actuale către furnizori, către bugetele statului, plata salariilor şi asimilatelor, precum şi a altor cheltuieli curente etc); Perioada de utilizare: 12 luni de la data acordării.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-pe-termen-scurt-si-mediu/#:~:text=Tip%20Credit%3A%20linie%20de%20credit,luni%20de%20la%20data%20acord%C4%83rii."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-pe-termen-scurt-si-mediu/",
+    "https://www.garantibbva.ro/imm-si-pfa/dobanzi-si-comisioane"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1347,
+    "citire_cache": 73879,
+    "scriere_cache": 52976,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1607018
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Integrări cu programe de contabilitate (grilă de planuri Revolut Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru planurile Revolut Business confirmă că integrarea cu programele de contabilitate este inclusă în toate planurile (Basic 50 lei/lună, Grow 200 lei/lună, Scale 700 lei/lună, Enterprise personalizat), fiind document de referință pentru costul de acces la acest serviciu pentru firme.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Rândul din grila de comparație arată disponibilitatea integrării cu programele de contabilitate pe fiecare plan, iar prețurile planurilor (50/200/700 lei/lună) apar explicit în același document.",
+      "citat": "Integrări cu programe de contabilitate Conectează-ți programul de contabilitate și redu munca administrativă",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (13 cuvinte)",
+      "link_live": "https://www.revolut.com/ro-RO/business/business-account-plans/#:~:text=Integr%C4%83ri%20cu%20programe%20de%20contabilitate,contabilitate%20%C8%99i%20redu%20munca%20administrativ%C4%83"
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/business/integrations/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Integrări Revolut Business (contabilitate) – Keez, SmartBill, FGO, Oblio, Factureaza.ro, Xero, QuickBooks",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina dedicată conectării contului de business la programele de contabilitate (inclusiv soluții românești precum Keez, SmartBill, FGO, Oblio), exact tipul de produs Libra API Contabili, pentru același segment: persoane juridice/firme.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina listează explicit integrările cu programe de contabilitate (inclusiv 4 soluții românești), dar fiind o funcționalitate inclusă în cont, nu are cifre de tip dobândă/comision asociate direct acestui serviciu.",
+      "citat": "Elimină deficiențele din fluxul tău de lucru, economisește timp și optimizează-ți operațiunile. Integrează-ți aplicațiile de contabilitate, software-ul de resurse umane și multe altele cu Revolut Business, cu doar câteva clicuri.",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/ro-RO/business/integrations/#:~:text=Elimin%C4%83%20deficien%C8%9Bele%20din%20fluxul%20t%C4%83u,Business%2C%20cu%20doar%20c%C3%A2teva%20clicuri."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/ro-RO/business/integrations/",
+    "https://www.revolut.com/ro-RO/business/business-account-plans/"
+  ],
+  "durata_s": 131,
+  "consum": {
+    "intrare": 6,
+    "iesire": 10826,
+    "citire_cache": 31780,
+    "scriere_cache": 48173,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2350605
+  }
+}

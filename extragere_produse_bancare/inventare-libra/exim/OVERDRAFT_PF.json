@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/11/09/descoperit-de-cont-autorizat/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperit de cont",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (descoperit autorizat de cont/overdraft) și segment (persoane fizice), cu structură similară: limită bazată pe venituri salariale, dobândă doar pe suma utilizată, fără comision de analiză dosar.",
+      "incredere": 0.97,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: limite minimă/maximă, dobândă variabilă, DAE, comisioane și criterii de eligibilitate.",
+      "citat": "Poti obtine rapid pana la 6 salarii; Simplu si rapid de obtinut, fara adeverinta de venit, doar in baza actului de identitate si acordului ANAF; Moneda: LEI; Dobanda este calculata numai la valoarea sumelor utilizate.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/09/descoperit-de-cont-autorizat/#:~:text=Poti%20obtine%20rapid%20pana%20la,numai%20la%20valoarea%20sumelor%20utilizate."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/11/09/descoperit-de-cont-autorizat/"
+  ],
+  "durata_s": 14,
+  "consum": {
+    "intrare": 6,
+    "iesire": 872,
+    "citire_cache": 36588,
+    "scriere_cache": 37478,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1097446
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/digital-banking/internet-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Serviciul de Internet Banking (Patria Online Banking) - persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este pagina dedicată serviciului de Internet & Mobile Banking pentru firme/companii (afaceri mici, persoane juridice), exact același tip de produs și segment ca INTERNET_BANKING Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu descrierea completă a serviciului de Internet Banking pentru persoane juridice, avantaje, detalii tehnice și cerințe de securitate.",
+      "citat": "Parola trebuie să aibă un grad de complexitate corespunzător și trebuie să conțină minim 5 caractere, minim o cifră, minim o literă cu majusculă și minim un caracter special.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Internet Banking / Patria Online Banking persoane juridice - abonament lunar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane pentru persoane juridice care conține explicit secțiunea cu comisioanele lunare de abonament pentru serviciul de Internet Banking, inclusiv token fizic.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul general de tarife include un tabel dedicat cu valorile exacte ale abonamentului lunar pentru Internet Banking, utilizator suplimentar și token fizic.",
+      "citat": "Abonament lunar 10 LEI / luna Abonament lunar- utilizator suplimentar 7 LEI / luna Abonament lunar-token fizic 15 LEI / luna",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://corporate.patriabank.ro/Corporate/Home/Documents/ghid-de-utilizare-al-serviciului-de-Internet-Banking-Persoane-Juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Ghid de utilizare a Serviciului de Internet Banking Persoane Juridice - Patria Online Banking",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Ghidul oficial de utilizare al serviciului de Internet Banking pentru persoane juridice, descrie funcționalitățile, limitele de plată instant și condițiile tehnice ale platformei.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document de condiții/ghid dedicat produsului, cu cifre concrete privind pragul plăților instant, dar fără tarife detaliate (acestea sunt în lista de tarife separată).",
+      "citat": "Suma maximă care se poate procesa printr-o plată în regim instant este de maxim 49.999,99 lei, inclusiv.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (17 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 4,
+    "iesire": 3320,
+    "citire_cache": 6312,
+    "scriere_cache": 35703,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12372789999999999
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Internet-Banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking (Corporate & SME)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată serviciului de Internet Banking pentru clienți persoane juridice (secțiunea Corporate & SME / Corporate Banking), cu aceleași funcționalități ca produsul Libra: acces online la conturi, plăți, transferuri, extrase, pentru firme.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina este dedicată explicit serviciului de Internet Banking pentru segmentul Corporate & SME și conține cifre concrete despre comisioane.",
+      "citat": "You have 0 commission for transfers between your own accounts; You have 0 administration fee for Internet Banking service; You have 24/7 access; You make secure transactions from wherever you are, needing ONLY an internet connection;",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Internet-Banking#:~:text=You%20have%200%20commission%20for,needing%20ONLY%20an%20internet%20connection%3B"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Internet-Banking",
+    "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Internet-Banking",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Internet-Banking"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3081,
+    "citire_cache": 94076,
+    "scriere_cache": 84860,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2617912
+  }
+}

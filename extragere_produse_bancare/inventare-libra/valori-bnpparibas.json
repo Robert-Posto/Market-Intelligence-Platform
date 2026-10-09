@@ -1,4 +1,189 @@
 {
  "banca": "bnpparibas",
- "urluri": []
+ "urluri": [
+  {
+   "cheie": "https://www.romania.bnpparibas.com/app/uploads/sites/37/2025/11/gtcs-ro-nov-2025.pdf||contracte de schimb valutar (fx) / cursul de schimb valutar la vedere",
+   "url": "https://www.romania.bnpparibas.com/app/uploads/sites/37/2025/11/gtcs-ro-nov-2025.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Contracte de schimb valutar (FX) / Cursul de schimb valutar la vedere",
+   "focus": "Produsul băncii: „Contracte de schimb valutar (FX) / Cursul de schimb valutar la vedere”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1990,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "f642e3af88904d81f921502e19c4a0d99a5c05022a9fd690dff01ea4aa4510a8",
+   "observatii": [
+    {
+     "id": "c9b29961f0d0191ee9877b4595c64131",
+     "id_url": 1990,
+     "id_produs": "schimb-valutar",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul este un set de Termeni și Condiții Generale care doar menționează conceptual contractele de schimb valutar (FX) și „Cursul de schimb valutar la vedere” (definiție generală), dar nu conține nicio valoare numerică concretă (curs cumpărare/vânzare, marjă, spread sau comision) pentru nicio valută; toate referirile sunt descriptive/contractuale, fără cifre aplicabile produsului.",
+     "content_hash": "f642e3af88904d81f921502e19c4a0d99a5c05022a9fd690dff01ea4aa4510a8",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "bnpparibas",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "8e0dfdf06604a3bcbce6a6be42401f2853147f303fb18f2d9eb17e388f380c40"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 9,
+   "tokeni": {
+    "intrare": 51756,
+    "iesire": 231
+   }
+  },
+  {
+   "cheie": "https://romania-leasingsolutions.bnpparibas.com/en/faq/||finance lease / operating lease (bnp paribas leasing solutions romania)",
+   "url": "https://romania-leasingsolutions.bnpparibas.com/en/faq/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Finance Lease / Operating Lease (BNP Paribas Leasing Solutions Romania)",
+   "focus": "Produsul băncii: „Finance Lease / Operating Lease (BNP Paribas Leasing Solutions Romania)”.\nCorespunde produsului Libra: „Leasing financiar (Libra Development IFN)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2003,
+     "id_produs_libra": 46,
+     "cod": "LEASING_FINANCIAR",
+     "v2": "leasing"
+    }
+   ],
+   "produse_v2": [
+    "leasing"
+   ],
+   "stare": "eroare",
+   "motiv": "DestinatieNerezolvata: romania-leasingsolutions.bnpparibas.com nu se rezolvă (gaierror)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://cashmanagement.bnpparibas.com/print/pdf/node/107||documentary credits (bnp paribas trade finance capabilities - romania)",
+   "url": "https://cashmanagement.bnpparibas.com/print/pdf/node/107",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Documentary credits (BNP Paribas Trade Finance Capabilities - Romania)",
+   "focus": "Produsul băncii: „Documentary credits (BNP Paribas Trade Finance Capabilities - Romania)”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1794,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "3265ae9193f0d9c0d5513bf11b6bfb08bd987fdb78b3c5193e9099074819322b",
+   "observatii": [
+    {
+     "id": "e833ea77b523e7e5ab24149eca4bcaa7",
+     "id_url": 1794,
+     "id_produs": "garantii-acreditive",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul menționează doar generic „Documentary credits” în secțiunea Trade Finance Capabilities, fără nicio cifră, comision, procent sau condiție asociată produsului.",
+     "content_hash": "3265ae9193f0d9c0d5513bf11b6bfb08bd987fdb78b3c5193e9099074819322b",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "bnpparibas",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "d9f0c42b36815b9b63149293ac3bc14ba055caff180f931e7f00367f299510c0"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 8,
+   "tokeni": {
+    "intrare": 8513,
+    "iesire": 141
+   }
+  },
+  {
+   "cheie": "https://www.romania.bnpparibas.com/en/live-currency-rates/||live currency rates",
+   "url": "https://www.romania.bnpparibas.com/en/live-currency-rates/",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Live Currency Rates",
+   "focus": "Produsul băncii: „Live Currency Rates”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1991,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "trafilatura",
+   "content_hash": "ab75d6e50d51c036decd2e8b264039c39e2fbb7a0f714c60bc9804afd89df1ca",
+   "observatii": [
+    {
+     "id": "6eaad528eb5c598da2c429e6fbe4d368",
+     "id_url": 1991,
+     "id_produs": "schimb-valutar",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Pagina indicată returnează o eroare 404 (conținut inexistent), nu conține niciun fel de date despre cursuri valutare sau schimb valutar.",
+     "content_hash": "ab75d6e50d51c036decd2e8b264039c39e2fbb7a0f714c60bc9804afd89df1ca",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "bnpparibas",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "474471dc9a31eee78e4f68272185a08d414b75a3dec01b3509cddadbda4572a5"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 12,
+   "tokeni": {
+    "intrare": 3863,
+    "iesire": 133
+   }
+  }
+ ]
 }

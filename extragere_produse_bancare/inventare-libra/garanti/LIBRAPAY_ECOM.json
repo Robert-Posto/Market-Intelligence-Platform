@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
+      "tip": "pdf",
+      "pagina_pdf": 20,
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comisioane standard aferente acceptării la plată a cardurilor pentru E-commerce",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiune dedicată din documentul de tarife IMM care acoperă exact acceptarea la plată a cardurilor pentru E-commerce (comision de tranzacție, taxă de înrolare, perioadă de decontare), aplicabilă firmelor/PFA, la fel ca LibraPay eCommerce.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Document oficial de tarife al băncii, cu secțiune explicit denumită 'pentru E-commerce' și cifre concrete (taxă înrolare, comision tranzacție, perioadă de decontare) aplicabile clienților IMM.",
+      "citat": "1. Taxe și comisioane pentru acceptarea la plată a cardurilor Taxă înrolare (RON/terminal) Tipul cardului Perioadă de decontare (zile) Comision tranzacție (%) 300 RON Carduri emise de GarantiBank T+1 1.00 Carduri emise de alte bănci din România, deținute de persoane fizice T+1 1.00",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/corporate-banking/payment-systems/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Online payment / e-commerce (mobilPay, în parteneriat cu Netopia)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este soluția dedicată de acceptare a plăților online cu cardul pentru comercianți/companii (corporate), oferită printr-un gateway (mobilPay/Netopia), exact ca LibraPay eCommerce: integrare pe magazin online, 3D Secure, module pentru platforme de e-commerce.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată de produs a băncii pentru plăți online/e-commerce pentru clienți corporate, cu detalii tehnice (module platforme, 3D secure, pași de implementare), dar fără comisioane explicite în text.",
+      "citat": "Online payment / e-commerce Benefits 3D secure trading Fast implementation (3 steps) Payment modules for platforms such as Prestashop, Magento, OsCommerce, Zencart, WHMCS and Joomla/Virtuemart User friendly customized interface for administration and reporting Sales instrument - marketing: Link to pay Recurrent payment option Interest free installments with Bonus Card.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/corporate-banking/payment-systems/#:~:text=Online%20payment%20%2F%20e%2Dcommerce%20Benefits,free%20installments%20with%20Bonus%20Card."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
+    "https://www.garantibbva.ro/en/corporate-banking/payment-systems/"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4459,
+    "citire_cache": 38040,
+    "scriere_cache": 88532,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.27354
+  }
+}

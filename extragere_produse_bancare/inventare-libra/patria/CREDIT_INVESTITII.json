@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/credite/credit-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit dedicat persoanelor juridice (firme, PFA) pentru investiții: achiziții/amenajări imobiliare, echipamente, utilaje, mijloace de transport - exact segmentul și tipul de produs ca CREDIT_INVESTITII Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: suma maximă finanțată, termenul maxim și monedele acceptate.",
+      "citat": "valoarea creditului este dimensionată la nivelul afacerii (însă nu mai mult de 600.000 euro sau echivalent în lei) poți accesa acest credit chiar dacă ești un start-up cu activitate de minim 3 luni (pentru credite cu garanții imobiliare) fără garanții reale pentru credite mici creditul pentru investiții poate fi contractat în lei sau euro, pe o perioada de pana la maxim 10 ani (120 luni)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 4,
+    "iesire": 749,
+    "citire_cache": 12612,
+    "scriere_cache": 31718,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0893154
+  }
+}

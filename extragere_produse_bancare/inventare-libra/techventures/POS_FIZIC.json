@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/acceptare-carduri-prin-pos",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acceptare carduri prin POS",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Terminal POS fizic pentru persoane juridice, exact același tip de produs (terminal POS la locație, pentru vânzare fizică) și același segment de clienți (companii), cu dobânzi/comisioane publicate.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea, avantajele și comisioanele exacte pe tranzacție și taxa lunară de administrare.",
+      "citat": "Beneficiezi de comisioane negociate: Taxă lunară de administrare – 0 Comisioane pe tranzacții: Carduri persoane fizice – 0,90% Carduri de masă – 1,40% Carduri business – 1,40%",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/acceptare-carduri-prin-pos",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/acceptare-carduri-prin-pos",
+    "https://techventures.bank/companii/pos-e-commerce",
+    "https://techventures.bank/documente-utile"
+  ],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 45448,
+    "iesire": 1096,
+    "citire_cache": 25169,
+    "scriere_cache": 20172,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1573198
+  }
+}

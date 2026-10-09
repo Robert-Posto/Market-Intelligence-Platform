@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/agri/carduri-de-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Vista Business Credit Card (Vista Visa Business Credit Card)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este un card de credit business revolving pentru persoane juridice/PFA, cu linie de credit acordată de bancă, perioadă de grație și rambursare minimă lunară - același tip de produs și segment de clienți ca și CARD_CREDIT_PJ de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea completă a cardului business de credit, inclusiv rata dobânzii și perioada de grație.",
+      "citat": "Rata dobânzii: variabila ROBOR 3 Luni + Marjă Fixă 12.80%. El poate fi o sursă de finanțare fără dobândă dacă este utilizat eficient, întrucât permite o perioadă de grație de până la 50 zile.",
+      "rol_alt": null,
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/agri/carduri-de-business#:~:text=Rata%20dob%C3%A2nzii%3A%20variabila%20ROBOR%203,de%20p%C3%A2n%C4%83%20la%2050%20zile."
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_Iulie_2024_info.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Vista Visa Business Credit Card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice conține secțiunea dedicată cardului de credit business Vista Visa Business Credit Card, cu toate comisioanele și limitele aplicabile.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife, termeni și condiții pentru persoane juridice, cu tabel explicit pentru CARDUL DE CREDIT - Vista Visa Business Credit Card, incluzând comisioane de administrare și limite zilnice.",
+      "citat": "Administrare card 0 LEI/ card primul an de la emitere 60 LEI card/ an din al doilea an de la emitere Limita zilnica utilizare card 30.000 LEI Limita zilnica retragere numerar de la ATM-uri (inclusa in Limita zilnica utilizare card) 10.000 LEI",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice/carduri-de-business",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_Iulie_2024_info.pdf",
+    "https://www.vistabank.ro/agri/carduri-de-business"
+  ],
+  "durata_s": 31,
+  "consum": {
+    "intrare": 30727,
+    "iesire": 2450,
+    "citire_cache": 49316,
+    "scriere_cache": 75551,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.28469469999999997
+  }
+}

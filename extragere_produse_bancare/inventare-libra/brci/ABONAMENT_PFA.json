@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Connect 20",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un pachet lunar cu abonament pentru persoane juridice (cont curent, card business, IB/MB gratuit), similar ca structură cu Abonamentul PFA de la Libra, dar este dedicat generic persoanelor juridice fără cont la BRCI, nu specific PFA/profesii liberale, iar pagina nu menționează un plafon de operațiuni gratuite incluse (ex. 50/lună) ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată pachetului Connect 20 prezintă explicit prețul abonamentului și conținutul pachetului, dar nu este un produs dedicat exclusiv PFA și nu listează un număr de operațiuni incluse.",
+      "citat": "Connect 20 este un pachet tranzactional dedicat persoanelor juridice care nu detin un cont curent sau alte pachete de produse si servicii bancare la BRCI. Abonament lunar 20 lei. Zero Griji.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Connect 20 (prin Partener NETOPIA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă și detaliază conținutul pachetului Connect 20 (cont lei, cont euro, card Mastercard Business Debit, IB/MB gratuite) cu abonament lunar de 20 lei, corespunzător ca structură abonamentului PFA de la Libra, dar oferit în variantă generală pentru persoane juridice, nu dedicat PFA.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina de produs pentru un card de business menționează explicit pachetul Connect 20 cu valoarea abonamentului și componentele incluse, confirmând cifrele din sursa principală.",
+      "citat": "Vei beneficia de pachetul BRCI CONNECT 20 prin Partener NETOPIA, cu un abonament lunar de 20 lei, ce include: Pachetul CONNECT 20 (oferit prin Partener NETOPIA) 1 Cont Curent in Lei 1 Cont Curent in Euro 1 Card Mastercard Business Debit Lei oferit prin Partener Instrumente de Plata cu Acces la Distanta (BRCI iBanking si BRCI Mobile Banking)",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://companii.brci.ro/pjonboarding"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 26525,
+    "iesire": 2405,
+    "citire_cache": 12690,
+    "scriere_cache": 18840,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.126738
+  }
+}

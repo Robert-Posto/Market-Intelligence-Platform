@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "DIGITAL RON Package (pentru IMM și PFA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament lunar de cont curent pentru firme/PFA care include cont, card de debit, acces Internet/Mobile Banking și plăți intrabancare/interbancare incluse, la fel ca Abonamentul ELITE Libra, dar diferă structura: 119 RON/lună (nu 225), include doar 1 card de debit (nu 3), nu specifică un număr fix de plăți/încasări incluse (50 la Libra) și nu menționează explicit SEPA sau Live FX, ci doar un curs valutar competitiv ca beneficiu separat.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată ofertei de pachet corporate cu cifre explicite (cost lunar, plafon cifră de afaceri eligibilă), dar nu detaliază toate componentele comparabile cu Libra (nr. carduri, SEPA, Live FX).",
+      "citat": "This Offer targets SMEs and individual entrepreneurs with a turnover, as reported in their most recently submitted financial statement, not exceeding 25 million RON. The Package cost is 119 RON per month.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/#:~:text=This%20Offer%20targets%20SMEs%20and,is%20119%20RON%20per%20month."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3343,
+    "citire_cache": 78167,
+    "scriere_cache": 48052,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1692094
+  }
+}

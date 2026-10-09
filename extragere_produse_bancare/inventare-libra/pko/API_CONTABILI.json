@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "PKO Bank Polski – Sucursala București este o sucursală corporate dedicată companiilor mari (finanțare, cash pooling, trade finance). Lista completă de produse (pagina /produse) nu conține niciun serviciu de tip API/integrare cu programe de contabilitate; serviciile electronice oferite sunt doar iPKO Biznes (internet banking) și aplicația mobilă, plus formate de import/export de fișiere bancare (XML, MT103, ISO20022) care sunt pentru extrase de cont, nu o integrare dedicată cu softuri de contabilitate pentru PFA/firme mici. Nu există un produs echivalent sau similar."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse"
+  ],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 6,
+    "iesire": 915,
+    "citire_cache": 25770,
+    "scriere_cache": 21186,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.067281
+  }
+}

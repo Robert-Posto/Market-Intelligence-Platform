@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "citibank",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/citidirect-be.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "CitiDirect BE® / CitiDirect BE® Mobile",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este platforma de internet și mobile banking dedicată exclusiv clienților corporate (persoane juridice) ai Citi România, exact segmentul și tipul de produs ca INTERNET_BANKING la Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată produsului, publicată chiar pe site-ul Citi România, descrie în detaliu funcționalitățile CitiDirect BE și componenta mobilă CitiDirect BE Mobile pentru clienți corporate.",
+      "citat": "With web-based installation and minimum hardware and software requirements CitiDirect BE® is the platform of choice for internet banking. It is a sophisticated user-centered interface offering global access, uniform client software, enhanced, customized reporting capabilities, online technical and customer services support to corporate clients.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html"
+  ],
+  "durata_s": 10,
+  "consum": {
+    "intrare": 4,
+    "iesire": 813,
+    "citire_cache": 6338,
+    "scriere_cache": 20259,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0600531
+  }
+}

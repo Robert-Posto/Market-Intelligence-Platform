@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/descoperit-cont-overdraft",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperitul de cont - Overdraft",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (descoperit de cont/overdraft pe cardul de debit) și segment (persoane fizice salariate), cu dobândă aplicată doar pe suma utilizată, exact ca produsul Libra.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele cheie: suma maximă, numărul de salarii, dobânda și comisioanele.",
+      "citat": "9 salarii în sumă maximă de 60.000 lei poți obține ca descoperit de cont Comision de analiză dosar: ZERO Comision lunar de administrare: ZERO Dobândă variabilă, ajustată trimestrial IRCC+ 7,92%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/exemplu-calcul-descoperit-cont.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Descoperit de cont card debit (Visa/Mastercard/Mastercard World)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial cu exemple de calcul DAE pentru facilitatea de descoperit de cont atașată cardurilor de debit, același produs ca cel Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document PDF dedicat exclusiv exemplelor de calcul pentru acest produs, cu DAE și condiții de rambursare.",
+      "citat": "Exemple de calcul pentru facilitatea de descoperit de cont (overdraft) atasata cardurilor de debit oferite de CEC Bank, ofertă valabilă începând cu 01 octombrie 2026, inclusiv",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/intrebari-raspunsuri/cati-bani-pot-imprumuta-prin-overdraft-descoperit-de-cont",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Overdraft (descoperit de cont)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină FAQ oficială care confirmă suma maximă a produsului echivalent.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Conține cifra cheie (suma maximă) dar nu alte detalii precum dobânda sau comisioanele.",
+      "citat": "Poți obține până la 9 salarii în sumă maximă de 60.000 de lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (13 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1328,
+    "citire_cache": 6327,
+    "scriere_cache": 28748,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0864234
+  }
+}

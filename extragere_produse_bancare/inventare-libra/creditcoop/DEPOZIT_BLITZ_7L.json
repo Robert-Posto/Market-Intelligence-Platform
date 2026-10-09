@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/flexiplus-7-luni-pentru-fonduri-noi/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "FlexiPlus 7 Luni pentru fonduri noi",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un depozit promoțional cu termen fix de 7 luni, dobândă fixă, constituit doar cu fonduri noi — același tip de produs ca Depozitul Blitz Libra. Diferă segmentul: la CREDITCOOP acest produs apare listat doar la categoria „Personal”, fără variantă echivalentă pentru persoane juridice (firmele au doar depozitele Standard și Star Plus, cu termene de 1-24 luni, respectiv 3 și 6 luni, fără o campanie dedicată de 7 luni), iar pagina nu publică procentul exact de dobândă.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține termenul exact (7 luni) și suma minimă (5000 lei), dar nu afișează procentul de dobândă în text, doar mențiunea generică „dobândă fixă avantajoasă”.",
+      "citat": "Suma minimă de constituire este de 5000 lei Termen de constituire 7 luni Constituire cu fonduri noi Depozitul poate fi lichidat oricând înainte de scadență, beneficiind de dobândă la zi",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/flexiplus-7-luni-pentru-fonduri-noi/#:~:text=Suma%20minim%C4%83%20de%20constituire%20este,beneficiind%20de%20dob%C3%A2nd%C4%83%20la%20zi"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/flexiplus-7-luni-pentru-fonduri-noi/",
+    "https://www.creditcoop.ro/depozit-firme-star-plus/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 38,
+  "consum": {
+    "intrare": 10,
+    "iesire": 2661,
+    "citire_cache": 135811,
+    "scriere_cache": 65263,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21694970000000002
+  }
+}

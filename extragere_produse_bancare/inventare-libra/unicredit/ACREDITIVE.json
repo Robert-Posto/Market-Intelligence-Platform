@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ACREDITIVE (Import/Export) - Corporate",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife și comisioane pentru clienți Corporate (persoane juridice) ce conține secțiune dedicată ACREDITIVE IMPORT/EXPORT cu valori exacte ale comisioanelor.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul conține explicit secțiunea ACREDITIVE cu comisioane numerice detaliate (verificare documente, discrepanțe, negociere documente etc.).",
+      "citat": "Verificare documente sub acreditiv expirat Euro 50 Andosare document de transport emis la ordinul băncii Euro 30 Discrepanțe 100 Euro/ prezentare documente Anulare/ Neutilizare 50 Euro Negociere documente (plata în avans) în cadrul acreditivelor la vedere 0,25%, min 75 Euro Examinare/manipulare documente 0,20%, min 100 Euro",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ACREDITIVE (Import/Export) - SME/PFA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru persoane juridice cu cifră de afaceri sub 1 milion Euro, liber profesioniști și PFA, conținând secțiunea ACREDITIVE cu comisioane numerice, acoperind segmentul relevant pentru produsul Libra (firme, PFA).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul se adresează explicit persoanelor juridice mici și PFA și conține cifre concrete pentru comisioanele de acreditive.",
+      "citat": "Acest document se referă la comisioanele și dobânzile aferente produselor destinate persoanelor juridice cu cifra de afaceri mai mică de 1 milion Euro, liber profesioniștilor și persoanelor fizice autorizate. Amendament 30 Euro Verificare documente sub acreditiv expirat 50 Euro",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/institutii-financiare/tranzactionare/trade-finance.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditivul documentar (Trade Finance)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată instrumentelor de trade finance pentru persoane juridice, care descrie explicit Acreditivul documentar ca instrument de plată internațională/locală, exact ca produsul Libra pentru firme.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina descrie clar mecanismul acreditivului documentar și segmentul (comerț internațional/local pentru firme), dar nu conține cifre/tarife, acestea fiind în documentele de comisioane separate.",
+      "citat": "Acreditivul documentar, unul din cele mai folosite instrumente de plata in comertul international (cu utilizare, mai putin frecventa, si in comertul local), asigura vanzatorului un angajament irevocabil de plata din partea bancii emitente si cumparatorului siguranta ca plata se va efectua numai la prezentarea de documente de livrare in stricta concordanta cu termenii si conditiile acreditivului.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3260,
+    "citire_cache": 12684,
+    "scriere_cache": 42578,
+    "apeluri": 2,
+    "cost_estimat_usd": 0.1415978
+  }
+}

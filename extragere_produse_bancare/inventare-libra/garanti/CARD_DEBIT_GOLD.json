@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/current-account-and-0-fees/current-account-in-lei/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Bonus Debit Card (Cont curent în Lei)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (card de debit atașat contului curent, Mastercard, contactless) și același segment (persoane fizice), dar nu are variantă „Gold” dedicată, nu oferă acces la lounge, asigurare de călătorie sau dobândă la sold, iar cashback-ul este de doar 0,05% față de 1% dobândă la sold promis de Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată descrie explicit cardul de debit Bonus și conține cifra de cashback (0,05%) și limitele contactless (100/700 RON), dar nu există un tier Gold separat pentru carduri de debit.",
+      "citat": "Choose the attached MasterCard Bonus Debit Card Lei Current Account and receive 0.05% of the value of each card payment as Bonus Points. You can use these points when you shop in one of the Garanti BBVA partner stores.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2023/10/T0012-Standard-Tarifs-and-Commissions.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Bonus Debit Card",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document de tarife care acoperă explicit cardul de debit standard al băncii (Bonus Debit Card) pentru persoane fizice, cu comisioane și limite de retragere, dar fără un tier Gold cu beneficii premium precum cele din produsul Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul standard de tarife conține un tabel dedicat „Bonus Debit Card (debit card)” cu taxe de administrare, emitere și limite de retragere exprimate numeric.",
+      "citat": "The daily cash withdrawal limit via the Bonus Debit Card debit card is 10,000 LEI, and the exchange rate adjustment margin for foreign currency transactions is 1.25%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Card de debit business (Pachet T0 pentru IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul persoane juridice (IMM/PFA) cu un card de debit business gratuit la emitere și administrare, dar fără niciuna din caracteristicile premium (asigurare călătorie, lounge, cashback, dobândă la sold) ale cardului Libra Gold.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul menționează explicit cardul de debit pentru afaceri inclus în pachetul T0, cu cifre despre costurile de emitere/administrare, dar este parte dintr-o ofertă de pachet, nu o pagină dedicată doar cardului.",
+      "citat": "Beneficiezi de operațiuni nelimitate în lei efectuate prin canalele digitale, precum și un card de debit pentru afacerea ta, fară costuri de emitere și administrare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 6,
+    "iesire": 6094,
+    "citire_cache": 38102,
+    "scriere_cache": 45983,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1835299
+  }
+}

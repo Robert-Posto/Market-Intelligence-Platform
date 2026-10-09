@@ -1,0 +1,44 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CREDIT_DEZVOLTATORI",
+  "denumire": "Credit pentru dezvoltatori imobiliari",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Finanțări Imobiliare / Finanțări Proiecte (încredere 0.55) — Vista Bank oferă pe pagina de credite pentru persoane juridice două secțiuni relevante - 'Finanțari Imobiliare' (finanțarea proiectelor imobiliare bine localizate, cu real potențial economic) și 'Finanțari Proiecte' (finanțarea proiectelor de dezvoltare, cu asistență de specialitate) - care acoperă segmentul de firme și tipul de finanțare (proiecte imobiliare/dezvoltare), dar nu este un produs dedicat exclusiv dezvoltatorilor imobiliari cu finanțare pe faze, analiză de proiect structurată și consultanță specializată ca la Libra; de asemenea pagina nu publică cifre (dobânzi, comisioane, sume, termene) pentru acest produs."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțări Imobiliare / Finanțări Proiecte",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Vista Bank oferă pe pagina de credite pentru persoane juridice două secțiuni relevante - 'Finanțari Imobiliare' (finanțarea proiectelor imobiliare bine localizate, cu real potențial economic) și 'Finanțari Proiecte' (finanțarea proiectelor de dezvoltare, cu asistență de specialitate) - care acoperă segmentul de firme și tipul de finanțare (proiecte imobiliare/dezvoltare), dar nu este un produs dedicat exclusiv dezvoltatorilor imobiliari cu finanțare pe faze, analiză de proiect structurată și consultanță specializată ca la Libra; de asemenea pagina nu publică cifre (dobânzi, comisioane, sume, termene) pentru acest produs.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina este dedicată creditelor pentru persoane juridice și descrie explicit finanțarea proiectelor imobiliare și a proiectelor de dezvoltare, dar conține doar text descriptiv general, fără cifre concrete asociate acestor două produse.",
+      "citat": "Finanțari Imobiliare Pe principiul că fiecare afacere are nevoie de un loc unde să se dezvolte, banca noastră consideră o oportunitate finanțarea proiectelor imobiliare bine localizate și cu un real potențial economic. Finanțari Proiecte Noi avem certitudinea că principalul motor de creștere al economiei constă în finanțarea proiectelor de dezvoltare.",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-juridice/credite#:~:text=Finan%C8%9Bari%20Imobiliare%20Pe%20principiul%20c%C4%83,%C3%AEn%20finan%C8%9Barea%20proiectelor%20de%20dezvoltare."
+    }
+  ],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice/credite",
+    "https://www.vistabank.ro/en/legal-entities/loans",
+    "https://www.vistabank.ro/",
+    "https://www.vistabank.ro/persoane-juridice/credite",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 29413,
+    "iesire": 3506,
+    "citire_cache": 144357,
+    "scriere_cache": 78373,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3186899
+  }
+}

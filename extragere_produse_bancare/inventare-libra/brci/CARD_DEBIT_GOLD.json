@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit (Mastercard debit)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un card de debit Mastercard pentru persoane fizice, dar nu are asigurare de călătorie, cashback, acces lounge sau dobândă la sold; de asemenea nu este oferit ca produs unic și pentru persoane juridice (BRCI are carduri de debit business separate, fără aceste beneficii premium).",
+      "incredere": 0.75,
+      "incredere_metoda": 0.6,
+      "explicatie_incredere": "Pagina dedicată a produsului conține caracteristicile tehnice și comisionul de retragere numerar, dar nu menționează cashback, asigurare de călătorie, lounge sau dobândă la sold, elemente centrale ale cardului Libra Gold.",
+      "citat": "Card MASTERCARD debit in Lei embosat, cu CHIP si cu tehnologie contactless; Plati rapide folosind tehnologia contactless; Tranzactii la comercianti efectuate la POS, oriunde in lume GRATUIT; Comision fix de doar 1 Leu / tranzactie la retragerea de numerar la ATM-urile oricarei banci din Romania sau UE",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html",
+    "https://www.brci.ro/ro/produse/card-mastercard-business.html",
+    "https://vreaucont.brci.ro/",
+    "https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 47110,
+    "iesire": 2965,
+    "citire_cache": 12718,
+    "scriere_cache": 21360,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.17981360000000002
+  }
+}

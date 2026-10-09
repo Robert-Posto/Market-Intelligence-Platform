@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/servicii-bancare/carduri-visa-business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul Visa Debit Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un card de debit fără cost de emitere, dar dedicat exclusiv segmentului persoane juridice (nu acoperă și persoanele fizice ca produsul Libra) și nu se menționează niciun program de cashback la parteneri.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată cardurilor Visa Business declară explicit, cu cifre, că emiterea cardului de debit atașat contului de business este gratuită, costul aplicându-se doar cardurilor adiționale.",
+      "citat": "Cardul de debit atașat contului curent de business este gratuit, dar pentru fiecare card adițional emis pe același cont curent costul este de 50 LEI/10 EUR.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/landing/pachetul-proactive/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de debit Visa Classic (LEI), inclus în Pachetul ProActive",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cardul de debit Visa Classic este oferit fără cost separat, dar doar ca parte a unui pachet de cont curent (ProActive) pentru persoane fizice, condiționat de îndeplinirea unor criterii lunare, și fără cashback la parteneri, spre deosebire de cardul Libra, autonom și valabil și pentru persoane juridice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina pachetului ProActive listează explicit cardul de debit Visa Classic (LEI) ca serviciu inclus, cu comision ZERO de administrare pentru întregul pachet, dar fără cifre dedicate exclusiv cardului.",
+      "citat": "Gestionează-ță finanțele cu Pachetul bancar ProActive. Beneficiezi de cont curent în LEI & EURO, cont de economii 3% dobândă și altele.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/02/Lista-de-preturi-persoane-fizice-_-10.02.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Visa Classic (LEI) - Pachetul ProActive",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife confirmă condițiile exacte de administrare gratuită pentru pachetul ProActive în care este inclus cardul de debit Visa Classic, dedicat persoanelor fizice.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Lista de prețuri pentru persoane fizice conține valorile exacte ale comisioanelor și condițiile de gratuitate pentru cardul de debit Visa Classic inclus în pachetul ProActive.",
+      "citat": "Ai încasări aferente lunii anterioare (salariu sau alte tipuri de încasări) în LEI în valoarea de minimum 1.000 LEI/ lună sau 2. Dacă nici una dintre condițiile menționate mai sus nu este îndeplinită, comisionul lunar de administrare este de 10 LEI.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/",
+    "https://www.procreditbank.ro/companii/servicii-bancare/carduri-visa-business/"
+  ],
+  "durata_s": 77,
+  "consum": {
+    "intrare": 8,
+    "iesire": 6004,
+    "citire_cache": 92323,
+    "scriere_cache": 61422,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2320756
+  }
+}

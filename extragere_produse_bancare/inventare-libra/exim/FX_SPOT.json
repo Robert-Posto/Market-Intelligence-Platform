@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Piata valutara (tranzactii FX Today/Tomorrow/Spot) - Trezorerie si investitii",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina descrie explicit tranzacțiile de schimb valutar la vedere cu decontare SPOT (T+2), alături de Today/Tomorrow, oferite prin platforma de tranzacționare a băncii; documentele MiFID conexe (KID) sunt furnizate atât clienților Retail cât și celor corporate, acoperind același tip de produs și segmentele de clienți ca FX_SPOT.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține cifre concrete (prag de 10.000 EUR pentru negociere, decontare T+2) direct în text, nu doar denumirea produsului.",
+      "citat": "Oferim cotatii competitive pentru diverse perechi valutare cu decontare: \"astazi – TODAY\" (T); \"maine – TOMORROW\" (T+1); \"SPOT\" (T+2) cu posibilitatea clientului de a lasa ordine de tranzactionare la curs limitat. Tranzactiile valutare peste suma minima de 10.000 EUR sau echivalent sunt eligibile pentru negociere.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://eximbank.ro/corporate/trezorerie-si-investii",
+    "https://www.eximbank.ro/curs-valutar/",
+    "https://www.eximbank.ro/curs-valutar/"
+  ],
+  "durata_s": 30,
+  "consum": {
+    "intrare": 70911,
+    "iesire": 2110,
+    "citire_cache": 12598,
+    "scriere_cache": 28710,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.23721660000000003
+  }
+}

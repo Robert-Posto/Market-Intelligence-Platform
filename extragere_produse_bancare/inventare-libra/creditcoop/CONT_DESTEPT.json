@@ -1,0 +1,46 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Conturi curente – Persoane juridice (încredere 0.55) — Este contul curent general pentru persoane juridice (firme/PFA) la CreditCoop, deci același tip de produs și același segment de clienți ca și Cont Deștept, dar nu este un pachet dedicat de start-up: nu are perioadă gratuită de 12 luni, nu menționează card, online banking inclus sau mPOS cu comision 0,59% ca bundle, ci este descris generic ca simplu cont curent de operațiuni."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Conturi curente – Persoane juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent general pentru persoane juridice (firme/PFA) la CreditCoop, deci același tip de produs și același segment de clienți ca și Cont Deștept, dar nu este un pachet dedicat de start-up: nu are perioadă gratuită de 12 luni, nu menționează card, online banking inclus sau mPOS cu comision 0,59% ca bundle, ci este descris generic ca simplu cont curent de operațiuni.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina este dedicată contului curent pentru persoane juridice la CreditCoop și conține cifre privind limitele de tranzacționare, dar nu oferă detalii despre comisioane, card sau mPOS specifice unui pachet de start-up.",
+      "citat": "Limită zilnică* 200.000 lei Limita pe tranzacție* 50.000 Lei * Limita zilnică și limita pe tranzacție pot fi modificate doar cu aprobarea expresă",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/#:~:text=Limit%C4%83%20zilnic%C4%83%2A%20200.000%20lei%20Limita,modificate%20doar%20cu%20aprobarea%20expres%C4%83"
+    }
+  ],
+  "deschise": [
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/cont-de-plati-persoane-juridice/",
+    "https://www.creditcoop.ro/c/persoane-fizice/",
+    "https://www.creditcoop.ro/internet-banking-afaceri/",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 13199,
+    "iesire": 2357,
+    "citire_cache": 122842,
+    "scriere_cache": 62195,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2300239
+  }
+}

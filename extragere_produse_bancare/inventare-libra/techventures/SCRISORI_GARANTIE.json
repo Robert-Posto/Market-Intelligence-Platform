@@ -1,0 +1,44 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/trade-finance",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de Garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs identic ca tip (scrisori de garanție bancară emise/avizate de bancă pentru garantarea obligațiilor contractuale) și același segment de clienți (persoane juridice/companii), oferit în cadrul secțiunii Trade Finance pentru companii.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina dedicată produsului, cu descrierea exactă a scrisorilor de garanție și a tipurilor emise, dar nu conține cifre (procente/comisioane) pentru acest produs; listele de tarife publicate pe site (secțiunile Acreditive, Ordine de plată documentare, Incassouri) nu includ o secțiune separată cu comisioane pentru scrisori de garanție.",
+      "citat": "Este mijlocul de garantare a îndeplinirii unor obligații contractuale ale unei societăți față de altă societate prin asumarea precisă și irevocabilă din partea Băncii de a plăti o sumă de bani beneficiarului garanției în cazul neîndeplinirii acestora. TechVentures Bank avizează sau emite scrisori de garanție de plată, de restituire avans, de participare la licitații, de bună execuție, pentru acordare de facilități bancare (credite), pentru vamă și plata taxelor vamale, de confort, cât și contragaranții.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/trade-finance",
+    "https://techventures.bank/companii/trade-finance",
+    "https://techventures.bank/companii/trade-finance",
+    "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+    "https://techventures.bank/companii/trade-finance"
+  ],
+  "durata_s": 163,
+  "consum": {
+    "intrare": 127547,
+    "iesire": 5199,
+    "citire_cache": 209762,
+    "scriere_cache": 93587,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5830039
+  }
+}

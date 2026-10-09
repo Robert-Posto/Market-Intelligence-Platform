@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { VersusExtra, VersusMatrice } from '@mcc/shared'
+import { VersusExtra, VersusLibra, VersusMatrice } from '@mcc/shared'
 import { api } from './client'
 
 /**
@@ -13,3 +13,6 @@ export const useVersusMatrice = (grup: string) =>
   })
 
 export const useVersusExtra = () => useQuery({ queryKey: ['versus_extra'], queryFn: () => api('/api/versus_extra', VersusExtra) })
+
+/** Produsele Libra față de echivalentele lor, din fluxul comparației (o singură cerere pentru toate). */
+export const useVersusLibra = () => useQuery({ queryKey: ['versus_libra'], queryFn: () => api('/api/versus_libra', VersusLibra) })

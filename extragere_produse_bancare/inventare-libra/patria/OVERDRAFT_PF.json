@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/persoane-fizice/credite/descoperit-de-cont",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Overdraft - Descoperire de Cont pentru persoane fizice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este același tip de produs (descoperit de cont/overdraft) pentru același segment (persoane fizice), cu dobândă aplicată doar pe suma utilizată, la fel ca produsul Libra, diferind doar plafonul maxim (4 salarii/30.000 lei vs 6 salarii/70.000 lei la Libra).",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: plafon maxim, formula de dobândă, exemplu de calcul cu DAE și comisioane.",
+      "citat": "Poți beneficia de o limită de credit Overdraft - Descoperire de Cont de până la 4 venituri nete (în limita a 30.000 lei), direct în contul tău curent. Plătești doar dobânda lunară aferentă sumei utilizate. Dobândă standard aplicabilă (variabilă): IRCC + marjă fixă 10%.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/1048",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Descoperit de cont",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de informare cu privire la comisioane pentru contul curent, care listează explicit rata de dobândă a descoperitului de cont pentru persoane fizice.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Documentul general de comisioane conține o secțiune dedicată cu rata de dobândă a descoperitului de cont, dar nu are toate detaliile (plafon, condiții de acordare).",
+      "citat": "Descoperitul de cont și servicii conexe Descoperitul de cont Rata de dobanda: IRCC +10%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (14 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/1782",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Overdraft (în pachetele de cont curent Patria Start/Senior/Avantaj/Premium/Premium Plus)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document care detaliază marjele de dobândă preferențiale pentru Overdraft în funcție de pachetul de cont curent ales, aplicabil persoanelor fizice.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Conține cifre despre reducerile de marjă pentru Overdraft în funcție de pachet, dar trimite la lista de dobânzi separată pentru marja standard.",
+      "citat": "Overdraft - reducere 5% fata de marja standard Overdraft - reducere 3.5% fata de marja standard Overdraft - reducere 2.5% fata de marja standard",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1477,
+    "citire_cache": 6331,
+    "scriere_cache": 29900,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.09079419999999999
+  }
+}

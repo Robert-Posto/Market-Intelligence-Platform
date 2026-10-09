@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/Economisire-si-investitii/campanie-depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit la termen cu Fonduri Noi (campanie promoțională, persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul depozit promoțional (dobândă majorată, perioadă limitată) pentru persoane fizice la UniCredit, dar termenul maxim este 12 luni (nu 13 luni ca la Libra) și dobânda maximă e 6,20% față de 6,10-6,60% la Libra.",
+      "incredere": 0.78,
+      "explicatie_incredere": "Pagină dedicată campaniei curente de depozit cu dobândă majorată, cu cifre explicite pentru toate termenele (3/6/12 luni) și perioada de valabilitate a campaniei.",
+      "citat": "Campania promotionala se desfasoara in perioada 02.10.2026 ora 09:00 – 15.01.2027 ora 17:00. Depozit LEI cu prelungire automata pana la 6,20% pe an 3 luni 5,70% 6 luni 6,00% 12 luni 6,20%",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/persoane-fizice/Economisire-si-investitii/campanie-depozite-la-termen.html#:~:text=Campania%20promotionala%20se%20desfasoara%20in,luni%206%2C00%25%2012%20luni%206%2C20%25"
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/imm/economisire-si-investitii/depozite-la-termen.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozit la termen pentru companii IMM Micro",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este echivalentul pentru persoane juridice (micro-companii) al depozitului la termen, dar nu există o variantă promoțională de 13 luni; termenul maxim standard este 12 luni, iar dobânda standard la 12 luni este 5,20%, mult sub 6,10% oferit de Libra pentru firme.",
+      "incredere": 0.62,
+      "explicatie_incredere": "Pagina de produs dedicată depozitelor la termen pentru companii IMM Micro conține grila de dobânzi cu cifre explicite, dar produsul nu este unul promoțional și nu acoperă termenul de 13 luni.",
+      "citat": "Depozitul la termen pentru companii IMM Micro ofera variante de economisire in lei, dolari si euro pe termen de o luna, 3 luni, 6 luni sau 1 an, in functie de planificarea sustenabila a afacerii tale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/persoane-fizice/Economisire-si-investitii/depozite-la-termen.html",
+    "https://www.unicredit.ro/ro/companii/economisire-si-investitii/depozite-la-termen.html",
+    "https://www.unicredit.ro/en/persoane-fizice/saving-and-investing/term-deposits.html",
+    "https://www.unicredit.ro/en/sme/saving-and-investing/term-deposits.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/persoane-fizice/Economisire-si-investitii/depozite-la-termen.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/economisire-si-investitii/depozite-la-termen.html",
+    "https://www.unicredit.ro/ro/persoane-fizice/Economisire-si-investitii/campanie-depozite-la-termen.html"
+  ],
+  "durata_s": 73,
+  "consum": {
+    "intrare": 34517,
+    "iesire": 6033,
+    "citire_cache": 186000,
+    "scriere_cache": 89218,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.38960900000000004
+  }
+}

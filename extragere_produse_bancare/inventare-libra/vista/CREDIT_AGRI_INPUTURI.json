@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CREDIT_AGRI_INPUTURI",
+  "denumire": "Linie de credit pentru inputuri agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/agri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul parteneriat Vista Bank – Naturevo",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt credite/linii dedicate finanțării inputurilor agricole (fertilizatori etc.) pentru persoane juridice din agricultură, dar la Vista perioada e de până la 12 luni (nu 24-48 luni ca la Libra) și garanția e dată de parteneriatul privat cu Naturevo, nu de InvestEU.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată AGRI descrie explicit creditul pentru achiziție de fertilizatori și alte inputuri, cu sumă maximă, monedă și perioadă de creditare.",
+      "dovada_metoda": "Text extras din pagina www.vistabank.ro/agri, secțiunea despre Creditul parteneriat Vista Bank – Naturevo.",
+      "citat": "Credit special destinat finanțării cheltuielilor curente generate de activitatea agricolă (de exemplu: achiziție fertilizatori și alte inputuri) furnizate de către NATUREVO pentru societăți agricole, SRL, SA. Valoarea creditului: de până la 300.000 EUR (în echivalent LEI) - se determină de comun acord, în funcție de nevoile fermei; Valuta creditului: LEI; Perioada: până la 12 luni; Perioada de grație: până la 12 luni pentru capital;",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/en/agri/loans",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Naturevo partnership credit for agricultural inputs",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Varianta în limba engleză a aceluiași credit Naturevo pentru inputuri agricole, cu tragere corelată cu campania de toamnă/primăvară (similar ideii de sezonalitate de la Libra), dar cu termen scurt de 12 luni și fără componenta InvestEU, spre deosebire de cei 24-48 luni ai produsului Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina EN detaliază explicit tragerile în 1-2 tranșe corelate cu campaniile agricole de toamnă și primăvară, plus suma maximă de 300.000 EUR.",
+      "dovada_metoda": "Text extras din pagina www.vistabank.ro/en/agri/loans, secțiunea despre creditul Naturevo pentru inputuri.",
+      "citat": "Credit amount: up to EUR 300,000 (in LEI equivalent) - determined by mutual agreement, depending on the farm needs; Loan currency: LEI; Grace period: up to 12 months for capital; Method of use: 1 or 2 draws (eg 1 draw for the inputs related to the autumn campaign and 1 draw for the inputs related to the spring campaign);",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4659,
+    "citire_cache": 6371,
+    "scriere_cache": 35179,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.13581970000000002
+  }
+}

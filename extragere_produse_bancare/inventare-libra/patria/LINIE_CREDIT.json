@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/credite/credit-pentru-capital-de-lucru",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru capital de lucru / Linia de credit Afaceri Mici",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Linie de credit reînnoibilă pentru capital de lucru, destinată firmelor și PFA (segment Afaceri Mici), aceeași logică de acoperire a decalajului dintre încasări și plăți, cu reîntregire la fiecare încasare, exact ca produsul Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre explicite despre plafon (200.000 euro), termen (12 luni pentru linie) și mecanism de utilizare/reîntregire.",
+      "citat": "Termenul de acordare este: maxim 12 luni, pentru linia de credit, maxim 36 de luni, pentru creditul cu plata în rate.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/credite/credit-pentru-capital-de-lucru"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 27320,
+    "iesire": 3139,
+    "citire_cache": 12734,
+    "scriere_cache": 33151,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1714543
+  }
+}

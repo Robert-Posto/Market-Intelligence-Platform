@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/en/ipko-biznes-online-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "iPKO dealer online (în cadrul iPKO biznes online banking)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o platformă online de schimb valutar integrată în bankingul electronic, cu tranzacții în timp real, gestionare a riscului valutar și plasare de excedente financiare — același tip de produs ca Live FX. Diferă segmentul: iPKO dealer este dedicat exclusiv companiilor (persoane juridice), în timp ce Live FX la Libra se adresează atât persoanelor fizice, cât și juridice; de asemenea platforma e comună grupului PKO (inclusiv sucursala din România), nu are o pagină dedicată separat pentru România.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina descrie explicit funcționalitatea iPKO dealer ca platformă online de schimb valutar pentru companii, inclusă în panoul iPKO biznes folosit și de clienții sucursalei din România, dar nu conține cifre (cursuri/comisioane) specifice.",
+      "citat": "Professional internet platform for currency exchange addressed to companies making settlements in foreign currencies. It provides online currency exchange transactions, management of foreign currency risk and deposition of financial surplus",
+      "citat_verificat": true,
+      "link_live": "https://www.pkobp.pl/en/ipko-biznes-online-banking#:~:text=Professional%20internet%20platform%20for%20currency,and%20deposition%20of%20financial%20surplus"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/en/ipko-biznes-online-banking",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 58,
+  "consum": {
+    "intrare": 12,
+    "iesire": 3703,
+    "citire_cache": 130503,
+    "scriere_cache": 84730,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2749796
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar casă de schimb",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de schimb valutar afișat cu cifre pe site-ul BRCI: cotații de cumpărare/vânzare la casa de schimb (operațiuni cu numerar la ghișeu), disponibil atât pentru persoane fizice cât și juridice prin contul curent, dar nu este prezentat ca produs dedicat de tranzacționare spot (electronică/interbancară) așa cum sugerează denumirea Libra 'Schimb valutar spot'; diferă canalul (ghișeu/numerar vs. tranzacție spot cont-cont).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina principală afișează explicit cotațiile valutare ale casei de schimb, dar nu descrie un produs de schimb valutar spot dedicat, cu termeni contractuali sau comisioane specifice.",
+      "citat": "Curs valutar casă de schimb Alegeți data Valută Cumpărare Vânzare EURO 4.3950 - USD NOTĂ: Cursurile valutare au caracter informativ și sunt din perspectiva băncii.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/cont-curent-pj.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont curent - operațiuni de schimb valutar",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina de Cont curent pentru persoane juridice confirmă că operațiunile de schimb valutar sunt oferite ca serviciu accesoriu contului curent pentru companii, dar nu există o pagină de produs separată pentru 'schimb valutar spot' cu cifre dedicate (dobânzi/comisioane proprii).",
+      "incredere": 0.55,
+      "explicatie_incredere": "Menționează explicit 'operațiuni de schimb valutar' ca funcționalitate a contului curent PJ, dar fără cifre specifice de curs sau comision pentru acest serviciu separat de produsul cont curent.",
+      "citat": "Oferă acces permanent la o gamă largă de operațiuni: Depuneri și retrageri de numerar în lei și valută; Plați și încasări în lei și valută; Constituire de depozite și operațiuni de schimb valutar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/persoane-juridice",
+    "https://www.brci.ro/ro/produse/plafon-de-trezorerie.html",
+    "https://www.brci.ro/ro/produse/depozite-la-termen.html"
+  ],
+  "durata_s": 50,
+  "consum": {
+    "intrare": 43291,
+    "iesire": 4084,
+    "citire_cache": 12612,
+    "scriere_cache": 22778,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1868894
+  }
+}

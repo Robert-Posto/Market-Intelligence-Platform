@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/carduri/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de Credit VISA Classic",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving pentru persoane fizice, cu perioadă de grație fără dobândă, plăți în rate fără dobândă la comercianți și rambursare minimă procentuală - același tip de produs și segment ca CARD_CREDIT_PF de la Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele relevante: perioada de grație, limitele zilnice, procentul minim de rambursare și pragul pentru plăți în rate.",
+      "citat": "Perioadă de grație de până la 52 de zile: fără dobândă pentru cumpărături, dacă suma este achitată integral până la data scadentă Beneficiezi gratuit de asigurare de risc pentru evenimente nedorite Tu alegi cât rambursezi – începând de la 5% din suma folosită, plus comisioanele aferente Ai posibilitatea de a efectua plăți în rate fără dobândă pentru tranzacții de minimum 200 RON",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/carduri/#:~:text=Perioad%C4%83%20de%20gra%C8%9Bie%20de%20p%C3%A2n%C4%83,tranzac%C8%9Bii%20de%20minimum%20200%20RON"
+    },
+    {
+      "url": "https://www.creditcoop.ro/intrebari-frecvente/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Card de Credit VISA Classic",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea FAQ descrie explicit cardul de credit CREDITCOOP (linie revolving, retrageri numerar, vârstă minimă, valabilitate card), completând datele de pe pagina dedicată a produsului.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina generală de FAQ conține un bloc dedicat cardului de credit cu vârsta minimă/maximă de eligibilitate și valabilitatea cardului, dar nu conține toate cifrele comerciale (dobânzi, comisioane).",
+      "citat": "Pot beneficia persoanele fizice cu cetățenie și rezidență în România care obțin venituri în România. Vârsta minimă este de 24 de ani (sau între 18-24 ani, cu condiția prezentării unui coplătitor sau a dovezii veniturilor, în funcție de vârstă). Limita maximă de vârstă la momentul acordării este de 70 de ani.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/carduri/",
+    "https://www.creditcoop.ro/intrebari-frecvente/"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1376,
+    "citire_cache": 32354,
+    "scriere_cache": 49579,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1441903
+  }
+}

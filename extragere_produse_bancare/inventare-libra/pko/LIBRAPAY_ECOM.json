@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "PKO Bank Polski Sucursala București este o sucursală corporate (deservește clienți corporate), iar pagina de Produse listează explicit toate categoriile: Conturi și Depozite, Servicii Bancare Electronice, Plăți și Carduri (doar transferuri și card de debit Visa Business), Managementul lichidităților, Credite, Finanțare Comercială. Nu există niciun produs de tip gateway/acceptare plăți online cu cardul pentru comercianți (eCommerce payment processing). Banca nu oferă servicii de merchant acquiring sau payment gateway pentru clienți cu magazin online."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse"
+  ],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 6,
+    "iesire": 723,
+    "citire_cache": 16649,
+    "scriere_cache": 11986,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0405368
+  }
+}

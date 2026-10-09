@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/pachet-cont-bancar-imm-optim",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul IMM Optim",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament/pachet operațional de cont bancar pentru IMM-uri (persoane juridice), cu cont curent, card de debit, IB/MB și comision lunar unic, la fel ca Abonamentul RISE de la Libra; diferă însă: comisionul e 59 lei/lună (nu 50 lei), include doar 1 card de debit (nu până la 2 carduri business), plățile/încasările interbancare gratuite sunt limitate la primele 10/lună (nu nelimitate), iar acceptarea de plăți cu cardul (SmartPhone POS) e un produs separat, nebundlat cu comision mPOS explicit în pachet.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a pachetului conține explicit serviciile incluse și comisionul lunar de administrare, cifre exacte și comparabile cu structura abonamentului Libra.",
+      "citat": "Servicii incluse: cont curent în lei și valută, card de debit, Internet Banking, Mobile Banking, cont de economii. Ai comision zero pentru încasări prin ordin de plată în lei și valută, primele 10 plăți efectuate lunar, de la distanță. Comisionul lunar de administrare este de 59 de lei.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/pachet-cont-bancar-imm-optim#:~:text=Servicii%20incluse%3A%20cont%20curent%20%C3%AEn,este%20de%2059%20de%20lei."
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Administrare Pachet Optim",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice confirmă comisionul lunar al pachetului de cont operațional echivalent structural abonamentului RISE, dar cu valoare diferită (59 lei față de 50 lei) și fără detalii despre carduri sau mPOS în același rând tarifar.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul oficial de tarife listează explicit valoarea comisionului lunar al pachetului, confirmând cifra din pagina dedicată, dar nu detaliază serviciile incluse (carduri, mPOS).",
+      "citat": "Administrare Pachet Comunitate 39 lei /luna Administrare Pachet Start-UP GRATUIT* Administrare Pachet Profesional Dinamic 39 lei/luna Administrare Pachet Acces EU 49 lei/luna Administrare Pachet Optim 59 lei/luna Administrare Pachet IMM Business 119 lei/luna",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/pachet-cont-bancar-imm-optim",
+    "https://www.cec.ro/smartphone-pos"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2868,
+    "citire_cache": 90671,
+    "scriere_cache": 61628,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2009002
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent MicroStar",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament/pachet lunar pentru persoane juridice (cifra de afaceri <1 mil EUR) care include conturi curente în lei și valută (EUR/USD) plus card de debit business, similar ca structură cu Abonament PRIME; diferă însă: preț 49 lei/lună (vs 95 lei), un singur card de debit inclus (vs 2 carduri), doar 10 plăți interbancare/lună (vs 25 plăți instant), fără serviciu Live FX inclus.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a pachetului conține toate cifrele relevante: preț, număr conturi, card, plafon tranzacții.",
+      "citat": "MicroStar 49 lei/luna Pentru persoane juridice cu cifra de afaceri anuala < 1 milion EUR Cont curent in Lei 2 conturi Cont curent in valuta (EUR sau/si USD) 2 conturi Card de debit Mastercard Business Gold Mastercard Business Silver Interbancare Lei in limita a 10 tranzactii/luna",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html#:~:text=MicroStar%2049%20lei%2Fluna%20Pentru%20persoane,in%20limita%20a%2010%20tranzactii%2Fluna"
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet MicroStar",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă prețul de bază al pachetului MicroStar (49 Lei/lună) și costul conturilor curente adiționale, aplicabil aceluiași segment de persoane juridice ca și Abonamentul PRIME de la Libra, dar fără serviciile de tip Live FX sau pachetul de 25 plăți instant.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de comisioane SME în care pachetul MicroStar apare explicit cu valoarea prețului de bază și a conturilor adiționale.",
+      "pagina_pdf": 1,
+      "citat": "MicroStar 49 Lei Cont curent Lei/Euro/USD/GBP/CHF/HUF 15 Lei/ cont/ lună",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (10 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+    "https://www.unicredit.ro/en/sme/banking/account-packages.html",
+    "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3103,
+    "citire_cache": 92131,
+    "scriere_cache": 62999,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2069697
+  }
+}

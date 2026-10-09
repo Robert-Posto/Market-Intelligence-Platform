@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/medium-and-long-term-investment-loan/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții pe termen mediu și lung (Medium and Long Term Investment Loan)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții dedicat firmelor (IMM și PFA) pentru achiziția de echipamente, mobilier, vehicule, spații sau extinderea activității, finanțare pe termen mediu/lung cu garanții reale - exact tipul și segmentul produsului Libra Credit de investiții.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține caracteristicile complete ale produsului, inclusiv procent de finanțare și durată maximă a creditului.",
+      "citat": "Get a Garanti BBVA medium and long lerm investment loan with up to 90% financing. The maturity of the loan may be granted for up to 10 years period, depending on investment type.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții pentru achiziția echipamentelor / Credit de investiții imobiliare (cu garanția InvestEU)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Sunt tot credite de investiții pentru firme (IMM), dar condiționate de garanția InvestEU (schemă de garantare UE) și cu plafoane/termene diferite de creditul standard de investiții.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina detaliază explicit cele două sub-produse de credit de investiții cu sume maxime, monedă și perioadă de creditare.",
+      "citat": "Credit de investiții pentru achiziția echipamentelor - Suma creditului: maxim 1.5 Mil EUR, Perioada de creditare: până la 7 ani, Credit de investiții imobiliare - Suma creditului: maxim 7.5 Mil EUR, Perioada de creditare: până la 12 ani",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/corporate-banking/investment-financing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Investment Financing (Finanțarea investițiilor pentru corporații)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Variantă a creditului de investiții, dar destinată segmentului de corporații mari, nu IMM/PFA ca produsul Libra.",
+      "incredere": 0.7,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina descrie caracteristicile generale ale produsului dar fără cifre specifice de sumă sau dobândă, segmentul fiind corporate nu IMM.",
+      "citat": "Loan type: investment loan; Currency: Lei/EUR/USD; Purpose: special-purpose financing; Loan Amount: partial funding or refinancing the total cost of the investment project",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1524,
+    "citire_cache": 6312,
+    "scriere_cache": 34198,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1020054
+  }
+}

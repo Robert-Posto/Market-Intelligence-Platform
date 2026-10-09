@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_HIPOCRATE",
+  "denumire": "Credit Hipocrate (medici)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/en/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credits for businesses in medical field / Credite pentru afaceri din domeniul medical",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată exclusiv finanțării cabinetelor/clinicilor medicale (PFA și firme cu profesie liberală medicală), acoperind atât investiții imobiliare (clinici, cabinete), cât și achiziție de echipamente medicale - exact segmentul și scopul produsului Libra Credit Hipocrate.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului cu toate cifrele: sume minime/maxime, monedă, perioade de creditare, pentru ambele componente (imobiliar și echipamente medicale).",
+      "citat": "The credit for securities procurement is dedicated both to companies, and to those practicing a liberal profession in medical services performance. Characteristics: minimal amount: RON 10,000 maximal amount: RON 250,000 for medical equipment, secured by securities/equipment, RON 500,000 for medical equipment, secured by liquid guarantees, maximal lending period: 10 years for medical equipment.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/#:~:text=The%20credit%20for%20securities%20procurement,10%20years%20for%20medical%20equipment."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/",
+    "https://www.eximbank.ro/en/2022/12/05/credite-pentru-afaceri-din-domeniul-medical/"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 17211,
+    "iesire": 1133,
+    "citire_cache": 36049,
+    "scriere_cache": 30939,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.13030930000000002
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_PROFESII",
+  "denumire": "Credite alte profesii liberale (Freud/Vitruvius/Paccioli/Libra IT)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/loans-for-pfa-and-self-employed/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru profesii liberale (Liberal professions loans)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este produsul dedicat creditării profesiilor liberale (persoane juridice/PFA), distinct în meniul băncii de creditele IMM generale, de 'Credite pentru profesii liberale de bază' și de 'Credite pentru persoane fizice autorizate'; acoperă același segment de clienți (firme/PFA din profesii liberale) ca produsul Libra, fără a mai detalia pe sub-profesii (psihologi/arhitecți/contabili/IT) așa cum face Libra.",
+      "incredere": 0.78,
+      "explicatie_incredere": "Pagina dedicată conține cifre concrete (sume și termene) pentru cele trei variante ale creditului - fără garanții, cu garanții și pentru investiții - specifice produsului de profesii liberale.",
+      "citat": "The loan can be offered for a period of up to 60 months, in line with your financial needs You can benefit from a credit of between RON 20,000 and RON 135,000, which you can use to develop your business",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/sme-and-pfa/loans-for-pfa-and-self-employed/#:~:text=The%20loan%20can%20be%20offered,use%20to%20develop%20your%20business"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-pentru-profesii-liberale-si-pfa/credite-pentru-profesii-liberale/",
+    "https://www.garantibbva.ro/imm-si-pfa/dobanzi-si-comisioane-credite-imm-si-pfa/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/loans-for-pfa-and-self-employed/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/fees-and-interest-on-sme-and-pfa-loans/",
+    "https://www.garantibbva.ro/en/useful-documents/"
+  ],
+  "durata_s": 78,
+  "consum": {
+    "intrare": 15781,
+    "iesire": 6588,
+    "citire_cache": 123441,
+    "scriere_cache": 58476,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2683202
+  }
+}

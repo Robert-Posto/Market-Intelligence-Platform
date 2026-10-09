@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete servicii - EXIM BUSINESS COMPLET / ACTIV / START / SMART",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul abonament lunar de cont curent pentru firme la Exim, cu tranzacții nelimitate lei/valută, card de debit inclus și Internet/Mobile Banking la preț fix lunar - același concept ca Abonamentul PRESTIGE Libra. Diferă însă segmentul (Exim îl listează la PFA și Microîntreprinderi, nu la Corporate), prețul maxim (70 lei/lună față de 295 lei/lună) și componenta de carduri: Exim oferă un singur card Mastercard Business Standard inclus, nu 5 standard + 2 Gold, iar Live FX nu este menționat.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată conține cifrele exacte ale celor 4 variante de abonament (25/40/45/70 lei/lună) și componentele incluse, dar segmentul țintă și amploarea pachetului (nr. de carduri, Live FX) diferă semnificativ de produsul corporate Libra.",
+      "citat": "EXIM BUSINESS COMPLET (70 lei/luna) Costuri ZERO: deschiderea contului curent; administrarea lunara a conturilor curente in lei si valuta; furnizarea (emiterea) si administrarea cardului de debit inclus in oferta; administrare lunara Internet/Mobile Banking (e-ximBanking)",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=EXIM%20BUSINESS%20COMPLET%20%2870%20lei%2Fluna%29,administrare%20lunara%20Internet%2FMobile%20Banking%20%28e%2DximBanking%29"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2025/06/11/oferta-tranzactionala/",
+    "https://www.eximbank.ro/en/2025/06/11/transactional-offers/",
+    "https://www.eximbank.ro/en/2023/01/05/operatiuni-curente-3/",
+    "https://www.eximbank.ro/en/2023/01/05/operatiuni-curente-2-2/",
+    "https://www.eximbank.ro/wp-content/uploads/2022/12/Ghid-produse-Cash-Management.pdf",
+    "https://www.eximbank.ro/en/2023/01/05/business-card/?corporate",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/"
+  ],
+  "durata_s": 66,
+  "consum": {
+    "intrare": 14,
+    "iesire": 5038,
+    "citire_cache": 351703,
+    "scriere_cache": 113947,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.40561610000000003
+  }
+}

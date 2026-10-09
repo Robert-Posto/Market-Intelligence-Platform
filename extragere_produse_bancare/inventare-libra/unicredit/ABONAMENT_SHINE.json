@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent MicroStar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este abonamentul operațional lunar pentru firme (persoane juridice cu cifră de afaceri <1 mil. EUR), cu cont în lei și valută (EUR/USD), card de debit business Mastercard Gold/Silver și acces la oferta POS — același tip de produs și segment ca Abonament SHINE de la Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetului conține explicit prețul lunar, conturile incluse și tipul de card de debit business.",
+      "citat": "MicroStar 49 lei/luna Pentru persoane juridice cu cifra de afaceri anuala < 1 milion EUR Cont curent in Lei 2 conturi Cont curent in valuta (EUR sau/si USD) 2 conturi Card de debit Mastercard Business Gold Mastercard Business Silver",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html#:~:text=MicroStar%2049%20lei%2Fluna%20Pentru%20persoane,Business%20Gold%20Mastercard%20Business%20Silver"
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent MicroStar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane precizează explicit costul pachetului MicroStar (49 Lei) și segmentul de clienți căruia îi este destinat, confirmând potrivirea cu abonamentul operațional Libra pentru firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de comisioane și dobânzi care listează prețul pachetului MicroStar și definește clar segmentul de clienți eligibil.",
+      "citat": "Pachetul MicroStar este destinat persoanelor fizice autorizate, liber profesioniștilor, organizaţiilor non-profit și companiilor cu cifra de afaceri anuală până la 1 milion Euro.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+    "https://www.unicredit.ro/en/sme/banking/account-packages.html",
+    "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2650,
+    "citire_cache": 92780,
+    "scriere_cache": 63268,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.203242
+  }
+}

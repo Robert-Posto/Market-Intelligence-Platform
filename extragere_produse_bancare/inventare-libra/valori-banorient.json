@@ -898,7 +898,8 @@
    "tokeni": {
     "intrare": 18025,
     "iesire": 3210
-   }
+   },
+   "verificare_azi": "eroare"
   },
   {
    "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||\"banorient premium\" sight account (contul banorient premium)",
@@ -948,7 +949,8 @@
    "tokeni": {
     "intrare": 4872,
     "iesire": 195
-   }
+   },
+   "verificare_azi": "eroare"
   },
   {
    "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||cont premium (min. 250.000)",
@@ -1047,6 +1049,495 @@
    "tokeni": {
     "intrare": 17359,
     "iesire": 723
+   },
+   "verificare_azi": "eroare"
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||cont curent / cont premium - persoane fizice",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont curent / Cont Premium - persoane fizice",
+   "focus": "Produsul băncii: „Cont curent / Cont Premium - persoane fizice”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1966,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||mastercard gold debit (secțiunea persoane juridice)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "MasterCard GOLD Debit (secțiunea PERSOANE Juridice)",
+   "focus": "Produsul băncii: „MasterCard GOLD Debit (secțiunea PERSOANE Juridice)”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1853,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||l/cs (acreditive, inclusiv stand-by l/c) - secțiunea iii-3 trade finance",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "L/CS (Acreditive, inclusiv Stand-by L/C) - secțiunea III-3 Trade Finance",
+   "focus": "Produsul băncii: „L/CS (Acreditive, inclusiv Stand-by L/C) - secțiunea III-3 Trade Finance”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1773,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||administrare cont curent (secțiunea persoane juridice, i-2 administrare cont)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Administrare cont curent (secțiunea PERSOANE Juridice, I-2 ADMINISTRARE CONT)",
+   "focus": "Produsul băncii: „Administrare cont curent (secțiunea PERSOANE Juridice, I-2 ADMINISTRARE CONT)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1732,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||mastercard gold debit",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "MasterCard GOLD Debit",
+   "focus": "Produsul băncii: „MasterCard GOLD Debit”.\nCorespunde produsului Libra: „Card de debit Gold”; „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1902,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    },
+    {
+     "id_sursa": 1825,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||scrisori de garantie bancara (trade finance)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisori de garantie bancara (Trade Finance)",
+   "focus": "Produsul băncii: „Scrisori de garantie bancara (Trade Finance)”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2055,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||dobânda standard la depozite (depozit la termen)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Dobânda standard la depozite (Depozit la termen)",
+   "focus": "Produsul băncii: „Dobânda standard la depozite (Depozit la termen)”.\nCorespunde produsului Libra: „Depozit promoțional „1 An și 1 Lună\"”; „Depozit promoțional Blitz (7 luni)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2001,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
+     "v2": "depozit-termen"
+    },
+    {
+     "id_sursa": 2007,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||trade finance - emitere de acreditive şi scrisori de garanţie",
+   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Trade finance - emitere de acreditive şi scrisori de garanţie",
+   "focus": "Produsul băncii: „Trade finance - emitere de acreditive şi scrisori de garanţie”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1774,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||internet banking",
+   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Internet Banking",
+   "focus": "Produsul băncii: „Internet Banking”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2077,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||cardul gold master / cardul gold business master",
+   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cardul Gold Master / Cardul Gold Business Master",
+   "focus": "Produsul băncii: „Cardul Gold Master / Cardul Gold Business Master”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1904,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||cardul gold business master",
+   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cardul Gold Business Master",
+   "focus": "Produsul băncii: „Cardul Gold Business Master”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1854,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||\"banorient premium\" sight account / cont curent",
+   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "\"BANORIENT Premium\" Sight account / Cont curent",
+   "focus": "Produsul băncii: „\"BANORIENT Premium\" Sight account / Cont curent”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1967,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro||mastercard gold debit card",
+   "url": "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mastercard Gold debit card",
+   "focus": "Produsul băncii: „Mastercard Gold debit card”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1903,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/internet-banking||ebanking internet banking",
+   "url": "https://www.banorientfrance.com/romanian/internet-banking",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "eBanking Internet Banking",
+   "focus": "Produsul băncii: „eBanking Internet Banking”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2076,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "eroare",
+   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
    }
   }
  ]

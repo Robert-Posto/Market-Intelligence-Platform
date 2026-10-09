@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/cont-bancar-pachet-imm-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul IMM Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament/pachet lunar de cont bancar pentru persoane juridice (firme), cu operațiuni incluse (plăți/încasări) la un comision lunar fix, la fel ca Abonamentul ELITE de la Libra; diferă însă numărul de carduri incluse (pachetul CEC include un singur card de debit, față de 3 carduri la Libra), nu menționează un serviciu de tip Live FX, iar numărul de operațiuni incluse (50 plăți interbancare în lei) nu acoperă explicit și SEPA sau cele 50 instrumente de debit ca la Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu cifre explicite despre comisionul lunar și numărul de operațiuni incluse.",
+      "citat": "Ai comision zero la încasări și la 50 de plăți interbancare în lei, de la distanță. Comisionul lunar de administrare este 119 de lei și economisești 501 lei din reducerile la comisioane (detalii în Q&As).",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/cont-bancar-pachet-imm-business#:~:text=Ai%20comision%20zero%20la%20%C3%AEncas%C4%83ri,la%20comisioane%20%28detalii%20%C3%AEn%20Q%26As%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/cont-bancar-pachet-imm-business"
+  ],
+  "durata_s": 38,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2972,
+    "citire_cache": 38697,
+    "scriere_cache": 46987,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1549389
+  }
+}

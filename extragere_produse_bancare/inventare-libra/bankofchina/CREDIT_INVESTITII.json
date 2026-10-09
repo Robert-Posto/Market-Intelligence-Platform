@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb2/202104/t20210430_19360666.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Fixed Asset Loan",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produsul este un credit pentru persoane juridice destinat finanțării investițiilor în active fixe (construcții, modernizare tehnologică, achiziție de echipamente, clădiri) — exact segmentul și tipul produsului Libra 'Credit de investiții'. Pagina este dedicată exclusiv acestui produs de creditare corporate, fără alte produse amestecate.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este pagina dedicată oficială a produsului echivalent (Fixed Asset Loan) la secțiunea Corporate Loans, cu descriere completă a scopului, categoriilor și condițiilor de aplicare, dar nu publică cifre (dobândă, comision, sumă, termen) — acestea fiind negociate individual per contract.",
+      "citat": "Fixed Asset Loan refers to loans granted by Bank of China (Central and Eastern Europe) Limited Bucharest Branch to meet the demands of enterprises in their investments in fixed assets. Investments by enterprises in fixed assets include capital construction, technical innovation, developing and manufacturing of the new products as well as related house purchase, civil engineering, purchase and installation of the technical equipment.",
+      "citat_verificat": true,
+      "link_live": "https://www.bankofchina.com/ro/en/cbservice/cb2/202104/t20210430_19360666.html#:~:text=Fixed%20Asset%20Loan%20refers%20to,installation%20of%20the%20technical%20equipment."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/cbservice/cb2/202104/t20210430_19360666.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2744,
+    "citire_cache": 58202,
+    "scriere_cache": 53963,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1740039
+  }
+}

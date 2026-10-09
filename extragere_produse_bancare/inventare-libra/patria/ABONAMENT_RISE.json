@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent (UȘOR / PRACTIC / COMPLET) pentru Afaceri mici/Agro",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (abonament/pachet operațional lunar pentru firme, cu plăți prin IB/MB, card business inclus și retrageri de numerar) și același segment (persoane juridice/afaceri mici), dar structura și prețul diferă: Patria oferă 3 trepte (85/100/200 lei/lună) față de abonamentul unic RISE de 50 lei/lună, iar plățile interbancare gratuite și retragerile au limite diferite pe trepte.",
+      "incredere": 0.88,
+      "explicatie_incredere": "Pagina este dedicată exclusiv pachetelor de cont curent pentru firme și conține cifre explicite (costuri lunare, numărul de plăți gratuite, cardul business inclus).",
+      "citat": "Card de Business Patria MasterCard Business | ✔ | ✔ | ✔ | Includere serviciu SMS Alert, alertare integrala (pentru conturi, carduri si instrumente de debit) | gratuit | gratuit | gratuit | Incasari instrumente debit | 5 | 15 | nelimitat | Plati instrumente debit | 5 | 15 | nelimitat | Cost | 85 lei/lună | 100 lei/lună | 200 lei/lună",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Lista de Tarife și Comisioane pentru Persoane Juridice - Card Mastercard Business Lider / Serviciul POS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice conține comisionul de administrare a cardului business atașat pachetelor (5 lei/lună) și comisionul de acceptare la plată prin POS, utilizat ca echivalent comercianți pentru mPOS din abonamentul Libra RISE, dar nivelul este diferit (1,40% procesare + 50 lei/lună gestiune terminal, față de 0,59% la Libra).",
+      "incredere": 0.72,
+      "explicatie_incredere": "Este documentul oficial de tarife pentru firme, cu cifre explicite pentru cardul business și serviciul POS, dar nu este o pagină dedicată abonamentului de cont în sine.",
+      "citat": "Comision procesare tranzactii, calculat la valoarea tranzactiei si perceput zilnic, pentru tranzactiile decontate in cursul zilei 1,40 % ... Comision gestiune terminal POS (se percepe lunar, per terminal POS) 50 LEI (se percepe la inceputul lunii, pentru luna anterioara)",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+    "https://www.patriabank.ro/d/2142",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business"
+  ],
+  "durata_s": 53,
+  "consum": {
+    "intrare": 54711,
+    "iesire": 4411,
+    "citire_cache": 12696,
+    "scriere_cache": 29834,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.23065619999999998
+  }
+}

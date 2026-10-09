@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/credit-pentru-investitii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții (PFA și Microîntreprinderi)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit de investiții pentru companii și PFA, cu structură de garantare flexibilă ce poate include ipotecă imobiliară, dar nu este un produs dedicat exclusiv garantării ipotecare și nu are o componentă de linie de credit; termenul maxim e 10 ani, sub cei 180 luni (15 ani) pentru investiții la Libra, iar plafonul maxim (2 mil RON) și minim (30.000 RON) diferă de intervalul Libra (50.000-1 mil RON).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre clare (sumă minimă/maximă, perioadă maximă) și descrie structura de garantare, dar nu este un produs specific garantat exclusiv cu ipotecă precum cel Libra.",
+      "citat": "Creditul de investitii este oferit companiilor si persoanelor fizice autorizate pentru acoperirea investitiilor imobiliare si/sau mobiliare. Suma minima: 30.000 RON, Suma maxima: 2.000.000 RON, Perioada maxima de creditare: 10 ani.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/12/05/credit-pentru-investitii/#:~:text=Creditul%20de%20investitii%20este%20oferit,maxima%20de%20creditare%3A%2010%20ani."
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/credite/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții (IMM 2-10 mil LEI)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Credit de investiții dedicat segmentului IMM (persoane juridice), cu mențiune explicită a contribuției proprii diferite pentru 'credite garantate' (15%) față de cele negarantate (30%), sugerând posibilitatea garanției ipotecare, dar fără a fi un produs specific dedicat garantării ipotecare și fără componentă de linie de credit; termenul maxim 10 ani e sub cei 180 luni pentru investiții la Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina de produs pentru segmentul IMM conține cifre (sumă, termen, procent contribuție proprie) dar nu specifică explicit garanția imobiliară ca o condiție definitorie a produsului.",
+      "citat": "valoare – minimum 100.000 de lei, maximum 2 milioane de lei, termen de acordare: maximum 10 ani, contributie proprie – 15% in cazul creditelor garantate si 30% in cazul creditelor negarantate",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/12/05/credite/#:~:text=valoare%20%E2%80%93%20minimum%20100.000%20de,30%25%20in%20cazul%20creditelor%20negarantate"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/en/2022/12/05/investment-loan/",
+    "https://www.eximbank.ro/2022/12/05/credit-pentru-investitii/",
+    "https://www.eximbank.ro/credite/",
+    "https://www.eximbank.ro/2022/12/05/investment-loan/",
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/12/05/credit-pentru-investitii/",
+    "https://www.eximbank.ro/2022/12/05/credite/",
+    "https://www.eximbank.ro/2022/12/05/credite-imm-10-mil-lei/"
+  ],
+  "durata_s": 58,
+  "consum": {
+    "intrare": 110906,
+    "iesire": 4772,
+    "citire_cache": 81734,
+    "scriere_cache": 54390,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4218538
+  }
+}

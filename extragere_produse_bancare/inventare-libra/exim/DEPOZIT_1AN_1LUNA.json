@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2026/09/15/depozitul-plus-lei/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul PLUS LEI (Depozit PLUS START / Depozit PLUS ACTIV)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un depozit la termen promoțional cu dobândă fixă, dar termenul este de 7 luni (nu 13 luni ca la Libra) și oferta se adresează exclusiv persoanelor fizice, nu și persoanelor juridice ca la produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre clare: dobândă, termen, sumă minimă, valabilă curent.",
+      "citat": "Dobanda (p.a.) – 6,7% Termen: 7 luni Suma minima: 500 LEI, fonduri noi* Dobanda este fixa pe toata perioada depozitului, indiferent de evolutia pietei",
+      "rol_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2026/09/15/depozitul-plus-lei/#:~:text=Dobanda%20%28p.a.%29%20%E2%80%93%206%2C7%25%20Termen%3A,depozitului%2C%20indiferent%20de%20evolutia%20pietei"
+    },
+    {
+      "url": "https://www.eximbank.ro/2026/09/15/depozitul-plus-euro/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Depozitul PLUS EURO (Depozit PLUS START / Depozit PLUS ACTIV)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Varianta în euro a aceluiași depozit promoțional pe 7 luni, exclusiv pentru persoane fizice; Libra are termen de 13 luni și acoperă și persoane juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre clare: dobândă, termen, sumă minimă, valabilă curent.",
+      "citat": "Dobanda (p.a.) – 3,0% Termen: 7 luni Suma minima: 150 EURO, fonduri noi* Dobanda este fixa pe toata perioada depozitului, indiferent de evolutia pietei",
+      "rol_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2026/09/15/depozitul-plus-euro/#:~:text=Dobanda%20%28p.a.%29%20%E2%80%93%203%2C0%25%20Termen%3A,depozitului%2C%20indiferent%20de%20evolutia%20pietei"
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/07/Termeni-si-conditii-aplicate-depozitelor-la-termen-constituite-prin-Internet-sau-Mobile-Banking.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Termeni și condiții aplicate depozitelor la termen",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document general de condiții pentru depozitele la termen (inclusiv Depozitul PLUS), aplicabil persoanelor fizice; nu există o variantă dedicată persoanelor juridice pentru acest tip de depozit promoțional de 13 luni.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Document oficial de condiții generale pentru depozite la termen, cu reguli de dobândă și lichidare anticipată, dar nu este specific unui singur produs cu termen de 13 luni.",
+      "citat": "Dobanda este fixa pe toata durata depozitului. Se acorda pentru toate zilele calendaristice, incepand cu ziua constituirii (inclusiv) si pana la scadenta (exclusiv), inclusiv pentru zilele nelucratoare.",
+      "rol_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2025/12/12/depozitul-plus-lei/",
+    "https://www.eximbank.ro/2026/09/15/depozitul-plus-euro/",
+    "https://www.eximbank.ro/2026/09/15/depozitul-plus-lei/"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2406,
+    "citire_cache": 86585,
+    "scriere_cache": 51252,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16952299999999998
+  }
+}

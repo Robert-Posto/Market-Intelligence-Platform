@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive documentare (II. Acreditive documentare - Akredytywy)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea II a listei de tarife PKO Bank Polski Sucursala București tratează explicit 'Acreditive documentare' (atât emise, cât și primite) pentru clienți corporate, exact ca produsul Libra ACREDITIVE destinat persoanelor juridice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Documentul oficial de tarife conține o secțiune dedicată integral acreditivelor documentare, cu zeci de comisioane numerice specifice (procente, sume minime, termene).",
+      "pagina_pdf": 6,
+      "citat": "Comision de emitere – calculat pentru fiecare perioadă de valabilitate de trei luni începută Opłata za otwarcie akredytywy – naliczana za każde rozpoczęte trzy miesiące 0,2% trimestrial, min. 225 RON",
+      "motiv": null,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.pkobp.pl/ro/filiala-romania/produse",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditive (secțiunea Finanțare Comercială)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de produse ale sucursalei listează 'Acreditive' sub categoria 'Finanțare Comercială', destinată clienților corporate, confirmând existența și denumirea produsului echivalent celui Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina confirmă existența produsului și categoria sa, dar este doar o listă fără cifre sau descriere detaliată; detaliile numerice se găsesc în documentul de tarife.",
+      "citat": "Finanțare Comercială - Garanții - Acreditive",
+      "motiv": null,
+      "citat_verificat": true,
+      "avertisment": "citat scurt (6 cuvinte)",
+      "link_live": "https://www.pkobp.pl/ro/filiala-romania/produse#:~:text=Finan%C8%9Bare%20Comercial%C4%83%20%2D%20Garan%C8%9Bii%20%2D%20Acreditive"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/en/romania-branch/products",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 14,
+    "iesire": 2119,
+    "citire_cache": 137755,
+    "scriere_cache": 70641,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2253715
+  }
+}

@@ -1,0 +1,354 @@
+Nexent Bank N.V. Amsterdam – Sucursala București: 51 de rulat, 6 sărite (au rezultat), paralel 5, model claude-sonnet-5, termen 180 s/produs, domenii nexentbank.ro
+  [cautare] nexentbank.ro linie de credit capital de lucru companii
+  [cautare] nexentbank.ro credite IMM linie de credit
+GATA    LINIE_CREDIT                 2 surse, 0 citate verificate, echivalent, $0.07, 14s — The Credit Line / Linia de credit
+  [cautare] nexentbank.ro InvestEU credit
+  [cautare] nexentbank.ro credit investitii IMM garantie
+  [ 1] https://www.nexentbank.ro/Investment-Loan
+  [ 2] https://www.nexentbank.ro/Finantari
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari/Finantarea-proiectelor-corporate
+  [cautare] nexentbank.ro "fonduri europene" OR "InvestEU" OR "garantie europeana" credit companii
+GOL     CREDIT_INVESTEU_PJ           produs_inexistent: Nexent Bank (fostă Credit Europe Bank) are produse generale de creditare pentru firme — Cr, $0.21
+  [cautare] nexentbank.ro plăți online comercianți card
+  [cautare] Nexent Bank POS virtual plăți online magazin
+  [ 1] https://www.nexentbank.ro/en/retail-banking/Avantaj-SoftPOS
+  [cautare] nexentbank.ro Corporate-SME acceptare plati comercianti POS virtual
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Services-and-Special-Accounts
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Avantaj-SoftPOS
+GOL     LIBRAPAY_ECOM                produs_inexistent: Nexent Bank nu are un gateway de plăți online / acceptare carduri e-commerce dedicat perso, $0.25
+  [cautare] nexentbank.ro platforma schimb valutar online curs real time
+  [cautare] Nexent Bank România tranzacționare valutară online dealer
+  [cautare] "nexentbank.ro" "FX" platforma online companii dealer
+GOL     LIVE_FX                      produs_inexistent: Nexent Bank oferă doar schimb valutar standard prin Internet Banking / Mobile Banking, ca , $0.09
+  [cautare] nexentbank.ro credit IMM companii
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Credite-IMM
+  [cautare] nexentbank.ro credit imm fara garantii scoring rapid
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari/Creditul-de-investitii
+GOL     CREDIT_SIMPLU_IMM            produs_inexistent: Nexent Bank (fosta Credit Europe Bank) oferă pentru IMM-uri doar: Linia de credit (revolvi, $0.20
+  [cautare] nexentbank.ro pachet cont curent persoane juridice IMM
+  [cautare] Nexent Bank pachet cont firme abonament lunar
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Operations
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/upload/media/document/0001/07/581947265d918cd664492b54a2eb112067c68d94.pdf
+  [ 4] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts
+GATA    ABONAMENT_OPERATIONAL        1 surse, 0 citate verificate, echivalent, $0.22, 32s — Comision administrare client (din Lista de taxe, comisioane si dobanzi - Persoane juridice)
+  [cautare] Nexent Bank pachet cont curent companii abonament lunar
+  [cautare] nexentbank.ro persoane juridice pachete servicii
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Cash-Management
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/Corporate-Banking
+  [ 4] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies
+  [ 5] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Services-and-Special-Accounts
+  [ 6] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts
+  [ 7] https://www.nexentbank.ro/upload/media/document/0001/07/7fdfecf14d580c867f15e1749de5f296094857fb.pdf
+  [ 8] https://www.nexentbank.ro/upload/media/document/0001/07/507b84b7c74e9d9e815e9235e6ba0886eb54b519.pdf
+GOL     ABONAMENT_ELITE              produs_inexistent: Nexent Bank nu oferă un pachet/abonament lunar cu plafon de tranzacții incluse (plăți lei/, $0.31
+  [cautare] nexentbank.ro terminal POS
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://www.nexentbank.ro/persoane-juridice/Avantaj-SoftPOS
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 4] https://www.nexentbank.ro/persoane-fizice/Avantaj-SoftPOS
+  [cautare] "Avantaj SoftPOS" comision tranzactie Nexent OR "Credit Europe Bank"
+GATA    POS_FIZIC                    1 surse, 1 citate verificate, similar, $0.27, 54s — Avantaj SoftPOS
+  [cautare] nexentbank.ro PFA abonament cont
+  [cautare] nexentbank.ro pachet cont curent persoane juridice
+  [ 1] https://www.nexentbank.ro/Persoane-Juridice
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 6] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii
+  [ 7] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni
+  [ 8] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Carduri-pentru-Persoane-Juridice
+  [cautare] "Credit Europe Bank" OR "Nexent Bank" pachet cont curent IMM comision lunar PFA
+GOL     ABONAMENT_PFA                produs_inexistent: Nexent Bank (fosta Credit Europe Bank) nu publică un produs de tip abonament/pachet lunar , $0.38
+  [ 1] https://www.nexentbank.ro/
+  [cautare] Nexent Bank cont curent online business persoane juridice
+  [ 2] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni
+  [ 4] https://www.nexentbank.ro/persoane-juridice
+  [cautare] Nexent Bank cont curent persoane juridice deschidere online card business
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Carduri-pentru-Persoane-Juridice
+  [ 6] https://www.nexentbank.ro/upload/media/document/0001/01/fce2e378b3de1e02d795f19fdd5517fd8f8ae348.pdf
+  [ 7] https://www.nexentbank.ro/upload/media/document/0001/07/aed46689c2f83e82389c7131ea102685f694cf04.pdf
+GATA    CONT_ONLINE_BUSINESS         2 surse, 0 citate verificate, similar, $0.46, 92s — Termeni și condiții privind Fluxul de înrolare online a clienților (Digital OnBoarding) / P.I.C.O.
+  [cautare] Nexent Bank pachet companii cont curent abonament lunar
+  [cautare] nexentbank.ro pachete servicii IMM companii
+  [ 1] https://www.nexentbank.ro/Persoane-Juridice/Corporatii
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Services-and-Special-Accounts
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/
+  [ 4] https://www.nexentbank.ro/Services-and-Special-Accounts
+  [ 5] https://nexentbank.ro/Persoane-Juridice/Corporatii/Cash-management
+  [ 6] https://nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale
+GOL     ABONAMENT_PRESTIGE           produs_inexistent: Am parcurs structura completă pentru persoane juridice la Nexent Bank (secțiunile Corporaț, $0.26
+  [cautare] Nexent Bank pachet abonament cont curent companii
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale
+  [cautare] Nexent Bank pachet lunar cont curent companii carduri plăți incluse comision lunar
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni
+  [cautare] nexentbank.ro pachet cont curent firme IMM comision lunar inclus
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Carduri-pentru-Persoane-Juridice
+GOL     ABONAMENT_PRIME              produs_inexistent: Nexent Bank nu are un produs de tip abonament lunar corporate care să bundle-eze cont cure, $0.31
+  [cautare] nexentbank.ro acreditive documentare
+  [cautare] nexentbank.ro acreditiv companii
+  [ 1] https://www.nexentbank.ro/Facilitati-NON-CASH
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Non-Cash-Financing
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari
+GATA    ACREDITIVE                   4 surse, 1 citate verificate, echivalent, $0.23, 34s — Facilități NON-CASH – Acreditive
+  [cautare] nexentbank.ro pachet cont curent firme comisioane lunare
+  [cautare] Nexent Bank pachet companii card business mPOS
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking
+  [ 2] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni
+  [ 6] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Carduri-pentru-Persoane-Juridice
+  [cautare] nexentbank.ro "pachet" cont curent lei euro IMM comision lunar
+GOL     ABONAMENT_SHINE              produs_inexistent: Nexent Bank nu are un abonament/pachet operațional unic (cont curent lei+euro + plăți inst, $0.35
+  [cautare] nexentbank.ro API contabilitate integrare firme
+  [cautare] nexentbank.ro API open banking persoane juridice
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Internet-Banking
+GOL     API_CONTABILI                produs_inexistent: Nexent Bank nu are un produs dedicat de tip API pentru integrarea cu programele de contabi, $0.13
+  [cautare] nexentbank.ro card de credit business
+  [cautare] Nexent Bank card credit companii IMM
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Company-Cards
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [cautare] nexentbank.ro "Company Cards" OR "Business Cards" companii
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies
+  [ 4] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking
+  [ 5] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Company-Cards
+  [ 6] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards
+GOL     CARD_CREDIT_BUSINESS         produs_inexistent: Nexent Bank nu are un card de credit dedicat persoanelor juridice (firme/PFA). Atât secțiu, $0.34
+  [cautare] Nexent Bank card de credit persoane fizice
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://nexentbank.ro/persoane-fizice/Carduri-de-credit/CardAvantaj
+  [ 3] https://www.nexentbank.ro/en/retail-banking/Credit-cards/CardAvantaj/CardAvantaj-Mastercard-Gold
+GATA    CARD_CREDIT_PF               2 surse, 1 citate verificate, echivalent, $0.19, 35s — Card Avantaj Mastercard Gold / Visa Gold
+  [cautare] nexentbank.ro pachet cont curent firme abonament lunar
+  [cautare] Nexent Bank persoane juridice pachet IMM comisioane
+  [ 1] https://www.nexentbank.ro/Corporate-SME/Small-and-Medium-Companies
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts
+  [ 4] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Operations
+  [ 5] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Company-Cards
+  [ 6] https://www.nexentbank.ro/en/Corporate-SME/Avantaj-SoftPOS
+  [ 7] https://www.nexentbank.ro/upload/media/document/0001/07/c65f86ba4c3ff2476f13d4f98a69b4aab211c4f2.pdf
+  [cautare] Nexent Bank "lista de taxe" persoane juridice cont curent comision administrare lunar
+  [ 8] https://www.nexentbank.ro/upload/media/document/0001/07/581947265d918cd664492b54a2eb112067c68d94.pdf
+GATA    ABONAMENT_RISE               2 surse, 0 citate verificate, similar, $0.42, 80s — Cont curent persoane juridice / Comision administrare client IMM
+  [cautare] nexentbank.ro card de debit business
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://www.nexentbank.ro/Corporate-SME/Corporate-Banking/Business-Cards
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Business-Cards
+       ! url_not_in_prior_context
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business
+  [ 5] https://www.nexentbank.ro/upload/media/document/0001/07/c65f86ba4c3ff2476f13d4f98a69b4aab211c4f2.pdf
+GATA    CARD_DEBIT_BUSINESS          3 surse, 2 citate verificate, echivalent, $0.19, 28s — Card de debit Visa Business
+  [cautare] nexentbank.ro card de credit business companii
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 3] https://nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Carduri-pentru-Persoane-Juridice
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Credite-IMM
+  [cautare] nexentbank.ro "card de credit" persoane juridice IMM limita credit
+GOL     CARD_CREDIT_PJ               potrivire_slaba: cel mai apropiat: Card de debit Visa Business (cu facilitate de overdraft) (încredere 0.55, $0.31
+  [cautare] nexentbank.ro cont curent start-up firme
+  [cautare] Nexent Bank persoane juridice cont pachet IMM
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies
+  [ 2] https://www.nexentbank.ro/Servicii-si-Conturi-Speciale
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii
+  [ 4] https://www.nexentbank.ro/persoane-juridice/Avantaj-SoftPOS
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni
+GOL     CONT_DESTEPT                 produs_inexistent: Nexent Bank nu are un pachet dedicat de start-up (cont gratuit 12 luni + card + online ban, $0.28
+  [cautare] nexentbank.ro cont online persoane fizice
+  [cautare] Nexent Bank cont curent persoane fizice 100% online
+  [ 1] https://www.nexentbank.ro/en/retail-banking/current-accounts
+  [ 2] https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf
+GATA    CONT_ONLINE_PERSONAL         2 surse, 1 citate verificate, echivalent, $0.16, 23s — Current Accounts / Online Current Account (Cont Curent Online)
+  [cautare] nexentbank.ro credit agricultura echipamente
+  [cautare] nexentbank.ro InvestEU credit IMM
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits
+  [ 2] https://www.nexentbank.ro/Investment-Loan
+GOL     CREDIT_AGRI_ECHIPAMENTE      produs_inexistent: Nexent Bank nu are un credit dedicat pentru echipamente agricole și nu menționează program, $0.13
+  [cautare] Nexent Bank credit agricultura InvestEU
+  [cautare] nexentbank.ro credit agricultura
+  [cautare] nexentbank.ro agricol fermier
+GOL     CREDIT_AGRI_INPUTURI         produs_inexistent: Nexent Bank nu are un produs de credit dedicat agriculturii/inputurilor agricole și nicio , $0.08
+  [cautare] Nexent Bank card de debit
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://nexentbank.ro/persoane-fizice/Carduri-de-Debit/Visa-Clasic-Debit
+  [ 3] https://nexentbank.ro/persoane-fizice/Carduri-de-Debit/Mastercard-Standard-Debit
+GATA    CARD_DEBIT_GOLD              3 surse, 0 citate verificate, similar, $0.21, 60s — Mastercard Standard Debit
+  [cautare] nexentbank.ro cont dezvoltator imobiliar
+  [cautare] nexentbank.ro Legea 207/2025 cont escrow dezvoltator
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 3] https://nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale
+  [cautare] nexentbank.ro "cont escrow" OR "cont colector" persoane juridice
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Servicii-si-Conturi-Speciale/Cont-de-garantie-de-buna-executie
+  [ 5] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Services-and-Special-Accounts
+  [ 6] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts
+GOL     CONT_DEZVOLTATOR             produs_inexistent: Nexent Bank nu are un cont dedicat dezvoltatorilor imobiliari (tip escrow pentru avansuri , $0.37
+  [cautare] nexentbank.ro credit APIA subventie agricultura
+  [cautare] Nexent Bank credit agricultura IMM persoane juridice
+  [cautare] nexentbank.ro agricultura APIA fermieri credit
+GOL     CREDIT_APIA                  produs_inexistent: Nexent Bank oferă pentru IMM doar credite generale de capital de lucru/investiții (Credit , $0.08
+  [cautare] nexentbank.ro credit irigatii agricultura
+  [cautare] nexentbank.ro InvestEU credit agricultura companii
+  ! CREDIT_AGRI_IRIGATII: gata fără surse și fără motiv — reiau o dată
+  [ 1] https://www.nexentbank.ro/
+  [cautare] nexentbank.ro card de debit
+  [cautare] Nexent Bank card debit cashback parteneri
+  [ 2] https://www.nexentbank.ro/persoane-fizice/Carduri-de-Debit/Visa-Clasic-Debit
+GATA    CARD_DEBIT_FREE              3 surse, 0 citate verificate, similar, $0.16, 75s — Visa Clasic Debit / Mastercard Standard Debit
+  [cautare] nexentbank.ro credit investitii garantie BERD
+  [cautare] nexentbank.ro InvestEU credit IMM
+  [ 1] https://www.nexentbank.ro/Investment-Loan
+  [cautare] nexentbank.ro "BERD" OR "InvestEU" OR "garantie de stat" credit companii
+GOL     CREDIT_BERD_PJ               produs_inexistent: Nexent Bank nu are pe site un produs dedicat cu garanție BERD/InvestEU pentru IMM/PJ. Exis, $0.12
+  [cautare] nexentbank.ro credit irigatii InvestEU agricultura
+  [cautare] nexentbank.ro credit agricultura companii
+  [cautare] nexentbank.ro agribusiness fermieri credit agricol
+GOL     CREDIT_AGRI_IRIGATII         produs_inexistent: Nu există la Nexent Bank un credit dedicat irigațiilor/agriculturii și nici unul garantat , $0.14
+  [cautare] Nexent Bank credit garantie BID IMM
+  [cautare] site:nexentbank.ro credit garantie BID
+  [cautare] Nexent Bank "BID" garantare credit IMM 70% 80%
+GOL     CREDIT_BID_IMM               produs_inexistent: Nexent Bank (fosta Credit Europe Bank Romania) oferă pentru IMM-uri doar credite generale , $0.07
+  [cautare] nexentbank.ro credit medici cabinete medicale
+  [cautare] Nexent Bank credit IMM persoane juridice
+  [cautare] site:nexentbank.ro medici OR cabinet medical OR clinica credit
+GOL     CREDIT_HIPOCRATE             produs_inexistent: Nexent Bank oferă pentru IMM doar credite generale pentru companii (Credit Line, Receivabl, $0.07
+  [cautare] nexentbank.ro credit energie verde firme fotovoltaice
+  [cautare] nexentbank.ro credit companii panouri fotovoltaice eolian
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Corporate-Projects-Financing
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Investment-Loan
+GOL     CREDIT_ENERGIE_VERDE         produs_inexistent: Nexent Bank nu are un produs dedicat pentru finanțarea capacităților de producție de energ, $0.14
+  [cautare] Nexent Bank credit dezvoltatori imobiliari finantare proiecte rezidentiale
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Credite-IMM
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari/Finantarea-proiectelor-corporate
+GOL     CREDIT_DEZVOLTATORI          produs_inexistent: Nexent Bank nu are un credit dedicat dezvoltatorilor imobiliari pentru proiecte rezidenția, $0.21
+  [cautare] nexentbank.ro credit notari avocati executori judecatoresti
+  [cautare] nexentbank.ro credit profesii liberale juridice
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME
+GOL     CREDIT_SOLON                 produs_inexistent: Nexent Bank nu are un credit dedicat notarilor, avocaților, executorilor judecătorești sau, $0.15
+  [cautare] nexentbank.ro credite profesii liberale firme
+  [cautare] nexentbank.ro credite IMM companii
+  [cautare] nexentbank.ro credit medici avocati contabili arhitecti profesii liberale firma
+GOL     CREDIT_PROFESII              produs_inexistent: Nexent Bank oferă doar credite generale pentru IMM-uri (Linie de credit, Finanțarea creanț, $0.09
+  [cautare] nexentbank.ro credit investitii persoane juridice
+  [cautare] nexentbank.ro credite companii IMM
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Investment-Loan
+GATA    CREDIT_INVESTITII            1 surse, 1 citate verificate, echivalent, $0.09, 22s — Investment Loan (Creditul de investiții pentru companii / IMM)
+  [cautare] nexentbank.ro credit imobiliar companii
+  [cautare] nexentbank.ro credite persoane juridice imobiliare
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Corporate-Projects-Financing
+  [ 2] https://www.nexentbank.ro/Corporate-SME/Corporate-Banking/Financing/Corporate-Projects-Financing
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari/Finantarea-proiectelor-corporate
+GATA    CREDIT_IMOBILIAR_PJ          2 surse, 1 citate verificate, similar, $0.20, 30s — Corporate Projects Financing (Finanțarea proiectelor)
+  [cautare] nexentbank.ro credit IMM garantat ipotecar
+  [cautare] nexentbank.ro credite companii garanție imobiliară
+  [ 1] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits
+  [cautare] nexentbank.ro IMM credit garantie ipotecara linie de credit firme
+       ! url_not_in_prior_context
+  [ 2] https://www.nexentbank.ro/SME-Credits
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies
+  [ 4] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Credit-Line
+  [ 5] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Investment-Loan
+  [ 6] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing
+  [ 7] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Project-Financing
+GATA    CREDIT_IMM_IPOTECA           1 surse, 1 citate verificate, similar, $0.41, 51s — Project Financing / Finanțarea proiectelor
+  [cautare] Nexent Bank depozite dobanzi
+  [ 1] https://www.nexentbank.ro/
+  [cautare] Nexent Bank depozit 13 luni promotional
+  [ 2] https://nexentbank.ro/persoane-fizice/Economii/Depozite-la-termen
+  [ 3] https://www.nexentbank.ro/Bani-Noi
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Produse-de-economisire
+  [ 5] https://www.nexentbank.ro/dobanzi-cotatii-si-cursuri/dobanzi
+GATA    DEPOZIT_1AN_1LUNA            2 surse, 1 citate verificate, similar, $0.32, 43s — Depozite la termen cu dobândă fixă (persoane fizice)
+  [cautare] nexentbank.ro leasing
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Credite-IMM
+  [ 3] https://nexentbank.ro/Persoane-Juridice/Corporatii/Finantari
+  [cautare] nexentbank.ro leasing auto echipamente IMM
+GOL     LEASING_FINANCIAR            produs_inexistent: Nu am găsit niciun produs de leasing financiar (auto sau echipamente) la Nexent Bank sau l, $0.20
+  [cautare] Nexent Bank internet banking business firme
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Internet-Banking
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Internet-Banking
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Internet-Banking
+GATA    INTERNET_BANKING             1 surse, 1 citate verificate, echivalent, $0.26, 42s — Internet Banking (Corporate & SME)
+  [cautare] nexentbank.ro titluri de stat
+  [cautare] nexentbank.ro plasamente investiții
+  [ 1] https://www.nexentbank.ro/upload/media/document/0001/01/dae3e6e13e3656d35c1e7b5dc9032c4450470277.pdf
+  [cautare] "nexentbank.ro" obligatiuni piata de capital
+GOL     PLASAMENTE                   potrivire_slaba: cel mai apropiat: Servicii de investiții - tranzacționare obligațiuni (MiFID II) - Chestio, $0.13
+  [cautare] nexentbank.ro schimb valutar
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni
+  [cautare] nexentbank.ro tarife si comisioane persoane fizice schimb valutar PDF
+GATA    FX_SPOT                      3 surse, 0 citate verificate, echivalent, $0.24, 87s — Curs valutar / Dobânzi, cotații și cursuri
+  [cautare] nexentbank.ro depunere numerar automat firme
+  [cautare] Nexent Bank România automat bancnote persoane juridice
+  [ 1] https://www.nexentbank.ro/atm-si-sucursale?atm-page=9&page=6&postoffice-page=13
+  [ 2] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Cash-management
+  [ 4] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale
+  [ 5] https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni
+GOL     RCD_CASH_DEPOSIT             produs_inexistent: Nexent Bank (fosta Credit Europe Bank) nu ofera un automat de depunere numerar dedicat per, $0.31
+  [cautare] Nexent Bank plăți instant telefon RoPay
+  [ 1] https://www.nexentbank.ro/
+  [cautare] Nexent Bank RoPay număr de telefon alias IBAN monet
+  [ 2] https://www.nexentbank.ro/monet
+GATA    ROPAY                        1 surse, 0 citate verificate, similar, $0.15, 29s — Plăți Instant (serviciul de plăți instant Nexent Bank)
+  [cautare] nexentbank.ro RoPay QR comercianți
+  [cautare] Nexent Bank încasări QR code plăți instant comercianți
+  [cautare] nexentbank.ro RoPay comercianti incasari cod QR afacere
+GOL     ROPAY_BUSINESS               produs_inexistent: Nexent Bank nu are un produs dedicat de încasare prin cod QR RoPay pentru comercianți/firm, $0.09
+  [cautare] Nexent Bank seif inteligent depunere numerar firme
+  [cautare] nexentbank.ro seif automat numerar companii
+  [ 1] https://www.nexentbank.ro/Persoane-Juridice/Corporatii
+  [ 2] https://www.nexentbank.ro/en/retail-banking/cash-transactions
+       ! url_not_in_prior_context
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Cash-Management
+  [ 4] https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Operations
+GOL     SMART_SAFE                   nu_am_gasit: Am verificat paginile dedicate operațiunilor cu numerar pentru persoane juridice: Corporat, $0.18
+  [cautare] nexentbank.ro descoperit de cont persoane fizice
+  [ 1] https://www.nexentbank.ro/
+  [ 2] https://www.nexentbank.ro/persoane-fizice/Conturi-curente
+  [ 3] https://www.nexentbank.ro/persoane-fizice/Credite
+  [cautare] nexentbank.ro "credit de nevoi personale" OR "linie de credit" persoane fizice
+  [ 4] https://www.nexentbank.ro/persoane-fizice/Carduri-de-Debit/Card-de-salariu
+  [ 5] https://www.nexentbank.ro/en/retail-banking/Debit-Cards/Salary-card
+  [ 6] https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf
+GOL     OVERDRAFT_PF                 nepublicat: Nexent Bank nu are pe site o pagină dedicată, un FIPC sau o secțiune din grila de dobânzi , $0.37
+  [cautare] nexentbank.ro scrisori de garanție bancară
+  [cautare] nexentbank.ro garantii bancare companii
+  [ 1] https://www.nexentbank.ro/Facilitati-NON-CASH
+  [ 2] https://www.nexentbank.ro/upload/media/document/0001/06/55542767f9b364d9568de517506f19c2fd3a05cc.pdf
+  [ 3] https://www.nexentbank.ro/en/Corporate-SME
+  [ 4] https://www.nexentbank.ro/upload/media/document/0001/07/b36d869376376f0ae8ca4f9a3f377c74d96b8902.pdf
+GATA    SCRISORI_GARANTIE            3 surse, 0 citate verificate, echivalent, $0.23, 43s — Scrisori de garanție
+  ! DEPOZIT_BLITZ_7L: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  DEPOZIT_BLITZ_7L             ReadTimeout: The read operation timed out
+
+nexent: 19/51 produse cu surse, 1 erori, cost estimat $10.84, durata 8 min
+Reia: python descopera_surse_libra.py --banca nexent --produse DEPOZIT_BLITZ_7L

@@ -3,7 +3,7 @@ import { useCallback, useRef, useState, type CSSProperties } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useMeta } from '../api/meta'
 import { useRate } from '../api/rate_mobil'
-import { useVersusExtra, useVersusMatrice } from '../api/versus'
+import { useVersusExtra, useVersusLibra, useVersusMatrice } from '../api/versus'
 import { Despre, Eroare, Pill, SeIncarca } from '../components/comune'
 import Sertar, { type CerereSertar } from '../components/Sertar'
 import { T, useLang, type DictKey } from '../i18n'
@@ -11,10 +11,10 @@ import { num } from '../util/format'
 import { AlegeBanci } from './versus/AlegeBanci'
 import { CardBanca } from './versus/CardBanca'
 import {
-  dinMatrice, dinRate, GRUPURI, IMPLICIT, REFERINTA, scurt, sectiunePret, sectiuniExtra,
-  type Bilant, type SectiuneExtra, type SectiunePret,
+  banciLibra, dinMatrice, dinRate, GRUPURI, IMPLICIT, REFERINTA, scurt, sectiunePret, sectiuniExtra, sectiuniLibra,
+  type Bilant, type SectiuneExtra, type SectiuneLibra, type SectiunePret,
 } from './versus/model'
-import { SectiuneExtraVs, SectiunePretVs } from './versus/Sectiune'
+import { SectiuneExtraVs, SectiuneLibraVs, SectiunePretVs } from './versus/Sectiune'
 import { Comutator } from '../components/Comutator'
 import '../styles/versus.css'
 
@@ -64,15 +64,19 @@ export default function Versus() {
   const depozite = useRate('depozite', '', '')
   const credite = useRate('credite', '', '')
   const extra = useVersusExtra()
+  const libra = useVersusLibra()
 
   const err = meta.error ?? contCurent.error ?? carduri.error ?? transferuri.error ?? depozite.error ?? credite.error ?? extra.error
+    ?? libra.error
   if (err) return <Eroare e={err} />
-  if (!meta.data || !contCurent.data || !carduri.data || !transferuri.data || !depozite.data || !credite.data || !extra.data) return <SeIncarca />
+  if (!meta.data || !contCurent.data || !carduri.data || !transferuri.data || !depozite.data || !credite.data || !extra.data
+    || !libra.data) return <SeIncarca />
   const m = meta.data
   const date = [dinMatrice(contCurent.data), dinMatrice(carduri.data), dinMatrice(transferuri.data), dinRate(depozite.data), dinRate(credite.data)]
   const x = extra.data
 
-  const toateBanci = [...new Set(date.flatMap((d) => d.celule.map((c) => c.banca)))]
+  // băncile cu valori în colectarea generală sau în comparația cu Libra (fluxul extragere_produse_bancare)
+  const toateBanci = [...new Set([...date.flatMap((d) => d.celule.map((c) => c.banca)), ...banciLibra(libra.data)])]
     .sort((a, b) => (m.nume[a] ?? a).localeCompare(m.nume[b] ?? b, locale))
   const implicit = IMPLICIT.filter((b) => toateBanci.includes(b))
   // `?banci=` gol (Aplică fără nicio bifă) înseamnă tot alegerea implicită, ca în aplicația veche
@@ -81,8 +85,9 @@ export default function Versus() {
   const nume = Object.fromEntries(coloane.map((b) => [b, scurt(b, m.nume)]))
 
   const bilant: Bilant = { castiga: 0, pierde: 0, mijloc: 0, fara: 0, singura: 0 }
-  const sectiuni: (SectiunePret | SectiuneExtra)[] = [
+  const sectiuni: (SectiunePret | SectiuneLibra | SectiuneExtra)[] = [
     ...GRUPURI.map((g, i) => sectiunePret(g, date[i]!, coloane, bilant, arata)).filter((s): s is SectiunePret => s !== null),
+    ...sectiuniLibra(libra.data, coloane, bilant, arata),
     ...sectiuniExtra(x, coloane, bilant, arata, { t, locale }),
   ]
   const comparabile = bilant.castiga + bilant.pierde + bilant.mijloc
@@ -142,9 +147,11 @@ export default function Versus() {
           {sectiuni.map((s) =>
             s.tip === 'pret'
               ? <SectiunePretVs key={s.cheie} s={s} coloane={coloane} nume={nume} deschide={setSertar} />
-              : <SectiuneExtraVs key={s.cheie} s={s} coloane={coloane} nume={nume} />,
+              : s.tip === 'libra'
+                ? <SectiuneLibraVs key={s.cheie} s={s} coloane={coloane} nume={nume} />
+                : <SectiuneExtraVs key={s.cheie} s={s} coloane={coloane} nume={nume} />,
           )}
-          <Despre><T k="versus.despre" /></Despre>
+          <Despre><T k="versus.despre" /> <T k="versus.despre_libra" /></Despre>
         </section>
       ) : (
         <section>

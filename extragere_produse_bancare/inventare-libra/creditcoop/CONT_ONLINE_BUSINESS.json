@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Conturi curente – Persoane juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un cont curent dedicat persoanelor juridice (firme), dar la CREDITCOOP deschiderea se face la ghișeu (documentele de firmă se depun la sucursală) și operarea se face atât la ghișeu cât și prin internet banking (creditcoop.online), nu exclusiv online ca la Libra; nu există mențiune despre un card business inclus în pachet.",
+      "incredere": 0.75,
+      "incredere_metoda": 1,
+      "explicatie_incredere": "Pagina dedicată conturilor curente pentru persoane juridice conține cifre concrete despre limite de tranzacționare și ore limită, dar nu menționează deschidere/gestionare exclusiv online nici card business atașat.",
+      "citat": "Limită zilnică* 200.000 lei Limita pe tranzacție* 50.000 Lei * Limita zilnică și limita pe tranzacție pot fi modificate doar cu aprobarea expresă",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/#:~:text=Limit%C4%83%20zilnic%C4%83%2A%20200.000%20lei%20Limita,modificate%20doar%20cu%20aprobarea%20expres%C4%83"
+    },
+    {
+      "url": "https://www.creditcoop.ro/internet-banking-afaceri/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Internet Banking Afaceri – creditcoop.online",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Descrie canalul online pentru gestionarea conturilor de firmă (transferuri, plăți facturi, verificare solduri), echivalent parțial cu componenta online a Cont Online Business, dar este un serviciu adițional de internet banking, nu un cont definit ca fiind deschis exclusiv online.",
+      "incredere": 0.55,
+      "incredere_metoda": 1,
+      "explicatie_incredere": "Pagina confirmă existența unei platforme digitale dedicate persoanelor juridice, dar nu conține cifre (comisioane, dobânzi, sume) legate de contul în sine.",
+      "citat": "Gândită special pentru nevoile persoanelor juridice, această soluție îți permite să gestionezi eficient finanțele companiei tale, oricând și oriunde.",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (19 cuvinte)",
+      "link_live": "https://www.creditcoop.ro/internet-banking-afaceri/#:~:text=G%C3%A2ndit%C4%83%20special%20pentru%20nevoile%20persoanelor,companiei%20tale%2C%20oric%C3%A2nd%20%C8%99i%20oriunde."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/internet-banking-afaceri/",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/documente/"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2100,
+    "citire_cache": 62016,
+    "scriere_cache": 54502,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1696742
+  }
+}

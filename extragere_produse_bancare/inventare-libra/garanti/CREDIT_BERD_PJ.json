@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite cu garanția InvestEU (Credit de investiții pentru achiziția echipamentelor / Credit de investiții imobiliare / Credit pentru investiții sustenabile)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru firme cu garanție europeană (InvestEU), ca și produsul Libra, dar la Garanti BBVA garanția InvestEU este de 50-70% (prin EIF), nu 80% prin BERD ca la Libra; de asemenea Garanti separă produsul pe sub-tipuri (echipamente, imobiliar, sustenabil) cu plafoane și durate diferite de cele unice ale Libra (10 mil. lei, 12-120 luni, max. 85% din investiție).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu cifre exacte pentru sumă, procent garanție și durată pentru fiecare variantă de credit de investiții cu garanție InvestEU.",
+      "citat": "Produs de credit dedicat finanțarii investițiilor în echipamente (echipamente, mașini și utilaje, mijloace auto și alte active fixe similare necesare în desfășurarea și dezvoltarea activității companiei). Suma creditului: maxim 1.5 Mil EUR Perioada de creditare: până la 7 ani Garanţii: garanția InvestEU intre 50% - 70%, fară alte garanții reale",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/#:~:text=Produs%20de%20credit%20dedicat%20finan%C8%9Barii,70%25%2C%20far%C4%83%20alte%20garan%C8%9Bii%20reale"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3829,
+    "citire_cache": 34379,
+    "scriere_cache": 41891,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1499053
+  }
+}

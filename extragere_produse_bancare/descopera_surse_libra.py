@@ -323,6 +323,27 @@ def un_produs(banca: dict, idb: int, p: dict, timeout_s: float = 0) -> dict:
     return iesire
 
 
+# Rolurile permise de discovery_libra_rol_check. Modelul propune uneori altul („fise-produs”,
+# Intesa CONT_DESTEPT, 08.10.2026), iar INSERT-ul cădea, cu apelul deja plătit: un rol
+# necunoscut se aduce la cel mai apropiat permis, după cuvintele din el.
+ROLURI = ("pagina-produs", "tarife", "dobanzi", "conditii", "simulator")
+
+
+def rol_permis(rol: str | None) -> str:
+    r = (rol or "").lower()
+    if r in ROLURI:
+        return r
+    if "tarif" in r or "comision" in r or "taxe" in r:
+        return "tarife"
+    if "dobanz" in r or "dobânz" in r:
+        return "dobanzi"
+    if "simul" in r or "calcul" in r:
+        return "simulator"
+    if any(x in r for x in ("condit", "contract", "regulament", "termen", "document")):
+        return "conditii"
+    return "pagina-produs"
+
+
 def scrie_db(idb: int, id_produs: int, surse: list[dict], gol: dict | None = None) -> None:
     """
     Găsit: upsert pe (bancă, produs, url) și se scoate un eventual rând
@@ -362,7 +383,7 @@ def scrie_db(idb: int, id_produs: int, surse: list[dict], gol: dict | None = Non
                     citat = EXCLUDED.citat, citat_verificat = EXCLUDED.citat_verificat,
                     link_live = EXCLUDED.link_live, incredere = EXCLUDED.incredere,
                     explicatie_incredere = EXCLUDED.explicatie_incredere, model = EXCLUDED.model
-                """, (idb, id_produs, s["url"], s["tip"], s["rol"], s.get("metoda"), s.get("pagina_pdf"),
+                """, (idb, id_produs, s["url"], s["tip"], rol_permis(s["rol"]), s.get("metoda"), s.get("pagina_pdf"),
                       s.get("denumire_la_banca"), s["citat"], s.get("citat_verificat"), s.get("link_live"),
                       round(float(s["incredere"]), 2),
                       f"[{s.get('tip_potrivire', '?')}] {s.get('explicatie_incredere', '')}"

@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/agri",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul pentru achiziție de echipamente/utilaje agricole noi și second-hand",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit de investiții pentru achiziția de utilaje/echipamente agricole) și același segment (fermieri organizați ca SRL, SA, societate/cooperativă agricolă - persoane juridice), dar la Vista Bank nu este structurat ca produs garantat prin InvestEU, ci este un credit standard de investiții agri; termenul maxim (84/120 luni, în funcție de valoarea investiției) diferă ușor de intervalul 12–84 luni de la Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată secțiunii AGRI conține descrierea completă a produsului, cu toate cifrele relevante (sumă maximă, avans, perioadă de creditare, perioadă de grație).",
+      "citat": "Pentru ce? Se folosește pentru achiziția de echipamente și/sau utilaje agricole, noi și second-hand; Moneda: LEI sau EURO; Suma maximă: 90% din valoarea bunului achiziționat, fără TVA; Avans: minimum 10%; Perioada de creditare: maximum 10 ani pentru investiții > 300.000 EUR (sau echivalent în LEI), respectiv maximum 7 ani pentru investiții < =300.000 EUR (sau echivalent în LEI); Perioada de grație: de până la 12 luni; Rambursare: dobândă și capital plătibile lunar în baza unui grafic de rambursare.",
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/agri#:~:text=Pentru%20ce%3F%20Se%20folose%C8%99te%20pentru,baza%20unui%20grafic%20de%20rambursare."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/agri"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2997,
+    "citire_cache": 37473,
+    "scriere_cache": 44933,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1498091
+  }
+}

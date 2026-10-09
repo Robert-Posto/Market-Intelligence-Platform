@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/en/sme/borrowing/credit-card-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Business credit card (Card de credit pentru IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving pentru companii/PFA (microîntreprinderi), cu plăți la comercianți, retrageri numerar, perioadă de grație și limită de credit stabilită în funcție de rezultatele financiare ale companiei — același tip de produs și segment ca CARD_CREDIT_PJ.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului descrie explicit cardul de credit business, perioada de grație și regula de stabilire a plafonului în funcție de rezultatele financiare ale companiei.",
+      "citat": "Maximum credit limit: established according to the financial results of the company; Card validity is 24 months. Grace period of up to 50 days for transactions made at merchants.",
+      "rol2": null,
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/sme/borrowing/credit-card-imm.html#:~:text=Maximum%20credit%20limit%3A%20established%20according,for%20transactions%20made%20at%20merchants."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/sme/borrowing/credit-card-imm.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf"
+  ],
+  "durata_s": 13,
+  "consum": {
+    "intrare": 6,
+    "iesire": 932,
+    "citire_cache": 37598,
+    "scriere_cache": 74697,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2035941
+  }
+}

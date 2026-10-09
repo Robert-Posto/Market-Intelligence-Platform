@@ -1,0 +1,84 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisoare de garanție bancară emisă (SGB/CGB/acreditiv stand-by) și Scrisoare de garanție bancară primită",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife pentru persoane juridice conține secțiuni dedicate explicit scrisorilor de garanție bancară emise și primite, cu comisioane procentuale și sume fixe, pentru segmentul de firme/PFA.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife cu cifre exacte (procente și sume în Euro) pentru emiterea, majorarea, anularea și procesarea plăților în cadrul scrisorilor de garanție bancară, atât emise cât și primite.",
+      "citat": "6. SCRISOARE DE GARANȚIE BANCARĂ EMISĂ (SGB/CGB/ acreditiv stand-by) Valoare Întocmire şi analiză a documentaţiei pentru emitere SGB/CGB/acreditiv stand-by Echiv. 50 Euro Emitere/majorare sumă/prelungire valabilitate 0,25% min. echiv. 50 Euro/trim. sau fracţiune de trimestru",
+      "pagina_pdf": 6,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Scrisori-de-garantie-Corporate.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată segmentului Corporate (persoane juridice) ce descrie scrisoarea de garanție bancară ca angajament de plată irevocabil al băncii, cu tipurile uzuale (licitație, bună execuție, avans, vamă, contragaranții), exact ca produsul Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie clar produsul și tipurile de scrisori, dar nu conține cifre (procente/sume); cifrele sunt în documentul de tarife listat ca link pe aceeași pagină.",
+      "citat": "Scrisoarea de garanție reprezintă un angajament de plată irevocabil, asumat de bancă, la cererea clientului său de a plăti o sumă de bani către beneficiarul garanției, ca urmare a prezentării unei cereri de plată, în conformitate cu termenii și condițiile scrisorii de garanție.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/finantarea-comertului-imm/scrisori-de-garantie-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina echivalentă pentru segmentul IMM (microîntreprinderi/firme mici), descriind același produs - scrisoarea de garanție bancară ca angajament de plată irevocabil, cu lista tipurilor de scrisori emise.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagină dedicată produsului pentru segmentul IMM, dar fără cifre concrete (procente, sume); cifrele relevante apar separat în documentul de tarife persoane juridice.",
+      "citat": "Scrisoarea de garanție reprezintă un angajament de plată irevocabil, asumat de bancă, la cererea clientului său de a plăti o sumă de bani către beneficiarul garanției, ca urmare a prezentării unei cereri de plată, în conformitate cu termenii și condițiile scrisorii de garanție.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/conditii-generale-afaceri_persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Scrisori de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Condițiile Generale de Afaceri pentru persoane juridice conțin un capitol dedicat (14. Scrisori de garanție bancară) care descrie mecanismul de emitere la solicitarea clientului, aplicabil aceluiași tip de produs ca la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Document de condiții generale cu secțiune dedicată produsului, dar fără cifre concrete (comisioane/dobânzi), doar prevederi contractuale generale.",
+      "citat": "14.1. La solicitarea Clientului, Banca poate emite o scrisoare de garanţie Bancară sau o altă formă de garantare în numele sau contul Clientului.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/corporate/Finantarea-comertului-corporate/Scrisori-de-garantie-Corporate.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2540,
+    "citire_cache": 34704,
+    "scriere_cache": 72867,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2145203
+  }
+}

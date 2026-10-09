@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/scrisori-de-garantie-bancara/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoare de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat persoanelor juridice pentru emiterea de scrisori de garanție bancară (licitații, bună execuție, restituire avans, plată), exact ca produsul Libra SCRISORI_GARANTIE.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre concrete privind plafonul, termenul de emitere și eligibilitatea.",
+      "citat": "Până la 150.000 EURO sau 750.000 LEI per scrisoare, fără garanții solide. Poți obține scrisori de garanție bancară rapid, online și în valoare de până la 150.000 EURO sau 750.000 LEI per SGB, fără garanții solide.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție (Garanții primite)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru persoane juridice ce conține secțiunea dedicată comisioanelor pentru scrisori de garanție bancară (SGB), emitere, administrare trimestrială și anulare.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife cu cifre exacte (procente și sume) pentru produsul SGB.",
+      "citat": "SGB modelul băncii 0,50% la emitere și apoi trimestrial minim 200 lei/40 EUR SGB model beneficiar 0,55% la emitere și apoi trimestrial Anulare SGB înainte de emitere 200 LEI/40 EUR Dacă a fost emis draftul",
+      "pagina_pdf": 8,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/credite/afaceri-documentare/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoarea de Garanție Bancară (Afaceri documentare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină complementară din secțiunea Credite care descrie tipurile de scrisori de garanție bancară oferite persoanelor juridice (participare licitație, restituire avans, plată, bună execuție) și condițiile de emitere.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată cu descrierea tipurilor de garanții și a beneficiilor, dar fără comisioane exprimate numeric direct pe pagină.",
+      "citat": "Participare la licitație: Garantăm participarea companiei la licitații publice sau private, asigurând partenerii comerciali de seriozitatea și capacitatea financiară a firmei dvs. Restituire avans: Asigurăm restituirea avansurilor primite de la beneficiari în cazul în care condițiile contractuale nu sunt îndeplinite.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1546,
+    "citire_cache": 6323,
+    "scriere_cache": 30484,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0929426
+  }
+}

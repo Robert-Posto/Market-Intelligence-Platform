@@ -1,0 +1,46 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Linia de credit (încredere 0.55) — Este singurul produs revolving pentru persoane juridice găsit la această bancă, dar diferă canalul: Libra oferă un card de credit business cu plafon pe card (10.000–500.000 lei, max. 5% din CA) și perioadă de grație, în timp ce TechVentures oferă o linie de credit clasică (cont, nu card), fără mențiune de perioadă de grație sau plafoane exprimate ca procent din cifra de afaceri; cardul lor de business (Mastercard Business) este un card de debit/charge fără funcție de credit revolving menționată."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://techventures.bank/companii/linia-de-credit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Linia de credit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs revolving pentru persoane juridice găsit la această bancă, dar diferă canalul: Libra oferă un card de credit business cu plafon pe card (10.000–500.000 lei, max. 5% din CA) și perioadă de grație, în timp ce TechVentures oferă o linie de credit clasică (cont, nu card), fără mențiune de perioadă de grație sau plafoane exprimate ca procent din cifra de afaceri; cardul lor de business (Mastercard Business) este un card de debit/charge fără funcție de credit revolving menționată.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată descrie clar caracterul revolving și termenul maxim de 1 an, dar nu este un produs tip card și nu conține plafoane de tip Libra.",
+      "citat": "Linia de credit se acordă în lei sau euro pentru finanțarea activității curente pe termen scurt (maximum 1 an). Funcționează în sistem revolving, în perioada de acordare efectuându-se trageri și rambursări multiple din plafonul disponibil pus la dispoziția companiei.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/mastercard-business",
+    "https://techventures.bank/companii/carduri",
+    "https://techventures.bank/companii/linia-de-credit",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/mastercard-business"
+  ],
+  "durata_s": 41,
+  "consum": {
+    "intrare": 32810,
+    "iesire": 3023,
+    "citire_cache": 25217,
+    "scriere_cache": 30188,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1763634
+  }
+}

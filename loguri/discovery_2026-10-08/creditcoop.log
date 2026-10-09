@@ -1,0 +1,339 @@
+Banca Centrală Cooperatistă CREDITCOOP: 51 de rulat, 6 sărite (au rezultat), paralel 5, model claude-sonnet-5, termen 180 s/produs, domenii creditcoop.ro
+  [cautare] creditcoop plăți online comerciant card
+  [cautare] creditcoop POS virtual ecommerce
+GOL     LIBRAPAY_ECOM                produs_inexistent: CREDITCOOP nu oferă un serviciu de acceptare plăți online / gateway de tip eCommerce pentr, $0.06
+  [cautare] creditcoop.ro InvestEU credit companii
+  [cautare] creditcoop.ro credite persoane juridice investitii
+  [cautare] "InvestEU" OR "BERD" OR "FEI" OR "garanție europeană" creditcoop.ro credit
+  [ 1] https://www.creditcoop.ro/linia-de-credit/
+       ! url_not_in_prior_context
+GOL     CREDIT_INVESTEU_PJ           produs_inexistent: CREDITCOOP nu are un produs dedicat InvestEU (cu garanție UE/BEI, pragurile 250k-10 mil. ș, $0.12
+  [cautare] creditcoop schimb valutar online platforma curs
+  [ 1] https://www.creditcoop.ro/
+GOL     LIVE_FX                      nepublicat: CREDITCOOP nu are o platformă dedicată de schimb valutar online cu cursuri în timp real pe, $0.06
+  [cautare] creditcoop.ro cont curent online persoane juridice
+  [cautare] site:creditcoop.ro cont curent IMM
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/internet-banking-afaceri/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 4] https://www.creditcoop.ro/documente/
+GATA    CONT_ONLINE_BUSINESS         2 surse, 2 citate verificate, similar, $0.17, 33s — Conturi curente – Persoane juridice
+  [cautare] creditcoop linie de credit capital de lucru persoane juridice
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/linia-de-credit/
+  [ 3] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro "linia de credit" dobândă DAE fisiere pdf
+GATA    LINIE_CREDIT                 1 surse, 1 citate verificate, echivalent, $0.16, 34s — Linia de credit
+  [cautare] creditcoop.ro terminal POS comercianți
+  [cautare] creditcoop.ro POS fizic IMM
+  [ 1] https://www.creditcoop.ro/c/persoane-juridice/
+  [ 2] https://www.creditcoop.ro/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/documente/
+  [ 4] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+GOL     POS_FIZIC                    produs_inexistent: Am verificat meniul complet al site-ului CREDITCOOP pentru segmentul Business/Afaceri (per, $0.15
+  [cautare] creditcoop.ro pachet companii cont curent comisioane
+  [cautare] creditcoop abonament firme plăți SEPA
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/depozit-creditcoop/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 4] https://www.creditcoop.ro/documente/
+GOL     ABONAMENT_ELITE              produs_inexistent: Creditcoop oferă pentru persoane juridice doar un cont curent de bază (pagina 'Conturi cur, $0.17
+  [cautare] creditcoop.ro pachet cont curent persoane juridice comisioane
+  [cautare] creditcoop.ro abonament cont firme PFA
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+       ! url_not_in_prior_context
+  [ 2] https://www.creditcoop.ro/
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 4] https://www.creditcoop.ro/documente/
+GATA    ABONAMENT_OPERATIONAL        2 surse, 1 citate verificate, echivalent, $0.21, 33s — Conturi curente – Persoane juridice
+  [cautare] creditcoop.ro pachet cont curent persoane juridice comision lunar
+  [cautare] creditcoop.ro abonament pachet companii IMM tranzacții
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 4] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro "persoane juridice" comision lunar administrare cont pachet carduri
+GOL     ABONAMENT_PRESTIGE           nepublicat: CREDITCOOP are produsul „Conturi curente – Persoane juridice” (https://www.creditcoop.ro/c, $0.19
+  [cautare] creditcoop.ro credit IMM fara garantie imobiliara
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/creditul-standard/
+  [ 3] https://www.creditcoop.ro/linia-de-credit/
+  [ 4] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro grila dobanzilor credite afaceri IMM
+  [ 5] https://www.creditcoop.ro/c/persoane-juridice/credite-juridice/
+GOL     CREDIT_SIMPLU_IMM            produs_inexistent: CREDITCOOP nu publică un credit IMM negarantat, acordat pe baza scoringului, comparabil cu, $0.26
+  [cautare] creditcoop.ro pachet cont curent persoane juridice abonament
+  [cautare] creditcoop.ro firme IMM pachet servicii lunar card business
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/c/persoane-fizice/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [cautare] creditcoop.ro tarife comisioane persoane juridice pdf
+GOL     ABONAMENT_PRIME              produs_inexistent: CREDITCOOP oferă pentru persoane juridice doar un cont curent de bază ('Conturi curente – , $0.16
+  [cautare] creditcoop.ro pachet cont PFA comision abonament
+  [cautare] creditcoop.ro persoane juridice cont curent IMM pachet
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/internet-banking-afaceri/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 4] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro tarife comisioane persoane juridice cont curent card business
+GOL     ABONAMENT_PFA                produs_inexistent: CREDITCOOP nu are un produs de tip abonament lunar cu preț fix pentru PFA/profesii (cont+c, $0.22
+  [cautare] creditcoop API contabilitate integrare firme
+  [cautare] creditcoop.ro internet banking firme API contabilitate
+  [ 1] https://www.creditcoop.ro/internet-banking-afaceri/
+GOL     API_CONTABILI                produs_inexistent: CREDITCOOP oferă doar platforma generală de internet banking pentru firme 'creditcoop.onli, $0.08
+  [cautare] creditcoop.ro acreditive documentare
+  [cautare] site:creditcoop.ro acreditiv
+  [cautare] creditcoop.ro tarife comisioane persoane juridice acreditiv scrisoare de garanție
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/documente/
+  [ 3] https://www.creditcoop.ro/c/persoane-juridice/credite-juridice/
+GOL     ACREDITIVE                   produs_inexistent: CREDITCOOP nu oferă public un produs de acreditive documentare pentru persoane juridice. M, $0.18
+  [cautare] creditcoop card de credit business persoane juridice
+  [cautare] creditcoop.ro card credit IMM firme
+  [cautare] creditcoop.ro "card de credit" VISA Classic persoane fizice
+GOL     CARD_CREDIT_BUSINESS         produs_inexistent: CREDITCOOP are un singur produs tip card de credit – 'Card de Credit VISA Classic' – dar e, $0.09
+  [cautare] creditcoop.ro card de credit persoane fizice
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/carduri/
+  [ 3] https://www.creditcoop.ro/intrebari-frecvente/
+GATA    CARD_CREDIT_PF               2 surse, 1 citate verificate, echivalent, $0.14, 21s — Card de Credit VISA Classic
+  [cautare] creditcoop.ro card debit business persoane juridice
+  [cautare] creditcoop card de debit firme IMM
+  [ 1] https://www.creditcoop.ro/carduri/
+  [cautare] creditcoop "conturi curente" persoane juridice card debit
+  [ 2] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+GOL     CARD_DEBIT_BUSINESS          produs_inexistent: CREDITCOOP nu oferă card de debit pentru persoane juridice. Secțiunea Business/Afaceri a s, $0.13
+  [cautare] creditcoop.ro card de debit
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/carduri/
+  [ 3] https://www.creditcoop.ro/cont-de-plati-persoane-fizice/
+GOL     CARD_DEBIT_FREE              produs_inexistent: CREDITCOOP nu are în portofoliu un card de debit. Singurul produs de tip card listat pe si, $0.13
+  [cautare] creditcoop card de credit persoane juridice
+  [cautare] creditcoop.ro card credit business IMM
+  [ 1] https://www.creditcoop.ro/intrebari-frecvente/
+  [ 2] https://www.creditcoop.ro/
+  [ 3] https://www.creditcoop.ro/carduri/
+GOL     CARD_CREDIT_PJ               produs_inexistent: CREDITCOOP are un singur produs de tip card de credit, 'Card de Credit VISA Classic' (http, $0.18
+  [cautare] creditcoop.ro pachet cont curent persoane juridice comision lunar
+  [cautare] creditcoop pachet servicii IMM PFA abonament lunar
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 4] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro comisioane persoane juridice pdf cont curent
+GOL     ABONAMENT_SHINE              potrivire_slaba: cel mai apropiat: Conturi curente – Persoane juridice (încredere 0.55) — Este contul curen, $0.21
+  [cautare] creditcoop.ro card de debit
+  [cautare] creditcoop card debit gold cashback
+  [ 1] https://www.creditcoop.ro/carduri/
+GOL     CARD_DEBIT_GOLD              produs_inexistent: CREDITCOOP nu oferă card de debit ca produs public; singurul card listat pe site (pagina d, $0.09
+  [cautare] creditcoop cont dezvoltator imobiliar Legea 207/2025
+  [cautare] creditcoop.ro cont dezvoltator imobiliar avansuri
+GOL     CONT_DEZVOLTATOR             produs_inexistent: CreditCoop nu are un cont dedicat dezvoltatorilor imobiliari conform Legii 207/2025 pentru, $0.06
+  [cautare] creditcoop.ro cont curent persoane juridice start-up
+  [cautare] creditcoop.ro pachet cont firme PFA gratuit
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/cont-de-plati-persoane-juridice/
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/c/persoane-fizice/
+  [ 4] https://www.creditcoop.ro/internet-banking-afaceri/
+  [ 5] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 6] https://www.creditcoop.ro/documente/
+GOL     CONT_DESTEPT                 potrivire_slaba: cel mai apropiat: Conturi curente – Persoane juridice (încredere 0.55) — Este contul curen, $0.23
+  [cautare] creditcoop.ro cont curent persoane fizice online
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/cont-de-plati-persoane-fizice/
+  [ 3] https://www.creditcoop.ro/documente/
+  [ 4] https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf
+GATA    CONT_ONLINE_PERSONAL         2 surse, 1 citate verificate, similar, $0.20, 32s — Cont curent în lei (Cont de plăți – Persoane fizice)
+  [cautare] creditcoop credit agricol inputuri agricole linie de credit
+  [cautare] creditcoop.ro credite agricultura IMM
+  [ 1] https://www.creditcoop.ro/creditul-agro/
+GOL     CREDIT_AGRI_INPUTURI         produs_inexistent: CREDITCOOP nu are o linie de credit cu garanție InvestEU dedicată inputurilor agricole, cu, $0.11
+  [cautare] creditcoop.ro credit investitii garantie BERD InvestEU IMM
+  [cautare] creditcoop credite persoane juridice garantie FNGCIMM InvestEU
+  [ 1] https://noul.creditcoop.ro/ro/produse-credite-persoane-juridice
+  [ 2] https://www.creditcoop.ro/c/persoane-juridice/credite-juridice/
+       ! url_not_allowed
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/creditul-pentru-echipamente/
+  [ 4] https://www.creditcoop.ro/
+       ! url_not_in_prior_context
+  [ 5] https://www.creditcoop.ro/creditul-pentru-echipamente/
+  [ 6] https://www.creditcoop.ro/c/persoane-juridice/credite-juridice/
+GOL     CREDIT_BERD_PJ               produs_inexistent: CREDITCOOP oferă pentru persoane juridice doar credite generale de afaceri: Creditul stand, $0.19
+  [cautare] creditcoop.ro credit irigatii InvestEU
+  [cautare] creditcoop.ro credit agricultura persoane juridice investitii
+  [ 1] https://www.creditcoop.ro/creditul-agro/
+  [ 2] https://www.creditcoop.ro/creditul-pentru-echipamente/
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [cautare] creditcoop.ro "Creditul Agro"
+  [ 3] https://www.creditcoop.ro/
+  [ 4] https://noul.creditcoop.ro/ro/produse-credite-persoane-juridice
+       ! url_not_allowed
+  [ 5] https://www.creditcoop.ro/creditul-pentru-echipamente/
+GOL     CREDIT_AGRI_IRIGATII         produs_inexistent: CREDITCOOP nu are un credit de investiții dedicat sistemelor de irigații sau garantat prin, $0.25
+  [cautare] creditcoop.ro credit agricol echipamente agricole IMM
+  [cautare] creditcoop.ro credit investitii persoane juridice agricultura
+  [ 1] https://www.creditcoop.ro/creditul-pentru-echipamente/
+  [cautare] creditcoop InvestEU
+       ! url_not_in_prior_context
+  [ 2] https://noul.creditcoop.ro/en/node/150
+       ! url_not_allowed
+  [ 3] https://www.creditcoop.ro/creditul-pentru-echipamente/
+       ! url_not_in_prior_context
+  [cautare] "creditul-pentru-echipamente" creditcoop.ro
+GOL     CREDIT_AGRI_ECHIPAMENTE      produs_inexistent: CREDITCOOP nu are un credit de investiții dedicat echipamentelor agricole garantat prin In, $0.30
+  [cautare] creditcoop credit garanție BID IMM
+  [cautare] creditcoop.ro credite IMM garanție
+  [ 1] https://www.creditcoop.ro/creditul-standard/
+  [ 2] https://www.creditcoop.ro/c/persoane-juridice/credite-juridice/
+       ! url_not_in_prior_context
+GOL     CREDIT_BID_IMM               produs_inexistent: CREDITCOOP oferă doar credite generale pentru firme (Creditul standard, Linia de credit, C, $0.15
+  [cautare] creditcoop.ro credit imobiliar dezvoltatori persoane juridice
+  [cautare] creditcoop credit investitii imobiliare firme
+  [ 1] https://www.creditcoop.ro/creditul-imobiliar/
+  [ 2] https://noul.creditcoop.ro/produse-credite-persoane-juridice
+       ! url_not_in_prior_context
+       ! url_not_allowed
+  [cautare] creditcoop.ro "creditul-imobiliar" afaceri firme
+GOL     CREDIT_DEZVOLTATORI          produs_inexistent: CREDITCOOP are doar 'Creditul imobiliar' pentru persoane juridice (https://www.creditcoop., $0.14
+  [cautare] creditcoop.ro credit energie verde fotovoltaice
+  [cautare] creditcoop credite IMM panouri fotovoltaice
+  [ 1] https://www.creditcoop.ro/credite-pentru-afaceri/
+  [ 2] https://noul.creditcoop.ro/en/node/150
+       ! url_not_in_prior_context
+       ! url_not_allowed
+  [ 3] https://www.creditcoop.ro/
+  [ 4] https://www.creditcoop.ro/creditul-pentru-echipamente/
+  [cautare] creditcoop "energie verde" OR "energie regenerabila" credit
+GOL     CREDIT_ENERGIE_VERDE         produs_inexistent: CreditCoop nu are un credit dedicat pentru energie verde/fotovoltaic/eolian pentru firme. , $0.18
+  [cautare] creditcoop.ro credit medici cabinete medicale
+  [cautare] site:creditcoop.ro credit IMM persoane juridice
+  [ 1] https://noul.creditcoop.ro/ro/produse-credite-persoane-juridice
+  [ 2] https://www.creditcoop.ro/creditul-standard/
+       ! url_not_allowed
+GOL     CREDIT_HIPOCRATE             produs_inexistent: CREDITCOOP nu are un credit dedicat cabinetelor/clinicilor medicale, stomatologice sau vet, $0.10
+  [cautare] creditcoop.ro credit imobiliar persoane juridice
+  [cautare] creditcoop credit pentru firme imobiliar
+  [ 1] https://www.creditcoop.ro/creditul-imobiliar/
+  [cautare] creditcoop.ro tarife comisioane credit imobiliar persoane juridice pdf
+GATA    CREDIT_IMOBILIAR_PJ          1 surse, 1 citate verificate, echivalent, $0.15, 30s — Creditul imobiliar (Afaceri/Persoane Juridice)
+  [cautare] creditcoop.ro credit IMM garantat ipotecar
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/creditul-imobiliar/
+  [ 3] https://www.creditcoop.ro/linia-de-credit/
+  [ 4] https://www.creditcoop.ro/documente/
+GATA    CREDIT_IMM_IPOTECA           2 surse, 2 citate verificate, similar, $0.19, 42s — Creditul imobiliar (Afaceri)
+  ! ABONAMENT_RISE: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  ABONAMENT_RISE               ReadTimeout: The read operation timed out
+  [cautare] creditcoop.ro credit investitii persoane juridice
+  [cautare] creditcoop credit de investitii IMM dobanda
+  [ 1] https://www.creditcoop.ro/creditul-imobiliar/
+  [ 2] https://noul.creditcoop.ro/ro/produse-credite-persoane-juridice
+       ! url_not_allowed
+  [ 3] https://www.creditcoop.ro/creditul-pentru-echipamente/
+GATA    CREDIT_INVESTITII            2 surse, 0 citate verificate, similar, $0.22, 41s — Creditul imobiliar (secțiunea Afaceri/persoane juridice)
+  [cautare] creditcoop.ro credit profesii liberale avocati notari
+  [cautare] creditcoop credit liber profesionisti IMM
+  [ 1] https://www.creditcoop.ro/c/persoane-juridice/
+       ! url_not_in_prior_context
+  [cautare] creditcoop.ro "persoane juridice" credit standard linia de credit
+GOL     CREDIT_SOLON                 produs_inexistent: CREDITCOOP are produse de creditare pentru persoane juridice (Afaceri/Business), precum Cr, $0.12
+  [cautare] creditcoop.ro credite profesii liberale firme IMM
+  [cautare] creditcoop.ro credite persoane juridice produse
+  [ 1] https://noul.creditcoop.ro/ro/produse-credite-persoane-juridice
+       ! url_not_allowed
+  [ 2] https://www.creditcoop.ro/c/persoane-juridice/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/
+GOL     CREDIT_PROFESII              produs_inexistent: CREDITCOOP oferă pentru persoane juridice doar credite generale pentru afaceri: Creditul s, $0.19
+  [cautare] creditcoop.ro schimb valutar curs
+  [ 1] https://www.creditcoop.ro/
+  [cautare] creditcoop.ro "curs valutar" site:creditcoop.ro
+  [ 2] https://www.creditcoop.ro/documente/
+  [ 3] https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf
+  [ 4] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+GOL     FX_SPOT                      produs_inexistent: CREDITCOOP este o rețea cooperatistă care operează aproape exclusiv în lei. Documentul ofi, $0.16
+  [cautare] creditcoop.ro depozit dobanzi persoane fizice
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/creditcoop-plus-pentru-fonduri-noi/
+  [ 3] https://www.creditcoop.ro/flexiplus-7-luni-pentru-fonduri-noi/
+  [cautare] creditcoop.ro lista dobanzi depozite pdf
+  [ 4] https://www.creditcoop.ro/documente/
+  [ 5] https://www.creditcoop.ro/depozit-firme-star-plus/
+GOL     DEPOZIT_1AN_1LUNA            potrivire_slaba: cel mai apropiat: CREDITCOOP Plus pentru fonduri noi (încredere 0.55) — Este singurul depo, $0.26
+  [cautare] creditcoop.ro depozit dobanda
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/flexiplus-7-luni-pentru-fonduri-noi/
+  [ 3] https://www.creditcoop.ro/depozit-firme-star-plus/
+  [ 4] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro grila dobanzi depozite FlexiPlus
+  [cautare] creditcoop "FlexiPlus 7 luni" dobanda %
+GATA    DEPOZIT_BLITZ_7L             1 surse, 1 citate verificate, similar, $0.22, 38s — FlexiPlus 7 Luni pentru fonduri noi
+  [cautare] creditcoop.ro internet banking persoane juridice firme
+  [cautare] creditcoop internet banking mobile banking business IMM
+  [ 1] https://www.creditcoop.ro/internet-banking-afaceri/
+  [cautare] creditcoop tarife comisioane internet banking persoane juridice abonament lunar
+  [ 2] https://www.creditcoop.ro/documente/
+GATA    INTERNET_BANKING             1 surse, 0 citate verificate, echivalent, $0.19, 32s — Internet Banking - creditcoop.online (Afaceri)
+  [cautare] creditcoop.ro titluri de stat
+  [cautare] creditcoop.ro plasamente
+GOL     PLASAMENTE                   produs_inexistent: CREDITCOOP este o rețea de bănci cooperatiste care, prin natura statutului lor, nu pot efe, $0.07
+  [cautare] creditcoop descoperit de cont persoane fizice
+  [cautare] creditcoop overdraft card salariu
+  [ 1] https://www.creditcoop.ro/cont-de-plati-persoane-fizice/
+  [ 2] https://www.creditcoop.ro/c/persoane-fizice/conturi-si-operatiuni/
+  [cautare] creditcoop.ro tarife comisioane descoperit de cont persoane fizice
+GOL     OVERDRAFT_PF                 produs_inexistent: CREDITCOOP nu are în catalogul public un produs de tip descoperit de cont/overdraft pentru, $0.18
+  [cautare] creditcoop.ro automat bancnote depunere numerar persoane juridice
+  [cautare] creditcoop.ro depunere numerar firme comision
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+       ! url_not_in_prior_context
+  [ 2] https://www.creditcoop.ro/
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+GOL     RCD_CASH_DEPOSIT             produs_inexistent: Am verificat meniul complet Business/Afaceri de pe creditcoop.ro (Credite: Creditul standa, $0.16
+  [cautare] creditcoop RoPay
+  [cautare] creditcoop.ro RoPay QR comerciant
+  [cautare] creditcoop.ro POS comercianți plăți card afaceri
+GOL     ROPAY_BUSINESS               produs_inexistent: CREDITCOOP nu oferă un serviciu de încasare instant prin cod QR (tip RoPay/schema național, $0.09
+  [cautare] creditcoop.ro leasing financiar
+  [cautare] CREDITCOOP leasing auto echipamente firme
+  [ 1] https://www.creditcoop.ro/creditul-pentru-echipamente/
+  [ 2] https://noul.creditcoop.ro/en/node/150
+       ! url_not_in_prior_context
+       ! url_not_allowed
+  [cautare] creditcoop.ro "creditul pentru echipamente"
+  [ 3] https://www.creditcoop.ro/
+  [ 4] https://noul.creditcoop.ro/en/node/150
+       ! url_not_allowed
+GOL     LEASING_FINANCIAR            produs_inexistent: CREDITCOOP nu are un IFN de leasing și nu oferă leasing financiar (auto sau echipamente) c, $0.21
+  [cautare] creditcoop.ro scrisori de garantie bancara
+  [cautare] creditcoop scrisori de garantie persoane juridice
+  [ 1] https://noul.creditcoop.ro/produse-credite-persoane-juridice
+  [ 2] https://www.creditcoop.ro/creditul-standard/
+       ! url_not_allowed
+  [ 3] https://www.creditcoop.ro/documente/
+  [cautare] "creditcoop.ro" "scrisoare de garanție"
+GOL     SCRISORI_GARANTIE            produs_inexistent: CREDITCOOP nu publică un produs dedicat de tip scrisori de garanție bancară pentru persoan, $0.16
+  [cautare] creditcoop RoPay plăți instant telefon
+  [cautare] creditcoop.ro plăți instant mobile banking telefon
+  [ 1] https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf
+  [cautare] "RoPay" banci participante Transfond listă
+GOL     ROPAY                        produs_inexistent: CreditCoop oferă doar un serviciu generic de Plăți Instant (transfer instant interbancar/i, $0.45
+  [cautare] creditcoop seif inteligent depunere numerar firme
+  [cautare] creditcoop.ro servicii persoane juridice depunere numerar
+GOL     SMART_SAFE                   produs_inexistent: CREDITCOOP este o rețea cooperatistă de credit cu produse de bază pentru persoane juridice, $0.06
+  ! CREDIT_APIA: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  CREDIT_APIA                  ReadTimeout: The read operation timed out
+
+creditcoop: 10/51 produse cu surse, 2 erori, cost estimat $8.14, durata 6 min
+Reia: python descopera_surse_libra.py --banca creditcoop --produse ABONAMENT_RISE,CREDIT_APIA

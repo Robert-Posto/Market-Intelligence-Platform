@@ -1,0 +1,34 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Patria Bank nu are un credit de investiții cu garanție dedicată BERD. Banca are produse similare dar cu alți garanți specifici: Creditul COMPETITIVENESS cu garanție FEI (expunere maximă 1.000.000 EUR, perioadă 36 luni, fără garanții reale pentru capital de lucru) și un 'Credit cu garanție BID pentru IMM-uri' menționat în meniurile de credite pentru companii (afaceri-mici/credite, imm/credite), dar pentru acesta din urmă nu am găsit o pagină dedicată cu cifre (site-ul patriabank.ro a refuzat accesul direct prin fetch în timpul verificării, posibil blocaj tehnic sau robots.txt). Conform regulii de potrivire strictă, un garant specific precum BERD necesită o variantă dedicată la bancă pentru a fi considerat echivalent/similar; cum Patria oferă doar variante cu FEI sau BID ca garanți, nu există un corespondent direct pentru produsul Libra cu garanție BERD."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/credite/credit-garantie-bid",
+    "https://www.patriabank.ro/afaceri-mici/credite/credit-cu-garantie-bid",
+    "https://www.patriabank.ro/imm/credite/credit-cu-garantie-bid-pentru-imm-uri",
+    "https://www.patriabank.ro/afaceri-mici/credite",
+    "https://www.patriabank.ro/agro/credite/credit-cu-garantie-fei",
+    "https://en.patriabank.ro/imm",
+    "https://www.patriabank.ro/imm/credite",
+    "https://www.patriabank.ro/",
+    "https://www.patriabank.ro/agro/credite/credit-investeu",
+    "https://www.patriabank.ro/afaceri-mici/credite/credit-imm-plus"
+  ],
+  "durata_s": 78,
+  "consum": {
+    "intrare": 252439,
+    "iesire": 4786,
+    "citire_cache": 38683,
+    "scriere_cache": 35648,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6495946
+  }
+}

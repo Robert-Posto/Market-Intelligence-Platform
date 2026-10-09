@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici/Agro",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact un pachet lunar de cont curent pentru persoane juridice (antreprenori, PFA, fermieri), cu abonament lunar fix care include un set de servicii (card business, internet banking, plăți, SMS Alert) - același tip de produs și segment ca Abonamentul operațional Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține denumirile celor 3 variante de pachet, serviciile incluse și costurile lunare exacte (85/100/200 lei).",
+      "citat": "| Opțiuni | UȘOR | PRACTIC | COMPLET |\n| --- | --- | --- | --- |\n| Card de Business Patria MasterCard Business | ✔ | ✔ | ✔ |\n| Includere serviciu SMS Alert, alertare integrala (pentru conturi, carduri si instrumente de debit) | gratuit | gratuit | gratuit |\n| Cost | 85 lei/lună | 100 lei/lună | 200 lei/lună |",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 27027,
+    "iesire": 3134,
+    "citire_cache": 12656,
+    "scriere_cache": 33029,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1704977
+  }
+}

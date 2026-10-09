@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/credite-imm/capital-lucru-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Capital de lucru (IMM) – credit capital de lucru, linii revolving, overdraft, scontare facturi",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat capitalului de lucru pentru IMM (firme), incluzând explicit linia de credit revolving pentru acoperirea decalajului dintre plăți și încasări, exact ca LINIE_CREDIT de la Libra.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Pagina descrie clar linia de credit revolving pentru capital de lucru și overdraft-ul, dar nu publică dobânzi sau comisioane exacte (produsele corporate sunt de regulă negociate individual).",
+      "citat": "Pentru a-ți asigura o sumă la dispozitie pentru orice ofertă avantajoasă, poți alege linia de credit revolving Finanțarea pentru capital de lucru se acordă în Lei, Euro sau Usd, dar și multivalută.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/microintreprinderi-antreprenori/credite-antreprenori/capital-lucru.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Working capital (Capital de lucru) – microîntreprinderi și antreprenori, incl. linii revolving și overdraft",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași familie de produs (capital de lucru / linie revolving / overdraft) dar pe segmentul de microîntreprinderi și antreprenori, care acoperă și PFA-urile din definiția Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina enumeră explicit linia de credit revolving pentru capital de lucru și menționează monedele (Lei/Euro) acceptate, dar nu publică valori numerice de dobândă sau comisioane.",
+      "citat": "You can choose the revolving credit line to have an amount available for any advantageous offer Working capital loans are offered in Lei or Euro.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife si comisioane - Persoane Juridice (listă costuri standard)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul general de tarife pentru persoane juridice la care trimit paginile de credite pentru capital de lucru, util pentru comisioane conexe conturilor și liniilor de credit (ex. descoperit de cont neautorizat).",
+      "incredere": 0.55,
+      "explicatie_incredere": "Documentul conține comisioane generale de cont și dobânda la descoperitul de cont neautorizat, dar nu detaliază separat dobânda/comisioanele specifice liniei de credit pentru capital de lucru, care sunt stabilite individual per client.",
+      "citat": "Dobanda descoperit de cont neautorizat 12% p.a. 12% p.a.",
+      "citat_verificat": false,
+      "avertisment": "citat scurt (9 cuvinte); citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/capital-lucru-imm.html",
+    "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_Septembrie-2026.pdf"
+  ],
+  "durata_s": 67,
+  "consum": {
+    "intrare": 12,
+    "iesire": 5148,
+    "citire_cache": 188215,
+    "scriere_cache": 85974,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.30408199999999996
+  }
+}

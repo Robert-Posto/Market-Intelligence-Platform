@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici/Agro",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un abonament lunar pentru persoane juridice (firme/IMM) care include cont curent, internet banking, card de business și tranzacții incluse/nelimitate - același tip de produs (abonament corporate la cont) și același segment (firme) ca Abonamentul PRESTIGE, dar diferă prețul (200 lei/lună pt. varianta COMPLET vs. 295 lei/lună la Libra), numărul de carduri incluse (un singur card Business Mastercard, nu 5 standard + 2 Gold) și nu se menționează serviciul Live FX.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată prezintă un tabel cu cele trei variante de pachet și cifre concrete (cost lunar, plăți gratuite, tranzacții nelimitate), dar nu confirmă explicit numărul de carduri sau Live FX ca la Libra.",
+      "citat": "Opțiuni | UȘOR | PRACTIC | COMPLET | Card de Business Patria MasterCard Business | ✔ | ✔ | ✔ | Incasari instrumente debit | 5 | 15 | nelimitat | Plati instrumente debit | 5 | 15 | nelimitat | Cost | 85 lei/lună | 100 lei/lună | 200 lei/lună",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 25713,
+    "iesire": 3198,
+    "citire_cache": 12730,
+    "scriere_cache": 31260,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16410200000000003
+  }
+}

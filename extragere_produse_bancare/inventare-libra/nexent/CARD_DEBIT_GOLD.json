@@ -1,0 +1,71 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CARD_DEBIT_GOLD",
+  "denumire": "Card de debit Gold",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/06/55542767f9b364d9568de517506f19c2fd3a05cc.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Mastercard Standard Debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Document oficial de tarife, comisioane și dobânzi pentru cardul de debit Mastercard Standard, valabil pentru persoane fizice; nu conține niciun comision anual de tip 48 lei/an și nicio dobândă la sold, nicio asigurare de călătorie sau cashback, spre deosebire de Card de debit Gold Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este documentul oficial de tarife și comisioane valabil din 01.01.2025, cu caracteristicile generale ale cardului (valabilitate 3 ani, taxă emitere 0) prezentate explicit pentru acest produs.",
+      "citat": "LISTA DE TAXE, COMISIOANE SI DOBANZI AFERENTA CARDULUI DE DEBIT MASTERCARD STANDARD EMIS DE CREDIT EUROPE BANK VALABILA INCEPAND CU DATA DE 01.01.2025. Perioada de valabilitate a cardului: 3 ani, reinnoire automata. Taxa emitere card: 0.",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/Mastercard-Standard-Debit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mastercard Standard Debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul card de debit pentru persoane fizice la Nexent Bank, dar este un card de bază, fără asigurare de călătorie, cashback, acces la lounge sau dobândă la sold, spre deosebire de Card de debit Gold Libra; în schimb are emitere gratuită (0 lei), nu 48 lei/an.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre exacte despre comisioane (0 lei emitere, 0 comision tranzacții POS/străinătate), dar produsul nu are deloc caracteristicile premium (asigurare, cashback, lounge, dobândă) ale cardului Libra.",
+      "citat": "Ai 0 (ZERO) lei comision pentru: Emiterea cardului (inclusiv pentru cardul suplimentar); Tranzacţiile comerciale efectuate la POS, oriunde în lume; Plăți rapide folosind tehnologia contactless; Tranzacţiile comerciale în străinătate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/en/retail-banking/Debit-Cards/Visa-Clasic-Debit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Visa Clasic Debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit multifuncțional pentru persoane fizice, fără asigurare de călătorie, cashback, acces lounge sau dobândă la sold, caracteristici prezente la Card de debit Gold Libra; emitere gratuită în loc de 48 lei/an.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată produsului listează caracteristicile și comisioanele (0 emitere, 0 comisioane tranzacții externe) dar nu menționează niciun beneficiu premium comparabil cu Libra Gold.",
+      "citat": "Visa Clasic Debit from Nexent Bank is a multifunctional debit card in lei or in euro, for individuals. 0 issuing fee (including for supplementary card); 0 commissions for commercial transactions made abroad.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/persoane-fizice/Carduri-de-Debit/Visa-Clasic-Debit",
+    "https://nexentbank.ro/persoane-fizice/Carduri-de-Debit/Mastercard-Standard-Debit"
+  ],
+  "durata_s": 60,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4710,
+    "citire_cache": 40666,
+    "scriere_cache": 62404,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2112552
+  }
+}

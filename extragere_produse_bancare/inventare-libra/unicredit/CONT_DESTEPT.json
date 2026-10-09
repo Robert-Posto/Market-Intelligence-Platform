@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul Creativ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife confirmă că Pachetul Creativ este dedicat companiilor start-up, PFA, liber profesioniștilor și ONG, cu preț standard de 0 RON/lună pentru primele 12 luni de la deschidere pentru persoane juridice/PFA, exact ca structura gratuită 12 luni a Cont Deștept de la Libra; include și comision preferențial la tranzacțiile POS/mPOS.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Documentul oficial de comisioane și dobânzi conține explicit denumirea pachetului, segmentul de clienți (start-up) și cifrele exacte (0 RON/12 luni, apoi 20 RON/lună, comision POS 0,7% pentru deținătorii pachetului Creativ).",
+      "citat": "Pachetul Creativ este destinat companiilor start-up, persoanelor fizice autorizate, liber profesioniștilor, organizaţiilor non-profit și companiilor cu cifra de afaceri anuală pană la 500.000 Euro.",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Creativ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachetul Creativ este destinat explicit start-up-urilor, PFA, liber profesioniștilor și ONG cu cifră de afaceri <0,5 mil EUR, incluzând cont curent, card de debit, BusinessNet/Business Mobile și plăți incluse, fiind gratuit pentru primele 12 luni - corespunde segmentului și tipului de produs al Cont Deștept (start-up) de la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată descrie explicit componența pachetului Creativ pentru start-up-uri, dar perioada de gratuitate de 12 luni este menționată doar în contextul tranziției foștilor clienți Alpha Bank, nu ca ofertă generală pentru toți clienții noi.",
+      "citat": "Pachetul Creativ, destinat liber profesionistilor, persoanelor fizice autorizate si ONG, dar si persoanelor juridice (inclusiv start-up) cu cifra de afaceri anuala < 0.5 milioane EUR, va include comisioanele pentru administrarea produselor si comisioanele de transfer pentru platile incluse",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html#:~:text=Pachetul%20Creativ%2C%20destinat%20liber%20profesionistilor%2C,de%20transfer%20pentru%20platile%20incluse"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2705,
+    "citire_cache": 31599,
+    "scriere_cache": 72514,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2146668
+  }
+}

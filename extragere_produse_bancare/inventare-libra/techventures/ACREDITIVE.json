@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01032024.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive de export / Acreditive de import",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife și comisioane pentru entități economice conține secțiuni dedicate cu comisioane exacte pentru acreditive de export și acreditive de import (preavizare, emitere, confirmare, modificare, anulare).",
+      "incredere": 0.9,
+      "explicatie_incredere": "PDF-ul oficial de tarife conține linii de tarifare explicite cu procente și sume minime/maxime pentru acreditivele de export și import.",
+      "citat": "Emitere/majorare/prelungire valabilitate 0,15%, minimum 50 euro pe trimestru/fracțiune de trimestru 25 euro Modificare condiții, altele decât majorare și prelungire valabilitate 25 euro Plata la prezentarea documentelor 0,15%, minimum 50 euro",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Export letters of credit / Import letters of credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiune bilingvă mai recentă (2025) a listei de tarife, cu aceleași secțiuni dedicate acreditivelor de export și import, inclusiv traducerea în engleză a denumirilor comisioanelor.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial de tarife, actualizat în 2025, cu procente și sume explicite pentru acreditive de export și import.",
+      "citat": "Avizare/ majorare/ transfer/ Advising/ increase/ transfer 0,15%, minim um 50 euro, maxim um 1.500 euro 25 euro",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (17 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/companii/trade-finance",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Acreditive (Trade Finance)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată acreditivelor documentare pentru persoane juridice: emitere/avizare acreditive de import și export, confirmare, transfer, cesiune, revolving și stand-by, exact ca produsul Libra Acreditive documentare.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie explicit tipurile de acreditive oferite, dar nu conține cifre (procente/sume), fiind mai degrabă o pagină descriptivă fără tarife.",
+      "citat": "TechVentures Bank avizează acreditivele de export sau emite acreditive de import, transferă și confirmă acreditive, cesionează sumele încasate în cadrul lor, emite și avizează acreditive revolving și stand by.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/"
+  ],
+  "durata_s": 15,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1343,
+    "citire_cache": 6299,
+    "scriere_cache": 19706,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0639628
+  }
+}

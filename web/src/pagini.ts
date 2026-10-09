@@ -35,6 +35,8 @@ export const PAGINI: Grup[] = [
       { id: 'versus', pdf: '', mutata: true },
       { id: 'banca', pdf: '', mutata: true },
       { id: 'concurenta', pdf: '', mutata: true },
+      // situațiile financiare ale băncilor (MF, data.gov.ro): evoluție și cote de piață din 2012
+      { id: 'situatie', pdf: '', mutata: true },
       { id: 'istoric', pdf: '', mutata: true },
     ],
   },

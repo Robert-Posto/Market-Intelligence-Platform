@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/BunVenit/cont-bancar-online",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul \"Bun Venit\" - Cont bancar 100% online",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane fizice, deschis integral online, cu card de debit și acces Mobile/Internet/Phone Banking incluse - același tip de produs și segment ca CONT_ONLINE_PERSONAL de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre explicite despre comisioane și condiții de activare a pachetului.",
+      "citat": "Ai comision lunar de administrare ZERO dacă ai încasări lunare reprezentînd venituri de minimum 2.000 lei / ai disponibilități cumulate în depozite la termen de minim 20.000 EUR (echiv. lei) și efectuezi o tranzacție pe lună la comercianți prin utilizarea cardului.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/presa/cec-bank-simplifica-accesul-la-servicii-bancare-cont-deschis-100-online-maximum-10-minute-si",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Flux digital de deschidere cont 100% online (CEC Bank)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Descrie noul flux de deschidere 100% online a contului curent pentru persoane fizice, inclusiv pentru diaspora, cu card virtual și acces digital complet - corespunde direct cu Cont Online Personal.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Comunicat oficial al băncii cu cifre concrete despre comisioane (ZERO) și valute disponibile pentru noul cont online, dar nu este pagina de produs permanentă.",
+      "citat": "CEC Bank oferă o structură transparentă, cu beneficii esențiale pentru utilizarea de zi cu zi: ZERO comision lunar de administrare pentru cardul de debit, ZERO comision pentru contul curent în lei, ZERO comision pentru conturile în valută, ZERO comision pentru CEC app – Mobile Banking, ZERO comision la retragerile de numerar de la ATM-urile CEC Bank.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/cont-bancar-pachete",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "simulator",
+      "denumire_la_banca": "Pachete de cont bancar (grila pachetelor CEC Bank, inclusiv Bun Venit)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila de pachete de cont bancar care include Pachetul Bun Venit, deschis 100% online pentru persoane fizice, cu cifre despre comisioane pentru fiecare pachet.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina listează mai multe pachete de cont, inclusiv Bun Venit, cu cifre despre comisioane lunare, utilă pentru compararea condițiilor.",
+      "citat": "20.000 EUR (echiv. lei) și efectuezi o tranzacție pe lună la comercianți prin utilizarea cardului, indiferent de valoare care să fie evidențiată pe extrasul de cont și decontată în acceași lună sau în cazul contractarii unui credit de nevoi personale prin flux online, altfel comisionul este 9 lei/lună.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/BunVenit/cont-bancar-online"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2099,
+    "citire_cache": 38836,
+    "scriere_cache": 45896,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1435092
+  }
+}

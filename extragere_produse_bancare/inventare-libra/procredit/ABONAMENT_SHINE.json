@@ -1,0 +1,60 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/pachet-grow/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Grow (cont business / Pachet servicii bancare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet operațional de cont curent pentru persoane juridice (firme, PFA, SRL), cu cont în lei plus conturi în valută (EUR/USD/GBP), plăți naționale nelimitate și carduri de debit business incluse — același tip de produs și același segment ca Abonamentul SHINE.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată a pachetului de cont curent business conține cifrele exacte ale produsului standard (comision 86 lei/lună după promoție, 3 carduri incluse, plăți naționale sub 50.000 lei nelimitate).",
+      "citat": "În primele 24 de luni nu plătești comisionul lunar de administrare. După perioada promoțională, se aplică tariful standard de 86 de lei pe lună. Conturi incluse 1 cont curent lei + 2 conturi în valută, Plăți naționale sub 50.000 de lei Nelimitate, Carduri de debit incluse 3 carduri.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/pachet-grow/#:~:text=%C3%8En%20primele%2024%20de%20luni,de%20debit%20incluse%203%20carduri."
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet servicii bancare (companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice listează explicit pachetul standard de cont curent echivalent (conturi LEI+EUR+USD/GBP, carduri și plăți incluse) cu comisionul lunar de administrare de referință pentru produsul din pagina dedicată.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document oficial de prețuri în vigoare (10.08.2026) cu rândul exact al pachetului de servicii bancare pentru companii și valorile comisioanelor aferente.",
+      "pagina_pdf": 1,
+      "citat": "Administrare pachet servicii bancare 86 lei Comisionul se preia lunar. Pachet servicii bancare: 3 conturi curente incluse (LEI, EUR, USD/GBP), Plăți naționale până în 50.000 lei incluse, Card Visa debit (maxim trei carduri incluse).",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+    "https://www.procreditbank.ro/prozero24-contul-bancar-gandit-pentru-afaceri-eficiente/",
+    "https://www.procreditbank.ro/landing/prozero24",
+    "https://www.procreditbank.ro/companii/servicii-bancare/terminale-pos/",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+    "https://www.procreditbank.ro/companii/pachet-grow/"
+  ],
+  "durata_s": 61,
+  "consum": {
+    "intrare": 14,
+    "iesire": 4769,
+    "citire_cache": 341649,
+    "scriere_cache": 118593,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.41253029999999996
+  }
+}

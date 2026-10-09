@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent \"Unlimited\" (companii)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente lunare corporate care combină conturi multi-valută, carduri business (2 carduri) și plăți/încasări incluse, dar diferă semnificativ prețul (200 lei/lună vs 95 lei/lună la Libra) și plafonul de tranzacții incluse (100 plăți interbancare la TechVentures vs 25 plăți + 25 încasări la Libra); nu se menționează un serviciu de tip Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor pentru companii prezintă explicit prețul și componența pachetului Unlimited, cel mai cuprinzător dintre cele trei variante (Startup, Business, Unlimited).",
+      "citat": "Unlimited 10 conturi curente în lei și valută Emitere și administrare card Mastercard Business în lei sau euro (2 carduri) Livrare card în România Internet și Mobile Banking Încasări intra/interbancare în lei și valută Plăți intrabancare în lei și valută prin Internet Banking Primele 100 plăți interbancare în lei și euro prin Internet Banking",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachete Startup / Business / Unlimited (entități economice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife confirmă prețurile lunare ale celor trei pachete pentru firme (inclusiv Unlimited la 200 lei/lună, cu card Mastercard Business), dar structura de preț și plafoanele diferă de abonamentul Libra PRIME de 95 lei/lună.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul listează explicit comisioanele lunare de administrare pentru cele trei pachete (Startup, Business, Unlimited), confirmând cifrele din pagina de produs.",
+      "citat": "Administrare pachet Package management Pachete 25 lei/ lună 29 lei/ lună 200 lei/ lună 25 lei/ month 29 lei/ month 200 lei/ month",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/conturi-pachete-cont-curent",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+    "https://techventures.bank/companii/pachete-cont-curent"
+  ],
+  "durata_s": 64,
+  "consum": {
+    "intrare": 59210,
+    "iesire": 4269,
+    "citire_cache": 55144,
+    "scriere_cache": 39614,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2711738
+  }
+}

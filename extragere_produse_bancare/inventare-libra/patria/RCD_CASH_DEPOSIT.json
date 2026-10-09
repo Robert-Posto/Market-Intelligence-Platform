@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depuneri de numerar in conturile clientului la MFM (echipament electronic de tip bancomat multifunctional)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Patria oferă pentru persoane juridice depunere de numerar prin echipamente MFM (bancomat multifuncțional) în unitățile teritoriale ale băncii, ceea ce corespunde ca tip de produs (terminal automat de depunere bancnote) și segment (PJ) cu RCD Cash Deposit de la Libra; diferă însă față de Libra prin plafonul zilnic explicit de 15.000 LEI/zi, prin faptul că echipamentul este multifuncțional (servește și retrageri de numerar, inclusiv din conturile de capital social) și nu este descris cu o oră limită de creditare în aceeași zi (16:00) ca la Libra.",
+      "incredere": 0.78,
+      "explicatie_incredere": "Documentul de tarife pentru persoane juridice menționează explicit depunerile de numerar prin MFM cu comisioane și plafon zilnic, dar nu este o pagină dedicată exclusiv acestui echipament.",
+      "citat": "Depuneri de numerar in conturile clientului la MFM* in RON (MFM-urile din unitatile teritoriale ale bancii) 0 LEI · n/a Depuneri de numerar in conturile clientului la MFM in RON (MFM-urile Euronet) · 0,40% din suma depusa · n/a Plafon maxim pentru operatiunile de depunere de numerar la MFM: · max. 15.000 LEI /zi · n/a",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/d/2142",
+    "https://www.patriabank.ro/d/2142",
+    "https://www.patriabank.ro/d/27/lista-taxe-si-comisioane-pentru-persoane-juridice.pdf"
+  ],
+  "durata_s": 47,
+  "consum": {
+    "intrare": 72282,
+    "iesire": 3943,
+    "citire_cache": 12698,
+    "scriere_cache": 25514,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2503186
+  }
+}

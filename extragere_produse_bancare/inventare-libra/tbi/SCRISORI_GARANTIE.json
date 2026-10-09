@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Eliberare Scrisori de garanție bancară (RON, EUR, USD)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife pentru persoane juridice (Anexa 2 la Condițiile Generale de Afaceri) care listează explicit produsul 'Eliberare Scrisori de garanție bancară (RON, EUR, USD)' în secțiunea Garanții, destinat clienților persoane juridice, exact ca la Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Documentul conține explicit denumirea produsului și comisionul aplicabil, fiind documentul oficial de tarife al băncii, în vigoare din iunie 2024.",
+      "pagina_pdf": 4,
+      "citat": "Eliberare Scrisori de garantie bancara (RON, EUR, USD) / Issuing Letters of Guarantee (RON, EUR, USD) 0,25% pe trimestru / per quarter, min. 50 EUR",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf"
+  ],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1408,
+    "citire_cache": 30058,
+    "scriere_cache": 36833,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1121861
+  }
+}

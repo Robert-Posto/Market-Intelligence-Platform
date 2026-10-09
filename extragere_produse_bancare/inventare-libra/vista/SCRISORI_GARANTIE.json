@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de Garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife, termeni și condiții pentru persoane juridice, valabil din 7 octombrie 2026, care conține o secțiune dedicată integral comisioanelor pentru Scrisori de Garanție emise și primite.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document oficial de tarife, actualizat, cu toate comisioanele numerice pentru produsul Scrisori de Garanție (emitere, modificare, anulare, plată, avizare, executare).",
+      "pagina_pdf": 6,
+      "citat": "Comision pentru emiterea Scrisorii de Garantie 0,50%/trimestru sau fractie din trimestru, minim 50 EUR Comision urgenta pentru emiterea Scrisorii de Garantie sau Amendament (in aceeasi zi in care este inregistrata cererea de emitere/ modificare L/G de la client) 30 EUR Modificare 50 EUR Plata 0,20 %, minim 100 EUR maxim 1.500 EUR + Taxa Swift Comision anulare Scrisoare de Garantie 50 EUR",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de Garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat persoanelor juridice pentru emiterea de scrisori de garanție bancară (licitații, plată, bună execuție, returnare avans), exact tipul de produs Libra SCRISORI_GARANTIE.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie explicit produsul și tipurile de garanții oferite, dar nu conține cifre (procente/comisioane), acestea fiind doar în documentul de tarife.",
+      "citat": "Scrisori de Garanție - Principalele tipuri de Scrisori de Garanție sunt: Garanții de participare la licitații, Garanții de plată, Garanții de bună execuție, Garanții de returnare avans (avans primit conform contract de execuție), Garanții de acordare împrumut sau alte tipuri de scrisori, în funcție de nevoile companiior",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice/credite",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1677,
+    "citire_cache": 71818,
+    "scriere_cache": 61821,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1857021
+  }
+}

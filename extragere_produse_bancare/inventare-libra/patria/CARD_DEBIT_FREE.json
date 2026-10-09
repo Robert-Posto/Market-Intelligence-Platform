@@ -1,0 +1,82 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cardul de debit Patria Bank",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit pentru persoane fizice, cu emitere gratuită ca și Libra Free, dar administrarea lunară are cost (vezi tarife) și nu există cashback generalizat la parteneri (doar cardul Gold, separat, are acces la oferte cu cashback).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a cardului de debit conține cifrele cheie de emitere și livrare, dar costul de administrare nu apare aici (e în documentul de tarife).",
+      "citat": "ZERO lei pentru emitere card de credit principal - ZERO lei pentru emitere card de credit suplimentar - 15 lei/ 3 EUR taxă de livrare card prin curier",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/1000",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de debit in lei si valuta - Persoane fizice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife arată că administrarea cardului de debit NU este gratuită (3-9 lei/lună în funcție de tip), spre deosebire de Libra Free care nu are costuri de administrare.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care listează explicit comisioanele de emitere (0 lei) și administrare (3-9 lei/lună) pentru cardurile de debit persoane fizice.",
+      "citat": "Emitere card de debit principal 0 lei 0 lei 0 lei Emitere card de debit suplimentar (pentru utilizatori) 0 lei 0 lei 0 lei Administrare card de debit (principal / suplimentar) 3 lei / card / luna 3 lei/ card / luna 9 lei / card /luna 1 EUR / card / luna",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Business (Mastercard Business)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit pentru persoane juridice/antreprenori, cu emitere gratuită similar Libra Free, dar administrarea lunară are cost (5 lei/lună, vezi tarife PJ) și nu există cashback la parteneri.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată cardului business conține cifrele de emitere și beneficii, dar costul de administrare lunară nu apare explicit aici.",
+      "citat": "ZERO lei/ EUR comision de emitere. ZERO lei/ EUR comision pentru plăți la comercianți (în țară și străinătate). O rețea de peste 500 de bancomate de la care poți retrage oricând numerar.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/27/lista-taxe-si-comisioane-pentru-persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Carduri de debit - Mastercard Business Lider (Persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife PJ confirmă emitere gratuită dar administrare lunară cu cost (5 lei/lună sau 1 EUR/lună), diferit de Libra Free care nu are cost de administrare.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de tarife pentru persoane juridice cu cifrele explicite de emitere (gratuit) și administrare (5 lei/lună) pentru cardul de debit business.",
+      "citat": "CARDURI DE DEBIT – lei si valuta – Denumire comision Mastercard Business Lider Mastercard Standard Euro Taxa emitere card (inclusiv carduri suplimentare) Gratuit Taxa lunara administrare card 5lei/luna 1€/luna",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business"
+  ],
+  "durata_s": 83,
+  "consum": {
+    "intrare": 33216,
+    "iesire": 7498,
+    "citire_cache": 12620,
+    "scriere_cache": 35406,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.23245100000000002
+  }
+}

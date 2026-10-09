@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Serviciul RoPay (PJ) - Tarif de comisioane și speze pentru persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice conține o secțiune explicită cu comisioanele pentru încasările prin serviciul RoPay, intrabancar și interbancar, exact ca la RoPay for Business.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document tarifar oficial, cu cifre exacte (procent + sumă fixă) pentru încasările RoPay la persoane juridice.",
+      "pagina_pdf": 3,
+      "citat": "Incasari prin serviciul RoPay - Intrabancar Gratuit - Interbancar 0.35% + 0.30 lei/tranzactie",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (13 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/serviciul-ropay-pj",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Serviciul RoPay PJ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată serviciului RoPay pentru persoane juridice: încasări instant prin cod QR de la persoane fizice către comercianți persoane juridice, exact segmentul și funcția RoPay for Business de la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Este pagina dedicată oficial serviciului RoPay pentru PJ, cu descriere a produsului și o cifră (10 secunde), deși restul conținutului vizibil (navigație) a dominat textul extras prin fetch.",
+      "citat": "Încasări instant prin furnizarea codului QR către clienții bancari (persoane fizice către persoane juridice) în maximum 10 secunde de la inițierea plății.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/serviciul-ropay-pj#:~:text=%C3%8Encas%C4%83ri%20instant%20prin%20furnizarea%20codului,secunde%20de%20la%20ini%C8%9Bierea%20pl%C4%83%C8%9Bii."
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/termeni_si_conditii_RoPay.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Termeni și condiții de utilizare a serviciului RoPay (caz de utilizare Person to Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de termeni și condiții descrie explicit cazul de utilizare Person to Business (P2B), în care beneficiarul este o persoană juridică (Comerciant RoPay) care încasează plăți prin cod QR static cu sumă fixă sau editabilă, echivalent cu RoPay for Business.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document contractual oficial care definește exact rolul de 'Comerciant RoPay Beneficiar - persoană juridică' și mecanismul de generare a codurilor QR pentru încasări, dar nu conține cifre de preț (acestea sunt în documentul de tarife).",
+      "citat": "Comerciant RoPay Beneficiar – persoană juridică care are acces la aplicația de Mobile Banking – CEC app sau la aplicația de mobile banking a unei alte bănci care oferă serviciul solicitare plata RoPay, și dorește să încaseze o suma de bani și pune la dispoziția plătitorului, persoană fizică, prin cod QR static (generat cu sumă fixă sau sumă editabilă), detaliile",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/serviciul-ropay-pj",
+    "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+    "https://www.cec.ro/serviciul-ropay-pj",
+    "https://www.cec.ro/mobile-banking-persoane-juridice",
+    "https://www.cec.ro/serviciul-ropay-pj",
+    "https://www.cec.ro/serviciul-ropay-pj"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 64707,
+    "iesire": 4130,
+    "citire_cache": 361313,
+    "scriere_cache": 109435,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5165641
+  }
+}

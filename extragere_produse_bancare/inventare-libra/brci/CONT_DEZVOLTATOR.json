@@ -1,0 +1,28 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CONT_DEZVOLTATOR",
+  "denumire": "Contul Dezvoltatorului",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Lista de produse pentru persoane juridice la BRCI (de pe pagina principală și pagina companii.brci.ro) cuprinde: Cont curent, Card Mastercard Business, Plafon de creditare, Linie de credit, Overdraft, Plafon de trezorerie, Credit de investiții, Factoring, Acreditiv documentar, Scrisoare de garanție, Incaso, Fonduri europene. Nu există niciun produs dedicat proiectelor imobiliare / dezvoltatorilor conform Legii 207/2025 (cont escrow/colector pentru avansuri clienți). Singurul produs apropiat ca tip este contul curent general pentru persoane juridice (cont-curent-pj.html), dar acesta este un cont generic, nededicat dezvoltatorilor imobiliari și fără mențiuni despre Legea 207/2025, încasarea avansurilor sau plata costurilor de proiect. Majoritatea paginilor brci.ro sunt blocate la acces direct (robots/permisiuni), dar conținutul indexat din rezultatele de căutare confirmă lista completă de produse PJ fără variantă dedicată."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/persoane-juridice.html",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html",
+    "https://companii.brci.ro/pjonboarding"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 95147,
+    "iesire": 1631,
+    "citire_cache": 12740,
+    "scriere_cache": 24802,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.271157
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Creativ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pachet de cont curent dedicat exact PFA, liber profesioniști și ONG (plus start-up-uri sub 0.5 mil EUR cifră de afaceri), cu cont curent, card de debit business, Internet & Mobile banking incluse - același segment și tip de produs ca Abonamentul PFA Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată a pachetului conține explicit prețul, segmentul țintă și serviciile incluse (cont, card, BusinessNet/Business Mobile).",
+      "citat": "Pentru persoane juridice (inclusiv start-up) cu cifra de afaceri anuala < 0.5 milioane EUR, liber profesionisti, PFA si ONG - Produse si servicii - Cont curent in Lei 1 cont - Internet & Mobile banking BusinessNet & Business Mobile",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html#:~:text=Pentru%20persoane%20juridice%20%28inclusiv%20start%2Dup%29,banking%20BusinessNet%20%26%20Business%20Mobile"
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul Creativ",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru liber profesioniști și PFA listează explicit Pachetul Creativ cu prețul de bază și definirea segmentului țintă (PFA, liber profesioniști, ONG, start-up-uri).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document PDF oficial de tarife care conține tabelul cu prețul pachetului Creativ (0 lei / 20 lei) și nota explicativă a segmentului de clienți vizat.",
+      "citat": "Pachetul Creativ este destinat companiilor start-up, persoanelor fizice autorizate, liber profesioniștilor, organizaţiilor non-profit și companiilor cu cifra de afaceri anuală pană la 500.000 Euro.",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+    "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2718,
+    "citire_cache": 112775,
+    "scriere_cache": 87513,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2685335
+  }
+}

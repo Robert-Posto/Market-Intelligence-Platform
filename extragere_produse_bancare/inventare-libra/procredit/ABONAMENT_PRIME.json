@@ -1,0 +1,57 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet servicii bancare (ProCredit Bank, persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este singurul pachet lunar plătit de cont curent pentru persoane juridice cu conturi multi-valută (LEI, EUR, USD/GBP), mai multe carduri business incluse și plăți naționale incluse, exact ca Abonamentul PRIME de la Libra (95 lei/lună, conturi lei/euro/USD, 2 carduri business, plăți incluse).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul de tarife oficial, valabil din 10.08.2026, listează explicit pachetul cu comision lunar fix, conturile incluse, numărul de carduri și plafonul de plăți incluse.",
+      "pagina_pdf": 1,
+      "citat": "Administrare pachet servicii bancare 86 lei Comisionul se preia lunar Pachet servicii bancare 3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse Card Visa debit (maxim trei carduri incluse)",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent pentru companii (incl. Pachet servicii bancare)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată pachetelor de cont curent pentru persoane juridice, segmentul corespunzător Abonamentului PRIME de la Libra, descrie conturile multi-valută și trimite la lista de tarife unde apar cifrele exacte ale pachetului plătit.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina confirmă existența conturilor LEI/EUR/USD/GBP pentru companii și a pachetelor de business, dar cifrele monetare exacte (86 lei/lună) se găsesc doar în documentul de tarife asociat, nu direct în text.",
+      "citat": "Conturile pentru companii pot fi deschise în LEI, EURO, USD și GBP, oferindu-ți flexibilitatea de care ai nevoie.",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (18 cuvinte)",
+      "link_live": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/#:~:text=Conturile%20pentru%20companii%20pot%20fi,flexibilitatea%20de%20care%20ai%20nevoie."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+    "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
+    "https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 12,
+    "iesire": 2646,
+    "citire_cache": 255736,
+    "scriere_cache": 105938,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3424762
+  }
+}

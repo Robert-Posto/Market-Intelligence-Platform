@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_ENERGIE_VERDE",
+  "denumire": "Credit pentru energie verde",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/programe-externe.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoSEFF - Finanțare prin programe externe (surse BERD) pentru eficiență energetică și energie regenerabilă",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs dedicat IMM-urilor pentru investiții în energie regenerabilă/eficiență energetică găsit la UniCredit; diferă de produsul Libra prin faptul că acoperă atât eficiența energetică cât și regenerabilele în general (nu este restrâns strict la capacități de producție fotovoltaică/eoliană de la zero sau refinanțare) și este structurat ca parteneriat cu BERD, cu grant UE asociat, nu ca un credit standard de investiții.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina este dedicată acestui tip de finanțare pentru IMM și conține cifre concrete despre valoarea finanțării și a granturilor, dar nu detaliază separat dobânzi/comisioane specifice.",
+      "citat": "RoSEFF este o facilitate de finantare a energiei durabile pentru IMM din Romania in parteneriat cu Banca Europeana pentru Reconstructie si Dezvoltare (BERD) si Uniunea Europeana. Finantare proiect de investitii prin UniCredit Bank pana la 1 milion de euro; Granturi UE de pana la 150.000 euro, in functie de valoarea imprumutata.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/finantare/programe-externe.html#:~:text=RoSEFF%20este%20o%20facilitate%20de,in%20functie%20de%20valoarea%20imprumutata."
+    },
+    {
+      "url": "https://www.unicredit.ro/en/sme/borrowing/eu-funds.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Apply for EU Funds - Energy efficiency & renewables (POR / National Scheme)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Tabelul arată produsele disponibile (Bridge loan, Investment loan, VAT facility, Advance payment LG) pentru categoria 'Energy efficiency & renewables', aplicabile IMM-urilor, dar este un instrument general pentru fonduri europene, nu un credit dedicat exclusiv producției de energie verde precum la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Produsul relevant apare explicit într-un tabel cu tipurile de finanțare disponibile pe categoria energie regenerabilă, dar pagina nu conține cifre de dobândă/comision, doar disponibilitatea tipurilor de credit (YES/NO).",
+      "citat": "Energy efficiency & renewables Bridge loan · Investment loan · VAT facility · Advance payment LG POR · YES · YES · YES · YES NATIONAL SCHEME · YES · YES · YES · NO",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/finantare/programe-externe.html",
+    "https://www.unicredit.ro/en/sme/borrowing/eu-funds.html"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3199,
+    "citire_cache": 76529,
+    "scriere_cache": 57614,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.19134679999999998
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/03/Lista-preturi-PJ-RO_12.05.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditiv documentar (Listă de prețuri Persoane Juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife, cea mai recentă versiune găsită (12.05.2025), conține secțiunea dedicată Acreditiv Documentar cu toate comisioanele aplicabile pentru persoane juridice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "PDF oficial de tarife, actualizat, cu tabel complet de comisioane pentru acreditivul documentar de export și administrare.",
+      "pagina_pdf": 10,
+      "citat": "ACREDITIV DOCUMENTAR DE EXPORT Tip comision Valoare Condiții Avizare 0,10% Minim 75 EUR Confirmare 0,25% Minim 100 EUR Remitere 0,20% Minim 75 EUR Modificare/Anulare/Investigare 30 EUR",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/credite/afaceri-documentare/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Afaceri documentare - Acreditiv documentar și incasso documentar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată pentru persoane juridice care descrie exact acreditivul documentar ca instrument de plată pentru tranzacții internaționale, alături de incasso documentar.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina produsului descrie clar acreditivul documentar și scopul său, dar nu conține cifre/procente, doar descriere calitativă.",
+      "citat": "Acreditivul documentar: Asigură-te că vei primi mărfurile comandate la termenul și calitatea agreată, fără riscuri de neplată. Incasso-ul documentar: Permite colaboratorului tău să încaseze contravaloarea mărfurilor livrate, conform clauzelor contractuale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/ro/imm-uri/credite-pentru-imm-uri/afaceri-documentare",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Afaceri documentare - Acreditiv și Incasso (IMM-uri)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta pentru secțiunea IMM-uri a aceleiași pagini de produs, cu descriere detaliată a acreditivului documentar și incasso-ului pentru tranzacții de import/export.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului pentru segmentul IMM, cu descriere funcțională completă dar fără cifre/tarife.",
+      "citat": "Pentru a te proteja de riscurile care pot interveni într-o tranzacţie comercială de export sau de import, îţi recomandăm două instrumente de plată sigure şi eficiente: acreditivul documentar şi incasso-ul documentar.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1508,
+    "citire_cache": 6305,
+    "scriere_cache": 21854,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07098399999999999
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "EXIM BUSINESS COMPLET (parte a gamei „Pachete servicii” / abonamente EXIM BUSINESS)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este abonamentul operațional lunar pentru PFA și microîntreprinderi, cu cont curent în lei și valută, card de debit business și internet/mobile banking, exact ca segmentul și tipul de produs al Abonamentului SHINE; diferă însă cardul (Mastercard Business Standard, nu Gold), prețul (70 lei/lună vs 100 lei/lună) și faptul că acest tier nu listează explicit un comision mPOS (comisionul mPOS de 0,9%/1% apare doar la tierurile SMART și START ale aceleiași game).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține denumirea comercială, prețul lunar și lista completă de beneficii/costuri zero pentru tierul cel mai apropiat de SHINE, dar nu confirmă un comision mPOS specific pentru acest tier.",
+      "citat": "EXIM BUSINESS COMPLET (70 lei/luna) Costuri ZERO: deschiderea contului curent; administrarea lunara a conturilor curente in lei si valuta; furnizarea (emiterea) si administrarea cardului de debit inclus in oferta; administrare lunara Internet/Mobile Banking (e-ximBanking); incasari nelimitate intrabancare/interbancare in lei si valuta; plati nelimitate intrabancare prin e-ximBanking",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=EXIM%20BUSINESS%20COMPLET%20%2870%20lei%2Fluna%29,plati%20nelimitate%20intrabancare%20prin%20e%2DximBanking"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/pachete-servicii/",
+    "https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2884,
+    "citire_cache": 83492,
+    "scriere_cache": 54235,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1811419
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Bank Guarantee",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este categoria dedicată de scrisori de garanție bancară pentru persoane juridice (firme), structurată pe tipuri (Performance, Tender, Advance Payment, Quality, Financing, Payment Guarantee), exact segmentul și tipul de produs ca SCRISORI_GARANTIE de la Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina-hub dedicată produsului (scrisori de garanție bancară) pentru clienți persoane juridice, dar nu afișează cifre/tarife concrete, doar lista tipurilor de garanții oferite.",
+      "citat": "Current Position : Home > BOC Romania > Corporate Banking > Trade Services > Bank Guarantee Performance Guarantee Tender Guarantee Advance Payment Guarantee Quality Guarantee Financing Guarantee Payment Guarantee",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/202105/t20210501_19360702.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Payment Guarantee (Letter of Guarantee)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este o scrisoare de garanție bancară emisă de bancă la cererea unui client persoană juridică pentru garantarea obligațiilor contractuale de plată, același tip de produs și segment ca SCRISORI_GARANTIE.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina dedicată descrie clar produsul (scrisoare de garanție) și condițiile de aplicare pentru firme, dar taxele sunt descrise generic, fără procent sau sumă publicată explicit.",
+      "citat": "The payment guarantee fees shall be charged based on the principles and rates determined in accordance with relevant rules of Bank of China (Central and Eastern Europe) Limited Bucharest Branch; the fees for letter of guarantee in foreign currency shall be charged in the same way as for letter of guarantee in RMB.",
+      "citat_verificat": true,
+      "link_live": "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/202105/t20210501_19360702.html#:~:text=The%20payment%20guarantee%20fees%20shall,letter%20of%20guarantee%20in%20RMB."
+    },
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/202105/t20210501_19360708.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Advance Payment Guarantee (Letter of Guarantee)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Variantă de scrisoare de garanție bancară (garanție de avans/restituire avans) emisă pentru clienți persoane juridice, aceeași familie de produs ca SCRISORI_GARANTIE.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagină dedicată produsului, cu descrierea procesului de emitere și condițiile de eligibilitate pentru firme, dar fără cifre publice pentru comisioane sau marje.",
+      "citat": "The advancement payment guarantee fees shall be charged based on the principles and rates determined in accordance with relevant rules of Bank of China (Central and Eastern Europe) Limited Bucharest Branch; the fees for letter of guarantee in foreign currency shall be charged in the same way as for letter of guarantee in RMB.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/202105/t20210501_19360702.html",
+    "https://www.bankofchina.com/ro/en/index.html",
+    "https://www.bankofchina.com/ro/en/bocinfo/bi2/202109/t20210908_20014518.html",
+    "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf",
+    "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/202105/t20210501_19360712.html",
+    "https://www.bankofchina.com/ro/en/cbservice/cb3/cb33/202105/t20210501_19360704.html"
+  ],
+  "durata_s": 76,
+  "consum": {
+    "intrare": 12,
+    "iesire": 6015,
+    "citire_cache": 175084,
+    "scriere_cache": 73007,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2777083
+  }
+}

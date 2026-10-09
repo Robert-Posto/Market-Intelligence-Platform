@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/Interests-Quotes-and-Exchange-Rates",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar / Dobânzi, cotații și cursuri",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina este dedicată operațiunilor de schimb valutar la cursul practicat de bancă pentru conturi curente, cu cotații zilnice de cumpărare/vânzare pentru principalele valute - exact tipul de produs FX spot pentru persoane fizice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată conține tabel cu cursuri de cumpărare și vânzare actualizate zilnic pentru EUR, USD, GBP, CHF, SEK, JPY, însă nu detaliază comisioane specifice tranzacției spot.",
+      "citat": "Aici puteţi găsi detalii referitoare la produsele de trezorerie oferite de Nexent Bank, precum şi informaţii referitoare la piaţa monetară. EUR 5,3501 5,2600 5,4200 USD 4,7801 4,7200 4,8400",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Operațiuni financiare pentru IMM-uri - FX Transactions / Schimburi valutare",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina descrie explicit operațiunile de vânzare/cumpărare de valută pe piața interbancară pentru clienți persoane juridice (IMM), fiind echivalentul corporate al schimbului valutar spot, incluzând cotații zilnice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Secțiunea 'FX Transactions' descrie clar mecanismul licitațiilor valutare pentru companii și include un tabel cu cursuri de schimb cumpărare/vânzare actualizate zilnic.",
+      "citat": "Pentru orice operatiuni financiare ai avea nevoie pentru compania ta, de la retrageri, ordine de plata, schimb valutar, cecuri, Nexent Bank iti sta alaturi. Simbol BNR Cumparare Vanzare EUR 5,3501 5,2600 5,4200 USD 4,7801 4,7200 4,8400",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Lista de taxe, comisioane si dobanzi - Comision schimb valutar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife, valabil din 01.01.2026, listează explicit comisionul de schimb valutar (RON/FX) aplicat pentru operațiunile de schimb valutar prin Internet Banking și monet pentru persoane fizice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de tarife care conține o linie explicită 'Comision schimb valutar RON/FX 0' pentru operațiunile efectuate prin canalele digitale ale băncii.",
+      "pagina_pdf": 1,
+      "citat": "Taxe si comisioane generale pentru tranzactiile efectuate prin serviciul de Internet Banking Transfer credit - Plati prin virament Transfer intre conturi proprii RON/FX 0 Comision schimb valutar RON/FX 0",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni"
+  ],
+  "durata_s": 87,
+  "consum": {
+    "intrare": 6,
+    "iesire": 7385,
+    "citire_cache": 41233,
+    "scriere_cache": 63890,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2418336
+  }
+}

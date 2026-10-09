@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Sucursala PKO Bank Polski din București deservește exclusiv clienți corporate (persoane juridice mari) care operează în România. Lista de produse (https://www.pkobp.pl/ro/filiala-romania/produse) arată la secțiunea 'Plăți și Carduri' doar 'Card de debit Visa Business', nu un card de credit business. Secțiunea 'Credite' conține Facilitate de descoperit de cont, Credit de capital de lucru (reînnoibil/ne-reînnoibil), Credit de Investiții și Facilitate de credit multi-produs, dar niciunul dintre acestea nu este un produs tip card de credit revolving. Nu există nicio mențiune despre PFA sau despre un card de credit business cu plafon 10.000-500.000 lei. Deci nu există un produs echivalent sau similar cu CARD_CREDIT_PJ la această bancă."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse"
+  ],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1220,
+    "citire_cache": 28531,
+    "scriere_cache": 19048,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0655422
+  }
+}

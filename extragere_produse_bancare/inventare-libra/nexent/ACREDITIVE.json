@@ -1,0 +1,85 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari/Facilitati-non-cash",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Facilități NON-CASH – Acreditive",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat acreditivelor documentare pentru persoane juridice (companii), descriind mecanismul de plată garantat de bancă în numele cumpărătorului către furnizor, exact ca produsul Libra ACREDITIVE.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina conține descrierea explicită și completă a mecanismului acreditivului pentru firme, dar nu publică cifre (comisioane/procente) specifice produsului, acestea fiind probabil doar în tarifele interne sau oferite la cerere.",
+      "citat": "reprezintă un angajament asumat de către banca emitentă în numele cumparatorului (ordonatorul), de a plăti furnizorului contravaloarea mărfurilor, cu condiţia prezentării documentelor de expediere a mărfii, conform cu termenele şi condiţiile prevăzute în acreditiv",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Non-Cash-Financing",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Non-Cash Financing – Letter of credit",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea în limba engleză a aceluiași produs 'Acreditive' pentru persoane juridice, cu descriere a Letter of credit ca angajament scris al băncii față de furnizor, inclusiv servicii conexe (advising, confirmation, transfer).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina descrie explicit produsul letter of credit și serviciile aferente (advising, confirmare, transfer), dar fără cifre concrete de comisioane sau dobânzi.",
+      "citat": "Written undertaking given by the bank to the supplier, on client's instruction to pay either at sight or at a determinable future date, a stated sum of money upon presentation of documents specified in the letter of credit and fulfillment of all terms and conditions specified in the L/C.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Non-Cash-Financing#:~:text=Written%20undertaking%20given%20by%20the,conditions%20specified%20in%20the%20L%2FC."
+    },
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Trade-Finance-Import-Services",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Trade Finance Import Services – acreditive/incasso/scrisori de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată instrumentelor de finanțare a importurilor pentru companii, care include explicit acreditivele ca instrument pentru derularea tranzacțiilor de import în siguranță.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Menționează explicit acreditivele ca instrument pentru importatori, dar nu oferă cifre; este complementară paginii principale NON-CASH.",
+      "citat": "La Nexent Bank ai instrumente specifice - incasso, acreditive si scrisori de garantie, astfel incat tu sa iti desfasori tranzactiile de import in siguranta.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Trade-Finance-Export-Services",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Trade Finance Export Services – acreditive/incasso/scrisori de garanție",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată instrumentelor de finanțare a exporturilor pentru companii, incluzând acreditivele documentare ca instrument de plată/finanțare pentru exportatori.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Conține descrierea funcționării acreditivelor documentare (documentary credits) din perspectiva exportatorului, dar fără cifre de comisioane.",
+      "citat": "The documentary credits provide access to finance after delivery without recourse to the exporter and may also reduce the cost of credit to the exporter as well as the need for the exporter's bank to maintain strict control of the credits granted through these types of financing.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/Facilitati-NON-CASH",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing/Non-Cash-Financing",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing",
+    "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Finantari"
+  ],
+  "durata_s": 34,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2844,
+    "citire_cache": 75697,
+    "scriere_cache": 73802,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22810040000000004
+  }
+}

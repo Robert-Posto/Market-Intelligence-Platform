@@ -1,0 +1,44 @@
+{
+  "generat": "2026-10-08",
+  "banca": "citibank",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisori de garanție bancară",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina Citi Romania dedicată operațiunilor documentare conține o secțiune distinctă numită explicit 'Scrisori de garantie bancara', destinată clienților corporate care au nevoie de emiterea sau confirmarea unei garanții bancare în comerțul intern și internațional, exact ca produsul Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina numește explicit produsul și descrie serviciul (emitere și confirmare de garanții bancare pentru clienți corporate), dar nu conține cifre (comisioane, termene, sume), fiind mai degrabă o descriere calitativă a serviciului de trade finance.",
+      "citat": "Scrisori de garantie bancara In comertul intern si international foarte adesea sunteti solicitat sa instructati emiterea de garantii bancare sau sunteti in situatia de a primi o garantie bancara, pe care o doriti confirmata.",
+      "citat_verificat": true,
+      "link_live": "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html#:~:text=Scrisori%20de%20garantie%20bancara%20In,pe%20care%20o%20doriti%20confirmata."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/trade-finance.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/bank-guarantees.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/trade-services.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/trade-services/trade-services.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/trade-services/trade-services.html"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 68915,
+    "iesire": 2395,
+    "citire_cache": 72727,
+    "scriere_cache": 31108,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2540954
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/biroul-de-presa/Nexent-Bank-lanseaza-platile-instant-pentru-clientii-sai/63",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Plăți Instant (serviciul de plăți instant Nexent Bank)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de serviciu (transfer interbancar instant în lei, disponibil pentru persoane fizice și juridice, prin Mobile/Internet Banking), dar pagina Nexent descrie integrarea la schema națională de Plăți Instant administrată de TRANSFOND fără a menționa explicit funcția de alias prin număr de telefon (proxy pentru IBAN) care definește RoPay; diferă canalul de identificare a beneficiarului (IBAN standard vs. număr de telefon ca alias).",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Comunicatul oficial al băncii conține cifre concrete (plafon 50.000 lei/tranzacție, fără costuri suplimentare) despre serviciul propriu de plăți instant, dar nu confirmă explicit funcția de alias telefonic specifică RoPay.",
+      "citat": "Serviciul permite transferul în timp real al sumelor de până la 50.000 lei per tranzacție, către orice bancă din România care participă la serviciul Plăți Instant Lei administrat de TRANSFOND, având finalitatea decontării asigurată de către Banca Națională a României.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/monet"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2117,
+    "citire_cache": 34195,
+    "scriere_cache": 48849,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.15014349999999999
+  }
+}

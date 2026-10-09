@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Depozit la termen cu dobândă fixă constituit exclusiv din Fonduri noi prin Mobile Banking (campanie)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul depozit cu dobândă promoțională/de campanie activ la UniCredit pentru persoane fizice, dar diferă termenul (3, 6 sau 12 luni, nu 7 luni) și condiția de 'fonduri noi' deschis exclusiv prin Mobile Banking; segmentul acoperit e doar persoane fizice, nu și persoane juridice ca la Libra. Documentul arată și că depozitul standard de 7 luni este în prezent 'suspendat din oferta activă a băncii' cu dobândă 0%.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Documentul oficial de tarife și dobânzi conține explicit cifrele campaniei de depozite cu fonduri noi, dar termenele (3/6/12 luni) nu coincid cu cele 7 luni ale produsului Libra.",
+      "citat": "PERIOADA LEI 3 luni 6.00 6 luni 6.50 12 luni 7.00 Suma minimă de constituire: 3.000 lei DEPOZITE LA TERMEN CU DOBÂNDĂ FIXĂ (%) CONSTITUITE EXCLUSIV DIN FONDURI NOI PRIN MOBILE BANKING",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/cib/deposits-and-investments/deposits.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Term Deposits (Legal Entities Corporate)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acoperă segmentul persoane juridice cu depozite la termen pe 3,4,5,6,9,12 luni, dar sunt depozite standard, nu promoționale, iar termenul de 7 luni lipsește din grilă.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina dedicată companiilor listează explicit dobânzile pentru depozite la termen pe mai multe perioade, confirmând oferta standard pentru persoane juridice fără variantă promoțională de 7 luni.",
+      "citat": "Legal Entities Corporate · Deposits · 6 months · 5.07% · 1.84% · 2.90% · 2.76% Legal Entities Corporate · Deposits · 9 months · 5.10% · 1.97% · 3.05% · 2.94% Legal Entities Corporate · Deposits · 12 months · 5.12% · 2.10% · 3.21% · 3.12%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi-PI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Depozit la termen de 7 luni (produs suspendat din oferta activă)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Confirmă existența unui depozit la termen de exact 7 luni la UniCredit, dar acesta este un produs suspendat din oferta activă, cu dobândă 0%, nu un depozit promoțional activ precum Blitz al Libra (~6,25% p.a.).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Depozitul de 7 luni apare explicit în document, dar cu dobândă 0% fiindcă e produs suspendat, nu o ofertă promoțională curentă comparabilă cu cea de la Libra.",
+      "citat": "DOBÂNZI APLICABILE PRODUSELOR SUSPENDATE DIN OFERTA BĂNCII • Depozitele la 2, 4, 5, 7 si 10 luni care au fost suspendate din oferta activă a băncii au comision de retragere 0 (zero) în ziua scadenţei. DEPOZIT LA TERMEN DE 7 LUNI CU DOBÂNDĂ FIXĂ Lei Euro Rata dobândă aplicată în cazul lichidării anticipate 1.25 0.25",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 4,
+    "iesire": 4504,
+    "citire_cache": 6342,
+    "scriere_cache": 38846,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1434314
+  }
+}

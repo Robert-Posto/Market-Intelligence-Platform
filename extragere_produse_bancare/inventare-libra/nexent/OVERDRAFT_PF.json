@@ -1,0 +1,30 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "nepublicat",
+    "nota": "Nexent Bank nu are pe site o pagină dedicată, un FIPC sau o secțiune din grila de dobânzi care să descrie un overdraft/descoperit de cont AUTORIZAT pentru persoane fizice, cu cifre (limită, dobândă, termen). Singura mențiune găsită este în meta-descrierea paginii 'Card de salariu' (https://www.nexentbank.ro/persoane-fizice/Carduri-de-Debit/Card-de-salariu), care promite 'facilitate de overdraft de pana la 3 salarii nete', dar corpul vizibil al paginii nu detaliază deloc această facilitate (nu apare dobândă, sumă maximă sau condiții), iar cel mai recent document de tarife (01.01.2026) menționează doar dobânda de 40%/an RON pentru descoperit de cont NEAUTORIZAT (penalizare), nu un produs de overdraft autorizat cu limită prestabilită. Secțiunea 'Credite' pentru persoane fizice conține doar Creditul ACASĂ (ipotecar) și informații CHF, fără credit de nevoi personale sau linie de credit pentru PF. Un extractor zilnic nu ar avea ce valori să citească pentru acest produs la această bancă."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/persoane-fizice/Conturi-curente",
+    "https://www.nexentbank.ro/persoane-fizice/Credite",
+    "https://www.nexentbank.ro/persoane-fizice/Carduri-de-Debit/Card-de-salariu",
+    "https://www.nexentbank.ro/en/retail-banking/Debit-Cards/Salary-card",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf"
+  ],
+  "durata_s": 91,
+  "consum": {
+    "intrare": 14,
+    "iesire": 6712,
+    "citire_cache": 308231,
+    "scriere_cache": 94604,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.36530419999999997
+  }
+}

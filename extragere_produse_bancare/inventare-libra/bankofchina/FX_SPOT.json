@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bankofchina",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.bankofchina.com/ro/en/cbservice/cb4/202104/t20210430_19360668.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Spot Transaction of Foreign Exchange",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (schimb valutar la vedere), dar la Bank of China este oferit explicit doar clienților persoane juridice (corporate), în timp ce produsul Libra vizează atât persoane fizice cât și juridice; de asemenea există o sumă minimă de tranzacționare (USD 50.000) și reguli de program orar.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată descrie explicit mecanismul, limitele de sumă și procedura pentru tranzacția spot valutară.",
+      "citat": "The amount may not be less than USD 50,000 of which the clients apply for the single rate during the whole working day. A transaction less than USD 20,000 will be conducted as per the quotations from the Bank of China on the same day.",
+      "citat_verificat": true,
+      "link_live": "https://www.bankofchina.com/ro/en/cbservice/cb4/202104/t20210430_19360668.html#:~:text=The%20amount%20may%20not%20be,China%20on%20the%20same%20day."
+    },
+    {
+      "url": "https://www.bankofchina.com/ro/en/bocinfo/bi4/202606/t20260630_25675688.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Exchange Rates (Curs valutar zilnic)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Tabelul zilnic de curs valutar (buying/selling) este folosit de bancă pentru operațiunile de schimb valutar spot, inclusiv pentru clienții menționați pe pagina dedicată; nu specifică segmentul de clienți.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Conține cifre reale (curs de cumpărare/vânzare zilnic) relevante pentru produsul spot, dar fără alte detalii contractuale sau de segment.",
+      "citat": "CNY / RON 0.6449 0.7109, EUR / RON 5.1974 5.2954, USD / RON 4.5633 4.6473 30.06.2026 09:00:00",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (17 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb4/",
+    "https://www.bankofchina.com/ro/en/cbservice/cb4/202104/t20210430_19360668.html"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1629,
+    "citire_cache": 39231,
+    "scriere_cache": 20299,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0748997
+  }
+}

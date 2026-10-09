@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Pay by QR (Open Banking pentru comercianti) (încredere 0.55) — Este singurul produs tbi bank destinat persoanelor juridice/comercianților pentru încasarea instant a plăților prin scanarea unui cod QR direct din contul bancar al clientului, la fel ca RoPay for Business. Diferă însă mecanismul: tbi folosește propriul flux de Open Banking (plată inițiată din portofelul corporativ al comerciantului), nu schema națională RoPay, iar pagina nu menționează explicit disponibilitate în weekend sau comisioane/cifre asociate."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://tbibank.ro/plati-prin-open-banking-pentru-comercianti/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pay by QR (Open Banking pentru comercianti)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs tbi bank destinat persoanelor juridice/comercianților pentru încasarea instant a plăților prin scanarea unui cod QR direct din contul bancar al clientului, la fel ca RoPay for Business. Diferă însă mecanismul: tbi folosește propriul flux de Open Banking (plată inițiată din portofelul corporativ al comerciantului), nu schema națională RoPay, iar pagina nu menționează explicit disponibilitate în weekend sau comisioane/cifre asociate.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina este dedicată explicit secțiunii 'Pay by QR' pentru comercianți (persoane juridice), descriind pașii de încasare prin cod QR, dar nu conține cifre (comisioane, sume, termene) care să poată fi extrase zilnic.",
+      "citat": "Ai propriul portofel sau doresti o metoda alternativa de plata la casieria magazinului tau, ai posibilitatea de a le permite clientilor sa plateasca direct din contul lor bancar in urmatorii trei pasi: Integreaza Pay in portofelul tau corporativ si generati un cod QR de plata",
+      "citat_verificat": true,
+      "link_live": "https://tbibank.ro/plati-prin-open-banking-pentru-comercianti/#:~:text=Ai%20propriul%20portofel%20sau%20doresti,un%20cod%20QR%20de%20plata"
+    }
+  ],
+  "deschise": [
+    "https://tbibank.ro/plati-prin-open-banking-pentru-comercianti/",
+    "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
+    "https://tbibank.ro/comercianti-parteneri/"
+  ],
+  "durata_s": 63,
+  "consum": {
+    "intrare": 12,
+    "iesire": 3703,
+    "citire_cache": 141589,
+    "scriere_cache": 60077,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21556430000000001
+  }
+}

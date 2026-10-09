@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/currency-converter/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Currency Converter / Exchange (in-app currency exchange)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs destinat persoanelor fizice: schimb valutar online, cu cursuri în timp real, realizat direct din aplicația Revolut (echivalentul Internet Banking-ului), fără dealer uman — același concept ca Live FX.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată conține exemple de curs live și explică mecanismul de schimb în aplicație, dar nu listează un tarif complet separat pe această pagină.",
+      "citat": "Check live foreign exchange rates, then use Revolut to convert money when the price is right for you. Then go to the Revolut app to exchange 38 currencies.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/business/currency-exchange/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Schimb valutar (Revolut Business Currency Exchange)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta pentru persoane juridice a platformei de schimb valutar online, cu curs interbancar afișat în timp real în aplicația Revolut Business, pentru clienți cu schimburi valutare frecvente.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului de business cu explicarea cursului interbancar și a comisioanelor aplicabile, deși cifrele exacte (procente) sunt detaliate în FAQ, nu într-un tabel separat.",
+      "citat": "Cu Revolut Business, poți schimba monede la cursul interbancar, care este același curs utilizat de bănci. Nu aplicăm costuri suplimentare în timpul orelor de tranzacționare și în limitele planului tău.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/ro-RO/legal/premium-fees/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comisioane personale (Premium) – secțiunea Schimb valutar",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de comisioane pentru persoane fizice conține secțiunea dedicată schimbului valutar efectuat prin Revolut Bank, cu regulile de curs și comision aplicabile produsului de schimb online.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document oficial de tarife, în limba română, care explică explicit mecanismul de curs și comision pentru schimbul valutar din aplicație, deși procentele exacte variază după plan.",
+      "citat": "De fiecare dată când efectuezi o tranzacție de schimb valutar folosind Revolut Bank, în limita de schimb a planului tău: Obțineți cursul de schimb Revolut; Adăugăm un comision de schimb valutar (dacă se aplică).",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2060,
+    "citire_cache": 6393,
+    "scriere_cache": 33793,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1063691
+  }
+}

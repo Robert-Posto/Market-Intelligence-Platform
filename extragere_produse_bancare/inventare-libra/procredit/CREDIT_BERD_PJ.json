@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul InvestEU / Finanțare cu Programe Europene (garanție FEI)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un credit de investiții pentru IMM-uri garantat printr-un program UE (InvestEU), aceeași categorie de produs și segment de clienți (PJ/IMM), dar garantul este Fondul European de Investiții (FEI), nu BERD, iar procentul de garanție (până la 70%, respectiv 50% în București) și maturitatea maximă (15 ani pentru investiții) diferă de cele ale produsului Libra (garanție BERD 80%, 12-120 luni).",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată programului InvestEU conține cifre explicite despre procentul de garanție, monedă și maturitate pentru creditul de investiții pentru companii.",
+      "citat": "Acordul semnat între ProCredit Bank și FEI reprezintă un pas important în sprijinirea eforturilor noastre de a oferi finanțare avantajoasă întreprinderilor mici și mijlocii din România, prin garantarea până la 70% din valoarea finanțărilor (50% pentru București și 70% pentru restul județelor).",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/#:~:text=Acordul%20semnat%20%C3%AEntre%20ProCredit%20Bank,%C8%99i%2070%25%20pentru%20restul%20jude%C8%9Belor%29."
+    },
+    {
+      "url": "https://www.procreditbank.ro/landing/investeu-credit-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul InvestEU pentru afacerea ta",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagină dedicată creditului de investiții/capital de lucru pentru IMM-uri cu garanție europeană (FEI) prin InvestEU; aceeași categorie (credit de investiții PJ cu garanție UE) dar garantul e FEI, nu BERD, iar maturitatea maximă de 15 ani și lipsa unui plafon explicit de 10 mil. lei diferă de structura produsului Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina de produs dedicată conține cifre (maturitate, avans) dar mai puține detalii numerice decât pagina de program.",
+      "citat": "Avans ZERO, Nevoie de garanții redusă, Maturitate de până la 15 ani, Necesar redus de garanții solide prin FEI, Plan de rambursare personalizat în funcție de modelul de business.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/landing/investeu-credit-imm/#:~:text=Avans%20ZERO%2C%20Nevoie%20de%20garan%C8%9Bii,func%C8%9Bie%20de%20modelul%20de%20business."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/landing/investeu-credit-imm/",
+    "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/"
+  ],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2331,
+    "citire_cache": 31276,
+    "scriere_cache": 50250,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1552022
+  }
+}

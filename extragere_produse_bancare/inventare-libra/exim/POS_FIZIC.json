@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Servicii de acceptare la POS (POS fizic / POS unattended)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de comisioane al băncii conține secțiunea dedicată 'Taxe si comisioane furnizare servicii de acceptare la POS', cu comisioane de tranzacționare pe praguri de rulaj lunar pentru 'POS fizic', chirie terminal și taxă de implementare pentru comercianți (persoane juridice), exact același tip de produs și segment ca Terminal POS fizic Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina/documentul de tarife conține explicit denumirea 'POS fizic', segmentarea Persoane Juridice și cifre complete (procente, taxe fixe, chirie pe tranșe de volum de terminale).",
+      "pagina_pdf": 12,
+      "citat": "Rulaj lunar / POS fizic <7.500 RON Persoane Fizice 1,75%, min 70 lei flat Persoane Juridice 1,80% flat Rulaj lunar / POS fizic 7.501 - 20.000 RON Persoane Fizice 1,50% flat Persoane Juridice 1,80% flat Rulaj lunar / POS fizic peste 20.001 RON Persoane Fizice 1,25% flat Persoane Juridice 1,80% flat",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf",
+    "https://www.eximbank.ro/wp-content/uploads/2024/03/Comisioane-Exim-Banca-Romaneasca.pdf"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1882,
+    "citire_cache": 35030,
+    "scriere_cache": 93624,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.25989799999999996
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Investiții (credit de investiții pentru IMM)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat creditelor de investiții pentru persoane juridice/IMM (achiziție echipamente, imobil/teren, amenajare, construcție), same segment ca și Credit de investiții Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține descrieri și caracteristici concrete (durată, TVA, garanții) pentru fiecare tip de investiție finanțată.",
+      "citat": "Daca a sosit momentul sa achizitionezi echipamente noi sau second-hand, linii de productie, vehicule, sau daca doresti sa refinantezi o investitie efectuata din surse proprii cu mai putin de 6 luni in urma, UniCredit Bank iti poate sustine finantarea printr-o solutie dedicata, un credit de investitii adaptat nevoii si activitatii companiei tale.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/en/sme/borrowing/investments.html",
+    "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/finantare/investitii.html"
+  ],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 36282,
+    "iesire": 1202,
+    "citire_cache": 47327,
+    "scriere_cache": 51644,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2231594
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2025/01/Document-de-informare-cu-privire-la-comisioane-pentru-Pachetul-de-produse-si-servicii-eSential.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de produse si servicii eSential",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document FIPC oficial dedicat exact contului curent online eSential, cu toate comisioanele aplicabile (administrare, transfer, card, retrageri).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document precontractual dedicat exclusiv acestui pachet, cu cifre concrete pentru administrare lunară și comision anual total.",
+      "citat": "Include un pachet de servicii [eSential] care consta in: Cont Curent in Lei; Card de Debit [MasterCard Gold]; Serviciul Internet Banking/ Mobile Banking; Serviciul SMS Alert; Lunar: 8 LEI",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/2023/07/04/produse-bancare-100-online-de-la-exim-banca-romaneasca/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet eSential (cont curent deschis 100% online, platforma e-bancamea.ro)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane fizice deschis integral online, cu identificare video și semnătură electronică, exact ca segmentul și canalul descrise la produsul Libra Cont Online Personal.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată anunță explicit produsul online pentru persoane fizice, cu pașii de înrolare și beneficiile incluse (comisioane zero).",
+      "citat": "Exim Banca Romaneasca pune la dispozitia persoanelor fizice platforma e-bancamea.ro prin care ofera acces facil, rapid si sigur, 100% online, la un pachet complet de produse si servicii: cont curent in lei, card de debit (Mastercard Gold), serviciul SMS Alert si Internet Banking, reunite sub denumirea Pachet eSential.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2023/07/04/produse-bancare-100-online-de-la-exim-banca-romaneasca/#:~:text=Exim%20Banca%20Romaneasca%20pune%20la,reunite%20sub%20denumirea%20Pachet%20eSential."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2023/07/04/produse-bancare-100-online-de-la-exim-banca-romaneasca/",
+    "https://www.eximbank.ro/wp-content/uploads/2025/01/Document-de-informare-cu-privire-la-comisioane-pentru-Pachetul-de-produse-si-servicii-eSential.pdf"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1669,
+    "citire_cache": 37868,
+    "scriere_cache": 43378,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1327206
+  }
+}

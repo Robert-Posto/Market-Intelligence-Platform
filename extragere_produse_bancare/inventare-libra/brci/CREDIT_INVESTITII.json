@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/creditul-de-investitie.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de credit pentru persoane juridice destinat finanțării investițiilor și proiectelor de dezvoltare a activității companiei, exact ca produsul Libra CREDIT_INVESTITII.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului descrie explicit scopul, moneda, perioada de grație, modalitatea de rambursare și tipurile de garanții, dar nu afișează cifre exacte (dobândă, sumă, termen) în textul extras.",
+      "citat": "Creditul de investiții este o facilitate de credit cash, acordată în vederea finanțării investițiilor și proiectelor ce au ca scop dezvoltarea activității companiei, prin completarea surselor proprii ale acesteia; Este pus la dispoziția dumneavoastră în baza unui contract de credit și se poate acorda atât în lei cât și în valută",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 8580,
+    "iesire": 636,
+    "citire_cache": 6316,
+    "scriere_cache": 6316,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.040573200000000004
+  }
+}

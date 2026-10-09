@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici/Agro",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament operațional lunar pentru cont curent de firmă, cu plăți instant incluse și card de business atașat, deci același tip de produs și același segment (persoane juridice/PFA). Diferă însă structura: Patria oferă 3 trepte de preț (85/100/200 lei/lună) în loc de un singur abonament fix de 100 lei, cardul inclus este Mastercard Business (nu explicit Gold), nu este menționat un cont euro inclus în același pachet, iar comisionul mPOS de 0,59% din Abonamentul SHINE nu apare explicit pe această pagină.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru firme conține tabelul complet cu cifrele (cost lunar, plăți instant incluse, card de business inclus) pentru fiecare dintre cele trei variante.",
+      "citat": "Pachete de cont curent Afaceri mici/ Agro | Opțiuni | UȘOR | PRACTIC | COMPLET | Cont curent | ✔ | ✔ | ✔ | Plăți instant | 5 | 10 | 15 | Card de Business Patria MasterCard Business | ✔ | ✔ | ✔ | Cost | 85 lei/lună | 100 lei/lună | 200 lei/lună",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent"
+  ],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 81662,
+    "iesire": 2438,
+    "citire_cache": 12660,
+    "scriere_cache": 28634,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.26182099999999997
+  }
+}

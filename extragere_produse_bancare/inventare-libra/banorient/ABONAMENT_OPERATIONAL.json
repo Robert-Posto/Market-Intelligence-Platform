@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Administrare cont curent (secțiunea PERSOANE Juridice, I-2 ADMINISTRARE CONT)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (taxă/comision lunar recurent pentru operarea contului curent al unei persoane juridice), dar la Banorient nu există un 'pachet' cu servicii incluse (transferuri, card etc.), ci doar un comision simplu de administrare cont, fără structura de abonament cu plafoane incluse specifică produsului Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul de tarife conține explicit, pentru segmentul PERSOANE Juridice, comisionul lunar de administrare a contului curent cu valori pe fiecare valută, fiind cea mai apropiată taxă recurentă legată de operarea contului.",
+      "citat": "Administrare cont curent (comision aplicabil lunar pentru fiecare cont in valuta contului) 9.5 RON / luna 2 EUR / luna 3 USD / luna 1.6 GBP / luna 3.2 CHF / luna",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Administrare%20cont%20curent%20%28comision%20aplicabil,luna%203.2%20CHF%20%2F%20luna"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1769,
+    "citire_cache": 17158,
+    "scriere_cache": 27217,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.08917610000000001
+  }
+}

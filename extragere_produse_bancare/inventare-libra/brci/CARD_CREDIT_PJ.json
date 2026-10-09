@@ -1,0 +1,29 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CARD_CREDIT_PJ",
+  "denumire": "Card de credit business (PJ/PFA)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "BRCI nu are un card de credit business/revolving pentru PJ. Cardurile sale business (Card Mastercard Business, Card Mastercard NETOPIA Business, Card Mastercard PayPoint Business) sunt explicit carduri de debit atașate contului curent, nu carduri de credit. Cele mai apropiate produse de creditare pentru PJ sunt facilități generale atașate contului curent — Overdraft, Linie de credit, Plafon de creditare, Plafon de trezorerie — dar acestea nu sunt structurate ca produse de tip card de credit, nu au plafon exprimat ca procent din cifra de afaceri și nu au fost găsite cu cifre publice specifice segmentului PJ pe paginile dedicate (ex. https://www.brci.ro/ro/produse/plafon-de-creditare.html, https://www.brci.ro/ro/produse/linia-de-credit.html), motiv pentru care nu le raportez ca surse echivalente sau similare."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/card-mastercard-business.html",
+    "https://www.brci.ro/ro/produse/overdraft.html",
+    "https://www.brci.ro/ro/produse/card-mastercard-business.html",
+    "https://www.brci.ro/public/index.php/ro/produse/overdraft.html"
+  ],
+  "durata_s": 80,
+  "consum": {
+    "intrare": 86702,
+    "iesire": 5339,
+    "citire_cache": 6355,
+    "scriere_cache": 6355,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2439525
+  }
+}

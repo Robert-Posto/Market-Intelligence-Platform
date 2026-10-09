@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react'
-import { Checkbox, Input, Tooltip } from 'antd'
+import { Checkbox, Input, Select, Tooltip } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import type { ProdusConcurenta } from '@mcc/shared'
 import { useProduseConcurenta } from '../api/comparatie_libra'
@@ -68,33 +68,47 @@ export default function Concurenta() {
   const nume = (b: string) => SCURT[b] ?? m.nume[b] ?? b
   const nrBanci = (l: ProdusConcurenta[]) => new Set(l.map((p) => p.banca)).size
 
+  // un rând de listă cu numărul de produse la dreapta (categorii și bănci), ca în 2.1
+  const optiune = (o: { data: { label: string; n: number } }) => (
+    <span className="pc-opt"><span>{o.data.label}</span><span className="n">{o.data.n}</span></span>
+  )
+  const optCategorii = [
+    { value: '', label: t('pc.toate'), n: peSeg.length },
+    ...CATEGORII.filter((k) => nrCat[k]).map((k) => ({ value: k, label: t(`pc.categorie.${k}` as DictKey), n: nrCat[k]! })),
+  ]
+  const optBanci = [
+    { value: '', label: t('pc.toate_bancile'), n: peSeg.length },
+    ...Object.keys(nrBanca).sort((a, b) => nrBanca[b]! - nrBanca[a]!).map((b) => ({ value: b, label: nume(b), n: nrBanca[b]! })),
+  ]
+
   return (
     <>
-      <div className="pl-filtre">
-        <Comutator value={seg} onChange={(s) => mergi({ segment: s === 'toate' ? '' : s })}
-          options={SEGMENTE.map(([s, k]) => ({ value: s, label: t(k) }))} />
-        <Input className="cauta" allowClear placeholder={t('pc.cauta_placeholder')} value={cauta} onChange={(e) => setCauta(e.target.value)} />
-        <Checkbox checked={stare.noi === '1'} onChange={() => mergi({ noi: stare.noi === '1' ? '' : '1' })}>{t('pc.bifa_noi')}</Checkbox>
+      {/* ca la 2.1: o singură bară fixă, comutatorul de segment și filtrele cu eticheta deasupra */}
+      <div className="bara-fixa">
+        <div className="filtre pc-filtre">
+          <Comutator value={seg} onChange={(s) => mergi({ segment: s === 'toate' ? '' : s })}
+            options={SEGMENTE.map(([s, k]) => ({ value: s, label: t(k) }))} />
+          <label className="f">{t('pc.filtru_categorie')}
+            <Select value={cat} onChange={(v) => mergi({ cat: v })} style={{ minWidth: 190 }} popupMatchSelectWidth={false}
+              classNames={{ popup: { root: 'pc-meniu' } }}
+              options={optCategorii} optionRender={optiune} />
+          </label>
+          <label className="f">{t('pc.filtru_banca')}
+            <Select value={banca} onChange={(v) => mergi({ banca: v })} style={{ minWidth: 190 }} popupMatchSelectWidth={false}
+              classNames={{ popup: { root: 'pc-meniu' } }}
+              showSearch optionFilterProp="label" options={optBanci} optionRender={optiune} />
+          </label>
+          <label className="f">{t('pc.filtru_cauta')}
+            <Input className="cauta" allowClear placeholder={t('pc.cauta_placeholder')} value={cauta} onChange={(e) => setCauta(e.target.value)} />
+          </label>
+          <Checkbox className="pc-bifa" checked={stare.noi === '1'} onChange={() => mergi({ noi: stare.noi === '1' ? '' : '1' })}>{t('pc.bifa_noi')}</Checkbox>
+        </div>
       </div>
-
-      <div className="pl-chipuri">
-        <button type="button" className={`pl-chip ${!cat ? 'activ' : ''}`} onClick={() => mergi({ cat: '' })}>
-          {t('pc.toate')}<span>{peSeg.length}</span>
-        </button>
-        {CATEGORII.filter((k) => nrCat[k]).map((k) => (
-          <button type="button" key={k} className={`pl-chip ${k === cat ? 'activ' : ''}`} onClick={() => mergi({ cat: k })}>
-            {t(`pc.categorie.${k}` as DictKey)}<span>{nrCat[k]}</span>
-          </button>
-        ))}
-      </div>
-      <div className="pl-chipuri">
-        <button type="button" className={`pl-chip ${!banca ? 'activ' : ''}`} onClick={() => mergi({ banca: '' })}>{t('pc.toate_bancile')}</button>
-        {Object.keys(nrBanca).sort((a, b) => nrBanca[b]! - nrBanca[a]!).map((b) => (
-          <button type="button" key={b} className={`pl-chip ${b === banca ? 'activ' : ''}`} onClick={() => mergi({ banca: b })}>
-            {nume(b)}<span>{nrBanca[b]}</span>
-          </button>
-        ))}
-      </div>
+      {vizibile.length > 0 && (
+        <p className="note pc-rezumat">
+          {t('pc.rezumat', { produse: tn('pc.n_produse', vizibile.length), banci: tn('pc.n_banci', nrBanci(vizibile)) })}
+        </p>
+      )}
 
       {!toate.length ? (
         <section><p className="note"><T k="pc.niciun_produs" /></p></section>

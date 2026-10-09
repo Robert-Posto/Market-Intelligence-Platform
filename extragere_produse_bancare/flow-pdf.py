@@ -81,9 +81,20 @@ pad = _modul("parser_pad", "parser_rate.py")
 # `ambiguitate.py` importă `crawler.parser_pdf`, care ESTE `parser_rate.py` —
 # numele fișierelor s-au amestecat la copiere. Se satisface aliasul în
 # sys.modules, ca să nu fie nevoie să edităm fișierele adăugate.
-_pachet = types.ModuleType("crawler")
-_pachet.__path__ = []
-sys.modules.setdefault("crawler", _pachet)
+#
+# Părintele aliasului e pachetul `crawler` REAL al MIP (UA, robots): descărcarea trece
+# prin ingest/transport.py (flow-html.refuz_mip), care cere `crawler.UA`. Un pachet gol
+# pus aici înainte de transport îl umbrea: pe 08.10.2026 toate sursele CEC (86) au căzut
+# cu „cannot import name 'UA' from 'crawler'”, după primul PDF din proces.
+_radacina = str(Path(__file__).resolve().parent.parent)
+if _radacina not in sys.path:
+    sys.path.append(_radacina)
+try:
+    import crawler as _pachet          # noqa: F401  (pachetul real, cu UA)
+except ImportError:                    # fără repo-ul MIP alături: pachetul gol, ca înainte
+    _pachet = types.ModuleType("crawler")
+    _pachet.__path__ = []
+    sys.modules.setdefault("crawler", _pachet)
 sys.modules.setdefault("crawler.parser_pdf", pad)
 nestd = _modul("parser_nestandardizat", "ambiguitate.py")
 

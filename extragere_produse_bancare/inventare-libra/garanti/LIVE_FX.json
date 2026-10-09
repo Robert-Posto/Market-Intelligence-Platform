@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2025/04/conditii-generale-de-afaceri-persoane-juridice-SME-RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Schimb valutar prin Garanti BBVA Online/Mobile (curs actualizat permanent)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Garanti nu are o platformă dedicată separată de tip 'Live FX'; oferă schimb valutar cu curs actualizat continuu, dar integrat ca funcție generală în Internet/Mobile Banking, nu ca produs distinct pentru clienți cu schimburi frecvente.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul de condiții generale pentru persoane juridice descrie explicit mecanismul cursului valutar actualizat permanent în aplicația de Internet/Mobile Banking, dar nu este o pagină de produs dedicată.",
+      "citat": "Cursul valutar la care se vor efectua operatiunile de schimb valutar este afisat in interiorul aplicatiei „Garanti BBVA Online” si/sau „Garanti BBVA Mobile” si este actualizat in permanenta in functie de oferta de vanzare/cumparare a Bancii.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/individuals/garanti-online/what-can-it-do/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Foreign exchange (meniu în Garanti BBVA Online)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o funcție de schimb valutar în Internet Banking pentru persoane fizice, cu curs mai bun decât la ghișeu, dar nu este prezentată ca o platformă separată de trading valutar cu cursuri live, dedicată clienților cu volum mare de schimburi.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina descrie funcția de schimb valutar din Internet Banking pentru persoane fizice, dar nu conține cifre concrete despre marjă sau curs.",
+      "citat": "By accessing the Foreign exchange menu, you can exchange currency between your accounts: lei-foreign currency, foreign currency - lei and foreign currency - foreign currency at a net exchange rate favourable to the one at the bank counter.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/internet-banking/what-can-it-do/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Foreign exchange / arbitrage (meniu în Garanti BBVA Online pentru IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Funcție de schimb valutar și arbitraj în Internet Banking pentru companii (segment persoane juridice, ca și Live FX), dar integrată generic în Internet Banking, nu ca platformă dedicată de schimb valutar cu cursuri live.",
+      "incredere": 0.65,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina descrie funcția de schimb valutar/arbitraj din Internet Banking pentru IMM, cu limite de tranzacționare, dar fără cifre despre marjă sau curs live.",
+      "citat": "From Foreign exchange menu you will be able to perform foreign exchange transactions between the accounts of the company: Lei – foreign currency, foreign currency – Lei, arbitrage, at a better rate than the one at the bank's counter.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 33,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2914,
+    "citire_cache": 30906,
+    "scriere_cache": 33591,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.11931070000000002
+  }
+}

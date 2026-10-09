@@ -1,0 +1,44 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "DEPOZIT_1AN_1LUNA",
+  "denumire": "Depozit promoțional „1 An și 1 Lună\"",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: CREDITCOOP Plus pentru fonduri noi (încredere 0.55) — Este singurul depozit promoțional la termen lung pentru persoane fizice la CREDITCOOP (fonduri noi, termen 14 luni, dobândă fixă), comparabil ca tip cu depozitul promoțional Libra de 13 luni; diferă termenul (14 vs 13 luni), condiția de 'fonduri noi' și faptul că pagina nu prezintă rata dobânzii ca procent, ci doar generic 'dobândă avantajoasă'. Nu a fost găsit un produs echivalent dedicat pentru persoane juridice (PJ) la CREDITCOOP, segmentul business având doar depozite generale Standard/Star Plus, nu unul promoțional de ~13 luni."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.creditcoop.ro/creditcoop-plus-pentru-fonduri-noi/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "CREDITCOOP Plus pentru fonduri noi",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul depozit promoțional la termen lung pentru persoane fizice la CREDITCOOP (fonduri noi, termen 14 luni, dobândă fixă), comparabil ca tip cu depozitul promoțional Libra de 13 luni; diferă termenul (14 vs 13 luni), condiția de 'fonduri noi' și faptul că pagina nu prezintă rata dobânzii ca procent, ci doar generic 'dobândă avantajoasă'. Nu a fost găsit un produs echivalent dedicat pentru persoane juridice (PJ) la CREDITCOOP, segmentul business având doar depozite generale Standard/Star Plus, nu unul promoțional de ~13 luni.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina este dedicată exact acestui depozit promoțional și conține cifre (sumă minimă, termen), dar nu afișează rata dobânzii în procente, aceasta nefiind publicată pe site.",
+      "citat": "Suma minimă de constituire este de 5.000 lei Termen de constituire 14 de luni Posibilitatea prelungirii depozitelor pe o perioadă identică celei inițiale Dobânda poate fi ridicată lunar sau capitalizată",
+      "citat_verificat": true,
+      "link_live": "https://www.creditcoop.ro/creditcoop-plus-pentru-fonduri-noi/#:~:text=Suma%20minim%C4%83%20de%20constituire%20este,fi%20ridicat%C4%83%20lunar%20sau%20capitalizat%C4%83"
+    }
+  ],
+  "deschise": [
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/creditcoop-plus-pentru-fonduri-noi/",
+    "https://www.creditcoop.ro/flexiplus-7-luni-pentru-fonduri-noi/",
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/depozit-firme-star-plus/"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3227,
+    "citire_cache": 149957,
+    "scriere_cache": 78796,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2592714
+  }
+}

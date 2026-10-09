@@ -2,74 +2,6 @@
  "banca": "unicredit",
  "urluri": [
   {
-   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf||depozit la termen (persoane fizice)",
-   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
-   "tip": "pdf",
-   "metoda": "http",
-   "denumire_la_banca": "Depozit la termen (persoane fizice)",
-   "focus": "Produsul băncii: „Depozit la termen (persoane fizice)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1335,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "cheie": "https://www.unicredit.ro/en/sme/saving-and-investing/term-deposits.html||depozit la termen (companii micro/imm)",
-   "url": "https://www.unicredit.ro/en/sme/saving-and-investing/term-deposits.html",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "Depozit la termen (companii Micro/IMM)",
-   "focus": "Produsul băncii: „Depozit la termen (companii Micro/IMM)”.\nCorespunde produsului Libra: „Depozit la termen”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1334,
-     "id_produs_libra": 43,
-     "cod": "DEPOZIT_TERMEN",
-     "v2": "depozit-termen"
-    }
-   ],
-   "produse_v2": [
-    "depozit-termen"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 1,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
    "cheie": "https://www.unicredit.ro/en/persoane-fizice/saving-and-investing/term-deposits.html||term deposits / depozite la termen",
    "url": "https://www.unicredit.ro/en/persoane-fizice/saving-and-investing/term-deposits.html",
    "tip": "html",
@@ -97,7 +29,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -165,7 +97,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -199,7 +131,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -233,7 +165,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -301,7 +233,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -313,16 +245,56 @@
    "tip": "pdf",
    "metoda": "http",
    "denumire_la_banca": "Creditul de Realizari Personale",
-   "focus": "Produsul băncii: „Creditul de Realizari Personale”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”; „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "focus": "Produsul băncii: „Creditul de Realizari Personale”.\nCorespunde produsului Libra: „Credit nevoi personale”; „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
    "legaturi": [
+    {
+     "id_sursa": 1596,
+     "id_produs_libra": 37,
+     "cod": "CREDIT_NEVOI_PERSONALE",
+     "v2": "nevoi-personale"
+    },
     {
      "id_sursa": 1603,
      "id_produs_libra": 36,
      "cod": "CREDIT_LIBRA_WAY",
      "v2": "nevoi-personale"
+    }
+   ],
+   "produse_v2": [
+    "nevoi-personale"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/Credite/credite-realizari-personale.html||creditul de realizari personale",
+   "url": "https://www.unicredit.ro/ro/persoane-fizice/Credite/credite-realizari-personale.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul de Realizari Personale",
+   "focus": "Produsul băncii: „Creditul de Realizari Personale”.\nCorespunde produsului Libra: „Credit nevoie personale Libra Way”; „Credit nevoi personale”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 1602,
+     "id_produs_libra": 36,
+     "cod": "CREDIT_LIBRA_WAY",
+     "v2": "nevoi-personale"
     },
     {
-     "id_sursa": 1596,
+     "id_sursa": 1595,
      "id_produs_libra": 37,
      "cod": "CREDIT_NEVOI_PERSONALE",
      "v2": "nevoi-personale"
@@ -342,46 +314,6 @@
    "respinse": [],
    "scrise": 0,
    "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/Credite/credite-realizari-personale.html||creditul de realizari personale",
-   "url": "https://www.unicredit.ro/ro/persoane-fizice/Credite/credite-realizari-personale.html",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "Creditul de Realizari Personale",
-   "focus": "Produsul băncii: „Creditul de Realizari Personale”.\nCorespunde produsului Libra: „Credit nevoi personale”; „Credit nevoie personale Libra Way”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1595,
-     "id_produs_libra": 37,
-     "cod": "CREDIT_NEVOI_PERSONALE",
-     "v2": "nevoi-personale"
-    },
-    {
-     "id_sursa": 1602,
-     "id_produs_libra": 36,
-     "cod": "CREDIT_LIBRA_WAY",
-     "v2": "nevoi-personale"
-    }
-   ],
-   "produse_v2": [
-    "nevoi-personale"
-   ],
-   "stare": "blocat",
-   "motiv": "403 la descărcare; fără fallback (regula echipei)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": 403,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -415,7 +347,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -449,7 +381,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -483,7 +415,2757 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html||investeu guarantee instrument / rrf - sme competitiveness and sustainability",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "InvestEU Guarantee Instrument / RRF - SME Competitiveness and Sustainability",
+   "focus": "Produsul băncii: „InvestEU Guarantee Instrument / RRF - SME Competitiveness and Sustainability”.\nCorespunde produsului Libra: „Credit InvestEU Competitivitate/Sustenabilitate”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2991,
+     "id_produs_libra": 33,
+     "cod": "CREDIT_INVESTEU_PJ",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||pachet de cont curent microstar",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet de cont curent MicroStar",
+   "focus": "Produsul băncii: „Pachet de cont curent MicroStar”.\nCorespunde produsului Libra: „Abonament ELITE (corporate)”; „Abonament SHINE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3037,
+     "id_produs_libra": 1,
+     "cod": "ABONAMENT_ELITE",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 3055,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html||pachet de cont curent microstar",
+   "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet de cont curent MicroStar",
+   "focus": "Produsul băncii: „Pachet de cont curent MicroStar”.\nCorespunde produsului Libra: „Abonament PRIME (corporate)”; „Abonament RISE”; „Abonament SHINE”; „Abonament ELITE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3050,
+     "id_produs_libra": 5,
+     "cod": "ABONAMENT_PRIME",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 3059,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 3054,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 3036,
+     "id_produs_libra": 1,
+     "cod": "ABONAMENT_ELITE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf||scrisori de garanție / acreditive standby",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisori de garanție / Acreditive standby",
+   "focus": "Produsul băncii: „Scrisori de garanție / Acreditive standby”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3229,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html||sme loans guaranteed by bid / financing offer for smes with bid guarantee up to 80%",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "SME loans Guaranteed by BID / Financing offer for SMEs with BID guarantee up to 80%",
+   "focus": "Produsul băncii: „SME loans Guaranteed by BID / Financing offer for SMEs with BID guarantee up to 80%”.\nCorespunde produsului Libra: „Credit cu garanție BID”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3157,
+     "id_produs_libra": 27,
+     "cod": "CREDIT_BID_IMM",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||pachetul creativ",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Creativ",
+   "focus": "Produsul băncii: „Pachetul Creativ”.\nCorespunde produsului Libra: „Abonament PFA”; „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3035,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 3113,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/popupeditpages/PI-CardCredit-Details/UniCreditCardPremium-Detalii.modal.html||unicreditcard premium",
+   "url": "https://www.unicredit.ro/ro/popupeditpages/PI-CardCredit-Details/UniCreditCardPremium-Detalii.modal.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "UniCreditCard Premium",
+   "focus": "Produsul băncii: „UniCreditCard Premium”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3085,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf||card de debit visa*/mastercard business silver si visa*/mastercard business gold",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Visa*/Mastercard Business Silver si Visa*/Mastercard Business Gold",
+   "focus": "Produsul băncii: „Card de debit Visa*/Mastercard Business Silver si Visa*/Mastercard Business Gold”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3120,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/persoane-fizice/borrowing/overdraft.html||overdraft",
+   "url": "https://www.unicredit.ro/en/persoane-fizice/borrowing/overdraft.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Overdraft",
+   "focus": "Produsul băncii: „Overdraft”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3206,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html||pachetul creativ",
+   "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Creativ",
+   "focus": "Produsul băncii: „Pachetul Creativ”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3034,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||terminal pos (comisioane acceptare la plată a cardurilor)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Terminal POS (comisioane acceptare la plată a cardurilor)",
+   "focus": "Produsul băncii: „Terminal POS (comisioane acceptare la plată a cardurilor)”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3013,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/cib/finantare/leasing.html||leasing financiar si operational (unicredit leasing corporation ifn s.a.)",
+   "url": "https://www.unicredit.ro/ro/cib/finantare/leasing.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Leasing financiar si operational (UniCredit Leasing Corporation IFN S.A.)",
+   "focus": "Produsul băncii: „Leasing financiar si operational (UniCredit Leasing Corporation IFN S.A.)”.\nCorespunde produsului Libra: „Leasing financiar (Libra Development IFN)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3218,
+     "id_produs_libra": 46,
+     "cod": "LEASING_FINANCIAR",
+     "v2": "leasing"
+    }
+   ],
+   "produse_v2": [
+    "leasing"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf||acreditive (import/export) - corporate",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "ACREDITIVE (Import/Export) - Corporate",
+   "focus": "Produsul băncii: „ACREDITIVE (Import/Export) - Corporate”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3064,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||pachet microstar",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet MicroStar",
+   "focus": "Produsul băncii: „Pachet MicroStar”.\nCorespunde produsului Libra: „Abonament PRIME (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3051,
+     "id_produs_libra": 5,
+     "cod": "ABONAMENT_PRIME",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html||pachete de cont curent micro (microstar / creativ)",
+   "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete de cont curent MICRO (MicroStar / Creativ)",
+   "focus": "Produsul băncii: „Pachete de cont curent MICRO (MicroStar / Creativ)”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3047,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf||ropay",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "RoPay",
+   "focus": "Produsul băncii: „RoPay”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3216,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/persoane-fizice/digital/ropay.html||ropay",
+   "url": "https://www.unicredit.ro/en/persoane-fizice/digital/ropay.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "RoPay",
+   "focus": "Produsul băncii: „RoPay”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3214,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/tranzactionare/pos-ecommerce.html||e-commerce unicredit (modulul de e-commerce unicredit, parte din pos & e-commerce)",
+   "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pos-ecommerce.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "E-Commerce UniCredit (Modulul de e-Commerce UniCredit, parte din POS & e-Commerce)",
+   "focus": "Produsul băncii: „E-Commerce UniCredit (Modulul de e-Commerce UniCredit, parte din POS & e-Commerce)”.\nCorespunde produsului Libra: „LibraPay eCommerce (plăți online)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3006,
+     "id_produs_libra": 47,
+     "cod": "LIBRAPAY_ECOM",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||ropay",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "RoPay",
+   "focus": "Produsul băncii: „RoPay”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3217,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/economisire-si-investitii/depozite-la-termen.html||depozit la termen pentru companii imm micro",
+   "url": "https://www.unicredit.ro/ro/imm/economisire-si-investitii/depozite-la-termen.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen pentru companii IMM Micro",
+   "focus": "Produsul băncii: „Depozit la termen pentru companii IMM Micro”.\nCorespunde produsului Libra: „Depozit promoțional „1 An și 1 Lună\"”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3204,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf||pachet de cont genius imm max (comisioane & dobânzi corporate)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet de cont GENIUS IMM MAX (Comisioane & Dobânzi Corporate)",
+   "focus": "Produsul băncii: „Pachet de cont GENIUS IMM MAX (Comisioane & Dobânzi Corporate)”.\nCorespunde produsului Libra: „Abonament PRESTIGE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3040,
+     "id_produs_libra": 4,
+     "cod": "ABONAMENT_PRESTIGE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/persoane-fizice/digital/ShopSmartEN.html||programul shopsmart (cashback pentru cardurile de debit unicredit bank)",
+   "url": "https://www.unicredit.ro/en/persoane-fizice/digital/ShopSmartEN.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Programul ShopSmart (cashback pentru cardurile de debit UniCredit Bank)",
+   "focus": "Produsul băncii: „Programul ShopSmart (cashback pentru cardurile de debit UniCredit Bank)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3128,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/tranzactionare/pos-ecommerce.html||pos & e-commerce (terminal pos)",
+   "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pos-ecommerce.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "POS & e-Commerce (Terminal POS)",
+   "focus": "Produsul băncii: „POS & e-Commerce (Terminal POS)”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3014,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||acreditive (import/export) - sme/pfa",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "ACREDITIVE (Import/Export) - SME/PFA",
+   "focus": "Produsul băncii: „ACREDITIVE (Import/Export) - SME/PFA”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3065,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html||alte finanțări agricultură (finanțarea achiziției de utilaje, echipamente agricole)",
+   "url": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Alte finanțări agricultură (finanțarea achiziției de utilaje, echipamente agricole)",
+   "focus": "Produsul băncii: „Alte finanțări agricultură (finanțarea achiziției de utilaje, echipamente agricole)”.\nCorespunde produsului Libra: „Credit echipamente agricole (InvestEU)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3159,
+     "id_produs_libra": 22,
+     "cod": "CREDIT_AGRI_ECHIPAMENTE",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf||multifuncțional de numerar (bna)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Multifuncțional de numerar (BNA)",
+   "focus": "Produsul băncii: „Multifuncțional de numerar (BNA)”.\nCorespunde produsului Libra: „RCD Cash Deposit”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3226,
+     "id_produs_libra": 53,
+     "cod": "RCD_CASH_DEPOSIT",
+     "v2": "cash-management"
+    }
+   ],
+   "produse_v2": [
+    "cash-management"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/institutii-financiare/tranzactionare/trade-finance.html||acreditivul documentar (trade finance)",
+   "url": "https://www.unicredit.ro/ro/institutii-financiare/tranzactionare/trade-finance.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Acreditivul documentar (Trade Finance)",
+   "focus": "Produsul băncii: „Acreditivul documentar (Trade Finance)”.\nCorespunde produsului Libra: „Acreditive documentare”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3066,
+     "id_produs_libra": 8,
+     "cod": "ACREDITIVE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html||finanțare apia (capital de lucru pe baza adeverințelor apia)",
+   "url": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Finanțare APIA (capital de lucru pe baza adeverințelor APIA)",
+   "focus": "Produsul băncii: „Finanțare APIA (capital de lucru pe baza adeverințelor APIA)”.\nCorespunde produsului Libra: „Credit APIA (convenție APIA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3152,
+     "id_produs_libra": 25,
+     "cod": "CREDIT_APIA",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/institutional/centru-media/comunicate-de-presa/UniCreditBank-in-parteneriat-cu-BID-lanseaza-un-nou-instrument-de-garantare-pentru-IMM-uri1.html||creditul pentru imm garantat de bid (comunicat de lansare parteneriat unicredit-bid)",
+   "url": "https://www.unicredit.ro/ro/institutional/centru-media/comunicate-de-presa/UniCreditBank-in-parteneriat-cu-BID-lanseaza-un-nou-instrument-de-garantare-pentru-IMM-uri1.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul pentru IMM Garantat de BID (comunicat de lansare parteneriat UniCredit-BID)",
+   "focus": "Produsul băncii: „Creditul pentru IMM Garantat de BID (comunicat de lansare parteneriat UniCredit-BID)”.\nCorespunde produsului Libra: „Credit cu garanție BID”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3158,
+     "id_produs_libra": 27,
+     "cod": "CREDIT_BID_IMM",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/cee2020-pws-ro/ro/cib/investment-banking/trezorerie.html||trezorerie – platforma electronica de tranzactionare uctrader",
+   "url": "https://www.unicredit.ro/content/cee2020-pws-ro/ro/cib/investment-banking/trezorerie.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Trezorerie – Platforma Electronica de Tranzactionare UCTrader",
+   "focus": "Produsul băncii: „Trezorerie – Platforma Electronica de Tranzactionare UCTrader”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3221,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html||finanțare culturi (agricultura)",
+   "url": "https://www.unicredit.ro/ro/imm/finantare/agricultura.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Finanțare culturi (Agricultura)",
+   "focus": "Produsul băncii: „Finanțare culturi (Agricultura)”.\nCorespunde produsului Libra: „Linie de credit pentru inputuri agricole (InvestEU)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3144,
+     "id_produs_libra": 23,
+     "cod": "CREDIT_AGRI_INPUTURI",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||card de debit business mastercard business silver / business gold",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit business Mastercard Business Silver / Business Gold",
+   "focus": "Produsul băncii: „Card de debit business Mastercard Business Silver / Business Gold”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3127,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://uctrader.unicredit.ro/files/marketing/pro/UCTraderProUserGuide.ro.pdf||uctrader – ghid de utilizare (tranzactii fx spot)",
+   "url": "https://uctrader.unicredit.ro/files/marketing/pro/UCTraderProUserGuide.ro.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "UCTrader – Ghid de utilizare (tranzactii FX Spot)",
+   "focus": "Produsul băncii: „UCTrader – Ghid de utilizare (tranzactii FX Spot)”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3223,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
    "durata_s": 2,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi-PI.pdf||depozit la termen de 7 luni (produs suspendat din oferta activă)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi-PI.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen de 7 luni (produs suspendat din oferta activă)",
+   "focus": "Produsul băncii: „Depozit la termen de 7 luni (produs suspendat din oferta activă)”.\nCorespunde produsului Libra: „Depozit promoțional Blitz (7 luni)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3201,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/popupeditpages/CIB-Cash-Management/BusinessNet-Avantaje-si-cerinte-tehnice.html||businessnet connect / businessnet professional (interfacing with erp)",
+   "url": "https://www.unicredit.ro/en/popupeditpages/CIB-Cash-Management/BusinessNet-Avantaje-si-cerinte-tehnice.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "BusinessNet Connect / BusinessNet Professional (interfacing with ERP)",
+   "focus": "Produsul băncii: „BusinessNet Connect / BusinessNet Professional (interfacing with ERP)”.\nCorespunde produsului Libra: „API Contabili (integrare cu programele de contabilitate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3077,
+     "id_produs_libra": 9,
+     "cod": "API_CONTABILI",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/investitii-financiare/operatiuni-in-derulare/fidelis.html||programul fidelis de emisiuni de titluri de stat",
+   "url": "https://www.unicredit.ro/ro/investitii-financiare/operatiuni-in-derulare/fidelis.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Programul FIDELIS de emisiuni de titluri de stat",
+   "focus": "Produsul băncii: „Programul FIDELIS de emisiuni de titluri de stat”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3211,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/finantare/investitii.html||investiții (credit de investiții pentru imm)",
+   "url": "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Investiții (credit de investiții pentru IMM)",
+   "focus": "Produsul băncii: „Investiții (credit de investiții pentru IMM)”.\nCorespunde produsului Libra: „Credit de investiții”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3179,
+     "id_produs_libra": 34,
+     "cod": "CREDIT_INVESTITII",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||multifuncțional de numerar (bna) - self service",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Multifuncțional de numerar (BNA) - Self Service",
+   "focus": "Produsul băncii: „Multifuncțional de numerar (BNA) - Self Service”.\nCorespunde produsului Libra: „RCD Cash Deposit”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3225,
+     "id_produs_libra": 53,
+     "cod": "RCD_CASH_DEPOSIT",
+     "v2": "cash-management"
+    }
+   ],
+   "produse_v2": [
+    "cash-management"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/finantare/cheltuieli-curente.html||linia de credit personalizată (pentru afaceri mici și mijlocii)",
+   "url": "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/finantare/cheltuieli-curente.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Linia de credit personalizată (pentru afaceri mici și mijlocii)",
+   "focus": "Produsul băncii: „Linia de credit personalizată (pentru afaceri mici și mijlocii)”.\nCorespunde produsului Libra: „Linie de credit / capital de lucru”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3001,
+     "id_produs_libra": 48,
+     "cod": "LINIE_CREDIT",
+     "v2": "linie-credit"
+    }
+   ],
+   "produse_v2": [
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf||card de debit mastercard standard (fizic/virtual)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Mastercard Standard (fizic/virtual)",
+   "focus": "Produsul băncii: „Card de debit Mastercard Standard (fizic/virtual)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3126,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/banking/account-packages.html||business accounts and packages (microstar / creative)",
+   "url": "https://www.unicredit.ro/en/sme/banking/account-packages.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Business Accounts and Packages (MicroStar / Creative)",
+   "focus": "Produsul băncii: „Business Accounts and Packages (MicroStar / Creative)”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3048,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/asistenta/descoperit-de-cont.html||descoperit de cont",
+   "url": "https://www.unicredit.ro/ro/persoane-fizice/asistenta/descoperit-de-cont.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Descoperit de cont",
+   "focus": "Produsul băncii: „Descoperit de cont”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3205,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/credit-card-imm.html||mastercard business credit card (card de credit pentru imm)",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/credit-card-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mastercard Business credit card (Card de credit pentru IMM)",
+   "focus": "Produsul băncii: „Mastercard Business credit card (Card de credit pentru IMM)”.\nCorespunde produsului Libra: „Card de credit business (PJ/PFA)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3082,
+     "id_produs_libra": 13,
+     "cod": "CARD_CREDIT_PJ",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf||cont curent persoane fizice (oferte optim, star, young, pensionar etc. și oferta standard)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Cont curent persoane fizice (oferte OPTIM, STAR, YOUNG, PENSIONAR etc. și Oferta Standard)",
+   "focus": "Produsul băncii: „Cont curent persoane fizice (oferte OPTIM, STAR, YOUNG, PENSIONAR etc. și Oferta Standard)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3149,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumenteInstitutional/Document-de-informare-precontractuala-privind-instrumentele-financiare.pdf||document de informare precontractuală privind instrumentele financiare (titluri de stat, obligațiuni)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumenteInstitutional/Document-de-informare-precontractuala-privind-instrumentele-financiare.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Document de informare precontractuală privind instrumentele financiare (titluri de stat, obligațiuni)",
+   "focus": "Produsul băncii: „Document de informare precontractuală privind instrumentele financiare (titluri de stat, obligațiuni)”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3213,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||scrisori de garanție / acreditive standby",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Scrisori de garanție / Acreditive standby",
+   "focus": "Produsul băncii: „Scrisori de garanție / Acreditive standby”.\nCorespunde produsului Libra: „Scrisori de garanție bancară”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3228,
+     "id_produs_libra": 56,
+     "cod": "SCRISORI_GARANTIE",
+     "v2": "garantii-acreditive"
+    }
+   ],
+   "produse_v2": [
+    "garantii-acreditive"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/finantare/investitii.html||leasing (in cadrul sectiunii investitii, prin unicredit leasing corporation ifn s.a.)",
+   "url": "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Leasing (in cadrul sectiunii Investitii, prin UniCredit Leasing Corporation IFN S.A.)",
+   "focus": "Produsul băncii: „Leasing (in cadrul sectiunii Investitii, prin UniCredit Leasing Corporation IFN S.A.)”.\nCorespunde produsului Libra: „Leasing financiar (Libra Development IFN)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3219,
+     "id_produs_libra": 46,
+     "cod": "LEASING_FINANCIAR",
+     "v2": "leasing"
+    }
+   ],
+   "produse_v2": [
+    "leasing"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html||mastercard business silver / mastercard business gold debit card",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mastercard Business Silver / Mastercard Business Gold debit card",
+   "focus": "Produsul băncii: „Mastercard Business Silver / Mastercard Business Gold debit card”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3121,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/Credite/carduri-de-credit.html||unicreditcard premium / unicreditcard principal (card de credit, emis de unicredit consumer financing)",
+   "url": "https://www.unicredit.ro/ro/persoane-fizice/Credite/carduri-de-credit.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "UniCreditCard Premium / UniCreditCard Principal (card de credit, emis de UniCredit Consumer Financing)",
+   "focus": "Produsul băncii: „UniCreditCard Premium / UniCreditCard Principal (card de credit, emis de UniCredit Consumer Financing)”.\nCorespunde produsului Libra: „Card de credit (PF)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3084,
+     "id_produs_libra": 12,
+     "cod": "CARD_CREDIT_PF",
+     "v2": "card-credit"
+    }
+   ],
+   "produse_v2": [
+    "card-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumenteInstitutional/UCB-Oferta-Clienti-IMM-Garantie-BID.pdf||creditul pentru imm garantat de bid (ofertă de finanțare pentru imm cu garanție bid până la 80%)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumenteInstitutional/UCB-Oferta-Clienti-IMM-Garantie-BID.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Creditul pentru IMM Garantat de BID (Ofertă de finanțare pentru IMM cu garanție BID până la 80%)",
+   "focus": "Produsul băncii: „Creditul pentru IMM Garantat de BID (Ofertă de finanțare pentru IMM cu garanție BID până la 80%)”.\nCorespunde produsului Libra: „Credit cu garanție BID”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3156,
+     "id_produs_libra": 27,
+     "cod": "CREDIT_BID_IMM",
+     "v2": "imm-invest"
+    }
+   ],
+   "produse_v2": [
+    "imm-invest"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/SchimbValutar.html||curs valutar / schimb valutar (calculator valutar)",
+   "url": "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/SchimbValutar.html",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Curs valutar / Schimb Valutar (calculator valutar)",
+   "focus": "Produsul băncii: „Curs valutar / Schimb Valutar (calculator valutar)”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3224,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 10,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html||pachet de cont curent genius imm max",
+   "url": "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet de cont curent Genius IMM MAX",
+   "focus": "Produsul băncii: „Pachet de cont curent Genius IMM MAX”.\nCorespunde produsului Libra: „Abonament PRESTIGE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3039,
+     "id_produs_libra": 4,
+     "cod": "ABONAMENT_PRESTIGE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/finantare/programe-externe.html||roseff - finanțare prin programe externe (surse berd) pentru eficiență energetică și energie regenerabilă",
+   "url": "https://www.unicredit.ro/ro/imm/finantare/programe-externe.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "RoSEFF - Finanțare prin programe externe (surse BERD) pentru eficiență energetică și energie regenerabilă",
+   "focus": "Produsul băncii: „RoSEFF - Finanțare prin programe externe (surse BERD) pentru eficiență energetică și energie regenerabilă”.\nCorespunde produsului Libra: „Credit pentru energie verde”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3172,
+     "id_produs_libra": 29,
+     "cod": "CREDIT_ENERGIE_VERDE",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf||depozit la termen cu dobândă fixă constituit exclusiv din fonduri noi prin mobile banking (campanie)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen cu dobândă fixă constituit exclusiv din Fonduri noi prin Mobile Banking (campanie)",
+   "focus": "Produsul băncii: „Depozit la termen cu dobândă fixă constituit exclusiv din Fonduri noi prin Mobile Banking (campanie)”.\nCorespunde produsului Libra: „Depozit promoțional Blitz (7 luni)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3199,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html||debit cards for smes (mastercard business silver / mastercard business gold)",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/debit-card-imm.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Debit cards for SMEs (Mastercard Business Silver / Mastercard Business Gold)",
+   "focus": "Produsul băncii: „Debit cards for SMEs (Mastercard Business Silver / Mastercard Business Gold)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3129,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html||genius imm pro / genius imm max (pachete de cont curent pentru companii cu cifră de afaceri mare)",
+   "url": "https://www.unicredit.ro/en/cib/cash-management/current-account-payments-collections.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Genius IMM PRO / Genius IMM MAX (pachete de cont curent pentru companii cu cifră de afaceri mare)",
+   "focus": "Produsul băncii: „Genius IMM PRO / Genius IMM MAX (pachete de cont curent pentru companii cu cifră de afaceri mare)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3021,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/micro/aplicatii-digitale.html||businessnet (internet banking) și business mobile (mobile banking)",
+   "url": "https://www.unicredit.ro/ro/imm/micro/aplicatii-digitale.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "BusinessNet (internet banking) și Business Mobile (mobile banking)",
+   "focus": "Produsul băncii: „BusinessNet (internet banking) și Business Mobile (mobile banking)”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3210,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumentePI/Document%20de%20informare%20Cont%20curent%20in%20LEI.pdf||descoperitul de cont",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumentePI/Document%20de%20informare%20Cont%20curent%20in%20LEI.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Descoperitul de cont",
+   "focus": "Produsul băncii: „Descoperitul de cont”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3207,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf||descoperit de cont",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Descoperit de cont",
+   "focus": "Produsul băncii: „Descoperit de cont”.\nCorespunde produsului Libra: „Overdraft (descoperit de cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3208,
+     "id_produs_libra": 50,
+     "cod": "OVERDRAFT_PF",
+     "v2": "overdraft-pf"
+    }
+   ],
+   "produse_v2": [
+    "overdraft-pf"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/digital/campanie-cont-curent.html||cont bancar online 100% (deschidere 100% digitală prin mobile banking)",
+   "url": "https://www.unicredit.ro/ro/persoane-fizice/digital/campanie-cont-curent.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont bancar online 100% (deschidere 100% digitală prin Mobile Banking)",
+   "focus": "Produsul băncii: „Cont bancar online 100% (deschidere 100% digitală prin Mobile Banking)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3150,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/eu-funds.html||apply for eu funds - energy efficiency & renewables (por / national scheme)",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/eu-funds.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Apply for EU Funds - Energy efficiency & renewables (POR / National Scheme)",
+   "focus": "Produsul băncii: „Apply for EU Funds - Energy efficiency & renewables (POR / National Scheme)”.\nCorespunde produsului Libra: „Credit pentru energie verde”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3173,
+     "id_produs_libra": 29,
+     "cod": "CREDIT_ENERGIE_VERDE",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/cib/cash-management/e-channels.html||businessnet connect",
+   "url": "https://www.unicredit.ro/en/cib/cash-management/e-channels.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "BusinessNet Connect",
+   "focus": "Produsul băncii: „BusinessNet Connect”.\nCorespunde produsului Libra: „API Contabili (integrare cu programele de contabilitate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3076,
+     "id_produs_libra": 9,
+     "cod": "API_CONTABILI",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumentePI/Project_Finn_Anunt_emisiuni_titluri_de_stat_Decembrie.pdf||anunț emisiune – programul fidelis de emisiuni de titluri de stat",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumentePI/Project_Finn_Anunt_emisiuni_titluri_de_stat_Decembrie.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Anunț emisiune – Programul Fidelis de emisiuni de titluri de stat",
+   "focus": "Produsul băncii: „Anunț emisiune – Programul Fidelis de emisiuni de titluri de stat”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3212,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html||pachetele microstar și creativ (pachete de cont curent)",
+   "url": "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetele MicroStar și Creativ (pachete de cont curent)",
+   "focus": "Produsul băncii: „Pachetele MicroStar și Creativ (pachete de cont curent)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3019,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/Economisire-si-investitii/campanie-depozite-la-termen.html||depozit la termen cu fonduri noi (campanie promoțională, persoane fizice)",
+   "url": "https://www.unicredit.ro/ro/persoane-fizice/Economisire-si-investitii/campanie-depozite-la-termen.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Depozit la termen cu Fonduri Noi (campanie promoțională, persoane fizice)",
+   "focus": "Produsul băncii: „Depozit la termen cu Fonduri Noi (campanie promoțională, persoane fizice)”.\nCorespunde produsului Libra: „Depozit promoțional „1 An și 1 Lună\"”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3203,
+     "id_produs_libra": 41,
+     "cod": "DEPOZIT_1AN_1LUNA",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/general-needs.html||working capital line (sme)",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/general-needs.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Working capital line (SME)",
+   "focus": "Produsul băncii: „Working capital line (SME)”.\nCorespunde produsului Libra: „Linie de credit / capital de lucru”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3002,
+     "id_produs_libra": 48,
+     "cod": "LINIE_CREDIT",
+     "v2": "linie-credit"
+    }
+   ],
+   "produse_v2": [
+    "linie-credit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Commissions-and-interests-PI.pdf||mastercard gold / visa gold debit card",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Commissions-and-interests-PI.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Mastercard Gold / Visa Gold debit card",
+   "focus": "Produsul băncii: „Mastercard Gold / Visa Gold debit card”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3115,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/PI-Conditii-generale-de-utilizare/Conditii-Generale_de_Utilizare_CGU.pdf||serviciul ropay",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/PI-Conditii-generale-de-utilizare/Conditii-Generale_de_Utilizare_CGU.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Serviciul RoPay",
+   "focus": "Produsul băncii: „Serviciul RoPay”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3215,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html||pachetul creativ",
+   "url": "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachetul Creativ",
+   "focus": "Produsul băncii: „Pachetul Creativ”.\nCorespunde produsului Libra: „Cont Deștept (start-up)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3114,
+     "id_produs_libra": 17,
+     "cod": "CONT_DESTEPT",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/cib/deposits-and-investments/deposits.html||term deposits (legal entities corporate)",
+   "url": "https://www.unicredit.ro/en/cib/deposits-and-investments/deposits.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Term Deposits (Legal Entities Corporate)",
+   "focus": "Produsul băncii: „Term Deposits (Legal Entities Corporate)”.\nCorespunde produsului Libra: „Depozit promoțional Blitz (7 luni)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3200,
+     "id_produs_libra": 42,
+     "cod": "DEPOZIT_BLITZ_7L",
+     "v2": "depozit-termen"
+    }
+   ],
+   "produse_v2": [
+    "depozit-termen"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf||pachete de cont (microstar, creativ, partener, smart, progresiv etc.)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Pachete de cont (MicroStar, Creativ, Partener, Smart, Progresiv etc.)",
+   "focus": "Produsul băncii: „Pachete de cont (MicroStar, Creativ, Partener, Smart, Progresiv etc.)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3020,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html||investeu guarantee instrument (special programs / imm invest)",
+   "url": "https://www.unicredit.ro/en/sme/borrowing/special-programs.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "InvestEU guarantee instrument (Special Programs / IMM Invest)",
+   "focus": "Produsul băncii: „InvestEU guarantee instrument (Special Programs / IMM Invest)”.\nCorespunde produsului Libra: „Credit echipamente agricole (InvestEU)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3160,
+     "id_produs_libra": 22,
+     "cod": "CREDIT_AGRI_ECHIPAMENTE",
+     "v2": "agro"
+    }
+   ],
+   "produse_v2": [
+    "agro"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/ContCurent/oferta-optim.html||oferta tranzacțională optim (cont curent, inclusiv deschis 100% online)",
+   "url": "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/ContCurent/oferta-optim.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Oferta tranzacțională OPTIM (cont curent, inclusiv deschis 100% online)",
+   "focus": "Produsul băncii: „Oferta tranzacțională OPTIM (cont curent, inclusiv deschis 100% online)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3151,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/RegulamenteCampanii/Regulament-Happy-Hour-2026.pdf||happy hour exchange rate (schimb valutar la curs bnr)",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/RegulamenteCampanii/Regulament-Happy-Hour-2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Happy Hour Exchange Rate (schimb valutar la curs BNR)",
+   "focus": "Produsul băncii: „Happy Hour Exchange Rate (schimb valutar la curs BNR)”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3222,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/financial-institutions/financial-markets/treasury.html||uctrader - fx electronic trading platform",
+   "url": "https://www.unicredit.ro/en/financial-institutions/financial-markets/treasury.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "UCTrader - FX Electronic Trading Platform",
+   "focus": "Produsul băncii: „UCTrader - FX Electronic Trading Platform”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3009,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Fees-and-Comissions-Corporate.pdf||businessnet connect",
+   "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Fees-and-Comissions-Corporate.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "BusinessNet Connect",
+   "focus": "Produsul băncii: „BusinessNet Connect”.\nCorespunde produsului Libra: „API Contabili (integrare cu programele de contabilitate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3075,
+     "id_produs_libra": 9,
+     "cod": "API_CONTABILI",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/Search/instructiuni-de-securitate-a-tranzactiilor-BN.html||businessnet (internet banking) & business mobile",
+   "url": "https://www.unicredit.ro/ro/imm/Search/instructiuni-de-securitate-a-tranzactiilor-BN.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "BusinessNet (Internet Banking) & Business Mobile",
+   "focus": "Produsul băncii: „BusinessNet (Internet Banking) & Business Mobile”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3209,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/en/persoane-fizice/banking/debit-cards.html||mastercard gold debit card (card de debit mastercard gold)",
+   "url": "https://www.unicredit.ro/en/persoane-fizice/banking/debit-cards.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Mastercard Gold debit card (Card de debit Mastercard Gold)",
+   "focus": "Produsul băncii: „Mastercard Gold debit card (Card de debit Mastercard Gold)”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3116,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/tranzactionare/oferta-odero.html||pachet de cont curent microstar",
+   "url": "https://www.unicredit.ro/ro/imm/tranzactionare/oferta-odero.html",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Pachet de cont curent MicroStar",
+   "focus": "Produsul băncii: „Pachet de cont curent MicroStar”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3018,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.unicredit.ro/ro/imm/finantare/investitii.html||credit de investiții – achiziție imobil / teren (investiții imm)",
+   "url": "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+   "tip": "html",
+   "metoda": "playwright",
+   "denumire_la_banca": "Credit de investiții – Achiziție imobil / teren (Investiții IMM)",
+   "focus": "Produsul băncii: „Credit de investiții – Achiziție imobil / teren (Investiții IMM)”.\nCorespunde produsului Libra: „Credit imobiliar persoane juridice”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 3198,
+     "id_produs_libra": 32,
+     "cod": "CREDIT_IMOBILIAR_PJ",
+     "v2": "credit-investitii"
+    }
+   ],
+   "produse_v2": [
+    "credit-investitii"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 7,
    "tokeni": {
     "intrare": 0,
     "iesire": 0

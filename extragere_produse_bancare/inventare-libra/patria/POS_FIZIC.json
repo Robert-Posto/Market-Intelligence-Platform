@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Serviciul de acceptare la plata al cardurilor (POS-uri)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea 9 din lista de tarife și comisioane pentru persoane juridice detaliază exact comisioanele aferente terminalului POS fizic instalat la comerciant (instalare, gestiune lunară, procesare tranzacții).",
+      "incredere": 0.95,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul oficial de tarife conține un tabel dedicat cu toate comisioanele numerice pentru serviciul POS: instalare gratuită, 50 LEI/lună gestiune, 1,40% comision procesare, minim 100 LEI/lună/terminal.",
+      "pagina_pdf": 6,
+      "citat": "Comisioanele de mai sus se calculeaza per tranzactie si se percep zilnic, dar nu mai putin de 100 LEI/luna/terminal POS. Suma minima de 50 LEI/luna/POS se calculeaza pentru o luna calendaristica intreaga de activitate a terminalului POS.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos-patria",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Terminale POS Patria",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată terminalului POS fizic pentru acceptarea plăților cu cardul la punctul de vânzare, adresată afacerilor (persoane juridice/PFA), identic cu segmentul și tipul produsului Libra POS_FIZIC.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina este dedicată exclusiv terminalului POS fizic pentru comercianți și conține cifra legală de prag (10.000 euro cifră de afaceri) care obligă acceptarea cardului.",
+      "citat": "193/2002 privind introducerea sistemelor moderne de plată) este deja o realitate și toţi comercianţii care au o cifră de afaceri mai mare de 10.000 de euro trebuie să ofere clienţilor posibilitatea de a plăti cu cardul, în toate punctele de vânzare.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/terminale-pos-patria",
+    "https://www.patriabank.ro/d/2142"
+  ],
+  "durata_s": 52,
+  "consum": {
+    "intrare": 18290,
+    "iesire": 4357,
+    "citire_cache": 12658,
+    "scriere_cache": 24123,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14298909999999998
+  }
+}

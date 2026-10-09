@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent MICRO (MicroStar / Creativ)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent pentru persoane juridice/PFA din segmentul IMM, gestionabil integral online prin BusinessNet și Business Mobile, cu card business atașat și extra-opțiuni (abonamente operaționale) plătite lunar — același tip de produs și segment ca „Cont Online Business”. Diferă faptul că nu e prezentat ca produs exclusiv digital (aplicarea se poate face și online, dar ridicarea cardului se face la sucursală), spre deosebire de contul Libra deschis și gestionat exclusiv online.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent IMM conține cifre complete (abonament lunar, tranzacții incluse, cost extra-opțiuni) pentru produsul echivalent din segmentul PJ/IMM.",
+      "citat": "Pachetul MicroStar include, pentru un cost lunar fix, comisioanele pentru administrarea produselor si comisioanele de transfer pentru platile incluse, cu exceptia comisionului Sent/Sent Instant/ReGIS, astfel: 1 cont curent principal in Lei si 1 cont optional in Lei",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/sme/banking/account-packages.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Business Accounts and Packages (MicroStar / Creative)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Versiunea în limba engleză a aceleiași pagini de pachete de cont curent IMM, cu aceleași cifre; confirmă segmentul (persoane juridice cu cifră de afaceri mică, PFA, start-up) și canalele online (BusinessNet, Business Mobile), dar fără a fi un cont strict digital ca produsul Libra.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Conține aceleași cifre ca versiunea RO (49 lei/lună MicroStar, gratuit Creative, limite de tranzacții), dar e duplicat lingvistic al sursei principale.",
+      "citat": "For legal entities with annual turnover < 1 million EUR Current account in lei 2 accounts Debit card Mastercard Business Gold Mastercard Business Silver Internet & Mobile banking BusinessNet Basic / Professional with Mobile Token & Business Mobile",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/en/sme/banking/account-packages.html#:~:text=For%20legal%20entities%20with%20annual,Mobile%20Token%20%26%20Business%20Mobile"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/micro/pachete-de-cont-curent.html",
+    "https://www.unicredit.ro/en/sme/banking/account-packages.html",
+    "https://www.unicredit.ro/ro/imm/digital/cont-curent-sme.html",
+    "https://www.unicredit.ro/ro/imm/tranzactionare/pachete-cont-curent.html",
+    "https://www.unicredit.ro/ro/imm/digital/cont-curent-sme.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/digital/cont-curent-sme",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/imm/digital/cont-curent-sme"
+  ],
+  "durata_s": 131,
+  "consum": {
+    "intrare": 172888,
+    "iesire": 3818,
+    "citire_cache": 157063,
+    "scriere_cache": 66734,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5822035999999999
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Sucursala PKO Bank Polski din București deservește exclusiv clienți corporate (persoane juridice), nu persoane fizice, deci segmentul nu corespunde cu RoPay (fizice+juridice). În plus, lista de produse a sucursalei (conturi, cash pooling, carduri Visa Business, credite, finanțare comercială) nu include niciun produs de plăți mobile instant prin telefon de tip RoPay/BLIK. Cel mai apropiat produs este transferul instant SEPA (TIPS) din platforma iPKO biznes, dar acesta e un transfer bancar clasic IBAN-to-IBAN pentru companii, nu o plată prin număr de telefon, deci diferă fundamental ca mecanism și segment de produsul Libra."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1726,
+    "citire_cache": 23894,
+    "scriere_cache": 19738,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.07139580000000001
+  }
+}

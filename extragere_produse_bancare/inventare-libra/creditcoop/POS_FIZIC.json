@@ -1,0 +1,28 @@
+{
+  "generat": "2026-10-08",
+  "banca": "creditcoop",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "Am verificat meniul complet al site-ului CREDITCOOP pentru segmentul Business/Afaceri (persoane juridice), care listează explicit toate produsele: Credite (Creditul standard, Linia de credit, Creditul imobiliar, Creditul Agro, Creditul pentru echipamente), Conturi și operațiuni (Conturi curente, Încasări facturi utilități) și Depozite (Standard, Star Plus, Acces cont economii). Nu există niciun produs de tip terminal POS / acceptare la plată cu cardul pentru comercianți (merchant acquiring) destinat persoanelor juridice. Banca are doar pagina 'Carduri' care descrie carduri de debit/credit emise pentru clienți (limite de utilizare la plăți POS), dar acesta este un produs de emitere card pentru persoane fizice, nu un serviciu de instalare terminal POS la locația comerciantului. Nu există nicio mențiune despre acquiring, terminale de plată sau servicii similare pentru comercianți în documentele sau paginile verificate."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.creditcoop.ro/c/persoane-juridice/",
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/"
+  ],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1316,
+    "citire_cache": 50874,
+    "scriere_cache": 49390,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1468258
+  }
+}

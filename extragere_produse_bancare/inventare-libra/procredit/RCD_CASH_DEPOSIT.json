@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "RCD_CASH_DEPOSIT",
+  "denumire": "RCD Cash Deposit",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/servicii-bancare/solutii-cash-management/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Brink's Complete (Soluții de Cash Management)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un echipament dedicat exclusiv persoanelor juridice pentru depunerea rapidă de bancnote, cu creditare în contul curent în aceeași zi, înainte de colectarea efectivă a numerarului. Diferă însă canalul: echipamentul Brink's Box este instalat la sediul propriu al clientului (nu într-o sucursală a băncii) și serviciul se oferă prin abonament lunar, nu ca automat disponibil în sucursală.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Este pagina dedicată a produsului, cu detalii operaționale clare despre creditarea în aceeași zi, dar fără un comision/tarif explicit afișat în text (se face trimitere la lista de prețuri separată).",
+      "citat": "Următorul pas este să depui numerarul în seif. Suma depusă trebuie înregistrată prin aplicația Brink's 24SEVEN. Creditarea contului se va face în aceeași zi de către ProCredit Bank, anterior colectării efective a numerarului de către echipa Brink's.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/servicii-bancare/solutii-cash-management/#:~:text=Urm%C4%83torul%20pas%20este%20s%C4%83%20depui,numerarului%20de%20c%C4%83tre%20echipa%20Brink%27s."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/servicii-bancare/solutii-cash-management/",
+    "https://www.procreditbank.ro/wp-content/uploads/2025/03/Lista-preturi-PJ-RO_12.05.2025.pdf"
+  ],
+  "durata_s": 65,
+  "consum": {
+    "intrare": 6,
+    "iesire": 5268,
+    "citire_cache": 29792,
+    "scriere_cache": 57283,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20185789999999998
+  }
+}

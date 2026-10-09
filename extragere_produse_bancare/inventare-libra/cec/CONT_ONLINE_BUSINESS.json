@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/pachet-cont-bancar-imm-optim",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul IMM Optim",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane juridice (IMM), deschis prin flux 100% online (buton APLICA ONLINE către platforma de onboarding digital), cu card de debit business inclus și abonament lunar operațional cu comisioane reduse — corespunde direct profilului Cont Online Business: cont PJ gestionat online, cu abonament și card business.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată a produsului conține explicit serviciile incluse, comisionul lunar și card-ul business, plus link-ul de aplicare 100% online.",
+      "citat": "Servicii incluse: cont curent în lei și valută, card de debit, Internet Banking, Mobile Banking, cont de economii. Ai comision zero pentru încasări prin ordin de plată în lei și valută, primele 10 plăți efectuate lunar, de la distanță. Comisionul lunar de administrare este de 59 de lei.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/pachet-cont-bancar-imm-optim#:~:text=Servicii%20incluse%3A%20cont%20curent%20%C3%AEn,este%20de%2059%20de%20lei."
+    },
+    {
+      "url": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul IMM Optim (în grila de pachete de cont bancar pentru persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina-grilă prezintă pachetul IMM Optim ca variantă 100% online pentru IMM-uri, cu servicii și comision explicit, confirmând poziționarea ca echivalent al unui cont de business online.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina conține secțiunea dedicată IMM Optim cu cifre (comision, economii lunare) și confirmă disponibilitatea 100% online a pachetului.",
+      "citat": "Comision zero la încasări și pentru 10 plăți interbancare în lei, de la distanță, lunar. Comisionul lunar de administrare este de 59 de lei. Poți economisi 122 de lei lunar din reducerile la comisioane.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice#:~:text=Comision%20zero%20la%20%C3%AEncas%C4%83ri%20%C8%99i,lunar%20din%20reducerile%20la%20comisioane."
+    },
+    {
+      "url": "https://www.cec.ro/presa/cec-bank-lanseaza-pachetele-de-cont-curent-100-digitale-pentru-persoanele-juridice-imm-si-pfa",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachetul IMM Optim (lansare 100% digitală pentru persoane juridice IMM și PFA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicatul de presă descrie lansarea pachetului IMM Optim ca produs contractabil 100% online pentru persoane juridice/PFA, cu dobândă și comisioane explicite, confirmând natura de cont business digital.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul oficial al băncii descrie explicit condițiile și cifrele pachetului IMM Optim disponibil integral online pentru IMM-uri.",
+      "citat": "Pachetul IMM Optim vine cu Internet și Mobile Banking, 0,1% dobândă la vedere pentru toate disponibilitățile din contul curent în lei, zero comisioane la toate încasările și plățile intrabancare în lei, prin ordin de plată, zero comisioane la primele 5 încasări interbancare în lei prin ordin de plată, zero comisioane la primele 5 plăți",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/pachete-de-cont-bancar-persoane-juridice",
+    "https://www.cec.ro/presa/cec-bank-lanseaza-pachetele-de-cont-curent-100-digitale-pentru-persoanele-juridice-imm-si-pfa",
+    "https://www.cec.ro/pachet-cont-bancar-imm-optim"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3012,
+    "citire_cache": 94162,
+    "scriere_cache": 69683,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.22317589999999998
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție emise / Scrisori de garanție primite",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife care listează explicit comisioanele pentru scrisorile de garanție bancară emise și primite, pentru clienți persoane juridice.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document de tarife actual (valabil din 01.04.2026) cu secțiune dedicată 'Scrisori de garanție emise' și 'Scrisori de garanție primite', conținând procente, sume minime/maxime și modalități de calcul.",
+      "pagina_pdf": 3,
+      "citat": "Comision emitere SGB emise din ordinul clienților pe bază de depozit colateral 0,25%, min. 50 EUR/ trim. sau fracțiune de trim. flat la valoarea SGB, pe trim. sau fracțiune de trim.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/scrisori-de-garantie-bancara-2/",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Scrisoarea de garantie bancara",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat scrisorilor de garanție bancară pentru persoane juridice (participare licitație, bună execuție, restituire avans, plată, contragaranții), identic ca tip și segment cu produsul Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina dedicată exactă a produsului, dar textul extras nu conține cifre (procente, sume, termene), fiind doar descriere calitativă și avantaje.",
+      "citat": "Exim Banca Romaneasca ofera scrisori de garantie pentru participare la licitatie, de plata, de buna executie, pentru garantie tehnica/retineri, pentru restituire a avansului si de plata a taxelor.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/12/05/scrisori-de-garantie-bancara-2/#:~:text=Exim%20Banca%20Romaneasca%20ofera%20scrisori,si%20de%20plata%20a%20taxelor."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/12/05/scrisori-de-garantie-bancara-2/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1412,
+    "citire_cache": 39445,
+    "scriere_cache": 70082,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.197226
+  }
+}

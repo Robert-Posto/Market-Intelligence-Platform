@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "SCRISORI_GARANTIE",
+  "denumire": "Scrisori de garanție bancară",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție / Acreditive standby",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru clienți IMM (persoane juridice) care include explicit secțiunea 'Scrisori de garanție / Acreditive standby' cu comisioane de emitere, amendament, anulare și transfer - exact tipul de produs Libra (scrisoare de garanție bancară pentru firme/PFA).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul de tarife SME conține explicit rândul cu comisionul de emitere (0,30% + primă de risc, min. 50 Euro/trimestru) și alte comisioane aferente scrisorilor de garanție.",
+      "citat": "Emitere scrisori de garanţie/acreditive standby / adăugare aval / majorare sumă și / sau prelungire valabilitate 0,30 % + prima de risc, min. 50 Euro pe trimestru sau fracţiune plătibil la emitere/ majorare/ prelungire",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneCIB/Taxe-si-Comisioane-Corporate.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Scrisori de garanție / Acreditive standby",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife pentru clienți Corporate (persoane juridice de dimensiuni mai mari) cu secțiune dedicată 'Scrisori de garanție/Acreditive standby emise/primite', inclusiv comisioane de emitere, executare și avizare - același tip de produs ca scrisoarea de garanție Libra, doar pentru segmentul corporate în loc de IMM.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul conține explicit comisionul de emitere (0,30% plus primă de risc, min 50 Euro/trimestru) și comisionul de emitere în regim de urgență (0,25%, min 75 Euro) pentru scrisori de garanție/acreditive standby.",
+      "citat": "Emitere scrisori de garanție/acreditive standby/ adăugare aval/ majorare sumă 0,30% plus primă de risc, min 50 Euro pe trimestru sau fracțiune, plătibil la emitere/ la majorare/ prelungire valabilitate",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/intreprinderi-mici-si-mijlocii/bancar/activitatea-curenta.html",
+    "https://www.unicredit.ro/ro/institutii-financiare/tranzactionare/trade-finance.html"
+  ],
+  "durata_s": 70,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5818,
+    "citire_cache": 71235,
+    "scriere_cache": 46693,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1891755
+  }
+}

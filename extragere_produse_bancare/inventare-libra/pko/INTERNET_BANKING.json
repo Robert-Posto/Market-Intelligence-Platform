@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "iPKO biznes (serviciul electronic banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este serviciul de internet & mobile banking pentru firme (persoane juridice) al PKO Bank Polski Sucursala București, cu structură de taxe pe utilizatori, token, autorizare mobilă etc., exact ca Internet & Mobile Banking business de la Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Documentul oficial de tarife conține o secțiune dedicată exclusiv serviciului iPKO biznes, cu toate comisioanele detaliate (abonament, utilizatori suplimentari, token, SWIFT Tracker).",
+      "pagina_pdf": 2,
+      "citat": "comision de abonament lunar pentrupână utilizarea sistemului la 5 utilizatori definiți (lunar) 30 RON; utilizarea sistemului pentru fiecare utilizator suplimentar de peste 5 utilizatori (lunar) 5 RON; emiterea unui token hardware (per utilizator) 60 RON; mobilní autorizare autoryzacja mobilna 0 RON",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.pkobp.pl/ro/filiala-romania/produse",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Serviciul de tranzacționare iPKO Biznes / Aplicația mobilă iPKO Biznes",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina oficială de produse a sucursalei România listează explicit, sub „Servicii Bancare Electronice” pentru clienți corporate, serviciul de internet banking și aplicația mobilă iPKO Biznes, echivalentul direct al produsului Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina confirmă existența și denumirea produsului pentru segmentul persoane juridice, dar nu conține cifre; cifrele sunt în documentul de tarife.",
+      "citat": "Servicii Bancare Electronice - Serviciul de tranzacționare iPKO Biznes - Aplicația mobilă iPKO Biznes",
+      "citat_verificat": true,
+      "avertisment": "citat scurt (14 cuvinte)",
+      "link_live": "https://www.pkobp.pl/ro/filiala-romania/produse#:~:text=Servicii%20Bancare%20Electronice%20%2D%20Serviciul,%2D%20Aplica%C8%9Bia%20mobil%C4%83%20iPKO%20Biznes"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 10,
+    "iesire": 1959,
+    "citire_cache": 76908,
+    "scriere_cache": 63231,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1930691
+  }
+}

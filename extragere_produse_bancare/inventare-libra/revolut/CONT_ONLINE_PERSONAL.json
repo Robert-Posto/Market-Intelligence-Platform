@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/ro-RO/bank-account/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont bancar (Cont curent) Revolut",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este contul curent personal Revolut, deschis integral online prin aplicație, pentru persoane fizice cu minim 18 ani - același tip de produs și segment ca Cont Online Personal Libra.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre explicite despre costuri (0% comisioane, 0% DAE/NIR pentru planul Standard) și despre dobânda la economii asociate contului.",
+      "citat": "Fără comisioane de administrare sau de întreținere a contului, 0% DAE, 0% NIR, pentru planurile Standard. Suport clienți 24/7 în aplicație. Banii tăi îți vor mulțumi.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/ro-RO/bank-account/#:~:text=F%C4%83r%C4%83%20comisioane%20de%20administrare%20sau,Banii%20t%C4%83i%20%C3%AE%C8%9Bi%20vor%20mul%C8%9Bumi."
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/our-pricing-plans/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Compare Revolut plans (Standard/Plus/Premium/Metal/Ultra)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila oficială de tarife și limite pentru contul personal Revolut, pe toate planurile (inclusiv planul gratuit Standard folosit implicit la deschiderea contului), echivalentă comisioanelor și condițiilor unui cont curent PF.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document/pagina de tarife cu cifre explicite pentru fiecare plan: abonament lunar, retrageri ATM gratuite, limite de schimb valutar, dobândă la economii.",
+      "citat": "Plans at a glance Standard Free Plus lei 19.99/month Premium lei 39.99/month Metal lei 72.99/month Ultra lei 260/month Fee-free ATM withdrawals lei 800/month or 5 withdrawals",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://help.revolut.com/en-RO/help/profile-and-plan/my-plan-benefits/revolut-plans1/standard-plan/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Standard plan (planul gratuit implicit al contului personal Revolut)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Descrie condițiile exacte (fără comision lunar) ale planului de bază al contului curent personal Revolut, echivalent planului standard al unui cont online personal.",
+      "incredere": 0.88,
+      "explicatie_incredere": "Pagina din Centrul de ajutor listează explicit limitele și comisioanele planului Standard, cu cifre concrete pentru retrageri, schimb valutar și dobândă.",
+      "citat": "Withdraw up to 800 lei and 5 withdrawals per month with no fees charged by us Exchange currency Monday to Friday up to 5000 lei per month, with no extra fees 1% fee on all exchanges made on the weekend between 5pm on Friday and 6pm on Sunday Eastern Time (ET) Earn up to 2.50% p.a. (variable) interest on your savings",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://help.revolut.com/en-RO/help/profile-and-plan/my-plan-benefits/revolut-plans1/standard-plan/#:~:text=Withdraw%20up%20to%20800%20lei,%28variable%29%20interest%20on%20your%20savings"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/ro-RO/bank-account/",
+    "https://help.revolut.com/en-RO/help/profile-and-plan/my-plan-benefits/revolut-plans1/standard-plan/"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2038,
+    "citire_cache": 41547,
+    "scriere_cache": 53625,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16276390000000002
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ABONAMENT_PRIME",
+  "denumire": "Abonament PRIME (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet DIGITAL RON (DIGITAL RON Package) pentru IMM și PFA",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un abonament lunar de cont curent business pentru IMM/PFA, cu card de debit business, plăți nelimitate prin Internet/Mobile Banking — dar costă 119 RON/lună (vs 95 lei la Libra), acoperă doar contul în RON (nu lei/euro/USD ca la Libra), include un singur card business (nu 2) și nu menționează un serviciu de tip „Live FX”, ci doar un curs valutar competitiv.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată pachetului conține toate cifrele relevante: prețul pachetului, componentele incluse și condițiile de eligibilitate pentru IMM/PFA.",
+      "citat": "This Offer targets SMEs and individual entrepreneurs with a turnover, as reported in their most recently submitted financial statement, not exceeding 25 million RON. The Package cost is 119 RON per month.",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/#:~:text=This%20Offer%20targets%20SMEs%20and,is%20119%20RON%20per%20month."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/pachet-cont-curent-digital-ron/",
+    "https://www.garantibbva.ro/en/current-campaigns-sme-and-pfa/digital-ron-package/"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1669,
+    "citire_cache": 36648,
+    "scriere_cache": 38873,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.12121409999999999
+  }
+}

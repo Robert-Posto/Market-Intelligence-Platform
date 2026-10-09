@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://vreaucont.brci.ro/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Total Digital (MIND by BRCI)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este contul curent pentru persoane fizice deschis 100% online, prin video-call și certificat digital, cu acces complet prin Internet/Mobile Banking - exact segmentul și tipul de produs ca și Cont Online Personal Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea completă a deschiderii 100% online și cifrele comisioanelor (toate zero), deși nu are un tabel formal de dobânzi.",
+      "citat": "Apasă pe butonul de jos, urmează pașii și creezi contul tău digital în lei și euro, cu zero costuri de administrare și de emitere, plus livrarea gratuită.",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/cont-curent.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont curent / Cont de plăți cu servicii de bază",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent general pentru persoane fizice la BRCI, disponibil în RON, EUR, USD și GBP, dar pagina descrie varianta clasică (nu insistă pe deschiderea 100% online ca la Cont Online Personal Libra).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată conține caracteristicile contului curent PF cu monede și operațiuni disponibile, dar nu specifică explicit procesul digital complet ca în pagina MIND.",
+      "citat": "Disponibil în RON, EUR, USD și GBP; Acces permanent la o gamă largă de operațiuni: Încasarea veniturilor (salariu, pensie, alocație, bursă, etc); Plata facturilor; Depuneri sau încasări de numerar",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://vreaucont.brci.ro/",
+    "https://www.brci.ro/ro/persoane-fizice.html",
+    "https://brci.ro/ro/produse/cont-curent.html",
+    "https://brci.ro/ro/persoane-fizice.html"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 38534,
+    "iesire": 1976,
+    "citire_cache": 12636,
+    "scriere_cache": 17968,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1442752
+  }
+}

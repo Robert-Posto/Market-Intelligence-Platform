@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive (Finanțarea Comerțului) - Tarife și comisioane persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane pentru persoane juridice, secțiunea dedicată Acreditivelor (import), cu comisioane explicite pentru emitere, incasso documentar, returnare documente etc., exact segmentul și tipul de produs Libra Acreditive documentare.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul conține un tabel dedicat secțiunii ACREDITIVE cu valori de comision explicite pentru operațiuni de acreditiv import.",
+      "citat": "SECTIUNEA II – FINANTAREA COMERTULUI 1. ACREDITIVE Tip operatiune Valoare comision ACREDITIVE IMPORT Incasso simplu 0,15 %, min. 50 € Incasso documentar 0,15 %, min. 50 €",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/27/lista-taxe-si-comisioane-pentru-persoane-juridice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Acreditive (Finanțarea Comerțului) - Lista taxe și comisioane persoane juridice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Variantă/versiune anterioară a documentului de tarife pentru persoane juridice, cu aceeași secțiune dedicată ACREDITIVE (import), comisioane de preavizare, emitere, incasso documentar, modificare.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Conține un tabel explicit cu denumirea produsului ACREDITIVE și nivelurile de comision aferente (procente și sume minime).",
+      "citat": "ACREDITIVE Denumire comision Nivel comision ACREDITIVE IMPORT Preavizare 25 € Emitere 0,15%, min. 50 € pe trimestru/ fractiune de trimestru Incasso documentar 0,20%, min. 50 € + comision posta rapida Modificare 50 € Returnare documente neplatite/ neacceptate 30 €",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/corporate",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Trade finance - acreditiv (Corporate Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de Corporate Banking listează acreditivul ca produs de trade finance dedicat companiilor, confirmând existența și segmentul de clienți al produsului, deși fără cifre.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Produsul este menționat explicit, dar pagina nu conține cifre (dobânzi/comisioane), doar descrierea generală a soluțiilor de trade finance.",
+      "citat": "Susținem comerțul autohton dar și internațional, punând la dispoziție produsele și serviciile noastre utile în acest domeniu: ordin de plată condiționat, acreditiv, scrisori de garanție bancară, scrisori de confort, conturi escrow precum și alte servicii personalizate nevoilor companiei tale.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 17,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1499,
+    "citire_cache": 6300,
+    "scriere_cache": 12958,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.048653
+  }
+}

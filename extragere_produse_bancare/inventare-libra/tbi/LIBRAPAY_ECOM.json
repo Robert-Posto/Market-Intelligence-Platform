@@ -1,0 +1,26 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "tbi bank nu operează ca acquirer/PSP pentru acceptare carduri online. Oferă doar (a) finanțare BNPL pentru clienții comercianților parteneri (pagina 'For partners'/'Devino partener') și (b) o soluție de plată prin Open Banking (Pay by Click/Link/QR) care inițiază transferuri cont-la-cont, nu procesare de carduri. Niciunul nu este un gateway de acceptare plăți cu cardul precum LibraPay eCommerce, deci tipul de produs diferă fundamental și nu se califică nici ca echivalent, nici ca similar."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/plati-prin-open-banking-pentru-comercianti/",
+    "https://tbibank.ro/partner-merchants/for-partners/"
+  ],
+  "durata_s": 36,
+  "consum": {
+    "intrare": 6,
+    "iesire": 2742,
+    "citire_cache": 32689,
+    "scriere_cache": 49132,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.15679980000000002
+  }
+}

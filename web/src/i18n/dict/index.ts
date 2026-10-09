@@ -23,6 +23,7 @@ import { android } from './android'
 import { logging } from './logging'
 import { rulare_manuala } from './rulare_manuala'
 import { inventar_produse } from './inventar_produse'
+import { situatie_banci } from './situatie_banci'
 import { auth } from './auth'
 import { vox } from './vox'
 
@@ -51,6 +52,7 @@ export const DICT = {
   ...logging,
   ...rulare_manuala,
   ...inventar_produse,
+  ...situatie_banci,
   ...auth,
   ...vox,
 } as const

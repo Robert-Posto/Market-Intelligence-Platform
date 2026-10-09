@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "LIBRAPAY_ECOM",
+  "denumire": "LibraPay eCommerce (plăți online)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/business/payment-gateway/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Revolut Payment Gateway (Merchant API)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat acceptării de plăți online cu cardul pentru clienți business (magazine online/facturare online), livrat printr-un gateway/API, exact ca LibraPay eCommerce.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea funcțională și cifra de tarifare a plăților online.",
+      "citat": "Accept payments online via our easy plugins or customisable API. Get fast payment processing with low rates, fraud protection, high conversion rates and more. Prices starting from 1% + £0.20 Online payments",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.revolut.com/business/accept-payments-pricing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Revolut Business - Accept payments (Online payments / Payment Gateway)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Grila de tarife acoperă explicit plățile online (card, Revolut Pay, Pay by Bank) pentru contul Merchant al firmelor, echivalent segmentului și tipului de produs LibraPay eCommerce.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de tarife cu cifre detaliate pe tip de card și canal pentru plățile online acceptate de comercianți.",
+      "citat": "Online payments Revolut Pay, Subscriptions, Payment Links, and Invoices Online payments Visa and Mastercard Domestic consumer cards 1% + £0.20 0.8% + £0.02 Domestic commercial cards 2.8% + £0.20 2.6% + £0.02",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://cdn.revolut.com/terms_and_conditions/pdf/merchant_fees_5a9efdd2_2.0.0_1766016563_en.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Merchant Fees - Merchant Services Transaction Fees",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru serviciile de procesare a plăților online ale comercianților (Merchant account), echivalent condițiilor contractuale pentru LibraPay eCommerce.",
+      "incredere": 0.85,
+      "explicatie_incredere": "PDF oficial de taxe comerciant cu structura exactă a comisionului fix + variabil pentru plățile online cu cardul, inclusiv exemple numerice.",
+      "citat": "Online Card Transaction Flat Fee A$0.20 Payment from Australian prepaid, debit and credit card: 1.6% of the transaction value For example, when an Australian credit card is used for a $500 online card transaction, a fee of A$8.20 will be incurred.",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1705,
+    "citire_cache": 6360,
+    "scriere_cache": 38767,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1152475
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ABONAMENT_ELITE",
+  "denumire": "Abonament ELITE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul MAXIMO (din structura PRIMUS / OPTIMO / MAXIMO pentru segmentul Small Business și SME)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "MAXIMO este pachetul lunar cu plată cel mai complex pentru firme (persoane juridice), cu 2 conturi RON și 2 conturi EUR/USD, card de debit și internet banking incluse, similar ca structură cu Abonamentul ELITE de la Libra; diferă însă volumul de operațiuni incluse (la Intesa plățile/încasările prin instrumente de debit sunt extraopțiuni plătite separat, nu incluse gratuit ca la ELITE), numărul de carduri incluse (MAXIMO nu specifică 3 carduri) și nu există un serviciu explicit de tip Live FX.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice listează explicit pachetul MAXIMO cu comisionul lunar de 99 Lei și componența sa (conturi, card, internet banking).",
+      "citat": "PACHET PRIMUS OPTIMO MAXIMO Comision lunar de administrare pachet (Lei) 29 Lei 49 Lei 99 Lei Cont curent in Lei 1 cont 1 cont 2 conturi Cont curent in EUR sau USD - 1 cont 2 conturi",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul MAXIMO",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina dedicată conturilor și pachetelor pentru companii descrie MAXIMO ca pachetul de top pentru firme (2 conturi RON, 2 conturi EUR/USD, card Visa Business Gold), segment comparabil cu ELITE de la Libra, dar fără mențiune despre un pachet fix de 50 tranzacții/plăți SEPA incluse sau despre un serviciu Live FX precum la Libra.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina hub prezintă explicit componența pachetului MAXIMO cu numărul de conturi incluse, dar nu detaliază toate comisioanele; acestea se regăsesc doar în documentul de tarife.",
+      "citat": "Pachetul MAXIMO 2 conturi curente în Lei, 2 conturi curente în EUR sau USD, Internet Banking, Card de debit Visa Business Gold, încasări.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachete-companii.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-maximo.html"
+  ],
+  "durata_s": 67,
+  "consum": {
+    "intrare": 8,
+    "iesire": 5211,
+    "citire_cache": 84723,
+    "scriere_cache": 58517,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2153631
+  }
+}

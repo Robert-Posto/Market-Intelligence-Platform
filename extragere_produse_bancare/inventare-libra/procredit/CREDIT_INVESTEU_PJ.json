@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CREDIT_INVESTEU_PJ",
+  "denumire": "Credit InvestEU Competitivitate/Sustenabilitate",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Finanțare cu Programe Europene – InvestEU",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit pentru IMM-uri (persoane juridice) prin programul InvestEU, cu componentele Competitivitate și Sustenabilitate, acoperind investiții și capital de lucru — exact tipul și segmentul produsului Libra InvestEU.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată programului InvestEU la ProCredit, cu cifre explicite despre garanții, monedă și maturitate pentru investiții și capital de lucru.",
+      "citat": "Garanție de până la 70%, fără costuri suplimentare pentru client, susținută de Fondul European de Investiții, Credite pentru investiții și/sau capital de lucru, Avans zero, Maturitate credite pentru capital de lucru: până la 3 ani, Maturitate extinsă pentru investiții: pana la 15 ani",
+      "rol_alt": null,
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/#:~:text=Garan%C8%9Bie%20de%20p%C3%A2n%C4%83%20la%2070%25%2C,investi%C8%9Bii%3A%20pana%20la%2015%20ani"
+    },
+    {
+      "url": "https://www.procreditbank.ro/landing/investeu-credit-imm/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul InvestEU pentru afacerea ta",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de landing dedicată creditului InvestEU pentru IMM-uri (SRL, PFA, II, IF), cu destinații de investiții și capital de lucru, condiții de eligibilitate și termen maxim, corespunzător segmentului și tipului produsului Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată exclusiv produsului InvestEU, cu cifre despre maturitate, avans și criterii de eligibilitate pentru IMM.",
+      "citat": "Beneficiază de finanțare pentru IMM-uri cu garanții europene Avans ZERO Nevoie de garanții redusă Maturitate de până la 15 ani Forme de organizare juridică: SRL, PFA, II sau IF Activitatate: minim doi ani fiscali încheiați Întreprinderi mici și mijlocii (IMM-uri), conform definiției europene",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/landing/investeu-credit-imm/#:~:text=Beneficiaz%C4%83%20de%20finan%C8%9Bare%20pentru%20IMM%2Duri,mijlocii%20%28IMM%2Duri%29%2C%20conform%20defini%C8%9Biei%20europene"
+    },
+    {
+      "url": "https://www.procreditbank.ro/procredit-bank-si-fondul-european-de-investitii-au-semnat-un-acord-de-garantare-in-cadrul-programului-investeu-pentru-sustinerea-imm-urilor-din-romania/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Acord de garantare InvestEU (componentele Competitivitate și Sustenabilitate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicat oficial care confirmă explicit cele două componente InvestEU (Competitivitate și Sustenabilitate) ale produsului Libra, cu procentul de garanție oferit IMM-urilor.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document de context/comunicat de presă, nu pagină de produs cu toate cifrele, dar confirmă denumirile componentelor și procentul garanției FEI.",
+      "citat": "ProCredit Bank, bancă dedicată sectorului IMM, a semnat cu Fondul European de Investiții (FEI) acordul de garantare pentru programul InvestEU cu cele două componente, Sustenabilitate și Competitivitate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/companii/finantare-cu-programe-europene/",
+    "https://www.procreditbank.ro/landing/investeu-credit-imm/"
+  ],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1960,
+    "citire_cache": 35688,
+    "scriere_cache": 54337,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16259210000000002
+  }
+}

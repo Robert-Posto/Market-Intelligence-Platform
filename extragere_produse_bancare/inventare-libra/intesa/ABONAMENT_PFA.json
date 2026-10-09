@@ -1,0 +1,74 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet PRIMUS / OPTIMO / MAXIMO (segment Small Business și SME)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife standard confirmă explicit comisionul lunar de 29 Lei pentru pachetul de intrare PRIMUS (cont curent, card de debit business, Internet Banking incluse), pentru segmentul Small Business/SME, care include și întreprinzătorii individuali/PFA, dar nu este un produs dedicat exclusiv PFA.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de tarife care conține explicit valorile pachetului echivalent, inclusiv componentele gratuite incluse și extraopțiunile.",
+      "citat": "PACHET PRIMUS OPTIMO MAXIMO Comision lunar de administrare pachet (Lei) 29 Lei 49 Lei 99 Lei Cont curent in Lei 1 cont 1 cont 2 conturi Serviciul de Internet banking I-B@nk ✓ ✓ ✓",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-primus.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul PRIMUS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un pachet de cont curent business pentru întreprinzători mici (cont + card de debit business + Internet Banking, 29 Lei/lună), dar vizează generic 'companii cu cifra de afaceri până la 10 milioane EUR', nu este branduit explicit ca produs dedicat PFA/profesii, iar structura de operațiuni incluse diferă de cele 50 operațiuni/lună fixe de la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată a pachetului curent în vânzare, cu cifra de preț (29 Lei) și componentele (cont, card, IB), dar conținutul numeric a fost confirmat prin rezultatul de căutare, nu direct din HTML brut (pagina pare randată prin JS).",
+      "dovada_metoda": "Fetch HTTP direct a returnat doar meniul de navigare fără cifre; conținutul cu cifre a fost observat în rezultatul web_search care a indexat pagina randată.",
+      "citat": "Pachetul PRIMUS este destinat companiilor cu cifra de afaceri de până la 10 milioane EUR. Comision lunar de administrare pachet 29 Lei",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachete tranzacționale pentru PFA/II/IF și profesii liberale (PROFESIONAL PLUS/EXTRA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Această fișă de produs arată că banca a avut (sau încă listează) o segmentare dedicată explicit 'PFA/II/IF si profesii liberale' cu pachete PROFESIONAL PLUS (19 Lei) și PROFESIONAL EXTRA (39 Lei), incluzând cont, card Visa Business și Internet Banking — cel mai apropiat de structura Abonamentului PFA Libra; însă lista de tarife curentă (02.12.2025) marchează aceste pachete ca fiind retrase din vânzare, oferta activă fiind PRIMUS/OPTIMO/MAXIMO cu segmentare mai generală.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul arată clar segmentul PFA/profesii liberale cu cifre (comisioane, produse incluse), dar nu este clar dacă acest fișier de produs mai este valabil, întrucât pachetele corespunzătoare apar ca 'retrase de la vânzare' în lista de tarife mai recentă.",
+      "pagina_pdf": 2,
+      "citat": "Pentru toate subsegmentele Companii cu cifra de afaceri <1M€ PFA/II/IF si profesii liberale PROFESIONAL PLUS PROFESIONAL EXTRA COMISION LUNAR DE ADMINISTRARE PACHET 19 39",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-start.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-profesional-plus.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-start.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-primus.html"
+  ],
+  "durata_s": 132,
+  "consum": {
+    "intrare": 166515,
+    "iesire": 10926,
+    "citire_cache": 120203,
+    "scriere_cache": 106620,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.7328806
+  }
+}

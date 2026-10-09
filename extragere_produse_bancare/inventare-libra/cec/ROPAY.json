@@ -1,0 +1,68 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ROPAY",
+  "denumire": "RoPay (plăți instant prin telefon)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/serviciul-ropay-pf",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Serviciul RoPay (persoane fizice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este același serviciu național RoPay (plăți instant prin telefon/cod QR, dezvoltat de TRANSFOND), dedicat persoanelor fizice, identic ca tip de produs și segment cu RoPay de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată exclusiv serviciului RoPay, cu cifre concrete (10 secunde, gratuit, 24/7).",
+      "citat": "Plăți și incasări instant cu telefonul mobil prin codul QR între clienții bancari (persoane fizice către persoane fizice și persoane fizice către persoane juridice/comercianți) în maximum 10 secunde de la inițierea plății.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/serviciul-ropay-pf#:~:text=Pl%C4%83%C8%9Bi%20%C8%99i%20incas%C4%83ri%20instant%20cu,secunde%20de%20la%20ini%C8%9Bierea%20pl%C4%83%C8%9Bii."
+    },
+    {
+      "url": "https://www.cec.ro/serviciul-ropay-pj",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Serviciul RoPay (persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată variantei RoPay pentru încasări către persoane juridice, acoperind segmentul business al aceluiași produs ca la Libra (persoane fizice și juridice).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată serviciului RoPay pentru persoane juridice, cu cifre concrete privind timpul de procesare.",
+      "citat": "Încasări instant prin furnizarea codului QR către clienții bancari (persoane fizice/juridice către persoane juridice) în maximum 10 secunde de la inițierea plății.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/serviciul-ropay-pj#:~:text=%C3%8Encas%C4%83ri%20instant%20prin%20furnizarea%20codului,secunde%20de%20la%20ini%C8%9Bierea%20pl%C4%83%C8%9Bii."
+    },
+    {
+      "url": "https://www.cec.ro/presa/cec-bank-sustine-platile-instant-prin-ropay-alias",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "RoPay Alias",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Varianta RoPay bazată pe numărul de telefon (alias) pentru trimitere/solicitare de bani, exact tipul de funcționalitate descris generic de RoPay la Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Comunicat de presă dedicat funcționalității RoPay Alias cu detalii despre funcționare, dar fără comisioane numerice explicite dincolo de 'gratuit'.",
+      "citat": "Acesta trebuie să fie înrolat în RoPay Alias la banca sa pentru a putea încasa bani prin acest serviciu.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (19 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/serviciul-ropay-pf",
+    "https://www.cec.ro/mobile-banking-persoane-juridice",
+    "https://www.cec.ro/serviciul-ropay-pj"
+  ],
+  "durata_s": 27,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1980,
+    "citire_cache": 85878,
+    "scriere_cache": 65281,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.20019410000000004
+  }
+}

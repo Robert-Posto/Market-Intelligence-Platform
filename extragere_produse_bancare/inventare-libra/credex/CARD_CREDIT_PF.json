@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "credex",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://credex.ro/totul-despre-credite/card-de-credit-credex/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card de credit Credex",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving pentru persoane fizice, cu perioadă de grație de 56 de zile și rate fără dobândă la comercianți parteneri eligibili, exact ca produsul Libra CARD_CREDIT_PF.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține exemplul reprezentativ de calcul complet, cu dobândă, DAE, comision și limita de credit.",
+      "citat": "Perioada de gratie de pana la 56 de zile valabila pentru tranzactiile la comercianti daca rambursezi integral, pana la data scadenta, suma datorata. La un Card de Credit Credex, cu o limita de credit de 10.000 lei, utilizata integral la data acordarii și rambursata în 12 rate lunare egale, cu o dobanda fixa de 32% pe an și un comision lunar de administrare de 5 lei, rata lunara este de 989,74 lei, valoarea totala de plata este de 11.876,82 lei, iar DAE este de 38,49%.",
+      "citat_verificat": true,
+      "link_live": "https://credex.ro/totul-despre-credite/card-de-credit-credex/#:~:text=Perioada%20de%20gratie%20de%20pana,iar%20DAE%20este%20de%2038%2C49%25."
+    },
+    {
+      "url": "https://credex.ro/intrebari-si-raspunsuri/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de credit Credex",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Secțiunea de întrebări frecvente detaliază toate costurile asociate cardului de credit pentru persoane fizice (comisioane, dobândă, taxe de reemitere, comision retragere numerar), completând informațiile din pagina dedicată a produsului.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document general (FAQ) dar cu listă explicită și completă a tuturor costurilor cardului de credit, cu valori numerice clare.",
+      "citat": "Comisionul de analiză dosar de credit este de 0.00 LEI Comisionul lunar de administrare credit este de 5.00 LEI Rata dobânzii aplicabilă sumei utilizate din Limita de Credit, incluzând tranzacţiile rambursate in rate: 32.00% pe an Comision retrageri de numerar la ATM-urile Băncilor: 10% din suma aferentă retragerii de numerar",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://credex.ro/",
+    "https://credex.ro/totul-despre-credite/card-de-credit-credex/"
+  ],
+  "durata_s": 21,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1584,
+    "citire_cache": 30173,
+    "scriere_cache": 28117,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0921791
+  }
+}

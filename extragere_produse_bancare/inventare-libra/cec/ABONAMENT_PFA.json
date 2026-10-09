@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/pachetul-profesional-dinamic",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachetul Profesional Dinamic",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un pachet de cont bancar dedicat profesiilor liberale (segment apropiat de PFA/profesii), cu cont curent, card de debit, Internet Banking și Mobile Banking incluse la un singur comision lunar - la fel ca Abonamentul PFA de la Libra. Diferă însă comisionul lunar (49 lei/lună față de 29 lei/lună la Libra) și nu există o limită explicită de operațiuni incluse (Libra specifică 50 operațiuni/lună).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată a pachetului conține explicit denumirea produsului, segmentul țintă (profesii liberale) și cifra comisionului lunar de administrare.",
+      "citat": "Beneficiezi de ZERO comisioane la încasările prin ordin de plată și acces 24/7 la contul asociației prin serviciile de Internet Banking și Mobile Banking incluse în pachet. Comision lunar de administrare: 49 lei/lună. Economisești până la 55 de lei lunar.",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/pachetul-profesional-dinamic#:~:text=Beneficiezi%20de%20ZERO%20comisioane%20la,la%2055%20de%20lei%20lunar."
+    },
+    {
+      "url": "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul Profesional Dinamic",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice listează explicit comisionul lunar de administrare al Pachetului Profesional Dinamic, produsul CEC cel mai apropiat de Abonamentul PFA (pachet de cont pentru profesii liberale/PFA), dar cu valoare diferită a comisionului (39 lei/lună în acest document, față de 29 lei/lună la Libra).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul de tarife oficial, în vigoare, conține linia explicită cu denumirea pachetului și valoarea comisionului lunar de administrare.",
+      "citat": "Administrare Pachet Comunitate 39 lei /luna Administrare Pachet Start-UP GRATUIT* Administrare Pachet Profesional Dinamic 39 lei/luna Administrare Pachet Acces EU 49 lei/luna",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/pachetul-profesional-dinamic",
+    "https://www.cec.ro/sites/default/files/public_folder/comisioane_operatiuni_pj.pdf"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3685,
+    "citire_cache": 36986,
+    "scriere_cache": 75350,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2326342
+  }
+}

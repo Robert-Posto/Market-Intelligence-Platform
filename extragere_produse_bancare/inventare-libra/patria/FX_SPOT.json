@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://en.patriabank.ro/exchange-rates",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Curs valutar / Schimb valutar (Exchange rates)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată de schimb valutar a băncii, cu cotații curs de cumpărare/vânzare pentru operațiuni în cont și la ghișeu, disponibilă atât pentru persoane fizice cât și juridice - corespunde direct produsului Libra de schimb valutar spot.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată, oficială, a băncii pentru cursul valutar/schimb valutar, cu tabel de cotații actualizat zilnic pentru principalele valute.",
+      "citat": "Exchange rates In account At the exchange office Currency Buy Sell NBR rates EUR 5,0020 5,1535 5,0737 USD 4,2415 4,4215 4,3122 GBP 5,7965 5,9315 5,8581 CHF 5,3645 5,5085 5,4401",
+      "citat_verificat": true,
+      "link_live": "https://en.patriabank.ro/exchange-rates#:~:text=Exchange%20rates%20In%20account%20At,5%2C8581%20CHF%205%2C3645%205%2C5085%205%2C4401"
+    },
+    {
+      "url": "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Happy Hour - curs BNR pentru schimburi valutare LEI/EUR și EUR/LEI",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot o operațiune de schimb valutar spot, dar limitată la perechea LEI/EUR, doar prin Internet/Mobile Banking, doar pentru clienții persoane fizice cu pachetul Patria Premium și cu plafoane zilnice/lunare - deci diferă canalul, moneda și segmentul față de FX_SPOT general.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Conține cifre concrete (plafoane 1.000 EUR/zi și 5.000 EUR/lună) legate explicit de operațiunea de schimb valutar, dar este un beneficiu restrâns la un pachet de cont, nu produsul general de schimb valutar.",
+      "citat": "este permisă o singură tranzacție pe zi pentru fiecare client; valoarea maximă a unei tranzacții este echivalentul a 1.000 EUR/zi/client; valoarea maximă cumulată a tranzacțiilor este echivalentul a 5.000 EUR/client/lună",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/curs-valutar/",
+    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria",
+    "https://en.patriabank.ro/exchange-rates",
+    "https://www.patriabank.ro/curs-valutar/",
+    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 97474,
+    "iesire": 3343,
+    "citire_cache": 46019,
+    "scriere_cache": 34235,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.32316930000000005
+  }
+}

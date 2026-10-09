@@ -1,0 +1,43 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Project-Financing",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Project Financing / Finanțarea proiectelor",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit pentru companii (segment IMM) garantat, printre altele, cu ipotecă imobiliară, destinat achiziției de imobile și investiții - exact ca ipoteza de bază a creditului Libra. Diferă însă maturitatea maximă (doar 5 ani, față de 84/180 luni la Libra), suma minimă/maximă nu este specificată, iar garanția nu este exclusiv ipotecară (banca acceptă și gaj, cesiune de creanțe, scrisori de garanție etc.), deci nu este un produs dedicat strict creditului ipotecar imobiliar pentru firme.",
+      "incredere": 0.72,
+      "explicatie_incredere": "Pagina dedicată a produsului menționează explicit ipotecile ca garanție principală și oferă o cifră concretă (maturitate maximă 5 ani), dar nu conține intervale de sumă sau termene separate pentru activitate curentă vs. investiții ca la Libra.",
+      "citat": "The credit for project financing is suitable for: Purchasing real estate Purchasing equipment/ tehnologies new or second hand, of any type Financing construction of new buidings on free land Financing building extensions Long term Maturity: maximum 5 years",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Project-Financing#:~:text=The%20credit%20for%20project%20financing,term%20Maturity%3A%20maximum%205%20years"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits",
+    "https://www.nexentbank.ro/SME-Credits",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Credit-Line",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Investment-Loan",
+    "https://www.nexentbank.ro/en/Corporate-SME/Corporate-Banking/Financing",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/SME-Credits/Project-Financing"
+  ],
+  "durata_s": 51,
+  "consum": {
+    "intrare": 12,
+    "iesire": 4051,
+    "citire_cache": 269212,
+    "scriere_cache": 128161,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.41477889999999995
+  }
+}

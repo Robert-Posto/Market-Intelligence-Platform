@@ -1,0 +1,67 @@
+{
+  "generat": "2026-10-08",
+  "banca": "procredit",
+  "cod": "CONT_DESTEPT",
+  "denumire": "Cont Deștept (start-up)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.procreditbank.ro/companii/pachet-grow/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Grow",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont de business pentru persoane juridice, gratuit (0 lei comision de administrare) pe o perioadă promoțională, recomandat explicit pentru startup-uri, cu card, internet banking gratuit și plăți naționale nelimitate — exact profilul Cont Deștept, diferă doar durata gratuității (24 luni față de 12 luni).",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu titlu 'Recomandat pentru startup-uri', cifre explicite de comision, cashback și plăți incluse.",
+      "citat": "Recomandat pentru startup-uri. Pachet Grow Cont business complet Comision de administrare 0 lei pe lună, timp de 24 de luni Plăți naționale sub 50.000 de lei Nelimitate Carduri de debit incluse 3 carduri",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/pachet-grow/#:~:text=Recomandat%20pentru%20startup%2Duri.%20Pachet%20Grow,de%20debit%20incluse%203%20carduri"
+    },
+    {
+      "url": "https://www.procreditbank.ro/landing/prozero24/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ProZero24 (variantă de brand a pachetului Grow pentru cont curent de business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Aceeași categorie de pachet de cont curent de business pentru persoane juridice, fără comision de administrare o perioadă (24 luni), cu plăți naționale/SEPA nelimitate, carduri incluse — conține tabelul complet de beneficii și comisionul ulterior de 150 lei/lună.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată cu tabel de beneficii și cifre explicite (plăți, carduri, comisioane), dar numele diferă de Grow, posibil variantă de campanie a aceluiași tip de produs.",
+      "citat": "Toate persoanele juridice care nu au un cont curent deschis la ProCredit Bank. După 24 de luni, comisionul de administrare va fi de 150 lei/lună.",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/landing/prozero24/#:~:text=Toate%20persoanele%20juridice%20care%20nu,va%20fi%20de%20150%20lei%2Flun%C4%83."
+    },
+    {
+      "url": "https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "ProAntreprenor (hub care include Pachetul Grow)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina hub pentru pachetul de cont business ProAntreprenor prezintă explicit Pachetul Grow ca soluție de start pentru firme, cu cifrele comisionului zero 24 luni și cashback.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document general de prezentare a pachetului de business, cu secțiune dedicată Pachetului Grow și cifre, dar nu este pagina de detaliu a produsului.",
+      "citat": "Pachet GROW Zero costuri pentru început ZERO comision de administrare timp de 24 de luni Până la 3 carduri incluse Onboarding complet online Cashback până la 250 lei",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/#:~:text=Pachet%20GROW%20Zero%20costuri%20pentru,Cashback%20p%C3%A2n%C4%83%20la%20250%20lei"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.procreditbank.ro/landing/prozero24/",
+    "https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/",
+    "https://www.procreditbank.ro/companii/pachet-grow/"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2216,
+    "citire_cache": 82305,
+    "scriere_cache": 62268,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.194307
+  }
+}

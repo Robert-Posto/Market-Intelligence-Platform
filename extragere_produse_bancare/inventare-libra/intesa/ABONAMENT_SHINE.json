@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "ABONAMENT_SHINE",
+  "denumire": "Abonament SHINE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul MAXIMO (pachet cont curent - segment Small Business/SME)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pachetul MAXIMO de la Intesa este abonamentul operațional pentru firme cu conturi Lei și EUR/USD, card Visa Business Gold inclus și comision lunar de 99 Lei, foarte apropiat de SHINE (100 lei/lună, lei+euro, card Gold). Diferă structura conturilor (MAXIMO cere 2 conturi Lei + 2 conturi EUR/USD, nu 1+1 ca la SHINE) și faptul că plățile instant/mPOS 0,59% nu sunt incluse explicit în pachet, ci separate.",
+      "incredere": 0.82,
+      "explicatie_incredere": "Documentul de tarife standard al băncii prezintă explicit grila PRIMUS/OPTIMO/MAXIMO cu comisioane, conturi incluse și cardul Visa Business Gold, deci cifrele sunt complete și oficiale.",
+      "pagina_pdf": 3,
+      "citat": "PACHET PRIMUS OPTIMO MAXIMO Comision lunar de administrare pachet (Lei) 29 Lei 49 Lei 99 Lei Produse si servicii obligatorii cu comision de administrare lunara zero, incluse in structura pachetului Cont curent in Lei 1 cont 1 cont 2 conturi Cont curent in EUR sau USD - 1 cont 2 conturi",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_02.12.2025.pdf",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pachet-maximo.html",
+    "https://www.intesasanpaolobank.ro/microintreprinderi-antreprenori/conturi-operatiuni/pos.html"
+  ],
+  "durata_s": 73,
+  "consum": {
+    "intrare": 8,
+    "iesire": 6090,
+    "citire_cache": 112415,
+    "scriere_cache": 101012,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.33592900000000003
+  }
+}

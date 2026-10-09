@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/credit-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "CEC Bank nu are un credit imobiliar dedicat persoanelor juridice; are în schimb un 'Credit de investiții' general pentru companii/PFA/fermieri, care include printre destinațiile eligibile și investițiile în clădiri/achiziția de spații, dar nu este un produs specializat exclusiv pentru imobiliare ca la Libra (acoperă și echipamente, producție etc.).",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina dedicată conține cifrele produsului (contribuție proprie, perioadă, valoare maximă), dar produsul e un credit general de investiții, nu unul specific imobiliar pentru firme.",
+      "citat": "Destinație: proiecte de investiții sau refinanțarea altor credite de investiții - Perioada de creditare: maximum 12 ani, corelată cu durata maximă de viață a investiției finanțate - Perioadă de grație: maximum 12 luni - Valoarea creditului: maximum 85% din valoarea investiției, excluzând TVA",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/sectiune-credite-finantare-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite pentru investiții (secțiune Finanțare IMM)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina hub de finanțare IMM confirmă că soluția CEC pentru investiții în 'clădiri' este tratată ca parte a creditului general de investiții, nu ca produs imobiliar distinct pentru companii.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina menționează explicit investițiile în clădiri ca destinație posibilă a creditului de investiții, dar nu oferă cifre proprii, fiind doar un hub de navigare.",
+      "citat": "Avem soluții adaptate oricare ar fi proiectul tău: achiziții de echipamente, extinderea producției sau investiții în clădiri.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (17 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/credit-de-investitii",
+    "https://www.cec.ro/persoane-juridice"
+  ],
+  "durata_s": 55,
+  "consum": {
+    "intrare": 6,
+    "iesire": 4537,
+    "citire_cache": 40187,
+    "scriere_cache": 59842,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2030244
+  }
+}

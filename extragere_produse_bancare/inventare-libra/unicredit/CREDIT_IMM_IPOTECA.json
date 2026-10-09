@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Credit Cheltuieli Generale cu Rambursari / Linia de credit personalizata / Linia de credit tip Descoperit de cont (încredere 0.55) — Acelasi tip de produs (credit/linie pentru activitatea curenta a IMM) si acelasi segment (persoane juridice/PFA), dar difera garantia (garantii de la Fonduri de Garantare nationale/internationale, nu ipoteca imobiliara dedicata) si termenul maxim (5 ani, fata de 84 luni la Libra); produsul e oferit ca linie separata, nu combinat cu componenta de investitii."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/cheltuieli-curente.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit Cheltuieli Generale cu Rambursari / Linia de credit personalizata / Linia de credit tip Descoperit de cont",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acelasi tip de produs (credit/linie pentru activitatea curenta a IMM) si acelasi segment (persoane juridice/PFA), dar difera garantia (garantii de la Fonduri de Garantare nationale/internationale, nu ipoteca imobiliara dedicata) si termenul maxim (5 ani, fata de 84 luni la Libra); produsul e oferit ca linie separata, nu combinat cu componenta de investitii.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina dedicata descrie clar produsul de credit pentru cheltuieli curente al IMM, cu termenul de 5 ani mentionat explicit, dar nu contine dobanzi sau sume si nu specifica garantia ipotecara.",
+      "citat": "Creditul este oferit pe o perioada de pana la 5 ani si poate fi utilizat pentru cheltuieli generale, achizitionarea de materii prime, materiale, obiecte de inventar, finantarea contractelor comerciale.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/finantare/cheltuieli-curente.html#:~:text=Creditul%20este%20oferit%20pe%20o,de%20inventar%2C%20finantarea%20contractelor%20comerciale."
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investitii - Achizitie imobil/teren",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Acelasi tip de produs (credit de investitii pentru IMM, inclusiv achizitie de imobil, unde garantia tipica este ipoteca asupra imobilului) si acelasi segment de clienti, dar difera structura: este un credit dedicat exclusiv investitiilor imobiliare, nu o linie combinata activitate curenta + investitii ca la Libra, iar valorile maxime nu sunt publicate (stabilite de la caz la caz).",
+      "incredere": 0.5,
+      "explicatie_incredere": "Pagina descrie componenta de investitii imobiliare pentru IMM cu un termen de referinta (12 luni pentru refinantare surse proprii) dar fara cifre despre suma maxima, dobanda sau termenul total al creditului.",
+      "citat": "Daca a sosit momentul sa achizitionezi un sediu pentru afacerea ta,un spatiu pentru productie, un teren sau daca doresti sa refinantezi o investitie efectuata din surse proprii cu mai putin de 12 luni in urma, UniCredit Bank iti poate sustine finantarea printr-o solutie dedicata, un credit de investitii adaptat nevoii si activitatii companiei tale.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/ro/imm/finantare/investitii.html#:~:text=Daca%20a%20sosit%20momentul%20sa,nevoii%20si%20activitatii%20companiei%20tale."
+    }
+  ],
+  "deschise": [
+    "https://www.unicredit.ro/ro/imm/micro/finantare.html",
+    "https://www.unicredit.ro/en/sme/borrowing/special-programs.html",
+    "https://www.unicredit.ro/ro/imm/finantare/cheltuieli-curente.html",
+    "https://www.unicredit.ro/ro/imm/finantare/investitii.html",
+    "https://www.unicredit.ro/ro/imm/diverse/documente-utile.html",
+    "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioaneSME/Comisioane-si-dobanzi-SME.pdf"
+  ],
+  "durata_s": 92,
+  "consum": {
+    "intrare": 14,
+    "iesire": 7292,
+    "citire_cache": 327484,
+    "scriere_cache": 128178,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4588898
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ABONAMENT_PRESTIGE",
+  "denumire": "Abonament PRESTIGE (corporate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet cont și card Unlimited (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul abonament corporate cu cont curent, carduri Mastercard Business și plăți/încasări incluse, dar la TechVentures pachetul Unlimited oferă doar 2 carduri (vs 5 standard+2 Gold la Prestige), doar primele 100 de plăți interbancare gratuite (nu tranzacții nelimitate) și nu menționează niciun serviciu de tip Live FX.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru companii listează explicit planul Unlimited cu cifrele privind conturile, cardurile și plățile incluse, dar accesul direct la pagină a fost blocat, textul fiind confirmat printr-un rezultat de căutare cache.",
+      "citat": "10 conturi curente în lei și valută Emitere și administrare card Mastercard Business în lei sau euro (2 carduri) Livrare card în România Internet și Mobile Banking Încasări intra/interbancare în lei și valută Plăți intrabancare în lei și valută prin Internet Banking Primele 100 plăți interbancare în lei și euro prin Internet Banking*",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet cont și card Unlimited (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagina principală confirmă prețul abonamentului Unlimited (200 lei/lună), mai mic decât Prestige (295 lei/lună) și cu doar 2 carduri Mastercard Business incluse, fără mențiune de Live FX sau carduri Gold suplimentare.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Secțiunea 'PACHETE CONT & CARD' de pe pagina principală prezintă prețul lunar și câteva beneficii-cheie ale pachetului Unlimited, dar fără detalii complete comparabile cu Prestige.",
+      "citat": "UNLIMITED 200 lei/luna Tot ce ai nevoie pentru afacere! 10 conturi curente in lei si valuta Emitere si administrare card Mastercard Business in lei sau euro (2 carduri) Livrare card in Romania Internet Banking Incasari intra/interbancare in lei si valuta",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/conturi-pachete-cont-curent",
+    "https://techventures.bank/companii/carduri",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/pachete-cont-curent"
+  ],
+  "durata_s": 48,
+  "consum": {
+    "intrare": 66993,
+    "iesire": 3809,
+    "citire_cache": 25277,
+    "scriere_cache": 21159,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.23002889999999998
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "revolut",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.revolut.com/en-RO/business/accept-payments/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Accept Payments (Revolut Business – QR Codes, Payment Links, Merchant Account)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este soluția Revolut Business pentru încasări instant de la clienți, inclusiv prin cod QR, cu decontare în 24h și în weekend; diferă de RoPay pentru că nu e integrată în schema națională RoPay, ci e un sistem propriu Revolut (card, Revolut Pay, QR, linkuri de plată) disponibil doar pentru conturile Business cu Merchant Account.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată serviciului de acceptare plăți pentru firme conține cifre explicite despre comisioane și despre decontarea în weekend, iar codul QR este unul dintre canalele menționate explicit în FAQ.",
+      "citat": "Accept payments directly into your Merchant account, then access your money the next day. Even on weekends. Only pay for successful sales with online rates starting at 1% + lei 1.20 per transaction.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/en-RO/business/accept-payments/#:~:text=Accept%20payments%20directly%20into%20your,%2B%20lei%201.20%20per%20transaction."
+    },
+    {
+      "url": "https://www.revolut.com/en-RO/business/accept-payments-pricing/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Accept Payments – Pricing (Revolut Business)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Grila de tarife pentru încasările persoanelor juridice (plăți în persoană, inclusiv prin QR/contactless, și online), aplicabilă contului Merchant Revolut Business; nu este o schemă națională de tip RoPay, ci tarifarea proprie Revolut pentru acceptarea plăților de către firme.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document de tarife cu cifre detaliate pe tip de card și canal (in-person/online), direct aplicabil încasărilor realizate de firme, inclusiv prin cod QR la terminal/telefon.",
+      "citat": "Prices starting from 0,8% + lei 0.12 In-person payments 1% + lei 1.20 Online payments. Visa and Mastercard Domestic & European consumer cards 1% + lei 1.20 0,8% + lei 0.12",
+      "citat_verificat": true,
+      "link_live": "https://www.revolut.com/en-RO/business/accept-payments-pricing/#:~:text=Prices%20starting%20from%200%2C8%25%20%2B,1.20%200%2C8%25%20%2B%20lei%200.12"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.revolut.com/en-RO/business/accept-payments/",
+    "https://www.revolut.com/ro-RO/business/solicitari-de-plata",
+    "https://www.revolut.com/ro-RO/business/solicitari-de-plata/",
+    "https://www.revolut.com/en-RO/business/payment-requests/",
+    "https://www.revolut.com/business/payment-qr/",
+    "https://www.revolut.com/en-RO/business/accept-payments-pricing/"
+  ],
+  "durata_s": 42,
+  "consum": {
+    "intrare": 65690,
+    "iesire": 3241,
+    "citire_cache": 80092,
+    "scriere_cache": 47837,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.29940089999999997
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "pko",
+  "cod": "LINIE_CREDIT",
+  "denumire": "Linie de credit / capital de lucru",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dob%C3%A2nzilor.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Credite de capital de lucru - Reînnoibil (Revolving)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de dobânzi al sucursalei românești liste rata dobânzii pentru creditul de capital de lucru reînnoibil, exact echivalentul liniei de credit Libra pentru firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de rate ale dobânzii emis de PKO Bank Polski Sucursala București, cu rândul dedicat explicit creditului de capital de lucru reînnoibil și formula de calcul a dobânzii.",
+      "pagina_pdf": 1,
+      "citat": "Credite de capital de lucru, inclusiv: Working capital loans, including: 1) facilitate de descoperit de cont overdraft facility ROBOR/SOFR/EURIBOR/WIBOR + marja ROBOR/SOFR/EURIBOR/WIBOR + margin 2) Reînnoibil Revolving ROBOR/SOFR/EURIBOR/WIBOR + marja ROBOR/SOFR/EURIBOR/WIBOR + margin",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.pkobp.pl/ro/filiala-romania/produse",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de capital de lucru reînnoibil",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs dedicat liniilor de credit reînnoibile pentru capitalul de lucru, destinat clienților corporate (persoane juridice), listat explicit în secțiunea Credite a băncii.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina listează explicit produsul 'Credit de capital de lucru reînnoibil' în categoria Credite, dar fără cifre (dobânzi/comisioane) pe această pagină.",
+      "citat": "Facilitate de descoperit de Cont Credit de capital de lucru reînnoibil Credit de capital de lucru ne-reînnoibil Credit de Investiții Facilitate de credit multi-produs",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.pkobp.pl/ro/filiala-romania",
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/2b04fb89-3eaf-4316-bbce-dc79d8f58b12.pdf?content-disposition=filename=Ratele_dobânzilor.pdf",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+  ],
+  "durata_s": 45,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3259,
+    "citire_cache": 52476,
+    "scriere_cache": 65354,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2064902
+  }
+}

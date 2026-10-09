@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bnpparibas",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://cashmanagement.bnpparibas.com/print/pdf/node/107",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Documentary credits (BNP Paribas Trade Finance Capabilities - Romania)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este același tip de produs (acreditiv documentar) pentru același segment (persoane juridice / corporates), confirmat explicit în ghidul de țară Atlas pentru România, secțiunea dedicată capabilităților de trade finance ale BNP Paribas.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul este specific pentru România (menționează centrul de trade finance din București) și confirmă explicit disponibilitatea 'Documentary credits' ca produs de trade payments, dar nu conține cifre de comisioane sau dobânzi specifice, fiind mai degrabă un checklist de capabilități.",
+      "citat": "BNP Paribas' trade centre for Romania, based in Bucharest, comprises a senior trade manager and a trade advisor. Back office support is provided through the shared service centre located in Bulgaria.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://cashmanagement.bnpparibas.com/print/pdf/node/107",
+    "https://www.romania.bnpparibas.com/en/corporates-institutions/",
+    "https://cashmanagement.bnpparibas.com/romania"
+  ],
+  "durata_s": 22,
+  "consum": {
+    "intrare": 8,
+    "iesire": 1536,
+    "citire_cache": 68585,
+    "scriere_cache": 53585,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16305550000000002
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_BID_IMM",
+  "denumire": "Credit cu garanție BID",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/garantia-de-portofoliu-pentru-imm",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanția de Portofoliu pentru IMM (BID)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit în lei pentru IMM-uri (persoane juridice), cu garanție BID 70-80%, destinat capitalului de lucru și investițiilor, plafon 10 milioane lei/tranzacție - corespunde exact produsului Libra CREDIT_BID_IMM.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu toate caracteristicile numerice: procent garantare, valoare maximă, durată.",
+      "citat": "Garanție BID până la 70% din valoarea finanțării și până la 80% pentru femei antreprenor, start-up-uri și companii inovatoare. Moneda: lei Valoarea maximă garantată a tranzacției: 10 milioane lei/ tranzacție.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/presa/cec-bank-continua-finantarea-imm-urilor-si-cu-garantia-bancii-de-investitii-si-dezvoltare-din",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Garanția de Portofoliu pentru IMM (BID)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Comunicat de presă care confirmă plafoanele și procentele de garantare ale aceluiași produs BID pentru IMM.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document general (comunicat) dar conține cifre explicite despre plafonul de garantare și procentele BID pentru acest produs.",
+      "citat": "În baza convenției semnate cu BID, CEC Bank va putea acorda credite în limita unui plafon de 740 milioane de lei, utilizând plafonul de garantare de 520 milioane de lei.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.cec.ro/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Garanția de Portofoliu pentru IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina principală prezintă sumar produsul și face trimitere către pagina dedicată, confirmând destinația pentru capital de lucru și investiții.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Mențiune scurtă a produsului pe homepage, fără cifre detaliate, dar confirmă existența și linkul către pagina dedicată.",
+      "citat": "Prin CEC Bank, partener al Produsului de Garanție de Portofoliu pentru IMM, poți avea acces la finanțări noi acordate pentru capital de lucru și pentru investiții în active corporale și necorporale",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1479,
+    "citire_cache": 6330,
+    "scriere_cache": 37505,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1098265
+  }
+}

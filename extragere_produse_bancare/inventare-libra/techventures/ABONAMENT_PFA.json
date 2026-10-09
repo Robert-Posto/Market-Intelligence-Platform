@@ -1,0 +1,59 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "ABONAMENT_PFA",
+  "denumire": "Abonament PFA",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet Business - Lista de tarife și comisioane aplicabile entităților economice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Documentul de tarife pentru entități economice confirmă structura celor 3 pachete (Startup 25 lei, Business 29 lei, Unlimited 200 lei) cu cont curent, card Mastercard Business atașat și Internet/Mobile Banking incluse - același tip de produs (abonament/pachet cont de business cu card și digital banking) și același segment (persoane juridice/PFA), dar nu este un produs dedicat exclusiv PFA/profesii, ci unul general pentru companii.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Documentul oficial de tarife pentru entități economice conține explicit prețul pachetului Business (29 lei/lună, identic cu Libra) și listează serviciile incluse (cont, card business, IB/MB), fiind document contractual cu cifre precise.",
+      "citat": "25 lei/ lună 29 lei/ lună 200 lei/ lună STARTUP BUSINESS UNLIMITED Card de debit de tip Mastercard Business, atașat unuia dintre conturile curente incluse în pachet (emitere, reînnoire card la expirare, administrare, livrare card emis/ reînnoit la expirare prin curier în România) – opțional",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/companii/pachete-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent Business",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pachetul Business (29 lei/lună) este pentru companii/entități economice (inclusiv PFA, care intră la TechVentures sub categoria entități economice) și include cont curent, card Mastercard Business, Internet și Mobile Banking - exact ca Abonamentul PFA de la Libra. Diferă faptul că nu este un pachet dedicat special brandat pentru PFA/profesii liberale, ci un pachet general de business (Startup/Business/Unlimited), iar pagina nu detaliază explicit un plafon de 50 operațiuni/lună inclus.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru companii arată explicit prețul de 29 lei/lună pentru pachetul Business, identic cu prețul Abonamentului PFA Libra, dar nu menționează PFA explicit și nici numărul de operațiuni incluse.",
+      "citat": "Pachetele TechVentures Bank răspund cerințelor complexe ale companiilor, oferind un set diversificat de servicii și produse personalizate precum conturi curente, Internet Banking, plăți sau încasări intrabancare. Alege unul dintre pachetele noastre de cont curent și bucură-te de avantaje suplimentare! Business 29 lei/luna Pentru companii în creștere!",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/companii/conturi-pachete-cont-curent",
+    "https://techventures.bank/companii/cont-curent",
+    "https://techventures.bank/companii/pachete-cont-curent",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-01092026.pdf",
+    "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf"
+  ],
+  "durata_s": 121,
+  "consum": {
+    "intrare": 148199,
+    "iesire": 9389,
+    "citire_cache": 120037,
+    "scriere_cache": 46224,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.5298554
+  }
+}

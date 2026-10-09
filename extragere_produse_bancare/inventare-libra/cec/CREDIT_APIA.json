@@ -1,0 +1,37 @@
+{
+  "generat": "2026-10-08",
+  "banca": "cec",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.cec.ro/subventii-agricole-apia",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit subvenții agricole APIA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de activitate curentă acordat firmelor/PFA din agricultură pe baza adeverinței APIA, cu finanțare temporară până la încasarea subvenției - exact același tip de produs și segment ca CREDIT_APIA de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține descrierea completă și cifrele exacte: procentul maxim finanțat, dobânda și comisionul de acordare.",
+      "citat": "Dacă ai o afacere care activează în agricultură și ai nevoie de finanțarea cheltuielilor legate de înființarea, întreținerea și recoltarea culturilor de sezon sau creșterea animalelor, CEC Bank îți oferă această soluție de finanțare pe termen scurt, pe baza subvențiilor de încasat de la Agenția de Plăti și Intervenții în Agricultura (APIA).",
+      "citat_verificat": true,
+      "link_live": "https://www.cec.ro/subventii-agricole-apia#:~:text=Dac%C4%83%20ai%20o%20afacere%20care,%C8%99i%20Interven%C8%9Bii%20%C3%AEn%20Agricultura%20%28APIA%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.cec.ro/subventii-agricole-apia"
+  ],
+  "durata_s": 18,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1361,
+    "citire_cache": 34832,
+    "scriere_cache": 41097,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1233309
+  }
+}

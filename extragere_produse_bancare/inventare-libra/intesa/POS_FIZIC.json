@@ -1,0 +1,69 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/Integrare/Tarife-si-Comisioane---Persoane-Juridice-valabile-din-31.10.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "POS (secțiunea E. POS din Lista privind costurile standard ale băncii - Persoane Juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice conține secțiunea dedicată E. POS cu comisioanele exacte de instalare, administrare lunară și dezinstalare terminal POS.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Document PDF oficial de tarife cu secțiune dedicată POS și valori numerice explicite în EUR echivalent.",
+      "citat": "Comisionul de administrare lunar/ terminal POS FARA PIN PAD Echiv. 12 EUR/POS/luna, Comisionul de dezinstalare terminal POS in primele 12 luni de la instalare Echiv. 16 EUR/POS/luna, Comisionul de instalare terminal POS Gratuit.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/fise-produs/Pachete_tranzactionale_SB.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Abonament POS (în cadrul Pachetelor tranzacționale Small Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul prezintă opțiunea de reducere 50% la abonamentul POS și comisionul de administrare terminal POS ZERO, parte din pachetele pentru companii cu cifră de afaceri <1M€.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Document oficial de produs/pachete care menționează explicit condiții pentru abonamentul POS, dar cifrele sunt relative (reduceri) și trimit la LCS pentru valorile standard.",
+      "citat": "Reducere 50% la abonament POS, Comisionul de administrare terminal POS ZERO conform pricing standard din LCS, Pachetul START porneste de la 0 lei/luna, daca rulajul lunar creditor prin conturile curente deschise la Intesa Sanpaolo Bank este mai mare de 20.000 lei/ luna.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/page/pos-companii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "POS (Terminal POS pentru companii)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată terminalului POS fizic pentru persoane juridice/companii, destinat comercianților cu vânzare fizică, exact ca produsul Libra.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina descrie clar produsul și beneficiile, dar nu conține cifre (comisioane); cifrele sunt în documentul de tarife asociat.",
+      "citat": "Alegeți soluția de acceptare la plată a cardurilor prin intermediul terminalelor POS de la Intesa Sanpaolo Bank. Permite acceptarea plăților în Lei și EUR, funcționează cu orice tip de card bancar Visa / Mastercard cu chip sau contactless.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1620,
+    "citire_cache": 6349,
+    "scriere_cache": 29088,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0901978
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de investiții imobiliare (în cadrul Creditelor cu garanția InvestEU)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un credit în rate dedicat exclusiv companiilor pentru achiziția, construcția, reabilitarea sau extinderea de bunuri imobiliare necesare activității firmei, deci același tip de produs (credit imobiliar) și același segment (persoane juridice) ca produsul Libra. Diferă însă printr-o caracteristică importantă: este condiționat de garanția InvestEU (50%-70% din valoarea creditului), nefiind un credit imobiliar generic disponibil oricărei firme fără acest mecanism de garantare europeană.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată conține denumirea produsului și cifre concrete (sumă maximă, perioadă, procent garanție), dar acestea sunt valabile doar în contextul programului InvestEU.",
+      "citat": "Credit de investiții imobiliare Produs de credit dedicat finanțarii achiziției, construcției, reabilitării, modernizării, consolidării sau extinderii bunurilor imobiliare, necesare desfășurării și dezvoltării activității companiei, cu excepția achiziției terenurilor și a activităților de dezvoltare imobiliară. Suma creditului: maxim 7.5 Mil EUR Perioada de creditare: până la 12 ani Garanţii: garanția InvestEU intre 50% - 70% și alte garanții suplimentare, conform deciziei de aprobare a creditului",
+      "citat_verificat": true,
+      "link_live": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/#:~:text=Credit%20de%20investi%C8%9Bii%20imobiliare%20Produs,deciziei%20de%20aprobare%20a%20creditului"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/credite-imm/credite-cu-garantie-investeu/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/sme-loans/medium-and-long-term-investment-loan/"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 6,
+    "iesire": 3187,
+    "citire_cache": 42217,
+    "scriere_cache": 56664,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.18198540000000002
+  }
+}

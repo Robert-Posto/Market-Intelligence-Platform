@@ -1,0 +1,73 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "CREDIT_INVESTITII",
+  "denumire": "Credit de investiții",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/en/2022/12/05/credite/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții (segment IMM 2-10 mil LEI)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții pentru firme, destinat finanțării proiectelor de extindere a activității (echipamente, spații de producție), cu sumă, monedă, termen și contribuție proprie precizate - același tip de produs și segment (persoane juridice) ca produsul Libra.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată a produsului conține toate caracteristicile numerice (sumă, termen, perioadă de grație, contribuție proprie).",
+      "citat": "moneda – LEI, valoare – minimum 100.000 de lei, maximum 2 milioane de lei, termen de acordare: maximum 10 ani, perioada de gratie: pana la 12 luni, nu se aplica in cazul refinantarilor, rambursare in rate lunare sau trimestriale egale, contributie proprie – 15% in cazul creditelor garantate si 30% in cazul creditelor negarantate",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2022/12/05/credite/#:~:text=moneda%20%E2%80%93%20LEI%2C%20valoare%20%E2%80%93,30%25%20in%20cazul%20creditelor%20negarantate"
+    },
+    {
+      "url": "https://www.eximbank.ro/en/2022/12/05/investment-loan/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Investment Loan (Credit pentru investiții) - segment PFA și microîntreprinderi",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de investiții oferit atât companiilor cât și persoanelor fizice autorizate (PFA) pentru investiții imobiliare și/sau de active, exact segmentul vizat de produsul Libra (firme, PFA).",
+      "incredere": 0.9,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului, cu cifre complete privind suma minimă/maximă, moneda și termenul maxim de creditare.",
+      "citat": "minimal amount: RON 20,000, maximal amount: RON 2,000,000, currency: RON, maximal lending period: 10 years. According to the sizing criteria of the bank and without exceeding RON 2,000,000 per client/group of clients.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/en/2022/12/05/investment-loan/#:~:text=minimal%20amount%3A%20RON%2020%2C000%2C%20maximal,2%2C000%2C000%20per%20client%2Fgroup%20of%20clients."
+    },
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/credite-corporate/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții (segment corporate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Variantă a aceluiași produs de credit de investiții pentru firme, dar destinată segmentului corporate (companii mai mari), cu monedă LEI/EUR/USD și termen flexibil (scurt/mediu/lung), diferit de pragurile fixe ale segmentului IMM.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Conținutul a fost obținut printr-un rezultat de căutare (fetch direct eșuat), dar conține cifre explicite despre produs; necesită reconfirmare printr-o deschidere ulterioară a paginii.",
+      "citat": "moneda: LEI, EUR sau USD, perioada de acordare: termen scurt, mediu sau lung, perioada de gratie: pana la 12 luni, rambursare in rate lunare, trimestriale sau in functie de faza de executie a proiectului de investii, contributia proprie la proiectul de investitii: minimum 15% din costul total al proiectului",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/12/05/credite-corporate/",
+    "https://www.eximbank.ro/2022/12/05/credite/",
+    "https://www.eximbank.ro/en/2022/12/05/credite/",
+    "https://www.eximbank.ro/en/2022/12/05/investment-loan/",
+    "https://www.eximbank.ro/2022/12/05/credite-corporate",
+    "https://www.eximbank.ro/2022/12/05/investment-loan/"
+  ],
+  "durata_s": 40,
+  "consum": {
+    "intrare": 61074,
+    "iesire": 3378,
+    "citire_cache": 43046,
+    "scriere_cache": 35930,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2543622
+  }
+}

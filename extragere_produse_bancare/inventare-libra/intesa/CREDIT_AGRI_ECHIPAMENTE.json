@@ -1,0 +1,45 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "CREDIT_AGRI_ECHIPAMENTE",
+  "denumire": "Credit echipamente agricole (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Credit de Investiții în Echipamentele Agricole (încredere 0.55) — Același tip de produs (credit de investiții pentru achiziția de utilaje/mașini/echipamente agricole) și același segment de clienți (IMM/persoane juridice), dar pagina nu menționează o garanție/program InvestEU și nici un termen de rambursare (12–84 luni) explicit, ca la produsul Libra; de asemenea nu există cifre de dobândă/comision publicate."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-agricultura-imm.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit de Investiții în Echipamentele Agricole",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Același tip de produs (credit de investiții pentru achiziția de utilaje/mașini/echipamente agricole) și același segment de clienți (IMM/persoane juridice), dar pagina nu menționează o garanție/program InvestEU și nici un termen de rambursare (12–84 luni) explicit, ca la produsul Libra; de asemenea nu există cifre de dobândă/comision publicate.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Produsul este numit explicit și descris ca vizând achiziția de mașini, echipamente, utilaje agricole, dar pagina este de tip listă/hub pentru pachetul de credite agricole și nu conține cifre (dobândă, comision, termen) pentru acest produs specific.",
+      "citat": "Îți oferim un pachet de soluții de finanțare dedicate nevoilor de finanțare a agriculturii. Credit de Investiții în Echipamentele Agricole - vizează achiziția de mașini, echipamente, utilaje agricole",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-agricultura-imm.html",
+    "https://www.intesasanpaolobank.ro/corporate/credite-corporate/credite-agricultura-corporate.html",
+    "https://www.intesasanpaolobank.ro/imm/credite-imm/credite-investitii-imm.html",
+    "https://www.intesasanpaolobank.ro/bine-de-stiut/tarife-si-comisioane.html",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/LCS-PERSOANE-JURIDICE_Septembrie-2026.pdf"
+  ],
+  "durata_s": 102,
+  "consum": {
+    "intrare": 14,
+    "iesire": 7575,
+    "citire_cache": 302534,
+    "scriere_cache": 112672,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.4179648
+  }
+}

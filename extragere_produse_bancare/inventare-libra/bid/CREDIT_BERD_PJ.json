@@ -1,0 +1,23 @@
+{
+  "generat": "2026-10-08",
+  "banca": "bid",
+  "cod": "CREDIT_BERD_PJ",
+  "denumire": "Credit de investiții InvestEU BERD",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "produs_inexistent",
+    "nota": "BID nu acordă credite de investiții direct către firme/PFA. Produsul cel mai apropiat, 'Portfolio Guarantees for SMEs' (garanție de portofoliu, rată 70-80%, max 10 mil RON/tranzacție, maturitate 12-120 luni), este un instrument de garantare distribuit exclusiv prin intermediari financiari (alte bănci/IFN-uri) - end-clientul IMM nu aplică direct la BID pentru un credit, ci la banca parteneră. Creditarea directă a BID este rezervată exclusiv sectorului public (UAT-uri, companii de utilități publice, instituții publice), nu firmelor private. Astfel, segmentul de livrare (B2B2C prin intermediari vs. credit direct la client) și tipul de produs (garanție de portofoliu pentru bănci vs. credit de investiții pentru firmă) diferă fundamental de CREDIT_BERD_PJ al Libra, care e un credit acordat direct firmei de către bancă, cu garanție BERD inclusă."
+  },
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 29,
+  "consum": {
+    "intrare": 4,
+    "iesire": 2222,
+    "citire_cache": 6372,
+    "scriere_cache": 28008,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0935224
+  }
+}

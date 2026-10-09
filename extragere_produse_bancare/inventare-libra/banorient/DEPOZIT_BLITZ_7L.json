@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "DEPOZIT_BLITZ_7L",
+  "denumire": "Depozit promoțional Blitz (7 luni)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Dobânda standard la depozite (depozit la termen)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de produs (depozit la termen) pentru același segment (persoane fizice și persoane juridice, pagina are taburi separate pentru fiecare), dar nu există un termen de 7 luni (grila sare de la 6 la 9 luni) și nu este o dobândă promoțională de tip „Blitz”, ci dobânda standard, mult mai mică decât 6,25% p.a.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul de dobânzi conține explicit grila de dobânzi la depozite la termen pentru ambele segmente de clienți, cu cifre pe fiecare perioadă, dar fără un produs promoțional echivalent celui Libra.",
+      "citat": "Suma minimă pentru depozitele purtătoare de dobândă este de 200.000 RON/50.000 EUR/50.000 USD. Perioada EUR USD RON 6 luni 1.00 % 2.25 % 2.25 % 9 luni 1.00 % 2.25 % 2.50 % 12 luni 1.00 % 2.50 % 2.75 %",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Suma%20minim%C4%83%20pentru%20depozitele%20purt%C4%83toare,%25%202.50%20%25%202.75%20%25"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges",
+    "https://www.banorientfrance.com/romanian/romania/form-downloads"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2910,
+    "citire_cache": 31469,
+    "scriere_cache": 29429,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1089823
+  }
+}

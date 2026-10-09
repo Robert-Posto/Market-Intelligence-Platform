@@ -1,0 +1,38 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CREDIT_AGRI_IRIGATII",
+  "denumire": "Credit soluții pentru irigații (InvestEU)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://en.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credit pentru investiții în agricultură",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Same segment (producători agricoli, inclusiv persoane juridice și PFA) și același tip general (credit de investiții agricole), dar este un produs GENERAL pentru investiții agro (ferme, utilaje, renovări), nu unul dedicat sistemelor de irigații, nu este legat explicit de garanția InvestEU, iar durata maximă (84 luni) diferă de intervalul 12-60 luni al produsului Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Produsul este general pentru investiții agricole și menționează explicit posibilitatea finanțării utilajelor/echipamentelor, dar nu are o secțiune dedicată sistemelor de irigații sau programului InvestEU în text.",
+      "citat": "Creditul pentru investiții în agricultură este un produs destinat producătorilor agricoli, indiferent de forma de organizare juridică: persoane juridice, societăți agricole, persoane fizice autorizate, asociații familiale, întreprinderi familiale, întreprinderi individuale, producători agricoli individuali sau alte forme de organizare.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura",
+    "https://en.patriabank.ro/agro/credite/credit-pentru-investitii-in-agricultura"
+  ],
+  "durata_s": 38,
+  "consum": {
+    "intrare": 57127,
+    "iesire": 2344,
+    "citire_cache": 12686,
+    "scriere_cache": 30247,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.21584869999999998
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este cont curent pentru firme/PFA cu opțiune de card de business și abonamente operaționale (pachete cu cost lunar), la fel ca «Cont Online Business» de la Libra, dar Patria nu îl descrie ca fiind deschis/gestionat exclusiv online; platforma 100% online a băncii (Patria de Oriunde) este explicit destinată doar persoanelor fizice.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document/pagină cu grilă de prețuri clară pentru pachetele de cont curent business, incluzând cardul de business, dar fără confirmarea canalului exclusiv online.",
+      "pagina_pdf": null,
+      "citat": "Pachete de cont curent Patria Business - afaceri agricole, comert, productie. Card de Business Patria MasterCard Business. Cost 85 lei/lună | 100 lei/lună | 200 lei/lună, iar pentru pachetele UȘOR și PRACTIC, comision de 0,1% din valoarea retrasă.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont curent Microîntreprinderi",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pagină dedicată contului curent pentru firme (segment PJ/microîntreprinderi), administrabil prin Internet Banking, dar fără mențiune explicită de deschidere 100% online, spre deosebire de Libra Cont Online Business.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Pagina produsului pentru firme există și descrie contul curent și operațiunile aferente, dar conține puține cifre concrete (doar lista valutelor disponibile), fără tarife sau procente explicite.",
+      "pagina_pdf": null,
+      "citat": "Cont curent Microîntreprinderi la Patria Bank. Beneficiezi de tranzacții la costuri reduse de oriunde ești cu serviciul de Internet Banking. Contul curent se poate deschide în lei sau valută (EUR, USD, CHF, GBP etc.).",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
+    "https://www.patriabank.ro/",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent"
+  ],
+  "durata_s": 67,
+  "consum": {
+    "intrare": 109164,
+    "iesire": 4880,
+    "citire_cache": 12654,
+    "scriere_cache": 27958,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.33955379999999996
+  }
+}

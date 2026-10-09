@@ -1,0 +1,27 @@
+{
+  "generat": "2026-10-08",
+  "banca": "tbi",
+  "cod": "CREDIT_IMM_IPOTECA",
+  "denumire": "Credit IMM garantat cu ipotecă",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "nepublicat",
+    "nota": "tbi bank are un produs apropiat ca tip si segment — 'Credit pentru activitatea curenta cu garantii materiale' (https://tbibank.ro/companii/credite-companii/credit-fara-garantii/, denumit si 'Credit pentru activitatea curenta cu garantii materiale' pe hub-ul https://tbibank.ro/companii/credite-companii/) — descris ca o facilitate de finantare pentru capital de lucru garantata cu bunuri materiale (posibil inclusiv imobile), si separat un 'Credit de investitii' (https://tbibank.ro/companii/credite-companii/credit-de-investitii/) pentru finantarea investitiilor companiei. Niciuna dintre aceste pagini nu specifica explicit garantia ipotecara/imobiliara ca tip dedicat si, mai important, niciuna nu publica cifre concrete (sume minime/maxime, procent dobanda, termen in luni) pentru aceste produse — paginile contin doar descrieri generale de tip 'valoarea finantarii este stabilita in functie de nevoile companiei' fara plafoane numerice. Nu am gasit nici o pagina de tarife/comisioane sau FIPC dedicata acestor credite de firma care sa contina cifre. Nu exista o pagina/produs tbi numit explicit 'credit IMM garantat cu ipoteca' sau echivalent cu plaja 50.000-1.000.000 RON si termene de 84/180 luni. Am cautat si posibile credite ipotecare pentru firme, dar singurele rezultate despre 'credit ipotecar' la tbi bank se refera la creditul ipotecar pentru persoane fizice oferit prin partenerul Patria Bank (produsul TBIPay/Patria Acasa), care nu este pentru persoane juridice si deci nu se potriveste segmentului cerut. Din acest motiv marchez produsul ca nepublicat cu cifre verificabile, desi banca pare sa aiba o oferta de principiu pentru credite de firma garantate material."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/companii/credite-companii/credit-fara-garantii/",
+    "https://tbibank.ro/companii/credite-companii/",
+    "https://crediteimm.tbibank.ro/"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 8,
+    "iesire": 3318,
+    "citire_cache": 65526,
+    "scriere_cache": 39508,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1450712
+  }
+}

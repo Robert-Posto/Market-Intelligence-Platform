@@ -1,0 +1,36 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CREDIT_APIA",
+  "denumire": "Credit APIA (convenție APIA)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/imm-si-pfa/credite-imm/creditul-apia-saps/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Creditul APIA SAPS (APIA pentru suprafață)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de activitate curentă pentru firme/PFA din agricultură, acordat pe baza Adeverinței de Înregistrare Fermier APIA, până la 90% din valoarea subvenției, cu dobânda plătită la maturitate - identic ca tip de produs și segment de clienți cu CREDIT_APIA de la Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagină dedicată produsului, cu denumire, beneficiari, sumă (90% din subvenție), valută, tip credit și garanții explicit menționate.",
+      "citat": "Beneficiari: Persoane Juridice, Persoane Fizice Autorizate, Întreprinderi Familiale și Întreprinzători Individuali care dețin Adeverințe de Înregistrare Fermier emise de APIA pentru schemele de sprijin aferente anului curent, în care este menționat contul special pentru efectuarea plății subvenției, cont deschis la Garanti Bank S.A. Suma creditului: până la 90% din valoarea Adeverinței de Înregistrare Fermier; Valută: lei; Tipul creditului: credit pentru finanțarea activității curente.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 11,
+  "consum": {
+    "intrare": 4,
+    "iesire": 806,
+    "citire_cache": 6343,
+    "scriere_cache": 25858,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0739816
+  }
+}

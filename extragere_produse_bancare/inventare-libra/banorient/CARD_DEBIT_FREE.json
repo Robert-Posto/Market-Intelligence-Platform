@@ -1,0 +1,39 @@
+{
+  "generat": "2026-10-08",
+  "banca": "banorient",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "MasterCard GOLD Debit",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un card de debit (persoane fizice și juridice, conform paginii de produse care listează 'Cardul Gold Master' și 'Cardul Gold Business Master'), dar la Banorient cardul NU este gratuit: are comision de emitere și administrare lunară, spre deosebire de Libra Card de debit Free care este fără costuri de emitere/administrare și oferă cashback la parteneri (funcție pe care Banorient nu o menționează).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Documentul de tarife conține secțiunea dedicată cardului cu toate cifrele relevante (emitere, administrare, retrageri), fiind un document general care acoperă explicit acest produs.",
+      "citat": "IV-1 TAXE SI COMISIOANE \"BANQUE BANORIENT FRANCE\" MasterCard GOLD Debit - RON Emitere card Gold Debit 175 LEI Administrare lunara- pentru fiecare cont de card 25 LEI Administrare anuala a contului de card Zero",
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=IV%2D1%20TAXE%20SI%20COMISIOANE%20%22BANQUE,a%20contului%20de%20card%20Zero"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.banorientfrance.com/romanian/romania",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/romania/service-charges"
+  ],
+  "durata_s": 24,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1851,
+    "citire_cache": 17121,
+    "scriere_cache": 27175,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0898837
+  }
+}

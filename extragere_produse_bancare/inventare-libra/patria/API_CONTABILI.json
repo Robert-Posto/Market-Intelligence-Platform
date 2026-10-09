@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "patria",
+  "cod": "API_CONTABILI",
+  "denumire": "API Contabili (integrare cu programele de contabilitate)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.patriabank.ro/afaceri-mici/digital-banking/patria-smart-api",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Patria SMART API",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este un API dedicat companiilor (persoane juridice) care furnizează liste de tranzacții din conturile curente în format JSON sau MT940 — format standard folosit pentru import în programele de contabilitate — dar produsul nu este branduit explicit ca „integrare cu programele de contabilitate”, ci ca un canal alternativ general de acces la informațiile de cont.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată a produsului descrie clar funcționalitatea API (JSON și MT940) pentru companii, dar nu conține tarife numerice, iar legătura explicită cu software-ul de contabilitate nu este menționată direct.",
+      "citat": "Caracteristicile serviciului SMART API: se adresează companiilor care doresc utilizarea unui canal alternativ de acces la informațiile privind tranzacțiile aferente conturilor curente, prin API; se poate activa doar pentru acei clienți care au o adresa de e-mail validă și un număr de telefon mobil valid",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.patriabank.ro/afaceri-mici/digital-banking/patria-smart-api",
+    "https://www.patriabank.ro/d/2142",
+    "https://www.patriabank.ro/afaceri-mici/digital-banking/patria-smart-api",
+    "https://www.patriabank.ro/afaceri-mici/digital-banking/patria-smart-api/"
+  ],
+  "durata_s": 37,
+  "consum": {
+    "intrare": 44697,
+    "iesire": 2534,
+    "citire_cache": 12648,
+    "scriere_cache": 16330,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1580886
+  }
+}

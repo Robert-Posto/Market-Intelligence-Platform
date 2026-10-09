@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "exim",
+  "cod": "LIVE_FX",
+  "denumire": "Live FX (platformă de schimb online, produs diferit de FX clasic)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Platformă de tranzacționare valutară (Trezorerie și investiții)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este o platformă online de schimb valutar cu cotații în timp real, acces fără instalare printr-un link securizat, exact ca Live FX de la Libra; diferă segmentul de clienți — la Exim este disponibilă exclusiv secțiunii Corporate (persoane juridice), nu și persoanelor fizice ca la Libra.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată descrie explicit platforma de tranzacționare online cu cotații actualizate la secundă și fără necesitate de instalare, însă nu conține cifre de tarife proprii, ci doar cursul valutar curent afișat pe site.",
+      "citat": "asigura acces in timp real la cotatiile negociate pentru schimburi valutare, actualizate la secunda, oferind astfel alegerea momentului potrivit pentru tranzactionare; permite decontarea tranzactiilor in today, tomorrow, spot si forward (cu scadente pana la 1 an)",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/#:~:text=asigura%20acces%20in%20timp%20real,scadente%20pana%20la%201%20an%29"
+    },
+    {
+      "url": "https://www.eximbank.ro/2016/06/09/platforma-on-line-pentru-tranzactionarea-schimburilor-valutare/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Platforma on-line pentru tranzacționarea schimburilor valutare",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Comunicatul de lansare descrie exact un serviciu de trezorerie online cu cursuri în timp real accesat direct de pe site-ul băncii, fără instalare; produsul este dedicat exclusiv companiilor (persoane juridice), nu și persoanelor fizice, spre deosebire de Live FX de la Libra.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagina este un comunicat de presă istoric (2016) care descrie funcționalitățile platformei (acces online, cursuri în timp real, fără instalare) dar nu conține tarife sau cifre curente ale produsului.",
+      "citat": "EximBank a lansat un nou serviciu de trezorerie care faciliteaza clientilor bancii urmarirea on-line si in timp real a evolutiilor cotatiilor pe piata valutara, precum si efectuarea automata a tranzactiilor de schimburi valutare la cotatiile afisate de platforma de tranzactionare a bancii",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.eximbank.ro/2022/12/05/trezorerie-si-investii/",
+    "https://www.eximbank.ro/platforma-on-line-pentru-tranzactionarea-schimburilor-valutare/"
+  ],
+  "durata_s": 28,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1944,
+    "citire_cache": 35326,
+    "scriere_cache": 44906,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1387822
+  }
+}

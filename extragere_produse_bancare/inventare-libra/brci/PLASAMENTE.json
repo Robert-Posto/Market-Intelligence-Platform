@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "PLASAMENTE",
+  "denumire": "Plasamente / titluri de stat",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.brci.ro/ro/produse/titluri-de-stat.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Titluri de stat",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este exact produsul de plasamente in titluri de stat (obligatiuni emise de statul roman) oferit de BRCI, cu servicii de custodie si tranzactionare pe piata secundara; banca are pagini separate pentru Persoane Juridice (aceasta) si Persoane Fizice (titluri-de-stat-1.html), acoperind ambele segmente ca si produsul Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina descrie explicit produsul (tip, moneda, termen, modalitate de tranzactionare) si link-uri catre listele de tarife si comisioane aferente, dar textul extras nu contine cifre de dobanda sau randament, doar descrierea produsului si comisioanelor aferente in documentele PDF asociate.",
+      "citat": "Titlurile de stat reprezintă obligațiuni emise și garantate de statul român, în moneda națională sau valută, pe termen scurt, mediu și lung, cu risc scăzut; Prin intermediul BRCI puteți efectua tranzacții pe piața secundară cu titluri de stat în lei sau euro, emise de Ministerul Finanțelor Publice pe teritoriul României sau pe pietele externe.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/titluri-de-stat.html",
+    "https://www.brci.ro/ro/produse/titluri-de-stat-1.html",
+    "https://www.brci.ro/ro/articol/actualizare-liste-comisioane-operatiuni-cu-instrumente-financiare-pf-si-pj-din-13-12-2024.html",
+    "https://brci.ro/ro/produse/titluri-de-stat.html"
+  ],
+  "durata_s": 63,
+  "consum": {
+    "intrare": 27151,
+    "iesire": 4315,
+    "citire_cache": 29881,
+    "scriere_cache": 18543,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14978570000000002
+  }
+}

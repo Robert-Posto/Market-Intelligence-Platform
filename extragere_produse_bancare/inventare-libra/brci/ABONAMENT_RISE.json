@@ -1,0 +1,54 @@
+{
+  "generat": "2026-10-08",
+  "banca": "brci",
+  "cod": "ABONAMENT_RISE",
+  "denumire": "Abonament RISE",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet Connect 20",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Ambele sunt abonamente operaționale lunare dedicate persoanelor juridice, incluzând cont curent, card business și IB/MB, dar Connect 20 costă 20 lei/lună (față de 50 lei la RISE), include doar 1 card business (față de 2 la RISE) și nu menționează explicit un comision mPOS dedicat.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată pachetului Connect 20, cu toate cifrele abonamentului (preț lunar, taxe card) prezentate explicit în text.",
+      "citat": "Connect 20 este un pachet tranzactional dedicat persoanelor juridice care nu detin un cont curent sau alte pachete de produse si servicii bancare la BRCI. Abonament lunar 20 lei.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Pachet Connect 20 (prin Partener NETOPIA)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Descrie aceeași structură de abonament lunar de 20 lei pentru persoane juridice (cont lei+euro, card business, IB/MB), dar legată de un card de parteneriat, nu un abonament operațional independent ca RISE.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina unui card specific menționează explicit pachetul Connect 20 cu abonamentul lunar de 20 lei și componentele incluse, dar nu este pagina principală a abonamentului.",
+      "citat": "Vei beneficia de pachetul BRCI CONNECT 20 prin Partener NETOPIA, cu un abonament lunar de 20 lei, ce include: 1 Cont Curent in Lei 1 Cont Curent in Euro 1 Card Mastercard Business Debit Lei oferit prin Partener",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.brci.ro/",
+    "https://companii.brci.ro/pjonboarding",
+    "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+    "https://www.brci.ro/ro/produse/cont-curent-pj.html"
+  ],
+  "durata_s": 64,
+  "consum": {
+    "intrare": 25459,
+    "iesire": 3410,
+    "citire_cache": 12716,
+    "scriere_cache": 23046,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.14517619999999998
+  }
+}

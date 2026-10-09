@@ -29,7 +29,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -63,7 +63,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -131,7 +131,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -165,7 +165,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -233,7 +233,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -267,7 +267,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -335,7 +335,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -369,7 +369,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -437,7 +437,7 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 1,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -505,10 +505,1796 @@
    "observatii": [],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 2,
+   "durata_s": 0,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/our-pricing-plans/||plan standard + revolut pro (cashback)",
+   "url": "https://www.revolut.com/ro-RO/our-pricing-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Plan Standard + Revolut Pro (cashback)",
+   "focus": "Produsul băncii: „Plan Standard + Revolut Pro (cashback)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2745,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/business-account-plans/||revolut business account plans (basic / grow / scale / enterprise)",
+   "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business Account Plans (Basic / Grow / Scale / Enterprise)",
+   "focus": "Produsul băncii: „Revolut Business Account Plans (Basic / Grow / Scale / Enterprise)”.\nCorespunde produsului Libra: „Abonament ELITE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2639,
+     "id_produs_libra": 1,
+     "cod": "ABONAMENT_ELITE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/flexible-cash-funds/||fonduri flexibile de investiții (business)",
+   "url": "https://www.revolut.com/ro-RO/business/flexible-cash-funds/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Fonduri flexibile de investiții (Business)",
+   "focus": "Produsul băncii: „Fonduri flexibile de investiții (Business)”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2870,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/legal/business-basic-fees/||revolut business fees (basic) - document de condiții/tarife complet",
+   "url": "https://www.revolut.com/en-RO/legal/business-basic-fees/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business Fees (Basic) - document de condiții/tarife complet",
+   "focus": "Produsul băncii: „Revolut Business Fees (Basic) - document de condiții/tarife complet”.\nCorespunde produsului Libra: „Abonament SHINE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2683,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/business-account-plans/||revolut business – planul grow",
+   "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business – planul Grow",
+   "focus": "Produsul băncii: „Revolut Business – planul Grow”.\nCorespunde produsului Libra: „Abonament PRIME (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2656,
+     "id_produs_libra": 5,
+     "cod": "ABONAMENT_PRIME",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/business-account-plans/||integrări cu programe de contabilitate (grilă de planuri revolut business)",
+   "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Integrări cu programe de contabilitate (grilă de planuri Revolut Business)",
+   "focus": "Produsul băncii: „Integrări cu programe de contabilitate (grilă de planuri Revolut Business)”.\nCorespunde produsului Libra: „API Contabili (integrare cu programele de contabilitate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2801,
+     "id_produs_libra": 9,
+     "cod": "API_CONTABILI",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/||revolut business account",
+   "url": "https://www.revolut.com/en-RO/business/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business Account",
+   "focus": "Produsul băncii: „Revolut Business Account”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2588,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/business-account-plans/||revolut business – planuri (basic, grow, scale, enterprise)",
+   "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business – Planuri (Basic, Grow, Scale, Enterprise)",
+   "focus": "Produsul băncii: „Revolut Business – Planuri (Basic, Grow, Scale, Enterprise)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2623,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/bonds/||obligațiuni (inclusiv obligațiuni de stat / titluri de stat)",
+   "url": "https://www.revolut.com/ro-RO/bonds/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Obligațiuni (inclusiv obligațiuni de stat / titluri de stat)",
+   "focus": "Produsul băncii: „Obligațiuni (inclusiv obligațiuni de stat / titluri de stat)”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2868,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://help.revolut.com/ro-RO/help/wealth/stocks/bonds/bonds-fees/||comisioane pentru obligațiuni",
+   "url": "https://help.revolut.com/ro-RO/help/wealth/stocks/bonds/bonds-fees/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Comisioane pentru obligațiuni",
+   "focus": "Produsul băncii: „Comisioane pentru obligațiuni”.\nCorespunde produsului Libra: „Plasamente / titluri de stat”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2869,
+     "id_produs_libra": 51,
+     "cod": "PLASAMENTE",
+     "v2": "investitii-retail"
+    }
+   ],
+   "produse_v2": [
+    "investitii-retail"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://help.revolut.com/en-RO/help/profile-and-plan/my-plan-benefits/revolut-plans1/standard-plan/||standard plan (planul gratuit implicit al contului personal revolut)",
+   "url": "https://help.revolut.com/en-RO/help/profile-and-plan/my-plan-benefits/revolut-plans1/standard-plan/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Standard plan (planul gratuit implicit al contului personal Revolut)",
+   "focus": "Produsul băncii: „Standard plan (planul gratuit implicit al contului personal Revolut)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2751,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/legal/business-scale-fees/||exchanging money currencies – business fees (scale), revolut bank uab sucursala bucurești",
+   "url": "https://www.revolut.com/en-RO/legal/business-scale-fees/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Exchanging money currencies – Business fees (Scale), Revolut Bank UAB Sucursala București",
+   "focus": "Produsul băncii: „Exchanging money currencies – Business fees (Scale), Revolut Bank UAB Sucursala București”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2830,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/our-pricing-plans/||compare revolut plans (standard/plus/premium/metal/ultra)",
+   "url": "https://www.revolut.com/en-RO/our-pricing-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Compare Revolut plans (Standard/Plus/Premium/Metal/Ultra)",
+   "focus": "Produsul băncii: „Compare Revolut plans (Standard/Plus/Premium/Metal/Ultra)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2750,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/legal/business-standard-fees/||business fees (enterprise)",
+   "url": "https://www.revolut.com/ro-RO/legal/business-standard-fees/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Business fees (Enterprise)",
+   "focus": "Produsul băncii: „Business fees (Enterprise)”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2625,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/currency-converter/||currency converter / exchange (in-app currency exchange)",
+   "url": "https://www.revolut.com/en-RO/currency-converter/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Currency Converter / Exchange (in-app currency exchange)",
+   "focus": "Produsul băncii: „Currency Converter / Exchange (in-app currency exchange)”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2611,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/integrations/||integrări revolut business (contabilitate) – keez, smartbill, fgo, oblio, factureaza.ro, xero, quickbooks",
+   "url": "https://www.revolut.com/ro-RO/business/integrations/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Integrări Revolut Business (contabilitate) – Keez, SmartBill, FGO, Oblio, Factureaza.ro, Xero, QuickBooks",
+   "focus": "Produsul băncii: „Integrări Revolut Business (contabilitate) – Keez, SmartBill, FGO, Oblio, Factureaza.ro, Xero, QuickBooks”.\nCorespunde produsului Libra: „API Contabili (integrare cu programele de contabilitate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2802,
+     "id_produs_libra": 9,
+     "cod": "API_CONTABILI",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/business-account-plans/||revolut business account pricing (basic/grow/scale/enterprise)",
+   "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business Account Pricing (Basic/Grow/Scale/Enterprise)",
+   "focus": "Produsul băncii: „Revolut Business Account Pricing (Basic/Grow/Scale/Enterprise)”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2589,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/business-account-plans/||plan grow (revolut business)",
+   "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Plan Grow (Revolut Business)",
+   "focus": "Produsul băncii: „Plan Grow (Revolut Business)”.\nCorespunde produsului Libra: „Abonament PRESTIGE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2680,
+     "id_produs_libra": 4,
+     "cod": "ABONAMENT_PRESTIGE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/accept-payments/||accept payments (revolut business – qr codes, payment links, merchant account)",
+   "url": "https://www.revolut.com/en-RO/business/accept-payments/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Accept Payments (Revolut Business – QR Codes, Payment Links, Merchant Account)",
+   "focus": "Produsul băncii: „Accept Payments (Revolut Business – QR Codes, Payment Links, Merchant Account)”.\nCorespunde produsului Libra: „RoPay for Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2888,
+     "id_produs_libra": 55,
+     "cod": "ROPAY_BUSINESS",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/business-account-plans/||planurile revolut business (basic / grow / scale / enterprise)",
+   "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Planurile Revolut Business (Basic / Grow / Scale / Enterprise)",
+   "focus": "Produsul băncii: „Planurile Revolut Business (Basic / Grow / Scale / Enterprise)”.\nCorespunde produsului Libra: „Abonament ELITE (corporate)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2638,
+     "id_produs_libra": 1,
+     "cod": "ABONAMENT_ELITE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/business/accept-payments-pricing/||revolut business - accept payments (online payments / payment gateway)",
+   "url": "https://www.revolut.com/business/accept-payments-pricing/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business - Accept payments (Online payments / Payment Gateway)",
+   "focus": "Produsul băncii: „Revolut Business - Accept payments (Online payments / Payment Gateway)”.\nCorespunde produsului Libra: „LibraPay eCommerce (plăți online)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2592,
+     "id_produs_libra": 47,
+     "cod": "LIBRAPAY_ECOM",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/||cont business (revolut business) — acces aplicație mobilă și web",
+   "url": "https://www.revolut.com/ro-RO/business/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont Business (Revolut Business) — acces aplicație mobilă și web",
+   "focus": "Produsul băncii: „Cont Business (Revolut Business) — acces aplicație mobilă și web”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2842,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/pro-vs-business/||revolut business pentru liber-profesioniști înregistrați",
+   "url": "https://www.revolut.com/pro-vs-business/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business pentru liber-profesioniști înregistrați",
+   "focus": "Produsul băncii: „Revolut Business pentru liber-profesioniști înregistrați”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2642,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://help.revolut.com/en-RO/help/setting-up-an-account/is-my-business-eligible/why-is-my-account-not-eligible/business/||eligibility to open a business account",
+   "url": "https://help.revolut.com/en-RO/help/setting-up-an-account/is-my-business-eligible/why-is-my-account-not-eligible/business/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Eligibility to open a Business account",
+   "focus": "Produsul băncii: „Eligibility to open a Business account”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2590,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/legal/premium-fees/||comisioane personale (premium) – secțiunea schimb valutar",
+   "url": "https://www.revolut.com/ro-RO/legal/premium-fees/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Comisioane personale (Premium) – secțiunea Schimb valutar",
+   "focus": "Produsul băncii: „Comisioane personale (Premium) – secțiunea Schimb valutar”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2613,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/legal/business-grow-fees/||business fees (grow)",
+   "url": "https://www.revolut.com/en-RO/legal/business-grow-fees/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Business fees (Grow)",
+   "focus": "Produsul băncii: „Business fees (Grow)”.\nCorespunde produsului Libra: „Abonament PRESTIGE (corporate)”; „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2681,
+     "id_produs_libra": 4,
+     "cod": "ABONAMENT_PRESTIGE",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 2624,
+     "id_produs_libra": 2,
+     "cod": "ABONAMENT_OPERATIONAL",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/currency-converter/||currency converter – revolut",
+   "url": "https://www.revolut.com/en-RO/currency-converter/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Currency Converter – Revolut",
+   "focus": "Produsul băncii: „Currency Converter – Revolut”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2831,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/revolut-business-affiliates/||planuri revolut business (basic, grow, scale) – includ emiterea de carduri de debit business",
+   "url": "https://www.revolut.com/ro-RO/business/revolut-business-affiliates/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Planuri Revolut Business (Basic, Grow, Scale) – includ emiterea de carduri de debit business",
+   "focus": "Produsul băncii: „Planuri Revolut Business (Basic, Grow, Scale) – includ emiterea de carduri de debit business”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2716,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/business-account-plans/||revolut business – planul basic",
+   "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business – planul Basic",
+   "focus": "Produsul băncii: „Revolut Business – planul Basic”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2641,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/cards/||carduri de companie (carduri de debit fizice și virtuale revolut business)",
+   "url": "https://www.revolut.com/ro-RO/business/cards/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Carduri de companie (carduri de debit fizice și virtuale Revolut Business)",
+   "focus": "Produsul băncii: „Carduri de companie (carduri de debit fizice și virtuale Revolut Business)”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2715,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/accept-payments-pricing/||accept payments – pricing (revolut business)",
+   "url": "https://www.revolut.com/en-RO/business/accept-payments-pricing/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Accept Payments – Pricing (Revolut Business)",
+   "focus": "Produsul băncii: „Accept Payments – Pricing (Revolut Business)”.\nCorespunde produsului Libra: „RoPay for Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2889,
+     "id_produs_libra": 55,
+     "cod": "ROPAY_BUSINESS",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/business-account-plans/||plan basic (revolut business)",
+   "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Plan Basic (Revolut Business)",
+   "focus": "Produsul băncii: „Plan Basic (Revolut Business)”.\nCorespunde produsului Libra: „Abonament RISE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2662,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/business/payment-gateway/||revolut payment gateway (merchant api)",
+   "url": "https://www.revolut.com/business/payment-gateway/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Payment Gateway (Merchant API)",
+   "focus": "Produsul băncii: „Revolut Payment Gateway (Merchant API)”.\nCorespunde produsului Libra: „LibraPay eCommerce (plăți online)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2591,
+     "id_produs_libra": 47,
+     "cod": "LIBRAPAY_ECOM",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/accept-payments-pricing/||terminalul revolut",
+   "url": "https://www.revolut.com/ro-RO/business/accept-payments-pricing/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Terminalul Revolut",
+   "focus": "Produsul băncii: „Terminalul Revolut”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2657,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://help.revolut.com/en-RO/help/wealth/exchanging-money/how-much-does-it-cost-to-make-an-exchange/will-i-be-charged-for-exchanging-foreign-currencies/||currency exchange (exchange) – revolut personal",
+   "url": "https://help.revolut.com/en-RO/help/wealth/exchanging-money/how-much-does-it-cost-to-make-an-exchange/will-i-be-charged-for-exchanging-foreign-currencies/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Currency exchange (Exchange) – Revolut Personal",
+   "focus": "Produsul băncii: „Currency exchange (Exchange) – Revolut Personal”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2828,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/a-radically-better-account/||cont standard revolut (card de debit gratuit)",
+   "url": "https://www.revolut.com/ro-RO/a-radically-better-account/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont Standard Revolut (card de debit gratuit)",
+   "focus": "Produsul băncii: „Cont Standard Revolut (card de debit gratuit)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2744,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/legal/standard-fees/||exchange – personal fees (standard), revolut bank uab sucursala bucurești",
+   "url": "https://www.revolut.com/en-RO/legal/standard-fees/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Exchange – Personal Fees (Standard), Revolut Bank UAB Sucursala București",
+   "focus": "Produsul băncii: „Exchange – Personal Fees (Standard), Revolut Bank UAB Sucursala București”.\nCorespunde produsului Libra: „Schimb valutar spot”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2829,
+     "id_produs_libra": 44,
+     "cod": "FX_SPOT",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/bank-account/||cont bancar (cont curent) revolut",
+   "url": "https://www.revolut.com/ro-RO/bank-account/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont bancar (Cont curent) Revolut",
+   "focus": "Produsul băncii: „Cont bancar (Cont curent) Revolut”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2749,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/legal/business-basic-fees/||business fees (basic plan)",
+   "url": "https://www.revolut.com/en-RO/legal/business-basic-fees/",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Business Fees (Basic plan)",
+   "focus": "Produsul băncii: „Business Fees (Basic plan)”.\nCorespunde produsului Libra: „Abonament RISE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2663,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/business-account-plans/||revolut business - plan basic",
+   "url": "https://www.revolut.com/en-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business - Plan Basic",
+   "focus": "Produsul băncii: „Revolut Business - Plan Basic”.\nCorespunde produsului Libra: „Abonament SHINE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2682,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/currency-exchange/||schimb valutar (revolut business currency exchange)",
+   "url": "https://www.revolut.com/ro-RO/business/currency-exchange/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Schimb valutar (Revolut Business Currency Exchange)",
+   "focus": "Produsul băncii: „Schimb valutar (Revolut Business Currency Exchange)”.\nCorespunde produsului Libra: „Live FX (platformă de schimb online, produs diferit de FX clasic)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2612,
+     "id_produs_libra": 49,
+     "cod": "LIVE_FX",
+     "v2": "schimb-valutar"
+    }
+   ],
+   "produse_v2": [
+    "schimb-valutar"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/en-RO/business/accept-payments-pricing/||revolut business - payment acceptance pricing (acceptare plăți card/mpos)",
+   "url": "https://www.revolut.com/en-RO/business/accept-payments-pricing/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Business - Payment Acceptance Pricing (acceptare plăți card/mPOS)",
+   "focus": "Produsul băncii: „Revolut Business - Payment Acceptance Pricing (acceptare plăți card/mPOS)”.\nCorespunde produsului Libra: „Abonament SHINE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2684,
+     "id_produs_libra": 7,
+     "cod": "ABONAMENT_SHINE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/business-account-plans/||planuri revolut business — acces pe aplicația mobilă și pe web",
+   "url": "https://www.revolut.com/ro-RO/business/business-account-plans/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Planuri Revolut Business — Acces pe aplicația mobilă și pe web",
+   "focus": "Produsul băncii: „Planuri Revolut Business — Acces pe aplicația mobilă și pe web”.\nCorespunde produsului Libra: „Internet & Mobile Banking business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2843,
+     "id_produs_libra": 45,
+     "cod": "INTERNET_BANKING",
+     "v2": "banking-digital"
+    }
+   ],
+   "produse_v2": [
+    "banking-digital"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/business/revolut-terminal/||revolut terminal",
+   "url": "https://www.revolut.com/business/revolut-terminal/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Revolut Terminal",
+   "focus": "Produsul băncii: „Revolut Terminal”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2658,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.revolut.com/ro-RO/business/accept-payments-pricing/||acceptă plăți cu revolut business (comisioane de procesare card)",
+   "url": "https://www.revolut.com/ro-RO/business/accept-payments-pricing/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Acceptă plăți cu Revolut Business (comisioane de procesare card)",
+   "focus": "Produsul băncii: „Acceptă plăți cu Revolut Business (comisioane de procesare card)”.\nCorespunde produsului Libra: „Abonament RISE”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2664,
+     "id_produs_libra": 6,
+     "cod": "ABONAMENT_RISE",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://help.revolut.com/ro-RO/business/help/merchant-accounts/revolut-terminal/transactions-with-revolut-terminal/cards-and-contactless-payments-with-revolut-terminal/||terminal revolut",
+   "url": "https://help.revolut.com/ro-RO/business/help/merchant-accounts/revolut-terminal/transactions-with-revolut-terminal/cards-and-contactless-payments-with-revolut-terminal/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Terminal Revolut",
+   "focus": "Produsul băncii: „Terminal Revolut”.\nCorespunde produsului Libra: „Terminal POS fizic”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2659,
+     "id_produs_libra": 52,
+     "cod": "POS_FIZIC",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "blocat",
+   "motiv": "403 la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": 403,
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://cdn.revolut.com/terms_and_conditions/pdf/merchant_fees_5a9efdd2_2.0.0_1766016563_en.pdf||merchant fees - merchant services transaction fees",
+   "url": "https://cdn.revolut.com/terms_and_conditions/pdf/merchant_fees_5a9efdd2_2.0.0_1766016563_en.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Merchant Fees - Merchant Services Transaction Fees",
+   "focus": "Produsul băncii: „Merchant Fees - Merchant Services Transaction Fees”.\nCorespunde produsului Libra: „LibraPay eCommerce (plăți online)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "legaturi": [
+    {
+     "id_sursa": 2593,
+     "id_produs_libra": 47,
+     "cod": "LIBRAPAY_ECOM",
+     "v2": "acceptare-carduri"
+    }
+   ],
+   "produse_v2": [
+    "acceptare-carduri"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "8efbde136a689fd46780ec37a798965b488a91f4de3639dc06e12dd3b51b13bd",
+   "observatii": [
+    {
+     "id": "cfb051a2c3d65b2cdbd3cc6cc3637f6a",
+     "id_url": 2593,
+     "id_produs": "acceptare-carduri",
+     "camp": "comision_online",
+     "cod_scenariu": "ONLINE_AUD_CARD_FLAT",
+     "valoare_num": 0.2,
+     "unitate": "altele",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8efbde136a689fd46780ec37a798965b488a91f4de3639dc06e12dd3b51b13bd",
+     "conditii": [
+      "Online Card Transaction cu card prepay/debit/credit australian, componenta fixă"
+     ],
+     "eticheta_libera": null,
+     "citat": "Online Card A$0.20",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.85,
+     "necesita_verificare": false,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "revolut",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3e216c9573ea387b17a583506a1b3cd09561be917ada6260285fc3304bc1114e"
+    },
+    {
+     "id": "23de5d3658ffd2a5bc6190b41a0092e8",
+     "id_url": 2593,
+     "id_produs": "acceptare-carduri",
+     "camp": "altele",
+     "cod_scenariu": "INPERSON_AUD_CARD_FLAT",
+     "valoare_num": 0.05,
+     "unitate": "altele",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "8efbde136a689fd46780ec37a798965b488a91f4de3639dc06e12dd3b51b13bd",
+     "conditii": [
+      "In-Person Card Transaction cu card prepay/debit/credit australian, componenta fixă"
+     ],
+     "eticheta_libera": "flat fee tranzacție in-person card australian",
+     "citat": "In-Person Card A$0.05",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.8,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": null,
+     "potrivire_scenariu": null,
+     "trepte": [],
+     "id_banca": "revolut",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "3e216c9573ea387b17a583506a1b3cd09561be917ada6260285fc3304bc1114e"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_online",
+     "cod_scenariu": "ONLINE_AUD_CARD",
+     "valoare_num": 1.6,
+     "unitate": "procent",
+     "incredere": 0.9,
+     "citat": "and credit card: 1.6% of the transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_online",
+     "cod_scenariu": "ONLINE_OTHER_CARD",
+     "valoare_num": 2.9,
+     "unitate": "procent",
+     "incredere": 0.9,
+     "citat": "2.9% of the transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_online",
+     "cod_scenariu": "ONLINE_REVOLUT_PAY",
+     "valoare_num": 1.0,
+     "unitate": "procent",
+     "incredere": 0.85,
+     "citat": "1% of the Revolut Pay A$0.20 transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_tranzactie_procent",
+     "cod_scenariu": "INPERSON_AUD_CARD",
+     "valoare_num": 1.4,
+     "unitate": "procent",
+     "incredere": 0.85,
+     "citat": "1.4% of the transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_tranzactie_procent",
+     "cod_scenariu": "INPERSON_OTHER_CARD",
+     "valoare_num": 2.7,
+     "unitate": "procent",
+     "incredere": 0.85,
+     "citat": "2.7% of the transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_tranzactie_procent",
+     "cod_scenariu": "INPERSON_REVOLUT_PAY",
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "incredere": 0.85,
+     "citat": "0.5% of the transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "altele",
+     "cod_scenariu": "APPLE_TAP_AUD_FLAT",
+     "valoare_num": 0.2,
+     "unitate": "altele",
+     "incredere": 0.75,
+     "citat": "Apple Tap to Pay A$0.20",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_tranzactie_procent",
+     "cod_scenariu": "APPLE_TAP_AUD",
+     "valoare_num": 1.4,
+     "unitate": "procent",
+     "incredere": 0.75,
+     "citat": "1.4% of the transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "comision_tranzactie_procent",
+     "cod_scenariu": "APPLE_TAP_OTHER",
+     "valoare_num": 2.7,
+     "unitate": "procent",
+     "incredere": 0.75,
+     "citat": "2.7% of the transaction value",
+     "motive": [
+      "citatul nu apare în textul sursă"
+     ]
+    },
+    {
+     "produs": "acceptare-carduri",
+     "camp": "chirie_pos_lunara",
+     "cod_scenariu": "TERMINAL_DEVICE_COST",
+     "valoare_num": 330,
+     "unitate": "altele",
+     "incredere": 0.3,
+     "citat": "A$330 excluding GST",
+     "motive": [
+      "încredere 0.3 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 2,
+   "durata_s": 17,
+   "tokeni": {
+    "intrare": 4944,
+    "iesire": 1748
    }
   }
  ]

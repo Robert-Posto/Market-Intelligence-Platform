@@ -1,0 +1,53 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/01/Anexa-1_RO_Oferta-includere-Pachet-T0.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet de cont curent T0 pentru Clienții IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este un pachet/abonament operațional de cont curent dedicat clienților persoane juridice (IMM și PFA), cu taxe lunare incluse pentru administrare, Internet/Mobile Banking și plăți, exact ca produsul Libra Abonament operațional.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document dedicat ofertei de pachet de cont pentru IMM, cu cifre explicite pentru toate componentele incluse.",
+      "citat": "Produse și servicii incluse în pachetul T0 | Zero lei/lună Taxă de administrare lunară a serviciilor Internet Banking și Mobile Banking Gratuit Plăți intrabancare în lei și valuta prin Internet Banking și Mobile Banking Gratuit",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane standard pentru Clienții IMM",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul de tarife standard pentru clienți IMM conține taxa de administrare a contului curent, echivalentul comisionului de abonament operațional pentru firme/PFA, cu valoarea standard aplicabilă în afara ofertelor promoționale.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Document general de tarife IMM, în care taxa de administrare cont curent apare explicit cu valoare numerică, dar nu este un pachet dedicat ca atare.",
+      "citat": "Taxă administrare cont curent ^1 25 RON/cont/lună Taxă administrare cont de economii Gratuit Rata dobânzii cont curent: RON, USD și EUR 0,01%",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 19,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1527,
+    "citire_cache": 6334,
+    "scriere_cache": 35595,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1055323
+  }
+}

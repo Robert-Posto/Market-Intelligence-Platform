@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "ABONAMENT_OPERATIONAL",
+  "denumire": "Abonament operațional (pachet cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/581947265d918cd664492b54a2eb112067c68d94.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Comision administrare client (din Lista de taxe, comisioane si dobanzi - Persoane juridice)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul este lista oficială de tarife pentru persoane juridice (firme/IMM) și conține explicit comisionul periodic de administrare a contului curent, perceput lunar pentru IMM și anual pentru Corporate, echivalentul funcțional al unui 'abonament operațional' / pachet cont pentru firme.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document general de tarife (persoane juridice) în care comisionul de administrare a contului (pachet/abonament operațional) apare explicit cu valori concrete pentru IMM și Corporate.",
+      "citat": "Comision administrare client Pentru IMM – lunar echivalent a 12.5 / 25 RON Pentru clienti Corporate & Commercial - anual perceput in Martie echivalent 150 RON",
+      "pagina_pdf": 2,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Operations",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/581947265d918cd664492b54a2eb112067c68d94.pdf",
+    "https://www.nexentbank.ro/en/Corporate-SME/Small-and-Medium-Companies/Services-and-Special-Accounts"
+  ],
+  "durata_s": 32,
+  "consum": {
+    "intrare": 29068,
+    "iesire": 2597,
+    "citire_cache": 33628,
+    "scriere_cache": 53663,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2249891
+  }
+}

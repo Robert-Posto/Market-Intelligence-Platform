@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "ROPAY_BUSINESS",
+  "denumire": "RoPay for Business",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Plăți Instant în lei (bazate pe RoPay) (încredere 0.55) — Este același tip de infrastructură (RoPay, plăți A2A prin cod QR, deep link, NFC) disponibilă și pentru clienți IMM/corporate, dar Garanti BBVA o prezintă ca serviciu general de trimitere/primire bani (instant payments), nu ca produs dedicat de încasare la firme prin QR integrat în infrastructura digitală a afacerii; nu există o pagină separată 'RoPay for Business' sau echivalent pentru comercianți."
+  },
+  "candidati_respinsi": [
+    {
+      "url": "https://www.garantibbva.ro/comunicate-de-presa/garanti-bbva-romania-ofera-clientilor-posibilitatea-de-a-efectua-plati-instant-in-lei/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Plăți Instant în lei (bazate pe RoPay)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același tip de infrastructură (RoPay, plăți A2A prin cod QR, deep link, NFC) disponibilă și pentru clienți IMM/corporate, dar Garanti BBVA o prezintă ca serviciu general de trimitere/primire bani (instant payments), nu ca produs dedicat de încasare la firme prin QR integrat în infrastructura digitală a afacerii; nu există o pagină separată 'RoPay for Business' sau echivalent pentru comercianți.",
+      "incredere": 0.55,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina conține cifre concrete (limite de plată/încasare) despre serviciul bazat pe RoPay și menționează explicit disponibilitatea pentru clienți IMM și corporate, dar nu descrie un produs dedicat de încasare pentru afaceri.",
+      "citat": "Acest serviciu permite plăți de până la 10.000 RON și încasări de până la 49.999,99 RON. Disponibil prin internet banking, mobile banking, precum și în agenții, pentru clienții persoane fizice, IMM și corporate.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "deschise": [],
+  "durata_s": 23,
+  "consum": {
+    "intrare": 6,
+    "iesire": 1759,
+    "citire_cache": 25613,
+    "scriere_cache": 28229,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0932971
+  }
+}

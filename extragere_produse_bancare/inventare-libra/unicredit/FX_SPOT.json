@@ -1,0 +1,88 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/content/cee2020-pws-ro/ro/cib/investment-banking/trezorerie.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Trezorerie – Platforma Electronica de Tranzactionare UCTrader",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Este serviciul UniCredit pentru schimb valutar electronic destinat companiilor (persoane juridice), platforma UCTrader permitand tranzactii FX spot, forward si swap, deci acopera segmentul juridic al produsului Libra FX_SPOT.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicata Trezoreriei CIB descrie explicit platforma UCTrader cu cifre concrete (numar de valute si perechi valutare), insa nu afiseaza un tarif/spread explicit pentru tranzactiile spot.",
+      "citat": "Platforma Electronica de Tranzactionare UCTrader ofera capacitate de executie de ultima generatie pentru cel putin 50 de valute si 140 de perechi de valute.",
+      "citat_verificat": true,
+      "link_live": "https://www.unicredit.ro/content/cee2020-pws-ro/ro/cib/investment-banking/trezorerie.html#:~:text=Platforma%20Electronica%20de%20Tranzactionare%20UCTrader,140%20de%20perechi%20de%20valute."
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/RegulamenteCampanii/Regulament-Happy-Hour-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Happy Hour Exchange Rate (schimb valutar la curs BNR)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de schimb valutar dedicat persoanelor fizice la UniCredit, dar difera de un spot clasic prin faptul ca se aplica doar intr-un interval orar fix (13:15-14:15) si cu plafon zilnic de 1.000 EUR/tranzactie, nu printr-o tranzactionare libera la cerere.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Regulamentul oficial contine cifrele exacte (plafon, interval orar, perioada de valabilitate) ale programului de schimb valutar pentru persoane fizice.",
+      "citat": "Cursul BNR se va aplica pentru o singura operatiune de schimb valutar/zi, in limita a maximum 1.000 EUR (respectiv echivalentul acestei sume-LEI, USD) pe tranzactie, in intervalul orar mentionat.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://uctrader.unicredit.ro/files/marketing/pro/UCTraderProUserGuide.ro.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "UCTrader – Ghid de utilizare (tranzactii FX Spot)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul descrie explicit functionalitatea de tranzactionare FX spot in platforma UCTrader folosita de clientii corporate/persoane juridice ai UniCredit, confirmand existenta produsului echivalent FX_SPOT pentru acest segment.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Este un ghid de utilizare tehnic, nu o pagina de produs cu tarife, dar contine detalii operationale clare despre tranzactiile de tip SPOT.",
+      "pagina_pdf": 14,
+      "citat": "Pentru tranzacțiile de tip 'SPOT', câmpul 'Data 1' este pre-completat cu data spot. Dacă modificați 'Data 1' la o scadență alta decât 'SPOT', trebuie să schimbați tipul de tranzacție la 'FORWARD'.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/Tranzactionare/SchimbValutar.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "simulator",
+      "denumire_la_banca": "Curs valutar / Schimb Valutar (calculator valutar)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este pagina dedicata afisarii cursurilor de schimb si a unui calculator valutar (cumparare/vanzare) pentru clientii persoane fizice, dar ratele efective (Info Spot & Today, Casierie, BNR) se incarca dinamic prin JavaScript si nu au aparut in continutul HTML brut.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina este clar dedicata schimbului valutar si contine un calculator de curs valutar si tabele de cumparare/vanzare, insa valorile numerice reale nu apar in raspunsul HTTP, fiind incarcate prin JavaScript.",
+      "citat": "Curs publicat de BNR - cursul de schimb calculat si publicat de catre BNR, in fiecare zi bancara, la ora 13:00, pe baza cotatiilor pietei valutare.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.unicredit.ro/ro/institutional/Diverse/SchimbValutar.html",
+    "https://uctrader.unicredit.ro/",
+    "https://www.unicredit.ro/en/cib/investment-banking/treasury.html",
+    "https://www.unicredit.ro/ro/persoane-fizice/Campanii/Articole/happy-hour-exchange-rate.html",
+    "https://www.unicredit.ro/ro/cib/investment-banking/trezorerie.html",
+    "https://www.unicredit.ro/content/cee2020-pws-ro/ro/cib/investment-banking/trezorerie.html"
+  ],
+  "durata_s": 111,
+  "consum": {
+    "intrare": 174637,
+    "iesire": 8871,
+    "citire_cache": 104344,
+    "scriere_cache": 77367,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.6522703000000001
+  }
+}

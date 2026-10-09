@@ -1,0 +1,72 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "INTERNET_BANKING",
+  "denumire": "Internet & Mobile Banking business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/internet-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Internet Banking (secțiunea Companii / Digital Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată, situată în meniul Companii > Digital Banking, pentru aplicația de Internet Banking destinată persoanelor juridice; descrie exact același tip de serviciu ca produsul Libra (acces conturi, plăți, depozite, carduri, credite) pentru business.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina este dedicată exclusiv Internet Banking pentru segmentul Companii și conține cifre concrete (reducere comisioane 50%), chiar dacă nu are un tabel de tarife complet pe pagină.",
+      "citat": "Comisioanele pentru operațiuni sunt cu 50% mai mici decât la ghișeu Dobânzi atractive Depozitele constituite online îți aduc dobânzi mai mari, totul din confortul casei tale.",
+      "rol_pagina": "pagina-produs",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/internet-banking#:~:text=Comisioanele%20pentru%20opera%C8%9Biuni%20sunt%20cu,totul%20din%20confortul%20casei%20tale."
+    },
+    {
+      "url": "https://techventures.bank/companii/mobile-banking",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Mobile Banking (secțiunea Companii / Digital Banking)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagină dedicată aplicației de Mobile Banking pentru persoane juridice (Companii), complementară Internet Banking-ului, acoperind aceeași nevoie (acces digital la conturi business) ca și produsul Libra care combină Internet & Mobile Banking.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagină dedicată segmentului Companii, cu cifre despre reduceri de comisioane, dar fără tabel complet de tarife.",
+      "citat": "Comisioanele pentru operațiuni sunt cu 50% mai mici decât la ghișeu Dobânzi atractive Depozitele constituite online îți aduc dobânzi mai mari, totul din confortul casei tale.",
+      "rol_pagina": "pagina-produs",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/mobile-banking#:~:text=Comisioanele%20pentru%20opera%C8%9Biuni%20sunt%20cu,totul%20din%20confortul%20casei%20tale."
+    },
+    {
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-14042026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane aplicabile entităților economice",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de tarife și comisioane linkat direct din paginile de Internet Banking și Mobile Banking pentru Companii, unde ar trebui să apară comisioanele specifice serviciilor de internet/mobile banking business.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Document general de tarife pentru entități economice, linkat explicit din paginile de Internet/Mobile Banking business, dar conținutul detaliat nu a fost verificat direct (document PDF extern).",
+      "citat": "Tarife și comisioane aplicabile entităților economice",
+      "rol_pagina": "tarife",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (6 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/internet-banking",
+    "https://techventures.bank/companii/digital-banking",
+    "https://techventures.bank/companii/mobile-banking"
+  ],
+  "durata_s": 46,
+  "consum": {
+    "intrare": 12819,
+    "iesire": 1958,
+    "citire_cache": 25124,
+    "scriere_cache": 26261,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1158953
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "generat": "2026-10-08",
+  "banca": "vista",
+  "cod": "ACREDITIVE",
+  "denumire": "Acreditive documentare",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ACREDITIVE (Export/Acreditive primite, Import/Acreditive emise)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane juridice, valabil din 7 octombrie 2026, conține secțiunea dedicată ACREDITIVE cu toate comisioanele aferente emiterii, avizării, confirmării, modificării și derulării acreditivelor documentare de export și import.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Document oficial de tarife, actualizat, cu toate comisioanele detaliate pentru acreditive documentare (export și import), cu procente și sume minime/maxime în EUR.",
+      "citat": "Deschidere 0,25 %/trimestru sau fractie din trimestru, minim 100 EUR Prelucrare documente 50 EUR Plata la Vedere/ Acceptare/ Deferata 0.25%, minim 100 EUR Modificare 35 EUR",
+      "pagina_pdf": 7,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_Bilingual_11.2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ACREDITIVE (versiune bilingvă RO/EN)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiune anterioară, bilingvă, a aceluiași document de tarife pentru persoane juridice, cu secțiunea dedicată acreditivelor documentare de export și import, utilă ca sursă de rezervă dacă pagina curentă se schimbă.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document de tarife anterior (valabil din noiembrie 2025) cu aceeași structură și cifre pentru acreditive, confirmă stabilitatea produsului în timp.",
+      "citat": "Acreditivele sunt procesate in conformitate cu Regulile si Uzantele Uniforme pentru acreditive 600, emise de ICC, in vigoare la data tranzactiei.",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.vistabank.ro/persoane-juridice/credite",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Operațiuni Documentare (Acreditive / Scrisori de credit)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produsul Vista Bank descrie exact același tip de instrument pentru persoane juridice: acreditive documentare (scrisori de credit) de export/import, emitere, plafon de credit și scontare, adresate firmelor.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina dedicată secțiunii Credite Non-Cash pentru persoane juridice descrie explicit tipurile de operațiuni cu acreditive, dar fără cifre/tarife în text.",
+      "citat": "Operațiuni Documentare - Principalele tipuri de operațiuni referitoare la acreditive (scrisori de credit) sunt: Emiterea de acreditive irevocabile, disponibile cu plata la vedere sau la termen, cu acceptare directă sau prin negociere",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.vistabank.ro/persoane-juridice/credite#:~:text=Opera%C8%9Biuni%20Documentare%20%2D%20Principalele%20tipuri,acceptare%20direct%C4%83%20sau%20prin%20negociere"
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.vistabank.ro/persoane-juridice/credite",
+    "https://www.vistabank.ro/public/docs/1000319_Anexa_1_CGA_PJ_RO_10_2026.pdf"
+  ],
+  "durata_s": 25,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2008,
+    "citire_cache": 76242,
+    "scriere_cache": 64064,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1955044
+  }
+}

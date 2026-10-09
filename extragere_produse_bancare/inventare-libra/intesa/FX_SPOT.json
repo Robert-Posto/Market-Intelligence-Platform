@@ -1,0 +1,75 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "FX_SPOT",
+  "denumire": "Schimb valutar spot",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://ib.intesasanpaolobank.ro/de/Dialog/FAQs/GetList?language=ro-RO",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Schimb valutar (SPOT/TDY/TOM/FWD) prin I-B@nk",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina FAQ explică exact tipurile de decontare a schimbului valutar (today, tomorrow, spot, forward), definește SPOT ca TDY+2 zile bancare și prezintă limitele și comisioanele aplicabile, acoperind atât persoane fizice cât și juridice care folosesc I-B@nk.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Documentul conține definiția tehnică a SPOT, plafoane valorice exacte și informația că nu se percep comisioane, deci acoperă cifrele cheie ale produsului.",
+      "citat": "Engl. SPOT (\"spot – on the spot\") = Ro. la vedere (accepțiunea folosită este data tranzacției plus două zile lucrătoare; i.e. SPOT = TDY + 2 zile bancare)",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://ib.intesasanpaolobank.ro/de/Dialog/FAQs/GetList?language=ro-RO#:~:text=Engl.%20SPOT%20%28%22spot%20%E2%80%93%20on,TDY%20%2B%202%20zile%20bancare%29"
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/tarife-comisioane_persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Schimburi valutare (tabel comisioane)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane fizice conține secțiunea dedicată 'SCHIMBURI VALUTARE' cu comisioanele aplicate (conversie valutară 3%, limite orare pentru operațiuni via Internet Banking).",
+      "incredere": 0.8,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Documentul PDF oficial listează explicit rubrica SCHIMBURI VALUTARE cu procente și ore limită, acoperind cifrele cerute pentru produsul de schimb valutar.",
+      "citat": "via Internet Banking / 15:45*** Digical pe suport hârtie 16:00 *** între 15.45 - 9:00 (următoarea zi) şi în zilele bancare nelucrătoare se vor putea face schimburi valutare prin intermediul I-B@nk / Digical în limita de 3.000 echiv.EUR/zi",
+      "pagina_pdf": null,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/corporate/cash-management/cont-curent-corporate.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Schimb valutar avantajos (în cadrul contului curent Corporate)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina dedicată contului curent pentru companii (segment persoane juridice) menționează explicit posibilitatea efectuării tranzacțiilor de schimb valutar cu decontare today, tomorrow sau spot, exact tipul de produs FX spot.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina este dedicată produsului de cont curent corporate și menționează explicit opțiunea de schimb valutar cu decontare spot, dar nu conține cifre de preț.",
+      "citat": "tranzacții de vânzare-cumpărare valută contra RON sau valută cu data de decontare today, tomorrow sau spot",
+      "pagina_pdf": null,
+      "citat_verificat": false,
+      "avertisment": "citat scurt (16 cuvinte); citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://ib.intesasanpaolobank.ro/de/Dialog/FAQs/GetList?language=ro-RO",
+    "https://www.intesasanpaolobank.ro/document/documents/ISPROMANIA/tarife-comisioane/tarife-comisioane-persoane-juridice.pdf",
+    "https://www.intesasanpaolobank.ro/corporate/cash-management/cont-curent-corporate.html"
+  ],
+  "durata_s": 39,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2767,
+    "citire_cache": 67729,
+    "scriere_cache": 50888,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.16845179999999998
+  }
+}

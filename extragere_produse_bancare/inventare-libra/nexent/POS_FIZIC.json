@@ -1,0 +1,40 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "POS_FIZIC",
+  "denumire": "Terminal POS fizic",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/persoane-juridice/Avantaj-SoftPOS",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Avantaj SoftPOS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este singurul produs de acceptare a plăților cu cardul la locația comerciantului oferit de Nexent Bank persoanelor juridice (retail, HoReCa, servicii), dar funcționează ca aplicație software pe smartphone Android, nu ca terminal POS fizic/hardware dedicat precum produsul Libra.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina dedicată produsului, aflată explicit în meniul Persoane Juridice, și descrie clar funcția (acceptare plăți cu cardul la comerciant), dar nu conține nicio cifră (comision, abonament, limite) verificabilă prin extractor.",
+      "citat": "Avantaj SoftPOS transformă orice smartphone Android într-un terminal POS Prin aplicația Avantaj SoftPOS poți să accepți plăți cu cardul bancar direct pe telefonul mobil.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/persoane-juridice/Avantaj-SoftPOS#:~:text=Avantaj%20SoftPOS%20transform%C4%83%20orice%20smartphone,bancar%20direct%20pe%20telefonul%20mobil."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://www.nexentbank.ro/persoane-juridice/Avantaj-SoftPOS",
+    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale",
+    "https://www.nexentbank.ro/persoane-fizice/Avantaj-SoftPOS"
+  ],
+  "durata_s": 54,
+  "consum": {
+    "intrare": 10,
+    "iesire": 4322,
+    "citire_cache": 160573,
+    "scriere_cache": 79857,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2749971
+  }
+}

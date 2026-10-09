@@ -1,0 +1,81 @@
+{
+  "generat": "2026-10-08",
+  "banca": "unicredit",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.unicredit.ro/ro/persoane-fizice/asistenta/descoperit-de-cont.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperit de cont",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Produs de descoperit de cont pentru persoane fizice, acordat pe baza veniturilor incasate in cont, dobanda doar pe suma utilizata, fara rata fixa lunara - identic ca tip si segment cu OVERDRAFT_PF.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicata explica integral mecanismul produsului, suma maxima si conditiile de eligibilitate.",
+      "citat": "Descoperitul de cont se acorda pentru o perioada de 12 luni, fiind reinnoit automat daca veniturile sunt incasate in contul deschis la UniCredit Bank si sunt indeplinite criteriile pentru reinnoire ale bancii. Suma maxima este stabilita in functie de gradul de indatorare si poate ajunge pana la echivalentul in Lei a 10,000 Euro.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/en/persoane-fizice/borrowing/overdraft.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Overdraft",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Versiunea in limba engleza a paginii de produs Overdraft pentru persoane fizice, cu cifre de dobanda si plafoane (pana la 10.000 EUR echivalent, dobanda IRCC+marja).",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicata contine exemple de calcul, dobanzi variabile si plafonul maxim al facilitatii.",
+      "citat": "The Overdraft is available for 1 year, with the possibility of an extension, and the maximum eligible sum is the equivalent of 10.000 EUR in Lei, in accordance to the applicant's monthly income.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/DocumentePI/Document%20de%20informare%20Cont%20curent%20in%20LEI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Descoperitul de cont",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document de informare precontractuala privind comisioanele asociate contului curent in Lei, care include rata dobanzii pentru Descoperitul de cont.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document oficial de informare (FIPC-like) care mentioneaza explicit rata dobanzii pentru Descoperitul de cont.",
+      "citat": "Denumirea contului: Cont curent în Lei Lunar: 12 Lei Comision anual total: 144 Lei Descoperit de cont și servicii conexe Descoperitul de cont Rata de dobândă: IRCC+9%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.unicredit.ro/content/dam/cee2020-pws-ro/DocumentePDF/TarifeComisioanePI/Comisioane-si-dobanzi_PI.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Descoperit de cont",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife si dobanzi pentru persoane fizice care include sectiunea de dobanzi aferente descoperitului de cont (neautorizat), relevant ca document de referinta pentru produs.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Documentul general de tarife contine un rand explicit cu dobanda pentru descoperit neautorizat de cont, dar nu detaliaza dobanda pentru descoperitul autorizat.",
+      "citat": "Dobândă penalizatoare pentru descoperit neautorizat de cont Overnight^1 + 18% 3 M^1 +15%",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (13 cuvinte)",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [],
+  "durata_s": 20,
+  "consum": {
+    "intrare": 4,
+    "iesire": 1727,
+    "citire_cache": 6335,
+    "scriere_cache": 33838,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.10314000000000001
+  }
+}

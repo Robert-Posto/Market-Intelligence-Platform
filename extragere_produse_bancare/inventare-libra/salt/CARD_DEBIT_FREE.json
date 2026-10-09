@@ -1,0 +1,28 @@
+{
+  "generat": "2026-10-08",
+  "banca": "salt",
+  "cod": "CARD_DEBIT_FREE",
+  "denumire": "Card de debit Free",
+  "model": "claude-sonnet-5",
+  "surse": [],
+  "gol": {
+    "motiv": "blocat_de_robots",
+    "nota": "Domeniul saltbank.ro nu a putut fi accesat deloc - web_fetch a returnat eroare de permisiune pentru pagina principală (https://www.saltbank.ro/), iar web_search nu a returnat niciun URL de pe acest domeniu pe care să îl pot deschide conform regulilor de navigare. Nu am putut identifica produsul echivalent 'Card de debit Free' din lipsă de acces la conținutul site-ului."
+  },
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.saltbank.ro/",
+    "https://www.saltbank.ro/card",
+    "https://www.saltbank.ro/produse",
+    "https://www.saltbank.ro/"
+  ],
+  "durata_s": 16,
+  "consum": {
+    "intrare": 14761,
+    "iesire": 1066,
+    "citire_cache": 19204,
+    "scriere_cache": 6808,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.0610428
+  }
+}

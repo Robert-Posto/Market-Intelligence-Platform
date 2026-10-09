@@ -1,0 +1,42 @@
+{
+  "generat": "2026-10-08",
+  "banca": "techventures",
+  "cod": "CREDIT_IMOBILIAR_PJ",
+  "denumire": "Credit imobiliar persoane juridice",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/companii/credite-de-investitii",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Credite de investiții",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "TechVentures Bank nu are un credit imobiliar dedicat exclusiv persoanelor juridice; cel mai apropiat produs este creditul general de investiții pentru companii, care finanțează printre altele și clădiri, dar acoperă și utilaje, mașini și instalații, deci nu e dedicat exclusiv imobiliarelor, iar termenul maxim (10 ani) e mult mai scurt decât la un credit imobiliar tipic.",
+      "incredere": 0.6,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina produsului conține cifre concrete (avans minim 20%, termen maxim 10 ani) dar produsul este un credit general de investiții, nu unul dedicat strict imobiliarelor pentru firme.",
+      "citat": "Se acordă în lei sau euro, pe o perioadă de până la 10 ani, cu un avans de minimum 20%, pentru realizarea, dezvoltarea, modernizarea, retehnologizarea capacităților de producție (utilaje, mașini, instalații, clădiri).",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/credite-de-investitii#:~:text=Se%20acord%C4%83%20%C3%AEn%20lei%20sau,produc%C8%9Bie%20%28utilaje%2C%20ma%C8%99ini%2C%20instala%C8%9Bii%2C%20cl%C4%83diri%29."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/companii/credite-de-investitii",
+    "https://techventures.bank/companii/credite",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf"
+  ],
+  "durata_s": 72,
+  "consum": {
+    "intrare": 23746,
+    "iesire": 3916,
+    "citire_cache": 81562,
+    "scriere_cache": 61367,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.2563819
+  }
+}

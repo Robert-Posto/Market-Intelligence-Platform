@@ -1,0 +1,55 @@
+{
+  "generat": "2026-10-08",
+  "banca": "intesa",
+  "cod": "OVERDRAFT_PF",
+  "denumire": "Overdraft (descoperit de cont)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.intesasanpaolobank.ro/en/persoane-fizice/credite/descoperit-cont-card.html",
+      "tip": "html",
+      "metoda": "playwright",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperit de Cont (Overdraft)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Acelasi tip de produs (descoperit de cont autorizat, atasat contului curent) pentru acelasi segment (persoane fizice), cu dobanda platita doar pe suma utilizata, plafon legat de salariu; difera doar plafonul (4 salarii/50.000 Lei fata de 6 salarii/70.000 Lei la Libra).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicata produsului contine toate cifrele relevante (plafon, dobanda, termen, comisioane, criterii de eligibilitate), insa continutul text nu a fost livrat la o accesare HTTP simpla, ceea ce sugereaza randare prin JavaScript.",
+      "citat": "Up to 50,000 LEI, within the limit of 4 salaries. Overdraft is being granted for 12 months with the option to extend it for another 12 months. Variable interest rate of 13.56% consisting of 7.50% fixed margin + 6.06% IRCC as of 01.10.2025.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.intesasanpaolobank.ro/persoane-fizice/credite.html",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Descoperit de cont",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina generala de credite persoane fizice care descrie explicit produsul descoperit de cont cu cifrele de plafon si mecanismul dobanzii doar pe suma utilizata, acelasi tip si segment ca produsul Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este o pagina-hub pentru creditele persoane fizice (nu dedicata exclusiv overdraftului), dar contine direct in text cifrele cheie ale produsului (4 salarii, 50.000 Lei).",
+      "citat": "Descoperitul de cont este acolo atunci când ai nevoie de el cu până la 4 salarii în plus (max. 50.000 Lei) pentru orice ai de făcut.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.intesasanpaolobank.ro/persoane-fizice/credite/descoperit-cont-card.html",
+    "https://www.intesasanpaolobank.ro/en/persoane-fizice/credite/descoperit-cont-card.html",
+    "https://www.intesasanpaolobank.ro/persoane-fizice/credite/descoperit-cont-card.html"
+  ],
+  "durata_s": 106,
+  "consum": {
+    "intrare": 19418,
+    "iesire": 8549,
+    "citire_cache": 76971,
+    "scriere_cache": 51706,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.26898520000000004
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "generat": "2026-10-08",
+  "banca": "nexent",
+  "cod": "CARD_CREDIT_PF",
+  "denumire": "Card de credit (PF)",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.nexentbank.ro/en/retail-banking/Credit-cards/CardAvantaj/CardAvantaj-Mastercard-Gold",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Card Avantaj Mastercard Gold / Visa Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Card de credit revolving în lei pentru persoane fizice, cu perioadă de grație fără dobândă, rate fără dobândă la comercianți parteneri și limită de credit calculată ca multiplu din venit, exact același tip și segment ca produsul Libra.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele cheie: limita de credit, multiplul de venit și perioada de grație.",
+      "citat": "Credit limit from 10,000 RON up to 135,000 RON – up to 6 times your salary. Grace period of up to 45 days with no interest charged for purchases (including those made in instalments);",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/en/retail-banking/Credit-cards/CardAvantaj/CardAvantaj-Mastercard-Gold#:~:text=Credit%20limit%20from%2010%2C000%20RON,%28including%20those%20made%20in%20instalments%29%3B"
+    },
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/311089d6c56fae2ffc6b154a5634e774b78cac8c.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card Avantaj Mastercard Standard/Gold, Visa Classic/Gold",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife, comisioane și dobânzi pentru aceeași familie de carduri de credit revolving pentru persoane fizice, cu perioadă de grație de 45 de zile și dobânzi/DAE explicite.",
+      "incredere": 0.85,
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "PDF-ul oficial de tarife conține explicit numele cardurilor, perioada de grație, comisioanele și dobânda fixă/DAE pentru un exemplu de limită de credit.",
+      "citat": "Pentru un card de credit Card Avantaj Mastercard Gold / Visa Gold cu o limita de credit de 5.367 lei, dobanda fixa este de 28%/an, rata lunara de plata este de 517,95 lei, iar dobanda anuala efectiva (DAE) este de 40,82%",
+      "pagina_pdf": 1,
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/persoane-fizice/Carduri-de-credit/CardAvantaj",
+    "https://www.nexentbank.ro/en/retail-banking/Credit-cards/CardAvantaj/CardAvantaj-Mastercard-Gold"
+  ],
+  "durata_s": 35,
+  "consum": {
+    "intrare": 8,
+    "iesire": 2677,
+    "citire_cache": 83911,
+    "scriere_cache": 60323,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.1943757
+  }
+}

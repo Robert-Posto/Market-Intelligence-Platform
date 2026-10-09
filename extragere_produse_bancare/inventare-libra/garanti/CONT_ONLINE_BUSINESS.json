@@ -1,0 +1,56 @@
+{
+  "generat": "2026-10-08",
+  "banca": "garanti",
+  "cod": "CONT_ONLINE_BUSINESS",
+  "denumire": "Cont Online Business",
+  "model": "claude-sonnet-5",
+  "surse": [
+    {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2024/02/Tarife-si-comisioane-standard-pentru-Clientii-IMM.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarife și comisioane standard pentru Clienții IMM (Cont curent IMM/PFA)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife pentru clienții IMM/PFA (societăți cu cifra de afaceri sub 10 milioane EUR și Întreprinzători Individuali) conține comisioanele exacte pentru contul curent deschis online, abonamentul de Internet/Mobile Banking și cardul de debit business (Bonus).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Document PDF oficial de tarife, cu cifre concrete pentru administrarea contului curent, operațiunile prin internet banking și cardul de debit asociat contului de firmă.",
+      "citat": "Deschidere de cont Gratuit Taxă administrare cont curent* 25 RON/cont/lună Taxă administrare cont de economii Gratuit Rata dobânzii cont curent: RON, USD și EUR 0,01% Lichidare cont 5 EUR/client, la închiderea relației de afaceri cu Banca",
+      "pagina_pdf": 3,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.garantibbva.ro/en/sme-and-pfa/current-account/",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont Curent pentru IMM și PFA",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent pentru persoane juridice (IMM) și PFA, care poate fi deschis integral online prin Garanti BBVA Online, exact segmentul și tipul de produs ca CONT_ONLINE_BUSINESS de la Libra.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este pagina dedicată a produsului și confirmă deschiderea online și valutele disponibile, dar nu conține cifre de dobânzi/comisioane proprii, acestea fiind trimise către documentul de tarife.",
+      "citat": "Open a current account for your SME or PFA. You can apply online via Garanti BBVA Online for both EUR and RON. Plus, for everything to be the way it needs to be, the current account can be opened in Lei, and in foreign currencies as well - EUR, USD, GBP, CHF, HUF, JPY, CAD, TRY, NOK, SEK, PLN.",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://www.garantibbva.ro/imm-si-pfa/cont-curent/",
+    "https://www.garantibbva.ro/informatii-comisioane-cont-curent-standard-lei/",
+    "https://www.garantibbva.ro/en/sme-and-pfa/current-account/",
+    "https://www.garantibbva.ro/wp-content/uploads/2024/02/Tarife-si-comisioane-standard-pentru-Clientii-IMM.pdf"
+  ],
+  "durata_s": 56,
+  "consum": {
+    "intrare": 10,
+    "iesire": 3905,
+    "citire_cache": 132623,
+    "scriere_cache": 104020,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.3256446
+  }
+}
