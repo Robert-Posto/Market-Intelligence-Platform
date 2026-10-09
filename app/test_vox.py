@@ -1505,11 +1505,11 @@ class CititoriAplicatii(unittest.TestCase):
     def setUp(self):
         import server
         self.s = server
-        self.vechi = (server.interoghează, server.FISIER_GOOGLE_PLAY)
+        self.vechi = (server.interoghează, server.FISIER_GOOGLE_PLAY, server.FISIER_GOOGLE_PLAY_RECENZII)
         self.dir = tempfile.mkdtemp(prefix="vox_play_")
 
     def tearDown(self):
-        self.s.interoghează, self.s.FISIER_GOOGLE_PLAY = self.vechi
+        self.s.interoghează, self.s.FISIER_GOOGLE_PLAY, self.s.FISIER_GOOGLE_PLAY_RECENZII = self.vechi
 
     def baza(self, sql, params=None):
         if "SELECT functie, min(titlu)" in sql:
@@ -1525,6 +1525,9 @@ class CititoriAplicatii(unittest.TestCase):
         if "FROM app_release_curente" in sql:
             return [{"banca": "bcr", "app_id": "123", "nota": 4.84, "evaluari": 188573,
                      "distributie_stele": [1, 0, 0, 0, 0], "versiune": "26.30", "observat_la": "2026-09-24"}]
+        if "FROM app_review" in sql:
+            return [{"banca": "bcr", "nota": 1, "versiune": "26.30", "text": "Logarea nu merge",
+                     "data": "2026-09-20", "raspuns_banca": None}]
         return []
 
     def play(self, continut):
@@ -1532,6 +1535,39 @@ class CititoriAplicatii(unittest.TestCase):
         with open(cale, "w", encoding="utf-8") as f:
             f.write(continut)
         self.s.FISIER_GOOGLE_PLAY = cale
+
+    def recenzii(self, continut):
+        cale = os.path.join(self.dir, "google_play_recenzii.json")
+        with open(cale, "w", encoding="utf-8") as f:
+            f.write(continut)
+        self.s.FISIER_GOOGLE_PLAY_RECENZII = cale
+
+    def test_recenzii_doar_la_cerere(self):
+        self.s.interoghează = self.baza
+        self.s.FISIER_GOOGLE_PLAY = os.path.join(self.dir, "nu_exista.json")
+        self.recenzii(json.dumps({"colectat_la": "2026-10-06T09:39:43Z", "aplicatii": {"bcr": {"package": "x", "recenzii": [
+            {"nota": 2, "text": "lentă", "data": "2026-10-01", "versiune": "1", "raspuns_banca": None, "raspuns_data": None}]}}}))
+        self.assertNotIn("recenzii_play", self.s._aplicatii_vox())
+        d = self.s._aplicatii_vox(cu_recenzii=True)
+        self.assertEqual(d["recenzii_app_store"][0]["text"], "Logarea nu merge")
+        self.assertEqual(d["recenzii_play"], {"colectat_la": "2026-10-06", "aplicatii": {"bcr": [
+            {"nota": 2, "text": "lentă", "data": "2026-10-01", "versiune": "1", "raspuns_banca": None, "raspuns_data": None}]}})
+
+    def test_google_play_recenzii_tipuri_gresite(self):
+        """Fișierul nu e în bază, deci nimic nu-l validează: o intrare greșită nu trebuie să dea 500 și nici să strice o
+        conversație salvată (revizia din 08.10.2026, la note)."""
+        bune = {"nota": 5, "text": "ok", "data": "2026-10-01"}
+        rele = [{"nota": "5", "text": "x", "data": "2026-10-01"}, {"nota": 6, "text": "x", "data": "2026-10-01"},
+                {"nota": True, "text": "x", "data": "2026-10-01"}, {"nota": 4, "text": 123, "data": "2026-10-01"},
+                {"nota": 4, "text": "x"}, "nu e obiect"]
+        self.recenzii(json.dumps({"aplicatii": {"bcr": {"recenzii": [bune, *rele]}, "brd": {"recenzii": "nu e listă"}}}))
+        d = self.s._google_play_recenzii()
+        self.assertEqual([r["text"] for r in d["aplicatii"]["bcr"]], ["ok"])
+        self.assertNotIn("brd", d["aplicatii"])
+        self.s.FISIER_GOOGLE_PLAY_RECENZII = os.path.join(self.dir, "lipsa.json")
+        self.assertIsNone(self.s._google_play_recenzii())
+        self.recenzii("{")
+        self.assertIsNone(self.s._google_play_recenzii())
 
     def test_context_functii_si_aplicatii(self):
         self.s.interoghează = self.baza
