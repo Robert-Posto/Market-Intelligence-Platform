@@ -339,6 +339,22 @@ def potriveste_recenzia(text, cuvinte):
     return all(re.search(r"(?<![^\W_])" + re.escape(_fara_accente(c)), norm) for c in cuvinte)
 
 
+_SEGMENTE_DIN_TEXT = (
+    ("pj", re.compile(r"(?<![^\W_])(?:firm|compan|persoan\w*\s+juridic|pj(?![^\W_]))")),
+    ("pfa", re.compile(r"(?<![^\W_])pfa(?![^\W_])")),
+    ("imm", re.compile(r"(?<![^\W_])imm(?![^\W_])")),
+    ("pf", re.compile(r"(?<![^\W_])(?:persoan\w*\s+fizic|pf(?![^\W_]))")),
+)
+
+
+def segment_din_intrebare(intrebare):
+    """Segmentul pe care îl spune textul, după vocabularul închis din prompt, sau None (nespus sau două segmente
+    diferite: nu alegem în locul utilizatorului). Cuvintele scurte (pj, pf, pfa, imm) trebuie să fie întregi."""
+    norm = _fara_accente(intrebare)
+    gasite = [segment for segment, tipar in _SEGMENTE_DIN_TEXT if tipar.search(norm)]
+    return gasite[0] if len(gasite) == 1 else None
+
+
 def _text(v, maxim):
     if not isinstance(v, str):
         return None
@@ -1190,6 +1206,10 @@ class Vox:
             interp, ignorate = _gol(), []
         else:
             interp, ignorate = valideaza(brut, ctx)
+            # #42 din evaluare (09.10.2026): „… pentru firme la BCR?” ieșea neclar cu „PFA, IMM sau PJ?”, iar o frază în
+            # plus în prompt a răsturnat #46 („Are George plata contactless?”): regula stă în cod, nu în prompt
+            if interp["tip"] in ("cautare", "clasament") and interp["segment"] is None:
+                interp["segment"] = segment_din_intrebare(intrebare)
         # singurul marcaj de cache din cerere e cel de o oră, deci orice scriere e de o oră
         cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"],
                             scriere_cache_1h=tokeni["scriere_cache"])

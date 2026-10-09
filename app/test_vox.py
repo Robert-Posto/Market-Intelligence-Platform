@@ -916,6 +916,18 @@ class Intrebari(unittest.TestCase):
         self.assertEqual(cerere["messages"],
                          [{"role": "user", "content": "Cât costă administrarea contului la BCR?"}])
 
+    def test_segmentul_din_intrebare_cand_modelul_l_lasa_gol(self):
+        """#42 din evaluare (09.10.2026): „… pentru firme la BCR?” ieșea neclar cu „PFA, IMM sau PJ?”, iar o frază în
+        plus în prompt a răsturnat #46: segmentul spus în text se aplică în cod."""
+        q = "Cât costă administrarea contului pentru firme la BCR?"
+        d = self.fa(ClientFals(interp(tip="neclar", segment=None,
+                                      clarificare="Pentru ce tip de firmă: PFA, IMM sau PJ?"))).intreaba(q)
+        self.assertEqual((d["interpretare"]["tip"], d["interpretare"]["segment"]), ("cautare", "pj"))
+
+    def test_segmentul_ales_de_model_nu_se_suprascrie(self):
+        d = self.fa(ClientFals(interp(segment="pf"))).intreaba("Cât costă administrarea contului pentru firme la BCR?")
+        self.assertEqual(d["interpretare"]["segment"], "pf")
+
     def test_scrierea_in_cache_de_o_ora(self):
         """Scrierea de o oră costă de 2 ori prețul de intrare, nu de 1,25 ori (documentația Anthropic)."""
         d = self.fa(ClientFals(interp(), scriere=12000)).intreaba("BCR?")
@@ -1741,6 +1753,30 @@ class PotrivireRecenzii(unittest.TestCase):
         self.assertTrue(vox.potriveste_recenzia("orice", []))
         self.assertTrue(vox.potriveste_recenzia(None, []))
         self.assertFalse(vox.potriveste_recenzia(None, ["card"]))
+
+
+class SegmentDinIntrebare(unittest.TestCase):
+    """Segmentul spus în întrebare, aplicat de cod (09.10.2026): vocabularul închis din prompt."""
+
+    def test_pj(self):
+        for t in ("pentru firme la BCR", "contul firmei", "pentru companii", "persoane juridice", "PJ",
+                  "Persoane Juridice", "pentru o firmă", "persoana juridica"):
+            self.assertEqual(vox.segment_din_intrebare(t), "pj", t)
+
+    def test_celelalte(self):
+        self.assertEqual(vox.segment_din_intrebare("pentru PFA"), "pfa")
+        self.assertEqual(vox.segment_din_intrebare("IMM-uri"), "imm")
+        self.assertEqual(vox.segment_din_intrebare("persoane fizice"), "pf")
+        self.assertEqual(vox.segment_din_intrebare("pentru PF"), "pf")
+
+    def test_nespus_sau_dublu(self):
+        self.assertIsNone(vox.segment_din_intrebare("Cât costă administrarea contului?"))
+        self.assertIsNone(vox.segment_din_intrebare("firme și persoane fizice"))
+        self.assertIsNone(vox.segment_din_intrebare(None))
+
+    def test_cuvintele_scurte_sunt_cuvinte_intregi(self):
+        self.assertIsNone(vox.segment_din_intrebare("pfand"))
+        self.assertIsNone(vox.segment_din_intrebare("immobil"))
 
 
 class Http(unittest.TestCase):
