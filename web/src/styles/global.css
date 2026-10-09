@@ -288,3 +288,6 @@ button.cm-chip.activ b { color: inherit }
 }
 /* Bula Vox (09.10.2026): la stânga barei de derulare a lui main (~17 px pe Windows); stratul (sub sertare) e în BulaVox */
 .ant-float-btn.vox-lansator { inset-inline-end: 40px; inset-block-end: 24px }
+/* inelul de focus la Tab: reset-ul antd pentru linkuri (`a:focus { outline: 0 }`) îl scotea; textul de la focus nu ajunge
+   ca semn pentru cine navighează cu tastatura (revizia finală, 09.10.2026) */
+.ant-float-btn.vox-lansator:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px }
