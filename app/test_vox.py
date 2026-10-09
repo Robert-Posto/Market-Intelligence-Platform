@@ -225,13 +225,15 @@ class Schema(unittest.TestCase):
                       "libra: Libra Bank", text)
         self.assertIn("(„Apple Pay”) → functie = null și numele ei în text_cautat", text)
         self.assertIn("(„cu cel puțin 1.000 de note” → 1000)", text)
-        self.assertIn("recenziile aplicațiilor, trackere, permisiuni, campanii", text)
         self.assertNotIn("(aplicații, recenzii, campanii", text)
-        # evaluarea din 09.10.2026 (52/53): „Ce scriu clienții despre BT Pay?” ieșea aplicatii cu aspect = note;
-        # regula `aplicatii` nu spunea că nota înseamnă doar stelele, nu și ce scriu clienții
-        self.assertIn("Nota înseamnă doar stelele și numărul de note: ce scriu sau spun clienții despre o aplicație "
-                      "(recenzii, comentarii, păreri, plângeri", text)
-        self.assertIn("e in_afara, fiindcă Vox nu are textul recenziilor", text)
+        # evaluarea din 09.10.2026 (52/53): „Ce scriu clienții despre BT Pay?” ieșea aplicatii cu aspect = note, fiindcă
+        # in_afara spunea doar „recenziile aplicațiilor”. Explicația pusă în regula `aplicatii` a stricat altă întrebare:
+        # „Care e cea mai ieftină variantă de administrare a contului?” ieșea neclar de 3 ori din 3, cu promptul de
+        # dimineață clasament de 3 ori din 3 (09.10.2026). De aceea explicația stă în in_afara și la `aspect = note`
+        self.assertIn("recenziile aplicațiilor și ce scriu sau spun clienții despre o aplicație, trackere, permisiuni, "
+                      "campanii", text)
+        self.assertIn("aspect = note pentru notă (stelele și numărul de note) și clasamentul ei", text)
+        self.assertNotIn("Nota înseamnă doar stelele", text)
 
 
 class Validare(unittest.TestCase):

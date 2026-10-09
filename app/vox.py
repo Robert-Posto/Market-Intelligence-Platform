@@ -217,13 +217,11 @@ def prompt(ctx):
         "- tip = aplicatii: întrebarea e despre aplicația mobilă a unei bănci: ce funcții are („Are George "
         "RoPay?”, „Ce funcții are aplicația BRD?”, „Ce bănci au plata cu telefonul?”, „Ce are BT Pay și n-are "
         "Libra?”) sau ce notă are în magazine („Ce notă are aplicația Libra?”, „Care bancă are cea mai bună "
-        "aplicație?”). Nota înseamnă doar stelele și numărul de note: ce scriu sau spun clienții despre o aplicație "
-        "(recenzii, comentarii, păreri, plângeri: „Ce spun clienții despre George?”, „Ce recenzii are aplicația "
-        "ING?”) e in_afara, fiindcă Vox nu are textul recenziilor. banci = băncile numite sau ale aplicațiilor "
-        "numite (lista „Aplicațiile” de la final: "
+        "aplicație?”). banci = băncile numite sau ale aplicațiilor numite (lista „Aplicațiile” de la final: "
         "„George” → bcr), altfel []. functie = funcția din lista „Funcțiile aplicațiilor”, dacă întrebarea "
         "numește una; o funcție care nu e în listă („Apple Pay”) → functie = null și numele ei în text_cautat. "
-        "aspect = note pentru note și clasamentul lor („cea mai bună aplicație” = cea mai bună notă), altfel "
+        "aspect = note pentru notă (stelele și numărul de note) și clasamentul ei („cea mai bună aplicație” = cea mai "
+        "bună notă), altfel "
         "functii. prag_note = numărul minim de note, doar dacă întrebarea îl cere („cu cel puțin 1.000 de "
         "note” → 1000), altfel null. La aplicatii, concept, categorie, termen, produs_credit, segment și "
         "metrica sunt null.",
@@ -232,8 +230,8 @@ def prompt(ctx):
         "o întrebare scurtă, în limba utilizatorului. O întrebare fără bancă și fără comparație "
         "(„Cât costă administrarea contului?”) e neclar. La neclar completezi totuși ce ai înțeles "
         "(banci, concept sau text_cautat): aplicația decide ce face cu ele.",
-        "- tip = in_afara: orice altceva (recenziile aplicațiilor, trackere, permisiuni, campanii, sfaturi, "
-        "texte de scris, întrebări generale).",
+        "- tip = in_afara: orice altceva (recenziile aplicațiilor și ce scriu sau spun clienții despre o aplicație, "
+        "trackere, permisiuni, campanii, sfaturi, texte de scris, întrebări generale).",
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
         "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept. „Comisionul de "
