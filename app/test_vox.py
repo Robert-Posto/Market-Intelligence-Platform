@@ -1582,6 +1582,30 @@ class CuvinteCautare(unittest.TestCase):
         self.assertEqual(vox.cuvinte_cautare(""), [])
 
 
+class PotrivireRecenzii(unittest.TestCase):
+    """Căutarea în recenzii (09.10.2026): rădăcina trebuie să fie începutul unui cuvânt."""
+
+    def test_potrivire_la_inceput_de_cuvant(self):
+        """Cu subșir, „lentă” (rădăcina „lent”) potrivea 13 recenzii, dintre care 12 erau „excelent”."""
+        lent = vox.cuvinte_cautare("lentă")
+        self.assertFalse(vox.potriveste_recenzia("Excelentă aplicație!", lent))
+        self.assertTrue(vox.potriveste_recenzia("Aplicația e lentă", lent))
+
+    def test_flexiune_si_diacritice(self):
+        self.assertTrue(vox.potriveste_recenzia("Logarea nu merge", vox.cuvinte_cautare("logare")))
+        self.assertTrue(vox.potriveste_recenzia("Nu pot face plăți", vox.cuvinte_cautare("plati")))
+
+    def test_toate_cuvintele(self):
+        c = vox.cuvinte_cautare("card blocat")
+        self.assertTrue(vox.potriveste_recenzia("Mi-a blocat cardul", c))
+        self.assertFalse(vox.potriveste_recenzia("Cardul merge", c))
+
+    def test_fara_cuvinte_totul_se_potriveste(self):
+        self.assertTrue(vox.potriveste_recenzia("orice", []))
+        self.assertTrue(vox.potriveste_recenzia(None, []))
+        self.assertFalse(vox.potriveste_recenzia(None, ["card"]))
+
+
 class Http(unittest.TestCase):
     """Rutele din server, pe un port liber, cu un client fals în locul modelului."""
 

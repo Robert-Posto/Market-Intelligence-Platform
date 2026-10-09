@@ -318,6 +318,15 @@ def cuvinte_cautare(text):
     return cuvinte[:5]
 
 
+def potriveste_recenzia(text, cuvinte):
+    """Adevărat dacă fiecare cuvânt căutat (rădăcina din `cuvinte_cautare`) e începutul unui cuvânt din recenzie. Subșirul
+    nu ajunge: „lentă” (rădăcina „lent”) potrivea 13 recenzii, dintre care 12 erau „excelent” (09.10.2026)."""
+    if not cuvinte:
+        return True
+    norm = (text or "").lower().translate(DIACRITICE)
+    return all(re.search(r"\b" + re.escape(c), norm) for c in cuvinte)
+
+
 def _text(v, maxim):
     if not isinstance(v, str):
         return None
