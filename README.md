@@ -274,7 +274,7 @@ categoria și termenul căutat, cu schemă strictă; valorile, citatele și docu
 scrie nicio cifră; singurul lui text pe ecran e o întrebare înapoi, etichetată ca atare. Ce n-are
 concept (găleata `comision`) se caută după text în denumirile și citatele băncii, cu cuvintele
 tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
-text”. Campaniile și recenziile nu intră: pagina răspunde că sunt în afara ei; aplicațiile au punctul lor, mai jos.
+text”. Campaniile nu intră: pagina răspunde că sunt în afara ei; aplicațiile și recenziile lor au punctele lor, mai jos.
 
 - Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
   apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar
@@ -355,10 +355,26 @@ text”. Campaniile și recenziile nu intră: pagina răspunde că sunt în afar
   butoanele „Cel puțin 100 de note” (App Store: 12 aplicații clasate, 7 sub prag) și „Cel puțin 1.000 de note” (App
   Store: 8; Libra, cu 971, iese sub prag). Pragul se poate scrie și în întrebare. Cu funcțiile și numele aplicațiilor,
   promptul a crescut de la 12.842 la 13.952 de tokeni de intrare pe întrebare (8,6%). Evaluarea, cu 53 de întrebări: 53
-  din 53 pe 09.10.2026, $0,0972. Prima rulare din aceeași zi dăduse 52 din 53: „Ce scriu clienții despre BT Pay?” ieșea
+  din 53 pe 09.10.2026, $0,0972 (cu recenziile, 57 din 57, mai jos). Prima rulare din aceeași zi dăduse 52 din 53: „Ce scriu clienții despre BT Pay?” ieșea
   `aplicatii` cu nota, fiindcă `in_afara` spunea doar „recenziile aplicațiilor”. Explicația pusă întâi în regula
   `aplicatii` a stricat altă întrebare („Care e cea mai ieftină variantă de administrare a contului?”, `neclar` de 3 ori
   din 3); pusă în `in_afara` („ce scriu sau spun clienții despre o aplicație”), trec amândouă.
+- **Recenziile** (09.10.2026). „Ce scriu clienții despre BT Pay?”, „Ce spun clienții despre logare la BRD?”: aspectul `recenzii` al tipului
+  `aplicatii`. Sursele: App Store din baza (`app_review`: 109 recenzii la 15 bănci, cel mult 8 pe bancă, alese de Apple, 2011–2026,
+  36 cu răspunsul băncii) și Google Play din `date/google_play_recenzii.json` (394 la 22 de aplicații, cel mult 20 pe aplicație,
+  cele mai noi, colectate pe 06.10.2026, 169 cu răspuns); fără fișier, fișa spune „Google Play necolectat”. Sunt un eșantion, nu toate
+  recenziile, și fișa o spune. Potrivirea (`vox.potriveste_recenzia`): fiecare rădăcină a textului căutat trebuie să fie începutul unui
+  cuvânt din recenzie, fără diacritice; cu subșir, „lentă” prindea 13 recenzii, dintre care 12 „excelent”, acum 1. Fără bancă, se caută
+  la toate aplicațiile; căutarea poate fi o funcție („RoPay”). Pe baza reală, cu model fals: BT Pay 20 + 8; „logare” la Libra 0 din 28,
+  la toate 7 recenzii la 5 bănci (BRD, Garanti, Nexent, Patria, Vista); „RoPay” 0; „card” 48 la 16 bănci; „lentă” 1. Fișa arată 5
+  recenzii pe magazin, cu textul scurtat la 400 de caractere (se deschide când potrivirea e după el, ca să se vadă mereu cuvântul găsit),
+  fără traducere (`web/src/pages/vox/Recenzii.tsx`). Pe Haiku, o frază nouă în prompt mută o întrebare de la limită (#36, #42, #46 pe
+  09.10.2026), deci ce poate decide codul sigur, pe un vocabular închis, decide codul, doar când modelul lasă câmpul gol:
+  `segment_din_intrebare` („firme”, „PFA”, „IMM”, „persoane fizice”) și `functie_din_intrebare` (cuvintele distinctive ale celor 13
+  funcții, doar dacă se potrivește exact una). Promptul desparte „Cât costă…” (neclar) de „Unde e cea mai ieftină…” (clasament).
+  Evaluarea (57 de întrebări): 57 din 57 pe 09.10.2026, $0,1058, 14.131 de tokeni de intrare pe întrebare ($0,0019). Pe întrebări din
+  afara evaluării: 33 din 33 (parafraze) și 28 din 29 (10 în engleză); singurul eșec, „Ce dobândă are CEC la contul de economii
+  pentru firme?” → `neclar`, e o limită veche a dobânzilor, la fel cu promptul de dinainte.
 - Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
   nouă, repornește serverul.
 - Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând
