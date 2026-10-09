@@ -2,11 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 import { Indici, Mobil, Rate, Sentiment } from '@mcc/shared'
 import { api } from './client'
 
-/** `sursa`: 'libra' la 2.2 (api/sursa.ts); gol la Versus și la Fișa băncii (colectarea generală). */
-export const useRate = (categorie: string, termen: string, produs: string, sursa = '') =>
+export const useRate = (categorie: string, termen: string, produs: string) =>
   useQuery({
-    queryKey: ['rate', categorie, termen, produs, sursa],
-    queryFn: () => api('/api/rate', Rate, { categorie, termen, produs, sursa }),
+    queryKey: ['rate', categorie, termen, produs],
+    queryFn: () => api('/api/rate', Rate, { categorie, termen, produs }),
     placeholderData: (p) => p,
   })
 export const useMobil = () => useQuery({ queryKey: ['mobil'], queryFn: () => api('/api/mobil', Mobil) })

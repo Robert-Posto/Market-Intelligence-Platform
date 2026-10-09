@@ -4,7 +4,6 @@ import { Link, useSearchParams } from 'react-router-dom'
 import type { Indici, Rate as RateT } from '@mcc/shared'
 import { useMeta } from '../api/meta'
 import { useIndici, useRate } from '../api/rate_mobil'
-import { SURSA_PRETURI } from '../api/sursa'
 import { Despre, EtichetaBanca, Eroare, Pill, SeIncarca } from '../components/comune'
 import Sertar, { type CerereSertar } from '../components/Sertar'
 import { Tabel, type Coloana } from '../components/Tabel'
@@ -44,7 +43,7 @@ export default function Rate() {
   const [cauta, setCauta] = useState('')
   const [sertar, setSertar] = useState<CerereSertar | null>(null)
   const meta = useMeta()
-  const q = useRate(cat, termen, produs, SURSA_PRETURI)
+  const q = useRate(cat, termen, produs)
   const indici = useIndici()
 
   const pe = useMemo(() => {
@@ -82,7 +81,7 @@ export default function Rate() {
 
   // filtrele datelor afișate, nu ale adresei: cât vine răspunsul nou, pe ecran e încă cel vechi
   const deschide = (b: string, cp: string) =>
-    setSertar({ banca: b, camp: cp, unitate: 'procent', scenariu: d.categorie, termen: d.termen, produs: d.produs, sursa: SURSA_PRETURI })
+    setSertar({ banca: b, camp: cp, unitate: 'procent', scenariu: d.categorie, termen: d.termen, produs: d.produs })
 
   const eticheta = <span className="rt-best">{t('rate.cea_mai_buna')}</span>
   const colBanca: Coloana<string> = {

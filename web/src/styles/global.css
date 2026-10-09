@@ -64,6 +64,8 @@ nav a .pdf { position: absolute; right: 20px; top: 50%; transform: translateY(-5
 nav a.activ .pdf { color: var(--marca); opacity: 1 }
 /* Vox e buton, nu pagină de citit: jos, deasupra piciorului, cu ramă și fără colțul tăiat al paginii active.
    Pe un rând: la 800px bara depășea deja cu 14px (grupul „Jobs”); pe două rânduri butonul mai adăuga 33px */
+/* grup fără titlu (Administrare): linia îl desparte de grupul de deasupra, altfel pare încă un rând din el */
+nav .fara-titlu { margin-top: 8px; padding-top: 4px; border-top: 1px solid var(--nav-line) }
 nav .jos { margin-top: auto }
 nav a.vox-nav { margin: 0 14px clamp(8px, 1.2vh, 11px); padding: clamp(5px, 0.7vh, 6px) 12px; gap: 9px;
   border: 1px solid var(--nav-line); border-radius: 9px; background: var(--nav-hover); font-weight: 600 }

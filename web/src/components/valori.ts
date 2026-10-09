@@ -39,3 +39,10 @@ export function unitTxt(u: string | null | undefined, t: Tr): string {
   const k = `unitate.${u}`
   return areCheie(k) ? t(k) : ' ' + u
 }
+
+
+/** Pentru cine e prețul (pf / pfa / imm / pj, din `cod_scenariu`); fără segment = sursa nu-l spune. */
+export function etSegment(segment: string | null | undefined, t: Tr): string {
+  const k = `segment.${segment || 'nemarcat'}`
+  return areCheie(k) ? t(k) : String(segment)
+}

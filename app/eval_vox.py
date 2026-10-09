@@ -23,9 +23,10 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import vox  # noqa: E402
 import server  # noqa: E402  (funcțiile de citire din bază)
 
-# măsurat pe 06.10.2026 (Haiku 4.5, mip_merge): $0,0015 pe întrebare cu promptul în cache
-# (11.568 de tokeni de intrare); prima întrebare scrie cache-ul, $0,0147 (măsurat în pagină)
-COST_PRIMA, COST_ESTIMAT = 0.014, 0.0015
+# măsurat pe 08.10.2026 (Haiku 4.5, mip_merge, 12.842 de tokeni de intrare pe întrebare): o întrebare cu promptul
+# în cache a costat $0,0016 în rularea cap-coadă, iar evaluarea de 44 de întrebări, $0,0963 în total; prima
+# întrebare, care scrie cache-ul de o oră (de 2 ori prețul de intrare), iese ≈ $0,027 ($0,0963 − 43 × ~$0,0016)
+COST_PRIMA, COST_ESTIMAT = 0.027, 0.0016
 
 
 def potriveste(asteptat, primit):
@@ -56,8 +57,9 @@ def main():
     if not vox.cheie_reala():
         print("ANTHROPIC_API_KEY din .env nu e o cheie reală.")
         return 2
-    q = vox.Vox(context=server._context_vox, cauta=lambda *x: [],
-                           stare_banca=lambda b: None, dir_jurnal=tempfile.mkdtemp(prefix="eval_vox_"))
+    q = vox.Vox(context=server._context_vox, cauta=lambda *x: [], stare_banca=lambda b: None,
+                clasament=lambda *x: None, stare_banci=lambda: {},
+                dir_jurnal=tempfile.mkdtemp(prefix="eval_vox_"))
     corecte, cost, intrare = 0, 0.0, 0
     for i, e in enumerate(exemple, 1):
         d = q.intreaba(e["intrebare"], e.get("anterior"))

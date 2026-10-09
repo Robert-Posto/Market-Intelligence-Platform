@@ -91,6 +91,7 @@ Se rulează în ordine, după `db/schema.sql`; după orice coloană nouă în
 | 036 | `products_discovery`: produsele concurenței fără echivalent în catalogul Libra; înlocuiește `descopera_concurenta` |
 | 037 | jurnalul joburilor: `job_types` (tipurile; unul nou e un `INSERT`), `jobs` (durată, tokeni, cost estimat, `errors` ținut de trigger), `jobs_error` (eroarea în `TEXT`, legată prin `id_job`), vederea `v_jobs`; scrise de `extragere_produse_bancare/jurnal_joburi.py`, citite de pagina Logging (`/api/jobs`) |
 | 038 | `jobs.runed_manually` (bool, implicit `FALSE`): jobul pornit din pagina „Rulare manuală”; `jurnal_joburi.py` îl scrie `TRUE` când procesul are `MIP_RULARE_MANUALA=1` (pusă de `app/rulari.py`); `v_jobs` primește coloana la coadă; pagina „Joburi și erori” o arată ca AUTOMAT / MANUAL |
+| 040 | `utilizatori`: conturile aplicației și rolul lor (`admin` / `analist` / `NULL` = neaprobat), `activ`, prima și ultima logare, cine a schimbat ultima dată; scrisă doar de `app/utilizatori.py` (la logare și din „Administrare → Utilizatori”). 039 rămâne liberă pentru ramura `dinu-george`, care are o migrare 038 nelivrată |
 
 ## ⚠️ În lucru acum — scrieți înainte să prindeți ceva de aici
 
@@ -144,9 +145,14 @@ refuză să ruleze fără el) și `ANTHROPIC_API_KEY` pentru discovery.
 ### Autentificare (Active Directory)
 
 Orice dată (`/api/*`, `/pdf`, `/logos`, paginile din `app/`) cere sesiune: logare cu contul de Windows, verificat la
-AD prin LDAPS (`app/autentificare.py`). Rolul vine din grupurile AD, inclusiv imbricate: `MCC_LDAP_GRUP_ADMIN` →
-admin, `MCC_LDAP_GRUP_ANALIST` → analist (în ambele → admin, în niciunul → 403). Doar adminul are „Rulare manuală”
-și „Joburi și erori” (`/api/rulari*`, `/api/rulare_manuala*`, `/api/jobs`): 403 pentru analist, verificat pe server.
+AD prin LDAPS (`app/autentificare.py`). AD-ul verifică doar parola; rolul (admin / analist) se dă în aplicație, în
+„Administrare → Utilizatori” (`#/administrare?tab=utilizatori`, tabela `utilizatori`, migrarea 040, `app/utilizatori.py`), ca în SCC. Un cont
+apare acolo la prima logare reușită, fără rol: până îi dă un admin unul, logarea răspunde 403 (`fara_rol`).
+`MCC_ADMIN_INITIAL` primește admin la prima logare (doar la crearea rândului). Nimeni nu-și retrage singur drepturile
+de admin și nu se poate retrage ultimul admin activ; schimbarea se aplică imediat sesiunilor deschise. Doar adminul are
+„Rulare manuală”, „Joburi și erori” și „Administrare” (`/api/rulari*`, `/api/rulare_manuala*`, `/api/jobs`,
+`/api/utilizatori*`): 403 pentru analist, verificat pe server. Până pe 09.10.2026 rolul venea din grupuri AD
+(`MCC_LDAP_GRUP_*`), care în Libra nu există.
 
 - **Pe laptop**: cât timp AD-ul nu e configurat (`MCC_LDAP_*` goale), intri automat ca admin, fără logare
   (`GET /api/sesiune` dă `local: true`). `MCC_AUTH_LOCAL=admin|analist` în `.env` alege rolul; cu AD configurat
@@ -159,8 +165,9 @@ admin, `MCC_LDAP_GRUP_ANALIST` → analist (în ambele → admin, în niciunul �
   `MCC_SESIUNE_ORE` (8) fără activitate și oricum după 12 h. 3 parole greșite pe utilizator (20 pe adresă) în
   30 de minute → 429, fără să mai întrebe AD-ul (configurabile: `MCC_AUTH_*` în `.env.example`). Sesiunile stau în
   memorie; jurnalul în `loguri/autentificare.log`, fără parole.
-- Teste: `python app/test_autentificare.py` (inclusiv cu un DC fals pe loopback, prin LDAPS) și
-  `python app/test_server_autentificare.py`.
+- Teste: `python app/test_autentificare.py` (inclusiv cu un DC fals pe loopback, prin LDAPS),
+  `python app/test_server_autentificare.py` și, pe o bază de test, `MIP_TEST_DSN=… python app/test_utilizatori.py`
+  (golește tabela `utilizatori`: niciodată pe baza aplicației).
 
 ### Colectare
 
@@ -274,7 +281,7 @@ categoria și termenul căutat, cu schemă strictă; valorile, citatele și docu
 scrie nicio cifră; singurul lui text pe ecran e o întrebare înapoi, etichetată ca atare. Ce n-are
 concept (găleata `comision`) se caută după text în denumirile și citatele băncii, cu cuvintele
 tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
-text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
+text”. Aplicațiile și campaniile nu intră: pagina răspunde că sunt în afara ei.
 
 - Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
   apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar
@@ -282,18 +289,67 @@ text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde 
   Pe laptop, cu `MCC_AUTH_LOCAL=admin`, Vox merge fără logare, ca restul aplicației.
 - Merge și din `npm run dev`: proxy-ul Vite rescrie Host-ul la server, dar Origin rămâne
   `localhost:5173`, deci ruta acceptă și acest Origin (rulările nu).
-- Modelul: `claude-haiku-4-5` (`MIP_VOX_MODEL`). Măsurat pe 06.10.2026 (`mip_merge`):
-  11.568 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0015
-  pe întrebare cu promptul în cache. Prima întrebare îl scrie: $0,0147 (11.555 de tokeni de
-  intrare); cache-ul ține 5 minute de la ultima întrebare.
+- Modelul: `claude-haiku-4-5` (`MIP_VOX_MODEL`). Măsurat pe 08.10.2026 (`mip_merge`):
+  12.842 de tokeni de intrare pe întrebare (promptul cu 30 de bănci și 127 de concepte), $0,0016
+  pe întrebare cu promptul în cache. Promptul stă în cache o oră de la ultima întrebare (`ttl: "1h"`,
+  din 08.10.2026; înainte, 5 minute). Prima întrebare îl scrie (scrierea de o oră costă de 2 ori prețul
+  de intrare): ≈ $0,027, dedus din evaluarea de mai jos ($0,0963 − 43 × ~$0,0016); apoi $0,0016 pe
+  întrebare. În conversația de test din 08.10.2026 (18 întrebări, 7,5 cenți), cu cache-ul de 5 minute,
+  promptul s-a scris de 3 ori, la prima întrebare și după două pauze, de 9 și de 5 minute: 4,9 cenți din
+  cele 7,5. Cu cache-ul de o oră, aceeași conversație ar fi costat 5,5 cenți (calculat din jurnalul ei).
 - Evaluarea interpretării (`python app/eval_vox.py --da`, 30 de întrebări reale): 30 din 30
   corecte pe 07.10.2026, $0,0576. Pe 06.10, „incoming payment” la BRD ieșea `transfer_credit` în loc
   de `incasare` în 2 rulări din 4, iar „APR” la Libra ieșea dobânda nominală (7,71–7,84%) în loc de
   DAE (8,09–8,37%); promptul spune acum ce înseamnă termenii englezești. Întrebările despre servicii
   fără concept („datoria vamală”, „TrezoNet” la BCR) cer `concept: null` și text de căutat; înainte
-  de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”).
-- Când termenul sau tipul de credit golesc răspunsul, fișa spune câte valori sunt fără filtru: ING
-  are 2 dobânzi la depozite, niciuna cu termen citit din textul băncii.
+  de corecturi Haiku le marca „neclar”, cu o clarificare falsă („nu se găsește în tarife”). Cu 10
+  întrebări de clasament și una despre aplicații (41 în total): 41 din 41 pe 07.10.2026, $0,0811, la
+  `temperature: 0` (trimis
+  prin `extra_body`, doar la Haiku 4.5: SDK-ul 1.x l-a scos din semnătură, iar Opus 4.7+ îl refuză). La
+  temperatura implicită, patru rulări cu aceleași întrebări dăduseră 36, 36, 39 și 37, cu alte greșeli
+  de fiecare dată. Pe 08.10.2026, „Cât costă administrarea contului la BCR și la BRD?”, pusă după o
+  întrebare „pentru firme”, păstra segmentul PJ deși nu-l spunea: o întrebare care se înțelege singură
+  e acum nouă, nu o continuare. Cu cazul ăsta, cu termenul la depozite și cu „și la BRD?” (care trebuie
+  să păstreze PJ), 44 din 44, $0,0867 (cache de 5 minute). Cu cache-ul de o oră, tot 44 din 44 pe
+  08.10.2026, $0,0963 în total ($0,0022 pe întrebare în medie, 12.842 de tokeni de intrare pe întrebare):
+  cu $0,0096 mai mult, cât costă scrierea de o oră (de 2 ori prețul de intrare, nu de 1,25) pe cei
+  ~12.800 de tokeni ai promptului. Fără `--da`, scriptul arată doar estimarea, ~$0,10.
+- **Clasamente.** „Care bancă are cel mai mic comision de administrare?”, „Unde stă Libra la DAE pentru
+  ipotecar?”: Vox ordonează băncile cu celulele din 2.1 (comisioane, în lei, PF dacă întrebarea nu spune
+  altfel) și 2.2 (dobânzi, pe categorie), deci aceleași cifre ca paginile (`celule_matrice`,
+  `celule_rate`). Implicit pe mediană; „cea mai ieftină variantă” ordonează pe cea mai bună valoare a
+  fiecărei bănci. Egalitățile au loc comun (la administrarea contului PF, 7 din 14 bănci au mediana
+  0 lei, `mip_merge`, 07.10.2026); Libra și băncile numite sunt evidențiate; cu termen sau tip de credit,
+  un al doilea bloc arată valorile la care sursa nu le spune (pe 7–12 luni: 2 bănci cu termen, 9 fără);
+  băncile fără date apar cu motivul. La valori egale, rândul de la mediană (serviciul afișat sub cifră)
+  se alege după cheia observației, deci paginile și Vox arată același rând.
+- **Fișa citește ce e în date** (08.10.2026). La dobânzi, câte un card pe monedă, din coloana `valuta`
+  (fără ghicit din text; gol = „monedă nespusă”): Libra · depozit, fără termen (11 valori), are 4,75% în
+  lei, 1,95% în euro și 9 valori fără monedă; „Vezi dovezile” de pe un card pe monedă deschide sertarul
+  doar pe moneda lui (`/api/celula?valuta=eur`: 1 valoare, nu cele 11). La comisioanele cu mai multe
+  frecvențe, intervalul se arată pe frecvență (BCR · administrare cont PF: pe lună 0–100 lei, pe an
+  0–1.200, fără frecvență 0–100). Notele, limitele și cursurile stau separat, la „Alte valori găsite”
+  (Garanti · schimbarea PIN-ului: doar limite contactless). Fiecare rând arată data intrării în vigoare,
+  când sursa o are (69% din valori; la BCR · administrare cont, 467 din 570). Clasamentele de dobânzi
+  păstrează cifrele din 2.2 și spun la ce bănci valorile includ și alte monede (depozit pe 12 luni:
+  Raiffeisen, 2 din 2 valori în altă monedă decât lei).
+- **Butoane fără model.** Sub răspuns: „Pentru firme” / „Pentru persoane fizice” (la comisioane) și
+  „Compară cu Libra” (la căutare). Serverul aplică butonul pe interpretarea răspunsului (`vox.din_buton`),
+  deci tura costă 0 și nu poate fi înțeleasă greșit; `POST /api/vox` cu `buton` + `anterior`.
+- **Segmentul.** Rezumatul și tabelul se împart pe persoane fizice, PFA, IMM, firme și „fără segment
+  în sursă”, PF primul: BCR · administrare cont avea 302 valori PJ, 234 PFA și 33 PF într-un singur
+  interval, 0–1.200 lei (`mip_merge`, 07.10.2026). Segmentul vine din `cod_scenariu`; la dobânzi
+  sursele nu-l spun, deci acolo nu apare. „Vezi dovezile” deschide sertarul exact pe grupă
+  (`/api/celula?segment=pf&strict=1`); sertarul din 2.1 și Versus folosește regula lui 2.1 (segmentul
+  plus rândurile nemarcate).
+- **Termenul și tipul de credit** se citesc din textul băncii, deci pot goli un răspuns: la „depozit
+  pe 12 luni” 28 din 30 de bănci n-aveau nicio valoare. Când răspunsul exact iese gol, Vox cade pe
+  „termen nespecificat”, apoi și pe „credit nespecificat”, și spune ce filtru a căzut (Libra: 11
+  dobânzi fără termen în sursă; băncile fără valori scad la 20). Dacă nici așa nu iese nimic, fișa
+  spune câte valori sunt fără niciun filtru.
+- **De ce lipsește o bancă.** Fișa goală spune câte surse ale băncii sunt interzise de `robots.txt`
+  sau refuzate de site și câte sunt PDF-uri (ING: 48 de PDF-uri interzise din 158 de surse), ori că
+  valoarea n-a apărut în sursele colectate; și că lipsa din bază nu înseamnă că banca n-are produsul.
 - Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
   nouă, repornește serverul.
 - Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând
@@ -301,7 +357,8 @@ text”. Comparațiile, aplicațiile și campaniile nu intră: pagina răspunde 
   redeschide fără model (gratuit), le caută în titlu și în întrebări (fără diacritice, cu cuvintele
   tăiate la rădăcină ca la căutarea după text), le redenumește și le șterge; cea deschisă stă în
   adresă (`#/vox?c=<id>`). Jurnalul de costuri rămâne separat, în `loguri/vox/AAAA-LL.jsonl`.
-- Teste fără rețea: `python app/test_vox.py`.
+- Teste fără rețea: `python app/test_vox.py` și `python app/test_celula.py` (segmentul, moneda și data din
+  `/api/celula`; nota de monedă din clasamente).
 
 ### Pachetul Playwright (`crawler/`)
 
@@ -593,8 +650,9 @@ docs/crawler/ jurnalele crawler-ului; operațional e doar CITESTE_PENTRU_MERGE.m
 docs/bs4/     notele scraperului BS4 (fezabilitate, comparații)
 ```
 
-Serverul e **strict read-only**: nicio rută nu scrie în bază (rulările manuale
-pornesc scripturile, care scriu ele; serverul nu). Interogările
+Serverul e **read-only pentru date**: nicio rută nu scrie date colectate (rulările manuale
+pornesc scripturile, care scriu ele; serverul nu). Singura scriere e tabela `utilizatori`
+(`app/utilizatori.py`): la logare și din „Administrare → Utilizatori”, doar admin. Interogările
 folosesc parametri (`%s`), nu interpolare de text.
 
 PDF-urile se deschid într-un **vizualizator propriu** (`pdf.html`, PDF.js), nu

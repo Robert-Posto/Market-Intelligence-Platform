@@ -4,7 +4,6 @@ import { Input, Select } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { Matrice } from '@mcc/shared'
 import { api } from '../api/client'
-import { SURSA_PRETURI } from '../api/sursa'
 import { useMeta } from '../api/meta'
 import { Despre, EtichetaBanca, Eroare, Pill, SeIncarca } from '../components/comune'
 import Sertar, { type CerereSertar } from '../components/Sertar'
@@ -41,8 +40,8 @@ export default function Produse() {
   const [sertar, setSertar] = useState<CerereSertar | null>(null)
   const meta = useMeta()
   const q = useQuery({
-    queryKey: ['matrice', grup, seg, SURSA_PRETURI],
-    queryFn: () => api('/api/matrice', Matrice, { grup, segment: seg, unitate: 'lei', sursa: SURSA_PRETURI }),
+    queryKey: ['matrice', grup, seg],
+    queryFn: () => api('/api/matrice', Matrice, { grup, segment: seg, unitate: 'lei' }),
     placeholderData: (p) => p,
   })
 
@@ -93,7 +92,7 @@ export default function Produse() {
               s: (b: string) => pe[b]![cp]?.n,
               td: (b: string) => pe[b]![cp]
                 ? { className: 'mc', title: t('produse.tooltip_celula', { banca: m.nume[b] ?? b, serviciu: etNume(cp, t) }),
-                    onClick: () => setSertar({ banca: b, camp: cp, unitate: 'lei', scenariu: '', sursa: SURSA_PRETURI }) }
+                    onClick: () => setSertar({ banca: b, camp: cp, unitate: 'lei', scenariu: '', segment: seg === 'toate' ? undefined : seg }) }
                 : { className: 'gol' },
               val: (b: string) => {
                 const x = pe[b]![cp]

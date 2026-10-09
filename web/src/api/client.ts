@@ -81,12 +81,13 @@ export async function apiPost(cale: string, corp: unknown, token: string): Promi
 /**
  * POST cu răspuns validat (Vox): aceleași antete ca apiPost (JSON + token), dar
  * erorile se aruncă, ca la `api`, iar răspunsul trece prin schemă. Ruta permite și Vite (:5173).
+ * `token: null` pentru rutele fără token (utilizatorii): acolo serverul cere doar JSON și aceeași origine.
  */
-export async function apiPostValidat<S extends z.ZodTypeAny>(cale: string, corp: unknown, token: string, schema: S): Promise<z.infer<S>> {
+export async function apiPostValidat<S extends z.ZodTypeAny>(cale: string, corp: unknown, token: string | null, schema: S): Promise<z.infer<S>> {
   const res = await fetch(cale, {
     method: 'POST',
     body: JSON.stringify(corp),
-    headers: { 'Content-Type': 'application/json', 'X-MIP-Token': token },
+    headers: { 'Content-Type': 'application/json', ...(token ? { 'X-MIP-Token': token } : {}) },
   })
   return dinRaspuns(res, cale, schema)
 }

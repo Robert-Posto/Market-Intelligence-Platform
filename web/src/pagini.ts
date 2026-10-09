@@ -12,7 +12,8 @@ export interface Pagina {
   admin?: true
 }
 export interface Grup {
-  grup: DictKey
+  /** titlul grupului în meniu; fără el, intrările stau singure (Administrare) */
+  grup?: DictKey
   chei: Pagina[]
 }
 
@@ -57,6 +58,11 @@ export const PAGINI: Grup[] = [
       { id: 'logging', pdf: '', mutata: true, admin: true },
       { id: 'rulare', pdf: '', mutata: true, admin: true },
     ],
+  },
+  {
+    // o singură intrare, cu tab-uri (Utilizatori; urmează și alte setări), deci fără titlu de grup:
+    // „ADMINISTRARE / Administrare” s-ar repeta. Rolurile se dau aici, nu în AD (09.10.2026).
+    chei: [{ id: 'administrare', pdf: '', mutata: true, admin: true }],
   },
 ]
 

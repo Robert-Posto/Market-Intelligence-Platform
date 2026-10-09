@@ -26,6 +26,7 @@ import { inventar_produse } from './inventar_produse'
 import { situatie_banci } from './situatie_banci'
 import { auth } from './auth'
 import { vox } from './vox'
+import { utilizatori } from './utilizatori'
 
 export const DICT = {
   ...comun,
@@ -55,4 +56,5 @@ export const DICT = {
   ...situatie_banci,
   ...auth,
   ...vox,
+  ...utilizatori,
 } as const

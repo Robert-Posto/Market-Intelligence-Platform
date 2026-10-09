@@ -11,6 +11,9 @@ export const ValoareDovada = z
     valoare_text: z.string().nullable(),
     unitate: z.string().nullable(),
     cod_scenariu: z.string().nullable(),
+    /** pf / pfa / imm / pj din `cod_scenariu`; null = sursa nu-l spune; lipsește în răspunsurile Vox
+     * salvate înainte de 07.10.2026 */
+    segment: z.string().nullable().optional(),
     citat: z.string().nullable(),
     confidence: z.number().nullable(),
     ambiguu: z.boolean(),
@@ -30,6 +33,10 @@ export const ValoareDovada = z
     pagina_documente_motiv: z.string().nullable(),
     fisier: z.string().nullable(),
     ancora: z.string().nullable(),
+    /** data intrării în vigoare (ISO), când sursa o are; o arată doar fișa din Vox */
+    data_vigoare: z.string().nullable().optional(),
+    /** tipul rândului când nu e prețul serviciului („limita”, „nota” …): îl pune Vox, nu /api/celula */
+    tip_alt: z.string().nullable().optional(),
   })
   .passthrough()
 export type ValoareDovada = z.infer<typeof ValoareDovada>

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { z } from 'zod'
-import { Conversatie, ConversatieRezumat, RaspunsVox, Redenumire, Stergere, VoxStare, type Interpretare } from '@mcc/shared'
+import { Conversatie, ConversatieRezumat, RaspunsVox, Redenumire, Stergere, VoxStare, type Buton, type Interpretare } from '@mcc/shared'
 import { api, apiPostValidat } from './client'
 
 /** Starea funcției (activă doar local, cu MIP_PERMITE_VOX=1 și cheia reală) și tokenul POST-ului. */
@@ -23,6 +23,11 @@ export function citesteConversatia(id: string) {
 /** O întrebare = un apel plătit la model: doar la clic, niciodată la randare; `conversatie` null începe una. */
 export function trimiteIntrebarea(intrebare: string, anterior: Interpretare | null, conversatie: string | null, token: string) {
   return apiPostValidat('/api/vox', { intrebare, anterior, conversatie }, token, RaspunsVox)
+}
+
+/** Un buton de sub răspuns: serverul aplică butonul pe `anterior` fără model, deci tura costă 0. */
+export function trimiteButonul(buton: Buton, anterior: Interpretare, conversatie: string | null, token: string) {
+  return apiPostValidat('/api/vox', { buton, anterior, conversatie }, token, RaspunsVox)
 }
 
 export function redenumesteConversatia(id: string, titlu: string, token: string) {
