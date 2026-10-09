@@ -9,7 +9,8 @@ import { PAGINI, TOATE, VOX, cheie } from '../pagini'
 import { useTema, type Tema } from '../tema'
 import { num } from '../util/format'
 import { Comutator } from '../components/Comutator'
-import { VoxBula, VoxInsigna } from '../components/LogoVox'
+import { VoxInsigna } from '../components/LogoVox'
+import BulaVox from './BulaVox'
 
 /** Bara laterală, titlul paginii, comutatoarele de limbă și de temă. */
 export default function AppShell() {
@@ -50,10 +51,6 @@ export default function AppShell() {
           ))}
         </div>
         <div className="jos">
-          <NavLink to={`/${VOX.id}`} className={({ isActive }) => (isActive ? 'vox-nav activ' : 'vox-nav')}>
-            <VoxBula className="icon" size={18} />
-            {t('vox.nav.buton')}
-          </NavLink>
           <div className="picior">
             {sumar.data && (
               <T
@@ -111,6 +108,7 @@ export default function AppShell() {
         </div>
         <Outlet />
       </main>
+      <BulaVox />
     </div>
   )
 }
