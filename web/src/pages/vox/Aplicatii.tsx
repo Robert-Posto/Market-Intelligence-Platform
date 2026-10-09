@@ -8,6 +8,7 @@ import { EtichetaBanca } from '../../components/comune'
 import { areCheie, useLang, type DictKey } from '../../i18n'
 import { formatZi, num } from '../../util/format'
 import { Verdict } from '../rate_mobil/android/comune'
+import Recenzii from './Recenzii'
 import { FUNCTII } from '../rate_mobil/android/model'
 import '../../styles/android.css'
 
@@ -50,9 +51,9 @@ export default function Aplicatii({ a, m }: { a: AplicatiiT; m: Meta }) {
   const { t, locale } = useLang()
   const note = a.vedere === 'note' || a.vedere === 'aplicatii'
   const surse = [
-    a.vedere !== 'note' && a.analiza_la ? t('vox.aplicatii.sursa_analiza', { data: formatZi(a.analiza_la, locale) }) : '',
+    a.vedere !== 'note' && a.vedere !== 'recenzii' && a.analiza_la ? t('vox.aplicatii.sursa_analiza', { data: formatZi(a.analiza_la, locale) }) : '',
     note && a.app_store_la ? t('vox.aplicatii.sursa_app_store', { data: formatZi(a.app_store_la, locale) }) : '',
-    note ? (a.play_la ? t('vox.aplicatii.sursa_play', { data: formatZi(a.play_la, locale) }) : t('vox.aplicatii.play_lipsa')) : '',
+    note || a.vedere === 'recenzii' ? (a.play_la ? t('vox.aplicatii.sursa_play', { data: formatZi(a.play_la, locale) }) : t('vox.aplicatii.play_lipsa')) : '',
   ].filter(Boolean)
   return (
     <div className="vox-fisa vox-apl">
@@ -60,7 +61,8 @@ export default function Aplicatii({ a, m }: { a: AplicatiiT; m: Meta }) {
       {a.vedere === 'aplicatii' && <VedereAplicatii a={a} m={m} />}
       {a.vedere === 'note' && <VedereNote a={a} m={m} />}
       {a.vedere === 'neanalizata' && <Neanalizata a={a} />}
-      {a.vedere !== 'aplicatii' && a.banci_fara_aplicatie.length > 0 && (
+      {a.vedere === 'recenzii' && <Recenzii a={a} m={m} />}
+      {a.vedere !== 'aplicatii' && a.vedere !== 'recenzii' && a.banci_fara_aplicatie.length > 0 && (
         <p className="vox-nota">
           <span className="vox-punct gri" />
           {t('vox.aplicatii.fara_aplicatie', {
@@ -70,8 +72,8 @@ export default function Aplicatii({ a, m }: { a: AplicatiiT; m: Meta }) {
       )}
       <div className="vox-fisa-jos">
         <span className="vox-meta">{surse.join(' · ')}</span>
-        <Link className="vox-link" to={a.vedere === 'note' ? '/mobil' : '/mobil?platforma=android&s=functionalitati'}>
-          {t(a.vedere === 'note' ? 'vox.aplicatii.deschide_mobil' : 'vox.aplicatii.deschide_android')}
+        <Link className="vox-link" to={a.vedere === 'note' ? '/mobil' : a.vedere === 'recenzii' ? '/mobil?la=recenzii' : '/mobil?platforma=android&s=functionalitati'}>
+          {t(a.vedere === 'note' ? 'vox.aplicatii.deschide_mobil' : a.vedere === 'recenzii' ? 'vox.aplicatii.recenzii.deschide' : 'vox.aplicatii.deschide_android')}
         </Link>
       </div>
     </div>

@@ -202,3 +202,10 @@ section.vox-bun-venit { flex: 1 0 auto; display: flex; flex-direction: column; a
 .vox-apl-magazin .nr { font-family: var(--mono); font-size: 18px }
 .vox-apl-lista { margin: 0; padding-left: 20px; columns: 2 220px; font-size: 13px }
 .vox-apl-note td:last-child { white-space: nowrap }
+
+/* Recenziile (09.10.2026): cardul vine din 2.3 (.rec, în rate_mobil.css) */
+.vox-rec-banca { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px }
+.vox-rec-banca.evidentiata { border-color: var(--accent); box-shadow: inset 4px 0 var(--accent) }
+.vox-rec-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px }
+.vox-rec-magazin { display: flex; flex-direction: column; gap: 6px }
+.vox-gasit { background: var(--accent-tint); border-radius: 2px }

@@ -25,7 +25,7 @@ export const Interpretare = z.object({
   metrica: z.enum(['mediana', 'cea_mai_buna']).nullable().optional(),
   /** lipsesc în conversațiile salvate înainte de aplicații (08.10.2026) */
   functie: z.string().nullable().optional(),
-  aspect: z.enum(['functii', 'note']).nullable().optional(),
+  aspect: z.enum(['functii', 'note', 'recenzii']).nullable().optional(),
   prag_note: z.number().nullable().optional(),
 })
 export type Interpretare = z.infer<typeof Interpretare>
@@ -177,9 +177,34 @@ export const CardNote = z
   .passthrough()
 export type CardNote = z.infer<typeof CardNote>
 
+/** O recenzie, așa cum a scris-o clientul (App Store din bază, Google Play din date/google_play_recenzii.json). */
+export const RecenzieVox = z
+  .object({
+    nota: z.number().nullable(), text: z.string().nullable(), data: z.string().nullable(), versiune: z.string().nullable(),
+    raspuns_banca: z.string().nullable(), raspuns_data: z.string().nullable().optional(),
+  })
+  .passthrough()
+export type RecenzieVox = z.infer<typeof RecenzieVox>
+
+/** Recenziile unei bănci într-un magazin: cele potrivite și câte are eșantionul. */
+export const MagazinRecenzii = z.object({ recenzii: z.array(RecenzieVox), din: z.number() })
+export type MagazinRecenzii = z.infer<typeof MagazinRecenzii>
+
+/** `play` = null: fișierul Google Play lipsește. */
+export const BlocRecenzii = z
+  .object({
+    banca: z.string(), aplicatie: z.string().nullable(), fara_aplicatie: z.boolean(), evidentiata: z.boolean(),
+    play: MagazinRecenzii.nullable(), app_store: MagazinRecenzii.nullable(),
+  })
+  .passthrough()
+export type BlocRecenzii = z.infer<typeof BlocRecenzii>
+
 const SchemaAplicatii = z
   .object({
-    vedere: z.enum(['functie', 'aplicatii', 'note', 'neanalizata']),
+    vedere: z.enum(['functie', 'aplicatii', 'note', 'neanalizata', 'recenzii']),
+    blocuri: z.array(BlocRecenzii).optional(),
+    cuvinte: z.array(z.string()).optional(),
+    fara_potriviri: z.number().optional(),
     functie: z.string().nullable(),
     text_cautat: z.string().nullable(),
     analiza_la: z.string().nullable(),
@@ -238,8 +263,10 @@ export const RaspunsVox = RaspunsIntrebare.extend({ conversatie: z.string().null
 export type RaspunsVox = z.infer<typeof RaspunsVox>
 
 /** O întrebare dintr-o conversație salvată (loguri/vox/conversatii/<id>.jsonl). */
-export const Tura = z.object({ data: z.string(), intrebare: z.string(), raspuns: RaspunsIntrebare })
-export type Tura = z.infer<typeof Tura>
+const SchemaTura = z.object({ data: z.string(), intrebare: z.string(), raspuns: RaspunsIntrebare })
+export type Tura = z.infer<typeof SchemaTura>
+/** Tip numit, ca la `Aplicatii`: cu vederea recenziilor, `Conversatie` depășea din nou lungimea maximă (TS7056, 09.10.2026). */
+export const Tura: z.ZodType<Tura, z.ZodTypeDef, unknown> = SchemaTura
 
 export const Conversatie = z
   .object({ id: z.string(), titlu: z.string(), redenumita: z.boolean(), ture: z.array(Tura) })

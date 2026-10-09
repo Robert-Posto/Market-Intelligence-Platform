@@ -408,7 +408,7 @@ function Raspuns({ r, m, poate, onDovezi, onExemplu, onButon }: {
       <article className="vox-card">
         <div className="vox-inteles">
           <span className="vox-et">{t('vox.am_inteles')}</span>
-          <span className="vox-chip">{t(i.aspect === 'note' ? 'vox.aplicatii.chip_note' : 'vox.aplicatii.chip')}</span>
+          <span className="vox-chip">{t(i.aspect === 'note' ? 'vox.aplicatii.chip_note' : i.aspect === 'recenzii' ? 'vox.aplicatii.chip_recenzii' : 'vox.aplicatii.chip')}</span>
           {i.banci.map((b) => <span key={b} className="vox-chip banca">{m.nume[b] ?? b}</span>)}
           {i.functie && (
             <span className="vox-chip">{areCheie(`mobil.android_fs.${i.functie}`) ? t(`mobil.android_fs.${i.functie}` as DictKey) : i.functie}</span>
