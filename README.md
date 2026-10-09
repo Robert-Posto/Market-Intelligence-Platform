@@ -276,6 +276,10 @@ concept (găleata `comision`) se caută după text în denumirile și citatele b
 tăiate la rădăcină („datoria vamală” găsește „datoriei vamale”), și apare marcat „căutare după
 text”. Campaniile nu intră: pagina răspunde că sunt în afara ei; aplicațiile și recenziile lor au punctele lor, mai jos.
 
+Vox se deschide din bula din dreapta jos (`web/src/layout/BulaVox.tsx`), aceeași pe toate paginile din cadrul
+aplicației; pe pagina Vox, pe hartă și pe vizualizatorul PDF bula nu apare (09.10.2026, în locul butonului din bara
+laterală). Stă sub sertare și ferestre (`zIndex` 900), iar `main` are 88 px jos, ca ultimul rând să rămână deasupra ei.
+
 - Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
   apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar
   istoricul conversațiilor e comun tuturor utilizatorilor, nu al fiecăruia, iar fiecare întrebare costă.
