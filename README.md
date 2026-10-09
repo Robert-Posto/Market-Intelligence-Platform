@@ -354,10 +354,11 @@ text”. Campaniile și recenziile nu intră: pagina răspunde că sunt în afar
   4,8). ProCredit e pe locul 1 în App Store cu 5,0 din 6 note, deci fișa spune asta și întreabă ce prag vrei, cu
   butoanele „Cel puțin 100 de note” (App Store: 12 aplicații clasate, 7 sub prag) și „Cel puțin 1.000 de note” (App
   Store: 8; Libra, cu 971, iese sub prag). Pragul se poate scrie și în întrebare. Cu funcțiile și numele aplicațiilor,
-  promptul a crescut de la 12.842 la 13.901 tokeni de intrare pe întrebare (8,2%). Evaluarea din 09.10.2026, cu 53 de
-  întrebări: 52 din 53, $0,1235. Singura greșeală, „Ce scriu clienții despre BT Pay?”, ieșea `aplicatii` cu nota în loc de
-  `in_afara`; promptul spune acum că nota înseamnă doar stelele și numărul de note, iar ce scriu clienții e în afara lui
-  Vox (nevalidat încă de o evaluare nouă).
+  promptul a crescut de la 12.842 la 13.952 de tokeni de intrare pe întrebare (8,6%). Evaluarea, cu 53 de întrebări: 53
+  din 53 pe 09.10.2026, $0,0972. Prima rulare din aceeași zi dăduse 52 din 53: „Ce scriu clienții despre BT Pay?” ieșea
+  `aplicatii` cu nota, fiindcă `in_afara` spunea doar „recenziile aplicațiilor”. Explicația pusă întâi în regula
+  `aplicatii` a stricat altă întrebare („Care e cea mai ieftină variantă de administrare a contului?”, `neclar` de 3 ori
+  din 3); pusă în `in_afara` („ce scriu sau spun clienții despre o aplicație”), trec amândouă.
 - Lista băncilor și a conceptelor se citește din bază la prima întrebare. După o încărcare de date
   nouă, repornește serverul.
 - Istoricul: fiecare conversație e un fișier pe laptop, `loguri/vox/conversatii/<id>.jsonl` (un rând
