@@ -1778,6 +1778,21 @@ class SegmentDinIntrebare(unittest.TestCase):
         self.assertIsNone(vox.segment_din_intrebare("pfand"))
         self.assertIsNone(vox.segment_din_intrebare("immobil"))
 
+    def test_pfa_pe_lung_nu_e_pf(self):
+        """„persoane fizice autorizate” ieșea `pf` (09.10.2026): `persoan\w*\s+fizic` o prindea și pe forma lungă a PFA."""
+        for t in ("pentru persoane fizice autorizate la BCR?", "pentru o persoană fizică autorizată?"):
+            self.assertEqual(vox.segment_din_intrebare(t), "pfa", t)
+
+    def test_contrapartea_nu_e_segmentul(self):
+        """„Cât costă transferul către o firmă la BCR?” ieșea `pj`, deși firma e destinatarul plății, nu clientul."""
+        for t in ("Cât costă transferul către o firmă la BCR?", "Cât costă plata către o companie de utilități la ING?",
+                  "How much is a transfer to a company at BCR?", "plata spre firme", "o plată unei firme"):
+            self.assertIsNone(vox.segment_din_intrebare(t), t)
+
+    def test_firme_mici_si_mijlocii_sunt_imm(self):
+        self.assertEqual(vox.segment_din_intrebare("Cât costă contul pentru firme mici și mijlocii?"), "imm")
+        self.assertEqual(vox.segment_din_intrebare("pentru firme la BCR"), "pj")
+
 
 FUNCTII_CTX = [{"functie": f} for f in (
     "anti_fraud", "hce_contactless", "huawei", "identity_verification", "in_app_chat", "marketing", "nfc_id_chip",
@@ -1802,17 +1817,64 @@ class FunctieDinIntrebare(unittest.TestCase):
         self.assertIsNone(self.f("Are BCR Apple Pay?"))
         self.assertIsNone(self.f("Are George chat și RoPay?"))
 
+    def test_cuvintele_prea_largi_nu_sunt_functii(self):
+        """Fiecare e o întrebare la care modelul lasă `functie` goală pe bună dreptate (re-revizia, 09.10.2026)."""
+        for t in ("Pot plăti facturi din aplicația BRD?", "Pot schimba poza de profil în George?", "Are BCR Apple Wallet?",
+                  "Are BCR Samsung Wallet?", "Are BCR tutoriale video?", "Cum deschid cont cu buletinul?"):
+            self.assertIsNone(self.f(t), t)
+
+    def test_expresii_inguste(self):
+        self.assertEqual(self.f("Are George apel video?"), "video_call")
+        self.assertEqual(self.f("Are George videocall?"), "video_call")
+        self.assertEqual(self.f("Pot adăuga cardul în Google Wallet din YOU BRD?"), "wallet_provisioning")
+        self.assertEqual(self.f("Are BCR GPay?"), "wallet_provisioning")
+        self.assertEqual(self.f("Se poate plăti prin scanare QR în George?"), "scan_pay")
+
     def test_slug_absent_din_functii(self):
         self.assertIsNone(self.f("Are BT Pay RoPay?", [{"functie": "in_app_chat"}]))
 
+    def fa(self, brut=None, **k):
+        return vox.Vox(context=lambda: CTX, cauta=lambda *a: [], stare_banca=lambda b: None,
+                       client=ClientFals(brut or apl(banci=["bcr"], **k)), dir_jurnal=tempfile.mkdtemp(prefix="vox_f_"))
+
     def test_in_vox(self):
-        def fa(**k):
-            return vox.Vox(context=lambda: CTX, cauta=lambda *a: [], stare_banca=lambda b: None,
-                           client=ClientFals(apl(banci=["bcr"], **k)), dir_jurnal=tempfile.mkdtemp(prefix="vox_f_"))
-        d = fa(functie=None, text_cautat="RoPay").intreaba("Are BT Pay RoPay?")
+        fa = self.fa
+        d = fa(functie=None, text_cautat=None).intreaba("Are BT Pay RoPay?")
         self.assertEqual((d["interpretare"]["functie"], d["interpretare"]["text_cautat"]), ("ropay", None))
         d = fa(functie="in_app_chat").intreaba("Are BT Pay RoPay?")
         self.assertEqual(d["interpretare"]["functie"], "in_app_chat")
+
+    def test_text_cautat_al_modelului_opreste_plasa(self):
+        """„Are BCR Apple Pay și chat?”: modelul a pus „Apple Pay” în `text_cautat` (funcție din afara listei), iar plasa
+        o înlocuia cu `in_app_chat` și pierdea cuvântul."""
+        d = self.fa(functie=None, text_cautat="Apple Pay").intreaba("Are BCR Apple Pay și chat?")
+        self.assertEqual((d["interpretare"]["functie"], d["interpretare"]["text_cautat"]), (None, "Apple Pay"))
+
+    def test_plasa_nu_lucreaza_la_recenzii(self):
+        """„Ce scriu clienții despre RoPay?” e `recenzii` cu text_cautat „RoPay”: `functie_din_intrebare` ar da `ropay`."""
+        d = self.fa(aspect="recenzii", functie=None, text_cautat="RoPay").intreaba("Ce scriu clienții despre RoPay?")
+        self.assertEqual((d["interpretare"]["functie"], d["interpretare"]["text_cautat"]), (None, "RoPay"))
+
+    def test_jurnalul_arata_plasele(self):
+        def jurnal(q):
+            (nume,) = [f for f in os.listdir(q.dir) if f.endswith(".jsonl")]
+            with open(os.path.join(q.dir, nume), encoding="utf-8") as f:
+                return json.loads(f.readline())
+        q = self.fa(functie=None, text_cautat=None)
+        q.intreaba("Are BT Pay RoPay?")
+        self.assertEqual(jurnal(q)["plase"], ["functie"])
+        q = self.fa(functie="ropay")
+        q.intreaba("Are BT Pay RoPay?")
+        self.assertNotIn("plase", jurnal(q))
+        q = self.fa(interp(segment=None))
+        q.intreaba("Cât costă administrarea contului pentru firme?")
+        self.assertEqual(jurnal(q)["plase"], ["segment"])
+
+    def test_segmentul_se_aplica_si_la_neclar(self):
+        """La `neclar` interpretarea doar alimentează `anterior`: fără segment, „la BCR” de după pierdea „firme”."""
+        q = self.fa(interp(tip="neclar", banci=[], concept=None, segment=None, clarificare="La ce bancă?"))
+        d = q.intreaba("Cât costă administrarea contului pentru firme?")
+        self.assertEqual((d["interpretare"]["tip"], d["interpretare"]["segment"]), ("neclar", "pj"))
 
 
 class Http(unittest.TestCase):

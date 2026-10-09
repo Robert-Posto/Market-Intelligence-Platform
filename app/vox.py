@@ -341,23 +341,31 @@ def potriveste_recenzia(text, cuvinte):
 
 _SEGMENTE_DIN_TEXT = (
     ("pj", re.compile(r"(?<![^\W_])(?:firm|compan|persoan\w*\s+juridic|pj(?![^\W_]))")),
-    ("pfa", re.compile(r"(?<![^\W_])pfa(?![^\W_])")),
+    ("pfa", re.compile(r"(?<![^\W_])(?:pfa(?![^\W_])|persoan\w*\s+fizic\w*\s+autorizat)")),
     ("imm", re.compile(r"(?<![^\W_])imm(?![^\W_])")),
-    ("pf", re.compile(r"(?<![^\W_])(?:persoan\w*\s+fizic|pf(?![^\W_]))")),
+    ("pf", re.compile(r"(?<![^\W_])(?:persoan\w*\s+fizic(?!\w*\s+autorizat)|pf(?![^\W_]))")),
 )
+# Firma din „transferul către o firmă la BCR” (și „plata către o companie de utilități la ING”) e destinatarul plății, nu
+# clientul: plasa o citea `pj` exact unde modelul lăsase `null` pe bună dreptate (re-revizia, 09.10.2026). Se scoate înainte
+# de potrivire. „Firme mici și mijlocii” e IMM, nu PJ: același test o citea `pj`.
+_CONTRAPARTE = re.compile(r"(?<![^\W_])(?:catre|spre|unei|to(?:\s+a)?)\s+(?:o\s+)?(?:firm|compan)\w*")
+_IMM_LUNG = re.compile(r"(?<![^\W_])firm\w*\s+mici\s+si\s+mijlocii")
 
 
 def segment_din_intrebare(intrebare):
     """Segmentul pe care îl spune textul, după vocabularul închis din prompt, sau None (nespus sau două segmente
     diferite: nu alegem în locul utilizatorului). Cuvintele scurte (pj, pf, pfa, imm) trebuie să fie întregi."""
-    norm = _fara_accente(intrebare)
+    norm = _IMM_LUNG.sub(" imm ", _CONTRAPARTE.sub("", _fara_accente(intrebare)))
     gasite = [segment for segment, tipar in _SEGMENTE_DIN_TEXT if tipar.search(norm)]
     return gasite[0] if len(gasite) == 1 else None
 
 
-# Cuvintele distinctive ale fiecărei funcții (rădăcini, fără diacritice). „Are BT Pay RoPay?” ieșea fără funcție (parafrazele,
-# 32/33, 09.10.2026), la fel #46 când promptul a primit o frază în plus: regula stă în cod. O funcție nouă din bază, fără
-# cuvinte aici, doar nu are plasă.
+# Cuvintele distinctive ale fiecărei funcții (rădăcini, fără diacritice; „a b” = cuvinte consecutive). „Are BT Pay RoPay?” ieșea
+# fără funcție (parafrazele, 32/33, 09.10.2026), la fel #46 când promptul a primit o frază în plus: regula stă în cod. O
+# funcție nouă din bază, fără cuvinte aici, doar nu are plasă. Tabelul e strâns la ce nu apare în alte întrebări: „factur”
+# prindea „Pot plăti facturi din aplicația BRD?” (orice aplicație plătește facturi, funcția e plata din poză), „poza” pe cea
+# de profil, „wallet” singur pe „Are BCR Apple Wallet?” (Apple Pay merge în `text_cautat`, nu la Google Wallet), „video” pe
+# „tutoriale video”, „buletin” pe „deschid cont cu buletinul”.
 _CUVINTE_FUNCTII = {
     "anti_fraud": ("fraud",),
     "hce_contactless": ("contactless",),
@@ -365,13 +373,13 @@ _CUVINTE_FUNCTII = {
     "identity_verification": ("identit",),
     "in_app_chat": ("chat",),
     "marketing": ("marketing",),
-    "nfc_id_chip": ("cip", "pasaport", "buletin"),
+    "nfc_id_chip": ("cip", "pasaport"),
     "ropay": ("ropay",),
-    "scan_pay": ("scan", "poza", "fotografi", "factur", "qr"),
+    "scan_pay": ("scan", "qr", "fotografi"),
     "strong_auth": ("biometric", "passkey", "amprent", "faceid", "facial"),
-    "video_call": ("video", "audio"),
+    "video_call": ("apel video", "videocall", "video call", "apel audio"),
     "voice": ("vocal", "voce", "voice"),
-    "wallet_provisioning": ("wallet", "portofel", "gpay"),
+    "wallet_provisioning": ("google wallet", "portofel", "gpay"),
 }
 
 
@@ -381,7 +389,7 @@ def functie_din_intrebare(intrebare, functii):
     norm = _fara_accente(intrebare)
     cunoscute = {f["functie"] for f in functii}
     gasite = [s for s, cuvinte in _CUVINTE_FUNCTII.items() if s in cunoscute
-              and any(re.search(r"(?<![^\W_])" + re.escape(c), norm) for c in cuvinte)]
+              and any(re.search(r"\s+".join(r"(?<![^\W_])" + re.escape(w) for w in c.split()), norm) for c in cuvinte)]
     return gasite[0] if len(gasite) == 1 else None
 
 
@@ -1238,13 +1246,25 @@ class Vox:
             interp, ignorate = valideaza(brut, ctx)
             # #42 din evaluare (09.10.2026): „… pentru firme la BCR?” ieșea neclar cu „PFA, IMM sau PJ?”, iar o frază în
             # plus în prompt a răsturnat #46 („Are George plata contactless?”): regula stă în cod, nu în prompt
-            if interp["tip"] in ("cautare", "clasament") and interp["segment"] is None:
+            # `neclar` doar alimentează `anterior`: fără segment, „la BCR” de după pierdea „firme” (re-revizia, N8)
+            plase = []
+            if interp["tip"] in ("cautare", "clasament", "neclar") and interp["segment"] is None:
                 interp["segment"] = segment_din_intrebare(intrebare)
-            # „Are BT Pay RoPay?” ieșea cu `functie` goală (32/33 parafraze, 09.10.2026): utilizatorul primea toate funcțiile
-            if interp["tip"] == "aplicatii" and interp["aspect"] == "functii" and interp["functie"] is None:
+                if interp["segment"]:
+                    plase.append("segment")
+            # „Are BT Pay RoPay?” ieșea cu `functie` goală (32/33 parafraze, 09.10.2026): utilizatorul primea toate funcțiile.
+            # Un `text_cautat` pus de model înseamnă că a recunoscut o funcție din afara listei („Apple Pay și chat”: plasa
+            # lua `in_app_chat` și arunca „Apple Pay”), deci plasa nu mai lucrează
+            if (interp["tip"] == "aplicatii" and interp["aspect"] == "functii" and interp["functie"] is None
+                    and interp["text_cautat"] is None):
                 f = functie_din_intrebare(intrebare, ctx["functii"])
                 if f:
-                    interp["functie"], interp["text_cautat"] = f, None        # căutarea era chiar funcția
+                    interp["functie"] = f
+                    plase.append("functie")
+            # jurnalul păstrează doar interpretarea de după plase: fără cheia asta, o greșeală a modelului acoperită de cod
+            # (sau o plasă care greșește) nu se mai vede în `loguri/vox/`
+            if plase:
+                rand["plase"] = plase
         # singurul marcaj de cache din cerere e cel de o oră, deci orice scriere e de o oră
         cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"],
                             scriere_cache_1h=tokeni["scriere_cache"])
