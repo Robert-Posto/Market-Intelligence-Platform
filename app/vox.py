@@ -360,15 +360,21 @@ def segment_din_intrebare(intrebare):
     return gasite[0] if len(gasite) == 1 else None
 
 
-_LEGATURI = ("si", "dar", "iar", "insa", "and", "but", "what about", "how about", "also")
+_LEGATURI = ("si", "dar", "iar", "insa", "sau", "and", "but", "or", "what about", "how about", "also")
 _LEGATURA = re.compile(r"^(?:" + "|".join(_LEGATURI) + r")(?![^\W_])")
+# „La ING pentru același cont?” are 5 cuvinte și niciun cuvânt de legătură, dar nu se înțelege singură (re-revizia, 09.10.2026);
+# „asta” cere cuvânt întreg: „astăzi” îl începe
+_REFERINTA = re.compile(r"(?<![^\W_])(?:acelasi|aceeasi|aceleasi|acelor|aceasta|asta(?![^\W_])|acela|aceea|compar|same|that"
+                        r"|this one)")
 
 
 def e_continuare(intrebare):
     """Adevărat dacă întrebarea se sprijină pe cea de dinainte: începe cu un cuvânt de legătură („și la BRD?”, „dar pe 6
-    luni?”) sau are cel mult 4 cuvinte („La ING?”). Una mai lungă care nu începe așa se înțelege singură."""
+    luni?”), are cel mult 4 cuvinte („La ING?”) sau conține un cuvânt de trimitere („același cont”, „compară”). Regula
+    păstrează intenționat ca „continuare” și o întrebare nouă scurtă („Cât costă la ING?” își păstrează segmentul): greșeala
+    spre păstrare e mai ieftină decât un segment pierdut. Una mai lungă, fără legătură sau trimitere, se înțelege singură."""
     norm = _fara_accente(intrebare).strip()
-    return bool(_LEGATURA.match(norm)) or len(re.findall(r"[^\W_]+", norm)) <= 4
+    return bool(_LEGATURA.match(norm) or _REFERINTA.search(norm)) or len(re.findall(r"[^\W_]+", norm)) <= 4
 
 
 # Cuvintele distinctive ale fiecărei funcții (rădăcini, fără diacritice; „a b” = cuvinte consecutive). „Are BT Pay RoPay?” ieșea

@@ -1882,8 +1882,17 @@ class EContinuare(unittest.TestCase):
 
     def test_continuari(self):
         for t in ("dar la Libra?", "și la BRD?", "dar pe 6 luni?", "La ING?", "Și care e cea mai ieftină?",
-                  "But at BRD?", "What about ING for 12 months?", "Also at BCR?"):
+                  "But at BRD?", "What about ING for 12 months?", "Also at BCR?", "sau la BRD?", "Or at BRD?",
+                  "și cât costă la ING pentru același cont?"):
             self.assertTrue(vox.e_continuare(t), t)
+
+    def test_trimiteri_fara_legatura(self):
+        for t in ("La ING pentru același cont?", "Cât costă la ING pentru același cont?", "Cum se compară cu BRD?",
+                  "Cum stă BRD la același comision?", "What is it at BRD for the same account?"):
+            self.assertTrue(vox.e_continuare(t), t)
+
+    def test_astazi_nu_e_trimitere(self):
+        self.assertFalse(vox.e_continuare("Care e cea mai ieftină variantă de administrare a contului astăzi?"))
 
     def test_intrebari_noi(self):
         for t in ("Care e cea mai ieftină variantă de administrare a contului?",
