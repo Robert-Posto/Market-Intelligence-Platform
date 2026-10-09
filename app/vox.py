@@ -63,7 +63,8 @@ CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text
 # „cea mai ieftină variantă” cere cea mai bună valoare a fiecărei bănci, nu mediana (decizia lui
 # Nicolae, 07.10.2026); mediana rămâne implicită, ca în 2.1 și Versus
 METRICI = ("mediana", "cea_mai_buna")
-# Aplicațiile (decizia lui Nicolae, 08.10.2026): funcțiile din analiza aplicațiilor Android, notele din magazine sau recenziile (decizia lui Nicolae, 09.10.2026)
+# Aplicațiile: funcțiile din analiza aplicațiilor Android sau notele din magazine (decizia lui Nicolae, 08.10.2026)
+# și recenziile (09.10.2026)
 ASPECTE = ("functii", "note", "recenzii")
 # Pragurile oferite ca butoane sub clasamentul notelor. Fără prag (decizia lui Nicolae, 08.10.2026), ProCredit iese
 # primul în App Store cu 5,0 din 6 note (24.09.2026): sub cel mai mic prag, Vox spune asta și întreabă ce prag vrea
@@ -194,7 +195,7 @@ def prompt(ctx):
         "Utilizatorul întreabă, în română sau în engleză, despre o valoare publicată de o bancă din "
         "România (un comision, o dobândă, o limită) sau compară băncile între ele pe o astfel de valoare. "
         "Poate întreba și despre aplicațiile mobile ale băncilor: funcțiile găsite în analiza aplicațiilor "
-        "Android și notele din magazine (Google Play, App Store).",
+        "Android, notele din magazine (Google Play, App Store) și recenziile lor.",
         "Sarcina ta: traduci întrebarea în parametrii unei căutări în baza noastră. NU răspunzi la "
         "întrebare, nu scrii nicio cifră și nu folosești ce știi despre bănci: valorile le arată "
         "aplicația, din bază.",
@@ -208,7 +209,7 @@ def prompt(ctx):
         "iar aplicația spune că nu are clasament.",
         "- Întrebările care încep cu „care bancă…”, „ce bancă…”, „which bank…” și cer o valoare (un comision, "
         "o dobândă) sunt întotdeauna clasament; cele despre aplicații („care bancă are cea mai bună "
-        "aplicație?”) sunt aplicatii, iar cele despre recenzii sau campanii rămân in_afara. "
+        "aplicație?”) sunt aplicatii, iar cele despre campanii rămân in_afara. "
         "O întrebare cu „cine are cel mai…”, „cea mai ieftină variantă…” compară și ea băncile: e "
         "clasament chiar fără bancă numită, chiar dacă serviciul nu are "
         "concept sau nu-l recunoști; nu pune neclar pentru asta. Exemple: „Care bancă are cel mai mic "
@@ -221,7 +222,9 @@ def prompt(ctx):
         "„George” → bcr), altfel []. functie = funcția din lista „Funcțiile aplicațiilor”, dacă întrebarea "
         "numește una; o funcție care nu e în listă („Apple Pay”) → functie = null și numele ei în text_cautat. "
         "aspect = note pentru notă (stelele și numărul de note) și clasamentul ei („cea mai bună aplicație” = cea mai "
-        "bună notă), altfel "
+        "bună notă); aspect = recenzii pentru ce scriu sau spun clienții despre o aplicație (recenzii, comentarii, "
+        "păreri, plângeri), cu functie = null și text_cautat = cuvintele căutate în recenzii, doar dacă întrebarea "
+        "caută ceva anume („Se plâng clienții de logare la Libra?” → logare); altfel "
         "functii. prag_note = numărul minim de note, doar dacă întrebarea îl cere („cu cel puțin 1.000 de "
         "note” → 1000), altfel null. La aplicatii, concept, categorie, termen, produs_credit, segment și "
         "metrica sunt null.",
@@ -230,8 +233,8 @@ def prompt(ctx):
         "o întrebare scurtă, în limba utilizatorului. O întrebare fără bancă și fără comparație "
         "(„Cât costă administrarea contului?”) e neclar. La neclar completezi totuși ce ai înțeles "
         "(banci, concept sau text_cautat): aplicația decide ce face cu ele.",
-        "- tip = in_afara: orice altceva (recenziile aplicațiilor și ce scriu sau spun clienții despre o aplicație, "
-        "trackere, permisiuni, campanii, sfaturi, texte de scris, întrebări generale).",
+        "- tip = in_afara: orice altceva (trackere, permisiuni, campanii, sfaturi, texte de scris, întrebări "
+        "generale).",
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
         "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept. „Comisionul de "
@@ -391,12 +394,12 @@ def _aplicatii_curat(curat, prag):
     if curat["aspect"] == "recenzii":
         curat["functie"] = None              # la recenzii, ce se caută stă în text_cautat
         if not (curat["banci"] or curat["text_cautat"]):
-            curat["aspect"] = None           # „Ce scriu clienții?": fără aplicație și fără ce se caută
+            curat["aspect"] = None           # „Ce scriu clienții?”: fără aplicație și fără ce se caută
     elif curat["functie"]:
         curat["aspect"] = "functii"          # o funcție e mereu despre funcții, nu despre note
     elif curat["aspect"] != "note":
-        # fără funcție, bancă sau text, „funcții" n-are la ce se referi: „Ce funcții au aplicațiile băncilor?" ajungea
-        # la „„" nu e printre funcțiile analizate" (revizia finală, 08.10.2026)
+        # fără funcție, bancă sau text, „funcții” n-are la ce se referi: „Ce funcții au aplicațiile băncilor?” ajungea
+        # la „„” nu e printre funcțiile analizate” (revizia finală, 08.10.2026)
         curat["aspect"] = "functii" if (curat["banci"] or curat["text_cautat"]) else None
     valid = isinstance(prag, int) and not isinstance(prag, bool) and 1 <= prag <= PRAG_NOTE_MAX
     curat["prag_note"] = prag if valid and curat["aspect"] == "note" else None

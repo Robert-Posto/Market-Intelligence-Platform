@@ -226,12 +226,12 @@ class Schema(unittest.TestCase):
         self.assertIn("(„Apple Pay”) → functie = null și numele ei în text_cautat", text)
         self.assertIn("(„cu cel puțin 1.000 de note” → 1000)", text)
         self.assertNotIn("(aplicații, recenzii, campanii", text)
-        # evaluarea din 09.10.2026 (52/53): „Ce scriu clienții despre BT Pay?” ieșea aplicatii cu aspect = note, fiindcă
-        # in_afara spunea doar „recenziile aplicațiilor”. Explicația pusă în regula `aplicatii` a stricat altă întrebare:
-        # „Care e cea mai ieftină variantă de administrare a contului?” ieșea neclar de 3 ori din 3, cu promptul de
-        # dimineață clasament de 3 ori din 3 (09.10.2026). De aceea explicația stă în in_afara și la `aspect = note`
-        self.assertIn("recenziile aplicațiilor și ce scriu sau spun clienții despre o aplicație, trackere, permisiuni, "
-                      "campanii", text)
+        # recenziile sunt răspuns din 09.10.2026 (aspect = recenzii); in_afara rămâne pentru ce nu avem deloc
+        self.assertIn("aspect = recenzii pentru ce scriu sau spun clienții despre o aplicație (recenzii, comentarii, "
+                      "păreri, plângeri)", text)
+        self.assertIn("text_cautat = cuvintele căutate în recenzii", text)
+        self.assertIn("tip = in_afara: orice altceva (trackere, permisiuni, campanii", text)
+        self.assertNotIn("cele despre recenzii sau campanii rămân in_afara", text)
         self.assertIn("aspect = note pentru notă (stelele și numărul de note) și clasamentul ei", text)
         self.assertNotIn("Nota înseamnă doar stelele", text)
 
@@ -413,12 +413,12 @@ class ValidareAplicatii(unittest.TestCase):
         self.assertEqual((i["tip"], i["aspect"], i["text_cautat"]), ("aplicatii", "recenzii", "logare"))
 
     def test_recenzii_golesc_functia_si_pragul(self):
-        """„Ce scriu clienții despre RoPay?": ce se caută în recenzii stă în text_cautat, nu în functie."""
+        """„Ce scriu clienții despre RoPay?”: ce se caută în recenzii stă în text_cautat, nu în functie."""
         i, _ = vox.valideaza(apl(banci=["bcr"], aspect="recenzii", functie="ropay", prag_note=100), CTX)
         self.assertEqual((i["aspect"], i["functie"], i["prag_note"]), ("recenzii", None, None))
 
     def test_recenzii_fara_nimic_e_neclar(self):
-        """„Ce scriu clienții?": fără aplicație și fără ce se caută, recenziile tuturor celor 22 de aplicații ar fi
+        """„Ce scriu clienții?”: fără aplicație și fără ce se caută, recenziile tuturor celor 22 de aplicații ar fi
         peste 500 de carduri."""
         for brut in (apl(banci=[], aspect="recenzii"), apl(banci=[], aspect="recenzii", text_cautat="AI")):
             i, _ = vox.valideaza(brut, CTX)
