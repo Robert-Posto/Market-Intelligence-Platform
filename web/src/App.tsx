@@ -17,6 +17,7 @@ import SursePagina from './pages/SursePagina'
 import Coada from './pages/Coada'
 import Logging from './pages/Logging'
 import RulareManuala from './pages/RulareManuala'
+import Utilizatori from './pages/Utilizatori'
 import Vox from './pages/Vox'
 
 /* maplibre-gl și pdfjs-dist sunt aproape jumătate din pachet (2,6 MB într-un singur fișier la 05.10.2026):
@@ -47,6 +48,7 @@ export default function App() {
         <Route path="/coada" element={<Coada />} />
         <Route path="/logging" element={<DoarAdmin><Logging /></DoarAdmin>} />
         <Route path="/rulare" element={<DoarAdmin><RulareManuala /></DoarAdmin>} />
+        <Route path="/utilizatori" element={<DoarAdmin><Utilizatori /></DoarAdmin>} />
         {/* pagina 2.7 s-a mutat în 2.3 (ca în aplicația veche) */}
         <Route path="/sentiment" element={<Navigate to="/mobil?la=recenzii" replace />} />
         <Route path="*" element={<Navigate to="/overview" replace />} />

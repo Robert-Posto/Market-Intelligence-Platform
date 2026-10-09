@@ -24,6 +24,7 @@ import { logging } from './logging'
 import { rulare_manuala } from './rulare_manuala'
 import { auth } from './auth'
 import { vox } from './vox'
+import { utilizatori } from './utilizatori'
 
 export const DICT = {
   ...comun,
@@ -51,4 +52,5 @@ export const DICT = {
   ...rulare_manuala,
   ...auth,
   ...vox,
+  ...utilizatori,
 } as const

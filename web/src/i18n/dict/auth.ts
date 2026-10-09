@@ -10,7 +10,7 @@ export const auth = {
   "auth.intra": ["Intră", "Sign in"],
   "auth.expirata": ["Sesiunea a expirat. Autentifică-te din nou: revii la pagina la care erai.", "Your session has expired. Sign in again: you will return to the page you were on."],
   "auth.eroare.date_invalide": ["Utilizator sau parolă incorecte.", "Incorrect username or password."],
-  "auth.eroare.fara_rol": ["Contul nu are acces la aplicație. Cere IT-ului să te adauge într-un grup autorizat.", "This account has no access to the application. Ask IT to add you to an authorised group."],
+  "auth.eroare.fara_rol": ["Contul nu are încă acces la aplicație. Cere unui administrator MCC să-ți dea un rol (pagina „Utilizatori”).", "This account does not have access to the application yet. Ask an MCC administrator to give you a role (the “Users” page)."],
   "auth.eroare.prea_multe_incercari": ["Prea multe încercări. Încearcă din nou mai târziu (de obicei după 30 de minute).", "Too many attempts. Try again later (usually after 30 minutes)."],
   "auth.eroare.ad_indisponibil": ["Serviciul de autentificare nu răspunde acum. Încearcă din nou în câteva minute.", "The sign-in service is not responding. Try again in a few minutes."],
   "auth.eroare.retea": ["Serverul aplicației nu răspunde. Verifică conexiunea și încearcă din nou.", "The application server is not responding. Check your connection and try again."],

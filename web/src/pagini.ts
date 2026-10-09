@@ -54,6 +54,11 @@ export const PAGINI: Grup[] = [
       { id: 'rulare', pdf: '', mutata: true, admin: true },
     ],
   },
+  {
+    // rolurile se dau în aplicație, nu în AD (09.10.2026); serverul scrie doar aici
+    grup: 'pagini.grup.administrare',
+    chei: [{ id: 'utilizatori', pdf: '', mutata: true, admin: true }],
+  },
 ]
 
 // Vox nu stă într-un grup: e buton jos în bară, deasupra piciorului (AppShell), cerut așa pe 07.10.2026.
