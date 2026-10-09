@@ -373,6 +373,12 @@ text”. Campaniile nu intră: pagina răspunde că sunt în afara ei; aplicați
   `segment_din_intrebare` („firme”, „PFA”, „IMM”, „persoane fizice”) și `functie_din_intrebare` (rădăcinile și expresiile înguste ale celor 13
   funcții, doar dacă se potrivește exact una și modelul n-a pus nimic în `text_cautat`); când o plasă lucrează, rândul din jurnal
   are cheia `plase`. Promptul desparte „Cât costă…” (neclar) de „Unde e cea mai ieftină…” (clasament).
+  A treia regulă, `e_continuare`, taie segmentul moștenit: când pagina trimite interpretarea anterioară (`anterior`), modelul i-a copiat segmentul,
+  întrebarea nouă nu numește niciun segment și nu e o continuare (începe cu „și”, „dar”, „sau”, „what about”…, are cel mult 4 cuvinte sau un cuvânt
+  de trimitere: „același”, „asta”, „compară”, „same”), segmentul se scoate și `plase` are `segment_mostenit`. Motivul (09.10.2026, două conversații
+  de test): „Care e cea mai ieftină variantă de administrare a contului?” după „Cât costă administrarea contului pentru firme la BCR?” ieșea
+  clasament pentru firme (PJ), și cu promptul de dinainte de recenzii. Rejucat pe jurnale: se schimbă doar cele două răspunsuri greșite, cele
+  57 de întrebări rămân la fel. Limita asumată: o întrebare nouă scurtă („Cât costă la ING?”, cel mult 4 cuvinte) păstrează segmentul.
   Evaluarea (57 de întrebări): 57 din 57 pe 09.10.2026, $0,1058, 14.131 de tokeni de intrare pe întrebare ($0,0019). Pe întrebări din
   afara evaluării: 33 din 33 (parafraze, rejucate cu plasele pe răspunsurile înregistrate) și 28 din 29 (10 în engleză); singurul eșec, „Ce dobândă are CEC la contul de economii
   pentru firme?” → `neclar`, e o limită veche a dobânzilor, la fel cu promptul de dinainte.
