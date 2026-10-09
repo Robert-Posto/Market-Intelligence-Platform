@@ -673,7 +673,41 @@ def _cate_aplicatii(a):
     if a["vedere"] == "note":
         return len({r["banca"] for c in a["clasamente"].values() if c
                     for r in c["randuri"] + c["sub_prag"] + c["fara_nota"]})
+    if a["vedere"] == "recenzii":
+        return len(a["blocuri"])
     return 0
+
+
+def _recenzii_raspuns(interp, date, aplicatia, nume):
+    """Vederea `recenzii` (spec 2026-10-09-vox-recenzii): recenziile așa cum le-au scris clienții, pe bancă și pe magazin,
+    cele mai noi întâi; cu `text_cautat`, doar cele potrivite. Fără bănci, doar băncile cu potriviri, în ordinea numelui:
+    eșantioanele (cel mult 20 în Google Play, cel mult 8 alese de Apple) nu suportă un clasament."""
+    cuvinte = cuvinte_cautare(interp["text_cautat"])
+    play = date.get("recenzii_play")
+    pe_play = (play or {}).get("aplicatii") or {}
+    ios = {}
+    for r in date.get("recenzii_app_store") or []:
+        ios.setdefault(r["banca"], []).append({k: v for k, v in r.items() if k != "banca"})
+
+    def magazin(lista):
+        lista = sorted(lista, key=lambda r: r.get("data") or "", reverse=True)
+        return {"recenzii": [r for r in lista if potriveste_recenzia(r.get("text"), cuvinte)], "din": len(lista)}
+
+    def bloc(b):
+        return {"banca": b, "aplicatie": aplicatia(b),
+                "fara_aplicatie": aplicatia(b) is None and b not in pe_play and b not in ios,
+                "evidentiata": b == "libra",
+                "play": magazin(pe_play.get(b, [])) if play else None, "app_store": magazin(ios.get(b, []))}
+
+    if interp["banci"]:
+        blocuri, fara = [bloc(b) for b in interp["banci"]], 0
+    else:
+        candidate = sorted(set(pe_play) | set(ios), key=lambda b: (nume.get(b) or b).lower())
+        toate = [bloc(b) for b in candidate]
+        blocuri = [b for b in toate if (b["play"] or {}).get("recenzii") or b["app_store"]["recenzii"]]
+        fara = len(toate) - len(blocuri)
+    return {"vedere": "recenzii", "blocuri": blocuri, "cuvinte": cuvinte, "fara_potriviri": fara,
+            "play_la": play["colectat_la"] if play else None}
 
 
 # Butoanele de sub un răspuns (decizia lui Nicolae, 08.10.2026): continuă fără model, deci gratuit și fără
@@ -717,7 +751,7 @@ def _butoane_aplicatii(interp, aplicatii):
     banci, rez = interp["banci"], []
     if banci and "libra" not in banci and len(banci) < MAX_BANCI:
         rez.append("libra")
-    if banci and (interp["functie"] or interp["aspect"] == "note"):
+    if banci and (interp["functie"] or interp["aspect"] == "note" or (interp["aspect"] == "recenzii" and interp["text_cautat"])):
         rez.append("toate")
     if interp["aspect"] == "note":
         prag = interp.get("prag_note")
@@ -753,7 +787,7 @@ def _din_buton_aplicatii(nou, buton):
     banci = nou["banci"]
     if buton == "libra" and banci and "libra" not in banci and len(banci) < MAX_BANCI:
         nou["banci"] = banci + ["libra"]
-    elif buton == "toate" and banci and (nou["functie"] or nou["aspect"] == "note"):
+    elif buton == "toate" and banci and (nou["functie"] or nou["aspect"] == "note" or (nou["aspect"] == "recenzii" and nou["text_cautat"])):
         nou["banci"] = []
     elif (buton in PRAG_BUTON or buton == "fara_prag") and nou["aspect"] == "note":
         nou["prag_note"] = PRAG_BUTON.get(buton)
@@ -1062,7 +1096,7 @@ class Vox:
         băncilor numite, notele din magazine sau o funcție care nu e analizată."""
         if not self._aplicatii:
             return None
-        date = self._aplicatii()
+        date = self._aplicatii(cu_recenzii=True) if interp["aspect"] == "recenzii" else self._aplicatii()
         nume = {b["slug"]: b["nume"] for b in ctx["banci"]}
         evidentiate = {"libra", *interp["banci"]}
         principale, secundare = {}, {}
@@ -1088,6 +1122,8 @@ class Vox:
         def aplicatia(b):
             return (principale.get(b) or {}).get("aplicatie")
 
+        if interp["aspect"] == "recenzii":
+            return {**rez, **_recenzii_raspuns(interp, date, aplicatia, nume)}
         if interp["aspect"] == "note":
             surse = {"play": (lambda b: _magazin_play(play, b)) if play else None,
                      "app_store": lambda b: _magazin_app_store(ios.get(b))}
@@ -1174,6 +1210,9 @@ class Vox:
             rand["clasate"] = len(clasament["blocuri"][0]["randuri"])
         if aplicatii:
             rand["aplicatii"] = _cate_aplicatii(aplicatii)
+            if aplicatii["vedere"] == "recenzii":
+                rand["recenzii"] = sum(len(m["recenzii"]) for b in aplicatii["blocuri"]
+                                       for m in (b["play"], b["app_store"]) if m)
         rezultat = {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
                     "clasament": clasament, "aplicatii": aplicatii, "model": rand["model"], "tokeni": rand["tokeni"],
                     "cost_usd": rand["cost_usd"], "butoane": butoane(interp, raspunsuri, clasament, aplicatii)}

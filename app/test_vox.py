@@ -733,6 +733,16 @@ class ButoaneAplicatii(unittest.TestCase):
         self.assertEqual(vox.din_buton(apl(banci=[], aspect="note"), "prag_1000")["prag_note"], 1000)
         self.assertIsNone(vox.din_buton(apl(banci=[], aspect="note", prag_note=100), "fara_prag")["prag_note"])
 
+    def test_butoane_recenzii(self):
+        rec = {"vedere": "recenzii"}
+        self.assertEqual(vox.butoane(apl(banci=["bcr"], aspect="recenzii"), [], None, rec), ["libra"])
+        self.assertEqual(vox.butoane(apl(banci=["bcr"], aspect="recenzii", text_cautat="logare"), [], None, rec),
+                         ["libra", "toate"])
+        n = vox.din_buton(apl(banci=["bcr"], aspect="recenzii", text_cautat="logare"), "toate")
+        self.assertEqual((n["banci"], n["text_cautat"], n["aspect"]), ([], "logare", "recenzii"))
+        with self.assertRaises(vox.Respins):
+            vox.din_buton(apl(banci=["bcr"], aspect="recenzii"), "toate")
+
     def test_din_buton_aplicatii_refuza(self):
         for i, b in ((apl(banci=["bcr"]), "prag_100"), (apl(banci=["bcr"]), "fara_prag"),
                      (apl(banci=[], functie="ropay"), "toate"), (apl(banci=["bcr"]), "toate"),
@@ -1265,17 +1275,90 @@ APLICATII = {
 }
 
 
+RECENZII = {
+    "recenzii_app_store": [
+        {"banca": "bcr", "nota": 1, "versiune": "26.30", "text": "Logarea nu merge după actualizare",
+         "data": "2026-09-20", "raspuns_banca": "Ne pare rău, scrieți-ne."},
+        {"banca": "libra", "nota": 5, "versiune": "4.23", "text": "Excelentă aplicație", "data": "2025-01-10",
+         "raspuns_banca": None},
+    ],
+    "recenzii_play": {"colectat_la": "2026-10-06", "aplicatii": {
+        "bcr": [{"nota": 5, "text": "Super", "data": "2026-09-01", "versiune": "26.29", "raspuns_banca": "Mulțumim!",
+                 "raspuns_data": "2026-09-02"},
+                {"nota": 2, "text": "Aplicația e lentă la logare", "data": "2026-10-01", "versiune": "26.30",
+                 "raspuns_banca": None, "raspuns_data": None}],
+        "libra": [{"nota": 5, "text": "Excelent, rapidă", "data": "2026-10-04", "versiune": "4.23.0",
+                   "raspuns_banca": None, "raspuns_data": None}],
+        "brd": [{"nota": 1, "text": "Nu pot face transfer", "data": "2026-09-30", "versiune": "16.3",
+                 "raspuns_banca": None, "raspuns_data": None}]}},
+}
+
+
 class RaspunsAplicatii(unittest.TestCase):
     """Răspunsul la `aplicatii`, pe un cititor fals: cele patru vederi și butoanele lor. ING n-are nicio aplicație."""
 
     def setUp(self):
         self.dir = tempfile.mkdtemp(prefix="vox_apl_")
-        self.date = json.loads(json.dumps(APLICATII))          # o copie: unele teste o schimbă
+        self.date = json.loads(json.dumps({**APLICATII, **RECENZII}))          # o copie: unele teste o schimbă
 
     def fa(self, i, aplicatii=True):
         v = vox.Vox(context=lambda: CTX, cauta=lambda *a: [], stare_banca=lambda b: None, client=ClientFals(i),
-                    dir_jurnal=self.dir, aplicatii=(lambda: self.date) if aplicatii else None)
+                    dir_jurnal=self.dir, aplicatii=(lambda **k: self.date) if aplicatii else None)
         return v.intreaba("aplicații?"), v
+
+    def test_recenzii_unei_banci(self):
+        d, _ = self.fa(apl(banci=["bcr"], aspect="recenzii"))
+        a = d["aplicatii"]
+        self.assertEqual((a["vedere"], a["cuvinte"], a["play_la"]), ("recenzii", [], "2026-10-06"))
+        b = a["blocuri"][0]
+        self.assertEqual((b["banca"], b["aplicatie"], b["fara_aplicatie"], b["evidentiata"]),
+                         ("bcr", "George Romania", False, False))
+        self.assertEqual([r["data"] for r in b["play"]["recenzii"]], ["2026-10-01", "2026-09-01"])   # cele mai noi întâi
+        self.assertEqual((b["play"]["din"], b["app_store"]["din"], b["app_store"]["recenzii"][0]["nota"]), (2, 1, 1))
+        self.assertNotIn("banca", b["app_store"]["recenzii"][0])
+        self.assertEqual(d["butoane"], ["libra"])                       # fără căutare, fără „La toate băncile”
+
+    def test_recenzii_cautare_la_o_banca(self):
+        d, _ = self.fa(apl(banci=["bcr"], aspect="recenzii", text_cautat="logare"))
+        b = d["aplicatii"]["blocuri"][0]
+        self.assertEqual(d["aplicatii"]["cuvinte"], ["loga"])
+        self.assertEqual(([r["text"] for r in b["play"]["recenzii"]], b["play"]["din"]),
+                         (["Aplicația e lentă la logare"], 2))
+        self.assertEqual([r["text"] for r in b["app_store"]["recenzii"]], ["Logarea nu merge după actualizare"])
+        self.assertEqual(d["butoane"], ["libra", "toate"])
+
+    def test_recenzii_cautare_la_toate(self):
+        """„lentă” la toate: BCR are „lentă”; Libra are doar „Excelent…”, care nu se potrivește."""
+        d, _ = self.fa(apl(banci=[], aspect="recenzii", text_cautat="lentă"))
+        a = d["aplicatii"]
+        self.assertEqual([b["banca"] for b in a["blocuri"]], ["bcr"])
+        self.assertEqual(a["fara_potriviri"], 2)                         # brd și libra, căutate fără rezultat
+        self.assertEqual(d["butoane"], [])
+
+    def test_recenzii_zero_potriviri(self):
+        d, _ = self.fa(apl(banci=["libra"], aspect="recenzii", text_cautat="logare"))
+        b = d["aplicatii"]["blocuri"][0]
+        self.assertEqual((b["play"]["recenzii"], b["play"]["din"], b["app_store"]["recenzii"], b["app_store"]["din"]),
+                         ([], 1, [], 1))
+        self.assertTrue(b["evidentiata"])
+
+    def test_recenzii_fara_google_play(self):
+        self.date["recenzii_play"] = None
+        d, _ = self.fa(apl(banci=["bcr"], aspect="recenzii"))
+        b = d["aplicatii"]["blocuri"][0]
+        self.assertEqual((b["play"], d["aplicatii"]["play_la"], b["app_store"]["din"]), (None, None, 1))
+
+    def test_recenzii_banca_fara_aplicatie(self):
+        d, _ = self.fa(apl(banci=["ing"], aspect="recenzii"))
+        b = d["aplicatii"]["blocuri"][0]
+        self.assertEqual((b["fara_aplicatie"], b["play"], b["app_store"]), (True, {"recenzii": [], "din": 0},
+                                                                          {"recenzii": [], "din": 0}))
+
+    def test_recenzii_in_jurnal(self):
+        d, _ = self.fa(apl(banci=["bcr"], aspect="recenzii"))
+        with open(os.path.join(self.dir, vox._acum()[:7] + ".jsonl"), encoding="utf-8") as f:
+            rand = json.loads(f.readlines()[-1])
+        self.assertEqual((rand["aplicatii"], rand["recenzii"]), (1, 3))
 
     def test_functie_la_toate_bancile(self):
         d, _ = self.fa(apl(banci=[], functie="ropay"))
