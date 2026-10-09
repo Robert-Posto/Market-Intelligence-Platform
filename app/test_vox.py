@@ -227,6 +227,11 @@ class Schema(unittest.TestCase):
         self.assertIn("(„cu cel puțin 1.000 de note” → 1000)", text)
         self.assertIn("recenziile aplicațiilor, trackere, permisiuni, campanii", text)
         self.assertNotIn("(aplicații, recenzii, campanii", text)
+        # evaluarea din 09.10.2026 (52/53): „Ce scriu clienții despre BT Pay?” ieșea aplicatii cu aspect = note;
+        # regula `aplicatii` nu spunea că nota înseamnă doar stelele, nu și ce scriu clienții
+        self.assertIn("Nota înseamnă doar stelele și numărul de note: ce scriu sau spun clienții despre o aplicație "
+                      "(recenzii, comentarii, păreri, plângeri", text)
+        self.assertIn("e in_afara, fiindcă Vox nu are textul recenziilor", text)
 
 
 class Validare(unittest.TestCase):
