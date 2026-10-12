@@ -21,6 +21,7 @@ import re
 import secrets
 import threading
 import unicodedata
+from decimal import ROUND_HALF_UP, Decimal
 
 RADACINA = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR_JURNAL = os.path.join(RADACINA, "loguri", "vox")
@@ -56,12 +57,21 @@ MAX_RANDURI = 50
 # 0–1.200 lei (mip_merge, 07.10.2026); rândurile fără segment în sursă vin la final. `celula` din server
 # acceptă la `segment` doar aceste valori, plus `nemarcat`.
 ORDINE_SEGMENT = ("pf", "pfa", "imm", "pj")
-TIPURI = ("cautare", "clasament", "neclar", "in_afara")
+TIPURI = ("cautare", "clasament", "aplicatii", "neclar", "in_afara")
 CHEI = ("tip", "banci", "concept", "categorie", "termen", "produs_credit", "text_cautat", "clarificare",
-        "segment", "metrica")
+        "segment", "metrica", "functie", "aspect", "prag_note")
 # „cea mai ieftină variantă” cere cea mai bună valoare a fiecărei bănci, nu mediana (decizia lui
 # Nicolae, 07.10.2026); mediana rămâne implicită, ca în 2.1 și Versus
 METRICI = ("mediana", "cea_mai_buna")
+# Aplicațiile: funcțiile din analiza aplicațiilor Android sau notele din magazine (decizia lui Nicolae, 08.10.2026)
+# și recenziile (09.10.2026)
+ASPECTE = ("functii", "note", "recenzii")
+# Pragurile oferite ca butoane sub clasamentul notelor. Fără prag (decizia lui Nicolae, 08.10.2026), ProCredit iese
+# primul în App Store cu 5,0 din 6 note (24.09.2026): sub cel mai mic prag, Vox spune asta și întreabă ce prag vrea
+PRAGURI_NOTE = (100, 1000)
+PRAG_AVERTIZARE = min(PRAGURI_NOTE)
+# Revolut are 4.147.313 note în Google Play (06.10.2026); un prag peste atât nu mai lasă nimic de clasat
+PRAG_NOTE_MAX = 100_000_000
 # Istoricul conversațiilor (coloana „Conversații” din pagina Vox): fișiere pe laptop, nu în bază
 ID_CONVERSATIE = re.compile(r"[0-9a-f]{16}")
 TITLU_MAX = 120
@@ -102,7 +112,8 @@ def _acum():
 
 def _gol(tip="neclar"):
     return {"tip": tip, "banci": [], "concept": None, "categorie": None, "termen": None,
-            "produs_credit": None, "text_cautat": None, "clarificare": None, "segment": None, "metrica": None}
+            "produs_credit": None, "text_cautat": None, "clarificare": None, "segment": None, "metrica": None,
+            "functie": None, "aspect": None, "prag_note": None}
 
 
 def cheie_reala():
@@ -165,6 +176,11 @@ def schema(ctx):
             "clarificare": text_optional,
             "segment": optional(ORDINE_SEGMENT),
             "metrica": optional(METRICI),
+            # o bază fără analiza Android ar fi dat `"enum": []`, pe care API-ul îl poate refuza: ar fi căzut orice
+            # întrebare, nu doar cele despre aplicații
+            "functie": optional(f["functie"] for f in ctx["functii"]) if ctx["functii"] else {"type": "null"},
+            "aspect": optional(ASPECTE),
+            "prag_note": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
         },
         "required": list(CHEI),
         "additionalProperties": False,
@@ -177,7 +193,9 @@ def prompt(ctx):
     linii = [
         "Ești interpretul paginii Vox din Marketing Command Center (Libra Bank).",
         "Utilizatorul întreabă, în română sau în engleză, despre o valoare publicată de o bancă din "
-        "România (un comision, o dobândă, o limită) sau compară băncile între ele pe o astfel de valoare.",
+        "România (un comision, o dobândă, o limită) sau compară băncile între ele pe o astfel de valoare. "
+        "Poate întreba și despre aplicațiile mobile ale băncilor: funcțiile găsite în analiza aplicațiilor "
+        "Android, notele din magazine (Google Play, App Store) și recenziile lor.",
         "Sarcina ta: traduci întrebarea în parametrii unei căutări în baza noastră. NU răspunzi la "
         "întrebare, nu scrii nicio cifră și nu folosești ce știi despre bănci: valorile le arată "
         "aplicația, din bază.",
@@ -190,20 +208,36 @@ def prompt(ctx):
         "pot clasa doar conceptele din lista „Clasabile” de la final; pentru altele pune tot clasament, "
         "iar aplicația spune că nu are clasament.",
         "- Întrebările care încep cu „care bancă…”, „ce bancă…”, „which bank…” și cer o valoare (un comision, "
-        "o dobândă) sunt întotdeauna clasament; cele despre aplicații, recenzii sau campanii („care bancă are "
-        "cea mai bună aplicație?”) rămân in_afara. "
+        "o dobândă) sunt întotdeauna clasament; cele despre aplicații („care bancă are cea mai bună "
+        "aplicație?”) sunt aplicatii, iar cele despre campanii rămân in_afara. "
         "O întrebare cu „cine are cel mai…”, „cea mai ieftină variantă…” compară și ea băncile: e "
         "clasament chiar fără bancă numită, chiar dacă serviciul nu are "
         "concept sau nu-l recunoști; nu pune neclar pentru asta. Exemple: „Care bancă are cel mai mic "
         "comision la X?”, cu X fără concept → clasament, concept = null, text_cautat = X; „Unde stă Libra "
         "la …?”, „pe ce loc e Libra la …?” → clasament (nu căutare), banci = [libra].",
+        "- tip = aplicatii: întrebarea e despre aplicația mobilă a unei bănci: ce funcții are („Are George "
+        "RoPay?”, „Ce funcții are aplicația BRD?”, „Ce bănci au plata cu telefonul?”, „Ce are BT Pay și n-are "
+        "Libra?”) sau ce notă are în magazine („Ce notă are aplicația Libra?”, „Care bancă are cea mai bună "
+        "aplicație?”). banci = băncile numite sau ale aplicațiilor numite (lista „Aplicațiile” de la final: "
+        "„George” → bcr), altfel []. functie = funcția din lista „Funcțiile aplicațiilor”, dacă întrebarea "
+        "numește una; o funcție care nu e în listă („Apple Pay”) → functie = null și numele ei în text_cautat. "
+        "aspect = note pentru notă (stelele și numărul de note) și clasamentul ei („cea mai bună aplicație” = cea mai "
+        "bună notă); aspect = recenzii pentru ce scriu sau spun clienții despre o aplicație (recenzii, comentarii, "
+        "păreri, plângeri), cu functie = null și text_cautat = cuvintele căutate în recenzii, doar dacă întrebarea "
+        "caută ceva anume, un cuvânt sau o funcție („Se plâng clienții de logare la Libra?” → logare; "
+        "„Ce spun clienții despre plata cu telefonul?” → banci = [], text_cautat = plata cu telefonul); "
+        "fără bancă numită, recenziile se caută la toate aplicațiile, deci nu ceri banca. "
+        "Fără note sau recenzii, aspect = functii. prag_note = numărul minim de note, doar dacă întrebarea îl cere („cu cel puțin 1.000 de "
+        "note” → 1000), altfel null. La aplicatii, concept, categorie, termen, produs_credit, segment și "
+        "metrica sunt null.",
         "- tip = neclar: lipsește banca (iar întrebarea nu compară băncile) sau nu se înțelege ce valoare; "
         "scrie atunci în clarificare "
         "o întrebare scurtă, în limba utilizatorului. O întrebare fără bancă și fără comparație "
-        "(„Cât costă administrarea contului?”) e neclar. La neclar completezi totuși ce ai înțeles "
+        "(„Cât costă administrarea contului?”) e neclar; cu o comparație "
+        "(„Unde e cea mai ieftină administrare a contului?”) e clasament. La neclar completezi totuși ce ai înțeles "
         "(banci, concept sau text_cautat): aplicația decide ce face cu ele.",
-        "- tip = in_afara: orice altceva (aplicații, recenzii, campanii, sfaturi, texte de scris, "
-        "întrebări generale).",
+        "- tip = in_afara: orice altceva (trackere, permisiuni, campanii, sfaturi, texte de scris, întrebări "
+        "generale).",
         "- concept: conceptul din lista de mai jos care corespunde valorii cerute. Dacă niciunul nu "
         "se potrivește clar, concept = null și scrii în text_cautat 1–3 cuvinte în română, așa cum ar "
         "apărea în tariful băncii (de pildă „datoria vamală”). Nu forța un concept. „Comisionul de "
@@ -254,6 +288,12 @@ def prompt(ctx):
         "Clasabile: comisioane (în lei): " + ", ".join(cl["comisioane"]) + "; dobânzi (cu categoria): "
         + "; ".join(f"{k} ({', '.join(v)})" for k, v in cl["dobanzi"].items()),
     ]
+    linii += [
+        "Funcțiile aplicațiilor (slug: titlu): "
+        + ("; ".join(f"{f['functie']}: {f['titlu']}" for f in ctx["functii"]) or "(niciuna în bază)"),
+        "Aplicațiile (bancă: nume): "
+        + ("; ".join(f"{a['banca']}: {a['aplicatie']}" for a in ctx["aplicatii"]) or "(niciuna în bază)"),
+    ]
     return "\n".join(linii)
 
 
@@ -281,6 +321,95 @@ def cuvinte_cautare(text):
     return cuvinte[:5]
 
 
+def _fara_accente(s):
+    """Ca `faraDiacritice` din pagină: NFD, fără semnele combinate U+0300–U+036F, litere mici. `DIACRITICE` pliază doar
+    ăâîșşțţ, iar „café” trebuie să se potrivească cu „cafe” ca în îngroșare."""
+    return "".join(c for c in unicodedata.normalize("NFD", s or "") if not "̀" <= c <= "ͯ").lower()
+
+
+def potriveste_recenzia(text, cuvinte):
+    """Adevărat dacă fiecare cuvânt căutat (rădăcina din `cuvinte_cautare`) e începutul unui cuvânt din recenzie. Subșirul
+    nu ajunge: „lentă” (rădăcina „lent”) potrivea 13 recenzii, dintre care 12 erau „excelent” (09.10.2026).
+
+    Aceeași regulă ca îngroșarea din pagină (cuvinte = litere și cifre, `_` desparte, accentele pliate), ca o recenzie
+    arătată să aibă mereu cuvântul în bold: `\\b` ar fi tratat `_` drept literă."""
+    if not cuvinte:
+        return True
+    norm = _fara_accente(text)
+    return all(re.search(r"(?<![^\W_])" + re.escape(_fara_accente(c)), norm) for c in cuvinte)
+
+
+_SEGMENTE_DIN_TEXT = (
+    ("pj", re.compile(r"(?<![^\W_])(?:firm|compan|persoan\w*\s+juridic|pj(?![^\W_]))")),
+    ("pfa", re.compile(r"(?<![^\W_])(?:pfa(?![^\W_])|persoan\w*\s+fizic\w*\s+autorizat)")),
+    ("imm", re.compile(r"(?<![^\W_])imm(?![^\W_])")),
+    ("pf", re.compile(r"(?<![^\W_])(?:persoan\w*\s+fizic(?!\w*\s+autorizat)|pf(?![^\W_]))")),
+)
+# Firma din „transferul către o firmă la BCR” (și „plata către o companie de utilități la ING”) e destinatarul plății, nu
+# clientul: plasa o citea `pj` exact unde modelul lăsase `null` pe bună dreptate (re-revizia, 09.10.2026). Se scoate înainte
+# de potrivire. „Firme mici și mijlocii” e IMM, nu PJ: același test o citea `pj`.
+_CONTRAPARTE = re.compile(r"(?<![^\W_])(?:catre|spre|unei|to(?:\s+a)?)\s+(?:o\s+)?(?:firm|compan)\w*")
+_IMM_LUNG = re.compile(r"(?<![^\W_])firm\w*\s+mici\s+si\s+mijlocii")
+
+
+def segment_din_intrebare(intrebare):
+    """Segmentul pe care îl spune textul, după vocabularul închis din prompt, sau None (nespus sau două segmente
+    diferite: nu alegem în locul utilizatorului). Cuvintele scurte (pj, pf, pfa, imm) trebuie să fie întregi."""
+    norm = _IMM_LUNG.sub(" imm ", _CONTRAPARTE.sub("", _fara_accente(intrebare)))
+    gasite = [segment for segment, tipar in _SEGMENTE_DIN_TEXT if tipar.search(norm)]
+    return gasite[0] if len(gasite) == 1 else None
+
+
+_LEGATURI = ("si", "dar", "iar", "insa", "sau", "and", "but", "or", "what about", "how about", "also")
+_LEGATURA = re.compile(r"^(?:" + "|".join(_LEGATURI) + r")(?![^\W_])")
+# „La ING pentru același cont?” are 5 cuvinte și niciun cuvânt de legătură, dar nu se înțelege singură (re-revizia, 09.10.2026);
+# „asta” cere cuvânt întreg: „astăzi” îl începe
+_REFERINTA = re.compile(r"(?<![^\W_])(?:acelasi|aceeasi|aceleasi|acelor|aceasta|asta(?![^\W_])|acela|aceea|compar|same|that"
+                        r"|this one)")
+
+
+def e_continuare(intrebare):
+    """Adevărat dacă întrebarea se sprijină pe cea de dinainte: începe cu un cuvânt de legătură („și la BRD?”, „dar pe 6
+    luni?”), are cel mult 4 cuvinte („La ING?”) sau conține un cuvânt de trimitere („același cont”, „compară”). Regula
+    păstrează intenționat ca „continuare” și o întrebare nouă scurtă („Cât costă la ING?” își păstrează segmentul): greșeala
+    spre păstrare e mai ieftină decât un segment pierdut. Una mai lungă, fără legătură sau trimitere, se înțelege singură."""
+    norm = _fara_accente(intrebare).strip()
+    return bool(_LEGATURA.match(norm) or _REFERINTA.search(norm)) or len(re.findall(r"[^\W_]+", norm)) <= 4
+
+
+# Cuvintele distinctive ale fiecărei funcții (rădăcini, fără diacritice; „a b” = cuvinte consecutive). „Are BT Pay RoPay?” ieșea
+# fără funcție (parafrazele, 32/33, 09.10.2026), la fel #46 când promptul a primit o frază în plus: regula stă în cod. O
+# funcție nouă din bază, fără cuvinte aici, doar nu are plasă. Tabelul e strâns la ce nu apare în alte întrebări: „factur”
+# prindea „Pot plăti facturi din aplicația BRD?” (orice aplicație plătește facturi, funcția e plata din poză), „poza” pe cea
+# de profil, „wallet” singur pe „Are BCR Apple Wallet?” (Apple Pay merge în `text_cautat`, nu la Google Wallet), „video” pe
+# „tutoriale video”, „buletin” pe „deschid cont cu buletinul”.
+_CUVINTE_FUNCTII = {
+    "anti_fraud": ("fraud",),
+    "hce_contactless": ("contactless",),
+    "huawei": ("huawei",),
+    "identity_verification": ("identit",),
+    "in_app_chat": ("chat",),
+    "marketing": ("marketing",),
+    "nfc_id_chip": ("cip", "pasaport"),
+    "ropay": ("ropay",),
+    "scan_pay": ("scan", "qr", "fotografi"),
+    "strong_auth": ("biometric", "passkey", "amprent", "faceid", "facial"),
+    "video_call": ("apel video", "videocall", "video call", "apel audio"),
+    "voice": ("vocal", "voce", "voice"),
+    "wallet_provisioning": ("google wallet", "portofel", "gpay"),
+}
+
+
+def functie_din_intrebare(intrebare, functii):
+    """Slug-ul funcției numite în întrebare sau None (nenumită sau două funcții: nu alegem în locul utilizatorului).
+    `functii` e lista din context; un slug din tabel care nu e în ea se ignoră."""
+    norm = _fara_accente(intrebare)
+    cunoscute = {f["functie"] for f in functii}
+    gasite = [s for s, cuvinte in _CUVINTE_FUNCTII.items() if s in cunoscute
+              and any(re.search(r"\s+".join(r"(?<![^\W_])" + re.escape(w) for w in c.split()), norm) for c in cuvinte)]
+    return gasite[0] if len(gasite) == 1 else None
+
+
 def _text(v, maxim):
     if not isinstance(v, str):
         return None
@@ -304,7 +433,8 @@ def valideaza(brut, ctx):
         return _gol(), []
     permise = {"concept": {c["camp"] for c in ctx["concepte"]}, "categorie": set(ctx["categorii"]),
                "termen": set(ctx["termene"]), "produs_credit": set(ctx["produse"]),
-               "segment": set(ORDINE_SEGMENT), "metrica": set(METRICI)}
+               "segment": set(ORDINE_SEGMENT), "metrica": set(METRICI),
+               "functie": {f["functie"] for f in ctx["functii"]}, "aspect": set(ASPECTE)}
     for cheie, valori in permise.items():
         v = brut.get(cheie)
         if v is not None and (not isinstance(v, str) or v not in valori):
@@ -323,6 +453,9 @@ def valideaza(brut, ctx):
     categorii = next((c["categorii"] for c in ctx["concepte"] if c["camp"] == curat["concept"]), [])
     if curat["categorie"] not in categorii:
         curat["categorie"] = None
+    if curat["tip"] == "aplicatii":
+        return _aplicatii_curat(curat, brut.get("prag_note")), banci[MAX_BANCI:]
+    curat["functie"] = curat["aspect"] = None
     if curat["tip"] == "clasament":
         curat["clarificare"] = None
         dobanzi = ctx["clasabile"]["dobanzi"]
@@ -343,6 +476,28 @@ def valideaza(brut, ctx):
         # clarificare care afirma că serviciul „nu se găsește în tarife”, fals (evaluarea, 06.10.2026)
         curat["tip"], curat["clarificare"] = "cautare", None
     return curat, banci[MAX_BANCI:]
+
+
+def _aplicatii_curat(curat, prag):
+    """`aplicatii` (decizia lui Nicolae, 08.10.2026): banca, funcția, aspectul și pragul; câmpurile comisioanelor
+    n-au sens aici. Un prag invalid se ignoră: rafinează întrebarea, nu-i schimbă sensul."""
+    for k in ("concept", "categorie", "termen", "produs_credit", "segment", "metrica", "clarificare"):
+        curat[k] = None
+    if curat["aspect"] == "recenzii":
+        curat["functie"] = None              # la recenzii, ce se caută stă în text_cautat
+        if not (curat["banci"] or curat["text_cautat"]):
+            curat["aspect"] = None           # „Ce scriu clienții?”: fără aplicație și fără ce se caută
+    elif curat["functie"]:
+        curat["aspect"] = "functii"          # o funcție e mereu despre funcții, nu despre note
+    elif curat["aspect"] != "note":
+        # fără funcție, bancă sau text, „funcții” n-are la ce se referi: „Ce funcții au aplicațiile băncilor?” ajungea
+        # la „„” nu e printre funcțiile analizate” (revizia finală, 08.10.2026)
+        curat["aspect"] = "functii" if (curat["banci"] or curat["text_cautat"]) else None
+    valid = isinstance(prag, int) and not isinstance(prag, bool) and 1 <= prag <= PRAG_NOTE_MAX
+    curat["prag_note"] = prag if valid and curat["aspect"] == "note" else None
+    if curat["aspect"] is None:
+        curat["tip"] = "neclar"              # fără funcție, aplicație sau note: pagina arată mesajul ei fix
+    return curat
 
 
 def _categorie(r):
@@ -487,15 +642,162 @@ def clasa(celule, sens, metrica, evidentiate, nume):
     return randuri
 
 
+VERDICTE = ("sigur", "probabil", "absent", "neconcludent")
+# „sigur” = găsit în cel puțin două surse (cod, texte, fișiere web), „probabil” = într-una; „neconcludent” = aplicație
+# web cu textul pe server, deci absența nu dovedește nimic (pagina Android, mobil.android_verdict_d.*)
+ARE = ("sigur", "probabil")
+
+
+def _nota_zecimala(nota):
+    """Nota cu o zecimală, ca în magazin. `round(4.25, 1)` dă 4,2 (rotunjire la par), magazinul arată 4,3."""
+    return Decimal(str(nota)).quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+
+
+def clasa_note(randuri, evidentiate, nume, prag=None):
+    """Clasamentul notelor dintr-un magazin, fără prag implicit (decizia lui Nicolae, 08.10.2026): ProCredit e pe
+    locul 1 în App Store cu 5,0 din 6 note (24.09.2026), iar fișa spune asta (`putine_note`). Nota se compară
+    rotunjită la o zecimală, ca în magazin: în Google Play, BRD 4,83, BCR 4,81, ING 4,79, Revolut 4,78 și UniCredit
+    4,77 au toate 4,8 (06.10.2026), deci loc comun, în ordinea numelui, ca la `clasa`. Cu prag, aplicațiile cu mai
+    puține note trec în `sub_prag`; cele fără notă, în `fara_nota`. Rândurile păstrează câmpurile primite."""
+    def dupa_nume(r):
+        return (nume.get(r["banca"]) or r["banca"]).lower()
+
+    def rand(r, **extra):
+        afisata = float(_nota_zecimala(r["nota"])) if r["nota"] is not None else None
+        return {**r, "nota_afisata": afisata, "evidentiata": r["banca"] in evidentiate, **extra}
+
+    clasate, sub, fara = [], [], []
+    for r in randuri:
+        if r["nota"] is None:
+            fara.append(r)
+        elif prag and (r["evaluari"] or 0) < prag:
+            sub.append(r)
+        else:
+            clasate.append(r)
+    clasate.sort(key=lambda r: (-_nota_zecimala(r["nota"]), dupa_nume(r)))
+    rez, i = [], 0
+    while i < len(clasate):
+        j = i
+        while j + 1 < len(clasate) and _nota_zecimala(clasate[j + 1]["nota"]) == _nota_zecimala(clasate[i]["nota"]):
+            j += 1
+        rez += [rand(r, loc=i + 1, loc_pana=j + 1) for r in clasate[i:j + 1]]
+        i = j + 1
+    return {"randuri": rez, "sub_prag": [rand(r) for r in sorted(sub, key=dupa_nume)],
+            "fara_nota": [rand(r) for r in sorted(fara, key=dupa_nume)]}
+
+
+def putine_note(clasamente):
+    """Fără prag: câte aplicații clasate au sub PRAG_AVERTIZARE note, pe magazin, și cea mai bine clasată dintre ele,
+    pe care fișa o numește când întreabă ce prag vrea utilizatorul (ProCredit, locul 1 în App Store cu 6 note,
+    24.09.2026). None când nu e niciuna."""
+    rez, candidati = {}, []
+    for magazin in ("app_store", "play"):
+        c = clasamente.get(magazin)
+        if not c:
+            continue
+        mici = [r for r in c["randuri"] if (r["evaluari"] or 0) < PRAG_AVERTIZARE]
+        rez[magazin] = len(mici)
+        candidati += [(r["loc"], magazin, r) for r in mici]
+    if not candidati:
+        return None
+    _, magazin, r = min(candidati, key=lambda x: x[0])
+    return {**rez, "prag": PRAG_AVERTIZARE,
+            "primul": {"magazin": magazin, "banca": r["banca"], "loc": r["loc"], "loc_pana": r["loc_pana"],
+                       "evaluari": r["evaluari"]}}
+
+
+def diferente(coloane):
+    """Funcțiile pe care o aplicație le are („sigur” sau „probabil”), iar alta nu („absent”), pe două niveluri
+    (decizia lui Nicolae, 08.10.2026): `sigur` dacă una dintre cele care o au e „sigur”, altfel `probabil`.
+    „Neconcludent” nu intră în comparație. BT Pay vs Libra (mip_merge, 08.10.2026): RoPay sigură; chatul,
+    marketingul și asistentul vocal, probabile."""
+    cu = [c for c in coloane if not c.get("fara_aplicatie")]
+    rez = []
+    for f in sorted({f for c in cu for f in c["functii"]}):
+        verdicte = [(c["banca"], (c["functii"].get(f) or {}).get("verdict")) for c in cu]
+        au = [b for b, v in verdicte if v in ARE]
+        n_au = [b for b, v in verdicte if v == "absent"]
+        if au and n_au:
+            nivel = "sigur" if any(v == "sigur" for _, v in verdicte) else "probabil"
+            rez.append({"functie": f, "nivel": nivel, "au": au, "n_au": n_au})
+    return rez
+
+
+def _magazin_play(play, banca):
+    p = ((play or {}).get("aplicatii") or {}).get(banca)
+    if not isinstance(p, dict):
+        return None
+    return {"nota": p.get("nota"), "evaluari": p.get("evaluari") or 0,
+            "distributie_stele": p.get("distributie_stele"), "versiune": p.get("versiune"), "url": p.get("url")}
+
+
+def _magazin_app_store(r):
+    if not r:
+        return None
+    return {"nota": r["nota"], "evaluari": r["evaluari"] or 0, "distributie_stele": r["distributie_stele"],
+            "versiune": r["versiune"], "url": f"https://apps.apple.com/ro/app/id{r['app_id']}"}
+
+
+def _cate_aplicatii(a):
+    """Câte aplicații arată răspunsul, pentru jurnal."""
+    if a["vedere"] == "functie":
+        return sum(len(g["aplicatii"]) for g in a["grupuri"])
+    if a["vedere"] == "aplicatii":
+        return sum(not c["fara_aplicatie"] for c in a["coloane"])
+    if a["vedere"] == "note":
+        return len({r["banca"] for c in a["clasamente"].values() if c
+                    for r in c["randuri"] + c["sub_prag"] + c["fara_nota"]})
+    if a["vedere"] == "recenzii":
+        return len(a["blocuri"])
+    return 0
+
+
+def _recenzii_raspuns(interp, date, aplicatia, nume):
+    """Vederea `recenzii` (spec 2026-10-09-vox-recenzii): recenziile așa cum le-au scris clienții, pe bancă și pe magazin,
+    cele mai noi întâi; cu `text_cautat`, doar cele potrivite. Fără bănci, doar băncile cu potriviri, în ordinea numelui:
+    eșantioanele (cel mult 20 în Google Play, cel mult 8 alese de Apple) nu suportă un clasament."""
+    cuvinte = cuvinte_cautare(interp["text_cautat"])
+    play = date.get("recenzii_play")
+    pe_play = (play or {}).get("aplicatii") or {}
+    ios = {}
+    for r in date.get("recenzii_app_store") or []:
+        ios.setdefault(r["banca"], []).append({k: v for k, v in r.items() if k != "banca"})
+
+    def magazin(lista):
+        lista = sorted(lista, key=lambda r: r.get("data") or "", reverse=True)
+        return {"recenzii": [r for r in lista if potriveste_recenzia(r.get("text"), cuvinte)], "din": len(lista)}
+
+    def bloc(b):
+        return {"banca": b, "aplicatie": aplicatia(b),
+                "fara_aplicatie": aplicatia(b) is None and b not in pe_play and b not in ios,
+                "evidentiata": b == "libra",
+                "play": magazin(pe_play.get(b, [])) if play else None, "app_store": magazin(ios.get(b, []))}
+
+    if interp["banci"]:
+        blocuri, fara = [bloc(b) for b in interp["banci"]], 0
+    else:
+        candidate = sorted(set(pe_play) | set(ios), key=lambda b: (nume.get(b) or b).lower())
+        toate = [bloc(b) for b in candidate]
+        blocuri = [b for b in toate if (b["play"] or {}).get("recenzii") or b["app_store"]["recenzii"]]
+        fara = len(toate) - len(blocuri)
+    return {"vedere": "recenzii", "blocuri": blocuri, "cuvinte": cuvinte, "fara_potriviri": fara,
+            "play_la": play["colectat_la"] if play else None}
+
+
 # Butoanele de sub un răspuns (decizia lui Nicolae, 08.10.2026): continuă fără model, deci gratuit și fără
 # riscul unei interpretări greșite. Eticheta română e textul turei în conversație.
-BUTOANE = {"firme": "Pentru firme", "pf": "Pentru persoane fizice", "libra": "Compară cu Libra"}
+BUTOANE = {"firme": "Pentru firme", "pf": "Pentru persoane fizice", "libra": "Compară cu Libra",
+           "toate": "La toate băncile", "prag_100": "Cel puțin 100 de note",
+           "prag_1000": "Cel puțin 1.000 de note", "fara_prag": "Fără prag"}
+PRAG_BUTON = {f"prag_{p}": p for p in PRAGURI_NOTE}
 NEPOTRIVIT = "Butonul nu se potrivește răspunsului."
 
 
-def butoane(interp, raspunsuri, clasament):
+def butoane(interp, raspunsuri, clasament, aplicatii=None):
     """Ce butoane are un răspuns. Segmentul doar la comisioane: rândurile de dobânzi n-au segment în sursă,
     deci „Pentru firme” n-ar schimba nimic."""
+    if interp["tip"] == "aplicatii":
+        return _butoane_aplicatii(interp, aplicatii)
     tip = interp["tip"]
     if tip == "cautare" and not interp["categorie"]:
         cu_segment = any(g.get("segment") for r in raspunsuri for g in r.get("rezumat") or [])
@@ -515,19 +817,56 @@ def butoane(interp, raspunsuri, clasament):
     return rez
 
 
+def _butoane_aplicatii(interp, aplicatii):
+    """La aplicații: Libra lângă băncile numite, aceeași întrebare la toate băncile și pragul de note. Fără prag,
+    pragurile apar doar când clasamentul are aplicații cu puține note (`putine_note`)."""
+    if not aplicatii:
+        return []
+    banci, rez = interp["banci"], []
+    if banci and "libra" not in banci and len(banci) < MAX_BANCI:
+        rez.append("libra")
+    if banci and (interp["functie"] or interp["aspect"] == "note" or (interp["aspect"] == "recenzii" and interp["text_cautat"])):
+        rez.append("toate")
+    if interp["aspect"] == "note":
+        prag = interp.get("prag_note")
+        if prag is None:
+            rez += list(PRAG_BUTON) if aplicatii.get("putine_note") else []
+        else:
+            rez += [b for b, p in PRAG_BUTON.items() if p != prag] + ["fara_prag"]
+    return rez
+
+
 def din_buton(anterior, buton):
-    """Interpretarea nouă după un buton, fără model. Un buton care nu se potrivește ridică `Respins`."""
-    if not isinstance(buton, str) or buton not in BUTOANE or anterior["tip"] not in ("cautare", "clasament"):
+    """Interpretarea nouă după un buton, fără model. Un buton care nu se potrivește ridică `Respins`. Fiecare buton
+    are ramura lui: cu `toate` și pragurile în BUTOANE, o ramură „orice altceva = Libra” ar fi adăugat Libra la un
+    `toate` trimis pe o căutare."""
+    if not isinstance(buton, str) or buton not in BUTOANE or anterior["tip"] not in ("cautare", "clasament", "aplicatii"):
         raise Respins(NEPOTRIVIT)
     nou = dict(anterior, clarificare=None)
+    if anterior["tip"] == "aplicatii":
+        return _din_buton_aplicatii(nou, buton)
     if buton in ("firme", "pf"):
         if anterior["categorie"]:
             raise Respins(NEPOTRIVIT)
         nou["segment"] = "pj" if buton == "firme" else "pf"
-    elif anterior["tip"] != "cautare" or "libra" in anterior["banci"] or len(anterior["banci"]) >= MAX_BANCI:
-        raise Respins(NEPOTRIVIT)
-    else:
+    elif (buton == "libra" and anterior["tip"] == "cautare" and "libra" not in anterior["banci"]
+          and len(anterior["banci"]) < MAX_BANCI):
         nou["banci"] = anterior["banci"] + ["libra"]
+    else:
+        raise Respins(NEPOTRIVIT)
+    return nou
+
+
+def _din_buton_aplicatii(nou, buton):
+    banci = nou["banci"]
+    if buton == "libra" and banci and "libra" not in banci and len(banci) < MAX_BANCI:
+        nou["banci"] = banci + ["libra"]
+    elif buton == "toate" and banci and (nou["functie"] or nou["aspect"] == "note" or (nou["aspect"] == "recenzii" and nou["text_cautat"])):
+        nou["banci"] = []
+    elif (buton in PRAG_BUTON or buton == "fara_prag") and nou["aspect"] == "note":
+        nou["prag_note"] = PRAG_BUTON.get(buton)
+    else:
+        raise Respins(NEPOTRIVIT)
     return nou
 
 
@@ -680,7 +1019,7 @@ class Vox:
     dă funcțiile de citire (`context`, `cauta`, `stare_banca`), ca la `rulari.Rulari`."""
 
     def __init__(self, context, cauta, stare_banca, client=None, dir_jurnal=DIR_JURNAL, dir_conversatii=None,
-                 clasament=None, stare_banci=None):
+                 clasament=None, stare_banci=None, aplicatii=None):
         self._sursa_context = context
         self._cauta = cauta
         self._stare_banca = stare_banca
@@ -688,6 +1027,8 @@ class Vox:
         # orice clasament iese `neclasabil` (evaluarea interpretării nu le folosește)
         self._clasament = clasament
         self._stare_banci = stare_banci
+        # aplicațiile (app/server.py, `_aplicatii_vox`); fără cititor, răspunsul are `aplicatii: null` (evaluarea)
+        self._aplicatii = aplicatii
         self._client = client
         self.dir = dir_jurnal
         # lângă jurnal: în teste și la evaluare jurnalul e într-un dosar temporar, deci și conversațiile
@@ -823,6 +1164,84 @@ class Vox:
                 "categorie": interp["categorie"], "termen": interp["termen"], "produs": interp["produs_credit"],
                 "blocuri": blocuri, "libra": libra, "fara_date": fara_date}
 
+
+    def _aplicatii_raspuns(self, interp, ctx):
+        """Una din cele patru vederi (spec 2026-10-08-vox-aplicatii): o funcție la toate băncile, aplicațiile
+        băncilor numite, notele din magazine sau o funcție care nu e analizată."""
+        if not self._aplicatii:
+            return None
+        date = self._aplicatii(cu_recenzii=True) if interp["aspect"] == "recenzii" else self._aplicatii()
+        nume = {b["slug"]: b["nume"] for b in ctx["banci"]}
+        evidentiate = {"libra", *interp["banci"]}
+        principale, secundare = {}, {}
+        for a in date["aplicatii"]:
+            if a["rol"] == "secundar":
+                secundare.setdefault(a["banca"], []).append(a["aplicatie"])
+            else:
+                principale.setdefault(a["banca"], a)
+        functii = {}
+        for f in date["functii"]:
+            functii.setdefault(f["package"], {})[f["functie"]] = {
+                "verdict": f["verdict"], "surse": [s for s in (f["surse"] or "").split("|") if s],
+                "dovada_text": f["dovada_text"] or None}
+        play = date["play"]
+        ios = {r["banca"]: r for r in date["app_store"]}
+        cu_aplicatie = set(principale) | set(ios) | set((play or {}).get("aplicatii") or {})
+        rez = {"functie": interp["functie"], "text_cautat": interp["text_cautat"],
+               "analiza_la": max((a["data_analizei"] for a in principale.values() if a["data_analizei"]), default=None),
+               "app_store_la": max((r["observat_la"] for r in ios.values() if r["observat_la"]), default=None),
+               "play_la": play["colectat_la"] if play else None,
+               "banci_fara_aplicatie": [b["slug"] for b in ctx["banci"] if b["slug"] not in cu_aplicatie]}
+
+        def aplicatia(b):
+            return (principale.get(b) or {}).get("aplicatie")
+
+        if interp["aspect"] == "recenzii":
+            return {**rez, **_recenzii_raspuns(interp, date, aplicatia, nume)}
+        if interp["aspect"] == "note":
+            surse = {"play": (lambda b: _magazin_play(play, b)) if play else None,
+                     "app_store": lambda b: _magazin_app_store(ios.get(b))}
+            clasamente = {}
+            for magazin, din in surse.items():
+                clasamente[magazin] = None if din is None else clasa_note(
+                    [{"banca": b, "aplicatie": aplicatia(b), **m} for b in sorted(cu_aplicatie) if (m := din(b))],
+                    evidentiate, nume, interp["prag_note"])
+            carduri = []
+            for b in interp["banci"]:
+                card = {"banca": b, "aplicatie": aplicatia(b), "fara_aplicatie": b not in cu_aplicatie}
+                for magazin, din in surse.items():
+                    m, c = (din(b) if din else None), clasamente[magazin]
+                    if m and c:
+                        r = next((x for x in c["randuri"] if x["banca"] == b), None)
+                        m.update(loc=r["loc"] if r else None, loc_pana=r["loc_pana"] if r else None,
+                                 din=len(c["randuri"]), sub_prag=any(x["banca"] == b for x in c["sub_prag"]))
+                    card[magazin] = m
+                carduri.append(card)
+            return {**rez, "vedere": "note", "prag": interp["prag_note"], "clasamente": clasamente,
+                    "putine_note": None if interp["prag_note"] else putine_note(clasamente), "carduri": carduri}
+        if interp["functie"] and not interp["banci"]:
+            grupuri = {v: [] for v in VERDICTE}
+            for b, a in principale.items():
+                f = functii.get(a["package"], {}).get(interp["functie"])
+                if f and f["verdict"] in grupuri:
+                    grupuri[f["verdict"]].append({"banca": b, "aplicatie": a["aplicatie"], **f,
+                                                  "evidentiata": b in evidentiate})
+            return {**rez, "vedere": "functie", "grupuri": [
+                {"verdict": v, "aplicatii": sorted(x, key=lambda r: (nume.get(r["banca"]) or r["banca"]).lower())}
+                for v, x in grupuri.items()]}
+        if not interp["banci"]:
+            return {**rez, "vedere": "neanalizata", "functii": [f["functie"] for f in ctx["functii"]]}
+        coloane = []
+        for b in interp["banci"]:
+            a = principale.get(b)
+            coloane.append({"banca": b, "fara_aplicatie": a is None, "aplicatie": a["aplicatie"] if a else None,
+                            "versiune_analizata": a["versiune_analizata"] if a else None,
+                            "data_analizei": a["data_analizei"] if a else None,
+                            "framework": a["framework"] if a else None, "secundare": secundare.get(b, []),
+                            "functii": functii.get(a["package"], {}) if a else {},
+                            "play": _magazin_play(play, b), "app_store": _magazin_app_store(ios.get(b))})
+        return {**rez, "vedere": "aplicatii", "coloane": coloane, "diferente": diferente(coloane)}
+
     def intreaba(self, intrebare, anterior=None, conversatie=None):
         intrebare = verifica_intrebarea(intrebare)
         anterior = verifica_anterior(anterior)
@@ -842,6 +1261,36 @@ class Vox:
             interp, ignorate = _gol(), []
         else:
             interp, ignorate = valideaza(brut, ctx)
+            # #42 din evaluare (09.10.2026): „… pentru firme la BCR?” ieșea neclar cu „PFA, IMM sau PJ?”, iar o frază în
+            # plus în prompt a răsturnat #46 („Are George plata contactless?”): regula stă în cod, nu în prompt
+            # `neclar` doar alimentează `anterior`: fără segment, „la BCR” de după pierdea „firme” (re-revizia, N8)
+            plase = []
+            # „Cât costă administrarea contului pentru firme la BCR?”, apoi „Care e cea mai ieftină variantă de administrare a
+            # contului?” ieșea clasament PJ (conversațiile din 09.10.2026): pagina trimite interpretarea anterioară ca „și la
+            # BRD?” să meargă, iar modelul îi copiază segmentul. Promptul de dinainte de recenzii făcea la fel, iar o frază nouă
+            # în prompt răstoarnă alte întrebări (#36, #42, #46), deci regula stă în cod
+            if (anterior and interp["tip"] in ("cautare", "clasament") and interp["segment"] is not None
+                    and interp["segment"] == anterior.get("segment") and segment_din_intrebare(intrebare) is None
+                    and not e_continuare(intrebare)):
+                interp["segment"] = None
+                plase.append("segment_mostenit")
+            if interp["tip"] in ("cautare", "clasament", "neclar") and interp["segment"] is None:
+                interp["segment"] = segment_din_intrebare(intrebare)
+                if interp["segment"]:
+                    plase.append("segment")
+            # „Are BT Pay RoPay?” ieșea cu `functie` goală (32/33 parafraze, 09.10.2026): utilizatorul primea toate funcțiile.
+            # Un `text_cautat` pus de model înseamnă că a recunoscut o funcție din afara listei („Apple Pay și chat”: plasa
+            # lua `in_app_chat` și arunca „Apple Pay”), deci plasa nu mai lucrează
+            if (interp["tip"] == "aplicatii" and interp["aspect"] == "functii" and interp["functie"] is None
+                    and interp["text_cautat"] is None):
+                f = functie_din_intrebare(intrebare, ctx["functii"])
+                if f:
+                    interp["functie"] = f
+                    plase.append("functie")
+            # jurnalul păstrează doar interpretarea de după plase: fără cheia asta, o greșeală a modelului acoperită de cod
+            # (sau o plasă care greșește) nu se mai vede în `loguri/vox/`
+            if plase:
+                rand["plase"] = plase
         # singurul marcaj de cache din cerere e cel de o oră, deci orice scriere e de o oră
         cost = preturi.cost(m, tokeni["intrare"], tokeni["iesire"], tokeni["citire_cache"],
                             scriere_cache_1h=tokeni["scriere_cache"])
@@ -854,6 +1303,7 @@ class Vox:
         try:
             raspunsuri = [self._raspuns(b, interp, ctx) for b in interp["banci"]] if interp["tip"] == "cautare" else []
             clasament = self._clasament_raspuns(interp, ctx) if interp["tip"] == "clasament" else None
+            aplicatii = self._aplicatii_raspuns(interp, ctx) if interp["tip"] == "aplicatii" else None
         except Exception as exc:
             # întrebarea sau butonul intră în jurnal și când cade baza (la o întrebare, apelul la model s-a plătit deja)
             rand["eroare"] = f"{exc.__class__.__name__}: {exc}"
@@ -862,9 +1312,14 @@ class Vox:
         rand["randuri"] = {r["banca"]: r["total"] for r in raspunsuri}
         if clasament and clasament.get("blocuri"):
             rand["clasate"] = len(clasament["blocuri"][0]["randuri"])
+        if aplicatii:
+            rand["aplicatii"] = _cate_aplicatii(aplicatii)
+            if aplicatii["vedere"] == "recenzii":
+                rand["recenzii"] = sum(len(m["recenzii"]) for b in aplicatii["blocuri"]
+                                       for m in (b["play"], b["app_store"]) if m)
         rezultat = {"interpretare": interp, "ignorate": ignorate, "raspunsuri": raspunsuri,
-                    "clasament": clasament, "model": rand["model"], "tokeni": rand["tokeni"],
-                    "cost_usd": rand["cost_usd"], "butoane": butoane(interp, raspunsuri, clasament)}
+                    "clasament": clasament, "aplicatii": aplicatii, "model": rand["model"], "tokeni": rand["tokeni"],
+                    "cost_usd": rand["cost_usd"], "butoane": butoane(interp, raspunsuri, clasament, aplicatii)}
         if buton:
             rezultat["buton"] = buton
         id = rand["conversatie"] or self.istoric.id_nou()

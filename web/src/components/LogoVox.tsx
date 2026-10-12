@@ -1,10 +1,10 @@
 import { useId } from 'react'
 
 /**
- * Siglele Vox, alese pe 07.10.2026 din pânza cu variante: 1A (bula plină cu V decupat) în butonul
- * din bara laterală, 15C (insigna cu unda de voce) lângă titlul paginii. Desenul e plin în `currentColor`,
- * iar V-ul și unda sunt găuri adevărate (mask), nu linii în culoarea fundalului: butonul din bară
- * își schimbă fundalul la hover și când pagina e activă.
+ * Siglele Vox, alese pe 07.10.2026 din pânza cu variante: 1A (bula plină cu V decupat) în bula
+ * din dreapta jos (`BulaVox`, 09.10.2026), 15C (insigna cu unda de voce) lângă titlul paginii. Desenul e plin în `currentColor`,
+ * iar V-ul și unda sunt găuri adevărate (mask), nu linii în culoarea fundalului: bula își schimbă
+ * fundalul la hover.
  */
 interface Props {
   className?: string

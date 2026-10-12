@@ -24,6 +24,7 @@ import { etNume, etSegment, unitTxt } from '../components/valori'
 import { areCheie, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { faraDiacritice, formatZi, num } from '../util/format'
+import Aplicatii from './vox/Aplicatii'
 import Clasament from './vox/Clasament'
 import Conversatii, { cand } from './vox/Conversatii'
 import '../styles/vox.css'
@@ -190,9 +191,10 @@ export default function Vox() {
   async function trimite(intrebare: string) {
     const q = intrebare.trim()
     if (!q) return
-    // „și la BRD?” continuă ultimul răspuns reușit (căutare sau clasament, inclusiv unul dat de un buton),
-    // nu o clarificare sau o eroare
-    const anterior = [...mesaje].reverse().find((x) => ['cautare', 'clasament'].includes(x.raspuns?.interpretare.tip ?? ''))?.raspuns?.interpretare ?? null
+    // „și la BRD?” continuă ultimul răspuns reușit (căutare, clasament sau aplicații, inclusiv unul dat de un
+    // buton), nu o clarificare sau o eroare; fără `aplicatii`, după „Are George plata contactless?” continua o
+    // căutare de comision mai veche (revizia finală, 08.10.2026)
+    const anterior = [...mesaje].reverse().find((x) => ['cautare', 'clasament', 'aplicatii'].includes(x.raspuns?.interpretare.tip ?? ''))?.raspuns?.interpretare ?? null
     await ruleaza({ intrebare: q }, () => trimiteIntrebarea(q, anterior, c, st.token ?? ''))
   }
 
@@ -399,6 +401,30 @@ function Raspuns({ r, m, poate, onDovezi, onExemplu, onButon }: {
           : <p>{t('vox.neclar')}</p>}
         {subsol}
       </div>
+    )
+  }
+  if (i.tip === 'aplicatii') {
+    return (
+      <article className="vox-card">
+        <div className="vox-inteles">
+          <span className="vox-et">{t('vox.am_inteles')}</span>
+          <span className="vox-chip">{t(i.aspect === 'note' ? 'vox.aplicatii.chip_note' : i.aspect === 'recenzii' ? 'vox.aplicatii.chip_recenzii' : 'vox.aplicatii.chip')}</span>
+          {i.banci.map((b) => <span key={b} className="vox-chip banca">{m.nume[b] ?? b}</span>)}
+          {i.functie && (
+            <span className="vox-chip">{areCheie(`mobil.android_fs.${i.functie}`) ? t(`mobil.android_fs.${i.functie}` as DictKey) : i.functie}</span>
+          )}
+          {i.text_cautat && <span className="vox-chip">{t('vox.text_chip', { text: i.text_cautat })}</span>}
+          {i.prag_note != null && <span className="vox-chip">{t('vox.aplicatii.chip_prag', { prag: num(i.prag_note, locale, 0) })}</span>}
+        </div>
+        {r.ignorate.length > 0 && (
+          <p className="vox-nota"><span className="vox-punct" />{t('vox.ignorate', { banci: r.ignorate.map((b) => m.nume[b] ?? b).join(', ') })}</p>
+        )}
+        {r.aplicatii
+          ? <Aplicatii a={r.aplicatii} m={m} />
+          : <p className="vox-nota"><span className="vox-punct" />{t('vox.aplicatii.indisponibil')}</p>}
+        {butoane}
+        <div className="vox-card-jos">{subsol}</div>
+      </article>
     )
   }
   const filtre = [

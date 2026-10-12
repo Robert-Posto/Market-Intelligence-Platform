@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { Button, Select } from 'antd'
 import type { Sentiment } from '@mcc/shared'
 import type { Meta } from '../../api/meta'
@@ -97,7 +97,7 @@ export function CardRecenzie({ banca, m, nota, data, versiune, magazin, text, ra
   data: string | null
   versiune?: string | null
   magazin?: string | null
-  text: string | null
+  text: ReactNode
   raspuns?: string | null
   raspunsData?: string | null
   utile?: number | null
