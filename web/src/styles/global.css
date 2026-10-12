@@ -76,6 +76,8 @@ nav a.vox-nav .icon { flex: none }
 nav .picior { padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); background: var(--nav-footer);
   border-top: 1px solid var(--nav-line); font-family: var(--mono); font-size: 9.5px; line-height: 1.6; color: var(--nav-footer-ink) }
 nav .picior .comutatoare { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px }
+/* fără rândul utilizatorului (pe laptop, modul local), comutatoarele sunt primele din picior */
+nav .picior .comutatoare:first-child { margin-top: 0 }
 
 /* ---- conținut ---- */
 main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 60px }

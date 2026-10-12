@@ -9,7 +9,7 @@ import { propsLipit, RandFantoma, useSusCap } from './lipire'
  * Tabelul comun al aplicației vechi, pe Table din AntD, cu aceleași reguli:
  *  - primul clic pe un antet sortează descrescător (cifrele mari sus), al doilea crescător;
  *  - golurile rămân jos în ambele sensuri;
- *  - rândul Libra rămâne primul, oricum s-ar sorta;
+ *  - rândul Libra rămâne primul, oricum s-ar sorta (cu `libraSus={false}`: doar evidențiat, la locul lui);
  *  - capul rămâne lipit sub bara de filtre la derulare, iar prima coloană la derularea pe orizontală (`lipit`).
  * AntD singur nu le are pe ultimele două, deci sortarea se face aici, iar
  * tabelul primește lista deja ordonată.
@@ -37,6 +37,7 @@ export function Tabel<R>({
   clasaRand,
   onRand,
   lipit = true,
+  libraSus = true,
 }: {
   randuri: R[]
   coloane: Coloana<R>[]
@@ -49,6 +50,8 @@ export function Tabel<R>({
   onRand?: (r: R) => void
   /** capul lipit la derularea paginii (implicit); `false` în chenarele cu derulare proprie și în sertare */
   lipit?: boolean
+  /** Libra fixată sus (implicit); `false` = la locul dat de sortare, doar cu rândul evidențiat (clasamente) */
+  libraSus?: boolean
 }) {
   const { t, locale } = useLang()
   const [sort, setSort] = useState<[string, 'ascend' | 'descend'] | null>(implicit ?? null)
@@ -68,9 +71,9 @@ export function Tabel<R>({
         return compara(va, vb, locale) * sens
       })
     }
-    if (libra) l.sort((a, b) => Number(libra(b) === 'libra') - Number(libra(a) === 'libra'))
+    if (libra && libraSus) l.sort((a, b) => Number(libra(b) === 'libra') - Number(libra(a) === 'libra'))
     return l
-  }, [randuri, coloane, sort, libra, locale])
+  }, [randuri, coloane, sort, libra, libraSus, locale])
 
   const cols: ColumnType<R>[] = coloane.map((c, i) => ({
     key: c.cheie,

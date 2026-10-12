@@ -107,7 +107,6 @@ export const comun = {
   "sertar.rand.metoda_tooltip": ["cu ce variantă de colectare a fost extrasă", "which collection method extracted it"],
   "sertar.rand.ambiguu": ["ambiguu", "ambiguous"],
   "sertar.rand.incredere": ["încredere {valoare}", "confidence {valoare}"],
-  "comun.picior.sumar": ["{banci} bănci · {surse} surse<br>{valori} valori colectate", "{banci} banks · {surse} sources<br>{valori} values collected"],
   "unitate.lei": [" lei", " lei"],
   "unitate.eur": [" EUR", " EUR"],
   "unitate.usd": [" USD", " USD"],

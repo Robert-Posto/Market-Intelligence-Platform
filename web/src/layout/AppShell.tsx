@@ -1,19 +1,15 @@
 import { MoonOutlined, SunOutlined } from '@ant-design/icons'
-import { useQuery } from '@tanstack/react-query'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
-import { Sumar } from '@mcc/shared'
 import { useSesiune } from '../auth'
-import { api } from '../api/client'
-import { T, useLang, type Lang } from '../i18n'
+import { useLang, type Lang } from '../i18n'
 import { PAGINI, TOATE, VOX, cheie } from '../pagini'
 import { useTema, type Tema } from '../tema'
-import { num } from '../util/format'
 import { Comutator } from '../components/Comutator'
 import { VoxBula, VoxInsigna } from '../components/LogoVox'
 
 /** Bara laterală, titlul paginii, comutatoarele de limbă și de temă. */
 export default function AppShell() {
-  const { t, lang, setLang, locale } = useLang()
+  const { t, lang, setLang } = useLang()
   const { intunecat, setTema } = useTema()
   const { utilizator, delogare } = useSesiune()
   const { pathname } = useLocation()
@@ -23,10 +19,6 @@ export default function AppShell() {
   // Paginile de admin nu apar în meniul analistului (serverul le refuză oricum cu 403); un grup rămas gol dispare
   const meniu = PAGINI.map((gr) => ({ ...gr, chei: gr.chei.filter((p) => !p.admin || utilizator?.rol === 'admin') })).filter((gr) => gr.chei.length)
 
-  // Piciorul barei spune cât e în bază, nu un slogan. Se cere o dată pe sesiune.
-  const sumar = useQuery({ queryKey: ['sumar'], staleTime: Infinity, queryFn: () => api('/api/sumar', Sumar) })
-  const g = (c: string) => sumar.data?.totaluri.find((x) => x.ce === c)?.n ?? 0
-
   return (
     <div className="aplicatie">
       <nav>
@@ -34,7 +26,6 @@ export default function AppShell() {
           <span className="t">
             Marketing <i>Command</i> Center
           </span>
-          <span className="s">{t('comun.nav.subtitlu')}</span>
         </div>
         <div className="meniu">
           {meniu.map((gr) => (
@@ -55,12 +46,6 @@ export default function AppShell() {
             {t('vox.nav.buton')}
           </NavLink>
           <div className="picior">
-            {sumar.data && (
-              <T
-                k="comun.picior.sumar"
-                params={{ banci: num(g('bănci'), locale, 0), surse: num(g('surse'), locale, 0), valori: num(g('observații'), locale, 0) }}
-              />
-            )}
             {/* o singură linie pentru utilizator, iar „Ieșire” / „local” pe rândul comutatoarelor: meniul trebuie să încapă fără derulare la 720 px */}
             {utilizator && !utilizator.local && (
               <div className="utilizator">

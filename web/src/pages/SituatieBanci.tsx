@@ -218,7 +218,7 @@ function Vedere({ d, m }: { d: Disponibil; m: Meta }) {
           <p className="note sb-unitate">{t('sb.tabel_unitate', { unitate: mod === 'cota' ? t('sb.grafic_cota') : unitate, indicator: t(`sb.ind.${ind}` as DictKey) })}</p>
           {/* derulare orizontală proprie (14 ani): capul lipit de pagină s-ar suprapune peste rânduri */}
           <Tabel<BancaSituatie> randuri={randuri} cheieRand={(b) => String(b.cui)} libra={(b) => b.slug ?? ''}
-            implicit={[ultim, 'descend']} gol={t('sb.gol')} coloane={colEvolutie} lipit={false} />
+            implicit={[ultim, 'descend']} gol={t('sb.gol')} coloane={colEvolutie} lipit={false} libraSus={false} />
         </div>
       </section>
 
@@ -332,7 +332,9 @@ function Grafic({ date, serii, nume, fmt }: {
           <Tooltip isAnimationActive={false} cursor={{ stroke: 'var(--line-2)' }}
             contentStyle={{ background: 'var(--surface)', border: '1px solid var(--line)', borderRadius: 8, fontSize: 12 }}
             labelStyle={{ color: 'var(--ink)', fontWeight: 600 }} itemStyle={{ color: 'var(--ink)' }}
-            formatter={(v, k) => [fmt(typeof v === 'number' ? v : null), eticheta(k)]} />
+            formatter={(v, k) => [fmt(typeof v === 'number' ? v : null), eticheta(k)]}
+            // băncile în ordinea sumei din anul de sub cursor, de la cea mai mare; fără valoare, la final
+            itemSorter={(it) => (typeof it.value === 'number' ? -it.value : Infinity)} />
           <Legend formatter={(k: string) => <span className="sb-leg">{eticheta(k)}</span>} />
           {serii.map((b, i) => (
             <Line key={b.cui} dataKey={String(b.cui)} name={String(b.cui)} type="linear" stroke={culoare(i)}
