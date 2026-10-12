@@ -46,6 +46,12 @@ DIR_RULARI = os.path.join(RADACINA, "loguri", "rulari")
 # plătite, pornite dintr-un clic.
 FARA_LLM_PLATIT = {"MIP_LLM_DOAR_CACHE": "1"}
 
+# `fara_mediu`: cheia API vine din `extragere_produse_bancare/.env`, citită de scripturi cu
+# load_dotenv, care NU suprascrie o variabilă existentă. Serverul pune în mediu `.env`-ul din
+# rădăcină (config.py), unde ANTHROPIC_API_KEY e un placeholder: jobul #172 (06.10.2026) a
+# moștenit-o și a primit 401 „API key is invalid”. Fără ea în mediu, ca din terminal.
+FARA_CHEIA_SERVERULUI = ["ANTHROPIC_API_KEY"]
+
 # `banca`: None = scriptul nu primește bancă; "optional" = toate băncile sau
 # una; "obligatoriu" = doar pe o bancă (rularea pe toate e o populare de la
 # zero, care nu stă aici).
@@ -76,6 +82,12 @@ COMENZI = [
      "ce": "Lista comunicatelor din newsroom-ul fiecărei bănci (titlu, dată, adresă), fără corpul lor.",
      "argumente": ["ingest/campanii.py", "--newsroom"], "banca": "optional", "internet": True,
      "estimare_min": 2, "estimare_banca_min": 1},
+    # Butonul de refresh al containerului „Sinteză” din Overview. Cheamă modelul (un apel, ~7.000 de
+    # tokeni de intrare pe 09.10.2026), deci cheia vine din extragere_produse_bancare/.env, ca la joburi.
+    {"id": "brief_stiri", "nume": "Brief de știri",
+     "ce": "Știrile din piața bancară (Google News, RSS, titlurile din paginile fără RSS) de la ultimul brief, curățate și grupate pe subiecte, apoi sinteza AI: alerte, predicții, trenduri, concurență, oportunități (tabela news).",
+     "argumente": ["ingest/brief_stiri.py"], "banca": None, "internet": True, "platit": True,
+     "estimare_min": 2, "fara_mediu": FARA_CHEIA_SERVERULUI},
     # 29.09.2026: 706 cereri la ~11 s (pauza de 10 s + răspunsul), ~140 min
     # cumulat pe cele trei porniri; băncile deja luate în aceeași zi se sar
     {"id": "bing", "nume": "Reclame Bing",
@@ -102,11 +114,6 @@ COMENZI = [
 # explicit după ea. Băncile sunt cele din `extragere_produse_bancare/banci.json` (30), nu
 # cele din `ingest/banks.py`; produsul e un cod din `produse_libra`, verificat pe listă.
 # Fiecare script își scrie singur jobul în `jobs` / `jobs_error` (jurnal_joburi.py).
-# `fara_mediu`: cheia API vine din `extragere_produse_bancare/.env`, citită de scripturi cu
-# load_dotenv, care NU suprascrie o variabilă existentă. Serverul pune în mediu `.env`-ul din
-# rădăcină (config.py), unde ANTHROPIC_API_KEY e un placeholder: jobul #172 (06.10.2026) a
-# moștenit-o și a primit 401 „API key is invalid”. Fără ea în mediu, ca din terminal.
-FARA_CHEIA_SERVERULUI = ["ANTHROPIC_API_KEY"]
 # `paralel_banci`: la mai multe bănci, câte rulează simultan (07.10.2026). Fiecare bancă își
 # scrie fișierele ei (inventare-libra/<banca>/, valori-<banca>.json, produse-<banca>.json) și
 # rândurile ei în bază, deci procesele nu se calcă. Fiecare are deja 3–4 cereri la model în

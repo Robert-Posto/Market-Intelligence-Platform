@@ -1532,6 +1532,28 @@ def situatii_banci():
         return {"disponibil": True, **json.load(f)}
 
 
+ISTORIC_NEWS = 30
+# ISO 8601 în UTC: `str(datetime)` pune spațiu în loc de „T”, pe care nu-l citesc toate browserele
+_ISO_NEWS = "to_char(created_at AT TIME ZONE 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS\"Z\"') AS created_at"
+
+
+def news(q):
+    """Brief-ul de știri din containerul „Sinteză” (Overview): ultimul din `news` sau, cu `id`, unul
+    mai vechi, plus lista celor mai noi `ISTORIC_NEWS` (id, created_at) pentru alegere. Structura lui
+    `continut` e garantată de baza însăși (migrarea 041, `news_valideaza`). Fără tabelă:
+    `disponibil: false`; fără niciun brief: `brief: null`."""
+    if not interoghează("SELECT to_regclass('public.news') IS NOT NULL AS e")[0]["e"]:
+        return {"disponibil": False, "motiv": "lipsește tabela news — aplică db/migration_041_news.sql"}
+    istoric = interoghează(
+        f"SELECT id, {_ISO_NEWS} FROM news ORDER BY news.created_at DESC LIMIT %s", (ISTORIC_NEWS,))
+    id_cerut = (q.get("id") or [""])[0]
+    if id_cerut.isdigit():
+        r = interoghează(f"SELECT id, {_ISO_NEWS}, continut FROM news WHERE id = %s", (int(id_cerut),))
+    else:
+        r = interoghează(f"SELECT id, {_ISO_NEWS}, continut FROM news ORDER BY news.created_at DESC LIMIT 1")
+    return {"disponibil": True, "brief": r[0] if r else None, "istoric": istoric}
+
+
 def retele():
     """Conturile oficiale de social media ale bancilor, din date/retele_sociale.csv.
 
@@ -2357,6 +2379,7 @@ RUTE = {
     "/api/versus_extra": lambda q: versus_extra(),
     "/api/versus_libra": lambda q: versus_libra(),
     "/api/situatii_banci": lambda q: situatii_banci(),
+    "/api/news": news,
     "/api/stare": lambda q: stare(),
     "/api/acoperire": lambda q: acoperire(),
 }

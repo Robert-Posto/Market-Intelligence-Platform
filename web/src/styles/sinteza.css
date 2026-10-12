@@ -1,0 +1,53 @@
+/* Containerul „Sinteză” din Overview (pages/overview/Sinteza.tsx): un card pe fiecare câmp din
+   news.continut (titlul = câmpul, dedesubt textul lui). */
+.sz { margin-bottom: 22px }
+.sz-cap { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px 20px; flex-wrap: wrap; margin-bottom: 12px }
+.sz-cap h2 { margin: 0 0 2px }
+.sz-actiuni { display: flex; gap: 8px; align-items: center; flex-wrap: wrap }
+.sz-istoric { min-width: 160px }
+
+.sz-grila { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: start }
+@media (max-width: 900px) { .sz-grila { grid-template-columns: minmax(0, 1fr) } }
+
+.sz-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px 16px;
+  box-shadow: var(--umbra); min-width: 0 }
+.sz-card-lat { grid-column: 1 / -1 }
+.sz-card h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-family: var(--serif); font-size: 15.5px; font-weight: 600 }
+.sz-n { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--muted); border: 1px solid var(--line);
+  border-radius: 999px; padding: 0 7px; line-height: 18px }
+.sz-gol { color: var(--muted); font-size: 12.5px; margin: 0 }
+
+.sz-text { font-size: 14px; line-height: 1.65; margin: 0; max-width: 120ch }
+.sz-card-sinteza { border-left: 4px solid var(--accent) }
+
+/* elementele unui card: text, separate printr-o linie fină */
+.sz-el { font-size: 13px; line-height: 1.55; padding: 9px 0; border-top: 1px dashed var(--line) }
+.sz-el:first-of-type { border-top: 0; padding-top: 0 }
+.sz-el:last-child { padding-bottom: 0 }
+.sz-el p { margin: 4px 0 0 }
+.sz-el-cap { line-height: 1.45 }
+.sz-el-cap .sz-eticheta { margin-right: 6px }
+.sz-mic { font-family: var(--mono); font-size: 11px; color: var(--muted) }
+
+/* eticheta (gravitate, tip, direcție): textul spune valoarea, culoarea doar o întărește */
+.sz-eticheta { display: inline-block; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .04em;
+  border: 1px solid currentColor; border-radius: 999px; padding: 0 7px; line-height: 16px; white-space: nowrap; color: var(--muted);
+  vertical-align: 1px }
+.sz-grav-critica { color: var(--err); background: var(--err-tint) }
+.sz-grav-ridicata { color: var(--warn); background: var(--warn-tint) }
+.sz-grav-medie { color: var(--aur) }
+.sz-dir-crestere { color: var(--ok) }
+.sz-dir-scadere { color: var(--err) }
+.sz-dir-nou { color: var(--accent) }
+
+/* trimiterile la știri: numere mici, fiecare link spre articol */
+.sz-citate { display: inline-flex; gap: 3px; vertical-align: 1px }
+.sz-citate a { font-family: var(--mono); font-size: 10px; line-height: 1; color: var(--accent); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 4px; padding: 2px 4px; background: var(--surface) }
+.sz-citate a:hover { border-color: var(--accent) }
+
+/* sursele: listă lungă, derulată în card ca să nu întindă rândul */
+.sz-surse { margin: 0; padding-left: 28px; font-size: 12.5px; line-height: 1.6; max-height: 360px; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent }
+.sz-surse li::marker { font-family: var(--mono); font-size: 11px; color: var(--muted) }
+.sz-nota { grid-column: 1 / -1; margin: 0 }

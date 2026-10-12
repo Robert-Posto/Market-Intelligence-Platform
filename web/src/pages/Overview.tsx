@@ -9,9 +9,11 @@ import { Tabel } from '../components/Tabel'
 import { T, useLang, type DictKey } from '../i18n'
 import { deLaServer } from '../i18n/server'
 import { num } from '../util/format'
+import Sinteza from './overview/Sinteza'
 
 /**
- * Overview, punctul de intrare (revamp 25.09 în aplicația veche): șapte carduri
+ * Overview, punctul de intrare (revamp 25.09 în aplicația veche): sus sinteza de știri (din 09.10.2026,
+ * overview/Sinteza.tsx), apoi șapte carduri
  * pe categoriile 2.1–2.7 — cifra-cheie, câte bănci din 30, prospețimea, link —
  * apoi acoperirea pe bănci. Tabelul tehnic stă pliat. Rulările manuale s-au mutat
  * pe 06.10.2026 în pagina „Rulare manuală” (grupul Jobs).
@@ -48,6 +50,8 @@ export default function Overview() {
 
   return (
     <>
+      <Sinteza />
+
       <div className="kpi">
         <Card cod="2.1" titlu="overview.comisioane" cifra={num(c.comisioane, locale, 0)} et={t('overview.card_comisioane_et')} banci={cate('comisioane')} data={c.comisioane_la} link="/produse" />
         <Card cod="2.2" titlu="overview.dobanzi" cifra={num(c.dobanzi, locale, 0)} et={t('overview.card_dobanzi_et')} banci={cate('dobanzi')} data={c.dobanzi_la} link="/rate" />
