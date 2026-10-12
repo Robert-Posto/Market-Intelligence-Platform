@@ -1,26 +1,43 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "pko",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
-  "surse": [],
-  "gol": {
-    "motiv": "produs_inexistent",
-    "nota": "PKO Bank Polski – Sucursala București este o unitate de corporate banking care deservește exclusiv clienți corporate mari (filiale ale grupurilor poloneze/CEE), conform declarației explicite de pe site: 'Sucursala din București a PKO Bank Polski deservește clienții corporate care își desfășoară activitatea în România'. Pagina de produse listează doar 'Conturi curente și conturi auxiliare', 'Cont escrow', cash pooling și credite corporative (capital de lucru, investiții, credite sindicalizate) — nu există niciun produs de tip cont curent online auto-servire pentru PFA/firme mici, cu deschidere 100% online și card de business atașat. Segmentul de clienți (corporații mari, adesea cu capital polonez) diferă fundamental de segmentul vizat de Cont Online Business Libra (PFA și firme mici care se deschid și gestionează exclusiv digital). Nu există, așadar, un produs echivalent sau similar la această bancă."
-  },
+  "model": "claude-opus-5-5",
+  "surse": [
+    {
+      "url": "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent (cont bancar) pentru clienți corporate, administrat prin iPKO biznes",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este contul curent PJ al sucursalei (doar clienți corporate, fără ofertă pentru PFA). Se administrează online prin iPKO biznes (abonament separat de 30 RON/lună) și are card PKO Visa Business Debit, dar nu e un cont deschis exclusiv online și nu are pachete cu operațiuni incluse.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Lista oficială de prețuri în vigoare de la 01.05.2026 conține explicit costul de deschidere (0 RON), administrarea lunară (50 RON), extrasul pe hârtie (10 RON), transferurile intrabancare (0,25 RON) și transferurile SENT online (8 RON); nu apar comisioane pentru depunerea de numerar sau închiderea contului.",
+      "citat": "1. Deschiderea unui cont bancar Otwarcie rachunku bankowego 0 RON 2. Menținerea unui cont bancar (lunar) Prowadzenie rachunku bankowego (miesięcznie) 50 RON",
+      "pagina_pdf": 1,
+      "dovada_metoda": "PDF citit integral prin http; cifrele apar în text (pag. 1: cont, extras; pag. 2: iPKO biznes 30 RON; pag. 3: plăți intrabancare 0,25 RON, SENT electronic 8 RON).",
+      "incredere_metoda": 0.95,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.pkobp.pl/ro/filiala-romania",
-    "https://www.pkobp.pl/ro/filiala-romania/produse"
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
   ],
   "durata_s": 22,
   "consum": {
-    "intrare": 8,
-    "iesire": 1357,
-    "citire_cache": 28500,
-    "scriere_cache": 20072,
+    "intrare": 10,
+    "iesire": 1478,
+    "citire_cache": 33387,
+    "scriere_cache": 52629,
     "apeluri": 1,
-    "cost_estimat_usd": 0.069466
+    "cost_estimat_usd": 0.30609980000000003
   }
 }

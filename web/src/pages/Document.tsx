@@ -3,7 +3,7 @@ import { Button, ConfigProvider, type ThemeConfig } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import type { PDFDocumentProxy } from 'pdfjs-dist'
 import { T, useLang } from '../i18n'
-import { incarcaDocument, randeazaPagina } from './document/pdf'
+import { incarcaDocument, paginaCuCitat, randeazaPagina } from './document/pdf'
 import '../styles/document.css'
 
 /*
@@ -25,10 +25,12 @@ import '../styles/document.css'
 export default function Document() {
   const [sp] = useSearchParams()
   const url = sp.get('u') || ''
+  // fără `p` (valorile fluxului Libra nu țin minte pagina), vizualizatorul caută pagina citatului
+  const cuPagina = !!parseInt(sp.get('p') || '0', 10)
   const pagina = Math.max(1, parseInt(sp.get('p') || '1', 10) || 1)
   const citat = (sp.get('q') || '').trim()
   // altă adresă = alt document: totul se ia de la capăt, ca la o încărcare de pagină
-  return <Vizualizator key={`${url}\n${pagina}\n${citat}`} url={url} pagina={pagina} citat={citat} />
+  return <Vizualizator key={`${url}\n${pagina}\n${citat}`} url={url} pagina={pagina} citat={citat} cautaPagina={!cuPagina} />
 }
 
 /* Butoanele din antet stau pe vișiniul barei laterale: transparente, cu text
@@ -57,7 +59,9 @@ const TEMA_ANTET: ThemeConfig = {
 /** Ce s-a randat ultima dată; etichetele din bară se schimbă abia după randare, ca în pdf.html. */
 type Rezultat = { fel: 'pagina'; nr: number; gasite: number } | { fel: 'toate'; cu: number[] }
 
-function Vizualizator({ url, pagina: paginaCeruta, citat }: { url: string; pagina: number; citat: string }) {
+function Vizualizator({ url, pagina: paginaCeruta, citat, cautaPagina }: {
+  url: string; pagina: number; citat: string; cautaPagina?: boolean
+}) {
   const { t, tn } = useLang()
   const [doc, setDoc] = useState<PDFDocumentProxy | null>(null)
   const [eroare, setEroare] = useState<string | null>(null)
@@ -94,6 +98,12 @@ function Vizualizator({ url, pagina: paginaCeruta, citat }: { url: string; pagin
         // o pagină peste numărul de pagini (documentul s-a scurtat) se oprește la ultima
         setPagina((p) => Math.min(Math.max(1, p), d.numPages))
         setDoc(d)
+        // fără pagină în adresă: prima pagină cu citatul, apoi randarea obișnuită îl evidențiază și derulează
+        if (cautaPagina && citat) {
+          void paginaCuCitat(d, citat).then((n) => {
+            if (!anulat && n) setPagina(n)
+          })
+        }
       },
       (e: unknown) => {
         if (!anulat) setEroare(mesajEroare(e))
@@ -103,7 +113,7 @@ function Vizualizator({ url, pagina: paginaCeruta, citat }: { url: string; pagin
       anulat = true
       void sarcina.destroy()
     }
-  }, [url])
+  }, [url, cautaPagina, citat])
 
   useEffect(() => {
     const cutie = foi.current

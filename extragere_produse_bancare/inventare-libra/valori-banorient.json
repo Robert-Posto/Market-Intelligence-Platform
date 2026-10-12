@@ -1053,74 +1053,6 @@
    "verificare_azi": "eroare"
   },
   {
-   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||cont curent / cont premium - persoane fizice",
-   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "Cont curent / Cont Premium - persoane fizice",
-   "focus": "Produsul băncii: „Cont curent / Cont Premium - persoane fizice”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1966,
-     "id_produs_libra": 21,
-     "cod": "CONT_ONLINE_PERSONAL",
-     "v2": "cont-curent"
-    }
-   ],
-   "produse_v2": [
-    "cont-curent"
-   ],
-   "stare": "eroare",
-   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": null,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||mastercard gold debit (secțiunea persoane juridice)",
-   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "MasterCard GOLD Debit (secțiunea PERSOANE Juridice)",
-   "focus": "Produsul băncii: „MasterCard GOLD Debit (secțiunea PERSOANE Juridice)”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1853,
-     "id_produs_libra": 14,
-     "cod": "CARD_DEBIT_BUSINESS",
-     "v2": "card-debit"
-    }
-   ],
-   "produse_v2": [
-    "card-debit"
-   ],
-   "stare": "eroare",
-   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": null,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
    "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||l/cs (acreditive, inclusiv stand-by l/c) - secțiunea iii-3 trade finance",
    "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
    "tip": "html",
@@ -1171,46 +1103,6 @@
    ],
    "produse_v2": [
     "cont-curent-pj"
-   ],
-   "stare": "eroare",
-   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": null,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
-   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||mastercard gold debit",
-   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "MasterCard GOLD Debit",
-   "focus": "Produsul băncii: „MasterCard GOLD Debit”.\nCorespunde produsului Libra: „Card de debit Gold”; „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1902,
-     "id_produs_libra": 16,
-     "cod": "CARD_DEBIT_GOLD",
-     "v2": "card-debit"
-    },
-    {
-     "id_sursa": 1825,
-     "id_produs_libra": 15,
-     "cod": "CARD_DEBIT_FREE",
-     "v2": "card-debit"
-    }
-   ],
-   "produse_v2": [
-    "card-debit"
    ],
    "stare": "eroare",
    "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
@@ -1439,40 +1331,6 @@
    }
   },
   {
-   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||\"banorient premium\" sight account / cont curent",
-   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
-   "tip": "html",
-   "metoda": "http",
-   "denumire_la_banca": "\"BANORIENT Premium\" Sight account / Cont curent",
-   "focus": "Produsul băncii: „\"BANORIENT Premium\" Sight account / Cont curent”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
-   "legaturi": [
-    {
-     "id_sursa": 1967,
-     "id_produs_libra": 21,
-     "cod": "CONT_ONLINE_PERSONAL",
-     "v2": "cont-curent"
-    }
-   ],
-   "produse_v2": [
-    "cont-curent"
-   ],
-   "stare": "eroare",
-   "motiv": "ImportError: cannot import name 'UA' from 'crawler' (unknown location)",
-   "flow": null,
-   "format_efectiv": null,
-   "blocaj_http_local": null,
-   "metoda_sanitizare": null,
-   "content_hash": null,
-   "observatii": [],
-   "respinse": [],
-   "scrise": 0,
-   "durata_s": 0,
-   "tokeni": {
-    "intrare": 0,
-    "iesire": 0
-   }
-  },
-  {
    "cheie": "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro||mastercard gold debit card",
    "url": "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro",
    "tip": "html",
@@ -1535,6 +1393,220 @@
    "respinse": [],
    "scrise": 0,
    "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/products-and-services||“banorient premium” sight account (cont curent la vedere)",
+   "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "“BANORIENT Premium” Sight account (Cont curent la vedere)",
+   "focus": "Produsul băncii: „“BANORIENT Premium” Sight account (Cont curent la vedere)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_emitere_card` — Emiterea cardului principal al produsului, la cerere, în regim normal: nu urgent, nu suplimentar, nu înlocuirea unui card pierdut sau furat, nu card virtual.\n  `comision_administrare_card` — Costul lunar de administrare a cardului principal al produsului.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_retragere_atm` — Retragerea de numerar în lei de la ATM-urile proprii ale băncii, în țară.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3520,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "interzis de robots.txt la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": "interzis de robots.txt",
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||banque banorient france mastercard gold debit - ron",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "BANQUE BANORIENT FRANCE MasterCard GOLD Debit - RON",
+   "focus": "Produsul băncii: „BANQUE BANORIENT FRANCE MasterCard GOLD Debit - RON”.\nCorespunde produsului Libra: „Card de debit Gold”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `comision_emitere_card` — Emiterea cardului principal al produsului, la cerere, în regim normal: nu urgent, nu suplimentar, nu înlocuirea unui card pierdut sau furat, nu card virtual.\n  `comision_administrare_card` — Costul lunar de administrare a cardului principal al produsului.\n  `comision_retragere_atm` — Retragerea de numerar în lei de la ATM-urile proprii ale băncii, în țară.\n  `comision_retragere_atm_alta_banca` — Retragerea de numerar în lei de la ATM-ul altei bănci, în țară.\n  `comision_conversie_valutara` — Comisionul aplicat la plata cu cardul într-o altă monedă decât cea a contului.\n  `comision_reemitere_card` — Reemiterea cardului principal la expirare, în regim normal.\n  `comision_interogare_sold` — Interogarea soldului la ATM-ul propriu al băncii, în țară (în aplicație e de obicei gratuită).\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3741,
+     "id_produs_libra": 16,
+     "cod": "CARD_DEBIT_GOLD",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "interzis de robots.txt la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": "interzis de robots.txt",
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "data_document": null,
+   "data_document_sursa": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||cont curent persoane fizice (tarife / comisioane – persoane fizice)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont curent persoane fizice (Tarife / Comisioane – PERSOANE FIZICE)",
+   "focus": "Produsul băncii: „Cont curent persoane fizice (Tarife / Comisioane – PERSOANE FIZICE)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_emitere_card` — Emiterea cardului principal al produsului, la cerere, în regim normal: nu urgent, nu suplimentar, nu înlocuirea unui card pierdut sau furat, nu card virtual.\n  `comision_administrare_card` — Costul lunar de administrare a cardului principal al produsului.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_retragere_atm` — Retragerea de numerar în lei de la ATM-urile proprii ale băncii, în țară.\n  `comision_deschidere` — Comisionul de deschidere a contului.\n  `comision_extras_cont` — Extrasul de cont lunar standard, pe hârtie sau eliberat la ghișeu (nu duplicatul și nu extrasul la cerere în afara lunii).\n  `comision_consultare_sold` — Interogarea soldului la ATM-ul propriu al băncii, în țară (în aplicație e de obicei gratuită).\n  `taxa_dezactivare` — Comisionul de închidere a contului curent, la cererea clientului.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3742,
+     "id_produs_libra": 21,
+     "cod": "CONT_ONLINE_PERSONAL",
+     "v2": "cont-curent"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent"
+   ],
+   "stare": "blocat",
+   "motiv": "interzis de robots.txt la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": "interzis de robots.txt",
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "data_document": null,
+   "data_document_sursa": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||mastercard gold debit - ron (cardul gold master / gold business master)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "MasterCard GOLD Debit - RON (Cardul Gold Master / Gold Business Master)",
+   "focus": "Produsul băncii: „MasterCard GOLD Debit - RON (Cardul Gold Master / Gold Business Master)”.\nCorespunde produsului Libra: „Card de debit Free”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `comision_emitere_card` — Emiterea cardului principal al produsului, la cerere, în regim normal: nu urgent, nu suplimentar, nu înlocuirea unui card pierdut sau furat, nu card virtual.\n  `comision_administrare_card` — Costul lunar de administrare a cardului principal al produsului.\n  `comision_retragere_atm` — Retragerea de numerar în lei de la ATM-urile proprii ale băncii, în țară.\n  `comision_retragere_atm_alta_banca` — Retragerea de numerar în lei de la ATM-ul altei bănci, în țară.\n  `comision_conversie_valutara` — Comisionul aplicat la plata cu cardul într-o altă monedă decât cea a contului.\n  `comision_reemitere_card` — Reemiterea cardului principal la expirare, în regim normal.\n  `comision_interogare_sold` — Interogarea soldului la ATM-ul propriu al băncii, în țară (în aplicație e de obicei gratuită).\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3740,
+     "id_produs_libra": 15,
+     "cod": "CARD_DEBIT_FREE",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "interzis de robots.txt la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": "interzis de robots.txt",
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "data_document": null,
+   "data_document_sursa": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 0,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||cont curent persoane juridice (tarife / comisioane – persoane juridice)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont curent persoane juridice (Tarife / Comisioane – PERSOANE Juridice)",
+   "focus": "Produsul băncii: „Cont curent persoane juridice (Tarife / Comisioane – PERSOANE Juridice)”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` / `comision_administrare_anual` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_plata_intrabancara` — Plata în lei către alt client al aceleiași bănci, inițiată online.\n  `comision_depunere_numerar` — Depunerea de numerar în lei în contul propriu.\n  `operatiuni_incluse` — Numărul de operațiuni (plăți, încasări) incluse în costul lunar.\n  `comision_deschidere` — Comisionul de deschidere a contului.\n  `comision_extras_cont` — Extrasul de cont lunar standard, pe hârtie sau eliberat la ghișeu (nu duplicatul și nu extrasul la cerere în afara lunii).\n  `taxa_dezactivare` — Comisionul de închidere a contului curent, la cererea clientului.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3736,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "blocat",
+   "motiv": "interzis de robots.txt la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": "interzis de robots.txt",
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "data_document": null,
+   "data_document_sursa": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
+   "tokeni": {
+    "intrare": 0,
+    "iesire": 0
+   }
+  },
+  {
+   "cheie": "https://www.banorientfrance.com/romanian/romania/service-charges||mastercard gold debit - ron (cardul gold business master)",
+   "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "MasterCard GOLD Debit - RON (Cardul Gold Business Master)",
+   "focus": "Produsul băncii: „MasterCard GOLD Debit - RON (Cardul Gold Business Master)”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `comision_emitere_card` — Emiterea cardului principal al produsului, la cerere, în regim normal: nu urgent, nu suplimentar, nu înlocuirea unui card pierdut sau furat, nu card virtual.\n  `comision_administrare_card` — Costul lunar de administrare a cardului principal al produsului.\n  `comision_retragere_atm` — Retragerea de numerar în lei de la ATM-urile proprii ale băncii, în țară.\n  `comision_retragere_atm_alta_banca` — Retragerea de numerar în lei de la ATM-ul altei bănci, în țară.\n  `comision_conversie_valutara` — Comisionul aplicat la plata cu cardul într-o altă monedă decât cea a contului.\n  `comision_reemitere_card` — Reemiterea cardului principal la expirare, în regim normal.\n  `comision_interogare_sold` — Interogarea soldului la ATM-ul propriu al băncii, în țară (în aplicație e de obicei gratuită).\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3735,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "blocat",
+   "motiv": "interzis de robots.txt la descărcare; fără fallback (regula echipei)",
+   "flow": null,
+   "format_efectiv": null,
+   "blocaj_http_local": "interzis de robots.txt",
+   "metoda_sanitizare": null,
+   "content_hash": null,
+   "data_document": null,
+   "data_document_sursa": null,
+   "observatii": [],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 1,
    "tokeni": {
     "intrare": 0,
     "iesire": 0

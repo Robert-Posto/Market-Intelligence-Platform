@@ -1,38 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "pko",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "PKO VISA BUSINESS DEBIT RO",
+      "denumire_la_banca": "PKO VISA BUSINESS DEBIT RO (Card de debit Visa Business)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este un card de debit, dar destinat exclusiv clienților persoane juridice (corporate) deserviți de Sucursala București, care nu oferă conturi/carduri pentru persoane fizice; în plus, emiterea cardului nu este complet gratuită (40 RON) și nu există cashback, spre deosebire de Cardul de debit Free de la Libra.",
+      "motiv_potrivire": "Tot card de debit, dar sucursala deservește doar clienți corporate (nu persoane fizice). Emiterea/reînnoirea costă 40 RON pe fiecare perioadă de 12 luni, administrarea lunară e 0 RON și nu există cashback la parteneri.",
       "incredere": 0.85,
-      "explicatie_incredere": "Documentul oficial de tarife al sucursalei românești conține o secțiune dedicată 'PKO VISA BUSINESS DEBIT RO' cu toate comisioanele aplicabile cardului.",
-      "citat": "Emitere card sau reînnoire card - comision pentru fiecare perioadă de valabilitate a cardului de 12 luni începută Notă: comision se achită în avans 40 RON. Comision lunară pentru serviciul de card Miesięczna opłata za obsługę karty 0 RON.",
+      "explicatie_incredere": "Lista oficială de prețuri în vigoare de la 01.05.2026 are secțiunea dedicată PKO VISA BUSINESS DEBIT RO, cu emitere/reînnoire, administrare, retragere ATM (0/6 RON, primele 3 gratuite) și conversie valutară 2%.",
+      "citat": "Emitere card sau reînnoire card - comision pentru fiecare perioadă de valabilitate a cardului de 12 luni începută Notă: comision se achită în avans Wydanie lub wznowienie karty - opłata za każdy rozpoczęty 12-miesięczny okres ważności karty Uwaga: Opłata pobierana z góry. 40 RON",
       "pagina_pdf": 4,
+      "dovada_metoda": "PDF, cifrele se văd în textul extras",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.pkobp.pl/ro/filiala-romania/produse",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Card de debit Visa Business",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Pagina de produse a sucursalei românești listează cardul de debit Visa Business ca singurul produs de tip card de debit, oferit exclusiv clienților corporate (persoane juridice), nu și persoanelor fizice.",
-      "incredere": 0.6,
-      "explicatie_incredere": "Pagina confirmă existența produsului și segmentul de clienți (corporate) dar nu conține cifre; sucursala deservește doar clienți corporate conform paginii principale.",
-      "citat": "Card de debit Visa Business se regăsește sub secțiunea Plăți și Carduri alături de Transferuri locale si internaționale, în cadrul produselor oferite de sucursala din București.",
-      "citat_verificat": false,
-      "avertisment": "citatul nu apare în textul primit",
       "link_live": null
     }
   ],
@@ -42,15 +29,16 @@
     "https://www.pkobp.pl/ro/filiala-romania",
     "https://www.pkobp.pl/ro/filiala-romania/produse",
     "https://www.pkobp.pl/ro/filiala-romania/documente",
-    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf"
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+    "https://www.pkobp.pl/api/public/0207e7ad-b15e-43c3-bc65-ab25ba54ba5e.pdf?content-disposition=filename=Lista_de_preturi.pdf"
   ],
-  "durata_s": 49,
+  "durata_s": 30,
   "consum": {
-    "intrare": 14,
-    "iesire": 3214,
-    "citire_cache": 153058,
-    "scriere_cache": 86112,
+    "intrare": 12,
+    "iesire": 1663,
+    "citire_cache": 85781,
+    "scriere_cache": 85932,
     "apeluri": 1,
-    "cost_estimat_usd": 0.27805959999999996
+    "cost_estimat_usd": 0.49728039999999996
   }
 }

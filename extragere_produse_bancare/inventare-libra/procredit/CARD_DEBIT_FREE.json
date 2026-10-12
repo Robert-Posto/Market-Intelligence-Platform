@@ -1,53 +1,42 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "procredit",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.procreditbank.ro/companii/servicii-bancare/carduri-visa-business/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Cardul Visa Debit Business",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este tot un card de debit fără cost de emitere, dar dedicat exclusiv segmentului persoane juridice (nu acoperă și persoanele fizice ca produsul Libra) și nu se menționează niciun program de cashback la parteneri.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată cardurilor Visa Business declară explicit, cu cifre, că emiterea cardului de debit atașat contului de business este gratuită, costul aplicându-se doar cardurilor adiționale.",
-      "citat": "Cardul de debit atașat contului curent de business este gratuit, dar pentru fiecare card adițional emis pe același cont curent costul este de 50 LEI/10 EUR.",
-      "citat_verificat": false,
-      "avertisment": "citatul nu apare în textul primit",
-      "link_live": null
-    },
-    {
-      "url": "https://www.procreditbank.ro/landing/pachetul-proactive/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Card de debit Visa Classic (LEI), inclus în Pachetul ProActive",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Cardul de debit Visa Classic este oferit fără cost separat, dar doar ca parte a unui pachet de cont curent (ProActive) pentru persoane fizice, condiționat de îndeplinirea unor criterii lunare, și fără cashback la parteneri, spre deosebire de cardul Libra, autonom și valabil și pentru persoane juridice.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina pachetului ProActive listează explicit cardul de debit Visa Classic (LEI) ca serviciu inclus, cu comision ZERO de administrare pentru întregul pachet, dar fără cifre dedicate exclusiv cardului.",
-      "citat": "Gestionează-ță finanțele cu Pachetul bancar ProActive. Beneficiezi de cont curent în LEI & EURO, cont de economii 3% dobândă și altele.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/02/Lista-de-preturi-persoane-fizice-_-10.02.pdf",
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Card de debit Visa Classic (LEI) - Pachetul ProActive",
+      "denumire_la_banca": "Card de debit Visa Classic (LEI) – persoane fizice",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul de tarife confirmă condițiile exacte de administrare gratuită pentru pachetul ProActive în care este inclus cardul de debit Visa Classic, dedicat persoanelor fizice.",
-      "incredere": 0.7,
-      "explicatie_incredere": "Lista de prețuri pentru persoane fizice conține valorile exacte ale comisioanelor și condițiile de gratuitate pentru cardul de debit Visa Classic inclus în pachetul ProActive.",
-      "citat": "Ai încasări aferente lunii anterioare (salariu sau alte tipuri de încasări) în LEI în valoarea de minimum 1.000 LEI/ lună sau 2. Dacă nici una dintre condițiile menționate mai sus nu este îndeplinită, comisionul lunar de administrare este de 10 LEI.",
+      "motiv_potrivire": "Card de debit Visa Classic pentru persoane fizice cu emitere și reemitere 0, retrageri ATM România și interogare sold 0; costul lunar e inclus în pachetul de cont (ProActive 0 lei condiționat, altfel 10 lei). Nu are cashback la parteneri și acoperă doar segmentul persoane fizice.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Lista oficială de prețuri PF, valabilă din 24.08.2026, are secțiunea Carduri cu comisioanele explicite pentru Visa Classic.",
+      "citat": "Comision emitere card Visa Classic 0 Comision reemitere card Visa Classic 0 Tranzacții cu cardul Visa Classic Comision LEI EUR Retrageri numerar (LEI) de la ATM-urile din România*",
+      "pagina_pdf": 5,
+      "dovada_metoda": "PDF cu text extras; cifrele apar direct în conținut.",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card Visa debit (Visa Business) – persoane juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit pentru firme, inclus în contul curent (58 lei/lună, maximum două carduri incluse). Nu este gratuit: retragerea la ATM-ul propriu costă 0,50%, interogarea soldului 5 lei, reînnoirea 60 lei și nu are cashback.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Lista oficială de prețuri PJ, valabilă din 12.10.2026, conține secțiunea Carduri cu valorile cardului Visa de business.",
+      "citat": "Retragere numerar ATM PCB 0.50% 0.50% Depunere numerar la ATM 0,20% 0,20% Retragere numerar la alte ATM-uri în România/ Avans numerar POS la alte bănci în România 1% + 2,5 LEI 1% + 2,5 EUR",
+      "pagina_pdf": 1,
+      "dovada_metoda": "PDF cu text extras; cifrele apar direct în conținut.",
+      "incredere_metoda": 0.95,
+      "citat_verificat": null,
       "link_live": null
     }
   ],
@@ -55,15 +44,18 @@
   "candidati_respinsi": [],
   "deschise": [
     "https://www.procreditbank.ro/",
-    "https://www.procreditbank.ro/companii/servicii-bancare/carduri-visa-business/"
+    "https://www.procreditbank.ro/persoane-fizice/carduri-visa/",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf"
   ],
-  "durata_s": 77,
+  "durata_s": 29,
   "consum": {
-    "intrare": 8,
-    "iesire": 6004,
-    "citire_cache": 92323,
-    "scriere_cache": 61422,
+    "intrare": 14,
+    "iesire": 2239,
+    "citire_cache": 174536,
+    "scriere_cache": 89694,
     "apeluri": 1,
-    "cost_estimat_usd": 0.2320756
+    "cost_estimat_usd": 0.5631204
   }
 }

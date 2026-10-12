@@ -1,27 +1,28 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bankofchina",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Bank of China (CEE) Ltd. Sucursala București este o bancă exclusiv corporate (secțiunile site-ului sunt doar Corporate Banking - Deposits, Corporate Loans, Trade Services, Treasury & FX, Other Services - și e-Banking cu Corporate Internet Banking). Nu există deloc segment de retail/persoane fizice și nicio mențiune despre o aplicație sau serviciu de plăți instant prin telefon, nici pentru companii, nici pentru persoane fizice. RoPay presupune un segment dual (fizice și juridice) pe care această bancă nu îl acoperă pentru produse de plată mobilă."
+    "nota": "Bank of China (CEE) Sucursala București deservește doar persoane juridice (Corporate Banking) și nu oferă RoPay, plăți instant prin telefon sau aplicație mobilă. Singurul canal de plăți este NetBank (Corporate Online Banking). Lista de Taxe și Comisioane pentru Persoane Juridice (în vigoare din 1 iulie 2025, https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf) are doar transferuri RON obișnuite: «Transfer RON normal / urgent (servicii bancare online) 7 RON». Încasările sunt gratuite («Toate plățile primite Gratuit»). Nu apare nicio plată instant."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.bankofchina.com/ro/en/",
     "https://www.bankofchina.com/ro/en/cbservice/cbo/",
-    "https://www.bankofchina.com/ro/en/custserv/"
+    "https://www.bankofchina.com/ro/en/bocinfo/bi2/202109/t20210908_20014518.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
   ],
-  "durata_s": 22,
+  "durata_s": 12,
   "consum": {
-    "intrare": 6,
-    "iesire": 1253,
-    "citire_cache": 20911,
-    "scriere_cache": 18324,
+    "intrare": 10,
+    "iesire": 846,
+    "citire_cache": 32451,
+    "scriere_cache": 39956,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0625342
+    "cost_estimat_usd": 0.2297204
   }
 }

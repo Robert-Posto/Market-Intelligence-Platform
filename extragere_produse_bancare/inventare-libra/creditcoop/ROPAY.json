@@ -1,25 +1,29 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "creditcoop",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "CreditCoop oferă doar un serviciu generic de Plăți Instant (transfer instant interbancar/intrabancar prin IBAN, non-stop, via internet/mobile banking), descris în Condițiile Generale de Afaceri (pct. 2.18, Cap. IV). Acest serviciu este un transfer instant clasic bazat pe IBAN, nu un sistem de plăți prin asociere telefon-cont (alias), care este caracteristica definitorie a RoPay. Nu există nicio mențiune despre participarea CreditCoop la schema RoPay sau despre vreun produs de plată inițiată prin numărul de telefon al beneficiarului, atât pentru persoane fizice cât și juridice. Diferența de canal/mecanism (IBAN vs. alias telefon) este o caracteristică esențială, nu secundară, deci nu se califică nici ca 'similar'."
+    "nota": "CREDITCOOP nu oferă RoPay și nici alt serviciu de plăți prin număr de telefon. Documentul de informare cu privire la comisioane pentru contul de plăți (datat 31.08.2026) spune explicit „Mobile banking: Serviciul nu este disponibil”. Banca are doar serviciul general de Plăți Instant în lei, prin internet banking, pe baza IBAN, descris în Condițiile generale de afaceri (CGA-Ianuarie2026.pdf, pct. 2.18). Pentru acest serviciu nu am găsit public un comision separat. Pentru context, documentul de comisioane PF (https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf) indică: plată interbancară standard prin internet banking 3 lei/operațiune, în regim de urgență 10 lei, iar încasarea interbancară 0 lei. Nu am găsit un document de tarife pentru persoane juridice. Nu am raportat plata instant prin internet banking drept corespondent pentru RoPay: este un serviciu general de transfer, nu un serviciu de plăți prin telefon."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf"
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf",
+    "https://www.creditcoop.ro/cont-de-plati-persoane-fizice/",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/"
   ],
-  "durata_s": 35,
+  "durata_s": 29,
   "consum": {
-    "intrare": 8,
-    "iesire": 2015,
-    "citire_cache": 178478,
-    "scriere_cache": 159075,
+    "intrare": 14,
+    "iesire": 1769,
+    "citire_cache": 169331,
+    "scriere_cache": 73446,
     "apeluri": 1,
-    "cost_estimat_usd": 0.4535491
+    "cost_estimat_usd": 0.4703984
   }
 }

@@ -162,6 +162,11 @@ def clasifica(fise: Fise, cod: str, camp_cheie: str, r: dict) -> tuple[str, str 
     return "referinta", None
 
 
+def _sursa(r: dict) -> dict:
+    """De unde vine o valoare: pentru linkul spre citat al variantelor și alternativelor."""
+    return {"id_sursa": r.get("id_sursa"), "url": r.get("url"), "citat": r.get("citat"), "link": r.get("link_live")}
+
+
 def _num(v) -> Decimal | None:
     return None if v is None else Decimal(str(v))
 
@@ -191,6 +196,9 @@ def alege(fise: Fise, cod: str, camp_cheie: str, randuri: list[dict]) -> dict:
         tip, et = clasifica(fise, cod, camp_cheie, r)
         if tip != "varianta" and unitati and r["unitate"] not in unitati:
             tip, et = "varianta", f"în {r['unitate'] or 'altă unitate'}"
+        # pragul de plauzibilitate al fișei: o limită de retragere de 5.000 lei nu e un comision (ProCredit)
+        if tip != "varianta" and r["unitate"] == "lei" and d.get("maxim_lei") and r["valoare_num"] > d["maxim_lei"]:
+            tip, et = "varianta", f"valoare neplauzibilă (peste {d['maxim_lei']} lei)"
         (ref if tip == "referinta" else apr if tip == "aproximativ" else var).append((r, et))
 
     def grupe(lista):
@@ -199,12 +207,12 @@ def alege(fise: Fise, cod: str, camp_cheie: str, randuri: list[dict]) -> dict:
             g[(r["valoare_num"], r["unitate"], r.get("moneda"))].append(r)
         return g
 
-    # variantele, grupate pe etichetă și cifră
-    gv = defaultdict(int)
+    # variantele, grupate pe etichetă și cifră, fiecare cu sursa primei apariții (sertarul o leagă de citat)
+    gv = defaultdict(list)
     for r, et in var:
-        gv[(et, r["valoare_num"], r["unitate"])] += 1
-    rez["variante"] = [{"eticheta": et, "valoare_num": float(v), "unitate": u, "n": n}
-                       for (et, v, u), n in sorted(gv.items(), key=lambda x: (-x[1], x[0][0] or ""))][:MAX_VARIANTE]
+        gv[(et, r["valoare_num"], r["unitate"])].append(r)
+    rez["variante"] = [{"eticheta": et, "valoare_num": float(v), "unitate": u, "n": len(rs), **_sursa(rs[0])}
+                       for (et, v, u), rs in sorted(gv.items(), key=lambda x: (-len(x[1]), x[0][0] or ""))][:MAX_VARIANTE]
 
     alese = ref or apr
     if not alese:
@@ -230,13 +238,15 @@ def alege(fise: Fise, cod: str, camp_cheie: str, randuri: list[dict]) -> dict:
     concurente = [(k, x) for k, x in g[1:] if scor(x)[:2] == nivel]
     if concurente:
         stare = "conflict"
-        rez["alternative"] = [{"valoare_num": float(k[0]), "unitate": k[1], "n": len({r["id_sursa"] for r in x})}
-                              for k, x in concurente]
+        rez["alternative"] = [{"valoare_num": float(k[0]), "unitate": k[1], "n": len({r["id_sursa"] for r in x}),
+                               **_sursa(x[0])} for k, x in concurente]
     principal = max(rs, key=lambda r: (-fise.rang.get(r.get("rol") or "", RANG_NECUNOSCUT), float(r.get("incredere") or 0)))
     surse = {}
     for r in sorted(rs, key=lambda r: fise.rang.get(r.get("rol") or "", RANG_NECUNOSCUT)):
         surse.setdefault(r["id_sursa"], {"id_sursa": r["id_sursa"], "url": r.get("url"), "rol": r.get("rol"),
-                                         "citat": r.get("citat"), "link": r.get("link_live")})
+                                         "citat": r.get("citat"), "link": r.get("link_live"),
+                                         "data_extragere": r.get("data_colectare"),
+                                         "data_document": r.get("data_document")})
     rol = principal.get("rol") or "sursă necunoscută"
     motiv = {"referinta": f"varianta de referință, din {rol}",
              "aproximativ": f"cel mai apropiat caz de scenariul de referință, din {rol}",

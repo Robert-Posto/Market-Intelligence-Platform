@@ -56,7 +56,7 @@ def masoara(cur, baza: str, produse: list[str], banci: list[str] | None) -> dict
                      WHERE pl.cod = ANY(%(produse)s){fb}""", p)
     d.update(cur.fetchone())
     cur.execute(f"""SELECT v.stare, count(*) AS n, sum(v.n_brut) AS brute
-                      FROM valori_referinta v JOIN banci b ON b.id = v.id_banca JOIN produse_libra pl ON pl.id = v.id_produs_libra
+                      FROM valori_referinta_curente v JOIN banci b ON b.id = v.id_banca JOIN produse_libra pl ON pl.id = v.id_produs_libra
                      WHERE v.baza = %(baza)s AND pl.cod = ANY(%(produse)s){fb} GROUP BY 1""", p)
     stari = {r["stare"]: r["n"] for r in cur.fetchall()}
     d["stari"] = stari
@@ -72,8 +72,8 @@ def diferente(cur, produse: list[str], banci: list[str] | None) -> list[dict]:
     cur.execute(f"""SELECT b.slug AS banca, pl.cod AS produs, n.camp_cheie,
                            o.valoare_num::float8 AS vechi, o.unitate AS u_vechi, o.stare AS stare_vechi,
                            n.valoare_num::float8 AS nou, n.unitate AS u_nou, n.stare AS stare_nou
-                      FROM valori_referinta n
-                      JOIN valori_referinta o ON o.baza = 'v1' AND o.id_banca = n.id_banca
+                      FROM valori_referinta_curente n
+                      JOIN valori_referinta_curente o ON o.baza = 'v1' AND o.id_banca = n.id_banca
                        AND o.id_produs_libra = n.id_produs_libra AND o.camp_cheie = n.camp_cheie
                       JOIN banci b ON b.id = n.id_banca JOIN produse_libra pl ON pl.id = n.id_produs_libra
                      WHERE n.baza = 'curent' AND pl.cod = ANY(%(produse)s){fb}

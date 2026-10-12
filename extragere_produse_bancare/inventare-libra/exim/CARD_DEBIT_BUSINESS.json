@@ -1,66 +1,42 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "exim",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.eximbank.ro/wp-content/uploads/2022/11/Taxe-si-comisioane-carduri.pdf",
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/04/Taxe-si-comisioane-Carduri-Business.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Mastercard Business (carduri de debit persoane juridice)",
+      "denumire_la_banca": "Mastercard Business (card de debit persoane juridice, Standard / World)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Document de tarife care contine un capitol dedicat exclusiv cardurilor de debit pentru persoane juridice, sub denumirea Mastercard Business, cu toate comisioanele relevante.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Document oficial de tarife, cu tabel complet de comisioane pentru cardul de debit business, incluzand emitere, administrare lunara si comisioane de retragere numerar pe tipuri de tranzactii.",
-      "citat": "CARDURI DE DEBIT PERSOANE JURIDICE MASTERCARD BUSINESS COMISIOANE FURNIZARE (EMITERE) SI ADMINISTRARE Furnizare (Emitere) 0 lei Administrare lunara 5 lei Utilizare ATM/POS alte banci - retragere numerar: National 0,75% + 2,5 lei International UE 0,75% + 0,4 euro International non UE 1% + 3 euro",
+      "motiv_potrivire": "Card de debit Mastercard Business atașat contului curent în lei al firmei (PFA, microîntreprinderi, IMM, corporate) – același tip de produs și segment. Varianta de bază este Standard; World e varianta premium.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Lista oficială de taxe și comisioane pentru cardurile de debit ale persoanelor juridice, cu toate comisioanele cheie Mastercard Business: emitere, administrare, ATM propriu/altă bancă, interogare sold, marjă de conversie.",
+      "citat": "MASTERCARD BUSINESS Tip card Standard World COMISIOANE FURNIZARE (EMITERE) SI ADMINISTRARE Furnizare (Emitere) 0 lei 0 lei Furnizare (Emitere), in regim de urgenta Furnizare (Emitere) + 30 lei Furnizare (Emitere) + 30 lei Administrare lunara 5 lei 15 lei",
+      "pagina_pdf": 1,
+      "dovada_metoda": "PDF cu text extras; toate cifrele apar în conținut.",
       "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.eximbank.ro/wp-content/uploads/2024/11/Conditii-generale-de-utilizare-a-cardurilor-Mastercard-Business.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Mastercard Business",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Conditii generale de utilizare aplicabile exclusiv cardurilor de debit Mastercard Business emise pentru persoane juridice, document contractual care insoteste produsul.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Document oficial de conditii generale, specific cardului de debit business pentru persoane juridice, contine termenul de valabilitate si prevederi contractuale.",
-      "citat": "Prezentul Contract se incheie pe o perioada nedeterminata, cu posibilitate de incetare conform articolului din prezentele Conditii referitor la incetarea Contractului. Durata de valabilitate a Cardului este de 5 ani, incepand cu data emiterii.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.eximbank.ro/mastercard-business/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Mastercard Business",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Card de debit atasat unui cont curent, emis pentru persoane juridice (companii) si utilizat de angajatii acestora pentru plati curente - acelasi tip de produs si acelasi segment ca si Card de debit business Libra.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina dedicata produsului descrie clar segmentul (companii) si caracteristicile (valabilitate, carduri suplimentare), dar cifrele de comisioane sunt doar partial mentionate (ZERO COMISION) fara tabel complet.",
-      "citat": "Mastercard Business atasat unui cont curent in lei se adresează companiilor care doresc sa ofere reprezentantilor lor o modalitate rapida si sigura de plată a serviciilor si bunurilor necesare derularii activitaaii profesionale.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
-  "deschise": [],
-  "durata_s": 61,
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2022/12/05/business-card/?pfa-microintreprinderi",
+    "https://www.eximbank.ro/documente-diverse/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/04/Taxe-si-comisioane-Carduri-Business.pdf"
+  ],
+  "durata_s": 21,
   "consum": {
-    "intrare": 4,
-    "iesire": 5618,
-    "citire_cache": 6315,
-    "scriere_cache": 39774,
+    "intrare": 10,
+    "iesire": 1199,
+    "citire_cache": 61655,
+    "scriere_cache": 42145,
     "apeluri": 1,
-    "cost_estimat_usd": 0.156886
+    "cost_estimat_usd": 0.259407
   }
 }

@@ -1,28 +1,41 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "banorient",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
-  "surse": [],
-  "gol": {
-    "motiv": "produs_inexistent",
-    "nota": "Banorient România este o bancă corporate/trade finance tradițională (grup BLOM), fără un produs dedicat de cont curent PJ deschis și gestionat exclusiv online. Banca oferă doar conturi curente clasice pentru persoane juridice (ex. 'BANORIENT Premium' Sight account) și carduri business (Gold Business Master), dar deschiderea contului și aplicarea pentru Internet Banking se fac exclusiv la sucursală, nu online: 'Aplicațiile pentru serviciul eBanking Internet Banking sunt disponibile în toate sucursalele BANQUE BANORIENT FRANCE.' Nu există nicio mențiune despre onboarding 100% online, fără deplasare la bancă, pentru persoane juridice."
-  },
+  "model": "claude-opus-5-5",
+  "surse": [
+    {
+      "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent persoane juridice (Tarife / Comisioane – PERSOANE Juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Banca nu are un cont business dedicat deschiderii și gestionării exclusiv online. Are doar contul curent standard pentru persoane juridice, cu Internet Banking și card Gold Business Master. Diferă canalul: contul nu e exclusiv online și nu există abonamente operaționale cu operațiuni incluse.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Pagina oficială de tarife, tabul PERSOANE Juridice, cuprinde comisioanele contului curent: deschidere zero, administrare 9.5 RON pe lună, extras lunar zero, închidere la inițiativa clientului zero, depunere zero, plăți către alte bănci între 5 și 10 RON, plăți interne zero. Pagina are însă două taburi pe același URL, iar tabul PF are alte valori (5 RON pe lună).",
+      "citat": "Administrare cont curent (comision aplicabil lunar pentru fiecare cont in valuta contului) | | 9.5 RON / luna   2 EUR / luna   3 USD / luna   1.6 GBP / luna   3.2 CHF / luna",
+      "dovada_metoda": "Cifrele apar direct în textul HTML primit, fără să fie nevoie de JavaScript.",
+      "incredere_metoda": 0.8,
+      "citat_verificat": true,
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Administrare%20cont%20curent%20%28comision%20aplicabil,luna%203.2%20CHF%20%2F%20luna"
+    }
+  ],
+  "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.banorientfrance.com/romanian/romania",
-    "https://www.banorientfrance.com/romanian/romania/products-and-services",
     "https://www.banorientfrance.com/romanian/romania/service-charges",
-    "https://www.banorientfrance.com/romanian/internet-banking"
+    "https://www.banorientfrance.com/romanian/romania/products-and-services"
   ],
-  "durata_s": 18,
+  "durata_s": 16,
   "consum": {
     "intrare": 8,
-    "iesire": 1147,
-    "citire_cache": 44341,
-    "scriere_cache": 30506,
+    "iesire": 1317,
+    "citire_cache": 18146,
+    "scriere_cache": 27635,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0966192
+    "cost_estimat_usd": 0.1718054
   }
 }

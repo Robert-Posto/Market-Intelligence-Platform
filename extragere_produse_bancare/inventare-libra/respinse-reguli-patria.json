@@ -1,33 +1,106 @@
 {
  "banca": "patria",
- "total": 2,
+ "total": 8,
  "pe_motiv": {
-  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 2
+  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 6,
+  "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 2
  },
  "valori": [
   {
-   "url": "https://en.patriabank.ro/persoane-fizice/credite/creditul-ipotecar-patria-acasa",
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
    "produse": [
-    "CREDIT_IPOTECAR_PF"
+    "ABONAMENT_PFA"
    ],
-   "camp": "avans_minim",
+   "camp": "comision_extras_cont",
    "valoare_num": 0,
-   "unitate": "procent",
-   "citat": "Acum poți accesa un credit ipotecar fără avans ușor și rapid.",
-   "incredere": 0.6,
+   "unitate": "lei",
+   "citat": "și la eliberarea extrasului de cont",
+   "incredere": 0.75,
    "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   },
   {
-   "url": "https://www.patriabank.ro/persoane-fizice/economii/cont-de-economii",
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
    "produse": [
-    "CONT_ECONOMII"
+    "ABONAMENT_PFA"
    ],
-   "camp": "suma_minima",
+   "camp": "comision_depunere_numerar",
    "valoare_num": 0,
    "unitate": "lei",
-   "citat": "nu există o valoarea minimă pentru deschiderea acestui cont și nici un sold minim care ar trebui menținut",
-   "incredere": 0.9,
+   "citat": "depunere de numerar în lei şi valută",
+   "incredere": 0.8,
    "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+   "produse": [
+    "ABONAMENT_PFA"
+   ],
+   "camp": "comision_incasare",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "încasare OP lei şi valută",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+   "produse": [
+    "ABONAMENT_PFA"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "de administrare anuală (după primul an, se va percepe un comision conform Tarifelor si Comisioanelor Standard în vigoare)",
+   "incredere": 0.65,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_extras_cont",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "și la eliberarea extrasului de cont",
+   "incredere": 0.75,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_depunere_numerar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "depunere de numerar în lei şi valută",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_incasare",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "încasare OP lei şi valută",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business",
+   "produse": [
+    "CARD_DEBIT_BUSINESS"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "pentru plăți la comercianți (în țară și străinătate)",
+   "incredere": 0.8,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
   }
  ]
 }

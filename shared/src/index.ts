@@ -215,6 +215,17 @@ export const CelulaMatrice = z
     minim: z.number(),
     maxim: z.number(),
     gratuite: z.number(),
+    // sursa „referinta” (valori_referinta): cifra produsului Libra de bază, iar `n` / minim–maxim pe
+    // toate produsele Libra ale băncii; `stare` = conflict înseamnă „de verificat”
+    valoare: z.number().nullable().optional(),
+    referinta: z.boolean().optional(),
+    stare: z.string().optional(),
+    serviciu: z.string().nullable().optional(),
+    // datele valorii de referință (migrarea 043): din citat, a documentului, a extragerii
+    data_citat: z.string().nullable().optional(),
+    data_document: z.string().nullable().optional(),
+    data_document_sursa: z.string().nullable().optional(),
+    data_extragere: z.string().nullable().optional(),
   })
   .passthrough()
 

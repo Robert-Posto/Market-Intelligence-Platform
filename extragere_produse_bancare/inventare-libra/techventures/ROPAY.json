@@ -1,37 +1,39 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "techventures",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://techventures.bank/companii/operatiuni-fara-numerar",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Plăți Instant",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este tot un serviciu de plăți instant, disponibil atât pentru persoane fizice cât și juridice, dar pagina descrie transferuri instant generale către alte bănci participante, fără a menționa explicit plata pe baza numărului de telefon (alias), spre deosebire de RoPay care este specific orientat pe plăți prin telefon.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată serviciului de Plăți Instant conține descrierea funcțională și un tabel cu limitele zilnice pe tip de client (PF/PJ).",
-      "citat": "TechVentures Bank oferă serviciul de Plăți Instant care le permite clienților să efectueze tranzacții sau transferuri bancare în doar câteva secunde, fără card, către băncile care au implementat acest sistem.",
-      "rol_motiv": "",
-      "citat_verificat": true,
-      "link_live": "https://techventures.bank/companii/operatiuni-fara-numerar#:~:text=TechVentures%20Bank%20ofer%C4%83%20serviciul%20de,care%20au%20implementat%20acest%20sistem."
-    },
-    {
-      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-14042026.pdf",
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-01092026.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Plăți instant",
+      "denumire_la_banca": "Plăți Instant (plăți interbancare în lei prin Internet și Mobile Banking) – persoane fizice",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul de tarife confirmă comisioanele pentru plățile instant ale persoanelor fizice, dar nu există o secțiune dedicată plăților prin numărul de telefon ca la RoPay.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document oficial de tarife cu linie explicită pentru plăți instant, cu valori diferite pentru ghișeu și Internet/Mobile Banking.",
+      "motiv_potrivire": "TechVentures Bank are serviciul Plăți Instant în Mobile/Internet Banking, dar nu publică plăți către un număr de telefon (alias RoPay); plata instant se face doar pe IBAN. Grila de tarife pentru persoane fizice include plata instant, plata interbancară online sub 50.000 lei și încasarea interbancară.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Lista oficială de tarife pentru persoane fizice, în vigoare din 01.09.2026, are un rând pentru plăți interbancare online sub 50.000 lei „inclusiv plăți instant” (5 lei), iar încasările interbancare sunt 0; RoPay nu este menționat.",
+      "citat": "Prin Internet și Mobile Banking:\nPlăți în sistem intrabancar între conturile aceluiași client 0\nPlăți în sistem intrabancar către conturile altor clienți 0\nPlăți în sistem interbancar, inclusiv către Trezoreria Statului*:\n- sume <50.000 lei, inclusiv plăți instant 5 lei",
       "pagina_pdf": 4,
-      "citat": "sume <50.000 lei, inclusiv plăți instant 10 lei; sume ≥ 50.000 lei sau în regim de urgență 20 lei; Plăți în sistem interbancar, inclusiv către Trezoreria Statului: sume <50.000 lei, inclusiv plăți instant 5 lei",
+      "dovada_metoda": "PDF cu text extras; cifrele apar direct în conținut.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Plăți Instant (plăți interbancare în lei prin Internet și Mobile Banking) – entități economice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este același serviciu Plăți Instant pentru firme, inițiat pe IBAN din Internet/Mobile Banking, fără alias de telefon (RoPay nu este publicat). Grila pentru firme are plata instant, plata interbancară online sub 50.000 lei (6 lei) și încasarea interbancară (0,51 lei sub 50.000 lei).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Lista oficială de tarife pentru entități economice, în vigoare din 01.09.2026, are explicit rândul „inclusiv plăți instant” cu valoare și rândul de încasări interbancare; RoPay nu este menționat.",
+      "citat": "Prin Internet și Mobile Banking (reducere 50% față de operațiunile la ghișeu):\nPlăți în sistem intrabancar între conturile aceluiași client 0\nPlăți în sistem intrabancar către conturile altor clienți 5 lei\nPlăți în sistem interbancar*:\n- sume <50.000 lei, inclusiv plăți instant 6 lei",
+      "pagina_pdf": 4,
+      "dovada_metoda": "PDF cu text extras; cifrele apar direct în conținut.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -40,18 +42,19 @@
   "candidati_respinsi": [],
   "deschise": [
     "https://techventures.bank/",
+    "https://techventures.bank/documente-utile",
     "https://techventures.bank/companii/mobile-banking",
-    "https://techventures.bank/persoane-fizice",
-    "https://techventures.bank/companii/operatiuni-fara-numerar",
-    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-14042026.pdf"
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-01092026.pdf",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+    "https://techventures.bank/companii/operatiuni-fara-numerar"
   ],
-  "durata_s": 36,
+  "durata_s": 45,
   "consum": {
-    "intrare": 10,
-    "iesire": 2754,
-    "citire_cache": 77204,
-    "scriere_cache": 51185,
+    "intrare": 14,
+    "iesire": 2546,
+    "citire_cache": 189232,
+    "scriere_cache": 82596,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1709633
+    "cost_estimat_usd": 0.5396488
   }
 }

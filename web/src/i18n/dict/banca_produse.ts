@@ -50,6 +50,8 @@ export const banca_produse = {
   "produse.tooltip_celula": ["{banca} · {serviciu}: toate prețurile, cu citat și link", "{banca} · {serviciu}: all the prices, with the quote and link"],
   "produse.celula_pret_1": ["preț", "price"],
   "produse.celula_pret_n": ["prețuri", "prices"],
+  "produse.celula_ref_plaja": ["{n} produse: {minim}–{maxim} lei", "{n} products: {minim}–{maxim} lei"],
+  "produse.nota_referinta": ["{n} bănci · în fiecare celulă: <b>valoarea de referință</b> a băncii, din produsul ei echivalent cu cel Libra (fluxul de comparație cu Libra), iar dedesubt plaja pe celelalte produse ale ei. <b>Clic pe celulă</b> pentru sursă, citat și variante (urgent, la ghișeu, alte pachete).", "{n} banks · each cell shows the bank's <b>reference value</b>, from its product equivalent to Libra's (the Libra comparison flow), with the range across its other products below. <b>Click a cell</b> for the source, quote and variants (urgent, at the counter, other packages)."],
   "produse.celula_gratuite_1": ["{n} gratuit", "{n} free"],
   "produse.celula_gratuite_n": ["{n} gratuite", "{n} free"],
   "produse.col_total": ["Total", "Total"],

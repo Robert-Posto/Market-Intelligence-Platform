@@ -1,21 +1,93 @@
 {
  "banca": "exim",
- "total": 6,
+ "total": 10,
  "pe_motiv": {
-  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 5,
-  "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 1
+  "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 5,
+  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 5
  },
  "valori": [
   {
-   "url": "https://www.eximbank.ro/wp-content/uploads/2025/01/Document-de-informare-cu-privire-la-comisioane-pentru-Pachetul-de-produse-si-servicii-eSential.pdf",
+   "url": "https://www.eximbank.ro/2022/11/16/standard-mastercard/",
    "produse": [
-    "CONT_ONLINE_PERSONAL"
+    "CARD_DEBIT_FREE"
    ],
    "camp": "altele",
-   "valoare_num": 0.0,
+   "valoare_num": 0,
    "unitate": "lei",
-   "citat": "≥1000 Lei si efectueaza cel putin o",
-   "incredere": 0.95,
+   "citat": "la achitarea cu cardul a cumparaturilor în magazine si pe internet;",
+   "incredere": 0.8,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.eximbank.ro/2022/11/16/standard-mastercard/",
+   "produse": [
+    "CARD_DEBIT_FREE"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "de transfer intre conturi curente la ATM-ul bancii;",
+   "incredere": 0.8,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.eximbank.ro/2022/11/16/standard-mastercard/",
+   "produse": [
+    "CARD_DEBIT_FREE"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "schimbare PIN la ATM-ul bancii.",
+   "incredere": 0.8,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+   "produse": [
+    "ABONAMENT_PFA"
+   ],
+   "camp": "comision_deschidere",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "deschiderea contului curent;",
+   "incredere": 0.85,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+   "produse": [
+    "ABONAMENT_PFA"
+   ],
+   "camp": "comision_depunere_numerar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Depuneri in lei la ATM-urile Exim Banca Romaneasca.",
+   "incredere": 0.7,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+   "produse": [
+    "ABONAMENT_PFA"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "administrarea lunara a conturilor curente in lei si valuta;",
+   "incredere": 0.8,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+   "produse": [
+    "ABONAMENT_PFA"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "administrare lunara Internet/Mobile Banking (e-ximBanking);",
+   "incredere": 0.8,
    "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
   },
   {
@@ -23,23 +95,11 @@
    "produse": [
     "CONT_ONLINE_BUSINESS"
    ],
-   "camp": "comision_plata_interbancara",
+   "camp": "comision_administrare_lunar",
    "valoare_num": 0,
-   "unitate": "procent",
-   "citat": "100% reducere pentru comisionul aferent platilor < 50.000 lei interbancare (regim normal) prin e-ximBanking/Ghiseu (mai puțin comisionul de procesare Transfond in valoare de 0,51 lei, suportat de client)",
-   "incredere": 0.85,
-   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
-  },
-  {
-   "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
-   "produse": [
-    "CONT_ONLINE_BUSINESS"
-   ],
-   "camp": "comision_plata_interbancara",
-   "valoare_num": 0,
-   "unitate": "procent",
-   "citat": "100% reducere la comisionul aferent platilor < 50.000 lei interbancare (regim normal) prin e-ximBanking (mai putin comisionul de procesare Transfond in valoare de 0,51 lei, suportat de client)",
-   "incredere": 0.7,
+   "unitate": "lei",
+   "citat": "administrarea lunara a conturilor curente in lei si valuta;",
+   "incredere": 0.6,
    "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   },
   {
@@ -51,7 +111,7 @@
    "valoare_num": 0,
    "unitate": "lei",
    "citat": "depunere cash la ghiseele si ATM-urile Exim Banca Romaneasca.",
-   "incredere": 0.8,
+   "incredere": 0.6,
    "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   },
   {
@@ -63,19 +123,7 @@
    "valoare_num": 0,
    "unitate": "lei",
    "citat": "Depuneri in lei la ATM-urile Exim Banca Romaneasca.",
-   "incredere": 0.6,
-   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
-  },
-  {
-   "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
-   "produse": [
-    "CONT_ONLINE_BUSINESS"
-   ],
-   "camp": "comision_depunere_numerar",
-   "valoare_num": 0,
-   "unitate": "lei",
-   "citat": "depunere bancnote la ghiseele si ATM-urile Exim Banca Romaneasca.",
-   "incredere": 0.6,
+   "incredere": 0.7,
    "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   }
  ]

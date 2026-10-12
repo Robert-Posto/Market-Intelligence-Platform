@@ -1,37 +1,37 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "patria",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici",
+      "denumire_la_banca": "Pachete de cont curent Afaceri mici (UȘOR / PRACTIC / COMPLET)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este cont curent pentru firme/PFA cu opțiune de card de business și abonamente operaționale (pachete cu cost lunar), la fel ca «Cont Online Business» de la Libra, dar Patria nu îl descrie ca fiind deschis/gestionat exclusiv online; platforma 100% online a băncii (Patria de Oriunde) este explicit destinată doar persoanelor fizice.",
+      "motiv_potrivire": "Abonamente operaționale pentru cont curent de firmă, cu Internet Banking și card Patria MasterCard Business incluse; contul nu se deschide exclusiv online.",
       "incredere": 0.75,
-      "explicatie_incredere": "Document/pagină cu grilă de prețuri clară pentru pachetele de cont curent business, incluzând cardul de business, dar fără confirmarea canalului exclusiv online.",
-      "pagina_pdf": null,
-      "citat": "Pachete de cont curent Patria Business - afaceri agricole, comert, productie. Card de Business Patria MasterCard Business. Cost 85 lei/lună | 100 lei/lună | 200 lei/lună, iar pentru pachetele UȘOR și PRACTIC, comision de 0,1% din valoarea retrasă.",
+      "explicatie_incredere": "Pagina pachetelor pentru firme are costul lunar al fiecărui pachet și operațiunile incluse, dar nu am putut-o deschide direct (am văzut-o doar în rezultatele căutării).",
+      "citat": "Pachetele de Cont Curent includ exclusiv costuri pentru operațiuni bancare realizate în regim normal. Plăților efectuate în regim de urgență li se aplică un comision suplimentar.",
+      "dovada_metoda": "Conținut din rezultatul de căutare; tabelul are Cost 85 lei/lună, 100 lei/lună, 200 lei/lună.",
       "citat_verificat": null,
       "link_live": null
     },
     {
-      "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
-      "tip": "html",
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Cont curent Microîntreprinderi",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent Microîntreprinderi (Lista de tarife și comisioane Persoane juridice)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Pagină dedicată contului curent pentru firme (segment PJ/microîntreprinderi), administrabil prin Internet Banking, dar fără mențiune explicită de deschidere 100% online, spre deosebire de Libra Cont Online Business.",
-      "incredere": 0.55,
-      "explicatie_incredere": "Pagina produsului pentru firme există și descrie contul curent și operațiunile aferente, dar conține puține cifre concrete (doar lista valutelor disponibile), fără tarife sau procente explicite.",
-      "pagina_pdf": null,
-      "citat": "Cont curent Microîntreprinderi la Patria Bank. Beneficiezi de tranzacții la costuri reduse de oriunde ești cu serviciul de Internet Banking. Contul curent se poate deschide în lei sau valută (EUR, USD, CHF, GBP etc.).",
+      "motiv_potrivire": "Cont curent pentru firme/PFA cu Internet Banking și card Mastercard Business Lider; diferă canalul: Patria nu deschide conturi pentru firme 100% online (platforma Patria de Oriunde e doar pentru persoane fizice).",
+      "incredere": 0.7,
+      "explicatie_incredere": "Lista oficială de tarife PJ conține deschidere/închidere, administrare cont, extras, plăți intra/interbancare și abonament Internet Banking, dar nu am putut confirma data versiunii (pagina produsului trimite la versiunea din 19.01.2026), iar site-ul nu s-a încărcat.",
+      "citat": "Deschidere/inchidere cont curent gratuit Constituire depozite la termen gratuit Constituire depozit Escrow 0.25% din suma depozitului, min 1.000 LEI sau 200 EUR /200 USD",
+      "dovada_metoda": "Text PDF văzut în rezultatul de căutare; fetch direct refuzat.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -39,20 +39,18 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
-    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
-    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
     "https://www.patriabank.ro/",
     "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent",
-    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent"
+    "https://www.patriabank.ro/d/2142",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent"
   ],
-  "durata_s": 67,
+  "durata_s": 38,
   "consum": {
-    "intrare": 109164,
-    "iesire": 4880,
-    "citire_cache": 12654,
-    "scriere_cache": 27958,
+    "intrare": 88651,
+    "iesire": 2325,
+    "citire_cache": 34949,
+    "scriere_cache": 29091,
     "apeluri": 1,
-    "cost_estimat_usd": 0.33955379999999996
+    "cost_estimat_usd": 0.5605385999999999
   }
 }

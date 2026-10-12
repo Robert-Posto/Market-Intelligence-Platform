@@ -1,25 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "credex",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Credex IFN este o instituție financiară nebancară axată exclusiv pe credite de consum pentru persoane fizice (credit de nevoi personale, card de credit de consum). Nu oferă conturi curente sau carduri de debit, nici produse dedicate persoanelor juridice/PFA. Nu există niciun produs echivalent sau similar pentru segmentul business."
+    "nota": "Credex este o instituție financiară nebancară (CREDEX IFN S.A., și instituție de plată) care oferă doar produse pentru persoane fizice: credit de nevoi personale și card de credit Credex. Pe site nu există secțiune pentru firme/PJ și nici card de debit (nici business, nici pentru persoane fizice). Cardul de credit pentru persoane fizice nu acoperă produsul: e alt tip de produs și alt segment."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://credex.ro/"
   ],
-  "durata_s": 7,
+  "durata_s": 10,
   "consum": {
-    "intrare": 4,
-    "iesire": 464,
-    "citire_cache": 6306,
-    "scriere_cache": 18327,
+    "intrare": 6,
+    "iesire": 355,
+    "citire_cache": 6782,
+    "scriere_cache": 10898,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0517267
+    "cost_estimat_usd": 0.06432679999999999
   }
 }

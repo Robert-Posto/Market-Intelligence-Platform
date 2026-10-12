@@ -3,34 +3,39 @@
   "banca": "bcr",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Contul George pentru afacerea ta (Cont Online George Business)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru persoane juridice (microîntreprinderi, PFA) deschis și gestionat 100% online, cu card de debit business și pachet de servicii/abonament operațional - corespunde exact profilului Cont Online Business de la Libra.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete despre plafonul de cifră de afaceri, structura de reduceri la comisionul de administrare și operațiunile incluse gratuit.",
-      "citat": "Conceput pentru afaceri de până la 1 mil. euro, ONG-uri și Asociații de Proprietari, pachetul George îți răsplătește plățile digitale cu comisioane 0 și reduceri dinamice la administrare.",
-      "citat_verificat": true,
-      "link_live": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george#:~:text=Conceput%20pentru%20afaceri%20de%20p%C3%A2n%C4%83,%C8%99i%20reduceri%20dinamice%20la%20administrare."
-    },
-    {
-      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/comisioane-BCR-MC-Business-Gold.pdf?forceDownload=1",
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PJ_RO_sept2026.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Tarif de comisioane BCR pentru persoane juridice (Cont curent PJ / George Business)",
+      "denumire_la_banca": "Cont George pentru afacerea ta (Pachet George pentru afacerea ta – microîntreprinderi)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Document oficial de tarife pentru persoane juridice care listează comisionul de administrare cont curent, transferurile intra/interbancare și depunerile de numerar - exact câmpurile cheie cerute pentru Cont Online Business.",
+      "motiv_potrivire": "Cont curent de business deschis 100% online prin George, cu pachet lunar (comision unic) și card de debit Mastercard Business inclus, pentru firme (SRL, micro până la 1 mil. EUR); același tip și segment ca Cont Online Business.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Tariful oficial PJ în vigoare din 1 septembrie 2026 are secțiunea 6.7 dedicată Pachetului George pentru afacerea ta (abonament 59/99/139/199 lei după numărul de plăți, plăți electronice intra/interbancare gratuite) plus comisioanele standard: deschidere gratuit, extras 1 lunar gratuit, depunere numerar 1% min. 30 lei.",
+      "citat": "În cazul entităților cu activitate mai mare de 12 luni anterior solicitării deschiderii contului, comisionul de administrare Pachet este gratuit pentru o perioada de 1 lună de la data deschiderii Pachetului George pentru afacerea ta.",
+      "pagina_pdf": 6,
+      "dovada_metoda": "PDF cu text extras; cifrele apar în conținut.",
+      "incredere_metoda": 0.95,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PDAI_sept2026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont George pentru afacerea ta (Pachet de servicii – clienți PDAI)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Același cont online George pentru afacerea ta, varianta pentru PFA/PDAI (segment acoperit și de produsul Libra); grilă de pachet 39/69/89/119 lei și închidere cont la cererea clientului 0 lei.",
       "incredere": 0.8,
-      "explicatie_incredere": "Este documentul oficial de tarife pentru PJ cu toate comisioanele cerute, dar data intrării în vigoare afișată este 13 mai 2019, deci nu poate fi confirmat 100% că e cea mai recentă versiune.",
-      "pagina_pdf": 2,
-      "citat": "1.2. Administrare cont curent 20 LEI sau echiv./cont curent/lună 1.3. Administrare cont de TVA în LEI gratuit 1.4. Administrare cont de TVA în valută 20 LEI sau echiv./cont/lună 1.5. Eliberare extras de cont curent gratuit/1 extras lunar",
+      "explicatie_incredere": "Tariful oficial PDAI în vigoare din 1 septembrie 2026 conține secțiunea 20 cu pachetul Cont George pentru afacerea ta și comisioanele de cont (deschidere 0, închidere la cerere 0, extras lunar gratuit, depunere numerar 1% min. 30 lei).",
+      "citat": "În cazul PDAI cu activitate mai mare de 12 luni anterior solicitării deschiderii contului, comisionul de administrare Pachet este gratuit pentru o perioada de 1 lună de la data deschiderii Contului George pentru afacerea ta.",
+      "pagina_pdf": 8,
+      "dovada_metoda": "PDF cu text extras; cifrele apar în conținut.",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
       "link_live": null
     }
@@ -38,16 +43,19 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/comisioane-BCR-MC-Business-Gold.pdf?forceDownload=1",
-    "https://www.bcr.ro/ro/business/digital-banking/cont-online-george"
+    "https://www.bcr.ro/ro/business/digital-banking/cont-online-george",
+    "https://www.bcr.ro/ro/business/informatii-utile",
+    "https://www.bcr.ro/ro/business/george-business-cont-online-help-center/cat-costa-contul-online-george-pentru-companii-",
+    "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PJ_RO_sept2026.pdf",
+    "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PDAI_sept2026.pdf"
   ],
-  "durata_s": 65,
+  "durata_s": 39,
   "consum": {
-    "intrare": 8,
-    "iesire": 5021,
-    "citire_cache": 111950,
-    "scriere_cache": 78926,
+    "intrare": 16,
+    "iesire": 2622,
+    "citire_cache": 248003,
+    "scriere_cache": 120641,
     "apeluri": 1,
-    "cost_estimat_usd": 0.26993100000000003
+    "cost_estimat_usd": 0.7549102
   }
 }

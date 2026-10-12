@@ -1,0 +1,24 @@
+Libra Internet Bank: 4 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii librabank.ro
+  [cautare] librabank.ro card de debit business tarife comisioane
+  [cautare] librabank.ro carduri business IMM
+  [ 1] https://www.librabank.ro/documente/carduri/comisioane_Libra_Business_Standard.pdf
+  [ 2] https://www.librabank.ro/card-bancar
+  [ 3] https://www.librabank.ro/card-business
+GATA    CARD_DEBIT_BUSINESS          3 surse, 1 citate verificate, echivalent, $0.20, 33s — Libra Business - Standard (Card Business)
+  [cautare] librabank.ro abonament PFA
+  [cautare] librabank.ro tarife comisioane persoane juridice PFA
+  [ 1] https://www.librabank.ro/cont-bancar-profesii-liberale
+  [ 2] https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PFA.pdf
+GATA    ABONAMENT_PFA                2 surse, 1 citate verificate, echivalent, $0.23, 52s — Abonament operațional profesii liberale (Abonament PFA)
+  [cautare] librabank.ro card debit Gold
+  [cautare] librabank.ro tarife comisioane carduri PDF
+  [ 1] https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Gold.pdf
+  [ 2] https://www.librabank.ro/documente/carduri/card_debit_Libra_GOLD_TRADEVILLE.pdf
+GATA    CARD_DEBIT_GOLD              1 surse, 0 citate verificate, echivalent, $0.21, 85s — Card de debit Avanpost Gold
+  [cautare] RoPay Libra Bank plăți instant telefon
+  [cautare] librabank.ro RoPay
+  [cautare] librabank.ro Tarife si Comisioane Persoane Fizice pdf RoPay
+  [ 1] https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf
+GATA    ROPAY                        3 surse, 0 citate verificate, echivalent, $0.28, 74s — Plăți RoPay / Încasare RoPay (comerciant) - Persoane Juridice
+
+libra: 4/4 produse cu surse, 0 erori, cost estimat $0.92, durata 2 min

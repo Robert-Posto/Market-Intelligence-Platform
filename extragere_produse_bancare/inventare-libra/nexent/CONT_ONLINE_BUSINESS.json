@@ -1,38 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "nexent",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/aed46689c2f83e82389c7131ea102685f694cf04.pdf",
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/b36d869376376f0ae8ca4f9a3f377c74d96b8902.pdf",
       "tip": "pdf",
       "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Termeni și condiții privind Fluxul de înrolare online a clienților (Digital OnBoarding) / P.I.C.O.",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent persoane juridice (IMM) – Lista de taxe, comisioane si dobanzi Persoane juridice",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul arată explicit că platforma de deschidere de cont 100% online (P.I.C.O.) de la Nexent Bank este disponibilă doar pentru Persoane Fizice, nu și pentru persoane juridice/PFA, ceea ce confirmă diferența de canal față de Cont Online Business (Libra), care e dedicat exclusiv firmelor și gestionat integral online.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document oficial de condiții care definește explicit criteriile de eligibilitate (doar persoane fizice) pentru deschiderea de cont curent prin canal 100% online, demonstrând lipsa unui echivalent exact pentru persoane juridice.",
-      "pagina_pdf": 1,
-      "citat": "Potentialul client/ Prospectul trebuie sa indeplineasca urmatoarele conditii pentru a putea accesa la distanta produse bancare prin intermediul Platformei de Inrolare Clienti Online: 1. Are numai cetatenie romana, are peste 18 ani si carte de identitate romaneasca",
+      "motiv_potrivire": "Nexent nu are cont business deschis și gestionat exclusiv online: contul curent PJ se deschide la unitate, iar pagina monet pentru companii spune că pentru contractare e nevoie de o vizită în unitate; ghidul monet confirmă că firmele pot deschide prin aplicație doar depozite. Același tip de produs (cont curent PJ/IMM), dar canalul diferă și nu există abonament operațional dedicat.",
+      "incredere": 0.65,
+      "explicatie_incredere": "Lista oficială de tarife PJ, legată din secțiunea Persoane Juridice (Documente utile), are comisioanele de cont curent IMM (deschidere, administrare lunară, plăți, depuneri, extras), dar e versiunea din 15.12.2019, apare ca imagine, iar produsul nu e pachetul online.",
+      "citat": "Comision dechidere cont RON 15 RON2 Comision administrare client Pentru IMM – lunar3 echivalent a 12.5 / 25 RON Extras de cont Lunar RON / FX gratuit",
+      "pagina_pdf": 2,
+      "dovada_metoda": "PDF obținut direct prin fetch; tabelele sunt randate ca imagine, cu valori vizibile pe paginile 1-2 (plăți către alte bănci 0.15% min. 8 RON, max. 4.750 RON; plăți în cadrul Nexent 3 RON; depunere numerar RON 0.1% min. 2 RON).",
+      "incredere_metoda": 0.6,
       "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.nexentbank.ro/Persoane-Juridice/Corporatii/Carduri-Business",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Card de debit Visa Business (cont curent persoane juridice + card Business)",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este contul curent pentru persoane juridice asociat cardului de business la Nexent Bank, deci aceeași categorie de produs (cont curent PJ + card business) și același segment de clienți (firme). Diferă însă canalul: la Nexent deschiderea de cont pentru persoane juridice nu se face 100% online, ci prin cererea standard depusă la unitatea teritorială (vezi sursa de condiții), spre deosebire de Cont Online Business de la Libra care e gestionat exclusiv online.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina este dedicată cardului de debit Business asociat contului curent pentru persoane juridice și conține cifre concrete (comisioane, dobândă), dar nu este o pagină dedicată exclusiv unui 'cont online' pentru firme.",
-      "citat": "Card de debit emis GRATUIT, cu acces non-stop la contul tău de salariu prin intermediul ATM-urilor, unităților teritoriale, serviciului Internet Banking și comercianților; 0% comision de retragere numerar la ATM-urile Nexent Bank; Dobândă de până la 1,2%* pe an la sumele existente în contul curent",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     }
   ],
@@ -40,20 +27,19 @@
   "candidati_respinsi": [],
   "deschise": [
     "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni",
     "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Servicii-si-Conturi-Speciale",
-    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Operatiuni",
-    "https://www.nexentbank.ro/persoane-juridice",
-    "https://www.nexentbank.ro/Persoane-Juridice/Intreprinderi-Mici-si-Mijlocii/Carduri-pentru-Persoane-Juridice",
-    "https://www.nexentbank.ro/upload/media/document/0001/01/fce2e378b3de1e02d795f19fdd5517fd8f8ae348.pdf",
-    "https://www.nexentbank.ro/upload/media/document/0001/07/aed46689c2f83e82389c7131ea102685f694cf04.pdf"
+    "https://www.nexentbank.ro/persoane-juridice/monet-Mobile-Banking-pentru-companii",
+    "https://www.nexentbank.ro/en/Corporate-SME",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/b36d869376376f0ae8ca4f9a3f377c74d96b8902.pdf"
   ],
-  "durata_s": 92,
+  "durata_s": 35,
   "consum": {
-    "intrare": 12,
-    "iesire": 6976,
-    "citire_cache": 276537,
-    "scriere_cache": 134156,
+    "intrare": 22,
+    "iesire": 2716,
+    "citire_cache": 525951,
+    "scriere_cache": 112250,
     "apeluri": 1,
-    "cost_estimat_usd": 0.46048139999999993
+    "cost_estimat_usd": 0.8260384000000001
   }
 }

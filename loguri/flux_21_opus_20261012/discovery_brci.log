@@ -1,0 +1,63 @@
+Banca Română de Credite și Investiții (BRCI): 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-opus-5-5, termen 420 s/produs, domenii brci.ro
+  [ 1] https://www.brci.ro/
+       ! url_not_allowed
+  [cautare] BRCI card debit persoane juridice comisioane
+  [ 2] https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html
+       ! url_not_allowed
+  [ 3] https://companii.brci.ro/pjonboarding
+       ! url_not_allowed
+  [cautare] BRCI Card Mastercard Business debit taxa emitere administrare retragere ATM
+  [cautare] BRCI Lista de tarife si comisioane persoane juridice pdf card Mastercard Business Debit
+GATA    CARD_DEBIT_BUSINESS          2 surse, 0 citate verificate, echivalent, $0.32, 47s — Card Mastercard Business
+  [ 1] https://www.brci.ro/
+       ! url_not_allowed
+  [cautare] BRCI cont curent persoane juridice online tarife comisioane
+  [ 2] https://companii.brci.ro/pjonboarding
+  [ 3] https://www.brci.ro/ro/produse/cont-curent-pj.html
+       ! url_not_allowed
+       ! url_not_allowed
+  [cautare] BRCI Lista de tarife si comisioane persoane juridice Connect 20 pdf
+GATA    CONT_ONLINE_BUSINESS         1 surse, 0 citate verificate, echivalent, $0.21, 49s — Connect 20 (MIND by BRCI – deschidere cont online persoane juridice)
+  [ 1] https://www.brci.ro/
+       ! url_not_allowed
+  [cautare] BRCI card de debit tarife comisioane persoane fizice
+  [ 2] https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html
+       ! url_not_allowed
+GATA    CARD_DEBIT_FREE              1 surse, 0 citate verificate, similar, $0.16, 16s — Card de debit (Mastercard debit în Lei) – Vreau Card
+  [ 1] https://www.brci.ro/
+       ! url_not_allowed
+  [cautare] BRCI card de debit tarife comisioane
+  [ 2] https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html
+       ! url_not_allowed
+  [cautare] BRCI lista de tarife si comisioane persoane fizice carduri pdf retragere numerar ATM BRCI
+GATA    CARD_DEBIT_GOLD              1 surse, 0 citate verificate, similar, $0.20, 20s — Card de debit (Mastercard debit in Lei, persoane fizice)
+  [ 1] https://www.brci.ro/
+       ! url_not_allowed
+  [cautare] BRCI RoPay plăți instant
+  [cautare] BRCI RoPay plata cu numarul de telefon
+  [ 2] https://www.brci.ro/ro/produse/vreau-card-card-de-debit.html
+  [ 3] https://www.brci.ro/ro/articol/plati-instant-din-17-06-2024.html
+       ! url_not_allowed
+       ! url_not_allowed
+  [cautare] BRCI lista de tarife si comisioane plati instant pdf
+GOL     ROPAY                        blocat_de_robots: Nu am putut deschide nicio pagină de pe brci.ro: fiecare încercare a fost refuzată („no pe, $0.25
+  [ 1] https://www.brci.ro/
+       ! url_not_allowed
+  [cautare] BRCI cont curent persoane fizice online tarife comisioane
+  [ 2] https://vreaucont.brci.ro/
+  [ 3] https://www.brci.ro/ro/produse/cont-curent.html
+       ! url_not_allowed
+  [cautare] BRCI lista de tarife si comisioane persoane fizice Cont Total Digital pdf
+  [ 4] https://vreaucont.brci.ro/content/comisioane.pdf
+       ! url_not_in_prior_context
+  [ 5] https://www2.brci.ro/
+  [ 6] https://brci.ro/ro/produse/scrisoare-garantie.html
+       ! url_not_allowed
+       ! url_not_allowed
+  [cautare] brci.ro files Lista tarife comisioane PF 17.12.2024 pdf retragere numerar extras de cont
+GATA    CONT_ONLINE_PERSONAL         1 surse, 0 citate verificate, echivalent, $0.46, 59s — Cont Total Digital (MIND by BRCI)
+  ! ABONAMENT_PFA: ReadError: [WinError 10054] An existing connection was forcibly closed by the remote host (tentativa 1)
+EROARE  ABONAMENT_PFA                timeout: nimic găsit în termen, după 1 ture și 0 pagini
+
+brci: 5/7 produse cu surse, 1 erori, cost estimat $1.62, durata 7 min
+Reia: python descopera_surse_libra.py --banca brci --produse ABONAMENT_PFA

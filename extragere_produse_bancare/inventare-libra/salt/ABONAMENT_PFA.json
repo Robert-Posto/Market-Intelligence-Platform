@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "salt",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
@@ -7,21 +7,21 @@
   "surse": [],
   "gol": {
     "motiv": "blocat_de_robots",
-    "nota": "Domeniul saltbank.ro (atât www.saltbank.ro cât și saltbank.ro) este inaccesibil prin fetch - eroare de permisiune/robots.txt pentru toate variantele de URL încercate, inclusiv pagina principală. Căutările web efectuate nu au returnat rezultate utilizabile (conținut din domeniul saltbank.ro) din cauza limitării numărului de interogări disponibile în această sesiune. Nu s-a putut verifica dacă Salt Bank oferă un produs de tip abonament/cont pentru PFA."
+    "nota": "Domeniul saltbank.ro nu a putut fi accesat (permisiune refuzată / blocat), iar căutările web nu au returnat rezultate. Din cunoștințe generale, Salt Bank este o bancă digitală axată pe persoane fizice (cont curent, economii, carduri) și nu pare să ofere produse dedicate PFA/persoane juridice, dar acest lucru nu a putut fi verificat direct pe site din cauza blocajului de acces."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.saltbank.ro/",
-    "https://www.saltbank.ro/pfa",
+    "https://www.saltbank.ro/persoane-juridice",
     "https://saltbank.ro/"
   ],
-  "durata_s": 20,
+  "durata_s": 14,
   "consum": {
-    "intrare": 7400,
-    "iesire": 1419,
-    "citire_cache": 19381,
-    "scriere_cache": 6868,
+    "intrare": 7912,
+    "iesire": 897,
+    "citire_cache": 20592,
+    "scriere_cache": 7250,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0500362
+    "cost_estimat_usd": 0.04703740000000001
   }
 }

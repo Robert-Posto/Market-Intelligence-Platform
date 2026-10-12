@@ -1,51 +1,57 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "procredit",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
   "model": "claude-sonnet-5",
   "surse": [
     {
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachetul ProActive",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cont curent în LEI pentru persoane fizice, deschis 100% online, cu card de debit, internet/mobile banking incluse și comision lunar condiționat zero — același tip de produs și segment ca Cont Online Personal.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial de tarife valabil din 24.08.2026, cu toate câmpurile cheie pentru Pachetul ProActive explicit listate cu valori.",
+      "pagina_pdf": 1,
+      "citat": "Cont curent în LEI 0 LEI* Beneficiezi de comision ZERO dacă îndeplinești una dintre următoarele condiții: 1. Ai o încasare de minim 1.000 LEI/lună aferentă lunii anterioare (salariu sau alte tipuri de încasări) sau... Dacă niciuna din condițiile meționate mai sus nu este îndeplinită, comisionul lunar de aministrare este de 10 LEI",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
       "url": "https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Pachetele de cont curent 100% online (ProActive, ProGreen Plus, Platinum)",
+      "denumire_la_banca": "Pachetul ProActive - Pachetele de cont curent 100% online",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru persoane fizice, deschis 100% online, cu card, internet/mobile banking - același tip de produs și segment ca Cont Online Personal Libra.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent online conține tabel comparativ cu cifre concrete (costuri lunare, plafoane).",
-      "citat": "Alege pachetul de cont curent care ți se potrivește | Pachetul ProActive 0* RON/lună | Pachetul Platinum 50 RON/lună | Cont curent în valută** ✔ Doar în EURO**** | Nu este inclus",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/01/Lista-de-preturi-persoane-fizice-_-04.12.2024_final.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Pachetele de cont curent (ProActive, ProGreen Plus, ProGreen, Platinum) - Listă de prețuri persoane fizice",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul de tarife detaliază comisioanele lunare și condițiile pentru pachetele de cont curent pentru persoane fizice, echivalente cu Cont Online Personal Libra.",
+      "motiv_potrivire": "Pagina dedicată descrie explicit deschiderea contului curent 100% online pentru persoane fizice, cu pachetul ProActive ca opțiune de bază, zero comision de administrare condiționat.",
       "incredere": 0.85,
-      "explicatie_incredere": "PDF oficial de tarife cu valori exacte ale comisioanelor de administrare pentru fiecare pachet de cont curent PF.",
-      "citat": "ZERO dacă îndeplinești una dintre următoarele condiții: Ai încasări aferente lunii anterioare (salariu sau alte tipuri de încasări) în LEI în valoarea de minimum 1.000 LEI/ lună sau Dacă nici una dintre condițiile menționate mai sus nu este îndeplinită, comisionul lunar de administrare este de 10 LEI",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "incredere_metoda": 0.85,
+      "explicatie_incredere": "Pagină dedicată produsului cu detalii și cifre despre comisionul de administrare și limitele pachetului ProActive, confirmă natura 100% online a contului.",
+      "citat": "Alege pachetul de cont curent care ți se potrivește | Pachetul ProActive 0* RON/lună | Pachetul Platinum 50 RON/lună — Retrageri de numerar gratuite de la orice ATM din România (inclusiv ATM-urile ProCredit Bank) ✔ LEI, în limita a 5 000 LEI/zi",
+      "citat_verificat": true,
+      "link_live": "https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/#:~:text=Alege%20pachetul%20de%20cont%20curent,limita%20a%205%20000%20LEI%2Fzi"
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
-  "deschise": [],
-  "durata_s": 17,
+  "deschise": [
+    "https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/",
+    "https://www.procreditbank.ro/wp-content/uploads/2025/02/Lista-de-preturi-persoane-fizice-_-10.02.pdf",
+    "https://www.procreditbank.ro/ro/lista-de-preturi",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf"
+  ],
+  "durata_s": 38,
   "consum": {
-    "intrare": 4,
-    "iesire": 1488,
-    "citire_cache": 6313,
-    "scriere_cache": 30600,
+    "intrare": 10,
+    "iesire": 2376,
+    "citire_cache": 192542,
+    "scriere_cache": 104741,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0926506
+    "cost_estimat_usd": 0.32414089999999995
   }
 }

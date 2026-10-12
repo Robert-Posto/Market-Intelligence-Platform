@@ -1,13 +1,13 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bcr-locuinte",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "BCR Banca pentru Locuințe este o bancă de economisire-creditare specializată exclusiv în credite pentru domeniul locativ (credit locativ, credit fix, credit anticipat) și produse de economisire cu primă de stat. Nu operează conturi curente sau carduri de debit/credit pentru nicio categorie de clienți, deci nu există niciun echivalent pentru un card de debit business destinat firmelor/PFA."
+    "nota": "BCR Banca pentru Locuințe este o bancă de economisire-creditare pentru domeniul locativ (contracte de economisire cu primă de stat, Creditul locativ, Creditul fix, Creditul anticipat). Nu emite carduri și nu oferă conturi curente sau produse pentru firme/PFA. Cardurile de debit business din grup sunt oferite de BCR (bcr.ro), care nu face parte din domeniul permis."
   },
   "candidati_respinsi": [],
   "deschise": [
@@ -15,11 +15,11 @@
   ],
   "durata_s": 10,
   "consum": {
-    "intrare": 4,
-    "iesire": 581,
-    "citire_cache": 6334,
-    "scriere_cache": 8208,
+    "intrare": 6,
+    "iesire": 351,
+    "citire_cache": 6810,
+    "scriere_cache": 8613,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0276048
+    "cost_estimat_usd": 0.052833000000000005
   }
 }

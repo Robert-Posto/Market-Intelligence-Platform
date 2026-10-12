@@ -1,35 +1,38 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "techventures",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
-    {
-      "url": "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Pachet Business - Lista de tarife și comisioane aplicabile entităților economice",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul de tarife pentru entități economice confirmă structura celor 3 pachete (Startup 25 lei, Business 29 lei, Unlimited 200 lei) cu cont curent, card Mastercard Business atașat și Internet/Mobile Banking incluse - același tip de produs (abonament/pachet cont de business cu card și digital banking) și același segment (persoane juridice/PFA), dar nu este un produs dedicat exclusiv PFA/profesii, ci unul general pentru companii.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Documentul oficial de tarife pentru entități economice conține explicit prețul pachetului Business (29 lei/lună, identic cu Libra) și listează serviciile incluse (cont, card business, IB/MB), fiind document contractual cu cifre precise.",
-      "citat": "25 lei/ lună 29 lei/ lună 200 lei/ lună STARTUP BUSINESS UNLIMITED Card de debit de tip Mastercard Business, atașat unuia dintre conturile curente incluse în pachet (emitere, reînnoire card la expirare, administrare, livrare card emis/ reînnoit la expirare prin curier în România) – opțional",
-      "citat_verificat": null,
-      "link_live": null
-    },
     {
       "url": "https://techventures.bank/companii/pachete-cont-curent",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Pachet de cont curent Business",
+      "denumire_la_banca": "Pachet Business",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Pachetul Business (29 lei/lună) este pentru companii/entități economice (inclusiv PFA, care intră la TechVentures sub categoria entități economice) și include cont curent, card Mastercard Business, Internet și Mobile Banking - exact ca Abonamentul PFA de la Libra. Diferă faptul că nu este un pachet dedicat special brandat pentru PFA/profesii liberale, ci un pachet general de business (Startup/Business/Unlimited), iar pagina nu detaliază explicit un plafon de 50 operațiuni/lună inclus.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina dedicată pachetelor de cont curent pentru companii arată explicit prețul de 29 lei/lună pentru pachetul Business, identic cu prețul Abonamentului PFA Libra, dar nu menționează PFA explicit și nici numărul de operațiuni incluse.",
-      "citat": "Pachetele TechVentures Bank răspund cerințelor complexe ale companiilor, oferind un set diversificat de servicii și produse personalizate precum conturi curente, Internet Banking, plăți sau încasări intrabancare. Alege unul dintre pachetele noastre de cont curent și bucură-te de avantaje suplimentare! Business 29 lei/luna Pentru companii în creștere!",
+      "motiv_potrivire": "Pachet de cont curent pentru companii, la 29 lei/lună, cu card business, Internet și Mobile Banking și 50 de plăți interbancare incluse. Nu este dedicat PFA/profesiilor liberale.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor, unde Business apare cu numele lui, prețul de 29 lei/lună și cele 50 de plăți interbancare incluse.",
+      "citat": "Primele 50 plăți interbancare în lei și euro prin Internet Banking*  \n\nÎncasări și plăți intrabancare în lei prin cecuri și bilete la ordin",
+      "dovada_metoda": "Cifrele apar în textul HTML.",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/companii/pachete-cont-curent#:~:text=Primele%2050%20pl%C4%83%C8%9Bi%20interbancare%20%C3%AEn,cecuri%20%C8%99i%20bilete%20la%20ordin"
+    },
+    {
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent BUSINESS",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pachet pentru entități economice: 29 lei/lună, cont curent, card Mastercard Business, IB/MB și primele 50 de plăți interbancare incluse. Termenii sunt aproape identici cu cei de la Libra, dar pachetul e general pentru firme, nu dedicat PFA/profesiilor liberale.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Lista oficială de tarife pentru entități economice, în vigoare din 01.09.2026. Conține costul pachetului (29 lei/lună, coloana BUSINESS) și comisioanele standard: deschidere și închidere 0, extras lunar 0, depunere la ghișeu 5 lei, plăți prin IB 5 lei intrabancar și 6 lei interbancar.",
+      "citat": "Administrare pachet\n1. Pachete de produse și servicii de cont curent\n25 lei/ lună 29 lei/ lună 200 lei/ lună\nProduse și servicii incluse în pachet:\nCont curent (deschidere și administrare)",
+      "pagina_pdf": 2,
+      "dovada_metoda": "Cifrele apar în textul extras din PDF.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -39,21 +42,16 @@
   "deschise": [
     "https://techventures.bank/",
     "https://techventures.bank/companii/pachete-cont-curent",
-    "https://techventures.bank/companii/conturi-pachete-cont-curent",
-    "https://techventures.bank/companii/cont-curent",
-    "https://techventures.bank/companii/pachete-cont-curent",
     "https://techventures.bank/documente-utile",
-    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
-    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-01092026.pdf",
-    "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf"
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf"
   ],
-  "durata_s": 121,
+  "durata_s": 29,
   "consum": {
-    "intrare": 148199,
-    "iesire": 9389,
-    "citire_cache": 120037,
-    "scriere_cache": 46224,
+    "intrare": 10,
+    "iesire": 2047,
+    "citire_cache": 46892,
+    "scriere_cache": 50517,
     "apeluri": 1,
-    "cost_estimat_usd": 0.5298554
+    "cost_estimat_usd": 0.3123218
   }
 }

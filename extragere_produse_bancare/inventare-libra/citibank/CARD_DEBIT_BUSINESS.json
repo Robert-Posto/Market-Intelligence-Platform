@@ -1,25 +1,49 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "citibank",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
-  "surse": [],
-  "gol": {
-    "motiv": "produs_inexistent",
-    "nota": "Citibank Europe plc – Sucursala România este o bancă exclusiv corporate/instituțională (parte din Institutional Clients Group), axată pe soluții de treasury și trade solutions pentru companii mari, nu o bancă comercială/retail. Site-ul nu menționează niciun produs de tip card de debit pentru persoane juridice (firme/PFA); nu există echivalent sau similar pentru CARD_DEBIT_BUSINESS."
-  },
+  "model": "claude-opus-5-5",
+  "surse": [
+    {
+      "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/assets/docs/Appendix_1_Visa_electron_bilingv_ECS_10_06_EN.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "conditii",
+      "denumire_la_banca": "Card de debit Citibank VISA Electron (pentru firme)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit emis firmei client (persoană juridică) pentru utilizatori desemnați, cu cont de card în lei, folosit pentru cheltuieli de afaceri. E similar, nu echivalent: documentul conține doar condițiile contractuale (versiunea ECS 10_06), cu două comisioane de tranzacție, fără grilă de emitere sau administrare. Banca nu publică o listă de tarife.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Documentul oficial Citi România pentru cardul de debit business are comisioane explicite numai pentru tranzacțiile locale și internaționale; versiunea e veche și nu se știe dacă produsul se mai oferă.",
+      "citat": "8.1. The Bank charges the following standard fees and commissions for Card operations: - for local Transactions : 0,5% of Transaction amount + RON 2,5; - for international Transactions: 1% of Transaction amount, minimum RON 18.",
+      "pagina_pdf": 8,
+      "incredere_metoda": 0.9,
+      "dovada_metoda": "PDF extras integral prin HTTP; cifrele apar în text la secțiunea 8.",
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html"
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/assets/docs/Appendix_1_Visa_electron_bilingv_ECS_10_06_EN.pdf",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/visa-cards.html",
+    "https://www.citibank.com/icg/sa/emea/romania/english/products-services/cash-management/visa-cards.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/index.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/useful-information/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/assets/docs/Appendix_1_Visa_business-_ECS_10_06_EN.pdf"
   ],
-  "durata_s": 11,
+  "durata_s": 35,
   "consum": {
-    "intrare": 4,
-    "iesire": 694,
-    "citire_cache": 6338,
-    "scriere_cache": 7842,
+    "intrare": 152163,
+    "iesire": 2354,
+    "citire_cache": 262065,
+    "scriere_cache": 96757,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0278206
+    "cost_estimat_usd": 1.244343
   }
 }

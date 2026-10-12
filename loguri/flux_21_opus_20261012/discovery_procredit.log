@@ -1,0 +1,47 @@
+ProCredit Bank: 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-opus-5-5, termen 420 s/produs, domenii procreditbank.ro
+  [ 1] https://www.procreditbank.ro/
+  [ 2] https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/
+  [ 3] https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/
+  [ 4] https://www.procreditbank.ro/lista-de-preturi/
+  [ 5] https://www.procreditbank.ro/companii/pachet-grow/
+  [ 6] https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf
+GATA    CONT_ONLINE_BUSINESS         2 surse, 1 citate verificate, echivalent, $0.54, 26s — Pachet GROW – cont de business
+  [ 1] https://www.procreditbank.ro/
+  [ 2] https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/
+  [ 3] https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/
+  [ 4] https://www.procreditbank.ro/lista-de-preturi/
+  [ 5] https://www.procreditbank.ro/companii/pachet-grow/
+  [ 6] https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf
+GATA    ABONAMENT_PFA                1 surse, 0 citate verificate, similar, $0.54, 30s — Pachet servicii bancare (Pachet Grow) / Cont curent persoane juridice
+  [ 1] https://www.procreditbank.ro/
+  [ 2] https://www.procreditbank.ro/companii/servicii-bancare/carduri-visa-business/
+  [ 3] https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/
+  [ 4] https://www.procreditbank.ro/lista-de-preturi/
+  [ 5] https://www.procreditbank.ro/companii/pachet-grow/
+  [ 6] https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf
+GATA    CARD_DEBIT_BUSINESS          1 surse, 0 citate verificate, echivalent, $0.55, 30s — Card Visa Debit Business (Card Visa debit inclus în contul curent / pachetul de servicii bancare PJ)
+  [ 1] https://www.procreditbank.ro/
+  [ 2] https://www.procreditbank.ro/persoane-fizice/carduri-visa/
+  [ 3] https://www.procreditbank.ro/lista-de-preturi/
+  [ 4] https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf
+  [ 5] https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf
+GATA    CARD_DEBIT_FREE              2 surse, 0 citate verificate, similar, $0.56, 29s — Card de debit Visa Classic (LEI) – persoane fizice
+  [ 1] https://www.procreditbank.ro/
+  [ 2] https://www.procreditbank.ro/persoane-fizice/carduri-visa/
+  [ 3] https://www.procreditbank.ro/lista-de-preturi/
+  [ 4] https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf
+GATA    CARD_DEBIT_GOLD              2 surse, 0 citate verificate, similar, $0.43, 30s — Card de debit Visa Platinum (LEI)
+  [cautare] ProCredit Bank RoPay plăți instant
+  [cautare] procreditbank.ro RoPay plată număr de telefon
+  [ 1] https://www.procreditbank.ro/
+  [ 2] https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/
+  [ 3] https://www.procreditbank.ro/procredit-romania-mobile-banking/
+  [ 4] https://www.procreditbank.ro/lista-de-preturi/
+  [ 5] https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf
+  [ 6] https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf
+GATA    ROPAY                        1 surse, 0 citate verificate, similar, $0.71, 31s — Plăți instant ≤ LEI 5.000 (Mobile Banking MB@nk / ProB@nking Plus)
+  ! CONT_ONLINE_PERSONAL: ReadError: [WinError 10054] An existing connection was forcibly closed by the remote host (tentativa 1)
+EROARE  CONT_ONLINE_PERSONAL         timeout: nimic găsit în termen, după 1 ture și 0 pagini
+
+procredit: 6/7 produse cu surse, 1 erori, cost estimat $3.36, durata 8 min
+Reia: python descopera_surse_libra.py --banca procredit --produse CONT_ONLINE_PERSONAL

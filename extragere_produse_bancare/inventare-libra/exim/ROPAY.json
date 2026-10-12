@@ -1,23 +1,61 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "exim",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
-  "surse": [],
-  "gol": {
-    "motiv": "nu_am_gasit",
-    "nota": "Exim Banca Românească nu are nicio pagină sau document public care să descrie un serviciu de plăți instant prin numărul de telefon (tip RoPay). Banca oferă Google Pay/Apple Pay (plăți contactless cu cardul la POS) și aplicația EximPay pentru autentificare 3D Secure la plăți online, dar acestea sunt produse diferite (wallet/autentificare card, nu transfer instant peer-to-peer prin telefon/IBAN către orice bancă din sistem). Nu am găsit mențiuni despre participarea Exim la schema RoPay sau un echivalent intern."
-  },
+  "model": "claude-opus-5-5",
+  "surse": [
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/07/Lista-de-comisioane-pentru-persoane-fizice.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Plati instant (tranzactii interbancare in Lei instant prin Internet/Mobile Banking e-ximBanking) – persoane fizice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Exim nu oferă RoPay (plata către alias = număr de telefon); are doar plăți instant în lei inițiate cu IBAN prin e-ximBanking, tarifate ca plățile interbancare standard online. Diferă canalul/identificarea beneficiarului (IBAN, nu număr de telefon).",
+      "incredere": 0.75,
+      "explicatie_incredere": "Lista oficială PF în vigoare din 29.07.2026 precizează că plățile instant au tariful plăților interbancare online (<50.000 lei: 10 lei) și încasarea interbancară 0 lei.",
+      "citat": "Transfer credit (Plati) interbancar(e) din conturi in LEI/ in EUR\ncatre tari din interiorul Uniunii Europene\n<50.000\nlei:25 lei\n≥50.000\nlei:35 lei\n<50.000\nlei:10 lei\n≥50.000\nlei:20 lei",
+      "pagina_pdf": 2,
+      "dovada_metoda": "PDF citit direct; tabel C Transfer credit, coloanele Ghiseu/Online; nota din pagina 1 spune că plățile instant se tarifează ca plățile interbancare standard online; rândul 15 pag. 3: încasări interbancare 0 lei.",
+      "incredere_metoda": 0.95,
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Plati instant in lei prin Internet Banking (e-xim Banking) – persoane juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Pentru firme, plățile instant în lei sunt incluse în plățile interbancare prin Internet; nu există plată prin număr de telefon (RoPay). Diferă canalul/identificarea beneficiarului.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Lista oficială de comisioane PJ din 01.07.2026 are rândurile plăți interbancare Internet (5 lei / 6,51 lei / 18 lei), cu nota «permite plăți instant in lei», și încasările gratuite.",
+      "citat": "✓ pana la 999,99 lei 6 lei 5 lei flat\n✓ între 1.000 și 49.999,99 lei 10 lei 6,51 lei flat\n✓ de la 50.000 lei 22 lei 18 lei flat",
+      "pagina_pdf": 8,
+      "dovada_metoda": "PDF citit direct; secțiunea Operațiuni fără numerar în lei – Plăți (ghișeu/Internet*), cu nota *permite plăți instant in lei; secțiunea Încasări: Încasări prin ordine de plată gratuit.",
+      "incredere_metoda": 0.95,
+      "citat_verificat": null,
+      "link_live": null
+    }
+  ],
+  "gol": null,
   "candidati_respinsi": [],
-  "deschise": [],
-  "durata_s": 16,
+  "deschise": [
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/documente-diverse/",
+    "https://www.eximbank.ro/2026/04/06/am-lansat-platile-instant-trimiti-si-primesti-bani-24-7-365/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/07/Lista-de-comisioane-pentru-persoane-fizice.pdf",
+    "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf"
+  ],
+  "durata_s": 32,
   "consum": {
-    "intrare": 6,
-    "iesire": 909,
-    "citire_cache": 29990,
-    "scriere_cache": 31365,
+    "intrare": 14,
+    "iesire": 2610,
+    "citire_cache": 124570,
+    "scriere_cache": 93424,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0935125
+    "cost_estimat_usd": 0.569204
   }
 }

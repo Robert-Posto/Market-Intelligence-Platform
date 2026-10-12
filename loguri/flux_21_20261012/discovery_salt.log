@@ -1,0 +1,79 @@
+Salt Bank: 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii saltbank.ro
+  [cautare] Salt Bank PFA cont firma abonament
+  [cautare] saltbank.ro PFA business
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank PFA
+  [ 2] https://www.saltbank.ro/persoane-juridice
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     ABONAMENT_PFA                blocat_de_robots: Domeniul saltbank.ro nu a putut fi accesat (permisiune refuzată / blocat), iar căutările w, $0.05
+  [cautare] Salt Bank business card PFA firme cont
+  [cautare] saltbank.ro persoane juridice card debit business
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank IMM business cont curent firma
+  [ 2] https://www.saltbank.ro/business
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     CARD_DEBIT_BUSINESS          blocat_de_robots: Domeniul saltbank.ro a refuzat accesul (eroare de permisiune) la toate încercările de fetc, $0.05
+  [cautare] Salt Bank cont pentru firme PFA business
+  [cautare] saltbank.ro persoane juridice cont curent
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [ 2] https://saltbank.ro/
+  [cautare] Salt Bank companii cont curent business
+       ! url_not_allowed
+  [ 3] https://www.saltbank.ro/business
+  [ 4] https://www.saltbank.ro/firme
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     CONT_ONLINE_BUSINESS         blocat_de_robots: Domeniul saltbank.ro a refuzat accesul (eroare de permisiune) la toate adresele încercate , $0.05
+  [cautare] Salt Bank card debit comisioane tarife
+  [cautare] Salt Bank tarife și comisioane PDF
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro tarife comisioane card
+  [ 2] https://www.saltbank.ro/tarife-si-comisioane
+  [ 3] https://www.saltbank.ro/card-debit
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+GOL     CARD_DEBIT_FREE              blocat_de_robots: Accesul la saltbank.ro a fost refuzat de instrumentul de fetch ("You don't have permission, $0.05
+  [cautare] Salt Bank card debit comisioane tarife
+  [cautare] Salt Bank card Gold cashback lounge asigurare calatorie
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] Salt Bank tarife comisioane card debit PDF
+  [ 2] https://www.saltbank.ro/card-de-debit
+  [ 3] https://saltbank.ro/
+       ! url_not_in_prior_context
+       ! url_not_allowed
+GOL     CARD_DEBIT_GOLD              blocat_de_robots: Domeniul saltbank.ro a refuzat accesul tool-ului de fetch ("You don't have permission to a, $0.05
+  [cautare] Salt Bank cont curent tarife comisioane card
+  [cautare] Salt Bank comisioane retragere ATM transfer alta banca
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro tarife comisioane cont
+  [ 2] https://www.saltbank.ro/tarife-si-comisioane
+  [ 3] https://www.saltbank.ro/documente-utile
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://www.saltbank.ro
+       ! url_not_allowed
+GOL     CONT_ONLINE_PERSONAL         blocat_de_robots: Nu s-a putut accesa deloc domeniul saltbank.ro (nici pagina principală, nici subpagini) - , $0.06
+  [cautare] Salt Bank plată instant telefon RoPay
+  [cautare] Salt Bank tarife comisioane transfer instant
+  [ 1] https://www.saltbank.ro/
+       ! url_not_allowed
+  [cautare] saltbank.ro tarife comisioane
+  [ 2] https://www.saltbank.ro/tarife-si-comisioane
+  [ 3] https://www.saltbank.ro/documente-utile
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 4] https://saltbank.ro/
+       ! url_not_allowed
+GOL     ROPAY                        blocat_de_robots: Domeniul saltbank.ro a returnat eroare de permisiune la fiecare încercare de acces (pagina, $0.06
+
+salt: 0/7 produse cu surse, 0 erori, cost estimat $0.37, durata 1 min

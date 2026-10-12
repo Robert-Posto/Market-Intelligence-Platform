@@ -3,35 +3,22 @@
   "banca": "garanti",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Cardul de debit Bonus Debit Card (Persoane Fizice)",
+      "denumire_la_banca": "Bonus Debit Card (card de debit Mastercard atașat contului curent în lei)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Card de debit standard, fără cost de emitere/administrare pentru primul card, cu comisioane reduse/gratuite la ATM propriu pentru clienții cu pachet de cont — corespunde direct produsului Libra Card de debit Free pentru segmentul persoane fizice.",
-      "incredere": 0.92,
-      "explicatie_incredere": "Document oficial de tarife în vigoare (10 noiembrie 2025) cu secțiune dedicată cardului de debit Bonus Debit Card, conținând explicit emitere, administrare, comisioane ATM propriu/alte bănci și marja de conversie valutară.",
-      "pagina_pdf": 13,
+      "motiv_potrivire": "Card de debit fără cost de emitere/reînnoire și fără cost de administrare pentru primul card, cu bonus 0,05% din plăți utilizabil la magazinele partenere Garanti BBVA (echivalentul cashback-ului la parteneri). Documentul acoperă segmentul persoane fizice; varianta pentru firme nu a fost identificată.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Lista oficială de tarife pentru persoane fizice, în vigoare din 10.11.2025, are o secțiune dedicată „CARDUL DE DEBIT BONUS DEBIT CARD”. Secțiunea conține emiterea, reînnoirea, administrarea, interogarea soldului, retragerile ATM proprii și ale altor bănci și marja de 1,25% pentru tranzacțiile în valută.",
       "citat": "CARDUL DE DEBIT BONUS DEBIT CARD emitere card si reînnoire card Gratuit administrare primul card Gratuit administrare începând cu al doilea card 10 LEI/an",
-      "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Cardul de debit Bonus (Clienți IMM)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cardul de debit standard pentru clienți IMM/Întreprinzători Individuali, cu toate câmpurile cheie (emitere, administrare, ATM propriu, ATM altă bancă, marjă valutară) — corespunde segmentului persoane juridice al produsului Libra.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Document oficial de tarife pentru clienți IMM (Aprilie 2026, în vigoare), cu secțiune dedicată 'CARDUL DE DEBIT BONUS' conținând toate cifrele relevante.",
-      "pagina_pdf": 14,
-      "citat": "CARDUL DE DEBIT BONUS emitere card reînnoire card la expirare administrare card retragere numerar ATM GARANTI BANK S.A retragere numerar ATM/POS alte bănci în România marjă ajustare curs valutar pentru tranzacții în valută 10 RON Gratuit 40 RON/card/an 0,25%, minim 2,5 RON 0,75%, minim 5 RON 1,25%",
+      "pagina_pdf": 13,
+      "dovada_metoda": "PDF descărcat direct, text extras cu cifre (pag. 13-14: emitere/administrare; interogare sold ATM Garanti Gratuit; retragere ATM Garanti 0,2% min 0,1 LEI; ATM alte bănci 1,25% min 7 LEI; marja curs valutar 1,25%)",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
       "link_live": null
     }
@@ -39,16 +26,16 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf",
-    "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf"
+    "https://www.garantibbva.ro/",
+    "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf"
   ],
-  "durata_s": 90,
+  "durata_s": 26,
   "consum": {
-    "intrare": 10,
-    "iesire": 7377,
-    "citire_cache": 215709,
-    "scriere_cache": 143823,
+    "intrare": 140,
+    "iesire": 1807,
+    "citire_cache": 69848,
+    "scriere_cache": 89435,
     "apeluri": 1,
-    "cost_estimat_usd": 0.47648930000000006
+    "cost_estimat_usd": 0.5118142
   }
 }

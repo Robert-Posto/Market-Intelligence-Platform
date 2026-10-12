@@ -1,72 +1,41 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "banorient",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
       "tip": "html",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "MasterCard GOLD Debit",
+      "denumire_la_banca": "BANQUE BANORIENT FRANCE MasterCard GOLD Debit - RON",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este tot un card de debit internațional (Mastercard Gold) emis pentru clienți persoane fizice/juridice, dar structura de preț și beneficiile diferă fundamental: nu apar asigurare de călătorie, cashback sau acces la lounge, iar taxa e lunară (25 lei/lună) nu anuală fixă de 48 lei cum e la Libra.",
+      "motiv_potrivire": "Card de debit Gold pentru persoane fizice și juridice (apare în tariful ambelor segmente), dar nu are asigurare de călătorie, cashback, lounge sau dobândă de 1% la sold; costurile diferă (emitere 175 lei, administrare 25 lei/lună). Retragerea la ATM propriu nu e listată separat; se publică doar retragerea de la alte bănci (0.5% min 5 lei).",
       "incredere": 0.85,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Documentul de tarife conține un capitol dedicat explicit cardului MasterCard GOLD Debit, cu toate comisioanele și limitele asociate.",
-      "citat": "IV-1 TAXE SI COMISIOANE “BANQUE BANORIENT FRANCE” MasterCard GOLD Debit - RON Emitere card Gold Debit 175 LEI Administrare lunara- pentru fiecare cont de card 25 LEI Administrare anuala a contului de card Zero Limita maxima de retragere numerar /cont /zi (ATM + POS) 5000 LEI",
+      "explicatie_incredere": "Pagina oficială de tarife are secțiunea IV-1 dedicată cardului MasterCard GOLD Debit, cu emitere, administrare, reemitere, interogare sold, retragere de la alte bănci și marja de conversie de 2%.",
+      "citat": "Emitere card Gold Debit | | 175 LEI |\n| Administrare lunara- pentru fiecare cont de card | | 25 LEI |",
+      "dovada_metoda": "Cifrele apar direct în textul HTML extras (tabelul IV - TAXE SI COMISIOANE APLICABILE CARDURILOR).",
+      "incredere_metoda": 0.85,
       "citat_verificat": true,
-      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=IV%2D1%20TAXE%20SI%20COMISIOANE%20%E2%80%9CBANQUE,%28ATM%20%2B%20POS%29%205000%20LEI"
-    },
-    {
-      "url": "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Mastercard Gold debit card",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Anunțul descrie caracteristicile tehnice ale cardului de debit Mastercard Gold (contactless, 3D secure, limite de retragere), dar nu menționează cashback, asigurare de călătorie sau acces lounge, elemente centrale ale cardului Libra Gold.",
-      "incredere": 0.7,
-      "incredere_metoda": 0.8,
-      "explicatie_incredere": "Este un comunicat oficial al băncii despre lansarea cardului Gold, cu cifre concrete (limită 5000 RON/zi, 0% comision la comercianți), dar fără informații despre beneficiile premium.",
-      "citat": "cardul are limită de retragere numerar de 5000 RON / zi la ATM / POS (sau echivalentul în valută retrasă); retrageri de numerar în țară și în străinătate; puteți oricând să folosiți cardul la comercianți cu 0% comision",
-      "citat_verificat": true,
-      "link_live": "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro#:~:text=cardul%20are%20limit%C4%83%20de%20retragere,la%20comercian%C8%9Bi%20cu%200%25%20comision"
-    },
-    {
-      "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Cardul Gold Master / Cardul Gold Business Master",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Pagina confirmă existența unui card Gold Master (persoane fizice) și a unui Gold Business Master (persoane juridice), același tip de produs ca și cardul Libra, dar fără detalii despre beneficii tip cashback, lounge sau asigurare de călătorie.",
-      "incredere": 0.6,
-      "incredere_metoda": 0.6,
-      "explicatie_incredere": "Pagina menționează explicit cele două variante de card Gold (fizice/juridice) dar nu conține cifre sau detalii de beneficii, doar numele produselor.",
-      "citat": "Clienţii nostri pot acum alege unul dintre următoarele carduri: Cardul Gold Master Cardul Gold Business Master",
-      "citat_verificat": true,
-      "avertisment": "citat scurt (16 cuvinte)",
-      "link_live": "https://www.banorientfrance.com/romanian/romania/products-and-services#:~:text=Clien%C5%A3ii%20nostri%20pot%20acum%20alege,Master%20Cardul%20Gold%20Business%20Master"
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=Emitere%20card%20Gold%20Debit%20%7C,%7C%20%7C%2025%20LEI%20%7C"
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.banorientfrance.com/romanian/romania",
-    "https://www.banorientfrance.com/romanian/romania/products-and-services",
-    "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro",
-    "https://www.banorientfrance.com/romanian/romania/service-charges"
+    "https://www.banorientfrance.com/romanian/romania/service-charges",
+    "https://www.banorientfrance.com/romanian/romania/latest-news/mastercard-ro"
   ],
-  "durata_s": 51,
+  "durata_s": 16,
   "consum": {
     "intrare": 8,
-    "iesire": 4087,
-    "citire_cache": 36499,
-    "scriere_cache": 32361,
+    "iesire": 1134,
+    "citire_cache": 18140,
+    "scriere_cache": 29120,
     "apeluri": 1,
-    "cost_estimat_usd": 0.12908830000000002
+    "cost_estimat_usd": 0.175568
   }
 }

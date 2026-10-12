@@ -1,40 +1,28 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "tbi",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
-    "motiv": "potrivire_slaba",
-    "nota": "cel mai apropiat: Cont curent pentru persoane juridice si entitati asimilate (încredere 0.55) — tbi bank nu are un produs de tip abonament/pachet dedicat PFA (cu card, IB/MB si operatiuni incluse la un pret fix lunar). Are doar un cont curent standard pentru persoane juridice/PFA, cu comision de administrare separat si comisioane per operatiune, fara structura de pachet all-inclusive."
+    "motiv": "produs_inexistent",
+    "nota": "tbi bank Romania nu are un abonament/pachet de cont pentru PFA sau profesii liberale. Pentru clienții business, site-ul are doar Credite Business și Depozite Business. Lista de dobânzi, taxe și comisioane pentru persoane juridice (în vigoare din iunie 2024, https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi%2C%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf) are doar un cont curent PJ general, fără pachet: deschidere 10 RON, administrare 10 RON/lună, depunere numerar 0, plăți interbancare la ghișeu de la 4 RON, închidere 0. Nu are operațiuni incluse, card business sau internet/mobile banking pentru firme. Un cont general nu ține locul unui abonament dedicat PFA/profesii, deci nu l-am raportat ca echivalent sau similar."
   },
-  "candidati_respinsi": [
-    {
-      "url": "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Cont curent pentru persoane juridice si entitati asimilate",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "tbi bank nu are un produs de tip abonament/pachet dedicat PFA (cu card, IB/MB si operatiuni incluse la un pret fix lunar). Are doar un cont curent standard pentru persoane juridice/PFA, cu comision de administrare separat si comisioane per operatiune, fara structura de pachet all-inclusive.",
-      "incredere": 0.55,
-      "explicatie_incredere": "Documentul de tarife pentru persoane juridice listeaza explicit comisioanele de deschidere, administrare si operare ale contului curent aplicabil si PFA, dar nu exista un produs-pachet de tip abonament comparabil cu cel de la Libra.",
-      "citat": "Deschidere cont curent / Current account opening 10 RON Administrare cont curent / Current account administration 10 RON/luna / 10 RON month",
-      "pagina_pdf": 1,
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    }
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://tbibank.ro/",
+    "https://tbibank.ro/companii/depozite/depozit-persoane-juridice/",
+    "https://tbibank.ro/despre-tbi-group/documente/",
+    "https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi%2C%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf"
   ],
-  "deschise": [],
-  "durata_s": 37,
+  "durata_s": 24,
   "consum": {
-    "intrare": 6,
-    "iesire": 2799,
-    "citire_cache": 29276,
-    "scriere_cache": 33616,
+    "intrare": 12,
+    "iesire": 1376,
+    "citire_cache": 72849,
+    "scriere_cache": 43892,
     "apeluri": 1,
-    "cost_estimat_usd": 0.11789720000000001
+    "cost_estimat_usd": 0.2761676
   }
 }

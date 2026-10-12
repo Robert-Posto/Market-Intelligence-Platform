@@ -1,25 +1,31 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "citibank",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Citibank România operează exclusiv ca bancă corporate/instituțională (Citi Commercial Bank / Treasury and Trade Solutions), deservind companii mari, naționale și multinaționale, prin relații bancare tradiționale (nu onboarding digital). Nu există un cont curent de business deschis și gestionat integral online, cu abonamente operaționale și card business, destinat PFA/firmelor mici, așa cum este CONT_ONLINE_BUSINESS la Libra. Produsele identificate (Treasury, Money Market, Capital Market, Commercial Cards administrate prin CitiManager) sunt servicii pentru clienți corporate existenți, un segment diferit de cel vizat de produsul Libra."
+    "nota": "Citibank Europe plc – Sucursala România face doar banking instituțional/corporate (Treasury and Trade Solutions): gestiunea lichidităților, servicii de trezorerie, finanțare comercială, custodie, conturi Nostro, toate cu Relationship Manager dedicat și prețuri negociate. Nu are un cont curent pentru IMM/PFA care se deschide și se gestionează exclusiv online, cu abonamente operaționale. Pe site nu există nicio listă publică de tarife pentru contul curent. Documentele publice cu comisioane sunt doar condițiile pentru cardurile comerciale (corporate cards) și anexe vechi pentru carduri Visa Business, iar acestea nu sunt un cont curent."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html"
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/index.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/useful-information/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/useful-information/index.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/index.html"
   ],
-  "durata_s": 20,
+  "durata_s": 24,
   "consum": {
-    "intrare": 4,
-    "iesire": 1456,
-    "citire_cache": 6353,
-    "scriere_cache": 14569,
+    "intrare": 13501,
+    "iesire": 1179,
+    "citire_cache": 40666,
+    "scriere_cache": 19397,
     "apeluri": 1,
-    "cost_estimat_usd": 0.052261100000000005
+    "cost_estimat_usd": 0.1908354
   }
 }

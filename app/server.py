@@ -543,6 +543,8 @@ def matrice(q):
     # sunt in acelasi tabel. Comparate intre ele, dau o concluzie falsa.
     segment = (q.get("segment") or ["pf"])[0]
     campuri = GRUPURI[grup]["campuri"]
+    if _sursa_referinta(q):
+        return matrice_referinta(grup, unitate, segment)
 
     filtru_seg = "" if segment == "toate" else f" AND ({COND_SEG})"
     p_seg = () if segment == "toate" else (segment,)
@@ -621,6 +623,8 @@ def celula(q):
     cuvinte = vox.cuvinte_cautare((q.get("text") or [""])[0])
     if not (q.get("banca") and (camp or cuvinte)):
         return {"eroare": "lipsește banca sau camp"}
+    if _sursa_referinta(q):
+        return celula_referinta(q)
     # `camp` singur nu e destul la dobanzi: `nominala` inseamna si dobanda de
     # depozit si dobanda de credit. Fara filtrul pe categorie, sertarul deschis
     # dintr-o celula de depozit arata si dobanzi de credit - exact amestecul pe
@@ -860,6 +864,8 @@ def rate(q):
     prag = GRUPURI_RATE[categorie]["prag"]
     termen = (q.get("termen") or [""])[0]
     produs = (q.get("produs") or [""])[0]
+    if _sursa_referinta(q):
+        return rate_referinta(categorie, termen, produs)
     baza_cat = _baza_rate(prag)
     # cate valori are fiecare optiune de filtru, ca meniul sa spuna ce gasesti
     optiuni = interoghează(
@@ -1462,14 +1468,14 @@ def versus_libra():
     multe surse, cu celelalte în `alternative`. Variantele (urgent, suplimentar, ghișeu ...) vin
     grupate, pentru tooltip; prima sursă dă citatul și linkul. Fără tabelă: `disponibil: false`.
     """
-    if not interoghează("SELECT to_regclass('public.valori_referinta') IS NOT NULL AS e")[0]["e"]:
+    if not interoghează("SELECT to_regclass('public.valori_referinta_curente') IS NOT NULL AS e")[0]["e"]:
         return {"disponibil": False}
     fise = _fise()
     randuri = interoghează(
         """SELECT p.cod AS produs, b.slug AS banca, v.camp_cheie AS camp, coalesce(v.unitate, '') AS unitate,
                   v.valoare_num::float8 AS valoare, v.stare, v.surse, v.variante, v.alternative, v.motiv,
-                  v.derivat
-             FROM valori_referinta v
+                  v.derivat, v.data_citat, v.data_document, v.data_document_sursa, v.data_extragere
+             FROM valori_referinta_curente v
              JOIN banci b ON b.id = v.id_banca
              JOIN produse_libra p ON p.id = v.id_produs_libra AND p.activ
             WHERE v.baza = 'curent' AND v.valoare_num IS NOT NULL""")
@@ -1484,6 +1490,7 @@ def versus_libra():
         return chei.index(camp) if camp in chei else len(chei)
 
     celule = []
+    tipuri = _tip_surse([(r["surse"] or [{}])[0].get("id_sursa") for r in randuri])
     for r in randuri:
         d = fise["campuri"].get(r["camp"]) or {}
         s0 = (r["surse"] or [{}])[0]
@@ -1493,8 +1500,12 @@ def versus_libra():
             "sens": d.get("sens", "mic_bun"), "n": len(r["surse"] or []),
             "minim": r["valoare"], "maxim": r["valoare"], "valoare": r["valoare"],
             "referinta": r["stare"] == "referinta", "stare": r["stare"], "motiv": r["motiv"],
-            "citat": s0.get("citat"), "link": s0.get("link") or s0.get("url"), "conditie": None,
+            # clic pe celulă = citatul în document (vizualizatorul la PDF, fragmentul de text la web)
+            "citat": s0.get("citat"), "conditie": None,
+            "link": (s0.get("link") if "#:~:text=" in (s0.get("link") or "")
+                     else _link_citat(s0.get("url"), s0.get("citat"), tipuri.get(s0.get("id_sursa")))),
             "variante": r["variante"] or [], "alternative": r["alternative"] or [], "derivat": r["derivat"],
+            **_date_valoare(r),
         })
     cu_celule = {c["produs"] for c in celule}
     produse = interoghează(
@@ -1502,6 +1513,271 @@ def versus_libra():
              FROM produse_libra WHERE activ
             ORDER BY prioritar DESC, denumire""")
     return {"disponibil": True, "produse": [p for p in produse if p["cod"] in cu_celule], "celule": celule}
+
+
+# ---------------------------------------------------------------------------
+# Sursa „referinta” pentru 2.1 și 2.2 (din 12.10.2026, la cererea lui George): aceleași răspunsuri ca
+# matrice / rate / celula, dar din valorile de referință ale fluxului Libra (valori_referinta, migrarea
+# 042), nu din colectarea echipei (observatii_curente). Doar 2.1 și 2.2 trimit `sursa=referinta`; Vox,
+# Versus și fișa de bancă cheamă funcțiile fără ea, deci rămân pe datele echipei.
+#
+# O celulă = bancă × concept: cifra vine de la produsul Libra de bază al segmentului (REF_PRIORITATE),
+# iar plaja (minim–maxim, câte) de la toate produsele Libra pe care banca le are pentru concept
+# (pachetele ei). Variantele (urgent, ghișeu ...) stau în sertar, nu în celulă.
+REF_CONCEPTE = {
+    "administrare_cont": ["cost_lunar"], "deschidere_cont": ["deschidere_cont"],
+    "emitere_card": ["emitere_card"], "reemitere_card": ["reemitere_card"],
+    "administrare_card": ["administrare_card"], "retragere_numerar": ["retragere_atm"],
+    "transfer_credit": ["plata_interbancara"], "incasare": ["incasare"],
+    "extras_de_cont": ["extras_cont"], "interogare_sold": ["interogare_sold"], "inchidere_cont": ["inchidere_cont"],
+}
+REF_RATE = {
+    "depozite": {"nominala": ["dobanda_depozit"]},
+    "credite": {"nominala": ["dobanda_credit"], "dae": ["dae"], "marja_ircc": ["marja"]},
+    "conturi_carduri": {},
+}
+REF_PRIORITATE = [
+    "CONT_ONLINE_PERSONAL", "CARD_DEBIT_FREE", "CONT_ONLINE_BUSINESS", "ABONAMENT_PFA", "ROPAY",
+    "ROPAY_BUSINESS", "CARD_DEBIT_BUSINESS", "DEPOZIT_TERMEN", "DEPOZIT_1AN_1LUNA", "DEPOZIT_BLITZ_7L",
+    "CONT_ECONOMII", "CREDIT_NEVOI_PERSONALE", "CREDIT_LIBRA_WAY", "CREDIT_IPOTECAR_PF", "OVERDRAFT_PF",
+    "CARD_CREDIT_PF",
+]
+# filtrul de produs din 2.2 (PRODUSE_CREDIT) -> produsele Libra
+REF_PRODUS_CREDIT = {
+    "nevoi_personale": {"CREDIT_NEVOI_PERSONALE", "CREDIT_LIBRA_WAY"},
+    "ipotecar": {"CREDIT_IPOTECAR_PF"},
+    "card": {"OVERDRAFT_PF", "CARD_CREDIT_PF"},
+}
+
+
+def _sursa_referinta(q):
+    return (q.get("sursa") or [""])[0] == "referinta"
+
+
+def _fragment_text(s):
+    # Text Fragments cer „-”, „,” și „&” codate; quote() lasă „-” necodat
+    return urllib.parse.quote(s, safe="").replace("-", "%2D")
+
+
+def _link_citat(url, citat, tip):
+    """Linkul care duce la citat: la PDF vizualizatorul nostru (#/document, caută singur pagina și
+    evidențiază), la o pagină web fragmentul de text `#:~:text=început,sfârșit` (Chrome / Edge / Safari
+    derulează și evidențiază). Fără citat, adresa simplă."""
+    if not url:
+        return None
+    if not citat:
+        return url
+    if tip == "pdf" or url.lower().split("?")[0].endswith(".pdf"):
+        return "#/document?u=" + urllib.parse.quote(url, safe="") + "&q=" + urllib.parse.quote(citat, safe="")
+    cuv = citat.split()
+    frag = (_fragment_text(" ".join(cuv)) if len(cuv) <= 8
+            else _fragment_text(" ".join(cuv[:5])) + "," + _fragment_text(" ".join(cuv[-5:])))
+    return url.split("#")[0] + "#:~:text=" + frag
+
+
+def _tip_surse(ids):
+    """html / pdf pe id-urile din surse_libra (valori_referinta.surse ține doar id-ul și adresa)."""
+    ids = [i for i in ids if i]
+    if not ids:
+        return {}
+    return {r["id"]: r["tip"] for r in interoghează("SELECT id, tip FROM surse_libra WHERE id = ANY(%s)", (ids,))}
+
+
+def _segmente_produs(cod, segment):
+    """Segmentele din 2.1 pe care le acoperă un produs Libra (PF / PJ / PF+PJ; PFA după cod)."""
+    if "PFA" in cod:
+        return {"pfa"}
+    return {"PF": {"pf"}, "PJ": {"pj", "imm"}}.get(segment or "", {"pf", "pj", "imm"})
+
+
+def _luni_referinta():
+    """Durata scenariului de referință pe produs (depozitele Libra: 7, 12, 13 luni)."""
+    with open(os.path.join(os.path.dirname(AICI), "extragere_produse_bancare", "referinte_libra.json"),
+              encoding="utf-8") as f:
+        return {cod: (r.get("parametri") or {}).get("perioada_luni") for cod, r in json.load(f)["produse"].items()}
+
+
+def _termen_cheie(luni):
+    if luni is None:
+        return "necunoscut"
+    return "scurt" if luni <= 3 else "6" if luni <= 6 else "12" if luni <= 12 else "lung"
+
+
+def _ref_randuri(chei, unitate):
+    return interoghează(
+        """SELECT b.slug AS banca, b.nume AS banca_nume, p.cod, p.denumire, p.segment, v.camp_cheie,
+                  v.valoare_num::float8 AS valoare, v.unitate, v.stare, v.surse, v.variante, v.alternative, v.motiv,
+                  v.data_citat, v.data_document, v.data_document_sursa, v.data_extragere
+             FROM valori_referinta_curente v
+             JOIN banci b ON b.id = v.id_banca
+             JOIN produse_libra p ON p.id = v.id_produs_libra AND p.activ
+            WHERE v.baza = 'curent' AND v.valoare_num IS NOT NULL
+              AND v.camp_cheie = ANY(%s) AND v.unitate = %s""", (chei, unitate))
+
+
+def _date_valoare(r):
+    """Datele unei valori de referință (migrarea 043), ca text ISO: din citat, a documentului (cu
+    proveniența ei) și a extragerii. Pagina arată cea mai precisă, iar tooltip-ul pe toate."""
+    return {k: (str(r[k]) if r.get(k) is not None else None)
+            for k in ("data_citat", "data_document", "data_document_sursa", "data_extragere")}
+
+
+def _prioritate(cod):
+    return (REF_PRIORITATE.index(cod) if cod in REF_PRIORITATE else len(REF_PRIORITATE), cod)
+
+
+def _celula_ref(banca, camp, randuri):
+    """O celulă din rândurile produselor Libra ale băncii pentru concept: cifra produsului de bază,
+    plaja pe toate."""
+    randuri = sorted(randuri, key=lambda r: _prioritate(r["cod"]))
+    r0 = randuri[0]
+    vals = [r["valoare"] for r in randuri]
+    s0 = (r0["surse"] or [{}])[0]
+    return {
+        "banca": banca, "camp": camp, "n": len(randuri), "minim": min(vals), "maxim": max(vals),
+        "gratuite": sum(1 for v in vals if v == 0), "servicii": len(randuri), "nemarcate": 0,
+        "valoare": r0["valoare"], "unitate": r0["unitate"], "serviciu": r0["denumire"],
+        "frecventa": None, "conditie": r0["motiv"], "pagina": None,
+        "url_public": s0.get("link") or s0.get("url"), "sursa": s0.get("url"), "tip_sursa": "url",
+        "segment_necunoscut": False, "referinta": True, "stare": r0["stare"],
+        "variante": sum(len(r["variante"] or []) for r in randuri),
+        **_date_valoare(r0),
+    }
+
+
+def matrice_referinta(grup, unitate, segment):
+    campuri = GRUPURI[grup]["campuri"]
+    pe, seg_n = {}, {}
+    for camp in campuri:
+        for r in _ref_randuri(REF_CONCEPTE.get(camp, []), unitate):
+            segs = _segmente_produs(r["cod"], r["segment"])
+            for s in segs:
+                seg_n[s] = seg_n.get(s, 0) + 1
+            if segment != "toate" and segment not in segs:
+                continue
+            pe.setdefault((r["banca"], camp), []).append(r)
+    celule = [_celula_ref(b, c, rs) for (b, c), rs in pe.items()]
+    nume = {r["banca"]: r["banca_nume"] for rs in pe.values() for r in rs}
+    pe_banca = {}
+    for c in celule:
+        pe_banca[c["banca"]] = pe_banca.get(c["banca"], 0) + c["n"]
+    return {
+        "grup": grup, "titlu": GRUPURI[grup]["titlu"], "sens": GRUPURI[grup]["sens"], "unitate": unitate,
+        "segment": segment, "sursa": "referinta",
+        "segmente": [{"seg": s, "n": n} for s, n in sorted(seg_n.items(), key=lambda x: -x[1])],
+        "campuri": campuri,
+        "banci": [{"slug": b, "nume": nume[b], "n": n} for b, n in sorted(pe_banca.items(), key=lambda x: -x[1])],
+        "celule": celule, "excluse_ambigue": 0, "excluse_implauzibile": 0, "prag_plauzibil": PRAGURI["suma"],
+    }
+
+
+def _produse_rata(categorie, termen, produs, luni):
+    """Filtrul de termen (depozite) și de produs (credite) din 2.2, pe produsele Libra."""
+    def ok(cod):
+        if categorie == "depozite":
+            # doar depozitele la termen: contul de economii (fără termen) nu stă lângă un depozit pe 12 luni
+            return cod.startswith("DEPOZIT_") and (not termen or _termen_cheie(luni.get(cod)) == termen)
+        if categorie == "credite":
+            # fără filtru, nevoi personale: un DAE de card (25%) nu stă lângă unul de nevoi personale (10%)
+            return cod in REF_PRODUS_CREDIT.get(produs or "nevoi_personale", set())
+        return True
+    return ok
+
+
+def rate_referinta(categorie, termen, produs):
+    luni = _luni_referinta()
+    ok = _produse_rata(categorie, termen, produs, luni)
+    pe, pe_termen, pe_produs = {}, {}, {}
+    for camp, chei in REF_RATE.get(categorie, {}).items():
+        for r in _ref_randuri(chei, "%"):
+            # la credite doar produsele cu tip în filtrul de produs; dobânda la firme nu stă lângă cea PF
+            if categorie == "credite" and not any(r["cod"] in s for s in REF_PRODUS_CREDIT.values()):
+                continue
+            k = _termen_cheie(luni.get(r["cod"]))
+            pe_termen[k] = pe_termen.get(k, 0) + 1
+            for pc, coduri in REF_PRODUS_CREDIT.items():
+                if r["cod"] in coduri:
+                    pe_produs[pc] = pe_produs.get(pc, 0) + 1
+            if ok(r["cod"]):
+                pe.setdefault((r["banca"], camp), []).append(r)
+    celule = []
+    for (b, c), rs in pe.items():
+        x = _celula_ref(b, c, rs)
+        x["luni"] = luni.get(sorted(rs, key=lambda r: _prioritate(r["cod"]))[0]["cod"])
+        x["unitate"] = "procent"
+        celule.append(x)
+    return {
+        "categorie": categorie, "titlu": GRUPURI_RATE[categorie]["titlu"], "sens": GRUPURI_RATE[categorie]["sens"],
+        "campuri": GRUPURI_RATE[categorie]["campuri"], "prag": GRUPURI_RATE[categorie]["prag"],
+        "termen": termen, "produs": produs, "sursa": "referinta",
+        "termene": [{"cheie": k, "eticheta": v[0], "n": pe_termen.get(k, 0)} for k, v in TERMENE.items()]
+                   + [{"cheie": "necunoscut", "eticheta": "termen nespecificat", "n": pe_termen.get("necunoscut", 0)}],
+        "produse": [{"cheie": k, "eticheta": v, "n": pe_produs.get(k, 0)} for k, v in PRODUSE_CREDIT.items()],
+        "celule": celule, "excluse_implauzibile": 0,
+        "provenienta": [{"metoda": "valori de referință (flux Libra)", "valori": len(celule),
+                         "banci": len({c["banca"] for c in celule})}],
+    }
+
+
+def celula_referinta(q):
+    """Sertarul unei celule din 2.1 / 2.2 pe sursa „referinta”: pe fiecare produs Libra al băncii, cifra de
+    referință cu toate sursele ei, celelalte cifre găsite pe aceeași variantă și variantele."""
+    banca, camp = q["banca"][0], (q.get("camp") or [""])[0]
+    categorie = (q.get("scenariu") or [""])[0]
+    segment = (q.get("segment") or [""])[0]
+    if categorie in REF_RATE:
+        chei, unitate = REF_RATE[categorie].get(camp, []), "%"
+        ok = _produse_rata(categorie, (q.get("termen") or [""])[0], (q.get("produs") or [""])[0], _luni_referinta())
+    else:
+        chei, unitate = REF_CONCEPTE.get(camp, []), (q.get("unitate") or ["lei"])[0]
+        ok = lambda cod: True  # noqa: E731
+    gol = {k: None for k in ("valoare", "valoare_text", "unitate", "cod_scenariu", "segment", "citat", "confidence",
+                             "motiv_ambiguu", "serviciu", "sectiune", "conditie", "frecventa", "detaliu", "pagina",
+                             "nr_aparitii", "sursa", "tip_sursa", "link", "link_pagina", "pagina_documente_motiv",
+                             "fisier", "ancora")}
+    u_afis = "procent" if unitate == "%" else unitate
+    randuri = _ref_randuri(chei, unitate)
+    tipuri = _tip_surse([s.get("id_sursa") for r in randuri if r["banca"] == banca
+                         for s in (r["surse"] or []) + (r["variante"] or []) + (r["alternative"] or [])])
+
+    def legatura(s):
+        """Sursa unui rând din sertar: PDF -> vizualizatorul (`document`), web -> fragmentul de text."""
+        url, citat = s.get("url"), s.get("citat")
+        if not url:
+            return {}
+        pdf = tipuri.get(s.get("id_sursa")) == "pdf" or url.lower().split("?")[0].endswith(".pdf")
+        link = (url if pdf else s.get("link") if "#:~:text=" in (s.get("link") or "")
+                else _link_citat(url, citat, "html"))
+        return {"citat": citat, "sursa": url, "tip_sursa": "document" if pdf else "url", "link": link}
+    out = []
+    for r in sorted(randuri, key=lambda r: _prioritate(r["cod"])):
+        if r["banca"] != banca or not ok(r["cod"]):
+            continue
+        if segment and segment not in ("toate", "nemarcat") and segment not in _segmente_produs(r["cod"], r["segment"]):
+            continue
+        baza = {**gol, "unitate": u_afis, "ambiguu": False, "metoda_extractie": "referinta"}
+        # datele valorii de referință (citat / document / extragere) stau pe rândurile ei, nu pe variante
+        date_r = _date_valoare(r)
+        for i, s in enumerate(r["surse"] or [{}]):
+            pdf = tipuri.get(s.get("id_sursa")) == "pdf" or (s.get("url") or "").lower().split("?")[0].endswith(".pdf")
+            link = (s.get("url") if pdf
+                    else s.get("link") if "#:~:text=" in (s.get("link") or "")
+                    else _link_citat(s.get("url"), s.get("citat"), "html"))
+            out.append({**baza, "valoare": r["valoare"], "citat": s.get("citat"), "sursa": s.get("url"),
+                        # `document` = vizualizatorul cu pagina găsită singur și citatul evidențiat (Dovezi.tsx)
+                        "tip_sursa": "document" if pdf else "url", "link": link,
+                        **date_r,
+                        "serviciu": f"{r['denumire']} · valoarea de referință" + (" (aceeași cifră, altă sursă)" if i else ""),
+                        "conditie": None if i else r["motiv"]})
+        for a in r["alternative"] or []:
+            out.append({**baza, **legatura(a), "valoare": a["valoare_num"], "ambiguu": True,
+                        "motiv_ambiguu": "altă cifră pe aceeași variantă, din surse la fel de sigure: de verificat",
+                        "serviciu": f"{r['denumire']} · altă cifră găsită"})
+        for v in r["variante"] or []:
+            out.append({**baza, **legatura(v), "valoare": v["valoare_num"], "unitate": "procent" if v.get("unitate") == "%" else v.get("unitate"),
+                        "serviciu": f"{r['denumire']} · variantă: {v.get('eticheta') or 'altă variantă'}",
+                        "nr_aparitii": v.get("n")})
+    return out
 
 
 def situatii_banci():
@@ -2525,11 +2801,14 @@ def pdf_permis(url):
         return False
     if url in _PERMISE:
         return True
+    # și sursele fluxului de comparație cu Libra (surse_libra), ca linkul spre citat al valorilor de
+    # referință să se deschidă în vizualizator
     if interoghează(
             """SELECT 1 FROM surse
                WHERE url_public = %s OR (tip_sursa IN ('url', 'document') AND sursa = %s)
+               UNION ALL SELECT 1 FROM surse_libra WHERE url = %s
                LIMIT 1""",
-            (url, url)):
+            (url, url, url)):
         _PERMISE.add(url)
         return True
     return False

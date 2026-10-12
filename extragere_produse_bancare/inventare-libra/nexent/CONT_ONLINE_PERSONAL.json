@@ -1,53 +1,62 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "nexent",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
-    {
-      "url": "https://www.nexentbank.ro/en/retail-banking/current-accounts",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Current Accounts / Online Current Account (Cont Curent Online)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru persoane fizice, deschis 100% online, cu card de debit Mastercard atașat și acces digital complet prin aplicația monet sau Internet Banking - același tip de produs și segment ca CONT_ONLINE_PERSONAL.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagina dedicată contului curent descrie explicit deschiderea online, comisioanele zero și beneficiile digitale, cu cifre concrete pentru fiecare taxă.",
-      "citat": "Open a Nexent Bank current account online and manage your money anytime through the monet mobile app or Internet Banking, with no branch visits and no unnecessary paperwork. In just a few minutes, you'll have a fully functional bank account together with a Mastercard debit card, ready for payments anywhere in the world.",
-      "citat_verificat": true,
-      "link_live": "https://www.nexentbank.ro/en/retail-banking/current-accounts#:~:text=Open%20a%20Nexent%20Bank%20current,payments%20anywhere%20in%20the%20world."
-    },
     {
       "url": "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Cont curent (persoane fizice)",
+      "denumire_la_banca": "Cont curent persoane fizice (deschis online prin Digital Onboarding / monet)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane fizice conține explicit comisioanele contului curent (deschidere, administrare, extras de cont, descoperit de cont), valabil din 01.01.2026.",
+      "motiv_potrivire": "Contul curent standard PF Nexent se deschide online (formular „Deschide un cont”/contcurent și aplicația monet); lista oficială PF în vigoare din 01.01.2026 conține comisioanele contului curent: deschidere, administrare lunară, extras, transfer interbancar prin Internet Banking/monet.",
       "incredere": 0.85,
-      "explicatie_incredere": "PDF oficial cu lista completă de comisioane pentru contul curent la persoane fizice, cu cifre exacte per fiecare operațiune.",
-      "citat": "Comision deschidere de cont - 0; Administrarea contului - Comision administrare client (lunar) - echivalent 3 RON; Extras de cont lunar / ultimul extras RON/FX 0; Rata de dobanda pentru descoperit de cont neautorizat RON 40% / an, FX 20% / an.",
+      "explicatie_incredere": "Lista oficială de taxe PF valabilă din 01.01.2026 acoperă explicit contul curent, cu cifre pentru deschidere (0), administrare lunară (3 RON), extras lunar (0) și plăți interbancare online (0,05% min. 4 RON, max. 20 RON, 0 până la 31.12.2026).",
+      "citat": "Comision deschidere de cont - 0 Administrarea contului - Comision administrare client (lunar)5- echivalent 3 RON Extras de cont lunar / ultimul extras RON/FX 0",
       "pagina_pdf": 1,
+      "dovada_metoda": "PDF cu text extras; cifrele apar direct în conținut.",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/06/55542767f9b364d9568de517506f19c2fd3a05cc.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Mastercard Standard Debit atașat contului curent",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Cardul de debit principal al contului curent PF; documentul aduce emitere card, administrare card, retragere la ATM propriu și interogare sold, cu scutiri pentru clienții înrolați prin Digital Onboarding (deschidere online).",
+      "incredere": 0.7,
+      "explicatie_incredere": "Cea mai recentă listă de tarife găsită pentru cardul de debit (valabilă din 01.01.2025, cu sigla Credit Europe Bank), cu cifre explicite pentru card, dar e posibil să existe o versiune mai nouă.",
+      "citat": "Taxa emitere card 0 Taxa lunara de administrare card 0 RON Taxa reinnoire card (dupa expirare) 5 RON",
+      "pagina_pdf": 3,
+      "dovada_metoda": "PDF cu text extras; rândurile pentru card și ATM (Retragere numerar de la ATM-urile Credit Europe Bank 0,2%, Comision interogare sold 1 RON) apar în conținut.",
+      "incredere_metoda": 0.95,
+      "citat_verificat": null,
+      "avertisment": "citat scurt (18 cuvinte)",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.nexentbank.ro/en/retail-banking/current-accounts",
-    "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf"
+    "https://www.nexentbank.ro/",
+    "https://nexentbank.ro/persoane-fizice/Conturi-curente",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf",
+    "https://www.nexentbank.ro/persoane-fizice/Carduri-de-Debit/Mastercard-Standard-Debit",
+    "https://www.nexentbank.ro/upload/media/document/0001/06/55542767f9b364d9568de517506f19c2fd3a05cc.pdf"
   ],
-  "durata_s": 23,
+  "durata_s": 44,
   "consum": {
-    "intrare": 6,
-    "iesire": 1841,
-    "citire_cache": 39849,
-    "scriere_cache": 54158,
+    "intrare": 18,
+    "iesire": 2447,
+    "citire_cache": 313446,
+    "scriere_cache": 93154,
     "apeluri": 1,
-    "cost_estimat_usd": 0.16178679999999998
+    "cost_estimat_usd": 0.6401604000000001
   }
 }

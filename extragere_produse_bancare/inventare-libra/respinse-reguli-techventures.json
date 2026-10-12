@@ -1,59 +1,129 @@
 {
  "banca": "techventures",
- "total": 4,
+ "total": 10,
  "pe_motiv": {
-  "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr": 3,
-  "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 1
+  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 10
  },
  "valori": [
   {
+   "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_plata_interbancara",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "primele 5 primele 50 plăți primele 100 plăți",
+   "incredere": 0.7,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_plata_intrabancara",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Plăți intrabancare prin\nInternet și Mobile Banking în lei în lei și euro în orice valută",
+   "incredere": 0.7,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_incasare",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Încasări intra și interbancare\nîn lei în lei și euro în orice valută",
+   "incredere": 0.7,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
    "url": "https://techventures.bank/companii/pachete-cont-curent",
    "produse": [
-    "ABONAMENT_PFA",
-    "ABONAMENT_SHINE"
+    "ABONAMENT_PFA"
    ],
-   "camp": "operatiuni_incluse",
+   "camp": "comision_plata_intrabancara",
    "valoare_num": 0,
-   "unitate": "numar",
-   "citat": "Primele 50 plăți interbancare în lei și euro prin Internet Banking*",
-   "incredere": 0.8,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
-  },
-  {
-   "url": "https://techventures.bank/storage/files/bilingv-lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-25022025.pdf",
-   "produse": [
-    "ABONAMENT_PRIME"
-   ],
-   "camp": "operatiuni_incluse",
-   "valoare_num": 0,
-   "unitate": "altele",
-   "citat": "Încasări intra și interbancare în lei",
-   "incredere": 0.8,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
-  },
-  {
-   "url": "https://techventures.bank/companii/credite-agricultura",
-   "produse": [
-    "CREDIT_APIA"
-   ],
-   "camp": "altele",
-   "valoare_num": 0,
-   "unitate": "altele",
-   "citat": "Acceptam garanții emise de fondurile de garantare",
-   "incredere": 0.8,
-   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+   "unitate": "lei",
+   "citat": "Plăți intrabancare în lei și euro prin Internet Banking",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   },
   {
    "url": "https://techventures.bank/companii/pachete-cont-curent",
    "produse": [
-    "CONT_DESTEPT"
+    "ABONAMENT_PFA"
    ],
-   "camp": "operatiuni_incluse",
+   "camp": "comision_incasare",
    "valoare_num": 0,
-   "unitate": "altele",
-   "citat": "Cont curent în lei și euro\nEmitere și administrare card de debit fizic contactless Mastercard Business\nLivrare card în România\nInternet și Mobile Banking\nÎncasări intra/interbancare în lei\nPlăți intrabancare în lei prin Internet Banking\nPrimele 5 plăți interbancare în lei prin Internet Banking",
-   "incredere": 0.85,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
+   "unitate": "lei",
+   "citat": "Încasări intra/interbancare în lei și euro",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+   "produse": [
+    "CARD_DEBIT_BUSINESS"
+   ],
+   "camp": "comision_emitere_card",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "(emitere, reînnoire card la expirare, 1 card în lei 1 card în lei 2 carduri în lei",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+   "produse": [
+    "CARD_DEBIT_BUSINESS"
+   ],
+   "camp": "comision_administrare_card",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "administrare, livrare card emis/reînnoit la",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-aplicabile-entitatilor-economice-01092026.pdf",
+   "produse": [
+    "ABONAMENT_PFA"
+   ],
+   "camp": "comision_plata_intrabancara",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Internet și Mobile Banking în lei în lei și euro în orice valută",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://techventures.bank/companii/pachete-cont-curent",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_plata_intrabancara",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Plăți intrabancare în lei prin Internet Banking",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://techventures.bank/companii/pachete-cont-curent",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "comision_incasare",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Încasări intra/interbancare în lei",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   }
  ]
 }

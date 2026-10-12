@@ -1,71 +1,41 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "brd",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.brd.ro/en/mastercardvisa-gold",
-      "tip": "html",
+      "url": "https://www.brd.ro/_files/pdf/Ghid_tarife_comisioane.pdf",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Debit Card Gold (MasterCard/Visa Gold)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată exclusiv cardului de debit Gold pentru persoane fizice, cu asigurare de călătorie gratuită, acces lounge și limite de tranzacție mai mari, corespunzând direct cardului de debit Gold Libra.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagină dedicată produsului, cu cifre concrete: 5 intrări gratuite/an în lounge condiționate de tranzacții de minim 1000 lei, plus plafoane de asigurare de călătorie (100.000 EUR, 500 EUR, 5.000 EUR).",
-      "citat": "You get 5 free entrances per year to the Business Lounges in the Priority Pass network, provided that transactions are made at POS or e-commerce worth at least 1000 lei, excluding bank transfers, settled in the previous month, but no later than 4 days before access to the lounge.",
-      "citat_verificat": false,
-      "avertisment": "citatul nu apare în textul primit",
-      "link_live": null
-    },
-    {
-      "url": "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/card-de-zi-cu-zi-gold",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Card de Zi cu Zi Gold (Card de debit Mastercard/Visa Gold)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pachet cu card de debit premium Gold, cont curent atașat, cashback, asigurare de călătorie și acces lounge pentru persoane fizice; segmentul firme nu e acoperit de acest pachet specific, dar tipul de produs (card debit premium) și beneficiile sunt echivalente cu CARD_DEBIT_GOLD.",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Gold în lei (Mastercard Gold / Visa Gold)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit premium Gold de la BRD, cu asigurare de călătorie, acces în lounge și reduceri. Diferențe: e doar pentru persoane fizice (Libra îl oferă și firmelor), costă 200 lei/an față de 48 lei/an la Libra și nu are retrageri gratuite incluse nici dobândă la sold.",
       "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată pachetului descrie explicit cardul de debit Gold, comision 0 și programul de cashback, deși cifrele complete apar mai degrabă în documentul conex (newsletter).",
-      "citat": "CARD DE ZI CU ZI GOLD include o gamă largă de produse și servicii bancare și extrabancare Icon CARD DE DEBIT MASTERCARD/VISA GOLD Cu un cont curent în lei atașat, ambele cu comision 0",
-      "citat_verificat": false,
-      "avertisment": "citatul nu apare în textul primit",
-      "link_live": null
-    },
-    {
-      "url": "https://www.brd.ro/_files/newsletters/Card_gold_website.html",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Card Gold în lei (pachet cont curent + card de debit Mastercard Gold)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Document de prezentare a pachetului cu cardul de debit Gold pentru persoane fizice, cu cifre exacte pentru retrageri gratuite, acces lounge și condiții de gratuitate a administrării, comparabile cu retragerile gratuite și taxa anuală din CARD_DEBIT_GOLD Libra.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document cu cifre explicite despre retrageri gratuite (nelimitat în România, de 2 ori/lună în străinătate) și condiția de venit de 8.000 lei/lună pentru gratuitate completă, direct legate de cardul de debit Gold.",
-      "citat": "GRATUIT si NELIMITAT poti retrage lei de la bancomatul oricarei banci din Romania. GRATUIT mai poti retrage valuta, de la bancomatul oricarei banci din strainatate, de 2 ori pe luna. ESTE GRATUIT IN PRIMELE 2 LUNI Comision 0 de administrare a pachetului, in luna deschiderii si in urmatoarea luna calendaristica. IL POTI AVEA GRATUIT SI DUPA CELE 2 LUNI Daca incasezi in conturile tale de la BRD un venit recurent de minimum 8.000 lei/luna.",
+      "explicatie_incredere": "Ghidul oficial de tarife pentru persoane fizice, în vigoare din 21.09.2026, are coloană separată pentru cardul de debit Gold în lei, cu emitere, administrare, reînnoire, retrageri ATM și interogare sold.",
+      "citat": "Tineri Standard A la Carte Gold Platinum Standard Gold Platinum Comisioane aferente operatiunilor conexe Furnizare card gratuit gratuit gratuit gratuit gratuit gratuit gratuit gratuit Reinnoire card gratuit gratuit gratuit gratuit gratuit gratuit gratuit gratuit Administrare anuala/ card3 10 lei 25 lei 50 lei 200 lei 450 lei",
+      "pagina_pdf": 8,
+      "dovada_metoda": "Text extras din PDF, pagina 8 (secțiunea 9. CARDURI DE DEBIT); nota 2 de la pagina 9 spune: Gold: Mastercard Gold, Visa Gold. Tot pe pagina 8: ATM BRD 1% min. 5 lei; ATM/POS alte bănci din România 1%+10 lei; interogare sold ATM/ROBO BRD gratuit.",
       "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/card-de-zi-cu-zi-gold",
-    "https://www.brd.ro/mastercardvisa-gold",
+    "https://www.brd.ro/_files/pdf/Ghid_tarife_comisioane.pdf",
     "https://www.brd.ro/en/mastercardvisa-gold",
-    "https://www.brd.ro/card-gold-upgrade"
+    "https://www.brd.ro/persoane-fizice/carduri/cardul-gold-debit-mastercard-visa"
   ],
-  "durata_s": 69,
+  "durata_s": 35,
   "consum": {
-    "intrare": 93322,
-    "iesire": 5547,
-    "citire_cache": 12704,
-    "scriere_cache": 29926,
+    "intrare": 14,
+    "iesire": 2063,
+    "citire_cache": 218063,
+    "scriere_cache": 96839,
     "apeluri": 1,
-    "cost_estimat_usd": 0.3194698
+    "cost_estimat_usd": 0.6127362000000001
   }
 }

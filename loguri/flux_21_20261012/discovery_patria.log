@@ -1,0 +1,102 @@
+Patria Bank: 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii patriabank.ro
+  [cautare] Patria Bank cont curent firme online IMM
+  [cautare] Patria Bank tarife comisioane persoane juridice PDF
+  [ 1] https://www.patriabank.ro/d/2142
+       ! url_not_allowed
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+  [ 3] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 4] https://www.patriabank.ro/d/2142
+  [ 5] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_allowed
+       ! url_not_accessible
+GATA    CONT_ONLINE_BUSINESS         3 surse, 0 citate verificate, similar, $0.35, 94s — Pachete de cont curent (UȘOR / PRACTIC / COMPLET) - Afaceri mici/Agro
+  ! CARD_DEBIT_BUSINESS: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  CARD_DEBIT_BUSINESS          ReadTimeout: The read operation timed out
+  ! ABONAMENT_PFA: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  ABONAMENT_PFA                ReadTimeout: The read operation timed out
+  [cautare] Patria Bank cont curent online persoane fizice
+  [cautare] Patria Bank tarife comisioane persoane fizice PDF
+  [ 1] https://www.patriabank.ro/d/1782
+  [ 2] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+       ! url_not_allowed
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent
+  [ 4] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/servicii-de-baza
+       ! too_many_requests
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent
+       ! url_not_accessible
+  [ 6] https://www.patriabank.ro/d/1782
+  [ 7] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+       ! url_not_allowed
+       ! too_many_requests
+  [ 8] https://www.patriabank.ro/d/22
+       ! url_not_allowed
+  [ 9] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/servicii-de-baza
+  [10] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent
+       ! too_many_requests
+       ! too_many_requests
+  [11] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/servicii-de-baza
+       ! url_not_accessible
+  [12] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent
+       ! too_many_requests
+  [13] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent
+       ! too_many_requests
+  [14] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+  ! CONT_ONLINE_PERSONAL: BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'This model does not support assistant message prefill. The conversation must end with a user message.'}, 'request_id': 'req_011Cfx3WEWyYNi54sTymhjxM'} (tentativa 1)
+  [cautare] Patria Bank card de debit comisioane
+  [cautare] Patria Bank tarife și comisioane persoane fizice PDF
+  [ 1] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! url_not_accessible
+  [ 2] https://www.patriabank.ro/d/1782
+  [ 3] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+       ! url_not_allowed
+       ! url_not_accessible
+  [cautare] patriabank.ro "tarife si comisioane PF valabila din 08.06.2026" site:patriabank.ro
+  [ 4] https://www.patriabank.ro/d/31
+       ! url_not_allowed
+GATA    CARD_DEBIT_FREE              3 surse, 0 citate verificate, similar, $0.49, 158s — Cardul de debit Patria Bank
+  [cautare] Patria Bank card de debit Gold
+  [cautare] Patria Bank tarife comisioane carduri PDF
+  [ 1] https://www.patriabank.ro/d/1782
+  [ 2] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! url_not_allowed
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/d/31
+  [ 4] https://www.patriabank.ro/d/1000
+       ! url_not_allowed
+       ! url_not_allowed
+  [ 5] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/servicii-de-baza
+  [ 6] https://www.patriabank.ro/persoane-fizice/digital-banking/patria-de-oriunde
+       ! too_many_requests
+       ! too_many_requests
+  [ 7] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/servicii-de-baza
+       ! url_not_accessible
+  [ 8] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! too_many_requests
+  [ 9] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! too_many_requests
+  [10] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! too_many_requests
+  [cautare] patriabank.ro lista taxe si comisioane persoane fizice pdf
+GATA    CARD_DEBIT_GOLD              3 surse, 0 citate verificate, similar, $0.68, 147s — Card Mastercard Gold (lei)
+  [cautare] Patria Bank RoPay plăți instant telefon
+  [cautare] Patria Bank plată instantă comision tarife
+  [ 1] https://www.patriabank.ro/d/1782
+  [ 2] https://www.patriabank.ro/d/2142
+       ! url_not_allowed
+       ! url_not_allowed
+  [ 3] https://www.patriabank.ro/d/27/lista-taxe-si-comisioane-pentru-persoane-juridice.pdf
+  [ 4] https://www.patriabank.ro/persoane-fizice/alte-servicii
+       ! url_not_allowed
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] Patria Bank "RoPay" alias telefon plata
+GATA    ROPAY                        3 surse, 0 citate verificate, echivalent, $0.35, 106s — Plăți Instant / Instant Payment (persoane fizice)
+EROARE  CONT_ONLINE_PERSONAL         timeout: nimic găsit în termen, după 1 ture și 0 pagini
+
+patria: 4/7 produse cu surse, 3 erori, cost estimat $1.87, durata 7 min
+Reia: python descopera_surse_libra.py --banca patria --produse CARD_DEBIT_BUSINESS,ABONAMENT_PFA,CONT_ONLINE_PERSONAL

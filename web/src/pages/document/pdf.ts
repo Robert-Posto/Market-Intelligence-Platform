@@ -28,6 +28,42 @@ export function incarcaDocument(url: string): PDFDocumentLoadingTask {
    „Lunar: 20 Lei” nu se regăsește într-un text extras ca „Lunar : 20 Lei”. */
 const strans = (s: string) => faraDiacritice(s).replace(/\s+/g, '')
 
+/** Câte caractere din începutul citatului se regăsesc în `s` (normalizate; căutare binară: dacă un
+ *  început se găsește, se găsesc și cele mai scurte). */
+function prefixGasit(s: string, cauta: string): number {
+  if (s.includes(cauta)) return cauta.length
+  let lo = 0
+  let hi = cauta.length - 1
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >> 1
+    if (s.includes(cauta.slice(0, mid))) lo = mid
+    else hi = mid - 1
+  }
+  return lo
+}
+/* Sub atâtea caractere potrivite, locul găsit poate fi oricare frază care începe la fel. */
+const MIN_POTRIVIT = 18
+
+/**
+ * Prima pagină care conține citatul, după același text normalizat ca evidențierea (`marcaje`), sau
+ * null. Pentru linkurile fără pagină: valorile fluxului Libra nu țin minte pagina din PDF.
+ */
+export async function paginaCuCitat(doc: PDFDocumentProxy, citat: string): Promise<number | null> {
+  const cauta = strans(citat)
+  if (cauta.length < 4) return null
+  // pagina care potrivește cea mai lungă parte din citat: la un rând de tabel citatul întreg nu apare
+  // lipit (cifrele stau în celule separate), iar o notă de subsol care începe la fel nu e locul lui
+  let best = { n: 0, len: 0 }
+  for (let n = 1; n <= doc.numPages; n++) {
+    const tc = await (await doc.getPage(n)).getTextContent()
+    const text = tc.items.filter((i): i is TextItem => 'str' in i).map((x) => strans(x.str)).join('')
+    const len = prefixGasit(text, cauta)
+    if (len === cauta.length) return n
+    if (len > best.len) best = { n, len }
+  }
+  return best.len >= Math.min(cauta.length, MIN_POTRIVIT) ? best.n : null
+}
+
 export interface Dreptunghi {
   left: number
   top: number
@@ -45,33 +81,36 @@ export function marcaje(tc: TextContent, viewport: PageViewport, citat: string):
   if (!citat) return []
   const cauta = strans(citat)
   if (cauta.length < 4) return []
-  // un citat lung poate trece de 14 fragmente: atunci ajung primele 18 caractere
-  const contine = (s: string) => s.includes(cauta) || (cauta.length > 18 && s.includes(cauta.slice(0, 18)))
   const it = tc.items.filter((i): i is TextItem => 'str' in i && !!i.str.trim())
   const lipite = it.map((x) => strans(x.str))
-  // se încearcă ferestre de fragmente consecutive
-  for (let i = 0; i < it.length; i++) {
+  /* Se încearcă ferestre de fragmente consecutive și câștigă cea care potrivește cea mai lungă parte
+     din citat (citatul întreg, dacă apare). Până pe 12.10.2026 câștiga prima care conținea primele
+     18 caractere: la Raiffeisen IMM, citatul „Comision lunar de administrare Pachet de cont curent
+     (lei) 39 59 89 129 199” (rând de tabel, cifrele în celule separate) se evidenția pe nota de
+     subsol „Comision lunar de administrare Pachet de cont curent START NU se datorează…”. */
+  let best = { len: 0, i: 0, j: 0 }
+  cauta_ferestre: for (let i = 0; i < it.length; i++) {
     let acc = ''
     for (let j = i; j < Math.min(i + 14, it.length); j++) {
       acc += lipite[j]
-      if (contine(acc)) {
-        /* Fereastra pornește de la primul fragment încercat, deci prindea și
-           până la ~140 de caractere dinaintea citatului: în pdf.html, la
-           „Lunar: 20 Lei, în echivalent” (BCR, cont în valută, 05.10.2026) se
-           colorau 14 fragmente, cu fraza de deasupra tabelului și antetul lui;
-           citatul are 5. Se strânge de la stânga cât timp restul îl conține. */
-        let k = i
-        while (k < j && contine(lipite.slice(k + 1, j + 1).join(''))) k++
-        return it.slice(k, j + 1).map((x) => {
-          const t = Util.transform(viewport.transform, x.transform) as number[]
-          const h = Math.hypot(t[2]!, t[3]!) || x.height
-          return { left: t[4]!, top: t[5]! - h, width: x.width * viewport.scale, height: h * 1.18 }
-        })
-      }
+      const len = prefixGasit(acc, cauta)
+      if (len > best.len) best = { len, i, j }
+      if (len === cauta.length) break cauta_ferestre
       if (acc.length > cauta.length + 140) break
     }
   }
-  return []
+  if (best.len < Math.min(cauta.length, MIN_POTRIVIT)) return []
+  /* Fereastra pornește de la primul fragment încercat, deci prindea și până la ~140 de caractere
+     dinaintea citatului: în pdf.html, la „Lunar: 20 Lei, în echivalent” (BCR, cont în valută,
+     05.10.2026) se colorau 14 fragmente, cu fraza de deasupra tabelului și antetul lui; citatul are
+     5. Se strânge de la stânga cât timp restul potrivește la fel de mult. */
+  let k = best.i
+  while (k < best.j && prefixGasit(lipite.slice(k + 1, best.j + 1).join(''), cauta) >= best.len) k++
+  return it.slice(k, best.j + 1).map((x) => {
+    const t = Util.transform(viewport.transform, x.transform) as number[]
+    const h = Math.hypot(t[2]!, t[3]!) || x.height
+    return { left: t[4]!, top: t[5]! - h, width: x.width * viewport.scale, height: h * 1.18 }
+  })
 }
 
 /**

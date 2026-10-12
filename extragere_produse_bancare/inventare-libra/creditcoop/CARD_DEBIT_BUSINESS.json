@@ -1,26 +1,28 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "creditcoop",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "CREDITCOOP nu oferă card de debit pentru persoane juridice. Secțiunea Business/Afaceri a site-ului (Credite, Conturi și operațiuni, Depozite, Internet Banking) nu conține deloc o categorie de Carduri. Singurul produs de card identificat pe site este Cardul de Credit VISA Classic, destinat exclusiv persoanelor fizice (acte necesare: CI, dovadă venit, coplătitor), fără variantă de debit și fără segment business. Nu există, așadar, niciun produs echivalent sau similar pentru CARD_DEBIT_BUSINESS."
+    "nota": "CREDITCOOP nu prezintă public niciun card de debit pentru persoane juridice/PFA. Secțiunea Business are doar credite, depozite, conturi curente PJ (pagina nu menționează carduri) și internet banking. Singurul card de pe site este Cardul de Credit VISA Classic, numai pentru persoane fizice, deci alt tip de produs și alt segment. Pe pagina Documente apar doar documente de informare pentru conturi de plăți ale persoanelor fizice, fără o listă de tarife pentru PJ."
   },
   "candidati_respinsi": [],
   "deschise": [
+    "https://www.creditcoop.ro/",
     "https://www.creditcoop.ro/carduri/",
-    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/"
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
+    "https://www.creditcoop.ro/documente/"
   ],
-  "durata_s": 16,
+  "durata_s": 18,
   "consum": {
-    "intrare": 8,
-    "iesire": 1178,
-    "citire_cache": 55752,
-    "scriere_cache": 41479,
+    "intrare": 12,
+    "iesire": 688,
+    "citire_cache": 111128,
+    "scriere_cache": 60025,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1266439
+    "cost_estimat_usd": 0.35838420000000004
   }
 }

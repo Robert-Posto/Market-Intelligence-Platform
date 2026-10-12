@@ -1,105 +1,178 @@
 {
  "banca": "procredit",
- "total": 8,
+ "total": 14,
  "pe_motiv": {
-  "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr": 7,
-  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 1
+  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 9,
+  "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 3,
+  "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr": 2
  },
  "valori": [
   {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
    "produse": [
-    "ABONAMENT_PRESTIGE"
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_retragere_atm",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "România în limita a 5.000 LEI/zi/maxim 10 tranzactii/zi",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_retragere_atm",
+   "valoare_num": 0,
+   "unitate": "eur",
+   "citat": "de la ATM-urile ProCredit România în limita a 2.000",
+   "incredere": 0.75,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_plata_interbancara",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "MB@nk, în regim normal și pentru sume <50.000LEI",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Plăți instant ≤ LEI 5.000",
+   "incredere": 0.6,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_retragere_atm",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "✔ LEI, în limita a 5 000 LEI/zi",
+   "incredere": 0.85,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_retragere_atm",
+   "valoare_num": 0,
+   "unitate": "eur",
+   "citat": "✔ EURO, în limita a 2000 EURO/zi",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/companii/pachet-grow/",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
    ],
    "camp": "operatiuni_incluse",
    "valoare_num": 0,
    "unitate": "altele",
-   "citat": "3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Pachet servicii bancare Card Visa debit (maxim trei carduri incluse)",
-   "incredere": 0.85,
+   "citat": "Plăți naționale sub 50.000 de lei",
+   "incredere": 0.75,
    "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
   },
   {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+   "url": "https://www.procreditbank.ro/companii/pachet-grow/",
    "produse": [
-    "ABONAMENT_PRIME"
+    "CONT_ONLINE_BUSINESS"
    ],
-   "camp": "operatiuni_incluse",
+   "camp": "altele",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Acces în ProB@nking Plus (Internet Banking)",
+   "incredere": 0.8,
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://www.procreditbank.ro/companii/pachet-grow/",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "altele",
    "valoare_num": 0,
    "unitate": "altele",
-   "citat": "3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Pachet servicii bancare Card Visa debit (maxim trei carduri incluse)",
+   "citat": "1 cont curent lei + 2 conturi în valută",
    "incredere": 0.85,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
+   "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
   },
   {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+   "produse": [
+    "CARD_DEBIT_FREE"
+   ],
+   "camp": "comision_retragere_atm",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Retrageri numerar (LEI) de la ATM-urile din 01",
+   "incredere": 0.7,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+   "produse": [
+    "CARD_DEBIT_FREE"
+   ],
+   "camp": "comision_retragere_atm_alta_banca",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Retrageri numerar (LEI) de la ATM-urile din 01",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf",
    "produse": [
     "ABONAMENT_PFA"
    ],
    "camp": "operatiuni_incluse",
    "valoare_num": 0,
    "unitate": "altele",
-   "citat": "Cont curent în LEI Cont de economii în LEI Cont curent Card Visa debit (maxim două carduri incluse) Serviciul Info SMS (Încasări și tranzacții cu cardul) – 0,5 lei/SMS1 Serviciul Info SMS pentru plata instrumentelor de debit – 0,5 lei/SMS1",
-   "incredere": 0.85,
+   "citat": "Plăți naționale până în 50.000 lei incluse2",
+   "incredere": 0.7,
    "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
   },
   {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
    "produse": [
-    "ABONAMENT_SHINE"
+    "CARD_DEBIT_GOLD"
    ],
-   "camp": "operatiuni_incluse",
-   "valoare_num": 0,
-   "unitate": "altele",
-   "citat": "3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Pachet servicii bancare Card Visa debit (maxim trei carduri incluse)",
-   "incredere": 0.9,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
-  },
-  {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
-   "produse": [
-    "ABONAMENT_ELITE"
-   ],
-   "camp": "operatiuni_incluse",
-   "valoare_num": 0,
-   "unitate": "numar",
-   "citat": "3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Pachet servicii bancare Card Visa debit (maxim trei carduri incluse)",
-   "incredere": 0.9,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
-  },
-  {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-August-2026.pdf",
-   "produse": [
-    "ABONAMENT_RISE"
-   ],
-   "camp": "operatiuni_incluse",
-   "valoare_num": 0,
-   "unitate": "altele",
-   "citat": "3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Pachet servicii bancare Card Visa debit (maxim trei carduri incluse)",
-   "incredere": 0.9,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
-  },
-  {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
-   "produse": [
-    "ABONAMENT_OPERATIONAL"
-   ],
-   "camp": "operatiuni_incluse",
-   "valoare_num": 0,
-   "unitate": "altele",
-   "citat": "3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Pachet servicii bancare Card Visa debit (maxim trei carduri incluse)",
-   "incredere": 0.85,
-   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
-  },
-  {
-   "url": "https://www.procreditbank.ro/wp-content/uploads/2025/01/Lista-de-preturi-persoane-fizice-_-04.12.2024_final.pdf",
-   "produse": [
-    "CONT_ONLINE_PERSONAL"
-   ],
-   "camp": "cost_lunar",
+   "camp": "comision_retragere_atm",
    "valoare_num": 0,
    "unitate": "lei",
-   "citat": "Cont de economii în LEI - FlexSave O LEI*",
-   "incredere": 0.85,
+   "citat": "Retrageri numerar (LEI) de la ATM-uri din 03",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+   "produse": [
+    "CARD_DEBIT_GOLD"
+   ],
+   "camp": "comision_retragere_atm_alta_banca",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Retrageri numerar (LEI) de la ATM-uri din 03",
+   "incredere": 0.75,
    "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   }
  ]

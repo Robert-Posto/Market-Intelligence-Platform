@@ -1,0 +1,59 @@
+Banca Centrală Cooperatistă CREDITCOOP: 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii creditcoop.ro
+  [cautare] creditcoop.ro card debit business persoane juridice
+  [cautare] creditcoop.ro tarife comisioane card persoane juridice
+  [ 1] https://www.creditcoop.ro/carduri/
+  [ 2] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [cautare] creditcoop card de debit persoane juridice
+  [ 4] https://www.creditcoop.ro/documente/
+GOL     CARD_DEBIT_BUSINESS          produs_inexistent: CREDITCOOP nu oferă niciun produs de card (debit sau credit) pentru persoane juridice. Men, $0.24
+  [cautare] creditcoop.ro card de debit comisioane
+  [cautare] creditcoop.ro tarife comisioane card debit PDF
+  [ 1] https://www.creditcoop.ro/carduri/
+  [ 2] https://www.creditcoop.ro/internet-banking-cu-creditcoop/
+  [ 3] https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf
+  [ 4] https://www.creditcoop.ro/cont-de-plati-persoane-fizice/
+GOL     CARD_DEBIT_FREE              produs_inexistent: CREDITCOOP nu oferă carduri de debit. Documentul oficial de comisioane pentru contul de pl, $0.18
+  [cautare] creditcoop.ro cont curent persoane juridice comisioane
+  [cautare] creditcoop cont online business firme
+  [ 1] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 2] https://www.creditcoop.ro/
+       ! url_not_in_prior_context
+  [ 3] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 4] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro "persoane juridice" comisioane pdf tarife cont curent
+GATA    CONT_ONLINE_BUSINESS         2 surse, 1 citate verificate, similar, $0.22, 50s — Conturi curente – Persoane juridice
+  [cautare] creditcoop.ro card debit tarife comisioane
+  [ 1] https://www.creditcoop.ro/
+  [ 2] https://www.creditcoop.ro/carduri/
+  [ 3] https://www.creditcoop.ro/documente/
+  [ 4] https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf
+GOL     CARD_DEBIT_GOLD              produs_inexistent: CREDITCOOP nu oferă niciun card de debit; documentul oficial de comisioane pentru contul d, $0.17
+  [cautare] creditcoop.ro cont curent persoane fizice online
+  [cautare] creditcoop.ro tarife comisioane persoane fizice pdf
+  [ 1] https://www.creditcoop.ro/cont-de-plati-persoane-fizice/
+  [cautare] creditcoop.ro "lista de tarife" OR "comisioane" persoane fizice pdf card
+  [ 2] https://www.creditcoop.ro/documente/
+  [ 3] https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf
+GATA    CONT_ONLINE_PERSONAL         1 surse, 0 citate verificate, similar, $0.22, 32s — Cont curent în lei (Cont de plăți – Persoane fizice)
+  [cautare] creditcoop.ro cont curent PFA comisioane
+  [cautare] creditcoop.ro tarife comisioane persoane juridice PDF
+  [ 1] https://noul.creditcoop.ro/ro/conturi-curente-persoane-juridice
+  [ 2] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+       ! url_not_in_prior_context
+       ! url_not_in_prior_context
+  [ 3] https://noul.creditcoop.ro/ro/produse-credite-persoane-juridice
+  [ 4] https://www.creditcoop.ro/
+       ! url_not_allowed
+  [ 5] https://www.creditcoop.ro/conturi-curente-persoane-juridice/
+  [ 6] https://www.creditcoop.ro/documente/
+  [cautare] creditcoop.ro "persoane juridice" comisioane cont curent tarife PDF
+GATA    ABONAMENT_PFA                3 surse, 1 citate verificate, similar, $0.30, 107s — Condiții Generale de Afaceri – limite de plată Persoane juridice
+  [cautare] creditcoop RoPay plăți instant telefon
+  [cautare] creditcoop.ro plata instanta comision tarife
+  [ 1] https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf
+  [cautare] creditcoop RoPay
+GATA    ROPAY                        1 surse, 0 citate verificate, similar, $0.44, 49s — Servicii de Plăți Instant
+
+creditcoop: 4/7 produse cu surse, 0 erori, cost estimat $1.77, durata 2 min

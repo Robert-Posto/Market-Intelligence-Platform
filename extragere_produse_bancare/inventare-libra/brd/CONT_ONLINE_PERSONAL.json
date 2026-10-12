@@ -3,69 +3,43 @@
   "banca": "brd",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.brd.ro/_files/pdf/Ghid_tarife_comisioane.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Cont Curent (pachete Card de Zi cu Zi / Card Gold), deschis inclusiv 100% online",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Contul curent standard pentru persoane fizice la BRD (pachetele Card de Zi cu Zi/Card Gold) poate fi deschis 100% online prin fluxul de remote onboarding al bancii; tarifele din acest ghid se aplica indiferent de canalul de deschidere.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Document oficial de tarife, in vigoare, cu toate campurile cheie (administrare cont, carduri, transferuri, ATM) pentru contul curent PF.",
-      "citat": "Deschidere cont curent gratuit gratuit Administrare conturi curente 8 lei/luna/cont 15 lei/luna/cont (echiv. in valuta contului)",
-      "pagina_pdf": 2,
-      "citat_verificat": null,
-      "avertisment": "citat scurt (16 cuvinte)",
-      "link_live": null
-    },
-    {
-      "url": "https://www.brd.ro/_files/pdf/Document%20de%20informare%20cu%20privire%20la%20comisioane_Cont%20curent%20in%20lei.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Cont curent in lei (document de informare standardizat FIPC)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul FIPC standardizat pentru contul curent in lei pentru persoane fizice, aceeasi categorie de produs ca si contul online personal Libra; valorile coincid cu Ghidul de tarife in vigoare.",
+      "denumire_la_banca": "Pachet de cont curent CARD DE ZI CU ZI (Simplu / Plus) – deschidere 100% online prin YOU BRD / Digital Station",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "BRD nu are un cont curent PF dedicat exclusiv canalului online; deschiderea 100% online (Digital Station, YOU BRD) se face pentru pachetele de cont curent Card de Zi cu Zi. Diferența: e un pachet (cont + card de debit + YOU BRD) cu preț condiționat de tranzacții/încasări, nu un cont simplu exclusiv online. Ghidul conține toate câmpurile cheie: preț pachet (5 lei/lună Simplu, 15 lei/lună Plus fără condiție), deschidere cont gratuit, administrare card Standard 25 lei/an, furnizare card gratuit, plată interbancară YOU BRD 6 lei, retragere ATM BRD 1% min. 5 lei, interogare sold ATM BRD gratuit, extras prin poștă 10 lei, închidere pachet 0 lei.",
       "incredere": 0.8,
-      "explicatie_incredere": "Document precontractual standardizat UE cu toate campurile cheie reunite intr-un singur tabel, consistent cu ghidul oficial de tarife.",
-      "citat": "Administrarea contului (lei) Lunar: 8 lei Emiterea unui card de debit (lei) 0 lei Administrare card de debit (lei) Anual: 25 lei Retrageri de numerar in lei de la ATM-ul bancii 1%, min. 5 lei/operatiune Plati interbancare in lei Canale electronice: 6 lei/operatiune",
-      "pagina_pdf": 1,
+      "explicatie_incredere": "Ghidul oficial de tarife PF, în vigoare din 21.09.2026, listează explicit pachetele Card de Zi cu Zi cu prețuri și toate comisioanele aplicabile contului curent și cardului de debit.",
+      "citat": "CARD DE ZI CU ZI SIMPLU LEI CARD DE ZI CU ZI PLUS LEI CARD DE ZI CU ZI GOLD LEI CARD DE ZI CU ZI PLATINUM LEI Pret pachet /luna cu indeplinirea conditie de pachet 0 lei/luna pana la 26 ani 0 lei/luna 0 lei/luna 0 lei/luna 0 lei/luna",
+      "pagina_pdf": 3,
+      "incredere_metoda": 0.9,
+      "dovada_metoda": "PDF primit integral ca text; cifrele apar în conținut (pag. 2-9).",
       "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.brd.ro/persoane-fizice/digital-banking/digital-station",
-      "tip": "html",
-      "metoda": "playwright",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Digital Station - deschidere cont curent online",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicata hub-ului digital BRD descrie explicit fluxul de deschidere a unui cont curent 100% online pentru persoane fizice, cu alegerea intre pachetele Card de Zi cu Zi sau Card Gold, exact segmentul si tipul de produs ca CONT_ONLINE_PERSONAL.",
-      "incredere": 0.65,
-      "explicatie_incredere": "Pagina confirma existenta si fluxul produsului (cont curent 100% online), dar valorile numerice complete se regasesc doar in ghidul de tarife; continutul cu cifre a fost vazut in motorul de cautare, nu in HTML brut (randare JS).",
-      "citat": "Ai posibilitatea sa alegi oricare dintre cele 2 pachete de cont curent in lei (Card de Zi cu Zi sau Card Gold) si obtii: un card de debit atasat unui cont curent deschis in lei, ambele cu administrare gratuita",
-      "citat_verificat": false,
-      "avertisment": "citatul nu apare în textul primit",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
+    "https://www.brd.ro/",
+    "https://www.brd.ro/persoane-fizice/operatiuni-curente/cont-curent",
+    "https://www.brd.ro/tarife-si-comisioane",
+    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/carduri-de-zi-cu-zi",
     "https://www.brd.ro/_files/pdf/Ghid_tarife_comisioane.pdf",
-    "https://www.brd.ro/persoane-fizice/digital-banking/digital-station",
-    "https://www.brd.ro/_files/pdf/Document%20de%20informare%20cu%20privire%20la%20comisioane_Cont%20curent%20in%20lei.pdf"
+    "https://www.brd.ro/you"
   ],
   "durata_s": 66,
   "consum": {
-    "intrare": 8,
-    "iesire": 5256,
-    "citire_cache": 130850,
-    "scriere_cache": 91842,
+    "intrare": 16,
+    "iesire": 3203,
+    "citire_cache": 354624,
+    "scriere_cache": 132070,
     "apeluri": 1,
-    "cost_estimat_usd": 0.308351
+    "cost_estimat_usd": 0.8663236
   }
 }

@@ -1,10 +1,15 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "creditcoop",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
-  "surse": [
+  "model": "claude-opus-5-5",
+  "surse": [],
+  "gol": {
+    "motiv": "potrivire_slaba",
+    "nota": "cel mai apropiat: Conturi curente – Persoane juridice (încredere 0.55) — Este contul curent pentru firme al CREDITCOOP, administrabil prin internet banking (creditcoop.online), dar se deschide la agenție, nu exclusiv online. Banca nu publică abonamente operaționale, iar cardul business nu apare pe pagină."
+  },
+  "candidati_respinsi": [
     {
       "url": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
       "tip": "html",
@@ -12,47 +17,29 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Conturi curente – Persoane juridice",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este tot un cont curent dedicat persoanelor juridice (firme), dar la CREDITCOOP deschiderea se face la ghișeu (documentele de firmă se depun la sucursală) și operarea se face atât la ghișeu cât și prin internet banking (creditcoop.online), nu exclusiv online ca la Libra; nu există mențiune despre un card business inclus în pachet.",
-      "incredere": 0.75,
-      "incredere_metoda": 1,
-      "explicatie_incredere": "Pagina dedicată conturilor curente pentru persoane juridice conține cifre concrete despre limite de tranzacționare și ore limită, dar nu menționează deschidere/gestionare exclusiv online nici card business atașat.",
-      "citat": "Limită zilnică* 200.000 lei Limita pe tranzacție* 50.000 Lei * Limita zilnică și limita pe tranzacție pot fi modificate doar cu aprobarea expresă",
-      "pagina_pdf": null,
-      "citat_verificat": true,
-      "link_live": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/#:~:text=Limit%C4%83%20zilnic%C4%83%2A%20200.000%20lei%20Limita,modificate%20doar%20cu%20aprobarea%20expres%C4%83"
-    },
-    {
-      "url": "https://www.creditcoop.ro/internet-banking-afaceri/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "conditii",
-      "denumire_la_banca": "Internet Banking Afaceri – creditcoop.online",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Descrie canalul online pentru gestionarea conturilor de firmă (transferuri, plăți facturi, verificare solduri), echivalent parțial cu componenta online a Cont Online Business, dar este un serviciu adițional de internet banking, nu un cont definit ca fiind deschis exclusiv online.",
+      "motiv_potrivire": "Este contul curent pentru firme al CREDITCOOP, administrabil prin internet banking (creditcoop.online), dar se deschide la agenție, nu exclusiv online. Banca nu publică abonamente operaționale, iar cardul business nu apare pe pagină.",
       "incredere": 0.55,
-      "incredere_metoda": 1,
-      "explicatie_incredere": "Pagina confirmă existența unei platforme digitale dedicate persoanelor juridice, dar nu conține cifre (comisioane, dobânzi, sume) legate de contul în sine.",
-      "citat": "Gândită special pentru nevoile persoanelor juridice, această soluție îți permite să gestionezi eficient finanțele companiei tale, oricând și oriunde.",
+      "explicatie_incredere": "Pagina dedicată contului curent pentru firme are doar limite pe tranzacție și ore limită; nu are comisioane, costuri lunare sau tarife, iar lista de tarife pentru firme nu este publicată pe site.",
+      "citat": "Aceste limite se aplică tuturor ordinelor de plată, cu excepția transferurilor care au loc între conturile proprii, și operațiunilor de constituire/lichidare depozite la termen.",
+      "dovada_metoda": "Tabelele cu limite (200.000 lei pe zi, 50.000 lei pe tranzacție) și cu orele limită apar în textul HTML extras.",
+      "incredere_metoda": 0.8,
       "citat_verificat": true,
-      "avertisment": "citat scurt (19 cuvinte)",
-      "link_live": "https://www.creditcoop.ro/internet-banking-afaceri/#:~:text=G%C3%A2ndit%C4%83%20special%20pentru%20nevoile%20persoanelor,companiei%20tale%2C%20oric%C3%A2nd%20%C8%99i%20oriunde."
+      "link_live": "https://www.creditcoop.ro/conturi-curente-persoane-juridice/#:~:text=Aceste%20limite%20se%20aplic%C4%83%20tuturor,de%20constituire%2Flichidare%20depozite%20la%20termen."
     }
   ],
-  "gol": null,
-  "candidati_respinsi": [],
   "deschise": [
+    "https://www.creditcoop.ro/",
     "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
-    "https://www.creditcoop.ro/internet-banking-afaceri/",
-    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
-    "https://www.creditcoop.ro/documente/"
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/internet-banking-afaceri/"
   ],
-  "durata_s": 33,
+  "durata_s": 25,
   "consum": {
-    "intrare": 8,
-    "iesire": 2100,
-    "citire_cache": 62016,
-    "scriere_cache": 54502,
+    "intrare": 10,
+    "iesire": 1552,
+    "citire_cache": 62760,
+    "scriere_cache": 57524,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1696742
+    "cost_estimat_usd": 0.343804
   }
 }

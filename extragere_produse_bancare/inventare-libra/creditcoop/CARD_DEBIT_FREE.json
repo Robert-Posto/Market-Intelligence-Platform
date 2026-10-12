@@ -1,27 +1,29 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "creditcoop",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "CREDITCOOP nu are în portofoliu un card de debit. Singurul produs de tip card listat pe site, atât pentru persoane fizice cât și structura de meniu pentru Business, este 'Card de Credit VISA Classic' (acces la o linie de credit, dobândă fixă 25%/an, perioadă de grație 52 zile, rambursare minimă 5%/lună) - un produs fundamental diferit (card de credit, nu de debit) și nu apare nicio variantă de card de debit nici în secțiunea Personal, nici în cea Business/Afaceri. Nu există, deci, nici un echivalent, nici un similar pentru CARD_DEBIT_FREE."
+    "nota": "CREDITCOOP nu emite card de debit. Documentul oficial de informare privind comisioanele (cont curent în lei, data 31.08.2026, https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf) scrie la rândul „Furnizarea unui card de debit”: „Serviciul nu este disponibil”. Pagina Carduri (https://www.creditcoop.ro/carduri/) prezintă doar Cardul de Credit VISA Classic, iar acesta este un alt tip de produs (card de credit, doar pentru persoane fizice). Pagina pentru conturile curente ale persoanelor juridice nu pomenește niciun card."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.creditcoop.ro/",
     "https://www.creditcoop.ro/carduri/",
-    "https://www.creditcoop.ro/cont-de-plati-persoane-fizice/"
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/"
   ],
   "durata_s": 17,
   "consum": {
-    "intrare": 6,
-    "iesire": 1149,
-    "citire_cache": 30855,
-    "scriere_cache": 46376,
+    "intrare": 10,
+    "iesire": 772,
+    "citire_cache": 62021,
+    "scriere_cache": 55345,
     "apeluri": 1,
-    "cost_estimat_usd": 0.133613
+    "cost_estimat_usd": 0.3170134
   }
 }

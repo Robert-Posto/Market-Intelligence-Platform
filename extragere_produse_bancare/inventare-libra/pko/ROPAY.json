@@ -1,26 +1,29 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "pko",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Sucursala PKO Bank Polski din București deservește exclusiv clienți corporate (persoane juridice), nu persoane fizice, deci segmentul nu corespunde cu RoPay (fizice+juridice). În plus, lista de produse a sucursalei (conturi, cash pooling, carduri Visa Business, credite, finanțare comercială) nu include niciun produs de plăți mobile instant prin telefon de tip RoPay/BLIK. Cel mai apropiat produs este transferul instant SEPA (TIPS) din platforma iPKO biznes, dar acesta e un transfer bancar clasic IBAN-to-IBAN pentru companii, nu o plată prin număr de telefon, deci diferă fundamental ca mecanism și segment de produsul Libra."
+    "nota": "PKO Bank Polski Sucursala București deservește doar clienți corporate (fără persoane fizice) și nu oferă RoPay sau alte plăți prin număr de telefon/alias, nici plăți instant în lei. Singura plată instant este transferul instant SEPA (TIPS) în EUR, inițiat din iPKO biznes de la 19.06.2026, cu comision egal cu cel al unui transfer SEPA standard. Lista de prețuri în vigoare de la 01.05.2026 (https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf) are doar plăți interne obișnuite în RON prin SENT: 8 RON trimise prin banca electronică, 12 RON pe hârtie, 0 RON la primire. ReGIS costă 10 RON online și 3 RON la primire. Acestea sunt plăți generale pentru firme, nu un produs de tip RoPay."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.pkobp.pl/ro/filiala-romania",
-    "https://www.pkobp.pl/ro/filiala-romania/produse"
+    "https://www.pkobp.pl/ro/filiala-romania/produse",
+    "https://www.pkobp.pl/ro/filiala-romania/documente",
+    "https://www.pkobp.pl/api/public/496b3921-7d8c-4694-9ac7-738457471fab.pdf?content-disposition=filename=Lista_de_preturi_(cu_1.05.2026).pdf",
+    "https://www.pkobp.pl/ro/filiala-romania/stiri/transfer-instant-sepa-in-ipko-biznes"
   ],
-  "durata_s": 22,
+  "durata_s": 21,
   "consum": {
-    "intrare": 6,
-    "iesire": 1726,
-    "citire_cache": 23894,
-    "scriere_cache": 19738,
+    "intrare": 12,
+    "iesire": 1666,
+    "citire_cache": 85180,
+    "scriere_cache": 54787,
     "apeluri": 1,
-    "cost_estimat_usd": 0.07139580000000001
+    "cost_estimat_usd": 0.34137500000000004
   }
 }

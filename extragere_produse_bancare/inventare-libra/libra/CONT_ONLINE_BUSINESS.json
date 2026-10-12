@@ -3,36 +3,38 @@
   "banca": "libra",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.librabank.ro/cont_online_business",
+      "url": "https://www.librabank.ro/deschidere-cont-bancar-online-persoane-juridice",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Cont Online Business (abonamente operaționale companii)",
+      "denumire_la_banca": "Cont online business (abonamente operaționale Cont Deștept, Rise IMM, Shine IMM, Prime, Elite, Prestige)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată contului curent pentru persoane juridice deschis online, cu tabelul de abonamente operaționale (Prime/Elite/Prestige) aplicabil tuturor companiilor indiferent de cifra de afaceri, incluzând costul lunar al abonamentului și numărul de operațiuni incluse (plăți, încasări).",
-      "incredere": 0.9,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Pagina produsului conține explicit tabelul cu cost lunar (95/225/295 lei) și numărul de plăți/încasări incluse lunar pentru fiecare variantă de abonament al Cont Online Business.",
-      "citat": "Plăți online euro SEPA · - · 50 · Nelimitat Încasări lei · 25 · 50 · Nelimitat Încasări euro · - · 50 · Nelimitat Încasări / plăți cec, bilet la ordin, cambie · - · 50 · Nelimitat mPOS – comision carduri persoane fizice · 0,59% · 0,59% · 0,59% Card Business Standard · pana la 2 carduri · pana la 3 carduri · pana la 5 carduri Card Business Gold · - · - · pana la 2 carduri Cost lunar · 95 lei · 225 lei · 295 lei",
+      "motiv_potrivire": "Pagina dedicată Contului Online Business, cu prețurile abonamentelor operaționale și numărul de operațiuni incluse, care nu apar în lista de tarife.",
+      "incredere": 0.92,
+      "explicatie_incredere": "Pagina dedicată produsului afișează în text prețurile lunare ale abonamentelor (50, 100, 95, 225, 295 lei/lună) și plățile/încasările incluse.",
+      "citat": "| Card Business Gold | - | - | până la 2 |\n| mPOS – comision carduri persoane fizice | 0,59% | 0,59% | 0,59% |\n| | ✦ Gratuit 12 luni | 50 lei/lună | 100 lei/lună |",
+      "dovada_metoda": "Cifrele apar direct în tabelele HTML extrase (inclusiv 'Plăți lei din aplicație, inclusiv plăți instant / lunar | 25 | 50 | Nelimitat').",
+      "incredere_metoda": 0.85,
       "citat_verificat": true,
-      "link_live": "https://www.librabank.ro/cont_online_business#:~:text=Pl%C4%83%C8%9Bi%20online%20euro%20SEPA%20%C2%B7,225%20lei%20%C2%B7%20295%20lei"
+      "link_live": "https://www.librabank.ro/deschidere-cont-bancar-online-persoane-juridice#:~:text=%7C%20Card%20Business%20Gold%20%7C,lei%2Flun%C4%83%20%7C%20100%20lei%2Flun%C4%83%20%7C"
     },
     {
       "url": "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Tarife și comisioane – Persoane Juridice (aplicabil Cont Online Business)",
+      "denumire_la_banca": "Tarife si comisioane – Persoane juridice si alte forme de organizare (V_52)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane juridice, linkat direct din pagina Cont Online Business, conține comisioanele de transfer intrabancar, interbancar și depunerea de numerar aplicabile contului curent PJ.",
+      "motiv_potrivire": "Lista oficială de tarife PJ a Libra, aplicabilă contului curent business deschis online: deschidere, administrare, depunere numerar, plăți online interne și interbancare, extras.",
       "incredere": 0.85,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Document oficial, în vigoare (Versiunea V_52), cu rândurile explicite pentru depunere numerar, administrare cont PJ (10 lei/lună) și comisioanele de plată intrabancară/interbancară prin internet/mobile banking, câmpuri care completează ce lipsește din pagina de produs.",
+      "explicatie_incredere": "Document oficial în vigoare (V_52) cu comisioanele standard ale contului curent PJ, fără a numi explicit 'Cont Online Business'.",
+      "citat": "Deschidere cont Persoane Juridice gratuit\nDeschidere cont Alte Forme de Organizare gratuit\nAdministrare cont Persoane Juridice* 10 lei / cont/ luna\nAdministrare cont Alte Forme de Organizare 5 lei / cont/ luna",
       "pagina_pdf": 1,
-      "citat": "Depunere numerar gratuit - Comision depunere moneda. Comisionul se aplica depunerilor de moneda de peste 20 lei, cu exceptia clientilor de tip birou executor judecatoresc, pentru depunerile in conturile de consemnare 10% (min 5 lei)",
+      "dovada_metoda": "PDF cu text extras; pag. 2: 'In favoarea LIBRA INTERNET BANK sau a clientilor sai* 10 lei 1 leu' și 'intre 0 lei – 49.999,99 lei 20 lei 6 lei'; pag. 1: 'Depunere numerar gratuit'; pag. 6: extras pe hârtie 50 lei / solicitare (prima eliberare gratuită).",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
       "link_live": null
     }
@@ -40,16 +42,17 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.librabank.ro/cont_online_business",
+    "https://www.librabank.ro/",
+    "https://www.librabank.ro/deschidere-cont-bancar-online-persoane-juridice",
     "https://www.librabank.ro/documente_contractuale/Tarife_si_Comisioane_PJ.pdf"
   ],
-  "durata_s": 99,
+  "durata_s": 412,
   "consum": {
-    "intrare": 6,
-    "iesire": 8169,
-    "citire_cache": 41068,
-    "scriere_cache": 83493,
+    "intrare": 12,
+    "iesire": 2436,
+    "citire_cache": 102151,
+    "scriere_cache": 81579,
     "apeluri": 1,
-    "cost_estimat_usd": 0.29864809999999997
+    "cost_estimat_usd": 0.4975234
   }
 }

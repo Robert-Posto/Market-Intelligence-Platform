@@ -1,25 +1,26 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bnpparibas",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "BNP Paribas Sucursala București este o bancă dedicată exclusiv corporate, instituții și clienți private banking de tip corporate (conform site-ului: secțiunile sunt doar 'Corporates and Institutions' și 'BNP Paribas companies'). Nu există servicii de retail banking pentru persoane fizice sau juridice de tip card de debit, cont curent personal etc. Produsul Libra 'Card de debit Free' nu are echivalent sau similar la această bancă, deoarece BNP Paribas Romania nu oferă deloc carduri de debit sau produse de retail banking."
+    "nota": "BNP Paribas S.A. Paris – Sucursala București face doar corporate & institutional banking (Global Markets, Cash Management, Global Trade Solutions, Exchange Traded Solutions), prin platforma Connexis. Site-ul romania.bnpparibas.com nu prezintă carduri de debit, nici pentru persoane fizice, nici pentru firme, și nu publică o listă de tarife și comisioane pentru carduri. Pagina „Private clients” trimite doar la alte entități ale grupului (BNP Paribas companies)."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://romania.bnpparibas.com/"
+    "https://romania.bnpparibas.com/",
+    "https://www.romania.bnpparibas.com/en/corporates-institutions/"
   ],
-  "durata_s": 10,
+  "durata_s": 9,
   "consum": {
-    "intrare": 4,
-    "iesire": 557,
-    "citire_cache": 6332,
-    "scriere_cache": 10158,
+    "intrare": 8,
+    "iesire": 473,
+    "citire_cache": 17435,
+    "scriere_cache": 14402,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0322394
+    "cost_estimat_usd": 0.088476
   }
 }

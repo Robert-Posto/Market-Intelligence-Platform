@@ -1,67 +1,58 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "procredit",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.procreditbank.ro/landing/visa-platinum/",
-      "tip": "html",
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Card de debit Visa Platinum (Pachetul Platinum)",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit Visa Platinum (LEI)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este tot un card de debit premium pentru persoane fizice cu asigurare de călătorie și acces lounge, ca la Libra, dar: acoperă DOAR persoane fizice (nu și juridice ca produsul Libra), costă 50 LEI/lună (≈600 LEI/an) față de 48 LEI/an la Libra, nu are cashback explicit menționat și nu are dobândă la soldul contului în descrierea cardului; retragerile numerar la ATM-uri din România sunt nelimitate și gratuite (nu doar 3/lună).",
+      "motiv_potrivire": "Este cardul de debit premium al băncii, cu asigurare de călătorie și beneficii extinse, dar e doar pentru persoane fizice și doar în RON. Costă 50 lei/lună (în pachetul Platinum sau peste un alt pachet), nu 48 lei/an. Retragerile de la ATM-uri din România sunt gratuite până la 10.000 lei/zi și nu oferă dobândă la sold.",
       "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată cardului Visa Platinum conține cifre concrete despre comision de administrare, lounge, limite de retragere și asigurare de călătorie.",
-      "citat": "Ai 6 intrări gratuite pe an dacă ai realizat plăți (POS sau online) în valoare de minim 7.500 de lei în ultimele 30 de zile, cu până la 4 zile înainte de intrarea în lounge.",
-      "citat_verificat": true,
-      "link_live": "https://www.procreditbank.ro/landing/visa-platinum/#:~:text=Ai%206%20intr%C4%83ri%20gratuite%20pe,%C3%AEnainte%20de%20intrarea%20%C3%AEn%20lounge."
+      "explicatie_incredere": "Lista oficială de prețuri pentru persoane fizice, valabilă din 24.08.2026, are un tabel separat pentru Visa Platinum cu administrarea, retragerile ATM și interogarea soldului.",
+      "citat": "Interogare sold la orice ATM din România* 0\nComision administrare card Visa Platinum \n(LEI)**\n50 LEI/ luna\nComision administrare card Visa Platinum \n(LEI) adițional\n50 LEI/ luna",
+      "pagina_pdf": 5,
+      "dovada_metoda": "PDF cu textul extras direct",
+      "citat_verificat": null,
+      "link_live": null
     },
     {
       "url": "https://www.procreditbank.ro/persoane-fizice/carduri-visa/",
       "tip": "html",
       "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Card de debit Visa Platinum",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Visa Debit Platinum",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Pagina generală despre cardurile Visa Debit conține tabelul de comisioane pentru cardul Platinum (persoane fizice), cu valori pentru administrare și retrageri, dar fără cashback sau dobândă la sold, spre deosebire de produsul Libra.",
+      "motiv_potrivire": "Pagina dedicată cardului de debit premium Visa Platinum, cu asigurare de călătorie și protecție extinsă. Cardul e doar pentru persoane fizice, doar în RON și costă 50 lei/lună.",
       "incredere": 0.8,
-      "explicatie_incredere": "Conține tabelul explicit de comisioane pentru cardul Visa Platinum, cu toate valorile numerice relevante.",
-      "citat": "Comisioane pentru tranzacțiile realizate cu cardul de debit Visa Platinum | Tranzacții cu cardul Visa Platinum | Comision | Comision administrare card Visa Platinum (LEI)* | 50 LEI/ lună",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.procreditbank.ro/wp-content/uploads/2025/05/Lista-de-preturi-persoane-fizice-mai-2025-1.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Pachetul Platinum (card Visa Platinum)",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul oficial de tarife pentru persoane fizice include costul lunar al Pachetului Platinum și comisioanele cardului Visa Platinum, util pentru extragerea periodică a valorilor.",
-      "incredere": 0.75,
-      "explicatie_incredere": "PDF de tarife cu valori explicite pentru comisionul de administrare al cardului Visa Platinum (50 LEI/lună) și condițiile asociate pachetului.",
-      "citat": "Comisionul de administrare pentru Pachetul Platinum este 50 de LEI pe lună. Comision administrare card Visa Platinum (LEI) 50 LEI/ lună",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "explicatie_incredere": "Pagina produsului are tabelul de comisioane Visa Platinum, cu cifre în text, și o adresă stabilă, spre deosebire de PDF-ul care se schimbă la fiecare versiune.",
+      "citat": "Cardul Visa Debit Platinum poate fi emis doar pentru conturile curente în RON. Acest card îți oferă acces la beneficii exclusive, inclusiv asigurare de călătorie, protecție extinsă pentru achiziții și multe altele.",
+      "dovada_metoda": "Tabelul de comisioane apare în textul extras",
+      "citat_verificat": false,
+      "avertisment": "citatul nu apare în textul primit",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.procreditbank.ro/landing/visa-platinum/"
+    "https://www.procreditbank.ro/",
+    "https://www.procreditbank.ro/persoane-fizice/carduri-visa/",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf"
   ],
-  "durata_s": 40,
+  "durata_s": 30,
   "consum": {
-    "intrare": 6,
-    "iesire": 3094,
-    "citire_cache": 40540,
-    "scriere_cache": 48158,
+    "intrare": 12,
+    "iesire": 1786,
+    "citire_cache": 105553,
+    "scriere_cache": 69413,
     "apeluri": 1,
-    "cost_estimat_usd": 0.159455
+    "cost_estimat_usd": 0.42505420000000005
   }
 }

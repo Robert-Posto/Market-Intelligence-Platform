@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "salt",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
@@ -7,21 +7,22 @@
   "surse": [],
   "gol": {
     "motiv": "blocat_de_robots",
-    "nota": "Domeniul saltbank.ro nu a putut fi accesat (fetch blocat la nivel de permisiuni), iar căutările web nu au returnat rezultate utile. Din cunoștințe generale, Salt Bank este o bancă digitală axată exclusiv pe persoane fizice (retail) și nu pare să aibă produse pentru persoane juridice/PFA, dar acest lucru nu a putut fi verificat cu o sursă directă de pe site din cauza blocajului de acces."
+    "nota": "Domeniul saltbank.ro a refuzat accesul (eroare de permisiune) la toate adresele încercate (pagina principală și variante /business, /firme). Căutările web nu au returnat rezultate relevante. Salt Bank este cunoscută ca bancă digitală pentru persoane fizice; nu s-a putut verifica dacă există un cont de business pentru persoane juridice din cauza blocajului de acces la domeniu."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.saltbank.ro/",
-    "https://www.saltbank.ro",
-    "saltbank.ro"
+    "https://saltbank.ro/",
+    "https://www.saltbank.ro/business",
+    "https://www.saltbank.ro/firme"
   ],
-  "durata_s": 14,
+  "durata_s": 17,
   "consum": {
-    "intrare": 7334,
-    "iesire": 911,
-    "citire_cache": 12654,
-    "scriere_cache": 6820,
+    "intrare": 8281,
+    "iesire": 1262,
+    "citire_cache": 20580,
+    "scriere_cache": 7429,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0433588
+    "cost_estimat_usd": 0.0518705
   }
 }

@@ -4,6 +4,7 @@ import { SEGMENT_VERSUS } from '../../api/versus'
 import type { CerereSertar } from '../../components/Sertar'
 import { etDesc, etNume, unitTxt } from '../../components/valori'
 import { useLang } from '../../i18n'
+import { DataValorii } from '../../components/DataValorii'
 import { deLaServer } from '../../i18n/server'
 import { num } from '../../util/format'
 import { numeCategorie } from '../produse/logica'
@@ -182,6 +183,7 @@ export function SectiuneLibraVs({ s, coloane, nume }: Comun & { s: SectiuneLibra
                     {c.stare === 'aproximativ' && <span className="v-ctx">{t('versus.libra_aproximativ')}</span>}
                     {c.stare === 'conflict' && <span className="v-ctx vs-de-verificat">{t('versus.libra_conflict')}</span>}
                     {variante.length > 0 && <span className="v-ctx">{t('versus.libra_variante', { n: variante.length })}</span>}
+                    <DataValorii d={c} className="v-ctx" />
                   </a>
                 </Tooltip>
                 <Marcaje bun={bun} pierde={pierde} />

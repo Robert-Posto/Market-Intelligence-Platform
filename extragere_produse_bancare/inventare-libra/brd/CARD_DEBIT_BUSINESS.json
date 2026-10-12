@@ -1,66 +1,42 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "brd",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
-    {
-      "url": "https://www.brd.ro/carduri-de-debit-business-imm",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Carduri de debit Business (gama Silver / Corporate / BRDepo)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Card de debit atașat contului curent al firmei, destinat persoanelor juridice (companii) pentru plăți, retrageri numerar și gestionarea fondurilor din cont — exact același tip de produs și același segment (companii/IMM) ca cel descris de Libra.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagină dedicată exclusiv produsului, cu caracteristici concrete (monedă, arie de utilizare, valabilitate) pentru cardul de debit business al companiilor.",
-      "citat": "Care sunt principalele caracteristici ale produsului? - Aria de utilizare: naţională şi internaţională; Monedă: Lei/ Euro/ USD; Valabilitate: 3 ani cu reînnoire automată.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.brd.ro/companii/pfa-si-profesii-liberale/activitate-curenta/carduri-de-debit-business",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Carduri de debit Business pentru PFA și profesii liberale",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Aceeași familie de carduri de debit business (Silver, BRDepo), dedicată aici segmentului PFA/profesii liberale, care face parte din segmentul 'persoane juridice (firme, PFA)' acoperit de produsul Libra.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagină dedicată produsului pentru PFA, cu descriere funcțională și caracteristici (valabilitate 5 ani, monedă LEI/EUR/USD, arie națională/internațională).",
-      "citat": "Sunt instrumente de plată moderne care oferă acces permanent la fondurile disponibile din contul curent al companiei și care elimină riscurile de gestionare a numerarului, iar aria de utilizare este naţională şi internaţională, Monedă: LEI/EUR/USD, Valabilitate: 5 ani cu reînnoire automată.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
     {
       "url": "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "MasterCard Business, MasterCard Business BRDepo, MasterCard Business Silver, VISA Business Silver, VISA Business Fermier",
+      "denumire_la_banca": "Carduri de debit business (MasterCard Business, MasterCard Business Silver, VISA Business Silver)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul de tarife și comisioane pentru persoane juridice listează explicit comisioanele de administrare anuală pentru fiecare tip de card de debit business, confirmând existența și costurile produsului echivalent.",
+      "motiv_potrivire": "BRD are carduri de debit business atașate contului curent al firmei, pentru persoane juridice (și PFA, cu aceleași tarife în lista separată pentru PFA). Lista de tarife pentru persoane juridice, în vigoare din 21.09.2026, are capitolul 7 Carduri cu emitere/reînnoire (gratuit), administrare (anuală, de ex. 22 LEI/an pentru MasterCard Business, 55 LEI/an pentru Business Silver), retragere la ATM BRD (0.50%, min. 5 Lei), la ATM-ul altor bănci din România (1% + 2.50 LEI) și interogare de sold la ATM BRD (gratuit). Atenție: administrarea e anuală, nu lunară. Lista nu are un comision explicit de conversie valutară pentru plățile cu cardul (plățile la POS sunt gratuite, iar conversia se face la cursul băncii).",
       "incredere": 0.85,
-      "explicatie_incredere": "Document oficial de tarife pentru persoane juridice, cu valori exacte ale comisioanelor de administrare pentru cardurile de debit business.",
-      "citat": "MasterCard Business, MasterCard Business BRDepo 22 LEI / an / card MasterCard Business Silver 55 LEI / an / card VISA Business Silver 55 LEI / an / card VISA Business Fermier 35 LEI / an / card",
+      "explicatie_incredere": "Documentul oficial de tarife pentru persoane juridice, în vigoare de la 21.09.2026, dă explicit, pe fiecare card de debit business, valori pentru emitere, administrare, retrageri ATM și interogare sold.",
+      "citat": "MasterCard Business, MasterCard Business BRDepo 22 LEI / an / card o MasterCard Business Silver 55 LEI / an / card o VISA Business Silver 55 LEI / an / card",
+      "pagina_pdf": 16,
+      "dovada_metoda": "PDF citit direct; secțiunile 7, 7.1, 7.7 și 7.10 de la paginile 16-18 conțin cifrele.",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
-  "deschise": [],
-  "durata_s": 29,
+  "deschise": [
+    "https://www.brd.ro/_files/pdf/Lista_tarife_si_comisioane_Persoane_Juridice.pdf",
+    "https://www.brd.ro/en/companies/sme/current-activity/debit-cards",
+    "https://www.brd.ro/companii/imm/activitate-curenta/carduri-de-debit-business"
+  ],
+  "durata_s": 47,
   "consum": {
-    "intrare": 4,
-    "iesire": 2732,
-    "citire_cache": 6315,
-    "scriere_cache": 31241,
+    "intrare": 14,
+    "iesire": 2066,
+    "citire_cache": 384878,
+    "scriere_cache": 146440,
     "apeluri": 1,
-    "cost_estimat_usd": 0.10669350000000001
+    "cost_estimat_usd": 0.9275272
   }
 }

@@ -1,0 +1,46 @@
+ProCredit Bank: 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii procreditbank.ro
+  [cautare] procreditbank.ro cont curent PFA abonament lunar
+  [cautare] procreditbank.ro tarife comisioane persoane juridice PDF
+  [ 1] https://www.procreditbank.ro/lista-de-preturi/
+  [cautare] procreditbank.ro PFA cont curent pachet servicii bancare
+  [ 2] https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/
+  [ 3] https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/
+  [ 4] https://www.procreditbank.ro/companii/pachet-grow/
+  [ 5] https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf
+GATA    ABONAMENT_PFA                3 surse, 2 citate verificate, similar, $0.37, 61s — Pachet servicii bancare / Cont curent pentru persoane juridice (SRL, PFA, II, IF)
+  [cautare] ProCredit Bank card de debit business comisioane
+  [cautare] ProCredit Bank tarife comisioane persoane juridice card
+  [ 1] https://www.procreditbank.ro/companii/servicii-bancare/carduri-visa-business/
+  [ 2] https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf
+GATA    CARD_DEBIT_BUSINESS          3 surse, 1 citate verificate, echivalent, $0.23, 70s — Visa Debit Business (Card Visa Business)
+  [cautare] ProCredit Bank cont curent online business companii comisioane
+  [cautare] procreditbank.ro tarife comisioane persoane juridice PDF
+  [ 1] https://www.procreditbank.ro/lista-de-preturi/
+  [ 2] https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf
+  [ 3] https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/
+  [ 4] https://www.procreditbank.ro/companii/pachet-grow/
+GATA    CONT_ONLINE_BUSINESS         2 surse, 1 citate verificate, echivalent, $0.33, 101s — Pachet servicii bancare (cont curent persoane juridice)
+  [cautare] ProCredit Bank România card de debit comisioane
+  [cautare] procreditbank.ro tarife și comisioane card debit PDF
+  [ 1] https://www.procreditbank.ro/persoane-fizice/carduri-visa/
+  [ 2] https://www.procreditbank.ro/companii/servicii-bancare/carduri-visa-business/
+GATA    CARD_DEBIT_FREE              3 surse, 1 citate verificate, similar, $0.23, 75s — Card Visa Debit Classic
+  [cautare] ProCredit Bank cont curent persoane fizice online
+  [cautare] procreditbank.ro tarife comisioane persoane fizice pdf
+  [ 1] https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/
+  [ 2] https://www.procreditbank.ro/wp-content/uploads/2025/02/Lista-de-preturi-persoane-fizice-_-10.02.pdf
+  [ 3] https://www.procreditbank.ro/ro/lista-de-preturi
+  [ 4] https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf
+GATA    CONT_ONLINE_PERSONAL         2 surse, 1 citate verificate, echivalent, $0.32, 38s — Pachetul ProActive
+  [cautare] ProCredit Bank RoPay plăți instant telefon
+  [cautare] ProCredit Bank comisioane transfer instant plată
+  [ 1] https://www.procreditbank.ro/wp-content/uploads/2025/01/Lista-de-preturi-persoane-fizice-_-04.12.2024_final.pdf
+  [ 2] https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf
+  [ 3] https://www.procreditbank.ro/persoane-fizice/aplicatia-mbnk/
+  [ 4] https://www.procreditbank.ro/pachetul-cont-de-plati-cu-servicii-de-baza/
+GATA    ROPAY                        1 surse, 1 citate verificate, similar, $0.44, 116s — Plăți instant (în cadrul Pachetului Cont de plăți cu servicii de bază)
+  ! CARD_DEBIT_GOLD: ReadTimeout: The read operation timed out (tentativa 1)
+EROARE  CARD_DEBIT_GOLD              ReadTimeout: The read operation timed out
+
+procredit: 6/7 produse cu surse, 1 erori, cost estimat $1.92, durata 4 min
+Reia: python descopera_surse_libra.py --banca procredit --produse CARD_DEBIT_GOLD

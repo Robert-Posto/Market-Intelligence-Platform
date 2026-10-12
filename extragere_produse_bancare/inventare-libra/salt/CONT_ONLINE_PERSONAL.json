@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "salt",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
@@ -7,21 +7,22 @@
   "surse": [],
   "gol": {
     "motiv": "blocat_de_robots",
-    "nota": "Domeniul saltbank.ro (atât cu www cât și fără) nu a putut fi accesat - toolul de fetch a returnat eroare de permisiune ('You don't have permission to access this domain'), ceea ce indică blocare prin robots.txt sau restricții similare. De asemenea, căutările web nu au returnat rezultate utilizabile pentru acest domeniu. Nu am putut identifica nicio pagină cu produsul Cont Online Personal echivalent la Salt Bank."
+    "nota": "Nu s-a putut accesa deloc domeniul saltbank.ro (nici pagina principală, nici subpagini) - instrumentul de fetch a returnat eroare de permisiune, iar căutările web nu au returnat rezultate. Nu s-a putut identifica produsul echivalent din lipsă de acces."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.saltbank.ro/",
-    "https://saltbank.ro/",
-    "https://www.saltbank.ro/cont-curent"
+    "https://www.saltbank.ro/tarife-si-comisioane",
+    "https://www.saltbank.ro/documente-utile",
+    "https://www.saltbank.ro"
   ],
-  "durata_s": 14,
+  "durata_s": 15,
   "consum": {
-    "intrare": 7246,
-    "iesire": 920,
-    "citire_cache": 19339,
-    "scriere_cache": 7129,
+    "intrare": 15800,
+    "iesire": 1035,
+    "citire_cache": 20645,
+    "scriere_cache": 7312,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0453823
+    "cost_estimat_usd": 0.064359
   }
 }

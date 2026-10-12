@@ -1,38 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "banorient",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.banorientfrance.com/romanian/romania/service-charges",
       "tip": "html",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "MasterCard GOLD Debit (secțiunea PERSOANE Juridice)",
+      "denumire_la_banca": "MasterCard GOLD Debit - RON (Cardul Gold Business Master)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul de tarife are un comutator distinct 'PERSOANE Juridice' / 'PERSOANE FIZICE', iar tabelul IV-1 afișat implicit (cu emitere 175 LEI, administrare lunară 25 LEI) corespunde variantei pentru firme a cardului de debit Mastercard Gold, echivalentul cardului Business la Libra.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Documentul oficial de tarife conține explicit tabelul de comisioane pentru cardul de debit Gold emis clienților persoane juridice, cu toate cifrele relevante (emitere, administrare, retragere numerar, limite).",
-      "citat": "IV-1 TAXE SI COMISIOANE “BANQUE BANORIENT FRANCE” MasterCard GOLD Debit - RON Emitere card Gold Debit 175 LEI Administrare lunara- pentru fiecare cont de card 25 LEI Administrare anuala a contului de card Zero Reemitere card la scadenta (reinnoire card) 175 LEI",
+      "motiv_potrivire": "Card de debit Mastercard în lei listat în secțiunea IV a tarifelor pentru Persoane Juridice (tab-ul implicit al paginii); pe pagina Produse și servicii banca îl prezintă drept Cardul Gold Business Master. Nu se menționează retragerea de la ATM-uri proprii (banca pare să nu aibă rețea de ATM-uri proprie).",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina oficială de tarife (tab-ul Persoane Juridice) are tabelul IV-1 cu emitere 175 LEI, administrare 25 LEI/lună, reemitere 175 LEI, interogare sold zero, retragere la alte bănci 0.5% min 5 LEI și o marjă de conversie de 2%; pagina conține și tab-ul pentru persoane fizice.",
+      "citat": "IV-1 TAXE SI COMISIOANE “BANQUE BANORIENT FRANCE” MasterCard GOLD Debit - RON | | | Emitere card Gold Debit | | 175 LEI | Administrare lunara- pentru fiecare cont de card | | 25 LEI",
+      "dovada_metoda": "Cifrele apar direct în textul HTML extras (tabel static).",
+      "incredere_metoda": 0.85,
       "citat_verificat": true,
-      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=IV%2D1%20TAXE%20SI%20COMISIOANE%20%E2%80%9CBANQUE,scadenta%20%28reinnoire%20card%29%20175%20LEI"
-    },
-    {
-      "url": "https://www.banorientfrance.com/romanian/romania/products-and-services",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Cardul Gold Business Master",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Este cardul de debit dedicat clienților persoane juridice, listat explicit alături de varianta pentru persoane fizice (Cardul Gold Master), în cadrul secțiunii BANORIENT Master Cards.",
-      "incredere": 0.6,
-      "explicatie_incredere": "Pagina confirmă existența produsului și numele comercial, dar descrierea nu conține cifre specifice (comisioane/dobânzi) pentru varianta business.",
-      "citat": "Clienţii nostri pot acum alege unul dintre următoarele carduri: Cardul Gold Master Cardul Gold Business Master",
-      "citat_verificat": true,
-      "avertisment": "citat scurt (16 cuvinte)",
-      "link_live": "https://www.banorientfrance.com/romanian/romania/products-and-services#:~:text=Clien%C5%A3ii%20nostri%20pot%20acum%20alege,Master%20Cardul%20Gold%20Business%20Master"
+      "link_live": "https://www.banorientfrance.com/romanian/romania/service-charges#:~:text=IV%2D1%20TAXE%20SI%20COMISIOANE%20%E2%80%9CBANQUE,card%20%7C%20%7C%2025%20LEI"
     }
   ],
   "gol": null,
@@ -42,13 +29,13 @@
     "https://www.banorientfrance.com/romanian/romania/service-charges",
     "https://www.banorientfrance.com/romanian/romania/products-and-services"
   ],
-  "durata_s": 44,
+  "durata_s": 16,
   "consum": {
-    "intrare": 6,
-    "iesire": 3879,
-    "citire_cache": 24452,
-    "scriere_cache": 34592,
+    "intrare": 8,
+    "iesire": 1237,
+    "citire_cache": 18066,
+    "scriere_cache": 27595,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1301724
+    "cost_estimat_usd": 0.16997340000000002
   }
 }

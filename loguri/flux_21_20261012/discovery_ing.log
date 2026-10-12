@@ -1,0 +1,25 @@
+ING Bank (Sucursala București): 4 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii ing.ro
+  [cautare] ING cont PFA pachet lunar comision
+  [cautare] ING ro PFA liber profesionist cont curent tarife
+  [ 1] https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-Comisioane-pentru-persoane-juridice-PFA-si-alte-entitati.pdf
+  [ 2] https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent
+       ! url_not_allowed
+  [cautare] ING Profesional pachet cont curent PFA profesii liberale ing.ro
+  [ 3] https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf
+       ! url_not_allowed
+GATA    ABONAMENT_PFA                2 surse, 1 citate verificate, echivalent, $0.36, 103s — Pachetul ING FIX Util (parte din oferta ING FIX / ING Profesional pentru PFA și profesii liberale)
+  [cautare] ING RoPay plăți instant telefon
+  [cautare] ING Bank România plată instant comision tarife
+GATA    ROPAY                        3 surse, 0 citate verificate, echivalent, $0.13, 48s — RoPay
+  [cautare] ING card de debit business IMM tarife
+  [cautare] ING.ro tarife comisioane companii card debit
+  [ 1] https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf
+       ! url_not_allowed
+  [ 2] https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-Comisioane-pentru-persoane-juridice-PFA-si-alte-entitati.pdf
+       ! url_not_allowed
+  [cautare] "Visa Business Manager" ING retragere numerar ATM 0,2% lei card
+GATA    CARD_DEBIT_BUSINESS          3 surse, 0 citate verificate, echivalent, $0.44, 164s — Card VISA Business Manager RON
+EROARE  CARD_DEBIT_GOLD              timeout: nimic găsit în termen, după 1 ture și 0 pagini
+
+ing: 3/4 produse cu surse, 1 erori, cost estimat $0.95, durata 3 min
+Reia: python descopera_surse_libra.py --banca ing --produse CARD_DEBIT_GOLD

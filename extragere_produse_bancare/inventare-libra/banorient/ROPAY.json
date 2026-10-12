@@ -1,28 +1,28 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "banorient",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Site-ul bancii (sucursala Romania) nu ofera un produs de plati instant prin telefon pentru clientii din Romania, echivalent cu RoPay. Pagina 'Produse si servicii' pentru Romania (https://www.banorientfrance.com/romanian/romania/products-and-services) listeaza doar: cont curent BANORIENT Premium, carduri Mastercard, Internet Banking si Open Banking - fara niciun serviciu de plati instant prin numar de telefon. Pagina 'Mobile Banking' (https://www.banorientfrance.com/romanian/mobile-banking) precizeaza explicit ca serviciul de mobile banking 'va fi disponibil in curand in Romania', deci inca nu exista. Singurul produs de plati instant gasit pe site, 'Aani Instant Payments' (https://www.banorientfrance.com/romanian/aani-instant-payments), este un sistem operat de Al Etihad Payments (Banca Centrala a EAU) si este limitat strict la transferuri domestice in AED intre conturi detinute la institutii licentiate din Emiratele Arabe Unite - nu este disponibil pentru clientii sucursalei din Romania si nu foloseste RON; este deci un produs dintr-o alta tara/jurisdictie, nu un echivalent sau similar valabil pentru segmentul vizat de RoPay (persoane fizice si juridice din Romania)."
+    "nota": "Banque Banorient France – Sucursala România nu oferă RoPay și nici alt serviciu de plăți instant prin telefon. Pagina Mobile Banking spune că serviciul e disponibil pentru Paris, EAU și Marea Britanie și că «va fi disponibil în curând în România». Serviciul «Aani Instant Payments» este doar pentru EAU. Lista de tarife pentru România (https://www.banorientfrance.com/romanian/romania/service-charges) are numai transferuri obișnuite în RON: plăți către alte bănci de 5/7/10 RON pe tranzacție, după sumă (sub 50.000 RON), plăți urgente de 25 RON și încasări din alte bănci de 5 RON. Nu există o rubrică pentru plăți instant sau RoPay."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.banorientfrance.com/romanian/romania",
-    "https://www.banorientfrance.com/romanian/aani-instant-payments",
-    "https://www.banorientfrance.com/romanian/mobile-banking",
-    "https://www.banorientfrance.com/romanian/romania/products-and-services"
+    "https://www.banorientfrance.com/romanian/romania/service-charges",
+    "https://www.banorientfrance.com/romanian/romania/products-and-services",
+    "https://www.banorientfrance.com/romanian/mobile-banking"
   ],
-  "durata_s": 25,
+  "durata_s": 13,
   "consum": {
-    "intrare": 8,
-    "iesire": 1859,
-    "citire_cache": 34847,
-    "scriere_cache": 27803,
+    "intrare": 10,
+    "iesire": 782,
+    "citire_cache": 45075,
+    "scriere_cache": 29683,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0950829
+    "cost_estimat_usd": 0.18212500000000004
   }
 }

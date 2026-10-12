@@ -1,21 +1,39 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "patria",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Pachete de cont curent Afaceri Mici / Agro (UȘOR, PRACTIC, COMPLET)",
+      "denumire_la_banca": "Pachet de cont curent Afaceri mici/Agro UȘOR",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este un pachet lunar pentru firme mici și PFA care include cont curent, card business, internet banking gratuit și un număr de operațiuni incluse - același tip de produs și segment ca Abonamentul PFA Libra. Diferă însă prețul (85-200 lei/lună față de 29 lei/lună) și structura operațiunilor gratuite incluse (15/30/nelimitat plăți interbancare, nu 50 operațiuni generale).",
-      "incredere": 0.8,
-      "explicatie_incredere": "Pagina dedicată conține tabelul complet cu cele trei variante de pachet, costurile lunare și serviciile incluse, iar pagina de prezentare Afaceri Mici confirmă explicit că se adresează inclusiv PFA.",
-      "citat": "Pachete de cont curent Afaceri mici/ Agro | Opțiuni | UȘOR | PRACTIC | COMPLET | Cont curent | ✔ | ✔ | ✔ | Card de Business Patria MasterCard Business | ✔ | ✔ | ✔ | Cost | 85 lei/lună | 100 lei/lună | 200 lei/lună",
+      "motiv_potrivire": "Pachet de cont curent cu abonament lunar pentru afaceri mici (SRL, PFA, II, CMI, liber profesioniști), cu cont, internet banking și card business incluse; nu e dedicat exclusiv PFA/profesiilor, costă 85 lei/lună (nu 29) și include un număr limitat de plăți instant/instrumente de debit, nu 50 de operațiuni.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Pagina dedicată pachetelor pentru firme mici conține costul lunar al fiecărui pachet și operațiunile incluse, dar pagina nu s-a încărcat direct, conținutul fiind văzut doar prin rezultatele căutării.",
+      "citat": "| Plăți instant | 5 | 10 | 15 | | Includere serviciu SMS Alert, alertare integrala (pentru conturi, carduri si instrumente de debit) | gratuit | gratuit | gratuit | | Incasari instrumente debit | 5 | 15 | nelimitat | | Plati instrumente debit | 5 | 15 | nelimitat | | Cost | 85 lei/lună | 100 lei/lună | 200 lei/lună |",
+      "incredere_metoda": 0.6,
+      "dovada_metoda": "Cifrele (costuri, operațiuni incluse) apar în textul extras al paginii în rezultatele de căutare; fetch direct a eșuat.",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://www.patriabank.ro/d/2142",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Lista de Tarife si Comisioane destinata Persoanelor juridice",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Lista oficială de tarife pentru persoane juridice (inclusiv profesii liberale), cu comisioanele de deschidere/închidere cont și extras, aplicabile și clienților cu pachete; aceleași diferențe față de produsul Libra ca la pachetul UȘOR.",
+      "incredere": 0.55,
+      "explicatie_incredere": "Document oficial de tarife PJ cu deschidere/închidere cont și extras, dar nu am putut confirma că e versiunea în vigoare (19.01.2026) și nici că numește explicit pachetele.",
+      "citat": "| Deschidere/inchidere cont curent  |  |  |  |  | gratuit  | | Constituire depozite la termen  |  |  |  |  | gratuit  |",
+      "incredere_metoda": 0.8,
+      "dovada_metoda": "Document PDF, conținutul apare ca text în rezultatele căutării.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -23,15 +41,18 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
+    "https://www.patriabank.ro/",
+    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent",
+    "https://www.patriabank.ro/d/2142",
     "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent"
   ],
-  "durata_s": 23,
+  "durata_s": 42,
   "consum": {
-    "intrare": 29808,
-    "iesire": 1726,
-    "citire_cache": 12670,
-    "scriere_cache": 35262,
+    "intrare": 80338,
+    "iesire": 2349,
+    "citire_cache": 65072,
+    "scriere_cache": 46207,
     "apeluri": 1,
-    "cost_estimat_usd": 0.16756500000000002
+    "cost_estimat_usd": 0.6253958000000001
   }
 }

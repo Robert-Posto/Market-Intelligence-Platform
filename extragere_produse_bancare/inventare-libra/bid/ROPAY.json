@@ -1,26 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bid",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
-    "surse": [],
     "motiv": "produs_inexistent",
-    "nota": "BID este o bancă de dezvoltare (deținută de statul român prin Ministerul Finanțelor) care oferă exclusiv garanții (Diaspora Investește Acasă, Garanții de portofoliu pentru IMM, Garanții individuale pentru mediul public) și credite (Creditare directă, Fondul de Participare Regional, Fondul de Participare Tranziție Justă) - acționând complementar sectorului bancar comercial, în parteneriat cu acesta. Nu oferă servicii bancare de retail/business precum conturi curente, carduri sau plăți instant prin telefon (RoPay), acestea nefiind în aria sa de activitate ca bancă de dezvoltare/wholesale."
+    "nota": "BID este banca de dezvoltare a statului român. Pe site apar doar garanții (Diaspora Investește Acasă, garanții de portofoliu IMM, garanții pentru mediul public), creditare directă și fonduri de participare. Banca nu oferă conturi curente, plăți instant, transferuri sau încasări pentru persoane fizice sau juridice, deci nu are nimic echivalent cu RoPay."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.bidromania.eu/"
   ],
-  "durata_s": 11,
+  "durata_s": 7,
   "consum": {
-    "intrare": 4,
-    "iesire": 678,
-    "citire_cache": 6320,
-    "scriere_cache": 13637,
+    "intrare": 6,
+    "iesire": 351,
+    "citire_cache": 6596,
+    "scriere_cache": 9648,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0421445
+    "cost_estimat_usd": 0.057922400000000006
   }
 }

@@ -1,72 +1,45 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "procredit",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.procreditbank.ro/companii/pachet-grow/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Pachetul GROW - cont business",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Pachetul de cont curent de business (inclusiv pentru PFA conform paginii cont-curent) cu IB inclus gratuit, dar structura de preț diferă de abonamentul PFA Libra: aici e 0 lei/lună timp de 24 de luni promoțional, apoi 86 lei/lună standard, fără plafon explicit de 'operațiuni incluse pe lună' ca la Libra.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată pachetului de business conține cifre exacte: comision 0 lei în promoție, 86 lei/lună standard, carduri și plăți incluse.",
-      "citat": "După încheierea perioadei promoționale de 24 de luni, comisionul standard de administrare este de 86 lei/lună.",
-      "citat_verificat": true,
-      "avertisment": "citat scurt (16 cuvinte)",
-      "link_live": "https://www.procreditbank.ro/companii/pachet-grow/#:~:text=Dup%C4%83%20%C3%AEncheierea%20perioadei%20promo%C8%9Bionale%20de,administrare%20este%20de%2086%20lei%2Flun%C4%83."
-    },
-    {
-      "url": "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Listă de prețuri persoane juridice - Ofertă servicii bancare (Cont curent / Pachet servicii bancare)",
+      "denumire_la_banca": "Pachet servicii bancare (Pachet Grow) / Cont curent persoane juridice",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Document de tarife generale pentru persoane juridice (inclusiv PFA ca formă juridică), cu comisioane de administrare pentru cont curent simplu (58 lei) și pachet de servicii bancare (86 lei), fără un abonament specific PFA la 29 lei ca la Libra.",
-      "incredere": 0.8,
-      "explicatie_incredere": "PDF oficial de tarife cu cifre exacte pentru comisioanele de administrare a conturilor/pachetelor pentru persoane juridice, segment care include PFA.",
+      "motiv_potrivire": "ProCredit nu are un abonament dedicat PFA/profesiilor liberale; pachetele de cont business sunt deschise oricărei entități (SRL, II, IF, PFA). Pachetul servicii bancare costă 86 lei/lună (vs 29 lei), include 3 conturi, 3 carduri și plăți naționale nelimitate sub 50.000 lei în loc de 50 operațiuni/lună; există și varianta Cont curent la 58 lei/lună.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Lista oficială de prețuri PJ în vigoare din 12.10.2026 conține costul lunar al pachetului, ce include, plățile interbancare (6,51 lei < 50.000 lei) și depunerea la ATM, dar produsul nu e dedicat PFA.",
+      "citat": "Administrare pachet servicii bancare 86 lei Comisionul se preia lunar Pachet servicii bancare 3 conturi curente incluse (LEI, EUR, USD/GBP) Cont de economii în LEI Plăți naționale până în 50.000 lei incluse2 Card Visa debit (maxim trei carduri incluse)",
       "pagina_pdf": 1,
-      "citat": "Administrare cont curent 58 LEI Comisionul se preia lunar. Administrare pachet servicii bancare 86 lei Comisionul se preia lunar, Pachet servicii bancare 3 conturi curente incluse (LEI, EUR, USD/GBP), Plăți naționale până în 50.000 lei incluse.",
+      "dovada_metoda": "Text PDF extras direct, cifrele apar în conținut.",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
       "link_live": null
-    },
-    {
-      "url": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Pachete de cont curent pentru companii (incl. Pachetul GROW)",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este pachetul de cont curent de business al ProCredit, explicit disponibil și pentru PFA ('SRL, II, IF, PFA sau altele'), dar nu este un abonament dedicat PFA cu preț redus de tip Libra (29 lei/lună, 50 operațiuni incluse); este un pachet general pentru persoane juridice.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina dedicată de produs confirmă eligibilitatea PFA și trimite la pachetul GROW cu cifre concrete, dar nu conține un tarif specific PFA.",
-      "citat": "Serviciile noastre bancare dedicate companiilor sunt disponibile pentru orice tip de entitate juridică: SRL, II, IF, PFA sau altele.",
-      "citat_verificat": true,
-      "avertisment": "citat scurt (19 cuvinte)",
-      "link_live": "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/#:~:text=Serviciile%20noastre%20bancare%20dedicate%20companiilor,II%2C%20IF%2C%20PFA%20sau%20altele."
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.procreditbank.ro/",
-    "https://www.procreditbank.ro/wp-content/uploads/2024/10/Lista-preturi-PJ-RO_01.10.2024-1.pdf",
     "https://www.procreditbank.ro/companii/proantreprenor-pachet-cont-business/",
     "https://www.procreditbank.ro/companii/servicii-bancare/cont-curent/",
-    "https://www.procreditbank.ro/companii/pachet-grow/"
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/companii/pachet-grow/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf"
   ],
-  "durata_s": 45,
+  "durata_s": 30,
   "consum": {
-    "intrare": 10,
-    "iesire": 3600,
-    "citire_cache": 190435,
-    "scriere_cache": 99878,
+    "intrare": 12,
+    "iesire": 1863,
+    "citire_cache": 140557,
+    "scriere_cache": 89284,
     "apeluri": 1,
-    "cost_estimat_usd": 0.32380200000000003
+    "cost_estimat_usd": 0.5399508000000001
   }
 }

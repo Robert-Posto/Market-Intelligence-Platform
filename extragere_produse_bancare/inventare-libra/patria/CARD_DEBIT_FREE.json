@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "patria",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
@@ -12,26 +12,29 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Cardul de debit Patria Bank",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Card de debit pentru persoane fizice, cu emitere gratuită ca și Libra Free, dar administrarea lunară are cost (vezi tarife) și nu există cashback generalizat la parteneri (doar cardul Gold, separat, are acces la oferte cu cashback).",
+      "motiv_potrivire": "Este cardul de debit standard pentru persoane fizice, fără comision de emitere și fără comision la plata la comercianți, cu campanie de cashback la parteneri — foarte apropiat de Libra Card de debit Free; diferă însă segmentul (doar persoane fizice, nu și juridice) și faptul că administrarea lunară nu este integral gratuită, existând un comision de 3 lei/card/lună conform listei de tarife.",
       "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată a cardului de debit conține cifrele cheie de emitere și livrare, dar costul de administrare nu apare aici (e în documentul de tarife).",
-      "citat": "ZERO lei pentru emitere card de credit principal - ZERO lei pentru emitere card de credit suplimentar - 15 lei/ 3 EUR taxă de livrare card prin curier",
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată a produsului conține cifre explicite despre emitere (0 lei) și taxa de livrare (15 lei/3 EUR), plus trimitere la campania de cashback și la comisionul de conversie valutară (BNR+1,75%).",
+      "dovada_metoda": "Conținutul a fost extras ca text HTML cu cifre explicite în pagină, fără a necesita randare JavaScript.",
+      "citat": "Costurile pentru obținerea cardului de debit Patria ZERO lei pentru emitere card de credit principal ZERO lei pentru emitere card de credit suplimentar 15 lei/ 3 EUR taxă de livrare card prin curier",
       "citat_verificat": null,
       "link_live": null
     },
     {
-      "url": "https://www.patriabank.ro/d/1000",
-      "tip": "pdf",
+      "url": "https://www.patriabank.ro/d/31",
+      "tip": "html",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Carduri de debit in lei si valuta - Persoane fizice",
+      "denumire_la_banca": "Carduri de debit in lei si valuta - Persoane fizice (Lista de tarife si comisioane PF)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul de tarife arată că administrarea cardului de debit NU este gratuită (3-9 lei/lună în funcție de tip), spre deosebire de Libra Free care nu are costuri de administrare.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Document oficial de tarife care listează explicit comisioanele de emitere (0 lei) și administrare (3-9 lei/lună) pentru cardurile de debit persoane fizice.",
-      "citat": "Emitere card de debit principal 0 lei 0 lei 0 lei Emitere card de debit suplimentar (pentru utilizatori) 0 lei 0 lei 0 lei Administrare card de debit (principal / suplimentar) 3 lei / card / luna 3 lei/ card / luna 9 lei / card /luna 1 EUR / card / luna",
+      "motiv_potrivire": "Documentul oficial de tarife pentru persoane fizice arată că administrarea cardului de debit nu este gratuită (3-9 lei/card/lună sau 1 EUR/card/lună), spre deosebire de Libra Card de debit Free, care este integral gratuit la administrare.",
+      "incredere": 0.8,
+      "incredere_metoda": 0.75,
+      "explicatie_incredere": "Documentul conține explicit rândurile de tarif pentru emitere și administrare card de debit pentru toate variantele de card (VISA Electron, Mastercard lei, Mastercard Gold, Mastercard Euro), cu valori numerice clare.",
+      "dovada_metoda": "Textul tabelului de tarife a fost extras direct, cu valori numerice vizibile, fără nevoie de randare suplimentară.",
+      "citat": "Emitere card de debit principal 0 EUR 0 lei 0 lei 0 lei Emitere card de debit suplimentar (pentru utilizatori) 0 EUR 0 lei 0 lei 0 lei Administrare card de debit (principal / suplimentar) 3 lei/ card / luna 9 lei / card /luna 1 EUR / card / luna 3 lei / card / luna",
       "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     },
     {
@@ -41,24 +44,12 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Card Business (Mastercard Business)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Card de debit pentru persoane juridice/antreprenori, cu emitere gratuită similar Libra Free, dar administrarea lunară are cost (5 lei/lună, vezi tarife PJ) și nu există cashback la parteneri.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată cardului business conține cifrele de emitere și beneficii, dar costul de administrare lunară nu apare explicit aici.",
-      "citat": "ZERO lei/ EUR comision de emitere. ZERO lei/ EUR comision pentru plăți la comercianți (în țară și străinătate). O rețea de peste 500 de bancomate de la care poți retrage oricând numerar.",
-      "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.patriabank.ro/d/27/lista-taxe-si-comisioane-pentru-persoane-juridice.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Carduri de debit - Mastercard Business Lider (Persoane juridice)",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul de tarife PJ confirmă emitere gratuită dar administrare lunară cu cost (5 lei/lună sau 1 EUR/lună), diferit de Libra Free care nu are cost de administrare.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document oficial de tarife pentru persoane juridice cu cifrele explicite de emitere (gratuit) și administrare (5 lei/lună) pentru cardul de debit business.",
-      "citat": "CARDURI DE DEBIT – lei si valuta – Denumire comision Mastercard Business Lider Mastercard Standard Euro Taxa emitere card (inclusiv carduri suplimentare) Gratuit Taxa lunara administrare card 5lei/luna 1€/luna",
+      "motiv_potrivire": "Este echivalentul pentru segmentul persoane juridice: card de debit fără comision de emitere și fără comision la comercianți, dar pagina nu menționează cashback (spre deosebire de Libra) iar conform tarifelor pentru persoane juridice administrarea costă 5 lei/lună, nu este gratuită.",
+      "incredere": 0.75,
+      "incredere_metoda": 0.7,
+      "explicatie_incredere": "Pagina dedicată prezintă explicit avantajele cardului (emitere gratuită, rețea de peste 500 de bancomate), însă nu conține toate comisioanele de administrare sau retragere, care se găsesc în lista de tarife pentru persoane juridice.",
+      "dovada_metoda": "Conținutul text a fost extras direct din pagină, incluzând cifre (500 bancomate, comisioane zero), fără necesitatea de randare JavaScript.",
+      "citat": "ZERO lei/ EUR comision de emitere ZERO lei/ EUR comision pentru plăți la comercianți (în țară și străinătate) O rețea de peste 500 de bancomate de la care poți retrage oricând numerar",
       "citat_verificat": null,
       "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
@@ -68,15 +59,17 @@
   "candidati_respinsi": [],
   "deschise": [
     "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit",
-    "https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business"
+    "https://www.patriabank.ro/d/1782",
+    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria",
+    "https://www.patriabank.ro/d/31"
   ],
-  "durata_s": 83,
+  "durata_s": 158,
   "consum": {
-    "intrare": 33216,
-    "iesire": 7498,
-    "citire_cache": 12620,
-    "scriere_cache": 35406,
+    "intrare": 114949,
+    "iesire": 13553,
+    "citire_cache": 49188,
+    "scriere_cache": 46773,
     "apeluri": 1,
-    "cost_estimat_usd": 0.23245100000000002
+    "cost_estimat_usd": 0.49219809999999997
   }
 }

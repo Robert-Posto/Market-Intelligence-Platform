@@ -87,7 +87,9 @@ ANTETE = {
     "Sec-Fetch-User": "?1",
     "Cache-Control": "max-age=0",
 }
-MODEL = os.getenv("MODEL", "claude-sonnet-5")
+# Sonnet 5.5 din 12.10.2026 (cerut de George, după o rulare pe Opus 5.5 la 2.1): discovery și extragere
+# pe același model, jumătate din prețul lui Opus 5.5 (preturi.py); MODEL în mediu îl schimbă fără cod
+MODEL = os.getenv("MODEL", "claude-sonnet-5-5")
 TIMEOUT = float(os.getenv("TIMEOUT", "30"))
 PRAG_INCREDERE = float(os.getenv("PRAG_INCREDERE", "0.85"))
 
@@ -291,6 +293,27 @@ def sanitizeaza(html: str) -> Sanitizat:
                         text, re.I)[:30],
         metoda_curatare=metoda, lungime_html=len(html),
     )
+
+
+# Data documentului din textul lui: „valabil începând cu 01.03.2024”, „în vigoare de la ...”,
+# „actualizat la ...”. Nu „valabil până la ...”: acela e sfârșitul unei promoții, nu data documentului.
+DATA_DOCUMENT = re.compile(
+    r"(valabil\w*|aplicabil\w*|in vigoare|actualizat\w*|ultima actualizare)"
+    r"[\s:,]*(incepand cu|de la|din|la)?[\s:]*(data de)?[\s:]*"
+    r"(\d{1,2})[./-](\d{1,2})[./-](\d{4})\b")
+
+
+def data_din_text(text: str) -> str | None:
+    """Cea mai recentă dată de intrare în vigoare / actualizare din text, care nu e în viitor (AAAA-LL-ZZ)."""
+    azi, gasite = datetime.now(timezone.utc).date(), []
+    for m in DATA_DOCUMENT.finditer(fara_diacritice(text or "")):
+        try:
+            d = datetime(int(m.group(6)), int(m.group(5)), int(m.group(4))).date()
+        except ValueError:
+            continue
+        if d.year >= 2000 and d <= azi:
+            gasite.append(d)
+    return max(gasite).isoformat() if gasite else None
 
 
 def hash_stabil(text: str) -> str:
@@ -802,17 +825,27 @@ async def extrage(ai: AsyncAnthropic, produs: str, text: str, url: str,
     antet = f"Sursă: {url}\n\n"
     if focus:
         antet += f"PRODUSUL CĂUTAT ÎN ACEST DOCUMENT\n{focus}\n\n"
-    r = await ai.messages.create(
-        model=MODEL, max_tokens=16000, system=sistem(produs, scenariu),
-        tools=[unealta(produs, scenariu)],
-        tool_choice={"type": "tool", "name": "raporteaza"},
-        messages=[{"role": "user",
-                   "content": f"{antet}TEXT:\n\n{text[:MAX_CARACTERE_LLM]}"}],
-    )
+    # `tool_choice` lăsat modelului (auto): Opus 5.5 refuză cu 400 unealta forțată („type "tool" and
+    # "any" are not supported for this model”) — pe 12.10.2026 așa au căzut toate extragerile rulării
+    # pe Opus. Sistemul cere oricum raportarea prin `raporteaza`; dacă modelul răspunde totuși cu text,
+    # i se cere o dată, explicit, unealta.
+    mesaje = [{"role": "user", "content": f"{antet}TEXT:\n\n{text[:MAX_CARACTERE_LLM]}"}]
+    unelte = [unealta(produs, scenariu)]
+    r = await ai.messages.create(model=MODEL, max_tokens=16000, system=sistem(produs, scenariu),
+                                 tools=unelte, tool_choice={"type": "auto"}, messages=mesaje)
+    tokeni_in, tokeni_out = r.usage.input_tokens, r.usage.output_tokens
+    if r.stop_reason == "end_turn" and not any(b.type == "tool_use" for b in r.content):
+        r = await ai.messages.create(
+            model=MODEL, max_tokens=16000, system=sistem(produs, scenariu), tools=unelte,
+            tool_choice={"type": "auto"},
+            messages=mesaje + [{"role": "assistant", "content": r.content},
+                               {"role": "user", "content": "Raportează rezultatul prin unealta `raporteaza`, "
+                                                           "chiar dacă nu ai găsit nimic (gasit = false)."}])
+        tokeni_in += r.usage.input_tokens
+        tokeni_out += r.usage.output_tokens
     for b in r.content:
         if b.type == "tool_use":
-            rez = {**b.input, "_tokeni": {"intrare": r.usage.input_tokens,
-                                          "iesire": r.usage.output_tokens}}
+            rez = {**b.input, "_tokeni": {"intrare": tokeni_in, "iesire": tokeni_out}}
             # Plasa de siguranță: enumul din schemă ar trebui să fi împiedicat
             # deja un nume inventat, dar `strict` nu e activat pe unealtă, deci
             # normalizăm oricum. Costă nimic și prinde regresiile.
@@ -826,8 +859,7 @@ async def extrage(ai: AsyncAnthropic, produs: str, text: str, url: str,
         cat = getattr(r.stop_details, "category", None)
         motiv = f"cerere refuzată de clasificatoarele de siguranță ({cat})"
     return {"gasit": False, "valori": [], "nota": motiv,
-            "_tokeni": {"intrare": r.usage.input_tokens,
-                        "iesire": r.usage.output_tokens}}
+            "_tokeni": {"intrare": tokeni_in, "iesire": tokeni_out}}
 
 
 # ══════════════════════════════════════════════════════════════════
@@ -1337,6 +1369,9 @@ async def proceseaza(
                 return {**baza, "stare": "gol", "avertisment": avert,
                         "rezultate": {}, "tokeni_text": tok,
                         "provenienta": meta_api}
+
+    # înainte de amprentă: și un document neschimbat își spune data (amprenta ignoră datele)
+    baza["data_document_text"] = data_din_text(s.text)
 
     # 2 ── hash pe textul sanitizat
     h = hash_stabil(s.text)

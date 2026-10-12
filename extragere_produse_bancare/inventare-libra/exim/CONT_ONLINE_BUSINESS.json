@@ -3,34 +3,36 @@
   "banca": "exim",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Pachete EXIM BUSINESS (SMART / START / ACTIV / COMPLET)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru PFA/microîntreprinderi, gestionat prin abonament lunar, cu card de debit business inclus și Internet/Mobile Banking (e-ximBanking) — aceeași structură ca produsul Libra: cont PJ online cu abonamente operaționale și card business.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Pagină dedicată a băncii cu cele 4 variante de abonament, costul lunar explicit pentru fiecare și lista de operațiuni incluse gratuit.",
-      "citat": "EXIM BUSINESS START (25 lei/luna) Costuri ZERO: deschiderea contului curent; administrarea lunara a conturilor curente in lei si valuta; furnizarea (emiterea) si administrarea cardului de debit inclus in oferta; administrare lunara Internet/Mobile Banking (e-ximBanking); incasari nelimitate intrabancare in lei si valuta; incasari nelimitate interbancare in valuta; plati nelimitate intrabancare prin e-ximBanking;",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "denumire_la_banca": "Pachete servicii PFA si Microintreprinderi (EXIM BUSINESS SMART / START / ACTIV / COMPLET)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cont curent PJ/PFA cu abonament lunar, card de debit Mastercard Business și Internet/Mobile Banking (e-ximBanking), același segment; diferă canalul: Exim nu oferă deschidere de cont 100% online pentru firme (onboarding-ul digital e doar pentru persoane fizice).",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina dedicată pachetelor pentru PFA și microîntreprinderi conține abonamentele lunare (45/25/40/70 lei) și operațiunile incluse: plăți intrabancare nelimitate, depuneri, reduceri la plățile interbancare.",
+      "citat": "Facilitati aferente POS – cu un cost al comisionului la incasari PF – 0,9%/tranzactii. In afara promotiei, abonamentul pentru pachetul EXIM BUSINESS SMART este de 45 lei/luna.",
+      "dovada_metoda": "Cifrele (lei/luna, procente) apar direct în textul extras.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=Facilitati%20aferente%20POS%20%E2%80%93%20cu,SMART%20este%20de%2045%20lei%2Fluna."
     },
     {
-      "url": "https://www.eximbank.ro/wp-content/uploads/2025/04/Comisioane-Exim-Banca-Romaneasca.pdf",
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Cont curent (Cash Management) - Exim Banca Românească",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul oficial de comisioane pentru persoane juridice, secțiunea Cash Management/Cont curent, aplicabil contului curent PJ care stă la baza pachetelor EXIM BUSINESS; conține comisionul de administrare, deschidere și tarifele de transfer intra/interbancar.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Document oficial de tarife în vigoare (10.04.2025), cu secțiune dedicată Cont curent pentru persoane juridice și tabel explicit pentru transferuri intrabancare/interbancare prin internet banking.",
-      "citat": "Intrabancare 5 lei gratuit flat 2. Interbancare* pana la 999,99 lei 6 lei 5 lei flat intre 1.000 si 49.999,99 lei 10 lei 6,51 lei flat de la 50.000 lei 22 lei 18 lei flat Urgenta (indiferent de valoare) 22 lei 18 lei flat",
+      "denumire_la_banca": "Comisioane Exim Banca Românească – Cash management, Cont curent (persoane juridice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Lista oficială de comisioane PJ, în vigoare din 01.07.2026, pentru contul curent standard: deschidere, administrare, extras, depunere numerar, plăți intra/interbancare prin internet; nu există o variantă de cont deschis exclusiv online.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document general de tarife PJ în care contul curent apare explicit cu valori (deschidere gratuit, administrare 7 lei/lună, extras gratuit, depunere bancnote gratuit, plăți internet 0/5/6,51 lei).",
+      "citat": "Operațiuni fără numerar în lei – Plăți ghișeu Internet* 1. Intrabancare 5 lei gratuit flat 2. Interbancare** ✓ pana la 999,99 lei 6 lei 5 lei flat ✓ între 1.000 și 49.999,99 lei 10 lei 6,51 lei flat",
+      "pagina_pdf": 8,
+      "dovada_metoda": "PDF cu text extras; cifrele sunt în conținut.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -38,22 +40,20 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.eximbank.ro/wp-content/uploads/2025/04/Comisioane-Exim-Banca-Romaneasca.pdf",
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
     "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
-    "https://www.eximbank.ro/2026/04/21/un-an-fara-griji-facturare-gratuita-pentru-micii-antreprenori/",
-    "https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/",
-    "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
-    "https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/",
-    "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
-    "https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/"
+    "https://www.eximbank.ro/documente-diverse/",
+    "https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf"
   ],
-  "durata_s": 100,
+  "durata_s": 33,
   "consum": {
-    "intrare": 74432,
-    "iesire": 7654,
-    "citire_cache": 296863,
-    "scriere_cache": 111198,
+    "intrare": 14,
+    "iesire": 2591,
+    "citire_cache": 176883,
+    "scriere_cache": 97533,
     "apeluri": 1,
-    "cost_estimat_usd": 0.5627716
+    "cost_estimat_usd": 0.6102942
   }
 }

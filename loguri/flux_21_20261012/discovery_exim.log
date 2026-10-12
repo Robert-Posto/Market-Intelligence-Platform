@@ -1,0 +1,35 @@
+Exim Banca Românească: 4 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii eximbank.ro
+  [cautare] eximbank.ro card de debit business IMM
+  [cautare] eximbank tarife comisioane persoane juridice card debit
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2025/04/Comisioane-Exim-Banca-Romaneasca.pdf
+  [ 2] https://www.eximbank.ro/mastercard-business/
+  [cautare] eximbank.ro "Taxe si comisioane" carduri persoane juridice 2025 OR 2026 pdf
+  [ 3] https://www.eximbank.ro/wp-content/uploads/2026/04/Taxe-si-comisioane-carduri.pdf
+  [ 4] https://www.eximbank.ro/documente-diverse/
+       ! url_not_in_prior_context
+  [ 5] https://www.eximbank.ro/wp-content/uploads/2026/04/Taxe-si-comisioane-Carduri-Business.pdf
+GATA    CARD_DEBIT_BUSINESS          3 surse, 1 citate verificate, echivalent, $0.35, 43s — Mastercard Business (card de debit persoane juridice)
+  [cautare] eximbank PFA cont pachet comision lunar
+  [cautare] eximbank tarife comisioane persoane juridice PDF
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2026/03/Comisioane-Exim-Banca-Romaneasca-valabile-din-01.04.2026.pdf
+  [cautare] eximbank PFA liber profesii cont curent IMM pachet
+  [ 2] https://www.eximbank.ro/2026/04/21/un-an-fara-griji-facturare-gratuita-pentru-micii-antreprenori/
+  [ 3] https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/
+  [ 4] https://www.eximbank.ro/2025/06/11/pachete-servicii/
+  [ 5] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+GATA    ABONAMENT_PFA                2 surse, 1 citate verificate, echivalent, $0.40, 62s — Pachete servicii - EXIM BUSINESS START / ACTIV / COMPLET / SMART
+  [cautare] eximbank RoPay plăți instant telefon
+  [cautare] eximbank tarife și comisioane plăți instant PDF
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2026/04/Lista-de-comisioane-pentru-persoane-fizice-in-vigoare-cu-08.06.2026.pdf
+GATA    ROPAY                        2 surse, 0 citate verificate, similar, $0.23, 42s — Transfer credit (Plăți) interbancare în lei prin Internet Banking (plăți instant)
+  [cautare] eximbank.ro card de debit persoane fizice
+  [cautare] eximbank.ro tarife comisioane card debit
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2025/10/Conditii-Generale-de-Utilizare-pentru-cardurile-de-debit-1.pdf
+  [ 2] https://ssl.eximbank.ro/persoane-fizice/carduri/gold-mastercard/
+       ! url_not_in_prior_context
+  [cautare] eximbank.ro "card de debit" Gold Mastercard lounge cashback asigurare calatorie
+  [ 3] https://www.eximbank.ro/en/2022/11/16/mastercard-gold/
+GATA    CARD_DEBIT_GOLD              2 surse, 1 citate verificate, similar, $0.61, 110s — Card de debit Mastercard Gold
+
+exim: 4/4 produse cu surse, 0 erori, cost estimat $1.59, durata 2 min

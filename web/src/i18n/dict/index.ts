@@ -28,6 +28,7 @@ import { auth } from './auth'
 import { vox } from './vox'
 import { utilizatori } from './utilizatori'
 import { sinteza } from './sinteza'
+import { data_valorii } from './data_valorii'
 
 export const DICT = {
   ...comun,
@@ -59,4 +60,5 @@ export const DICT = {
   ...vox,
   ...utilizatori,
   ...sinteza,
+  ...data_valorii,
 } as const

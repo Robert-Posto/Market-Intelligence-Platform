@@ -1,25 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "credex",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Credex Bank este o instituție financiară nebancară (IFN) care oferă exclusiv credite de nevoi personale și un card de credit (Cardul de credit Credex, cu plată în rate la Altex, Media Galaxy, Brico Depot). Nu există niciun produs de tip card de debit - Credex nu operează conturi curente/de debit, ci doar linii de credit și carduri de credit asociate. Produsul Libra CARD_DEBIT_GOLD (card de debit cu dobândă la sold, cashback, lounge) nu are corespondent la Credex, nici pentru persoane fizice, nici pentru juridice."
+    "nota": "Credex este IFN (instituție financiară nebancară și instituție de plată), nu bancă: oferă doar credite de nevoi personale și un card de credit Credex (cu Apple Pay), fără conturi curente și fără carduri de debit. Nici pentru firme nu are carduri. Cardul de credit e alt tip de produs, așa că nu poate fi pus drept corespondent pentru un card de debit."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://credex.ro/"
   ],
-  "durata_s": 10,
+  "durata_s": 8,
   "consum": {
-    "intrare": 4,
-    "iesire": 689,
-    "citire_cache": 6343,
-    "scriere_cache": 18348,
+    "intrare": 6,
+    "iesire": 361,
+    "citire_cache": 6819,
+    "scriere_cache": 10907,
     "apeluri": 1,
-    "cost_estimat_usd": 0.054036600000000004
+    "cost_estimat_usd": 0.0645066
   }
 }

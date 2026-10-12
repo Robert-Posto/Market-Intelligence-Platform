@@ -144,6 +144,30 @@ def text_pdf(cale: Path) -> tuple[str, int]:
     return "\n".join(bucati).strip(), pagini
 
 
+def _data_pdf(v: Any) -> str | None:
+    """„D:20240315120000+02'00'” -> „2024-03-15”."""
+    if isinstance(v, bytes):
+        v = v.decode("latin-1", "ignore")
+    m = re.match(r"(?:D:)?(\d{4})(\d{2})(\d{2})", str(v or ""))
+    if not m:
+        return None
+    try:
+        d = datetime(int(m.group(1)), int(m.group(2)), int(m.group(3))).date()
+    except ValueError:
+        return None
+    return d.isoformat() if 2000 <= d.year and d <= datetime.now(timezone.utc).date() else None
+
+
+def metadate_pdf(cale: Path) -> dict:
+    """Datele din metadatele documentului: ultima modificare și crearea, dacă există."""
+    try:
+        with pdfplumber.open(str(cale)) as doc:
+            m = doc.metadata or {}
+    except Exception:
+        return {}
+    return {"modificat": _data_pdf(m.get("ModDate")), "creat": _data_pdf(m.get("CreationDate"))}
+
+
 def e_standardizat(text: str) -> bool:
     return bool(RE_TITLU_PAD.search(text[:6000]))
 
@@ -239,7 +263,10 @@ async def proceseaza(
             "lungime_text": len(text),
             "standardizat_258_2017": standardizat,
             "cale_extractie": "determinist" if standardizat else "model",
+            "metadate": metadate_pdf(cale),
         }
+        # înainte de amprentă: și un document neschimbat își spune data
+        baza["data_document_text"] = fh.data_din_text(text)
 
         if not text:
             return {**baza, "stare": "gol", "rezultate": {},

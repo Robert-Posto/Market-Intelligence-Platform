@@ -1,21 +1,143 @@
 {
  "banca": "bcr",
- "total": 1,
+ "total": 11,
  "pe_motiv": {
+  "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”": 9,
+  "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr": 1,
   "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)": 1
  },
  "valori": [
   {
-   "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george",
+   "url": "https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_administrare_lunar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "cel puțin 5.000 lei pentru George Gold",
+   "incredere": 0.85,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_administrare_lunar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "cel puțin 10.000 lei pentru George Platinum",
+   "incredere": 0.85,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_plata_interbancara",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Valabil începând cu nivelul ADVANCED din Programul de Beneficii.",
+   "incredere": 0.85,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_retragere_atm",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Valabil de pe conturile în lei, dacă ești cel puțin la nivel ADVANCED în Programul de Beneficii",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PDAI_sept2026.pdf",
+   "produse": [
+    "CONT_ONLINE_BUSINESS"
+   ],
+   "camp": "operatiuni_incluse",
+   "valoare_num": 0,
+   "unitate": "numar",
+   "citat": "pe teritoriul României) inițiate prin serviciul internet banking George, Gratuit**",
+   "incredere": 0.75,
+   "motiv": "0 operațiuni incluse fără „0” în citat: e o listă de servicii, nu un număr"
+  },
+  {
+   "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PDAI_sept2026.pdf",
    "produse": [
     "CONT_ONLINE_BUSINESS"
    ],
    "camp": "altele",
    "valoare_num": 0,
    "unitate": "lei",
-   "citat": "Administrarea contului curent (LEI) și a unui cont suplimentar in LEI sau valută",
+   "citat": "Business debit card",
    "incredere": 0.6,
    "motiv": "0 pe `altele` fără „0 / gratuit” în citat: faptul e text (garanții, perioadă de grație)"
+  },
+  {
+   "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/BCR_Tarife-si-Comisioane-PJ_RO_sept2026.pdf",
+   "produse": [
+    "CARD_DEBIT_BUSINESS"
+   ],
+   "camp": "comision_emitere_card",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Taxa de emitere și mentenanță",
+   "incredere": 0.6,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Tarif_standard_de_comisioane_PF.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_administrare_lunar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "Pentru Clienții cu vârsta între 18 ani și 22 de ani: dacă aceștia fac cel puțin o plată (i) cu Cardul de debit sau (ii) un transfer credit (plăți) prin Internet/ Mobile",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Tarif_standard_de_comisioane_PF.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_administrare_lunar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "▪ 2.000 Lei pentru Cardul George Standard",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Tarif_standard_de_comisioane_PF.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_administrare_lunar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "▪ 5.000 Lei pentru Cardul George Gold",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
+  },
+  {
+   "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Tarif_standard_de_comisioane_PF.pdf",
+   "produse": [
+    "CONT_ONLINE_PERSONAL"
+   ],
+   "camp": "comision_administrare_lunar",
+   "valoare_num": 0,
+   "unitate": "lei",
+   "citat": "▪ 10.000 Lei pentru Cardul George Platinum",
+   "incredere": 0.8,
+   "motiv": "0 nesusținut de citat: lipsește „0 / gratuit / fără comision / inclus”"
   }
  ]
 }

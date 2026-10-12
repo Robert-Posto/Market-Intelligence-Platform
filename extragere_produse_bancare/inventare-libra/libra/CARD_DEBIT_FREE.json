@@ -3,21 +3,22 @@
   "banca": "libra",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.librabank.ro/documente/operatiuni/comisioane/comisioane_Libra_Free.pdf",
+      "url": "https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Free.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Card Free (Avanpost Free)",
+      "denumire_la_banca": "Card de debit Free (Avanpost Free)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Document oficial de tarife pentru cardul de debit Free/Avanpost Free, aplicabil atât persoanelor fizice cât și persoanelor juridice/alte entități, exact produsul CARD_DEBIT_FREE: card fără costuri de emitere/administrare.",
+      "motiv_potrivire": "Este chiar produsul Libra: anexa de dobânzi, comisioane și taxe a cardului Avanpost Free, valabilă pentru persoane fizice și pentru cardul de debit al persoanelor juridice.",
       "incredere": 0.95,
-      "incredere_metoda": 0.95,
-      "explicatie_incredere": "Document oficial 'Dobanzi, comisioane, taxe si alte costuri' pentru cardul Free, cu toate cele 5 câmpuri cheie prezente explicit și numeric.",
+      "explicatie_incredere": "Documentul oficial de comisioane al cardului Free, legat din pagina produsului, conține emiterea, administrarea, retragerea de la ATM-urile Libra/Euronet, conversia valutară, reînnoirea și interogarea soldului.",
+      "citat": "Comision de administrare a cardului/contului de card 0 RON / luna Taxa interogare sold la ATM-uri din Romania 0 RON Taxa interogare sold la ATM-uri din strainatate 0 RON",
       "pagina_pdf": 1,
-      "citat": "Comision de emitere plastic 0 RON Comision de utilizare mijloc de plata (card) la ATM-uri ale Libra Internet Bank SA/ Euronet* 0.2% Comision de utilizare mijloc de plata (card) la ATM-uri din Uniunea Europeana* 0.5%+2.5 RON Comision de conversie valutara 0 Comision de administrare a cardului/ contului de card 0 RON/ luna",
+      "dovada_metoda": "PDF cu text extras; cifrele apar direct în conținut.",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
       "link_live": null
     }
@@ -25,16 +26,17 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.librabank.ro/documente/operatiuni/comisioane/comisioane_Libra_Free.pdf",
-    "https://www.librabank.ro/card-de-debit"
+    "https://www.librabank.ro/",
+    "https://www.librabank.ro/card-de-debit",
+    "https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Free.pdf"
   ],
-  "durata_s": 34,
+  "durata_s": 16,
   "consum": {
-    "intrare": 6,
-    "iesire": 2733,
-    "citire_cache": 36982,
-    "scriere_cache": 46543,
+    "intrare": 10,
+    "iesire": 1011,
+    "citire_cache": 56567,
+    "scriere_cache": 34853,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1510959
+    "cost_estimat_usd": 0.2171518
   }
 }

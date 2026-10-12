@@ -1,52 +1,55 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "bcr",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/mastercard-gold",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Cardul George Gold (card de debit Mastercard Gold)",
+      "denumire_la_banca": "Cardul George Gold",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Card de debit premium pentru persoane fizice, cu asigurare de călătorie, acces lounge și cashback, la fel ca Libra Gold, dar structura de comisioane diferă: la BCR comisionul este lunar (30 lei/lună dacă nu încasezi minimum 5.000 lei/lună), nu anual de 48 lei ca la Libra, nu se menționează dobândă la soldul contului, iar retragerile sunt gratuite nelimitat (nu 3/lună) și accesul lounge are prag de tranzacții diferit (3 vizite/an la minimum 4.500 lei cumpărături, nu condiționat de retrageri).",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele comisioanelor, condițiile de acces lounge și asigurarea de călătorie.",
-      "citat": "3 vizite gratuite / an, pentru tine, dacă ai efectuat, în luna calendaristică anterioară solicitarii accesului, cumpărături cu cardul tau la comercianti (POS și/sau online), în valoare de minimum 4.500 Lei ; este necesar să ajungi la suma minimă, cu cel puțin 4 zile înaintea accesului în lounge.",
+      "motiv_potrivire": "Pagina produsului: card de debit Gold pentru persoane fizice, cu asigurare de călătorie, lounge și cashback. Costul depinde de administrarea contului George; nu are dobândă la sold și nu se adresează persoanelor juridice.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Este pagina dedicată cardului George Gold, cu costul lunar al contului asociat și pragul de încasări.",
+      "citat": "Nu cu încasezi minimum 5.000 de lei / lună: Plătești un comision de 30 de lei / lună pentru contul George în RON. 15 lei comision de livrare a cardului la o adresă fizică în România",
+      "dovada_metoda": "Cifrele apar în textul HTML al paginii.",
       "citat_verificat": true,
-      "link_live": "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/mastercard-gold#:~:text=3%20vizite%20gratuite%20%2F%20an%2C,zile%20%C3%AEnaintea%20accesului%20%C3%AEn%20lounge."
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/mastercard-gold#:~:text=Nu%20cu%20%C3%AEncasezi%20minimum%205.000,o%20adres%C4%83%20fizic%C4%83%20%C3%AEn%20Rom%C3%A2nia"
     },
     {
-      "url": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-gold-ron",
-      "tip": "html",
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Tarif_standard_de_comisioane_PF.pdf",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Cardul de debit BCR Mastercard Business Gold în RON",
+      "rol": "tarife",
+      "denumire_la_banca": "Card George Gold (Cont Curent George 3.0)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Card de debit premium pentru persoane juridice/companii, cu asigurare de călătorie, acces lounge și reduceri la parteneri, ca segment de firme echivalent cu Libra Gold pentru persoane juridice; diferă pragurile de acces lounge (5 vizite/an la minimum 7.000 lei tranzacții, față de 3 retrageri gratuite/lună la Libra), comisionul este 'zero' în cadrul unui pachet de cont (nu 48 lei/an) și nu se menționează dobândă la sold.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Pagina dedicată produsului pentru business conține cifrele privind lounge-ul, asigurarea și comisioanele, dar costurile exacte complete sunt trimise către tariful general de comisioane PJ.",
-      "citat": "5 vizite gratuite / an, pentru tine, dacă ai efectuat, în luna calendaristică anterioară solicitării accesului, cumpărături cu cardul tău la comercianți (POS și/sau online), în valoare de minimum 7.000 Lei; este necesar să ajungi la suma minimă, cu cel puțin 4 zile înaintea accesului în lounge.",
-      "citat_verificat": true,
-      "link_live": "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-gold-ron#:~:text=5%20vizite%20gratuite%20%2F%20an%2C,zile%20%C3%AEnaintea%20accesului%20%C3%AEn%20lounge."
+      "motiv_potrivire": "Card de debit Mastercard Gold pentru persoane fizice, cu asigurare de călătorie, lounge Priority Pass și cashback. Diferențe: costul vine în principal din administrarea contului George 3.0 (0/30 lei pe lună, după încasări), nu din taxa anuală pe card; nu primești dobândă la sold; nu acoperă persoanele juridice.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Tariful oficial pentru persoane fizice are o coloană dedicată cardului George Gold, cu emitere, administrare, retrageri ATM, interogare sold, conversie valutară și reemitere.",
+      "citat": "Card George Gold Card George Gold Metal Card George Platinum Visa Clasic Card Virtual Carduri în Lei Carduri în valută Furnizare (emitere)/Administrare Emiterea (furnizarea) unui Card de debit/(principal) 0 Lei 0 Lei 100 Lei 0 Lei",
+      "pagina_pdf": 8,
+      "dovada_metoda": "Text PDF extras direct; secțiunea 7 de la pagina 8 conține toate câmpurile cheie.",
+      "citat_verificat": null,
+      "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/carduri-de-debit/mastercard-gold",
-    "https://www.bcr.ro/ro/business/general/conturi-si-servicii/carduri-de-debit/mastercard-business-gold-ron"
+    "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Tarif_standard_de_comisioane_PF.pdf"
   ],
-  "durata_s": 51,
+  "durata_s": 28,
   "consum": {
-    "intrare": 6,
-    "iesire": 4431,
-    "citire_cache": 37661,
-    "scriere_cache": 41056,
+    "intrare": 10,
+    "iesire": 2103,
+    "citire_cache": 51640,
+    "scriere_cache": 68658,
     "apeluri": 1,
-    "cost_estimat_usd": 0.15449420000000003
+    "cost_estimat_usd": 0.406046
   }
 }

@@ -1,26 +1,27 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bnpparibas",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "BNP Paribas Sucursala București este o bancă corporate/wholesale (Global Markets, Cash Management, Global Trade Solutions, CIB) fără retail banking pentru IMM/PFA. Site-ul nu oferă conturi curente online pentru firme mici cu abonamente operaționale și card business; segmentul de clienți țintă este corporații mari și instituții, nu PFA/IMM deservite 100% online."
+    "nota": "BNP Paribas S.A. Paris – Sucursala București face doar Corporate & Institutional Banking (Global Markets, Cash Management, Global Trade Solutions) pentru corporații mari și instituții. Nu are cont curent pentru IMM/PFA deschis online, abonamente sau card business pentru acest segment. Site-ul nu publică o listă de tarife și comisioane, ci doar Condițiile Generale (nov. 2025). Platforma Connexis Cash Management e destinată clienților corporate, nu este un produs echivalent."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://romania.bnpparibas.com/",
-    "https://www.romania.bnpparibas.com/en/corporates-institutions/"
+    "https://www.romania.bnpparibas.com/en/corporates-institutions/",
+    "https://www.romania.bnpparibas.com/en/legal-information/"
   ],
-  "durata_s": 17,
+  "durata_s": 13,
   "consum": {
-    "intrare": 6,
-    "iesire": 734,
-    "citire_cache": 16553,
-    "scriere_cache": 14043,
+    "intrare": 10,
+    "iesire": 584,
+    "citire_cache": 31976,
+    "scriere_cache": 18936,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0457701
+    "cost_estimat_usd": 0.11919040000000002
   }
 }

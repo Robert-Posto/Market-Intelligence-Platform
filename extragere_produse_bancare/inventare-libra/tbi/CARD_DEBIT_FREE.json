@@ -1,25 +1,30 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "tbi",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "tbi bank este un creditor specializat în credite de consum (nevoi personale, cumpărături în rate/BNPL), nu oferă conturi curente cu card de debit asociat ca produs de retail general. Documentul oficial de informare cu privire la comisioane pentru conturile curente (standard RON, servicii de bază RON, standard EUR) indică explicit pentru fiecare variantă de cont că furnizarea, emiterea și administrarea unui card de debit sunt servicii indisponibile. Site-ul menționează doar carduri de debit ALE CLIENTULUI, folosite ca metodă de plată a ratelor de credit (ex. prin my tbi, tbi app, PayU), nu un card de debit emis de tbi bank. Nu există, prin urmare, niciun produs echivalent sau similar cu 'Card de debit Free' la această bancă."
+    "nota": "tbi bank (Sucursala București) nu oferă card de debit nici pentru persoane fizice, nici pentru persoane juridice. Documentul oficial de informare privind comisioanele pentru Cont curent standard (data 30.03.2026, https://tbibank.ro/wp-content/uploads/2026/09/Document-de-informare-cu-privire-la-comisioane_Cont-curent-standard-1.pdf) spune explicit la emitere card de debit, administrare card de debit și retrageri ATM proprii/alte bănci: 'Serviciul nu este disponibil'. Nici Lista de dobânzi, taxe și comisioane PF în vigoare din 30.03.2026 nu are secțiune de carduri. Pe site, banca oferă doar cont curent la ghișeu, depozite, cont de economii, credite și BNPL prin aplicația tbi. Expresia „card de debit” apare numai când e vorba de plata ratelor cu cardul unei alte bănci."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://tbibank.ro/wp-content/uploads/2022/09/Document_de_informare_cu_privire_la_comisioane.pdf"
+    "https://tbibank.ro/",
+    "https://tbibank.ro/aplicatia-tbi/",
+    "https://tbibank.ro/persoane-fizice/operatiuni-bancare/operatiuni-cont-curent/",
+    "https://tbibank.ro/despre-tbi-group/documente/",
+    "https://tbibank.ro/wp-content/uploads/2026/09/Lista-de-dobanzi-taxe-si-comisioane-pentru-persoane-fizice_30.03.2026-1.pdf",
+    "https://tbibank.ro/wp-content/uploads/2026/09/Document-de-informare-cu-privire-la-comisioane_Cont-curent-standard-1.pdf"
   ],
-  "durata_s": 18,
+  "durata_s": 30,
   "consum": {
-    "intrare": 6,
-    "iesire": 872,
-    "citire_cache": 25958,
-    "scriere_cache": 36870,
+    "intrare": 14,
+    "iesire": 1221,
+    "citire_cache": 145015,
+    "scriere_cache": 81449,
     "apeluri": 1,
-    "cost_estimat_usd": 0.10609860000000002
+    "cost_estimat_usd": 0.48972699999999997
   }
 }

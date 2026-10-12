@@ -1,41 +1,59 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "nexent",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.nexentbank.ro/biroul-de-presa/Nexent-Bank-lanseaza-platile-instant-pentru-clientii-sai/63",
+      "url": "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Plăți instant / plăți interbancare în lei prin monet și Internet Banking (Lista de taxe, comisioane și dobânzi PF, 01.01.2026)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Nexent nu are RoPay (plăți prin telefon cu alias, QR sau NFC). Oferă însă plăți instant în lei din monet și Internet Banking, la costul unei plăți interbancare standard. Lista oficială PF dă comisionul pentru plata către altă bancă prin monet sau Internet Banking și pentru încasarea din altă bancă.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Este lista oficială de tarife PF în vigoare de la 01.01.2026. Are comisioanele pentru plata interbancară online și pentru încasare, dar nu are un rând separat pentru plata instant.",
+      "citat": "Plati interbancare (catre alte banci) indiferent de suma8 RON/FX 0,05% min. echivalent 4 RON, max. echivalent 20 RON8",
+      "pagina_pdf": 2,
+      "dovada_metoda": "PDF cu text extras, cifrele apar direct în conținut.",
+      "citat_verificat": null,
+      "avertisment": "citat scurt (18 cuvinte)",
+      "link_live": null
+    },
+    {
+      "url": "https://www.nexentbank.ro/biroul-de-presa/Nexent-Bank-launches-instant-payments-for-its-clients/63",
       "tip": "html",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Plăți Instant (serviciul de plăți instant Nexent Bank)",
+      "rol": "conditii",
+      "denumire_la_banca": "Plăți instant (Plăți Instant Lei)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este același tip de serviciu (transfer interbancar instant în lei, disponibil pentru persoane fizice și juridice, prin Mobile/Internet Banking), dar pagina Nexent descrie integrarea la schema națională de Plăți Instant administrată de TRANSFOND fără a menționa explicit funcția de alias prin număr de telefon (proxy pentru IBAN) care definește RoPay; diferă canalul de identificare a beneficiarului (IBAN standard vs. număr de telefon ca alias).",
-      "incredere": 0.75,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Comunicatul oficial al băncii conține cifre concrete (plafon 50.000 lei/tranzacție, fără costuri suplimentare) despre serviciul propriu de plăți instant, dar nu confirmă explicit funcția de alias telefonic specifică RoPay.",
-      "citat": "Serviciul permite transferul în timp real al sumelor de până la 50.000 lei per tranzacție, către orice bancă din România care participă la serviciul Plăți Instant Lei administrat de TRANSFOND, având finalitatea decontării asigurată de către Banca Națională a României.",
-      "pagina_pdf": null,
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "motiv_potrivire": "Este serviciul de plăți instant în lei pentru persoane fizice și juridice, inițiate din Mobile și Internet Banking. Diferă canalul: nu are RoPay, adică alias pe număr de telefon sau QR.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este singura pagină a băncii care descrie plata instant: limita de 50.000 lei și costul egal cu cel al unei plăți interbancare standard. E însă un comunicat de presă, nu o pagină de produs.",
+      "citat": "Noua facilitate este accesibilă direct din aplicațiile de Mobile și Internet Banking, fără costuri suplimentare față de o plată interbancară standard în lei.",
+      "dovada_metoda": "Text HTML static, informația apare direct în conținut.",
+      "citat_verificat": true,
+      "link_live": "https://www.nexentbank.ro/biroul-de-presa/Nexent-Bank-launches-instant-payments-for-its-clients/63#:~:text=Noua%20facilitate%20este%20accesibil%C4%83%20direct,plat%C4%83%20interbancar%C4%83%20standard%20%C3%AEn%20lei."
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.nexentbank.ro/",
-    "https://www.nexentbank.ro/monet"
+    "https://www.nexentbank.ro/persoane-fizice/Transferuri/Transferuri-intra/inter-bancare",
+    "https://www.nexentbank.ro/biroul-de-presa/Nexent-Bank-launches-instant-payments-for-its-clients/63",
+    "https://www.nexentbank.ro/upload/media/document/0001/07/d79f5526970ef9646a7cdb4cb18416b9052414a9.pdf",
+    "https://www.nexentbank.ro/persoane-fizice/Conturi-curente"
   ],
-  "durata_s": 29,
+  "durata_s": 45,
   "consum": {
-    "intrare": 6,
-    "iesire": 2117,
-    "citire_cache": 34195,
-    "scriere_cache": 48849,
+    "intrare": 16,
+    "iesire": 2240,
+    "citire_cache": 247361,
+    "scriere_cache": 85493,
     "apeluri": 1,
-    "cost_estimat_usd": 0.15014349999999999
+    "cost_estimat_usd": 0.5712733999999999
   }
 }

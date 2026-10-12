@@ -3,53 +3,40 @@
   "banca": "garanti",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Cont curent în LEI (Persoane Fizice) / Card de debit Bonus Debit Card",
+      "denumire_la_banca": "Cont curent în lei (persoane fizice, deschidere online prin Garanti BBVA Online)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul oficial de tarife și comisioane standard pentru persoane fizice, în vigoare din 10.11.2025, conține toate comisioanele aplicabile contului curent standard, inclusiv cel deschis online prin Garanti BBVA Online/Mobile.",
-      "incredere": 0.95,
-      "incredere_metoda": 0.95,
-      "explicatie_incredere": "Document oficial PDF de tarife, în vigoare, cu valorile exacte pentru administrare cont, emitere/administrare card de debit.",
+      "motiv_potrivire": "Contul curent în lei pentru persoane fizice se poate deschide online în Garanti BBVA Online. Banca nu are un produs separat „cont online”, așa că tarifele standard ale contului curent PF sunt cele aplicabile. Pachetul de cont curent dă scutiri doar cu condiții de activitate și nu e luat drept preț de listă.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Lista oficială de tarife pentru persoane fizice din 10.11.2025 conține toate câmpurile cheie ale contului curent în lei: administrare 7,5 lei/lună, deschidere și închidere gratuite, extras lunar gratuit, card Bonus Debit emis și administrat gratuit, transfer interbancar online 5 lei, retragere la ATM propriu 0,2% (minim 0,1 lei), interogare de sold gratuită.",
+      "citat": "CONTURI CURENTE ÎN LEI ȘI VALUTĂ\nDeschidere conturi curente în LEI și/sau valuta Gratuit \nDeschidere cont de economii Gratuit \nDeschidere depozit/desființare depozit la scadență Gratuit \nTaxă administrare cont curent 1 7,5 LEI/cont/lună, în echivalent",
       "pagina_pdf": 3,
-      "citat": "Taxă administrare cont curent 7,5 LEI/cont/lună, în echivalent Taxă administrare cont de economii Gratuit Rata dobânzii cont curent în LEI și în orice valută 0%",
+      "dovada_metoda": "PDF citit integral prin http; valorile apar ca text pe paginile 3, 8-9, 13-14.",
+      "incredere_metoda": 0.95,
       "citat_verificat": null,
       "link_live": null
-    },
-    {
-      "url": "https://www.garantibbva.ro/en/become-customer/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Everyday Account (Cont curent în LEI, 100% digital onboarding)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Produs identic ca tip (cont curent pentru persoane fizice) și segment, cu accent explicit pe deschidere 100% online, fără vizită la sucursală, exact ca produsul Libra Cont Online Personal.",
-      "incredere": 0.85,
-      "incredere_metoda": 0.8,
-      "explicatie_incredere": "Pagina dedicată descrie explicit procesul 100% digital de deschidere a contului curent și pachetul 'Everyday Account' cu cont curent în RON cu 0 comisioane, dar nu conține toate cifrele de tarife (acestea sunt în documentul oficial de tarife).",
-      "citat": "Open your Garanti BBVA account in minutes — no branch visit, no paperwork. 100% online process No branch visit required Secure onboarding Full access to all digital tools Current account in RON with 0 fees Debit card Garanti BBVA online and mobile SMS elerts with 0 costs",
-      "citat_verificat": true,
-      "link_live": "https://www.garantibbva.ro/en/become-customer/#:~:text=Open%20your%20Garanti%20BBVA%20account,SMS%20elerts%20with%200%20costs"
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
+    "https://www.garantibbva.ro/",
     "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf",
-    "https://www.garantibbva.ro/en/become-customer/"
+    "https://www.garantibbva.ro/en/individuals/current-account-package/"
   ],
-  "durata_s": 67,
+  "durata_s": 24,
   "consum": {
-    "intrare": 6,
-    "iesire": 5842,
-    "citire_cache": 35141,
-    "scriere_cache": 80264,
+    "intrare": 97,
+    "iesire": 1709,
+    "citire_cache": 68869,
+    "scriere_cache": 85533,
     "apeluri": 1,
-    "cost_estimat_usd": 0.26612020000000003
+    "cost_estimat_usd": 0.48978059999999995
   }
 }

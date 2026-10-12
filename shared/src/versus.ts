@@ -124,6 +124,10 @@ export const VersusCelulaLibra = z
     variante: z.array(z.object({ eticheta: z.string().nullable(), valoare_num: z.number(), unitate: z.string().nullable(), n: z.number() })).optional(),
     alternative: z.array(z.object({ valoare_num: z.number(), unitate: z.string().nullable(), n: z.number() })).optional(),
     derivat: z.boolean().optional(),
+    data_citat: z.string().nullable().optional(),
+    data_document: z.string().nullable().optional(),
+    data_document_sursa: z.string().nullable().optional(),
+    data_extragere: z.string().nullable().optional(),
   })
   .passthrough()
 export type VersusCelulaLibra = z.infer<typeof VersusCelulaLibra>

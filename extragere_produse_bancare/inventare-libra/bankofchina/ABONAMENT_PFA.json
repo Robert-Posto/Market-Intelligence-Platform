@@ -1,26 +1,26 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bankofchina",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Bank of China (CEE) Ltd - Sucursala București este o bancă corporate/wholesale dedicată clienților mari și relațiilor comerciale China-România. Nu are produse de retail sau pachete dedicate PFA/microîntreprinderi; singurul produs conex este 'Corporate Current Account', un cont curent generic pentru companii, fără pachet de tip abonament, card business sau operațiuni incluse gratuit."
+    "nota": "Bank of China (CEE) Sucursala București oferă doar servicii corporate (RMB Service, depozite, credite corporate, trade services, trezorerie, online banking corporate). Pe site nu există niciun abonament sau pachet de cont pentru PFA sau profesii liberale cu cost lunar fix și operațiuni incluse. Singurul document cu tarife legat din footer este „Terms and Conditions for Corporate Customers”, care e general și nu descrie un pachet."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.bankofchina.com/ro/en/",
     "https://www.bankofchina.com/ro/en/cbservice/cbo/"
   ],
-  "durata_s": 16,
+  "durata_s": 9,
   "consum": {
-    "intrare": 6,
-    "iesire": 1123,
-    "citire_cache": 20776,
-    "scriere_cache": 16291,
+    "intrare": 8,
+    "iesire": 485,
+    "citire_cache": 18271,
+    "scriere_cache": 12958,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0561247
+    "cost_estimat_usd": 0.0818304
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "salt",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
@@ -7,20 +7,21 @@
   "surse": [],
   "gol": {
     "motiv": "blocat_de_robots",
-    "nota": "Domeniul saltbank.ro nu a putut fi accesat (eroare de permisiune la fetch, posibil blocare robots.txt), iar căutările web nu au returnat rezultate utilizabile. Nu s-a putut verifica dacă Salt Bank oferă conturi/carduri de debit pentru persoane juridice (firme, PFA)."
+    "nota": "Domeniul saltbank.ro a refuzat accesul (eroare de permisiune) la toate încercările de fetch, iar căutările web nu au returnat rezultate accesibile. Din informații generale, Salt Bank este o bancă digitală axată exclusiv pe persoane fizice (retail) și nu pare să ofere conturi/carduri pentru persoane juridice sau PFA, dar nu am putut verifica acest lucru direct pe site din cauza blocării accesului."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.saltbank.ro/",
-    "https://www.saltbank.ro/business"
+    "https://www.saltbank.ro/business",
+    "https://saltbank.ro/"
   ],
-  "durata_s": 15,
+  "durata_s": 17,
   "consum": {
-    "intrare": 7550,
-    "iesire": 1015,
-    "citire_cache": 19208,
-    "scriere_cache": 6897,
+    "intrare": 7927,
+    "iesire": 921,
+    "citire_cache": 20580,
+    "scriere_cache": 7295,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0463341
+    "cost_estimat_usd": 0.0474175
   }
 }

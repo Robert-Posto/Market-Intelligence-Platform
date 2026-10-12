@@ -652,6 +652,122 @@
     "intrare": 7292,
     "iesire": 223
    }
+  },
+  {
+   "cheie": "https://www.citibank.com/icg/sa/emea/romania/romanian/assets/docs/Appendix_1_Visa_electron_bilingv_ECS_10_06_EN.pdf||card de debit citibank visa electron (pentru firme)",
+   "url": "https://www.citibank.com/icg/sa/emea/romania/romanian/assets/docs/Appendix_1_Visa_electron_bilingv_ECS_10_06_EN.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Card de debit Citibank VISA Electron (pentru firme)",
+   "focus": "Produsul băncii: „Card de debit Citibank VISA Electron (pentru firme)”.\nCorespunde produsului Libra: „Card de debit business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `comision_emitere_card` — Emiterea cardului principal al produsului, la cerere, în regim normal: nu urgent, nu suplimentar, nu înlocuirea unui card pierdut sau furat, nu card virtual.\n  `comision_administrare_card` — Costul lunar de administrare a cardului principal al produsului.\n  `comision_retragere_atm` — Retragerea de numerar în lei de la ATM-urile proprii ale băncii, în țară.\n  `comision_retragere_atm_alta_banca` — Retragerea de numerar în lei de la ATM-ul altei bănci, în țară.\n  `comision_conversie_valutara` — Comisionul aplicat la plata cu cardul într-o altă monedă decât cea a contului.\n  `comision_reemitere_card` — Reemiterea cardului principal la expirare, în regim normal.\n  `comision_interogare_sold` — Interogarea soldului la ATM-ul propriu al băncii, în țară (în aplicație e de obicei gratuită).\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3647,
+     "id_produs_libra": 14,
+     "cod": "CARD_DEBIT_BUSINESS",
+     "v2": "card-debit"
+    }
+   ],
+   "produse_v2": [
+    "card-debit"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "eb6509b872a15fff9df16e9ab7f7f8b297a04b357dc6edde928fae371b37397b",
+   "data_document": "2014-06-10",
+   "data_document_sursa": "pdf_modificat",
+   "observatii": [
+    {
+     "id": "0db9b41b785a886258bf678cc3e9775c",
+     "id_url": 3647,
+     "id_produs": "card-debit",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 36,
+     "unitate": "luni",
+     "valid_from": null,
+     "valid_to": null,
+     "content_hash": "eb6509b872a15fff9df16e9ab7f7f8b297a04b357dc6edde928fae371b37397b",
+     "conditii": [],
+     "eticheta_libera": "perioadă de valabilitate a cardului",
+     "citat": "The Card is valid for thirty-six months.",
+     "citat_original": null,
+     "citat_aparitii": null,
+     "confidence": 0.6,
+     "necesita_verificare": true,
+     "not_found": false,
+     "not_found_motiv": null,
+     "nota": null,
+     "conflict_scenariu": "câmpul „altele” apare de 5 ori, iar această valoare nu are cod_scenariu",
+     "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
+     "trepte": [],
+     "id_banca": "citibank",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "7e969d418426ccaba7781866ae1750cbf2b8c566c58e88a14173fd2c3c2a1846"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "card-debit",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 0.5,
+     "unitate": "procent",
+     "incredere": 0.45,
+     "citat": "- for local Transactions : 0,5% of Transaction amount",
+     "motive": [
+      "încredere 0.45 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "card-debit",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 2.5,
+     "unitate": "lei",
+     "incredere": 0.4,
+     "citat": "- for local Transactions : 0,5% of Transaction amount - pentru Tranzac(cid:2)ii locale: 0,5% din suma + RON 2,5; Tranzac(cid:2)iei + 2.5 RON",
+     "motive": [
+      "încredere 0.4 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "card-debit",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 1,
+     "unitate": "procent",
+     "incredere": 0.45,
+     "citat": "- for international Transactions: 1% of Transaction",
+     "motive": [
+      "încredere 0.45 sub pragul 0.6"
+     ]
+    },
+    {
+     "produs": "card-debit",
+     "camp": "altele",
+     "cod_scenariu": null,
+     "valoare_num": 18,
+     "unitate": "lei",
+     "incredere": 0.45,
+     "citat": "amount, minimum RON 18.",
+     "motive": [
+      "încredere 0.45 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 1,
+   "durata_s": 380,
+   "tokeni": {
+    "intrare": 21986,
+    "iesire": 1563
+   }
   }
  ]
 }

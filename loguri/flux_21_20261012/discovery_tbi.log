@@ -1,0 +1,38 @@
+tbi bank EAD Sofia — Sucursala București: 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii tbibank.ro
+  [cautare] tbibank.ro card de debit business firme
+  [cautare] tbi bank România IMM cont curent card business
+  [ 1] https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf
+  [ 2] https://tbibank.ro/companii/
+  [cautare] tbibank.ro card de debit companii emitere card
+       ! url_not_in_prior_context
+GOL     CARD_DEBIT_BUSINESS          produs_inexistent: Lista oficială de dobânzi, taxe și comisioane pentru persoane juridice (în vigoare din Iun, $0.13
+  [cautare] tbibank.ro cont curent persoane juridice firme
+  [ 1] https://tbibank.ro/
+  [ 2] https://tbibank.ro/companii/credite-companii/
+  [ 3] https://tbibank.ro/companii/depozite/depozit-persoane-juridice/
+GATA    CONT_ONLINE_BUSINESS         2 surse, 0 citate verificate, similar, $0.14, 34s — Cont curent pentru persoane juridice si entitati asimilate
+  [cautare] tbibank.ro cont curent PFA firme
+  [cautare] tbi bank România persoane juridice cont business
+  [ 1] https://tbibank.ro/companii/
+  [ 2] https://tbibank.ro/wp-content/uploads/docs/Documente%20pentru%20persoane%20juridice/Lista%20de%20dobanzi,%20taxe%20si%20comisioane%20pentru%20persoane%20juridice%20si%20entitati%20asimilate.pdf
+       ! url_not_in_prior_context
+  [cautare] tbibank.ro companii cont curent persoane juridice
+GATA    ABONAMENT_PFA                2 surse, 0 citate verificate, similar, $0.21, 44s — Cont curent pentru persoane juridice si entitati asimilate (inclusiv PFA)
+  [cautare] tbibank.ro card de debit cont curent
+  [cautare] tbi bank România card debit comisioane
+  [cautare] "TBI NEON" card debit tbi bank 2024
+GOL     CARD_DEBIT_FREE              produs_inexistent: Documentele oficiale FIPC ale tbi bank (Document de informare cu privire la comisioane, pe, $0.10
+  [cautare] tbibank.ro card de debit
+  [cautare] tbi bank România cont curent card debit tarife
+GOL     CARD_DEBIT_GOLD              produs_inexistent: tbi bank EAD Sofia - Sucursala București nu emite carduri de debit. Documentul oficial 'Do, $0.07
+  [cautare] tbibank.ro plăți instant telefon
+  [cautare] tbi bank tarife comisioane cont curent plată instant
+  [ 1] https://tbibank.ro/companii/plati/
+  [cautare] tbi bank "plata instant" OR "plăți instant" telefon IBAN
+GOL     ROPAY                        produs_inexistent: tbi bank nu are un produs de plăți instant prin telefon (alias telefon/IBAN) similar RoPay, $0.12
+  [cautare] tbibank.ro cont curent persoane fizice
+  [cautare] tbi bank cont online personal
+  [ 1] https://tbibank.ro/persoane-fizice/operatiuni-bancare/operatiuni-cont-curent/
+GATA    CONT_ONLINE_PERSONAL         3 surse, 1 citate verificate, similar, $0.16, 53s — Cont curent standard in RON
+
+tbi: 3/7 produse cu surse, 0 erori, cost estimat $0.93, durata 2 min

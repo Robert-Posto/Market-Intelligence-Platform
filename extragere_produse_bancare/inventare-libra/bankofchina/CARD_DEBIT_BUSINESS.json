@@ -1,13 +1,13 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bankofchina",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Bank of China (CEE) Sucursala București este o bancă corporate/wholesale axată pe companii mari și comerț cu China. Secțiunea Corporate Banking oferă doar: RMB Service, Deposits, Corporate Loans, Trade Services (Trade Settlement, Trade Finance, Bank Guarantee), Treasury & FX și 'Other Services' (pagină goală, fără produse listate). Lista oficială de Taxe și Comisioane pentru Persoane Juridice (valabilă din 1 iulie 2025, document PDF) listează explicit toate produsele și serviciile băncii pentru firme — administrare cont, certificate, transferuri interne, plăți interne/externe în RON/EUR/USD/CNY, online banking, depozite la termen — dar nu conține nicio mențiune despre carduri de debit sau carduri de orice fel pentru clienți business. Banca nu pare să emită carduri de debit pentru persoane juridice; serviciile sale corporate se limitează la conturi curente, depozite, credite, trade finance și tranzacții valutare."
+    "nota": "Bank of China (CEE) Sucursala București nu oferă carduri firmelor. Meniul Corporate Banking are doar RMB Service, Deposits, Corporate Loans, Trade Services, Treasury & FX și Other Services (Developer Portal). Lista oficială de taxe și comisioane pentru persoane juridice, în vigoare din 1 iulie 2025 (https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf), are doar administrare cont, certificate, transferuri, plăți, NetBank/E-token și depozite. Nu apare nicio linie despre card, ATM, conversie la plata cu cardul sau interogare sold la ATM."
   },
   "candidati_respinsi": [],
   "deschise": [
@@ -18,11 +18,11 @@
   ],
   "durata_s": 20,
   "consum": {
-    "intrare": 8,
-    "iesire": 1215,
-    "citire_cache": 42387,
-    "scriere_cache": 45156,
+    "intrare": 10,
+    "iesire": 712,
+    "citire_cache": 32949,
+    "scriere_cache": 40084,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1335334
+    "cost_estimat_usd": 0.22787960000000002
   }
 }

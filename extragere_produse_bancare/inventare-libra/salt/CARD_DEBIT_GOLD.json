@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "salt",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
@@ -7,20 +7,21 @@
   "surse": [],
   "gol": {
     "motiv": "blocat_de_robots",
-    "nota": "Domeniul saltbank.ro nu a putut fi accesat prin instrumentul web_fetch (eroare de permisiune la fiecare încercare, inclusiv pagina principală https://www.saltbank.ro/ și https://saltbank.ro/), iar web_search nu a returnat rezultate utile pentru a identifica pagini alternative permise. Nu am putut naviga efectiv site-ul pentru a localiza produsul de card de debit echivalent."
+    "nota": "Domeniul saltbank.ro a refuzat accesul tool-ului de fetch (\"You don't have permission to access this domain\"), iar apelurile de web_search disponibile s-au epuizat fără rezultate utile. Nu am putut deschide nicio pagină de pe saltbank.ro pentru a verifica existența unui produs echivalent cardului de debit Gold Libra."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.saltbank.ro/",
+    "https://www.saltbank.ro/card-de-debit",
     "https://saltbank.ro/"
   ],
-  "durata_s": 13,
+  "durata_s": 15,
   "consum": {
-    "intrare": 7258,
-    "iesire": 799,
-    "citire_cache": 12698,
-    "scriere_cache": 6852,
+    "intrare": 8197,
+    "iesire": 1066,
+    "citire_cache": 20719,
+    "scriere_cache": 7414,
     "apeluri": 1,
-    "cost_estimat_usd": 0.042175599999999994
+    "cost_estimat_usd": 0.0497328
   }
 }

@@ -4,9 +4,11 @@ import { Input, Select } from 'antd'
 import { useSearchParams } from 'react-router-dom'
 import { Matrice } from '@mcc/shared'
 import { api } from '../api/client'
+import { SURSA_PRETURI } from '../api/sursa'
 import { useMeta } from '../api/meta'
 import { Despre, EtichetaBanca, Eroare, Pill, SeIncarca } from '../components/comune'
 import Sertar, { type CerereSertar } from '../components/Sertar'
+import { DataValorii } from '../components/DataValorii'
 import { Tabel } from '../components/Tabel'
 import { etDesc, etNume } from '../components/valori'
 import { T, useLang, type DictKey } from '../i18n'
@@ -40,8 +42,8 @@ export default function Produse() {
   const [sertar, setSertar] = useState<CerereSertar | null>(null)
   const meta = useMeta()
   const q = useQuery({
-    queryKey: ['matrice', grup, seg],
-    queryFn: () => api('/api/matrice', Matrice, { grup, segment: seg, unitate: 'lei' }),
+    queryKey: ['matrice', grup, seg, SURSA_PRETURI],
+    queryFn: () => api('/api/matrice', Matrice, { grup, segment: seg, unitate: 'lei', sursa: SURSA_PRETURI || undefined }),
     placeholderData: (p) => p,
   })
 
@@ -77,7 +79,9 @@ export default function Produse() {
         </div>
       </div>
       <section style={{ opacity: q.isPlaceholderData ? 0.45 : 1 }}>
-        <p className="note" style={{ margin: '0 0 10px' }}><T k="produse.nota_matrice" params={{ n: toate.length }} /></p>
+        <p className="note" style={{ margin: '0 0 10px' }}>
+          <T k={d.sursa === 'referinta' ? 'produse.nota_referinta' : 'produse.nota_matrice'} params={{ n: toate.length }} />
+        </p>
         <Tabel
           randuri={banci}
           cheieRand={(b) => b}
@@ -92,11 +96,24 @@ export default function Produse() {
               s: (b: string) => pe[b]![cp]?.n,
               td: (b: string) => pe[b]![cp]
                 ? { className: 'mc', title: t('produse.tooltip_celula', { banca: m.nume[b] ?? b, serviciu: etNume(cp, t) }),
-                    onClick: () => setSertar({ banca: b, camp: cp, unitate: 'lei', scenariu: '', segment: seg === 'toate' ? undefined : seg }) }
+                    onClick: () => setSertar({ banca: b, camp: cp, unitate: 'lei', scenariu: '', segment: seg === 'toate' ? undefined : seg, sursa: SURSA_PRETURI || undefined }) }
                 : { className: 'gol' },
               val: (b: string) => {
                 const x = pe[b]![cp]
                 if (!x) return '—'
+                if (x.referinta && x.valoare != null) {
+                  // valoarea de referință: o cifră, iar dedesubt plaja pe produsele (pachetele) băncii
+                  return (
+                    <>
+                      <b>{t('banca.suma_lei', { suma: num(x.valoare, locale) })}</b>
+                      {x.n > 1 && x.minim !== x.maxim && (
+                        <span className="sub">{t('produse.celula_ref_plaja', { n: num(x.n, locale, 0), minim: num(x.minim, locale), maxim: num(x.maxim, locale) })}</span>
+                      )}
+                      {x.stare === 'conflict' && <span className="sub de-verificat">{t('versus.libra_conflict')}</span>}
+                      <DataValorii d={x} />
+                    </>
+                  )
+                }
                 const interval = x.minim === x.maxim
                   ? t('banca.suma_lei', { suma: num(x.minim, locale) })
                   : t('banca.interval_lei', { minim: num(x.minim, locale), maxim: num(x.maxim, locale) })

@@ -1,26 +1,28 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bankofchina",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Sucursala Bank of China (CEE) Ltd din București oferă exclusiv servicii de tip corporate (RMB Service, Deposits, Corporate Loans, Trade Services, Treasury & FX, Other Services) — site-ul nu are nicio secțiune de Personal Banking/Individuals și nicio mențiune de carduri de debit pentru persoane fizice sau juridice. Produsul Libra 'Card de debit Gold' (cu asigurare de călătorie, cashback, lounge, cash-back la dobândă) nu are niciun corespondent la această sucursală, care pare dedicată exclusiv clienților corporate (tranzacții comerciale, depozite și finanțări pentru firme)."
+    "nota": "Bank of China (CEE) Sucursala București lucrează doar cu companii (Corporate Banking: depozite, credite, trade finance, trezorerie, RMB, online banking) și nu are clienți persoane fizice. Nu oferă carduri de debit. Lista de Taxe și Comisioane pentru Persoane Juridice în vigoare din 1 iulie 2025 (https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf) are comisioane doar pentru administrarea contului curent (30 RON/lună), plăți, NetBank și E-token. Nu conține emitere sau administrare de card, retrageri ATM sau conversie valutară la card. Dobânda la contul curent este 0 în toate monedele."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.bankofchina.com/ro/en/",
-    "https://www.bankofchina.com/ro/en/cbservice/cbo/"
+    "https://www.bankofchina.com/ro/en/cbservice/cbo/",
+    "https://www.bankofchina.com/ro/en/bocinfo/bi2/202109/t20210908_20014518.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
   ],
-  "durata_s": 14,
+  "durata_s": 19,
   "consum": {
-    "intrare": 6,
-    "iesire": 1042,
-    "citire_cache": 28145,
-    "scriere_cache": 23529,
+    "intrare": 10,
+    "iesire": 745,
+    "citire_cache": 33103,
+    "scriere_cache": 40172,
     "apeluri": 1,
-    "cost_estimat_usd": 0.07488349999999999
+    "cost_estimat_usd": 0.2290412
   }
 }

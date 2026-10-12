@@ -4,8 +4,10 @@ import { Link, useSearchParams } from 'react-router-dom'
 import type { Indici, Rate as RateT } from '@mcc/shared'
 import { useMeta } from '../api/meta'
 import { useIndici, useRate } from '../api/rate_mobil'
+import { SURSA_PRETURI } from '../api/sursa'
 import { Despre, EtichetaBanca, Eroare, Pill, SeIncarca } from '../components/comune'
 import Sertar, { type CerereSertar } from '../components/Sertar'
+import { DataValorii } from '../components/DataValorii'
 import { Tabel, type Coloana } from '../components/Tabel'
 import { etDesc, etNume } from '../components/valori'
 import { T, useLang, type DictKey } from '../i18n'
@@ -43,7 +45,7 @@ export default function Rate() {
   const [cauta, setCauta] = useState('')
   const [sertar, setSertar] = useState<CerereSertar | null>(null)
   const meta = useMeta()
-  const q = useRate(cat, termen, produs)
+  const q = useRate(cat, termen, produs, SURSA_PRETURI)
   const indici = useIndici()
 
   const pe = useMemo(() => {
@@ -81,7 +83,7 @@ export default function Rate() {
 
   // filtrele datelor afișate, nu ale adresei: cât vine răspunsul nou, pe ecran e încă cel vechi
   const deschide = (b: string, cp: string) =>
-    setSertar({ banca: b, camp: cp, unitate: 'procent', scenariu: d.categorie, termen: d.termen, produs: d.produs })
+    setSertar({ banca: b, camp: cp, unitate: 'procent', scenariu: d.categorie, termen: d.termen, produs: d.produs, sursa: SURSA_PRETURI || undefined })
 
   const eticheta = <span className="rt-best">{t('rate.cea_mai_buna')}</span>
   const colBanca: Coloana<string> = {
@@ -110,10 +112,10 @@ export default function Rate() {
       { ...colBanca, td: rand },
       {
         cheie: cp0, num: true,
-        cap: <>{etNume(cp0, t)}<span className="cap-d">{t('rate.cap_tipica_mediana')}</span></>,
+        cap: <>{etNume(cp0, t)}<span className="cap-d">{t(d.sursa === 'referinta' ? 'rate.cap_referinta' : 'rate.cap_tipica_mediana')}</span></>,
         s: (b) => c(b).valoare,
         td: (b) => ({ ...rand(b), className: best[cp0] === b ? 'mc best' : 'mc' }),
-        val: (b) => <><b>{num(c(b).valoare, locale)}%</b>{best[cp0] === b && eticheta}</>,
+        val: (b) => <><b>{num(c(b).valoare, locale)}%</b>{best[cp0] === b && eticheta}<DataValorii d={c(b)} /></>,
       },
       {
         cheie: 'termen', cap: t('rate.termen'), s: (b) => c(b).luni, td: rand,
@@ -162,6 +164,7 @@ export default function Rate() {
                   ? t('rate.interval_valori_n', { minim: num(x.minim, locale), maxim: num(x.maxim, locale), n: num(x.n, locale, 0) })
                   : t('rate.interval_valori_1')}
               </span>
+              <DataValorii d={x} />
             </>
           )
         },
@@ -207,7 +210,8 @@ export default function Rate() {
       </div>
       <section style={{ opacity: q.isPlaceholderData ? 0.45 : 1 }}>
         <p className="note" style={{ margin: '0 0 10px' }}>
-          <T k={plat ? (banci.length === 1 ? 'rate.nota_intro_plat_1' : 'rate.nota_intro_plat') : (banci.length === 1 ? 'rate.nota_intro_matrice_1' : 'rate.nota_intro_matrice')}
+          <T k={d.sursa === 'referinta' ? 'rate.nota_referinta'
+            : plat ? (banci.length === 1 ? 'rate.nota_intro_plat_1' : 'rate.nota_intro_plat') : (banci.length === 1 ? 'rate.nota_intro_matrice_1' : 'rate.nota_intro_matrice')}
             params={{ n: banci.length, sens }} />{' '}
           {t(plat ? 'rate.clic_rand' : 'rate.clic_celula')}
           {cat === 'depozite' && !termen && <>{' '}<T k="rate.alege_termen" /></>}
@@ -215,7 +219,7 @@ export default function Rate() {
         </p>
         {tabel}
         <Despre>
-          <T k="rate.despre_mediana" />
+          {d.sursa !== 'referinta' && <T k="rate.despre_mediana" />}
           <T k="rate.despre_termen" params={{ n: num(necunoscut, locale, 0) }} />
           <T k="rate.despre_produs" />
           {d.excluse_implauzibile > 0 && <T k="rate.despre_implauzibile" params={{ n: num(d.excluse_implauzibile, locale, 0), prag: num(d.prag, locale) }} />}

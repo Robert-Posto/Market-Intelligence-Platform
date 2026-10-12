@@ -666,10 +666,10 @@
    "tip": "html",
    "metoda": "http",
    "denumire_la_banca": "Internet Banking Afaceri – creditcoop.online",
-   "focus": "Produsul băncii: „Internet Banking Afaceri – creditcoop.online”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "focus": "Produsul băncii: „Internet Banking Afaceri – creditcoop.online”.\nCorespunde produsului Libra: „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` / `comision_administrare_anual` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_plata_intrabancara` — Plata în lei către alt client al aceleiași bănci, inițiată online.\n  `comision_depunere_numerar` — Depunerea de numerar în lei în contul propriu.\n  `operatiuni_incluse` — Numărul de operațiuni (plăți, încasări) incluse în costul lunar.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
    "legaturi": [
     {
-     "id_sursa": 2089,
+     "id_sursa": 3450,
      "id_produs_libra": 20,
      "cod": "CONT_ONLINE_BUSINESS",
      "v2": "cont-curent-pj"
@@ -687,13 +687,13 @@
    "content_hash": "2b71e9c89520af1745938072b45a593b2db0b92eeecd9da2ed025b20af6e6ac8",
    "observatii": [
     {
-     "id": "92d467524829eb42456149b3dad2516f",
-     "id_url": 2089,
+     "id": "560a9fbcbda2a43d05c18c37abf850a2",
+     "id_url": 3450,
      "id_produs": "cont-curent-pj",
      "camp": null,
      "not_found": true,
      "not_found_motiv": "negasit_in_pagina",
-     "nota": "Textul descrie doar beneficiile generale ale platformei de internet banking creditcoop.online, fără nicio valoare numerică privind costuri, comisioane sau praguri pentru Cont Online Business.",
+     "nota": "Textul descrie doar funcționalitățile generale ale platformei de internet banking creditcoop.online (transferuri, plăți facturi, verificare solduri), fără nicio valoare numerică privind costuri, comisioane sau operațiuni incluse pentru acest produs.",
      "content_hash": "2b71e9c89520af1745938072b45a593b2db0b92eeecd9da2ed025b20af6e6ac8",
      "conditii": [],
      "necesita_verificare": false,
@@ -704,10 +704,10 @@
    ],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 4,
+   "durata_s": 17,
    "tokeni": {
-    "intrare": 3423,
-    "iesire": 148
+    "intrare": 4135,
+    "iesire": 171
    }
   },
   {
@@ -866,10 +866,10 @@
    "tip": "pdf",
    "metoda": "http",
    "denumire_la_banca": "Cont curent în lei (Cont de plăți – Persoane fizice)",
-   "focus": "Produsul băncii: „Cont curent în lei (Cont de plăți – Persoane fizice)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "focus": "Produsul băncii: „Cont curent în lei (Cont de plăți – Persoane fizice)”.\nCorespunde produsului Libra: „Cont Online Personal”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_emitere_card` — Emiterea cardului principal al produsului, la cerere, în regim normal: nu urgent, nu suplimentar, nu înlocuirea unui card pierdut sau furat, nu card virtual.\n  `comision_administrare_card` — Costul lunar de administrare a cardului principal al produsului.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_retragere_atm` — Retragerea de numerar în lei de la ATM-urile proprii ale băncii, în țară.\n  `comision_deschidere` — Comisionul de deschidere a contului.\n  `comision_extras_cont` — Extrasul de cont lunar standard, pe hârtie sau eliberat la ghișeu (nu duplicatul și nu extrasul la cerere în afara lunii).\n  `comision_consultare_sold` — Interogarea soldului la ATM-ul propriu al băncii, în țară (în aplicație e de obicei gratuită).\n  `taxa_dezactivare` — Comisionul de închidere a contului curent, la cererea clientului.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
    "legaturi": [
     {
-     "id_sursa": 2232,
+     "id_sursa": 3690,
      "id_produs_libra": 21,
      "cod": "CONT_ONLINE_PERSONAL",
      "v2": "cont-curent"
@@ -885,10 +885,12 @@
    "blocaj_http_local": null,
    "metoda_sanitizare": null,
    "content_hash": "a54fe62c0b0be4d1c895cde7fe9e3d3dd9f6692a910c44326e4c8c3e3cb49a2d",
+   "data_document": "2026-09-10",
+   "data_document_sursa": "pdf_modificat",
    "observatii": [
     {
-     "id": "6e0a86a804006dd43184985b6d314eb8",
-     "id_url": 2232,
+     "id": "de8eb2da538fd4cf38c75e262219f440",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_lunar",
      "cod_scenariu": "lunar",
@@ -909,14 +911,16 @@
      "nota": null,
      "conflict_scenariu": null,
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -937,14 +941,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -965,14 +971,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -993,14 +1001,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -1021,14 +1031,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -1049,14 +1061,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -1077,14 +1091,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -1105,14 +1121,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -1133,14 +1151,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "21a6b1eac2c6af3b799fc0cfe6ed5639",
-     "id_url": 2232,
+     "id": "682f3be1e6ad7cfab22732c4b6e1125f",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_plata_interbancara",
      "cod_scenariu": "pe operațiune",
@@ -1161,14 +1181,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_plata_interbancara” apare de 9 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "bffab23d913e38ba9cd2b177bd1e6070",
-     "id_url": 2232,
+     "id": "7009d5cde9264ccf7c1638e3075c9782",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": null,
@@ -1189,14 +1211,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 10 ori, iar această valoare nu are cod_scenariu",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "bffab23d913e38ba9cd2b177bd1e6070",
-     "id_url": 2232,
+     "id": "7009d5cde9264ccf7c1638e3075c9782",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": null,
@@ -1217,14 +1241,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 10 ori, iar această valoare nu are cod_scenariu",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1245,14 +1271,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1273,14 +1301,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1301,14 +1331,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1329,14 +1361,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1357,14 +1391,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1385,14 +1421,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1413,14 +1451,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "c408b3362fb895ff478b552b6fcb0656",
-     "id_url": 2232,
+     "id": "0f458b36a153977f37be26e6faa3e650",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "comision_administrare_card",
      "cod_scenariu": "pe operațiune",
@@ -1441,14 +1481,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „comision_administrare_card” apare de 8 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "2fc21beda5085040dee0748e8bccead2",
-     "id_url": 2232,
+     "id": "09e97d6be94005bf78aa56fbb9c66e46",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "altele",
      "cod_scenariu": "pe operațiune",
@@ -1469,14 +1511,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „altele” apare de 4 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "2fc21beda5085040dee0748e8bccead2",
-     "id_url": 2232,
+     "id": "09e97d6be94005bf78aa56fbb9c66e46",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "altele",
      "cod_scenariu": "pe operațiune",
@@ -1497,14 +1541,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „altele” apare de 4 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "2fc21beda5085040dee0748e8bccead2",
-     "id_url": 2232,
+     "id": "09e97d6be94005bf78aa56fbb9c66e46",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "altele",
      "cod_scenariu": "pe operațiune",
@@ -1525,14 +1571,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „altele” apare de 4 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "2fc21beda5085040dee0748e8bccead2",
-     "id_url": 2232,
+     "id": "09e97d6be94005bf78aa56fbb9c66e46",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "altele",
      "cod_scenariu": "pe operațiune",
@@ -1553,14 +1601,16 @@
      "nota": null,
      "conflict_scenariu": "câmpul „altele” apare de 4 ori cu același cod_scenariu „pe operațiune”",
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "9eea14b704a49f7065bc16d45b0b2f51",
-     "id_url": 2232,
+     "id": "c06a2e362faac25e522fe03827ed9185",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "altele",
      "cod_scenariu": "lunar",
@@ -1581,14 +1631,16 @@
      "nota": null,
      "conflict_scenariu": null,
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
      "bronze_sha256": "fe4a636074c58ea44ed26422b54be5db86ddbe7a0fa91ca64cf3cebc5266d88c"
     },
     {
-     "id": "51482df10a05b176ac09e3072f245983",
-     "id_url": 2232,
+     "id": "030c2058fcc7134f81ee02115d833577",
+     "id_url": 3690,
      "id_produs": "cont-curent",
      "camp": "altele",
      "cod_scenariu": "anual",
@@ -1609,6 +1661,8 @@
      "nota": null,
      "conflict_scenariu": null,
      "potrivire_scenariu": null,
+     "este_referinta": null,
+     "varianta": null,
      "trepte": [],
      "id_banca": "creditcoop",
      "sursa_continut": "descarcare_proprie",
@@ -1617,7 +1671,7 @@
    ],
    "respinse": [],
    "scrise": 9,
-   "durata_s": 1,
+   "durata_s": 2,
    "tokeni": {
     "intrare": 0,
     "iesire": 0
@@ -2558,18 +2612,24 @@
    "tip": "html",
    "metoda": "http",
    "denumire_la_banca": "Conturi curente – Persoane juridice",
-   "focus": "Produsul băncii: „Conturi curente – Persoane juridice”.\nCorespunde produsului Libra: „Abonament operațional (pachet cont)”; „Cont Online Business”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.",
+   "focus": "Produsul băncii: „Conturi curente – Persoane juridice”.\nCorespunde produsului Libra: „Cont Online Business”; „Abonament PFA”; „Abonament operațional (pachet cont)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` / `comision_administrare_anual` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_plata_intrabancara` — Plata în lei către alt client al aceleiași bănci, inițiată online.\n  `comision_depunere_numerar` — Depunerea de numerar în lei în contul propriu.\n  `operatiuni_incluse` — Numărul de operațiuni (plăți, încasări) incluse în costul lunar.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
    "legaturi": [
+    {
+     "id_sursa": 3449,
+     "id_produs_libra": 20,
+     "cod": "CONT_ONLINE_BUSINESS",
+     "v2": "cont-curent-pj"
+    },
+    {
+     "id_sursa": 3473,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    },
     {
      "id_sursa": 2134,
      "id_produs_libra": 2,
      "cod": "ABONAMENT_OPERATIONAL",
-     "v2": "cont-curent-pj"
-    },
-    {
-     "id_sursa": 2088,
-     "id_produs_libra": 20,
-     "cod": "CONT_ONLINE_BUSINESS",
      "v2": "cont-curent-pj"
     }
    ],
@@ -2585,13 +2645,13 @@
    "content_hash": "cdaf43e66782614bd79215a457ed2cf8ac602891fe13706d8b361f0c476e9bbc",
    "observatii": [
     {
-     "id": "c6b58b6c28dcc9955648c0b5de6e5268",
-     "id_url": 2134,
+     "id": "5d773c65a5889ef96e83d35b6bb27810",
+     "id_url": 3449,
      "id_produs": "cont-curent-pj",
      "camp": null,
      "not_found": true,
      "not_found_motiv": "negasit_in_pagina",
-     "nota": "Textul descrie doar operațiunile și limitele de tranzacționare (ore limită, plafoane zilnice) pentru contul curent persoane juridice, fără nicio informație despre cost lunar, comision de administrare, comisioane de plată/încasare sau praguri de taxare suplimentară.",
+     "nota": "Textul descrie doar funcționalități generale ale contului curent pentru persoane juridice (încasări, plăți, depozite) și limite orare/valorice pentru tranzacții, dar nu conține nicio valoare numerică privind costul lunar, comisioane de administrare, comisioane de plată intra/interbancară, depunere numerar sau operațiuni incluse în pachet.",
      "content_hash": "cdaf43e66782614bd79215a457ed2cf8ac602891fe13706d8b361f0c476e9bbc",
      "conditii": [],
      "necesita_verificare": false,
@@ -2602,10 +2662,10 @@
    ],
    "respinse": [],
    "scrise": 0,
-   "durata_s": 3,
+   "durata_s": 5,
    "tokeni": {
-    "intrare": 4065,
-    "iesire": 179
+    "intrare": 4787,
+    "iesire": 207
    }
   },
   {
@@ -2656,6 +2716,182 @@
    "tokeni": {
     "intrare": 3909,
     "iesire": 167
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf||condiții generale de afaceri – limite de plată persoane juridice",
+   "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Condiții Generale de Afaceri – limite de plată Persoane juridice",
+   "focus": "Produsul băncii: „Condiții Generale de Afaceri – limite de plată Persoane juridice”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` / `comision_administrare_anual` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_plata_intrabancara` — Plata în lei către alt client al aceleiași bănci, inițiată online.\n  `comision_depunere_numerar` — Depunerea de numerar în lei în contul propriu.\n  `operatiuni_incluse` — Numărul de operațiuni (plăți, încasări) incluse în costul lunar.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3472,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+   "observatii": [
+    {
+     "id": "faa58d734f97a8ec73aa320697cfc6e8",
+     "id_url": 3472,
+     "id_produs": "cont-curent-pj",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Documentul este un set generic de Condiții Generale de Afaceri (definiții, reguli privind conturile, servicii de plată, GDPR etc.) și nu conține un tarif/listă de comisioane sau costuri concrete pentru cont curent/pachet persoane juridice; este menționat doar generic faptul că există o „Listă de comisioane și taxe” separată, fără valori numerice incluse în acest text, deci nu pot extrage date despre costul lunar, administrare, operațiuni incluse sau praguri pentru acest produs.",
+     "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "9d2b44b15f0230ae6ccde000a347b1d48c8d36d06cce14ea6532e996c8eb6118"
+    }
+   ],
+   "respinse": [],
+   "scrise": 0,
+   "durata_s": 25,
+   "tokeni": {
+    "intrare": 71663,
+    "iesire": 262
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/intrebari-frecvente/||cont de plăți / cont curent (informații tarifare generale)",
+   "url": "https://www.creditcoop.ro/intrebari-frecvente/",
+   "tip": "html",
+   "metoda": "http",
+   "denumire_la_banca": "Cont de plăți / Cont curent (informații tarifare generale)",
+   "focus": "Produsul băncii: „Cont de plăți / Cont curent (informații tarifare generale)”.\nCorespunde produsului Libra: „Abonament PFA”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `cost_lunar` / `comision_administrare_lunar` / `comision_administrare_anual` — Costul lunar al contului sau al abonamentului, prețul de listă: fără scutiri condiționate și fără promoții.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_plata_intrabancara` — Plata în lei către alt client al aceleiași bănci, inițiată online.\n  `comision_depunere_numerar` — Depunerea de numerar în lei în contul propriu.\n  `operatiuni_incluse` — Numărul de operațiuni (plăți, încasări) incluse în costul lunar.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3474,
+     "id_produs_libra": 3,
+     "cod": "ABONAMENT_PFA",
+     "v2": "cont-curent-pj"
+    }
+   ],
+   "produse_v2": [
+    "cont-curent-pj"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-html",
+   "format_efectiv": "html",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": "selectolax",
+   "content_hash": "a58c2fe6156830939c9676d7e0eed092de66fab09a51e88648c8793f2fcf8d9f",
+   "observatii": [
+    {
+     "id": "67bf5f7fce290137d21108ddc4280537",
+     "id_url": 3474,
+     "id_produs": "cont-curent-pj",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "negasit_in_pagina",
+     "nota": "Textul menționează doar, la general, că deschiderea și administrarea unui cont de plăți pentru persoane fizice este gratuită; nu există informații specifice despre un cont curent pentru persoane juridice/PFA, nu se precizează cost lunar, comisioane de plată, depunere numerar sau operațiuni incluse pentru acest produs - restul documentului tratează alte produse (credite, depozite, card de credit).",
+     "content_hash": "a58c2fe6156830939c9676d7e0eed092de66fab09a51e88648c8793f2fcf8d9f",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "5ee03b2e1a7a67053e3a823327be8809dcfd2d3a00cdf05abfe5d7ca4aa5f6b0"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "cont-curent-pj",
+     "camp": "comision_administrare_lunar",
+     "cod_scenariu": null,
+     "valoare_num": 0,
+     "unitate": "lei",
+     "incredere": 0.5,
+     "citat": "nu percepe niciun comision pentru deschiderea și administrarea contului de plăți",
+     "motive": [
+      "încredere 0.5 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 0,
+   "durata_s": 28,
+   "tokeni": {
+    "intrare": 12440,
+    "iesire": 315
+   }
+  },
+  {
+   "cheie": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf||servicii de plăți instant",
+   "url": "https://www.creditcoop.ro/fisiere/CGA-Ianuarie2026.pdf",
+   "tip": "pdf",
+   "metoda": "http",
+   "denumire_la_banca": "Servicii de Plăți Instant",
+   "focus": "Produsul băncii: „Servicii de Plăți Instant”.\nCorespunde produsului Libra: „RoPay (plăți instant prin telefon)”.\nRaportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori pentru el, raportează gasit = false.\n\nVARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n  `comision_plata_instant` — Plata instant în lei către altă bancă, inițiată online.\n  `comision_plata_interbancara` — Plata în lei către altă bancă din România, inițiată online, sumă obișnuită (sub 50.000 lei), fără regim urgent.\n  `comision_incasare` — Încasarea în cont a unei plăți în lei din altă bancă.\nPe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu `varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.",
+   "legaturi": [
+    {
+     "id_sursa": 3477,
+     "id_produs_libra": 54,
+     "cod": "ROPAY",
+     "v2": "plati-transferuri"
+    }
+   ],
+   "produse_v2": [
+    "plati-transferuri"
+   ],
+   "stare": "extras",
+   "motiv": null,
+   "flow": "flow-pdf",
+   "format_efectiv": "pdf",
+   "blocaj_http_local": null,
+   "metoda_sanitizare": null,
+   "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+   "observatii": [
+    {
+     "id": "6401eb5617f63e185d53e474eb486624",
+     "id_url": 3477,
+     "id_produs": "plati-transferuri",
+     "camp": null,
+     "not_found": true,
+     "not_found_motiv": "nepublicat",
+     "nota": "Documentul este un Condiții Generale de Afaceri (CGA) general, nu un tarif de comisioane. Deși menționează explicit „Servicii de Plăți Instant” (secțiunea 2.18, cap. IV) ca serviciu disponibil, descriind funcționarea (transfer instant 24/7, praguri valorice ajustabile, decizie discreționară a băncii), NU conține nicio valoare numerică de comision pentru acest serviciu - documentul precizează doar că la cerere se poate aplica un comision pentru plăți urgente în regim general (fără sumă), dar referitor strict la Plăți Instant nu există cifre de comision, praguri de sumă în lei/eur, sau alte valori cuantificabile. Se face trimitere generică la „Lista de comisioane și taxe” ca document separat, care nu este inclus în acest text. Prin urmare marchez gasit=true doar pentru a semnala mențiunea calitativă a serviciului, însă fără valori numerice fiabile de raportat; încrederea este foarte scăzută.",
+     "content_hash": "d91988d649674c4f53e0f526a811423bbf451d3c760abccfedc6ed6e5eb95f50",
+     "conditii": [],
+     "necesita_verificare": false,
+     "id_banca": "creditcoop",
+     "sursa_continut": "descarcare_proprie",
+     "bronze_sha256": "9d2b44b15f0230ae6ccde000a347b1d48c8d36d06cce14ea6532e996c8eb6118"
+    }
+   ],
+   "respinse": [
+    {
+     "produs": "plati-transferuri",
+     "camp": "comision_plata_interbancara",
+     "cod_scenariu": "PI_ONLINE_INTERBANCAR",
+     "valoare_num": 0,
+     "unitate": "altele",
+     "incredere": 0.2,
+     "citat": "Banca pune la dispoziția clienților serviciul de Plăți Instant în lei, care permite transferul fondurilor, către alte instituții de credit participante în sistemul de plăți instant, cu decontare imediată, 24 de ore din 24, în orice zi calendaristică.",
+     "motive": [
+      "încredere 0.2 sub pragul 0.6"
+     ]
+    }
+   ],
+   "scrise": 0,
+   "durata_s": 25,
+   "tokeni": {
+    "intrare": 71515,
+    "iesire": 732
    }
   }
  ]

@@ -1,27 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bankofchina",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Bank of China (CEE) Sucursala București operează actual doar ca bancă corporate/business în România — meniul site-ului (ro/en) conține exclusiv Corporate Banking (Deposits, Corporate Loans, RMB Service, Trade Services, Treasury & FX) și e-Banking corporate. Nu există nicio secțiune de Personal/Retail Banking activă, deci niciun cont curent pentru persoane fizice, online sau altfel. O versiune arhivată mai veche a site-ului (circa 2020) menționa generic 'Personal Banking' cu Deposits/Personal Loans, dar aceste linkuri nu mai sunt prezente în structura curentă și nu au pagini de produs accesibile — segmentul retail pare să fi fost întrerupt."
+    "nota": "Bank of China (CEE) Sucursala București oferă doar servicii pentru companii (Corporate Banking: RMB Service, Deposits, Corporate Loans, Trade Services, Treasury, Corporate Online Banking). Site-ul nu are secțiune pentru persoane fizice și nici cont curent PF deschis online; singurul document de tarife este 'Terms and Conditions for Corporate Customers'."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.bankofchina.com/ro/en/",
-    "https://www.bankofchina.com/ro/en/psservice/",
-    "https://www.bankofchina.com/ro/"
+    "https://www.bankofchina.com/ro/en/"
   ],
-  "durata_s": 26,
+  "durata_s": 6,
   "consum": {
-    "intrare": 8,
-    "iesire": 1624,
-    "citire_cache": 45836,
-    "scriere_cache": 28292,
+    "intrare": 6,
+    "iesire": 371,
+    "citire_cache": 6922,
+    "scriere_cache": 11479,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0961532
+    "cost_estimat_usd": 0.0676078
   }
 }

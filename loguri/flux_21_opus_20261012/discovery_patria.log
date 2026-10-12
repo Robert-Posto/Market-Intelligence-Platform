@@ -1,0 +1,84 @@
+Patria Bank: 7 de rulat, 0 sărite (au rezultat), paralel 3, model claude-opus-5-5, termen 420 s/produs, domenii patriabank.ro
+  [ 1] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] Patria Bank card debit business persoane juridice tarife comisioane
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/card-business
+  [ 3] https://www.patriabank.ro/d/2142
+       ! url_not_accessible
+       ! url_not_allowed
+  [ 4] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/patriaong
+       ! url_not_accessible
+  [cautare] Patria Bank Tarife si comisioane persoane juridice 2026 Mastercard Business Lider
+GATA    CARD_DEBIT_BUSINESS          2 surse, 0 citate verificate, echivalent, $0.41, 31s — Cardul de debit Mastercard Business
+  [ 1] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] Patria Bank cont curent persoane juridice deschidere online tarife comisioane
+  [cautare] Patria Bank deschidere cont firma online PFA SRL 100% online
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/cont-curent
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/d/2142
+       ! url_not_allowed
+  [ 4] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+GATA    CONT_ONLINE_BUSINESS         2 surse, 0 citate verificate, similar, $0.56, 38s — Pachete de cont curent Afaceri mici (UȘOR / PRACTIC / COMPLET)
+  [ 1] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] Patria Bank pachet PFA profesii liberale abonament lunar
+  [cautare] Patria Bank pachete cont curent firme PFA abonament lunar operatiuni incluse
+  [ 2] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+  [ 3] https://www.patriabank.ro/d/2142
+       ! url_not_accessible
+       ! url_not_allowed
+  [cautare] Patria Bank tarife comisioane persoane juridice pachet USOR PRACTIC COMPLET 85 lei
+  [ 4] https://www.patriabank.ro/afaceri-mici/operatiuni-curente/pachete-de-cont-curent
+       ! url_not_accessible
+GATA    ABONAMENT_PFA                2 surse, 0 citate verificate, similar, $0.63, 42s — Pachet de cont curent Afaceri mici/Agro UȘOR
+  [ 1] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] Patria Bank card debit Gold Mastercard comisioane
+  [ 2] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/d/1782
+       ! url_not_allowed
+  [cautare] Patria Bank lista de tarife si comisioane PF valabila din 08.06.2026 Mastercard Gold
+  [ 4] https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare
+       ! url_not_accessible
+  [ 5] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+       ! url_not_accessible
+  [cautare] patriabank.ro tarife comisioane persoane fizice 2026 MASTERCARD Gold lei retrageri numerar ATM proprii Euronet
+GATA    CARD_DEBIT_GOLD              2 surse, 0 citate verificate, similar, $0.76, 49s — Card de debit MASTERCARD Gold lei (Persoane Fizice)
+  [ 1] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] Patria Bank cont curent online persoane fizice tarife comisioane
+  [ 2] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent
+       ! url_not_accessible
+  [ 3] https://www.patriabank.ro/depozitonline
+  [ 4] https://www.patriabank.ro/d/1782
+       ! url_not_accessible
+       ! url_not_allowed
+  [cautare] Patria Bank Lista de tarife si comisioane PF valabila din 08.06.2026
+  [ 5] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria
+       ! url_not_accessible
+  [cautare] patriabank.ro tarife si comisioane persoane fizice 2026 cont curent administrare emitere card Visa Patria Clasic
+GATA    CONT_ONLINE_PERSONAL         1 surse, 0 citate verificate, similar, $0.60, 47s — Cont curent Lei persoane fizice (deschis inclusiv online prin Patria de Oriunde) – Lista Tarife si Comisioane Persoane Fizice
+  [cautare] Patria Bank RoPay
+  [cautare] Patria Bank plata instant număr de telefon comision
+  [ 1] https://www.patriabank.ro/
+       ! url_not_accessible
+  [cautare] Patria Bank tarife si comisioane persoane fizice 2026 plati instant
+  [ 2] https://www.patriabank.ro/persoane-fizice/digital-banking/patria-de-oriunde
+  [ 3] https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 4] https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare
+  [ 5] https://www.patriabank.ro/d/2142
+       ! url_not_accessible
+       ! url_not_allowed
+  [ 6] https://www.patriabank.ro/d/1782
+       ! url_not_allowed
+GOL     ROPAY                        blocat_de_robots: Nu am putut deschide nicio pagină patriabank.ro: pagina principală și paginile de produs n, $0.84
+  ! CARD_DEBIT_FREE: ReadError: [WinError 10054] An existing connection was forcibly closed by the remote host (tentativa 1)
+EROARE  CARD_DEBIT_FREE              timeout: nimic găsit în termen, după 1 ture și 0 pagini
+
+patria: 5/7 produse cu surse, 1 erori, cost estimat $3.83, durata 8 min
+Reia: python descopera_surse_libra.py --banca patria --produse CARD_DEBIT_FREE

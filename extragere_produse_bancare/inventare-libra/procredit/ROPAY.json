@@ -1,40 +1,44 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "procredit",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.procreditbank.ro/persoane-fizice/aplicatia-mbnk/",
-      "tip": "html",
+      "url": "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Plăți instant prin telefon în aplicația ProCredit Mobile Banking (MB@nk)",
+      "rol": "tarife",
+      "denumire_la_banca": "Plăți instant ≤ LEI 5.000 (Mobile Banking MB@nk / ProB@nking Plus)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este singura funcționalitate de plată instant pe baza numărului de telefon găsită la ProCredit, însă diferă de RoPay prin două aspecte: este disponibilă doar pentru persoane fizice (nu și juridice, cum cere produsul Libra) și funcționează doar între conturi deschise la ProCredit Bank, nu interbancar la nivel de sistem (ca schema RoPay).",
+      "motiv_potrivire": "ProCredit nu are RoPay publicat; are plăți instant în lei (≤5.000 LEI) din aplicație/Internet Banking, iar plata pe baza numărului de telefon există doar către clienți ProCredit (intrabancar). Tarifele de plăți instant apar doar în lista PF; lista PJ nu conține plăți instant.",
       "incredere": 0.6,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Pagina descrie explicit funcția de plată instant pe bază de număr de telefon, dar nu conține cifre despre comisioane sau limite, acestea fiind menționate doar generic în alte documente ale băncii.",
-      "citat": "Faci plăți instant către prieteni care au cont la ProCredit Bank doar pe baza numărului de telefon.",
-      "citat_verificat": true,
-      "avertisment": "citat scurt (17 cuvinte)",
-      "link_live": "https://www.procreditbank.ro/persoane-fizice/aplicatia-mbnk/#:~:text=Faci%20pl%C4%83%C8%9Bi%20instant%20c%C4%83tre%20prieteni,pe%20baza%20num%C4%83rului%20de%20telefon."
+      "explicatie_incredere": "Lista de prețuri PF în vigoare din 24.08.2026 conține explicit comisionul pentru plăți instant, plăți interbancare normale și încasări, dar serviciul nu e RoPay propriu-zis și acoperă doar persoane fizice.",
+      "citat": "Plăți naționale normale sau plăți < LEI 50.000 5,51 LEI Plăți naționale urgente sau plăți ≥ LEI 50.000 15 LEI Plăți instant ≤ LEI 5.000 5,45 LEI",
+      "pagina_pdf": 6,
+      "dovada_metoda": "PDF cu text extras; cifrele apar în conținut.",
+      "citat_verificat": null,
+      "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.procreditbank.ro/persoane-fizice/aplicatia-mbnk/",
-    "https://www.procreditbank.ro/companii/banking-servicii-digitale/"
+    "https://www.procreditbank.ro/",
+    "https://www.procreditbank.ro/persoane-fizice/pachete-cont-bancar/",
+    "https://www.procreditbank.ro/procredit-romania-mobile-banking/",
+    "https://www.procreditbank.ro/lista-de-preturi/",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/LISTA-PRETURI-PF.pdf",
+    "https://www.procreditbank.ro/wp-content/uploads/2026/08/Lista-preturi-PJ-RO-12-Octombrie-2026.pdf"
   ],
-  "durata_s": 45,
+  "durata_s": 31,
   "consum": {
-    "intrare": 8,
-    "iesire": 2156,
-    "citire_cache": 63484,
-    "scriere_cache": 48901,
+    "intrare": 16,
+    "iesire": 2087,
+    "citire_cache": 212583,
+    "scriere_cache": 116180,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1565253
+    "cost_estimat_usd": 0.7077372
   }
 }

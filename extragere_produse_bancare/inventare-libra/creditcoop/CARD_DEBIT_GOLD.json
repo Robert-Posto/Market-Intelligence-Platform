@@ -1,25 +1,30 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "creditcoop",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "CREDITCOOP nu oferă card de debit ca produs public; singurul card listat pe site (pagina dedicată /carduri/ și meniul Personal) este Cardul de Credit VISA Classic, un instrument revolving cu dobândă 25%/an și perioadă de grație de 52 zile, fără cashback, lounge sau asigurare de călătorie, deci nu e nici echivalent nici similar cardului de debit Gold Libra."
+    "nota": "CREDITCOOP nu emite card de debit. Documentul oficial de informare privind comisioanele pentru contul curent în lei (datat 31.08.2026, https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf) spune la rubrica «Furnizarea unui card de debit»: «Serviciul nu este disponibil». Singurul card din ofertă este Cardul de Credit VISA Classic pentru persoane fizice (variantele Standard și VIP, https://www.creditcoop.ro/carduri/). E alt tip de produs (card de credit, nu de debit), deci nu e corespondent. Pagina conturilor curente pentru persoane juridice nu pomenește niciun card."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.creditcoop.ro/carduri/"
+    "https://www.creditcoop.ro/",
+    "https://www.creditcoop.ro/carduri/",
+    "https://www.creditcoop.ro/documente/",
+    "https://www.creditcoop.ro/fisiere/Document_Informare_Comisioane_cont-de-plati.pdf",
+    "https://www.creditcoop.ro/cont-de-plati-persoane-fizice/",
+    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/"
   ],
-  "durata_s": 15,
+  "durata_s": 21,
   "consum": {
-    "intrare": 6,
-    "iesire": 913,
-    "citire_cache": 26162,
-    "scriere_cache": 30223,
+    "intrare": 12,
+    "iesire": 922,
+    "citire_cache": 118032,
+    "scriere_cache": 66855,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0899319
+    "cost_estimat_usd": 0.3999758
   }
 }

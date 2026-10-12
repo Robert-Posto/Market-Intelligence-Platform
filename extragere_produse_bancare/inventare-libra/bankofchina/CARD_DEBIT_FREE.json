@@ -1,25 +1,28 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bankofchina",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "Bank of China (CEE) Ltd. – Sucursala București este o sucursală exclusiv corporate (Corporate Banking, Deposits, Corporate Loans, Trade Services, Treasury & FX, RMB Service, Other Services), fără servicii retail pentru persoane fizice. Site-ul local nu oferă carduri de debit sau orice produs echivalent cardului Libra 'Free' pentru persoane fizice sau juridice. Paginile despre carduri de debit găsite în căutare aparțin altor sucursale BOC (China, Australia) și nu sucursalei din România."
+    "nota": "Bank of China (CEE) Sucursala București lucrează doar cu persoane juridice (Corporate Banking: RMB Service, Deposits, Corporate Loans, Trade Services, Treasury & FX, Other Services) și nu are în ofertă carduri de debit. Lista de Taxe și Comisioane pentru Persoane Juridice în vigoare din 1 iulie 2025 (https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf) acoperă doar administrarea contului (30 RON/lună pentru contul în RON), certificate, transferuri, NetBank/E-token și depozite. Nu are nicio secțiune despre carduri, ATM, conversie valutară la plata cu cardul sau interogare sold. Nu există nici varianta pentru persoane fizice."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.bankofchina.com/ro/en/"
+    "https://www.bankofchina.com/ro/en/",
+    "https://www.bankofchina.com/ro/en/cbservice/cbo/",
+    "https://www.bankofchina.com/ro/en/bocinfo/bi2/202109/t20210908_20014518.html",
+    "https://pic.bankofchina.com/bocappd/Romania/202507/P020250701398817431078.pdf"
   ],
-  "durata_s": 11,
+  "durata_s": 16,
   "consum": {
-    "intrare": 4,
-    "iesire": 618,
-    "citire_cache": 6333,
-    "scriere_cache": 17581,
+    "intrare": 10,
+    "iesire": 759,
+    "citire_cache": 32983,
+    "scriere_cache": 40107,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0514071
+    "cost_estimat_usd": 0.2289482
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "salt",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
@@ -7,22 +7,21 @@
   "surse": [],
   "gol": {
     "motiv": "blocat_de_robots",
-    "nota": "Domeniul saltbank.ro nu a putut fi accesat deloc - web_fetch a returnat eroare de permisiune pentru pagina principală (https://www.saltbank.ro/), iar web_search nu a returnat niciun URL de pe acest domeniu pe care să îl pot deschide conform regulilor de navigare. Nu am putut identifica produsul echivalent 'Card de debit Free' din lipsă de acces la conținutul site-ului."
+    "nota": "Accesul la saltbank.ro a fost refuzat de instrumentul de fetch (\"You don't have permission to access this domain\"), iar căutările web_search nu au returnat niciun rezultat pentru acest domeniu. Nu am putut naviga la nicio pagină a băncii pentru a identifica produsul echivalent cardului de debit Free."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://www.saltbank.ro/",
-    "https://www.saltbank.ro/card",
-    "https://www.saltbank.ro/produse",
-    "https://www.saltbank.ro/"
+    "https://www.saltbank.ro/tarife-si-comisioane",
+    "https://www.saltbank.ro/card-debit"
   ],
-  "durata_s": 16,
+  "durata_s": 12,
   "consum": {
-    "intrare": 14761,
-    "iesire": 1066,
-    "citire_cache": 19204,
-    "scriere_cache": 6808,
+    "intrare": 8067,
+    "iesire": 943,
+    "citire_cache": 20585,
+    "scriere_cache": 7328,
     "apeluri": 1,
-    "cost_estimat_usd": 0.0610428
+    "cost_estimat_usd": 0.048001
   }
 }

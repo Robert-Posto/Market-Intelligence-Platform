@@ -87,6 +87,10 @@ h2 { font-family: var(--serif); font-size: 17px; margin: 0 0 12px; font-weight: 
 .note { color: var(--muted); font-size: 12px; line-height: 1.55; max-width: 80ch }
 .gri { color: var(--muted) }
 .sub { display: block; color: var(--muted); font-size: 10.5px; line-height: 1.35; font-weight: 400 }
+/* valoarea de referință cu cifre diferite din surse la fel de sigure (2.1, sursa „referinta”) */
+.sub.de-verificat { color: var(--warn) }
+/* data valorii (components/DataValorii.tsx): cea scrisă lângă cifră, verde; a documentului / extragerii, gri */
+.data-valorii.din-citat { color: var(--ok) }
 .callout { border: 1px solid var(--ok); border-left-width: 4px; border-radius: 9px; padding: 11px 14px; font-size: 12.5px; line-height: 1.6;
   background: var(--ok-tint) }
 .callout.warn { border-color: var(--warn); background: var(--warn-tint) }

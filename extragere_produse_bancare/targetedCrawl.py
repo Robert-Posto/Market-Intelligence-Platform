@@ -46,7 +46,9 @@ CALE_CATALOG = AICI / os.getenv("CATALOG_PRODUSE", "produse_bancare_v2.json")
 CALE_BANCI = AICI / "banci.json"
 IESIRE = AICI / "inventare-targeted"
 
-MODEL = os.getenv("MODEL", "claude-sonnet-5")
+# Sonnet 5.5 din 12.10.2026 (cerut de George, după o rulare pe Opus 5.5 la 2.1): discovery și extragere
+# pe același model, jumătate din prețul lui Opus 5.5 (preturi.py); MODEL în mediu îl schimbă fără cod
+MODEL = os.getenv("MODEL", "claude-sonnet-5-5")
 MAX_PAGINI = int(os.getenv("MAX_PAGINI", "15"))
 MAX_CAUTARI = int(os.getenv("MAX_CAUTARI", "3"))
 TURE_MAX = int(os.getenv("TURE_MAX", "10"))

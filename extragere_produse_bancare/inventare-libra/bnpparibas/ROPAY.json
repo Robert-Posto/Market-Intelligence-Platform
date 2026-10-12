@@ -1,23 +1,27 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bnpparibas",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "BNP Paribas SA Paris - Sucursala București este o entitate exclusiv de Corporate & Institutional Banking, fără clienți persoane fizice de retail. Nu oferă niciun serviciu de plăți instant P2P prin număr de telefon (tip RoPay) pentru persoane fizice și juridice. Produsele de plăți instant găsite pe domeniile bnpparibas.com (ex. 'Instanea' - soluție de acceptare plăți instant pentru comercianți, sau 'SEPA Instant Credit Transfer' pentru corporate treasury) sunt soluții de cash management destinate companiilor mari, nu echivalente cu un produs de plată P2P prin telefon pentru populație și firme mici. Segmentul de clienți (persoane fizice) nu este acoperit de acest site."
+    "nota": "BNP Paribas S.A. Paris – Sucursala București face doar corporate & institutional banking (Global Markets, Cash Management, Global Trade Solutions, platforma Connexis). Nu are clienți persoane fizice și nici retail/IMM. Pe site nu apare RoPay, nicio plată instant prin telefon și nicio listă publică de tarife și comisioane. Singurele documente legale publicate sunt Termenii și condițiile generale (nov. 2025), fără comisioane. La nivel de grup, BNP Paribas are SEPA Instant Credit Transfer în EUR și Instanea, o soluție de acceptare a plăților pentru comercianți, pe cashmanagement.bnpparibas.com. Ambele sunt servicii corporate globale, fără plăți instant în lei prin telefon, deci nu corespund produsului."
   },
   "candidati_respinsi": [],
-  "deschise": [],
-  "durata_s": 24,
+  "deschise": [
+    "https://romania.bnpparibas.com/",
+    "https://www.romania.bnpparibas.com/en/legal-information/",
+    "https://www.romania.bnpparibas.com/en/corporates-institutions/"
+  ],
+  "durata_s": 15,
   "consum": {
-    "intrare": 4,
-    "iesire": 1787,
-    "citire_cache": 6328,
-    "scriere_cache": 16566,
+    "intrare": 10,
+    "iesire": 795,
+    "citire_cache": 35804,
+    "scriere_cache": 24140,
     "apeluri": 1,
-    "cost_estimat_usd": 0.060558600000000004
+    "cost_estimat_usd": 0.1509616
   }
 }

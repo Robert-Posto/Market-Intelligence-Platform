@@ -11,6 +11,8 @@ export const rate_mobil = {
   "rate.interval_valori_n": ["{minim}–{maxim}% · {n} valori", "{minim}–{maxim}% · {n} values"],
   "rate.interval_valori_1": ["1 valoare", "1 value"],
   "rate.cap_tipica_mediana": ["tipică (mediana)", "typical (median)"],
+  "rate.cap_referinta": ["de referință", "reference"],
+  "rate.nota_referinta": ["{n} bănci · cifra e <b>valoarea de referință</b> a băncii, din produsul ei echivalent cu cel Libra, pe scenariul de referință (fluxul de comparație cu Libra); intervalul arată celelalte produse ale ei; {sens}.", "{n} banks · the figure is the bank's <b>reference value</b>, from its product equivalent to Libra's, on the reference scenario (the Libra comparison flow); the range shows its other products; {sens}."],
   "rate.termen": ["Termen", "Term"],
   "rate.termen_nespecificat_title": ["sursa nu spune termenul", "the source does not state the term"],
   "rate.nespecificat": ["nespecificat", "unspecified"],

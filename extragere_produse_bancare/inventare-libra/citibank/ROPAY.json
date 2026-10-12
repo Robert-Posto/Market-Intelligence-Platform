@@ -1,25 +1,32 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "citibank",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
-    "motiv": "necesita_alt_domeniu",
-    "nota": "Citibank Europe plc - Sucursala România este o entitate strict corporate/instituțională (parte din Institutional Clients Group), care deservește doar companii mari, IMM-uri, sector public și organizații non-profit. Pagina despre companie precizează explicit că banca oferă servicii financiare 'to large national and multinational companies, small and middle enterprises, the public sector and non-profit organizations'. Nu există servicii de retail banking pentru persoane fizice în România, deci nu poate exista un produs de plăți instant prin telefon (tip RoPay) destinat persoanelor fizice și juridice deopotrivă. Nu am găsit nicio pagină, produs sau serviciu de plăți instant/mobile payments by phone number pentru clienți retail pe site-ul Citibank România; toate rezultatele relevante despre 'instant payments' sau 'mobile payments' se refereau la soluții globale de trezorerie pentru corporații (Citi Instant Payments, Citi Payment Exchange) sau la carduri corporate, nu la un produs echivalent RoPay."
+    "motiv": "produs_inexistent",
+    "nota": "Citibank Europe plc – Sucursala România lucrează doar cu clienți instituționali (companii mari și multinaționale, IMM-uri, sector public, ONG-uri). Portofoliul de retail a fost vândut către Raiffeisen în 2013. Pe site nu există RoPay și nici altă plată instant pe telefon, iar segmentul persoane fizice nu e acoperit deloc. Plățile pentru firme se fac prin CitiDirect BE® și sunt descrise în secțiunea Gestiune lichidități, la „Plăți”. Acestea sunt servicii corporate de cash management, fără tarife publicate. Ca să fie complet: Citi are la nivel global o ofertă Citi Instant Payments, tot pentru companii, dar nici ea nu e un produs RoPay."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html"
+    "https://www.citibank.com/icg/sa/emea/romania/english/about-us.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/index.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/useful-information/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/useful-information/index.html",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/",
+    "https://www.citibank.com/icg/sa/emea/romania/romanian/products-services/cash-management/payables.html"
   ],
-  "durata_s": 14,
+  "durata_s": 40,
   "consum": {
-    "intrare": 4,
-    "iesire": 998,
-    "citire_cache": 6332,
-    "scriere_cache": 13397,
+    "intrare": 37596,
+    "iesire": 1430,
+    "citire_cache": 74028,
+    "scriere_cache": 18071,
     "apeluri": 1,
-    "cost_estimat_usd": 0.04474689999999999
+    "cost_estimat_usd": 0.2989502
   }
 }

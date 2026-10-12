@@ -1,36 +1,22 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "techventures",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-15052025.pdf",
+      "url": "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-01092026.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Mastercard Gold",
+      "denumire_la_banca": "Mastercard Gold (card de debit persoane fizice, lei/euro)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul de tarife listează explicit comisioanele pentru cardul Mastercard Gold (emitere, administrare, retrageri numerar), produs disponibil doar pentru persoane fizice, spre deosebire de Libra Card Gold care acoperă și persoane juridice.",
+      "motiv_potrivire": "Card de debit premium Mastercard Gold cu acces lounge în aeroport, asigurare și cashback prin Priceless, ca la Libra. Diferă segmentul: la TechVentures cardul e doar pentru persoane fizice (firmele au Mastercard Business, fără variantă Gold). Diferă și costurile: emitere 50 lei, administrare 15 lei/lună, retragere ATM propriu 0,50%. Nu există dobândă la sold.",
       "incredere": 0.85,
-      "explicatie_incredere": "Tabelul din secțiunea 6. Carduri conține cifre exacte pentru Mastercard Gold (emitere, administrare lunară, comisioane retragere numerar), direct comparabile cu produsul Libra.",
+      "explicatie_incredere": "Lista oficială de tarife pentru persoane fizice, în vigoare din 01.09.2026, are la cap. 6 Carduri o coloană dedicată Mastercard Gold: emitere, administrare, reînnoire, retrageri ATM proprii și ale altor bănci, interogare sold.",
+      "citat": "Emitere card fizic principal/ suplimentar Mastercard Standard (lei/ euro) Mastercard Kids Finance (lei) 50 lei Livrare card fizic în România 20 lei + TVA Administrare card fizic emis 15 lei/ lună",
       "pagina_pdf": 6,
-      "citat": "Emitere card fizic principal/ suplimentar Mastercard Standard (lei/euro) Mastercard Kids Finance (lei) 50 lei Livrare card fizic în România 20 lei + TVA Administrare card fizic emis 15 lei/ lună Mastercard Gold (lei/ euro)",
-      "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://techventures.bank/persoane-fizice/mastercard-gold",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Mastercard Gold",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Card de debit premium cu beneficii similare (lounge access prin programul Mastercard Premium Business Lounge Access, cashback prin priceless.com), dar este disponibil doar pentru persoane fizice (18+), nu și pentru persoane juridice ca la Libra.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina dedicată produsului descrie beneficiile (lounge, cashback, siguranță) și câteva caracteristici tehnice (valabilitate, emitere monedă), dar nu conține comisionul anual sau procentul de dobândă la sold.",
-      "citat": "Cardul se emite în lei sau euro, în funcție de preferințele tale. Cardul este embosat, prevăzut cu tehnologie EMV (Chip). Termen de valabilitate: 3 ani, cu posibilitatea de prelungire automată.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -41,19 +27,17 @@
     "https://techventures.bank/",
     "https://techventures.bank/persoane-fizice",
     "https://techventures.bank/companii/carduri",
-    "https://techventures.bank/persoane-fizice/mastercard-gold",
-    "https://techventures.bank/persoane-fizice/carduri",
-    "https://techventures.bank/robots.txt",
     "https://techventures.bank/documente-utile",
-    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-15052025.pdf"
+    "https://techventures.bank/persoane-fizice/mastercard-gold",
+    "https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-01092026.pdf"
   ],
-  "durata_s": 74,
+  "durata_s": 27,
   "consum": {
-    "intrare": 69932,
-    "iesire": 5351,
-    "citire_cache": 53912,
-    "scriere_cache": 48333,
+    "intrare": 10,
+    "iesire": 2218,
+    "citire_cache": 53107,
+    "scriere_cache": 58212,
     "apeluri": 1,
-    "cost_estimat_usd": 0.3249889
+    "cost_estimat_usd": 0.3567028
   }
 }

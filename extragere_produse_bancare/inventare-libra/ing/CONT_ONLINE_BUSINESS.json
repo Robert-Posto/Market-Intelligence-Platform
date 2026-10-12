@@ -3,22 +3,39 @@
   "banca": "ing",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
       "tip": "html",
       "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Pachetele ING Fix (cont curent pentru firme, inclusiv FIX Online)",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Pachet ING FIX Online",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru persoane juridice, deschis online (inclusiv din Home'Bank/ING Business), cu abonament lunar operațional cu cost fix și card business inclus — corespunde exact cu Cont Online Business de la Libra.",
+      "motiv_potrivire": "Pachet de cont curent în lei pentru firme și PFA (cifră de afaceri sub 9 mil. lei), deschis online, cu abonament lunar fix, Business Card și ING Business inclus; plăți nelimitate către clienți ING și 20 de plăți lunare către alte bănci incluse.",
       "incredere": 0.9,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Pagina dedicată conține un tabel complet cu costurile lunare ale fiecărui pachet (40/70/150/165/250 RON), operațiunile incluse (plăți către alte bănci, transferuri intrabancare, depuneri numerar la ATM) și comisioanele standard pentru transferuri sub 50.000 lei.",
-      "citat": "Pachet FIX Online (70 RON) Cont curent RON ✓ Business Card ✓ ING Business, platforma de internet și mobile banking ✓ Depunere de numerar la ATM ING ✓ Acceptare la plată prin POS (primul cont) ✓ Plăți în RON intre conturile proprii sau către alți clienți ING Romania ✓ Plăți în RON (ING-altă bancă) - 20 de tranzacții pe lună către conturile altor bănci ✓",
+      "explicatie_incredere": "Pagina dedicată pachetelor ING Fix conține explicit costul FIX Online (70 RON/lună), operațiunile incluse (20 plăți interbancare/lună, plăți ING nelimitate, depunere numerar la ATM ING) și comisionul Transfond de 0,51 lei.",
+      "citat": "Pachet FIX Online (70 RON)\n\nCont curent RON\n\n✓\n\nBusiness Card\n\n✓\n\nING Business, platforma de internet și mobile banking\n\n✓\n\nDepunere de numerar la ATM ING\n\n✓",
+      "dovada_metoda": "Cifrele (70 RON, 20 de tranzacții pe lună către alte bănci, 0,51 lei Transfond) apar în textul HTML primit.",
+      "incredere_metoda": 0.85,
       "citat_verificat": true,
-      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Pachet%20FIX%20Online%20%2870%20RON%29,c%C4%83tre%20conturile%20altor%20b%C4%83nci%20%E2%9C%93"
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Pachet%20FIX%20Online%20%2870%20RON%29,numerar%20la%20ATM%20ING%20%E2%9C%93"
+    },
+    {
+      "url": "https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING FIX Online (Lista de Taxe și comisioane pentru persoane juridice, PFA și alte entități)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Lista oficială de tarife PJ/PFA în vigoare (30 septembrie 2026), legată din pagina Documente contractuale și din pagina produsului; conține coloana pachetului ING FIX Online (deschidere cont, administrare, extras, depuneri numerar, plăți).",
+      "incredere": 0.7,
+      "explicatie_incredere": "Document oficial curent de tarife PJ care include pachetul FIX Online, dar PDF-ul nu a putut fi descărcat direct; citatul provine din versiunea anterioară (2 septembrie 2026) a aceleiași liste, văzută prin căutare.",
+      "citat": "Pachetul Fix Online se adreseaz ă entităţilor (SRL, SA, SNC, SCS, SCA, PFA) care au cifra de afaceri mai mică de 9.000.000 lei.",
+      "dovada_metoda": "PDF, deci http; accesul direct a fost refuzat la fetch, conținutul a fost văzut doar în rezultatul de căutare al versiunii anterioare.",
+      "incredere_metoda": 0.6,
+      "citat_verificat": null,
+      "link_live": null
     }
   ],
   "gol": null,
@@ -26,15 +43,18 @@
   "deschise": [
     "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-Comisioane-pentru-persoane-juridice-PFA-si-alte-entitati.pdf",
     "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
+    "https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf",
+    "https://ing.ro/ing-in-romania/informatii-utile/documente-contractuale/documente-contractuale-arhiva",
+    "https://ing.ro/ing-in-romania/informatii-utile/documente-contractuale",
     "https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf"
   ],
-  "durata_s": 64,
+  "durata_s": 47,
   "consum": {
-    "intrare": 41442,
-    "iesire": 5331,
-    "citire_cache": 47607,
-    "scriere_cache": 47461,
+    "intrare": 89682,
+    "iesire": 3835,
+    "citire_cache": 117398,
+    "scriere_cache": 61093,
     "apeluri": 1,
-    "cost_estimat_usd": 0.2643679
+    "cost_estimat_usd": 0.7878522
   }
 }

@@ -1,9 +1,9 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "brci",
   "cod": "CARD_DEBIT_BUSINESS",
   "denumire": "Card de debit business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.brci.ro/ro/produse/card-mastercard-business.html",
@@ -12,10 +12,27 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Card Mastercard Business",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Este cardul de debit Mastercard destinat persoanelor juridice (companii, PFA) pentru operațiuni curente, fără legătură cu un partener extern, deci corespunde direct conceptului de 'Card de debit business' de la Libra.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina dedicată a produsului conține caracteristici tehnice și cifre concrete (POS gratuit, până la 250 de carduri pe cont), dar nu am putut accesa pagina live din cauza restricției robots.txt, informația provine din indexarea publică a paginii.",
-      "citat": "Card MASTERCARD business debit in Lei embosat, cu CHIP si cu tehnologie contactless; Plăti rapide folosind tehnologia contactless; Tranzacții comerciale efectuate la POS, oriunde in lume GRATUIT; Se poate utiliza atât in Romania cat si in afara tarii; Posibilitate de a solicita pana la 250 carduri pe același cont;",
+      "motiv_potrivire": "Card de debit Mastercard business în lei pentru persoane juridice, produsul standard de card de debit pentru firme al BRCI.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Pagina dedicată cardului de debit business conține comisionul de conversie valutară (2%), dar celelalte comisioane sunt în Lista de tarife PJ legată din pagină, pe care nu am putut-o deschide.",
+      "citat": "Card  MASTERCARD  business  debit in Lei embosat, cu CHIP si cu tehnologie contactless; Comision conversie valutara practicat de BRCI pentru tranzactiile realizate in alta moneda decat cea a cardului 2%",
+      "dovada_metoda": "Conținut văzut doar în rezultatele web_search; deschiderea directă a domeniului a fost refuzată de unealtă.",
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
+    },
+    {
+      "url": "https://companii.brci.ro/pjonboarding",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card Mastercard Business Debit (pachet Connect 20)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Pagina de onboarding pentru persoane juridice care arată taxa standard de emitere și cea de administrare anuală a cardului Mastercard Business Debit (cu scutire în pachetul Connect 20).",
+      "incredere": 0.7,
+      "explicatie_incredere": "Cifrele de emitere (35 lei) și administrare (150 lei/an) a cardului Mastercard Business Debit apar explicit, dar în contextul pachetului Connect 20 care le scutește.",
+      "citat": "150 lei / an · 0 lei · Taxa anuala Administrare Card Mastercard Business Debit\n35 lei / luna · 0 lei · Taxa emitere Card Mastercard Business Debit",
+      "dovada_metoda": "Conținut văzut doar în rezultatele web_search; deschiderea directă a domeniului a fost refuzată de unealtă.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -23,17 +40,17 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.brci.ro/ro/produse/card-mastercard-business.html",
-    "https://brci.ro/ro/produse/card-mastercard-business.html",
-    "https://brci.ro/ro/produse/scrisoare-garantie.html"
+    "https://www.brci.ro/",
+    "https://www.brci.ro/ro/produse/card-mastercard-netopia-business.html",
+    "https://companii.brci.ro/pjonboarding"
   ],
-  "durata_s": 49,
+  "durata_s": 47,
   "consum": {
-    "intrare": 72133,
-    "iesire": 2807,
-    "citire_cache": 12644,
-    "scriere_cache": 25736,
+    "intrare": 30110,
+    "iesire": 1506,
+    "citire_cache": 50244,
+    "scriere_cache": 29401,
     "apeluri": 1,
-    "cost_estimat_usd": 0.2392048
+    "cost_estimat_usd": 0.3176626
   }
 }

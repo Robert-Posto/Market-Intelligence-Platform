@@ -1,0 +1,41 @@
+{
+  "generat": "2026-10-12",
+  "banca": "techventures",
+  "cod": "CONT_ONLINE_PERSONAL",
+  "denumire": "Cont Online Personal",
+  "model": "claude-opus-5-5",
+  "surse": [
+    {
+      "url": "https://techventures.bank/persoane-fizice/cont-curent",
+      "tip": "html",
+      "metoda": "http",
+      "rol": "pagina-produs",
+      "denumire_la_banca": "Cont curent (persoane fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Este tot un cont curent pentru persoane fizice, în RON/EUR/USD/GBP/CHF/HUF, cu Internet și Mobile Banking. Diferă canalul: banca nu descrie deschiderea 100% online pentru clienții noi, iar accesul la Internet Banking se activează în sucursală. Pe site, conturile noi se pot deschide din aplicație doar de clienții existenți. Comisioanele sunt în Lista de tarife PF în vigoare din 01.09.2026 (https://techventures.bank/storage/files/lista-de-tarife-si-comisioane-persoane-fizice-valabile-din-01092026.pdf), cu pachetele Starter/Selfmade/Explorer, dar nu am putut deschide documentul în această sesiune.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Este pagina dedicată contului curent PF, dar nu are cifrele câmpurilor cheie; acestea sunt doar în lista de tarife PF din 01.09.2026, pe care nu am putut-o verifica.",
+      "citat": "De asemenea, dacă ești din Constanța, poți solicita virarea alocațiilor și indemnizațiilor în conturile deschise la TechVentures Bank. Sumele sunt garantate de stat, în limita plafonului comunicat de Fondul de Garantare a Depozitelor Bancare – în prezent 100.000 euro sau echivalent.",
+      "citat_verificat": true,
+      "link_live": "https://techventures.bank/persoane-fizice/cont-curent#:~:text=De%20asemenea%2C%20dac%C4%83%20e%C8%99ti%20din,prezent%20100.000%20euro%20sau%20echivalent."
+    }
+  ],
+  "gol": null,
+  "candidati_respinsi": [],
+  "deschise": [
+    "https://techventures.bank/",
+    "https://techventures.bank/persoane-fizice",
+    "https://techventures.bank/documente-utile",
+    "https://techventures.bank/persoane-fizice/cont-curent",
+    "https://techventures.bank/persoane-fizice/pachete-cont-curent"
+  ],
+  "durata_s": 63,
+  "consum": {
+    "intrare": 26248,
+    "iesire": 2341,
+    "citire_cache": 92808,
+    "scriere_cache": 54640,
+    "apeluri": 1,
+    "cost_estimat_usd": 0.46213519999999997
+  }
+}

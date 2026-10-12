@@ -1,54 +1,30 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "patria",
   "cod": "ROPAY",
   "denumire": "RoPay (plăți instant prin telefon)",
-  "model": "claude-sonnet-5",
-  "surse": [
-    {
-      "url": "https://www.patriabank.ro/afaceri-mici/digital-banking/plati-instant",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Plăți Instant persoane juridice",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Serviciu de plăți interbancare instant pentru persoane juridice, dar efectuat tot pe baza contului bancar al beneficiarului (IBAN), nu prin numărul de telefon ca la RoPay, deci diferă canalul/mecanismul de identificare a beneficiarului.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Pagina dedicată serviciului conține cifre concrete (plafon de 49.999 lei) și lista băncilor participante, fiind document cu cifrele produsului similar.",
-      "citat": "Sumă generoasă - transfer rapid (plată/încasare) pentru sumele de pâna în 49.999 lei, pe teritoriul României, prin băncile care oferă acest serviciu. Băncile elibigile, participante la sistemul de plăți instant sunt: BCR, BRD, BT, CEC Bank, Libra Internet Bank, Raiffeisen Bank, Vista Bank, Intesa Sanpaolo Bank, ING Bank.",
-      "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.patriabank.ro/persoane-fizice/alte-servicii/plati-instant",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Plăți Instant (persoane fizice)",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este tot un serviciu de plăți instant interbancare, dar la Patria Bank se face către un cont bancar (IBAN), nu prin simpla introducere a numărului de telefon al beneficiarului ca la RoPay; canalul de identificare a beneficiarului diferă.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina dedicată serviciului de Plăți Instant pentru persoane fizice explică mecanismul de plată, dar nu conține cifre de comision, doar condiții de eligibilitate și trimitere către lista băncilor participante.",
-      "citat": "Este disponibil sub forma unei opțiuni de selecție a tipului de prioritate dorit pentru plata respectivă către un cont deschis la oricare din băncile beneficiare care oferă la rândul lor acest serviciu.",
-      "rol_alt": null,
-      "citat_verificat": null,
-      "link_live": null
-    }
-  ],
-  "gol": null,
+  "model": "claude-opus-5-5",
+  "surse": [],
+  "gol": {
+    "motiv": "blocat_de_robots",
+    "nota": "Nu am putut deschide nicio pagină patriabank.ro: pagina principală și paginile de produs nu s-au încărcat, iar documentele /d/ au răspuns cu „no permission”. În rezultatele de căutare n-am găsit nicio pagină Patria Bank despre RoPay sau despre plata la număr de telefon. Varianta cea mai apropiată pare să fie plata instant în lei prin Internet/Mobile Banking (Patria Online), pentru persoane fizice și juridice. Din fragmentele de căutare, NEVERIFICATE: lista de tarife PF (www.patriabank.ro/d/1782, versiune nesigură) dă 10 lei pentru plata instant sub 50.000 lei, 7 lei pentru plata standard prin canale electronice și 3 lei pentru încasarea instant. Lista PJ (www.patriabank.ro/d/2142) are secțiunea 4.1.2 „Serviciul operatiuni instant in lei”: 8 lei pentru 0-999,99 lei și 9 lei pentru 1.000-49.999,99 lei. Lista PF în vigoare se numește „Lista de tarife si comisioane PF valabila din 08.06.2026”, dar nu i-am găsit adresa. Rămâne de verificat dacă Patria oferă RoPay."
+  },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.patriabank.ro/persoane-fizice/alte-servicii",
-    "https://www.patriabank.ro/persoane-fizice/alte-servicii/plati-instant",
-    "https://www.patriabank.ro/afaceri-mici/digital-banking/plati-instant"
+    "https://www.patriabank.ro/",
+    "https://www.patriabank.ro/persoane-fizice/digital-banking/patria-de-oriunde",
+    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/cont-curent",
+    "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+    "https://www.patriabank.ro/d/2142",
+    "https://www.patriabank.ro/d/1782"
   ],
-  "durata_s": 32,
+  "durata_s": 40,
   "consum": {
-    "intrare": 23028,
-    "iesire": 2637,
-    "citire_cache": 32807,
-    "scriere_cache": 28550,
+    "intrare": 145220,
+    "iesire": 1618,
+    "citire_cache": 53768,
+    "scriere_cache": 41007,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1503624
+    "cost_estimat_usd": 0.8397822000000001
   }
 }

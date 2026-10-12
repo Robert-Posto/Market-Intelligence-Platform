@@ -1,35 +1,39 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "ing",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Pachet ING FIX Util",
+      "denumire_la_banca": "Pachet FIX Util",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este un pachet lunar pentru cont curent + card business + ING Business (IB/MB), disponibil explicit pentru categoria de clienți 'Microîntreprinderi si PFA', deci același tip de produs și același segment ca Abonamentul PFA Libra; diferă prețul (40 RON vs 29 RON/lună) și numărul de operațiuni gratuite incluse (10 plăți către clienți ING + 5 plăți interbancare, nu 50 operațiuni/lună) și este un pachet general ING FIX, nu un produs dedicat exclusiv PFA/profesii.",
+      "motiv_potrivire": "Pagina pachetelor ING Fix. FIX Util costă 40 RON/lună și se adresează și PFA/profesiilor liberale. Include cont, Business Card și ING Business, plus un număr limitat de plăți fără comision (10 intrabancare, 5 interbancare), nu 50 de operațiuni.",
       "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată pachetelor ING FIX conține simulatorul care listează PFA ca categorie eligibilă și tabelul cu prețul și componența exactă a pachetului FIX Util (cel mai apropiat de Abonamentul PFA ca preț și conținut).",
-      "citat": "Pachet FIX Util(40 RON/luna) Cont curent RON ✓ Business Card ✓ ING Business, platforma de internet și mobile banking ✓ Depunere de numerar la ATM ING ✓ Acceptare la plată prin POS (primul cont) ✓ Plăți în RON intre conturile proprii sau către alți clienți ING Romania ✓1",
+      "explicatie_incredere": "Este pagina dedicată pachetului și conține în text costul lunar și numărul de plăți incluse în FIX Util.",
+      "citat": "1. 10 plăți către alți clienti ING (persoane fizice sau companii), fără comision 2. 5 plați către alte banci* (fie către Trezorerie, fie către diverși furnizori), fără comision 3. În limita a 5.000 de lei/ lună la ATM ING Bank, fără comision de retragere",
+      "dovada_metoda": "Pagina s-a încărcat prin HTTP, iar cifrele (40 RON/lună, 10 și 5 plăți, 5.000 lei) apar în text.",
+      "incredere_metoda": 0.85,
       "citat_verificat": true,
-      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=Pachet%20FIX%20Util%2840%20RON%2Fluna%29%20Cont,al%C8%9Bi%20clien%C8%9Bi%20ING%20Romania%20%E2%9C%931"
+      "link_live": "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent#:~:text=1.%2010%20pl%C4%83%C8%9Bi%20c%C4%83tre%20al%C8%9Bi,Bank%2C%20f%C4%83r%C4%83%20comision%20de%20retragere"
     },
     {
-      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--29-August-2025-.pdf",
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Pachete de produse și servicii pentru afacerea ta (ING FIX Util / Online / Lei / Valută / Complet)",
+      "denumire_la_banca": "Pachet ING FIX Util (Listă de Taxe și Comisioane pentru persoane juridice, PFA și alte entități)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul oficial de tarife confirmă taxele lunare de administrare ale pachetelor ING FIX (inclusiv pachetul de 40 lei, cel mai apropiat ca preț de Abonamentul PFA Libra de 29 lei) și precizează explicit că aceste pachete/comisioane se aplică și conturilor de PFA și altor entități (profesii liberale, întreprinderi individuale).",
+      "motiv_potrivire": "Pachet de cont curent pentru firme mici, inclusiv PFA și profesii liberale: cont curent RON, card Visa Business, internet/mobile banking ING Business. Diferențe: costă 40 lei/lună în loc de 29 și include 10 plăți intrabancare și 5 interbancare, nu 50 de operațiuni; încasările și depunerile la ATM ING sunt nelimitate. Mai există și oferta ING Profesional (coloana de 30 lei, după cât se pare), dar site-ul nu o descrie separat.",
       "incredere": 0.75,
-      "explicatie_incredere": "Document general de tarife în care pachetele de cont pentru firme/PFA apar explicit cu valorile taxei lunare de administrare, dar fără un produs separat denumit exclusiv pentru PFA.",
-      "citat": "Listă de Taxe și Comisioane pentru Persoane Juridice, PFA și alte entități Administrare lunară pachet 0 lei 30 lei 40 lei 70 lei 150 lei 165 lei 250 lei",
+      "explicatie_incredere": "Este lista oficială de tarife pentru PJ și PFA, legată din footer-ul secțiunii IMM, cu versiunea din 30 septembrie 2026 și coloanele de taxe lunare pe pachet. Fișierul nu a putut fi descărcat direct (acces refuzat), așa că citatul vine din indexul de căutare.",
+      "citat": "Valabilă începând cu data de 30 Septembrie 2026 Listă de Taxe și Comisioane pentru Persoane Juridice, PFA și alte entități* Administrare lunară pachet 0 lei 30 lei 40 lei 70 lei 150 lei 165 lei 250 lei",
+      "dovada_metoda": "PDF legat din footer („Taxe/comisioane persoane juridice”); web_fetch a refuzat accesul, conținutul l-am văzut doar în rezultatele web_search.",
+      "incredere_metoda": 0.6,
       "citat_verificat": null,
       "link_live": null
     }
@@ -37,21 +41,19 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.ing.ro/microcompanii/profesii-liberale/ing-profesional-pentru-profesii-liberale.html",
-    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice--PFA-si-alte-entitati--29-August-2025-.pdf",
-    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati--29-August-2025-.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-Comisioane-pentru-persoane-juridice-PFA-si-alte-entitati.pdf",
     "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent/pachetele-ing-fix-cont-curent",
     "https://ing.ro/dam/jcr:8baf3309-ddcf-4634-8b6e-68239e1c4cb6/Lista%20de%20Taxe%20si%20comisioane%20pentru%20persoane%20juridice%20PFA%20si%20alte%20entitati_final.pdf",
-    "https://ing.ro/microcompanii/profesii-liberale/ing-profesional-pentru-profesii-liberale.html",
-    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf"
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-juridice/Lista-de-Taxe-si-comisioane-pentru-persoane-juridice-PFA-si-alte-entitati_final.pdf",
+    "https://ing.ro/imm/operatiuni-curente/solutii-de-cont-curent"
   ],
-  "durata_s": 113,
+  "durata_s": 54,
   "consum": {
-    "intrare": 114758,
-    "iesire": 8566,
-    "citire_cache": 109982,
-    "scriere_cache": 73127,
+    "intrare": 98501,
+    "iesire": 3815,
+    "citire_cache": 118248,
+    "scriere_cache": 55338,
     "apeluri": 1,
-    "cost_estimat_usd": 0.5199899
+    "cost_estimat_usd": 0.7942932
   }
 }

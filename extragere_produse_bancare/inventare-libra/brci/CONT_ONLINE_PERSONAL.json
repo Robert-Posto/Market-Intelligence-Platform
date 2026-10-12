@@ -1,40 +1,25 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "brci",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://vreaucont.brci.ro/",
       "tip": "html",
-      "metoda": "http",
+      "metoda": "playwright",
       "rol": "pagina-produs",
       "denumire_la_banca": "Cont Total Digital (MIND by BRCI)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Este contul curent pentru persoane fizice deschis 100% online, prin video-call și certificat digital, cu acces complet prin Internet/Mobile Banking - exact segmentul și tipul de produs ca și Cont Online Personal Libra.",
+      "motiv_potrivire": "Cont curent pentru persoane fizice, în lei și euro, deschis integral online prin apel video, cu card de debit și internet/mobile banking: același tip de produs și același segment ca Libra Cont Online Personal.",
       "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată produsului conține descrierea completă a deschiderii 100% online și cifrele comisioanelor (toate zero), deși nu are un tabel formal de dobânzi.",
+      "explicatie_incredere": "Este pagina dedicată contului online PF, cu costurile cheie (administrare cont, emitere și administrare card, plăți în lei), dar descărcarea simplă HTTP a întors doar formularul de înrolare, fără textul cu valorile.",
+      "dovada_metoda": "Prin web_fetch a venit doar formularul de înregistrare. Textul cu comisioanele ZERO a apărut numai în indexul căutării, așa că probabil se încarcă prin JavaScript.",
+      "incredere_metoda": 0.6,
       "citat": "Apasă pe butonul de jos, urmează pașii și creezi contul tău digital în lei și euro, cu zero costuri de administrare și de emitere, plus livrarea gratuită.",
-      "pagina_pdf": null,
       "citat_verificat": false,
       "avertisment": "citatul nu apare în textul primit",
-      "link_live": null
-    },
-    {
-      "url": "https://www.brci.ro/ro/produse/cont-curent.html",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Cont curent / Cont de plăți cu servicii de bază",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este contul curent general pentru persoane fizice la BRCI, disponibil în RON, EUR, USD și GBP, dar pagina descrie varianta clasică (nu insistă pe deschiderea 100% online ca la Cont Online Personal Libra).",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina dedicată conține caracteristicile contului curent PF cu monede și operațiuni disponibile, dar nu specifică explicit procesul digital complet ca în pagina MIND.",
-      "citat": "Disponibil în RON, EUR, USD și GBP; Acces permanent la o gamă largă de operațiuni: Încasarea veniturilor (salariu, pensie, alocație, bursă, etc); Plata facturilor; Depuneri sau încasări de numerar",
-      "pagina_pdf": null,
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     }
   ],
@@ -43,17 +28,18 @@
   "deschise": [
     "https://www.brci.ro/",
     "https://vreaucont.brci.ro/",
-    "https://www.brci.ro/ro/persoane-fizice.html",
-    "https://brci.ro/ro/produse/cont-curent.html",
-    "https://brci.ro/ro/persoane-fizice.html"
+    "https://www.brci.ro/ro/produse/cont-curent.html",
+    "https://vreaucont.brci.ro/content/comisioane.pdf",
+    "https://www2.brci.ro/",
+    "https://brci.ro/ro/produse/scrisoare-garantie.html"
   ],
-  "durata_s": 45,
+  "durata_s": 59,
   "consum": {
-    "intrare": 38534,
-    "iesire": 1976,
-    "citire_cache": 12636,
-    "scriere_cache": 17968,
+    "intrare": 63709,
+    "iesire": 1622,
+    "citire_cache": 51519,
+    "scriere_cache": 29631,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1442752
+    "cost_estimat_usd": 0.45603859999999996
   }
 }

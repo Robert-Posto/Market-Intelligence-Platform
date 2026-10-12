@@ -17,6 +17,11 @@ export const CelulaRata = z
     frecventa: z.string().nullable(),
     conditie: z.string().nullable(),
     luni: z.number().nullable(),
+    // sursa „referinta”: datele valorii (din citat, a documentului, a extragerii)
+    data_citat: z.string().nullable().optional(),
+    data_document: z.string().nullable().optional(),
+    data_document_sursa: z.string().nullable().optional(),
+    data_extragere: z.string().nullable().optional(),
   })
   .passthrough()
 

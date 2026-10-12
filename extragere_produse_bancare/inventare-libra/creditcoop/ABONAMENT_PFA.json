@@ -1,28 +1,27 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "creditcoop",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "CREDITCOOP nu are un produs de tip abonament lunar cu preț fix pentru PFA/profesii (cont+card business+IB/MB gratuite+operațiuni incluse). Există doar o pagină generică 'Conturi curente – Persoane juridice' (https://www.creditcoop.ro/conturi-curente-persoane-juridice/) care descrie operațiunile posibile (încasări/plăți numerar, OP, încasări APIA, constituire depozite) și limitele de tranzacționare, dar fără niciun comision lunar de abonament, fără mențiune de card inclus gratuit sau număr de operațiuni incluse lunar. De asemenea există 'Internet Banking Afaceri' (creditcoop.online) ca produs separat, nu bundle. Documentele de tarife/comisioane publicate pe pagina 'Documente' (https://www.creditcoop.ro/documente/) acoperă doar conturi de plăți pentru persoane fizice (cont standard, pensionari, APIA, clienți vulnerabili/nevulnerabili financiar) — nu există un document de tarife pentru persoane juridice/PFA cu structură de pachet. Nu am găsit nicio variantă dedicată PFA/profesii liberale cu abonament lunar, deci nu există nici echivalent, nici similar suficient de apropiat pentru a fi raportat cu încredere."
+    "nota": "CREDITCOOP nu are pe site un abonament sau pachet cu cost lunar fix pentru PFA/profesii liberale (cont + card business + IB/MB + operațiuni incluse). Pentru firme are doar produsul general «Conturi curente – Persoane juridice» (https://www.creditcoop.ro/conturi-curente-persoane-juridice/). Pagina descrie funcționalitățile, orele limită și limitele în internet banking (200.000 lei/zi, 50.000 lei/tranzacție), dar nu dă niciun comision. Pagina «Documente» are doar documente de informare privind comisioanele pentru conturile de plăți ale persoanelor fizice (standard, pensionari, APIA, clienți vulnerabili/nevulnerabili). Nu apare nicio listă de tarife pentru persoane juridice/PFA."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
-    "https://www.creditcoop.ro/internet-banking-afaceri/",
+    "https://www.creditcoop.ro/",
     "https://www.creditcoop.ro/conturi-curente-persoane-juridice/",
     "https://www.creditcoop.ro/documente/"
   ],
-  "durata_s": 53,
+  "durata_s": 17,
   "consum": {
-    "intrare": 12,
-    "iesire": 3949,
-    "citire_cache": 149928,
-    "scriere_cache": 59084,
+    "intrare": 10,
+    "iesire": 867,
+    "citire_cache": 62784,
+    "scriere_cache": 48100,
     "apeluri": 1,
-    "cost_estimat_usd": 0.2172096
+    "cost_estimat_usd": 0.2829936
   }
 }

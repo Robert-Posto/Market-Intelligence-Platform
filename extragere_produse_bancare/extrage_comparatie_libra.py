@@ -484,6 +484,8 @@ def _respinge(grup: dict, o: dict, motiv: str, cod: str | None = None) -> None:
 
 def randuri_comparatie(idb: int, grup: dict, rez: dict, slug: str | None = None) -> list[tuple]:
     """Observațiile acceptate de flow -> rânduri comparatie_libra, una per produs Libra legat."""
+    data_doc = _data(rez.get("data_document"))
+    sursa_data_doc = rez.get("data_document_sursa") if data_doc else None
     pregatite = []
     for o in rez.get("observatii") or []:
         if o.get("not_found") or not o.get("camp") or not o.get("citat"):
@@ -555,6 +557,8 @@ def randuri_comparatie(idb: int, grup: dict, rez: dict, slug: str | None = None)
         # clară, doar mai puțin sigură, iar încrederea ei rămâne în rând. Ambiguu e
         # un citat scurt găsit de mai multe ori în document: contextul e de la
         # prima apariție și poate fi al altui exemplu.
+        # data de la valoare: cea dată de model sau „valabil începând cu ...” din condiție
+        valabil = _data(o.get("valid_from")) or _data_in_vigoare("; ".join(conditii))
         n_ap = o.get("citat_aparitii")
         ambiguu = bool(n_ap)
         motiv = (f"citatul „{o.get('citat_original')}” apare de {n_ap} ori în document; "
@@ -584,8 +588,25 @@ def randuri_comparatie(idb: int, grup: dict, rez: dict, slug: str | None = None)
                         o.get("eticheta_libera") if o.get("valoare_num") is None or o["camp"] == "altele" else None,
                         unitate, moneda, "; ".join(cond_l) or None, o["citat"], link,
                         "llm", round(float(o.get("confidence") or 0), 2), ambiguu, motiv,
-                        json.dumps(sc_l, ensure_ascii=False) if sc_l else None, *interval(sc_l)))
+                        json.dumps(sc_l, ensure_ascii=False) if sc_l else None, *interval(sc_l),
+                        valabil, data_doc, sursa_data_doc))
     return out
+
+
+def _data(v) -> date | None:
+    """AAAA-LL-ZZ (de la model sau din JSON) -> dată; altceva -> None."""
+    try:
+        return date.fromisoformat(str(v)[:10]) if v else None
+    except ValueError:
+        return None
+
+
+def _data_in_vigoare(conditie: str | None) -> date | None:
+    m = IN_VIGOARE_DIN.search(_fara_diacritice(conditie or "").lower())
+    try:
+        return date(int(m.group(7)), int(m.group(6)), int(m.group(5))) if m else None
+    except ValueError:
+        return None
 
 
 def _fmt(r: tuple) -> str:
@@ -638,11 +659,8 @@ IN_VIGOARE_DIN = re.compile(r"(valabil\w*|aplicabil\w*) (incepand|de la data de|
 
 def _in_vigoare_din(conditie: str | None) -> bool:
     """Condiția spune „valabil începând cu <dată>”, iar data a trecut."""
-    m = IN_VIGOARE_DIN.search(_fara_diacritice(conditie or "").lower())
-    try:
-        return bool(m) and date(int(m.group(7)), int(m.group(6)), int(m.group(5))) <= date.today()
-    except ValueError:
-        return False
+    d = _data_in_vigoare(conditie)
+    return bool(d) and d <= date.today()
 
 
 def rezolva(randuri: list[tuple]) -> list[tuple]:
@@ -699,8 +717,9 @@ def rescrie_banca(idb: int, randuri: list[tuple], produse: set[int] | None = Non
             cur.execute("""
                 INSERT INTO comparatie_libra (id_banca, id_produs_libra, id_sursa, camp, valoare_num,
                     valoare_text, unitate, moneda, conditie, citat, link_live, metoda_extractie,
-                    incredere, ambiguu, motiv_ambiguu, scenariu, interval_min, interval_max, unitate_interval)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb,%s,%s,%s)
+                    incredere, ambiguu, motiv_ambiguu, scenariu, interval_min, interval_max, unitate_interval,
+                    valabil_de_la, data_document, data_document_sursa)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb,%s,%s,%s,%s,%s,%s)
                 ON CONFLICT ON CONSTRAINT ux_comparatie_libra DO NOTHING""", r)
             scrise += cur.rowcount
         for id_sursa, data in date_vechi.items():
@@ -720,13 +739,16 @@ def scrie_db(grup: dict, randuri: list[tuple]) -> int:
             cur.execute("""
                 INSERT INTO comparatie_libra (id_banca, id_produs_libra, id_sursa, camp, valoare_num,
                     valoare_text, unitate, moneda, conditie, citat, link_live, metoda_extractie,
-                    incredere, ambiguu, motiv_ambiguu, scenariu, interval_min, interval_max, unitate_interval)
-                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb,%s,%s,%s)
+                    incredere, ambiguu, motiv_ambiguu, scenariu, interval_min, interval_max, unitate_interval,
+                    valabil_de_la, data_document, data_document_sursa)
+                VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb,%s,%s,%s,%s,%s,%s)
                 ON CONFLICT ON CONSTRAINT ux_comparatie_libra DO UPDATE SET
                     id_sursa = EXCLUDED.id_sursa, valoare_num = EXCLUDED.valoare_num,
                     valoare_text = EXCLUDED.valoare_text, citat = EXCLUDED.citat,
                     link_live = EXCLUDED.link_live, incredere = EXCLUDED.incredere,
                     ambiguu = EXCLUDED.ambiguu, motiv_ambiguu = EXCLUDED.motiv_ambiguu,
+                    valabil_de_la = EXCLUDED.valabil_de_la, data_document = EXCLUDED.data_document,
+                    data_document_sursa = EXCLUDED.data_document_sursa,
                     data_colectare = CURRENT_DATE, updated_at = now()
                 WHERE comparatie_libra.incredere IS NULL OR comparatie_libra.incredere < EXCLUDED.incredere
                 """, r)
@@ -818,9 +840,18 @@ async def un_url(idb: int, slug: str, grup: dict, sem: asyncio.Semaphore,
         # Documentul e identic cu cel din rularea precedentă: procesul se oprește aici,
         # fără apel la model; valorile rămân cele extrase atunci.
         spune(f"neschimbat  amprentă identică, fără extracție, {round(time.time() - start):3}s  {grup['url'][:90]}")
+        # amprenta ignoră datele, deci un document neschimbat poate avea o dată nouă („actualizat la ...”)
+        data_doc = rez.get("data_document") or anterior.get("data_document")
+        sursa_data_doc = rez.get("data_document_sursa") if rez.get("data_document") else anterior.get("data_document_sursa")
+        if data_doc:
+            with psycopg2.connect(DSN) as conn, conn.cursor() as cur:
+                cur.execute("UPDATE comparatie_libra SET data_document = %s, data_document_sursa = %s "
+                            "WHERE id_sursa = ANY(%s) AND stare = 'propus'",
+                            (data_doc, sursa_data_doc, [l["id_sursa"] for l in grup["legaturi"]]))
         return {**anterior, "cheie": grup["cheie"], "legaturi": grup["legaturi"], "stare": "neschimbat",
                 "durata_s": round(time.time() - start), "tokeni": {"intrare": 0, "iesire": 0},
-                "content_hash": rez.get("content_hash")}
+                "content_hash": rez.get("content_hash"),
+                "data_document": data_doc, "data_document_sursa": sursa_data_doc}
     randuri = randuri_comparatie(idb, grup, rez, slug)
     scrise = scrie_db(grup, randuri) if rez.get("stare") not in ("eroare",) else 0
     gasite = sum(1 for o in rez.get("observatii") or [] if not o.get("not_found"))
@@ -832,6 +863,7 @@ async def un_url(idb: int, slug: str, grup: dict, sem: asyncio.Semaphore,
             "stare": rez.get("stare"), "motiv": rez.get("motiv"), "flow": rez.get("flow"),
             "format_efectiv": rez.get("format_efectiv"), "blocaj_http_local": rez.get("blocaj_http_local"),
             "metoda_sanitizare": rez.get("metoda_sanitizare"), "content_hash": rez.get("content_hash"),
+            "data_document": rez.get("data_document"), "data_document_sursa": rez.get("data_document_sursa"),
             "observatii": rez.get("observatii") or [], "respinse": rez.get("respinse") or [],
             "scrise": scrise, "durata_s": round(time.time() - start),
             "tokeni": {"intrare": (rez.get("bilant") or {}).get("tokeni_intrare", 0),

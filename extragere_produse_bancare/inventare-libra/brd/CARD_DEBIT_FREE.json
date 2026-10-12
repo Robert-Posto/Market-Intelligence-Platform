@@ -3,57 +3,38 @@
   "banca": "brd",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.brd.ro/_files/pdf/Ghid_tarife_comisioane.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Card de debit Standard (Visa Standard / Mastercard Standard)",
+      "denumire_la_banca": "Card de debit Standard în lei (Visa Standard / Mastercard Standard)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este cardul de debit de bază pentru persoane fizice, cu emitere gratuită precum Libra Free, dar spre deosebire de acesta are un comision anual de administrare (25 lei) și nu este descris cu cashback la parteneri; segmentul de business (persoane juridice) are carduri separate, tot cu administrare anuală nenulă.",
-      "incredere": 0.85,
-      "incredere_metoda": 0.95,
-      "explicatie_incredere": "Document oficial de tarife în vigoare, cu tabel complet pentru cardurile de debit Standard: emitere, administrare, retrageri ATM proprii și la alte bănci.",
-      "pagina_pdf": 8,
-      "citat": "Furnizare card gratuit gratuit gratuit gratuit gratuit gratuit gratuit gratuit Administrare anuala/ card 10 lei 25 lei 50 lei 200 lei 450 lei 12 USD/12 EUR 70 EUR 110 EUR ATM BRD 1% min. 5 lei (sau echiv. in valuta contului) 1% ATM/POS alte banci din Romania 1%+10 lei 1%+10 lei",
-      "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.brd.ro/persoane-fizice/carduri/cardul-standard-debit-mastercard-visa",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Cardul standard Mastercard / Visa",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Pagina dedicată cardului de debit standard pentru persoane fizice, care promovează emiterea gratuită a cardului, însă nu menționează cashback la parteneri, iar administrarea anuală (vizibilă în ghidul de tarife) nu e gratuită, spre deosebire de Libra Free.",
+      "motiv_potrivire": "Este tot un card de debit de bază, dar pentru persoane fizice. Emiterea este gratuită, însă administrarea costă 25 lei pe an și nu este gratuită ca la Libra. Nu există cashback dedicat la parteneri; BRD îl oferă prin aplicația YOU BRD. Documentul acoperă doar segmentul persoane fizice.",
       "incredere": 0.75,
-      "incredere_metoda": 0.6,
-      "explicatie_incredere": "Pagina de produs confirmă explicit comisionul zero la emitere și la plățile la comercianți, dar cifra de administrare anuală nu apare pe pagină (se regăsește doar în ghidul de tarife).",
-      "citat": "ZERO COMISION pentru emiterea cardului și plățile la comercianți, inclusiv online națională și internațională plăţi online prin 3D Secure Mastercard/Visa Standard este un card de debit cu valabilitate 5 ani, emis sub sigla Mastercard (LEI/EUR)/Visa (LEI/USD).",
-      "citat_verificat": false,
-      "avertisment": "citatul nu apare în textul primit",
+      "explicatie_incredere": "Ghidul oficial de tarife PF, în vigoare din 21.09.2026, are coloana Standard cu emiterea, reînnoirea, administrarea, retragerile ATM și interogarea soldului; comisionul de conversie valutară nu apare.",
+      "citat": "Furnizare card gratuit gratuit gratuit gratuit gratuit gratuit gratuit gratuit Reinnoire card gratuit gratuit gratuit gratuit gratuit gratuit gratuit gratuit Administrare anuala/ card3 10 lei 25 lei 50 lei 200 lei 450 lei",
+      "pagina_pdf": 8,
+      "dovada_metoda": "Cifrele apar în textul extras din PDF.",
+      "incredere_metoda": 0.95,
+      "citat_verificat": null,
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.brd.ro/_files/pdf/Ghid_tarife_comisioane.pdf",
-    "https://www.brd.ro/persoane-fizice/carduri-si-conturi/operatiuni-curente/card-de-zi-cu-zi-gold",
-    "https://www.brd.ro/persoane-fizice/carduri/cardul-standard-debit-mastercard-visa",
-    "https://www.brd.ro/_files/pdf/Document_de_informare_cu_privire_la_comisioane_cont_lei.pdf",
-    "https://www.brd.ro/companii/pfa-si-profesii-liberale/activitate-curenta/craduri-business-pfa"
+    "https://www.brd.ro/_files/pdf/Ghid_tarife_comisioane.pdf"
   ],
-  "durata_s": 87,
+  "durata_s": 18,
   "consum": {
-    "intrare": 12,
-    "iesire": 7201,
-    "citire_cache": 311643,
-    "scriere_cache": 112686,
+    "intrare": 8,
+    "iesire": 1550,
+    "citire_cache": 28496,
+    "scriere_cache": 57290,
     "apeluri": 1,
-    "cost_estimat_usd": 0.4160776
+    "cost_estimat_usd": 0.32888039999999996
   }
 }

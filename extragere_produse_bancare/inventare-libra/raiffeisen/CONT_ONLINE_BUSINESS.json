@@ -3,55 +3,37 @@
   "banca": "raiffeisen",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale/20260901-Tarife-si-comisioane-IMM-si-profesii-liberale.pdf.coredownload.pdf",
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Pachete de cont curent IMM (Start, Plus, Optim, Extra, Ultra)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru persoane juridice/PFA (IMM și profesii liberale) deschis și gestionat online, cu pachete operaționale lunare și card business de debit inclus — același tip de produs și segment ca și Cont Online Business Libra.",
-      "incredere": 0.95,
-      "incredere_metoda": 0.95,
-      "explicatie_incredere": "Document oficial de tarife în vigoare (valabil din 01 Septembrie 2026) care listează explicit costul lunar al fiecărui pachet, comisioanele de transfer intrabancar/interbancar și condițiile de depunere numerar.",
+      "denumire_la_banca": "Pachetul de cont curent IMM Plus (pachete IMM deschise 100% online: Plus/Optim/Extra)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Cont curent pentru firme/PFA, deschis 100% online, cu card Visa Business inclus. Diferă de Libra: Raiffeisen îl vinde ca pachete pe niveluri (Start 39, Plus 59, Optim 89, Extra 129, Ultra 199 lei/lună), nu ca un cont exclusiv online. Plus e cel mai apropiat.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Broșura oficială de tarife IMM și profesii liberale, valabilă din 01.09.2026. Conține comisionul lunar al pachetelor, plățile incluse, plata intra/interbancară în lei (2/20 lei), depunerea gratuită la MFM și duplicatul de extras.",
+      "citat": "Comision lunar de administrare Pachet de cont curent (lei) Promoţie valabilă la achiziţionarea pachetelor Start 39 59 199 PACHETE CONT CURENT beneficii lunare Oferta valabilă începând cu 01 noiembrie 2025 Start Plus Optim Extra",
       "pagina_pdf": 3,
-      "citat": "Comision lunar de administrare Pachet de cont curent (lei) 39 59 89 129 199 pentru pachetele Start Plus Optim Extra Ultra, toate incluzând Depuneri numerar în LEI nelimitate, la MFM-uri Raiffeisen Bank din Romania și Card business de debit.",
       "citat_verificat": null,
       "link_live": null
-    },
-    {
-      "url": "https://bank.raiffeisen.ro/ro/pachete-de-cont-curent-imm/home.html",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Pachete de cont curent IMM",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată de prezentare și comparare a pachetelor de cont curent online pentru firme (IMM/PFA), cu deschidere 100% online, card business și operațiuni incluse pe lună — echivalentul direct al Cont Online Business.",
-      "incredere": 0.85,
-      "incredere_metoda": 0.85,
-      "explicatie_incredere": "Pagină de produs cu cifre explicite pe pachet (cost lunar, număr plăți către alte bănci incluse, retrageri ATM), confirmând și extinzând datele din documentul de tarife.",
-      "citat": "EXTRA 129 lei /lună - NELIMITAT plăți către alte banci în lei, online (inclusiv plăți Instant) - 30 plăti către alte bănci în EUR/USD, online - 7 retrageri în lei de la orice ATM din România - Card debit Visa Business Silver.",
-      "citat_verificat": true,
-      "link_live": "https://bank.raiffeisen.ro/ro/pachete-de-cont-curent-imm/home.html#:~:text=EXTRA%20129%20lei%20%2Flun%C4%83%20%2D,Card%20debit%20Visa%20Business%20Silver."
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://bank.raiffeisen.ro/ro/pachete-de-cont-curent-imm/home.html",
-    "https://www.raiffeisen.ro/ro/imm/in-sprijinul-tau/informatii-utile.html",
-    "https://www.raiffeisen.ro/ro/imm/in-sprijinul-tau/informatii-utile.html",
-    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale/20260901-Tarife-si-comisioane-IMM-si-profesii-liberale.pdf.coredownload.pdf"
+    "https://www.raiffeisen.ro/ro/imm/produse-si-servicii/conturi-si-pachete-de-cont-curent-imm.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pj/tarife-si-comisioane-imm-si-profesii-liberale.sv.pdf"
   ],
-  "durata_s": 119,
+  "durata_s": 25,
   "consum": {
-    "intrare": 31226,
-    "iesire": 10509,
-    "citire_cache": 90036,
-    "scriere_cache": 68439,
+    "intrare": 10,
+    "iesire": 1423,
+    "citire_cache": 48914,
+    "scriere_cache": 48021,
     "apeluri": 1,
-    "cost_estimat_usd": 0.3566467
+    "cost_estimat_usd": 0.2881706
   }
 }

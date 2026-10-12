@@ -12,8 +12,9 @@ import { Pill } from './comune'
  * Adresa vizualizatorului propriu de PDF, la pagina și cu citatul de evidențiat.
  * Un singur loc: era `/pdf.html?…` în aplicația veche și e `#/document?…` acum.
  */
-export function linkDocument(url: string, pagina: number, citat: string): string {
-  return `#/document?u=${encodeURIComponent(url)}&p=${pagina}&q=${encodeURIComponent(citat)}`
+/** Fără pagină (`null` / 0), vizualizatorul caută singur prima pagină cu citatul (pages/Document.tsx). */
+export function linkDocument(url: string, pagina: number | null, citat: string): string {
+  return `#/document?u=${encodeURIComponent(url)}${pagina ? `&p=${pagina}` : ''}&q=${encodeURIComponent(citat)}`
 }
 
 /** Motivele din bază (vederea coada_verificare) -> cheia explicației în dicționar. */
@@ -90,7 +91,7 @@ export function LinkSursa({ r }: { r: ValoareDovada }) {
   }
   if (r.link) {
     if (r.tip_sursa === 'document') {
-      const u = linkDocument(r.link, r.pagina || 1, r.citat || '')
+      const u = linkDocument(r.link, r.pagina, r.citat || '')
       return (
         <Tooltip title={t('sertar.sursa.document_tooltip', { pagina: r.pagina || 1 })}>
           <a className="sursa" href={u} target="_blank" rel="noopener">↗ {scurta(r.fisier || r.sursa)}{pg} ⤷</a>

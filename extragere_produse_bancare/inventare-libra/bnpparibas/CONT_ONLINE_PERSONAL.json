@@ -1,26 +1,26 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bnpparibas",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "BNP Paribas S.A. Paris – Sucursala București este exclusiv o entitate de Corporate & Institutional Banking (confirmat pe pagina 'A bank of reference' și 'BNP Paribas companies'), care deservește corporații și instituții, nu persoane fizice. Cele 6 entități BNP Paribas prezente în România (Arval - leasing auto corporate, BNP Paribas Cardif - asigurări, Cetelem - finanțare personală/credite de consum, BNP Paribas Leasing Solutions, Central Europe Technologies - IT, plus sucursala CIB) nu includ niciun furnizor de conturi curente pentru persoane fizice. Nu există deci un produs de tip 'cont curent online pentru persoane fizice' la această entitate bancară."
+    "nota": "BNP Paribas S.A. Paris – Sucursala București lucrează numai cu clienți corporate și instituționali (BNP Paribas Corporate & Institutional Banking), cu acces online prin Connexis/Global Markets. Pagina pentru „private clients” trimite doar la alte entități ale grupului: Cetelem pentru credite de consum, Cardif pentru asigurări, Arval și Leasing Solutions pentru leasing. Niciuna nu oferă cont curent pentru persoane fizice, iar pe site nu există cont curent PF, cu atât mai puțin unul deschis online."
   },
   "candidati_respinsi": [],
   "deschise": [
     "https://romania.bnpparibas.com/",
     "https://www.romania.bnpparibas.com/en/private-clients/"
   ],
-  "durata_s": 17,
+  "durata_s": 9,
   "consum": {
-    "intrare": 6,
-    "iesire": 1194,
-    "citire_cache": 19888,
-    "scriere_cache": 17541,
+    "intrare": 8,
+    "iesire": 496,
+    "citire_cache": 17663,
+    "scriere_cache": 14479,
     "apeluri": 1,
-    "cost_estimat_usd": 0.059782100000000005
+    "cost_estimat_usd": 0.0894122
   }
 }

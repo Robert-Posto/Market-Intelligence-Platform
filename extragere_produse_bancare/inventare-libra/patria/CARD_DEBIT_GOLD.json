@@ -1,10 +1,26 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "patria",
   "cod": "CARD_DEBIT_GOLD",
   "denumire": "Card de debit Gold",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
+    {
+      "url": "https://www.patriabank.ro/d/1782",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Card de debit MASTERCARD Gold lei (Persoane Fizice)",
+      "tip_potrivire": "similar",
+      "motiv_potrivire": "Card de debit Gold în lei la Patria Bank (acces lounge Mastercard, Mastercard Premium Collection). Diferențe: e doar pentru persoane fizice (la Libra e PF și PJ); costă 9 lei/lună administrare, nu 48 lei/an; nu are publicate asigurarea de călătorie și dobânda de 1% la sold.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Lista oficială de tarife PF are o coloană separată pentru MASTERCARD Gold lei, cu emitere, administrare, retrageri, interogare sold, reînnoire și conversie valutară. Nu am putut deschide documentul, iar conținutul vine din indexul de căutare, deci nu e sigur că e versiunea în vigoare din 08.06.2026.",
+      "citat": "Inlocuire card/ card pierdut/card furat/card deteriorat 18 Lei 18 Lei 20 Lei 5 EUR Regenerare cod PIN 2 Lei 3 Lei 5 Lei 1 EUR Refuz la plata nejustificat 15 Lei 15 Lei 15 Lei 5 EUR",
+      "pagina_pdf": null,
+      "dovada_metoda": "Documentul /d/ e un PDF cu tarife care apare în rezultatele de căutare, cu cifre în text. Deschiderea directă a dat eroare de permisiune.",
+      "citat_verificat": null,
+      "link_live": null
+    },
     {
       "url": "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit",
       "tip": "html",
@@ -12,24 +28,11 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Card Mastercard Gold (lei)",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este tot un card de debit premium (Gold) cu acces în Business Lounge și cashback prin program de parteneri, la fel ca la Libra, dar la Patria este poziționat explicit doar în secțiunea persoane fizice (nu am găsit variantă dedicată persoane juridice), nu menționează asigurare de călătorie inclusă și nu are o dobândă explicită la soldul din cont, spre deosebire de cardul Libra care are 1% dobândă la sold peste 500 lei.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagina dedicată a cardurilor de debit descrie explicit varianta Mastercard Gold cu praguri numerice pentru accesul în lounge și limite de tranzacționare.",
-      "citat": "Accesul este permis doar pentru carduri: - valide - cardul nu este blocat, declarat pierdut sau furat și poate fi folosit pentru tranzacții de plată - active - carduri Mastercard Gold care au efectuat cumpărături de minim 4.500 de lei în luna calendaristică anterioară și până cu maximum 96 de ore înaintea accesului în Business Lounge.",
-      "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.patriabank.ro/d/22",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Card Mastercard Gold (lei)",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Documentul de tarife listează explicit comisioanele cardului Mastercard Gold (administrare anuală, plafoane de retragere), utile pentru compararea costurilor cu cele 48 lei/an ale cardului Libra Gold, dar fiind document general pentru persoane fizice, nu acoperă varianta pentru persoane juridice cerută de produsul Libra.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document de tarife și comisioane cu rândul explicit pentru Mastercard Gold lei, incluzând comisionul anual de administrare și plafoanele de retragere.",
-      "citat": "VISA Electron lei MASTERCARD lei MASTERCARD Gold lei MASTERCARD Euro Comision anual administrare card (principal / suplimentar)* 24 le / card 30 lei/ card 100 lei / card 8 € / card",
+      "motiv_potrivire": "Pagina cardurilor de debit PF are o secțiune pentru Mastercard Gold (lei): lounge (3 intrări gratuite pe an), emitere gratuită, curier 15 lei, limită ATM 8.000 lei/zi. E doar pentru persoane fizice.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Pagina descrie explicit Mastercard Gold, dar cifrele sunt parțiale (emitere, curier, lounge), iar comisioanele complete sunt în lista de tarife. Pagina nu s-a încărcat direct.",
+      "citat": "Cardurile Mastercard Gold sunt limitate la maximum 3 intrări gratuite cumulat pe parcursului întregului an 2026, în oricare Business Lounge-urile disponibile pe site-ul Mastercard, numai pentru titularul cardului.",
+      "dovada_metoda": "Textul cu cifre apare în conținutul indexat al paginii.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -37,19 +40,19 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
+    "https://www.patriabank.ro/",
     "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit",
-    "https://www.patriabank.ro/d/22",
     "https://www.patriabank.ro/d/1782",
-    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit",
-    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/card-de-debit"
+    "https://en.patriabank.ro/persoane-fizice/economii/depozite-bancare",
+    "https://www.patriabank.ro/persoane-fizice/carduri-si-conturi/pachetele-de-cont-curent-patria"
   ],
-  "durata_s": 106,
+  "durata_s": 49,
   "consum": {
-    "intrare": 113154,
-    "iesire": 8625,
-    "citire_cache": 40271,
-    "scriere_cache": 44795,
+    "intrare": 110261,
+    "iesire": 2826,
+    "citire_cache": 68198,
+    "scriere_cache": 46879,
     "apeluri": 1,
-    "cost_estimat_usd": 0.43259970000000003
+    "cost_estimat_usd": 0.7592382
   }
 }

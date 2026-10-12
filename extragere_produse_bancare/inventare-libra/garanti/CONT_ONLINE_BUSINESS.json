@@ -3,38 +3,24 @@
   "banca": "garanti",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Cont curent IMM (Tarife și comisioane standard pentru Clienții IMM)",
+      "denumire_la_banca": "Cont curent IMM și PFA (deschidere online prin Garanti BBVA Online) – Tarife și comisioane standard pentru Clienții IMM, Aprilie 2026",
       "tip_potrivire": "similar",
-      "motiv_potrivire": "Este contul curent standard pentru persoane juridice (IMM și PFA) oferit de Garanti BBVA, cu operare posibilă online (Internet/Mobile Banking) sau în agenție; diferă de produsul Libra prin faptul că nu este un cont gestionat EXCLUSIV online, ci un cont tradițional multicanal.",
-      "incredere": 0.85,
-      "incredere_metoda": 0.95,
-      "explicatie_incredere": "Document oficial de tarife în vigoare (Aprilie 2026) pentru clienții IMM, cu toate câmpurile cheie (cost administrare, transfer intra/interbancar online, depunere numerar) explicit listate cu cifre.",
+      "motiv_potrivire": "Garanti BBVA nu are un cont business separat, doar online. Contul curent standard pentru IMM și PFA se poate deschide online din Garanti BBVA Online, dar se poate folosi și în agenții. Costul lunar este format din taxa de administrare a contului (25 RON) plus abonamentul de Internet/Mobile Banking (20 RON). Nu există un pachet cu un număr de operațiuni incluse.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este documentul oficial de tarife pentru IMM, în vigoare din aprilie 2026 (cea mai nouă versiune găsită). Conține deschiderea contului, administrarea lunară, extrasul, lichidarea contului, depunerea de numerar și plățile online intra- și interbancare.",
+      "citat": "Deschidere de cont Gratuit Deschidere cont de economii Gratuit Deschidere depozit/desființare depozit la scadență Gratuit Păstrarea corespondenței Gratuit Taxă poștală (în oraș) Gratuit Taxă administrare cont curent 1 25 RON/cont/lună",
       "pagina_pdf": 3,
-      "citat": "Taxă administrare cont curent 1 25 RON/cont/lună Taxă administrare cont de economii Gratuit Rata dobânzii cont curent: RON, USD și EUR 0,01% Eliberare cecuri și bilete la ordin Solicitare instrument: 0,8 RON/filă",
+      "incredere_metoda": 0.9,
+      "dovada_metoda": "PDF cu text extras; cifrele apar în conținut (p.3 cont, p.4 numerar, p.7 Internet/Mobile Banking: abonament 20 RON/lună, plăți intrabancare 1 RON, interbancare 500,01–49.999,99 RON 9 RON).",
       "citat_verificat": null,
       "link_live": null
-    },
-    {
-      "url": "https://www.garantibbva.ro/en/sme-and-pfa/current-account/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Current Account (Cont Curent pentru IMM și PFA)",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este pagina dedicată contului curent pentru IMM/PFA; arată că deschiderea se poate face online prin Garanti BBVA Online, dar și în agenție, deci nu este un produs gestionat exclusiv digital ca 'Cont Online Business' de la Libra; diferența cheie este canalul.",
-      "incredere": 0.65,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Pagina de produs confirmă segmentul (IMM/PFA) și opțiunea de deschidere online, dar nu conține cifre proprii, trimițând către documentul de tarife pentru costuri.",
-      "citat": "How to apply OnlineYou can open an online account yourself in Garanti BBVA Online Find out more In agenciesYou can come to any of the Garanti BBVA agencies Find out more",
-      "citat_verificat": true,
-      "link_live": "https://www.garantibbva.ro/en/sme-and-pfa/current-account/#:~:text=How%20to%20apply%20OnlineYou%20can,BBVA%20agencies%20Find%20out%20more"
     }
   ],
   "gol": null,
@@ -43,13 +29,13 @@
     "https://www.garantibbva.ro/en/sme-and-pfa/current-account/",
     "https://www.garantibbva.ro/wp-content/uploads/2026/04/T0013_V24_Tarife-si-comisioane-standard-pentru-Clientii-IMM_RO.pdf"
   ],
-  "durata_s": 78,
+  "durata_s": 36,
   "consum": {
-    "intrare": 6,
-    "iesire": 6018,
-    "citire_cache": 38638,
-    "scriere_cache": 90989,
+    "intrare": 14,
+    "iesire": 1802,
+    "citire_cache": 169155,
+    "scriere_cache": 98058,
     "apeluri": 1,
-    "cost_estimat_usd": 0.2953921
+    "cost_estimat_usd": 0.594048
   }
 }

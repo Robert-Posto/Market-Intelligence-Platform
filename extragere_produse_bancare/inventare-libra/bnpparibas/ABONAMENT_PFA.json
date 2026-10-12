@@ -1,25 +1,26 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "bnpparibas",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [],
   "gol": {
     "motiv": "produs_inexistent",
-    "nota": "BNP Paribas Sucursala București este o bancă corporate/instituțională (confirmat pe pagina principală: servicii pentru corporates, institutions și private clients), fără segment de retail pentru PFA/microîntreprinderi. Nu există un abonament de cont tip PFA cu card business, IB/MB gratuite și pachet de operațiuni incluse; secțiunile disponibile sunt doar 'Corporates and Institutions' și 'Private Clients' (wealth management), fără echivalent pentru acest produs de nișă destinat PFA/profesii liberale."
+    "nota": "BNP Paribas S.A. Paris – Sucursala București lucrează doar cu corporații și instituții (CIB: Global Markets, Cash Management, Global Trade Solutions, acces prin Connexis). Pe site nu există ofertă de retail sau IMM: niciun cont ori abonament pentru PFA sau profesii liberale și nicio listă publică de tarife pentru acest segment. Cash Management pentru corporații este alt segment și nu are tarife publicate."
   },
   "candidati_respinsi": [],
   "deschise": [
-    "https://romania.bnpparibas.com/"
+    "https://romania.bnpparibas.com/",
+    "https://www.romania.bnpparibas.com/en/corporates-institutions/"
   ],
-  "durata_s": 11,
+  "durata_s": 14,
   "consum": {
-    "intrare": 4,
-    "iesire": 651,
-    "citire_cache": 6357,
-    "scriere_cache": 10211,
+    "intrare": 8,
+    "iesire": 460,
+    "citire_cache": 17536,
+    "scriere_cache": 14464,
     "apeluri": 1,
-    "cost_estimat_usd": 0.033316899999999997
+    "cost_estimat_usd": 0.08856639999999999
   }
 }

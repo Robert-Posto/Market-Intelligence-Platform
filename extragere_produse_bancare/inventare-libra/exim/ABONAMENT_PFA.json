@@ -1,54 +1,58 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "exim",
   "cod": "ABONAMENT_PFA",
   "denumire": "Abonament PFA",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
       "url": "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Pachete Servicii (EXIM BUSINESS SMART / START / ACTIV / COMPLET)",
+      "denumire_la_banca": "Pachete servicii PFA si Microintreprinderi – EXIM BUSINESS START (25 lei/luna); variante: ACTIV 40 lei, COMPLET 70 lei, SMART 45 lei",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Abonamente lunare pentru PFA și microîntreprinderi care includ cont curent, card de debit business, Internet/Mobile Banking, exact ca Abonamentul PFA Libra, cu mai multe variante de preț lunar.",
+      "motiv_potrivire": "Abonament lunar pentru PFA și microîntreprinderi care include cont curent, card de debit Mastercard Business și Internet/Mobile Banking, la cost lunar apropiat (25 lei față de 29 lei). Diferența: nu are un număr fix de operațiuni incluse. Plățile intrabancare online și încasările intrabancare sunt nelimitate, iar plățile interbancare se plătesc separat (reduceri doar la ACTIV/COMPLET/SMART).",
       "incredere": 0.9,
-      "explicatie_incredere": "Pagină dedicată produsului, cu denumiri clare ale pachetelor și prețurile lunare exacte pentru fiecare variantă.",
-      "citat": "EXIM BUSINESS SMART - EXIM BUSINESS START (25 lei/luna) - EXIM BUSINESS ACTIV (40 lei/luna) - EXIM BUSINESS COMPLET (70 lei/luna)",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "explicatie_incredere": "Pagina e dedicată pachetelor pentru PFA/microîntreprinderi și dă prețul lunar al fiecărui pachet, plus ce operațiuni sunt incluse gratuit.",
+      "citat": "EXIM BUSINESS START (25 lei/luna) Costuri ZERO: deschiderea contului curent; administrarea lunara a conturilor curente in lei si valuta; furnizarea (emiterea) si administrarea cardului de debit inclus in oferta;",
+      "dovada_metoda": "Cifrele (25/40/70/45 lei pe lună, reducerile procentuale) apar direct în textul HTML primit.",
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2025/06/11/pachete-servicii/#:~:text=EXIM%20BUSINESS%20START%20%2825%20lei%2Fluna%29,de%20debit%20inclus%20in%20oferta%3B"
     },
     {
-      "url": "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
-      "tip": "html",
+      "url": "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "PACHET START-UP",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Este un abonament de cont+card business+IB/MB pentru PFA/microîntreprinderi ca la Libra, dar e rezervat exclusiv afacerilor la început de drum (primii 2 ani de la înființare) și e gratuit primul an, cu abonament de 45 lei/lună după expirare, spre deosebire de abonamentul fix de 29 lei/lună de la Libra disponibil oricărui PFA.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagină dedicată produsului cu cifre clare despre cost (45 lei/lună) și componente (cont, card, IB/MB), dar segmentul este restrâns la afaceri noi.",
-      "citat": "La expirarea anului de gratuitate, detinatorii Pachetului Start-Up pot opta pentru un abonament lunar de 45 de lei/luna.",
-      "citat_verificat": true,
-      "avertisment": "citat scurt (18 cuvinte)",
-      "link_live": "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/#:~:text=La%20expirarea%20anului%20de%20gratuitate%2C,lunar%20de%2045%20de%20lei%2Fluna."
+      "rol": "tarife",
+      "denumire_la_banca": "Comisioane Exim Banca Românească (persoane juridice), în vigoare din 01.07.2026",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Lista oficială de comisioane pentru persoane juridice. Din ea se iau comisioanele standard la care se aplică scutirile/reducerile pachetelor: plăți interbancare online, plăți intrabancare, depunere numerar, deschidere cont, extras. Pachetele nu sunt numite explicit în document.",
+      "incredere": 0.75,
+      "explicatie_incredere": "Document oficial de tarife pentru firme, cu dată de intrare în vigoare, care conține câmpurile cheie; pachetul nu apare explicit în el.",
+      "citat": "Cont curent 1. Deschidere de cont gratuit - 2. Administrare cont curent 7 lei/luna/cont flat în echivalent valuta contului 3. Emitere file CEC 2 lei / filă flat 4. Emitere file Bilet la ordin 1 leu / filă flat 5. Extras de cont curent gratuit -",
+      "pagina_pdf": 7,
+      "dovada_metoda": "PDF cu text extras; rândurile pentru plăți interbancare (6,51 lei online pentru 1.000–49.999,99 lei, 5 lei sub 1.000 lei), intrabancare (gratuit online) și depunere numerar în bancnote (gratuit) sunt la paginile 7-8.",
+      "citat_verificat": null,
+      "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/",
-    "https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/"
+    "https://www.eximbank.ro/",
+    "https://www.eximbank.ro/2025/06/11/pachete-servicii/",
+    "https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/",
+    "https://www.eximbank.ro/documente-diverse/",
+    "https://www.eximbank.ro/wp-content/uploads/2026/06/Comisioane-Exim-Banca-Romaneasca.pdf"
   ],
-  "durata_s": 29,
+  "durata_s": 35,
   "consum": {
-    "intrare": 8,
-    "iesire": 2012,
-    "citire_cache": 87328,
-    "scriere_cache": 53154,
+    "intrare": 12,
+    "iesire": 2529,
+    "citire_cache": 107786,
+    "scriere_cache": 78403,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1704866
+    "cost_estimat_usd": 0.4857574
   }
 }

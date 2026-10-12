@@ -71,6 +71,7 @@ import os
 import re
 import sys
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
@@ -173,12 +174,13 @@ def scrie_bronze(octeti: bytes, id_sursa: Any, url: str) -> dict | None:
             "cale": str(cale.relative_to(DATE))}
 
 
-async def descarca(url: str, metoda: str) -> tuple[bytes, int | str | None]:
+async def descarca(url: str, metoda: str, antete: dict | None = None) -> tuple[bytes, int | str | None]:
     """
     @returns (octeți, status_refuz). Status nenul = serverul a refuzat, iar
              octeții sunt goi; apelantul decide dacă trece pe fallback. Text în
              loc de cod când refuzul e al nostru, înainte de cerere: robots.txt,
              origine BLOCAT, adresă internă (`fh.adu_http`, pe fiecare redirect).
+    `antete`, dacă e dat, primește `last_modified` (antetul HTTP, AAAA-LL-ZZ).
     """
     try:
         if metoda == "playwright":
@@ -193,9 +195,36 @@ async def descarca(url: str, metoda: str) -> tuple[bytes, int | str | None]:
         if fh._pare_pagina_de_blocaj(r.text if r.headers.get(
                 "content-type", "").startswith("text") else ""):
             return b"", r.status_code
+        if antete is not None:
+            antete["last_modified"] = _last_modified(r.headers.get("last-modified"))
         return r.content, None
     except fh.AccesRefuzat as e:
         return b"", e.status
+
+
+def _last_modified(v: str | None) -> str | None:
+    """
+    Antetul Last-Modified, ca dată. Unul din ziua de azi nu se ia: paginile generate
+    dinamic îl pun la momentul cererii, iar documentul ar părea proaspăt fără să fie.
+    """
+    try:
+        d = parsedate_to_datetime(v).date() if v else None
+    except (TypeError, ValueError):
+        return None
+    return d.isoformat() if d and d < datetime.now(timezone.utc).date() else None
+
+
+def data_document(rez: dict, last_modified: str | None) -> tuple[str | None, str | None]:
+    """
+    Data documentului și de unde e luată. Întâi ce spune documentul („în vigoare
+    începând cu ...”), apoi metadatele PDF, apoi antetul HTTP.
+    """
+    pdf = (rez.get("pdf") or {}).get("metadate") or {}
+    for d, sursa in ((rez.get("data_document_text"), "text"), (pdf.get("modificat"), "pdf_modificat"),
+                     (pdf.get("creat"), "pdf_creat"), (last_modified, "http_last_modified")):
+        if d:
+            return d, sursa
+    return None, None
 
 
 async def cauta_date(sursa: dict) -> dict:
@@ -231,7 +260,8 @@ async def cauta_date(sursa: dict) -> dict:
                 "motiv": "nicio asociere de produs; hub sau pagină de context",
                 "observatii": []}
 
-    octeti, refuz = await descarca(url, metoda)
+    antete: dict = {}
+    octeti, refuz = await descarca(url, metoda, antete)
     raport["blocaj_http_local"] = refuz
 
     if refuz and sursa.get("fara_fallback"):
@@ -294,12 +324,15 @@ async def cauta_date(sursa: dict) -> dict:
         r["sursa_continut"] = provenienta
         r["bronze_sha256"] = (raport["bronze"] or {}).get("sha256") \
             if provenienta == "descarcare_proprie" else None
+    data_doc, sursa_data_doc = data_document(rez, antete.get("last_modified"))
 
     return {
         **raport,
         "flow": flow,
         "stare": rez.get("stare"),
         "content_hash": rez.get("content_hash"),
+        "data_document": data_doc,
+        "data_document_sursa": sursa_data_doc,
         "metoda_sanitizare": sanit,
         "avertisment": rez.get("avertisment"),
         "bilant": rez.get("bilant"),

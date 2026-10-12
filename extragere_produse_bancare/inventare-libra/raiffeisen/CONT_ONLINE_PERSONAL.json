@@ -3,20 +3,21 @@
   "banca": "raiffeisen",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
-  "model": "claude-sonnet-5",
+  "model": "claude-opus-5-5",
   "surse": [
     {
-      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf.sv.pdf",
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/fid/20260731-Pachet-Zero-Simplu.pdf.coredownload.inline.pdf",
       "tip": "pdf",
       "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Pachetul de cont curent ZERO Simplu",
+      "rol": "conditii",
+      "denumire_la_banca": "Cont curent de tip Pachet ZERO Simplu LEI",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru persoane fizice, deschis 100% online prin Smart Mobile, cu administrare condiționată gratuită — echivalent direct al Cont Online Personal de la Libra.",
+      "motiv_potrivire": "Documentul de informare privind comisioanele pentru același pachet. Arată că emiterea și administrarea cardului, retragerile ATM și transferurile interbancare sunt incluse în pachet, informații pe care lista standard nu le are.",
       "incredere": 0.9,
-      "explicatie_incredere": "Document oficial de tarife în vigoare (1 septembrie 2026) care conține explicit administrarea, cardul și comisioanele de transfer/retragere pentru pachetul ZERO Simplu.",
-      "citat": "Pachet ZERO Simplu 0*/15 lei/lună; Taxa lunară de administrare a pachetului ZERO Simplu și a pachetului Gold este 0 lei dacă sunt îndeplinite cumulativ următoarele condiții: înregistrarea unui rulaj creditor lunar de minimum 1.000 lei pentru pachetul ZERO Simplu.",
+      "explicatie_incredere": "Document dedicat produsului, din 31/07/2026, cu valori pentru retragerea de la ATM-ul propriu, transferul interbancar din Smart Mobile și cardul inclus.",
+      "citat": "Retrageri de numerar La ATM-ul Raiffeisen Bank S.A. - Lei La ATM alte banci din Romania - Lei La ghiseul Raiffeisen Bank S.A. 0 Lei 0 Lei",
       "pagina_pdf": 2,
+      "dovada_metoda": "Text extras din PDF. Pagina 1 conține și rândul «Interbancar in lei – Raiffeisen Smart Mobile** 0 Lei» și lista serviciilor incluse (taxa de emitere card de debit Lei; taxa de administrare card de debit Lei).",
       "citat_verificat": null,
       "link_live": null
     },
@@ -27,27 +28,47 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Pachetul de cont curent ZERO Simplu",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată produsului confirmă deschiderea 100% online, retragerile gratuite la ATM-uri și condițiile de administrare gratuită, completând cifrele din documentul de tarife.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Pagina produsului conține cifre concrete (1.000 lei încasări, 15 lei administrare) care confirmă și completează tariful oficial, dar nu înlocuiește documentul de tarife pentru toate câmpurile.",
-      "citat": "Ai ales Zero Simplu? Felicitări, acum te numeri printre cei peste 2.000.000 de români care se bucură de super beneficii cu ZERO costuri, cu doar 1.000 de lei încasări lunare în cont și o plată cu cardul pe lună, indiferent de valoare!",
+      "motiv_potrivire": "Pagina produsului confirmă deschiderea 100% online și dă taxa de livrare a cardului (15 lei), care lipsește din documentul de informare.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagină dedicată produsului, cu cifre în text: 15 lei taxă de livrare card și condițiile pentru cost lunar zero.",
+      "citat": "Taxa de livrare card este 15 Lei și va fi debitată din contul atașat acestuia pentru cardurile de debit nou emise, reemise sau reînnoite.",
+      "dovada_metoda": "Text HTML static. Cifrele apar direct în conținut.",
       "citat_verificat": true,
-      "link_live": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent/pachetul-de-cont-curent-zero-simplu.html#:~:text=Ai%20ales%20Zero%20Simplu%3F%20Felicit%C4%83ri%2C,pe%20lun%C4%83%2C%20indiferent%20de%20valoare%21"
+      "link_live": "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent/pachetul-de-cont-curent-zero-simplu.html#:~:text=Taxa%20de%20livrare%20card%20este,nou%20emise%2C%20reemise%20sau%20re%C3%AEnnoite."
+    },
+    {
+      "url": "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf.sv.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Pachet de cont curent ZERO Simplu",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "ZERO Simplu este pachetul de cont curent pentru persoane fizice pe care Raiffeisen îl promovează ca deschis 100% online din Smart Mobile, cu card de debit și mobile banking incluse.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Lista oficială de tarife PF, în vigoare din 1 septembrie 2026, are rând explicit pentru Pachet ZERO Simplu (0*/15 lei/lună), plus comisioanele de deschidere/închidere cont și de extras.",
+      "citat": "Deschidere cont curent/Închidere cont curent 0 lei Administarea contului curent*** - În lei Pachet Premium 0*/60 lei/lună Pachet ZERO Tot 0*/20 lei/lună Pachet ZERO Simplu 0*/15 lei/lună",
+      "pagina_pdf": 2,
+      "dovada_metoda": "Text extras din PDF, pagina 2, tabelul 1.1 Conturi curente",
+      "citat_verificat": null,
+      "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
+    "https://www.raiffeisen.ro/",
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent/pachetul-de-cont-curent-zero-simplu.html",
     "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/tarife-comisioane-standard-pf.sv.pdf",
-    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent/pachetul-de-cont-curent-zero-simplu.html"
+    "https://www.raiffeisen.ro/ro/persoane-fizice/produsele-noastre/conturi-si-pachete-de-cont-curent.html",
+    "https://www.raiffeisen.ro/content/dam/rbi/retail/eu/ro/documents/pf/fid/20260731-Pachet-Zero-Simplu.pdf.coredownload.inline.pdf"
   ],
-  "durata_s": 26,
+  "durata_s": 41,
   "consum": {
-    "intrare": 6,
-    "iesire": 2123,
-    "citire_cache": 39102,
-    "scriere_cache": 69620,
+    "intrare": 14,
+    "iesire": 2505,
+    "citire_cache": 221148,
+    "scriere_cache": 82885,
     "apeluri": 1,
-    "cost_estimat_usd": 0.20311240000000003
+    "cost_estimat_usd": 0.5530402
   }
 }
