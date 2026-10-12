@@ -71,9 +71,9 @@ nav .picior { padding: clamp(10px, 1.4vh, 13px) 22px clamp(11px, 1.5vh, 14px); b
 nav .picior .comutatoare { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px }
 
 /* ---- conținut ---- */
-/* jos: bula Vox (40 px, la 24 px de margine) plus 24 px, ca ultimul rând și paginarea să rămână deasupra ei la capătul
+/* jos: bula Vox (56 px, la 24 px de margine) plus 24 px, ca ultimul rând și paginarea să rămână deasupra ei la capătul
    derulării */
-main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 88px }
+main { flex: 1; min-width: 0; overflow: auto; height: 100%; padding: 26px 30px 104px }
 .cap { margin-bottom: 20px }
 h1 { font-family: var(--serif); font-size: 26px; margin: 0 0 5px; font-weight: 700 }
 h1 .titlu-logo { color: var(--marca); vertical-align: -6px; margin-right: 10px }
@@ -289,7 +289,13 @@ button.cm-chip.activ b { color: inherit }
   transition: color .15s ease-in;
 }
 /* Bula Vox (09.10.2026): la stânga barei de derulare a lui main (~17 px pe Windows); stratul (sub sertare) e în BulaVox */
-.ant-float-btn.vox-lansator { inset-inline-end: 40px; inset-block-end: 24px }
+/* 56 px, cât bula de chat de pe reginamaria.ro (Nicolae, 12.10.2026: antd o face de 40 px) */
+.ant-float-btn.vox-lansator { inset-inline-end: 40px; inset-block-end: 24px; width: 56px; height: 56px }
+/* containerul iconiței: antd îi dă 15 px lățime, iar sigla ieșea din el spre dreapta (centrul la +2,5 px și −1 px față de
+   centrul bulei, măsurat pe 12.10.2026); acum ia lățimea siglei, iar SVG-ul e bloc, fără spațiul de sub linia de bază.
+   Lanțul întreg de clase: regula antd are 4 clase (body, content, icon), una mai scurtă pierde */
+.ant-float-btn.vox-lansator .ant-float-btn-body .ant-float-btn-content .ant-float-btn-icon { width: auto; line-height: 0 }
+.ant-float-btn.vox-lansator .ant-float-btn-icon svg { display: block }
 /* inelul de focus la Tab: reset-ul antd pentru linkuri (`a:focus { outline: 0 }`) îl scotea; textul de la focus nu ajunge
    ca semn pentru cine navighează cu tastatura (revizia finală, 09.10.2026) */
 .ant-float-btn.vox-lansator:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px }

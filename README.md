@@ -285,7 +285,7 @@ text”. Campaniile nu intră: pagina răspunde că sunt în afara ei; aplicați
 
 Vox se deschide din bula din dreapta jos (`web/src/layout/BulaVox.tsx`), aceeași pe toate paginile din cadrul
 aplicației; pe pagina Vox, pe hartă și pe vizualizatorul PDF bula nu apare (09.10.2026, în locul butonului din bara
-laterală). Stă sub sertare și ferestre (`zIndex` 900), iar `main` are 88 px jos, ca ultimul rând să rămână deasupra ei.
+laterală). Are 56 px, stă sub sertare și ferestre (`zIndex` 900), iar `main` are 104 px jos, ca ultimul rând să rămână deasupra ei.
 
 - Activă **doar local**: `MIP_PERMITE_VOX=1` și cheia reală `ANTHROPIC_API_KEY` în `.env`,
   apoi repornește serverul. Pe `mcc-test` rămâne oprită: logarea AD protejează rutele, dar

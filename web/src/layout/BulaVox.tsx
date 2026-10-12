@@ -25,7 +25,7 @@ export default function BulaVox() {
         type="primary"
         shape="circle"
         href={`#/${VOX.id}`}
-        icon={<VoxBula size={20} />}
+        icon={<VoxBula size={28} />}
         aria-label={text}
         style={{ zIndex: 900 }}
       />
