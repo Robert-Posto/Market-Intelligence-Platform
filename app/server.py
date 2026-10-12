@@ -1955,7 +1955,7 @@ RULARI = rulari.Rulari(slugs=_slugs_rulari, produse=_produse_rulari)
 
 
 def _context_vox():
-    """Băncile și conceptele pe care le vede modelul din Vox. Doar concepte cu valori
+    """Băncile, conceptele și aplicațiile pe care le vede modelul din Vox. Doar concepte cu valori
     numerice (127 în baza mip, 06.10.2026), fără găleata `comision`; fiecare cu 2–3 denumiri reale
     din tarife, ca modelul să lege „retragere de la bancomat” de `retragere_numerar` fără să
     dublăm etichetele din interfață sau vocabularul."""
@@ -1983,6 +1983,13 @@ def _context_vox():
         c["unitati"] = sorted(u for u in c["unitati"] if u)
         c["categorii"] = sorted(x for x in c["categorii"] if x)
         c["exemple"] = pe_camp.get(c["camp"], [])
+    # aplicațiile (decizia lui Nicolae, 08.10.2026): titlurile funcțiilor și numele aplicațiilor vin din bază, ca
+    # modelul să lege „George” de BCR și „plata cu telefonul” de `hce_contactless` fără să dublăm etichetele paginii
+    functii = interoghează(
+        "SELECT functie, min(titlu) AS titlu FROM android_functionalitati GROUP BY functie ORDER BY functie")
+    aplicatii = interoghează(
+        """SELECT b.slug AS banca, a.aplicatie FROM android_aplicatii a JOIN banci b ON b.id = a.id_banca
+           ORDER BY b.slug, (a.rol = 'secundar'), a.aplicatie""")
     return {
         "banci": banci,
         "concepte": concepte,
@@ -1998,6 +2005,8 @@ def _context_vox():
             "dobanzi": {c: sorted(k for k, v in GRUPURI_RATE.items() if c in v["campuri"])
                         for c in sorted({c for v in GRUPURI_RATE.values() for c in v["campuri"]})},
         },
+        "functii": functii,
+        "aplicatii": aplicatii,
     }
 
 
@@ -2035,6 +2044,97 @@ def _stare_banci_vox(banca=None):
                         "surse": x["surse"], "robots": x["robots"], "refuzate": x["blocate"] - x["robots"],
                         "pdf": x["pdf"]}
             for x in rows}
+
+
+# Notele din Google Play (ingest/google_play_app.mjs), același fișier pe care 2.3 îl citește la build. Nu e în bază
+# și e în afara git (`date/*.json`): pe alt laptop sau pe mcc-test lipsește, iar Vox merge fără el
+FISIER_GOOGLE_PLAY = os.path.join(os.path.dirname(AICI), "date", "google_play.json")
+
+
+def _google_play():
+    """{colectat_la, aplicatii: {slug: {...}}} sau None dacă fișierul lipsește ori nu are forma așteptată."""
+    try:
+        with open(FISIER_GOOGLE_PLAY, encoding="utf-8") as f:
+            d = json.load(f)
+    except (OSError, ValueError):
+        return None
+    if not isinstance(d, dict) or not isinstance(d.get("aplicatii"), dict):
+        return None
+    return {"colectat_la": str(d.get("colectat_la") or "")[:10] or None, "aplicatii": d["aplicatii"]}
+
+
+# Recenziile din Google Play (ingest/google_play_app.mjs --salveaza), același fișier pe care 2.3 îl citește la build:
+# 394 de recenzii la 22 de aplicații, cel mult 20 pe aplicație, autorii pseudonimizați (06.10.2026)
+FISIER_GOOGLE_PLAY_RECENZII = os.path.join(os.path.dirname(AICI), "date", "google_play_recenzii.json")
+
+
+def _recenzie_play(r):
+    """O recenzie din fișier sau None dacă are tipuri greșite: fișierul nu e în bază, deci nimic altceva nu-l validează."""
+    if not isinstance(r, dict):
+        return None
+    nota, text, data = r.get("nota"), r.get("text"), r.get("data")
+    if isinstance(nota, bool) or not isinstance(nota, int) or not 1 <= nota <= 5:
+        return None
+    if not (text is None or isinstance(text, str)) or not isinstance(data, str):
+        return None
+
+    def txt(k):
+        v = r.get(k)
+        return v if isinstance(v, str) else None
+
+    return {"nota": nota, "text": text, "data": data[:10], "versiune": txt("versiune"),
+            "raspuns_banca": txt("raspuns_banca"), "raspuns_data": (txt("raspuns_data") or "")[:10] or None}
+
+
+def _google_play_recenzii():
+    """{colectat_la, aplicatii: {slug: [recenzie]}} sau None dacă fișierul lipsește ori nu are forma așteptată."""
+    try:
+        with open(FISIER_GOOGLE_PLAY_RECENZII, encoding="utf-8") as f:
+            d = json.load(f)
+    except (OSError, ValueError):
+        return None
+    if not isinstance(d, dict) or not isinstance(d.get("aplicatii"), dict):
+        return None
+    aplicatii = {}
+    for slug, a in d["aplicatii"].items():
+        lista = a.get("recenzii") if isinstance(a, dict) else None
+        if isinstance(lista, list):
+            aplicatii[slug] = [x for x in map(_recenzie_play, lista) if x]
+    return {"colectat_la": str(d.get("colectat_la") or "")[:10] or None, "aplicatii": aplicatii}
+
+
+def _aplicatii_vox(cu_recenzii=False):
+    """Aplicațiile băncilor pentru Vox (decizia lui Nicolae, 08.10.2026): analiza APK (funcțiile, cu verdict), App
+    Store din bază și Google Play din fișier. Toate odată, fiindcă sunt puține: 24 de aplicații × 13 funcții, 19 note
+    App Store și 22 Google Play (mip_merge, 08.10.2026); filtrarea pe bănci o face `vox`. Recenziile vin doar cu
+    `cu_recenzii`, fără autori."""
+    rez = {
+        "aplicatii": interoghează(
+            """SELECT b.slug AS banca, a.package, a.aplicatie, a.rol, a.versiune_analizata, a.framework,
+                      v.data_extragere::text AS data_analizei
+               FROM android_aplicatii a
+               JOIN banci b ON b.id = a.id_banca
+               LEFT JOIN android_versiuni v ON v.package = a.package AND v.version_name = a.versiune_analizata
+               ORDER BY b.slug, (a.rol = 'secundar'), a.aplicatie"""),
+        "functii": interoghează(
+            """SELECT package, functie, verdict, coalesce(surse, '') AS surse, coalesce(dovada_text, '') AS dovada_text
+               FROM android_functionalitati ORDER BY package, functie"""),
+        "app_store": interoghează(
+            """SELECT b.slug AS banca, ar.app_id, ar.rating_agregat::float8 AS nota, ar.volum_rating AS evaluari,
+                      ar.distributie_stele, ar.versiune, ar.observat_la::date::text AS observat_la
+               FROM app_release_curente ar JOIN banci b ON b.id = ar.id_banca
+               WHERE ar.platforma = 'ios' ORDER BY b.slug"""),
+        "play": _google_play(),
+    }
+    if cu_recenzii:
+        # doar la aspect = recenzii: celelalte vederi nu le citesc (109 rânduri App Store, 394 Google Play)
+        rez["recenzii_app_store"] = interoghează(
+            """SELECT b.slug AS banca, v.rating AS nota, v.versiune, v.text, v.postat_la::date::text AS data,
+                      nullif(v.raspuns_banca, '') AS raspuns_banca
+               FROM app_review v JOIN banci b ON b.id = v.id_banca
+               ORDER BY v.postat_la DESC NULLS LAST""")
+        rez["recenzii_play"] = _google_play_recenzii()
+    return rez
 
 
 def _alte_monede_rate(campuri, categorie, termen, produs):
@@ -2083,7 +2183,7 @@ def _clasament_vox(concept, categorie, termen, produs, segment):
 
 
 VOX = vox.Vox(context=_context_vox, cauta=_cauta_vox, stare_banca=_stare_banca_vox,
-              clasament=_clasament_vox, stare_banci=_stare_banci_vox)
+              clasament=_clasament_vox, stare_banci=_stare_banci_vox, aplicatii=_aplicatii_vox)
 
 
 def rulare_manuala_catalog(q):

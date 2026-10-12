@@ -30,7 +30,7 @@ export interface PropsSectiune {
  * la contul deschis la distanță la plăți și siguranță. Serverul le trimite
  * alfabetic, iar „anti_fraud” ajungea prima. O cheie nouă din bază apare la coadă.
  */
-const FUNCTII: string[] = [
+export const FUNCTII: string[] = [
   'identity_verification', 'nfc_id_chip', 'video_call', 'in_app_chat', 'wallet_provisioning', 'hce_contactless',
   'ropay', 'scan_pay', 'voice', 'strong_auth', 'marketing', 'anti_fraud', 'huawei',
 ]
