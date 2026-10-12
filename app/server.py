@@ -1443,74 +1443,58 @@ def comparatie_libra(q):
     return rez
 
 
-# Versus Libra din fluxul comparației: ce câmp se compară și în ce sens. Doar câmpurile cu
-# „mai bun” clar; sumele, perioadele, vârsta și „altele” sunt caracteristici, nu prețuri.
-# Dobânda e câștig la depozite și cost la credite / carduri de credit (sensul vine din categorie).
-_VS_LIBRA_MIC = {
-    "dae", "marja_banca", "rata_lunara", "total_platibil", "cost_lunar", "cost_evaluare",
-    "cost_asigurare", "chirie_pos_lunara", "avans_minim", "avans_min", "contributie_proprie_minima",
-}
-_VS_LIBRA_MARE = {"operatiuni_incluse", "numar_rate_fara_dobanda", "perioada_gratie", "cashback_maxim"}
-_VS_LIBRA_DOBANZI = {"dobanda_nominala", "dobanda_fixa", "dobanda_variabila", "dobanda_fixa_introductiva",
-                     "dobanda_variabila_ulterioara", "dobanda_la_scadenta"}
-# Câmpurile care depind de scenariu (sumă, termen): se compară doar pe scenariul de referință
-# al produsului (referinte_libra.json), altfel 4 luni ar sta lângă 12 luni.
-_VS_LIBRA_SCENARIU = _VS_LIBRA_DOBANZI | {"dae", "marja_banca", "rata_lunara", "total_platibil", "cost_asigurare"}
+# Versus Libra din valorile de referință (migrarea 042, extragere_produse_bancare/consolideaza_referinta.py):
+# o cifră pe bancă × produs Libra × câmp cheie, aleasă din toate valorile extrase. Numele, sensul
+# și ordinea câmpurilor vin din fișa produsului; serverul doar citește.
+CALE_FISE = os.path.join(os.path.dirname(AICI), "extragere_produse_bancare", "fise_produse.json")
 
 
-def _sens_libra(camp, categorie):
-    if camp in _VS_LIBRA_DOBANZI:
-        return "mare_bun" if categorie == "DEPOZITE" else "mic_bun"
-    if camp in _VS_LIBRA_MARE:
-        return "mare_bun"
-    if camp in _VS_LIBRA_MIC or camp.startswith("comision_"):
-        return "mic_bun"
-    return None
+def _fise():
+    with open(CALE_FISE, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def versus_libra():
-    """Valorile fluxului comparației cu Libra, gata de pus în Versus Libra.
+    """Valorile de referință, gata de pus în Versus Libra.
 
-    Pe produs Libra × câmp × bancă: câte valori, minimul, maximul, mediana (o valoare reală,
-    ca la /api/matrice) și citatul cu linkul valorii mediane. Intră doar valorile neambigue,
-    pe câmpurile din `_sens_libra`; cele care depind de scenariu doar pe scenariul de
-    referință (potrivire „exact” sau „aproximativ”), restul fără scenariu sau pe referință
-    (niciodată pe „alt” scenariu). Fără tabelele fluxului: `disponibil: false`.
+    Pe produs Libra × câmp cheie × bancă: valoarea variantei de referință (stare `referinta`), cel
+    mai apropiat caz al scenariului (`aproximativ`) sau, la `conflict`, cifra găsită în cele mai
+    multe surse, cu celelalte în `alternative`. Variantele (urgent, suplimentar, ghișeu ...) vin
+    grupate, pentru tooltip; prima sursă dă citatul și linkul. Fără tabelă: `disponibil: false`.
     """
-    if not interoghează("SELECT to_regclass('public.comparatie_libra') IS NOT NULL AS e")[0]["e"]:
+    if not interoghează("SELECT to_regclass('public.valori_referinta') IS NOT NULL AS e")[0]["e"]:
         return {"disponibil": False}
+    fise = _fise()
     randuri = interoghează(
-        """SELECT p.cod AS produs, p.categorie_cod, b.slug AS banca, c.camp,
-                  coalesce(c.unitate, '') AS unitate, c.valoare_num::float8 AS valoare,
-                  c.citat, coalesce(c.link_live, s.url) AS link, c.conditie,
-                  c.scenariu->'referinta'->>'potrivire' AS potrivire
-             FROM comparatie_libra c
-             JOIN banci b ON b.id = c.id_banca
-             JOIN produse_libra p ON p.id = c.id_produs_libra AND p.activ
-             JOIN surse_libra s ON s.id = c.id_sursa
-            WHERE c.valoare_num IS NOT NULL AND NOT c.ambiguu
-            ORDER BY c.valoare_num""")
-    grupuri = {}
-    for r in randuri:
-        sens = _sens_libra(r["camp"], r["categorie_cod"])
-        if sens is None or not r["unitate"]:
-            continue
-        pe_referinta = r["potrivire"] in ("exact", "aproximativ")
-        if r["camp"] in _VS_LIBRA_SCENARIU and not pe_referinta:
-            continue
-        if r["potrivire"] == "alt":
-            continue
-        cheie = (r["produs"], r["camp"], r["unitate"], r["banca"])
-        grupuri.setdefault(cheie, {"sens": sens, "valori": []})["valori"].append(r)
+        """SELECT p.cod AS produs, b.slug AS banca, v.camp_cheie AS camp, coalesce(v.unitate, '') AS unitate,
+                  v.valoare_num::float8 AS valoare, v.stare, v.surse, v.variante, v.alternative, v.motiv,
+                  v.derivat
+             FROM valori_referinta v
+             JOIN banci b ON b.id = v.id_banca
+             JOIN produse_libra p ON p.id = v.id_produs_libra AND p.activ
+            WHERE v.baza = 'curent' AND v.valoare_num IS NOT NULL""")
+    tip = {}
+    with open(os.path.join(os.path.dirname(AICI), "extragere_produse_bancare", "produse_libra.json"),
+              encoding="utf-8") as f:
+        tip = {p["cod"]: p.get("tip_v2") for p in json.load(f)["produse"]}
+
+    def ordine(cod, camp):
+        chei = ((fise["produse"].get(cod) or {}).get("campuri_cheie")
+                or (fise["tipuri"].get(tip.get(cod)) or {}).get("campuri_cheie") or [])
+        return chei.index(camp) if camp in chei else len(chei)
+
     celule = []
-    for (produs, camp, unitate, banca), g in grupuri.items():
-        vs = g["valori"]                 # deja în ordinea valorii
-        mediana = vs[(len(vs) - 1) // 2]  # mediana de jos: o valoare care chiar există
+    for r in randuri:
+        d = fise["campuri"].get(r["camp"]) or {}
+        s0 = (r["surse"] or [{}])[0]
         celule.append({
-            "produs": produs, "camp": camp, "unitate": unitate, "banca": banca, "sens": g["sens"],
-            "n": len(vs), "minim": vs[0]["valoare"], "maxim": vs[-1]["valoare"], "valoare": mediana["valoare"],
-            "referinta": any(v["potrivire"] in ("exact", "aproximativ") for v in vs),
-            "citat": mediana["citat"], "link": mediana["link"], "conditie": mediana["conditie"],
+            "produs": r["produs"], "camp": r["camp"], "nume": d.get("nume", r["camp"]),
+            "ordine": ordine(r["produs"], r["camp"]), "unitate": r["unitate"], "banca": r["banca"],
+            "sens": d.get("sens", "mic_bun"), "n": len(r["surse"] or []),
+            "minim": r["valoare"], "maxim": r["valoare"], "valoare": r["valoare"],
+            "referinta": r["stare"] == "referinta", "stare": r["stare"], "motiv": r["motiv"],
+            "citat": s0.get("citat"), "link": s0.get("link") or s0.get("url"), "conditie": None,
+            "variante": r["variante"] or [], "alternative": r["alternative"] or [], "derivat": r["derivat"],
         })
     cu_celule = {c["produs"] for c in celule}
     produse = interoghează(

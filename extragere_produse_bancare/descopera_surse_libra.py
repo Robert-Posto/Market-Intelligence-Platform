@@ -49,6 +49,7 @@ import psycopg2
 import preturi
 import targetedCrawl as T
 from jurnal_joburi import FaraJurnal, Job
+from referinta import Fise
 
 AICI = Path(__file__).parent
 IESIRE = AICI / "inventare-libra"
@@ -97,6 +98,20 @@ def id_banca(conn, slug: str) -> int:
 # ── prompt și unealtă ─────────────────────────────────────────────
 
 SEGMENT = {"PF": "persoane fizice", "PJ": "persoane juridice (firme, PFA)", "PF+PJ": "persoane fizice și juridice"}
+FISE = Fise()
+
+
+def bloc_campuri(cod: str) -> str:
+    """Câmpurile cheie din fișa produsului (fise_produse.json): ce trebuie să conțină sursele. Pe
+    12.10.2026, 391 din 815 perechi găsite la discovery n-aveau nicio valoare după extragere:
+    sursele erau despre produs, dar fără cifrele după care se compară."""
+    chei = FISE.campuri_cheie(cod)
+    if not chei:
+        return ""
+    linii = "\n".join(f"- {FISE.campuri[k]['nume']}: {FISE.campuri[k]['referinta']}" for k in chei)
+    return f"""CÂMPURILE CHEIE — după ele se compară băncile; alege sursele care le conțin
+{linii}
+"""
 
 
 def sistem(p: dict, e_libra: bool) -> str:
@@ -119,12 +134,13 @@ SARCINA
 {sarcina}
 Ignoră orice alt produs. Dacă o pagină acoperă mai multe produse, raportează doar partea despre produsul corespunzător.
 
+{bloc_campuri(p['cod'])}
 CE CAUȚI, în ordinea valorii
-1. Pagina dedicată produsului, dacă are cifre în text.
-2. Lista sau grila de dobânzi care îl acoperă.
-3. Documentul de tarife și comisioane (de obicei PDF, legat din footer: „Tarife și comisioane", „Documente utile"). Doar dacă produsul chiar apare în el.
-4. Documentele de condiții: FIPC / fișa cu informații precontractuale, fișa produsului, regulamentul.
-De obicei 1-4 surse. Nu raporta hub-uri, bloguri, știri sau campanii expirate.
+1. Documentul OFICIAL de tarife și comisioane în vigoare pentru segmentul produsului (de obicei PDF, legat din footer: „Tarife și comisioane", „Documente utile"), dacă produsul apare în el. Are toate comisioanele, cu dată, și e sursa după care se compară băncile. Dacă există mai multe versiuni, doar cea în vigoare acum.
+2. Lista sau grila de dobânzi care îl acoperă (la depozite, credite, economii e prima).
+3. Pagina dedicată produsului, dacă are cifre în text pe care documentele de mai sus nu le au.
+4. Documentele de condiții: FIPC / fișa cu informații precontractuale, fișa produsului — doar pentru câmpurile cheie pe care nu le găsești în 1-3.
+Cel mult 3 surse. O sursă intră doar dacă aduce câmpuri cheie pe care celelalte nu le au: nu raporta contracte, formulare de informare sau documente de pachet care repetă tarifele din lista oficială, nici hub-uri, bloguri, știri sau campanii expirate.
 
 NAVIGARE
 - Pornești de la pagina principală. Deschizi doar adrese care apar ca linkuri în ce ai citit sau în rezultatele `web_search`.

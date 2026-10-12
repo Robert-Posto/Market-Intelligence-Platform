@@ -1,54 +1,55 @@
 {
-  "generat": "2026-10-08",
+  "generat": "2026-10-12",
   "banca": "garanti",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
   "model": "claude-sonnet-5",
   "surse": [
     {
+      "url": "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Cont curent în LEI (Persoane Fizice) / Card de debit Bonus Debit Card",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane standard pentru persoane fizice, în vigoare din 10.11.2025, conține toate comisioanele aplicabile contului curent standard, inclusiv cel deschis online prin Garanti BBVA Online/Mobile.",
+      "incredere": 0.95,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial PDF de tarife, în vigoare, cu valorile exacte pentru administrare cont, emitere/administrare card de debit.",
+      "pagina_pdf": 3,
+      "citat": "Taxă administrare cont curent 7,5 LEI/cont/lună, în echivalent Taxă administrare cont de economii Gratuit Rata dobânzii cont curent în LEI și în orice valută 0%",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
       "url": "https://www.garantibbva.ro/en/become-customer/",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Everyday Account / Become a client 100% digital",
+      "denumire_la_banca": "Everyday Account (Cont curent în LEI, 100% digital onboarding)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată deschiderii unui cont curent pentru persoane fizice 100% online, fără vizită la sucursală, cu pachetul de cont curent 'Everyday Account' inclus - corespunde exact conceptului de Cont Online Personal.",
+      "motiv_potrivire": "Produs identic ca tip (cont curent pentru persoane fizice) și segment, cu accent explicit pe deschidere 100% online, fără vizită la sucursală, exact ca produsul Libra Cont Online Personal.",
       "incredere": 0.85,
-      "explicatie_incredere": "Pagina este dedicată explicit procesului de deschidere online a contului și prezintă pachetul de cont curent cu cifre (0 fees), dar nu conține un tabel complet de dobânzi/comisioane.",
-      "citat": "Everyday Account Your essential current account package– send, receive, pay bills and more. Current account in RON with 0 fees Debit card Garanti BBVA online and mobile SMS elerts with 0 costs",
+      "incredere_metoda": 0.8,
+      "explicatie_incredere": "Pagina dedicată descrie explicit procesul 100% digital de deschidere a contului curent și pachetul 'Everyday Account' cu cont curent în RON cu 0 comisioane, dar nu conține toate cifrele de tarife (acestea sunt în documentul oficial de tarife).",
+      "citat": "Open your Garanti BBVA account in minutes — no branch visit, no paperwork. 100% online process No branch visit required Secure onboarding Full access to all digital tools Current account in RON with 0 fees Debit card Garanti BBVA online and mobile SMS elerts with 0 costs",
       "citat_verificat": true,
-      "link_live": "https://www.garantibbva.ro/en/become-customer/#:~:text=Everyday%20Account%20Your%20essential%20current,SMS%20elerts%20with%200%20costs"
-    },
-    {
-      "url": "https://www.garantibbva.ro/wp-content/uploads/2025/09/T0012-Tarife-si-comisioane-standard-persoane-fizice_01.09.2025.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Cont curent (Pachet de cont curent / Garanti BBVA Online)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane fizice conține liniile aferente deschiderii și administrării contului curent, inclusiv taxele pentru Garanti BBVA Online/Mobile, canalul prin care se deschide contul 100% digital.",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document PDF oficial, valabil din 01.09.2025, cu cifre exacte pentru deschiderea/administrarea contului curent și pentru abonamentul Garanti BBVA Online/Mobile folosit la deschiderea online.",
-      "pagina_pdf": 2,
-      "citat": "Deschidere conturi curente în LEI și/sau valuta Gratuit Taxă administrare cont curent 7,5 LEI/cont/lună, în echivalent Rata dobânzii cont curent în LEI și în orice valută 0%",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "link_live": "https://www.garantibbva.ro/en/become-customer/#:~:text=Open%20your%20Garanti%20BBVA%20account,SMS%20elerts%20with%200%20costs"
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.garantibbva.ro/en/become-customer/",
-    "https://www.garantibbva.ro/devino-client/"
+    "https://www.garantibbva.ro/wp-content/uploads/2025/11/T0012-tarife-si-comisioane-standard-persoane-fizice-10-11-2025.pdf",
+    "https://www.garantibbva.ro/en/become-customer/"
   ],
-  "durata_s": 44,
+  "durata_s": 67,
   "consum": {
-    "intrare": 32198,
-    "iesire": 3846,
-    "citire_cache": 12628,
-    "scriere_cache": 30424,
+    "intrare": 6,
+    "iesire": 5842,
+    "citire_cache": 35141,
+    "scriere_cache": 80264,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1814416
+    "cost_estimat_usd": 0.26612020000000003
   }
 }

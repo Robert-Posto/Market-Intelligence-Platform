@@ -564,6 +564,13 @@ def unealta(produs: str, scenariu: dict | None = None) -> dict:
                             "citat": {"type": "string",
                                       "description": "Fragmentul EXACT din text din care ai luat valoarea. Copiat literal, maximum 200 de caractere."},
                             "incredere": {"type": "number", "minimum": 0, "maximum": 1},
+                            # Varianta de referință (fise_produse.json, prin `focus`): modelul vede
+                            # pagina întreagă și știe dacă 50 de lei e emiterea normală sau cea urgentă;
+                            # markerii din consolideaza_referinta.py văd doar citatul.
+                            "este_referinta": {"type": "boolean",
+                                               "description": "Doar pentru câmpurile cu VARIANTĂ DE REFERINȚĂ în instrucțiunea PRODUSUL CĂUTAT. true = valoarea e chiar varianta de referință a câmpului; false = altă variantă (urgent, suplimentar, la ghișeu, promoție, alt pachet, altă monedă). Omis pentru celelalte câmpuri."},
+                            "varianta": {"type": "string",
+                                         "description": "Când `este_referinta` e false: ce variantă e, în 2-6 cuvinte, ex. „emitere urgentă”, „card suplimentar”, „la ghișeu”, „promoție primele 12 luni”. Gol altfel."},
                             **potrivire,
                             **trepte,
                         },
@@ -1187,6 +1194,10 @@ def ca_observatii(rez: dict, id_url: str | None = None) -> list[dict]:
                 # `None` cand nu s-a cerut niciun scenariu — deosebit de
                 # `alt_scenariu`, care inseamna ca s-a cerut si nu se potriveste.
                 "potrivire_scenariu": v.get("potrivire_scenariu"),
+                # Varianta de referință a câmpului cheie (fise_produse.json): `None` când
+                # instrucțiunea n-a definit-o pentru câmp, deosebit de `False` (altă variantă).
+                "este_referinta": v.get("este_referinta"),
+                "varianta": (v.get("varianta") or "").strip() or None,
                 # Treapta pe care se aplica valoarea. Lista goala nu inseamna
                 # „nu are treapta", inseamna „pagina nu a spus" — si asta e
                 # tot o constatare, nu o lipsa de date.

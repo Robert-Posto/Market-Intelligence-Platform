@@ -1,0 +1,54 @@
+Exim Banca Românească: 5 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii eximbank.ro
+  [cautare] eximbank.ro cont curent persoane fizice online
+  [cautare] eximbank.ro tarife comisioane persoane fizice pdf
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2025/01/Document-de-informare-cu-privire-la-comisioane-pentru-Pachetul-de-produse-si-servicii-eSential.pdf
+  [ 2] https://www.eximbank.ro/wp-content/uploads/2026/04/Lista-de-comisioane-pentru-persoane-fizice-in-vigoare-cu-08.06.2026.pdf
+GATA    CONT_ONLINE_PERSONAL         1 surse, 0 citate verificate, echivalent, $0.18, 38s — Pachet de produse și servicii eSential
+  [cautare] Exim Banca Românească credit nevoi personale persoane fizice
+  [cautare] eximbank.ro credit de nevoi personale fara garantii dobanda
+  [ 1] https://www.eximbank.ro/2022/11/09/the-loan-for-all/
+       ! url_not_in_prior_context
+  [ 2] https://www.eximbank.ro/en/2022/11/09/the-loan-for-all/
+  [ 3] https://www.eximbank.ro/2022/11/09/creditul-de-nevoi-personale/
+GATA    CREDIT_NEVOI_PERSONALE       2 surse, 1 citate verificate, echivalent, $0.23, 29s — Credit de nevoi personale
+  [cautare] eximbank card de debit persoane fizice
+  [cautare] eximbank tarife și comisioane card debit
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2026/04/Taxe-si-comisioane-Carduri.pdf
+  [ 2] https://ssl.eximbank.ro/persoane-fizice/carduri/standard-mastercard/
+       ! url_not_allowed
+  [cautare] eximbank "START Mastercard" card debit
+  [ 3] https://www.eximbank.ro/persoane-fizice/carduri/start-mastercard/
+  [ 4] https://www.eximbank.ro/en/category/individuals/cards/
+       ! url_not_in_prior_context
+  [ 5] https://www.eximbank.ro/2022/11/16/mastercard-standard/
+  [ 6] https://www.eximbank.ro/documente-diverse/
+       ! url_not_in_prior_context
+GATA    CARD_DEBIT_FREE              1 surse, 0 citate verificate, echivalent, $0.37, 85s — START Mastercard (card de debit persoane fizice)
+  [cautare] eximbank.ro cont curent persoane juridice comisioane
+  [cautare] eximbank.ro cont online IMM deschidere online
+  [ 1] https://www.eximbank.ro/wp-content/uploads/2025/04/Comisioane-Exim-Banca-Romaneasca.pdf
+  [cautare] eximbank.ro cont curent persoane juridice deschis online card business
+  [ 2] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+  [ 3] https://www.eximbank.ro/2026/04/21/un-an-fara-griji-facturare-gratuita-pentru-micii-antreprenori/
+       ! url_not_accessible
+  [ 4] https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/
+  [ 5] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+       ! url_not_accessible
+       ! url_not_accessible
+  [ 6] https://www.eximbank.ro/2025/06/11/oferte-tranzactionale/
+  [ 7] https://www.eximbank.ro/2025/09/09/nou-pachet-start-up/
+  [ 8] https://www.eximbank.ro/2022/12/21/operatiuni-curente-pfa-si-microintreprinderi/
+GATA    CONT_ONLINE_BUSINESS         2 surse, 0 citate verificate, echivalent, $0.56, 100s — Pachete EXIM BUSINESS (SMART / START / ACTIV / COMPLET)
+  [cautare] Eximbank depozit la termen dobanda persoane fizice
+  [cautare] eximbank.ro depozite termen dobanzi
+  [ 1] https://www.eximbank.ro/
+  [ 2] https://www.eximbank.ro/en/2022/11/09/even-more-deposits/
+  [ 3] https://www.eximbank.ro/2022/11/09/si-mai-multe-depozite/
+  [ 4] https://www.eximbank.ro/2022/12/05/depozite-si-investitii-imm-2-10-mil-lei/
+  [ 5] https://www.eximbank.ro/documente-diverse/
+  [ 6] https://www.eximbank.ro/wp-content/uploads/2026/07/Dobanzi-aplicabile-depozitelor-atrase-de-la-clientela-nebancara-–-persoane-juridice.pdf
+  [ 7] https://www.eximbank.ro/wp-content/uploads/2026/07/Lista-Dobanzi-Conturi-2.pdf
+  [ 8] https://www.eximbank.ro/wp-content/uploads/2025/12/Notificare-depozite-la-termen-retrase-din-oferta-curenta-a-bancii.pdf
+GATA    DEPOZIT_TERMEN               2 surse, 1 citate verificate, echivalent, $0.30, 46s — Depozite la termen
+
+exim: 5/5 produse cu surse, 0 erori, cost estimat $1.64, durata 2 min

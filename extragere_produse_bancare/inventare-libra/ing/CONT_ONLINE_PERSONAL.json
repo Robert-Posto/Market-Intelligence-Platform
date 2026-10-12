@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "ing",
   "cod": "CONT_ONLINE_PERSONAL",
   "denumire": "Cont Online Personal",
@@ -10,26 +10,41 @@
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "ING Go (pachet de cont curent pentru persoane fizice, deschis 100% online)",
+      "denumire_la_banca": "ING Go (pachet de cont curent)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Este pachetul standard de cont curent pentru persoane fizice la ING, care se poate deschide integral online din aplicația Home'Bank, cu acces digital complet la operațiuni bancare - exact segmentul și tipul de produs ca 'Cont Online Personal' de la Libra.",
-      "incredere": 0.9,
-      "explicatie_incredere": "Este pagina dedicată produsului ING Go, cu beneficii și cifre explicite (0 RON/lună, prag de 700 lei, plafon curs valutar 10.000 lei/lună) și descrierea pașilor de deschidere 100% online.",
+      "motiv_potrivire": "Este contul curent de bază pentru persoane fizice, deschis 100% online prin aplicația Home'Bank, cu card principal inclus - același tip de produs și segment ca Cont Online Personal Libra.",
+      "incredere": 0.85,
+      "explicatie_incredere": "Pagina oficială a pachetului ING Go conține explicit costul lunar condiționat, cardul inclus și comisioanele 0 pentru retrageri ATM și transferuri, dar prețul de listă (fără condiții) e menționat doar parțial aici.",
       "citat": "Pachetul ING GO include cel puțin un cont curent în lei și un card principal, cu taxe de administrare 0 dacă încasezi cel puțin 700 lei și faci cel puțin o plată pe lună.",
-      "citat_verificat": true,
-      "link_live": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/go#:~:text=Pachetul%20ING%20GO%20include%20cel,pu%C8%9Bin%20o%20plat%C4%83%20pe%20lun%C4%83."
+      "citat_verificat": null,
+      "avertisment": "adresă neregăsită printre deschiderile efective",
+      "link_live": null
     },
     {
-      "url": "https://ing.ro/lp/cont-bancar-online",
+      "url": "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente",
       "tip": "html",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Cont bancar online ING (deschidere 100% online pentru persoane fizice)",
+      "denumire_la_banca": "ING Go (pachet de cont curent)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina dedicată deschiderii contului curent pentru persoane fizice 100% online, cu tabel de costuri (administrare, transferuri, retrageri) pentru varianta Standard vs. cu salariu la ING, exact corespondentul 'Cont Online Personal'.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Pagină de produs/landing dedicată deschiderii online a contului, cu tabel explicit de tarife (15 lei administrare, 5 lei transferuri către alte bănci, 1% min 5 lei retrageri ATM) pentru varianta fără salariu la ING.",
-      "citat": "Deschiderea contului la ING durează aproximativ 8 minute și se realizează 100% online, fără nicio vizită la bancă și fără documente fizice.",
+      "motiv_potrivire": "Pagina de comparare a pachetelor de cont curent ING arată explicit costul lunar de listă (fără venit recurent) pentru contul inclus în pachetul ING Go, echivalentul Cont Online Personal.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Tabelul de comparație afișează explicit tariful de listă de 15 RON/lună pentru administrarea contului în lei din pachetul ING Go, fără condiții de venit recurent.",
+      "citat": "Cont în lei inclus 15 RON/lună (administrare cont) 0 comision administrare conturi în valută 0 comision retrageri la ATM-uri în toată lumea din contul de lei",
+      "citat_verificat": null,
+      "link_live": null
+    },
+    {
+      "url": "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Lista-de-taxe-si-comisioane.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "ING Go / Cont curent în lei (fostul ING Card Complet)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial 'Lista de Taxe și Comisioane pentru persoane fizice', valabil din 06.04.2026, conține toate comisioanele pentru contul curent în lei și cardul atașat (echivalentul Cont Online Personal), inclusiv taxele Sent/Regis pentru transferuri către alte bănci.",
+      "incredere": 0.6,
+      "explicatie_incredere": "Conținutul PDF-ului a fost văzut doar prin fragmente din rezultatele de căutare (accesul direct la fișier a fost blocat de domeniu), dar menționează explicit comisioanele pentru transferuri către alte bănci; alte valori (emitere/administrare card) apar în tabel dar sunt parțial neclare din extragere.",
+      "citat": "Acum, comisionul Sent este 0,51 RON pentru plăți până la 50.000 RON, iar comisionul Regis este 6 RON pentru plăți egale sau mai mari de 50.000 RON.",
       "citat_verificat": null,
       "link_live": null
     }
@@ -37,16 +52,21 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/go",
-    "https://ing.ro/lp/cont-bancar-online"
+    "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente",
+    "https://ing.ro/persoane-fizice/carduri-si-conturi/card-complet",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Lista-de-taxe-si-comisioane.pdf",
+    "https://ing.ro/persoane-fizice/carduri-si-conturi/pachete-conturi-curente/more",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/Lista-de-taxe-si-comisioane.pdf",
+    "https://ing.ro/dam/ingro/doc/contractuale/pers-fizice/arhiva/Lista-de-taxe-si-comisioanebk20251217.pdf",
+    "https://ing.ro/persoane-fizice/carduri-si-conturi/cardurile-ing"
   ],
-  "durata_s": 31,
+  "durata_s": 115,
   "consum": {
-    "intrare": 6,
-    "iesire": 2707,
-    "citire_cache": 40016,
-    "scriere_cache": 57874,
+    "intrare": 142470,
+    "iesire": 9230,
+    "citire_cache": 196552,
+    "scriere_cache": 105237,
     "apeluri": 1,
-    "cost_estimat_usd": 0.17977020000000002
+    "cost_estimat_usd": 0.6796429
   }
 }

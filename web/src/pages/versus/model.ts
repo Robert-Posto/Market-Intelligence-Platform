@@ -120,6 +120,8 @@ export function sectiunePret(g: Grup, d: DateGrup, coloane: string[], bilant: Bi
  */
 export interface RandLibra {
   camp: string
+  /** numele câmpului cheie din fișa produsului („Emitere card”) */
+  nume: string
   unitate: string
   sens: string
   celule: Record<string, VersusCelulaLibra>
@@ -157,8 +159,8 @@ export function sectiuniLibra(d: VersusLibra, coloane: string[], bilant: Bilant,
     const cate = (cel: Record<string, VersusCelulaLibra>) => coloane.filter((b) => cel[b]).length
     const campuri = Object.entries(pe[p.cod] ?? {})
       .filter(([, cel]) => cate(cel) > 0)
-      // întâi rândurile cu mai multe bănci (comparabile), apoi restul, alfabetic pe câmp
-      .sort(([ka, a], [kb, b]) => cate(b) - cate(a) || ka.localeCompare(kb))
+      // în ordinea câmpurilor cheie din fișa produsului, apoi pe unitate
+      .sort(([ka, a], [kb, b]) => (Object.values(a)[0]!.ordine ?? 99) - (Object.values(b)[0]!.ordine ?? 99) || ka.localeCompare(kb))
     for (const [cheie, cel] of campuri) {
       const [camp, unitate] = cheie.split('|') as [string, string]
       const sens = Object.values(cel)[0]!.sens
@@ -168,7 +170,7 @@ export function sectiuniLibra(d: VersusLibra, coloane: string[], bilant: Bilant,
       const st = stareLibra(Object.fromEntries(coloane.map((b) => [b, cel[b] ? cel[b].valoare : null])), sens)
       bilant[st] += 1
       if (!vizibil(st, arata)) continue
-      randuri.push({ camp, unitate, sens, celule: cel, prezente: prezente.length, celMaiBun, stare: st })
+      randuri.push({ camp, nume: Object.values(cel)[0]!.nume ?? camp, unitate, sens, celule: cel, prezente: prezente.length, celMaiBun, stare: st })
     }
     if (randuri.length) {
       rez.push({ tip: 'libra', cheie: `libra:${p.cod}`, titlu: p.denumire, categorie: p.categorie_cod, segment: p.segment, randuri })

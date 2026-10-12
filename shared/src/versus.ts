@@ -115,6 +115,15 @@ export const VersusCelulaLibra = z
     citat: z.string().nullable(),
     link: z.string().nullable(),
     conditie: z.string().nullable(),
+    // din 12.10.2026 celula e valoarea de referință (valori_referinta): numele și ordinea câmpului
+    // vin din fișa produsului, `stare` spune cât de sigură e cifra, variantele stau pe lângă ea
+    nume: z.string().optional(),
+    ordine: z.number().optional(),
+    stare: z.enum(['referinta', 'aproximativ', 'conflict']).optional(),
+    motiv: z.string().nullable().optional(),
+    variante: z.array(z.object({ eticheta: z.string().nullable(), valoare_num: z.number(), unitate: z.string().nullable(), n: z.number() })).optional(),
+    alternative: z.array(z.object({ valoare_num: z.number(), unitate: z.string().nullable(), n: z.number() })).optional(),
+    derivat: z.boolean().optional(),
   })
   .passthrough()
 export type VersusCelulaLibra = z.infer<typeof VersusCelulaLibra>

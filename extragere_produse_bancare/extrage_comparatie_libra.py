@@ -62,6 +62,7 @@ from scenariu_libra import descompune, interval, potrivire   # noqa: E402
 import reguli_valori                      # noqa: E402
 from descopera_surse_libra import link_live   # noqa: E402
 from jurnal_joburi import FaraJurnal, Job      # noqa: E402
+from referinta import Fise                     # noqa: E402
 
 DSN = os.environ.get("MIP_DSN", "host=localhost port=5432 dbname=mip user=mip password=mip")
 # produsul Libra -> tipul din produse_bancare_v2.json, care dă câmpurile de căutat; produse_libra.json
@@ -121,22 +122,50 @@ def surse_de_extras(conn, slug: str) -> tuple[int, list[dict]]:
 
 
 def focus(g: dict, slug: str) -> str | None:
-    """Instrucțiunea pentru extracție: ce produs anume al băncii se caută în document."""
-    if not g["denumire_la_banca"]:
+    """Instrucțiunea pentru extracție: ce produs anume al băncii se caută în document și, din
+    12.10.2026, varianta de referință a fiecărui câmp cheie (fise_produse.json)."""
+    parti = []
+    if g["denumire_la_banca"]:
+        # Descrierea Libra conține prețurile noastre („225 lei/lună"). La un concurent
+        # ar ancora alegerea dintre cifrele reale ale documentului, deci acolo se dă
+        # doar numele; ancora e produsul băncii, găsit la discovery.
+        cu_descriere = slug == "libra"
+        libra = "; ".join(f"„{d}”" + (f" ({desc})" if desc and cu_descriere else "")
+                          for d, desc in dict.fromkeys(g["libra"]))
+        cine = "Acesta e produsul Libra" if slug == "libra" else "Corespunde produsului Libra"
+        parti.append(f"Produsul băncii: „{g['denumire_la_banca']}”.\n"
+                     f"{cine}: {libra}.\n"
+                     "Raportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau "
+                     "produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai "
+                     "multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori "
+                     "pentru el, raportează gasit = false.")
+    ref = bloc_referinta({l["cod"] for l in g["legaturi"]})
+    if ref:
+        parti.append(ref)
+    return "\n\n".join(parti) or None
+
+
+FISE = Fise()
+
+
+def bloc_referinta(coduri: set[str]) -> str | None:
+    """
+    Varianta de referință a câmpurilor cheie, pentru `este_referinta` / `varianta` din unealtă.
+    Nu restrânge extracția: celelalte variante se raportează în continuare, doar marcate, ca
+    valori_referinta să le arate grupate, nu amestecate cu prețul comparabil.
+    """
+    linii = {}
+    for cod in sorted(coduri):
+        for k, brute, text in FISE.descriere(cod):
+            linii.setdefault(k, "  " + " / ".join(f"`{c}`" for c in brute) + f" — {text}")
+    if not linii:
         return None
-    # Descrierea Libra conține prețurile noastre („225 lei/lună"). La un concurent
-    # ar ancora alegerea dintre cifrele reale ale documentului, deci acolo se dă
-    # doar numele; ancora e produsul băncii, găsit la discovery.
-    cu_descriere = slug == "libra"
-    libra = "; ".join(f"„{d}”" + (f" ({desc})" if desc and cu_descriere else "")
-                      for d, desc in dict.fromkeys(g["libra"]))
-    cine = "Acesta e produsul Libra" if slug == "libra" else "Corespunde produsului Libra"
-    return (f"Produsul băncii: „{g['denumire_la_banca']}”.\n"
-            f"{cine}: {libra}.\n"
-            "Raportează DOAR valorile acestui produs. Ignoră celelalte pachete, variante, conturi sau "
-            "produse din document, chiar dacă sunt de același tip. Dacă documentul are o grilă cu mai "
-            "multe pachete, ia doar coloana sau rândul acestui produs. Dacă documentul nu are valori "
-            "pentru el, raportează gasit = false.")
+    return ("VARIANTA DE REFERINȚĂ pe câmpurile cheie (cea care se compară între bănci):\n"
+            + "\n".join(linii.values()) + "\n"
+            "Pe aceste câmpuri raportezi TOATE variantele din document, nu doar referința, iar fiecare "
+            "valoare primește `este_referinta`: true doar pentru varianta descrisă mai sus, false pentru "
+            "orice altă variantă (urgent, suplimentar, la ghișeu, altă monedă, promoție, alt pachet), cu "
+            "`varianta` completat. Aceeași cifră găsită în mai multe locuri din document se raportează o dată.")
 
 
 def fara_descriere(f: str | None) -> str | None:
@@ -491,6 +520,15 @@ def randuri_comparatie(idb: int, grup: dict, rez: dict, slug: str | None = None)
             # ce este valoarea: fără ea, „altele: 0,4%” nu spune nimic (24 din 24 la economii o aveau)
             # și două „altele” diferite cu aceleași condiții ar cădea pe aceeași cheie
             conditii.insert(0, _cond_curata(o["eticheta_libera"]))
+        if o.get("este_referinta") is not None:
+            # marcajul modelului pe câmpurile cheie (bloc_referinta): îl citește consolideaza_referinta.py
+            sc = sc or {}
+            sc["referinta_fisa"] = bool(o["este_referinta"])
+            if not o["este_referinta"]:
+                sc["varianta_fisa"] = o.get("varianta") or "altă variantă"
+                # varianta intră în cheia valorii: emiterea normală și cea urgentă, ambele fără
+                # condiții, ar cădea altfel pe aceeași cheie și una ar ieși marcată ambiguă
+                conditii.append(f"variantă: {sc['varianta_fisa']}")
         pregatite.append({"o": o, "sc": sc, "conditii": conditii, "unitate": unitate, "moneda": moneda})
 
     out = []
@@ -724,6 +762,10 @@ def noteaza(idb: int, grup: dict, rez: dict, schimbat: bool) -> None:
     stare = rez.get("stare")
     h = rez.get("content_hash")
     cod_http = rez.get("blocaj_http_local")
+    # `blocaj_http_local` poate fi și un text („interzis de robots.txt”): coloana e numerică, iar
+    # UPDATE-ul cădea, oprind extracția întregii bănci (Patria, 08.10.2026)
+    if not isinstance(cod_http, int):
+        cod_http = int(cod_http) if str(cod_http or "").isdigit() else None
     motiv = rez.get("motiv") or ""
     status = {"extras": "ok", "neschimbat": "neschimbat", "blocat": "blocat"}.get(stare, "eroare")
     if status == "eroare" and "404" in motiv:

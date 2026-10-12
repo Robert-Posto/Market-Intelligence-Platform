@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "brd",
   "cod": "CREDIT_NEVOI_PERSONALE",
   "denumire": "Credit nevoi personale",
@@ -12,28 +12,43 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Creditul Expresso (Credit de Nevoi Personale)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără justificarea destinației, fără garanții imobiliare, cu perioadă maximă de 5 ani (60 luni) și sumă maximă de până la 250.000 lei — corespunde direct creditului de nevoi personale Libra (fără justificare, până la 60 luni, fără garanții).",
-      "incredere": 0.95,
-      "explicatie_incredere": "Pagina dedicată produsului conține explicit cifrele: dobândă, sumă maximă, perioadă maximă și exemplul reprezentativ cu DAE.",
-      "citat": "Rata dobânzii este cuprinsă între 5,70% și 20,68% și este oferită clienților în funcție de o serie de elemente avute în vedere în analiza cererii de credit, precum optiunea de incasare a veniturilor in contul curent BRD, incheierea unei asigurari de viata, refinantarea",
-      "pagina_pdf": null,
+      "motiv_potrivire": "Credit de consum fără justificarea destinației, fără garanții, pentru persoane fizice, cu termen de până la 5 ani (10 ani pentru refinanțare) și sumă maximă fără garanții similară cu produsul Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Pagina dedicată produsului conține explicit dobânda, DAE, suma maximă și exemplul reprezentativ cu toate comisioanele.",
+      "citat": "Exemplu reprezentativ valabil la 01.10.2026, calculat pentru un credit de nevoi personale EXPRESSO, în valoare de 35.000 lei, acordat 100% online pe o perioadă de 5 ani și rambursat în 60 de rate lunare egale, cu încasarea venitului în cont BRD, incheierea unei asigurari de viata si contractarea unui pachet de produse și servicii: dobândă fixă de 6,49%/ an, DAE 8,35%",
       "citat_verificat": false,
       "avertisment": "citatul nu apare în textul primit",
+      "link_live": null
+    },
+    {
+      "url": "https://www.brd.ro/_files/Ghid_tarife_comisioane_2.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "tarife",
+      "denumire_la_banca": "Expresso/ Expresso ReStart (credite de nevoi personale fără obiect)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Documentul oficial de tarife și comisioane pentru persoane fizice, în vigoare, listează explicit comisionul de analiză dosar și de administrare pentru creditul Expresso, echivalentul BRD al creditului de nevoi personale Libra.",
+      "incredere": 0.9,
+      "explicatie_incredere": "Document oficial în vigoare (16.10.2024) cu tabel dedicat creditelor de nevoi personale fără obiect, incluzând Expresso/Expresso ReStart.",
+      "citat": "a. Credite de nevoi personale fără obiect Expresso/ Expresso ReStart 200 lei - Credit Multiplan 200 lei 50 eur Expresso NonStop/ Expresso NonStop Restart 650 lei - ... Expresso/ Expresso ReStart gratuit -",
+      "pagina_pdf": 17,
+      "citat_verificat": null,
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.brd.ro/persoane-fizice/credite/credite-de-nevoi-personale/creditul-expresso"
+    "https://www.brd.ro/persoane-fizice/credite/credite-de-nevoi-personale/creditul-expresso",
+    "https://www.brd.ro/_files/Ghid_tarife_comisioane_2.pdf"
   ],
-  "durata_s": 17,
+  "durata_s": 29,
   "consum": {
     "intrare": 6,
-    "iesire": 1365,
-    "citire_cache": 36898,
-    "scriere_cache": 43248,
+    "iesire": 1840,
+    "citire_cache": 38987,
+    "scriere_cache": 142317,
     "apeluri": 1,
-    "cost_estimat_usd": 0.12916160000000002
+    "cost_estimat_usd": 0.3820019
   }
 }

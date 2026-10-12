@@ -1,10 +1,26 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "bcr",
   "cod": "CREDIT_NEVOI_PERSONALE",
   "denumire": "Credit nevoi personale",
   "model": "claude-sonnet-5",
   "surse": [
+    {
+      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/george/credit/Creditul_DIVERS_BCR_credite_noi_si_refinantari_BCR_BCR.pdf",
+      "tip": "pdf",
+      "metoda": "http",
+      "rol": "dobanzi",
+      "denumire_la_banca": "Creditul Divers BCR (Credit de nevoi personale George)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Credit de consum negarantat, fără justificarea destinației, pentru persoane fizice, sumă până la 250.000 lei, termen până la 60 luni (120 luni doar pentru un caz particular de refinanțare) — același tip de produs și segment ca CREDIT_NEVOI_PERSONALE Libra.",
+      "incredere": 0.92,
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial 'Dobânzi şi comisioane' al produsului, actualizat 16/04/2026, cu toate câmpurile cheie: dobândă, DAE, comision analiză, comision administrare, valoare maximă.",
+      "pagina_pdf": 2,
+      "citat": "Dobânda standard este fixă, cuprinsă între 7,99% și 14,99%/an (DAE de la 8,59% la 18,91%) și diferă în funcție de mai multe variabile utilizate în analiza cererii de credit, istoricul relației cu banca, venitul realizat, vechimea locului de munca, ratele în derulare și comportamentul de plată, sumă, perioada creditului, etc.",
+      "citat_verificat": null,
+      "link_live": null
+    },
     {
       "url": "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george",
       "tip": "html",
@@ -12,42 +28,29 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Creditul de nevoi personale George",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Credit de consum pentru persoane fizice, fără garanții, fără justificarea destinației, cu termen până la 60 de luni (120 luni doar pentru refinanțări de credite vechi fără sumă suplimentară) și plafon până la 250.000 lei în funcție de venituri - corespunde tipologic creditului de nevoi personale Libra.",
-      "incredere": 0.95,
-      "explicatie_incredere": "Pagina dedicată a produsului conține toate cifrele relevante: dobânzi, DAE, exemple reprezentative, comisioane și termene.",
-      "citat": "Dobânda standard este fixă, cuprinsă între 7,99% și 14,99%/an (DAE de la 8,59% la 18,91%) și diferă în funcție de mai multe variabile utilizate în analiza cererii de credit, istoricul relației cu banca, venitul realizat, vechimea locului de munca, ratele în derulare și comportamentul de plată, sumă, perioada creditului, etc.",
+      "motiv_potrivire": "Pagina dedicată produsului de credit de nevoi personale pentru persoane fizice, fără garanții, 100% online, cu sumă maximă și termen explicite.",
+      "incredere": 0.9,
+      "incredere_metoda": 0.9,
+      "explicatie_incredere": "Pagina oficială a produsului conține sumă maximă (250.000 lei), termen (60 luni), dobândă și trimitere la documentul cu dobânzi și comisioane.",
+      "citat": "Poți rambursa creditul oricând vrei tu, în până la 60 de luni, în cazul împrumuturilor noi şi al celor destinate refinanţării împrumuturilor acordate după 8 iulie 2020. Accesezi până la 250.000 lei",
       "citat_verificat": true,
-      "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george#:~:text=Dob%C3%A2nda%20standard%20este%20fix%C4%83%2C%20cuprins%C4%83,plat%C4%83%2C%20sum%C4%83%2C%20perioada%20creditului%2C%20etc."
-    },
-    {
-      "url": "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/george/credit/Creditul_DIVERS_BCR_credite_noi_si_refinantari_BCR_BCR.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "dobanzi",
-      "denumire_la_banca": "Creditul de nevoi personale George (Dobânzi şi comisioane Împrumutul pentru nevoi personale)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Document oficial de dobânzi și comisioane legat direct din pagina produsului echivalent, aplicabil creditelor noi și refinanțărilor pentru nevoi personale.",
-      "incredere": 0.85,
-      "explicatie_incredere": "Document PDF dedicat, linkat explicit de pe pagina produsului drept sursa oficială de dobânzi și comisioane pentru acest credit.",
-      "citat": "Dobânzi şi comisioane Împrumutul pentru nevoi personale (PDF, 398 KB)",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective; citat scurt (10 cuvinte)",
-      "link_live": null
+      "link_live": "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george#:~:text=Po%C8%9Bi%20rambursa%20creditul%20oric%C3%A2nd%20vrei,Accesezi%20p%C3%A2n%C4%83%20la%20250.000%20lei"
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
     "https://www.bcr.ro/ro/persoane-fizice/credite/credit-george",
-    "https://www.bcr.ro/ro/persoane-fizice/credite/credite-pentru-nevoi-personale"
+    "https://www.bcr.ro/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Dobanzi_si_comisioane_MAXICREDIT_BCR.pdf",
+    "https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/george/credit/Creditul_DIVERS_BCR_credite_noi_si_refinantari_BCR_BCR.pdf"
   ],
-  "durata_s": 21,
+  "durata_s": 41,
   "consum": {
-    "intrare": 6,
-    "iesire": 1831,
-    "citire_cache": 41366,
-    "scriere_cache": 44994,
+    "intrare": 8,
+    "iesire": 3323,
+    "citire_cache": 84168,
+    "scriere_cache": 51771,
     "apeluri": 1,
-    "cost_estimat_usd": 0.1390802
+    "cost_estimat_usd": 0.1795071
   }
 }

@@ -1,41 +1,24 @@
 {
-  "generat": "2026-10-06",
+  "generat": "2026-10-12",
   "banca": "exim",
   "cod": "CREDIT_NEVOI_PERSONALE",
   "denumire": "Credit nevoi personale",
   "model": "claude-sonnet-5",
   "surse": [
     {
-      "url": "https://www.eximbank.ro/en/2022/11/09/the-loan-for-all/",
+      "url": "https://www.eximbank.ro/2022/11/09/creditul-de-nevoi-personale/",
       "tip": "html",
       "metoda": "http",
       "rol": "pagina-produs",
-      "denumire_la_banca": "Personal needs loan (Credit de nevoi personale)",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Credit de consum fără justificarea destinației, pentru persoane fizice, fără garanție imobiliară, sumă maximă 200.000 lei și termen maxim 60 luni - caracteristici identice cu produsul Libra.",
-      "incredere": 0.95,
-      "incredere_metoda": 0.95,
-      "explicatie_incredere": "Pagina dedicată produsului conține toate cifrele relevante: sume minime/maxime, dobânzi fixe/variabile, comisioane și exemple reprezentative de calcul.",
-      "citat": "Personal loan for unspecified needs: up to 200,000 lei, for a period of up to 60 months. Minimal amount · 2,000 RON Maximal amount · RON 110,000 – with insurance RON 200,000 – without insurance Maximum period · 60 months",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
-    },
-    {
-      "url": "https://www.eximbank.ro/2026/09/04/dobanda-redusa-la-creditul-de-consum/",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "dobanzi",
       "denumire_la_banca": "Credit de nevoi personale",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Anunț oficial al băncii cu dobânda curentă și condițiile actualizate ale creditului de nevoi personale pentru persoane fizice.",
-      "incredere": 0.85,
-      "incredere_metoda": 0.9,
-      "explicatie_incredere": "Articol recent (publicat acum ~32 zile) cu cifre exacte despre dobândă, sumă maximă, termen și exemplu de rată.",
-      "citat": "Pentru un plus de resurse financiare dupa vacanta, Exim Banca Romaneasca reduce dobanda de start la creditele de nevoi personale la 5,70% pe an, atunci cand sunt accesate impreuna cu un Card de Credit Destept, astfel incat planurile de toamna sa poata fi realizate mai usor.",
-      "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
-      "link_live": null
+      "motiv_potrivire": "Credit de consum fără justificarea destinației, destinat persoanelor fizice, fără garanție imobiliară, sumă maximă 200.000 lei (fără asigurare) / 110.000 lei (cu asigurare), perioadă maximă 60 de luni — potrivire directă cu Credit nevoi personale Libra.",
+      "incredere": 0.95,
+      "explicatie_incredere": "Pagina dedicată produsului conține toate câmpurile cheie: dobândă fixă standard, dobândă variabilă, comision de analiză dosar, comision de administrare, sumă maximă și exemple DAE.",
+      "citat": "Rata dobanzii fixe este cuprinsa intre 5,50%/an si 16,80%/an. Rata dobanzii variabile este cuprinsa intre 9.56% (IRCC+3.99)/an si 16.66% (IRCC+11.09)/an.",
+      "pagina_pdf": null,
+      "citat_verificat": true,
+      "link_live": "https://www.eximbank.ro/2022/11/09/creditul-de-nevoi-personale/#:~:text=Rata%20dobanzii%20fixe%20este%20cuprinsa,9.56%25%20%28IRCC%2B3.99%29%2Fan%20si%2016.66%25%20%28IRCC%2B11.09%29%2Fan."
     },
     {
       "url": "https://www.eximbank.ro/2025/08/20/dobanda-pentru-creditul-de-nevoi-personale-intra-la-reduceri-acum-de-la-649/",
@@ -44,11 +27,11 @@
       "rol": "dobanzi",
       "denumire_la_banca": "Credit de nevoi personale",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Articol oficial cu tabel de exemple reprezentative (dobândă, rată lunară, DAE, valoare totală) pentru creditul de nevoi personale.",
-      "incredere": 0.8,
-      "incredere_metoda": 0.85,
-      "explicatie_incredere": "Conține un tabel complet cu dobânzi minime/medii/maxime, rate lunare și DAE pentru un credit exemplu de 50.000 lei pe 5 ani.",
-      "citat": "Dobanda (%/an) Rata lunara fixa (lei) DAE (%) Valoare totala platibila (lei) 6,49 – nivel mininim 978,07 9,01 61.247,79 8,49 – nivel mediu 1.025,59 11,23 64.098,54 12,59 – nivel maxim 1.127,19 15,92 70.194,62",
+      "motiv_potrivire": "Articol oficial de pe site-ul băncii care confirmă suma maximă majorată la 200.000 lei și prezintă un tabel exemplu cu DAE pentru creditul de nevoi personale.",
+      "incredere": 0.7,
+      "explicatie_incredere": "Conține cifre pentru produs (dobândă, DAE, sumă maximă), dar e un anunț promoțional, nu documentul oficial de tarife; valorile de dobândă pot fi condiționate de pachete.",
+      "citat": "Exim Banca Romaneasca lanseaza o noua solutie de finantare avantajoasa pentru persoanele fizice, disponibila incepand cu aceasta luna: creditele de nevoi personale pot fi accesate acum cu o dobanda fixa redusa ce porneste de la 6,49% pe an, iar suma maxima ce poate fi obtinuta a fost majorata pana la 200.000 de lei.",
+      "pagina_pdf": null,
       "citat_verificat": null,
       "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
@@ -56,14 +39,18 @@
   ],
   "gol": null,
   "candidati_respinsi": [],
-  "deschise": [],
-  "durata_s": 18,
+  "deschise": [
+    "https://www.eximbank.ro/2022/11/09/the-loan-for-all/",
+    "https://www.eximbank.ro/en/2022/11/09/the-loan-for-all/",
+    "https://www.eximbank.ro/2022/11/09/creditul-de-nevoi-personale/"
+  ],
+  "durata_s": 29,
   "consum": {
-    "intrare": 4,
-    "iesire": 1583,
-    "citire_cache": 6340,
-    "scriere_cache": 35604,
+    "intrare": 26178,
+    "iesire": 2369,
+    "citire_cache": 87945,
+    "scriere_cache": 52810,
     "apeluri": 1,
-    "cost_estimat_usd": 0.10611599999999999
+    "cost_estimat_usd": 0.22566
   }
 }

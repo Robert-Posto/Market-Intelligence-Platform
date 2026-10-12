@@ -1,51 +1,23 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "libra",
   "cod": "CARD_DEBIT_FREE",
   "denumire": "Card de debit Free",
   "model": "claude-sonnet-5",
   "surse": [
     {
-      "url": "https://www.librabank.ro/card-de-debit",
-      "tip": "html",
-      "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Card de debit Free",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Pagina oficială dedicată tipurilor de carduri de debit Libra, cu secțiune proprie pentru Card Free: cost emitere 0 lei, 0 lei/lună, cashback și link direct la documentul de tarife al cardului Free.",
-      "incredere": 0.95,
-      "explicatie_incredere": "Pagina produsului conține secțiunea dedicată Card Free cu cifre explicite (0 lei/lună, cost emitere 0 lei, cashback până la 10%) și link direct la tarifele cardului Free.",
-      "citat": "Cost emitere: 0 lei Card debit Free 0 lei/lună Card Free Până la 10% cashback instant Bani înapoi pe card, la sute de Avanposturi",
-      "citat_verificat": true,
-      "link_live": "https://www.librabank.ro/card-de-debit#:~:text=Cost%20emitere%3A%200%20lei%20Card,card%2C%20la%20sute%20de%20Avanposturi"
-    },
-    {
-      "url": "https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Free.pdf",
+      "url": "https://www.librabank.ro/documente/operatiuni/comisioane/comisioane_Libra_Free.pdf",
       "tip": "pdf",
       "metoda": "http",
       "rol": "tarife",
-      "denumire_la_banca": "Avanpost Free",
+      "denumire_la_banca": "Card Free (Avanpost Free)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Document oficial de dobânzi, comisioane și taxe aferent exact cardului de debit Free, valabil atât pentru persoane fizice cât și pentru persoane juridice, conform titlului documentului.",
+      "motiv_potrivire": "Document oficial de tarife pentru cardul de debit Free/Avanpost Free, aplicabil atât persoanelor fizice cât și persoanelor juridice/alte entități, exact produsul CARD_DEBIT_FREE: card fără costuri de emitere/administrare.",
       "incredere": 0.95,
-      "explicatie_incredere": "PDF dedicat exclusiv cardului Free (Avanpost Free), cu toate comisioanele și taxele enumerate explicit, inclusiv mențiunea 'cardului de debit pentru persoane juridice/alte entitati'.",
+      "incredere_metoda": 0.95,
+      "explicatie_incredere": "Document oficial 'Dobanzi, comisioane, taxe si alte costuri' pentru cardul Free, cu toate cele 5 câmpuri cheie prezente explicit și numeric.",
       "pagina_pdf": 1,
-      "citat": "Comision de administrare a cardului/contului de card 0 RON / luna Dobanda cont curent de card (se aplica la sold mai mare de 500 RON) 0% Comision de reemitere card 5 RON",
-      "citat_verificat": null,
-      "link_live": null
-    },
-    {
-      "url": "https://www.librabank.ro/documente_contractuale/comisioane_cont_curent_lei.pdf",
-      "tip": "pdf",
-      "metoda": "http",
-      "rol": "tarife",
-      "denumire_la_banca": "Card debit Libra free",
-      "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Documentul de informare privind comisioanele contului curent în lei include explicit rândurile cu comisioanele pentru cardul de debit Libra free (emitere, administrare, retrageri numerar).",
-      "incredere": 0.8,
-      "explicatie_incredere": "Document general pentru cont curent, dar care listează explicit valorile comisioanelor pentru 'Card debit Libra free' (emitere 0 lei, administrare 0 lei/lună, retrageri numerar).",
-      "pagina_pdf": 2,
-      "citat": "Emiterea unui card de debit [Libra free] 0 lei Administrare card de debit [Libra free] Lunar: 0 Lei Comision anual total: 0 Lei",
+      "citat": "Comision de emitere plastic 0 RON Comision de utilizare mijloc de plata (card) la ATM-uri ale Libra Internet Bank SA/ Euronet* 0.2% Comision de utilizare mijloc de plata (card) la ATM-uri din Uniunea Europeana* 0.5%+2.5 RON Comision de conversie valutara 0 Comision de administrare a cardului/ contului de card 0 RON/ luna",
       "citat_verificat": null,
       "link_live": null
     }
@@ -53,17 +25,16 @@
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
-    "https://www.librabank.ro/card-de-debit",
-    "https://www.librabank.ro/documente_contractuale/comisioane_cont_curent_lei.pdf",
-    "https://www.librabank.ro/documente/carduri/comisioane_card_Avanpost_Free.pdf"
+    "https://www.librabank.ro/documente/operatiuni/comisioane/comisioane_Libra_Free.pdf",
+    "https://www.librabank.ro/card-de-debit"
   ],
-  "durata_s": 32,
+  "durata_s": 34,
   "consum": {
-    "intrare": 8,
-    "iesire": 2702,
-    "citire_cache": 89241,
-    "scriere_cache": 62648,
+    "intrare": 6,
+    "iesire": 2733,
+    "citire_cache": 36982,
+    "scriere_cache": 46543,
     "apeluri": 1,
-    "cost_estimat_usd": 0.20150419999999997
+    "cost_estimat_usd": 0.1510959
   }
 }

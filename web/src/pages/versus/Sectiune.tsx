@@ -7,7 +7,7 @@ import { useLang } from '../../i18n'
 import { deLaServer } from '../../i18n/server'
 import { num } from '../../util/format'
 import { numeCategorie } from '../produse/logica'
-import { REFERINTA, UNITATI_LIBRA, type CelulaVs, type SectiuneExtra, type SectiuneLibra, type SectiunePret } from './model'
+import { REFERINTA, UNITATI_LIBRA, type CelulaVs, type RandLibra, type SectiuneExtra, type SectiuneLibra, type SectiunePret } from './model'
 
 interface Comun {
   coloane: string[]
@@ -143,12 +143,12 @@ export function SectiuneLibraVs({ s, coloane, nume }: Comun & { s: SectiuneLibra
   const sub = [t('versus.libra_produs'), s.segment, s.categorie && numeCategorie(s.categorie, t)].filter(Boolean).join(' · ')
   // același câmp în două unități („Administrare lunară” în lei și în %): unitatea intră în etichetă
   const repetate = new Set(s.randuri.map((r) => r.camp).filter((c, i, a) => a.indexOf(c) !== i))
-  const eticheta = (camp: string, u: string) => etNume(camp, t) + (repetate.has(camp) ? ` (${unitate(u).trim() || u})` : '')
+  const eticheta = (r: RandLibra) => (r.nume !== r.camp ? r.nume : etNume(r.camp, t)) + (repetate.has(r.camp) ? ` (${unitate(r.unitate).trim() || r.unitate})` : '')
   return (
     <Pliabila cap={<CapSectiune titlu={s.titlu} sens="" sub={sub} coloane={coloane} nume={nume} />}>
       {s.randuri.map((r, k) => (
         <div key={`${r.camp}|${r.unitate}`} className={k % 2 ? 'vs-rand alt' : 'vs-rand'}>
-          <EtichetaRand et={eticheta(r.camp, r.unitate)} desc={t(r.sens === 'mare_bun' ? 'versus.sens_mare_bun' : 'versus.sens_mic_bun')}
+          <EtichetaRand et={eticheta(r)} desc={t(r.sens === 'mare_bun' ? 'versus.sens_mare_bun' : 'versus.sens_mic_bun')}
             cate={r.prezente} total={coloane.length} />
           {coloane.map((b) => {
             const c = r.celule[b]
@@ -156,16 +156,32 @@ export function SectiuneLibraVs({ s, coloane, nume }: Comun & { s: SectiuneLibra
             const bun = r.prezente > 1 && c.valoare === r.celMaiBun
             const pierde = b === REFERINTA && r.stare === 'pierde'
             const u = unitate(r.unitate)
-            const multe = c.n > 1 && c.minim !== c.maxim
-            const titlu = [c.citat && `„${c.citat}”`, c.link && t('versus.libra_clic_sursa')].filter(Boolean).join(' — ')
+            const variante = c.variante ?? []
+            // tooltip-ul: citatul, apoi de ce cifra asta, celelalte cifre la conflict și variantele
+            const titlu = (
+              <div className="vs-libra-tip">
+                {c.citat && <div>„{c.citat}”</div>}
+                {c.motiv && <div className="gri">{c.motiv}</div>}
+                {c.stare === 'conflict' && !!c.alternative?.length && (
+                  <div>{t('versus.libra_alternative')}: {c.alternative.map((a) => `${num(a.valoare_num, locale)}${unitate(a.unitate ?? '')}`).join(', ')}</div>
+                )}
+                {variante.length > 0 && (
+                  <div>
+                    <b>{t('versus.libra_variante_titlu')}</b>
+                    {variante.map((v, i) => <div key={i}>{v.eticheta}: {num(v.valoare_num, locale)}{unitate(v.unitate ?? '')}</div>)}
+                  </div>
+                )}
+                {c.link && <div className="gri">{t('versus.libra_clic_sursa')}</div>}
+              </div>
+            )
             return (
               <div key={b} className={['vs-cel', bun && 'best', pierde && 'pierde'].filter(Boolean).join(' ')}>
-                <Tooltip title={titlu || undefined}>
+                <Tooltip title={titlu}>
                   <a className="celula vs-libra" href={c.link ?? undefined} target="_blank" rel="noopener noreferrer">
-                    {multe && <span className="v-pref">{t('comun.valoare.de_obicei')}</span>}
                     <span className="v-num">{num(c.valoare, locale)}{u}</span>
-                    {multe && <span className="v-ctx">{num(c.minim, locale)}{u} – {num(c.maxim, locale)}{u}</span>}
-                    {c.referinta && <span className="v-ctx">{t('versus.libra_referinta')}</span>}
+                    {c.stare === 'aproximativ' && <span className="v-ctx">{t('versus.libra_aproximativ')}</span>}
+                    {c.stare === 'conflict' && <span className="v-ctx vs-de-verificat">{t('versus.libra_conflict')}</span>}
+                    {variante.length > 0 && <span className="v-ctx">{t('versus.libra_variante', { n: variante.length })}</span>}
                   </a>
                 </Tooltip>
                 <Marcaje bun={bun} pierde={pierde} />

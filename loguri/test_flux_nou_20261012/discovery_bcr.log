@@ -1,0 +1,32 @@
+BCR: 5 de rulat, 0 sărite (au rezultat), paralel 3, model claude-sonnet-5, termen 180 s/produs, domenii bcr.ro, bcrleasing.ro, bcrlocuinte.ro, cdn.erstegroup.com, cdn0.erstegroup.com, pensiibcr.ro
+  [cautare] BCR cont curent IMM online tarife comisioane
+  [cautare] BCR cont online pentru firme PFA deschidere online
+  [ 1] https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/comisioane-BCR-MC-Business-Gold.pdf?forceDownload=1
+  [ 2] https://www.bcr.ro/ro/business/digital-banking/cont-online-george
+  [cautare] BCR "Tarif de comisioane" persoane juridice 2024 pdf George
+GATA    CONT_ONLINE_BUSINESS         2 surse, 1 citate verificate, echivalent, $0.27, 65s — Contul George pentru afacerea ta (Cont Online George Business)
+  [cautare] BCR credit nevoi personale dobanda DAE
+  [cautare] BCR tarife comisioane credite persoane fizice pdf
+  [ 1] https://www.bcr.ro/ro/persoane-fizice/credite/credit-george
+  [ 2] https://www.bcr.ro/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Dobanzi_si_comisioane_MAXICREDIT_BCR.pdf
+  [ 3] https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/george/credit/Creditul_DIVERS_BCR_credite_noi_si_refinantari_BCR_BCR.pdf
+GATA    CREDIT_NEVOI_PERSONALE       2 surse, 1 citate verificate, echivalent, $0.18, 41s — Creditul Divers BCR (Credit de nevoi personale George)
+  [cautare] BCR cont curent 100% online persoane fizice
+  [cautare] BCR tarife comisioane cont curent persoane fizice PDF
+  [ 1] https://www.bcr.ro/ro/persoane-fizice/digital-banking/cont-online-george
+  [ 2] https://www.bcr.ro/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/documente-de-infomare-comisioane/Document_de_informare_cu_privire_la_comisioane_CCB_cont_George.pdf
+  [ 3] https://www.bcr.ro/ro/persoane-fizice/conturi-si-operatiuni/pachete-de-cont-curent/serviciul-de-mobilitate
+  [ 4] https://cdn.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/Tarif_standard_de_comisioane_PF.pdf
+GATA    CONT_ONLINE_PERSONAL         2 surse, 1 citate verificate, echivalent, $0.37, 116s — Cont Curent George 3.0
+  [cautare] BCR depozit la termen dobanda persoane fizice
+  [cautare] BCR depozit la termen persoane juridice dobanzi
+  [ 1] https://www.bcr.ro/ro/persoane-fizice/economisire-si-investire/depozitul-la-termen
+  [ 2] https://www.bcr.ro/ro/organizatii-publice-si-non-profit/investitii/economisire/depozitul-overnight-automat
+  [ 3] https://www.bcr.ro/ro/business/general/economisire-si-investitii/Economisire/depozitul-la-termen
+  [ 4] https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Persoane-fizice/Documente-importante/BCR_Dobanzi_pentru_contul_curent_si_produsele_de_economisire_PF.pdf
+  [ 5] https://www.bcr.ro/ro/business/informatii-utile
+GATA    DEPOZIT_TERMEN               3 surse, 2 citate verificate, echivalent, $0.27, 56s — Depozitul la Termen BCR (persoane fizice)
+EROARE  CARD_DEBIT_FREE              timeout: nimic găsit în termen, după 1 ture și 0 pagini
+
+bcr: 4/5 produse cu surse, 1 erori, cost estimat $1.11, durata 3 min
+Reia: python descopera_surse_libra.py --banca bcr --produse CARD_DEBIT_FREE

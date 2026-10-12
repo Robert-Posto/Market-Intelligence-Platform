@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-01",
+  "generat": "2026-10-12",
   "banca": "bcr",
   "cod": "CONT_ONLINE_BUSINESS",
   "denumire": "Cont Online Business",
@@ -12,41 +12,42 @@
       "rol": "pagina-produs",
       "denumire_la_banca": "Contul George pentru afacerea ta (Cont Online George Business)",
       "tip_potrivire": "echivalent",
-      "motiv_potrivire": "Cont curent pentru persoane juridice (PFA, SRL, microîntreprinderi), deschis 100% online prin aplicația George, cu card de debit business atașat și pachet de servicii operaționale - corespunde exact Cont Online Business de la Libra: cont PJ digital cu card business.",
+      "motiv_potrivire": "Cont curent pentru persoane juridice (microîntreprinderi, PFA) deschis și gestionat 100% online, cu card de debit business și pachet de servicii/abonament operațional - corespunde exact profilului Cont Online Business de la Libra.",
       "incredere": 0.9,
-      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete: termene de deschidere, procente de reducere la comisioane și condițiile pachetului.",
-      "citat": "Pachetul George pentru afacerea ta începe cu: 3 LUNI cu ZERO comision de administrare, 12 LUNI cu ZERO comision pentru facturarea prin Smart EasyBill, 2 LUNI de contabilitate GRATUITĂ și 30% reducere la serviciile de modificare date firma și recodificare CAEN prin REGNET",
+      "explicatie_incredere": "Pagina dedicată produsului conține cifre concrete despre plafonul de cifră de afaceri, structura de reduceri la comisionul de administrare și operațiunile incluse gratuit.",
+      "citat": "Conceput pentru afaceri de până la 1 mil. euro, ONG-uri și Asociații de Proprietari, pachetul George îți răsplătește plățile digitale cu comisioane 0 și reduceri dinamice la administrare.",
       "citat_verificat": true,
-      "link_live": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george#:~:text=Pachetul%20George%20pentru%20afacerea%20ta,%C8%99i%20recodificare%20CAEN%20prin%20REGNET"
+      "link_live": "https://www.bcr.ro/ro/business/digital-banking/cont-online-george#:~:text=Conceput%20pentru%20afaceri%20de%20p%C3%A2n%C4%83,%C8%99i%20reduceri%20dinamice%20la%20administrare."
     },
     {
-      "url": "https://www.bcr.ro/ro/business/digital-banking/cont-online-valuta-george",
-      "tip": "html",
+      "url": "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/comisioane-BCR-MC-Business-Gold.pdf?forceDownload=1",
+      "tip": "pdf",
       "metoda": "http",
-      "rol": "pagina-produs",
-      "denumire_la_banca": "Contul George în valută 100% online",
-      "tip_potrivire": "similar",
-      "motiv_potrivire": "Variantă a aceluiași cont de business George, dar dedicată conturilor în valută (USD, EUR, GBP, CHF) pentru afaceri cu tranzacții internaționale, diferă moneda față de contul standard în lei.",
-      "incredere": 0.75,
-      "explicatie_incredere": "Pagina descrie clar produsul și procesul de deschidere, dar cifrele concrete de comisioane lipsesc, fiind orientative (timp de deschidere).",
-      "citat": "Contul Online în Valută George este un cont curent digital dedicat afacerilor care desfășoară tranzacții în valută. Acesta permite gestionarea eficientă a operațiunilor financiare internaționale, oferind acces la multiple valute precum USD, EUR, GBP, CHF și altele.",
+      "rol": "tarife",
+      "denumire_la_banca": "Tarif de comisioane BCR pentru persoane juridice (Cont curent PJ / George Business)",
+      "tip_potrivire": "echivalent",
+      "motiv_potrivire": "Document oficial de tarife pentru persoane juridice care listează comisionul de administrare cont curent, transferurile intra/interbancare și depunerile de numerar - exact câmpurile cheie cerute pentru Cont Online Business.",
+      "incredere": 0.8,
+      "explicatie_incredere": "Este documentul oficial de tarife pentru PJ cu toate comisioanele cerute, dar data intrării în vigoare afișată este 13 mai 2019, deci nu poate fi confirmat 100% că e cea mai recentă versiune.",
+      "pagina_pdf": 2,
+      "citat": "1.2. Administrare cont curent 20 LEI sau echiv./cont curent/lună 1.3. Administrare cont de TVA în LEI gratuit 1.4. Administrare cont de TVA în valută 20 LEI sau echiv./cont/lună 1.5. Eliberare extras de cont curent gratuit/1 extras lunar",
       "citat_verificat": null,
-      "avertisment": "adresă neregăsită printre deschiderile efective",
       "link_live": null
     }
   ],
   "gol": null,
   "candidati_respinsi": [],
   "deschise": [
+    "https://cdn0.erstegroup.com/content/dam/ro/bcr/www_bcr_ro/Business/Informatii-utile/comisioane-BCR-MC-Business-Gold.pdf?forceDownload=1",
     "https://www.bcr.ro/ro/business/digital-banking/cont-online-george"
   ],
-  "durata_s": 17,
+  "durata_s": 65,
   "consum": {
-    "intrare": 6,
-    "iesire": 1267,
-    "citire_cache": 37413,
-    "scriere_cache": 36096,
+    "intrare": 8,
+    "iesire": 5021,
+    "citire_cache": 111950,
+    "scriere_cache": 78926,
     "apeluri": 1,
-    "cost_estimat_usd": 0.11040460000000002
+    "cost_estimat_usd": 0.26993100000000003
   }
 }
