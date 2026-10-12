@@ -27,6 +27,7 @@ sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 import autentificare  # noqa: E402
 import rulari  # noqa: E402
+import utilizatori  # noqa: E402
 
 PAROLA = "Parola-Secreta-123!"
 CONTURI = {"ana": (PAROLA, "Ana Analist", "analist"), "adi": (PAROLA, "Adi Admin", "admin"),
@@ -36,9 +37,31 @@ RUTE_ADMIN_POST = ["/api/rulari/porneste", "/api/rulari/opreste"]
 TEST_RULARI = [{"id": "nimic", "nume": "Nimic", "ce": "test", "argumente": ["-c", "import time; time.sleep(30)"],
                 "banca": None, "internet": False, "estimare_min": 1}]
 CONFIG_AD = autentificare.Config(url="ldaps://dc01.banca.example:636", domeniu="banca.example",
-                                 baza="DC=banca,DC=example", grup_admin="CN=MCC-Admin,DC=banca,DC=example",
-                                 grup_analist="CN=MCC-Analist,DC=banca,DC=example")
+                                 baza="DC=banca,DC=example")
 VARIABILE = ("MCC_AUTH_LOCAL", "MCC_AUTH_OBLIGATORIE", "MIP_PERMITE_RULARI")
+
+
+class UtilizatoriFalsi:
+    """Tabela `utilizatori` în memorie: regulile ei se testează pe Postgres (test_utilizatori.py);
+    aici contează doar ce face serverul cu răspunsul (cod, sesiuni, jurnal)."""
+
+    def __init__(self):
+        self.randuri = {u: {"utilizator": u, "nume": n, "rol": r, "activ": True}
+                        for u, (_, n, r) in CONTURI.items()}
+        self.apeluri = []
+
+    def lista(self):
+        return {"disponibil": True, "utilizatori": list(self.randuri.values())}
+
+    def modifica(self, utilizator, corp, de_catre):
+        self.apeluri.append((utilizator, corp, de_catre))
+        if utilizator not in self.randuri:
+            raise utilizatori.Lipsa(utilizator)
+        if corp.get("rol") == "sef":
+            raise utilizatori.Respins("rol_invalid")
+        vechi = dict(self.randuri[utilizator])
+        self.randuri[utilizator] = dict(vechi, **{k: corp[k] for k in ("rol", "activ") if k in corp})
+        return dict(self.randuri[utilizator]), vechi
 
 
 def verificator(utilizator, parola):
@@ -63,7 +86,8 @@ class Http(unittest.TestCase):
         cls.server_mod = server
         cls.dir = tempfile.mkdtemp(prefix="auth_http_")
         cls.mediu_vechi = {k: os.environ.get(k) for k in VARIABILE}
-        cls.vechi = {k: getattr(server, k) for k in ("AUTENTIFICARE", "SESIUNI", "RULARI", "pdf_permis", "adu_pdf")}
+        cls.vechi = {k: getattr(server, k) for k in ("AUTENTIFICARE", "SESIUNI", "RULARI", "pdf_permis", "adu_pdf",
+                                                      "UTILIZATORI")}
         cls.rute_vechi = dict(server.RUTE)
         cls.jurnal_vechi = autentificare.CALE_JURNAL
         autentificare.CALE_JURNAL = os.path.join(cls.dir, "autentificare.log")
@@ -105,6 +129,7 @@ class Http(unittest.TestCase):
         os.environ["MIP_PERMITE_RULARI"] = "1"
         # AD configurat (fictiv, verificatorul e simulat): fără el, laptopul ar intra automat ca admin local
         self.server_mod.AUTENTIFICARE = autentificare.Autentificator(CONFIG_AD, verificator=verificator)
+        self.server_mod.UTILIZATORI = UtilizatoriFalsi()
 
     def cere(self, metoda, cale, corp=None, antete=None, cookie=None, brut=None, nume_cookie="mcc_sesiune"):
         c = http.client.HTTPConnection("127.0.0.1", self.port, timeout=10)
@@ -280,8 +305,7 @@ class Http(unittest.TestCase):
 
     def test_ldap_real_inaccesibil_503_fara_detalii(self):
         """Drumul real (ldap3, fără verificator injectat) spre un port unde nu ascultă nimeni."""
-        c = autentificare.Config(url="ldaps://127.0.0.1:1", domeniu="banca.example", baza="DC=banca,DC=example",
-                                 grup_admin="CN=A,DC=banca,DC=example", grup_analist="CN=B,DC=banca,DC=example")
+        c = autentificare.Config(url="ldaps://127.0.0.1:1", domeniu="banca.example", baza="DC=banca,DC=example")
         self.assertIsNone(c.problema())
         self.server_mod.AUTENTIFICARE = autentificare.Autentificator(c)
         cod, h, brut = self.cere("POST", "/api/autentificare", {"utilizator": "ana", "parola": PAROLA})
@@ -378,6 +402,53 @@ class Http(unittest.TestCase):
         t = time.time() + 15
         while self.server_mod.RULARI.curenta and time.time() < t:
             time.sleep(0.1)
+
+    # ---------------- utilizatorii (rolurile date în aplicație)
+
+    def test_utilizatori_doar_pentru_admin(self):
+        _, _, _, ana = self.logare("ana")
+        self.assertEqual(self.cere("GET", "/api/utilizatori", cookie=ana)[:3:2], (403, {"eroare": "interzis"}))
+        cod, _, d = self.cere("POST", "/api/utilizatori/modifica", {"utilizator": "ana", "rol": "admin"}, cookie=ana)
+        self.assertEqual((cod, d), (403, {"eroare": "interzis"}))
+        self.assertEqual(self.server_mod.UTILIZATORI.apeluri, [])       # rolul nu s-a schimbat
+        _, _, _, adi = self.logare("adi")
+        cod, _, d = self.cere("GET", "/api/utilizatori", cookie=adi)
+        self.assertEqual(cod, 200)
+        self.assertEqual({u["utilizator"] for u in d["utilizatori"]}, set(CONTURI))
+
+    def test_rolul_dat_se_vede_imediat_in_sesiunea_deschisa(self):
+        _, _, _, ana = self.logare("ana")
+        _, _, _, adi = self.logare("adi")
+        cod, _, d = self.cere("POST", "/api/utilizatori/modifica", {"utilizator": "ana", "rol": "admin"}, cookie=adi)
+        self.assertEqual((cod, d["rol"]), (200, "admin"))
+        self.assertEqual(self.server_mod.UTILIZATORI.apeluri, [("ana", {"utilizator": "ana", "rol": "admin"}, "adi")])
+        self.assertEqual(self.cere("GET", "/api/sesiune", cookie=ana)[2]["rol"], "admin")
+        self.assertEqual(self.cere("GET", "/api/jobs", cookie=ana)[0], 200)
+        rand = [r for r in self.jurnal() if r["eveniment"] == "utilizator_modificat"][-1]
+        self.assertEqual((rand["utilizator"], rand["cont"], rand["rol"]), ("adi", "ana", ["analist", "admin"]))
+        self.assertGreaterEqual(rand["sesiuni_atinse"], 1)      # sesiunile sunt comune testelor clasei
+
+    def test_contul_dezactivat_iese_imediat(self):
+        _, _, _, ana = self.logare("ana")
+        _, _, _, adi = self.logare("adi")
+        cod, _, _ = self.cere("POST", "/api/utilizatori/modifica", {"utilizator": "ana", "activ": False}, cookie=adi)
+        self.assertEqual(cod, 200)
+        self.assertEqual(self.cere("GET", "/api/sumar", cookie=ana)[:3:2], (401, {"eroare": "neautentificat"}))
+
+    def test_modifica_erori(self):
+        _, _, _, adi = self.logare("adi")
+        cale = "/api/utilizatori/modifica"
+        self.assertEqual(self.cere("POST", cale, {"utilizator": "ana", "rol": "sef"}, cookie=adi)[:3:2],
+                         (400, {"eroare": "rol_invalid"}))
+        self.assertEqual(self.cere("POST", cale, {"utilizator": "nimeni", "rol": "admin"}, cookie=adi)[:3:2],
+                         (404, {"eroare": "inexistent"}))
+        cod, _, _ = self.cere("POST", cale, cookie=adi, brut="utilizator=ana&rol=admin",
+                              antete={"Content-Type": "application/x-www-form-urlencoded"})
+        self.assertEqual(cod, 415)
+        cod, _, d = self.cere("POST", cale, {"utilizator": "ana", "rol": "admin"},
+                              {"Sec-Fetch-Site": "cross-site"}, cookie=adi)
+        self.assertEqual((cod, d), (403, {"eroare": "interzis"}))
+        self.assertEqual([a[0] for a in self.server_mod.UTILIZATORI.apeluri], ["ana", "nimeni"])
 
     # ---------------- cerința 12
 

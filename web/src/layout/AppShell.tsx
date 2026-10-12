@@ -39,8 +39,8 @@ export default function AppShell() {
         </div>
         <div className="meniu">
           {meniu.map((gr) => (
-            <div key={gr.grup}>
-              <h3>{t(gr.grup)}</h3>
+            <div key={gr.grup ?? gr.chei[0]!.id} className={gr.grup ? undefined : 'fara-titlu'}>
+              {gr.grup && <h3>{t(gr.grup)}</h3>}
               {gr.chei.map((p) => (
                 <NavLink key={p.id} to={`/${p.id}`} className={({ isActive }) => (isActive ? 'activ' : '')}>
                   {t(cheie(p.id, 'nume_meniu'))}

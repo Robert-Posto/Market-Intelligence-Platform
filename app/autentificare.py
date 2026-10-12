@@ -1,14 +1,16 @@
 """Autentificarea cu Active Directory (LDAPS) și rolurile admin / analist.
 
 De ce: pe mcc-test.libra.bank aplicația era deschisă oricui din rețea. Logarea se face cu
-contul de Windows, verificat la AD; rolul vine din grupurile AD (inclusiv imbricate):
-`MCC_LDAP_GRUP_ADMIN` → admin, `MCC_LDAP_GRUP_ANALIST` → analist, în ambele → admin.
+contul de Windows, verificat la AD; AD-ul verifică doar parola și identitatea, iar rolul se dă în
+aplicație („Administrare → Utilizatori”, `app/utilizatori.py`), ca în SCC. Până pe 09.10.2026 rolul venea
+din două grupuri AD (`MCC_LDAP_GRUP_*`), care nu există în Libra și nu se vor crea.
 
 Modulul nu știe nimic de server (testabil separat, `app/test_autentificare.py`):
   - `Config`: setările AD din mediu (`.env`), cu `problema()` = de ce nu se poate loga;
   - `Autentificator`: validare, limitarea încercărilor, verificarea la AD (`ldap3`, sau un
-    verificator injectat în teste) și jurnalul fiecărei încercări;
-  - `Sesiuni`: în memorie (serverul nu scrie în bază), identificatorul ținut doar ca SHA-256;
+    verificator injectat în teste), rolul cerut aplicației (`roluri`) și jurnalul fiecărei încercări;
+  - `Sesiuni`: în memorie, identificatorul ținut doar ca SHA-256; o schimbare de rol din pagina
+    „Utilizatori” se aplică imediat sesiunilor deschise (`aplica_rol`);
   - `jurnal`: o linie JSON pe eveniment în `loguri/autentificare.log`, niciodată parola (iar la o
     logare eșuată nici numele scris, doar amprenta lui: `hash_utilizator`);
   - `mod_local` / `verifica_pornire`: scurtătura de pe laptop (`MCC_AUTH_LOCAL`), care pe
@@ -53,8 +55,6 @@ MAXIM_ABSOLUT_S = 12 * 3600
 SESIUNI_PE_UTILIZATOR = 10
 CURATARE_S = 15 * 60
 PAROLA_MAXIM = 256
-# regula AD LDAP_MATCHING_RULE_IN_CHAIN: apartenența și prin grupuri imbricate
-REGULA_IMBRICATA = "1.2.840.113556.1.4.1941"
 
 # fullmatch, nu ^…$: în Python `$` acceptă și un „\n” la final
 _UTILIZATOR = re.compile(r"[A-Za-z0-9._-]{1,64}")
@@ -64,14 +64,12 @@ _DOMENIU = re.compile(r"[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*")
 class Config:
     """Setările AD. Lipsa lor nu oprește serverul: logarea răspunde `ad_indisponibil`."""
 
-    def __init__(self, url="", domeniu="", baza="", grup_admin="", grup_analist="", ca=None,
+    def __init__(self, url="", domeniu="", baza="", ca=None,
                  sesiune_ore=ORE_IMPLICITE, max_incercari=ESECURI_UTILIZATOR, fereastra_min=FEREASTRA_MIN,
                  max_pe_ip=ESECURI_IP):
         self.url = url
         self.domeniu = domeniu
         self.baza = baza
-        self.grup_admin = grup_admin
-        self.grup_analist = grup_analist
         self.ca = ca
         self.sesiune_ore = sesiune_ore      # None = valoare invalidă în mediu (vezi problema())
         # la fel: None = valoare invalidă
@@ -98,7 +96,6 @@ class Config:
         if ore is not None and not ore > 0:        # prinde și NaN
             ore = None
         return cls(url=v("MCC_LDAP_URL"), domeniu=v("MCC_LDAP_DOMENIU"), baza=v("MCC_LDAP_BAZA"),
-                   grup_admin=v("MCC_LDAP_GRUP_ADMIN"), grup_analist=v("MCC_LDAP_GRUP_ANALIST"),
                    ca=v("MCC_LDAP_CA") or None, sesiune_ore=ore,
                    max_incercari=intreg("MCC_AUTH_MAX_INCERCARI", ESECURI_UTILIZATOR),
                    fereastra_min=intreg("MCC_AUTH_FEREASTRA_MIN", FEREASTRA_MIN),
@@ -124,10 +121,6 @@ class Config:
             return "MCC_LDAP_DOMENIU trebuie să fie un nume DNS (ex. banca.example)"
         if not self.baza:
             return "MCC_LDAP_BAZA lipsește"
-        if not self.grup_admin:
-            return "MCC_LDAP_GRUP_ADMIN lipsește"
-        if not self.grup_analist:
-            return "MCC_LDAP_GRUP_ANALIST lipsește"
         if self.ca and not os.path.isfile(self.ca):
             return f"MCC_LDAP_CA: fișierul {self.ca} nu există"
         if self.sesiune_ore is None:
@@ -184,21 +177,15 @@ def filtru_utilizator(utilizator, domeniu):
             f"(userPrincipalName={esc(utilizator + '@' + domeniu)})))")
 
 
-def filtru_grup(sam, dn_grup):
-    """Apartenența, directă sau prin grupuri imbricate, la grupul cu DN-ul dat.
-
-    DN-ul se escapează și el: un grup ca „CN=MCC (Admin),…” ar rupe altfel filtrul.
-    """
-    from ldap3.utils.conv import escape_filter_chars as esc
-    return f"(&(sAMAccountName={esc(sam)})(memberOf:{REGULA_IMBRICATA}:={esc(dn_grup)}))"
-
-
 class Autentificator:
-    def __init__(self, config, verificator=None, ceas=time.monotonic):
+    def __init__(self, config, verificator=None, ceas=time.monotonic, roluri=None):
         self.config = config
         # verificator(utilizator, parola) -> (nume, rol) | (nume, None) fără rol | None parolă greșită;
         # o excepție înseamnă AD indisponibil
         self._verificator = verificator or self._verifica_ldap
+        # roluri(sam, nume) -> rol | None: rolul dat în aplicație (utilizatori.la_logare), cerut doar
+        # după ce AD-ul a confirmat parola și identitatea; fără el nimeni nu primește rol
+        self._roluri = roluri
         self._ceas = ceas
         # cerința 6, din configurație; o valoare invalidă (None) e motivul din problema(), iar
         # limitarea rămâne oricum activă, cu valorile implicite
@@ -332,9 +319,9 @@ class Autentificator:
                 if conn.result.get("result") == 49:      # invalidCredentials: parolă greșită, cont blocat/expirat
                     return None
                 raise RuntimeError(f"bind refuzat: {conn.result.get('description')} {conn.result.get('message')}")
-            # contul legat, după AD (WhoAmI, RFC 4532: `u:DOMENIU\sam`). Rolul se dă doar dacă
+            # contul legat, după AD (WhoAmI, RFC 4532: `u:DOMENIU\sam`). Rolul se cere doar dacă
             # e chiar contul găsit la căutare: căutarea pleacă de la numele scris, iar un alt cont
-            # care se potrivește filtrului nu trebuie să-și împrumute grupurile celui legat
+            # care se potrivește filtrului nu trebuie să ia rolul celui legat
             legat = sam_din_whoami(conn.extend.standard.who_am_i())
             gasite = self._cauta(conn, filtru_utilizator(utilizator, c.domeniu), ["displayName", "sAMAccountName"])
             if not gasite:
@@ -349,11 +336,6 @@ class Autentificator:
                 raise RuntimeError("identitate ambiguă: " + (
                     "AD-ul n-a răspuns la WhoAmI cu u:DOMENIU\\sam" if legat is None
                     else "contul legat (WhoAmI) nu e contul găsit la căutare"))
-            # admin întâi: cine e în ambele grupuri e admin
-            for dn_grup, rol in ((c.grup_admin, "admin"), (c.grup_analist, "analist")):
-                if self._cauta(conn, filtru_grup(sam, dn_grup), ["sAMAccountName"]):
-                    return nume, rol
-            return nume, None
         finally:
             try:
                 conn.unbind()
@@ -365,6 +347,9 @@ class Autentificator:
                     conn.socket.close()
                 except OSError:
                     pass
+        # după închiderea conexiunii LDAP: rolul vine din aplicație, nu din AD. Cheia e contul legat
+        # (WhoAmI), nu numele scris: „LIBRA\\Ana” și „ana@libra.bank” sunt același rând.
+        return nume, (self._roluri(legat, nume) if self._roluri else None)
 
     def _cauta(self, conn, filtru, atribute):
         conn.search(self.config.baza, filtru, attributes=atribute, size_limit=2, time_limit=TIMEOUT_RASPUNS)
@@ -443,6 +428,20 @@ class Sesiuni:
                 return None
             s["activ"] = acum
             return {"utilizator": s["utilizator"], "nume": s["nume"], "rol": s["rol"]}
+
+    def aplica_rol(self, utilizator, rol):
+        """Rolul nou, schimbat din „Administrare → Utilizatori”, în toate sesiunile deschise ale contului.
+
+        Fără rol (retras sau cont dezactivat) sesiunile se închid: următoarea cerere primește 401.
+        Întoarce câte sesiuni au fost atinse."""
+        with self._lacat:
+            ale_lui = [k for k, s in self._sesiuni.items() if s["utilizator"] == utilizator]
+            for k in ale_lui:
+                if rol is None:
+                    del self._sesiuni[k]
+                else:
+                    self._sesiuni[k]["rol"] = rol
+            return len(ale_lui)
 
     def sterge(self, id_sesiune):
         """Ieșirea: sesiunea ștearsă (pentru jurnal) sau None."""

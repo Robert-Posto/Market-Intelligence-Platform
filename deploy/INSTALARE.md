@@ -17,10 +17,13 @@ Intrarea e cu parola AD, nu cu cheie. În `~/.ssh/config`, blocul `Host mcc-test
 | Python 3.13 | `/opt/marketing/venv`. Proiectul cere 3.12, dar pe Debian 13 vine 3.13, iar `requirements.txt` se instalează fără erori |
 | Chromium (Playwright) | `/opt/marketing/.cache/ms-playwright` |
 | PostgreSQL 17 (apt, nu Docker) | baza și rolul `mip`, doar pe `localhost`; parola e în `.env` |
-| `.env` | `/opt/marketing/mcc/.env` (600): `MIP_DSN`, `MIP_SALT` generate la instalare, `MIP_PERMITE_RULARI=0`, `MCC_LDAP_*` (autentificarea), `MCC_AUTH_OBLIGATORIE=1`; fără `MCC_AUTH_LOCAL` |
+| `.env` | `/opt/marketing/mcc/.env` (600): `MIP_DSN`, `MIP_SALT` generate la instalare, `MIP_PERMITE_RULARI=0`, `MCC_LDAP_*` (autentificarea), `MCC_ADMIN_INITIAL`, `MCC_AUTH_OBLIGATORIE=1`; fără `MCC_AUTH_LOCAL` |
 | aplicația | `systemd`: `mcc.service` (`deploy/mcc.service`), `app/server.py` pe `127.0.0.1:8765` |
 | nginx | `deploy/nginx-mcc.conf`: HTTPS pe 443 (HTTP pe 80 redirecționează), servește `web/dist`; `/api`, `/logos`, `/pdf`, `/harta.html` merg la `:8765` |
 | certificatul | `/etc/nginx/ssl/`: wildcard-ul `*.libra.bank` de la Libra Enterprise Root CA (ca la rcc-test, command-center, st-test), valabil până la 10.02.2028; copie din `/srv/linux-sysprep/certs`, cheia 600 root |
+
+nginx (`www-data`) citește `web/dist` printr-un ACL pe `/opt/marketing` (`setfacl -m u:www-data:x`), nu prin grupul
+`marketing`: lista grupului e rescrisă din afară (pe 09.10.2026 `www-data` dispăruse din el, iar pagina dădea 500).
 
 `app/server.py` refuză orice conexiune care nu vine de pe loopback (`verify_request`).
 nginx stă pe același server, deci verificarea rămâne neatinsă.
@@ -43,10 +46,16 @@ sudo -u marketing -H /opt/marketing/venv/bin/python ingest/<script>.py
 
 ## Autentificare AD
 
-Logarea e cu contul de Windows, verificat la Active Directory prin LDAPS (`app/autentificare.py`). Rolul vine din
-grupurile AD, inclusiv imbricate: admin (în plus „Rulare manuală” și „Joburi și erori”) sau analist; cine nu e în
-niciunul primește 403. Fără sesiune nu se citește nicio dată (401). Nu e nevoie de cont de serviciu: bind-ul și
-căutările se fac cu contul celui care se loghează.
+Logarea e cu contul de Windows, verificat la Active Directory prin LDAPS (`app/autentificare.py`). AD-ul verifică doar
+parola; rolul se dă în aplicație, în „Administrare → Utilizatori” (ca în SCC): admin (în plus „Rulare manuală”, „Joburi și
+erori” și „Administrare”) sau analist. Un cont nou apare acolo la prima logare, fără rol (403 până îi dă un admin unul).
+`MCC_ADMIN_INITIAL` din `.env` primește admin la prima logare, ca să existe cine să dea rolurile celorlalți. Fără
+sesiune nu se citește nicio dată (401). Nu e nevoie de cont de serviciu: bind-ul și căutarea se fac cu contul celui
+care se loghează.
+
+Pe mcc-test (09.10.2026): DC-ul e cel din SCC, `buc-orange-dc2.libra.bank`, dar pe LDAPS (636), cu Libra Enterprise
+Root CA în `/etc/ssl/mcc/ca-ad.pem` („Verify return code: 0 (ok)” de pe server); `MCC_LDAP_DOMENIU=libra.bank`,
+`MCC_LDAP_BAZA=DC=libra,DC=bank`, `MCC_ADMIN_INITIAL=doru.popescu`.
 
 ### Ce cerem de la IT
 
@@ -54,8 +63,7 @@ căutările se fac cu contul celui care se loghează.
    DC-ului trebuie să conțină exact acest nume (SAN); se verifică, deci o adresă IP în loc de nume nu merge.
 2. **CA-ul** care a emis certificatul DC-ului, ca fișier PEM. Dacă e Libra Enterprise Root CA, e probabil deja în
    `/srv/linux-sysprep/certs`; se copiază în `/etc/ssl/mcc/ca-ad.pem` (citibil de `marketing`) și se pune în `MCC_LDAP_CA`.
-3. **Cele două grupuri**, cu DN-ul complet (ex. `CN=MCC-Admin,OU=…,DC=…`) și cu membrii lor: unul pentru admin, unul
-   pentru analist.
+3. ~~Grupurile AD~~: nu mai trebuie. Rolurile se dau în aplicație („Administrare → Utilizatori”, migrarea 040).
 4. **Sufixul UPN** (`MCC_LDAP_DOMENIU`: utilizatorul scrie numele scurt, bind-ul e `nume@sufix`) și **baza de căutare**
    (`MCC_LDAP_BAZA`, DN-ul domeniului).
 5. **Politica de blocare a conturilor** din AD: pragul (*Account lockout threshold*) și fereastra de observație
